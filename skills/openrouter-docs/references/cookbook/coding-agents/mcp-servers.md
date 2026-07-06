@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Using MCP Servers with OpenRouter
+
+> Use MCP Servers with OpenRouter
 
 MCP servers are a popular way of providing LLMs with tool calling abilities, and are an alternative to using OpenAI-compatible tool calling.
 
@@ -10,13 +12,15 @@ By converting MCP (Anthropic) tool definitions to OpenAI-compatible tool definit
 
 In this example, we'll use [Anthropic's MCP client SDK](https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#writing-mcp-clients) to interact with the File System MCP, all with OpenRouter under the hood.
 
-Note that interacting with MCP servers is more complex than calling a REST
-endpoint. The MCP protocol is stateful and requires session management. The
-example below uses the MCP client SDK, but is still somewhat complex.
+<Warning>
+  Note that interacting with MCP servers is more complex than calling a REST
+  endpoint. The MCP protocol is stateful and requires session management. The
+  example below uses the MCP client SDK, but is still somewhat complex.
+</Warning>
 
 First, some setup. In order to run this you will need to pip install the packages, and create a `.env` file with OPENAI\_API\_KEY set. This example also assumes the directory `/Applications` exists.
 
-```python
+```python expandable lines theme={null}
 import asyncio
 from typing import Optional
 from contextlib import AsyncExitStack
@@ -43,7 +47,7 @@ SERVER_CONFIG = {
 
 Next, our helper function to convert MCP tool definitions to OpenAI tool definitions:
 
-```python
+```python lines theme={null}
 
 def convert_tool_format(tool):
     converted_tool = {
@@ -64,7 +68,7 @@ def convert_tool_format(tool):
 
 And, the MCP client itself; a regrettable \~100 lines of code. Note that the SERVER\_CONFIG is hard-coded into the client, but of course could be parameterized for other MCP servers.
 
-```python
+```python expandable lines theme={null}
 class MCPClient:
     def __init__(self):
         self.session: Optional[ClientSession] = None
@@ -171,7 +175,7 @@ if __name__ == "__main__":
 
 Assembling all of the above code into mcp-client.py, you get a client that behaves as follows (some outputs truncated for brevity):
 
-```bash
+```bash expandable lines theme={null}
 % python mcp-client.py
 
 Secure MCP Filesystem Server running on stdio

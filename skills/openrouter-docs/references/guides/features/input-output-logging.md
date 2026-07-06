@@ -1,12 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Input & Output Logging
 
+> Privately store and review your prompts and completions
+
 Input & Output Logging lets you privately save and review the full content of your requests and responses. Use it to debug issues, compare model responses, and optimize your prompts. Once enabled, your prompts and completions are accessible from your [Logs](https://openrouter.ai/logs) page.
 
-This feature is currently in **Beta**.
+<Note>
+  This feature is currently in **Beta**.
+</Note>
 
 ## Enabling Input & Output Logging
 
@@ -22,7 +26,9 @@ Once Input & Output Logging is enabled, you can view your stored prompts and com
 
 The generation detail view also shows metadata including the model used, provider, token counts, and cost.
 
-Only generations made after enabling Input & Output Logging will have stored content.
+<Note>
+  Only generations made after enabling Input & Output Logging will have stored content.
+</Note>
 
 ## Storage, Privacy, and Access
 

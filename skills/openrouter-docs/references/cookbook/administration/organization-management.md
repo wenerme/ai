@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Organization Management
+
+> Manage teams and shared resources with OpenRouter organizations
 
 OpenRouter organizations enable teams and companies to collaborate effectively by sharing credits, managing API keys centrally, and tracking usage across all team members. Organizations are ideal for companies that want to pool resources, manage inference costs centrally, and maintain oversight of AI usage across their team.
 
@@ -17,7 +19,9 @@ To create an organization:
 3. Follow the setup process to configure your organization details
 4. Invite team members to join your organization
 
-You must have a verified email address to create an organization.
+<Tip>
+  You must have a verified email address to create an organization.
+</Tip>
 
 ### Switching Between Personal and Organization Accounts
 
@@ -45,7 +49,9 @@ Only organization administrators can:
 * View detailed billing information
 * Manage payment methods and invoicing settings
 
-Regular organization members cannot purchase credits or access billing information. Contact your organization administrator for credit-related requests.
+<Warning>
+  Regular organization members cannot purchase credits or access billing information. Contact your organization administrator for credit-related requests.
+</Warning>
 
 ### Transferring Credits from Personal to Organization
 
@@ -55,7 +61,9 @@ If you need to transfer credits from your personal account to your organization 
 2. Include your organization details and the amount you wish to transfer
 3. Our support team will process the transfer manually
 
-Credit transfers from personal to organization accounts require manual processing by our support team and cannot be done automatically through the interface.
+<Info>
+  Credit transfers from personal to organization accounts require manual processing by our support team and cannot be done automatically through the interface.
+</Info>
 
 ## API Key Management
 
@@ -74,7 +82,9 @@ Organizations provide flexible API key management with role-based permissions:
 * **Manage All Keys**: Full access to edit, disable, or delete any organization API key
 * **Monitor Usage**: Access to detailed usage analytics for all organization keys
 
-When creating API keys within an organization, consider using descriptive names that indicate the key's purpose or the team member responsible for it.
+<Tip>
+  When creating API keys within an organization, consider using descriptive names that indicate the key's purpose or the team member responsible for it.
+</Tip>
 
 ## Activity and Usage Tracking
 
@@ -86,7 +96,9 @@ When viewing your activity feed while in organization context, you'll see:
 * **Metadata Only**: Activity shows model usage, costs, and request metadata
 * **Key Filtering**: Activity can be filtered by a specific API key to view usage for that key only
 
-**Known Limitation**: The activity feed currently shows all organization member activity when in organization context, not just your individual activity. Usage metadata (model used, cost, timing) is visible to all organization members.
+<Warning>
+  **Known Limitation**: The activity feed currently shows all organization member activity when in organization context, not just your individual activity. Usage metadata (model used, cost, timing) is visible to all organization members.
+</Warning>
 
 ### Usage Analytics
 
@@ -140,21 +152,33 @@ Organizations support role-based access control:
 
 ## Frequently Asked Questions
 
-No, organizations are separate entities. You'll need to create a new organization and transfer resources as needed. Contact [support@openrouter.ai](mailto:support@openrouter.ai) for assistance with credit transfers.
+<AccordionGroup>
+  <Accordion title="Can I convert my personal account to an organization?">
+    No, organizations are separate entities. You'll need to create a new organization and transfer resources as needed. Contact [support@openrouter.ai](mailto:support@openrouter.ai) for assistance with credit transfers.
+  </Accordion>
 
-An organization can only have 10 members. Contact support if you need more.
+  <Accordion title="How many members can an organization have?">
+    An organization can only have 10 members. Contact support if you need more.
+  </Accordion>
 
-Organization members can see usage metadata (model used, cost, timing) for all organization activity in the activity feed. OpenRouter does not store prompts or responses.
+  <Accordion title="Can organization members see each other's usage data?">
+    Organization members can see usage metadata (model used, cost, timing) for all organization activity in the activity feed. OpenRouter does not store prompts or responses.
+  </Accordion>
 
-When you leave an organization, you lose access to organization resources, credits, and API keys. Your personal account remains unaffected.
+  <Accordion title="What happens if I leave an organization?">
+    When you leave an organization, you lose access to organization resources, credits, and API keys. Your personal account remains unaffected.
+  </Accordion>
 
-Yes, you can be a member of multiple organizations and switch between them using the organization switcher.
+  <Accordion title="Can I be a member of multiple organizations?">
+    Yes, you can be a member of multiple organizations and switch between them using the organization switcher.
+  </Accordion>
+</AccordionGroup>
 
 ## Getting Help
 
 If you need assistance with organization management:
 
-* **General Questions**: Check our [FAQ](/docs/faq) for common questions
+* **General Questions**: Check our [FAQ](/faq) for common questions
 * **Technical Support**: Email [support@openrouter.ai](mailto:support@openrouter.ai)
 * **Credit Transfers**: Email [support@openrouter.ai](mailto:support@openrouter.ai) with transfer requests
 * **Enterprise Sales**: Contact our sales team for large organization needs

@@ -1,12 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Allowlist
 
-The prompt injection allowlist lets you mark specific phrases as safe so they are not caught by the [regex-based prompt injection detection guardrail](/docs/guides/features/guardrails/prompt-injection). This is useful when your application legitimately uses language that overlaps with injection patterns — for example, a security-training chatbot that discusses prompt injection techniques, or a customer-support agent whose canned responses include phrases like "ignore previous instructions."
+> Exclude known-safe phrases from prompt injection detection
 
-The allowlist only applies to regex-based detection patterns (the patterns listed on the [Prompt Injection Detection](/docs/guides/features/guardrails/prompt-injection#detection-patterns) page). Evasion detectors — typoglycemia and Base64/hex encoding — are not affected by the allowlist because they operate on decoded or normalized text where selective phrase exemption is not meaningful.
+The prompt injection allowlist lets you mark specific phrases as safe so they are not caught by the [regex-based prompt injection detection guardrail](/guides/features/guardrails/prompt-injection). This is useful when your application legitimately uses language that overlaps with injection patterns — for example, a security-training chatbot that discusses prompt injection techniques, or a customer-support agent whose canned responses include phrases like "ignore previous instructions."
+
+<Note>
+  The allowlist only applies to regex-based detection patterns (the patterns listed on the [Prompt Injection Detection](/guides/features/guardrails/prompt-injection#detection-patterns) page). Evasion detectors — typoglycemia and Base64/hex encoding — are not affected by the allowlist because they operate on decoded or normalized text where selective phrase exemption is not meaningful.
+</Note>
 
 ## How It Works
 
@@ -29,7 +33,9 @@ This means you can allowlist one phrase while still catching other injection pat
 
 Allowlist patterns are managed per-user from [Settings > Privacy](https://openrouter.ai/settings/privacy). Your allowlist applies across every guardrail that scans your requests — unlike detection configuration, which is set per-guardrail, the allowlist is entity-scoped.
 
-In an organization, only **org admins** can view and manage the allowlist — both in [Settings > Privacy](https://openrouter.ai/settings/privacy) and via the quick-add banner in [Logs](https://openrouter.ai/logs). Non-admin members do not see these controls. On personal accounts, the account owner manages their own allowlist.
+<Note>
+  In an organization, only **org admins** can view and manage the allowlist — both in [Settings > Privacy](https://openrouter.ai/settings/privacy) and via the quick-add banner in [Logs](https://openrouter.ai/logs). Non-admin members do not see these controls. On personal accounts, the account owner manages their own allowlist.
+</Note>
 
 ### Adding a Pattern
 
@@ -56,11 +62,13 @@ When reviewing guardrail events in the [Logs](https://openrouter.ai/logs) prompt
 * **Single pattern detected:** click the banner to add it in one step.
 * **Multiple patterns detected:** click the banner to expand a picker with checkboxes. Select individual patterns or use **Select all**, then click **Add *N* patterns** to batch-add them. Patterns already on the allowlist are hidden from the picker, and an "N already added" link takes you to [Settings > Privacy](https://openrouter.ai/settings/privacy) to manage them.
 
-![Multi-select pattern picker in the prompt detail view](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/491975505d415e3330593c1990a012aef1f90e1017e39ee293a2d5d6188e893b/content/pages/features/pi-allow-list-multi-select.png)
+<img src="https://mintcdn.com/openrouter-d02e98a0/vKv_Fe97IEm3a1mW/assets/guides/features/guardrails/prompt-injection/pi-allow-list-multi-select.png?fit=max&auto=format&n=vKv_Fe97IEm3a1mW&q=85&s=f55f88a081a513d7b85879526445f59b" alt="Multi-select pattern picker in the prompt detail view" width="2498" height="1762" data-path="assets/guides/features/guardrails/prompt-injection/pi-allow-list-multi-select.png" />
 
 After adding, a confirmation links back to [Settings > Privacy](https://openrouter.ai/settings/privacy) where you can edit, toggle, or delete the pattern.
 
-The quick-add banner only appears for regex-based detections. Events triggered by evasion detectors (typoglycemia, encoding) do not show the banner because those detection types cannot be selectively allowlisted.
+<Tip>
+  The quick-add banner only appears for regex-based detections. Events triggered by evasion detectors (typoglycemia, encoding) do not show the banner because those detection types cannot be selectively allowlisted.
+</Tip>
 
 ## Limitations
 
@@ -73,5 +81,5 @@ The quick-add banner only appears for regex-based detections. Events triggered b
 
 ## Further Reading
 
-* [Prompt Injection Detection](/docs/guides/features/guardrails/prompt-injection) — the full list of regex patterns and evasion detectors
-* [Guardrails overview](/docs/guides/features/guardrails) — how guardrails work, hierarchy, and configuration
+* [Prompt Injection Detection](/guides/features/guardrails/prompt-injection) — the full list of regex patterns and evasion detectors
+* [Guardrails overview](/guides/features/guardrails) — how guardrails work, hierarchy, and configuration

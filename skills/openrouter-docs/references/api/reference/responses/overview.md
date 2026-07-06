@@ -1,18 +1,28 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Responses API Beta
 
-This API is in **beta stage** and may have breaking changes. Use with caution in production environments.
+> OpenAI-compatible Responses API (Beta)
 
-This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request.
+<Warning>
+  **Beta API**
+
+  This API is in **beta stage** and may have breaking changes. Use with caution in production environments.
+</Warning>
+
+<Info>
+  **Stateless Only**
+
+  This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request.
+</Info>
 
 OpenRouter's Responses API Beta provides OpenAI-compatible access to multiple AI models through a unified interface, designed to be a drop-in replacement for OpenAI's Responses API. This stateless API offers enhanced capabilities including reasoning, tool calling, and web search integration, with each request being independent and no server-side state persisted.
 
 ## Base URL
 
-```
+```lines theme={null}
 https://openrouter.ai/api/v1/responses
 ```
 
@@ -20,45 +30,47 @@ https://openrouter.ai/api/v1/responses
 
 All requests require authentication using your OpenRouter API key:
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/o4-mini',
-    input: 'Hello, world!',
-  }),
-});
-```
-
-```python title="Python"
-import requests
-
-response = requests.post(
-    'https://openrouter.ai/api/v1/responses',
-    headers={
-        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-        'Content-Type': 'application/json',
+<CodeGroup>
+  ```typescript title="TypeScript" lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/responses', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+      'Content-Type': 'application/json',
     },
-    json={
-        'model': 'openai/o4-mini',
-        'input': 'Hello, world!',
-    }
-)
-```
+    body: JSON.stringify({
+      model: 'openai/o4-mini',
+      input: 'Hello, world!',
+    }),
+  });
+  ```
 
-```bash title="cURL"
-curl -X POST https://openrouter.ai/api/v1/responses \
-  -H "Authorization: Bearer YOUR_OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openai/o4-mini",
-    "input": "Hello, world!"
-  }'
-```
+  ```python title="Python" lines theme={null}
+  import requests
+
+  response = requests.post(
+      'https://openrouter.ai/api/v1/responses',
+      headers={
+          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+          'Content-Type': 'application/json',
+      },
+      json={
+          'model': 'openai/o4-mini',
+          'input': 'Hello, world!',
+      }
+  )
+  ```
+
+  ```bash title="cURL" lines theme={null}
+  curl -X POST https://openrouter.ai/api/v1/responses \
+    -H "Authorization: Bearer YOUR_OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "openai/o4-mini",
+      "input": "Hello, world!"
+    }'
+  ```
+</CodeGroup>
 
 ## Core Features
 
@@ -82,7 +94,7 @@ Enable web search capabilities with real-time information retrieval and citation
 
 The API returns structured error responses:
 
-```json
+```json lines theme={null}
 {
   "error": {
     "code": "invalid_prompt",
@@ -96,4 +108,4 @@ For comprehensive error handling guidance, see [Error Handling](./error-handling
 
 ## Rate Limits
 
-Standard OpenRouter rate limits apply. See [API Limits](/docs/api-reference/limits) for details.
+Standard OpenRouter rate limits apply. See [API Limits](/api/reference/limits) for details.

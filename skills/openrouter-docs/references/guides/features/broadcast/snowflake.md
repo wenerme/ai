@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Snowflake
+
+> Send traces to Snowflake
 
 [Snowflake](https://snowflake.com) is a cloud data warehouse platform. OpenRouter can stream traces directly to your Snowflake database for custom analytics, long-term storage, and business intelligence.
 
@@ -10,19 +12,25 @@
 
 Before connecting OpenRouter, create the `OPENROUTER_TRACES` table in your Snowflake database. You can find the exact SQL in the OpenRouter dashboard when configuring the destination:
 
-![Snowflake Table Setup](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/db3ff2b0530882403aeb9f9eaba5ca71e222c9b8c10f525c6177e677fa576c56/content/pages/features/broadcast/snowflake-table-setup.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/snowflake/snowflake-table-setup.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=83994af0ee94bbff8486e910111bfe04" alt="Snowflake Table Setup" width="1950" height="1180" data-path="assets/guides/features/broadcast/snowflake/snowflake-table-setup.png" />
+</Frame>
 
 ## Step 2: Create access credentials
 
 Generate a [Programmatic Access Token](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens) with `ACCOUNTADMIN` permissions in the Snowflake UI under **Settings > Authentication**.
 
-![Snowflake PAT](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/eead64d1e537b198567e1ce337babdb22cfa6c0f102856b4dd69355f10e74ed6/content/pages/features/broadcast/snowflake-pat.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/snowflake/snowflake-pat.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=111ae5fbdde62174613ae3ce4b0abad7" alt="Snowflake PAT" width="1464" height="687" data-path="assets/guides/features/broadcast/snowflake/snowflake-pat.png" />
+</Frame>
 
 ## Step 3: Enable Broadcast in OpenRouter
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 4: Configure Snowflake
 
@@ -43,13 +51,15 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 
 Make an API request through OpenRouter and query your Snowflake table to verify the trace was received.
 
-![Snowflake Test Trace](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/d6fd2cb5005ff249fbc228889402a09c81ee584bbd9cd00aa5fc59ccfa4a4fa5/content/pages/features/broadcast/snowflake-test-trace.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/snowflake/snowflake-test-trace.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=35f3639a8aa372dd3b5635a2e9cb84dc" alt="Snowflake Test Trace" width="3364" height="1650" data-path="assets/guides/features/broadcast/snowflake/snowflake-test-trace.png" />
+</Frame>
 
 ## Example queries
 
 ### Cost analysis by model
 
-```sql
+```sql lines theme={null}
 SELECT
   DATE_TRUNC('day', TIMESTAMP) as day,
   MODEL,
@@ -66,7 +76,7 @@ ORDER BY day DESC, total_cost DESC;
 
 ### User activity analysis
 
-```sql
+```sql lines theme={null}
 SELECT
   USER_ID,
   COUNT(DISTINCT TRACE_ID) as trace_count,
@@ -83,7 +93,7 @@ ORDER BY total_cost DESC;
 
 ### Error analysis
 
-```sql
+```sql lines theme={null}
 SELECT
   TRACE_ID,
   TIMESTAMP,
@@ -101,7 +111,7 @@ ORDER BY TIMESTAMP DESC;
 
 ### Provider performance comparison
 
-```sql
+```sql lines theme={null}
 SELECT
   PROVIDER_NAME,
   MODEL,
@@ -120,7 +130,7 @@ ORDER BY avg_duration_ms;
 
 ### Usage by API key
 
-```sql
+```sql lines theme={null}
 SELECT
   API_KEY_NAME,
   COUNT(DISTINCT TRACE_ID) as trace_count,
@@ -136,7 +146,7 @@ ORDER BY total_cost DESC;
 
 ### Accessing VARIANT columns
 
-```sql
+```sql lines theme={null}
 SELECT
   TRACE_ID,
   METADATA:custom_field::STRING as custom_value,
@@ -147,7 +157,7 @@ WHERE METADATA:custom_field IS NOT NULL;
 
 ### Parsing input messages
 
-```sql
+```sql lines theme={null}
 SELECT
   TRACE_ID,
   INPUT:messages[0]:role::STRING as first_message_role,
@@ -193,7 +203,7 @@ Custom metadata from the `trace` field is stored in the `METADATA` VARIANT colum
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Forecast next quarter revenue..." }],
@@ -213,7 +223,7 @@ Custom metadata from the `trace` field is stored in the `METADATA` VARIANT colum
 
 Use Snowflake's VARIANT column syntax to query your custom metadata:
 
-```sql
+```sql lines theme={null}
 SELECT
   TRACE_ID,
   METADATA:department::STRING as department,
@@ -236,4 +246,4 @@ ORDER BY TIMESTAMP DESC;
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

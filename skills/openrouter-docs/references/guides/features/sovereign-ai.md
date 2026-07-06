@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Sovereign AI
+
+> Keep AI workloads within national and regional boundaries
 
 Sovereign AI refers to a nation's or region's ability to develop, deploy, and control artificial intelligence systems within its own borders, using local infrastructure and under local regulatory frameworks. As AI becomes critical infrastructure, governments and enterprises increasingly require that AI workloads -- including the data they process -- remain within specific geographic and jurisdictional boundaries.
 
@@ -30,77 +32,83 @@ For enterprise customers, OpenRouter supports EU in-region routing. When enabled
 
 To use EU in-region routing, send API requests through the EU-specific base URL:
 
-```
+```lines theme={null}
 https://eu.openrouter.ai
 ```
 
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
+<CodeGroup>
+  ```typescript title="TypeScript SDK" lines theme={null}
+  import { OpenRouter } from '@openrouter/sdk';
 
-const openRouter = new OpenRouter({
-  apiKey: '<OPENROUTER_API_KEY>',
-  serverURL: 'https://eu.openrouter.ai/api/v1',
-});
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+    serverURL: 'https://eu.openrouter.ai/api/v1',
+  });
 
-const completion = await openRouter.chat.send({
-  model: 'meta-llama/llama-3.3-70b-instruct',
-  messages: [{ role: 'user', content: 'Hello' }],
-  stream: false,
-});
-```
-
-```typescript title="TypeScript (fetch)"
-fetch('https://eu.openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
+  const completion = await openRouter.chat.send({
     model: 'meta-llama/llama-3.3-70b-instruct',
     messages: [{ role: 'user', content: 'Hello' }],
-  }),
-});
-```
+    stream: false,
+  });
+  ```
 
-```python title="Python"
-import requests
+  ```typescript title="TypeScript (fetch)" lines theme={null}
+  fetch('https://eu.openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'meta-llama/llama-3.3-70b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+    }),
+  });
+  ```
 
-headers = {
-  'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-  'Content-Type': 'application/json',
-}
+  ```python title="Python" lines theme={null}
+  import requests
 
-response = requests.post('https://eu.openrouter.ai/api/v1/chat/completions', headers=headers, json={
-  'model': 'meta-llama/llama-3.3-70b-instruct',
-  'messages': [{ 'role': 'user', 'content': 'Hello' }],
-})
-```
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'Content-Type': 'application/json',
+  }
 
-```bash title="cURL"
-curl https://eu.openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer <OPENROUTER_API_KEY>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "meta-llama/llama-3.3-70b-instruct",
-    "messages": [{"role": "user", "content": "Hello"}]
-  }'
-```
+  response = requests.post('https://eu.openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'meta-llama/llama-3.3-70b-instruct',
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+  })
+  ```
 
-To see which models are available for EU in-region routing, you can:
+  ```bash title="cURL" lines theme={null}
+  curl https://eu.openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer <OPENROUTER_API_KEY>" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "messages": [{"role": "user", "content": "Hello"}]
+    }'
+  ```
+</CodeGroup>
 
-* Call [`/api/v1/models`](https://eu.openrouter.ai/api/v1/models) through the EU domain to get the full list programmatically
-* Browse [EU-eligible models](https://openrouter.ai/models?region=eu) on the models page using the **In-Region Routing** filter
+<Info>
+  **EU-only models list**
+
+  To see which models are available for EU in-region routing, you can:
+
+  * Call [`/api/v1/models`](https://eu.openrouter.ai/api/v1/models) through the EU domain to get the full list programmatically
+  * Browse [EU-eligible models](https://openrouter.ai/models?region=eu) on the models page using the **In-Region Routing** filter
+</Info>
 
 EU in-region routing is available for enterprise customers by request. [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable it for your account.
 
 ### Zero Data Retention (ZDR)
 
-[Zero Data Retention](/docs/guides/features/zdr) ensures that providers do not store your prompts or responses. This is a key component of sovereign AI, as it guarantees that no data persists outside your control after a request completes.
+[Zero Data Retention](/guides/features/zdr) ensures that providers do not store your prompts or responses. This is a key component of sovereign AI, as it guarantees that no data persists outside your control after a request completes.
 
-ZDR can be enforced per model group (Anthropic, OpenAI, Google, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/docs/guides/features/guardrails), or per-request:
+ZDR can be enforced per model group (Anthropic, OpenAI, Google, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/guides/features/guardrails), or per-request:
 
-```json
+```json lines theme={null}
 {
   "model": "meta-llama/llama-3.3-70b-instruct",
   "messages": [{ "role": "user", "content": "Hello" }],
@@ -114,7 +122,7 @@ ZDR can be enforced per model group (Anthropic, OpenAI, Google, and non-frontier
 
 Control whether providers can collect your data with the `data_collection` parameter:
 
-```json
+```json lines theme={null}
 {
   "provider": {
     "data_collection": "deny"
@@ -138,8 +146,8 @@ This gives you a single API with unified billing while maintaining full control 
 
 Sovereign AI features are available to all OpenRouter users, with EU in-region routing available for enterprise customers. To get started:
 
-* [Create an API key](https://openrouter.ai/settings/keys) and start using [provider routing](/docs/guides/routing/provider-selection) to control where your requests are processed
-* Enable [ZDR](/docs/guides/features/zdr) and [data collection controls](/docs/guides/privacy/provider-logging) for privacy compliance
+* [Create an API key](https://openrouter.ai/settings/keys) and start using [provider routing](/guides/routing/provider-selection) to control where your requests are processed
+* Enable [ZDR](/guides/features/zdr) and [data collection controls](/guides/privacy/provider-logging) for privacy compliance
 * [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable EU in-region routing and discuss additional sovereign AI requirements
 
-For a complete enterprise setup guide, see the [Enterprise Quickstart](/docs/cookbook/get-started/enterprise-quickstart).
+For a complete enterprise setup guide, see the [Enterprise Quickstart](/cookbook/get-started/enterprise-quickstart).

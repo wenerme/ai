@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get Video Results with Webhooks
+
+> Submit a video job with a callback URL and verify OpenRouter webhook signatures
 
 Use this guide when you need to add webhook-based video completion handling
 instead of polling from a client or worker.
@@ -10,8 +12,9 @@ instead of polling from a client or worker.
 By the end, your implementation should submit a video job with `callback_url`
 and verify the webhook signature.
 
-For reusable agent knowledge across projects, install the
-[openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+<Tip>
+  For reusable agent knowledge across projects, install the [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+</Tip>
 
 ## Before you start
 
@@ -23,27 +26,31 @@ You need:
 * A webhook signing secret configured in your OpenRouter workspace settings
 * A video model slug for the job you submit with `callback_url`
 
-If you have not chosen a model yet, read
-[Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-so you can select one based on your clip duration, output shape, input type,
-audio, provider controls, and cost requirements.
+<Tip>
+  If you have not chosen a model yet, read
+  [Choose a Video Generation Model](/cookbook/video-generation/choose-video-model)
+  so you can select one based on your clip duration, output shape, input type,
+  audio, provider controls, and cost requirements.
+</Tip>
 
 Use the API reference pages as the source of truth for exact fields:
 
-* [Create video generation request](/docs/api/api-reference/video-generation/create-videos)
-* [List video generation models](/docs/api/api-reference/video-generation/list-videos-models)
-* [TypeScript SDK video generation reference](/docs/client-sdks/typescript/api-reference/videogeneration)
+* [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
+* [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
+* [TypeScript SDK video generation reference](/client-sdks/typescript/api-reference/videogeneration)
 
 If you adapt the Express examples below in a local test project, use these
 dependencies:
 
-```bash
+```bash lines theme={null}
 npm install express
 npm install --save-dev @types/express tsx
 ```
 
-Submitting `POST /api/v1/videos` starts a real video generation job and may
-spend OpenRouter credits.
+<Warning>
+  Submitting `POST /api/v1/videos` starts a real video generation job and may
+  spend OpenRouter credits.
+</Warning>
 
 ## Step 1: Implement a webhook receiver
 
@@ -53,7 +60,7 @@ re-serialized payload.
 
 Example Express receiver:
 
-```ts
+```ts expandable lines theme={null}
 import crypto from "node:crypto";
 import express from "express";
 
@@ -155,13 +162,13 @@ app.listen(3000, () => {
 Before connecting a real `callback_url`, exercise the receiver with the same
 signing secret your test sender uses:
 
-```bash
+```bash lines theme={null}
 OPENROUTER_WEBHOOK_SECRET=dev_secret npx tsx server.ts
 ```
 
 Actual local receiver startup output:
 
-```text
+```text lines theme={null}
 Listening on http://localhost:3000
 ```
 
@@ -177,7 +184,7 @@ comparison, and idempotency headers are wired correctly.
 
 Example local sender:
 
-```js
+```js expandable lines theme={null}
 import crypto from "node:crypto";
 
 const secret = process.env.OPENROUTER_WEBHOOK_SECRET;
@@ -216,7 +223,7 @@ console.log(response.status);
 
 Exercise the local sender while the receiver is listening:
 
-```bash
+```bash lines theme={null}
 OPENROUTER_WEBHOOK_SECRET=dev_secret node send-test-webhook.mjs
 ```
 
@@ -225,7 +232,7 @@ confirm the receiver returns `401` for invalid requests.
 
 Actual local signature-test output:
 
-```text
+```text lines theme={null}
 204
 ```
 
@@ -236,7 +243,7 @@ with the workspace signing secret for end-to-end signature verification.
 
 Example Webhook.site delivery:
 
-```json
+```json expandable lines theme={null}
 {
   "request": {
     "method": "POST",
@@ -291,7 +298,7 @@ preview environments or tenant-specific receivers.
 
 Example submit logic:
 
-```ts
+```ts expandable lines theme={null}
 const apiKey = process.env.OPENROUTER_API_KEY;
 const callbackUrl = process.env.CALLBACK_URL;
 
@@ -330,7 +337,7 @@ console.log(await response.json());
 The submit call returns the initial job fields. In a completed run, that job
 later completed and delivered a webhook with this final summary:
 
-```json
+```json lines theme={null}
 {
   "id": "Nxff2D1Z6w4Zk9iNuZam",
   "initial_status": "pending",
@@ -342,7 +349,7 @@ later completed and delivered a webhook with this final summary:
 After the receiver is deployed or exposed through a tunnel, run the submit logic
 with `CALLBACK_URL` set to that public endpoint:
 
-```bash
+```bash lines theme={null}
 CALLBACK_URL=https://your-app.example.com/openrouter/video-webhook npx tsx submit-video-job.mts
 ```
 
@@ -359,11 +366,11 @@ video from the first `unsigned_urls` entry or from the content endpoint. If the
 URL points to the OpenRouter API, include the bearer token when downloading it.
 
 For a complete polling and download helper, see
-[Generate and Download a Video from Text](/docs/cookbook/video-generation/text-to-video).
+[Generate and Download a Video from Text](/cookbook/video-generation/text-to-video).
 
 Actual local receiver log shape from the signature test:
 
-```text
+```text lines theme={null}
 Video ready: {
   id: "job_test",
   idempotencyKey: "job_test-completed",

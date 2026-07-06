@@ -1,12 +1,14 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # API Reference
 
+> Complete reference for the callModel API, ModelResult class, tool types, and helper functions.
+
 ## callModel
 
-```typescript
+```typescript lines theme={null}
 function callModel(request: CallModelInput, options?: RequestOptions): ModelResult
 ```
 
@@ -83,7 +85,7 @@ Wrapper providing multiple consumption patterns for a response.
 
 #### getText()
 
-```typescript
+```typescript lines theme={null}
 getText(): Promise<string>
 ```
 
@@ -91,7 +93,7 @@ Get text content after tool execution completes.
 
 #### getResponse()
 
-```typescript
+```typescript lines theme={null}
 getResponse(): Promise<OpenResponsesNonStreamingResponse>
 ```
 
@@ -99,7 +101,7 @@ Get full response with usage data (inputTokens, outputTokens, cachedTokens).
 
 #### getTextStream()
 
-```typescript
+```typescript lines theme={null}
 getTextStream(): AsyncIterableIterator<string>
 ```
 
@@ -107,7 +109,7 @@ Stream text deltas.
 
 #### getReasoningStream()
 
-```typescript
+```typescript lines theme={null}
 getReasoningStream(): AsyncIterableIterator<string>
 ```
 
@@ -115,7 +117,7 @@ Stream reasoning deltas (for reasoning models).
 
 #### getNewMessagesStream()
 
-```typescript
+```typescript lines theme={null}
 getNewMessagesStream(): AsyncIterableIterator<ResponsesOutputMessage | OpenResponsesFunctionCallOutput>
 ```
 
@@ -123,7 +125,7 @@ Stream cumulative message snapshots in OpenResponses format.
 
 #### getFullResponsesStream()
 
-```typescript
+```typescript lines theme={null}
 getFullResponsesStream(): AsyncIterableIterator<EnhancedResponseStreamEvent>
 ```
 
@@ -131,7 +133,7 @@ Stream all events including tool preliminary results.
 
 #### getToolCalls()
 
-```typescript
+```typescript lines theme={null}
 getToolCalls(): Promise<ParsedToolCall[]>
 ```
 
@@ -139,7 +141,7 @@ Get all tool calls from initial response.
 
 #### getToolCallsStream()
 
-```typescript
+```typescript lines theme={null}
 getToolCallsStream(): AsyncIterableIterator<ParsedToolCall>
 ```
 
@@ -147,7 +149,7 @@ Stream tool calls as they complete.
 
 #### getToolStream()
 
-```typescript
+```typescript lines theme={null}
 getToolStream(): AsyncIterableIterator<ToolStreamEvent>
 ```
 
@@ -155,7 +157,7 @@ Stream tool deltas and preliminary results.
 
 #### getContextUpdates()
 
-```typescript
+```typescript lines theme={null}
 getContextUpdates(): AsyncGenerator<ToolContextMap<TTools>>
 ```
 
@@ -164,7 +166,7 @@ Stream context snapshots whenever a tool calls
 
 #### cancel()
 
-```typescript
+```typescript lines theme={null}
 cancel(): Promise<void>
 ```
 
@@ -176,7 +178,7 @@ Cancel the stream and all consumers.
 
 ### tool()
 
-```typescript
+```typescript lines theme={null}
 function tool<TInput, TOutput>(config: ToolConfig): Tool
 ```
 
@@ -203,7 +205,7 @@ Create a typed tool with Zod schema validation.
 
 Union type of all tool types:
 
-```typescript
+```typescript lines theme={null}
 type Tool =
   | ToolWithExecute<ZodObject, ZodType>
   | ToolWithGenerator<ZodObject, ZodType, ZodType>
@@ -215,7 +217,7 @@ type Tool =
 
 Regular tool with execute function:
 
-```typescript
+```typescript lines theme={null}
 interface ToolWithExecute<
   TInput, TOutput, TContext, TName
 > {
@@ -238,7 +240,7 @@ interface ToolWithExecute<
 
 Generator tool with eventSchema:
 
-```typescript
+```typescript lines theme={null}
 interface ToolWithGenerator<
   TInput, TEvent, TOutput, TContext, TName
 > {
@@ -262,7 +264,7 @@ interface ToolWithGenerator<
 
 Tool without execute function:
 
-```typescript
+```typescript lines theme={null}
 interface ManualTool<TInput, TOutput> {
   type: ToolType.Function;
   function: {
@@ -278,7 +280,7 @@ interface ManualTool<TInput, TOutput> {
 
 Human-in-the-loop tool with `onToolCalled` and optional `onResponseReceived` hooks. `outputSchema` is required — it validates both the hook's non-null return value and the caller-supplied response delivered via `function_call_output`.
 
-```typescript
+```typescript expandable lines theme={null}
 interface HITLToolFunction<
   TInput, TOutput, TContext, TName
 > {
@@ -313,7 +315,7 @@ Returning `null` from `onToolCalled` pauses the loop and sets the conversation s
 
 ## Tool Type Guards
 
-```typescript
+```typescript lines theme={null}
 function isManualTool(tool: Tool): tool is ManualTool;
 function isHITLTool(tool: Tool): tool is HITLTool;
 function isAutoResolvableTool(
@@ -331,7 +333,7 @@ function isAutoResolvableTool(
 
 ### TurnContext
 
-```typescript
+```typescript lines theme={null}
 interface TurnContext {
   toolCall?: OpenResponsesFunctionToolCall;
   numberOfTurns: number;
@@ -344,7 +346,7 @@ interface TurnContext {
 Flat context passed to tool execute functions.
 Merges `TurnContext` fields with tool-specific context:
 
-```typescript
+```typescript lines theme={null}
 type ToolExecuteContext<TName, TContext> =
   TurnContext & {
     tools: {
@@ -359,7 +361,7 @@ type ToolExecuteContext<TName, TContext> =
 Context map for `callModel`'s `context` option,
 keyed by tool name:
 
-```typescript
+```typescript lines theme={null}
 type ToolContextMap<T extends readonly Tool[]> = {
   [K in T[number] as K['function']['name']]:
     InferToolContext<K>;
@@ -371,7 +373,7 @@ type ToolContextMap<T extends readonly Tool[]> = {
 Context can be static, a sync function,
 or an async function:
 
-```typescript
+```typescript lines theme={null}
 type ContextInput<T> =
   | T
   | ((turn: TurnContext) => T)
@@ -380,7 +382,7 @@ type ContextInput<T> =
 
 ### NextTurnParamsContext
 
-```typescript
+```typescript lines theme={null}
 interface NextTurnParamsContext {
   input: OpenResponsesInput;
   model: string;
@@ -399,7 +401,7 @@ interface NextTurnParamsContext {
 
 ### EnhancedResponseStreamEvent
 
-```typescript
+```typescript lines theme={null}
 type EnhancedResponseStreamEvent =
   | OpenResponsesStreamEvent
   | ToolPreliminaryResultEvent;
@@ -407,7 +409,7 @@ type EnhancedResponseStreamEvent =
 
 ### ToolStreamEvent
 
-```typescript
+```typescript lines theme={null}
 type ToolStreamEvent =
   | { type: 'delta'; content: string }
   | { type: 'preliminary_result'; toolCallId: string; result: unknown };
@@ -415,7 +417,7 @@ type ToolStreamEvent =
 
 ### ParsedToolCall
 
-```typescript
+```typescript lines theme={null}
 interface ParsedToolCall {
   id: string;
   name: string;
@@ -425,7 +427,7 @@ interface ParsedToolCall {
 
 ### ToolExecutionResult
 
-```typescript
+```typescript lines theme={null}
 interface ToolExecutionResult {
   toolCallId: string;
   toolName: string;
@@ -441,7 +443,7 @@ interface ToolExecutionResult {
 
 ### StopWhen
 
-```typescript
+```typescript lines theme={null}
 type StopWhen =
   | StopCondition
   | StopCondition[];
@@ -449,13 +451,13 @@ type StopWhen =
 
 ### StopCondition
 
-```typescript
+```typescript lines theme={null}
 type StopCondition = (context: StopConditionContext) => boolean | Promise<boolean>;
 ```
 
 ### StopConditionContext
 
-```typescript
+```typescript lines theme={null}
 interface StopConditionContext {
   steps: StepResult[];
 }
@@ -463,7 +465,7 @@ interface StopConditionContext {
 
 ### StepResult
 
-```typescript
+```typescript lines theme={null}
 interface StepResult {
   stepType: 'initial' | 'continue';
   text: string;
@@ -479,7 +481,7 @@ interface StepResult {
 
 ### Warning
 
-```typescript
+```typescript lines theme={null}
 interface Warning {
   type: string;
   message: string;
@@ -502,7 +504,7 @@ interface Warning {
 
 ### fromChatMessages
 
-```typescript
+```typescript lines theme={null}
 function fromChatMessages(messages: Message[]): OpenResponsesInput
 ```
 
@@ -510,7 +512,7 @@ Convert OpenAI chat format to OpenResponses input.
 
 ### toChatMessage
 
-```typescript
+```typescript lines theme={null}
 function toChatMessage(response: OpenResponsesNonStreamingResponse): AssistantMessage
 ```
 
@@ -518,7 +520,7 @@ Convert response to chat message format.
 
 ### fromClaudeMessages
 
-```typescript
+```typescript lines theme={null}
 function fromClaudeMessages(messages: ClaudeMessageParam[]): OpenResponsesInput
 ```
 
@@ -526,7 +528,7 @@ Convert Anthropic Claude format to OpenResponses input.
 
 ### toClaudeMessage
 
-```typescript
+```typescript lines theme={null}
 function toClaudeMessage(response: OpenResponsesNonStreamingResponse): ClaudeMessage
 ```
 
@@ -538,7 +540,7 @@ Convert response to Claude message format.
 
 ### InferToolInput
 
-```typescript
+```typescript lines theme={null}
 type InferToolInput<T> = T extends { function: { inputSchema: infer S } }
   ? S extends ZodType ? z.infer<S> : unknown
   : unknown;
@@ -546,7 +548,7 @@ type InferToolInput<T> = T extends { function: { inputSchema: infer S } }
 
 ### InferToolOutput
 
-```typescript
+```typescript lines theme={null}
 type InferToolOutput<T> = T extends { function: { outputSchema: infer S } }
   ? S extends ZodType ? z.infer<S> : unknown
   : unknown;
@@ -554,7 +556,7 @@ type InferToolOutput<T> = T extends { function: { outputSchema: infer S } }
 
 ### InferToolEvent
 
-```typescript
+```typescript lines theme={null}
 type InferToolEvent<T> = T extends { function: { eventSchema: infer S } }
   ? S extends ZodType ? z.infer<S> : never
   : never;
@@ -562,7 +564,7 @@ type InferToolEvent<T> = T extends { function: { eventSchema: infer S } }
 
 ### TypedToolCall
 
-```typescript
+```typescript lines theme={null}
 type TypedToolCall<T extends Tool> = {
   id: string;
   name: T extends { function: { name: infer N } } ? N : string;
@@ -574,7 +576,7 @@ type TypedToolCall<T extends Tool> = {
 
 ## Exports
 
-```typescript
+```typescript expandable lines theme={null}
 // Agent client
 export { OpenRouter } from '@openrouter/agent';
 

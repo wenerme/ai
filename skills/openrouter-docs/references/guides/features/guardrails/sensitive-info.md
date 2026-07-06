@@ -1,12 +1,14 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Sensitive Info Guardrail
 
+> Automatically detect and handle sensitive information in API requests
+
 The Sensitive Info Guardrail lets you automatically detect and handle sensitive information — such as email addresses, phone numbers, credit card numbers, and names — before requests reach the model provider. You can choose to **redact** (replace with a placeholder) or **block** (reject the request entirely) when sensitive data is detected.
 
-This feature is part of [Guardrails](/docs/guides/features/guardrails) and can be configured alongside budget limits, model restrictions, and other guardrail settings.
+This feature is part of [Guardrails](/guides/features/guardrails) and can be configured alongside budget limits, model restrictions, and other guardrail settings.
 
 ## How It Works
 
@@ -18,7 +20,9 @@ When a Sensitive Info Guardrail is active, every API request is scanned before i
    * **Block**: The entire request is rejected with an HTTP `403 Forbidden` error.
 3. **Forwarding** — If no sensitive info is detected (or all matches were redacted), the request proceeds to the model provider as normal.
 
-Sensitive info detection runs on the **input** (prompt) side of requests. It scans message content, tool call arguments, and prompt strings. It does not scan model responses.
+<Note>
+  Sensitive info detection runs on the **input** (prompt) side of requests. It scans message content, tool call arguments, and prompt strings. It does not scan model responses.
+</Note>
 
 ## Detection Methods
 
@@ -45,9 +49,11 @@ NLP-based presets include:
 * Person names *(beta)*
 * Physical addresses / locations *(beta)*
 
-The "Person Name" and "Address" presets are currently in **beta**. Detection accuracy may vary — especially for uncommon name formats and partial or non-standard addresses. If the check times out, the request proceeds (not blocked). We're actively improving these models.
+<Warning>
+  The "Person Name" and "Address" presets are currently in **beta**. Detection accuracy may vary — especially for uncommon name formats and partial or non-standard addresses. If the check times out, the request proceeds (not blocked). We're actively improving these models.
 
-NLP-based detection also adds latency proportional to the size of the input text. These presets are marked with an **Adds latency** label in the dashboard.
+  NLP-based detection also adds latency proportional to the size of the input text. These presets are marked with an **Adds latency** label in the dashboard.
+</Warning>
 
 ## Built-In Presets
 
@@ -124,7 +130,7 @@ Sensitive info filters are configured as part of the guardrail object using the 
 
 **Built-in presets** use the `content_filter_builtins` field:
 
-```json
+```json lines theme={null}
 {
   "name": "PII Protection",
   "content_filter_builtins": [
@@ -143,7 +149,7 @@ Available slugs: `email`, `phone`, `ssn`, `credit-card`, `ip-address`, `person-n
 
 **Custom patterns** use the `content_filters` field:
 
-```json
+```json lines theme={null}
 {
   "name": "Custom Filters",
   "content_filters": [
@@ -155,11 +161,11 @@ Available slugs: `email`, `phone`, `ssn`, `credit-card`, `ip-address`, `person-n
 
 Each custom filter supports an optional `label` field for descriptive error messages when blocking.
 
-See the [Guardrails API reference](/docs/api/api-reference/guardrails/list-guardrails) for full endpoint documentation.
+See the [Guardrails API reference](/api/api-reference/guardrails/list-guardrails) for full endpoint documentation.
 
 ## How Sensitive Info Interacts with Other Guardrails
 
-Sensitive info filters follow the same [guardrail hierarchy](/docs/guides/features/guardrails#guardrail-hierarchy) as other guardrail settings. When multiple guardrails apply to a request:
+Sensitive info filters follow the same [guardrail hierarchy](/guides/features/guardrails#guardrail-hierarchy) as other guardrail settings. When multiple guardrails apply to a request:
 
 * **Content filters are unioned** — If a member guardrail has an email filter and an API key guardrail has a phone filter, both filters apply.
 * **Block wins over redact** — If the same entity type appears in multiple guardrails with different actions, the stricter action (block) takes precedence.
@@ -169,7 +175,7 @@ Sensitive info filters follow the same [guardrail hierarchy](/docs/guides/featur
 
 When a request is blocked by a content filter, the API returns:
 
-```json
+```json lines theme={null}
 {
   "error": {
     "code": 403,

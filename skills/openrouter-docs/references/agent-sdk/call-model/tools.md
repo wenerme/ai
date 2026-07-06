@@ -1,14 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Tools
+
+> Create type-safe tools with Zod schemas and automatic execution. Supports regular tools, generator tools with progress, manual tools, human-in-the-loop tools, and automatic multi-turn execution.
 
 ## The tool() Helper
 
 The `tool()` function creates type-safe tools with Zod schema validation:
 
-```typescript
+```typescript expandable lines theme={null}
 import { OpenRouter, tool } from '@openrouter/agent';
 import { z } from 'zod';
 
@@ -41,7 +43,7 @@ The SDK supports four types of tools, automatically detected from your configura
 
 Standard tools with an execute function:
 
-```typescript
+```typescript lines theme={null}
 const calculatorTool = tool({
   name: 'calculate',
   description: 'Perform a mathematical calculation',
@@ -62,7 +64,7 @@ const calculatorTool = tool({
 
 Tools that yield progress updates during execution. Add `eventSchema` to enable generator mode:
 
-```typescript
+```typescript expandable lines theme={null}
 const searchTool = tool({
   name: 'search_database',
   description: 'Search documents with progress updates',
@@ -107,7 +109,7 @@ Progress events are streamed to consumers via `getToolStream()` and `getFullResp
 
 Tools without automatic execution - you handle the tool calls yourself:
 
-```typescript
+```typescript lines theme={null}
 const manualTool = tool({
   name: 'send_email',
   description: 'Send an email (requires user confirmation)',
@@ -131,7 +133,7 @@ HITL tools extend manual-tool semantics with two sync-or-async hooks that let yo
 
 An `outputSchema` is required for HITL tools — it validates both the `onToolCalled` return value (when non-null) and the value delivered via `function_call_output` (whether transformed by `onResponseReceived` or passed through directly).
 
-```typescript
+```typescript expandable lines theme={null}
 const approvePaymentTool = tool({
   name: 'approve_payment',
   description: 'Approve a payment, escalating large amounts to a human',
@@ -160,7 +162,9 @@ const approvePaymentTool = tool({
 
 When `onToolCalled` returns `null`, the conversation state moves to `status: 'awaiting_hitl'` and the paused call surfaces via `getToolCalls()` / `getPendingToolCalls()`. Resume by calling `callModel` again with a `function_call_output` item for each paused call in the input.
 
-HITL tools differ from `requireApproval`: approval gates pause *before* execution for a yes/no decision, while HITL tools let `onToolCalled` run arbitrary logic first and only pause when it returns `null`. Use HITL when the decision is data-driven (e.g., amount thresholds, risk scoring); use `requireApproval` when you always want explicit human consent. See [Tool Approval & State](/docs/sdks/typescript/call-model/approval-and-state).
+<Note>
+  HITL tools differ from `requireApproval`: approval gates pause *before* execution for a yes/no decision, while HITL tools let `onToolCalled` run arbitrary logic first and only pause when it returns `null`. Use HITL when the decision is data-driven (e.g., amount thresholds, risk scoring); use `requireApproval` when you always want explicit human consent. See [Tool Approval & State](/agent-sdk/call-model/tool-approval-state).
+</Note>
 
 ## Schema Definition
 
@@ -168,7 +172,7 @@ HITL tools differ from `requireApproval`: approval gates pause *before* executio
 
 Define what parameters the tool accepts:
 
-```typescript
+```typescript expandable lines theme={null}
 const inputSchema = z.object({
   // Required parameters
   query: z.string().describe('Search query'),
@@ -197,7 +201,7 @@ const inputSchema = z.object({
 
 Define the structure of results returned to the model:
 
-```typescript
+```typescript lines theme={null}
 const outputSchema = z.object({
   results: z.array(z.object({
     id: z.string(),
@@ -215,7 +219,7 @@ const outputSchema = z.object({
 
 Define progress/status events for generator tools:
 
-```typescript
+```typescript lines theme={null}
 const eventSchema = z.object({
   stage: z.enum(['initializing', 'processing', 'finalizing']),
   progress: z.number(),
@@ -227,7 +231,7 @@ const eventSchema = z.object({
 
 The SDK provides utilities to extract types from tools:
 
-```typescript
+```typescript lines theme={null}
 import type { InferToolInput, InferToolOutput, InferToolEvent } from '@openrouter/agent';
 
 // Get the input type
@@ -247,7 +251,7 @@ type SearchEvent = InferToolEvent<typeof searchTool>;
 
 ### Single Tool
 
-```typescript
+```typescript lines theme={null}
 const openrouter = new OpenRouter({ apiKey: process.env.OPENROUTER_API_KEY });
 
 const result = openrouter.callModel({
@@ -263,7 +267,7 @@ const text = await result.getText();
 
 ### Multiple Tools
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Search for TypeScript tutorials and calculate 2+2',
@@ -275,7 +279,7 @@ const result = openrouter.callModel({
 
 Use `as const` for full type inference on tool calls:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'What is the weather?',
@@ -298,7 +302,7 @@ Tool execute functions receive a flat context object as
 their second argument. It merges `TurnContext` fields
 with a `tools` map and a `setContext()` method:
 
-```typescript
+```typescript lines theme={null}
 const contextAwareTool = tool({
   name: 'context_tool',
   inputSchema: z.object({ data: z.string() }),
@@ -336,7 +340,7 @@ keyed by tool name and persists across turns.
 
 ### Declaring contextSchema
 
-```typescript
+```typescript expandable lines theme={null}
 const weatherTool = tool({
   name: 'get_weather',
   description: 'Get weather for a location',
@@ -369,7 +373,7 @@ const weatherTool = tool({
 
 Pass context keyed by tool name:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'What is the weather in Tokyo?',
@@ -388,7 +392,7 @@ const result = openrouter.callModel({
 Use an async function for one-time initialization
 that needs to fetch data:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'What is the weather?',
@@ -404,9 +408,11 @@ const result = openrouter.callModel({
 });
 ```
 
-`resolveContext` runs once at turn 0 to seed the
-context store. For per-turn mutations, use
-`setContext()` inside your tool's `execute` function.
+<Note>
+  `resolveContext` runs once at turn 0 to seed the
+  context store. For per-turn mutations, use
+  `setContext()` inside your tool's `execute` function.
+</Note>
 
 ### Mutating Context with setContext
 
@@ -415,7 +421,7 @@ Changes persist across turns via the shared store and
 are visible immediately — `context.local` is a live
 getter that always reads the latest values:
 
-```typescript
+```typescript expandable lines theme={null}
 const authTool = tool({
   name: 'auth',
   inputSchema: z.object({ action: z.string() }),
@@ -446,7 +452,7 @@ const authTool = tool({
 Use `getContextUpdates()` on `ModelResult` to observe
 context mutations in real time:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Authenticate and fetch data',
@@ -467,7 +473,7 @@ for await (const snapshot of result.getContextUpdates()) {
 Use `sharedSchema` on `tool()` and `sharedContextSchema`
 on `callModel` to share typed state across tools:
 
-```typescript
+```typescript expandable lines theme={null}
 const SharedContextSchema = z.object({
   _sessionId: z.string().optional(),
 });
@@ -498,11 +504,13 @@ const result = openrouter.callModel({
 });
 ```
 
-`context.local` is scoped to one tool.
-`context.shared` is visible to all tools and persists
-across turns. Pass the same `sharedSchema` to each tool
-for typed access, and `sharedContextSchema` to
-`callModel` for runtime validation.
+<Note>
+  `context.local` is scoped to one tool.
+  `context.shared` is visible to all tools and persists
+  across turns. Pass the same `sharedSchema` to each tool
+  for typed access, and `sharedContextSchema` to
+  `callModel` for runtime validation.
+</Note>
 
 ## Tool Execution
 
@@ -512,7 +520,7 @@ callModel automatically executes tools and handles multi-turn conversations. Whe
 
 When you provide tools with execute functions:
 
-```typescript
+```typescript expandable lines theme={null}
 import { OpenRouter, tool } from '@openrouter/agent';
 import { z } from 'zod';
 
@@ -551,7 +559,7 @@ const text = await result.getText();
 
 Limit the maximum number of tool execution rounds:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Research this topic thoroughly',
@@ -566,7 +574,7 @@ Setting `maxToolRounds: 0` disables automatic execution - you get raw tool calls
 
 Use a function for dynamic control:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Research and analyze',
@@ -586,7 +594,7 @@ The function receives `TurnContext` and returns `true` to continue or `false` to
 
 Get all tool calls from the initial response (before auto-execution):
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'What is the weather in Tokyo and Paris?',
@@ -607,7 +615,7 @@ for (const call of toolCalls) {
 
 Stream tool calls as they complete:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Check weather in multiple cities',
@@ -630,7 +638,7 @@ for await (const toolCall of result.getToolCallsStream()) {
 
 Stream both argument deltas and preliminary results:
 
-```typescript
+```typescript expandable lines theme={null}
 const searchTool = tool({
   name: 'search',
   inputSchema: z.object({ query: z.string() }),
@@ -676,7 +684,7 @@ for await (const event of result.getToolStream()) {
 
 When using `getFullResponsesStream()`, you can also receive `tool.result` events that fire when a tool execution completes:
 
-```typescript
+```typescript lines theme={null}
 for await (const event of result.getFullResponsesStream()) {
   switch (event.type) {
     case 'tool.preliminary_result':
@@ -698,7 +706,7 @@ for await (const event of result.getFullResponsesStream()) {
 
 #### ToolResultEvent Type
 
-```typescript
+```typescript lines theme={null}
 type ToolResultEvent<TResult = unknown, TPreliminaryResults = unknown> = {
   type: 'tool.result';
   toolCallId: string;
@@ -714,7 +722,7 @@ The `tool.result` event provides the final output from tool execution along with
 
 When the model calls multiple tools, they execute in parallel:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Get weather in Paris, Tokyo, and New York simultaneously',
@@ -729,7 +737,7 @@ const text = await result.getText();
 
 For tools without execute functions:
 
-```typescript
+```typescript expandable lines theme={null}
 const confirmTool = tool({
   name: 'send_email',
   description: 'Send an email (requires confirmation)',
@@ -766,7 +774,7 @@ for (const call of toolCalls) {
 
 Access execution metadata through getResponse():
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'What is 2+2 and the weather in Paris?',
@@ -786,7 +794,7 @@ console.log('Usage:', response.usage);
 
 Errors in execute functions are caught and sent back to the model:
 
-```typescript
+```typescript expandable lines theme={null}
 const riskyTool = tool({
   name: 'risky_operation',
   inputSchema: z.object({ input: z.string() }),
@@ -814,7 +822,7 @@ const text = await result.getText();
 
 Invalid tool arguments are caught before execution:
 
-```typescript
+```typescript lines theme={null}
 const strictTool = tool({
   name: 'strict',
   inputSchema: z.object({
@@ -832,7 +840,7 @@ const strictTool = tool({
 
 Handle errors gracefully in execute functions:
 
-```typescript
+```typescript lines theme={null}
 const robustTool = tool({
   name: 'fetch_data',
   inputSchema: z.object({ url: z.string().url() }),
@@ -858,7 +866,7 @@ const robustTool = tool({
 
 ### Descriptive Names and Descriptions
 
-```typescript
+```typescript lines theme={null}
 // Good: Clear name and description
 const tool1 = tool({
   name: 'search_knowledge_base',
@@ -878,7 +886,7 @@ const tool2 = tool({
 
 Add `.describe()` to help the model understand parameters:
 
-```typescript
+```typescript lines theme={null}
 const inputSchema = z.object({
   query: z.string().describe('Natural language search query'),
   maxResults: z.number()
@@ -896,7 +904,7 @@ const inputSchema = z.object({
 
 Design tools to be safely re-executable:
 
-```typescript
+```typescript lines theme={null}
 const createUserTool = tool({
   name: 'create_user',
   inputSchema: z.object({
@@ -920,7 +928,7 @@ const createUserTool = tool({
 
 Wrap long-running operations:
 
-```typescript
+```typescript lines theme={null}
 const longRunningTool = tool({
   name: 'process_data',
   inputSchema: z.object({ dataId: z.string() }),
@@ -941,7 +949,7 @@ const longRunningTool = tool({
 
 ## Next Steps
 
-* **[Tool Approval & State](/docs/sdks/typescript/call-model/approval-and-state)** - Human-in-the-loop approval and conversation persistence
-* **[nextTurnParams](/docs/sdks/typescript/call-model/next-turn-params)** - Tool-driven context injection
-* **[Stop Conditions](/docs/sdks/typescript/call-model/stop-conditions)** - Advanced execution control
-* **[Examples](/docs/sdks/typescript/call-model/examples/weather-tool)** - Complete tool implementations
+* **[Tool Approval & State](/agent-sdk/call-model/tool-approval-state)** - Human-in-the-loop approval and conversation persistence
+* **[nextTurnParams](/agent-sdk/call-model/next-turn-params)** - Tool-driven context injection
+* **[Stop Conditions](/agent-sdk/call-model/stop-conditions)** - Advanced execution control
+* **[Examples](/agent-sdk/call-model/examples/weather-tool)** - Complete tool implementations

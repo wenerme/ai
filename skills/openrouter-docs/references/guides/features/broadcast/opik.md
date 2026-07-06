@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Comet Opik
+
+> Send traces to Comet Opik
 
 [Comet Opik](https://www.comet.com/site/products/opik/) is an open-source platform for evaluating, testing, and monitoring LLM applications.
 
@@ -19,7 +21,9 @@ In Comet, set up your Opik workspace and project:
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 3: Configure Comet Opik
 
@@ -38,7 +42,9 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 Make an API request through OpenRouter and view the trace in your Opik
 project dashboard.
 
-![Opik Trace View](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/bd71a7fd9d80d09e76d05ea52e654e94dd15e68914669145afe6416e832a0103/content/pages/features/broadcast/broadcast-opik-trace.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/opik/broadcast-opik-trace.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a1efdbc1b136ceccc4546078f5cad6b0" alt="Opik Trace View" width="3368" height="1650" data-path="assets/guides/features/broadcast/opik/broadcast-opik-trace.png" />
+</Frame>
 
 ## Custom Metadata
 
@@ -55,7 +61,7 @@ Comet Opik supports custom metadata on both traces and spans for organizing and 
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Evaluate this response..." }],
@@ -80,4 +86,4 @@ Comet Opik supports custom metadata on both traces and spans for organizing and 
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

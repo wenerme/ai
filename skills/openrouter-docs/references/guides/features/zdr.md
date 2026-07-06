@@ -1,12 +1,51 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Zero Data Retention
 
+> How OpenRouter gives you control over your data
+
+export const ZDREndpointsTable = () => {
+  const [endpoints, setEndpoints] = useState(null);
+  const [didError, setDidError] = useState(false);
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("https://openrouter.ai/api/v1/endpoints/zdr", {
+      signal: controller.signal
+    }).then(res => res.ok ? res.json() : Promise.reject(new Error(`HTTP ${res.status}`))).then(body => setEndpoints(body.data ?? [])).catch(err => {
+      if (err.name !== "AbortError") setDidError(true);
+    });
+    return () => controller.abort();
+  }, []);
+  if (didError) {
+    return <p>ZDR endpoint data could not be retrieved at this time.</p>;
+  }
+  if (endpoints === null) {
+    return <div className="bg-muted h-40 w-full animate-pulse rounded-lg" />;
+  }
+  const rows = [...endpoints].sort((a, b) => a.model_name.localeCompare(b.model_name));
+  return <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Provider</th>
+          <th>Implicit Caching</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map(endpoint => <tr key={endpoint.name}>
+            <td>{endpoint.model_name}</td>
+            <td>{endpoint.provider_name}</td>
+            <td>{endpoint.supports_implicit_caching ? "Yes" : "No"}</td>
+          </tr>)}
+      </tbody>
+    </table>;
+};
+
 Zero Data Retention (ZDR) means that a provider will not store your data for any period of time.
 
-OpenRouter has [privacy settings](/settings/privacy) that, when enabled, only allow you to route to endpoints that have a Zero Data Retention policy. You can enforce ZDR globally, per model group, per guardrail, or per request.
+OpenRouter has [privacy settings](https://openrouter.ai/settings/privacy) that, when enabled, only allow you to route to endpoints that have a Zero Data Retention policy. You can enforce ZDR globally, per model group, per guardrail, or per request.
 
 Providers that do not retain your data are also unable to train on your data. However we do have some endpoints & providers who do not train on your data but *do* retain it (e.g. to scan for abuse or for legal reasons). OpenRouter gives you controls over both of these policies.
 
@@ -16,13 +55,15 @@ OpenRouter works with providers to understand each of their data policies and st
 
 Note that a provider's general policy may differ from the specific policy for a given endpoint. OpenRouter keeps track of the specific policy for each endpoint, works with providers to keep these policies up to date, and in some cases creates special agreements with providers to ensure data retention or training policies that are more privacy-focused than their default policies.
 
-If OpenRouter is not able to establish or ascertain a clear policy for a provider or endpoint, we take a conservative stance and assume that the endpoint both retains and trains on data and mark it as such.
+<Note>
+  If OpenRouter is not able to establish or ascertain a clear policy for a provider or endpoint, we take a conservative stance and assume that the endpoint both retains and trains on data and mark it as such.
+</Note>
 
-A full list of providers and their data policies can be found [here](/docs/guides/privacy/provider-logging#data-retention--logging). Note that this list shows the default policy for each provider; if there is a particular endpoint that has a policy that differs from the provider default, it may not be available if "ZDR Only" is enabled.
+A full list of providers and their data policies can be found [here](/guides/privacy/provider-logging#data-retention--logging). Note that this list shows the default policy for each provider; if there is a particular endpoint that has a policy that differs from the provider default, it may not be available if "ZDR Only" is enabled.
 
 ## Per-Model-Group ZDR Enforcement
 
-Rather than a single global toggle, OpenRouter lets you enforce ZDR independently for different model groups. This is available in both your [account-level privacy settings](/settings/privacy) and in [guardrails](/docs/guides/features/guardrails).
+Rather than a single global toggle, OpenRouter lets you enforce ZDR independently for different model groups. This is available in both your [account-level privacy settings](https://openrouter.ai/settings/privacy) and in [guardrails](/guides/features/guardrails).
 
 The four model group scopes are:
 
@@ -33,15 +74,19 @@ The four model group scopes are:
 | **Google**       | Removes AI Studio endpoints (Vertex remains available)                        |
 | **Non-frontier** | Removes all other non-ZDR endpoints                                           |
 
-Per-model-group ZDR is useful when you only need ZDR enforcement for certain model groups. For example, you may want to enforce ZDR for non-frontier models while keeping first-party Anthropic, OpenAI, and Google endpoints available without the ZDR restriction.
+<Tip>
+  **When to use per-model-group ZDR**
+
+  Per-model-group ZDR is useful when you only need ZDR enforcement for certain model groups. For example, you may want to enforce ZDR for non-frontier models while keeping first-party Anthropic, OpenAI, and Google endpoints available without the ZDR restriction.
+</Tip>
 
 ### Account-level settings
 
-In your [privacy settings](/settings/privacy), each model group has its own toggle. Enabling a scope restricts all your requests to ZDR endpoints for that model group.
+In your [privacy settings](https://openrouter.ai/settings/privacy), each model group has its own toggle. Enabling a scope restricts all your requests to ZDR endpoints for that model group.
 
 ### Guardrail-level settings
 
-When creating or editing a [guardrail](/docs/guides/features/guardrails), you can set ZDR independently for each model group. This lets you apply different ZDR policies to different API keys or organization members.
+When creating or editing a [guardrail](/guides/features/guardrails), you can set ZDR independently for each model group. This lets you apply different ZDR policies to different API keys or organization members.
 
 In the API, these are represented as separate fields on the guardrail object:
 
@@ -52,7 +97,9 @@ In the API, these are represented as separate fields on the guardrail object:
 | `enforce_zdr_google`    | Enforce ZDR for Google endpoints       |
 | `enforce_zdr_other`     | Enforce ZDR for non-frontier endpoints |
 
-The legacy `enforce_zdr` field is deprecated. When provided, its value is copied into any per-model-group fields that are not explicitly set on the request. Use the per-model-group fields directly for new integrations.
+<Note>
+  The legacy `enforce_zdr` field is deprecated. When provided, its value is copied into any per-model-group fields that are not explicitly set on the request. Use the per-model-group fields directly for new integrations.
+</Note>
 
 ## Per-Request ZDR Enforcement
 
@@ -66,7 +113,7 @@ This is useful for customers who don't want to globally enforce ZDR but need to 
 
 Include the `zdr` parameter in your provider preferences:
 
-```json
+```json lines theme={null}
 {
   "model": "gpt-4",
   "messages": [...],
@@ -91,3 +138,5 @@ OpenRouter itself has a ZDR policy; your prompts are not retained unless you spe
 ## Zero Retention Endpoints
 
 The following endpoints have a ZDR policy. Note that this list is also available progammatically via [https://openrouter.ai/api/v1/endpoints/zdr](https://openrouter.ai/api/v1/endpoints/zdr). It is automatically updated when there are changes to a provider's data policy.:
+
+<ZDREndpointsTable />

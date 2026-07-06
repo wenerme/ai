@@ -1,103 +1,556 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List guardrails
 
-GET https://openrouter.ai/api/v1/guardrails
+> List all guardrails for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
-List all guardrails for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
-Reference: https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrails
 
-## OpenAPI Specification
+## OpenAPI
 
-```yaml
+````yaml /openapi/openapi.yaml get /guardrails
 openapi: 3.1.0
 info:
+  contact:
+    email: support@openrouter.ai
+    name: OpenRouter Support
+    url: https://openrouter.ai/docs
+  description: OpenAI-compatible API with additional OpenRouter features
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
   title: OpenRouter API
   version: 1.0.0
+servers:
+  - description: Production server
+    url: https://openrouter.ai/api/v1
+    x-speakeasy-server-id: production
+security:
+  - apiKey: []
+tags:
+  - description: API key management endpoints
+    name: API Keys
+  - description: Analytics and usage endpoints
+    name: Analytics
+  - description: Anthropic Messages endpoints
+    name: Anthropic Messages
+  - description: BYOK endpoints
+    name: BYOK
+  - description: Benchmarks endpoints
+    name: Benchmarks
+  - description: Chat completion endpoints
+    name: Chat
+  - description: Task classification market-share endpoints
+    name: Classifications
+  - description: Credit management endpoints
+    name: Credits
+  - description: Datasets endpoints
+    name: Datasets
+  - description: Text embedding endpoints
+    name: Embeddings
+  - description: Endpoint information
+    name: Endpoints
+  - description: Files endpoints
+    name: Files
+  - description: Generation history endpoints
+    name: Generations
+  - description: Guardrails endpoints
+    name: Guardrails
+  - description: Images endpoints
+    name: Images
+  - description: Model information endpoints
+    name: Models
+  - description: OAuth authentication endpoints
+    name: OAuth
+  - description: Observability endpoints
+    name: Observability
+  - description: Organization endpoints
+    name: Organization
+  - description: Presets endpoints
+    name: Presets
+  - description: Provider information endpoints
+    name: Providers
+  - description: Rerank endpoints
+    name: Rerank
+  - description: Speech-to-text endpoints
+    name: STT
+    x-displayName: Transcriptions
+  - description: Text-to-speech endpoints
+    name: TTS
+    x-displayName: Speech
+  - description: Video Generation endpoints
+    name: Video Generation
+  - description: Workspaces endpoints
+    name: Workspaces
+  - description: beta.Analytics endpoints
+    name: beta.Analytics
+  - description: beta.responses endpoints
+    name: beta.responses
+externalDocs:
+  description: OpenRouter Documentation
+  url: https://openrouter.ai/docs
 paths:
   /guardrails:
     get:
-      operationId: list-guardrails
+      tags:
+        - Guardrails
       summary: List guardrails
       description: >-
         List all guardrails for the authenticated user. [Management
         key](/docs/guides/overview/auth/management-api-keys) required.
-      tags:
-        - subpackage_guardrails
+      operationId: listGuardrails
       parameters:
-        - name: offset
+        - description: Number of records to skip for pagination
           in: query
-          description: Number of records to skip for pagination
+          name: offset
           required: false
           schema:
+            description: Number of records to skip for pagination
+            example: 0
+            minimum: 0
+            nullable: true
             type: integer
-        - name: limit
+        - description: Maximum number of records to return (max 100)
           in: query
-          description: Maximum number of records to return (max 100)
+          name: limit
           required: false
           schema:
+            description: Maximum number of records to return (max 100)
+            example: 50
+            maximum: 100
+            minimum: 1
             type: integer
-        - name: workspace_id
-          in: query
-          description: >-
+        - description: >-
             Filter guardrails by workspace ID. By default, guardrails in the
             default workspace are returned.
+          in: query
+          name: workspace_id
           required: false
           schema:
-            type: string
+            description: >-
+              Filter guardrails by workspace ID. By default, guardrails in the
+              default workspace are returned.
+            example: 0df9e665-d932-5740-b2c7-b52af166bc11
             format: uuid
-        - name: Authorization
-          in: header
-          description: API key as bearer token in Authorization header
-          required: true
-          schema:
             type: string
       responses:
         '200':
-          description: List of guardrails
           content:
             application/json:
+              example:
+                data:
+                  - allowed_models: null
+                    allowed_providers:
+                      - openai
+                      - anthropic
+                      - google
+                    created_at: '2025-08-24T10:30:00Z'
+                    description: Guardrail for production environment
+                    enforce_zdr: false
+                    id: 550e8400-e29b-41d4-a716-446655440000
+                    ignored_models: null
+                    ignored_providers: null
+                    limit_usd: 100
+                    name: Production Guardrail
+                    reset_interval: monthly
+                    updated_at: '2025-08-24T15:45:00Z'
+                    workspace_id: 0df9e665-d932-5740-b2c7-b52af166bc11
+                total_count: 1
               schema:
                 $ref: '#/components/schemas/ListGuardrailsResponse'
+          description: List of guardrails
         '401':
-          description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
+              example:
+                error:
+                  code: 401
+                  message: Missing Authentication header
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
+          description: Unauthorized - Authentication required or invalid credentials
         '500':
-          description: Internal Server Error - Unexpected server error
           content:
             application/json:
+              example:
+                error:
+                  code: 500
+                  message: Internal Server Error
               schema:
                 $ref: '#/components/schemas/InternalServerResponse'
-servers:
-  - url: https://openrouter.ai/api/v1
-    description: Production server
+          description: Internal Server Error - Unexpected server error
 components:
   schemas:
-    ContentFilterBuiltinAction:
+    ListGuardrailsResponse:
+      example:
+        data:
+          - allowed_models: null
+            allowed_providers:
+              - openai
+              - anthropic
+              - google
+            content_filter_builtins:
+              - action: redact
+                label: '[EMAIL]'
+                slug: email
+            content_filters: null
+            created_at: '2025-08-24T10:30:00Z'
+            description: Guardrail for production environment
+            enforce_zdr: null
+            enforce_zdr_anthropic: true
+            enforce_zdr_google: false
+            enforce_zdr_openai: true
+            enforce_zdr_other: false
+            id: 550e8400-e29b-41d4-a716-446655440000
+            ignored_models: null
+            ignored_providers: null
+            limit_usd: 100
+            name: Production Guardrail
+            reset_interval: monthly
+            updated_at: '2025-08-24T15:45:00Z'
+            workspace_id: 0df9e665-d932-5740-b2c7-b52af166bc11
+        total_count: 1
+      properties:
+        data:
+          description: List of guardrails
+          items:
+            $ref: '#/components/schemas/Guardrail'
+          type: array
+        total_count:
+          description: Total number of guardrails
+          example: 25
+          type: integer
+      required:
+        - data
+        - total_count
+      type: object
+    UnauthorizedResponse:
+      description: Unauthorized - Authentication required or invalid credentials
+      example:
+        error:
+          code: 401
+          message: Missing Authentication header
+      properties:
+        error:
+          $ref: '#/components/schemas/UnauthorizedResponseErrorData'
+        openrouter_metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        user_id:
+          nullable: true
+          type: string
+      required:
+        - error
+      type: object
+    InternalServerResponse:
+      description: Internal Server Error - Unexpected server error
+      example:
+        error:
+          code: 500
+          message: Internal Server Error
+      properties:
+        error:
+          $ref: '#/components/schemas/InternalServerResponseErrorData'
+        openrouter_metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        user_id:
+          nullable: true
+          type: string
+      required:
+        - error
+      type: object
+    Guardrail:
+      example:
+        allowed_models: null
+        allowed_providers:
+          - openai
+          - anthropic
+          - google
+        content_filter_builtins:
+          - action: redact
+            label: '[EMAIL]'
+            slug: email
+        content_filters: null
+        created_at: '2025-08-24T10:30:00Z'
+        description: Guardrail for production environment
+        enforce_zdr: null
+        enforce_zdr_anthropic: true
+        enforce_zdr_google: false
+        enforce_zdr_openai: true
+        enforce_zdr_other: false
+        id: 550e8400-e29b-41d4-a716-446655440000
+        ignored_models: null
+        ignored_providers: null
+        limit_usd: 100
+        name: Production Guardrail
+        reset_interval: monthly
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 0df9e665-d932-5740-b2c7-b52af166bc11
+      properties:
+        allowed_models:
+          description: Array of model canonical_slugs (immutable identifiers)
+          example:
+            - openai/gpt-5.2-20251211
+            - anthropic/claude-4.5-opus-20251124
+            - deepseek/deepseek-r1-0528:free
+          items:
+            type: string
+          nullable: true
+          type: array
+        allowed_providers:
+          description: List of allowed provider IDs
+          example:
+            - openai
+            - anthropic
+            - google
+          items:
+            type: string
+          nullable: true
+          type: array
+        content_filter_builtins:
+          description: >-
+            Builtin content filters applied to requests. Includes PII detectors
+            and the regex-based prompt injection detector.
+          example:
+            - action: redact
+              label: '[EMAIL]'
+              slug: email
+          items:
+            $ref: '#/components/schemas/ContentFilterBuiltinEntry'
+          nullable: true
+          type: array
+        content_filters:
+          description: Custom regex content filters applied to request messages
+          example:
+            - action: redact
+              label: '[API_KEY]'
+              pattern: \b(sk-[a-zA-Z0-9]{48})\b
+          items:
+            $ref: '#/components/schemas/ContentFilterEntry'
+          nullable: true
+          type: array
+        created_at:
+          description: ISO 8601 timestamp of when the guardrail was created
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        description:
+          description: Description of the guardrail
+          example: Guardrail for production environment
+          nullable: true
+          type: string
+        enforce_zdr:
+          deprecated: true
+          description: >-
+            Deprecated. Use enforce_zdr_anthropic, enforce_zdr_openai,
+            enforce_zdr_google, and enforce_zdr_other instead. When provided,
+            its value is copied into any of those per-provider fields that are
+            not explicitly specified on the request.
+          example: false
+          nullable: true
+          type: boolean
+        enforce_zdr_anthropic:
+          description: >-
+            Whether to enforce zero data retention for Anthropic models. Falls
+            back to enforce_zdr when not provided.
+          example: false
+          nullable: true
+          type: boolean
+        enforce_zdr_google:
+          description: >-
+            Whether to enforce zero data retention for Google models. Falls back
+            to enforce_zdr when not provided.
+          example: false
+          nullable: true
+          type: boolean
+        enforce_zdr_openai:
+          description: >-
+            Whether to enforce zero data retention for OpenAI models. Falls back
+            to enforce_zdr when not provided.
+          example: false
+          nullable: true
+          type: boolean
+        enforce_zdr_other:
+          description: >-
+            Whether to enforce zero data retention for models that are not from
+            Anthropic, OpenAI, or Google. Falls back to enforce_zdr when not
+            provided.
+          example: false
+          nullable: true
+          type: boolean
+        id:
+          description: Unique identifier for the guardrail
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+        ignored_models:
+          description: Array of model canonical_slugs to exclude from routing
+          example:
+            - openai/gpt-4o-mini-2024-07-18
+          items:
+            type: string
+          nullable: true
+          type: array
+        ignored_providers:
+          description: List of provider IDs to exclude from routing
+          example:
+            - azure
+          items:
+            type: string
+          nullable: true
+          type: array
+        limit_usd:
+          description: Spending limit in USD
+          example: 100
+          format: double
+          nullable: true
+          type: number
+        name:
+          description: Name of the guardrail
+          example: Production Guardrail
+          type: string
+        reset_interval:
+          $ref: '#/components/schemas/GuardrailInterval'
+        updated_at:
+          description: ISO 8601 timestamp of when the guardrail was last updated
+          example: '2025-08-24T15:45:00Z'
+          nullable: true
+          type: string
+        workspace_id:
+          description: The workspace ID this guardrail belongs to.
+          example: 0df9e665-d932-5740-b2c7-b52af166bc11
+          type: string
+      required:
+        - id
+        - name
+        - created_at
+        - workspace_id
+      type: object
+    UnauthorizedResponseErrorData:
+      description: Error data for UnauthorizedResponse
+      example:
+        code: 401
+        message: Missing Authentication header
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+      required:
+        - code
+        - message
+      type: object
+    InternalServerResponseErrorData:
+      description: Error data for InternalServerResponse
+      example:
+        code: 500
+        message: Internal Server Error
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+      required:
+        - code
+        - message
+      type: object
+    ContentFilterBuiltinEntry:
+      description: >-
+        A builtin content filter entry. Builtin filters include PII detectors
+        and the regex-based prompt injection detector.
+      example:
+        action: redact
+        label: '[EMAIL]'
+        slug: email
+      properties:
+        action:
+          $ref: '#/components/schemas/ContentFilterBuiltinAction'
+        label:
+          description: >-
+            Read-only, system-assigned redaction placeholder derived from the
+            slug (e.g. "[EMAIL]", "[PHONE]"). Not settable by the caller.
+          example: '[EMAIL]'
+          maxLength: 100
+          type: string
+        scan_scope:
+          $ref: '#/components/schemas/PromptInjectionScanScope'
+        slug:
+          $ref: '#/components/schemas/ContentFilterBuiltinSlug'
+      required:
+        - slug
+        - action
+      type: object
+    ContentFilterEntry:
+      description: >-
+        A custom regex content filter that scans request messages for matching
+        patterns.
+      example:
+        action: redact
+        label: '[API_KEY]'
+        pattern: \b(sk-[a-zA-Z0-9]{48})\b
+      properties:
+        action:
+          $ref: '#/components/schemas/ContentFilterAction'
+        label:
+          description: Optional label used in redaction placeholders or error messages
+          example: '[API_KEY]'
+          maxLength: 100
+          nullable: true
+          type: string
+        pattern:
+          description: A regex pattern to match against request content
+          example: \b(sk-[a-zA-Z0-9]{48})\b
+          minLength: 1
+          type: string
+      required:
+        - pattern
+        - action
+      type: object
+    GuardrailInterval:
+      description: Interval at which the limit resets (daily, weekly, monthly)
+      enum:
+        - daily
+        - weekly
+        - monthly
+        - null
+      example: monthly
+      nullable: true
       type: string
+    ContentFilterBuiltinAction:
+      description: Action taken when the builtin filter triggers
       enum:
         - redact
         - block
         - flag
-      description: Action taken when the builtin filter triggers
-      title: ContentFilterBuiltinAction
-    PromptInjectionScanScope:
+      example: block
       type: string
-      enum:
-        - user_only
-        - all_messages
+    PromptInjectionScanScope:
       description: >-
         Which message roles to scan for prompt injection. Only applies to the
         regex-prompt-injection builtin. Defaults to all_messages.
-      title: PromptInjectionScanScope
-    ContentFilterBuiltinSlug:
+      enum:
+        - user_only
+        - all_messages
+      example: user_only
       type: string
+    ContentFilterBuiltinSlug:
+      description: The builtin filter identifier
       enum:
         - email
         - phone
@@ -107,440 +560,19 @@ components:
         - person-name
         - address
         - regex-prompt-injection
-      description: The builtin filter identifier
-      title: ContentFilterBuiltinSlug
-    ContentFilterBuiltinEntry:
-      type: object
-      properties:
-        action:
-          $ref: '#/components/schemas/ContentFilterBuiltinAction'
-        label:
-          type: string
-          description: >-
-            Read-only, system-assigned redaction placeholder derived from the
-            slug (e.g. "[EMAIL]", "[PHONE]"). Not settable by the caller.
-        scan_scope:
-          $ref: '#/components/schemas/PromptInjectionScanScope'
-        slug:
-          $ref: '#/components/schemas/ContentFilterBuiltinSlug'
-      required:
-        - action
-        - slug
-      description: >-
-        A builtin content filter entry. Builtin filters include PII detectors
-        and the regex-based prompt injection detector.
-      title: ContentFilterBuiltinEntry
-    ContentFilterAction:
+      example: regex-prompt-injection
       type: string
+    ContentFilterAction:
+      description: Action taken when the pattern matches
       enum:
         - redact
         - block
-      description: Action taken when the pattern matches
-      title: ContentFilterAction
-    ContentFilterEntry:
-      type: object
-      properties:
-        action:
-          $ref: '#/components/schemas/ContentFilterAction'
-        label:
-          type:
-            - string
-            - 'null'
-          description: Optional label used in redaction placeholders or error messages
-        pattern:
-          type: string
-          description: A regex pattern to match against request content
-      required:
-        - action
-        - pattern
-      description: >-
-        A custom regex content filter that scans request messages for matching
-        patterns.
-      title: ContentFilterEntry
-    GuardrailInterval:
+      example: block
       type: string
-      enum:
-        - daily
-        - weekly
-        - monthly
-      description: Interval at which the limit resets (daily, weekly, monthly)
-      title: GuardrailInterval
-    Guardrail:
-      type: object
-      properties:
-        allowed_models:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-          description: Array of model canonical_slugs (immutable identifiers)
-        allowed_providers:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-          description: List of allowed provider IDs
-        content_filter_builtins:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: '#/components/schemas/ContentFilterBuiltinEntry'
-          description: >-
-            Builtin content filters applied to requests. Includes PII detectors
-            and the regex-based prompt injection detector.
-        content_filters:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: '#/components/schemas/ContentFilterEntry'
-          description: Custom regex content filters applied to request messages
-        created_at:
-          type: string
-          description: ISO 8601 timestamp of when the guardrail was created
-        description:
-          type:
-            - string
-            - 'null'
-          description: Description of the guardrail
-        enforce_zdr:
-          type:
-            - boolean
-            - 'null'
-          description: >-
-            Deprecated. Use enforce_zdr_anthropic, enforce_zdr_openai,
-            enforce_zdr_google, and enforce_zdr_other instead. When provided,
-            its value is copied into any of those per-provider fields that are
-            not explicitly specified on the request.
-        enforce_zdr_anthropic:
-          type:
-            - boolean
-            - 'null'
-          description: >-
-            Whether to enforce zero data retention for Anthropic models. Falls
-            back to enforce_zdr when not provided.
-        enforce_zdr_google:
-          type:
-            - boolean
-            - 'null'
-          description: >-
-            Whether to enforce zero data retention for Google models. Falls back
-            to enforce_zdr when not provided.
-        enforce_zdr_openai:
-          type:
-            - boolean
-            - 'null'
-          description: >-
-            Whether to enforce zero data retention for OpenAI models. Falls back
-            to enforce_zdr when not provided.
-        enforce_zdr_other:
-          type:
-            - boolean
-            - 'null'
-          description: >-
-            Whether to enforce zero data retention for models that are not from
-            Anthropic, OpenAI, or Google. Falls back to enforce_zdr when not
-            provided.
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the guardrail
-        ignored_models:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-          description: Array of model canonical_slugs to exclude from routing
-        ignored_providers:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-          description: List of provider IDs to exclude from routing
-        limit_usd:
-          type:
-            - number
-            - 'null'
-          format: double
-          description: Spending limit in USD
-        name:
-          type: string
-          description: Name of the guardrail
-        reset_interval:
-          $ref: '#/components/schemas/GuardrailInterval'
-        updated_at:
-          type:
-            - string
-            - 'null'
-          description: ISO 8601 timestamp of when the guardrail was last updated
-        workspace_id:
-          type: string
-          description: The workspace ID this guardrail belongs to.
-      required:
-        - created_at
-        - id
-        - name
-        - workspace_id
-      title: Guardrail
-    ListGuardrailsResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Guardrail'
-          description: List of guardrails
-        total_count:
-          type: integer
-          description: Total number of guardrails
-      required:
-        - data
-        - total_count
-      title: ListGuardrailsResponse
-    UnauthorizedResponseErrorData:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
-      description: Error data for UnauthorizedResponse
-      title: UnauthorizedResponseErrorData
-    UnauthorizedResponse:
-      type: object
-      properties:
-        error:
-          $ref: '#/components/schemas/UnauthorizedResponseErrorData'
-        openrouter_metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-        user_id:
-          type:
-            - string
-            - 'null'
-      required:
-        - error
-      description: Unauthorized - Authentication required or invalid credentials
-      title: UnauthorizedResponse
-    InternalServerResponseErrorData:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
-      description: Error data for InternalServerResponse
-      title: InternalServerResponseErrorData
-    InternalServerResponse:
-      type: object
-      properties:
-        error:
-          $ref: '#/components/schemas/InternalServerResponseErrorData'
-        openrouter_metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-        user_id:
-          type:
-            - string
-            - 'null'
-      required:
-        - error
-      description: Internal Server Error - Unexpected server error
-      title: InternalServerResponse
   securitySchemes:
     apiKey:
-      type: http
-      scheme: bearer
       description: API key as bearer token in Authorization header
+      scheme: bearer
+      type: http
 
-```
-
-## Examples
-
-
-
-**Response**
-
-```json
-{
-  "data": [
-    {
-      "created_at": "2025-08-24T10:30:00Z",
-      "id": "550e8400-e29b-41d4-a716-446655440000",
-      "name": "Production Guardrail",
-      "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11",
-      "allowed_models": null,
-      "allowed_providers": [
-        "openai",
-        "anthropic",
-        "google"
-      ],
-      "description": "Guardrail for production environment",
-      "ignored_models": null,
-      "ignored_providers": null,
-      "limit_usd": 100,
-      "reset_interval": "monthly",
-      "updated_at": "2025-08-24T15:45:00Z",
-      "enforce_zdr": false
-    }
-  ],
-  "total_count": 1
-}
-```
-
-**SDK Code**
-
-```python Guardrails_listGuardrails_example
-import requests
-
-url = "https://openrouter.ai/api/v1/guardrails"
-
-headers = {"Authorization": "Bearer <token>"}
-
-response = requests.get(url, headers=headers)
-
-print(response.json())
-```
-
-```javascript Guardrails_listGuardrails_example
-const url = 'https://openrouter.ai/api/v1/guardrails';
-const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
-
-try {
-  const response = await fetch(url, options);
-  const data = await response.json();
-  console.log(data);
-} catch (error) {
-  console.error(error);
-}
-```
-
-```go Guardrails_listGuardrails_example
-package main
-
-import (
-	"fmt"
-	"net/http"
-	"io"
-)
-
-func main() {
-
-	url := "https://openrouter.ai/api/v1/guardrails"
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("Authorization", "Bearer <token>")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := io.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```ruby Guardrails_listGuardrails_example
-require 'uri'
-require 'net/http'
-
-url = URI("https://openrouter.ai/api/v1/guardrails")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-
-request = Net::HTTP::Get.new(url)
-request["Authorization"] = 'Bearer <token>'
-
-response = http.request(request)
-puts response.read_body
-```
-
-```java Guardrails_listGuardrails_example
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/guardrails")
-  .header("Authorization", "Bearer <token>")
-  .asString();
-```
-
-```php Guardrails_listGuardrails_example
-<?php
-require_once('vendor/autoload.php');
-
-$client = new \GuzzleHttp\Client();
-
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/guardrails', [
-  'headers' => [
-    'Authorization' => 'Bearer <token>',
-  ],
-]);
-
-echo $response->getBody();
-```
-
-```csharp Guardrails_listGuardrails_example
-using RestSharp;
-
-var client = new RestClient("https://openrouter.ai/api/v1/guardrails");
-var request = new RestRequest(Method.GET);
-request.AddHeader("Authorization", "Bearer <token>");
-IRestResponse response = client.Execute(request);
-```
-
-```swift Guardrails_listGuardrails_example
-import Foundation
-
-let headers = ["Authorization": "Bearer <token>"]
-
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails")! as URL,
-                                        cachePolicy: .useProtocolCachePolicy,
-                                    timeoutInterval: 10.0)
-request.httpMethod = "GET"
-request.allHTTPHeaderFields = headers
-
-let session = URLSession.shared
-let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-  if (error != nil) {
-    print(error as Any)
-  } else {
-    let httpResponse = response as? HTTPURLResponse
-    print(httpResponse)
-  }
-})
-
-dataTask.resume()
-```
+````

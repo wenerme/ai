@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Latency and Performance
+
+> Understanding OpenRouter's performance characteristics
 
 OpenRouter is designed with performance as a top priority. OpenRouter is heavily optimized to add as little latency as possible to your requests.
 
@@ -31,7 +33,7 @@ OpenRouter expires caches more aggressively under these conditions to ensure pro
 
 ### Model Fallback
 
-When using [model routing](/docs/routing/auto-model-selection) or [provider routing](/docs/guides/routing/provider-selection), if the primary model or provider fails, OpenRouter will automatically try the next option. A failed initial completion unsurprisingly adds latency to the specific request. OpenRouter tracks provider failures, and will attempt to intelligently route around unavailable providers so that this latency is not incurred on every request.
+When using [model routing](/guides/routing/routers/auto-router) or [provider routing](/guides/routing/provider-selection), if the primary model or provider fails, OpenRouter will automatically try the next option. A failed initial completion unsurprisingly adds latency to the specific request. OpenRouter tracks provider failures, and will attempt to intelligently route around unavailable providers so that this latency is not incurred on every request.
 
 ## Best Practices
 
@@ -43,4 +45,4 @@ To achieve optimal performance with OpenRouter:
    * Recommended minimum balance: \$10-20 to ensure smooth operation
 
 2. **Use Provider Preferences**
-   * If you have specific latency requirements (whether time to first token, or time to last), there are [provider routing](/docs/guides/routing/provider-selection) features to help you achieve your performance and cost goals.
+   * If you have specific latency requirements (whether time to first token, or time to last), there are [provider routing](/guides/routing/provider-selection) features to help you achieve your performance and cost goals.

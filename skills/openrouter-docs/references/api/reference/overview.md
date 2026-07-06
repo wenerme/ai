@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # API Reference
+
+> An overview of OpenRouter's API
 
 OpenRouter's request and response schemas are very similar to the OpenAI Chat API, with a few small differences. At a high level, **OpenRouter normalizes the schema across models and providers** so you only need to learn one.
 
@@ -19,147 +21,149 @@ These specifications can be used with tools like [Swagger UI](https://swagger.io
 
 ### Completions Request Format
 
-Here is the request schema as a TypeScript type. This will be the body of your `POST` request to the `/api/v1/chat/completions` endpoint (see the [quick start](/docs/quickstart) above for an example).
+Here is the request schema as a TypeScript type. This will be the body of your `POST` request to the `/api/v1/chat/completions` endpoint (see the [quick start](/quickstart) above for an example).
 
-For a complete list of parameters, see the [Parameters](/docs/api-reference/parameters).
+For a complete list of parameters, see the [Parameters](/api/reference/parameters).
 
-```typescript title="Request Schema"
-// Definitions of subtypes are below
-type Request = {
-  // Either "messages" or "prompt" is required
-  messages?: Message[];
-  prompt?: string;
+<CodeGroup>
+  ```typescript title="Request Schema" expandable lines theme={null}
+  // Definitions of subtypes are below
+  type Request = {
+    // Either "messages" or "prompt" is required
+    messages?: Message[];
+    prompt?: string;
 
-  // If "model" is unspecified, uses the user's default
-  model?: string; // See "Supported Models" section
+    // If "model" is unspecified, uses the user's default
+    model?: string; // See "Supported Models" section
 
-  // Allows to force the model to produce specific output format.
-  // See "Structured Outputs" section below and models page for which models support it.
-  response_format?: ResponseFormat;
+    // Allows to force the model to produce specific output format.
+    // See "Structured Outputs" section below and models page for which models support it.
+    response_format?: ResponseFormat;
 
-  stop?: string | string[];
-  stream?: boolean; // Enable streaming
+    stop?: string | string[];
+    stream?: boolean; // Enable streaming
 
-  // Plugins to extend model capabilities (PDF parsing, response healing)
-  // See "Plugins" section: openrouter.ai/docs/guides/features/plugins
-  plugins?: Plugin[];
+    // Plugins to extend model capabilities (PDF parsing, response healing)
+    // See "Plugins" section: openrouter.ai/docs/guides/features/plugins
+    plugins?: Plugin[];
 
-  // See LLM Parameters (openrouter.ai/docs/api/reference/parameters)
-  max_tokens?: number; // Range: [1, context_length)
-  temperature?: number; // Range: [0, 2]
+    // See LLM Parameters (openrouter.ai/docs/api/reference/parameters)
+    max_tokens?: number; // Range: [1, context_length)
+    temperature?: number; // Range: [0, 2]
 
-  // Tool calling
-  // Will be passed down as-is for providers implementing OpenAI's interface.
-  // For providers with custom interfaces, we transform and map the properties.
-  // Otherwise, we transform the tools into a YAML template. The model responds with an assistant message.
-  // See models supporting tool calling: openrouter.ai/models?supported_parameters=tools
-  tools?: Tool[];
-  tool_choice?: ToolChoice;
+    // Tool calling
+    // Will be passed down as-is for providers implementing OpenAI's interface.
+    // For providers with custom interfaces, we transform and map the properties.
+    // Otherwise, we transform the tools into a YAML template. The model responds with an assistant message.
+    // See models supporting tool calling: openrouter.ai/models?supported_parameters=tools
+    tools?: Tool[];
+    tool_choice?: ToolChoice;
 
-  // Advanced optional parameters
-  seed?: number; // Integer only
-  top_p?: number; // Range: (0, 1]
-  top_k?: number; // Range: [1, Infinity) Not available for OpenAI models
-  frequency_penalty?: number; // Range: [-2, 2]
-  presence_penalty?: number; // Range: [-2, 2]
-  repetition_penalty?: number; // Range: (0, 2]
-  logit_bias?: { [key: number]: number };
-  top_logprobs: number; // Integer only
-  min_p?: number; // Range: [0, 1]
-  top_a?: number; // Range: [0, 1]
+    // Advanced optional parameters
+    seed?: number; // Integer only
+    top_p?: number; // Range: (0, 1]
+    top_k?: number; // Range: [1, Infinity) Not available for OpenAI models
+    frequency_penalty?: number; // Range: [-2, 2]
+    presence_penalty?: number; // Range: [-2, 2]
+    repetition_penalty?: number; // Range: (0, 2]
+    logit_bias?: { [key: number]: number };
+    top_logprobs: number; // Integer only
+    min_p?: number; // Range: [0, 1]
+    top_a?: number; // Range: [0, 1]
 
-  // Reduce latency by providing the model with a predicted output
-  // https://platform.openai.com/docs/guides/latency-optimization#use-predicted-outputs
-  prediction?: { type: 'content'; content: string };
+    // Reduce latency by providing the model with a predicted output
+    // https://platform.openai.com/docs/guides/latency-optimization#use-predicted-outputs
+    prediction?: { type: 'content'; content: string };
 
-  // OpenRouter-only parameters
-  // See "Model Routing" section: openrouter.ai/docs/guides/features/model-routing
-  models?: string[];
-  route?: 'fallback';
-  // See "Provider Routing" section: openrouter.ai/docs/guides/routing/provider-selection
-  provider?: ProviderPreferences;
-  user?: string; // A stable identifier for your end-users. Used to help detect and prevent abuse.
+    // OpenRouter-only parameters
+    // See "Model Routing" section: openrouter.ai/docs/guides/features/model-routing
+    models?: string[];
+    route?: 'fallback';
+    // See "Provider Routing" section: openrouter.ai/docs/guides/routing/provider-selection
+    provider?: ProviderPreferences;
+    user?: string; // A stable identifier for your end-users. Used to help detect and prevent abuse.
 
-  // Debug options (streaming only)
-  debug?: {
-    echo_upstream_body?: boolean; // If true, returns the transformed request body sent to the provider
+    // Debug options (streaming only)
+    debug?: {
+      echo_upstream_body?: boolean; // If true, returns the transformed request body sent to the provider
+    };
   };
-};
 
-// Subtypes:
+  // Subtypes:
 
-type TextContent = {
-  type: 'text';
-  text: string;
-};
-
-type ImageContentPart = {
-  type: 'image_url';
-  image_url: {
-    url: string; // URL or base64 encoded image data
-    detail?: string; // Optional, defaults to "auto"
+  type TextContent = {
+    type: 'text';
+    text: string;
   };
-};
 
-type ContentPart = TextContent | ImageContentPart;
-
-type Message =
-  | {
-      role: 'user' | 'assistant' | 'system';
-      // ContentParts are only for the "user" role:
-      content: string | ContentPart[];
-      // If "name" is included, it will be prepended like this
-      // for non-OpenAI models: `{name}: {content}`
-      name?: string;
-    }
-  | {
-      role: 'tool';
-      content: string;
-      tool_call_id: string;
-      name?: string;
+  type ImageContentPart = {
+    type: 'image_url';
+    image_url: {
+      url: string; // URL or base64 encoded image data
+      detail?: string; // Optional, defaults to "auto"
     };
+  };
 
-type FunctionDescription = {
-  description?: string;
-  name: string;
-  parameters: object; // JSON Schema object
-};
+  type ContentPart = TextContent | ImageContentPart;
 
-type Tool = {
-  type: 'function';
-  function: FunctionDescription;
-};
-
-type ToolChoice =
-  | 'none'
-  | 'auto'
-  | {
-      type: 'function';
-      function: {
-        name: string;
+  type Message =
+    | {
+        role: 'user' | 'assistant' | 'system';
+        // ContentParts are only for the "user" role:
+        content: string | ContentPart[];
+        // If "name" is included, it will be prepended like this
+        // for non-OpenAI models: `{name}: {content}`
+        name?: string;
+      }
+    | {
+        role: 'tool';
+        content: string;
+        tool_call_id: string;
+        name?: string;
       };
-    };
 
-// Response format for structured outputs
-type ResponseFormat =
-  | { type: 'json_object' }
-  | {
-      type: 'json_schema';
-      json_schema: {
-        name: string;
-        strict?: boolean;
-        schema: object; // JSON Schema object
+  type FunctionDescription = {
+    description?: string;
+    name: string;
+    parameters: object; // JSON Schema object
+  };
+
+  type Tool = {
+    type: 'function';
+    function: FunctionDescription;
+  };
+
+  type ToolChoice =
+    | 'none'
+    | 'auto'
+    | {
+        type: 'function';
+        function: {
+          name: string;
+        };
       };
-    };
 
-// Plugin configuration
-type Plugin = {
-  id: string; // 'web', 'file-parser', 'response-healing', 'context-compression'
-  enabled?: boolean;
-  // Additional plugin-specific options
-  [key: string]: unknown;
-};
-```
+  // Response format for structured outputs
+  type ResponseFormat =
+    | { type: 'json_object' }
+    | {
+        type: 'json_schema';
+        json_schema: {
+          name: string;
+          strict?: boolean;
+          schema: object; // JSON Schema object
+        };
+      };
+
+  // Plugin configuration
+  type Plugin = {
+    id: string; // 'web', 'file-parser', 'response-healing', 'context-compression'
+    enabled?: boolean;
+    // Additional plugin-specific options
+    [key: string]: unknown;
+  };
+  ```
+</CodeGroup>
 
 ### Structured Outputs
 
@@ -168,13 +172,13 @@ The `response_format` parameter allows you to enforce structured JSON responses 
 * `{ type: 'json_object' }`: Basic JSON mode - the model will return valid JSON
 * `{ type: 'json_schema', json_schema: { ... } }`: Strict schema mode - the model will return JSON matching your exact schema
 
-For detailed usage and examples, see [Structured Outputs](/docs/guides/features/structured-outputs). To find models that support structured outputs, check the [models page](https://openrouter.ai/models?supported_parameters=structured_outputs).
+For detailed usage and examples, see [Structured Outputs](/guides/features/structured-outputs). To find models that support structured outputs, check the [models page](https://openrouter.ai/models?supported_parameters=structured_outputs).
 
 ### Plugins
 
 OpenRouter plugins extend model capabilities with features like web search, PDF processing, response healing, and context compression. Enable plugins by adding a `plugins` array to your request:
 
-```json
+```json lines theme={null}
 {
   "plugins": [
     { "id": "web" },
@@ -183,7 +187,7 @@ OpenRouter plugins extend model capabilities with features like web search, PDF 
 }
 ```
 
-Available plugins include `web` (real-time web search), `file-parser` (PDF processing), `response-healing` (automatic JSON repair), and `context-compression` (middle-out prompt compression). For detailed configuration options, see [Plugins](/docs/guides/features/plugins)
+Available plugins include `web` (real-time web search), `file-parser` (PDF processing), `response-healing` (automatic JSON repair), and `context-compression` (middle-out prompt compression). For detailed configuration options, see [Plugins](/guides/features/plugins)
 
 ### Headers
 
@@ -191,45 +195,59 @@ OpenRouter allows you to specify some optional headers to identify your app and 
 
 * `HTTP-Referer`: Identifies your app on openrouter.ai
 * `X-OpenRouter-Title`: Sets/modifies your app's title (`X-Title` also accepted)
-* `X-OpenRouter-Categories`: Assigns marketplace categories (see [App Attribution](/docs/app-attribution))
+* `X-OpenRouter-Categories`: Assigns marketplace categories (see [App Attribution](/app-attribution))
 
-```typescript title="TypeScript"
-fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>', // Optional. Site URL for rankings on openrouter.ai.
-    'X-OpenRouter-Title': '<YOUR_SITE_NAME>', // Optional. Site title for rankings on openrouter.ai.
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/gpt-5.2',
-    messages: [
-      {
-        role: 'user',
-        content: 'What is the meaning of life?',
-      },
-    ],
-  }),
-});
-```
+<CodeGroup>
+  ```typescript title="TypeScript" lines theme={null}
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>', // Optional. Site URL for rankings on openrouter.ai.
+      'X-OpenRouter-Title': '<YOUR_SITE_NAME>', // Optional. Site title for rankings on openrouter.ai.
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'openai/gpt-5.2',
+      messages: [
+        {
+          role: 'user',
+          content: 'What is the meaning of life?',
+        },
+      ],
+    }),
+  });
+  ```
+</CodeGroup>
 
-If the `model` parameter is omitted, the user or payer's default is used.
-Otherwise, remember to select a value for `model` from the [supported
-models](/models) or [API](/api/v1/models), and include the organization
-prefix. OpenRouter will select the least expensive and best GPUs available to
-serve the request, and fall back to other providers or GPUs if it receives a
-5xx response code or if you are rate-limited.
+<Info>
+  **Model routing**
 
-[Server-Sent Events
-(SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#event_stream_format)
-are supported as well, to enable streaming *for all models*. Simply send
-`stream: true` in your request body. The SSE stream will occasionally contain
-a "comment" payload, which you should ignore (noted below).
+  If the `model` parameter is omitted, the user or payer's default is used.
+  Otherwise, remember to select a value for `model` from the [supported
+  models](/guides/overview/models) or [API](/api/v1/models), and include the organization
+  prefix. OpenRouter will select the least expensive and best GPUs available to
+  serve the request, and fall back to other providers or GPUs if it receives a
+  5xx response code or if you are rate-limited.
+</Info>
 
-If the chosen model doesn't support a request parameter (such as `logit_bias`
-in non-OpenAI models, or `top_k` for OpenAI), then the parameter is ignored.
-The rest are forwarded to the underlying model API.
+<Info>
+  **Streaming**
+
+  [Server-Sent Events
+  (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#event_stream_format)
+  are supported as well, to enable streaming *for all models*. Simply send
+  `stream: true` in your request body. The SSE stream will occasionally contain
+  a "comment" payload, which you should ignore (noted below).
+</Info>
+
+<Info>
+  **Non-standard parameters**
+
+  If the chosen model doesn't support a request parameter (such as `logit_bias`
+  in non-OpenAI models, or `top_k` for OpenAI), then the parameter is ignored.
+  The rest are forwarded to the underlying model API.
+</Info>
 
 ### Assistant Prefill
 
@@ -237,22 +255,24 @@ OpenRouter supports asking models to complete a partial response. This can be us
 
 To use this features, simply include a message with `role: "assistant"` at the end of your `messages` array.
 
-```typescript title="TypeScript"
-fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer <OPENROUTER_API_KEY>',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/gpt-5.2',
-    messages: [
-      { role: 'user', content: 'What is the meaning of life?' },
-      { role: 'assistant', content: "I'm not sure, but my best guess is" },
-    ],
-  }),
-});
-```
+<CodeGroup>
+  ```typescript title="TypeScript" lines theme={null}
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer <OPENROUTER_API_KEY>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'openai/gpt-5.2',
+      messages: [
+        { role: 'user', content: 'What is the meaning of life?' },
+        { role: 'assistant', content: "I'm not sure, but my best guess is" },
+      ],
+    }),
+  });
+  ```
+</CodeGroup>
 
 ## Responses
 
@@ -264,7 +284,7 @@ This means that `choices` is always an array, even if the model only returns one
 
 Here's the response schema as a TypeScript type:
 
-```typescript TypeScript
+```typescript TypeScript lines theme={null}
 // Definitions of subtypes are below
 type Response = {
   id: string;
@@ -285,7 +305,7 @@ type Response = {
 };
 ```
 
-```typescript
+```typescript expandable lines theme={null}
 // OpenRouter always returns detailed usage information.
 // Token counts are calculated using the model's native tokenizer.
 
@@ -330,7 +350,7 @@ type ResponseUsage = {
 };
 ```
 
-```typescript
+```typescript expandable lines theme={null}
 // Subtypes:
 type NonChatChoice = {
   finish_reason: string | null;
@@ -375,7 +395,7 @@ type ToolCall = {
 
 Here's an example:
 
-```json
+```json expandable lines theme={null}
 {
   "id": "gen-xxxxxxxxxxxxxx",
   "choices": [
@@ -417,15 +437,17 @@ The token counts returned in the completions API response are calculated using t
 
 You can also use the returned `id` to query for the generation stats (including token counts and cost) after the request is complete via the `/api/v1/generation` endpoint. This is useful for auditing historical usage or when you need to fetch stats asynchronously.
 
-```typescript title="Query Generation Stats"
-const generation = await fetch(
-  'https://openrouter.ai/api/v1/generation?id=$GENERATION_ID',
-  { headers },
-);
+<CodeGroup>
+  ```typescript title="Query Generation Stats" lines theme={null}
+  const generation = await fetch(
+    'https://openrouter.ai/api/v1/generation?id=$GENERATION_ID',
+    { headers },
+  );
 
-const stats = await generation.json();
-```
+  const stats = await generation.json();
+  ```
+</CodeGroup>
 
-Please see the [Generation](/docs/api-reference/get-a-generation) API reference for the full response shape.
+Please see the [Generation](/api/api-reference/generations/get-request-&-usage-metadata-for-a-generation) API reference for the full response shape.
 
 Note that token counts are also available in the `usage` field of the response body for non-streaming completions.

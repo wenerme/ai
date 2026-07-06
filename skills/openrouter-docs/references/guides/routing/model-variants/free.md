@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Free Variant
+
+> Access free models with the :free variant
 
 The `:free` variant allows you to access free versions of models on OpenRouter.
 
@@ -10,7 +12,7 @@ The `:free` variant allows you to access free versions of models on OpenRouter.
 
 Append `:free` to any model ID:
 
-```json
+```json lines theme={null}
 {
   "model": "meta-llama/llama-3.2-3b-instruct:free"
 }
@@ -22,4 +24,4 @@ Free variants provide access to models without cost, but may have different rate
 
 ## Related Resources
 
-* [Free Models Router](/docs/cookbook/get-started/free-models-router-playground) - Learn how to use the Free Models Router in the Chat Playground for zero-cost inference
+* [Free Models Router](/cookbook/get-started/free-models-router-playground) - Learn how to use the Free Models Router in the Chat Playground for zero-cost inference

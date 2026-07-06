@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Infisical
+
+> Automatic API Key Rotation with Infisical
 
 [Infisical](https://infisical.com/) is a secrets management platform that helps teams securely store, sync, and rotate secrets across their infrastructure. With Infisical's OpenRouter integration, you can automatically rotate your API keys on a schedule, ensuring your credentials stay secure with zero-downtime rotation.
 
@@ -14,9 +16,11 @@ Before setting up API key rotation, you'll need an OpenRouter Management API key
 
 Navigate to [OpenRouter Settings](https://openrouter.ai/settings/management-keys) and go to the Management API Keys section. Click Create New Key, complete the key creation flow, and copy the generated Management API key. Store it securely as you'll need it when creating the Infisical connection.
 
-![OpenRouter Management Keys page showing the Create Management Key button](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/336ed359fefab25c78a656b2fac4c282c1c2da28c8273f9c5fd553b55b6cb56f/content/pages/community/infisical-provisioning-keys.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/community/infisical/infisical-provisioning-keys.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=b5fb9fae737c301bbda15dff3f6817e6" alt="OpenRouter Management Keys page showing the Create Management Key button" width="1550" height="1035" data-path="assets/guides/community/infisical/infisical-provisioning-keys.png" />
+</Frame>
 
-For more details on Management API keys and key management, see [OpenRouter's Management Keys documentation](/docs/guides/overview/auth/management-api-keys).
+For more details on Management API keys and key management, see [OpenRouter's Management Keys documentation](/guides/overview/auth/management-api-keys).
 
 ## Setting Up the OpenRouter Connection
 
@@ -38,7 +42,9 @@ Once your connection is set up, you can configure automatic API key rotation.
 
 Navigate to your Secret Manager Project's Dashboard in Infisical and select Add Secret Rotation from the actions dropdown. Choose the OpenRouter API Key option.
 
-![Infisical dashboard showing the Add Secret Rotation option](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/12dc63362a6752b8df7bedf6ba430399ca4ec391cbfaa2341ae7e76366ee7473/content/pages/community/infisical-add-rotation.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/community/infisical/infisical-add-rotation.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=29be3202ed138f758f85b35c4415d470" alt="Infisical dashboard showing the Add Secret Rotation option" width="1550" height="1035" data-path="assets/guides/community/infisical/infisical-add-rotation.png" />
+</Frame>
 
 ### Configure Rotation Behavior
 
@@ -80,11 +86,11 @@ BYOK (Bring Your Own Key) on OpenRouter lets you use your own provider API keys 
 
 The Include BYOK in limit option controls whether BYOK usage counts toward your key's spending limit. When disabled, only OpenRouter credit usage counts toward the limit and BYOK usage is tracked separately. When enabled, usage from your own provider keys is included in the limit, and once the limit is reached, the key is subject to OpenRouter's rate limits until the next reset.
 
-For more details, see [OpenRouter BYOK documentation](/docs/features/byok) and [OpenRouter limits documentation](/docs/api/limits).
+For more details, see [OpenRouter BYOK documentation](/guides/overview/auth/byok) and [OpenRouter limits documentation](/api/reference/limits).
 
 ## Learn More
 
 * **Infisical OpenRouter Connection**: [https://infisical.com/docs/integrations/app-connections/openrouter](https://infisical.com/docs/integrations/app-connections/openrouter)
 * **Infisical OpenRouter API Key Rotation**: [https://infisical.com/docs/documentation/platform/secret-rotation/openrouter-api-key](https://infisical.com/docs/documentation/platform/secret-rotation/openrouter-api-key)
-* **OpenRouter Management Keys**: [https://openrouter.ai/docs/guides/overview/auth/management-api-keys](/docs/guides/overview/auth/management-api-keys)
-* **OpenRouter Quick Start Guide**: [https://openrouter.ai/docs/quickstart](/docs/quickstart)
+* **OpenRouter Management Keys**: [https://openrouter.ai/docs/guides/overview/auth/management-api-keys](/guides/overview/auth/management-api-keys)
+* **OpenRouter Quick Start Guide**: [https://openrouter.ai/docs/quickstart](/quickstart)

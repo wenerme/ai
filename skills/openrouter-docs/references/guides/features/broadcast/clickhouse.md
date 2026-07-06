@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ClickHouse
+
+> Send traces to ClickHouse
 
 [ClickHouse](https://clickhouse.com) is a fast, open-source columnar database for real-time analytics. OpenRouter can stream traces directly to your ClickHouse database for high-performance analytics and custom dashboards.
 
@@ -10,13 +12,15 @@
 
 Before connecting OpenRouter, create the `OPENROUTER_TRACES` table in your ClickHouse database. You can find the exact SQL in the OpenRouter dashboard when configuring the destination:
 
-![ClickHouse Setup Instructions](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/5c24c1cafb5b6b4fade072d9624cb8f997a997de69f01dbe26e097d90938f488/content/pages/features/broadcast/broadcast-clickhouse-setup.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/clickhouse/broadcast-clickhouse-setup.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=4cacbda77bf7632cb9a5910ba8ece0b3" alt="ClickHouse Setup Instructions" width="1920" height="1090" data-path="assets/guides/features/broadcast/clickhouse/broadcast-clickhouse-setup.png" />
+</Frame>
 
 ## Step 2: Set up permissions
 
 Ensure your ClickHouse user has CREATE TABLE permissions:
 
-```sql
+```sql lines theme={null}
 GRANT CREATE TABLE ON your_database.* TO your_database_user;
 ```
 
@@ -24,13 +28,17 @@ GRANT CREATE TABLE ON your_database.* TO your_database_user;
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 4: Configure ClickHouse
 
 Click the edit icon next to **ClickHouse** and enter:
 
-![ClickHouse Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/7cb1f2b37ea07e292bcce47af9c7667b44e4fa45becf4795e0d73ac0d98da03f/content/pages/features/broadcast/broadcast-clickhouse-config.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/clickhouse/broadcast-clickhouse-config.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=5b23936118f8bf9c6f8acadc6b4d8fd9" alt="ClickHouse Configuration" width="1580" height="1550" data-path="assets/guides/features/broadcast/clickhouse/broadcast-clickhouse-config.png" />
+</Frame>
 
 * **Host**: Your ClickHouse HTTP endpoint (e.g., `https://clickhouse.example.com:8123`)
 * **Database**: Target database name (default: `default`)
@@ -38,7 +46,9 @@ Click the edit icon next to **ClickHouse** and enter:
 * **Username**: ClickHouse username for authentication (defaults to `default`)
 * **Password**: ClickHouse password for authentication
 
-For ClickHouse Cloud, your host URL is typically `https://{instance}.{region}.clickhouse.cloud:8443`. You can find this in your ClickHouse Cloud console [under **Connect**](https://clickhouse.com/docs/cloud/guides/sql-console/gather-connection-details).
+<Tip>
+  For ClickHouse Cloud, your host URL is typically `https://{instance}.{region}.clickhouse.cloud:8443`. You can find this in your ClickHouse Cloud console [under **Connect**](https://clickhouse.com/docs/cloud/guides/sql-console/gather-connection-details).
+</Tip>
 
 ## Step 5: Test and save
 
@@ -52,7 +62,7 @@ Make an API request through OpenRouter and query your ClickHouse table to verify
 
 ### Cost analysis by model
 
-```sql
+```sql lines theme={null}
 SELECT
   toDate(TIMESTAMP) as day,
   MODEL,
@@ -69,7 +79,7 @@ ORDER BY day DESC, total_cost DESC;
 
 ### User activity analysis
 
-```sql
+```sql lines theme={null}
 SELECT
   USER_ID,
   uniqExact(TRACE_ID) as trace_count,
@@ -86,7 +96,7 @@ ORDER BY total_cost DESC;
 
 ### Error analysis
 
-```sql
+```sql lines theme={null}
 SELECT
   TRACE_ID,
   TIMESTAMP,
@@ -104,7 +114,7 @@ ORDER BY TIMESTAMP DESC;
 
 ### Provider performance comparison
 
-```sql
+```sql lines theme={null}
 SELECT
   PROVIDER_NAME,
   MODEL,
@@ -123,7 +133,7 @@ ORDER BY avg_duration_ms;
 
 ### Usage by API key
 
-```sql
+```sql lines theme={null}
 SELECT
   API_KEY_NAME,
   uniqExact(TRACE_ID) as trace_count,
@@ -142,7 +152,7 @@ ORDER BY total_cost DESC;
 ClickHouse stores JSON data as strings. Use `JSONExtract` functions to query
 nested fields:
 
-```sql
+```sql lines theme={null}
 SELECT
   TRACE_ID,
   JSONExtractString(METADATA, 'custom_field') as custom_value,
@@ -153,7 +163,7 @@ WHERE JSONHas(METADATA, 'custom_field');
 
 To parse input messages:
 
-```sql
+```sql lines theme={null}
 SELECT
   TRACE_ID,
   JSONExtractString(
@@ -206,7 +216,7 @@ Custom metadata from the `trace` field is stored in the `METADATA` column as a J
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Analyze these metrics..." }],
@@ -226,7 +236,7 @@ Custom metadata from the `trace` field is stored in the `METADATA` column as a J
 
 Use ClickHouse's JSON functions to query your custom metadata:
 
-```sql
+```sql lines theme={null}
 SELECT
   TRACE_ID,
   JSONExtractString(METADATA, 'team') as team,
@@ -255,4 +265,4 @@ ORDER BY TIMESTAMP DESC;
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

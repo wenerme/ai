@@ -1,8 +1,50 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Video Inputs
+
+> How to send video files to OpenRouter models
+
+export const Template = ({children, data}) => {
+  const replace = s => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in data) ? data[k] : `{{${k}}}`);
+  const leafText = node => typeof node === 'string' ? node : node?.$$typeof && typeof node.props?.children === 'string' ? node.props.children : null;
+  const collapseTokens = nodes => {
+    const out = [];
+    let i = 0;
+    while (i < nodes.length) {
+      const ta = leafText(nodes[i]);
+      const tb = leafText(nodes[i + 1]);
+      const tc = leafText(nodes[i + 2]);
+      if (ta != null && tb != null && tc != null) {
+        const m = (ta + tb + tc).match(/^([\s\S]*)\{\{(\w+)\}\}([\s\S]*)$/);
+        if (m && (m[2] in data)) {
+          out.push(m[1] + data[m[2]] + m[3]);
+          i += 3;
+          continue;
+        }
+      }
+      out.push(nodes[i]);
+      i++;
+    }
+    return out;
+  };
+  const process = node => {
+    if (typeof node === 'string') return replace(node);
+    if (Array.isArray(node)) return collapseTokens(node.map(process));
+    if (node && typeof node === 'object') {
+      if (node.$$typeof) return {
+        ...node,
+        props: process(node.props)
+      };
+      return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, process(v)]));
+    }
+    return node;
+  };
+  return <>{process(children)}</>;
+};
+
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 OpenRouter supports sending video files to compatible models via the API. This guide will show you how to work with video using our API.
 
@@ -11,261 +53,283 @@ OpenRouter supports both **direct URLs** and **base64-encoded data URLs** for vi
 * **URLs**: Efficient for publicly accessible videos as they don't require local encoding
 * **Base64 Data URLs**: Required for local files or private videos that aren't publicly accessible
 
-**Important:** Video URL support varies by provider. OpenRouter only sends video URLs to providers that explicitly support them. For example, Google Gemini on AI Studio only supports YouTube links (not Vertex AI).
+<Info>
+  **Important:** Video URL support varies by provider. OpenRouter only sends video URLs to providers that explicitly support them. For example, Google Gemini on AI Studio only supports YouTube links (not Vertex AI).
+</Info>
 
-**API Only:** Video inputs are currently only supported via the API. Video uploads are not available in the OpenRouter chatroom interface at this time.
+<Warning>
+  **API Only:** Video inputs are currently only supported via the API. Video uploads are not available in the OpenRouter chatroom interface at this time.
+</Warning>
 
 ## Video Inputs
 
 Requests with video files to compatible models are available via the `/api/v1/chat/completions` API with the `video_url` content type. The `url` can either be a URL or a base64-encoded data URL. Note that only models with video processing capabilities will handle these requests.
 
-You can search for models that support video by filtering to video input modality on our [Models page](/models?fmt=cards\&input_modalities=video).
+You can search for models that support video by filtering to video input modality on our [Models page](/guides/overview/models).
 
 ### Using Video URLs
 
 Here's how to send a video using a URL. Note that for Google Gemini on AI Studio, only YouTube links are supported:
 
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'google/gemini-2.5-flash'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK" expandable lines theme={null}
+    import { OpenRouter } from '@openrouter/sdk';
 
-const openRouter = new OpenRouter({
-  apiKey: '{{API_KEY_REF}}',
-});
+    const openRouter = new OpenRouter({
+      apiKey: '{{API_KEY_REF}}',
+    });
 
-const result = await openRouter.chat.send({
-  model: "{{MODEL}}",
-  messages: [
-    {
-      role: "user",
-      content: [
+    const result = await openRouter.chat.send({
+      model: "{{MODEL}}",
+      messages: [
         {
-          type: "text",
-          text: "Please describe what's happening in this video.",
-        },
-        {
-          type: "video_url",
-          videoUrl: {
-            url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-          },
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: "Please describe what's happening in this video.",
+            },
+            {
+              type: "video_url",
+              videoUrl: {
+                url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+              },
+            },
+          ],
         },
       ],
-    },
-  ],
-  stream: false,
-});
+      stream: false,
+    });
 
-console.log(result);
-```
+    console.log(result);
+    ```
 
-```python
-import requests
-import json
+    ```python Python expandable lines theme={null}
+    import requests
+    import json
 
-url = "https://openrouter.ai/api/v1/chat/completions"
-headers = {
-    "Authorization": f"Bearer {API_KEY_REF}",
-    "Content-Type": "application/json"
-}
-
-messages = [
-    {
-        "role": "user",
-        "content": [
-            {
-                "type": "text",
-                "text": "Please describe what's happening in this video."
-            },
-            {
-                "type": "video_url",
-                "video_url": {
-                    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                }
-            }
-        ]
+    url = "https://openrouter.ai/api/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {API_KEY_REF}",
+        "Content-Type": "application/json"
     }
-]
 
-payload = {
-    "model": "{{MODEL}}",
-    "messages": messages
-}
+    messages = [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Please describe what's happening in this video."
+                },
+                {
+                    "type": "video_url",
+                    "video_url": {
+                        "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                    }
+                }
+            ]
+        }
+    ]
 
-response = requests.post(url, headers=headers, json=payload)
-print(response.json())
-```
+    payload = {
+        "model": "{{MODEL}}",
+        "messages": messages
+    }
 
-```typescript title="TypeScript (fetch)"
-const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${API_KEY_REF}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    model: "{{MODEL}}",
-    messages: [
-      {
-        role: "user",
-        content: [
+    response = requests.post(url, headers=headers, json=payload)
+    print(response.json())
+    ```
+
+    ```typescript title="TypeScript (fetch)" expandable lines theme={null}
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${API_KEY_REF}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "{{MODEL}}",
+        messages: [
           {
-            type: "text",
-            text: "Please describe what's happening in this video.",
-          },
-          {
-            type: "video_url",
-            video_url: {
-              url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-            },
+            role: "user",
+            content: [
+              {
+                type: "text",
+                text: "Please describe what's happening in this video.",
+              },
+              {
+                type: "video_url",
+                video_url: {
+                  url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                },
+              },
+            ],
           },
         ],
-      },
-    ],
-  }),
-});
+      }),
+    });
 
-const data = await response.json();
-console.log(data);
-```
+    const data = await response.json();
+    console.log(data);
+    ```
+  </CodeGroup>
+</Template>
 
 ### Using Base64 Encoded Videos
 
 For locally stored videos, you can send them using base64 encoding as data URLs:
 
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
-import * as fs from 'fs';
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'google/gemini-2.5-flash'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK" expandable lines theme={null}
+    import { OpenRouter } from '@openrouter/sdk';
+    import * as fs from 'fs';
 
-const openRouter = new OpenRouter({
-  apiKey: '{{API_KEY_REF}}',
-});
+    const openRouter = new OpenRouter({
+      apiKey: '{{API_KEY_REF}}',
+    });
 
-async function encodeVideoToBase64(videoPath: string): Promise<string> {
-  const videoBuffer = await fs.promises.readFile(videoPath);
-  const base64Video = videoBuffer.toString('base64');
-  return `data:video/mp4;base64,${base64Video}`;
-}
+    async function encodeVideoToBase64(videoPath: string): Promise<string> {
+      const videoBuffer = await fs.promises.readFile(videoPath);
+      const base64Video = videoBuffer.toString('base64');
+      return `data:video/mp4;base64,${base64Video}`;
+    }
 
-// Read and encode the video
-const videoPath = 'path/to/your/video.mp4';
-const base64Video = await encodeVideoToBase64(videoPath);
+    // Read and encode the video
+    const videoPath = 'path/to/your/video.mp4';
+    const base64Video = await encodeVideoToBase64(videoPath);
 
-const result = await openRouter.chat.send({
-  model: '{{MODEL}}',
-  messages: [
-    {
-      role: 'user',
-      content: [
+    const result = await openRouter.chat.send({
+      model: '{{MODEL}}',
+      messages: [
         {
-          type: 'text',
-          text: "What's in this video?",
-        },
-        {
-          type: 'video_url',
-          videoUrl: {
-            url: base64Video,
-          },
+          role: 'user',
+          content: [
+            {
+              type: 'text',
+              text: "What's in this video?",
+            },
+            {
+              type: 'video_url',
+              videoUrl: {
+                url: base64Video,
+              },
+            },
+          ],
         },
       ],
-    },
-  ],
-  stream: false,
-});
+      stream: false,
+    });
 
-console.log(result);
-```
+    console.log(result);
+    ```
 
-```python
-import requests
-import json
-import base64
-from pathlib import Path
+    ```python Python expandable lines theme={null}
+    import requests
+    import json
+    import base64
+    from pathlib import Path
 
-def encode_video_to_base64(video_path):
-    with open(video_path, "rb") as video_file:
-        return base64.b64encode(video_file.read()).decode('utf-8')
+    def encode_video_to_base64(video_path):
+        with open(video_path, "rb") as video_file:
+            return base64.b64encode(video_file.read()).decode('utf-8')
 
-url = "https://openrouter.ai/api/v1/chat/completions"
-headers = {
-    "Authorization": f"Bearer {API_KEY_REF}",
-    "Content-Type": "application/json"
-}
-
-# Read and encode the video
-video_path = "path/to/your/video.mp4"
-base64_video = encode_video_to_base64(video_path)
-data_url = f"data:video/mp4;base64,{base64_video}"
-
-messages = [
-    {
-        "role": "user",
-        "content": [
-            {
-                "type": "text",
-                "text": "What's in this video?"
-            },
-            {
-                "type": "video_url",
-                "video_url": {
-                    "url": data_url
-                }
-            }
-        ]
+    url = "https://openrouter.ai/api/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {API_KEY_REF}",
+        "Content-Type": "application/json"
     }
-]
 
-payload = {
-    "model": "{{MODEL}}",
-    "messages": messages
-}
+    # Read and encode the video
+    video_path = "path/to/your/video.mp4"
+    base64_video = encode_video_to_base64(video_path)
+    data_url = f"data:video/mp4;base64,{base64_video}"
 
-response = requests.post(url, headers=headers, json=payload)
-print(response.json())
-```
+    messages = [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "What's in this video?"
+                },
+                {
+                    "type": "video_url",
+                    "video_url": {
+                        "url": data_url
+                    }
+                }
+            ]
+        }
+    ]
 
-```typescript title="TypeScript (fetch)"
-import * as fs from 'fs';
+    payload = {
+        "model": "{{MODEL}}",
+        "messages": messages
+    }
 
-async function encodeVideoToBase64(videoPath: string): Promise<string> {
-  const videoBuffer = await fs.promises.readFile(videoPath);
-  const base64Video = videoBuffer.toString('base64');
-  return `data:video/mp4;base64,${base64Video}`;
-}
+    response = requests.post(url, headers=headers, json=payload)
+    print(response.json())
+    ```
 
-// Read and encode the video
-const videoPath = 'path/to/your/video.mp4';
-const base64Video = await encodeVideoToBase64(videoPath);
+    ```typescript title="TypeScript (fetch)" expandable lines theme={null}
+    import * as fs from 'fs';
 
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${API_KEY_REF}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    messages: [
-      {
-        role: 'user',
-        content: [
+    async function encodeVideoToBase64(videoPath: string): Promise<string> {
+      const videoBuffer = await fs.promises.readFile(videoPath);
+      const base64Video = videoBuffer.toString('base64');
+      return `data:video/mp4;base64,${base64Video}`;
+    }
+
+    // Read and encode the video
+    const videoPath = 'path/to/your/video.mp4';
+    const base64Video = await encodeVideoToBase64(videoPath);
+
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${API_KEY_REF}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        messages: [
           {
-            type: 'text',
-            text: "What's in this video?",
-          },
-          {
-            type: 'video_url',
-            video_url: {
-              url: base64Video,
-            },
+            role: 'user',
+            content: [
+              {
+                type: 'text',
+                text: "What's in this video?",
+              },
+              {
+                type: 'video_url',
+                video_url: {
+                  url: base64Video,
+                },
+              },
+            ],
           },
         ],
-      },
-    ],
-  }),
-});
+      }),
+    });
 
-const data = await response.json();
-console.log(data);
-```
+    const data = await response.json();
+    console.log(data);
+    ```
+  </CodeGroup>
+</Template>
 
 ## Supported Video Formats
 

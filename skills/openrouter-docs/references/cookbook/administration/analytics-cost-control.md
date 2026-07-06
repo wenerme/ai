@@ -1,23 +1,66 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Control Costs with the Analytics API
 
-**Goal:** Run a cost review on your OpenRouter account using your coding agent, the beta [Analytics API](/docs/api/api-reference/beta-analytics/query-analytics), and the [openrouter-analytics skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-analytics).
+> Hand your coding agent a management key and the analytics skill, then ask it where your money is going
+
+export const CopyPromptButton = ({prompt, buttonLabel = "Copy prompt"}) => {
+  const [isCopied, setIsCopied] = useState(false);
+  const handleClick = () => {
+    navigator.clipboard.writeText(prompt).then(() => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    });
+  };
+  return <div className="mt-3">
+      <button type="button" onClick={handleClick} className="border-border inline-flex items-center gap-2 rounded-lg border px-3 py-2 font-semibold cursor-pointer border-green-200 dark:border-green-900">
+        {isCopied ? "Copied" : buttonLabel}
+      </button>
+    </div>;
+};
+
+**Goal:** Run a cost review on your OpenRouter account using your coding agent, the beta [Analytics API](/api/api-reference/beta-analytics/query-analytics), and the [openrouter-analytics skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-analytics).
 
 **Outcome:** A set of query recipes and agent prompts for digging into your own usage data: which models burn the most, which API keys cause it, and what to repoint or cache.
 
-For reusable agent knowledge across projects, install the
-[openrouter-analytics skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-analytics).
+<Tip>
+  <Markdown src="/snippets/openrouter-analytics-skill.mdx" />
 
-Then copy this prompt into your agent to run the full cost review.
+  Then copy this prompt into your agent to run the full cost review.
 
-Analytics queries need a **management key** from
-[Settings → Management Keys](https://openrouter.ai/settings/management-keys).
-Regular inference keys get a 403. Management keys can't make model requests,
-so the whole workflow is read-only and free, but the data it returns is your
-org's full spend breakdown. Treat the key like any other credential.
+  <CopyPromptButton
+    prompt={`Run a cost review on my OpenRouter account and give me ranked recommendations for reducing spend next month.
+
+Use the openrouter-analytics skill if it's installed (clone https://github.com/OpenRouterTeam/skills and run npm install in skills/openrouter-analytics/scripts). Otherwise call the API directly. Either way, read these source-of-truth docs for the current query schema, metrics, and dimensions before writing any query:
+- Query endpoint reference: https://openrouter.ai/docs/api/api-reference/beta-analytics/query-analytics
+- Skill with runnable query scripts: https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-analytics
+
+Auth: the Analytics API needs an OpenRouter management key (regular inference keys get a 403). Look for one in my environment or secret store first; the skill's scripts read it from OPENROUTER_API_KEY or a --api-key flag. If you can't find one, stop and ask me to create one at https://openrouter.ai/settings/management-keys instead of guessing.
+
+Method:
+1. Fetch /api/v1/analytics/meta and use only metrics, dimensions, and operators it actually returns.
+2. Inspect this codebase (and any sibling services you can see) to map API key names and apps in the analytics data to the pipelines, jobs, or features that call them, so recommendations name the actual code to change.
+3. Establish the baseline: total spend, tokens, and requests over the last full month, plus the blended $/Mtok rate (total_usage / tokens_total * 1e6).
+4. Break spend down by model with cache_hit_rate and tokens. Flag any model whose effective $/Mtok is a large multiple of the blended rate, especially preview or frontier models on high-volume traffic.
+5. For each flagged model, drill into api_key_id (and app or user if populated) with a filter on that model to find who's responsible.
+6. Decompose spend with the usage_* component metrics to see if money is going to upstream inference, web search, file parsing, or being saved by caching and discounts.
+7. Check prompt-heaviness (tokens_prompt vs tokens_completion) and reasoning_tokens share to decide whether caching or prompt trimming is even worth recommending.
+
+For every recommendation, state the monthly dollar impact, the specific key or pipeline to change, the suggested replacement (cheaper model, caching, prompt change), and the risk. Order by impact. Skip generic advice that my data doesn't support. Mind that latency/throughput metrics and the generation_id dimension only work for time ranges up to 31 days, and check metadata.truncated on every response before summing rows.
+
+Finish with the exact queries to re-run next month to verify each fix worked.`}
+  />
+</Tip>
+
+<Warning>
+  Analytics queries need a **management key** from
+  [Settings → Management Keys](https://openrouter.ai/settings/management-keys).
+  Regular inference keys get a 403. Management keys can't make model requests,
+  so the whole workflow is read-only and free, but the data it returns is your
+  org's full spend breakdown. Treat the key like any other credential.
+</Warning>
 
 ## Before you start
 
@@ -30,16 +73,16 @@ You need:
 
 Use these references for exact schemas:
 
-* [Query analytics endpoint](/docs/api/api-reference/beta-analytics/query-analytics)
-* [Get analytics metadata](/docs/api/api-reference/beta-analytics/get-analytics-meta)
-* [Management API keys](/docs/guides/overview/auth/management-api-keys)
+* [Query analytics endpoint](/api/api-reference/beta-analytics/query-analytics)
+* [Get analytics metadata](/api/api-reference/beta-analytics/get-analytics-meta)
+* [Management API keys](/guides/overview/auth/management-api-keys)
 * [openrouter-analytics skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-analytics)
 
 ## What you're building
 
 A cost review your agent runs for you. The conversation starts with one question:
 
-```text
+```text lines theme={null}
 how can I reduce costs for next month?
 ```
 
@@ -53,20 +96,20 @@ The recipes below are the building blocks of that review. Each one is a prompt y
 
 The skill bundles runnable query scripts so your agent doesn't hand-write `curl` calls:
 
-```bash
+```bash lines theme={null}
 git clone https://github.com/OpenRouterTeam/skills
 cd skills/skills/openrouter-analytics/scripts && npm install
 ```
 
 Schema discovery comes first. Metrics and dimensions evolve while the API is in beta, so query what's actually there instead of trusting a doc snapshot:
 
-```bash
+```bash lines theme={null}
 npx tsx discover-schema.ts
 ```
 
 Or hit the endpoint directly:
 
-```bash
+```bash lines theme={null}
 curl https://openrouter.ai/api/v1/analytics/meta \
   -H "Authorization: Bearer $OPENROUTER_API_KEY"
 ```
@@ -81,7 +124,7 @@ The API caps queries at 2 dimensions; a third returns a 400 (`dimensions: Too bi
 
 The widest-angle question, and the right one to start with:
 
-```text
+```text lines theme={null}
 Break down my OpenRouter spend by model for last month. Compute the
 effective $/Mtok for each model and flag anything far above my
 blended rate.
@@ -89,7 +132,7 @@ blended rate.
 
 Under the hood, your agent generates a query like this (one POST to `/api/v1/analytics/query` with the management key):
 
-```json
+```json lines theme={null}
 {
   "metrics": ["total_usage", "request_count", "tokens_total", "cache_hit_rate"],
   "dimensions": ["model"],
@@ -103,7 +146,7 @@ An explicit `time_range` matters: without one the API defaults to a recent windo
 
 Sample response shape (1 row shown):
 
-```json
+```json lines theme={null}
 {
   "data": {
     "data": [
@@ -126,14 +169,14 @@ From here the agent computes `total_usage / tokens_total * 1e6` for each row to 
 
 The model row shows where spend concentrates, but the thing you can change is the key, app, or pipeline calling that model. This works whether the model is an outlier or just your biggest fairly-priced line, since the per-key split still shows which workload to optimize:
 
-```text
+```text lines theme={null}
 My spend on google/gemini-3-flash-preview looks too high. Which of
 my API keys is behind it, and what is each one doing?
 ```
 
 Under the hood, the agent filters to that model and groups by `api_key_id` using a `filters` array on the request body:
 
-```json
+```json lines theme={null}
 {
   "metrics": ["total_usage", "tokens_total", "request_count"],
   "dimensions": ["api_key_id"],
@@ -148,7 +191,7 @@ Under the hood, the agent filters to that model and groups by `api_key_id` using
 
 `api_key_id`, `app`, `user`, and `workspace` resolve to human-readable names in the response, so each row names the key directly. Here's the row shape, filled with the internal run's numbers (rounded, key name changed):
 
-```json
+```json lines theme={null}
 {
   "api_key_id": "batch-pipeline",
   "total_usage": 6067.0,
@@ -161,7 +204,7 @@ In the internal run, this is where the recommendation wrote itself: a batch-pipe
 
 A sharper variant of the same prompt skips the model step entirely:
 
-```text
+```text lines theme={null}
 Are any of my keys calling preview or frontier models for high-volume
 batch work? Estimate the savings from moving each one to a cheaper
 production model.
@@ -171,7 +214,7 @@ production model.
 
 `total_usage` is a single number. The `usage_*` components split it into what each dollar paid for:
 
-```text
+```text lines theme={null}
 Break my OpenRouter spend into components: raw inference, caching,
 discounts, web search, and file parsing. Are surcharges or cache
 writes a meaningful slice?
@@ -179,7 +222,7 @@ writes a meaningful slice?
 
 Under the hood, the agent queries the component metrics over a time axis:
 
-```json
+```json lines theme={null}
 {
   "metrics": ["usage_upstream", "usage_cache", "usage_data", "usage_web", "usage_file"],
   "granularity": "day",
@@ -200,7 +243,7 @@ If `usage_web` or `usage_file` is a meaningful slice, the fix is gating those fe
 
 The token shape decides whether caching or prompt trimming is worth the effort:
 
-```text
+```text lines theme={null}
 Is prompt caching saving me anything? Show prompt vs completion
 tokens, reasoning tokens, and cache_hit_rate by model, and tell me
 where caching would pay off.
@@ -208,7 +251,7 @@ where caching would pay off.
 
 Under the hood:
 
-```json
+```json lines theme={null}
 {
   "metrics": ["tokens_prompt", "tokens_completion", "reasoning_tokens", "cache_hit_rate"],
   "dimensions": ["model"],
@@ -224,14 +267,14 @@ A 20:1 prompt-to-completion ratio points at oversized context, and a large `reas
 
 Grouping spend over a time axis covers 2 jobs: finding what changed when a bill jumps, and verifying that a fix landed. For the first:
 
-```text
+```text lines theme={null}
 My OpenRouter bill doubled this month. Find what changed, comparing
 this month's spend by model and key against last month's.
 ```
 
 Under the hood, the agent groups per-key spend over a weekly time axis:
 
-```json
+```json lines theme={null}
 {
   "metrics": ["total_usage"],
   "dimensions": ["api_key_id"],
@@ -242,7 +285,7 @@ Under the hood, the agent groups per-key spend over a weekly time axis:
 
 Sample output:
 
-```json
+```json lines theme={null}
 {
   "data": {
     "data": [
@@ -260,8 +303,8 @@ Filter values must match what the dimension stores internally, so agents should 
 
 ## Next steps
 
-* Read the [Analytics API reference](/docs/api/api-reference/beta-analytics/query-analytics) for exact request and response schemas.
+* Read the [Analytics API reference](/api/api-reference/beta-analytics/query-analytics) for exact request and response schemas.
 * Drill from an aggregate into individual requests with the `generation_id` dimension, then inspect them with the [openrouter-generations skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-generations).
-* Set [credit limits on keys](/docs/api/api-reference/api-keys/update-keys) once you know which ones drift.
-* Add [usage accounting](/docs/cookbook/administration/usage-accounting) to get per-request cost in your own logs.
-* Use [prompt caching](/docs/guides/best-practices/prompt-caching) where this review showed low cache rates on prompt-heavy traffic.
+* Set [credit limits on keys](/api/api-reference/api-keys/update-keys) once you know which ones drift.
+* Add [usage accounting](/cookbook/administration/usage-accounting) to get per-request cost in your own logs.
+* Use [prompt caching](/guides/best-practices/prompt-caching) where this review showed low cache rates on prompt-heavy traffic.

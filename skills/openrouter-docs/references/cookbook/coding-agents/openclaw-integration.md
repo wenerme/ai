@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # OpenClaw 🦞
+
+> Use OpenClaw (formerly Moltbot, formerly Clawdbot) with OpenRouter
 
 ## What is OpenClaw?
 
@@ -14,7 +16,7 @@
 
 The easiest way to configure OpenClaw with OpenRouter is using the built-in setup wizard:
 
-```bash
+```bash lines theme={null}
 openclaw onboard
 ```
 
@@ -31,7 +33,7 @@ This is the recommended approach for new users and ensures everything is configu
 
 If you already have your OpenRouter API key and want to skip the wizard, use this one-line command:
 
-```bash
+```bash lines theme={null}
 openclaw onboard --auth-choice apiKey --token-provider openrouter --token "$OPENROUTER_API_KEY"
 ```
 
@@ -39,7 +41,9 @@ This automatically configures OpenClaw to use OpenRouter with the recommended mo
 
 ## Manual Configuration
 
-**Advanced users only:** The following manual configuration is for users who need to edit their config file directly. For most users, we recommend using the setup wizard above.
+<Warning>
+  **Advanced users only:** The following manual configuration is for users who need to edit their config file directly. For most users, we recommend using the setup wizard above.
+</Warning>
 
 If you need to manually edit your OpenClaw configuration file, follow these steps:
 
@@ -54,7 +58,7 @@ If you need to manually edit your OpenClaw configuration file, follow these step
 
 Add your OpenRouter API key to your `~/.openclaw/openclaw.json`:
 
-```json
+```json lines theme={null}
 {
   "env": {
     "OPENROUTER_API_KEY": "sk-or-..."
@@ -74,11 +78,13 @@ Add your OpenRouter API key to your `~/.openclaw/openclaw.json`:
 
 Or set it as an environment variable in your shell profile:
 
-```bash
+```bash lines theme={null}
 export OPENROUTER_API_KEY="sk-or-..."
 ```
 
-That's it! OpenClaw has built-in support for OpenRouter. You don't need to configure `models.providers` - just set your API key and reference models with the `openrouter/<author>/<slug>` format.
+<Note>
+  That's it! OpenClaw has built-in support for OpenRouter. You don't need to configure `models.providers` - just set your API key and reference models with the `openrouter/<author>/<slug>` format.
+</Note>
 
 ### Step 3: Choose Your Model
 
@@ -86,7 +92,7 @@ Update the `primary` model and add it to the `models` list. Here are some popula
 
 **Anthropic Claude:**
 
-```json
+```json lines theme={null}
 "model": {
   "primary": "openrouter/~anthropic/claude-sonnet-latest"
 },
@@ -97,7 +103,7 @@ Update the `primary` model and add it to the `models` list. Here are some popula
 
 **Google Gemini:**
 
-```json
+```json lines theme={null}
 "model": {
   "primary": "openrouter/~google/gemini-pro-latest"
 },
@@ -108,7 +114,7 @@ Update the `primary` model and add it to the `models` list. Here are some popula
 
 **DeepSeek:**
 
-```json
+```json lines theme={null}
 "model": {
   "primary": "openrouter/deepseek/deepseek-chat"
 },
@@ -119,7 +125,7 @@ Update the `primary` model and add it to the `models` list. Here are some popula
 
 **Moonshot Kimi:**
 
-```json
+```json lines theme={null}
 "model": {
   "primary": "openrouter/~moonshotai/kimi-latest"
 },
@@ -134,7 +140,7 @@ Browse all available models at [openrouter.ai/models](https://openrouter.ai/mode
 
 After updating your configuration, start or restart OpenClaw:
 
-```bash
+```bash lines theme={null}
 openclaw gateway run
 ```
 
@@ -155,7 +161,7 @@ You can find the exact format for each model on the [OpenRouter models page](htt
 
 OpenClaw supports model fallbacks. If the primary model is unavailable, it will try the fallback models in order:
 
-```json
+```json lines theme={null}
 {
   "agents": {
     "defaults": {
@@ -184,7 +190,7 @@ The OpenRouter Auto Model (`openrouter/openrouter/auto`) automatically selects t
 
 To configure Auto Model as your primary model:
 
-```json
+```json lines theme={null}
 {
   "agents": {
     "defaults": {
@@ -201,7 +207,7 @@ To configure Auto Model as your primary model:
 
 You can also combine Auto Model with fallbacks for maximum reliability:
 
-```json
+```json lines theme={null}
 {
   "agents": {
     "defaults": {
@@ -228,7 +234,7 @@ For more secure credential management, you can use OpenClaw's auth profiles inst
 
 To manually create an auth profile, add this to your `openclaw.json`:
 
-```json
+```json lines theme={null}
 {
   "auth": {
     "profiles": {
@@ -243,7 +249,7 @@ To manually create an auth profile, add this to your `openclaw.json`:
 
 Then use the OpenClaw CLI to set the key in your system keychain:
 
-```bash
+```bash lines theme={null}
 openclaw auth set openrouter:default --key "$OPENROUTER_API_KEY"
 ```
 
@@ -296,7 +302,7 @@ If a specific model isn't working:
 
 Configure different models for different messaging channels:
 
-```json
+```json lines theme={null}
 {
   "telegram": {
     "agents": {

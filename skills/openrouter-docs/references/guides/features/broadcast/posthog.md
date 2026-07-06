@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # PostHog
+
+> Send traces to PostHog
 
 [PostHog](https://posthog.com) is an open-source product analytics platform that helps you understand user behavior. With PostHog's LLM analytics, you can track and analyze your AI application usage.
 
@@ -18,7 +20,9 @@ In PostHog, navigate to your project settings:
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 3: Configure PostHog
 
@@ -36,7 +40,9 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 Make an API request through OpenRouter and view the LLM analytics in your
 PostHog dashboard.
 
-![PostHog LLM Analytics](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/c4b6f05846279a1425ed82450ff599981a7770f8ef5a80c560cc91d56e5e1b39/content/pages/features/broadcast/broadcast-posthog-analytics.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/posthog/broadcast-posthog-analytics.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=0f08977fcb4041defda4348eb26b3ac8" alt="PostHog LLM Analytics" width="3156" height="2064" data-path="assets/guides/features/broadcast/posthog/broadcast-posthog-analytics.png" />
+</Frame>
 
 ## Custom Metadata
 
@@ -67,7 +73,7 @@ Every other key inside `trace` that is not in the table above is forwarded as
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Recommend a product..." }],
@@ -99,4 +105,4 @@ The above request produces a `$ai_generation` event with these properties (among
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, the `$ai_input` and `$ai_output_choices` properties are excluded from events. All other analytics data — token usage, costs, model information, and custom metadata — is still sent normally.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, the `$ai_input` and `$ai_output_choices` properties are excluded from events. All other analytics data — token usage, costs, model information, and custom metadata — is still sent normally.

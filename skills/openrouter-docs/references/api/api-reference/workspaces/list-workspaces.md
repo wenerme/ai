@@ -1,416 +1,401 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List workspaces
 
-GET https://openrouter.ai/api/v1/workspaces
+> List all workspaces for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
-List all workspaces for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
-Reference: https://openrouter.ai/docs/api/api-reference/workspaces/list-workspaces
 
-## OpenAPI Specification
+## OpenAPI
 
-```yaml
+````yaml /openapi/openapi.yaml get /workspaces
 openapi: 3.1.0
 info:
+  contact:
+    email: support@openrouter.ai
+    name: OpenRouter Support
+    url: https://openrouter.ai/docs
+  description: OpenAI-compatible API with additional OpenRouter features
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
   title: OpenRouter API
   version: 1.0.0
+servers:
+  - description: Production server
+    url: https://openrouter.ai/api/v1
+    x-speakeasy-server-id: production
+security:
+  - apiKey: []
+tags:
+  - description: API key management endpoints
+    name: API Keys
+  - description: Analytics and usage endpoints
+    name: Analytics
+  - description: Anthropic Messages endpoints
+    name: Anthropic Messages
+  - description: BYOK endpoints
+    name: BYOK
+  - description: Benchmarks endpoints
+    name: Benchmarks
+  - description: Chat completion endpoints
+    name: Chat
+  - description: Task classification market-share endpoints
+    name: Classifications
+  - description: Credit management endpoints
+    name: Credits
+  - description: Datasets endpoints
+    name: Datasets
+  - description: Text embedding endpoints
+    name: Embeddings
+  - description: Endpoint information
+    name: Endpoints
+  - description: Files endpoints
+    name: Files
+  - description: Generation history endpoints
+    name: Generations
+  - description: Guardrails endpoints
+    name: Guardrails
+  - description: Images endpoints
+    name: Images
+  - description: Model information endpoints
+    name: Models
+  - description: OAuth authentication endpoints
+    name: OAuth
+  - description: Observability endpoints
+    name: Observability
+  - description: Organization endpoints
+    name: Organization
+  - description: Presets endpoints
+    name: Presets
+  - description: Provider information endpoints
+    name: Providers
+  - description: Rerank endpoints
+    name: Rerank
+  - description: Speech-to-text endpoints
+    name: STT
+    x-displayName: Transcriptions
+  - description: Text-to-speech endpoints
+    name: TTS
+    x-displayName: Speech
+  - description: Video Generation endpoints
+    name: Video Generation
+  - description: Workspaces endpoints
+    name: Workspaces
+  - description: beta.Analytics endpoints
+    name: beta.Analytics
+  - description: beta.responses endpoints
+    name: beta.responses
+externalDocs:
+  description: OpenRouter Documentation
+  url: https://openrouter.ai/docs
 paths:
   /workspaces:
     get:
-      operationId: list-workspaces
+      tags:
+        - Workspaces
       summary: List workspaces
       description: >-
         List all workspaces for the authenticated user. [Management
         key](/docs/guides/overview/auth/management-api-keys) required.
-      tags:
-        - subpackage_workspaces
+      operationId: listWorkspaces
       parameters:
-        - name: offset
+        - description: Number of records to skip for pagination
           in: query
-          description: Number of records to skip for pagination
+          name: offset
           required: false
           schema:
+            description: Number of records to skip for pagination
+            example: 0
+            minimum: 0
+            nullable: true
             type: integer
-        - name: limit
+        - description: Maximum number of records to return (max 100)
           in: query
-          description: Maximum number of records to return (max 100)
+          name: limit
           required: false
           schema:
+            description: Maximum number of records to return (max 100)
+            example: 50
+            maximum: 100
+            minimum: 1
             type: integer
-        - name: Authorization
-          in: header
-          description: API key as bearer token in Authorization header
-          required: true
-          schema:
-            type: string
       responses:
         '200':
-          description: List of workspaces
           content:
             application/json:
+              example:
+                data:
+                  - created_at: '2025-08-24T10:30:00Z'
+                    created_by: user_abc123
+                    default_image_model: openai/dall-e-3
+                    default_provider_sort: price
+                    default_text_model: openai/gpt-4o
+                    description: Production environment workspace
+                    id: 550e8400-e29b-41d4-a716-446655440000
+                    io_logging_api_key_ids: null
+                    io_logging_sampling_rate: 1
+                    is_data_discount_logging_enabled: true
+                    is_observability_broadcast_enabled: false
+                    is_observability_io_logging_enabled: false
+                    name: Production
+                    slug: production
+                    updated_at: '2025-08-24T15:45:00Z'
+                total_count: 1
               schema:
                 $ref: '#/components/schemas/ListWorkspacesResponse'
+          description: List of workspaces
         '401':
-          description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
+              example:
+                error:
+                  code: 401
+                  message: Missing Authentication header
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
+          description: Unauthorized - Authentication required or invalid credentials
         '500':
-          description: Internal Server Error - Unexpected server error
           content:
             application/json:
+              example:
+                error:
+                  code: 500
+                  message: Internal Server Error
               schema:
                 $ref: '#/components/schemas/InternalServerResponse'
-servers:
-  - url: https://openrouter.ai/api/v1
-    description: Production server
+          description: Internal Server Error - Unexpected server error
 components:
   schemas:
-    Workspace:
-      type: object
-      properties:
-        created_at:
-          type: string
-          description: ISO 8601 timestamp of when the workspace was created
-        created_by:
-          type:
-            - string
-            - 'null'
-          description: User ID of the workspace creator
-        default_image_model:
-          type:
-            - string
-            - 'null'
-          description: Default image model for this workspace
-        default_provider_sort:
-          type:
-            - string
-            - 'null'
-          description: >-
-            Default provider sort preference (price, throughput, latency,
-            exacto)
-        default_text_model:
-          type:
-            - string
-            - 'null'
-          description: Default text model for this workspace
-        description:
-          type:
-            - string
-            - 'null'
-          description: Description of the workspace
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the workspace
-        io_logging_api_key_ids:
-          type:
-            - array
-            - 'null'
-          items:
-            type: integer
-          description: >-
-            Optional array of API key IDs to filter I/O logging. Null means all
-            keys are logged.
-        io_logging_sampling_rate:
-          type: number
-          format: double
-          description: >-
-            Sampling rate for I/O logging (0.0001-1). 1 means 100% of requests
-            are logged.
-        is_data_discount_logging_enabled:
-          type: boolean
-          description: Whether data discount logging is enabled for this workspace
-        is_observability_broadcast_enabled:
-          type: boolean
-          description: Whether broadcast is enabled for this workspace
-        is_observability_io_logging_enabled:
-          type: boolean
-          description: Whether private logging is enabled for this workspace
-        name:
-          type: string
-          description: Name of the workspace
-        slug:
-          type: string
-          description: URL-friendly slug for the workspace
-        updated_at:
-          type:
-            - string
-            - 'null'
-          description: ISO 8601 timestamp of when the workspace was last updated
-      required:
-        - created_at
-        - created_by
-        - default_image_model
-        - default_provider_sort
-        - default_text_model
-        - description
-        - id
-        - io_logging_api_key_ids
-        - io_logging_sampling_rate
-        - is_data_discount_logging_enabled
-        - is_observability_broadcast_enabled
-        - is_observability_io_logging_enabled
-        - name
-        - slug
-        - updated_at
-      title: Workspace
     ListWorkspacesResponse:
-      type: object
+      example:
+        data:
+          - created_at: '2025-08-24T10:30:00Z'
+            created_by: user_abc123
+            default_image_model: openai/dall-e-3
+            default_provider_sort: price
+            default_text_model: openai/gpt-4o
+            description: Production environment workspace
+            id: 550e8400-e29b-41d4-a716-446655440000
+            io_logging_api_key_ids: null
+            io_logging_sampling_rate: 1
+            is_data_discount_logging_enabled: true
+            is_observability_broadcast_enabled: false
+            is_observability_io_logging_enabled: false
+            name: Production
+            slug: production
+            updated_at: '2025-08-24T15:45:00Z'
+        total_count: 1
       properties:
         data:
-          type: array
+          description: List of workspaces
           items:
             $ref: '#/components/schemas/Workspace'
-          description: List of workspaces
+          type: array
         total_count:
-          type: integer
           description: Total number of workspaces
+          example: 5
+          type: integer
       required:
         - data
         - total_count
-      title: ListWorkspacesResponse
-    UnauthorizedResponseErrorData:
       type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
-      description: Error data for UnauthorizedResponse
-      title: UnauthorizedResponseErrorData
     UnauthorizedResponse:
-      type: object
+      description: Unauthorized - Authentication required or invalid credentials
+      example:
+        error:
+          code: 401
+          message: Missing Authentication header
       properties:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          type:
-            - object
-            - 'null'
           additionalProperties:
-            description: Any type
+            nullable: true
+          nullable: true
+          type: object
         user_id:
-          type:
-            - string
-            - 'null'
+          nullable: true
+          type: string
       required:
         - error
-      description: Unauthorized - Authentication required or invalid credentials
-      title: UnauthorizedResponse
-    InternalServerResponseErrorData:
       type: object
+    InternalServerResponse:
+      description: Internal Server Error - Unexpected server error
+      example:
+        error:
+          code: 500
+          message: Internal Server Error
+      properties:
+        error:
+          $ref: '#/components/schemas/InternalServerResponseErrorData'
+        openrouter_metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        user_id:
+          nullable: true
+          type: string
+      required:
+        - error
+      type: object
+    Workspace:
+      example:
+        created_at: '2025-08-24T10:30:00Z'
+        created_by: user_abc123
+        default_image_model: openai/dall-e-3
+        default_provider_sort: price
+        default_text_model: openai/gpt-4o
+        description: Production environment workspace
+        id: 550e8400-e29b-41d4-a716-446655440000
+        io_logging_api_key_ids: null
+        io_logging_sampling_rate: 1
+        is_data_discount_logging_enabled: true
+        is_observability_broadcast_enabled: false
+        is_observability_io_logging_enabled: false
+        name: Production
+        slug: production
+        updated_at: '2025-08-24T15:45:00Z'
+      properties:
+        created_at:
+          description: ISO 8601 timestamp of when the workspace was created
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        created_by:
+          description: User ID of the workspace creator
+          example: user_abc123
+          nullable: true
+          type: string
+        default_image_model:
+          description: Default image model for this workspace
+          example: openai/dall-e-3
+          nullable: true
+          type: string
+        default_provider_sort:
+          description: >-
+            Default provider sort preference (price, throughput, latency,
+            exacto)
+          example: price
+          nullable: true
+          type: string
+        default_text_model:
+          description: Default text model for this workspace
+          example: openai/gpt-4o
+          nullable: true
+          type: string
+        description:
+          description: Description of the workspace
+          example: Production environment workspace
+          nullable: true
+          type: string
+        id:
+          description: Unique identifier for the workspace
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+        io_logging_api_key_ids:
+          description: >-
+            Optional array of API key IDs to filter I/O logging. Null means all
+            keys are logged.
+          example: null
+          items:
+            type: integer
+          nullable: true
+          type: array
+        io_logging_sampling_rate:
+          description: >-
+            Sampling rate for I/O logging (0.0001-1). 1 means 100% of requests
+            are logged.
+          example: 1
+          format: double
+          type: number
+        is_data_discount_logging_enabled:
+          description: Whether data discount logging is enabled for this workspace
+          example: true
+          type: boolean
+        is_observability_broadcast_enabled:
+          description: Whether broadcast is enabled for this workspace
+          example: false
+          type: boolean
+        is_observability_io_logging_enabled:
+          description: Whether private logging is enabled for this workspace
+          example: false
+          type: boolean
+        name:
+          description: Name of the workspace
+          example: Production
+          type: string
+        slug:
+          description: URL-friendly slug for the workspace
+          example: production
+          type: string
+        updated_at:
+          description: ISO 8601 timestamp of when the workspace was last updated
+          example: '2025-08-24T15:45:00Z'
+          nullable: true
+          type: string
+      required:
+        - id
+        - name
+        - slug
+        - description
+        - default_text_model
+        - default_image_model
+        - default_provider_sort
+        - is_observability_io_logging_enabled
+        - is_observability_broadcast_enabled
+        - is_data_discount_logging_enabled
+        - io_logging_sampling_rate
+        - io_logging_api_key_ids
+        - created_at
+        - updated_at
+        - created_by
+      type: object
+    UnauthorizedResponseErrorData:
+      description: Error data for UnauthorizedResponse
+      example:
+        code: 401
+        message: Missing Authentication header
       properties:
         code:
           type: integer
         message:
           type: string
         metadata:
-          type:
-            - object
-            - 'null'
           additionalProperties:
-            description: Any type
+            nullable: true
+          nullable: true
+          type: object
       required:
         - code
         - message
-      description: Error data for InternalServerResponse
-      title: InternalServerResponseErrorData
-    InternalServerResponse:
       type: object
+    InternalServerResponseErrorData:
+      description: Error data for InternalServerResponse
+      example:
+        code: 500
+        message: Internal Server Error
       properties:
-        error:
-          $ref: '#/components/schemas/InternalServerResponseErrorData'
-        openrouter_metadata:
-          type:
-            - object
-            - 'null'
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
           additionalProperties:
-            description: Any type
-        user_id:
-          type:
-            - string
-            - 'null'
+            nullable: true
+          nullable: true
+          type: object
       required:
-        - error
-      description: Internal Server Error - Unexpected server error
-      title: InternalServerResponse
+        - code
+        - message
+      type: object
   securitySchemes:
     apiKey:
-      type: http
-      scheme: bearer
       description: API key as bearer token in Authorization header
+      scheme: bearer
+      type: http
 
-```
-
-## Examples
-
-
-
-**Response**
-
-```json
-{
-  "data": [
-    {
-      "created_at": "2025-08-24T10:30:00Z",
-      "created_by": "user_abc123",
-      "default_image_model": "openai/dall-e-3",
-      "default_provider_sort": "price",
-      "default_text_model": "openai/gpt-4o",
-      "description": "Production environment workspace",
-      "id": "550e8400-e29b-41d4-a716-446655440000",
-      "io_logging_api_key_ids": null,
-      "io_logging_sampling_rate": 1,
-      "is_data_discount_logging_enabled": true,
-      "is_observability_broadcast_enabled": false,
-      "is_observability_io_logging_enabled": false,
-      "name": "Production",
-      "slug": "production",
-      "updated_at": "2025-08-24T15:45:00Z"
-    }
-  ],
-  "total_count": 1
-}
-```
-
-**SDK Code**
-
-```python Workspaces_listWorkspaces_example
-import requests
-
-url = "https://openrouter.ai/api/v1/workspaces"
-
-headers = {"Authorization": "Bearer <token>"}
-
-response = requests.get(url, headers=headers)
-
-print(response.json())
-```
-
-```javascript Workspaces_listWorkspaces_example
-const url = 'https://openrouter.ai/api/v1/workspaces';
-const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
-
-try {
-  const response = await fetch(url, options);
-  const data = await response.json();
-  console.log(data);
-} catch (error) {
-  console.error(error);
-}
-```
-
-```go Workspaces_listWorkspaces_example
-package main
-
-import (
-	"fmt"
-	"net/http"
-	"io"
-)
-
-func main() {
-
-	url := "https://openrouter.ai/api/v1/workspaces"
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("Authorization", "Bearer <token>")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := io.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```ruby Workspaces_listWorkspaces_example
-require 'uri'
-require 'net/http'
-
-url = URI("https://openrouter.ai/api/v1/workspaces")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-
-request = Net::HTTP::Get.new(url)
-request["Authorization"] = 'Bearer <token>'
-
-response = http.request(request)
-puts response.read_body
-```
-
-```java Workspaces_listWorkspaces_example
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/workspaces")
-  .header("Authorization", "Bearer <token>")
-  .asString();
-```
-
-```php Workspaces_listWorkspaces_example
-<?php
-require_once('vendor/autoload.php');
-
-$client = new \GuzzleHttp\Client();
-
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/workspaces', [
-  'headers' => [
-    'Authorization' => 'Bearer <token>',
-  ],
-]);
-
-echo $response->getBody();
-```
-
-```csharp Workspaces_listWorkspaces_example
-using RestSharp;
-
-var client = new RestClient("https://openrouter.ai/api/v1/workspaces");
-var request = new RestRequest(Method.GET);
-request.AddHeader("Authorization", "Bearer <token>");
-IRestResponse response = client.Execute(request);
-```
-
-```swift Workspaces_listWorkspaces_example
-import Foundation
-
-let headers = ["Authorization": "Bearer <token>"]
-
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/workspaces")! as URL,
-                                        cachePolicy: .useProtocolCachePolicy,
-                                    timeoutInterval: 10.0)
-request.httpMethod = "GET"
-request.allHTTPHeaderFields = headers
-
-let session = URLSession.shared
-let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-  if (error != nil) {
-    print(error as Any)
-  } else {
-    let httpResponse = response as? HTTPURLResponse
-    print(httpResponse)
-  }
-})
-
-dataTask.resume()
-```
+````

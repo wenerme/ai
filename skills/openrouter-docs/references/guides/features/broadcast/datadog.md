@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Datadog
+
+> Send traces to Datadog
 
 With [Datadog LLM Observability](https://docs.datadoghq.com/llm_observability), you can investigate the root cause of issues, monitor operational performance, and evaluate the quality, privacy, and safety of your LLM applications.
 
@@ -14,7 +16,9 @@ In Datadog, go to **Organization Settings > API Keys** and create a new key.
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 3: Configure Datadog
 
@@ -24,19 +28,25 @@ Click the edit icon next to **Datadog** and enter:
 * **Ml App**: A name for your application (e.g., "production-app")
 * **Url** (optional): Default is `https://api.us5.datadoghq.com`. Change for other regions
 
-![Datadog Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/bd0388077ffa2902197f1d1fa6119f5ce77bf529fe0d8c7c4c95f9fb46059daf/content/pages/features/broadcast/broadcast-datadog-config.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/datadog/broadcast-datadog-config.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=c4430ee6ac51388c192246329cce2355" alt="Datadog Configuration" width="1196" height="1039" data-path="assets/guides/features/broadcast/datadog/broadcast-datadog-config.png" />
+</Frame>
 
 ## Step 4: Test and save
 
 Click **Test Connection** to verify the setup. The configuration only saves if the test passes.
 
-![Datadog Configured](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/755c64c80cd8210cb44151d7d67c6937a16c70eb7cc3abe752c788bf72b5dc20/content/pages/features/broadcast/broadcast-datadog-configured.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/datadog/broadcast-datadog-configured.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=287ab5d0c5c9ba9d87efbdbf7bfc4b54" alt="Datadog Configured" width="1244" height="723" data-path="assets/guides/features/broadcast/datadog/broadcast-datadog-configured.png" />
+</Frame>
 
 ## Step 5: Send a test trace
 
 Make an API request through OpenRouter and view the trace in Datadog.
 
-![Datadog Trace](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/2bf9b44fd78abdb48c8a14645b5113b0f0ce1b754828a17fc07d1fe7cdcbe1e0/content/pages/features/broadcast/broadcast-datadog-trace.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/datadog/broadcast-datadog-trace.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=87e0358899e1431f5bb3d067dd031af5" alt="Datadog Trace" width="1563" height="1225" data-path="assets/guides/features/broadcast/datadog/broadcast-datadog-trace.png" />
+</Frame>
 
 ## Custom Metadata
 
@@ -62,7 +72,7 @@ Any additional keys in `trace` are passed to the span's `meta` object and can be
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Hello!" }],
@@ -87,4 +97,4 @@ In Datadog LLM Observability, you can:
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

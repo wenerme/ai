@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Ramp
+
+> Send traces to Ramp
 
 [Ramp](https://ramp.com) is a finance automation platform that helps businesses manage expenses, track spending, and optimize costs. With Ramp's AI usage tracking, you can monitor and control your organization's LLM spending through OpenRouter.
 
@@ -13,21 +15,29 @@ In Ramp, navigate to your integration settings and generate an API key:
 1. Log in to your Ramp account
 2. Go to **Settings > Integrations** and search for "OpenRouter"
 
-![Search for OpenRouter integration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ccdc62c6816e55cb3c301e2f2ebc35b630862086d73731d4359ea39fad6a2c52/content/pages/features/broadcast/ramp-search-integration.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/ramp/ramp-search-integration.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=55e4109140c1fa4bca5ce52664296ee5" alt="Search for OpenRouter integration" width="1024" height="293" data-path="assets/guides/features/broadcast/ramp/ramp-search-integration.png" />
+</Frame>
 
 3. Click the **OpenRouter** integration to view the details, then click **Connect**
 
-![OpenRouter integration detail](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/2856fe0d21fbb9636525b0fffbbe78a25ea9c287e7f1d94134cf92f40f7cd874/content/pages/features/broadcast/ramp-integration-detail.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/ramp/ramp-integration-detail.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=5c1c56525ff7517a48a66ac9855b12a7" alt="OpenRouter integration detail" width="856" height="1024" data-path="assets/guides/features/broadcast/ramp/ramp-integration-detail.png" />
+</Frame>
 
 4. Click **Generate API Key** and copy the token
 
-![Generate API Key](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/643f487dd7d098ec75222115dafde9e5db1fd05123cc03fb3cfa4a8ba8d91868/content/pages/features/broadcast/ramp-generate-api-key.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/ramp/ramp-generate-api-key.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=0be5c3fea7d708a96179c64d70be9af8" alt="Generate API Key" width="991" height="1024" data-path="assets/guides/features/broadcast/ramp/ramp-generate-api-key.png" />
+</Frame>
 
 ## Step 2: Enable Broadcast in OpenRouter
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 3: Configure Ramp
 
@@ -37,7 +47,9 @@ Click the edit icon next to **Ramp** and enter:
 * **Base URL** (optional): Default is `https://api.ramp.com/developer/v1/ai-usage/openrouter`. Only change if directed by Ramp
 * **Headers** (optional): Custom HTTP headers as a JSON object to include in requests to Ramp
 
-![Ramp Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/16ee7940ffd833aacb7d95ee09a8a181a2e8cbeff6d8b61336198c47f3020334/content/pages/features/broadcast/broadcast-ramp-config.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/ramp/broadcast-ramp-config.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=c420834d5fcf35872745120962affd95" alt="Ramp Configuration" width="1024" height="401" data-path="assets/guides/features/broadcast/ramp/broadcast-ramp-config.png" />
+</Frame>
 
 ## Step 4: Test and save
 
@@ -47,7 +59,9 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 
 Make an API request through OpenRouter and verify that the AI usage data appears in your Ramp dashboard.
 
-![Ramp AI Spend Dashboard](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/281142c61157a8e3494b1e7ed3b4cfa02094ee35045df0268f2f4270c4d58ed6/content/pages/features/broadcast/ramp-ai-spend-dashboard.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/ramp/ramp-ai-spend-dashboard.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=f3d7047c86f06ee53486d0abe17ac25a" alt="Ramp AI Spend Dashboard" width="1024" height="668" data-path="assets/guides/features/broadcast/ramp/ramp-ai-spend-dashboard.png" />
+</Frame>
 
 ## Trace Data
 
@@ -75,7 +89,7 @@ Custom metadata from the `trace` field is sent as span attributes in the OTLP pa
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Analyze this expense report..." }],
@@ -100,4 +114,4 @@ Custom metadata from the `trace` field is sent as span attributes in the OTLP pa
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

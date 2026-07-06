@@ -1,0 +1,109 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Endpoints
+
+> Endpoint information
+
+## Overview
+
+Endpoint information
+
+### Available Operations
+
+* [list\_zdr\_endpoints](#list_zdr_endpoints) - Preview the impact of ZDR on the available endpoints
+* [list](#list) - List all endpoints for a model
+
+## list\_zdr\_endpoints
+
+Preview the impact of ZDR on the available endpoints
+
+### Example Usage
+
+```python theme={null}
+from openrouter import OpenRouter
+import os
+
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.endpoints.list_zdr_endpoints()
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                                | Required             | Description                                                                                                                                                 |
+| -------------------------- | ------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |
+| `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |
+| `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |
+
+### Response
+
+**[operations.ListEndpointsZdrResponse](../../operations/listendpointszdrresponse.mdx)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## list
+
+List all endpoints for a model
+
+### Example Usage
+
+```python theme={null}
+from openrouter import OpenRouter
+import os
+
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.endpoints.list(author="openai", slug="gpt-4")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                                | Required             | Description                                                                                                                                                 | Example |
+| -------------------------- | ------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `author`                   | *str*                                                               | :heavy\_check\_mark: | The author/organization of the model                                                                                                                        | openai  |
+| `slug`                     | *str*                                                               | :heavy\_check\_mark: | The model slug                                                                                                                                              | gpt-4   |
+| `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
+| `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
+| `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
+
+### Response
+
+**[operations.ListEndpointsResponse](../../operations/listendpointsresponse.mdx)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |

@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Webhook
+
+> Send traces to any HTTP endpoint
 
 Webhook allows you to send traces to any HTTP endpoint that can receive JSON payloads. This is useful for integrating with custom observability systems, internal tools, or any service that accepts HTTP requests.
 
@@ -20,7 +22,9 @@ The endpoint will receive traces in [OpenTelemetry Protocol (OTLP)](https://open
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 3: Configure Webhook
 
@@ -32,7 +36,7 @@ Click the edit icon next to **Webhook** and enter:
 
 Example headers for authenticated endpoints:
 
-```json
+```json lines theme={null}
 {
   "Authorization": "Bearer your-token",
   "X-Webhook-Signature": "your-webhook-secret"
@@ -43,7 +47,9 @@ Example headers for authenticated endpoints:
 
 Click **Test Connection** to verify the setup. The configuration only saves if the test passes. During the test, OpenRouter sends an empty OTLP payload with an `X-Test-Connection: true` header to your endpoint.
 
-Your endpoint should return a 2xx status code for the test to pass. A 400 status code is also accepted, as some endpoints reject empty payloads.
+<Tip>
+  Your endpoint should return a 2xx status code for the test to pass. A 400 status code is also accepted, as some endpoints reject empty payloads.
+</Tip>
 
 ## Step 5: Send a test trace
 
@@ -61,7 +67,7 @@ Traces are sent in OTLP JSON format. Each request contains a `resourceSpans` arr
 
 Example payload structure:
 
-```json
+```json expandable lines theme={null}
 {
   "resourceSpans": [
     {
@@ -103,7 +109,9 @@ The Webhook destination is ideal for:
 * **Compliance logging**: Store traces in systems that meet specific regulatory requirements
 * **Development and testing**: Use services like [webhook.site](https://webhook.site) to inspect trace payloads
 
-For production use, ensure your webhook endpoint is highly available and can handle the expected volume of traces. Consider implementing retry logic on your end for any failed deliveries.
+<Tip>
+  For production use, ensure your webhook endpoint is highly available and can handle the expected volume of traces. Consider implementing retry logic on your end for any failed deliveries.
+</Tip>
 
 ## Custom Metadata
 
@@ -121,7 +129,7 @@ Custom metadata from the `trace` field is included as span attributes in the OTL
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Process this order..." }],
@@ -141,7 +149,7 @@ Custom metadata from the `trace` field is included as span attributes in the OTL
 
 Custom metadata keys appear as span attributes in the OTLP payload under the `trace.metadata.*` namespace:
 
-```json
+```json lines theme={null}
 {
   "resourceSpans": [{
     "scopeSpans": [{
@@ -164,4 +172,4 @@ Custom metadata keys appear as span attributes in the OTLP payload under the `tr
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

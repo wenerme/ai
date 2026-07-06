@@ -1,10 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Claude 4.7 Migration Guide
 
-As of June 22, 2026, OpenRouter maps `reasoning.effort` to Anthropic's `output_config.effort` on Claude 4.6 and newer models — previously it was ignored. `verbosity` is unchanged: it still sets `output_config.effort`, and wins if both are passed.
+> Migrate to Claude 4.7 Opus — sampling parameters removed, adaptive-only thinking, and new xhigh effort level
+
+<Note>
+  **Update · June 22, 2026**
+
+  As of June 22, 2026, OpenRouter maps `reasoning.effort` to Anthropic's `output_config.effort` on Claude 4.6 and newer models — previously it was ignored. `verbosity` is unchanged: it still sets `output_config.effort`, and wins if both are passed.
+</Note>
 
 ## What's New
 
@@ -20,7 +26,7 @@ Claude 4.7 Opus introduces three major changes:
 
 Claude 4.7 Opus no longer accepts `temperature`, `top_p`, or `top_k`. If you pass these parameters, they will be silently ignored — your request will still succeed, but the parameters will have no effect.
 
-```json
+```json lines theme={null}
 // These parameters are ignored on Claude 4.7 Opus
 {
   "model": "anthropic/claude-4.7-opus",
@@ -35,7 +41,7 @@ Claude 4.7 Opus no longer accepts `temperature`, `top_p`, or `top_k`. If you pas
 
 Claude 4.7 Opus supports only adaptive thinking. On 4.6, reasoning could be controlled via a token budget (`reasoning.max_tokens` / `thinking.budget_tokens`) or left adaptive; on 4.7, budget-based thinking is removed and adaptive is the only remaining mode when reasoning is on.
 
-Reasoning itself remains opt-in on all Anthropic models via [`reasoning.enabled=true`](/docs/guides/best-practices/reasoning-tokens) — 4.7 does not change that.
+Reasoning itself remains opt-in on all Anthropic models via [`reasoning.enabled=true`](/guides/best-practices/reasoning-tokens) — 4.7 does not change that.
 
 Concretely on 4.7:
 
@@ -45,7 +51,7 @@ Concretely on 4.7:
 
 To influence overall response effort (not reasoning-specific), use [`verbosity`](#new-xhigh-effort-level). It maps to Anthropic's `output_config.effort` and applies whether or not reasoning is enabled.
 
-```json
+```json lines theme={null}
 // Opt in to adaptive thinking — the only thinking mode on 4.7 Opus
 {
   "model": "anthropic/claude-4.7-opus",
@@ -54,7 +60,7 @@ To influence overall response effort (not reasoning-specific), use [`verbosity`]
 }
 ```
 
-```json
+```json lines theme={null}
 // reasoning.max_tokens is ignored (adaptive used)
 {
   "model": "anthropic/claude-4.7-opus",
@@ -64,7 +70,7 @@ To influence overall response effort (not reasoning-specific), use [`verbosity`]
 // ↑ Equivalent to just { "reasoning": { "enabled": true } }
 ```
 
-```json
+```json lines theme={null}
 // reasoning.effort maps to output_config.effort (thinking stays adaptive)
 {
   "model": "anthropic/claude-4.7-opus",
@@ -78,7 +84,7 @@ To influence overall response effort (not reasoning-specific), use [`verbosity`]
 
 A new `'xhigh'` effort level is available between `'high'` and `'max'` via the `verbosity` parameter. This maps to Anthropic's `output_config.effort`.
 
-```json
+```json lines theme={null}
 {
   "model": "anthropic/claude-4.7-opus",
   "verbosity": "xhigh"
@@ -87,7 +93,9 @@ A new `'xhigh'` effort level is available between `'high'` and `'max'` via the `
 
 The full effort scale is now: `low` → `medium` → `high` → `xhigh` → `max`.
 
-`'xhigh'` is only supported on Claude 4.7 Opus. `'max'` is supported on Claude 4.6+. For older models, both automatically fall back to `'high'`.
+<Note>
+  `'xhigh'` is only supported on Claude 4.7 Opus. `'max'` is supported on Claude 4.6+. For older models, both automatically fall back to `'high'`.
+</Note>
 
 ## Parameter Summary
 
@@ -100,7 +108,7 @@ With sampling parameters and reasoning budgets removed on 4.7, `output_config.ef
 | `reasoning.effort`              | Sets `output_config.effort` (when reasoning is enabled) |
 | `verbosity`                     | Sets `output_config.effort`                             |
 
-```json
+```json lines theme={null}
 { "model": "anthropic/claude-4.7-opus", "verbosity": "xhigh" }
 ```
 

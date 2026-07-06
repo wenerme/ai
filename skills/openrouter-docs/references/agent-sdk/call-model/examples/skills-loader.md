@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Skills Loader
+
+> A complete implementation of a skills system similar to Claude Code, demonstrating the power of `nextTurnParams` for context injection.
 
 ## Overview
 
@@ -10,13 +12,13 @@ This example shows how to build encapsulated, self-managing tools that inject do
 
 ## Prerequisites
 
-```bash
+```bash lines theme={null}
 pnpm add @openrouter/sdk zod
 ```
 
 Create a skills directory:
 
-```bash
+```bash lines theme={null}
 mkdir -p ~/.claude/skills/pdf-processing
 mkdir -p ~/.claude/skills/data-analysis
 mkdir -p ~/.claude/skills/code-review
@@ -24,7 +26,7 @@ mkdir -p ~/.claude/skills/code-review
 
 ## Basic Skills Tool
 
-```typescript
+```typescript expandable lines theme={null}
 import { OpenRouter, tool } from '@openrouter/agent';
 import { readFileSync, existsSync, readdirSync } from 'fs';
 import path from 'path';
@@ -112,7 +114,7 @@ ${skill}`,
 
 ## Usage
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'anthropic/claude-sonnet-4.5',
   input: 'I need to process a PDF and extract tables from it',
@@ -128,7 +130,7 @@ const text = await result.getText();
 
 Create `~/.claude/skills/pdf-processing/SKILL.md`:
 
-```markdown
+```markdown expandable lines theme={null}
 # PDF Processing Skill
 
 You are now equipped with PDF processing capabilities.
@@ -161,7 +163,7 @@ When processing PDFs, you have access to:
 
 Load multiple skills in a single call:
 
-```typescript
+```typescript expandable lines theme={null}
 const multiSkillLoader = tool({
   name: 'load_skills',
   description: 'Load multiple skills at once for complex tasks',
@@ -246,7 +248,7 @@ const result = openrouter.callModel({
 
 Skills that accept configuration:
 
-```typescript
+```typescript expandable lines theme={null}
 const configurableSkillLoader = tool({
   name: 'configure_skill',
   description: 'Load a skill with custom configuration options',
@@ -338,7 +340,7 @@ ${skillContent}`,
 
 List and describe available skills:
 
-```typescript
+```typescript expandable lines theme={null}
 const skillDiscoveryTool = tool({
   name: 'list_skills',
   description: 'List all available skills with their descriptions',
@@ -393,7 +395,7 @@ const skillDiscoveryTool = tool({
 
 Putting it all together:
 
-```typescript
+```typescript expandable lines theme={null}
 import { OpenRouter, tool, stepCountIs } from '@openrouter/agent';
 import { readFileSync, existsSync, readdirSync } from 'fs';
 import path from 'path';
@@ -428,7 +430,7 @@ console.log(text);
 
 Always check if a skill is already loaded:
 
-```typescript
+```typescript lines theme={null}
 nextTurnParams: {
   input: (params, context) => {
     const marker = `[Skill: ${params.type}]`;
@@ -444,7 +446,7 @@ nextTurnParams: {
 
 Handle missing skills gracefully:
 
-```typescript
+```typescript lines theme={null}
 execute: async (params) => {
   if (!existsSync(skillPath)) {
     return `Skill not found. Available: ${listAvailableSkills().join(', ')}`;
@@ -457,7 +459,7 @@ execute: async (params) => {
 
 Always preserve existing input:
 
-```typescript
+```typescript lines theme={null}
 nextTurnParams: {
   input: (params, context) => {
     const currentInput = Array.isArray(context.input)
@@ -472,13 +474,13 @@ nextTurnParams: {
 
 Use unique markers to identify injected content:
 
-```typescript
+```typescript lines theme={null}
 const skillMarker = `[Skill: ${params.type}]`;
 // Makes detection reliable and content clearly labeled
 ```
 
 ## See Also
 
-* **[nextTurnParams Guide](/docs/sdks/call-model/next-turn-params)** - Context injection patterns
-* **[Dynamic Parameters](/docs/sdks/call-model/dynamic-parameters)** - Adaptive behavior
-* **[Tools](/docs/sdks/call-model/tools)** - Multi-turn orchestration
+* **[nextTurnParams Guide](/agent-sdk/call-model/next-turn-params)** - Context injection patterns
+* **[Dynamic Parameters](/agent-sdk/call-model/dynamic-parameters)** - Adaptive behavior
+* **[Tools](/agent-sdk/call-model/tools)** - Multi-turn orchestration

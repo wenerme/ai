@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Hermes Agent
+
+> Use Hermes Agent by Nous Research with OpenRouter
 
 ## What is Hermes Agent?
 
@@ -16,7 +18,7 @@ Hermes runs on local, Docker, SSH, Daytona, Modal, Vercel Sandbox, or Singularit
 
 The easiest way to configure Hermes with OpenRouter:
 
-```bash
+```bash lines theme={null}
 hermes model
 ```
 
@@ -26,19 +28,21 @@ Select **OpenRouter** from the provider list, enter your API key, and choose you
 
 If you already have your OpenRouter API key:
 
-```bash
+```bash lines theme={null}
 hermes config set OPENROUTER_API_KEY sk-or-...
 ```
 
 Then start a chat:
 
-```bash
+```bash lines theme={null}
 hermes chat --provider openrouter --model '~anthropic/claude-sonnet-latest'
 ```
 
 ## Manual Configuration
 
-**Advanced users only:** The following manual configuration is for users who need to edit config files directly. For most users, we recommend using `hermes model` above.
+<Warning>
+  **Advanced users only:** The following manual configuration is for users who need to edit config files directly. For most users, we recommend using `hermes model` above.
+</Warning>
 
 ### Step 1: Get Your OpenRouter API Key
 
@@ -51,17 +55,19 @@ hermes chat --provider openrouter --model '~anthropic/claude-sonnet-latest'
 
 Add your OpenRouter API key to `~/.hermes/.env`:
 
-```bash
+```bash lines theme={null}
 OPENROUTER_API_KEY=sk-or-...
 ```
 
-Hermes separates secrets from non-secret settings. API keys go in `~/.hermes/.env`, while model and provider configuration goes in `~/.hermes/config.yaml`.
+<Note>
+  Hermes separates secrets from non-secret settings. API keys go in `~/.hermes/.env`, while model and provider configuration goes in `~/.hermes/config.yaml`.
+</Note>
 
 ### Step 3: Configure Your Model
 
 Edit `~/.hermes/config.yaml`:
 
-```yaml
+```yaml lines theme={null}
 model:
   provider: openrouter
   default: ~anthropic/claude-sonnet-latest
@@ -71,7 +77,7 @@ Browse all available models at [openrouter.ai/models](https://openrouter.ai/mode
 
 ### Step 4: Start Hermes
 
-```bash
+```bash lines theme={null}
 hermes          # classic CLI
 hermes --tui    # modern TUI
 ```
@@ -93,7 +99,7 @@ You can find the exact model ID for each model on the [OpenRouter models page](h
 
 OpenRouter routes your requests across multiple infrastructure providers for each model. You can control this routing behavior in `~/.hermes/config.yaml`:
 
-```yaml
+```yaml lines theme={null}
 provider_routing:
   sort: "throughput"          # "price" (default), "throughput", or "latency"
   # only: ["anthropic"]      # Only use these providers
@@ -104,13 +110,13 @@ provider_routing:
 
 **Shortcuts:** Append `:nitro` to any model name for throughput sorting (e.g., `~anthropic/claude-sonnet-latest:nitro`), or `:floor` for price sorting.
 
-For a full breakdown of routing options, see the [Provider Routing docs](/docs/guides/routing/provider-selection).
+For a full breakdown of routing options, see the [Provider Routing docs](/guides/routing/provider-selection).
 
 ## Fallback Providers
 
 Configure a chain of backup providers Hermes tries when the primary model fails:
 
-```yaml
+```yaml lines theme={null}
 fallback_providers:
   - provider: openrouter
     model: ~anthropic/claude-sonnet-latest
@@ -124,7 +130,7 @@ This provides an additional layer of reliability. When activated, the fallback s
 
 Hermes uses "auxiliary models" for side tasks like context compression, vision analysis, session titles, and web summarization. By default these use your main model, but you can route them to cheaper models via OpenRouter:
 
-```yaml
+```yaml lines theme={null}
 auxiliary:
   title:
     provider: openrouter
@@ -143,7 +149,7 @@ This keeps your main model focused on complex reasoning while cheaper models han
 
 OpenRouter's experimental coding-model router auto-routes requests to the cheapest model meeting a coding-quality threshold. Configure it in `~/.hermes/config.yaml`:
 
-```yaml
+```yaml lines theme={null}
 model:
   provider: openrouter
   model: openrouter/pareto-code
@@ -154,7 +160,9 @@ openrouter:
 
 This is useful for cost optimization on coding tasks — the router picks the cheapest model that meets your quality bar.
 
-Hermes uses its own `openrouter:` config key to set `min_coding_score`. This maps to the `plugins` array in the [OpenRouter API](/docs/guides/routing/routers/pareto-router) — you don't need to construct the plugins payload yourself.
+<Note>
+  Hermes uses its own `openrouter:` config key to set `min_coding_score`. This maps to the `plugins` array in the [OpenRouter API](/guides/routing/routers/pareto-router) — you don't need to construct the plugins payload yourself.
+</Note>
 
 ## Monitoring Usage
 

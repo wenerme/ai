@@ -20,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-12039)
-* [  TypeScript ](#tab-panel-12040)
-* [  Python ](#tab-panel-12041)
-* [  Hono ](#tab-panel-12042)
+* [  JavaScript ](#tab-panel-12162)
+* [  TypeScript ](#tab-panel-12163)
+* [  Python ](#tab-panel-12164)
+* [  Hono ](#tab-panel-12165)
 
 **JavaScript**
 
@@ -157,13 +157,9 @@ export default {
 
 ```py
 import json
-from workers import WorkerEntrypoint
-from pyodide.ffi import to_js as _to_js
-from js import Object, URL, Request, fetch, Response
-
-
-def to_js(obj):
-    return _to_js(obj, dict_converter=Object.fromEntries)
+from workers import WorkerEntrypoint, Response, fetch
+from js import Request
+from urllib.parse import urlparse
 
 
 class Default(WorkerEntrypoint):
@@ -175,38 +171,38 @@ class Default(WorkerEntrypoint):
         # The best practice is to only assign new_request_init properties
         # on the request object using either a method or the constructor
         new_request_init = {
-          "method": "POST", # Change method
-          "body": json.dumps({ "bar": "foo" }), # Change body
-          "redirect": "follow", # Change the redirect mode
-          # Change headers, note this method will erase existing headers
-          "headers": {
-            "Content-Type": "application/json",
-          },
-          #  Change a Cloudflare feature on the outbound response
-          "cf": { "apps": False },
+            "method": "POST", # Change method
+            "body": json.dumps({"bar": "foo"}), # Change body
+            "redirect": "follow", # Change the redirect mode
+            # Change headers, note this method will erase existing headers
+            "headers": {
+                "Content-Type": "application/json",
+            },
+            #  Change a Cloudflare feature on the outbound response
+            "cf": {"apps": False},
         }
 
 
         # Change just the host
-        url = URL.new(some_url)
-        url.hostname = some_host
+        parsed = urlparse(some_url)
+        new_url = parsed._replace(netloc=some_host).geturl()
 
 
         # Best practice is to always use the original request to construct the new request
         # to clone all the attributes. Applying the URL also requires a constructor
         # since once a Request has been constructed, its URL is immutable.
         org_request = Request.new(request, new_request_init)
-        new_request = Request.new(url.toString(),org_request)
+        new_request = Request.new(new_url, org_request)
 
 
-        new_request.headers["X-Example"] =  "bar"
+        new_request.headers["X-Example"] = "bar"
         new_request.headers["Content-Type"] = "application/json"
 
 
         try:
             return await fetch(new_request)
         except Exception as e:
-            return Response.new({"error": str(e)}, status=500)
+            return Response.join({"error": str(e)}, status=500)
 ```
 
 **TypeScript**
@@ -273,6 +269,6 @@ export default app;
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/modify-request-property/#page","headline":"Modify request property · Cloudflare Workers docs","description":"Create a modified request with edited properties based off of an incoming request.","url":"https://developers.cloudflare.com/workers/examples/modify-request-property/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","Headers","JavaScript","TypeScript","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/modify-request-property/#page","headline":"Modify request property · Cloudflare Workers docs","description":"Create a modified request with edited properties based off of an incoming request.","url":"https://developers.cloudflare.com/workers/examples/modify-request-property/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","Headers","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/modify-request-property/","name":"Modify request property"}}]}
 ```

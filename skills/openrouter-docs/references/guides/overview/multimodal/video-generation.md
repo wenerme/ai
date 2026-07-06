@@ -1,19 +1,62 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Video Generation
 
-OpenRouter supports video generation from text prompts (and optional reference images) via a dedicated asynchronous API. You can find the supported models, their capabilities, and pricing by filtering our [model list by video output](https://openrouter.ai/models?output_modalities=video).
+> How to generate videos with OpenRouter models
 
-Adding video generation to an app? The
-[Video Generation Cookbook](/docs/cookbook/video-generation/choose-video-model)
-breaks this workflow into step-by-step recipes for choosing a model,
-submitting text-to-video jobs, using images, passing provider options, and
-handling webhooks.
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
-For reusable agent knowledge across projects, install the
-[openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+export const Template = ({children, data}) => {
+  const replace = s => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in data) ? data[k] : `{{${k}}}`);
+  const leafText = node => typeof node === 'string' ? node : node?.$$typeof && typeof node.props?.children === 'string' ? node.props.children : null;
+  const collapseTokens = nodes => {
+    const out = [];
+    let i = 0;
+    while (i < nodes.length) {
+      const ta = leafText(nodes[i]);
+      const tb = leafText(nodes[i + 1]);
+      const tc = leafText(nodes[i + 2]);
+      if (ta != null && tb != null && tc != null) {
+        const m = (ta + tb + tc).match(/^([\s\S]*)\{\{(\w+)\}\}([\s\S]*)$/);
+        if (m && (m[2] in data)) {
+          out.push(m[1] + data[m[2]] + m[3]);
+          i += 3;
+          continue;
+        }
+      }
+      out.push(nodes[i]);
+      i++;
+    }
+    return out;
+  };
+  const process = node => {
+    if (typeof node === 'string') return replace(node);
+    if (Array.isArray(node)) return collapseTokens(node.map(process));
+    if (node && typeof node === 'object') {
+      if (node.$$typeof) return {
+        ...node,
+        props: process(node.props)
+      };
+      return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, process(v)]));
+    }
+    return node;
+  };
+  return <>{process(children)}</>;
+};
+
+OpenRouter supports video generation from text prompts (and optional reference images) via a dedicated asynchronous API. You can find the supported models, their capabilities, and pricing by filtering our [model list by video output](https://openrouter.ai/docs/guides/overview/models?output_modalities=video).
+
+<Tip>
+  Adding video generation to an app? The
+  [Video Generation Cookbook](/cookbook/video-generation/choose-video-model)
+  breaks this workflow into step-by-step recipes for choosing a model,
+  submitting text-to-video jobs, using images, passing provider options, and
+  handling webhooks.
+
+  For reusable agent knowledge across projects, install the [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+</Tip>
 
 ## Model Discovery
 
@@ -23,13 +66,13 @@ You can find video generation models in several ways:
 
 Use the dedicated video models endpoint to list all available video generation models along with their supported parameters:
 
-```bash
-curl "https://openrouter.ai/api/v1/videos/models"
+```bash lines theme={null}
+curl "https://openrouter.ai/api/v1/videos/docs/guides/overview/models"
 ```
 
 The response returns a `data` array where each model includes:
 
-```json
+```json lines theme={null}
 {
   "data": [
     {
@@ -65,16 +108,16 @@ Use this endpoint to check which resolutions, aspect ratios, and passthrough par
 
 ### Via the Models API
 
-You can also use the `output_modalities` query parameter on the [Models API](/docs/api-reference/models/get-models) to discover video generation models:
+You can also use the `output_modalities` query parameter on the [Models API](/api/api-reference/models/list-all-models-and-their-properties) to discover video generation models:
 
-```bash
+```bash lines theme={null}
 # List only video generation models
-curl "https://openrouter.ai/api/v1/models?output_modalities=video"
+curl "https://openrouter.ai/api/v1/docs/guides/overview/models?output_modalities=video"
 ```
 
 ### On the Models Page
 
-Visit the [Models page](/models) and filter by output modalities to find models capable of video generation. Look for models that list `"video"` in their output modalities.
+Visit the [Models page](/guides/overview/models) and filter by output modalities to find models capable of video generation. Look for models that list `"video"` in their output modalities.
 
 ## How It Works
 
@@ -89,120 +132,129 @@ Unlike text or image generation, video generation is **asynchronous** because ge
 
 ### Submitting a Video Generation Request
 
-```python
-import requests
-import json
-import time
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'google/veo-3.1'
+}}
+>
+  <CodeGroup>
+    ```python Python expandable lines theme={null}
+    import requests
+    import json
+    import time
 
-url = "https://openrouter.ai/api/v1/videos"
-headers = {
-    "Authorization": f"Bearer {API_KEY_REF}",
-    "Content-Type": "application/json"
-}
+    url = "https://openrouter.ai/api/v1/videos"
+    headers = {
+        "Authorization": f"Bearer {API_KEY_REF}",
+        "Content-Type": "application/json"
+    }
 
-payload = {
-    "model": "{{MODEL}}",
-    "prompt": "A golden retriever playing fetch on a sunny beach with waves crashing in the background"
-}
+    payload = {
+        "model": "{{MODEL}}",
+        "prompt": "A golden retriever playing fetch on a sunny beach with waves crashing in the background"
+    }
 
-# Step 1: Submit the generation request
-response = requests.post(url, headers=headers, json=payload)
-result = response.json()
+    # Step 1: Submit the generation request
+    response = requests.post(url, headers=headers, json=payload)
+    result = response.json()
 
-job_id = result["id"]
-polling_url = result["polling_url"]
-print(f"Job submitted: {job_id}")
-print(f"Status: {result['status']}")
+    job_id = result["id"]
+    polling_url = result["polling_url"]
+    print(f"Job submitted: {job_id}")
+    print(f"Status: {result['status']}")
 
-# Step 2: Poll until completion
-while True:
-    time.sleep(30)  # Wait 30 seconds between polls
-    poll_response = requests.get(polling_url, headers=headers)
-    status = poll_response.json()
+    # Step 2: Poll until completion
+    while True:
+        time.sleep(30)  # Wait 30 seconds between polls
+        poll_response = requests.get(polling_url, headers=headers)
+        status = poll_response.json()
 
-    print(f"Status: {status['status']}")
+        print(f"Status: {status['status']}")
 
-    if status["status"] == "completed":
-        # Step 3: Download the video
-        content_url = status["unsigned_urls"][0]
-        video_response = requests.get(content_url)
-        with open("output.mp4", "wb") as f:
-            f.write(video_response.content)
-        print("Video saved to output.mp4")
-        break
-    elif status["status"] == "failed":
-        print(f"Generation failed: {status.get('error', 'Unknown error')}")
-        break
-```
+        if status["status"] == "completed":
+            # Step 3: Download the video
+            content_url = status["unsigned_urls"][0]
+            video_response = requests.get(content_url)
+            with open("output.mp4", "wb") as f:
+                f.write(video_response.content)
+            print("Video saved to output.mp4")
+            break
+        elif status["status"] == "failed":
+            print(f"Generation failed: {status.get('error', 'Unknown error')}")
+            break
+    ```
 
-```typescript title="TypeScript (fetch)"
-const headers = {
-  Authorization: `Bearer ${API_KEY_REF}`,
-  'Content-Type': 'application/json',
-};
+    ```typescript title="TypeScript (fetch)" expandable lines theme={null}
+    const headers = {
+      Authorization: `Bearer ${API_KEY_REF}`,
+      'Content-Type': 'application/json',
+    };
 
-// Step 1: Submit the generation request
-const response = await fetch('https://openrouter.ai/api/v1/videos', {
-  method: 'POST',
-  headers,
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    prompt: 'A golden retriever playing fetch on a sunny beach with waves crashing in the background',
-  }),
-});
+    // Step 1: Submit the generation request
+    const response = await fetch('https://openrouter.ai/api/v1/videos', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        prompt: 'A golden retriever playing fetch on a sunny beach with waves crashing in the background',
+      }),
+    });
 
-const result = await response.json();
-const jobId = result.id;
-const pollingUrl = result.polling_url;
-console.log(`Job submitted: ${jobId}`);
-console.log(`Status: ${result.status}`);
+    const result = await response.json();
+    const jobId = result.id;
+    const pollingUrl = result.polling_url;
+    console.log(`Job submitted: ${jobId}`);
+    console.log(`Status: ${result.status}`);
 
-// Step 2: Poll until completion
-while (true) {
-  await new Promise((resolve) => setTimeout(resolve, 30000)); // Wait 30 seconds
-  const pollResponse = await fetch(pollingUrl, { headers });
-  const status = await pollResponse.json();
+    // Step 2: Poll until completion
+    while (true) {
+      await new Promise((resolve) => setTimeout(resolve, 30000)); // Wait 30 seconds
+      const pollResponse = await fetch(pollingUrl, { headers });
+      const status = await pollResponse.json();
 
-  console.log(`Status: ${status.status}`);
+      console.log(`Status: ${status.status}`);
 
-  if (status.status === 'completed') {
-    // Step 3: Download the video
-    const contentUrl = status.unsigned_urls[0];
-    const videoResponse = await fetch(contentUrl);
-    const videoBuffer = await videoResponse.arrayBuffer();
-    // Save or process the video buffer
-    console.log(`Video ready: ${contentUrl}`);
-    break;
-  } else if (status.status === 'failed') {
-    console.error(`Generation failed: ${status.error ?? 'Unknown error'}`);
-    break;
-  }
-}
-```
+      if (status.status === 'completed') {
+        // Step 3: Download the video
+        const contentUrl = status.unsigned_urls[0];
+        const videoResponse = await fetch(contentUrl);
+        const videoBuffer = await videoResponse.arrayBuffer();
+        // Save or process the video buffer
+        console.log(`Video ready: ${contentUrl}`);
+        break;
+      } else if (status.status === 'failed') {
+        console.error(`Generation failed: ${status.error ?? 'Unknown error'}`);
+        break;
+      }
+    }
+    ```
 
-```bash title="cURL"
-# Step 1: Submit the generation request
-curl -X POST "https://openrouter.ai/api/v1/videos" \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "{{MODEL}}",
-    "prompt": "A golden retriever playing fetch on a sunny beach with waves crashing in the background"
-  }'
+    ```bash title="cURL" expandable lines theme={null}
+    # Step 1: Submit the generation request
+    curl -X POST "https://openrouter.ai/api/v1/videos" \
+      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "model": "{{MODEL}}",
+        "prompt": "A golden retriever playing fetch on a sunny beach with waves crashing in the background"
+      }'
 
-# Response:
-# {
-#   "id": "<job_id>",
-#   "polling_url": "https://openrouter.ai/api/v1/videos/<job_id>",
-#   "status": "pending"
-# }
+    # Response:
+    # {
+    #   "id": "<job_id>",
+    #   "polling_url": "https://openrouter.ai/api/v1/videos/<job_id>",
+    #   "status": "pending"
+    # }
 
-# Step 2: Poll for status
-curl "https://openrouter.ai/api/v1/videos/<job_id>" \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY"
+    # Step 2: Poll for status
+    curl "https://openrouter.ai/api/v1/videos/<job_id>" \
+      -H "Authorization: Bearer $OPENROUTER_API_KEY"
 
-# Step 3: Once status is "completed", download from unsigned_urls[0]
-```
+    # Step 3: Once status is "completed", download from unsigned_urls[0]
+    ```
+  </CodeGroup>
+</Template>
 
 ### Request Parameters
 
@@ -262,7 +314,7 @@ image-to-video.
 
 #### Image-to-Video (frame\_images)
 
-```json
+```json lines theme={null}
 {
   "model": "alibaba/wan-2.7",
   "prompt": "A character walking through a forest",
@@ -281,7 +333,7 @@ image-to-video.
 
 #### Reference-to-Video (input\_references)
 
-```json
+```json lines theme={null}
 {
   "model": "alibaba/wan-2.7",
   "prompt": "A colossal solar flare beside a planet",
@@ -301,7 +353,7 @@ image-to-video.
 
 You can pass provider-specific options using the `provider` parameter. Options are keyed by provider slug, and only the options for the matched provider are forwarded:
 
-```json
+```json lines theme={null}
 {
   "model": "google/veo-3.1",
   "prompt": "A time-lapse of a flower blooming",
@@ -326,7 +378,7 @@ Use the [Video Models API](#via-the-video-models-api) to check which passthrough
 
 When you submit a video generation request, you receive an immediate response with the job details:
 
-```json
+```json lines theme={null}
 {
   "id": "abc123",
   "polling_url": "https://openrouter.ai/api/v1/videos/abc123",
@@ -338,7 +390,7 @@ When you submit a video generation request, you receive an immediate response wi
 
 When polling the job status, the response includes additional fields as the job progresses:
 
-```json
+```json lines theme={null}
 {
   "id": "abc123",
   "generation_id": "gen-1234567890-abcdef",
@@ -367,7 +419,7 @@ When polling the job status, the response includes additional fields as the job 
 
 Once the job status is `completed`, the `unsigned_urls` array contains URLs to download the generated video content. You can also use the content endpoint directly:
 
-```bash
+```bash lines theme={null}
 curl "https://openrouter.ai/api/v1/videos/{jobId}/content?index=0" \
   -H "Authorization: Bearer $OPENROUTER_API_KEY" \
   --output video.mp4
@@ -380,7 +432,7 @@ The `index` query parameter defaults to `0` and can be used if the model generat
 Instead of polling for job status, you can receive a webhook notification when a video generation job completes. There are two ways to configure a callback URL:
 
 1. **Per-request**: Pass `callback_url` in the request body. This takes priority over the workspace default.
-2. **Workspace default**: Set a default callback URL in your [workspace settings](/workspaces). This applies to all video generation requests that don't specify their own `callback_url`.
+2. **Workspace default**: Set a default callback URL in your [workspace settings](/guides/features/workspaces). This applies to all video generation requests that don't specify their own `callback_url`.
 
 ### Webhook Payload
 
@@ -391,7 +443,7 @@ safe retry deduplication.
 
 `video.generation.completed`:
 
-```json
+```json lines theme={null}
 {
   "type": "video.generation.completed",
   "created_at": "2026-04-24T12:00:00.000Z",
@@ -413,7 +465,7 @@ safe retry deduplication.
 
 `video.generation.failed`:
 
-```json
+```json lines theme={null}
 {
   "type": "video.generation.failed",
   "created_at": "2026-04-24T12:00:00.000Z",
@@ -429,7 +481,7 @@ safe retry deduplication.
 
 `video.generation.cancelled`:
 
-```json
+```json lines theme={null}
 {
   "type": "video.generation.cancelled",
   "created_at": "2026-04-24T12:00:00.000Z",
@@ -445,7 +497,7 @@ safe retry deduplication.
 
 `video.generation.expired`:
 
-```json
+```json lines theme={null}
 {
   "type": "video.generation.expired",
   "created_at": "2026-04-24T12:00:00.000Z",
@@ -464,11 +516,11 @@ those values are assigned (e.g. an early validation failure).
 
 ### Signing Secret
 
-You can configure a signing secret in your [workspace settings](/workspaces) to verify that webhook payloads are authentically from OpenRouter. When a signing secret is configured, each webhook delivery includes an `X-OpenRouter-Signature` header.
+You can configure a signing secret in your [workspace settings](/guides/features/workspaces) to verify that webhook payloads are authentically from OpenRouter. When a signing secret is configured, each webhook delivery includes an `X-OpenRouter-Signature` header.
 
 The signature includes a timestamp and an HMAC hash:
 
-```
+```lines theme={null}
 X-OpenRouter-Signature: t=1234567890,v1=a1b2c3d4...
 ```
 
@@ -481,7 +533,7 @@ To verify the signature on your webhook receiver:
 3. Compute the HMAC-SHA256 of the signed payload using your signing secret as the key
 4. Compare the hex-encoded result with the `v1` value
 
-```typescript
+```typescript expandable lines theme={null}
 import crypto from 'crypto';
 
 const FIVE_MINUTES_IN_SECONDS = 300;
@@ -522,7 +574,9 @@ function verifyWebhookSignature(
 }
 ```
 
-Use the **raw request body** (the exact bytes received) for verification. Parsing and re-serializing JSON may change key ordering or number formatting, which will cause verification to fail.
+<Warning>
+  Use the **raw request body** (the exact bytes received) for verification. Parsing and re-serializing JSON may change key ordering or number formatting, which will cause verification to fail.
+</Warning>
 
 ## Best Practices
 
@@ -534,9 +588,9 @@ Use the **raw request body** (the exact bytes received) for verification. Parsin
 
 ## Zero Data Retention
 
-Video generation is **not eligible** for [Zero Data Retention (ZDR)](/docs/guides/features/zdr). Because video generation is asynchronous, the generated video output must be retained by the provider for a short period of time so that it can be retrieved after generation is complete. This temporary retention is inherent to the async polling workflow and cannot be bypassed.
+Video generation is **not eligible** for [Zero Data Retention (ZDR)](/guides/features/zdr). Because video generation is asynchronous, the generated video output must be retained by the provider for a short period of time so that it can be retrieved after generation is complete. This temporary retention is inherent to the async polling workflow and cannot be bypassed.
 
-If you have ZDR enforcement enabled (either via [account settings](/settings/privacy) or the per-request `zdr` parameter), video generation requests will not be routed.
+If you have ZDR enforcement enabled (either via [account settings](https://openrouter.ai/settings/privacy) or the per-request `zdr` parameter), video generation requests will not be routed.
 
 ## Troubleshooting
 
@@ -554,5 +608,5 @@ If you have ZDR enforcement enabled (either via [account settings](/settings/pri
 
 **Model not found?**
 
-* Use the [Video Models API](#via-the-video-models-api) or the [Models page](/models) to find available video generation models
+* Use the [Video Models API](#via-the-video-models-api) or the [Models page](/guides/overview/models) to find available video generation models
 * Verify the model slug is correct (e.g., `google/veo-3.1`)

@@ -1,6 +1,6 @@
 ---
 title: Configure Virtual Appliance
-description: Learn how to configure Cloudflare One Virtual Appliance on VMWare ESXi or Proxmox Virtual Environment
+description: Learn how to configure Cloudflare One Virtual Appliance on VMware ESXi or Proxmox Virtual Environment
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -12,13 +12,36 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Configure Virtual Appliance
 
-Self-serve provisioning via API
+## Register a virtual appliance and generate a license key
 
-You can create, rotate, and delete Cloudflare One Virtual Appliance instances directly via the API or Terraform. Each request returns a license key that you use to activate the deployed VM.
+You can register a Cloudflare One Virtual Appliance instance and generate its license key yourself, from either the dashboard or the API — no account team involvement required. Each create or rotate request returns a license key that you use to activate the deployed VM.
 
-* Create a virtual appliance: `POST /accounts/{account_id}/magic/connectors` with `device.provision_license: true`. The response includes `result.license_key` — copy and store it securely, as it is shown only once.
+Warning
+
+The license key is shown only once, at create or rotate time. Copy and store it securely — it cannot be recovered afterwards, but it can be rotated.
+
+* [ Dashboard ](#tab-panel-8114)
+* [ API ](#tab-panel-8115)
+
+1. Go to the **Connectors** page.
+2. Select **Add an appliance**.
+3. Choose **Virtual appliance** as the connector type.
+Unlike a hardware appliance — which requires the serial number printed on the physical device, obtained through your account team — a virtual appliance only needs a name, since Cloudflare generates the license key for you.
+4. In **Name**, enter a descriptive name for your virtual appliance.
+5. Select **Generate authentication key**.
+6. Copy the authentication key shown in the dialog. Use it as the license key when you [configure your virtual machine](#configure-a-virtual-machine).
+
+To rotate the key for an existing virtual appliance:
+
+1. Go to the **Connectors** page.
+2. Find the connector in the table, select the three dots next to it, then select **Regenerate authentication key**.
+3. Confirm the action. The existing key is immediately and irrevocably revoked, and a new key is generated and shown in the dialog.
+
+* Create a virtual appliance: `POST /accounts/{account_id}/magic/connectors` with `device.provision_license: true`. The response includes `result.license_key`.
 * Rotate the license key: `PATCH /accounts/{account_id}/magic/connectors/{connector_id}` with `provision_license: true`. The previous key is immediately and irrevocably revoked.
 * Delete a virtual appliance: deletes the associated licensed device in the same operation.
+
+This is also available via Terraform.
 
 Cloudflare One Virtual Appliance is a virtual device alternative to the hardware based Cloudflare One Appliance. These two versions of Cloudflare One Appliance are identical otherwise.
 
@@ -79,8 +102,8 @@ Cloudflare One Virtual Appliance uses a DHCP connection at first boot to downloa
 
 Select the appropriate tab to configure Cloudflare One Virtual Appliance on VMWare ESXi or Proxmox Virtual Environment.
 
-* [ VMWare ESXi ](#tab-panel-8079)
-* [ Proxmox Virtual Environment (beta) ](#tab-panel-8080)
+* [ VMWare ESXi ](#tab-panel-8120)
+* [ Proxmox Virtual Environment (beta) ](#tab-panel-8121)
 
 **1\. Obtain the VMWare image**
 
@@ -205,7 +228,7 @@ To create a profile:
 2. You need to decide if you want to turn on high availability for the Cloudflare One Virtual Appliance. For details, refer to [About high availability configurations](#about-high-availability-configurations).
 3. Select **Create and continue**.
 4. Select **Add Appliance**. This will display a list of devices associated with your account. For a Virtual Appliance to appear you need to:
-  * **VMWare:** Have already obtained your OVA package and license keys if you are installing on VMWare.
+  * **VMware:** Have already obtained your OVA package and license keys if you are installing on VMware.
   * **Proxmox:** Have already obtained your Virtual Appliance Script and license keys if you are installing on Proxmox.
 For details, refer to [Configure a virtual machine](#configure-a-virtual-machine) and select the appropriate tab.
 5. If you have more than one Cloudflare One Virtual Appliance, choose the one that corresponds to the on-ramp you are creating. Cloudflare One Virtual Appliance devices are identified by a serial number, also known as a service tag. Use this information to choose the right Cloudflare One Virtual Appliance.
@@ -215,8 +238,8 @@ For details, refer to [Configure a virtual machine](#configure-a-virtual-machine
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-8075)
-* [ API ](#tab-panel-8076)
+* [ Dashboard ](#tab-panel-8116)
+* [ API ](#tab-panel-8117)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Virtual Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -258,8 +281,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-8077)
-* [ API ](#tab-panel-8078)
+* [ Dashboard ](#tab-panel-8118)
+* [ API ](#tab-panel-8119)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.
@@ -432,6 +455,6 @@ To check the IPsec tunnels and static routes created by your Cloudflare One Virt
 * [Troubleshooting](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/troubleshooting/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#page","headline":"Configure Virtual Appliance · Cloudflare WAN docs","description":"Learn how to configure Cloudflare One Virtual Appliance on VMWare ESXi or Proxmox Virtual Environment","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#page","headline":"Configure Virtual Appliance · Cloudflare WAN docs","description":"Learn how to configure Cloudflare One Virtual Appliance on VMware ESXi or Proxmox Virtual Environment","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/appliance/","name":"Configure with Appliance"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/appliance/configure-virtual-appliance/","name":"Configure Virtual Appliance"}}]}
 ```

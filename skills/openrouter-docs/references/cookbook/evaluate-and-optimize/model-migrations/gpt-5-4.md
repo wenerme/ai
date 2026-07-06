@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # GPT-5.4 Migration Guide
+
+> Support the phase field for GPT-5.3 Codex, GPT-5.4, GPT-5.4 Pro, GPT-5.5, and GPT-5.5 Pro
 
 ## What's New
 
@@ -13,12 +15,14 @@ workflows — it tells the model whether an assistant message
 is intermediate commentary or the final answer.
 
 OpenRouter supports `phase` in the
-[Responses API](/docs/api/api-reference/responses/create-responses).
+[Responses API](/api/api-reference/responses/create-a-response).
 
-`phase` is **not available** in the Chat Completions API.
-The Chat Completions format cannot represent multiple
-output items with distinct phases in a single response.
-Use the Responses API for full `phase` support.
+<Note>
+  `phase` is **not available** in the Chat Completions API.
+  The Chat Completions format cannot represent multiple
+  output items with distinct phases in a single response.
+  Use the Responses API for full `phase` support.
+</Note>
 
 ## The `phase` Field
 
@@ -31,8 +35,10 @@ possible values:
 | `"commentary"`   | Intermediate assistant message |
 | `"final_answer"` | The final closeout message     |
 
-`phase` is only valid on **assistant** messages.
-Do not add `phase` to user or system messages.
+<Note>
+  `phase` is only valid on **assistant** messages.
+  Do not add `phase` to user or system messages.
+</Note>
 
 ## Why It Matters
 
@@ -52,7 +58,7 @@ When using the Responses API, assistant output items
 include `phase`. You must persist these items verbatim
 and pass them back in subsequent requests.
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-5.4",
   "input": [
@@ -73,7 +79,7 @@ and pass them back in subsequent requests.
 The response will include `phase` on assistant output
 messages:
 
-```json
+```json expandable lines theme={null}
 {
   "output": [
     {
@@ -105,7 +111,7 @@ messages:
 For follow-up requests, include the assistant output
 items with their `phase` intact:
 
-```json
+```json expandable lines theme={null}
 {
   "model": "openai/gpt-5.4",
   "input": [
@@ -165,7 +171,7 @@ items that models like GPT-5.4 produce.
 
 If you need `phase` support for multi-turn agentic
 workflows, use the
-[Responses API](/docs/api/api-reference/responses/create-responses)
+[Responses API](/api/api-reference/responses/create-a-response)
 instead.
 
 ## Implementation Pattern
@@ -201,10 +207,12 @@ on assistant messages:
 | Other OpenAI models    | Silently ignored (safe to pass) |
 | Non-OpenAI models      | Not applicable                  |
 
-Passing `phase` to OpenAI models that don't support it
-(like `gpt-4o`) is safe — OpenAI silently ignores the
-field. You do not need to filter `phase` based on the
-model.
+<Note>
+  Passing `phase` to OpenAI models that don't support it
+  (like `gpt-4o`) is safe — OpenAI silently ignores the
+  field. You do not need to filter `phase` based on the
+  model.
+</Note>
 
 ## Breaking Changes
 
@@ -222,6 +230,6 @@ None. The `phase` field is additive:
 
 * [Prompt Guidance for GPT-5.4](https://developers.openai.com/api/docs/guides/prompt-guidance/) — OpenAI's official guide covering prompt patterns and migration tips for GPT-5.4, including completeness checks, verification loops, tool persistence, and structured outputs.
 * [OpenAI Responses API Reference](https://developers.openai.com/api/reference/resources/responses/methods/create)
-* [Codex CLI Integration Guide](/docs/cookbook/coding-agents/codex-cli)
-* [OpenRouter API Documentation](/docs/api/reference/overview)
+* [Codex CLI Integration Guide](/cookbook/coding-agents/codex-cli)
+* [OpenRouter API Documentation](/api/reference/overview)
 * [OpenRouter Codex Models](https://openrouter.ai/models?q=codex)

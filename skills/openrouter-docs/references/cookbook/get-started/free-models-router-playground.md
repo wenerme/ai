@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Free Models Router
+
+> Get started with free AI inference using the OpenRouter Chat Playground
 
 OpenRouter offers free models that let you experiment with AI without any cost. The easiest way to try these models is through the [Chat Playground](https://openrouter.ai/chat), where you can start chatting immediately.
 
@@ -18,7 +20,9 @@ Navigate to [openrouter.ai/chat](https://openrouter.ai/chat) to access the Chat 
 
 Click the **Add Model** button (or press `Cmd+K` / `Ctrl+K`) to open the model selector. Type "free" in the search box to filter for free models.
 
-![Searching for free models in the model selector](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/279ff80044cd9fe63c0bbd22776b2ff5bac6c31578d0110d6bf66ee559d44b92/content/pages/guides/free-models-search.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/get-started/free-models-router-playground/free-models-search.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=c99cb85c309b9b104c2bdaf3089e38c0" alt="Searching for free models in the model selector" width="1550" height="1035" data-path="assets/cookbook/get-started/free-models-router-playground/free-models-search.png" />
+</Frame>
 
 You'll see a list of available free models, including the **Free Models Router** option.
 
@@ -26,13 +30,17 @@ You'll see a list of available free models, including the **Free Models Router**
 
 Click on **Free Models Router** to select it. This router will automatically choose a free model for each request based on your needs.
 
-![Free Models Router selected in the chat playground](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/98bfb39b5b0c0e4d907e5be1adf502d7b87d50ca21bf656a28e86a5ea7785752/content/pages/guides/free-router-selected.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/get-started/free-models-router-playground/free-router-selected.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=da5c29afeab8f3f1d6b277c4f21bde1b" alt="Free Models Router selected in the chat playground" width="1550" height="1035" data-path="assets/cookbook/get-started/free-models-router-playground/free-router-selected.png" />
+</Frame>
 
 ### Step 4: Start Chatting
 
 Once selected, you can start sending messages. The Free Models Router will route your request to an appropriate free model, and you'll see which model responded in the chat.
 
-![A response from a free model showing the model name](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ea10ad8718aa5c1190c32eabe34d6fe7a1c79124771f619c3160e6e6620bd3a4/content/pages/guides/free-router-response.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/get-started/free-models-router-playground/free-router-response.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=f8386a7b19a310ecaf210cc18133ac3b" alt="A response from a free model showing the model name" width="2984" height="1866" data-path="assets/cookbook/get-started/free-models-router-playground/free-router-response.png" />
+</Frame>
 
 In this example, the Free Models Router selected Solar Pro 3 (free) to respond to the message.
 
@@ -49,7 +57,7 @@ If you prefer to use a specific free model rather than the Free Models Router, y
 
 You can also use the Free Models Router programmatically. Simply set the model to `openrouter/free` in your API requests:
 
-```bash
+```bash lines theme={null}
 curl https://openrouter.ai/api/v1/chat/completions \
   -H "Authorization: Bearer $OPENROUTER_API_KEY" \
   -H "Content-Type: application/json" \
@@ -67,6 +75,6 @@ Free models may have different rate limits and availability compared to paid mod
 
 ## Related Resources
 
-* [Free Variant Documentation](/docs/guides/routing/model-variants/free) - Learn about the `:free` variant suffix
+* [Free Variant Documentation](/guides/routing/model-variants/free) - Learn about the `:free` variant suffix
 * [Models Page](https://openrouter.ai/models) - Browse all available models
 * [Free Models Router API](https://openrouter.ai/openrouter/free/api) - API quickstart for the Free Models Router

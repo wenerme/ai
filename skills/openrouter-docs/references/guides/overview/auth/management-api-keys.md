@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Management API Keys
+
+> Manage API keys programmatically
 
 OpenRouter provides endpoints to programmatically manage your API keys, enabling key creation and management for applications that need to distribute or rotate keys automatically.
 
@@ -28,185 +30,187 @@ Common scenarios for programmatic key management include:
 
 All key management endpoints are under `/api/v1/keys` and require a Management API key in the Authorization header.
 
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
+<CodeGroup>
+  ```typescript title="TypeScript SDK" expandable lines theme={null}
+  import { OpenRouter } from '@openrouter/sdk';
 
-const openRouter = new OpenRouter({
-  apiKey: 'your-management-key', // Use your Management API key
-});
+  const openRouter = new OpenRouter({
+    apiKey: 'your-management-key', // Use your Management API key
+  });
 
-// List the most recent 100 API keys
-const keys = await openRouter.apiKeys.list();
+  // List the most recent 100 API keys
+  const keys = await openRouter.apiKeys.list();
 
-// You can paginate using the offset parameter
-const keysPage2 = await openRouter.apiKeys.list({ offset: 100 });
+  // You can paginate using the offset parameter
+  const keysPage2 = await openRouter.apiKeys.list({ offset: 100 });
 
-// Create a new API key
-const newKey = await openRouter.apiKeys.create({
-  name: 'Customer Instance Key',
-  limit: 1000, // Optional credit limit
-});
-
-// Get a specific key
-const keyHash = '<YOUR_KEY_HASH>';
-const key = await openRouter.apiKeys.get(keyHash);
-
-// Update a key
-const updatedKey = await openRouter.apiKeys.update(keyHash, {
-  name: 'Updated Key Name',
-  disabled: true, // Optional: Disable the key
-  includeByokInLimit: false, // Optional: control BYOK usage in limit
-  limitReset: 'daily', // Optional: reset limit every day at midnight UTC
-});
-
-// Delete a key
-await openRouter.apiKeys.delete(keyHash);
-```
-
-```python title="Python"
-import requests
-
-MANAGEMENT_API_KEY = "your-management-key"
-BASE_URL = "https://openrouter.ai/api/v1/keys"
-
-# List the most recent 100 API keys
-response = requests.get(
-    BASE_URL,
-    headers={
-        "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
-        "Content-Type": "application/json"
-    }
-)
-
-# You can paginate using the offset parameter
-response = requests.get(
-    f"{BASE_URL}?offset=100",
-    headers={
-        "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
-        "Content-Type": "application/json"
-    }
-)
-
-# Create a new API key
-response = requests.post(
-    f"{BASE_URL}/",
-    headers={
-        "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
-        "Content-Type": "application/json"
-    },
-    json={
-        "name": "Customer Instance Key",
-        "limit": 1000  # Optional credit limit
-    }
-)
-
-# Get a specific key
-key_hash = "<YOUR_KEY_HASH>"
-response = requests.get(
-    f"{BASE_URL}/{key_hash}",
-    headers={
-        "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
-        "Content-Type": "application/json"
-    }
-)
-
-# Update a key
-response = requests.patch(
-    f"{BASE_URL}/{key_hash}",
-    headers={
-        "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
-        "Content-Type": "application/json"
-    },
-    json={
-        "name": "Updated Key Name",
-        "disabled": True,  # Optional: Disable the key
-        "include_byok_in_limit": False,  # Optional: control BYOK usage in limit
-        "limit_reset": "daily"  # Optional: reset limit every day at midnight UTC
-    }
-)
-
-# Delete a key
-response = requests.delete(
-    f"{BASE_URL}/{key_hash}",
-    headers={
-        "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
-        "Content-Type": "application/json"
-    }
-)
-```
-
-```typescript title="TypeScript (fetch)"
-const MANAGEMENT_API_KEY = 'your-management-key';
-const BASE_URL = 'https://openrouter.ai/api/v1/keys';
-
-// List the most recent 100 API keys
-const listKeys = await fetch(BASE_URL, {
-  headers: {
-    Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
-    'Content-Type': 'application/json',
-  },
-});
-
-// You can paginate using the `offset` query parameter
-const listKeys = await fetch(`${BASE_URL}?offset=100`, {
-  headers: {
-    Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
-    'Content-Type': 'application/json',
-  },
-});
-
-// Create a new API key
-const createKey = await fetch(`${BASE_URL}`, {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
+  // Create a new API key
+  const newKey = await openRouter.apiKeys.create({
     name: 'Customer Instance Key',
     limit: 1000, // Optional credit limit
-  }),
-});
+  });
 
-// Get a specific key
-const keyHash = '<YOUR_KEY_HASH>';
-const getKey = await fetch(`${BASE_URL}/${keyHash}`, {
-  headers: {
-    Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
-    'Content-Type': 'application/json',
-  },
-});
+  // Get a specific key
+  const keyHash = '<YOUR_KEY_HASH>';
+  const key = await openRouter.apiKeys.get(keyHash);
 
-// Update a key
-const updateKey = await fetch(`${BASE_URL}/${keyHash}`, {
-  method: 'PATCH',
-  headers: {
-    Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
+  // Update a key
+  const updatedKey = await openRouter.apiKeys.update(keyHash, {
     name: 'Updated Key Name',
     disabled: true, // Optional: Disable the key
-    include_byok_in_limit: false, // Optional: control BYOK usage in limit
-    limit_reset: 'daily', // Optional: reset limit every day at midnight UTC
-  }),
-});
+    includeByokInLimit: false, // Optional: control BYOK usage in limit
+    limitReset: 'daily', // Optional: reset limit every day at midnight UTC
+  });
 
-// Delete a key
-const deleteKey = await fetch(`${BASE_URL}/${keyHash}`, {
-  method: 'DELETE',
-  headers: {
-    Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
-    'Content-Type': 'application/json',
-  },
-});
-```
+  // Delete a key
+  await openRouter.apiKeys.delete(keyHash);
+  ```
+
+  ```python title="Python" expandable lines theme={null}
+  import requests
+
+  MANAGEMENT_API_KEY = "your-management-key"
+  BASE_URL = "https://openrouter.ai/api/v1/keys"
+
+  # List the most recent 100 API keys
+  response = requests.get(
+      BASE_URL,
+      headers={
+          "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
+          "Content-Type": "application/json"
+      }
+  )
+
+  # You can paginate using the offset parameter
+  response = requests.get(
+      f"{BASE_URL}?offset=100",
+      headers={
+          "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
+          "Content-Type": "application/json"
+      }
+  )
+
+  # Create a new API key
+  response = requests.post(
+      f"{BASE_URL}/",
+      headers={
+          "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
+          "Content-Type": "application/json"
+      },
+      json={
+          "name": "Customer Instance Key",
+          "limit": 1000  # Optional credit limit
+      }
+  )
+
+  # Get a specific key
+  key_hash = "<YOUR_KEY_HASH>"
+  response = requests.get(
+      f"{BASE_URL}/{key_hash}",
+      headers={
+          "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
+          "Content-Type": "application/json"
+      }
+  )
+
+  # Update a key
+  response = requests.patch(
+      f"{BASE_URL}/{key_hash}",
+      headers={
+          "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
+          "Content-Type": "application/json"
+      },
+      json={
+          "name": "Updated Key Name",
+          "disabled": True,  # Optional: Disable the key
+          "include_byok_in_limit": False,  # Optional: control BYOK usage in limit
+          "limit_reset": "daily"  # Optional: reset limit every day at midnight UTC
+      }
+  )
+
+  # Delete a key
+  response = requests.delete(
+      f"{BASE_URL}/{key_hash}",
+      headers={
+          "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
+          "Content-Type": "application/json"
+      }
+  )
+  ```
+
+  ```typescript title="TypeScript (fetch)" expandable lines theme={null}
+  const MANAGEMENT_API_KEY = 'your-management-key';
+  const BASE_URL = 'https://openrouter.ai/api/v1/keys';
+
+  // List the most recent 100 API keys
+  const listKeys = await fetch(BASE_URL, {
+    headers: {
+      Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  // You can paginate using the `offset` query parameter
+  const listKeys = await fetch(`${BASE_URL}?offset=100`, {
+    headers: {
+      Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  // Create a new API key
+  const createKey = await fetch(`${BASE_URL}`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: 'Customer Instance Key',
+      limit: 1000, // Optional credit limit
+    }),
+  });
+
+  // Get a specific key
+  const keyHash = '<YOUR_KEY_HASH>';
+  const getKey = await fetch(`${BASE_URL}/${keyHash}`, {
+    headers: {
+      Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  // Update a key
+  const updateKey = await fetch(`${BASE_URL}/${keyHash}`, {
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: 'Updated Key Name',
+      disabled: true, // Optional: Disable the key
+      include_byok_in_limit: false, // Optional: control BYOK usage in limit
+      limit_reset: 'daily', // Optional: reset limit every day at midnight UTC
+    }),
+  });
+
+  // Delete a key
+  const deleteKey = await fetch(`${BASE_URL}/${keyHash}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+  });
+  ```
+</CodeGroup>
 
 ## Response Format
 
 API responses return JSON objects containing key information:
 
-```json
+```json expandable lines theme={null}
 {
   "data": [
     {
@@ -233,4 +237,4 @@ API responses return JSON objects containing key information:
 }
 ```
 
-When creating a new key, the response will include the key string itself. Read more in the [API reference](/docs/api-reference/api-keys/create-api-key).
+When creating a new key, the response will include the key string itself. Read more in the [API reference](/api/api-reference/api-keys/create-a-new-api-key).

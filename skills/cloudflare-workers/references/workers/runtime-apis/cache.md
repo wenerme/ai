@@ -16,6 +16,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The [Cache API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Cache) allows fine grained control of reading and writing from the [Cloudflare global network ↗](https://www.cloudflare.com/network/) cache.
 
+Note
+
+The Cache API is a programmatic interface for reading from and writing to Cloudflare's cache from inside a Worker. To cache responses from your Worker so that Cloudflare returns them without executing your Worker, use [Workers Caching](https://developers.cloudflare.com/workers/cache/) instead. The two mechanisms are independent.
+
 The Cache API is available globally but the contents of the cache do not replicate outside of the originating data center. A `GET /users` response can be cached in the originating data center, but will not exist in another data center unless it has been explicitly created.
 
 Tiered caching
@@ -214,6 +218,6 @@ The `cache.delete` method only purges content of the cache in the data center th
 * [Example: caching POST requests](https://developers.cloudflare.com/workers/examples/cache-post-request/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/cache/#page","headline":"Cache · Cloudflare Workers docs","description":"Control reading and writing from the Cloudflare global network cache.","url":"https://developers.cloudflare.com/workers/runtime-apis/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/cache/#page","headline":"Cache · Cloudflare Workers docs","description":"Control reading and writing from the Cloudflare global network cache.","url":"https://developers.cloudflare.com/workers/runtime-apis/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/cache/","name":"Cache"}}]}
 ```

@@ -1,6 +1,6 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Parameters
 
@@ -8,7 +8,7 @@ Sampling parameters shape the token generation process of the model. You may sen
 
 OpenRouter will default to the values listed below if certain parameters are absent from your request (for example, `temperature` to 1.0). We will also transmit some provider-specific parameters, such as `safe_prompt` for Mistral or `raw_mode` for Hyperbolic directly to the respective providers if specified.
 
-Please refer to the model’s provider section to confirm which parameters are supported. For detailed guidance on managing provider-specific parameters, [click here](/docs/guides/routing/provider-selection#requiring-providers-to-support-all-parameters-beta).
+Please refer to the model’s provider section to confirm which parameters are supported. For detailed guidance on managing provider-specific parameters, [click here](/guides/routing/provider-selection#requiring-providers-to-support-all-parameters-beta).
 
 ## Temperature
 
@@ -183,7 +183,7 @@ Stop generation immediately if the model encounter any token specified in the st
 
 * Optional, **array**
 
-Tool calling parameter, following OpenAI's tool calling request shape. For non-OpenAI providers, it will be transformed accordingly. [Click here to learn more about tool calling](/docs/guides/features/tool-calling)
+Tool calling parameter, following OpenAI's tool calling request shape. For non-OpenAI providers, it will be transformed accordingly. [Click here to learn more about tool calling](/guides/features/tool-calling)
 
 ## Tool Choice
 
@@ -223,7 +223,7 @@ Controls reasoning behavior for models that support thinking tokens, including w
 
 * Key: `reasoning_effort`
 
-* Optional, **enum** (max, xhigh, high, medium, low, minimal, none)
+* Optional, **enum** (xhigh, high, medium, low, minimal, none)
 
 OpenAI-style reasoning effort setting. Higher values allow the model to spend more tokens on internal reasoning when supported.
 
@@ -240,6 +240,8 @@ Configures native web search options for models and providers that support web-c
 * Key: `verbosity`
 
 * Optional, **enum** (low, medium, high, xhigh, max)
+
+* Default: **medium**
 
 Constrains the verbosity of the model's response. Lower values produce more concise responses, while higher values produce more detailed and comprehensive responses. Introduced by OpenAI for the Responses API.
 

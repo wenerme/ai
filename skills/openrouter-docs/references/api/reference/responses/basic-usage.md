@@ -1,10 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Basic Usage
 
-This API is in **beta stage** and may have breaking changes.
+> Getting started with the Responses API Beta
+
+<Warning>
+  **Beta API**
+
+  This API is in **beta stage** and may have breaking changes.
+</Warning>
 
 The Responses API Beta supports both simple string input and structured message arrays, making it easy to get started with basic text generation.
 
@@ -12,144 +18,148 @@ The Responses API Beta supports both simple string input and structured message 
 
 The simplest way to use the API is with a string input:
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/o4-mini',
-    input: 'What is the meaning of life?',
-    max_output_tokens: 9000,
-  }),
-});
-
-const result = await response.json();
-console.log(result);
-```
-
-```python title="Python"
-import requests
-
-response = requests.post(
-    'https://openrouter.ai/api/v1/responses',
-    headers={
-        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-        'Content-Type': 'application/json',
+<CodeGroup>
+  ```typescript title="TypeScript" lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/responses', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+      'Content-Type': 'application/json',
     },
-    json={
-        'model': 'openai/o4-mini',
-        'input': 'What is the meaning of life?',
-        'max_output_tokens': 9000,
-    }
-)
+    body: JSON.stringify({
+      model: 'openai/o4-mini',
+      input: 'What is the meaning of life?',
+      max_output_tokens: 9000,
+    }),
+  });
 
-result = response.json()
-print(result)
-```
+  const result = await response.json();
+  console.log(result);
+  ```
 
-```bash title="cURL"
-curl -X POST https://openrouter.ai/api/v1/responses \
-  -H "Authorization: Bearer YOUR_OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openai/o4-mini",
-    "input": "What is the meaning of life?",
-    "max_output_tokens": 9000
-  }'
-```
+  ```python title="Python" lines theme={null}
+  import requests
+
+  response = requests.post(
+      'https://openrouter.ai/api/v1/responses',
+      headers={
+          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+          'Content-Type': 'application/json',
+      },
+      json={
+          'model': 'openai/o4-mini',
+          'input': 'What is the meaning of life?',
+          'max_output_tokens': 9000,
+      }
+  )
+
+  result = response.json()
+  print(result)
+  ```
+
+  ```bash title="cURL" lines theme={null}
+  curl -X POST https://openrouter.ai/api/v1/responses \
+    -H "Authorization: Bearer YOUR_OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "openai/o4-mini",
+      "input": "What is the meaning of life?",
+      "max_output_tokens": 9000
+    }'
+  ```
+</CodeGroup>
 
 ## Structured Message Input
 
 For more complex conversations, use the message array format:
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/o4-mini',
-    input: [
-      {
-        type: 'message',
-        role: 'user',
-        content: [
-          {
-            type: 'input_text',
-            text: 'Tell me a joke about programming',
-          },
-        ],
-      },
-    ],
-    max_output_tokens: 9000,
-  }),
-});
-
-const result = await response.json();
-```
-
-```python title="Python"
-import requests
-
-response = requests.post(
-    'https://openrouter.ai/api/v1/responses',
-    headers={
-        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-        'Content-Type': 'application/json',
+<CodeGroup>
+  ```typescript title="TypeScript" expandable lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/responses', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+      'Content-Type': 'application/json',
     },
-    json={
-        'model': 'openai/o4-mini',
-        'input': [
+    body: JSON.stringify({
+      model: 'openai/o4-mini',
+      input: [
+        {
+          type: 'message',
+          role: 'user',
+          content: [
             {
-                'type': 'message',
-                'role': 'user',
-                'content': [
-                    {
-                        'type': 'input_text',
-                        'text': 'Tell me a joke about programming',
-                    },
-                ],
+              type: 'input_text',
+              text: 'Tell me a joke about programming',
             },
-        ],
-        'max_output_tokens': 9000,
-    }
-)
+          ],
+        },
+      ],
+      max_output_tokens: 9000,
+    }),
+  });
 
-result = response.json()
-```
+  const result = await response.json();
+  ```
 
-```bash title="cURL"
-curl -X POST https://openrouter.ai/api/v1/responses \
-  -H "Authorization: Bearer YOUR_OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openai/o4-mini",
-    "input": [
-      {
-        "type": "message",
-        "role": "user",
-        "content": [
-          {
-            "type": "input_text",
-            "text": "Tell me a joke about programming"
-          }
-        ]
+  ```python title="Python" expandable lines theme={null}
+  import requests
+
+  response = requests.post(
+      'https://openrouter.ai/api/v1/responses',
+      headers={
+          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+          'Content-Type': 'application/json',
+      },
+      json={
+          'model': 'openai/o4-mini',
+          'input': [
+              {
+                  'type': 'message',
+                  'role': 'user',
+                  'content': [
+                      {
+                          'type': 'input_text',
+                          'text': 'Tell me a joke about programming',
+                      },
+                  ],
+              },
+          ],
+          'max_output_tokens': 9000,
       }
-    ],
-    "max_output_tokens": 9000
-  }'
-```
+  )
+
+  result = response.json()
+  ```
+
+  ```bash title="cURL" lines theme={null}
+  curl -X POST https://openrouter.ai/api/v1/responses \
+    -H "Authorization: Bearer YOUR_OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "openai/o4-mini",
+      "input": [
+        {
+          "type": "message",
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Tell me a joke about programming"
+            }
+          ]
+        }
+      ],
+      "max_output_tokens": 9000
+    }'
+  ```
+</CodeGroup>
 
 ## Response Format
 
 The API returns a structured response with the generated content:
 
-```json
+```json expandable lines theme={null}
 {
   "id": "resp_1234567890",
   "object": "response",
@@ -183,85 +193,87 @@ The API returns a structured response with the generated content:
 
 Enable streaming for real-time response generation:
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/o4-mini',
-    input: 'Write a short story about AI',
-    stream: true,
-    max_output_tokens: 9000,
-  }),
-});
+<CodeGroup>
+  ```typescript title="TypeScript" expandable lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/responses', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'openai/o4-mini',
+      input: 'Write a short story about AI',
+      stream: true,
+      max_output_tokens: 9000,
+    }),
+  });
 
-const reader = response.body?.getReader();
-const decoder = new TextDecoder();
+  const reader = response.body?.getReader();
+  const decoder = new TextDecoder();
 
-while (true) {
-  const { done, value } = await reader.read();
-  if (done) break;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
 
-  const chunk = decoder.decode(value);
-  const lines = chunk.split('\n');
+    const chunk = decoder.decode(value);
+    const lines = chunk.split('\n');
 
-  for (const line of lines) {
-    if (line.startsWith('data: ')) {
-      const data = line.slice(6);
-      if (data === '[DONE]') return;
+    for (const line of lines) {
+      if (line.startsWith('data: ')) {
+        const data = line.slice(6);
+        if (data === '[DONE]') return;
 
-      try {
-        const parsed = JSON.parse(data);
-        console.log(parsed);
-      } catch (e) {
-        // Skip invalid JSON
+        try {
+          const parsed = JSON.parse(data);
+          console.log(parsed);
+        } catch (e) {
+          // Skip invalid JSON
+        }
       }
     }
   }
-}
-```
+  ```
 
-```python title="Python"
-import requests
-import json
+  ```python title="Python" expandable lines theme={null}
+  import requests
+  import json
 
-response = requests.post(
-    'https://openrouter.ai/api/v1/responses',
-    headers={
-        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-        'Content-Type': 'application/json',
-    },
-    json={
-        'model': 'openai/o4-mini',
-        'input': 'Write a short story about AI',
-        'stream': True,
-        'max_output_tokens': 9000,
-    },
-    stream=True
-)
+  response = requests.post(
+      'https://openrouter.ai/api/v1/responses',
+      headers={
+          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+          'Content-Type': 'application/json',
+      },
+      json={
+          'model': 'openai/o4-mini',
+          'input': 'Write a short story about AI',
+          'stream': True,
+          'max_output_tokens': 9000,
+      },
+      stream=True
+  )
 
-for line in response.iter_lines():
-    if line:
-        line_str = line.decode('utf-8')
-        if line_str.startswith('data: '):
-            data = line_str[6:]
-            if data == '[DONE]':
-                break
-            try:
-                parsed = json.loads(data)
-                print(parsed)
-            except json.JSONDecodeError:
-                continue
-```
+  for line in response.iter_lines():
+      if line:
+          line_str = line.decode('utf-8')
+          if line_str.startswith('data: '):
+              data = line_str[6:]
+              if data == '[DONE]':
+                  break
+              try:
+                  parsed = json.loads(data)
+                  print(parsed)
+              except json.JSONDecodeError:
+                  continue
+  ```
+</CodeGroup>
 
 ### Example Streaming Output
 
 The streaming response returns Server-Sent Events (SSE) chunks:
 
-```
+```lines theme={null}
 data: {"type":"response.created","response":{"id":"resp_1234567890","object":"response","status":"in_progress"}}
 
 data: {"type":"response.output_item.added","response_id":"resp_1234567890","output_index":0,"item":{"type":"message","id":"msg_abc123","role":"assistant","status":"in_progress","content":[]}}
@@ -298,9 +310,70 @@ data: [DONE]
 
 Handle common errors gracefully:
 
-```typescript title="TypeScript"
-try {
-  const response = await fetch('https://openrouter.ai/api/v1/responses', {
+<CodeGroup>
+  ```typescript title="TypeScript" expandable lines theme={null}
+  try {
+    const response = await fetch('https://openrouter.ai/api/v1/responses', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'openai/o4-mini',
+        input: 'Hello, world!',
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('API Error:', error.error.message);
+      return;
+    }
+
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.error('Network Error:', error);
+  }
+  ```
+
+  ```python title="Python" expandable lines theme={null}
+  import requests
+
+  try:
+      response = requests.post(
+          'https://openrouter.ai/api/v1/responses',
+          headers={
+              'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+              'Content-Type': 'application/json',
+          },
+          json={
+              'model': 'openai/o4-mini',
+              'input': 'Hello, world!',
+          }
+      )
+
+      if response.status_code != 200:
+          error = response.json()
+          print(f"API Error: {error['error']['message']}")
+      else:
+          result = response.json()
+          print(result)
+
+  except requests.RequestException as e:
+      print(f"Network Error: {e}")
+  ```
+</CodeGroup>
+
+## Multiple Turn Conversations
+
+Since the Responses API Beta is stateless, you must include the full conversation history in each request to maintain context:
+
+<CodeGroup>
+  ```typescript title="TypeScript" expandable lines theme={null}
+  // First request
+  const firstResponse = await fetch('https://openrouter.ai/api/v1/responses', {
     method: 'POST',
     headers: {
       'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
@@ -308,217 +381,168 @@ try {
     },
     body: JSON.stringify({
       model: 'openai/o4-mini',
-      input: 'Hello, world!',
+      input: [
+        {
+          type: 'message',
+          role: 'user',
+          content: [
+            {
+              type: 'input_text',
+              text: 'What is the capital of France?',
+            },
+          ],
+        },
+      ],
+      max_output_tokens: 9000,
     }),
   });
 
-  if (!response.ok) {
-    const error = await response.json();
-    console.error('API Error:', error.error.message);
-    return;
-  }
+  const firstResult = await firstResponse.json();
 
-  const result = await response.json();
-  console.log(result);
-} catch (error) {
-  console.error('Network Error:', error);
-}
-```
-
-```python title="Python"
-import requests
-
-try:
-    response = requests.post(
-        'https://openrouter.ai/api/v1/responses',
-        headers={
-            'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-            'Content-Type': 'application/json',
+  // Second request - include previous conversation
+  const secondResponse = await fetch('https://openrouter.ai/api/v1/responses', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'openai/o4-mini',
+      input: [
+        {
+          type: 'message',
+          role: 'user',
+          content: [
+            {
+              type: 'input_text',
+              text: 'What is the capital of France?',
+            },
+          ],
         },
-        json={
-            'model': 'openai/o4-mini',
-            'input': 'Hello, world!',
-        }
-    )
-
-    if response.status_code != 200:
-        error = response.json()
-        print(f"API Error: {error['error']['message']}")
-    else:
-        result = response.json()
-        print(result)
-
-except requests.RequestException as e:
-    print(f"Network Error: {e}")
-```
-
-## Multiple Turn Conversations
-
-Since the Responses API Beta is stateless, you must include the full conversation history in each request to maintain context:
-
-```typescript title="TypeScript"
-// First request
-const firstResponse = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/o4-mini',
-    input: [
-      {
-        type: 'message',
-        role: 'user',
-        content: [
-          {
-            type: 'input_text',
-            text: 'What is the capital of France?',
-          },
-        ],
-      },
-    ],
-    max_output_tokens: 9000,
-  }),
-});
-
-const firstResult = await firstResponse.json();
-
-// Second request - include previous conversation
-const secondResponse = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/o4-mini',
-    input: [
-      {
-        type: 'message',
-        role: 'user',
-        content: [
-          {
-            type: 'input_text',
-            text: 'What is the capital of France?',
-          },
-        ],
-      },
-      {
-        type: 'message',
-        role: 'assistant',
-        id: 'msg_abc123',
-        status: 'completed',
-        content: [
-          {
-            type: 'output_text',
-            text: 'The capital of France is Paris.',
-            annotations: []
-          }
-        ]
-      },
-      {
-        type: 'message',
-        role: 'user',
-        content: [
-          {
-            type: 'input_text',
-            text: 'What is the population of that city?',
-          },
-        ],
-      },
-    ],
-    max_output_tokens: 9000,
-  }),
-});
-
-const secondResult = await secondResponse.json();
-```
-
-```python title="Python"
-import requests
-
-# First request
-first_response = requests.post(
-    'https://openrouter.ai/api/v1/responses',
-    headers={
-        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-        'Content-Type': 'application/json',
-    },
-    json={
-        'model': 'openai/o4-mini',
-        'input': [
+        {
+          type: 'message',
+          role: 'assistant',
+          id: 'msg_abc123',
+          status: 'completed',
+          content: [
             {
-                'type': 'message',
-                'role': 'user',
-                'content': [
-                    {
-                        'type': 'input_text',
-                        'text': 'What is the capital of France?',
-                    },
-                ],
-            },
-        ],
-        'max_output_tokens': 9000,
-    }
-)
-
-first_result = first_response.json()
-
-# Second request - include previous conversation
-second_response = requests.post(
-    'https://openrouter.ai/api/v1/responses',
-    headers={
-        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-        'Content-Type': 'application/json',
-    },
-    json={
-        'model': 'openai/o4-mini',
-        'input': [
+              type: 'output_text',
+              text: 'The capital of France is Paris.',
+              annotations: []
+            }
+          ]
+        },
+        {
+          type: 'message',
+          role: 'user',
+          content: [
             {
-                'type': 'message',
-                'role': 'user',
-                'content': [
-                    {
-                        'type': 'input_text',
-                        'text': 'What is the capital of France?',
-                    },
-                ],
+              type: 'input_text',
+              text: 'What is the population of that city?',
             },
-            {
-                'type': 'message',
-                'role': 'assistant',
-                'id': 'msg_abc123',
-                'status': 'completed',
-                'content': [
-                    {
-                        'type': 'output_text',
-                        'text': 'The capital of France is Paris.',
-                        'annotations': []
-                    }
-                ]
-            },
-            {
-                'type': 'message',
-                'role': 'user',
-                'content': [
-                    {
-                        'type': 'input_text',
-                        'text': 'What is the population of that city?',
-                    },
-                ],
-            },
-        ],
-        'max_output_tokens': 9000,
-    }
-)
+          ],
+        },
+      ],
+      max_output_tokens: 9000,
+    }),
+  });
 
-second_result = second_response.json()
-```
+  const secondResult = await secondResponse.json();
+  ```
 
-The `id` and `status` fields are required for any `assistant` role messages included in the conversation history.
+  ```python title="Python" expandable lines theme={null}
+  import requests
 
-Always include the complete conversation history in each request. The API does not store previous messages, so context must be maintained client-side.
+  # First request
+  first_response = requests.post(
+      'https://openrouter.ai/api/v1/responses',
+      headers={
+          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+          'Content-Type': 'application/json',
+      },
+      json={
+          'model': 'openai/o4-mini',
+          'input': [
+              {
+                  'type': 'message',
+                  'role': 'user',
+                  'content': [
+                      {
+                          'type': 'input_text',
+                          'text': 'What is the capital of France?',
+                      },
+                  ],
+              },
+          ],
+          'max_output_tokens': 9000,
+      }
+  )
+
+  first_result = first_response.json()
+
+  # Second request - include previous conversation
+  second_response = requests.post(
+      'https://openrouter.ai/api/v1/responses',
+      headers={
+          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+          'Content-Type': 'application/json',
+      },
+      json={
+          'model': 'openai/o4-mini',
+          'input': [
+              {
+                  'type': 'message',
+                  'role': 'user',
+                  'content': [
+                      {
+                          'type': 'input_text',
+                          'text': 'What is the capital of France?',
+                      },
+                  ],
+              },
+              {
+                  'type': 'message',
+                  'role': 'assistant',
+                  'id': 'msg_abc123',
+                  'status': 'completed',
+                  'content': [
+                      {
+                          'type': 'output_text',
+                          'text': 'The capital of France is Paris.',
+                          'annotations': []
+                      }
+                  ]
+              },
+              {
+                  'type': 'message',
+                  'role': 'user',
+                  'content': [
+                      {
+                          'type': 'input_text',
+                          'text': 'What is the population of that city?',
+                      },
+                  ],
+              },
+          ],
+          'max_output_tokens': 9000,
+      }
+  )
+
+  second_result = second_response.json()
+  ```
+</CodeGroup>
+
+<Info>
+  **Required Fields**
+
+  The `id` and `status` fields are required for any `assistant` role messages included in the conversation history.
+</Info>
+
+<Info>
+  **Conversation History**
+
+  Always include the complete conversation history in each request. The API does not store previous messages, so context must be maintained client-side.
+</Info>
 
 ## Next Steps
 

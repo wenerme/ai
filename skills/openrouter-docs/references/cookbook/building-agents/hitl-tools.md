@@ -1,13 +1,17 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Add Human-in-the-Loop Controls to an Agent SDK Agent
 
-This recipe assumes you already have an agent built with the OpenRouter Agent
-SDK and `callModel`. If you are starting from scratch, first read the
-[callModel overview](/docs/sdks/typescript/call-model/overview) to learn
-about the Agent SDK.
+> Add HITL to an existing Agent SDK agent so it can pause high-stakes tool calls for human input
+
+<Tip>
+  This recipe assumes you already have an agent built with the OpenRouter Agent
+  SDK and `callModel`. If you are starting from scratch, first read the
+  [callModel overview](/agent-sdk/call-model/overview) to learn
+  about the Agent SDK.
+</Tip>
 
 **Goal:** Add human-in-the-loop (HITL) controls to an existing Agent SDK agent
 so one of its tools can auto-resolve routine decisions and pause for human
@@ -36,7 +40,7 @@ Both pause for human input, but they solve different problems:
 
 Use HITL when the decision depends on the input data. Use `requireApproval`
 when you need a human to approve whether a tool should execute. See the [Tool
-Approval & State](/docs/sdks/typescript/call-model/approval-and-state)
+Approval & State](/agent-sdk/call-model/tool-approval-state)
 reference for details on approval flows and conditional approval predicates.
 
 ## Prerequisites
@@ -60,7 +64,7 @@ Return a value to auto-resolve (like a regular tool). Return `null` to pause
 the loop — the conversation status moves to `'awaiting_hitl'` and the call
 surfaces to the caller.
 
-```typescript
+```typescript expandable lines theme={null}
 import { OpenRouter, tool } from '@openrouter/agent';
 import type { ConversationState, StateAccessor } from '@openrouter/agent';
 import { z } from 'zod';
@@ -92,7 +96,7 @@ const approvePayment = tool({
 
 `outputSchema` is required for HITL tools — it validates both the
 auto-resolved return value and any human-supplied response. See the
-[HITLTool type reference](/docs/sdks/typescript/call-model/api-reference#hitltool)
+[HITLTool type reference](/agent-sdk/call-model/api-reference#hitltool)
 for the full type signature.
 
 ## 2. Add post-processing with onResponseReceived
@@ -113,7 +117,7 @@ exact model-facing tool result you want. Common cases include:
 
 Replace the tool definition from step 1 with this version:
 
-```typescript
+```typescript lines theme={null}
 const approvePayment = tool({
   name: 'approve_payment',
   description: 'Approve a payment, escalating large amounts to a human',
@@ -150,7 +154,7 @@ The snippet below shows the minimum shape with in-memory state for clarity. In
 production, back the `StateAccessor` with your database, Redis, or whatever
 storage your agent already uses.
 
-```typescript
+```typescript lines theme={null}
 // Keep using your existing OpenRouter client if your agent already has one.
 const openrouter = new OpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,
@@ -175,7 +179,7 @@ const result = openrouter.callModel({
 
 If you need a deterministic smoke test, temporarily force this tool call:
 
-```typescript
+```typescript lines theme={null}
 toolChoice: { type: 'function', name: 'approve_payment' },
 ```
 
@@ -187,7 +191,7 @@ pauses with `status: 'awaiting_hitl'`. Check the state after the call
 completes, then surface the pending call to the human review surface in your
 app.
 
-```typescript
+```typescript lines theme={null}
 const stateSnapshot = await result.getState();
 const pendingCalls =
   stateSnapshot.status === 'awaiting_hitl'
@@ -202,7 +206,7 @@ for (const call of pendingCalls) {
 
 **Illustrative output shape:**
 
-```
+```lines theme={null}
 Pending: approve_payment({"amount":500,"recipient":"Acme Corp"})
 Call ID: call_abc123
 ```
@@ -226,7 +230,7 @@ collect a rollback plan, or a data-change tool might collect corrected field
 values. Whatever collects the input should return a value that matches the
 tool's `outputSchema`.
 
-```typescript
+```typescript expandable lines theme={null}
 // Simulate collecting a human decision
 const humanDecision = { approved: true };
 const firstPendingCall = pendingCalls[0];

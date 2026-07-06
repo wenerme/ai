@@ -1,14 +1,18 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Build Your Own Headless Agent
 
-Looking to build an interactive terminal agent with a customizable UI instead? See the [Build Your Own Agent TUI](/docs/cookbook/building-agents/create-agent-harness-tui) guide.
+> Scaffold a headless AI agent for CLI tools, API servers, and automation pipelines
+
+<Info>
+  Looking to build an interactive terminal agent with a customizable UI instead? See the [Build Your Own Agent TUI](/cookbook/building-agents/create-agent-harness-tui) guide.
+</Info>
 
 The [create-headless-agent](https://github.com/OpenRouterTeam/skills/tree/main/skills/create-headless-agent) skill scaffolds a headless agent in TypeScript + Bun — no terminal UI, just structured input and output. It's designed for CLI tools, API servers, queue workers, and automation pipelines where you need an agent that runs programmatically.
 
-Under the hood, the generated project uses [`@openrouter/agent`](https://www.npmjs.com/package/@openrouter/agent) for the inner loop (model calls, tool execution, stop conditions) — the same SDK that powers the [Agent TUI](/docs/cookbook/building-agents/create-agent-harness-tui), with a non-interactive outer layer.
+Under the hood, the generated project uses [`@openrouter/agent`](https://www.npmjs.com/package/@openrouter/agent) for the inner loop (model calls, tool execution, stop conditions) — the same SDK that powers the [Agent TUI](/cookbook/building-agents/create-agent-harness-tui), with a non-interactive outer layer.
 
 ## When to build your own
 
@@ -21,24 +25,32 @@ Building a headless agent makes sense when:
 * **You want structured output** — NDJSON event streams, exit codes, or schema-validated responses for programmatic consumption
 * **You want to learn** — understanding how agents work at the tool-execution level makes you better at using and debugging them
 
-If you need an interactive terminal experience, use the [Agent TUI skill](/docs/cookbook/building-agents/create-agent-harness-tui) instead.
+If you need an interactive terminal experience, use the [Agent TUI skill](/cookbook/building-agents/create-agent-harness-tui) instead.
 
 ## Install the skill
 
 The create-headless-agent skill is part of the [OpenRouter Skills](https://github.com/OpenRouterTeam/skills) collection. Install it with your AI coding agent of choice:
 
-Requires [GitHub CLI](https://cli.github.com/) v2.90.0+. Works with Claude Code, Cursor, OpenCode, Codex, Gemini CLI, Windsurf, and [many more agents](https://cli.github.com/manual/gh_skill_install):
+<Tabs>
+  <Tab title="GitHub CLI">
+    Requires [GitHub CLI](https://cli.github.com/) v2.90.0+. Works with Claude Code, Cursor, OpenCode, Codex, Gemini CLI, Windsurf, and [many more agents](https://cli.github.com/manual/gh_skill_install):
 
-```bash
-gh skill install OpenRouterTeam/skills create-headless-agent
-```
+    ```bash lines theme={null}
+    gh skill install OpenRouterTeam/skills create-headless-agent
+    ```
+  </Tab>
 
-```
-/plugin marketplace add OpenRouterTeam/skills
-/plugin install openrouter@openrouter
-```
+  <Tab title="Claude Code">
+    ```lines theme={null}
+    /plugin marketplace add OpenRouterTeam/skills
+    /plugin install openrouter@openrouter
+    ```
+  </Tab>
 
-Add via **Settings > Rules > Add Rule > Remote Rule (Github)** with `OpenRouterTeam/skills`.
+  <Tab title="Cursor">
+    Add via **Settings > Rules > Add Rule > Remote Rule (Github)** with `OpenRouterTeam/skills`.
+  </Tab>
+</Tabs>
 
 Once installed, ask your agent something like *"scaffold a headless agent"* or *"build me a CLI agent"* and the skill activates automatically.
 
@@ -73,7 +85,7 @@ The generated CLI supports three output modes:
 | **JSON**           | `--json` / `-j`  | NDJSON event stream — one `AgentEvent` per line |
 | **Quiet**          | `--quiet` / `-q` | No output; exit 0 on success, 1 on error        |
 
-```bash
+```bash lines theme={null}
 # Text mode (default)
 bun run src/cli.ts --prompt "List all TypeScript files"
 
@@ -89,7 +101,7 @@ echo "Summarize this file" | bun run src/cli.ts
 
 ## Generated project structure
 
-```
+```lines theme={null}
 my-headless-agent/
   package.json              @openrouter/agent, zod
   tsconfig.json             ES2022, NodeNext, strict
@@ -112,7 +124,7 @@ my-headless-agent/
 
 Run it with:
 
-```bash
+```bash lines theme={null}
 export OPENROUTER_API_KEY="sk-or-..."
 bun run src/cli.ts --prompt "What files are in this directory?"
 ```
@@ -173,7 +185,7 @@ For mid-run resilience (crash-resume, cross-process approval flows), pair with t
 
 Constrain the agent's final response to match a JSON Schema using Ajv. The scaffold is tolerant of markdown fences, so schemas work even when the model wraps JSON in code blocks:
 
-```bash
+```bash lines theme={null}
 cat > report.schema.json <<'EOF'
 {
   "type": "object",
@@ -208,6 +220,6 @@ The skill generates a CLI entry point by default, but you can also ask for:
 * [Create Headless Agent skill README](https://github.com/OpenRouterTeam/skills/tree/main/skills/create-headless-agent)
 * [OpenRouter Skills repository](https://github.com/OpenRouterTeam/skills)
 * [`@openrouter/agent` on npm](https://www.npmjs.com/package/@openrouter/agent)
-* [OpenRouter TypeScript SDK](/docs/client-sdks/typescript)
-* [Server Tools documentation](/docs/guides/features/server-tools)
+* [OpenRouter TypeScript SDK](/client-sdks/typescript)
+* [Server Tools documentation](/guides/features/server-tools)
 * [OpenRouter API keys](https://openrouter.ai/settings/keys)

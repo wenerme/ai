@@ -1,8 +1,50 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Audio
+
+> How to send and receive audio with OpenRouter models
+
+export const Template = ({children, data}) => {
+  const replace = s => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in data) ? data[k] : `{{${k}}}`);
+  const leafText = node => typeof node === 'string' ? node : node?.$$typeof && typeof node.props?.children === 'string' ? node.props.children : null;
+  const collapseTokens = nodes => {
+    const out = [];
+    let i = 0;
+    while (i < nodes.length) {
+      const ta = leafText(nodes[i]);
+      const tb = leafText(nodes[i + 1]);
+      const tc = leafText(nodes[i + 2]);
+      if (ta != null && tb != null && tc != null) {
+        const m = (ta + tb + tc).match(/^([\s\S]*)\{\{(\w+)\}\}([\s\S]*)$/);
+        if (m && (m[2] in data)) {
+          out.push(m[1] + data[m[2]] + m[3]);
+          i += 3;
+          continue;
+        }
+      }
+      out.push(nodes[i]);
+      i++;
+    }
+    return out;
+  };
+  const process = node => {
+    if (typeof node === 'string') return replace(node);
+    if (Array.isArray(node)) return collapseTokens(node.map(process));
+    if (node && typeof node === 'object') {
+      if (node.$$typeof) return {
+        ...node,
+        props: process(node.props)
+      };
+      return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, process(v)]));
+    }
+    return node;
+  };
+  return <>{process(children)}</>;
+};
+
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 OpenRouter supports both sending audio files to compatible models and receiving audio responses via the API. This guide covers how to work with audio inputs and outputs.
 
@@ -12,146 +54,155 @@ Send audio files to compatible models for transcription, analysis, and processin
 
 **Note**: Audio files must be **base64-encoded** - direct URLs are not supported for audio content.
 
-You can search for models that support audio input by filtering to audio input modality on our [Models page](/models?fmt=cards\&input_modalities=audio).
+You can search for models that support audio input by filtering to audio input modality on our [Models page](/guides/overview/models).
 
 ### Sending Audio Files
 
 Here's how to send an audio file for processing:
 
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
-import fs from "fs/promises";
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'google/gemini-2.5-flash'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK" expandable lines theme={null}
+    import { OpenRouter } from '@openrouter/sdk';
+    import fs from "fs/promises";
 
-const openRouter = new OpenRouter({
-  apiKey: '{{API_KEY_REF}}',
-});
+    const openRouter = new OpenRouter({
+      apiKey: '{{API_KEY_REF}}',
+    });
 
-async function encodeAudioToBase64(audioPath: string): Promise<string> {
-  const audioBuffer = await fs.readFile(audioPath);
-  return audioBuffer.toString("base64");
-}
+    async function encodeAudioToBase64(audioPath: string): Promise<string> {
+      const audioBuffer = await fs.readFile(audioPath);
+      return audioBuffer.toString("base64");
+    }
 
-// Read and encode the audio file
-const audioPath = "path/to/your/audio.wav";
-const base64Audio = await encodeAudioToBase64(audioPath);
+    // Read and encode the audio file
+    const audioPath = "path/to/your/audio.wav";
+    const base64Audio = await encodeAudioToBase64(audioPath);
 
-const result = await openRouter.chat.send({
-  model: "{{MODEL}}",
-  messages: [
-    {
-      role: "user",
-      content: [
+    const result = await openRouter.chat.send({
+      model: "{{MODEL}}",
+      messages: [
         {
-          type: "text",
-          text: "Please transcribe this audio file.",
-        },
-        {
-          type: "input_audio",
-          inputAudio: {
-            data: base64Audio,
-            format: "wav",
-          },
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: "Please transcribe this audio file.",
+            },
+            {
+              type: "input_audio",
+              inputAudio: {
+                data: base64Audio,
+                format: "wav",
+              },
+            },
+          ],
         },
       ],
-    },
-  ],
-  stream: false,
-});
+      stream: false,
+    });
 
-console.log(result);
-```
+    console.log(result);
+    ```
 
-```python
-import requests
-import json
-import base64
+    ```python Python expandable lines theme={null}
+    import requests
+    import json
+    import base64
 
-def encode_audio_to_base64(audio_path):
-    with open(audio_path, "rb") as audio_file:
-        return base64.b64encode(audio_file.read()).decode('utf-8')
+    def encode_audio_to_base64(audio_path):
+        with open(audio_path, "rb") as audio_file:
+            return base64.b64encode(audio_file.read()).decode('utf-8')
 
-url = "https://openrouter.ai/api/v1/chat/completions"
-headers = {
-    "Authorization": f"Bearer {API_KEY_REF}",
-    "Content-Type": "application/json"
-}
-
-# Read and encode the audio file
-audio_path = "path/to/your/audio.wav"
-base64_audio = encode_audio_to_base64(audio_path)
-
-messages = [
-    {
-        "role": "user",
-        "content": [
-            {
-                "type": "text",
-                "text": "Please transcribe this audio file."
-            },
-            {
-                "type": "input_audio",
-                "input_audio": {
-                    "data": base64_audio,
-                    "format": "wav"
-                }
-            }
-        ]
+    url = "https://openrouter.ai/api/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {API_KEY_REF}",
+        "Content-Type": "application/json"
     }
-]
 
-payload = {
-    "model": "{{MODEL}}",
-    "messages": messages
-}
+    # Read and encode the audio file
+    audio_path = "path/to/your/audio.wav"
+    base64_audio = encode_audio_to_base64(audio_path)
 
-response = requests.post(url, headers=headers, json=payload)
-print(response.json())
-```
+    messages = [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Please transcribe this audio file."
+                },
+                {
+                    "type": "input_audio",
+                    "input_audio": {
+                        "data": base64_audio,
+                        "format": "wav"
+                    }
+                }
+            ]
+        }
+    ]
 
-```typescript title="TypeScript (fetch)"
-import fs from "fs/promises";
+    payload = {
+        "model": "{{MODEL}}",
+        "messages": messages
+    }
 
-async function encodeAudioToBase64(audioPath: string): Promise<string> {
-  const audioBuffer = await fs.readFile(audioPath);
-  return audioBuffer.toString("base64");
-}
+    response = requests.post(url, headers=headers, json=payload)
+    print(response.json())
+    ```
 
-// Read and encode the audio file
-const audioPath = "path/to/your/audio.wav";
-const base64Audio = await encodeAudioToBase64(audioPath);
+    ```typescript title="TypeScript (fetch)" expandable lines theme={null}
+    import fs from "fs/promises";
 
-const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${API_KEY_REF}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    model: "{{MODEL}}",
-    messages: [
-      {
-        role: "user",
-        content: [
+    async function encodeAudioToBase64(audioPath: string): Promise<string> {
+      const audioBuffer = await fs.readFile(audioPath);
+      return audioBuffer.toString("base64");
+    }
+
+    // Read and encode the audio file
+    const audioPath = "path/to/your/audio.wav";
+    const base64Audio = await encodeAudioToBase64(audioPath);
+
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${API_KEY_REF}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "{{MODEL}}",
+        messages: [
           {
-            type: "text",
-            text: "Please transcribe this audio file.",
-          },
-          {
-            type: "input_audio",
-            input_audio: {
-              data: base64Audio,
-              format: "wav",
-            },
+            role: "user",
+            content: [
+              {
+                type: "text",
+                text: "Please transcribe this audio file.",
+              },
+              {
+                type: "input_audio",
+                input_audio: {
+                  data: base64Audio,
+                  format: "wav",
+                },
+              },
+            ],
           },
         ],
-      },
-    ],
-  }),
-});
+      }),
+    });
 
-const data = await response.json();
-console.log(data);
-```
+    const data = await response.json();
+    console.log(data);
+    ```
+  </CodeGroup>
+</Template>
 
 ### Supported Audio Input Formats
 
@@ -173,136 +224,145 @@ Supported audio formats vary by provider. Common formats include:
 
 OpenRouter supports receiving audio responses from models that have audio output capabilities. To request audio output, include the `modalities` and `audio` parameters in your request.
 
-You can search for models that support audio output by filtering to audio output modality on our [Models page](/models?fmt=cards\&output_modalities=audio).
+You can search for models that support audio output by filtering to audio output modality on our [Models page](/guides/overview/models).
 
 ### Requesting Audio Output
 
 To receive audio output, set `modalities` to `["text", "audio"]` and provide the `audio` configuration with your desired voice and format:
 
-```python
-import requests
-import json
-import base64
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'openai/gpt-4o-audio-preview'
+}}
+>
+  <CodeGroup>
+    ```python Python expandable lines theme={null}
+    import requests
+    import json
+    import base64
 
-url = "https://openrouter.ai/api/v1/chat/completions"
-headers = {
-    "Authorization": f"Bearer {API_KEY_REF}",
-    "Content-Type": "application/json"
-}
+    url = "https://openrouter.ai/api/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {API_KEY_REF}",
+        "Content-Type": "application/json"
+    }
 
-payload = {
-    "model": "{{MODEL}}",
-    "messages": [
-        {
-            "role": "user",
-            "content": "Say hello in a friendly tone."
-        }
-    ],
-    "modalities": ["text", "audio"],
-    "audio": {
-        "voice": "alloy",
-        "format": "wav"
-    },
-    "stream": True
-}
+    payload = {
+        "model": "{{MODEL}}",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Say hello in a friendly tone."
+            }
+        ],
+        "modalities": ["text", "audio"],
+        "audio": {
+            "voice": "alloy",
+            "format": "wav"
+        },
+        "stream": True
+    }
 
-# Audio output requires streaming — the response is delivered as SSE chunks
-response = requests.post(url, headers=headers, json=payload, stream=True)
+    # Audio output requires streaming — the response is delivered as SSE chunks
+    response = requests.post(url, headers=headers, json=payload, stream=True)
 
-audio_data_chunks = []
-transcript_chunks = []
+    audio_data_chunks = []
+    transcript_chunks = []
 
-for line in response.iter_lines():
-    if not line:
-        continue
-    decoded = line.decode("utf-8")
-    if not decoded.startswith("data: "):
-        continue
-    data = decoded[len("data: "):]
-    if data.strip() == "[DONE]":
-        break
-    chunk = json.loads(data)
-    delta = chunk["choices"][0].get("delta", {})
-    audio = delta.get("audio", {})
-    if audio.get("data"):
-        audio_data_chunks.append(audio["data"])
-    if audio.get("transcript"):
-        transcript_chunks.append(audio["transcript"])
+    for line in response.iter_lines():
+        if not line:
+            continue
+        decoded = line.decode("utf-8")
+        if not decoded.startswith("data: "):
+            continue
+        data = decoded[len("data: "):]
+        if data.strip() == "[DONE]":
+            break
+        chunk = json.loads(data)
+        delta = chunk["choices"][0].get("delta", {})
+        audio = delta.get("audio", {})
+        if audio.get("data"):
+            audio_data_chunks.append(audio["data"])
+        if audio.get("transcript"):
+            transcript_chunks.append(audio["transcript"])
 
-transcript = "".join(transcript_chunks)
-print(f"Transcript: {transcript}")
+    transcript = "".join(transcript_chunks)
+    print(f"Transcript: {transcript}")
 
-# Combine and decode the base64 audio chunks, then save
-full_audio_b64 = "".join(audio_data_chunks)
-audio_bytes = base64.b64decode(full_audio_b64)
-with open("output.wav", "wb") as f:
-    f.write(audio_bytes)
-```
+    # Combine and decode the base64 audio chunks, then save
+    full_audio_b64 = "".join(audio_data_chunks)
+    audio_bytes = base64.b64decode(full_audio_b64)
+    with open("output.wav", "wb") as f:
+        f.write(audio_bytes)
+    ```
 
-```typescript title="TypeScript (fetch)"
-const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${API_KEY_REF}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    model: "{{MODEL}}",
-    messages: [
-      {
-        role: "user",
-        content: "Say hello in a friendly tone.",
+    ```typescript title="TypeScript (fetch)" expandable lines theme={null}
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${API_KEY_REF}`,
+        "Content-Type": "application/json",
       },
-    ],
-    modalities: ["text", "audio"],
-    audio: {
-      voice: "alloy",
-      format: "wav",
-    },
-    stream: true,
-  }),
-});
+      body: JSON.stringify({
+        model: "{{MODEL}}",
+        messages: [
+          {
+            role: "user",
+            content: "Say hello in a friendly tone.",
+          },
+        ],
+        modalities: ["text", "audio"],
+        audio: {
+          voice: "alloy",
+          format: "wav",
+        },
+        stream: true,
+      }),
+    });
 
-// Audio output requires streaming — parse the SSE chunks
-const reader = response.body!.getReader();
-const decoder = new TextDecoder();
+    // Audio output requires streaming — parse the SSE chunks
+    const reader = response.body!.getReader();
+    const decoder = new TextDecoder();
 
-const audioDataChunks: string[] = [];
-const transcriptChunks: string[] = [];
-let buffer = "";
+    const audioDataChunks: string[] = [];
+    const transcriptChunks: string[] = [];
+    let buffer = "";
 
-while (true) {
-  const { done, value } = await reader.read();
-  if (done) break;
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
 
-  buffer += decoder.decode(value, { stream: true });
-  const lines = buffer.split("\n");
-  buffer = lines.pop()!; // keep incomplete line in buffer
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop()!; // keep incomplete line in buffer
 
-  for (const line of lines) {
-    if (!line.startsWith("data: ")) continue;
-    const data = line.slice("data: ".length).trim();
-    if (data === "[DONE]") break;
+      for (const line of lines) {
+        if (!line.startsWith("data: ")) continue;
+        const data = line.slice("data: ".length).trim();
+        if (data === "[DONE]") break;
 
-    const chunk = JSON.parse(data);
-    const audio = chunk.choices?.[0]?.delta?.audio;
-    if (audio?.data) audioDataChunks.push(audio.data);
-    if (audio?.transcript) transcriptChunks.push(audio.transcript);
-  }
-}
+        const chunk = JSON.parse(data);
+        const audio = chunk.choices?.[0]?.delta?.audio;
+        if (audio?.data) audioDataChunks.push(audio.data);
+        if (audio?.transcript) transcriptChunks.push(audio.transcript);
+      }
+    }
 
-const transcript = transcriptChunks.join("");
-console.log(`Transcript: ${transcript}`);
+    const transcript = transcriptChunks.join("");
+    console.log(`Transcript: ${transcript}`);
 
-// audioDataChunks joined together is the full base64-encoded audio
-const fullAudioB64 = audioDataChunks.join("");
-```
+    // audioDataChunks joined together is the full base64-encoded audio
+    const fullAudioB64 = audioDataChunks.join("");
+    ```
+  </CodeGroup>
+</Template>
 
 ### Streaming Chunk Format
 
 Audio output requires streaming (`stream: true`). Audio data and transcript are delivered incrementally via the `delta.audio` field in each chunk:
 
-```json
+```json lines theme={null}
 {
   "choices": [
     {

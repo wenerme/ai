@@ -24,9 +24,9 @@ These APIs allow a producer Worker to send messages to a Queue.
 
 An example of writing a single message to a Queue:
 
-* [  JavaScript ](#tab-panel-10018)
-* [  TypeScript ](#tab-panel-10019)
-* [  Python ](#tab-panel-10020)
+* [  JavaScript ](#tab-panel-10059)
+* [  TypeScript ](#tab-panel-10060)
+* [  Python ](#tab-panel-10061)
 
 **index.js**
 
@@ -66,25 +66,24 @@ export default {
 **Python**
 
 ```python
-from pyodide.ffi import to_js
 from workers import Response, WorkerEntrypoint
 
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
-        await self.env.MY_QUEUE.send(to_js({
+        await self.env.MY_QUEUE.send({
             "url": request.url,
             "method": request.method,
             "headers": dict(request.headers),
-        }))
+        })
         return Response("Sent!")
 ```
 
 The Queues API also supports writing multiple messages at once:
 
-* [  JavaScript ](#tab-panel-10015)
-* [  TypeScript ](#tab-panel-10016)
-* [  Python ](#tab-panel-10017)
+* [  JavaScript ](#tab-panel-10056)
+* [  TypeScript ](#tab-panel-10057)
+* [  Python ](#tab-panel-10058)
 
 **index.js**
 
@@ -111,15 +110,12 @@ const sendResultsToQueue = async (results: Array<unknown>, env: Env) => {
 **Python**
 
 ```python
-from pyodide.ffi import to_js
-
-
 async def send_results_to_queue(results, env):
     batch = [
         {"body": value}
         for value in results
     ]
-    await env.MY_QUEUE.sendBatch(to_js(batch))
+    await env.MY_QUEUE.sendBatch(batch)
 ```
 
 ### `Queue`
@@ -274,9 +270,9 @@ Note
 
 `waitUntil()` is the only supported method to run tasks (such as logging or metrics calls) that resolve after a queue handler has completed. Promises that have not resolved by the time the queue handler returns may not complete and will not block completion of execution.
 
-* [  JavaScript ](#tab-panel-10021)
-* [  TypeScript ](#tab-panel-10022)
-* [  Python ](#tab-panel-10023)
+* [  JavaScript ](#tab-panel-10062)
+* [  TypeScript ](#tab-panel-10063)
+* [  Python ](#tab-panel-10064)
 
 **index.js**
 
@@ -442,6 +438,6 @@ interface QueueRetryOptions {
   * Returns a [QueueSendResult](#queuesendresult) containing realtime metrics about the queue.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/javascript-apis/#page","headline":"Cloudflare Queues - JavaScript APIs · Cloudflare Queues docs","description":"Produce and consume Cloudflare Queues messages using the Workers JavaScript API.","url":"https://developers.cloudflare.com/queues/configuration/javascript-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/javascript-apis/#page","headline":"Cloudflare Queues - JavaScript APIs · Cloudflare Queues docs","description":"Produce and consume Cloudflare Queues messages using the Workers JavaScript API.","url":"https://developers.cloudflare.com/queues/configuration/javascript-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/javascript-apis/","name":"JavaScript APIs"}}]}
 ```

@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Free Models Router
+
+> Get free AI inference by routing to available free models
 
 The [Free Models Router](https://openrouter.ai/openrouter/free) (`openrouter/free`) automatically selects a free model at random from the available free models on OpenRouter. The router intelligently filters for models that support the features your request needs, such as image understanding, tool calling, and structured outputs.
 
@@ -10,42 +12,21 @@ The [Free Models Router](https://openrouter.ai/openrouter/free) (`openrouter/fre
 
 Instead of manually choosing a specific free model, let the Free Models Router handle model selection for you. This is ideal for experimentation, learning, and low-volume use cases where you want zero-cost inference without worrying about which specific model to use.
 
-To try the Free Models Router without writing any code, see the [Chat Playground guide](/docs/cookbook/get-started/free-models-router-playground).
+To try the Free Models Router without writing any code, see the [Chat Playground guide](/cookbook/get-started/free-models-router-playground).
 
 ## Usage
 
 Set your model to `openrouter/free`:
 
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
+<CodeGroup>
+  ```typescript title="TypeScript SDK" lines theme={null}
+  import { OpenRouter } from '@openrouter/sdk';
 
-const openRouter = new OpenRouter({
-  apiKey: '<OPENROUTER_API_KEY>',
-});
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
 
-const completion = await openRouter.chat.send({
-  model: 'openrouter/free',
-  messages: [
-    {
-      role: 'user',
-      content: 'Hello! What can you help me with today?',
-    },
-  ],
-});
-
-console.log(completion.choices[0].message.content);
-// Check which model was selected
-console.log('Model used:', completion.model);
-```
-
-```typescript title="TypeScript (fetch)"
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
+  const completion = await openRouter.chat.send({
     model: 'openrouter/free',
     messages: [
       {
@@ -53,57 +34,80 @@ const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         content: 'Hello! What can you help me with today?',
       },
     ],
-  }),
-});
+  });
 
-const data = await response.json();
-console.log(data.choices[0].message.content);
-// Check which model was selected
-console.log('Model used:', data.model);
-```
+  console.log(completion.choices[0].message.content);
+  // Check which model was selected
+  console.log('Model used:', completion.model);
+  ```
 
-```python title="Python"
-import requests
-import json
+  ```typescript title="TypeScript (fetch)" expandable lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'openrouter/free',
+      messages: [
+        {
+          role: 'user',
+          content: 'Hello! What can you help me with today?',
+        },
+      ],
+    }),
+  });
 
-response = requests.post(
-  url="https://openrouter.ai/api/v1/chat/completions",
-  headers={
-    "Authorization": "Bearer <OPENROUTER_API_KEY>",
-    "Content-Type": "application/json",
-  },
-  data=json.dumps({
-    "model": "openrouter/free",
-    "messages": [
-      {
-        "role": "user",
-        "content": "Hello! What can you help me with today?"
-      }
-    ]
-  })
-)
+  const data = await response.json();
+  console.log(data.choices[0].message.content);
+  // Check which model was selected
+  console.log('Model used:', data.model);
+  ```
 
-data = response.json()
-print(data['choices'][0]['message']['content'])
-# Check which model was selected
-print('Model used:', data['model'])
-```
+  ```python title="Python" expandable lines theme={null}
+  import requests
+  import json
 
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openrouter/free",
-    "messages": [{"role": "user", "content": "Hello!"}]
-  }'
-```
+  response = requests.post(
+    url="https://openrouter.ai/api/v1/chat/completions",
+    headers={
+      "Authorization": "Bearer <OPENROUTER_API_KEY>",
+      "Content-Type": "application/json",
+    },
+    data=json.dumps({
+      "model": "openrouter/free",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hello! What can you help me with today?"
+        }
+      ]
+    })
+  )
+
+  data = response.json()
+  print(data['choices'][0]['message']['content'])
+  # Check which model was selected
+  print('Model used:', data['model'])
+  ```
+
+  ```bash title="cURL" lines theme={null}
+  curl https://openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "openrouter/free",
+      "messages": [{"role": "user", "content": "Hello!"}]
+    }'
+  ```
+</CodeGroup>
 
 ## Response
 
 The response includes the `model` field showing which free model was actually used:
 
-```json
+```json lines theme={null}
 {
   "id": "gen-...",
   "model": "upstage/solar-pro-3:free",
@@ -135,7 +139,9 @@ The response includes the `model` field showing which free model was actually us
 
 The Free Models Router selects from all currently available free models on OpenRouter. Some popular options include:
 
-Free model availability changes frequently. Check the [models page](https://openrouter.ai/models?pricing=free) for the current list of free models.
+<Warning>
+  Free model availability changes frequently. Check the [models page](https://openrouter.ai/models?pricing=free) for the current list of free models.
+</Warning>
 
 * **DeepSeek R1 (free)** - DeepSeek's reasoning model
 * **Llama models (free)** - Various Meta Llama models
@@ -168,7 +174,7 @@ The Free Models Router is completely free. There is no charge for:
 If you prefer to use a specific free model rather than random selection, you can:
 
 1. **Use the `:free` variant**: Append `:free` to any model that has a free variant:
-   ```json
+   ```json lines theme={null}
    {
      "model": "meta-llama/llama-3.2-3b-instruct:free"
    }
@@ -178,9 +184,9 @@ If you prefer to use a specific free model rather than random selection, you can
 
 ## Related
 
-* [Free Models Router in Chat Playground](/docs/cookbook/get-started/free-models-router-playground) - Try the router without writing code
-* [Free Variant](/docs/guides/routing/model-variants/free) - Use the `:free` suffix for specific models
-* [Auto Router](/docs/guides/routing/routers/auto-router) - Intelligent model selection (paid models)
-* [Latest Model Resolution](/docs/guides/routing/routers/latest-resolution) - Always target the newest version of a model family
-* [Body Builder](/docs/guides/routing/routers/body-builder) - Generate multiple parallel API requests
-* [Model Fallbacks](/docs/guides/routing/model-fallbacks) - Configure fallback models
+* [Free Models Router in Chat Playground](/cookbook/get-started/free-models-router-playground) - Try the router without writing code
+* [Free Variant](/guides/routing/model-variants/free) - Use the `:free` suffix for specific models
+* [Auto Router](/guides/routing/routers/auto-router) - Intelligent model selection (paid models)
+* [Latest Model Resolution](/guides/routing/routers/latest-resolution) - Always target the newest version of a model family
+* [Body Builder](/guides/routing/routers/body-builder) - Generate multiple parallel API requests
+* [Model Fallbacks](/guides/routing/model-fallbacks) - Configure fallback models

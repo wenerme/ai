@@ -15,6 +15,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ DNS record types ](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/)
 * [ Time to Live (TTL) ](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/)
 * [ Record attributes ](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/)
+* [ Shadowed records ](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/)
 * [ Vendor-specific DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/)
 * [ Wildcard DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/)
 

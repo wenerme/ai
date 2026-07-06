@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Pareto Router
+
+> Pick a coding model by minimum coding score without choosing a specific model
 
 The [Pareto Router](https://openrouter.ai/openrouter/pareto-code) (`openrouter/pareto-code`) is a way to have OpenRouter always pick a strong coding model for your needs without committing to a specific one. You express a single `min_coding_score` preference between `0` and `1`, and the router routes your request to a coding model that meets that bar.
 
@@ -16,50 +18,52 @@ The name comes from [Pareto efficiency](https://en.wikipedia.org/wiki/Pareto_eff
 
 Set your model to `openrouter/pareto-code` and optionally pass the `pareto-router` plugin to control the minimum coding score:
 
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
+<CodeGroup>
+  ```typescript title="TypeScript SDK" expandable lines theme={null}
+  import { OpenRouter } from '@openrouter/sdk';
 
-const openRouter = new OpenRouter({
-  apiKey: '<OPENROUTER_API_KEY>',
-});
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
 
-const completion = await openRouter.chat.send({
-  model: 'openrouter/pareto-code',
-  plugins: [
-    {
-      id: 'pareto-router',
-      min_coding_score: 0.8,
-    },
-  ],
-  messages: [
-    {
-      role: 'user',
-      content: 'Write a Python function that merges two sorted lists.',
-    },
-  ],
-});
-
-console.log(completion.choices[0].message.content);
-console.log('Model used:', completion.model);
-```
-
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openrouter/pareto-code",
-    "plugins": [
+  const completion = await openRouter.chat.send({
+    model: 'openrouter/pareto-code',
+    plugins: [
       {
-        "id": "pareto-router",
-        "min_coding_score": 0.8
-      }
+        id: 'pareto-router',
+        min_coding_score: 0.8,
+      },
     ],
-    "messages": [
-      {"role": "user", "content": "Write a Python function that merges two sorted lists."}
-    ]
-  }'
-```
+    messages: [
+      {
+        role: 'user',
+        content: 'Write a Python function that merges two sorted lists.',
+      },
+    ],
+  });
+
+  console.log(completion.choices[0].message.content);
+  console.log('Model used:', completion.model);
+  ```
+
+  ```bash title="cURL" lines theme={null}
+  curl https://openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "openrouter/pareto-code",
+      "plugins": [
+        {
+          "id": "pareto-router",
+          "min_coding_score": 0.8
+        }
+      ],
+      "messages": [
+        {"role": "user", "content": "Write a Python function that merges two sorted lists."}
+      ]
+    }'
+  ```
+</CodeGroup>
 
 ## Default Settings
 
@@ -73,7 +77,9 @@ Instead of passing the `pareto-router` plugin on every API request, you can conf
 
 Once enabled, the configured `min_coding_score` is automatically applied to every request that uses `openrouter/pareto-code`, without needing to include the `plugins` array in your API calls.
 
-You can still override the default on a per-request basis by passing the `pareto-router` plugin in your request's `plugins` array. To prevent per-request overrides, enable "Prevent overrides" in the plugin configuration.
+<Info>
+  You can still override the default on a per-request basis by passing the `pareto-router` plugin in your request's `plugins` array. To prevent per-request overrides, enable "Prevent overrides" in the plugin configuration.
+</Info>
 
 ## The `min_coding_score` parameter
 
@@ -88,15 +94,19 @@ You can still override the default on a per-request basis by passing the `pareto
 
 If you omit `min_coding_score`, the router defaults to the strongest available coders. Within a tier, the router picks the cheapest available model, or the fastest by p50 throughput when you request the `:nitro` variant.
 
-The router resolves a primary coding model plus up to two same-tier fallbacks. The primary is what serves your request. The fallbacks only fire on transient provider errors or rate limits, they do not load-balance traffic. If the entire tier has no models currently published on OpenRouter, the router steps into a neighboring tier instead. The response `model` field always reports the concrete model that handled the request.
+<Info>
+  The router resolves a primary coding model plus up to two same-tier fallbacks. The primary is what serves your request. The fallbacks only fire on transient provider errors or rate limits, they do not load-balance traffic. If the entire tier has no models currently published on OpenRouter, the router steps into a neighboring tier instead. The response `model` field always reports the concrete model that handled the request.
+</Info>
 
-Because the scoring axis is a *percentile* within AA's benchmarked coding field, the capability bar implied by a given `min_coding_score` shifts as the frontier moves. A new strong release can push existing models down a percentile band, so `min_coding_score=0.66` always means "top of the current field" rather than "above an absolute capability score".
+<Note>
+  Because the scoring axis is a *percentile* within AA's benchmarked coding field, the capability bar implied by a given `min_coding_score` shifts as the frontier moves. A new strong release can push existing models down a percentile band, so `min_coding_score=0.66` always means "top of the current field" rather than "above an absolute capability score".
+</Note>
 
 ## Response
 
 The response includes the `model` field showing which coding model was actually used:
 
-```json
+```json lines theme={null}
 {
   "id": "gen-...",
   "model": "anthropic/claude-opus-4.8",
@@ -126,7 +136,7 @@ The response includes the `model` field showing which coding model was actually 
 
 ## Session Stickiness
 
-The Pareto Router pins both the selected **model** and **provider** so that subsequent requests in the same conversation route to the same place. This ensures consistent behavior within a conversation and maximizes [prompt cache](/docs/guides/best-practices/prompt-caching) hits.
+The Pareto Router pins both the selected **model** and **provider** so that subsequent requests in the same conversation route to the same place. This ensures consistent behavior within a conversation and maximizes [prompt cache](/guides/best-practices/prompt-caching) hits.
 
 Stickiness applies at two levels:
 
@@ -135,64 +145,66 @@ Stickiness applies at two levels:
 
 In both cases, the cache expires after **5 minutes** of inactivity. Each successful request resets the timer. If the cached provider returns an error, the cache is not updated, allowing the next request to be re-routed.
 
-For full details on how sticky routing works, cache key granularity, and the `x-session-id` header, see [Provider Sticky Routing](/docs/guides/best-practices/prompt-caching#provider-sticky-routing).
+For full details on how sticky routing works, cache key granularity, and the `x-session-id` header, see [Provider Sticky Routing](/guides/best-practices/prompt-caching#provider-sticky-routing).
 
 ### Example with `session_id`
 
-```typescript title="TypeScript SDK"
-const completion = await openRouter.chat.send({
-  model: 'openrouter/pareto-code',
-  session_id: 'my-coding-session-123',
-  plugins: [
-    {
-      id: 'pareto-router',
-      min_coding_score: 0.8,
-    },
-  ],
-  messages: [
-    {
-      role: 'user',
-      content: 'Write a Python function that merges two sorted lists.',
-    },
-  ],
-});
-
-// Subsequent requests with the same session_id will use the same model and provider
-const followUp = await openRouter.chat.send({
-  model: 'openrouter/pareto-code',
-  session_id: 'my-coding-session-123',
-  plugins: [
-    {
-      id: 'pareto-router',
-      min_coding_score: 0.8,
-    },
-  ],
-  messages: [
-    { role: 'user', content: 'Write a Python function that merges two sorted lists.' },
-    { role: 'assistant', content: completion.choices[0].message.content ?? '' },
-    { role: 'user', content: 'Now add type hints and docstrings.' },
-  ],
-});
-```
-
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openrouter/pareto-code",
-    "session_id": "my-coding-session-123",
-    "plugins": [
+<CodeGroup>
+  ```typescript title="TypeScript SDK" expandable lines theme={null}
+  const completion = await openRouter.chat.send({
+    model: 'openrouter/pareto-code',
+    session_id: 'my-coding-session-123',
+    plugins: [
       {
-        "id": "pareto-router",
-        "min_coding_score": 0.8
-      }
+        id: 'pareto-router',
+        min_coding_score: 0.8,
+      },
     ],
-    "messages": [
-      {"role": "user", "content": "Write a Python function that merges two sorted lists."}
-    ]
-  }'
-```
+    messages: [
+      {
+        role: 'user',
+        content: 'Write a Python function that merges two sorted lists.',
+      },
+    ],
+  });
+
+  // Subsequent requests with the same session_id will use the same model and provider
+  const followUp = await openRouter.chat.send({
+    model: 'openrouter/pareto-code',
+    session_id: 'my-coding-session-123',
+    plugins: [
+      {
+        id: 'pareto-router',
+        min_coding_score: 0.8,
+      },
+    ],
+    messages: [
+      { role: 'user', content: 'Write a Python function that merges two sorted lists.' },
+      { role: 'assistant', content: completion.choices[0].message.content ?? '' },
+      { role: 'user', content: 'Now add type hints and docstrings.' },
+    ],
+  });
+  ```
+
+  ```bash title="cURL" lines theme={null}
+  curl https://openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "openrouter/pareto-code",
+      "session_id": "my-coding-session-123",
+      "plugins": [
+        {
+          "id": "pareto-router",
+          "min_coding_score": 0.8
+        }
+      ],
+      "messages": [
+        {"role": "user", "content": "Write a Python function that merges two sorted lists."}
+      ]
+    }'
+  ```
+</CodeGroup>
 
 ### Why It Matters for the Pareto Router
 
@@ -210,7 +222,7 @@ The Pareto Router itself adds no fee. You pay only for the underlying model that
 
 ## Related
 
-* [Auto Router](/docs/guides/routing/routers/auto-router) - Intelligent model selection across all task types
-* [Free Models Router](/docs/guides/routing/routers/free-router) - Zero-cost model selection
-* [Body Builder](/docs/guides/routing/routers/body-builder) - Generate multiple parallel API requests
-* [Model Fallbacks](/docs/guides/routing/model-fallbacks) - Configure fallback models
+* [Auto Router](/guides/routing/routers/auto-router) - Intelligent model selection across all task types
+* [Free Models Router](/guides/routing/routers/free-router) - Zero-cost model selection
+* [Body Builder](/guides/routing/routers/body-builder) - Generate multiple parallel API requests
+* [Model Fallbacks](/guides/routing/model-fallbacks) - Configure fallback models

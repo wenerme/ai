@@ -1,13 +1,17 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Build a Long-Horizon Agent
 
-This cookbook assumes you have an OpenRouter API key and are using the Agent
-SDK (`@openrouter/agent`). If you are starting from scratch, read the
-[Agent SDK overview](/docs/agent-sdk/overview) and the
-[callModel reference](/docs/agent-sdk/call-model/overview) first.
+> Run multi-hour agent loops with cost ceilings, resumable state, and voice input
+
+<Tip>
+  This cookbook assumes you have an OpenRouter API key and are using the Agent
+  SDK (`@openrouter/agent`). If you are starting from scratch, read the
+  [Agent SDK overview](/agent-sdk/overview) and the
+  [callModel reference](/agent-sdk/call-model/overview) first.
+</Tip>
 
 **Goal:** Run an agent that can keep working for hours, not seconds — research
 projects, multi-stage migrations, voice-driven assistants, or background jobs
@@ -23,8 +27,8 @@ up four primitives.
 * Runs a self-ask loop — research, adversarial review, repeat — until the
   agent emits a `[DONE]` sentinel.
 * Optionally accepts voice input via OpenRouter's
-  [Speech-to-Text](/docs/guides/overview/multimodal/stt) endpoint and replies
-  with [Text-to-Speech](/docs/guides/overview/multimodal/tts).
+  [Speech-to-Text](/guides/overview/multimodal/stt) endpoint and replies
+  with [Text-to-Speech](/guides/overview/multimodal/tts).
 
 You can hand this page to your coding agent as the implementation brief.
 Adapt the storage, ceilings, and surface (CLI, API, queue worker) to your app
@@ -39,7 +43,7 @@ rather than scaffold a separate project.
 * A place to persist state — a database, Redis, S3, or the local filesystem
 * Optional: a microphone or audio file for the voice section
 
-```bash
+```bash lines theme={null}
 npm install @openrouter/agent @openrouter/sdk zod
 ```
 
@@ -49,7 +53,7 @@ Long-horizon agents must terminate. Combine multiple stop conditions so the
 loop ends as soon as the first one fires. The most useful for long runs are
 `maxCost`, `stepCountIs`, and `maxTokensUsed`.
 
-```typescript
+```typescript expandable lines theme={null}
 import { OpenRouter, tool, stepCountIs, maxCost } from '@openrouter/agent';
 import { z } from 'zod';
 
@@ -77,13 +81,15 @@ const result = openrouter.callModel({
 const text = await result.getText();
 ```
 
-See the [Stop Conditions reference](/docs/agent-sdk/call-model/stop-conditions)
+See the [Stop Conditions reference](/agent-sdk/call-model/stop-conditions)
 for the full list (`stepCountIs`, `hasToolCall`, `maxTokensUsed`, `maxCost`,
 `finishReasonIs`) and how to compose custom predicates.
 
-Long-horizon runs spend real credits. Always set both a step ceiling and a
-cost ceiling before you start a multi-hour run, and start small while you are
-iterating.
+<Warning>
+  Long-horizon runs spend real credits. Always set both a step ceiling and a
+  cost ceiling before you start a multi-hour run, and start small while you are
+  iterating.
+</Warning>
 
 ## 2. Persist state for resumability
 
@@ -92,7 +98,7 @@ A multi-hour run must survive restarts, deploys, and human approvals.
 `ConversationState` between steps. Back it with whatever storage your app
 already uses.
 
-```typescript
+```typescript expandable lines theme={null}
 import type { ConversationState, StateAccessor } from '@openrouter/agent';
 import { readFile, rename, writeFile } from 'node:fs/promises';
 
@@ -131,7 +137,7 @@ To resume after a crash, deploy, or human review, call `callModel` again with
 the same `StateAccessor`. Pass `input: []` to signal "no new user turn —
 continue from saved state"; the SDK loads the checkpoint and keeps going.
 
-```typescript
+```typescript lines theme={null}
 const resumed = openrouter.callModel({
   model: '~anthropic/claude-opus-latest',
   input: [],
@@ -144,7 +150,7 @@ await resumed.getResponse();
 ```
 
 For production, swap the file accessor for one backed by Postgres, Redis, or
-an object store. See [Tool Approval & State](/docs/agent-sdk/call-model/approval-and-state)
+an object store. See [Tool Approval & State](/agent-sdk/call-model/tool-approval-state)
 for the full StateAccessor and resumption contract.
 
 ## 3. Stream progress instead of waiting
@@ -158,7 +164,7 @@ returns a result object with several streams you can consume independently:
   preliminary results.
 * `result.getResponse()` — the final, fully-resolved response with usage data.
 
-```typescript
+```typescript expandable lines theme={null}
 const result = openrouter.callModel({
   model: '~anthropic/claude-opus-latest',
   input: 'Build a market analysis report on EV charging.',
@@ -185,7 +191,7 @@ const final = await result.getResponse();
 publishToDashboard({ kind: 'done', usage: final.usage });
 ```
 
-See the [callModel API reference](/docs/agent-sdk/call-model/api-reference)
+See the [callModel API reference](/agent-sdk/call-model/api-reference)
 for every stream method and event type.
 
 Wire `publishToDashboard` to whatever transport you already use — Server-Sent
@@ -200,7 +206,7 @@ sentinel. Each iteration appends a new user turn to the persisted
 `StateAccessor`, so the agent builds on its prior work instead of starting
 over.
 
-```typescript
+```typescript expandable lines theme={null}
 import { OpenRouter, stepCountIs, maxCost } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({
@@ -242,19 +248,21 @@ changing the loop. Three layers of ceilings keep cost bounded:
 `SELF_ASK_MAX_ITERATIONS` caps the number of review rounds, and each round
 inherits its own `stepCountIs` + `maxCost` budget.
 
-Pair this with the `state` accessor from step 2 so the loop survives crashes
-mid-review. On resume, re-enter the loop from the saved state and continue
-reviewing.
+<Tip>
+  Pair this with the `state` accessor from step 2 so the loop survives crashes
+  mid-review. On resume, re-enter the loop from the saved state and continue
+  reviewing.
+</Tip>
 
 ## 5. Add voice input
 
 Drive the same agent loop from a voice memo, phone call, or push-to-talk app.
 OpenRouter exposes a dedicated
-[`/api/v1/audio/transcriptions`](/docs/guides/overview/multimodal/stt)
+[`/api/v1/audio/transcriptions`](/guides/overview/multimodal/stt)
 endpoint with a single STT model parameter. Hand the transcript to
 `callModel` exactly like a text prompt.
 
-```typescript
+```typescript lines theme={null}
 import { OpenRouter as SDK } from '@openrouter/sdk';
 import { OpenRouter, stepCountIs, maxCost } from '@openrouter/agent';
 import { readFile } from 'node:fs/promises';
@@ -279,16 +287,16 @@ const reply = await result.getText();
 
 For a streaming microphone, capture audio chunks on the client, send them to
 your server, and call `createTranscription` once silence is detected. Use the
-[STT cookbook](/docs/guides/overview/multimodal/stt) for the full request and
+[STT cookbook](/guides/overview/multimodal/stt) for the full request and
 response shape.
 
 ## 6. Speak the response back (optional)
 
 For voice-out, pipe the agent's reply through
-[`/api/v1/audio/speech`](/docs/guides/overview/multimodal/tts) and write the
+[`/api/v1/audio/speech`](/guides/overview/multimodal/tts) and write the
 resulting bytes to a file or stream them to the caller.
 
-```typescript
+```typescript lines theme={null}
 import { writeFile } from 'node:fs/promises';
 
 const stream = await sdk.tts.createSpeech({
@@ -316,7 +324,7 @@ when the run terminates — by webhook, email, Slack message, or whatever your
 stack uses. Trigger the notification once `getResponse()` resolves so the
 agent has fully completed and ceilings have been honored.
 
-```typescript
+```typescript lines theme={null}
 const final = await result.getResponse();
 
 const webhookUrl = process.env.WEBHOOK_URL;
@@ -336,7 +344,7 @@ await fetch(webhookUrl, {
 ```
 
 For agents that pause mid-run (for example, human-in-the-loop approvals), see
-[Add Human-in-the-Loop Controls](/docs/cookbook/building-agents/hitl-tools).
+[Add Human-in-the-Loop Controls](/cookbook/building-agents/hitl-tools).
 
 ## Check your work
 
@@ -357,11 +365,11 @@ A correct long-horizon implementation should pass all of the following:
 
 ## Resources
 
-* [Agent SDK overview](/docs/agent-sdk/overview)
-* [callModel reference](/docs/agent-sdk/call-model/overview)
-* [Stop conditions reference](/docs/agent-sdk/call-model/stop-conditions)
-* [Tool Approval & State](/docs/agent-sdk/call-model/approval-and-state)
-* [Speech-to-Text guide](/docs/guides/overview/multimodal/stt)
-* [Text-to-Speech guide](/docs/guides/overview/multimodal/tts)
-* [Add Human-in-the-Loop Controls](/docs/cookbook/building-agents/hitl-tools)
-* [Build Your Own Headless Agent](/docs/cookbook/building-agents/create-headless-agent)
+* [Agent SDK overview](/agent-sdk/overview)
+* [callModel reference](/agent-sdk/call-model/overview)
+* [Stop conditions reference](/agent-sdk/call-model/stop-conditions)
+* [Tool Approval & State](/agent-sdk/call-model/tool-approval-state)
+* [Speech-to-Text guide](/guides/overview/multimodal/stt)
+* [Text-to-Speech guide](/guides/overview/multimodal/tts)
+* [Add Human-in-the-Loop Controls](/cookbook/building-agents/hitl-tools)
+* [Build Your Own Headless Agent](/cookbook/building-agents/create-headless-agent)

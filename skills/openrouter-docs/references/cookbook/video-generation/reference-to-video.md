@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Guide a Video with Reference Images
+
+> Use reference images to influence video subject, style, or identity without exact frame control
 
 Use this guide when you need to add reference-to-video generation where images
 influence the output without forcing exact first or last frames.
@@ -10,8 +12,9 @@ influence the output without forcing exact first or last frames.
 By the end, your implementation should submit a reference-to-video job with
 `input_references`.
 
-For reusable agent knowledge across projects, install the
-[openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+<Tip>
+  For reusable agent knowledge across projects, install the [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+</Tip>
 
 ## Before you start
 
@@ -23,35 +26,39 @@ You need:
 * A model that supports reference-to-video, confirmed from the current
   OpenRouter video docs or model description
 
-If you have not chosen a model yet, read
-[Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-so you can select one based on your clip duration, output shape, input type,
-audio, provider controls, and cost requirements.
+<Tip>
+  If you have not chosen a model yet, read
+  [Choose a Video Generation Model](/cookbook/video-generation/choose-video-model)
+  so you can select one based on your clip duration, output shape, input type,
+  audio, provider controls, and cost requirements.
+</Tip>
 
 Use the API reference pages as the source of truth for exact fields:
 
-* [Create video generation request](/docs/api/api-reference/video-generation/create-videos)
-* [List video generation models](/docs/api/api-reference/video-generation/list-videos-models)
-* [TypeScript SDK video generation reference](/docs/client-sdks/typescript/api-reference/videogeneration)
+* [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
+* [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
+* [TypeScript SDK video generation reference](/client-sdks/typescript/api-reference/videogeneration)
 
 Use `input_references` for visual guidance. Use `frame_images` only when you need exact frame control.
 
 Use stable, directly downloadable image URLs. Some providers cannot fetch image URLs that require cookies, redirects through HTML pages, bot checks, or unusual headers.
 
-Submitting `POST /api/v1/videos` starts a real video generation job and may
-spend OpenRouter credits.
+<Warning>
+  Submitting `POST /api/v1/videos` starts a real video generation job and may
+  spend OpenRouter credits.
+</Warning>
 
 The video models endpoint does not expose a dedicated structured reference-image
 field for every provider. Confirm reference support from the model description
 or current docs before you submit:
 
-```bash
+```bash lines theme={null}
 curl https://openrouter.ai/api/v1/videos/models
 ```
 
 Example model output excerpt:
 
-```json
+```json expandable lines theme={null}
 {
   "id": "bytedance/seedance-2.0-fast",
   "supported_durations": [
@@ -89,7 +96,7 @@ need confirmation from the model description or docs.
 
 Reference images work best when the prompt explains what should stay consistent.
 
-```text
+```text lines theme={null}
 Create a 4-second product video of the same backpack from the reference image.
 Keep the shape, color, and logo placement consistent.
 Place it on a wet city sidewalk at night with neon reflections.
@@ -104,7 +111,7 @@ exact frame anchors.
 
 Example request shape:
 
-```js
+```js expandable lines theme={null}
 const apiKey = process.env.OPENROUTER_API_KEY;
 const referenceImageUrl = process.env.REFERENCE_IMAGE_URL;
 
@@ -154,7 +161,7 @@ console.log(job);
 The submit call returns the job fields immediately. In the QA run, the submitted
 job later completed and downloaded with this final summary:
 
-```json
+```json lines theme={null}
 {
   "id": "Mu1opxXnpIIpwMhwFl8v",
   "status": "completed",
@@ -170,7 +177,7 @@ Some models can use multiple reference images. Before doing this in production,
 check the current docs or model description for the selected model, then start
 with the smallest number of references that gives you enough consistency.
 
-```js
+```js expandable lines theme={null}
 const characterSideUrl = process.env.CHARACTER_SIDE_URL;
 const styleReferenceUrl = process.env.STYLE_REFERENCE_URL;
 
@@ -198,7 +205,7 @@ Then set `input_references` in the request body to `inputReferences`.
 
 Request shape for the optional multi-reference path:
 
-```json
+```json lines theme={null}
 [
   {
     "type": "image_url",
@@ -223,7 +230,7 @@ then download the completed video.
 
 Example polling and download helper:
 
-```js
+```js expandable lines theme={null}
 import { writeFile } from "node:fs/promises";
 
 async function waitForVideo(job) {
@@ -291,7 +298,7 @@ console.log("Saved reference-video.mp4");
 
 The QA run saved the finished video after polling completed:
 
-```text
+```text lines theme={null}
 Saved reference-video.mp4
 ```
 

@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # OpenTelemetry Collector
+
+> Send traces to any OpenTelemetry-compatible backend
 
 [OpenTelemetry](https://opentelemetry.io/) is an open-source observability framework for collecting, processing, and exporting telemetry data. OpenRouter can send traces to any backend that supports the OpenTelemetry Protocol (OTLP), including Axiom, Jaeger, Grafana Tempo, and self-hosted collectors.
 
@@ -27,7 +29,9 @@ For self-hosted collectors:
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 3: Configure OpenTelemetry Collector
 
@@ -38,7 +42,7 @@ Click the edit icon next to **OpenTelemetry Collector** and enter:
 
 Example headers for Axiom:
 
-```json
+```json lines theme={null}
 {
   "Authorization": "Bearer xaat-your-token",
   "X-Axiom-Dataset": "your-dataset"
@@ -47,7 +51,7 @@ Example headers for Axiom:
 
 Example headers for authenticated collectors:
 
-```json
+```json lines theme={null}
 {
   "Authorization": "Bearer your-token",
   "X-Custom-Header": "value"
@@ -73,7 +77,9 @@ The OpenTelemetry Collector destination works with any backend that supports OTL
 * **Lightstep** - Cloud-native observability platform
 * **Self-hosted OpenTelemetry Collector** - Route traces to multiple backends
 
-OpenRouter sends traces using the OTLP/HTTP protocol with JSON encoding. Ensure your collector or backend is configured to accept OTLP over HTTP on the `/v1/traces` path.
+<Tip>
+  OpenRouter sends traces using the OTLP/HTTP protocol with JSON encoding. Ensure your collector or backend is configured to accept OTLP over HTTP on the `/v1/traces` path.
+</Tip>
 
 ## Custom Metadata
 
@@ -91,7 +97,7 @@ Custom metadata from the `trace` field is sent as span attributes in the OTLP pa
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Hello!" }],
@@ -122,4 +128,4 @@ Standard GenAI semantic conventions (`gen_ai.*`) are used for model, token usage
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

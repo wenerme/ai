@@ -1,12 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Stripe Projects
 
+> Add OpenRouter to your app with the Stripe Projects CLI
+
 [Stripe Projects](https://projects.dev) is a CLI-based developer tool marketplace that lets you provision production-grade services -- hosting, databases, auth, analytics, AI, and more -- directly from your terminal. OpenRouter is a launch partner, so you can add AI model access to any project with a single command. Browse the full catalog at [projects.dev/providers](https://projects.dev/providers) and read Stripe's docs at [docs.stripe.com/stripe-projects](https://docs.stripe.com/stripe-projects).
 
-![Stripe Projects home page at projects.dev showing stripe projects add openrouter/api provisioning, syncing credentials, and writing env vars to .env](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/e8d4ac778168f53c8c53da474ac12c29bb83093b4cd391e2ac1c0760c9afb0b8/content/assets/stripe-projects/projects-dev-home.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/stripe-projects/projects-dev-home.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=fe49198425fc33f557cd103e013ca3fc" alt="Stripe Projects home page at projects.dev showing stripe projects add openrouter/api provisioning, syncing credentials, and writing env vars to .env" width="960" height="735" data-path="assets/stripe-projects/projects-dev-home.png" />
+</Frame>
 
 ## Why Use Stripe Projects with OpenRouter?
 
@@ -21,7 +25,7 @@
 2. The [Stripe CLI](https://docs.stripe.com/stripe-cli) installed and up to date
 3. The Projects plugin installed:
 
-```bash
+```bash lines theme={null}
 stripe plugin install projects
 ```
 
@@ -31,7 +35,7 @@ stripe plugin install projects
 
 List every provider or filter down to OpenRouter before installing:
 
-```bash
+```bash lines theme={null}
 # All providers
 stripe projects catalog
 
@@ -45,7 +49,7 @@ You can also browse the web directory at [projects.dev/providers](https://projec
 
 If you already have a Stripe project initialized, add OpenRouter in one step:
 
-```bash
+```bash lines theme={null}
 stripe projects add openrouter/api
 ```
 
@@ -55,7 +59,7 @@ This provisions an OpenRouter account (or links your existing one), generates an
 
 If you're starting a new project, initialize it first:
 
-```bash
+```bash lines theme={null}
 # Initialize a new Stripe project
 stripe projects init my-app
 
@@ -67,7 +71,7 @@ stripe projects add openrouter/api
 
 After adding OpenRouter, confirm everything is working:
 
-```bash
+```bash lines theme={null}
 # Check project status
 stripe projects status
 
@@ -89,12 +93,12 @@ When you run `stripe projects add openrouter/api`, the following happens:
 2. **API key generation** -- A dedicated API key (`sk-or-v1-...`) is minted and labeled **"Provisioned by Stripe"** so it's easy to identify alongside your other keys at [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys).
 3. **Environment sync** -- The following variables are stored in Stripe's encrypted vault and written to your project's `.env`:
 
-   ```bash
+   ```bash lines theme={null}
    OPENROUTER_API_KEY=sk-or-v1-...
    OPENROUTER_TYPE=bearer
    ```
 
-Your API key works with the full [OpenRouter API](/docs/quickstart), giving you access to 300+ AI models through a single endpoint.
+Your API key works with the full [OpenRouter API](/quickstart), giving you access to 400+ AI models through a single endpoint.
 
 ## Service Details
 
@@ -110,7 +114,7 @@ Your API key works with the full [OpenRouter API](/docs/quickstart), giving you 
 
 `stripe projects add openrouter/api` prompts you to choose between the **Free** and **Pay-as-you-go** plans when you provision. The Free plan works without a payment method. To switch plans later, use `stripe projects upgrade` or `stripe projects downgrade`:
 
-```bash
+```bash lines theme={null}
 # Move an existing resource to pay-as-you-go
 stripe projects upgrade openrouter/api
 
@@ -126,7 +130,7 @@ Stripe's `remove` and `rotate` commands accept either the local resource name (e
 
 If you need to rotate your API key (for example, after a team member leaves):
 
-```bash
+```bash lines theme={null}
 stripe projects rotate openrouter/api
 ```
 
@@ -136,7 +140,7 @@ This generates a new API key, disables the old one, and updates your `.env` file
 
 To remove OpenRouter from your project and revoke the API key:
 
-```bash
+```bash lines theme={null}
 stripe projects remove openrouter/api
 ```
 
@@ -146,13 +150,13 @@ Add `--only-credentials` to forget the local resource without deprovisioning it 
 
 List the project's environment variables (values are hidden):
 
-```bash
+```bash lines theme={null}
 stripe projects env
 ```
 
 If your `.env` file gets out of sync, pull the latest credentials:
 
-```bash
+```bash lines theme={null}
 stripe projects env --pull
 ```
 
@@ -160,7 +164,7 @@ stripe projects env --pull
 
 Jump straight to your OpenRouter dashboard from the CLI:
 
-```bash
+```bash lines theme={null}
 stripe projects open openrouter
 ```
 
@@ -177,13 +181,13 @@ Stripe Projects resolves your OpenRouter account by the email on your Stripe acc
 OpenRouter ships with two plans through Stripe Projects:
 
 * **Free** -- Access free AI models at zero cost. No payment method required.
-* **Pay-as-you-go** -- Per-token pricing across 300+ models with no minimum commitment. See [openrouter.ai/models](https://openrouter.ai/models) for rates.
+* **Pay-as-you-go** -- Per-token pricing across 400+ models with no minimum commitment. See [openrouter.ai/models](https://openrouter.ai/models) for rates.
 
 When you choose a paid plan, Stripe tokenizes your Stripe-stored payment credentials into a [Shared Payment Token](https://docs.stripe.com/agentic-commerce/concepts/shared-payment-tokens) and grants OpenRouter a payment credential scoped to that upgrade. Your underlying card/bank details are never shared directly.
 
 Manage your payment method on Stripe's side:
 
-```bash
+```bash lines theme={null}
 # View the payment method on file
 stripe projects billing show
 
@@ -201,32 +205,34 @@ Example prompts for your agent:
 * *"Rotate my OpenRouter API key."*
 * *"What AI services are available in the Stripe Projects catalog?"*
 
-To avoid browser pop-ups during agent-driven provisioning, complete the following flow manually **before** starting your agent session:
+<Tip>
+  To avoid browser pop-ups during agent-driven provisioning, complete the following flow manually **before** starting your agent session:
 
-```bash
-stripe login
-stripe projects link openrouter
-stripe projects billing add   # only if you plan to use pay-as-you-go
-```
+  ```bash lines theme={null}
+  stripe login
+  stripe projects link openrouter
+  stripe projects billing add   # only if you plan to use pay-as-you-go
+  ```
 
-Then let the agent call `stripe projects add openrouter/api`.
+  Then let the agent call `stripe projects add openrouter/api`.
+</Tip>
 
 For fully non-interactive provisioning (CI, scripts, agents), pass `--json --yes`:
 
-```bash
+```bash lines theme={null}
 stripe projects add openrouter/api --json --yes
 ```
 
 To give your agent a combined, up-to-date context document for every provider in your project (including OpenRouter's quickstart, models, and SDK skills), run:
 
-```bash
+```bash lines theme={null}
 stripe projects llm-context
 ```
 
 ## Next Steps
 
-* [Quickstart](/docs/quickstart) -- Learn the basics of calling the OpenRouter API
-* [Models](https://openrouter.ai/models) -- Browse 300+ available models and compare pricing
-* [API Key Rotation](/docs/cookbook/administration/api-key-rotation) -- Best practices for credential management
-* [Guardrails](/docs/guides/features/guardrails) -- Set spending limits and model restrictions
-* [Provider Selection](/docs/guides/routing/provider-selection) -- Control which providers handle your requests
+* [Quickstart](/quickstart) -- Learn the basics of calling the OpenRouter API
+* [Models](https://openrouter.ai/models) -- Browse 400+ available models and compare pricing
+* [API Key Rotation](/cookbook/administration/api-key-rotation) -- Best practices for credential management
+* [Guardrails](/guides/features/guardrails) -- Set spending limits and model restrictions
+* [Provider Selection](/guides/routing/provider-selection) -- Control which providers handle your requests

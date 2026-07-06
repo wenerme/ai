@@ -1,10 +1,58 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Image Generation
 
-Server tools are currently in beta. The API and behavior may change.
+> Generate images from text prompts with any model
+
+export const Template = ({children, data}) => {
+  const replace = s => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in data) ? data[k] : `{{${k}}}`);
+  const leafText = node => typeof node === 'string' ? node : node?.$$typeof && typeof node.props?.children === 'string' ? node.props.children : null;
+  const collapseTokens = nodes => {
+    const out = [];
+    let i = 0;
+    while (i < nodes.length) {
+      const ta = leafText(nodes[i]);
+      const tb = leafText(nodes[i + 1]);
+      const tc = leafText(nodes[i + 2]);
+      if (ta != null && tb != null && tc != null) {
+        const m = (ta + tb + tc).match(/^([\s\S]*)\{\{(\w+)\}\}([\s\S]*)$/);
+        if (m && (m[2] in data)) {
+          out.push(m[1] + data[m[2]] + m[3]);
+          i += 3;
+          continue;
+        }
+      }
+      out.push(nodes[i]);
+      i++;
+    }
+    return out;
+  };
+  const process = node => {
+    if (typeof node === 'string') return replace(node);
+    if (Array.isArray(node)) return collapseTokens(node.map(process));
+    if (node && typeof node === 'object') {
+      if (node.$$typeof) return {
+        ...node,
+        props: process(node.props)
+      };
+      return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, process(v)]));
+    }
+    return node;
+  };
+  return <>{process(children)}</>;
+};
+
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
+
+<Badge color="blue">Beta</Badge>
+
+<Note>
+  **Beta**
+
+  Server tools are currently in beta. The API and behavior may change.
+</Note>
 
 The `openrouter:image_generation` server tool enables any model to generate images from text prompts. When the model determines it needs to create an image, it calls the tool with a description. OpenRouter executes the image generation and returns the result to the model.
 
@@ -18,81 +66,90 @@ The `openrouter:image_generation` server tool enables any model to generate imag
 
 ## Quick Start
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer {{API_KEY_REF}}',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    messages: [
-      {
-        role: 'user',
-        content: 'Create an image of a futuristic city at sunset'
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'openai/gpt-5.2'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript" expandable lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer {{API_KEY_REF}}',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        messages: [
+          {
+            role: 'user',
+            content: 'Create an image of a futuristic city at sunset'
+          }
+        ],
+        tools: [
+          { type: 'openrouter:image_generation' }
+        ]
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data.choices[0].message.content);
+    ```
+
+    ```python title="Python" expandable lines theme={null}
+    import requests
+
+    response = requests.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      headers={
+        "Authorization": f"Bearer {{API_KEY_REF}}",
+        "Content-Type": "application/json",
+      },
+      json={
+        "model": "{{MODEL}}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Create an image of a futuristic city at sunset"
+          }
+        ],
+        "tools": [
+          {"type": "openrouter:image_generation"}
+        ]
       }
-    ],
-    tools: [
-      { type: 'openrouter:image_generation' }
-    ]
-  }),
-});
+    )
 
-const data = await response.json();
-console.log(data.choices[0].message.content);
-```
+    data = response.json()
+    print(data["choices"][0]["message"]["content"])
+    ```
 
-```python title="Python"
-import requests
-
-response = requests.post(
-  "https://openrouter.ai/api/v1/chat/completions",
-  headers={
-    "Authorization": f"Bearer {{API_KEY_REF}}",
-    "Content-Type": "application/json",
-  },
-  json={
-    "model": "{{MODEL}}",
-    "messages": [
-      {
-        "role": "user",
-        "content": "Create an image of a futuristic city at sunset"
-      }
-    ],
-    "tools": [
-      {"type": "openrouter:image_generation"}
-    ]
-  }
-)
-
-data = response.json()
-print(data["choices"][0]["message"]["content"])
-```
-
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer {{API_KEY_REF}}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "{{MODEL}}",
-    "messages": [
-      {
-        "role": "user",
-        "content": "Create an image of a futuristic city at sunset"
-      }
-    ],
-    "tools": [
-      {"type": "openrouter:image_generation"}
-    ]
-  }'
-```
+    ```bash title="cURL" lines theme={null}
+    curl https://openrouter.ai/api/v1/chat/completions \
+      -H "Authorization: Bearer {{API_KEY_REF}}" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "model": "{{MODEL}}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Create an image of a futuristic city at sunset"
+          }
+        ],
+        "tools": [
+          {"type": "openrouter:image_generation"}
+        ]
+      }'
+    ```
+  </CodeGroup>
+</Template>
 
 ## Configuration
 
 The image generation tool accepts optional `parameters` to customize the output:
 
-```json
+```json lines theme={null}
 {
   "type": "openrouter:image_generation",
   "parameters": {
@@ -123,7 +180,7 @@ All parameters except `model` are passed directly to the underlying image genera
 
 When the model calls the image generation tool, it receives a response like:
 
-```json
+```json lines theme={null}
 {
   "status": "ok",
   "imageUrl": "https://..."
@@ -132,7 +189,7 @@ When the model calls the image generation tool, it receives a response like:
 
 If generation fails, the response includes an error:
 
-```json
+```json lines theme={null}
 {
   "status": "error",
   "error": "Generation failed due to content policy"
@@ -143,53 +200,62 @@ If generation fails, the response includes an error:
 
 The image generation server tool also works with the Responses API:
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer {{API_KEY_REF}}',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    input: 'Generate an image of a mountain landscape',
-    tools: [
-      {
-        type: 'openrouter:image_generation',
-        parameters: { quality: 'high' }
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'openai/gpt-5.2'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript" lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/responses', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer {{API_KEY_REF}}',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        input: 'Generate an image of a mountain landscape',
+        tools: [
+          {
+            type: 'openrouter:image_generation',
+            parameters: { quality: 'high' }
+          }
+        ]
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+    ```
+
+    ```python title="Python" expandable lines theme={null}
+    import requests
+
+    response = requests.post(
+      "https://openrouter.ai/api/v1/responses",
+      headers={
+        "Authorization": f"Bearer {{API_KEY_REF}}",
+        "Content-Type": "application/json",
+      },
+      json={
+        "model": "{{MODEL}}",
+        "input": "Generate an image of a mountain landscape",
+        "tools": [
+          {
+            "type": "openrouter:image_generation",
+            "parameters": {"quality": "high"}
+          }
+        ]
       }
-    ]
-  }),
-});
+    )
 
-const data = await response.json();
-console.log(data);
-```
-
-```python title="Python"
-import requests
-
-response = requests.post(
-  "https://openrouter.ai/api/v1/responses",
-  headers={
-    "Authorization": f"Bearer {{API_KEY_REF}}",
-    "Content-Type": "application/json",
-  },
-  json={
-    "model": "{{MODEL}}",
-    "input": "Generate an image of a mountain landscape",
-    "tools": [
-      {
-        "type": "openrouter:image_generation",
-        "parameters": {"quality": "high"}
-      }
-    ]
-  }
-)
-
-data = response.json()
-print(data)
-```
+    data = response.json()
+    print(data)
+    ```
+  </CodeGroup>
+</Template>
 
 ## Pricing
 
@@ -204,7 +270,7 @@ The cost is in addition to standard LLM token costs for processing the request a
 
 ## Next Steps
 
-* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
-* [Web Search](/docs/guides/features/server-tools/web-search) — Search the web for real-time information
-* [Datetime](/docs/guides/features/server-tools/datetime) — Get the current date and time
-* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Server Tools Overview](/guides/features/server-tools) — Learn about server tools
+* [Web Search](/guides/features/server-tools/web-search) — Search the web for real-time information
+* [Datetime](/guides/features/server-tools/datetime) — Get the current date and time
+* [Tool Calling](/guides/features/tool-calling) — Learn about user-defined tool calling

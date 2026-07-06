@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Guardrails
+
+> Control spending and model access for your organization
 
 Guardrails let organizations control how their members and API keys can use OpenRouter. You can set spending limits, restrict which models and providers are available, and enforce data privacy policies.
 
@@ -27,7 +29,10 @@ Each guardrail can include any combination of:
 * **Budget limit** - Spending cap in USD that resets daily, weekly, or monthly. Requests are rejected when the limit is reached.
 * **Model allowlist** - Restrict to specific models. Leave empty to allow all.
 * **Provider allowlist** - Restrict to specific providers. Leave empty to allow all.
-* **Zero Data Retention** - Require ZDR-compatible providers for all requests.
+* **Zero Data Retention** - Enforce ZDR per model group (Anthropic, OpenAI, Google, and non-frontier). See [Zero Data Retention](/guides/features/zdr#per-model-group-zdr-enforcement) for details.
+* **Security** - Protect against prompt injection and jailbreak attacks with [regex-based detection](/guides/features/guardrails/prompt-injection).
+* **[Sensitive Info](/guides/features/guardrails/sensitive-info)** - Detect and redact or block sensitive information (PII) in API requests using built-in presets and NLP-based detection.
+* **Custom content filters** - Define your own regex patterns to [redact or block](#custom-content-filters) matching content in incoming requests.
 
 <Note>
   Individual API key budgets still apply. The lower limit wins.
@@ -48,7 +53,8 @@ Account-wide privacy and provider settings are always enforced as a default guar
 
 * **Provider allowlists**: Intersection across all guardrails (only providers allowed by all guardrails are available)
 * **Model allowlists**: Intersection across all guardrails (only models allowed by all guardrails are available)
-* **Zero Data Retention**: OR logic (if any guardrail enforces ZDR, it is enforced)
+* **Zero Data Retention**: OR logic per model group (if any guardrail enforces ZDR for a given scope — Anthropic, OpenAI, Google, or non-frontier — it is enforced for that scope)
+* **Sensitive Info**: Union across all guardrails (filters from all applicable guardrails are combined). If the same entity type or pattern appears with different actions, block takes precedence over redact.
 * **Budget limits**: Each guardrail's budget is checked independently. See [Budget Enforcement](#budget-enforcement) for details.
 
 This means stricter rules always win when multiple guardrails apply. For example, if a member guardrail allows providers A, B, and C, but an API key guardrail only allows providers A and B, only providers A and B will be available for that key.
@@ -73,8 +79,144 @@ Alice creates two API keys, both assigned a guardrail with a \$20/day limit. Key
 
 Bob has a member guardrail with a \$100/day limit. His API key has a separate guardrail with a \$30/day limit. The key can only spend \$30/day (its own limit), but Bob's total usage across all his keys cannot exceed \$100/day. Both limits are checked independently on each request.
 
+## Custom Content Filters
+
+Each guardrail can carry a list of **custom content filter patterns**.
+Every pattern is a regular expression with an associated action:
+
+* **Redact** - Matched spans are replaced with a placeholder before the
+  request is forwarded to the model.
+* **Block** - The request is rejected with a `403` before it reaches the
+  model.
+
+Patterns are evaluated locally against every user message, so they add
+negligible latency to requests.
+
+### Supported regex features
+
+Patterns are JavaScript-flavoured regular expressions. The following common
+constructs are all supported:
+
+* Character classes (`[a-z]`, `\d`, `\w`, `\s`, …)
+* Quantifiers (`*`, `+`, `?`, `{n,m}`)
+* Alternation (`foo|bar`)
+* Non-capturing groups (`(?:…)`)
+* Named capture groups (`(?<name>…)`)
+* Anchors (`^`, `$`, `\b`)
+* Escape sequences (`\.`, `\(`, `\\`, …)
+
+### Unsupported regex features
+
+To keep evaluation fast and predictable across all requests, the following
+features are **not allowed** in new or edited patterns:
+
+* **Lookaheads** - `(?=…)` and `(?!…)`
+* **Lookbehinds** - `(?<=…)` and `(?<!…)`
+* **Backreferences** - numeric (`\1`, `\2`, …) and named (`\k<name>`)
+* **Excessive backtracking** - patterns with nested quantifiers like
+  `(a+)+`
+
+The API rejects offending patterns with an `invalid_regex_pattern` error
+on create and on update.
+
+### Limits
+
+* Up to **100,000 characters** per pattern.
+* Multiple patterns per guardrail; each is evaluated independently.
+
+## When a Request Is Blocked
+
+When a guardrail's runtime checks block a request — for example a content filter or prompt-injection detector — OpenRouter returns an HTTP **403 Forbidden** response. Note that budget limits and allowlist restrictions also produce 403 responses, but only runtime content checks include `openrouter_metadata` stage details.
+
+```json lines theme={null}
+{
+  "error": {
+    "code": 403,
+    "message": "Request blocked: prompt injection patterns detected",
+    "metadata": {
+      "patterns": ["ignore all previous instructions"]
+    }
+  }
+}
+```
+
+If you opt in to [router metadata](/guides/features/router-metadata) via the `X-OpenRouter-Experimental-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran:
+
+```json expandable lines theme={null}
+{
+  "error": {
+    "code": 403,
+    "message": "Request blocked: prompt injection patterns detected",
+    "metadata": {
+      "patterns": ["ignore all previous instructions"]
+    }
+  },
+  "openrouter_metadata": {
+    "requested": "openai/gpt-4o",
+    "strategy": "direct",
+    "region": "iad",
+    "summary": "available=1",
+    "attempt": 1,
+    "is_byok": false,
+    "endpoints": {
+      "total": 1,
+      "available": [
+        { "provider": "OpenAI", "model": "openai/gpt-4o", "selected": false }
+      ]
+    },
+    "pipeline": [
+      {
+        "type": "guardrail",
+        "name": "regex_pi_detection",
+        "guardrail_id": "grd_abc123",
+        "guardrail_scope": "api-key",
+        "summary": "Blocked: prompt injection detected (1 pattern matched)",
+        "data": {
+          "action": "blocked",
+          "detected": true,
+          "engines": ["regex"],
+          "patterns": ["ignore all previous instructions"]
+        }
+      }
+    ]
+  }
+}
+```
+
+See [Router Metadata — Error Responses](/guides/features/router-metadata#error-responses) and [Errors — Guardrail Errors](/api/reference/errors-and-debugging#guardrail-errors) for the full response shapes and pipeline stage reference.
+
 ## API Access
 
 You can manage guardrails programmatically using the OpenRouter API. This allows you to create, update, delete, and assign guardrails to API keys and organization members directly from your code.
 
-See the [Guardrails API reference](/docs/api/api-reference/guardrails/list-guardrails) for available endpoints and usage examples.
+See the [Guardrails API reference](/api/api-reference/guardrails/list-guardrails) for available endpoints and usage examples.
+
+### Updating the Workspace Default Guardrail via API
+
+Each workspace has a **default guardrail** that applies to all traffic in that workspace without needing to be explicitly assigned to individual keys or members. To update the workspace default guardrail via the API:
+
+1. **List guardrails** for the workspace to find the default guardrail:
+
+```bash lines theme={null}
+curl https://openrouter.ai/api/v1/guardrails?workspace_id=YOUR_WORKSPACE_ID \
+  -H "Authorization: Bearer YOUR_MANAGEMENT_KEY"
+```
+
+2. **Identify the default guardrail** in the response. It is named `Workspace <workspace-id> Default` (where `<workspace-id>` is the UUID of your workspace).
+
+3. **Update it** using the guardrail's `id`:
+
+```bash lines theme={null}
+curl -X PATCH https://openrouter.ai/api/v1/guardrails/GUARDRAIL_ID \
+  -H "Authorization: Bearer YOUR_MANAGEMENT_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "allowed_providers": ["openai", "anthropic"],
+    "limit_usd": 100,
+    "reset_interval": "monthly",
+    "enforce_zdr_anthropic": true,
+    "enforce_zdr_openai": true
+  }'
+```
+
+All [guardrail settings](#guardrail-settings) can be configured this way, including budget limits, provider/model allowlists, zero data retention enforcement, and content filters.

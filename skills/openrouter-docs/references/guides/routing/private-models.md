@@ -1,10 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Private Models
 
-Private Models are currently in **invite-only beta** for Enterprise Plan customers. To request access, email [product@openrouter.ai](mailto:product@openrouter.ai) or contact your OpenRouter account representative.
+> Bring your own model to OpenRouter, scoped to approved users and organizations
+
+<Badge color="blue">Beta</Badge>
+
+<Note>
+  Private Models are currently in **invite-only beta** for Enterprise Plan customers. To request access, email [product@openrouter.ai](mailto:product@openrouter.ai) or contact your OpenRouter account representative.
+</Note>
 
 Private Models let you route to your own custom, fine-tuned, or dedicated model deployments through OpenRouter, alongside the public models you already use. Think of it as "bring your own model" to OpenRouter, with the same API surface your team already uses.
 
@@ -15,7 +21,7 @@ Your private models and endpoints are only visible to the users and organization
 Once your private model endpoint is onboarded:
 
 * Approved users and organizations call it through the standard OpenRouter API — the same endpoints they use for public models (chat completions and responses).
-* The model slug behaves like any other OpenRouter model. It can be used with [Model Fallbacks](/docs/guides/routing/model-fallbacks), [Provider Selection](/docs/guides/routing/provider-selection), and other routing features.
+* The model slug behaves like any other OpenRouter model. It can be used with [Model Fallbacks](/guides/routing/model-fallbacks), [Provider Selection](/guides/routing/provider-selection), and other routing features.
 * Approved private endpoints are prioritized for callers with access, while public fallback candidates remain available if you list them.
 
 ## Who It's For

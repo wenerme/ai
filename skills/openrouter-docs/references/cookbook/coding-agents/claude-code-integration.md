@@ -1,10 +1,14 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Claude Code
 
-Claude Code with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/docs/guides/routing/provider-selection) when using Claude Code.
+> Use Claude Code with OpenRouter
+
+<Warning>
+  Claude Code with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/guides/routing/provider-selection) when using Claude Code.
+</Warning>
 
 ## Why Use OpenRouter with Claude Code?
 
@@ -28,23 +32,29 @@ This guide will get you running [Claude Code](https://code.claude.com/docs/en/ov
 
 ### Step 1: Install Claude Code
 
-**macOS, Linux, WSL:**
+<Tabs>
+  <Tab title="Native Install (Recommended)">
+    **macOS, Linux, WSL:**
 
-```bash
-curl -fsSL https://claude.ai/install.sh | bash
-```
+    ```bash lines theme={null}
+    curl -fsSL https://claude.ai/install.sh | bash
+    ```
 
-**Windows PowerShell:**
+    **Windows PowerShell:**
 
-```powershell
-irm https://claude.ai/install.ps1 | iex
-```
+    ```powershell lines theme={null}
+    irm https://claude.ai/install.ps1 | iex
+    ```
+  </Tab>
 
-Requires [Node.js 18 or newer](https://nodejs.org/en/download/).
+  <Tab title="npm">
+    Requires [Node.js 18 or newer](https://nodejs.org/en/download/).
 
-```bash
-npm install -g @anthropic-ai/claude-code
-```
+    ```bash lines theme={null}
+    npm install -g @anthropic-ai/claude-code
+    ```
+  </Tab>
+</Tabs>
 
 ### Step 2: Connect Claude to OpenRouter
 
@@ -57,58 +67,72 @@ Requirements:
 2. Provide your [OpenRouter API key](https://openrouter.ai/settings/keys) as the auth token
 3. **Important:** Explicitly blank out the Anthropic API key to prevent conflicts
 
-Add these environment variables to your shell profile:
+<Tabs>
+  <Tab title="Shell Profile">
+    Add these environment variables to your shell profile:
 
-```bash
-# Open your shell profile in nano
-nano ~/.zshrc  # or ~/.bashrc for Bash users
+    ```bash lines theme={null}
+    # Open your shell profile in nano
+    nano ~/.zshrc  # or ~/.bashrc for Bash users
 
-# Add these lines to the file:
-export OPENROUTER_API_KEY="<your-openrouter-api-key>"
-export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
-export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"
-export ANTHROPIC_API_KEY="" # Important: Must be explicitly empty
+    # Add these lines to the file:
+    export OPENROUTER_API_KEY="<your-openrouter-api-key>"
+    export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
+    export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"
+    export ANTHROPIC_API_KEY="" # Important: Must be explicitly empty
 
-# After saving, restart your terminal for changes to take effect
-```
+    # After saving, restart your terminal for changes to take effect
+    ```
 
-**Persistence:** We recommend adding these lines to your shell profile (`~/.bashrc`, `~/.zshrc`, or `~/.config/fish/config.fish`).
+    <Note>
+      **Persistence:** We recommend adding these lines to your shell profile (`~/.bashrc`, `~/.zshrc`, or `~/.config/fish/config.fish`).
+    </Note>
+  </Tab>
 
-Alternatively, you can configure Claude Code using a project-level settings file at `.claude/settings.local.json` in your project root:
+  <Tab title="Project Settings File">
+    Alternatively, you can configure Claude Code using a project-level settings file at `.claude/settings.local.json` in your project root:
 
-```json
-{
-  "env": {
-    "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
-    "ANTHROPIC_AUTH_TOKEN": "<your-openrouter-api-key>",
-    "ANTHROPIC_API_KEY": ""
-  }
-}
-```
+    ```json lines theme={null}
+    {
+      "env": {
+        "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
+        "ANTHROPIC_AUTH_TOKEN": "<your-openrouter-api-key>",
+        "ANTHROPIC_API_KEY": ""
+      }
+    }
+    ```
 
-Replace `<your-openrouter-api-key>` with your actual OpenRouter API key.
+    Replace `<your-openrouter-api-key>` with your actual OpenRouter API key.
 
-**Note:** This method keeps your configuration scoped to the project, making it easy to share OpenRouter settings with your team via version control (just be careful not to commit your API key).
+    <Note>
+      **Note:** This method keeps your configuration scoped to the project, making it easy to share OpenRouter settings with your team via version control (just be careful not to commit your API key).
+    </Note>
+  </Tab>
+</Tabs>
 
-**Variable Location:** Do not put these in a project-level `.env` file. The native Claude Code installer does not read standard `.env` files.
+<Warning>
+  **Variable Location:** Do not put these in a project-level `.env` file. The native Claude Code installer does not read standard `.env` files.
+</Warning>
 
 ### Step 3: Clear any cached Anthropic login
 
 If you were previously logged in to Claude Code with an Anthropic account, you must run `/logout` once to remove the cached session. Claude Code warns about auth conflicts when both a cached login and `ANTHROPIC_AUTH_TOKEN` are present, and the conflict can cause unexpected behaviour on startup — typically surfacing as confusing model-not-found errors (e.g. for `openrouter/auto`, `openrouter/pareto-code`, or any other OpenRouter-only model).
 
-```text
+```text lines theme={null}
 > /logout
 ```
 
 Then quit and re-launch `claude` so it picks up the new environment variables.
 
-If you have never logged in to Claude Code with Anthropic, you can skip this step.
+<Note>
+  If you have never logged in to Claude Code with Anthropic, you can skip this step.
+</Note>
 
 ### Step 4: Start your session
 
 Navigate to your project directory and start Claude Code:
 
-```bash
+```bash lines theme={null}
 cd /path/to/your/project
 claude
 ```
@@ -119,7 +143,7 @@ You are now connected! Any prompt you send will be routed through OpenRouter.
 
 You can confirm your connection by running the `/status` command inside Claude Code.
 
-```text
+```text lines theme={null}
 > /status
 Auth token: ANTHROPIC_AUTH_TOKEN
 Anthropic base URL: https://openrouter.ai/api
@@ -139,7 +163,7 @@ OpenRouter exposes an input that is compatible with the Anthropic Messages API.
 
 Claude Code uses several environment variables to determine which models to use for different tasks. You can override these to route each role through a specific model:
 
-```bash
+```bash lines theme={null}
 export ANTHROPIC_DEFAULT_OPUS_MODEL="~anthropic/claude-opus-latest"
 export ANTHROPIC_DEFAULT_SONNET_MODEL="~anthropic/claude-sonnet-latest"
 export ANTHROPIC_DEFAULT_HAIKU_MODEL="~anthropic/claude-haiku-latest"
@@ -172,17 +196,21 @@ Both options route through the Anthropic first-party provider, and the required 
 
 Claude Code has a built-in `/fast` command that toggles fast mode. When enabled, Claude Code sends `speed: "fast"` in its requests alongside the configured Opus model. OpenRouter fully supports this parameter — you just need to set the following environment variable:
 
-```bash
+```bash lines theme={null}
 export CLAUDE_CODE_SKIP_FAST_MODE_ORG_CHECK=1
 ```
 
-Requires Claude Code v2.1.96 or newer.
+<Note>
+  Requires Claude Code v2.1.96 or newer.
+</Note>
 
 ### Pricing
 
 Fast mode is priced at a premium over the underlying Claude Opus model's standard token rates. See [Anthropic's fast mode pricing](https://platform.claude.com/docs/en/build-with-claude/fast-mode#pricing) for current rates. When fast mode is active, the response's `usage` object includes `"speed": "fast"` to confirm the request was processed at the higher speed tier.
 
-If `speed: "fast"` is sent for a model that does not support fast mode, OpenRouter silently drops the parameter and the request proceeds at standard speed with standard pricing.
+<Note>
+  If `speed: "fast"` is sent for a model that does not support fast mode, OpenRouter silently drops the parameter and the request proceeds at standard speed with standard pricing.
+</Note>
 
 ### Routing behavior
 
@@ -192,7 +220,7 @@ Fast mode is only served by the Anthropic first-party provider, since other prov
 
 The [Anthropic Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) lets you build AI agents programmatically using Python or TypeScript. Since the Agent SDK uses Claude Code as its runtime, you can connect it to OpenRouter using the same environment variables described above.
 
-For complete setup instructions and code examples, see our [Anthropic Agent SDK integration guide](/docs/guides/community/anthropic-agent-sdk).
+For complete setup instructions and code examples, see our [Anthropic Agent SDK integration guide](/guides/community/anthropic-agent-sdk).
 
 ## GitHub Action
 
@@ -201,7 +229,7 @@ You can use OpenRouter with the official [Claude Code GitHub Action](https://git
 1. Pass your OpenRouter API key via `anthropic_api_key` (store it as a GitHub secret named `OPENROUTER_API_KEY`)
 2. Set the `ANTHROPIC_BASE_URL` environment variable to `https://openrouter.ai/api`
 
-```yaml
+```yaml lines theme={null}
 - name: Run Claude Code
   uses: anthropics/claude-code-action@v1
   with:
@@ -214,11 +242,13 @@ You can use OpenRouter with the official [Claude Code GitHub Action](https://git
 
 You can add a custom statusline to Claude Code that tracks your OpenRouter API costs in real-time. The statusline displays the provider, model, cumulative cost, and cache discounts for your session.
 
-![Claude Code statusline showing OpenRouter cost tracking](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/5bc3af530c4a0111317cbdcee893be444718c676f3f80bf0860141cffcb5ee1b/content/pages/guides/claude-code-statusline.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/coding-agents/claude-code-integration/claude-code-statusline.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=06adfa14552de4c90bf429d9bdbe46c6" alt="Claude Code statusline showing OpenRouter cost tracking" width="2286" height="766" data-path="assets/cookbook/coding-agents/claude-code-integration/claude-code-statusline.png" />
+</Frame>
 
 Download the statusline scripts from the [openrouter-examples repository](https://github.com/OpenRouterTeam/openrouter-examples/tree/main/claude-code), make them executable, and add the following to your `~/.claude/settings.json`:
 
-```json
+```json lines theme={null}
 {
   "statusLine": {
     "type": "command",

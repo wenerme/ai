@@ -1,101 +1,329 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List files
 
-GET https://openrouter.ai/api/v1/files
+> Lists files belonging to the workspace of the authenticating API key.
 
-Lists files belonging to the workspace of the authenticating API key.
 
-Reference: https://openrouter.ai/docs/api/api-reference/files/list-files
 
-## OpenAPI Specification
+## OpenAPI
 
-```yaml
+````yaml /openapi/openapi.yaml get /files
 openapi: 3.1.0
 info:
+  contact:
+    email: support@openrouter.ai
+    name: OpenRouter Support
+    url: https://openrouter.ai/docs
+  description: OpenAI-compatible API with additional OpenRouter features
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
   title: OpenRouter API
   version: 1.0.0
+servers:
+  - description: Production server
+    url: https://openrouter.ai/api/v1
+    x-speakeasy-server-id: production
+security:
+  - apiKey: []
+tags:
+  - description: API key management endpoints
+    name: API Keys
+  - description: Analytics and usage endpoints
+    name: Analytics
+  - description: Anthropic Messages endpoints
+    name: Anthropic Messages
+  - description: BYOK endpoints
+    name: BYOK
+  - description: Benchmarks endpoints
+    name: Benchmarks
+  - description: Chat completion endpoints
+    name: Chat
+  - description: Task classification market-share endpoints
+    name: Classifications
+  - description: Credit management endpoints
+    name: Credits
+  - description: Datasets endpoints
+    name: Datasets
+  - description: Text embedding endpoints
+    name: Embeddings
+  - description: Endpoint information
+    name: Endpoints
+  - description: Files endpoints
+    name: Files
+  - description: Generation history endpoints
+    name: Generations
+  - description: Guardrails endpoints
+    name: Guardrails
+  - description: Images endpoints
+    name: Images
+  - description: Model information endpoints
+    name: Models
+  - description: OAuth authentication endpoints
+    name: OAuth
+  - description: Observability endpoints
+    name: Observability
+  - description: Organization endpoints
+    name: Organization
+  - description: Presets endpoints
+    name: Presets
+  - description: Provider information endpoints
+    name: Providers
+  - description: Rerank endpoints
+    name: Rerank
+  - description: Speech-to-text endpoints
+    name: STT
+    x-displayName: Transcriptions
+  - description: Text-to-speech endpoints
+    name: TTS
+    x-displayName: Speech
+  - description: Video Generation endpoints
+    name: Video Generation
+  - description: Workspaces endpoints
+    name: Workspaces
+  - description: beta.Analytics endpoints
+    name: beta.Analytics
+  - description: beta.responses endpoints
+    name: beta.responses
+externalDocs:
+  description: OpenRouter Documentation
+  url: https://openrouter.ai/docs
 paths:
   /files:
     get:
-      operationId: list-files
+      tags:
+        - Files
       summary: List files
       description: Lists files belonging to the workspace of the authenticating API key.
-      tags:
-        - subpackage_files
+      operationId: listFiles
       parameters:
-        - name: limit
+        - description: Maximum number of files to return (1–1000).
           in: query
-          description: Maximum number of files to return (1–1000).
+          name: limit
           required: false
           schema:
+            description: Maximum number of files to return (1–1000).
+            example: 100
+            maximum: 1000
+            minimum: 1
             type: integer
-        - name: cursor
+        - description: Opaque pagination cursor from a previous response.
           in: query
-          description: Opaque pagination cursor from a previous response.
+          name: cursor
           required: false
           schema:
+            description: Opaque pagination cursor from a previous response.
+            example: eyJjdXJzb3IiOiJmaWxlXzAxMUNOaGE4aUNKY1Uxd1hOUjZxNFY4dyJ9
             type: string
-        - name: workspace_id
-          in: query
-          description: >-
+        - description: >-
             Workspace to scope the request to. Defaults to the caller’s default
             workspace.
+          in: query
+          name: workspace_id
           required: false
           schema:
-            type: string
+            description: >-
+              Workspace to scope the request to. Defaults to the caller’s
+              default workspace.
+            example: a103d8b6-42f0-4e50-9a3c-bf41e2c3c1a7
             format: uuid
-        - name: Authorization
-          in: header
-          description: API key as bearer token in Authorization header
-          required: true
-          schema:
             type: string
       responses:
         '200':
-          description: A page of files.
           content:
             application/json:
+              example:
+                cursor: null
+                data:
+                  - created_at: '2025-01-01T00:00:00Z'
+                    downloadable: false
+                    filename: document.pdf
+                    id: file_011CNha8iCJcU1wXNR6q4V8w
+                    mime_type: application/pdf
+                    size_bytes: 1024000
+                    type: file
+                first_id: file_011CNha8iCJcU1wXNR6q4V8w
+                has_more: false
+                last_id: file_011CNha8iCJcU1wXNR6q4V8w
               schema:
                 $ref: '#/components/schemas/FileListResponse'
+          description: A page of files.
         '400':
-          description: Bad Request - Invalid request parameters or malformed input
           content:
             application/json:
+              example:
+                error:
+                  code: 400
+                  message: Invalid request parameters
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
+          description: Bad Request - Invalid request parameters or malformed input
         '401':
-          description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
+              example:
+                error:
+                  code: 401
+                  message: Missing Authentication header
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
+          description: Unauthorized - Authentication required or invalid credentials
         '429':
-          description: Too Many Requests - Rate limit exceeded
           content:
             application/json:
+              example:
+                error:
+                  code: 429
+                  message: Rate limit exceeded
               schema:
                 $ref: '#/components/schemas/TooManyRequestsResponse'
+          description: Too Many Requests - Rate limit exceeded
         '500':
-          description: Internal Server Error - Unexpected server error
           content:
             application/json:
+              example:
+                error:
+                  code: 500
+                  message: Internal Server Error
               schema:
                 $ref: '#/components/schemas/InternalServerResponse'
-servers:
-  - url: https://openrouter.ai/api/v1
-    description: Production server
+          description: Internal Server Error - Unexpected server error
 components:
   schemas:
-    FileMetadataType:
-      type: string
-      enum:
-        - file
-      title: FileMetadataType
-    FileMetadata:
+    FileListResponse:
+      description: A page of files belonging to the requesting workspace.
+      example:
+        cursor: null
+        data:
+          - created_at: '2025-01-01T00:00:00Z'
+            downloadable: false
+            filename: document.pdf
+            id: file_011CNha8iCJcU1wXNR6q4V8w
+            mime_type: application/pdf
+            size_bytes: 1024000
+            type: file
+        first_id: file_011CNha8iCJcU1wXNR6q4V8w
+        has_more: false
+        last_id: file_011CNha8iCJcU1wXNR6q4V8w
+      properties:
+        cursor:
+          description: >-
+            Opaque cursor for the next page; null when there are no more
+            results.
+          nullable: true
+          type: string
+        data:
+          items:
+            $ref: '#/components/schemas/FileMetadata'
+          type: array
+        first_id:
+          nullable: true
+          type: string
+        has_more:
+          type: boolean
+        last_id:
+          nullable: true
+          type: string
+      required:
+        - data
+        - has_more
+        - first_id
+        - last_id
+        - cursor
       type: object
+    BadRequestResponse:
+      description: Bad Request - Invalid request parameters or malformed input
+      example:
+        error:
+          code: 400
+          message: Invalid request parameters
+      properties:
+        error:
+          $ref: '#/components/schemas/BadRequestResponseErrorData'
+        openrouter_metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        user_id:
+          nullable: true
+          type: string
+      required:
+        - error
+      type: object
+    UnauthorizedResponse:
+      description: Unauthorized - Authentication required or invalid credentials
+      example:
+        error:
+          code: 401
+          message: Missing Authentication header
+      properties:
+        error:
+          $ref: '#/components/schemas/UnauthorizedResponseErrorData'
+        openrouter_metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        user_id:
+          nullable: true
+          type: string
+      required:
+        - error
+      type: object
+    TooManyRequestsResponse:
+      description: Too Many Requests - Rate limit exceeded
+      example:
+        error:
+          code: 429
+          message: Rate limit exceeded
+      properties:
+        error:
+          $ref: '#/components/schemas/TooManyRequestsResponseErrorData'
+        openrouter_metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        user_id:
+          nullable: true
+          type: string
+      required:
+        - error
+      type: object
+    InternalServerResponse:
+      description: Internal Server Error - Unexpected server error
+      example:
+        error:
+          code: 500
+          message: Internal Server Error
+      properties:
+        error:
+          $ref: '#/components/schemas/InternalServerResponseErrorData'
+        openrouter_metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        user_id:
+          nullable: true
+          type: string
+      required:
+        - error
+      type: object
+    FileMetadata:
+      description: Metadata describing a stored file.
+      example:
+        created_at: '2025-01-01T00:00:00Z'
+        downloadable: false
+        filename: document.pdf
+        id: file_011CNha8iCJcU1wXNR6q4V8w
+        mime_type: application/pdf
+        size_bytes: 1024000
+        type: file
       properties:
         created_at:
           type: string
@@ -110,355 +338,98 @@ components:
         size_bytes:
           type: integer
         type:
-          $ref: '#/components/schemas/FileMetadataType'
+          enum:
+            - file
+          type: string
       required:
-        - created_at
-        - downloadable
-        - filename
         - id
+        - type
+        - filename
         - mime_type
         - size_bytes
-        - type
-      description: Metadata describing a stored file.
-      title: FileMetadata
-    FileListResponse:
+        - created_at
+        - downloadable
       type: object
-      properties:
-        cursor:
-          type:
-            - string
-            - 'null'
-          description: >-
-            Opaque cursor for the next page; null when there are no more
-            results.
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/FileMetadata'
-        first_id:
-          type:
-            - string
-            - 'null'
-        has_more:
-          type: boolean
-        last_id:
-          type:
-            - string
-            - 'null'
-      required:
-        - cursor
-        - data
-        - first_id
-        - has_more
-        - last_id
-      description: A page of files belonging to the requesting workspace.
-      title: FileListResponse
     BadRequestResponseErrorData:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
       description: Error data for BadRequestResponse
-      title: BadRequestResponseErrorData
-    BadRequestResponse:
-      type: object
+      example:
+        code: 400
+        message: Invalid request parameters
       properties:
-        error:
-          $ref: '#/components/schemas/BadRequestResponseErrorData'
-        openrouter_metadata:
-          type:
-            - object
-            - 'null'
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
           additionalProperties:
-            description: Any type
-        user_id:
-          type:
-            - string
-            - 'null'
+            nullable: true
+          nullable: true
+          type: object
       required:
-        - error
-      description: Bad Request - Invalid request parameters or malformed input
-      title: BadRequestResponse
+        - code
+        - message
+      type: object
     UnauthorizedResponseErrorData:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
       description: Error data for UnauthorizedResponse
-      title: UnauthorizedResponseErrorData
-    UnauthorizedResponse:
-      type: object
+      example:
+        code: 401
+        message: Missing Authentication header
       properties:
-        error:
-          $ref: '#/components/schemas/UnauthorizedResponseErrorData'
-        openrouter_metadata:
-          type:
-            - object
-            - 'null'
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
           additionalProperties:
-            description: Any type
-        user_id:
-          type:
-            - string
-            - 'null'
+            nullable: true
+          nullable: true
+          type: object
       required:
-        - error
-      description: Unauthorized - Authentication required or invalid credentials
-      title: UnauthorizedResponse
+        - code
+        - message
+      type: object
     TooManyRequestsResponseErrorData:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
       description: Error data for TooManyRequestsResponse
-      title: TooManyRequestsResponseErrorData
-    TooManyRequestsResponse:
-      type: object
-      properties:
-        error:
-          $ref: '#/components/schemas/TooManyRequestsResponseErrorData'
-        openrouter_metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-        user_id:
-          type:
-            - string
-            - 'null'
-      required:
-        - error
-      description: Too Many Requests - Rate limit exceeded
-      title: TooManyRequestsResponse
-    InternalServerResponseErrorData:
-      type: object
+      example:
+        code: 429
+        message: Rate limit exceeded
       properties:
         code:
           type: integer
         message:
           type: string
         metadata:
-          type:
-            - object
-            - 'null'
           additionalProperties:
-            description: Any type
+            nullable: true
+          nullable: true
+          type: object
       required:
         - code
         - message
-      description: Error data for InternalServerResponse
-      title: InternalServerResponseErrorData
-    InternalServerResponse:
       type: object
+    InternalServerResponseErrorData:
+      description: Error data for InternalServerResponse
+      example:
+        code: 500
+        message: Internal Server Error
       properties:
-        error:
-          $ref: '#/components/schemas/InternalServerResponseErrorData'
-        openrouter_metadata:
-          type:
-            - object
-            - 'null'
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
           additionalProperties:
-            description: Any type
-        user_id:
-          type:
-            - string
-            - 'null'
+            nullable: true
+          nullable: true
+          type: object
       required:
-        - error
-      description: Internal Server Error - Unexpected server error
-      title: InternalServerResponse
+        - code
+        - message
+      type: object
   securitySchemes:
     apiKey:
-      type: http
-      scheme: bearer
       description: API key as bearer token in Authorization header
+      scheme: bearer
+      type: http
 
-```
-
-## Examples
-
-
-
-**Response**
-
-```json
-{
-  "cursor": null,
-  "data": [
-    {
-      "created_at": "2025-01-01T00:00:00Z",
-      "downloadable": false,
-      "filename": "document.pdf",
-      "id": "file_011CNha8iCJcU1wXNR6q4V8w",
-      "mime_type": "application/pdf",
-      "size_bytes": 1024000,
-      "type": "file"
-    }
-  ],
-  "first_id": "file_011CNha8iCJcU1wXNR6q4V8w",
-  "has_more": false,
-  "last_id": "file_011CNha8iCJcU1wXNR6q4V8w"
-}
-```
-
-**SDK Code**
-
-```python Files_listFiles_example
-import requests
-
-url = "https://openrouter.ai/api/v1/files"
-
-headers = {"Authorization": "Bearer <token>"}
-
-response = requests.get(url, headers=headers)
-
-print(response.json())
-```
-
-```javascript Files_listFiles_example
-const url = 'https://openrouter.ai/api/v1/files';
-const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
-
-try {
-  const response = await fetch(url, options);
-  const data = await response.json();
-  console.log(data);
-} catch (error) {
-  console.error(error);
-}
-```
-
-```go Files_listFiles_example
-package main
-
-import (
-	"fmt"
-	"net/http"
-	"io"
-)
-
-func main() {
-
-	url := "https://openrouter.ai/api/v1/files"
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("Authorization", "Bearer <token>")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := io.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```ruby Files_listFiles_example
-require 'uri'
-require 'net/http'
-
-url = URI("https://openrouter.ai/api/v1/files")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-
-request = Net::HTTP::Get.new(url)
-request["Authorization"] = 'Bearer <token>'
-
-response = http.request(request)
-puts response.read_body
-```
-
-```java Files_listFiles_example
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/files")
-  .header("Authorization", "Bearer <token>")
-  .asString();
-```
-
-```php Files_listFiles_example
-<?php
-require_once('vendor/autoload.php');
-
-$client = new \GuzzleHttp\Client();
-
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/files', [
-  'headers' => [
-    'Authorization' => 'Bearer <token>',
-  ],
-]);
-
-echo $response->getBody();
-```
-
-```csharp Files_listFiles_example
-using RestSharp;
-
-var client = new RestClient("https://openrouter.ai/api/v1/files");
-var request = new RestRequest(Method.GET);
-request.AddHeader("Authorization", "Bearer <token>");
-IRestResponse response = client.Execute(request);
-```
-
-```swift Files_listFiles_example
-import Foundation
-
-let headers = ["Authorization": "Bearer <token>"]
-
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/files")! as URL,
-                                        cachePolicy: .useProtocolCachePolicy,
-                                    timeoutInterval: 10.0)
-request.httpMethod = "GET"
-request.allHTTPHeaderFields = headers
-
-let session = URLSession.shared
-let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-  if (error != nil) {
-    print(error as Any)
-  } else {
-    let httpResponse = response as? HTTPURLResponse
-    print(httpResponse)
-  }
-})
-
-dataTask.resume()
-```
+````

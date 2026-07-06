@@ -1,0 +1,83 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Organization
+
+> Organization endpoints
+
+## Overview
+
+Organization endpoints
+
+### Available Operations
+
+* [ListMembers](#listmembers) - List organization members
+
+## ListMembers
+
+List all members of the organization associated with the authenticated management key. [Management key](/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```go theme={null}
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/optionalnullable"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Organization.ListMembers(ctx, optionalnullable.From[int64](nil), nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                       | Required             | Description                                   | Example |
+| --------- | ---------------------------------------------------------- | -------------------- | --------------------------------------------- | ------- |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.           |         |
+| `offset`  | optionalnullable.OptionalNullable\[`int64`]                | :heavy\_minus\_sign: | Number of records to skip for pagination      | 0       |
+| `limit`   | `*int64`                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100) | 50      |
+| `opts`    | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                 |         |
+
+### Response
+
+**[\*operations.ListOrganizationMembersResponse](../../models/operations/listorganizationmembersresponse.mdx), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.NotFoundResponseError       | 404         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |

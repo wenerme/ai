@@ -1,12 +1,14 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Agent SDK
 
+> Build AI agents with multi-turn loops, tools, and conversation state
+
 The Agent SDK (`@openrouter/agent`) provides the primitives you need to build agentic applications on OpenRouter. Instead of manually wiring up conversation loops, tool dispatch, and state tracking, the Agent SDK handles all of that so you can focus on defining *what* your agent does.
 
-The Agent SDK is built to work alongside the [Client SDKs](/docs/client-sdks/overview). Installing `@openrouter/agent` automatically includes the Client SDKs as well, but each package can work independently.
+The Agent SDK is built to work alongside the [Client SDKs](/client-sdks/overview). Installing `@openrouter/agent` automatically includes the Client SDKs as well, but each package can work independently.
 
 ## When to use the Agent SDK
 
@@ -19,25 +21,29 @@ Choose the Agent SDK when you need **agentic behavior** — multi-step reasoning
 * **Streaming** — real-time token output within each agent step
 * **Dynamic parameters** — change model, temperature, or tools between turns based on context
 
-If you only need simple request/response calls to a model without agent loops, the [Client SDKs](/docs/client-sdks/overview) are a lighter-weight option.
+<Tip>
+  If you only need simple request/response calls to a model without agent loops, the [Client SDKs](/client-sdks/overview) are a lighter-weight option.
+</Tip>
 
 ## Installation
 
-```bash title="npm"
-npm install @openrouter/agent
-```
+<CodeGroup>
+  ```bash title="npm" lines theme={null}
+  npm install @openrouter/agent
+  ```
 
-```bash title="pnpm"
-pnpm add @openrouter/agent
-```
+  ```bash title="pnpm" lines theme={null}
+  pnpm add @openrouter/agent
+  ```
 
-```bash title="yarn"
-yarn add @openrouter/agent
-```
+  ```bash title="yarn" lines theme={null}
+  yarn add @openrouter/agent
+  ```
+</CodeGroup>
 
 ## Quick example
 
-```typescript
+```typescript expandable lines theme={null}
 import { callModel, tool } from '@openrouter/agent';
 import { z } from 'zod';
 
@@ -77,13 +83,13 @@ The main entry point. It runs an inference loop that:
 3. Appends tool results to the conversation
 4. Repeats until a stop condition is met or no more tool calls are made
 
-See the [Call Model documentation](/docs/agent-sdk/call-model) for the full API.
+See the [Call Model documentation](/agent-sdk/call-model) for the full API.
 
 ### Tools
 
 Define tools with the `tool()` helper. Each tool has a name, description, Zod parameter schema, and an `execute` function. The SDK handles serialization, validation, and dispatch.
 
-```typescript
+```typescript lines theme={null}
 import { tool } from '@openrouter/agent';
 import { z } from 'zod';
 
@@ -102,7 +108,7 @@ const searchTool = tool({
 
 Control when the agent loop terminates:
 
-```typescript
+```typescript lines theme={null}
 import { callModel, stepCountIs, maxCost } from '@openrouter/agent';
 
 const result = await callModel({
@@ -125,9 +131,9 @@ const result = await callModel({
 
 ## Next steps
 
-* [Call Model](/docs/agent-sdk/call-model) — the complete `callModel` API reference
-* [Tools](/docs/agent-sdk/call-model/tools) — defining and using tools
-* [Stop Conditions](/docs/agent-sdk/call-model/stop-conditions) — controlling agent loop termination
-* [Streaming](/docs/agent-sdk/call-model/streaming) — real-time token output
-* [DevTools](/docs/agent-sdk/devtools) — telemetry capture and visualization for development
-* [Migrating from @openrouter/sdk](/docs/agent-sdk/agent-migration) — move agent imports to the standalone package
+* [Call Model](/agent-sdk/call-model) — the complete `callModel` API reference
+* [Tools](/agent-sdk/call-model/tools) — defining and using tools
+* [Stop Conditions](/agent-sdk/call-model/stop-conditions) — controlling agent loop termination
+* [Streaming](/agent-sdk/call-model/streaming) — real-time token output
+* [DevTools](/agent-sdk/dev-tools/devtools) — telemetry capture and visualization for development
+* [Migrating from @openrouter/sdk](/agent-sdk/agent-migration) — move agent imports to the standalone package

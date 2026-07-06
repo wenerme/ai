@@ -1,10 +1,12 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Models
 
-Explore and browse 300+ models and providers [on our website](https://openrouter.ai/models), or [with our API](/docs/api/api-reference/models/get-models). You can also subscribe to our [RSS feed](/api/v1/models?use_rss=true) to stay updated on new models.
+> One API for hundreds of models
+
+Explore and browse 400+ models and providers [on our website](https://openrouter.ai/models), or [with our API](/api/api-reference/models/list-all-models-and-their-properties). You can also subscribe to our [RSS feed](https://openrouter.ai/api/v1/models?use_rss=true) to stay updated on new models.
 
 ## Query Parameters
 
@@ -24,7 +26,7 @@ Filter models by their output capabilities. Accepts a comma-separated list of mo
 
 Examples:
 
-```bash
+```bash lines theme={null}
 # Default — text models only
 curl "https://openrouter.ai/api/v1/models"
 
@@ -38,13 +40,13 @@ curl "https://openrouter.ai/api/v1/models?output_modalities=text,image"
 curl "https://openrouter.ai/api/v1/models?output_modalities=all"
 ```
 
-The same parameter is available on the [`/v1/models/count`](/docs/api/api-reference/models/list-models-count) endpoint so that counts stay consistent with list results.
+The same parameter is available on the [`/v1/models/count`](/api/api-reference/models/get-total-count-of-available-models) endpoint so that counts stay consistent with list results.
 
 ### `supported_parameters`
 
 Filter models by the API parameters they support. For example, to find models that support tool calling:
 
-```bash
+```bash lines theme={null}
 curl "https://openrouter.ai/api/v1/models?supported_parameters=tools"
 ```
 
@@ -65,7 +67,7 @@ Sort models server-side before they're returned. Accepts one of the following va
 
 Models without data for the requested sort dimension (e.g. no pricing, no throughput heuristics) sort last. Omitting `sort` preserves the default ordering (backward compatible).
 
-```bash
+```bash lines theme={null}
 # Cheapest models first
 curl "https://openrouter.ai/api/v1/models?sort=pricing-low-to-high"
 
@@ -88,7 +90,7 @@ The endpoint resolves aliases automatically. For example, `anthropic/claude-3-5-
 
 Variant suffixes are also supported — append `:free`, `:thinking`, etc. to the slug:
 
-```bash
+```bash lines theme={null}
 # Look up a specific model
 curl "https://openrouter.ai/api/v1/model/openai/gpt-4o"
 
@@ -101,7 +103,7 @@ curl "https://openrouter.ai/api/v1/model/openai/gpt-4:free"
 
 Returns `404` if the model doesn't exist and isn't an alias for another model. The response shape wraps the same Model object used in the list endpoint:
 
-```json
+```json lines theme={null}
 {
   "data": {
     "id": "openai/gpt-4o",
@@ -114,7 +116,7 @@ Returns `404` if the model doesn't exist and isn't an alias for another model. T
 
 ## Models API Standard
 
-Our [Models API](/docs/api/api-reference/models/get-models) makes the most important information about all LLMs freely available as soon as we confirm it.
+Our [Models API](/api/api-reference/models/list-all-models-and-their-properties) makes the most important information about all LLMs freely available as soon as we confirm it.
 
 ### API Response Schema
 
@@ -122,7 +124,7 @@ The Models API returns a standardized JSON response format that provides compreh
 
 #### Root Response Object
 
-```json
+```json lines theme={null}
 {
   "data": [
     /* Array of Model objects */
@@ -153,7 +155,7 @@ Each model in the `data` array contains the following standardized fields:
 
 #### Architecture Object
 
-```typescript
+```typescript lines theme={null}
 {
   "input_modalities": string[], // Supported input types: ["file", "image", "text"]
   "output_modalities": string[], // Supported output types: ["text"]
@@ -166,7 +168,7 @@ Each model in the `data` array contains the following standardized fields:
 
 All pricing values are in USD per token/request/unit. A value of `"0"` indicates the feature is free.
 
-```typescript
+```typescript lines theme={null}
 {
   "prompt": string,           // Cost per input token
   "completion": string,       // Cost per output token
@@ -181,7 +183,7 @@ All pricing values are in USD per token/request/unit. A value of `"0"` indicates
 
 #### Top Provider Object
 
-```typescript
+```typescript lines theme={null}
 {
   "context_length": number,        // Provider-specific context limit
   "max_completion_tokens": number, // Maximum tokens in response
@@ -193,7 +195,7 @@ All pricing values are in USD per token/request/unit. A value of `"0"` indicates
 
 Present only on models that have been evaluated in third-party benchmarks. Currently includes [Design Arena](https://designarena.org) rankings.
 
-```typescript
+```typescript lines theme={null}
 {
   "design_arena": [
     {
@@ -209,7 +211,7 @@ Present only on models that have been evaluated in third-party benchmarks. Curre
 
 Rankings are computed among models listed on OpenRouter, not the full external leaderboard. Models without benchmark data omit the `benchmarks` field entirely.
 
-```bash
+```bash lines theme={null}
 # Find models with benchmark data
 curl -s "https://openrouter.ai/api/v1/models" | jq '.data[] | select(.benchmarks) | {id, benchmarks}'
 ```
@@ -232,15 +234,19 @@ The `supported_parameters` array indicates which OpenAI-compatible parameters wo
 * `presence_penalty` - Topic diversity
 * `seed` - Deterministic outputs
 
-Some models break up text into chunks of multiple characters (GPT, Claude,
-Llama, etc), while others tokenize by character (PaLM). This means that token
-counts (and therefore costs) will vary between models, even when inputs and
-outputs are the same. Costs are displayed and billed according to the
-tokenizer for the model in use. You can use the `usage` field in the response
-to get the token counts for the input and output.
+<Note>
+  **Different models tokenize text in different ways**
+
+  Some models break up text into chunks of multiple characters (GPT, Claude,
+  Llama, etc), while others tokenize by character (PaLM). This means that token
+  counts (and therefore costs) will vary between models, even when inputs and
+  outputs are the same. Costs are displayed and billed according to the
+  tokenizer for the model in use. You can use the `usage` field in the response
+  to get the token counts for the input and output.
+</Note>
 
 If there are models or providers you are interested in that OpenRouter doesn't have, please tell us about them in our [Discord channel](https://openrouter.ai/discord).
 
 ## For Providers
 
-If you're interested in working with OpenRouter, you can learn more on our [providers page](/docs/guides/community/for-providers).
+If you're interested in working with OpenRouter, you can learn more on our [providers page](/guides/community/for-providers).

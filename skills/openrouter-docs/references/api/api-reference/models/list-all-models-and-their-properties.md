@@ -1,0 +1,1180 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# List all models and their properties
+
+
+
+## OpenAPI
+
+````yaml /openapi/openapi.yaml get /models
+openapi: 3.1.0
+info:
+  contact:
+    email: support@openrouter.ai
+    name: OpenRouter Support
+    url: https://openrouter.ai/docs
+  description: OpenAI-compatible API with additional OpenRouter features
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  title: OpenRouter API
+  version: 1.0.0
+servers:
+  - description: Production server
+    url: https://openrouter.ai/api/v1
+    x-speakeasy-server-id: production
+security:
+  - apiKey: []
+tags:
+  - description: API key management endpoints
+    name: API Keys
+  - description: Analytics and usage endpoints
+    name: Analytics
+  - description: Anthropic Messages endpoints
+    name: Anthropic Messages
+  - description: BYOK endpoints
+    name: BYOK
+  - description: Benchmarks endpoints
+    name: Benchmarks
+  - description: Chat completion endpoints
+    name: Chat
+  - description: Task classification market-share endpoints
+    name: Classifications
+  - description: Credit management endpoints
+    name: Credits
+  - description: Datasets endpoints
+    name: Datasets
+  - description: Text embedding endpoints
+    name: Embeddings
+  - description: Endpoint information
+    name: Endpoints
+  - description: Files endpoints
+    name: Files
+  - description: Generation history endpoints
+    name: Generations
+  - description: Guardrails endpoints
+    name: Guardrails
+  - description: Images endpoints
+    name: Images
+  - description: Model information endpoints
+    name: Models
+  - description: OAuth authentication endpoints
+    name: OAuth
+  - description: Observability endpoints
+    name: Observability
+  - description: Organization endpoints
+    name: Organization
+  - description: Presets endpoints
+    name: Presets
+  - description: Provider information endpoints
+    name: Providers
+  - description: Rerank endpoints
+    name: Rerank
+  - description: Speech-to-text endpoints
+    name: STT
+    x-displayName: Transcriptions
+  - description: Text-to-speech endpoints
+    name: TTS
+    x-displayName: Speech
+  - description: Video Generation endpoints
+    name: Video Generation
+  - description: Workspaces endpoints
+    name: Workspaces
+  - description: beta.Analytics endpoints
+    name: beta.Analytics
+  - description: beta.responses endpoints
+    name: beta.responses
+externalDocs:
+  description: OpenRouter Documentation
+  url: https://openrouter.ai/docs
+paths:
+  /models:
+    get:
+      tags:
+        - Models
+      summary: List all models and their properties
+      operationId: getModels
+      parameters:
+        - description: Filter models by use case category
+          in: query
+          name: category
+          required: false
+          schema:
+            description: Filter models by use case category
+            enum:
+              - programming
+              - roleplay
+              - marketing
+              - marketing/seo
+              - technology
+              - science
+              - translation
+              - legal
+              - finance
+              - health
+              - trivia
+              - academia
+            example: programming
+            type: string
+        - description: Filter models by supported parameter (comma-separated)
+          in: query
+          name: supported_parameters
+          required: false
+          schema:
+            description: Filter models by supported parameter (comma-separated)
+            example: temperature
+            type: string
+        - description: >-
+            Filter models by output modality. Accepts a comma-separated list of
+            modalities (text, image, audio, embeddings) or "all" to include all
+            models. Defaults to "text".
+          in: query
+          name: output_modalities
+          required: false
+          schema:
+            description: >-
+              Filter models by output modality. Accepts a comma-separated list
+              of modalities (text, image, audio, embeddings) or "all" to include
+              all models. Defaults to "text".
+            example: text
+            type: string
+        - description: >-
+            Sort the returned models server-side. Prefer this over fetching the
+            full list and sorting client-side. Options: pricing-low-to-high,
+            pricing-high-to-low (average prompt/completion price),
+            context-high-to-low (context length), throughput-high-to-low,
+            latency-low-to-high (recent median performance), most-popular,
+            top-weekly (tokens processed in the last week), newest (creation
+            date), intelligence-high-to-low (Artificial Analysis intelligence
+            index), design-arena-elo-high-to-low (best Design Arena ELO across
+            arenas). Models without a score for the chosen benchmark are placed
+            last. When omitted, the existing default ordering is preserved.
+          in: query
+          name: sort
+          required: false
+          schema:
+            description: >-
+              Sort the returned models server-side. Prefer this over fetching
+              the full list and sorting client-side. Options:
+              pricing-low-to-high, pricing-high-to-low (average
+              prompt/completion price), context-high-to-low (context length),
+              throughput-high-to-low, latency-low-to-high (recent median
+              performance), most-popular, top-weekly (tokens processed in the
+              last week), newest (creation date), intelligence-high-to-low
+              (Artificial Analysis intelligence index),
+              design-arena-elo-high-to-low (best Design Arena ELO across
+              arenas). Models without a score for the chosen benchmark are
+              placed last. When omitted, the existing default ordering is
+              preserved.
+            enum:
+              - most-popular
+              - newest
+              - top-weekly
+              - pricing-low-to-high
+              - pricing-high-to-low
+              - context-high-to-low
+              - throughput-high-to-low
+              - latency-low-to-high
+              - intelligence-high-to-low
+              - design-arena-elo-high-to-low
+            example: newest
+            type: string
+        - description: Return results as RSS feed
+          in: query
+          name: use_rss
+          required: false
+          schema:
+            description: Return results as RSS feed
+            example: 'true'
+            type: string
+        - description: Use chat links in RSS feed items
+          in: query
+          name: use_rss_chat_links
+          required: false
+          schema:
+            description: Use chat links in RSS feed items
+            example: 'true'
+            type: string
+        - description: Free-text search by model name or slug.
+          in: query
+          name: q
+          required: false
+          schema:
+            description: Free-text search by model name or slug.
+            example: gpt-4
+            type: string
+        - description: >-
+            Filter models by input modality. Comma-separated list of: text,
+            image, audio, file.
+          in: query
+          name: input_modalities
+          required: false
+          schema:
+            description: >-
+              Filter models by input modality. Comma-separated list of: text,
+              image, audio, file.
+            example: text,image
+            type: string
+        - description: >-
+            Minimum context length (tokens). Models with smaller context are
+            excluded.
+          in: query
+          name: context
+          required: false
+          schema:
+            description: >-
+              Minimum context length (tokens). Models with smaller context are
+              excluded.
+            example: 128000
+            exclusiveMinimum: true
+            minimum: 0
+            type: integer
+        - description: Minimum prompt price in $/M tokens.
+          in: query
+          name: min_price
+          required: false
+          schema:
+            description: Minimum prompt price in $/M tokens.
+            example: 0
+            minimum: 0
+            nullable: true
+            type: number
+        - description: Maximum prompt price in $/M tokens.
+          in: query
+          name: max_price
+          required: false
+          schema:
+            description: Maximum prompt price in $/M tokens.
+            example: 10
+            minimum: 0
+            nullable: true
+            type: number
+        - description: >-
+            Filter models by architecture/model family (e.g. GPT, Claude,
+            Gemini, Llama).
+          in: query
+          name: arch
+          required: false
+          schema:
+            description: >-
+              Filter models by architecture/model family (e.g. GPT, Claude,
+              Gemini, Llama).
+            example: GPT
+            type: string
+        - description: >-
+            Filter models by the organization that created the model.
+            Comma-separated list of author slugs.
+          in: query
+          name: model_authors
+          required: false
+          schema:
+            description: >-
+              Filter models by the organization that created the model.
+              Comma-separated list of author slugs.
+            example: openai,anthropic
+            type: string
+        - description: >-
+            Filter models by hosting provider. Comma-separated list of provider
+            names.
+          in: query
+          name: providers
+          required: false
+          schema:
+            description: >-
+              Filter models by hosting provider. Comma-separated list of
+              provider names.
+            example: OpenAI,Anthropic
+            type: string
+        - description: >-
+            Filter by distillation capability. "true" returns only distillable
+            models, "false" excludes them.
+          in: query
+          name: distillable
+          required: false
+          schema:
+            description: >-
+              Filter by distillation capability. "true" returns only distillable
+              models, "false" excludes them.
+            enum:
+              - 'true'
+              - 'false'
+            example: 'true'
+            type: string
+        - description: >-
+            When set to "true", return only models with zero data retention
+            endpoints.
+          in: query
+          name: zdr
+          required: false
+          schema:
+            description: >-
+              When set to "true", return only models with zero data retention
+              endpoints.
+            enum:
+              - 'true'
+            example: 'true'
+            type: string
+        - description: >-
+            Filter to models with endpoints in the given data region. Currently
+            only "eu" is supported.
+          in: query
+          name: region
+          required: false
+          schema:
+            description: >-
+              Filter to models with endpoints in the given data region.
+              Currently only "eu" is supported.
+            enum:
+              - eu
+            example: eu
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                  - architecture:
+                      input_modalities:
+                        - text
+                      instruct_type: chatml
+                      modality: text->text
+                      output_modalities:
+                        - text
+                      tokenizer: GPT
+                    canonical_slug: openai/gpt-4
+                    context_length: 8192
+                    created: 1692901234
+                    default_parameters: null
+                    description: >-
+                      GPT-4 is a large multimodal model that can solve difficult
+                      problems with greater accuracy.
+                    expiration_date: null
+                    id: openai/gpt-4
+                    knowledge_cutoff: null
+                    links:
+                      details: /api/v1/models/openai/gpt-4/endpoints
+                    name: GPT-4
+                    per_request_limits: null
+                    pricing:
+                      completion: '0.00006'
+                      image: '0'
+                      prompt: '0.00003'
+                      request: '0'
+                    supported_parameters:
+                      - temperature
+                      - top_p
+                      - max_tokens
+                    supported_voices: null
+                    top_provider:
+                      context_length: 8192
+                      is_moderated: true
+                      max_completion_tokens: 4096
+              schema:
+                $ref: '#/components/schemas/ModelsListResponse'
+            application/rss+xml:
+              example: >-
+                <?xml version="1.0" encoding="UTF-8"?><rss
+                version="2.0"><channel><title>OpenRouter
+                Models</title></channel></rss>
+              schema:
+                type: string
+          description: Returns a list of models or RSS feed
+        '400':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 400
+                  message: Invalid request parameters
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Bad Request - Invalid request parameters or malformed input
+        '500':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 500
+                  message: Internal Server Error
+              schema:
+                $ref: '#/components/schemas/InternalServerResponse'
+          description: Internal Server Error - Unexpected server error
+components:
+  schemas:
+    ModelsListResponse:
+      description: List of available models
+      example:
+        data:
+          - architecture:
+              input_modalities:
+                - text
+              instruct_type: chatml
+              modality: text->text
+              output_modalities:
+                - text
+              tokenizer: GPT
+            canonical_slug: openai/gpt-4
+            context_length: 8192
+            created: 1692901234
+            default_parameters: null
+            description: >-
+              GPT-4 is a large multimodal model that can solve difficult
+              problems with greater accuracy.
+            expiration_date: null
+            id: openai/gpt-4
+            knowledge_cutoff: null
+            links:
+              details: /api/v1/models/openai/gpt-5.4/endpoints
+            name: GPT-4
+            per_request_limits: null
+            pricing:
+              completion: '0.00006'
+              image: '0'
+              prompt: '0.00003'
+              request: '0'
+            supported_parameters:
+              - temperature
+              - top_p
+              - max_tokens
+              - frequency_penalty
+              - presence_penalty
+            supported_voices: null
+            top_provider:
+              context_length: 8192
+              is_moderated: true
+              max_completion_tokens: 4096
+      properties:
+        data:
+          $ref: '#/components/schemas/ModelsListResponseData'
+      required:
+        - data
+      type: object
+    BadRequestResponse:
+      description: Bad Request - Invalid request parameters or malformed input
+      example:
+        error:
+          code: 400
+          message: Invalid request parameters
+      properties:
+        error:
+          $ref: '#/components/schemas/BadRequestResponseErrorData'
+        openrouter_metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        user_id:
+          nullable: true
+          type: string
+      required:
+        - error
+      type: object
+    InternalServerResponse:
+      description: Internal Server Error - Unexpected server error
+      example:
+        error:
+          code: 500
+          message: Internal Server Error
+      properties:
+        error:
+          $ref: '#/components/schemas/InternalServerResponseErrorData'
+        openrouter_metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        user_id:
+          nullable: true
+          type: string
+      required:
+        - error
+      type: object
+    ModelsListResponseData:
+      description: List of available models
+      example:
+        - architecture:
+            input_modalities:
+              - text
+            instruct_type: chatml
+            modality: text->text
+            output_modalities:
+              - text
+            tokenizer: GPT
+          canonical_slug: openai/gpt-4
+          context_length: 8192
+          created: 1692901234
+          default_parameters: null
+          description: >-
+            GPT-4 is a large multimodal model that can solve difficult problems
+            with greater accuracy.
+          expiration_date: null
+          id: openai/gpt-4
+          knowledge_cutoff: null
+          links:
+            details: /api/v1/models/openai/gpt-5.4/endpoints
+          name: GPT-4
+          per_request_limits: null
+          pricing:
+            completion: '0.00006'
+            image: '0'
+            prompt: '0.00003'
+            request: '0'
+          supported_parameters:
+            - temperature
+            - top_p
+            - max_tokens
+          supported_voices: null
+          top_provider:
+            context_length: 8192
+            is_moderated: true
+            max_completion_tokens: 4096
+      items:
+        $ref: '#/components/schemas/Model'
+      type: array
+    BadRequestResponseErrorData:
+      description: Error data for BadRequestResponse
+      example:
+        code: 400
+        message: Invalid request parameters
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+      required:
+        - code
+        - message
+      type: object
+    InternalServerResponseErrorData:
+      description: Error data for InternalServerResponse
+      example:
+        code: 500
+        message: Internal Server Error
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+      required:
+        - code
+        - message
+      type: object
+    Model:
+      description: Information about an AI model available on OpenRouter
+      example:
+        architecture:
+          input_modalities:
+            - text
+          instruct_type: chatml
+          modality: text->text
+          output_modalities:
+            - text
+          tokenizer: GPT
+        canonical_slug: openai/gpt-4
+        context_length: 8192
+        created: 1692901234
+        default_parameters: null
+        description: >-
+          GPT-4 is a large multimodal model that can solve difficult problems
+          with greater accuracy.
+        expiration_date: null
+        id: openai/gpt-4
+        knowledge_cutoff: null
+        links:
+          details: /api/v1/models/openai/gpt-5.4/endpoints
+        name: GPT-4
+        per_request_limits: null
+        pricing:
+          completion: '0.00006'
+          image: '0'
+          prompt: '0.00003'
+          request: '0'
+        reasoning:
+          default_effort: medium
+          default_enabled: true
+          mandatory: false
+          supported_efforts:
+            - high
+            - medium
+            - low
+            - minimal
+        supported_parameters:
+          - temperature
+          - top_p
+          - max_tokens
+        supported_voices: null
+        top_provider:
+          context_length: 8192
+          is_moderated: true
+          max_completion_tokens: 4096
+      properties:
+        architecture:
+          $ref: '#/components/schemas/ModelArchitecture'
+        benchmarks:
+          $ref: '#/components/schemas/ModelBenchmarks'
+        canonical_slug:
+          description: Canonical slug for the model
+          example: openai/gpt-4
+          type: string
+        context_length:
+          description: Maximum context length in tokens
+          example: 8192
+          nullable: true
+          type: integer
+        created:
+          description: Unix timestamp of when the model was created
+          example: 1692901234
+          type: integer
+        default_parameters:
+          $ref: '#/components/schemas/DefaultParameters'
+        description:
+          description: Description of the model
+          example: >-
+            GPT-4 is a large multimodal model that can solve difficult problems
+            with greater accuracy.
+          type: string
+        expiration_date:
+          description: >-
+            The date after which the model may be removed. ISO 8601 date string
+            (YYYY-MM-DD) or null if no expiration.
+          example: '2025-06-01'
+          nullable: true
+          type: string
+        hugging_face_id:
+          description: Hugging Face model identifier, if applicable
+          example: microsoft/DialoGPT-medium
+          nullable: true
+          type: string
+        id:
+          description: Unique identifier for the model
+          example: openai/gpt-4
+          type: string
+        knowledge_cutoff:
+          description: >-
+            The date up to which the model was trained on data. ISO 8601 date
+            string (YYYY-MM-DD) or null if unknown.
+          example: '2024-10-01'
+          nullable: true
+          type: string
+        links:
+          $ref: '#/components/schemas/ModelLinks'
+        name:
+          description: Display name of the model
+          example: GPT-4
+          type: string
+        per_request_limits:
+          $ref: '#/components/schemas/PerRequestLimits'
+        pricing:
+          $ref: '#/components/schemas/PublicPricing'
+        reasoning:
+          $ref: '#/components/schemas/ModelReasoning'
+        supported_parameters:
+          description: List of supported parameters for this model
+          items:
+            $ref: '#/components/schemas/Parameter'
+          type: array
+        supported_voices:
+          description: >-
+            List of supported voice identifiers for TTS models. Null for non-TTS
+            models.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        top_provider:
+          $ref: '#/components/schemas/TopProviderInfo'
+      required:
+        - id
+        - canonical_slug
+        - name
+        - created
+        - pricing
+        - context_length
+        - architecture
+        - top_provider
+        - per_request_limits
+        - supported_parameters
+        - default_parameters
+        - supported_voices
+        - links
+      type: object
+    ModelArchitecture:
+      description: Model architecture information
+      example:
+        input_modalities:
+          - text
+        instruct_type: chatml
+        modality: text->text
+        output_modalities:
+          - text
+        tokenizer: GPT
+      properties:
+        input_modalities:
+          description: Supported input modalities
+          items:
+            $ref: '#/components/schemas/InputModality'
+          type: array
+        instruct_type:
+          description: Instruction format type
+          enum:
+            - none
+            - airoboros
+            - alpaca
+            - alpaca-modif
+            - chatml
+            - claude
+            - code-llama
+            - gemma
+            - llama2
+            - llama3
+            - mistral
+            - nemotron
+            - neural
+            - openchat
+            - phi3
+            - rwkv
+            - vicuna
+            - zephyr
+            - deepseek-r1
+            - deepseek-v3.1
+            - qwq
+            - qwen3
+            - null
+          example: chatml
+          nullable: true
+          type: string
+        modality:
+          description: Primary modality of the model
+          example: text->text
+          nullable: true
+          type: string
+        output_modalities:
+          description: Supported output modalities
+          items:
+            $ref: '#/components/schemas/OutputModality'
+          type: array
+        tokenizer:
+          $ref: '#/components/schemas/ModelGroup'
+      required:
+        - modality
+        - input_modalities
+        - output_modalities
+      type: object
+    ModelBenchmarks:
+      description: >-
+        Third-party benchmark rankings for this model. Omitted when no benchmark
+        data is available.
+      example:
+        artificial_analysis:
+          agentic_index: 55.8
+          coding_index: 63.2
+          intelligence_index: 71.4
+        design_arena:
+          - arena: models
+            category: website
+            elo: 1385.2
+            rank: 5
+            win_rate: 62.5
+      properties:
+        artificial_analysis:
+          $ref: '#/components/schemas/AABenchmarkEntry'
+        design_arena:
+          description: Design Arena ELO rankings across arena+category pairs.
+          example:
+            - arena: models
+              category: website
+              elo: 1385.2
+              rank: 5
+              win_rate: 62.5
+          items:
+            $ref: '#/components/schemas/DABenchmarkEntry'
+          type: array
+      required:
+        - design_arena
+      type: object
+    DefaultParameters:
+      additionalProperties: false
+      description: Default parameters for this model
+      example:
+        frequency_penalty: 0
+        presence_penalty: 0
+        repetition_penalty: 1
+        temperature: 0.7
+        top_k: 0
+        top_p: 0.9
+      nullable: true
+      properties:
+        frequency_penalty:
+          format: double
+          nullable: true
+          type: number
+        presence_penalty:
+          format: double
+          nullable: true
+          type: number
+        repetition_penalty:
+          format: double
+          nullable: true
+          type: number
+        temperature:
+          format: double
+          nullable: true
+          type: number
+        top_k:
+          nullable: true
+          type: integer
+        top_p:
+          format: double
+          nullable: true
+          type: number
+      type: object
+    ModelLinks:
+      description: Related API endpoints and resources for this model.
+      example:
+        details: /api/v1/models/openai/gpt-5.4/endpoints
+      properties:
+        details:
+          description: URL for the model details/endpoints API
+          example: /api/v1/models/openai/gpt-5.4/endpoints
+          type: string
+      required:
+        - details
+      type: object
+    PerRequestLimits:
+      description: Per-request token limits
+      example:
+        completion_tokens: 1000
+        prompt_tokens: 1000
+      nullable: true
+      properties:
+        completion_tokens:
+          description: Maximum completion tokens per request
+          example: 1000
+          type: number
+        prompt_tokens:
+          description: Maximum prompt tokens per request
+          example: 1000
+          type: number
+      required:
+        - prompt_tokens
+        - completion_tokens
+      type: object
+    PublicPricing:
+      description: Pricing information for the model
+      example:
+        completion: '0.00006'
+        image: '0'
+        prompt: '0.00003'
+        request: '0'
+      properties:
+        audio:
+          description: Price in USD per audio input token
+          type: string
+        audio_output:
+          description: Price in USD per audio output token
+          type: string
+        completion:
+          description: Price in USD per token for completion (output) generation
+          type: string
+        discount:
+          description: >-
+            Fractional discount applied to this endpoint's pricing; the price is
+            multiplied by (1 - discount) (0 = no discount, 1 = free)
+          format: double
+          type: number
+        image:
+          description: Price in USD per input image
+          type: string
+        image_output:
+          description: Price in USD per output image
+          type: string
+        image_token:
+          description: Price in USD per image token
+          type: string
+        input_audio_cache:
+          description: Price in USD per cached audio input token
+          type: string
+        input_cache_read:
+          description: Price in USD per cached input token (read)
+          type: string
+        input_cache_write:
+          description: >-
+            Price per cache-write token, in USD per token. For providers with
+            multiple cache TTLs (e.g. Anthropic), this is the default (5-minute)
+            cache-write rate.
+          type: string
+        input_cache_write_1h:
+          description: >-
+            Price per 1-hour cache-write token, in USD per token. Only present
+            for providers that price an extended (1-hour) cache TTL separately,
+            such as Anthropic.
+          type: string
+        internal_reasoning:
+          description: Price in USD per internal reasoning token
+          type: string
+        prompt:
+          description: Price in USD per token for prompt (input) processing
+          type: string
+        request:
+          description: Price in USD per request
+          type: string
+        web_search:
+          description: Price in USD per web search
+          type: string
+      required:
+        - prompt
+        - completion
+      type: object
+    ModelReasoning:
+      description: >-
+        Reasoning effort configuration. Omitted for non-reasoning models and
+        dynamic router models.
+      example:
+        default_effort: medium
+        default_enabled: true
+        mandatory: false
+        supported_efforts:
+          - high
+          - medium
+          - low
+          - minimal
+      properties:
+        default_effort:
+          allOf:
+            - $ref: '#/components/schemas/ReasoningEffort'
+            - description: >-
+                Default reasoning effort when the client enables reasoning
+                without specifying effort. Maps to `reasoning.effort` in chat
+                requests. When `"none"`, prefer omitting effort unless the user
+                explicitly disables reasoning.
+        default_enabled:
+          description: >-
+            Default reasoning enabled state when the client does not set
+            `reasoning.enabled`.
+          type: boolean
+        mandatory:
+          description: >-
+            When true, reasoning cannot be disabled and effort "none" is
+            rejected.
+          type: boolean
+        supported_efforts:
+          description: >-
+            Allowed reasoning effort values for this model, in descending effort
+            order (highest first). Null means no allowlist — all gateway effort
+            values are accepted.
+          items:
+            $ref: '#/components/schemas/ReasoningEffort'
+          nullable: true
+          type: array
+        supports_max_tokens:
+          description: >-
+            Present and `true` when the model accepts `reasoning.max_tokens` in
+            requests (Anthropic-style) instead of or in addition to
+            `reasoning.effort`. Omitted otherwise.
+          type: boolean
+      required:
+        - mandatory
+      type: object
+    Parameter:
+      enum:
+        - temperature
+        - top_p
+        - top_k
+        - min_p
+        - top_a
+        - frequency_penalty
+        - presence_penalty
+        - repetition_penalty
+        - max_tokens
+        - max_completion_tokens
+        - logit_bias
+        - logprobs
+        - top_logprobs
+        - seed
+        - response_format
+        - structured_outputs
+        - stop
+        - tools
+        - tool_choice
+        - parallel_tool_calls
+        - include_reasoning
+        - reasoning
+        - reasoning_effort
+        - web_search_options
+        - verbosity
+      example: temperature
+      type: string
+    TopProviderInfo:
+      description: Information about the top provider for this model
+      example:
+        context_length: 8192
+        is_moderated: true
+        max_completion_tokens: 4096
+      properties:
+        context_length:
+          description: Context length from the top provider
+          example: 8192
+          nullable: true
+          type: integer
+        is_moderated:
+          description: Whether the top provider moderates content
+          example: true
+          type: boolean
+        max_completion_tokens:
+          description: Maximum completion tokens from the top provider
+          example: 4096
+          nullable: true
+          type: integer
+      required:
+        - is_moderated
+      type: object
+    InputModality:
+      enum:
+        - text
+        - image
+        - file
+        - audio
+        - video
+      example: text
+      type: string
+    OutputModality:
+      enum:
+        - text
+        - image
+        - embeddings
+        - audio
+        - video
+        - rerank
+        - speech
+        - transcription
+      example: text
+      type: string
+    ModelGroup:
+      description: Tokenizer type used by the model
+      enum:
+        - Router
+        - Media
+        - Other
+        - GPT
+        - Claude
+        - Gemini
+        - Gemma
+        - Grok
+        - Cohere
+        - Nova
+        - Qwen
+        - Yi
+        - DeepSeek
+        - Mistral
+        - Llama2
+        - Llama3
+        - Llama4
+        - PaLM
+        - RWKV
+        - Qwen3
+      example: GPT
+      type: string
+    AABenchmarkEntry:
+      description: Artificial Analysis benchmark index scores.
+      example:
+        agentic_index: 55.8
+        coding_index: 63.2
+        intelligence_index: 71.4
+      properties:
+        agentic_index:
+          description: Artificial Analysis Agentic Index score
+          example: 55.8
+          format: double
+          nullable: true
+          type: number
+        coding_index:
+          description: Artificial Analysis Coding Index score
+          example: 63.2
+          format: double
+          nullable: true
+          type: number
+        intelligence_index:
+          description: Artificial Analysis Intelligence Index score
+          example: 71.4
+          format: double
+          nullable: true
+          type: number
+      required:
+        - intelligence_index
+        - coding_index
+        - agentic_index
+      type: object
+    DABenchmarkEntry:
+      description: A single Design Arena benchmark entry for a specific arena+category
+      example:
+        arena: models
+        category: website
+        elo: 1385.2
+        rank: 5
+        win_rate: 62.5
+      properties:
+        arena:
+          description: Arena type (e.g. models, builders, agents)
+          example: models
+          type: string
+        category:
+          description: Category within the arena (e.g. website, gamedev, uicomponent)
+          example: website
+          type: string
+        elo:
+          description: ELO rating from head-to-head arena battles
+          example: 1385.2
+          format: double
+          type: number
+        rank:
+          description: >-
+            Rank position within this arena+category among models available on
+            OpenRouter (1 = highest ELO)
+          example: 5
+          type: integer
+        win_rate:
+          description: Win rate percentage in arena battles
+          example: 62.5
+          format: double
+          type: number
+      required:
+        - arena
+        - category
+        - elo
+        - win_rate
+        - rank
+      type: object
+    ReasoningEffort:
+      enum:
+        - max
+        - xhigh
+        - high
+        - medium
+        - low
+        - minimal
+        - none
+        - null
+      example: medium
+      nullable: true
+      type: string
+  securitySchemes:
+    apiKey:
+      description: API key as bearer token in Authorization header
+      scheme: bearer
+      type: http
+
+````

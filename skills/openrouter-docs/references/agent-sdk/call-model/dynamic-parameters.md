@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Dynamic Parameters
+
+> Use async functions for adaptive model behavior across turns
 
 ## Basic Usage
 
@@ -10,7 +12,7 @@ Any parameter in `callModel` can be a function that computes its value based on 
 
 Pass a function instead of a static value:
 
-```typescript
+```typescript lines theme={null}
 import { OpenRouter } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({
@@ -31,7 +33,7 @@ const result = openrouter.callModel({
 
 Parameter functions receive a `TurnContext` and return the parameter value:
 
-```typescript
+```typescript lines theme={null}
 type ParameterFunction<T> = (context: TurnContext) => T | Promise<T>;
 ```
 
@@ -47,7 +49,7 @@ type ParameterFunction<T> = (context: TurnContext) => T | Promise<T>;
 
 Functions can be async for fetching external data:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
 
@@ -73,7 +75,7 @@ const result = openrouter.callModel({
 
 Start with a fast model, upgrade for complex tasks:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: (ctx) => {
     // First few turns: fast model
@@ -93,7 +95,7 @@ const result = openrouter.callModel({
 
 Adjust creativity based on context:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   temperature: (ctx) => {
@@ -116,7 +118,7 @@ const result = openrouter.callModel({
 
 Build instructions based on conversation state:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   instructions: (ctx) => {
@@ -139,7 +141,7 @@ const result = openrouter.callModel({
 
 Adjust output length based on task:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   maxOutputTokens: (ctx) => {
@@ -161,7 +163,7 @@ const result = openrouter.callModel({
 
 Enable features dynamically:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'anthropic/claude-sonnet-4.5',
 
@@ -185,7 +187,7 @@ const result = openrouter.callModel({
 
 Dynamic parameters work alongside tool execution:
 
-```typescript
+```typescript lines theme={null}
 const smartAssistant = openrouter.callModel({
   // Upgrade model if tools have been used
   model: (ctx) => {
@@ -207,7 +209,7 @@ const smartAssistant = openrouter.callModel({
 
 Dynamic parameters are resolved at the start of each turn:
 
-```
+```lines theme={null}
 1. Resolve all parameter functions with current TurnContext
 2. Build request with resolved values
 3. Send to model
@@ -221,7 +223,7 @@ Dynamic parameters are resolved at the start of each turn:
 
 Handle errors in async parameter functions:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
 
@@ -246,7 +248,7 @@ const result = openrouter.callModel({
 
 Avoid side effects in parameter functions:
 
-```typescript
+```typescript lines theme={null}
 // Good: Pure function
 model: (ctx) => ctx.numberOfTurns > 3 ? 'gpt-4' : 'gpt-4o-mini',
 
@@ -261,7 +263,7 @@ model: (ctx) => {
 
 Cache results for repeated calls:
 
-```typescript
+```typescript lines theme={null}
 let cachedRules: string | null = null;
 
 const result = openrouter.callModel({
@@ -279,7 +281,7 @@ const result = openrouter.callModel({
 
 Always have fallback values:
 
-```typescript
+```typescript lines theme={null}
 model: (ctx) => {
   const preferredModel = getPreferredModel();
   return preferredModel ?? 'openai/gpt-5-nano'; // Default fallback
@@ -288,6 +290,6 @@ model: (ctx) => {
 
 ## See Also
 
-* **[nextTurnParams](/docs/sdks/call-model/next-turn-params)** - Tool-driven parameter modification
-* **[Stop Conditions](/docs/sdks/call-model/stop-conditions)** - Dynamic execution control
-* **[Tools](/docs/sdks/call-model/tools)** - Multi-turn orchestration
+* **[nextTurnParams](/agent-sdk/call-model/next-turn-params)** - Tool-driven parameter modification
+* **[Stop Conditions](/agent-sdk/call-model/stop-conditions)** - Dynamic execution control
+* **[Tools](/agent-sdk/call-model/tools)** - Multi-turn orchestration

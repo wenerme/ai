@@ -1,10 +1,14 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Build Your Own Agent TUI
 
-Looking to build a headless agent for scripts, pipelines, or API servers instead? See the [Build Your Own Headless Agent](/docs/cookbook/building-agents/create-headless-agent) guide.
+> Scaffold a custom AI agent with a fully customizable terminal interface using an AI coding agent
+
+<Info>
+  Looking to build a headless agent for scripts, pipelines, or API servers instead? See the [Build Your Own Headless Agent](/cookbook/building-agents/create-headless-agent) guide.
+</Info>
 
 The [create-agent-tui](https://github.com/OpenRouterTeam/skills/tree/main/skills/create-agent-tui) skill scaffolds a complete agent TUI (terminal user interface) in TypeScript — like `create-react-app` for terminal agents. Tell your AI coding agent what kind of agent you want, and it generates a runnable project targeting [OpenRouter](https://openrouter.ai) with a fully customizable terminal interface, tools, and configuration.
 
@@ -26,18 +30,26 @@ If you're already using Claude Code, Codex CLI, or Cursor as-is, you probably do
 
 The create-agent-tui skill is part of the [OpenRouter Skills](https://github.com/OpenRouterTeam/skills) collection. Install it with your AI coding agent of choice:
 
-Requires [GitHub CLI](https://cli.github.com/) v2.90.0+. Works with Claude Code, Cursor, OpenCode, Codex, Gemini CLI, Windsurf, and [many more agents](https://cli.github.com/manual/gh_skill_install):
+<Tabs>
+  <Tab title="GitHub CLI">
+    Requires [GitHub CLI](https://cli.github.com/) v2.90.0+. Works with Claude Code, Cursor, OpenCode, Codex, Gemini CLI, Windsurf, and [many more agents](https://cli.github.com/manual/gh_skill_install):
 
-```bash
-gh skill install OpenRouterTeam/skills create-agent-tui
-```
+    ```bash lines theme={null}
+    gh skill install OpenRouterTeam/skills create-agent-tui
+    ```
+  </Tab>
 
-```
-/plugin marketplace add OpenRouterTeam/skills
-/plugin install openrouter@openrouter
-```
+  <Tab title="Claude Code">
+    ```lines theme={null}
+    /plugin marketplace add OpenRouterTeam/skills
+    /plugin install openrouter@openrouter
+    ```
+  </Tab>
 
-Add via **Settings > Rules > Add Rule > Remote Rule (Github)** with `OpenRouterTeam/skills`.
+  <Tab title="Cursor">
+    Add via **Settings > Rules > Add Rule > Remote Rule (Github)** with `OpenRouterTeam/skills`.
+  </Tab>
+</Tabs>
 
 Once installed, ask your agent something like *"build me an agent TUI"* or *"scaffold a coding assistant"* and the skill activates automatically.
 
@@ -80,15 +92,21 @@ Choose how tool calls appear during agent execution. Set `display.toolDisplay` i
 
 **Grouped** — bold action labels with tree-branch output:
 
-![Grouped tool display](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ffc6a75bed6e7af737e21fdd93908ca60bc384a2c99761c61ecbfd365bca2cfb/content/pages/guides/tool-display-grouped.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/building-agents/create-agent-harness-tui/tool-display-grouped.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=9af120a40df609342a411864a334b8e7" alt="Grouped tool display" width="1080" height="720" data-path="assets/cookbook/building-agents/create-agent-harness-tui/tool-display-grouped.png" />
+</Frame>
 
 **Emoji** — per-call markers with tool name, arguments, and timing:
 
-![Emoji tool display](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/9c54edb558ae000fae8fcac16696be013e3e83e422b985aff307164e7aa9c1ee/content/pages/guides/tool-display-emoji.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/building-agents/create-agent-harness-tui/tool-display-emoji.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=fb13de6628931a227c94e0130f00a8a9" alt="Emoji tool display" width="1080" height="720" data-path="assets/cookbook/building-agents/create-agent-harness-tui/tool-display-emoji.png" />
+</Frame>
 
 **Minimal** — aggregated one-liner summaries:
 
-![Minimal tool display](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/67b4c45480c37d0fee1247d2d3e0e50fe6ccdbe116e8bf774b47318bfaade8ed/content/pages/guides/tool-display-minimal.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/building-agents/create-agent-harness-tui/tool-display-minimal.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=ae60482d5364fa70f272e43a0638d733" alt="Minimal tool display" width="1080" height="720" data-path="assets/cookbook/building-agents/create-agent-harness-tui/tool-display-minimal.png" />
+</Frame>
 
 You can also describe a completely custom tool display style and the skill will implement it for you.
 
@@ -105,15 +123,21 @@ Three input styles are available via `display.inputStyle` or `--input`.
 
 **Block** — full-width background input box that adapts to your terminal theme:
 
-![Block input style](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/34d02afe904cd002836999f17c8604cdbd285a9d336d371fa7c2c0b6c5f42440/content/pages/guides/input-style-block.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/building-agents/create-agent-harness-tui/input-style-block.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=2b96f4997b82b71144b0a498c7074c7b" alt="Block input style" width="1080" height="720" data-path="assets/cookbook/building-agents/create-agent-harness-tui/input-style-block.png" />
+</Frame>
 
 **Bordered** — horizontal line frame that works on any terminal:
 
-![Bordered input style](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/48e27c84cb32a7805f05a060726e848d9f33c7f5feb4068d5ec4cbe61a73e336/content/pages/guides/input-style-bordered.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/building-agents/create-agent-harness-tui/input-style-bordered.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=71fde3d3b5d61d56905e53955cc97ccd" alt="Bordered input style" width="1080" height="720" data-path="assets/cookbook/building-agents/create-agent-harness-tui/input-style-bordered.png" />
+</Frame>
 
 **Plain** — simple readline prompt, no escape sequences:
 
-![Plain input style](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/c6c86308616d92986bca9b2c0cbfe1bf819ceb558f48a9de89d0d3c8f01c7735/content/pages/guides/input-style-plain.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/building-agents/create-agent-harness-tui/input-style-plain.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=95737609cbefab8cb263e150611dd46c" alt="Plain input style" width="1080" height="720" data-path="assets/cookbook/building-agents/create-agent-harness-tui/input-style-plain.png" />
+</Frame>
 
 You can also describe a completely custom input style and the skill will implement it for you.
 
@@ -130,15 +154,21 @@ Three loader styles shown while waiting for the model response. Set `display.loa
 
 **Gradient** — scrolling color shimmer:
 
-![Gradient loader](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ffc6a75bed6e7af737e21fdd93908ca60bc384a2c99761c61ecbfd365bca2cfb/content/pages/guides/loader-gradient.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/building-agents/create-agent-harness-tui/loader-gradient.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=ef65fe345c3b097ce510e31a1c0d1a3c" alt="Gradient loader" width="1080" height="720" data-path="assets/cookbook/building-agents/create-agent-harness-tui/loader-gradient.png" />
+</Frame>
 
 **Spinner** — braille dot animation:
 
-![Spinner loader](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ffc6a75bed6e7af737e21fdd93908ca60bc384a2c99761c61ecbfd365bca2cfb/content/pages/guides/loader-spinner.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/building-agents/create-agent-harness-tui/loader-spinner.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=4ca66d2a48131bc94ce89df51ac55bb5" alt="Spinner loader" width="1080" height="720" data-path="assets/cookbook/building-agents/create-agent-harness-tui/loader-spinner.png" />
+</Frame>
 
 **Minimal** — trailing dots:
 
-![Minimal loader](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ffc6a75bed6e7af737e21fdd93908ca60bc384a2c99761c61ecbfd365bca2cfb/content/pages/guides/loader-minimal.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/building-agents/create-agent-harness-tui/loader-minimal.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=190a85197f129673395e425cb0ea9a3b" alt="Minimal loader" width="1080" height="720" data-path="assets/cookbook/building-agents/create-agent-harness-tui/loader-minimal.png" />
+</Frame>
 
 You can also describe a completely custom loader animation and the skill will implement it for you.
 
@@ -146,13 +176,15 @@ You can also describe a completely custom loader animation and the skill will im
 
 Enable `showBanner` or pass `--banner "Your Agent Name"` to display a custom ASCII art logo on startup. The skill generates block-letter art for your project name using the `█` character, colored and sized to fit a 60-column terminal.
 
-![ASCII banner on startup](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/8db8219e896387700a03ff3487cd69848a13e858d5026fc75fb5324e4f40c2ca/content/pages/guides/banner.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/building-agents/create-agent-harness-tui/banner.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=d9c3d77f67846fd9bf810adef7514609" alt="ASCII banner on startup" width="1080" height="720" data-path="assets/cookbook/building-agents/create-agent-harness-tui/banner.png" />
+</Frame>
 
 ## Generated project structure
 
 With default options selected, the skill generates this layout:
 
-```
+```expandable lines theme={null}
 my-agent/
   package.json              @openrouter/agent, zod, tsx
   tsconfig.json             ES2022, Node16, strict
@@ -179,18 +211,20 @@ my-agent/
 
 Run it with:
 
-```bash
+```bash lines theme={null}
 export OPENROUTER_API_KEY="sk-or-..."
 npm start
 ```
 
 Override visual styles at launch:
 
-```bash
+```bash lines theme={null}
 npm start -- --banner "Acme Bot" --model '~anthropic/claude-sonnet-latest' --input bordered --tool-display emoji
 ```
 
-![Agent TUI running in the terminal](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/1ad9193b995bc66fa0a8746e2f7a9028234eef3e19d7b5d9a1d6557ec02b2c6d/content/pages/guides/agent-harness-tui.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/building-agents/create-agent-harness-tui/agent-harness-tui.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=3d8cb85bf772c777311209e42dd94d9b" alt="Agent TUI running in the terminal" width="700" height="550" data-path="assets/cookbook/building-agents/create-agent-harness-tui/agent-harness-tui.png" />
+</Frame>
 
 ## Customization options
 
@@ -267,13 +301,15 @@ The skill generates a CLI REPL by default, but you can also ask for:
 
 Here's a demo app built entirely by the agent TUI skill — a GitHub trending repos viewer, scaffolded and running from a single prompt:
 
-![A demo app built by the agent TUI](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ce54b0ae0482180b6f6f14f16c860facd71331dccfb7cfb07cb9e27103472ace/content/pages/guides/agent-harness-demo.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/building-agents/create-agent-harness-tui/agent-harness-demo.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=f5b663bbf7cc734c7a5c6a5aaf9b72d1" alt="A demo app built by the agent TUI" width="2624" height="2304" data-path="assets/cookbook/building-agents/create-agent-harness-tui/agent-harness-demo.png" />
+</Frame>
 
 ## Resources
 
 * [Create Agent TUI skill README](https://github.com/OpenRouterTeam/skills/tree/main/skills/create-agent-tui)
 * [OpenRouter Skills repository](https://github.com/OpenRouterTeam/skills)
 * [`@openrouter/agent` on npm](https://www.npmjs.com/package/@openrouter/agent)
-* [OpenRouter TypeScript SDK](/docs/client-sdks/typescript)
-* [Server Tools documentation](/docs/guides/features/server-tools)
+* [OpenRouter TypeScript SDK](/client-sdks/typescript)
+* [Server Tools documentation](/guides/features/server-tools)
 * [OpenRouter API keys](https://openrouter.ai/settings/keys)

@@ -1,26 +1,101 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List observability destinations
 
-GET https://openrouter.ai/api/v1/observability/destinations
+> List the observability destinations configured for the authenticated entity's default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
-List the observability destinations configured for the authenticated entity's default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
-Reference: https://openrouter.ai/docs/api/api-reference/observability/list-observability-destinations
 
-## OpenAPI Specification
+## OpenAPI
 
-```yaml
+````yaml /openapi/openapi.yaml get /observability/destinations
 openapi: 3.1.0
 info:
+  contact:
+    email: support@openrouter.ai
+    name: OpenRouter Support
+    url: https://openrouter.ai/docs
+  description: OpenAI-compatible API with additional OpenRouter features
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
   title: OpenRouter API
   version: 1.0.0
+servers:
+  - description: Production server
+    url: https://openrouter.ai/api/v1
+    x-speakeasy-server-id: production
+security:
+  - apiKey: []
+tags:
+  - description: API key management endpoints
+    name: API Keys
+  - description: Analytics and usage endpoints
+    name: Analytics
+  - description: Anthropic Messages endpoints
+    name: Anthropic Messages
+  - description: BYOK endpoints
+    name: BYOK
+  - description: Benchmarks endpoints
+    name: Benchmarks
+  - description: Chat completion endpoints
+    name: Chat
+  - description: Task classification market-share endpoints
+    name: Classifications
+  - description: Credit management endpoints
+    name: Credits
+  - description: Datasets endpoints
+    name: Datasets
+  - description: Text embedding endpoints
+    name: Embeddings
+  - description: Endpoint information
+    name: Endpoints
+  - description: Files endpoints
+    name: Files
+  - description: Generation history endpoints
+    name: Generations
+  - description: Guardrails endpoints
+    name: Guardrails
+  - description: Images endpoints
+    name: Images
+  - description: Model information endpoints
+    name: Models
+  - description: OAuth authentication endpoints
+    name: OAuth
+  - description: Observability endpoints
+    name: Observability
+  - description: Organization endpoints
+    name: Organization
+  - description: Presets endpoints
+    name: Presets
+  - description: Provider information endpoints
+    name: Providers
+  - description: Rerank endpoints
+    name: Rerank
+  - description: Speech-to-text endpoints
+    name: STT
+    x-displayName: Transcriptions
+  - description: Text-to-speech endpoints
+    name: TTS
+    x-displayName: Speech
+  - description: Video Generation endpoints
+    name: Video Generation
+  - description: Workspaces endpoints
+    name: Workspaces
+  - description: beta.Analytics endpoints
+    name: beta.Analytics
+  - description: beta.responses endpoints
+    name: beta.responses
+externalDocs:
+  description: OpenRouter Documentation
+  url: https://openrouter.ai/docs
 paths:
   /observability/destinations:
     get:
-      operationId: list-observability-destinations
+      tags:
+        - Observability
       summary: List observability destinations
       description: >-
         List the observability destinations configured for the authenticated
@@ -29,1974 +104,2222 @@ paths:
         release status are surfaced — destinations of other types are excluded.
         [Management key](/docs/guides/overview/auth/management-api-keys)
         required.
-      tags:
-        - subpackage_observability
+      operationId: listObservabilityDestinations
       parameters:
-        - name: offset
+        - description: Number of records to skip for pagination
           in: query
-          description: Number of records to skip for pagination
+          name: offset
           required: false
           schema:
+            description: Number of records to skip for pagination
+            example: 0
+            minimum: 0
+            nullable: true
             type: integer
-        - name: limit
+        - description: Maximum number of records to return (max 100)
           in: query
-          description: Maximum number of records to return (max 100)
+          name: limit
           required: false
           schema:
+            description: Maximum number of records to return (max 100)
+            example: 50
+            maximum: 100
+            minimum: 1
             type: integer
-        - name: workspace_id
-          in: query
-          description: >-
+        - description: >-
             Optional workspace ID to filter by. Defaults to the authenticated
             entity's default workspace.
+          in: query
+          name: workspace_id
           required: false
           schema:
-            type: string
+            description: >-
+              Optional workspace ID to filter by. Defaults to the authenticated
+              entity's default workspace.
+            example: 550e8400-e29b-41d4-a716-446655440000
             format: uuid
-        - name: Authorization
-          in: header
-          description: API key as bearer token in Authorization header
-          required: true
-          schema:
             type: string
       responses:
         '200':
-          description: List of observability destinations
           content:
             application/json:
+              example:
+                data:
+                  - api_key_hashes: null
+                    config:
+                      baseUrl: https://us.cloud.langfuse.com
+                      publicKey: pk-l...EfGh
+                      secretKey: sk-l...AbCd
+                    created_at: '2025-08-24T10:30:00Z'
+                    enabled: true
+                    filter_rules: null
+                    id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+                    name: Production Langfuse
+                    privacy_mode: false
+                    sampling_rate: 1
+                    type: langfuse
+                    updated_at: '2025-08-24T15:45:00Z'
+                    workspace_id: 550e8400-e29b-41d4-a716-446655440000
+                total_count: 1
               schema:
                 $ref: '#/components/schemas/ListObservabilityDestinationsResponse'
+          description: List of observability destinations
         '401':
-          description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
+              example:
+                error:
+                  code: 401
+                  message: Missing Authentication header
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
+          description: Unauthorized - Authentication required or invalid credentials
         '500':
-          description: Internal Server Error - Unexpected server error
           content:
             application/json:
+              example:
+                error:
+                  code: 500
+                  message: Internal Server Error
               schema:
                 $ref: '#/components/schemas/InternalServerResponse'
-servers:
-  - url: https://openrouter.ai/api/v1
-    description: Production server
+          description: Internal Server Error - Unexpected server error
 components:
   schemas:
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingArizeConfig:
-      type: object
-      properties:
-        apiKey:
-          type: string
-        baseUrl:
-          type: string
-          default: https://otlp.arize.com
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        modelId:
-          type: string
-          description: The name of the tracing project in Arize AX
-        spaceKey:
-          type: string
-      required:
-        - apiKey
-        - modelId
-        - spaceKey
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingArizeConfig
-    ObservabilityFilterRulesConfigGroupsItemsLogic:
-      type: string
-      enum:
-        - and
-        - or
-      default: and
-      title: ObservabilityFilterRulesConfigGroupsItemsLogic
-    ObservabilityFilterRulesConfigGroupsItemsRulesItemsField:
-      type: string
-      enum:
-        - model
-        - provider
-        - session_id
-        - user_id
-        - api_key_name
-        - finish_reason
-        - input
-        - output
-        - total_cost
-        - total_tokens
-        - prompt_tokens
-        - completion_tokens
-      title: ObservabilityFilterRulesConfigGroupsItemsRulesItemsField
-    ObservabilityFilterRulesConfigGroupsItemsRulesItemsOperator:
-      type: string
-      enum:
-        - equals
-        - not_equals
-        - contains
-        - not_contains
-        - regex
-        - starts_with
-        - ends_with
-        - gt
-        - lt
-        - gte
-        - lte
-        - exists
-        - not_exists
-      title: ObservabilityFilterRulesConfigGroupsItemsRulesItemsOperator
-    ObservabilityFilterRulesConfigGroupsItemsRulesItemsValue:
-      oneOf:
-        - type: string
-        - type: number
-          format: double
-      title: ObservabilityFilterRulesConfigGroupsItemsRulesItemsValue
-    ObservabilityFilterRulesConfigGroupsItemsRulesItems:
-      type: object
-      properties:
-        field:
-          $ref: >-
-            #/components/schemas/ObservabilityFilterRulesConfigGroupsItemsRulesItemsField
-        operator:
-          $ref: >-
-            #/components/schemas/ObservabilityFilterRulesConfigGroupsItemsRulesItemsOperator
-        value:
-          $ref: >-
-            #/components/schemas/ObservabilityFilterRulesConfigGroupsItemsRulesItemsValue
-      required:
-        - field
-        - operator
-      title: ObservabilityFilterRulesConfigGroupsItemsRulesItems
-    ObservabilityFilterRulesConfigGroupsItems:
-      type: object
-      properties:
-        logic:
-          $ref: '#/components/schemas/ObservabilityFilterRulesConfigGroupsItemsLogic'
-        rules:
-          type: array
-          items:
-            $ref: >-
-              #/components/schemas/ObservabilityFilterRulesConfigGroupsItemsRulesItems
-      required:
-        - rules
-      title: ObservabilityFilterRulesConfigGroupsItems
-    ObservabilityFilterRulesConfig:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          default: true
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/ObservabilityFilterRulesConfigGroupsItems'
-      required:
-        - groups
-      description: Optional structured filter rules controlling which events are forwarded.
-      title: ObservabilityFilterRulesConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingBraintrustConfig:
-      type: object
-      properties:
-        apiKey:
-          type: string
-        baseUrl:
-          type: string
-          default: https://api.braintrust.dev
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        projectId:
-          type: string
-      required:
-        - apiKey
-        - projectId
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingBraintrustConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingClickhouseConfig:
-      type: object
-      properties:
-        database:
-          type: string
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        host:
-          type: string
-        password:
-          type: string
-        table:
-          type: string
-          default: OPENROUTER_TRACES
-        username:
-          type: string
-          description: >-
-            If you have not set a specific username in ClickHouse, simply type
-            in 'default' below.
-      required:
-        - database
-        - host
-        - password
-        - username
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingClickhouseConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingDatadogConfig:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: 'Datadog API key must have LLM Observability permissions. Create at: '
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        mlApp:
-          type: string
-          description: Name to identify your application in Datadog LLM Observability
-        url:
-          type: string
-          default: https://api.us5.datadoghq.com
-          description: >-
-            Datadog API URL for your region (e.g., https://api.datadoghq.com,
-            https://api.us3.datadoghq.com, https://api.datadoghq.eu)
-      required:
-        - apiKey
-        - mlApp
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingDatadogConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingGrafanaConfig:
-      type: object
-      properties:
-        apiKey:
-          type: string
-        baseUrl:
-          type: string
-          default: https://otlp-gateway-prod-us-west-0.grafana.net
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        instanceId:
-          type: string
-      required:
-        - apiKey
-        - instanceId
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingGrafanaConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingLangfuseConfig:
-      type: object
-      properties:
-        baseUrl:
-          type: string
-          default: https://us.cloud.langfuse.com
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        publicKey:
-          type: string
-        secretKey:
-          type: string
-      required:
-        - publicKey
-        - secretKey
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingLangfuseConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingLangsmithConfig:
-      type: object
-      properties:
-        apiKey:
-          type: string
-        endpoint:
-          type: string
-          default: https://api.smith.langchain.com
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        project:
-          type: string
-          default: main
-          description: >-
-            The name for this project, such as pr-openrouter-demo. Defaults to
-            "main" if not set.
-        workspaceId:
-          type: string
-          description: >-
-            Required for org-scoped API keys. Find this in your LangSmith
-            workspace settings.
-      required:
-        - apiKey
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingLangsmithConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingNewrelicConfigRegion:
-      type: string
-      enum:
-        - us
-        - eu
-      default: us
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingNewrelicConfigRegion
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingNewrelicConfig:
-      type: object
-      properties:
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        licenseKey:
-          type: string
-        region:
-          $ref: >-
-            #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingNewrelicConfigRegion
-      required:
-        - licenseKey
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingNewrelicConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingOpikConfig:
-      type: object
-      properties:
-        apiKey:
-          type: string
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        projectName:
-          type: string
-        workspace:
-          type: string
-      required:
-        - apiKey
-        - projectName
-        - workspace
-      title: UpdateObservabilityDestinationResponseDataDiscriminatorMappingOpikConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingOtelCollectorConfig:
-      type: object
-      properties:
-        endpoint:
-          type: string
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: >-
-            Custom HTTP headers as a JSON object. For Axiom, use
-            {"Authorization": "Bearer xaat-xxx", "X-Axiom-Dataset":
-            "your-dataset"}
-      required:
-        - endpoint
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingOtelCollectorConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingPosthogConfig:
-      type: object
-      properties:
-        apiKey:
-          type: string
-        endpoint:
-          type: string
-          default: https://us.i.posthog.com
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-      required:
-        - apiKey
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingPosthogConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingRampConfig:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: Generate this in your Ramp integration settings.
-        baseUrl:
-          type: string
-          default: https://api.ramp.com/developer/v1/ai-usage/openrouter
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to Ramp.
-      required:
-        - apiKey
-      title: UpdateObservabilityDestinationResponseDataDiscriminatorMappingRampConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingS3Config:
-      type: object
-      properties:
-        accessKeyId:
-          type: string
-        bucketName:
-          type: string
-        endpoint:
-          type: string
-          format: uri
-          description: >-
-            Only for S3-compatible services like Cloudflare R2
-            (https://account-id.r2.cloudflarestorage.com) or MinIO. Leave blank
-            for standard AWS S3.
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        pathTemplate:
-          type: string
-          default: '{prefix}/{date}'
-          description: >-
-            Template for S3 object path. The filename
-            ({traceId}-{timestamp}.json) is automatically appended. Available
-            variables: {prefix}, {date}, {year}, {month}, {day}, {apiKeyName}
-        prefix:
-          type: string
-          default: openrouter-traces
-        region:
-          type: string
-        secretAccessKey:
-          type: string
-        sessionToken:
-          type: string
-      required:
-        - accessKeyId
-        - bucketName
-        - secretAccessKey
-      title: UpdateObservabilityDestinationResponseDataDiscriminatorMappingS3Config
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingSentryConfig:
-      type: object
-      properties:
-        dsn:
-          type: string
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        otlpEndpoint:
-          type: string
-      required:
-        - dsn
-        - otlpEndpoint
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingSentryConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingSnowflakeConfig:
-      type: object
-      properties:
-        account:
-          type: string
-        database:
-          type: string
-          default: SNOWFLAKE_LEARNING_DB
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        schema:
-          type: string
-          default: PUBLIC
-        table:
-          type: string
-          default: OPENROUTER_TRACES
-        token:
-          type: string
-        warehouse:
-          type: string
-          default: COMPUTE_WH
-      required:
-        - account
-        - token
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingSnowflakeConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingWeaveConfig:
-      type: object
-      properties:
-        apiKey:
-          type: string
-        baseUrl:
-          type: string
-          default: https://trace.wandb.ai
-        entity:
-          type: string
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        project:
-          type: string
-      required:
-        - apiKey
-        - entity
-        - project
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingWeaveConfig
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfigMethod:
-      type: string
-      enum:
-        - POST
-        - PUT
-      default: POST
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfigMethod
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfig:
-      type: object
-      properties:
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-        method:
-          $ref: >-
-            #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfigMethod
-        url:
-          type: string
-      required:
-        - url
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfig
-    ObservabilityDestination:
-      oneOf:
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - arize
-              description: 'Discriminator value: arize'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingArizeConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: arize variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - braintrust
-              description: 'Discriminator value: braintrust'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingBraintrustConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: braintrust variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - clickhouse
-              description: 'Discriminator value: clickhouse'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingClickhouseConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: clickhouse variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - datadog
-              description: 'Discriminator value: datadog'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingDatadogConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: datadog variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - grafana
-              description: 'Discriminator value: grafana'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingGrafanaConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: grafana variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - langfuse
-              description: 'Discriminator value: langfuse'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingLangfuseConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: langfuse variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - langsmith
-              description: 'Discriminator value: langsmith'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingLangsmithConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: langsmith variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - newrelic
-              description: 'Discriminator value: newrelic'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingNewrelicConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: newrelic variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - opik
-              description: 'Discriminator value: opik'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingOpikConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: opik variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - otel-collector
-              description: 'Discriminator value: otel-collector'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingOtelCollectorConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: otel-collector variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - posthog
-              description: 'Discriminator value: posthog'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingPosthogConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: posthog variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - ramp
-              description: 'Discriminator value: ramp'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingRampConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: ramp variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - s3
-              description: 'Discriminator value: s3'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingS3Config
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: s3 variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - sentry
-              description: 'Discriminator value: sentry'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingSentryConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: sentry variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - snowflake
-              description: 'Discriminator value: snowflake'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingSnowflakeConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: snowflake variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - weave
-              description: 'Discriminator value: weave'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingWeaveConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: weave variant
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - webhook
-              description: 'Discriminator value: webhook'
-            api_key_hashes:
-              type:
-                - array
-                - 'null'
-              items:
-                type: string
-              description: >-
-                Optional allowlist of OpenRouter API key hashes
-                (`api_keys.hash`) whose traffic is forwarded to this
-                destination. `null` means all keys.
-            config:
-              $ref: >-
-                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfig
-            created_at:
-              type: string
-              description: ISO timestamp of when the destination was created.
-            enabled:
-              type: boolean
-              description: Whether this destination is currently enabled.
-            filter_rules:
-              $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
-            id:
-              type: string
-              format: uuid
-              description: Stable public identifier for this destination.
-            name:
-              type:
-                - string
-                - 'null'
-              description: Human-readable name for the destination.
-            privacy_mode:
-              type: boolean
-              description: >-
-                When true, request/response bodies are not forwarded to this
-                destination — only metadata.
-            sampling_rate:
-              type: number
-              format: double
-              description: >-
-                Sampling rate for events sent to this destination, between
-                0.0001 and 1 (1 = 100%).
-            updated_at:
-              type: string
-              description: ISO timestamp of when the destination was last updated.
-            workspace_id:
-              type: string
-              format: uuid
-              description: ID of the workspace this destination belongs to.
-          required:
-            - type
-            - api_key_hashes
-            - config
-            - created_at
-            - enabled
-            - filter_rules
-            - id
-            - name
-            - privacy_mode
-            - sampling_rate
-            - updated_at
-            - workspace_id
-          description: webhook variant
-      discriminator:
-        propertyName: type
-      title: ObservabilityDestination
     ListObservabilityDestinationsResponse:
-      type: object
+      example:
+        data:
+          - api_key_hashes: null
+            config:
+              baseUrl: https://us.cloud.langfuse.com
+              publicKey: pk-l...EfGh
+              secretKey: sk-l...AbCd
+            created_at: '2025-08-24T10:30:00Z'
+            enabled: true
+            filter_rules: null
+            id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+            name: Production Langfuse
+            privacy_mode: false
+            sampling_rate: 1
+            type: langfuse
+            updated_at: '2025-08-24T15:45:00Z'
+            workspace_id: 550e8400-e29b-41d4-a716-446655440000
+        total_count: 1
       properties:
         data:
-          type: array
+          description: List of observability destinations.
           items:
             $ref: '#/components/schemas/ObservabilityDestination'
-          description: List of observability destinations.
+          type: array
         total_count:
-          type: integer
           description: Total number of destinations matching the filters.
+          example: 1
+          type: integer
       required:
         - data
         - total_count
-      title: ListObservabilityDestinationsResponse
-    UnauthorizedResponseErrorData:
       type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
-      description: Error data for UnauthorizedResponse
-      title: UnauthorizedResponseErrorData
     UnauthorizedResponse:
-      type: object
+      description: Unauthorized - Authentication required or invalid credentials
+      example:
+        error:
+          code: 401
+          message: Missing Authentication header
       properties:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          type:
-            - object
-            - 'null'
           additionalProperties:
-            description: Any type
+            nullable: true
+          nullable: true
+          type: object
         user_id:
-          type:
-            - string
-            - 'null'
+          nullable: true
+          type: string
       required:
         - error
-      description: Unauthorized - Authentication required or invalid credentials
-      title: UnauthorizedResponse
-    InternalServerResponseErrorData:
       type: object
+    InternalServerResponse:
+      description: Internal Server Error - Unexpected server error
+      example:
+        error:
+          code: 500
+          message: Internal Server Error
+      properties:
+        error:
+          $ref: '#/components/schemas/InternalServerResponseErrorData'
+        openrouter_metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        user_id:
+          nullable: true
+          type: string
+      required:
+        - error
+      type: object
+    ObservabilityDestination:
+      discriminator:
+        mapping:
+          arize:
+            $ref: '#/components/schemas/ObservabilityArizeDestination'
+          braintrust:
+            $ref: '#/components/schemas/ObservabilityBraintrustDestination'
+          clickhouse:
+            $ref: '#/components/schemas/ObservabilityClickhouseDestination'
+          datadog:
+            $ref: '#/components/schemas/ObservabilityDatadogDestination'
+          grafana:
+            $ref: '#/components/schemas/ObservabilityGrafanaDestination'
+          langfuse:
+            $ref: '#/components/schemas/ObservabilityLangfuseDestination'
+          langsmith:
+            $ref: '#/components/schemas/ObservabilityLangsmithDestination'
+          newrelic:
+            $ref: '#/components/schemas/ObservabilityNewrelicDestination'
+          opik:
+            $ref: '#/components/schemas/ObservabilityOpikDestination'
+          otel-collector:
+            $ref: '#/components/schemas/ObservabilityOtelCollectorDestination'
+          posthog:
+            $ref: '#/components/schemas/ObservabilityPosthogDestination'
+          ramp:
+            $ref: '#/components/schemas/ObservabilityRampDestination'
+          s3:
+            $ref: '#/components/schemas/ObservabilityS3Destination'
+          sentry:
+            $ref: '#/components/schemas/ObservabilitySentryDestination'
+          snowflake:
+            $ref: '#/components/schemas/ObservabilitySnowflakeDestination'
+          weave:
+            $ref: '#/components/schemas/ObservabilityWeaveDestination'
+          webhook:
+            $ref: '#/components/schemas/ObservabilityWebhookDestination'
+        propertyName: type
+      example:
+        api_key_hashes: null
+        config:
+          baseUrl: https://us.cloud.langfuse.com
+          publicKey: pk-l...EfGh
+          secretKey: sk-l...AbCd
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production Langfuse
+        privacy_mode: false
+        sampling_rate: 1
+        type: langfuse
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      oneOf:
+        - $ref: '#/components/schemas/ObservabilityArizeDestination'
+        - $ref: '#/components/schemas/ObservabilityBraintrustDestination'
+        - $ref: '#/components/schemas/ObservabilityClickhouseDestination'
+        - $ref: '#/components/schemas/ObservabilityDatadogDestination'
+        - $ref: '#/components/schemas/ObservabilityGrafanaDestination'
+        - $ref: '#/components/schemas/ObservabilityLangfuseDestination'
+        - $ref: '#/components/schemas/ObservabilityLangsmithDestination'
+        - $ref: '#/components/schemas/ObservabilityNewrelicDestination'
+        - $ref: '#/components/schemas/ObservabilityOpikDestination'
+        - $ref: '#/components/schemas/ObservabilityOtelCollectorDestination'
+        - $ref: '#/components/schemas/ObservabilityPosthogDestination'
+        - $ref: '#/components/schemas/ObservabilityRampDestination'
+        - $ref: '#/components/schemas/ObservabilityS3Destination'
+        - $ref: '#/components/schemas/ObservabilitySentryDestination'
+        - $ref: '#/components/schemas/ObservabilitySnowflakeDestination'
+        - $ref: '#/components/schemas/ObservabilityWeaveDestination'
+        - $ref: '#/components/schemas/ObservabilityWebhookDestination'
+    UnauthorizedResponseErrorData:
+      description: Error data for UnauthorizedResponse
+      example:
+        code: 401
+        message: Missing Authentication header
       properties:
         code:
           type: integer
         message:
           type: string
         metadata:
-          type:
-            - object
-            - 'null'
           additionalProperties:
-            description: Any type
+            nullable: true
+          nullable: true
+          type: object
       required:
         - code
         - message
-      description: Error data for InternalServerResponse
-      title: InternalServerResponseErrorData
-    InternalServerResponse:
       type: object
+    InternalServerResponseErrorData:
+      description: Error data for InternalServerResponse
+      example:
+        code: 500
+        message: Internal Server Error
       properties:
-        error:
-          $ref: '#/components/schemas/InternalServerResponseErrorData'
-        openrouter_metadata:
-          type:
-            - object
-            - 'null'
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
           additionalProperties:
-            description: Any type
-        user_id:
-          type:
-            - string
-            - 'null'
+            nullable: true
+          nullable: true
+          type: object
       required:
-        - error
-      description: Internal Server Error - Unexpected server error
-      title: InternalServerResponse
+        - code
+        - message
+      type: object
+    ObservabilityArizeDestination:
+      example:
+        api_key_hashes: null
+        config:
+          apiKey: arize_...AbCd
+          baseUrl: https://otlp.arize.com
+          modelId: openrouter-prod
+          spaceKey: space_...EfGh
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production Arize
+        privacy_mode: false
+        sampling_rate: 1
+        type: arize
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            apiKey:
+              minLength: 1
+              type: string
+            baseUrl:
+              default: https://otlp.arize.com
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            modelId:
+              description: The name of the tracing project in Arize AX
+              minLength: 1
+              type: string
+            spaceKey:
+              minLength: 1
+              type: string
+          required:
+            - apiKey
+            - spaceKey
+            - modelId
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - arize
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityBraintrustDestination:
+      example:
+        api_key_hashes: null
+        config:
+          apiKey: sk-...AbCd
+          baseUrl: https://api.braintrust.dev
+          projectId: proj_...
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production Braintrust
+        privacy_mode: false
+        sampling_rate: 1
+        type: braintrust
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            apiKey:
+              minLength: 1
+              type: string
+            baseUrl:
+              default: https://api.braintrust.dev
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            projectId:
+              minLength: 1
+              type: string
+          required:
+            - apiKey
+            - projectId
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - braintrust
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityClickhouseDestination:
+      example:
+        api_key_hashes: null
+        config:
+          database: analytics
+          host: https://clickhouse.example.com:8123
+          password: '********'
+          table: OPENROUTER_TRACES
+          username: default
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production ClickHouse
+        privacy_mode: false
+        sampling_rate: 1
+        type: clickhouse
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            database:
+              minLength: 1
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            host:
+              minLength: 1
+              type: string
+            password:
+              minLength: 1
+              type: string
+            table:
+              default: OPENROUTER_TRACES
+              type: string
+            username:
+              description: >-
+                If you have not set a specific username in ClickHouse, simply
+                type in 'default' below.
+              minLength: 1
+              type: string
+          required:
+            - host
+            - database
+            - username
+            - password
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - clickhouse
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityDatadogDestination:
+      example:
+        api_key_hashes: null
+        config:
+          apiKey: '************...AbCd'
+          mlApp: my-llm-app
+          url: https://api.us5.datadoghq.com
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production Datadog
+        privacy_mode: false
+        sampling_rate: 1
+        type: datadog
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            apiKey:
+              description: >-
+                Datadog API key must have LLM Observability permissions. Create
+                at: 
+              minLength: 1
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            mlApp:
+              description: Name to identify your application in Datadog LLM Observability
+              minLength: 1
+              type: string
+            url:
+              default: https://api.us5.datadoghq.com
+              description: >-
+                Datadog API URL for your region (e.g.,
+                https://api.datadoghq.com, https://api.us3.datadoghq.com,
+                https://api.datadoghq.eu)
+              type: string
+          required:
+            - apiKey
+            - mlApp
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - datadog
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityGrafanaDestination:
+      example:
+        api_key_hashes: null
+        config:
+          apiKey: glc_...AbCd
+          baseUrl: https://otlp-gateway-prod-us-west-0.grafana.net
+          instanceId: '123456'
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production Grafana
+        privacy_mode: false
+        sampling_rate: 1
+        type: grafana
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            apiKey:
+              minLength: 1
+              type: string
+            baseUrl:
+              default: https://otlp-gateway-prod-us-west-0.grafana.net
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            instanceId:
+              minLength: 1
+              type: string
+          required:
+            - apiKey
+            - instanceId
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - grafana
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityLangfuseDestination:
+      example:
+        api_key_hashes: null
+        config:
+          baseUrl: https://us.cloud.langfuse.com
+          publicKey: pk-l...EfGh
+          secretKey: sk-l...AbCd
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production Langfuse
+        privacy_mode: false
+        sampling_rate: 1
+        type: langfuse
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            baseUrl:
+              default: https://us.cloud.langfuse.com
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            publicKey:
+              minLength: 1
+              type: string
+            secretKey:
+              minLength: 1
+              type: string
+          required:
+            - secretKey
+            - publicKey
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - langfuse
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityLangsmithDestination:
+      example:
+        api_key_hashes: null
+        config:
+          apiKey: lsv2_...AbCd
+          endpoint: https://api.smith.langchain.com
+          project: main
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production LangSmith
+        privacy_mode: false
+        sampling_rate: 1
+        type: langsmith
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            apiKey:
+              minLength: 1
+              type: string
+            endpoint:
+              default: https://api.smith.langchain.com
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            project:
+              default: main
+              description: >-
+                The name for this project, such as pr-openrouter-demo. Defaults
+                to "main" if not set.
+              minLength: 1
+              type: string
+            workspaceId:
+              description: >-
+                Required for org-scoped API keys. Find this in your LangSmith
+                workspace settings.
+              type: string
+          required:
+            - apiKey
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - langsmith
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityNewrelicDestination:
+      example:
+        api_key_hashes: null
+        config:
+          licenseKey: '****...AbCd'
+          region: US
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production New Relic
+        privacy_mode: false
+        sampling_rate: 1
+        type: newrelic
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            licenseKey:
+              minLength: 1
+              type: string
+            region:
+              default: us
+              enum:
+                - us
+                - eu
+              type: string
+          required:
+            - licenseKey
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - newrelic
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityOpikDestination:
+      example:
+        api_key_hashes: null
+        config:
+          apiKey: '****...AbCd'
+          projectName: openrouter-prod
+          workspace: my-workspace
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production Opik
+        privacy_mode: false
+        sampling_rate: 1
+        type: opik
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            apiKey:
+              minLength: 1
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            projectName:
+              minLength: 1
+              type: string
+            workspace:
+              minLength: 1
+              type: string
+          required:
+            - apiKey
+            - workspace
+            - projectName
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - opik
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityOtelCollectorDestination:
+      example:
+        api_key_hashes: null
+        config:
+          endpoint: https://otel.example.com:4318
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production OTel Collector
+        privacy_mode: false
+        sampling_rate: 1
+        type: otel-collector
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            endpoint:
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: >-
+                Custom HTTP headers as a JSON object. For Axiom, use
+                {"Authorization": "Bearer xaat-xxx", "X-Axiom-Dataset":
+                "your-dataset"}
+              type: object
+          required:
+            - endpoint
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - otel-collector
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityPosthogDestination:
+      example:
+        api_key_hashes: null
+        config:
+          apiKey: phc_...AbCd
+          endpoint: https://us.i.posthog.com
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production PostHog
+        privacy_mode: false
+        sampling_rate: 1
+        type: posthog
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            apiKey:
+              minLength: 1
+              type: string
+            endpoint:
+              default: https://us.i.posthog.com
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+          required:
+            - apiKey
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - posthog
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityRampDestination:
+      example:
+        api_key_hashes: null
+        config:
+          apiKey: rmp_...AbCd
+          baseUrl: https://api.ramp.com/developer/v1/ai-usage/openrouter
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production Ramp
+        privacy_mode: false
+        sampling_rate: 1
+        type: ramp
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            apiKey:
+              description: Generate this in your Ramp integration settings.
+              minLength: 1
+              type: string
+            baseUrl:
+              default: https://api.ramp.com/developer/v1/ai-usage/openrouter
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to Ramp.
+              type: object
+          required:
+            - apiKey
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - ramp
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityS3Destination:
+      example:
+        api_key_hashes: null
+        config:
+          accessKeyId: AKIA...AbCd
+          bucketName: openrouter-traces
+          secretAccessKey: '****...EfGh'
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production S3
+        privacy_mode: false
+        sampling_rate: 1
+        type: s3
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            accessKeyId:
+              minLength: 1
+              type: string
+            bucketName:
+              minLength: 1
+              type: string
+            endpoint:
+              description: >-
+                Only for S3-compatible services like Cloudflare R2
+                (https://account-id.r2.cloudflarestorage.com) or MinIO. Leave
+                blank for standard AWS S3.
+              format: uri
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            pathTemplate:
+              default: '{prefix}/{date}'
+              description: >-
+                Template for S3 object path. The filename
+                ({traceId}-{timestamp}.json) is automatically appended.
+                Available variables: {prefix}, {date}, {year}, {month}, {day},
+                {apiKeyName}
+              type: string
+            prefix:
+              default: openrouter-traces
+              type: string
+            region:
+              type: string
+            secretAccessKey:
+              minLength: 1
+              type: string
+            sessionToken:
+              type: string
+          required:
+            - bucketName
+            - accessKeyId
+            - secretAccessKey
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - s3
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilitySentryDestination:
+      example:
+        api_key_hashes: null
+        config:
+          otlpEndpoint: https://o0.ingest.sentry.io/api/0/otlp
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production Sentry
+        privacy_mode: false
+        sampling_rate: 1
+        type: sentry
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            dsn:
+              minLength: 1
+              pattern: ^https:\/\/([^:@]+)(?::[^@]*)?@([^/]+)(?:\/[^/]+)*\/(\d+)\/?$
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            otlpEndpoint:
+              type: string
+          required:
+            - otlpEndpoint
+            - dsn
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - sentry
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilitySnowflakeDestination:
+      example:
+        api_key_hashes: null
+        config:
+          account: xy12345.us-east-1
+          token: '****...AbCd'
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production Snowflake
+        privacy_mode: false
+        sampling_rate: 1
+        type: snowflake
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            account:
+              minLength: 1
+              type: string
+            database:
+              default: SNOWFLAKE_LEARNING_DB
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            schema:
+              default: PUBLIC
+              type: string
+            table:
+              default: OPENROUTER_TRACES
+              type: string
+            token:
+              minLength: 1
+              type: string
+            warehouse:
+              default: COMPUTE_WH
+              type: string
+          required:
+            - account
+            - token
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - snowflake
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityWeaveDestination:
+      example:
+        api_key_hashes: null
+        config:
+          apiKey: '****...AbCd'
+          baseUrl: https://trace.wandb.ai
+          entity: my-team
+          project: openrouter-prod
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production Weave
+        privacy_mode: false
+        sampling_rate: 1
+        type: weave
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            apiKey:
+              minLength: 1
+              type: string
+            baseUrl:
+              default: https://trace.wandb.ai
+              type: string
+            entity:
+              minLength: 1
+              type: string
+            headers:
+              additionalProperties:
+                type: string
+              description: Custom HTTP headers to include in requests to this destination.
+              type: object
+            project:
+              minLength: 1
+              type: string
+          required:
+            - apiKey
+            - entity
+            - project
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - weave
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityWebhookDestination:
+      example:
+        api_key_hashes: null
+        config:
+          url: https://example.com/openrouter-events
+        created_at: '2025-08-24T10:30:00Z'
+        enabled: true
+        filter_rules: null
+        id: 99999999-aaaa-bbbb-cccc-dddddddddddd
+        name: Production Webhook
+        privacy_mode: false
+        sampling_rate: 1
+        type: webhook
+        updated_at: '2025-08-24T15:45:00Z'
+        workspace_id: 550e8400-e29b-41d4-a716-446655440000
+      properties:
+        api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            whose traffic is forwarded to this destination. `null` means all
+            keys.
+          example: null
+          items:
+            type: string
+          nullable: true
+          type: array
+        config:
+          properties:
+            headers:
+              additionalProperties:
+                type: string
+              type: object
+            method:
+              default: POST
+              enum:
+                - POST
+                - PUT
+              type: string
+            url:
+              type: string
+          required:
+            - url
+          type: object
+        created_at:
+          description: ISO timestamp of when the destination was created.
+          example: '2025-08-24T10:30:00Z'
+          type: string
+        enabled:
+          description: Whether this destination is currently enabled.
+          example: true
+          type: boolean
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        id:
+          description: Stable public identifier for this destination.
+          example: 99999999-aaaa-bbbb-cccc-dddddddddddd
+          format: uuid
+          type: string
+        name:
+          description: Human-readable name for the destination.
+          example: Production Langfuse
+          nullable: true
+          type: string
+        privacy_mode:
+          description: >-
+            When true, request/response bodies are not forwarded to this
+            destination — only metadata.
+          example: false
+          type: boolean
+        sampling_rate:
+          description: >-
+            Sampling rate for events sent to this destination, between 0.0001
+            and 1 (1 = 100%).
+          example: 1
+          format: double
+          type: number
+        type:
+          enum:
+            - webhook
+          type: string
+        updated_at:
+          description: ISO timestamp of when the destination was last updated.
+          example: '2025-08-24T15:45:00Z'
+          type: string
+        workspace_id:
+          description: ID of the workspace this destination belongs to.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+      required:
+        - id
+        - workspace_id
+        - name
+        - enabled
+        - privacy_mode
+        - sampling_rate
+        - api_key_hashes
+        - filter_rules
+        - created_at
+        - updated_at
+        - type
+        - config
+      type: object
+    ObservabilityFilterRulesConfig:
+      description: Optional structured filter rules controlling which events are forwarded.
+      example: null
+      nullable: true
+      properties:
+        enabled:
+          default: true
+          type: boolean
+        groups:
+          items:
+            properties:
+              logic:
+                default: and
+                enum:
+                  - and
+                  - or
+                type: string
+              rules:
+                items:
+                  properties:
+                    field:
+                      enum:
+                        - model
+                        - provider
+                        - session_id
+                        - user_id
+                        - api_key_name
+                        - finish_reason
+                        - input
+                        - output
+                        - total_cost
+                        - total_tokens
+                        - prompt_tokens
+                        - completion_tokens
+                      type: string
+                    operator:
+                      enum:
+                        - equals
+                        - not_equals
+                        - contains
+                        - not_contains
+                        - regex
+                        - starts_with
+                        - ends_with
+                        - gt
+                        - lt
+                        - gte
+                        - lte
+                        - exists
+                        - not_exists
+                      type: string
+                    value:
+                      anyOf:
+                        - type: string
+                        - type: number
+                  required:
+                    - field
+                    - operator
+                  type: object
+                type: array
+            required:
+              - rules
+            type: object
+          type: array
+      required:
+        - groups
+      type: object
   securitySchemes:
     apiKey:
-      type: http
-      scheme: bearer
       description: API key as bearer token in Authorization header
+      scheme: bearer
+      type: http
 
-```
-
-## Examples
-
-
-
-**Response**
-
-```json
-{
-  "data": [
-    {
-      "type": "langfuse",
-      "api_key_hashes": null,
-      "config": {
-        "publicKey": "pk-l...EfGh",
-        "secretKey": "sk-l...AbCd",
-        "baseUrl": "https://us.cloud.langfuse.com"
-      },
-      "created_at": "2025-08-24T10:30:00Z",
-      "enabled": true,
-      "filter_rules": null,
-      "id": "99999999-aaaa-bbbb-cccc-dddddddddddd",
-      "name": "Production Langfuse",
-      "privacy_mode": false,
-      "sampling_rate": 1,
-      "updated_at": "2025-08-24T15:45:00Z",
-      "workspace_id": "550e8400-e29b-41d4-a716-446655440000"
-    }
-  ],
-  "total_count": 1
-}
-```
-
-**SDK Code**
-
-```python Observability_listObservabilityDestinations_example
-import requests
-
-url = "https://openrouter.ai/api/v1/observability/destinations"
-
-headers = {"Authorization": "Bearer <token>"}
-
-response = requests.get(url, headers=headers)
-
-print(response.json())
-```
-
-```javascript Observability_listObservabilityDestinations_example
-const url = 'https://openrouter.ai/api/v1/observability/destinations';
-const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
-
-try {
-  const response = await fetch(url, options);
-  const data = await response.json();
-  console.log(data);
-} catch (error) {
-  console.error(error);
-}
-```
-
-```go Observability_listObservabilityDestinations_example
-package main
-
-import (
-	"fmt"
-	"net/http"
-	"io"
-)
-
-func main() {
-
-	url := "https://openrouter.ai/api/v1/observability/destinations"
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("Authorization", "Bearer <token>")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := io.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```ruby Observability_listObservabilityDestinations_example
-require 'uri'
-require 'net/http'
-
-url = URI("https://openrouter.ai/api/v1/observability/destinations")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-
-request = Net::HTTP::Get.new(url)
-request["Authorization"] = 'Bearer <token>'
-
-response = http.request(request)
-puts response.read_body
-```
-
-```java Observability_listObservabilityDestinations_example
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/observability/destinations")
-  .header("Authorization", "Bearer <token>")
-  .asString();
-```
-
-```php Observability_listObservabilityDestinations_example
-<?php
-require_once('vendor/autoload.php');
-
-$client = new \GuzzleHttp\Client();
-
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/observability/destinations', [
-  'headers' => [
-    'Authorization' => 'Bearer <token>',
-  ],
-]);
-
-echo $response->getBody();
-```
-
-```csharp Observability_listObservabilityDestinations_example
-using RestSharp;
-
-var client = new RestClient("https://openrouter.ai/api/v1/observability/destinations");
-var request = new RestRequest(Method.GET);
-request.AddHeader("Authorization", "Bearer <token>");
-IRestResponse response = client.Execute(request);
-```
-
-```swift Observability_listObservabilityDestinations_example
-import Foundation
-
-let headers = ["Authorization": "Bearer <token>"]
-
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/observability/destinations")! as URL,
-                                        cachePolicy: .useProtocolCachePolicy,
-                                    timeoutInterval: 10.0)
-request.httpMethod = "GET"
-request.allHTTPHeaderFields = headers
-
-let session = URLSession.shared
-let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-  if (error != nil) {
-    print(error as Any)
-  } else {
-    let httpResponse = response as? HTTPURLResponse
-    print(httpResponse)
-  }
-})
-
-dataTask.resume()
-```
+````

@@ -1,16 +1,18 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Principles
+
+> Core principles and values of OpenRouter
 
 OpenRouter helps developers source and optimize AI usage. We believe the future is multi-model and multi-provider.
 
 ## Why OpenRouter?
 
-**Price and Performance**. OpenRouter scouts for the best prices, the lowest latencies, and the highest throughput across dozens of providers, and lets you choose how to [prioritize](/docs/guides/routing/provider-selection) them.
+**Price and Performance**. OpenRouter scouts for the best prices, the lowest latencies, and the highest throughput across dozens of providers, and lets you choose how to [prioritize](/guides/routing/provider-selection) them.
 
-**Standardized API**. No need to change code when switching between models or providers. You can even let your users [choose and pay for their own](/docs/guides/overview/auth/oauth).
+**Standardized API**. No need to change code when switching between models or providers. You can even let your users [choose and pay for their own](/guides/overview/auth/oauth).
 
 **Real-World Insights**. Be the first to take advantage of new models. See real-world data of [how often models are used](https://openrouter.ai/rankings) for different purposes. Keep up to date in our [Discord channel](https://discord.com/channels/1091220969173028894/1094454198688546826).
 

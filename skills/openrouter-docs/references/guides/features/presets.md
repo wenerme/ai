@@ -1,10 +1,12 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Presets
 
-[Presets](/settings/presets) allow you to separate your LLM configuration from your code. Create and manage presets through the OpenRouter web application to control provider routing, model selection, system prompts, and other parameters, then reference them in OpenRouter API requests.
+> Manage your LLM configurations
+
+[Presets](/guides/features/presets) allow you to separate your LLM configuration from your code. Create and manage presets through the OpenRouter web application to control provider routing, model selection, system prompts, and other parameters, then reference them in OpenRouter API requests.
 
 ## What are Presets?
 
@@ -24,22 +26,23 @@ Each preset can manage:
 
 ## Quick Start
 
-1. [Create a preset](/settings/presets). For example, select a model and restrict provider routing to just a few providers.
-   ![Creating a new preset](file:143f16f5-5a5c-40ef-97af-6ddb76c1caff "A new preset")
+1. [Create a preset](/guides/features/presets). For example, select a model and restrict provider routing to just a few providers.
+   <Frame>
+     <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/preset-example.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=b87ed014781f965aa751327dc0dc4a65" alt="Creating a new preset" width="2172" height="1608" data-path="assets/preset-example.png" />
+   </Frame>
 
 2. Make an API request to the preset:
-
-```json
-{
-  "model": "@preset/ravenel-bridge",
-  "messages": [
-    {
-      "role": "user",
-      "content": "What's your opinion of the Golden Gate Bridge? Isn't it beautiful?"
-    }
-  ]
-}
-```
+   ```json lines theme={null}
+   {
+     "model": "@preset/ravenel-bridge",
+     "messages": [
+       {
+         "role": "user",
+         "content": "What's your opinion of the Golden Gate Bridge? Isn't it beautiful?"
+       }
+     ]
+   }
+   ```
 
 ## Benefits
 
@@ -64,7 +67,7 @@ There are three ways to use presets in your API requests.
 
 You can reference the preset as if it was a model by sending requests to `@preset/preset-slug`
 
-```json
+```json lines theme={null}
 {
   "model": "@preset/email-copywriter",
   "messages": [
@@ -78,7 +81,7 @@ You can reference the preset as if it was a model by sending requests to `@prese
 
 2. **Preset Field**
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4",
   "preset": "email-copywriter",
@@ -93,7 +96,7 @@ You can reference the preset as if it was a model by sending requests to `@prese
 
 3. **Combined Model and Preset**
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4@preset/email-copywriter",
   "messages": [
@@ -134,7 +137,7 @@ version. If it does not exist, a new preset is created.
 
 Reuse the exact body you would `POST /api/v1/chat/completions`:
 
-```bash
+```bash lines theme={null}
 curl https://openrouter.ai/api/v1/presets/email-copywriter/chat/completions \
   -H "Authorization: Bearer $OPENROUTER_API_KEY" \
   -H "Content-Type: application/json" \
@@ -155,7 +158,7 @@ extracted system prompt are persisted.
 
 ### From an Anthropic Messages request
 
-```bash
+```bash lines theme={null}
 curl https://openrouter.ai/api/v1/presets/code-reviewer/messages \
   -H "Authorization: Bearer $OPENROUTER_API_KEY" \
   -H "Content-Type: application/json" \
@@ -173,7 +176,7 @@ The top-level `system` field becomes the preset's system prompt.
 
 ### From a Responses request
 
-```bash
+```bash lines theme={null}
 curl https://openrouter.ai/api/v1/presets/inbound-classifier/responses \
   -H "Authorization: Bearer $OPENROUTER_API_KEY" \
   -H "Content-Type: application/json" \
@@ -191,7 +194,7 @@ The `instructions` field becomes the preset's system prompt.
 All three endpoints return the resulting preset with its
 designated version:
 
-```json
+```json expandable lines theme={null}
 {
   "data": {
     "id": "650e8400-e29b-41d4-a716-446655440001",

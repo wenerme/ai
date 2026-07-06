@@ -1,8 +1,12 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Image Generation
+
+> How to generate images with OpenRouter's dedicated Image API
+
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 OpenRouter provides a dedicated Image API for generating images from text prompts (and optional reference images). The API covers model discovery, per-endpoint capabilities, and generation. You can browse available models and pricing on the [models page filtered by image output](https://openrouter.ai/models?output_modalities=image).
 
@@ -12,13 +16,13 @@ OpenRouter provides a dedicated Image API for generating images from text prompt
 
 The dedicated image models endpoint lists every available image model with its capabilities:
 
-```bash
+```bash lines theme={null}
 curl "https://openrouter.ai/api/v1/images/models"
 ```
 
 Each entry in the `data` array includes:
 
-```json
+```json lines theme={null}
 {
   "data": [
     {
@@ -53,11 +57,11 @@ Each entry in the `data` array includes:
 
 Each model may be served by multiple providers. To see the definitive capabilities, pricing, and passthrough options per endpoint:
 
-```bash
+```bash lines theme={null}
 curl "https://openrouter.ai/api/v1/images/models/bytedance-seed/seedream-4.5/endpoints"
 ```
 
-```json
+```json lines theme={null}
 {
   "id": "bytedance-seed/seedream-4.5",
   "endpoints": [
@@ -102,9 +106,9 @@ An absent key means the parameter is unsupported by that endpoint.
 
 ### Via the Models API
 
-You can also discover image models through the general [Models API](/docs/api-reference/models/get-models):
+You can also discover image models through the general [Models API](/api/reference/models/get-models):
 
-```bash
+```bash lines theme={null}
 curl "https://openrouter.ai/api/v1/models?output_modalities=image"
 ```
 
@@ -116,59 +120,68 @@ Visit the [Models page](/models) and filter by output modalities to find models 
 
 Send a `POST` request to `/api/v1/images` with the model and prompt:
 
-```python title="Python (requests)"
-import requests
-import json
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'bytedance-seed/seedream-4.5'
+}}
+>
+  <CodeGroup>
+    ```python title="Python (requests)" lines theme={null}
+    import requests
+    import json
 
-url = "https://openrouter.ai/api/v1/images"
-headers = {
-    "Authorization": f"Bearer {API_KEY_REF}",
-    "Content-Type": "application/json"
-}
+    url = "https://openrouter.ai/api/v1/images"
+    headers = {
+        "Authorization": f"Bearer {API_KEY_REF}",
+        "Content-Type": "application/json"
+    }
 
-payload = {
-    "model": "{{MODEL}}",
-    "prompt": "a red panda astronaut floating in space, studio lighting"
-}
+    payload = {
+        "model": "{{MODEL}}",
+        "prompt": "a red panda astronaut floating in space, studio lighting"
+    }
 
-response = requests.post(url, headers=headers, json=payload)
-result = response.json()
+    response = requests.post(url, headers=headers, json=payload)
+    result = response.json()
 
-for image in result["data"]:
-    # image["b64_json"] contains the base64-encoded image
-    print(f"Generated image ({len(image['b64_json'])} chars)")
-```
+    for image in result["data"]:
+        # image["b64_json"] contains the base64-encoded image
+        print(f"Generated image ({len(image['b64_json'])} chars)")
+    ```
 
-```typescript title="TypeScript (fetch)"
-const response = await fetch('https://openrouter.ai/api/v1/images', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${API_KEY_REF}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    prompt: 'a red panda astronaut floating in space, studio lighting',
-  }),
-});
+    ```typescript title="TypeScript (fetch)" lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/images', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${API_KEY_REF}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        prompt: 'a red panda astronaut floating in space, studio lighting',
+      }),
+    });
 
-const result = await response.json();
+    const result = await response.json();
 
-for (const image of result.data) {
-  // image.b64_json contains the base64-encoded image
-  console.log(`Generated image (${image.b64_json.length} chars)`);
-}
-```
+    for (const image of result.data) {
+      // image.b64_json contains the base64-encoded image
+      console.log(`Generated image (${image.b64_json.length} chars)`);
+    }
+    ```
 
-```bash title="cURL"
-curl -X POST "https://openrouter.ai/api/v1/images" \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "{{MODEL}}",
-    "prompt": "a red panda astronaut floating in space, studio lighting"
-  }'
-```
+    ```bash title="cURL" lines theme={null}
+    curl -X POST "https://openrouter.ai/api/v1/images" \
+      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "model": "{{MODEL}}",
+        "prompt": "a red panda astronaut floating in space, studio lighting"
+      }'
+    ```
+  </CodeGroup>
+</Template>
 
 ### Response Format
 
@@ -176,7 +189,7 @@ Images are returned as base64-encoded bytes. The `usage` field reports token cou
 
 For raster PNG outputs (most models), `media_type` is omitted:
 
-```json
+```json lines theme={null}
 {
   "created": 1748372400,
   "data": [
@@ -195,7 +208,7 @@ For raster PNG outputs (most models), `media_type` is omitted:
 
 For vector outputs (e.g., SVG from Recraft vector models), the `media_type` field is included:
 
-```json
+```json lines theme={null}
 {
   "created": 1748372400,
   "data": [
@@ -219,7 +232,7 @@ For vector outputs (e.g., SVG from Recraft vector models), the `media_type` fiel
 
 Control output dimensions with `resolution`, `aspect_ratio`, or the convenience `size` shorthand:
 
-```json
+```json lines theme={null}
 {
   "model": "bytedance-seed/seedream-4.5",
   "prompt": "a landscape photo",
@@ -236,7 +249,7 @@ Check the model's `supported_parameters` to see which values each endpoint accep
 
 ### Quality and Output Format
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-image-1",
   "prompt": "a product photo",
@@ -255,7 +268,7 @@ Check the model's `supported_parameters` to see which values each endpoint accep
 
 Request up to 10 images per call with `n`:
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-image-1",
   "prompt": "a cute cat",
@@ -269,7 +282,7 @@ Not all providers support `n > 1`. Check the model's `supported_parameters` for 
 
 Pass reference images to guide generation via `input_references`:
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-image-1",
   "prompt": "make this scene look like a watercolor painting",
@@ -290,7 +303,7 @@ Reference images can be HTTP(S) URLs or base64 data URLs. The number of referenc
 
 Pass provider-specific parameters through `provider.options`, keyed by the provider slug from the endpoints API:
 
-```json
+```json lines theme={null}
 {
   "model": "black-forest-labs/flux.2-pro",
   "prompt": "a dramatic portrait",
@@ -311,7 +324,7 @@ The `allowed_passthrough_parameters` field in each endpoint record lists which k
 
 Models that support native SSE streaming (`supports_streaming: true` in the discovery API) can return partial images as they're generated:
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-image-1",
   "prompt": "a detailed landscape",
@@ -349,71 +362,79 @@ data: {"type":"error","error":{"message":"Generation failed","code":"server_erro
 
 The stream terminates with `data: [DONE]`.
 
-```python title="Python (requests)"
-import requests
+<Template
+  data={{
+API_KEY_REF,
+}}
+>
+  <CodeGroup>
+    ```python title="Python (requests)" expandable lines theme={null}
+    import requests
 
-url = "https://openrouter.ai/api/v1/images"
-headers = {
-    "Authorization": f"Bearer {API_KEY_REF}",
-    "Content-Type": "application/json"
-}
-
-response = requests.post(url, headers=headers, json={
-    "model": "openai/gpt-image-1",
-    "prompt": "a detailed landscape painting",
-    "stream": True
-}, stream=True)
-
-for line in response.iter_lines():
-    if line:
-        decoded = line.decode("utf-8")
-        if decoded.startswith("data: ") and decoded != "data: [DONE]":
-            import json
-            event = json.loads(decoded[6:])
-            print(f"Event: {event['type']}")
-```
-
-```typescript title="TypeScript (fetch)"
-const response = await fetch('https://openrouter.ai/api/v1/images', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${API_KEY_REF}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/gpt-image-1',
-    prompt: 'a detailed landscape painting',
-    stream: true,
-  }),
-});
-
-const reader = response.body?.getReader();
-const decoder = new TextDecoder();
-
-while (true) {
-  const { done, value } = await reader.read();
-  if (done) break;
-
-  const chunk = decoder.decode(value);
-  for (const line of chunk.split('\n')) {
-    if (line.startsWith('data: ') && line !== 'data: [DONE]') {
-      const event = JSON.parse(line.slice(6));
-      console.log(`Event: ${event.type}`);
+    url = "https://openrouter.ai/api/v1/images"
+    headers = {
+        "Authorization": f"Bearer {API_KEY_REF}",
+        "Content-Type": "application/json"
     }
-  }
-}
-```
 
-```bash title="cURL"
-curl -N -X POST "https://openrouter.ai/api/v1/images" \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openai/gpt-image-1",
-    "prompt": "a detailed landscape painting",
-    "stream": true
-  }'
-```
+    response = requests.post(url, headers=headers, json={
+        "model": "openai/gpt-image-1",
+        "prompt": "a detailed landscape painting",
+        "stream": True
+    }, stream=True)
+
+    for line in response.iter_lines():
+        if line:
+            decoded = line.decode("utf-8")
+            if decoded.startswith("data: ") and decoded != "data: [DONE]":
+                import json
+                event = json.loads(decoded[6:])
+                print(f"Event: {event['type']}")
+    ```
+
+    ```typescript title="TypeScript (fetch)" expandable lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/images', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${API_KEY_REF}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'openai/gpt-image-1',
+        prompt: 'a detailed landscape painting',
+        stream: true,
+      }),
+    });
+
+    const reader = response.body?.getReader();
+    const decoder = new TextDecoder();
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      const chunk = decoder.decode(value);
+      for (const line of chunk.split('\n')) {
+        if (line.startsWith('data: ') && line !== 'data: [DONE]') {
+          const event = JSON.parse(line.slice(6));
+          console.log(`Event: ${event.type}`);
+        }
+      }
+    }
+    ```
+
+    ```bash title="cURL" lines theme={null}
+    curl -N -X POST "https://openrouter.ai/api/v1/images" \
+      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "model": "openai/gpt-image-1",
+        "prompt": "a detailed landscape painting",
+        "stream": true
+      }'
+    ```
+  </CodeGroup>
+</Template>
 
 ## Request Parameters
 

@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Sentry
+
+> Send traces to Sentry
 
 [Sentry](https://sentry.io) is an application monitoring platform that helps developers identify and fix issues in real-time. With Sentry's AI monitoring capabilities, you can track LLM performance and errors.
 
@@ -20,7 +22,9 @@ In Sentry, navigate to your project's SDK setup:
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 3: Configure Sentry
 
@@ -38,10 +42,14 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 Make an API request through OpenRouter and view the trace in Sentry's
 Performance or Traces view.
 
-![Sentry Trace View](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/56b7ddbbef77c96471b25b6e468e6327816ffacd355d4671ec2d20a5b0564a8e/content/pages/features/broadcast/broadcast-sentry-trace.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/sentry/broadcast-sentry-trace.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=46b63b4737564eea81184e73899ea3b2" alt="Sentry Trace View" width="3372" height="2058" data-path="assets/guides/features/broadcast/sentry/broadcast-sentry-trace.png" />
+</Frame>
 
-Sentry uses OpenTelemetry for trace ingestion. The OTLP endpoint and DSN
-are both required for proper authentication and trace routing.
+<Tip>
+  Sentry uses OpenTelemetry for trace ingestion. The OTLP endpoint and DSN
+  are both required for proper authentication and trace routing.
+</Tip>
 
 ## Custom Metadata
 
@@ -59,7 +67,7 @@ Sentry receives traces via the OTLP protocol. Custom metadata from the `trace` f
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Debug this error..." }],
@@ -84,4 +92,4 @@ Sentry receives traces via the OTLP protocol. Custom metadata from the `trace` f
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

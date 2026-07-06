@@ -1,20 +1,68 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Build a Token-Efficient Review Agent
+
+> Use a cheap executor model for routine work and call Advisor only for compact uncertainty checks
+
+export const CopyPromptButton = ({prompt, buttonLabel = "Copy prompt"}) => {
+  const [isCopied, setIsCopied] = useState(false);
+  const handleClick = () => {
+    navigator.clipboard.writeText(prompt).then(() => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    });
+  };
+  return <div className="mt-3">
+      <button type="button" onClick={handleClick} className="border-border inline-flex items-center gap-2 rounded-lg border px-3 py-2 font-semibold cursor-pointer border-green-200 dark:border-green-900">
+        {isCopied ? "Copied" : buttonLabel}
+      </button>
+    </div>;
+};
 
 **Goal:** Build a review agent that drafts routine answers with a cheap model and asks a stronger Advisor model only after the executor compresses uncertainty into a short packet.
 
 **Outcome:** Your app sends normal review tasks to a low-cost executor, adds one compact `plan-reviewer` Advisor entry when a second model is worth the spend, and logs whether Advisor was offered without storing prompts or advice.
 
-Want your coding agent to add this workflow to your app? Copy this prompt.
+<Tip>
+  Want your coding agent to add this workflow to your app? Copy this prompt.
 
-Advisor is a beta server tool. It runs an inner model call, so it can add
-cost and latency. This recipe keeps that call behind a budget gate and sends a
-compact review prompt instead of forwarding the full transcript. Use returned
-`usage.cost` when present, or estimate spend from the selected advisor model's
-current pricing before widening the gate.
+  <CopyPromptButton
+    prompt={`Add a token-efficient review pattern with OpenRouter Advisor.
+
+Start by inspecting the repository. Find the existing OpenRouter request path, agent loop, model config, review or planning workflow, logging surface, and tests. If this is a new TypeScript agent loop, prefer the OpenRouter Agent SDK callModel path. Otherwise, adapt the existing Chat Completions or Responses request path. Infer which user actions can stay on the cheap executor and which ones create enough uncertainty to justify offering a second-model check. Ask follow-up questions only when the missing detail changes the budget gate or output format.
+
+Use this Cookbook recipe as the implementation workflow:
+https://openrouter.ai/docs/cookbook/building-agents/advisor-server-tool
+
+Use these source-of-truth docs for current fields and response shapes:
+- Advisor server tool: https://openrouter.ai/docs/guides/features/server-tools/advisor
+- Agent SDK callModel overview: https://openrouter.ai/docs/sdks/typescript/call-model/overview
+- Chat Completions request API: https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request
+- Responses request API, if this app uses Responses: https://openrouter.ai/docs/api/api-reference/responses/create-responses
+- TypeScript SDK Chat reference, if this app uses @openrouter/sdk: https://openrouter.ai/docs/client-sdks/typescript/api-reference/chat
+- TypeScript SDK Responses reference, if this app uses @openrouter/sdk beta responses: https://openrouter.ai/docs/client-sdks/typescript/api-reference/responses
+
+Add this token-saving pattern to the app's existing review or planning path:
+- Keep the existing cheap or default executor model for routine work.
+- Offer one openrouter:advisor tool entry named plan-reviewer only behind a budget gate, such as low executor confidence, a large diff summary, unfamiliar code ownership, missing tests, or a decision that would be expensive to revisit. Do not use a nested advisor roster.
+- Keep forward_transcript false unless the advisor genuinely needs the whole conversation.
+- Make the advisor prompt compact. Send a short task summary, changed files, uncertainty signals, and the exact decision you want reviewed.
+- Cap advisor output tokens. Log whether Advisor was offered, the selected models, finish reason, and cost or usage fields when returned. Do not log prompts, raw diffs, full advice, cookies, or API keys.
+- Verify through the app's existing workflow or tests.
+
+Return the changed files, the budget gate, the request body shape, the representative workflow you used to verify it, and any remaining cost or product tradeoffs.`}
+  />
+</Tip>
+
+<Warning>
+  Advisor is a beta server tool. It runs an inner model call, so it can add
+  cost and latency. This recipe keeps that call behind a budget gate and sends a
+  compact review prompt instead of forwarding the full transcript. Use returned
+  `usage.cost` when present, or estimate spend from the selected advisor model's
+  current pricing before widening the gate.
+</Warning>
 
 ## Before you start
 
@@ -26,15 +74,15 @@ You need:
 * A cheap executor model for routine work
 * A stronger advisor model for compact second opinions
 
-If you are starting a new TypeScript agent, use the [Agent SDK `callModel` API](/docs/sdks/typescript/call-model/overview) for the executor loop. The sample below uses Chat Completions so the server-tool request shape is visible, but the budget-gate pattern is the same inside an Agent SDK workflow.
+If you are starting a new TypeScript agent, use the [Agent SDK `callModel` API](/sdks/typescript/call-model/overview) for the executor loop. The sample below uses Chat Completions so the server-tool request shape is visible, but the budget-gate pattern is the same inside an Agent SDK workflow.
 
 Use these references for exact schemas:
 
-* [Advisor server tool](/docs/guides/features/server-tools/advisor)
-* [Agent SDK `callModel` overview](/docs/sdks/typescript/call-model/overview)
-* [Create a chat completion](/docs/api/api-reference/chat/send-chat-completion-request)
-* [Create a response](/docs/api/api-reference/responses/create-responses)
-* [TypeScript SDK Chat reference](/docs/client-sdks/typescript/api-reference/chat)
+* [Advisor server tool](/guides/features/server-tools/advisor)
+* [Agent SDK `callModel` overview](/sdks/typescript/call-model/overview)
+* [Create a chat completion](/api/api-reference/chat/send-chat-completion-request)
+* [Create a response](/api/api-reference/responses/create-responses)
+* [TypeScript SDK Chat reference](/client-sdks/typescript/api-reference/chat)
 
 ## What you're building
 
@@ -42,7 +90,7 @@ This recipe builds a tiny budget-aware implementation-plan reviewer.
 
 The executor model handles the normal response and writes most plans by itself. The app only offers the `plan-reviewer` Advisor when the task has uncertainty signals like a large diff, missing tests, a schema change, or unfamiliar ownership. When Advisor is available, the executor can ask it for one focused second opinion before writing the final answer.
 
-```text
+```text lines theme={null}
 Review task
   → app checks whether a second model earns its cost
   → cheap executor drafts the answer
@@ -56,7 +104,7 @@ For this workflow, give the Advisor the decision being reviewed, the changed fil
 
 Start with the smallest object the agent needs. This is the data your app already knows before it calls OpenRouter.
 
-```js
+```js lines theme={null}
 const reviewTask = {
   title: "Move usage-event writes to a monthly partitioned table",
   userQuestion:
@@ -77,7 +125,7 @@ Keep this packet small. Full diffs, raw conversation history, logs, and customer
 
 The sample below shows the routing pattern and Chat Completions request shape. Adapt the same budget gate and `tools` shape inside your existing OpenRouter call, including Agent SDK `callModel` if that is your agent loop.
 
-```js
+```js expandable lines theme={null}
 const ADVISOR_WORTHY_SIGNALS = new Set([
   "billing-path",
   "large-diff",
@@ -168,7 +216,7 @@ const { requestBody, telemetryContext } = buildReviewRequest({
 
 Send `requestBody` through the request path your app already uses. For routine tasks, `tools` is omitted and the request stays on the cheap executor model. For uncertain tasks, the request offers one named Advisor tool:
 
-```json
+```json lines theme={null}
 {
   "type": "openrouter:advisor",
   "parameters": {
@@ -196,7 +244,7 @@ In this workflow, `forward_transcript: false` is deliberate. The Advisor receive
 
 Use the system prompt to tell the executor what belongs in the Advisor call:
 
-```text
+```text lines theme={null}
 When calling plan-reviewer, include:
 - the decision you want reviewed
 - the changed files or affected modules
@@ -217,7 +265,7 @@ That keeps the expensive model focused on the part where it changes the outcome.
 
 If the executor can identify different kinds of uncertainty, give it separate Advisor entries. Each entry is its own tool. Do not use a nested `parameters.advisors` roster.
 
-```js
+```js expandable lines theme={null}
 const tools = [
   {
     type: "openrouter:advisor",
@@ -289,7 +337,7 @@ Confirm:
 
 After you wire the pattern into your app, log routing telemetry like this. Treat `usage_keys` as provider-dependent. Assert the routing fields, then check that usage includes the billing fields your app depends on. `finish_reason` is typically `stop` after the server-side tool call resolves, but don't treat the literal value as a fixed contract.
 
-```json
+```json lines theme={null}
 {
   "telemetry": {
     "executor_model": "openai/gpt-4o-mini",
@@ -310,7 +358,7 @@ Token counts, cost, answer text, and provider-specific usage detail keys vary by
 
 ## Next steps
 
-* Read the [Advisor reference](/docs/guides/features/server-tools/advisor) for exact parameters, multiple-advisor rules, memory, streaming, and API-surface details.
-* Add [Web Search](/docs/guides/features/server-tools/web-search) as an Advisor sub-tool when the reviewer needs current sources.
-* Use [Response Caching](/docs/guides/features/response-caching) for repeated stable prefixes in the executor prompt.
-* Add [Human-in-the-Loop controls](/docs/cookbook/building-agents/hitl-tools) when a second opinion should pause for a person instead of another model.
+* Read the [Advisor reference](/guides/features/server-tools/advisor) for exact parameters, multiple-advisor rules, memory, streaming, and API-surface details.
+* Add [Web Search](/guides/features/server-tools/web-search) as an Advisor sub-tool when the reviewer needs current sources.
+* Use [Response Caching](/guides/features/response-caching) for repeated stable prefixes in the executor prompt.
+* Add [Human-in-the-Loop controls](/cookbook/building-agents/hitl-tools) when a second opinion should pause for a person instead of another model.

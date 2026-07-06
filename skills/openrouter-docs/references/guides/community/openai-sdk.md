@@ -1,5 +1,80 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # OpenAI SDK
+
+> Using OpenRouter with OpenAI SDK
+
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
+
+## Using the OpenAI SDK
+
+* Using `pip install openai`: [github](https://github.com/OpenRouterTeam/openrouter-examples-python/blob/main/src/openai_test.py).
+* Using `npm i openai`: [github](https://github.com/OpenRouterTeam/openrouter-examples/tree/main/typescript).
+  <Tip>
+    You can also use
+    [Grit](https://app.grit.io/studio?key=RKC0n7ikOiTGTNVkI8uRS) to
+    automatically migrate your code. Simply run `npx @getgrit/launcher
+        openrouter`.
+  </Tip>
+
+<CodeGroup>
+  ```typescript title="TypeScript" expandable lines theme={null}
+  import OpenAI from "openai"
+
+  const openai = new OpenAI({
+    baseURL: "https://openrouter.ai/api/v1",
+    apiKey: "<OPENROUTER_API_KEY>",
+    defaultHeaders: {
+      "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+      "X-OpenRouter-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    },
+  })
+
+  async function main() {
+    const completion = await openai.chat.completions.create({
+      model: "openai/gpt-4o",
+      messages: [
+        { role: "user", content: "Say this is a test" }
+      ],
+    })
+
+    console.log(completion.choices[0].message)
+  }
+  main();
+  ```
+
+  ```python title="Python" expandable lines theme={null}
+  from openai import OpenAI
+  from os import getenv
+
+  # gets API Key from environment variable OPENROUTER_API_KEY
+  client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=getenv("OPENROUTER_API_KEY"),
+  )
+
+  completion = client.chat.completions.create(
+    model="openai/gpt-4o",
+    extra_headers={
+      "HTTP-Referer": "<YOUR_SITE_URL>", # Optional. Site URL for rankings on openrouter.ai.
+      "X-OpenRouter-Title": "<YOUR_SITE_NAME>", # Optional. Site title for rankings on openrouter.ai.
+    },
+    # pass extra_body to access OpenRouter-only arguments.
+    # extra_body={
+      # "models": [
+      #   "openai/gpt-4o",
+      #   "mistralai/mixtral-8x22b-instruct"
+      # ]
+    # },
+    messages=[
+      {
+        "role": "user",
+        "content": "Say this is a test",
+      },
+    ],
+  )
+  print(completion.choices[0].message.content)
+  ```
+</CodeGroup>

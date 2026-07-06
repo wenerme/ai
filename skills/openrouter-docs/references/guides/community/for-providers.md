@@ -1,12 +1,12 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Provider Integration
 
 ## For Providers
 
-If you'd like to be a model provider and sell inference on OpenRouter, [fill out our form](https://openrouter.ai/providers/apply/form) to get started.
+If you'd like to be a model provider and sell inference on OpenRouter, [fill out our form](https://openrouter.ai/how-to-list) to get started.
 
 To be eligible to provide inference on OpenRouter you must have the following:
 
@@ -14,7 +14,7 @@ To be eligible to provide inference on OpenRouter you must have the following:
 
 You must implement an endpoint that returns all models that should be served by OpenRouter. At this endpoint, please return a list of all available models on your platform. Below is an example of the response format:
 
-```json
+```json expandable lines theme={null}
 {
   "data": [
     {
@@ -81,7 +81,7 @@ Valid features are: `tools`, `json_mode`, `structured_outputs`, `logprobs`, `web
 
 For models with different pricing based on context length (e.g., long context pricing), you can provide `pricing` as an array of tiers instead of a single object:
 
-```json
+```json lines theme={null}
 {
   "pricing": [
     {
@@ -112,11 +112,11 @@ Limitations:
 
 To offer a discount on the prices users see and pay, include the optional `discount_to_user` field. It's a decimal fraction that OpenRouter applies to your displayed pricing:
 
-```text
+```text lines theme={null}
 user price = base price × (1 - discount_to_user)
 ```
 
-```json
+```json lines theme={null}
 {
   "id": "your-org/your-model",
   "pricing": {
@@ -141,7 +141,7 @@ Send `discount_to_user` as a number, not a string. Unlike the `pricing` fields, 
 
 If a model is scheduled for deprecation, include the `deprecation_date` field in ISO 8601 format. OpenRouter accepts either a date-only value or a specific UTC hour:
 
-```json
+```json lines theme={null}
 {
   "id": "anthropic/claude-2.1",
   "deprecation_date": "2025-06-01"
@@ -157,7 +157,7 @@ When OpenRouter's provider monitor detects a deprecation date or time, it will a
 
 By default, when OpenRouter's provider monitor sees a new model in your `/v1/models` response, it auto-stages the endpoint, runs baseline tests, and unhides it (makes it live) once the tests pass and pricing is configured. If you need to upload a model ahead of an announcement — or temporarily take a model offline — set the optional boolean `is_ready` field:
 
-```json
+```json lines theme={null}
 {
   "id": "your-org/upcoming-model",
   "is_ready": false
@@ -173,7 +173,7 @@ Behavior:
 
 If you want to offer a free version of a model, set `is_free: true`:
 
-```json
+```json lines theme={null}
 {
   "id": "your-org/your-model",
   "is_free": true
@@ -182,15 +182,15 @@ If you want to offer a free version of a model, set `is_free: true`:
 
 Behavior:
 
-* `is_free: true` marks the endpoint as a **free endpoint** (`:free` suffix).
-* Any upstream `pricing` sent alongside `is_free: true` is **ignored** — free endpoints always have zero cost.
+* `is_free: true` marks the endpoint as a free endpoint (`:free` suffix).
+* Any upstream `pricing` sent alongside `is_free: true` is ignored — free endpoints always have zero cost.
 * `is_free: false` or an omitted field preserves the default behavior (standard paid variant).
 
 #### Capacity with `capacity_tpm`
 
 Report your per-model throughput capacity so OpenRouter can make better routing and capacity-planning decisions. The value is in **input tokens per minute**:
 
-```json
+```json lines theme={null}
 {
   "id": "your-org/your-model",
   "capacity_tpm": 5000000
@@ -248,13 +248,13 @@ To keep your metrics competitive:
 
 ### 5. Auto Exacto: Tool-Calling Traffic Routing
 
-[Auto Exacto](/docs/guides/routing/auto-exacto) is a routing step that automatically reorders providers for all requests that include tools. It runs by default on every tool-calling request and may change how much tool-calling traffic your endpoints receive.
+[Auto Exacto](/guides/routing/auto-exacto) is a routing step that automatically reorders providers for all requests that include tools. It runs by default on every tool-calling request and may change how much tool-calling traffic your endpoints receive.
 
 #### How traffic is affected
 
 Auto Exacto shifts tool-calling traffic toward providers that perform well on tool-use quality signals. Providers with strong metrics are moved to the front of the routing order and will receive more tool-calling requests, while providers with weaker signals are deprioritized and will see less.
 
-Non-tool-calling traffic is **not affected** by Auto Exacto -- it continues to follow the standard [price-weighted routing](/docs/guides/routing/provider-selection#price-based-load-balancing-default-strategy).
+Non-tool-calling traffic is **not affected** by Auto Exacto -- it continues to follow the standard [price-weighted routing](/guides/routing/provider-selection#price-based-load-balancing-default-strategy).
 
 #### How ranking factors are determined
 
@@ -294,4 +294,4 @@ To maximize the tool-calling traffic routed to your endpoints:
 * **Optimize throughput** -- minimize queueing and stream tokens as soon as they are available (see [Performance Metrics](#4-performance-metrics) above).
 * **Return early 429s under load** -- rather than queueing and degrading throughput, return rate limit errors so we can retry with another provider and your metrics stay healthy.
 
-For the full user-facing documentation on Auto Exacto, see [Auto Exacto](/docs/guides/routing/auto-exacto).
+For the full user-facing documentation on Auto Exacto, see [Auto Exacto](/guides/routing/auto-exacto).
