@@ -3,6 +3,7 @@ title: "WanVaceToVideo - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the WanVaceToVideo node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
+
 WanVaceToVideo 节点用于处理视频生成模型的视频条件数据。它接收正面和负面条件输入以及视频控制数据，并准备用于视频生成的潜在表示。该节点处理视频放大、遮罩和 VAE 编码，以创建适用于视频模型的适当条件结构。
 
 ## 输入
@@ -27,10 +28,10 @@ WanVaceToVideo 节点用于处理视频生成模型的视频条件数据。它�
 
 | 输出名称 | 描述 | 数据类型 |
 | --- | --- | --- |
-| `负向` | 应用了视频控制数据的正面条件 | CONDITIONING |
-| `latent` | 应用了视频控制数据的负面条件 | CONDITIONING |
-| `裁剪latent` | 准备用于视频生成的空潜在张量 | LATENT |
-| `trim_latent` | 使用参考图像时需要裁剪的潜在帧数 | INT |
+| `正向` | 应用了视频控制数据的正面条件 | CONDITIONING |
+| `负向` | 应用了视频控制数据的负面条件 | CONDITIONING |
+| `latent` | 准备用于视频生成的空潜在张量 | LATENT |
+| `裁剪latent` | 使用参考图像时需要裁剪的潜在帧数 | INT |
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/WanVaceToVideo/zh.md)
 

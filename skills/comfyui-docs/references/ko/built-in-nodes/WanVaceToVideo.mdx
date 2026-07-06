@@ -3,6 +3,7 @@ title: "WanVaceToVideo - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the WanVaceToVideo node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
+
 WanVaceToVideo 노드는 비디오 생성 모델을 위한 비디오 컨디셔닝 데이터를 처리합니다. 이 노드는 긍정 및 부정 컨디셔닝 입력과 비디오 제어 데이터를 받아 비디오 생성을 위한 잠재 표현을 준비합니다. 또한 비디오 업스케일링, 마스킹 및 VAE 인코딩을 처리하여 비디오 모델에 적합한 컨디셔닝 구조를 생성합니다.
 
 ## 입력
@@ -27,10 +28,10 @@ WanVaceToVideo 노드는 비디오 생성 모델을 위한 비디오 컨디셔�
 
 | 출력 이름 | 설명 | 데이터 타입 |
 | --- | --- | --- |
-| `부정 조건` | 비디오 제어 데이터가 적용된 긍정 컨디셔닝 | CONDITIONING |
-| `잠재 비디오` | 비디오 제어 데이터가 적용된 부정 컨디셔닝 | CONDITIONING |
-| `잘린 잠재 비디오` | 비디오 생성을 위해 준비된 빈 잠재 텐서 | LATENT |
-| `trim_latent` | 참조 이미지 사용 시 제거할 잠재 프레임 수 | INT |
+| `긍정 조건` | 비디오 제어 데이터가 적용된 긍정 컨디셔닝 | CONDITIONING |
+| `부정 조건` | 비디오 제어 데이터가 적용된 부정 컨디셔닝 | CONDITIONING |
+| `잠재 비디오` | 비디오 생성을 위해 준비된 빈 잠재 텐서 | LATENT |
+| `잘린 잠재 비디오` | 참조 이미지 사용 시 제거할 잠재 프레임 수 | INT |
 
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/WanVaceToVideo/ko.md)
 

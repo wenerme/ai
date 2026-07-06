@@ -89,8 +89,8 @@ This will create a new `hyperdrive-tutorial` directory. Your new `hyperdrive-tut
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-9184)
-* [  wrangler.toml ](#tab-panel-9185)
+* [  wrangler.jsonc ](#tab-panel-9223)
+* [  wrangler.toml ](#tab-panel-9224)
 
 **JSONC**
 
@@ -100,7 +100,7 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
     "nodejs_compat"
   ],
   // Set this to today's date
-  "compatibility_date": "2026-07-01"
+  "compatibility_date": "2026-07-06"
 }
 ```
 
@@ -109,7 +109,7 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-06"
 ```
 
 ## 3\. Connect Hyperdrive to a database
@@ -133,8 +133,8 @@ To create your first Hyperdrive, you will need:
 
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
-* [ PostgreSQL ](#tab-panel-9178)
-* [ MySQL ](#tab-panel-9179)
+* [ PostgreSQL ](#tab-panel-9217)
+* [ MySQL ](#tab-panel-9218)
 
 ```txt
 postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
@@ -162,11 +162,11 @@ npx wrangler hyperdrive create <YOUR_CONFIG_NAME> --connection-string="mysql://u
 
 Manage caching
 
-By default, Hyperdrive will cache query results. If you wish to disable caching, pass the flag `--caching-disabled`.
+By default, Hyperdrive caches eligible read query results. If you wish to disable caching, pass the flag `--caching-disabled`.
 
 Alternatively, you can use the `--max-age` flag to specify the maximum duration (in seconds) for which items should persist in the cache, before they are evicted. Default value is 60 seconds.
 
-Refer to [Hyperdrive Wrangler commands](https://developers.cloudflare.com/hyperdrive/reference/wrangler-commands/) for more information.
+Hyperdrive does not invalidate cached read results when your application writes to your database. If your application needs read-after-write consistency, use a separate cache-disabled Hyperdrive configuration for the reads that must return fresh data. Refer to [Query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/#read-after-write-behavior) for guidance and [Hyperdrive Wrangler commands](https://developers.cloudflare.com/hyperdrive/reference/wrangler-commands/) for command options.
 
 If successful, the command will output your new Hyperdrive configuration:
 
@@ -193,8 +193,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9186)
-* [  wrangler.toml ](#tab-panel-9187)
+* [  wrangler.jsonc ](#tab-panel-9225)
+* [  wrangler.toml ](#tab-panel-9226)
 
 **JSONC**
 
@@ -225,8 +225,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-9188)
-* [  wrangler.toml ](#tab-panel-9189)
+* [  wrangler.jsonc ](#tab-panel-9227)
+* [  wrangler.toml ](#tab-panel-9228)
 
 **JSONC**
 
@@ -261,8 +261,8 @@ Once you have created a Hyperdrive configuration and bound it to your Worker, yo
 
 ### Install a database driver
 
-* [ PostgreSQL ](#tab-panel-9182)
-* [ MySQL ](#tab-panel-9183)
+* [ PostgreSQL ](#tab-panel-9221)
+* [ MySQL ](#tab-panel-9222)
 
 To connect to your database, you will need a database driver which allows you to authenticate and query your database. For this tutorial, you will use [node-postgres (pg) ↗](https://node-postgres.com/), one of the most widely used PostgreSQL drivers.
 
@@ -346,8 +346,8 @@ With the driver installed, you can now create a Worker script that queries your 
 
 ### Write a Worker
 
-* [ PostgreSQL ](#tab-panel-9180)
-* [ MySQL ](#tab-panel-9181)
+* [ PostgreSQL ](#tab-panel-9219)
+* [ MySQL ](#tab-panel-9220)
 
 After you have set up your database, you will run a SQL query from within your Worker.
 
@@ -560,6 +560,6 @@ If your Worker makes only one query per request, placement does not improve end-
 If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the [Cloudflare Developers community on Discord ↗](https://discord.cloudflare.com).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/get-started/#page","headline":"Getting started · Cloudflare Hyperdrive docs","description":"Create your first Hyperdrive configuration and connect a Cloudflare Worker to your database.","url":"https://developers.cloudflare.com/hyperdrive/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/get-started/#page","headline":"Getting started · Cloudflare Hyperdrive docs","description":"Create your first Hyperdrive configuration and connect a Cloudflare Worker to your database.","url":"https://developers.cloudflare.com/hyperdrive/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/get-started/","name":"Getting started"}}]}
 ```

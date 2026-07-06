@@ -21,10 +21,11 @@ an additional flag, often `-c`, to make them evaluate the first argument.
 #### Windows Shell
 
 `just` uses `sh` on Windows by default. To use a different shell on Windows,
-use `windows-shell`:
+use the `[windows]` attribute on the `shell` setting:
 
 ```just
-set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
+[windows]
+set shell := ["powershell.exe", "-NoLogo", "-Command"]
 
 hello:
   Write-Host "Hello, world!"
@@ -33,22 +34,6 @@ hello:
 See
 [powershell.just](https://github.com/casey/just/blob/master/examples/powershell.just)
 for a justfile that uses PowerShell on all platforms.
-
-#### Windows PowerShell
-
-*`set windows-powershell` uses the legacy `powershell.exe` binary, and is no
-longer recommended. See the `windows-shell` setting above for a more flexible
-way to control which shell is used on Windows.*
-
-`just` uses `sh` on Windows by default. To use `powershell.exe` instead, set
-`windows-powershell` to true.
-
-```just
-set windows-powershell := true
-
-hello:
-  Write-Host "Hello, world!"
-```
 
 #### Python 3
 

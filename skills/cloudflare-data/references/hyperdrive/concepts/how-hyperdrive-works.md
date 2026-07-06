@@ -76,9 +76,11 @@ Hyperdrive supports caching of non-mutating (read) queries to your database.
 
 When queries are sent via Hyperdrive, Hyperdrive parses the query and determines whether the query is a mutating (write) or non-mutating (read) query.
 
-For non-mutating queries, Hyperdrive will cache the response for the configured `max_age`, and whenever subsequent queries are made that match the original, Hyperdrive will return the cached response, bypassing the need to issue the query back to the origin database.
+For non-mutating queries, Hyperdrive caches the response for the configured `max_age`. When your Worker sends a later query that matches the original, Hyperdrive returns the cached response instead of sending the query back to the origin database.
 
 Caching reduces the burden on your origin database and accelerates the response times for your queries.
+
+Hyperdrive does not invalidate cached read query results when your application writes to your database. If your application needs read-after-write consistency, refer to [Query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/#read-after-write-behavior) for guidance on using a separate cache-disabled Hyperdrive configuration for reads that must return fresh data.
 
 Learn more about query caching behavior and configuration in [Query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/).
 
@@ -99,6 +101,6 @@ Hyperdrive supports named prepared statements as implemented in the `postgres.js
 * [Connection pooling](https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/#page","headline":"How Hyperdrive works · Cloudflare Hyperdrive docs","description":"Hyperdrive accelerates database queries through edge connection setup, connection pooling, and query caching.","url":"https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/#page","headline":"How Hyperdrive works · Cloudflare Hyperdrive docs","description":"Hyperdrive accelerates database queries through edge connection setup, connection pooling, and query caching.","url":"https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/concepts/how-hyperdrive-works/","name":"How Hyperdrive works"}}]}
 ```

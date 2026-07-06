@@ -3,6 +3,7 @@ title: "WanVaceToVideo - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the WanVaceToVideo node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
+
 WanVaceToVideo ノードは、動画生成モデル向けの動画条件付けデータを処理します。ポジティブおよびネガティブの条件付け入力と動画制御データを受け取り、動画生成のための潜在表現を準備します。このノードは、動画のアップスケーリング、マスキング、VAEエンコーディングを処理し、動画モデルに適した条件付け構造を作成します。
 
 ## 入力
@@ -27,10 +28,10 @@ WanVaceToVideo ノードは、動画生成モデル向けの動画条件付け�
 
 | 出力名 | 説明 | データ型 |
 | --- | --- | --- |
-| `ネガティブ` | 動画制御データが適用されたポジティブ条件付け | CONDITIONING |
-| `latent` | 動画制御データが適用されたネガティブ条件付け | CONDITIONING |
-| `トリムlatent` | 動画生成用の空の潜在テンソル | LATENT |
-| `trim_latent` | 参照画像が使用される場合にトリミングする潜在フレーム数 | INT |
+| `ポジティブ` | 動画制御データが適用されたポジティブ条件付け | CONDITIONING |
+| `ネガティブ` | 動画制御データが適用されたネガティブ条件付け | CONDITIONING |
+| `latent` | 動画生成用の空の潜在テンソル | LATENT |
+| `トリムlatent` | 参照画像が使用される場合にトリミングする潜在フレーム数 | INT |
 
 > このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/WanVaceToVideo/ja.md)
 

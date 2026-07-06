@@ -24,9 +24,9 @@ Worker-to-Worker `fetch` requests are possible with [Service bindings](https://d
 
 ## Syntax
 
-* [  Module Worker ](#tab-panel-12353)
-* [  Service Worker ](#tab-panel-12354)
-* [  Python Worker ](#tab-panel-12355)
+* [  Module Worker ](#tab-panel-12390)
+* [  Service Worker ](#tab-panel-12391)
+* [  Python Worker ](#tab-panel-12392)
 
 **JavaScript**
 
@@ -82,7 +82,7 @@ class Default(WorkerEntrypoint):
 * `options` options
 
   * `cache` `undefined | 'no-store' | 'no-cache'` optional
-    * Standard HTTP `cache` header. Only `cache: 'no-store'` and `cache: 'no-cache'` are supported. Any other `cache` header will result in a `TypeError` with the message `Unsupported cache mode: <attempted-cache-mode>`. \_ For all requests this forwards the `Pragma: no-cache` and `Cache-Control: no-cache` headers to the origin. \_ For `no-store`, requests to origins not hosted by Cloudflare bypass the use of Cloudflare's caches. \_ For `no-cache`, requests to origins not hosted by Cloudflare are forced to revalidate with the origin before resonding.
+    * Standard HTTP `cache` header. Only `cache: 'no-store'` and `cache: 'no-cache'` are supported. Any other `cache` header will result in a `TypeError` with the message `Unsupported cache mode: <attempted-cache-mode>`. \_ For all requests this forwards the `Pragma: no-cache` and `Cache-Control: no-cache` headers to the origin. \_ For `no-store`, requests to origins not hosted by Cloudflare bypass the use of Cloudflare's caches. \_ For `no-cache`, requests to origins not hosted by Cloudflare are forced to revalidate with the origin before responding.
   * An object that defines the content and behavior of the request.
 
 ---
@@ -138,6 +138,6 @@ export default {
 * [Fetch API in a partial setup](https://developers.cloudflare.com/workers/platform/known-issues/#fetch-api-in-cname-setup)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/fetch/#page","headline":"Fetch · Cloudflare Workers docs","description":"An interface for asynchronously fetching resources via HTTP requests inside of a Worker.","url":"https://developers.cloudflare.com/workers/runtime-apis/fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/fetch/#page","headline":"Fetch · Cloudflare Workers docs","description":"An interface for asynchronously fetching resources via HTTP requests inside of a Worker.","url":"https://developers.cloudflare.com/workers/runtime-apis/fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/fetch/","name":"Fetch"}}]}
 ```

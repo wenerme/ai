@@ -36,6 +36,20 @@ Yes, if your Worker makes multiple queries per request. [Placement](https://deve
 
 Use `placement.region` if your database runs in AWS, GCP, or Azure. Use `placement.host` for databases hosted elsewhere.
 
+## Caching
+
+### Does Hyperdrive invalidate cached reads when I write to my database
+
+No. Hyperdrive does not invalidate cached read query results when your application writes to your database. A matching read can return a cached result until the configured `max_age` expires, and Hyperdrive can serve that result during the `stale_while_revalidate` window while it refreshes the cache.
+
+Use a cache-disabled Hyperdrive configuration for reads that must return fresh data, such as authentication, sessions, permissions, or reads immediately after a write. Refer to [Query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/#read-after-write-behavior) to choose a caching strategy.
+
+### Can I use Hyperdrive if some reads need read-after-write consistency
+
+Yes. Configure two Hyperdrive bindings to the same database: one with query caching enabled for reads that can tolerate short staleness, and one with query caching disabled for reads that must be fresh. The cache-disabled binding still gives you Hyperdrive's connection pooling and fast connection setup.
+
+If an object-relational mapping (ORM) library or authentication library owns the SQL, create separate database clients for each binding and pass the cache-disabled client to the code that needs fresh reads.
+
 ## Pricing
 
 ### Does Hyperdrive charge for data transfer / egress?
@@ -57,6 +71,6 @@ Hyperdrive itself does not charge for compute (CPU) or processing (wall clock) t
 Refer to the published [limits](https://developers.cloudflare.com/hyperdrive/platform/limits/) documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/reference/faq/#page","headline":"FAQ · Cloudflare Hyperdrive docs","description":"Frequently asked questions about Hyperdrive connectivity, caching, and supported databases.","url":"https://developers.cloudflare.com/hyperdrive/reference/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/reference/faq/#page","headline":"FAQ · Cloudflare Hyperdrive docs","description":"Frequently asked questions about Hyperdrive connectivity, caching, and supported databases.","url":"https://developers.cloudflare.com/hyperdrive/reference/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/reference/faq/","name":"FAQ"}}]}
 ```
