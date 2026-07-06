@@ -6,10 +6,9 @@ from highest to lowest, is:
 
 1. The `--shell` and `--shell-arg` command line options. Passing either of
    these will cause `just` to ignore any settings in the current justfile.
-2. `set windows-shell := [...]`
+2. `set windows-shell := [...]` (deprecated)
 3. `set windows-powershell` (deprecated)
 4. `set shell := [...]`
 
-Since `set windows-shell` has higher precedence than `set shell`, you can use
-`set windows-shell` to pick a shell on Windows, and `set shell` to pick a shell
-for all other platforms.
+Use the `[windows]` and `[unix]` attributes with `set shell` to use different a
+shells on Windows.

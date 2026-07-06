@@ -1206,7 +1206,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 108 skills, 27342 files, 295 MiB total
+> 108 skills, 27468 files, 295 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1233,7 +1233,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 3.6 KiB |
 | [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 121 | 4.4 MiB |
-| [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1092 | 10 MiB |
+| [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1093 | 10 MiB |
 | [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1509 | 11 MiB |
 | [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 395 | 3.0 MiB |
 | [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 30 KiB |
@@ -1243,9 +1243,9 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 773 | 7.1 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 929 | 9.6 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
-| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4632 | 14 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4756 | 15 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
-| [doris-docs](./skills/doris-docs/SKILL.md) | 1584 | 9.5 MiB |
+| [doris-docs](./skills/doris-docs/SKILL.md) | 1585 | 9.5 MiB |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
 | [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 284 | 1.8 MiB |
 | [find-skills](./skills/find-skills/SKILL.md) | 1 | 4.5 KiB |

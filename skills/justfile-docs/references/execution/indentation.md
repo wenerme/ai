@@ -11,7 +11,8 @@ Here's a justfile with a recipe indented with spaces, represented as `·`, and
 tabs, represented as `→`.
 
 ```justfile
-set windows-shell := ["pwsh", "-NoLogo", "-NoProfileLoadTime", "-Command"]
+[windows]
+set shell := ["pwsh", "-NoLogo", "-NoProfileLoadTime", "-Command"]
 
 set ignore-comments
 

@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Cloudflare platform access
