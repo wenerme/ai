@@ -21,7 +21,7 @@ It is possible to use WebSocket in browsers with an ephemeral API token as shown
 ```javascript
 import WebSocket from "ws";
 
-const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime-2";
+const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime-2.1";
 const ws = new WebSocket(url, {
   headers: {
     Authorization: "Bearer " + process.env.OPENAI_API_KEY,
@@ -53,7 +53,7 @@ import websocket
 
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
-url = "wss://api.openai.com/v1/realtime?model=gpt-realtime-2"
+url = "wss://api.openai.com/v1/realtime?model=gpt-realtime-2.1"
 headers = [
     "Authorization: Bearer " + OPENAI_API_KEY,
     "OpenAI-Safety-Identifier: hashed-user-id",
@@ -93,7 +93,7 @@ Cloudflare Workers.
 */
 
 const ws = new WebSocket(
-  "wss://api.openai.com/v1/realtime?model=gpt-realtime-2",
+  "wss://api.openai.com/v1/realtime?model=gpt-realtime-2.1",
   [
     "realtime",
     // Auth
@@ -126,7 +126,7 @@ Over a WebSocket, you will both send and receive JSON-serialized events as strin
 ```javascript
 import WebSocket from "ws";
 
-const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime-2";
+const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime-2.1";
 const ws = new WebSocket(url, {
   headers: {
     Authorization: "Bearer " + process.env.OPENAI_API_KEY,

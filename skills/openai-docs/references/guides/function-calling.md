@@ -61,6 +61,8 @@ Tool calling is a multi-step conversation between your application and a model v
 
 ![Function Calling Diagram Steps](https://cdn.openai.com/API/docs/images/function-calling-diagram-steps.png)
 
+With Responses, your application can continue this flow for as many tool calls as the task requires. If you want a framework that packages recurring orchestration around that loop, see [how the Responses API compares with the Agents SDK](https://developers.openai.com/api/docs/guides/agents#agents-sdk-vs-responses-api).
+
 ## Function tool example
 
 Let's look at an end-to-end tool calling flow for a `get_horoscope` function that gets a daily horoscope for an astrological sign.

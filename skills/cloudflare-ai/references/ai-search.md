@@ -18,11 +18,19 @@ The search primitive for your applications and agents.
 
 AI Search lets you add search to any application or agent without having to build an entire retrieval infrastructure. Create an instance, give it your data, and search it with natural language.
 
+[ Upload or connect ](https://developers.cloudflare.com/ai-search/configuration/data-source/)
+
+AI Search
+
+[ Storage ](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) [ AI models ](https://developers.cloudflare.com/ai-search/configuration/models/) [ Index ](https://developers.cloudflare.com/ai-search/configuration/indexing/)
+
+[ Search ](https://developers.cloudflare.com/ai-search/concepts/search-modes/)
+
 You can use AI Search for:
 
 * Documentation and knowledge base search
-* AI agent tool use and memory
-* Per-tenant or per-agent file search
+* AI agents that perform research over your internal knowledge
+* Let each tenant or agent upload and search their own files
 
 [ Get started ](https://developers.cloudflare.com/ai-search/get-started/)[ Watch AI Search demo ](https://www.youtube.com/watch?v=JUFdbkiDN2U)
 
@@ -95,6 +103,6 @@ Connect with the Workers community on Discord to ask questions, share what you a
 Follow @CloudflareDev on Twitter to learn about product announcements, and what is new in Cloudflare Workers.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/#page","headline":"Cloudflare AI Search · Cloudflare AI Search docs","description":"Cloudflare AI Search is a managed search service. Index your content and query it with natural language from a Workers binding, REST API, or MCP server.","url":"https://developers.cloudflare.com/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/#page","headline":"Cloudflare AI Search · Cloudflare AI Search docs","description":"Cloudflare AI Search is a managed search service. Index your content and query it with natural language from a Workers binding, REST API, or MCP server.","url":"https://developers.cloudflare.com/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}}]}
 ```

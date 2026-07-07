@@ -14,7 +14,15 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
-There are no scheduled entries at this time.
+## 2026-07-06
+
+
+**WAF Release - Scheduled changes for 2026-07-13**
+
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                                              | Comments                 |
+| ----------------- | ------------ | ---------------- | -------------- | ----------- | ------------------------------------------------------------------------ | ------------------------ |
+| 2026-07-06        | 2026-07-13   | Log              | N/A            | ...76973ac4 | Citrix Netscaler ADC - Insufficient Input Validation - CVE:CVE-2026-8451 | This is a new detection. |
+| 2026-07-06        | 2026-07-13   | Log              | N/A            | ...10233f36 | Progress Kemp LoadMaster - Remote Code Execution - CVE:CVE-2026-8037     | This is a new detection. |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

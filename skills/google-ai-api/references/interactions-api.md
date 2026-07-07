@@ -160,6 +160,32 @@ The configuration for speech interaction.
 voice string (optional) The voice of the speaker.
 language string (optional) The language of the speech.
 speaker string (optional) The speaker's name, it should match the speaker name given in the prompt.
+video_config VideoConfig (optional) Configuration for video generation.
+Configuration options for video generation.
+
+#### Fields
+
+task enum (string) (optional) Optional task mode for video generation. If not specified, the model
+automatically determines the appropriate mode based on the provided text
+prompt and input media.
+
+Possible
+values:
+
+- `text_to_video`
+
+  Generates video solely from a text prompt.
+- `image_to_video`
+
+  Generates video from one or two source images. The first image defines
+  the starting frame, and the optional second image defines the ending
+  frame.
+- `reference_to_video`
+
+  Generates video using reference media (such as images, audio, or video).
+- `edit`
+
+  Modifies an existing input video.
 presence_penalty number (optional) Penalizes tokens that have already appeared in the generated
 text. A positive value encourages the model to generate more diverse and
 less repetitive text. Valid values can range from \[-2.0, 2.0\].
@@ -1553,6 +1579,32 @@ values:
 excluded_predefined_functions array (string) (optional) The list of predefined functions that are excluded from the model call.
 enable_prompt_injection_detection boolean (optional) Whether enable the prompt injection detection check on computer-use
 request.
+disabled_safety_policies array (enum (string)) (optional) Optional. Disabled safety policies for computer use.
+
+Possible
+values:
+
+- `financial_transactions`
+
+  Safety policy for financial transactions.
+- `sensitive_data_modification`
+
+  Safety policy for sensitive data modification.
+- `communication_tool`
+
+  Safety policy for communication tools (e.g. Gmail, Chat, Meet).
+- `account_creation`
+
+  Safety policy for account creation.
+- `data_modification`
+
+  Safety policy for data modification.
+- `user_consent_management`
+
+  Safety policy for user consent management.
+- `legal_terms_and_agreements`
+
+  Safety policy for legal terms and agreements.
 McpServer A MCPServer is a server that can be called by the model to perform actions.
 type object (required) No description provided.
 
@@ -3480,6 +3532,280 @@ event_type object (required) No description provided.
 
 Always set to `"step.stop"`.
 index integer (required) No description provided.
+usage Usage (optional) Cumulative model usage stats from the start of the session.
+Statistics on the interaction request's token usage.
+
+#### Fields
+
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
+input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
+output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
+tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
+total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
+internal tokens).
+grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+The number of grounding tool counts.
+
+#### Fields
+
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+- `retrieval`
+
+  Grounding with customer's data, for example, VertexAISearch.
+count integer (optional) The number of grounding tool counts.
+step_usage Usage (optional) Model usage stats for this specific step.
+Statistics on the interaction request's token usage.
+
+#### Fields
+
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
+input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
+output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
+tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
+total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
+internal tokens).
+grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+The number of grounding tool counts.
+
+#### Fields
+
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+- `retrieval`
+
+  Grounding with customer's data, for example, VertexAISearch.
+count integer (optional) The number of grounding tool counts.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
 metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed event.
@@ -3898,6 +4224,35 @@ values:
 - `4K`
 
   4K image size.
+VideoResponseFormat Configuration for video output format.
+type object (required) No description provided.
+
+Always set to `"video"`.
+delivery enum (string) (optional) The delivery mode for the video output.
+
+Possible
+values:
+
+- `inline`
+
+  Video data is returned inline in the response.
+- `uri`
+
+  Video data is returned as a URI.
+gcs_uri string (optional) The GCS URI to store the video output. Required for Vertex if delivery mode
+is URI.
+aspect_ratio enum (string) (optional) The aspect ratio for the video output.
+
+Possible
+values:
+
+- `16:9`
+
+  16:9 aspect ratio.
+- `9:16`
+
+  9:16 aspect ratio.
+duration string (optional) The duration for the video output.
 
 ### Examples
 
@@ -3948,6 +4303,16 @@ values:
 }
 ```
 
+### Video Output
+
+```json
+{
+  "type": "video",
+  "delivery": "inline",
+  "aspect_ratio": "16:9"
+}
+```
+
 ### Step
 
 A step in the interaction.
@@ -3965,6 +4330,23 @@ type object (required) No description provided.
 
 Always set to `"model_output"`.
 content array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) (optional) No description provided.
+error Status (optional) The error result of the operation in case of failure or cancellation.
+The \`Status\` type defines a logical error model that is suitable for
+different programming environments, including REST APIs and RPC APIs. It is
+used by \[gRPC\](https://github.com/grpc). Each \`Status\` message contains
+three pieces of data: error code, error message, and error details.
+
+You can find out more about this error model and how to work with it in the
+\[API Design Guide\](https://cloud.google.com/apis/design/errors).
+
+#### Fields
+
+code integer (optional) The status code, which should be an enum value of google.rpc.Code.
+message string (optional) A developer-facing error message, which should be in English. Any
+user-facing error message should be localized and sent in the
+google.rpc.Status.details field, or localized by the client.
+details array (object) (optional) A list of messages that carry the error details. There is a common set of
+message types for APIs to use.
 ThoughtStep A thought step.
 type object (required) No description provided.
 
@@ -4549,6 +4931,8 @@ For GitHub, this is the GitHub path.
 target string (optional) Where the source should appear in the environment.
 content string (optional) The inline content if \`type\` is \`INLINE\`.
 encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
+environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
+update the existing environment instead of creating a new one.
 network [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or enum (string) (optional) Network configuration for the environment.
 
 Possible

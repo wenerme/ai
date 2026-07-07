@@ -4177,9 +4177,9 @@
   },
   "agent-sdk/typescript/api-reference/models/paretorouterplugin.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/typescript/api-reference/models/paretorouterplugin.md",
-    "lastModified": "Mon, 06 Jul 2026 14:20:05 GMT",
-    "size": 2303,
-    "updatedAt": "2026-07-06T14:20:05.848Z"
+    "lastModified": "Tue, 07 Jul 2026 04:28:39 GMT",
+    "size": 2750,
+    "updatedAt": "2026-07-07T04:28:39.930Z"
   },
   "agent-sdk/typescript/api-reference/models/partialcoverage.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/typescript/api-reference/models/partialcoverage.md",
@@ -9997,9 +9997,9 @@
   },
   "api/api-reference/anthropic-messages/create-a-message.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-a-message.md",
-    "lastModified": "Mon, 06 Jul 2026 14:28:11 GMT",
-    "size": 164245,
-    "updatedAt": "2026-07-06T14:28:11.760Z"
+    "lastModified": "Tue, 07 Jul 2026 04:37:47 GMT",
+    "size": 164741,
+    "updatedAt": "2026-07-07T04:37:47.758Z"
   },
   "api/api-reference/api-keys/create-a-new-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/create-a-new-api-key.md",
@@ -10057,9 +10057,9 @@
   },
   "api/api-reference/betaresponses/create-a-response.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/betaresponses/create-a-response.md",
-    "lastModified": "Mon, 06 Jul 2026 14:28:16 GMT",
-    "size": 296175,
-    "updatedAt": "2026-07-06T14:28:16.058Z"
+    "lastModified": "Tue, 07 Jul 2026 04:37:52 GMT",
+    "size": 296671,
+    "updatedAt": "2026-07-07T04:37:52.574Z"
   },
   "api/api-reference/byok/create-a-byok-provider-credential.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/byok/create-a-byok-provider-credential.md",
@@ -10093,9 +10093,9 @@
   },
   "api/api-reference/chat/create-a-chat-completion.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/create-a-chat-completion.md",
-    "lastModified": "Mon, 06 Jul 2026 14:28:18 GMT",
-    "size": 142742,
-    "updatedAt": "2026-07-06T14:28:18.628Z"
+    "lastModified": "Tue, 07 Jul 2026 04:37:54 GMT",
+    "size": 143238,
+    "updatedAt": "2026-07-07T04:37:54.852Z"
   },
   "api/api-reference/classifications/task-classification-market-share.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/classifications/task-classification-market-share.md",
@@ -10267,9 +10267,9 @@
   },
   "api/api-reference/images/generate-an-image.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/images/generate-an-image.md",
-    "lastModified": "Mon, 06 Jul 2026 14:28:31 GMT",
-    "size": 49046,
-    "updatedAt": "2026-07-06T14:28:31.494Z"
+    "lastModified": "Tue, 07 Jul 2026 04:38:07 GMT",
+    "size": 49082,
+    "updatedAt": "2026-07-07T04:38:07.633Z"
   },
   "api/api-reference/images/list-endpoints-for-an-image-model.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/images/list-endpoints-for-an-image-model.md",
@@ -10357,21 +10357,21 @@
   },
   "api/api-reference/presets/create-a-preset-from-a-chat-completions-request-body.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-a-preset-from-a-chat-completions-request-body.md",
-    "lastModified": "Mon, 06 Jul 2026 14:28:37 GMT",
-    "size": 114417,
-    "updatedAt": "2026-07-06T14:28:37.817Z"
+    "lastModified": "Tue, 07 Jul 2026 04:38:13 GMT",
+    "size": 114913,
+    "updatedAt": "2026-07-07T04:38:13.206Z"
   },
   "api/api-reference/presets/create-a-preset-from-a-messages-request-body.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-a-preset-from-a-messages-request-body.md",
-    "lastModified": "Mon, 06 Jul 2026 14:28:38 GMT",
-    "size": 104589,
-    "updatedAt": "2026-07-06T14:28:38.185Z"
+    "lastModified": "Tue, 07 Jul 2026 04:38:13 GMT",
+    "size": 105085,
+    "updatedAt": "2026-07-07T04:38:13.519Z"
   },
   "api/api-reference/presets/create-a-preset-from-a-responses-request-body.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body.md",
-    "lastModified": "Mon, 06 Jul 2026 14:28:38 GMT",
-    "size": 187813,
-    "updatedAt": "2026-07-06T14:28:38.747Z"
+    "lastModified": "Tue, 07 Jul 2026 04:38:13 GMT",
+    "size": 188309,
+    "updatedAt": "2026-07-07T04:38:13.835Z"
   },
   "api/api-reference/presets/get-a-preset.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/get-a-preset.md",
@@ -11941,9 +11941,9 @@
   },
   "guides/overview/mcp-server.md": {
     "url": "https://openrouter.ai/docs/guides/overview/mcp-server.md",
-    "lastModified": "Mon, 06 Jul 2026 14:31:00 GMT",
-    "size": 11632,
-    "updatedAt": "2026-07-06T14:31:00.648Z"
+    "lastModified": "Tue, 07 Jul 2026 04:39:53 GMT",
+    "size": 12019,
+    "updatedAt": "2026-07-07T04:39:53.702Z"
   },
   "guides/overview/models.md": {
     "url": "https://openrouter.ai/docs/guides/overview/models.md",
@@ -11959,9 +11959,9 @@
   },
   "guides/overview/multimodal/image-generation.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/image-generation.md",
-    "lastModified": "Mon, 06 Jul 2026 14:31:01 GMT",
-    "size": 18107,
-    "updatedAt": "2026-07-06T14:31:01.786Z"
+    "lastModified": "Tue, 07 Jul 2026 04:39:54 GMT",
+    "size": 19526,
+    "updatedAt": "2026-07-07T04:39:54.635Z"
   },
   "guides/overview/multimodal/image-understanding.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/image-understanding.md",

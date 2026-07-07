@@ -14,13 +14,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 ## `cf_clearance` cookies
 
-A `cf_clearance` cookie proves to Cloudflare that the visitor is a verified human and has passed the challenge presented to them.
+A `cf_clearance` cookie proves to Cloudflare that the visitor is a verified human and has passed Cloudflare's client-side verifications.
 
-The `cf_clearance` cookie is securely tied to the specific visitor and device it was issued to. This binding is a security feature designed to prevent the cookie from being easily transferred and re-used on other machines.
+The cookie contains **two types of clearance** that work together:
 
-As an additional layer of security, Cloudflare recommends that customers [add a rate limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/) based on the `cf_clearance` cookie value. This ensures that a single, valid cookie cannot be abused by a single machine to send an excessive volume of requests.
+* **Challenge clearance**: Granted when a visitor solves a Challenge (for example, Interstitial Challenge Pages or Turnstile with pre-clearance enabled).
+* **Precursor clearance**: Continuously updated based on session behavior.
 
-Each challenge type sets a clearance level. A higher-level cookie bypasses all challenge types at or below that level. A lower-level cookie only bypasses challenges at the same level.
+The cookie is securely tied to the specific visitor and device it was issued to, preventing reuse across machines.
+
+As an additional layer of security, Cloudflare recommends that customers [add a rate limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/) based on the `cf_clearance` cookie value. This helps ensure that a single, valid cookie cannot be abused by one machine to send an excessive volume of requests.
+
+### Challenge clearance
+
+Challenge clearance is granted when a visitor successfully completes a Challenge.
+
+Each challenge type sets a clearance level. A higher-level clearance bypasses all Challenges at or below that level. A lower-level clearance only bypasses challenges at the same level.
 
 | Clearance level       | Bypasses                                             |
 | --------------------- | ---------------------------------------------------- |
@@ -28,11 +37,24 @@ Each challenge type sets a clearance level. A higher-level cookie bypasses all c
 | Managed (medium)      | Managed and Non-Interactive Challenges               |
 | Non-Interactive (low) | Non-Interactive Challenges only                      |
 
-If a visitor passes an Interactive Challenge (highest security level), then the `cf_clearance` cookie indicates this to the origin and allows the visitor to bypass any other Challenge on the website, whether it is a Non-Interactive Challenge, a Managed Challenge, or another Interactive Challenge for as long as the cookie is valid.
+If a visitor passes an Interactive Challenge (highest security level), they can bypass all other Challenges for as long as the clearance remains valid.
 
-If a visitor receives a `cf_clearance` cookie on a page that uses a WAF rule with Managed or Non-Interactive Challenge (lower security levels), then encountering a different page with a higher security clearance level Challenge will prompt them to solve the challenge again.
+If a visitor receives clearance at a lower level (Managed or Non-Interactive) and later encounters a higher-level challenge, they must solve the higher-level challenge again.
 
-The original `cf_clearance` cookie that was issued to the visitor from a lower security clearance level challenge will be replaced with the new `cf_clearance` cookie from a higher security clearance level challenge.
+The original clearance is replaced if a higher-level challenge is later solved.
+
+Challenge clearance remains valid for the duration configured by the customer (Challenge Passage), **unless Precursor determines the session is suspicious**.
+
+### Precursor clearance
+
+Precursor clearance is continuously re-evaluated throughout a visitor’s session. Rather than being tied to a single challenge event, it operates as an ongoing, client-side process that periodically reassesses behavior at regular intervals. As new signals are observed, the clearance is updated dynamically to reflect the current level of trust in the session.
+
+If Precursor determines that a session is suspicious:
+
+* The visitor’s effective Challenge clearance may be **reduced or invalidated**.
+* The visitor may be **re-challenged**, even if the cookie has not expired.
+
+This creates a model where clearance is both **time-bound (Interstitial)** and **behavior-bound (Precursor)**.
 
 ## Pre-clearance support in Turnstile
 
@@ -104,23 +126,23 @@ The `cf_clearance` cookie cannot exceed the maximum size of 4096 bytes.
 
 #### Enable pre-clearance on a new site
 
-1. In the Cloudflare dashboard, go to the **Turnstile** page.
+1. In the Cloudflare dashboard, go to **Turnstile**.
 [ Go to **Turnstile** ](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget**.
-3. Under **Would you like to opt for pre-clearance for this site?** select **Yes**.
-4. Choose the pre-clearance level from the select box.
+3. Under **Would you like to opt for pre-clearance for this site?**, select **Yes**.
+4. Choose a **pre-clearance level**.
 5. Select **Create**.
 
 #### Enable pre-clearance on an existing site
 
-1. In the Cloudflare dashboard, go to the **Turnstile** page.
+1. In the Cloudflare dashboard, go to **Turnstile**.
 [ Go to **Turnstile** ](https://dash.cloudflare.com/?to=/:account/turnstile)
-2. Go to the existing widget or site and select **Settings**.
-3. Under **Would you like to opt for pre-clearance for this site?** select **Yes**.
-4. Choose the pre-clearance level from the select box.
+2. Select an existing widget and open **Settings**.
+3. Under **Would you like to opt for pre-clearance for this site?**, select **Yes**.
+4. Choose a **pre-clearance level**.
 5. Select **Update**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/#page","headline":"Clearance · Cloudflare challenges docs","description":"How cf\\_clearance cookies prove a visitor passed a Cloudflare challenge.","url":"https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/#page","headline":"Clearance · Cloudflare challenges docs","description":"How cf\\_clearance cookies prove a visitor passed a Cloudflare challenge.","url":"https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/concepts/clearance/","name":"Clearance"}}]}
 ```

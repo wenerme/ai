@@ -32,6 +32,41 @@ Instead of passing entire sheets to the model, the API parses up to the first
 1,000 rows per sheet and adds model-generated summary and header metadata so the
 model can work from a smaller, structured view of the data.
 
+## PDF detail levels
+
+For PDF inputs in the Responses API, set the optional `detail` field on an
+`input_file` item to control how page images are processed. `low` is the default
+and uses fewer input tokens. Use `high` when you need more visual detail from PDF
+page images, such as dense charts, small print, or diagrams.
+
+The `detail` setting only affects PDF page image processing. Text extracted from
+the PDF is still included. Chat Completions file inputs don't support `detail`.
+
+A minimal Responses API request body with explicit high detail looks like this:
+
+```json
+{
+  "model": "gpt-4.1",
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_file",
+          "filename": "document.pdf",
+          "file_data": "data:application/pdf;base64,...",
+          "detail": "high"
+        },
+        {
+          "type": "input_text",
+          "text": "Summarize this document."
+        }
+      ]
+    }
+  ]
+}
+```
+
 ## Accepted file types
 
 The following table lists common file types accepted in `input_file`. The full
@@ -387,7 +422,7 @@ print(response.output_text)
 
 Keep these constraints in mind when you use file inputs:
 
-- **Token usage:** PDF parsing includes both extracted text and page images in context, which can increase token usage. Before deploying at scale, review pricing and token implications. [More on pricing](https://developers.openai.com/api/docs/pricing).
+- **Token usage:** PDF parsing includes both extracted text and page images in context, which can increase token usage. In the Responses API, set `detail` to `low` (the default) or `high` to control how much visual detail is processed for PDF page images. Before deploying at scale, review pricing and token implications. [More on pricing](https://developers.openai.com/api/docs/pricing).
 - **File size limits:** A single request can include more than one file, but each file must be under 50 MB. The combined limit across all files in the request is 50 MB.
 - **Supported models:** PDF parsing that includes text and page images requires models with vision capabilities, such as `gpt-4o` and later models.
 - **File upload purpose:** You can upload files with any supported [purpose](https://developers.openai.com/api/docs/api-reference/files/create#files-create-purpose), but use `user_data` for files you plan to pass as model inputs.

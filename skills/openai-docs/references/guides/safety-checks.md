@@ -97,7 +97,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 -d '{
 "session": {
 "type": "realtime",
-"model": "gpt-realtime-2"
+"model": "gpt-realtime-2.1"
 }
 }'
 ```

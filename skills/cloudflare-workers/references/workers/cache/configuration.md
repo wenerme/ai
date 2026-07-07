@@ -40,7 +40,7 @@ Add a `cache` block to your Wrangler configuration:
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-07",
   "cache": {
     "enabled": true,
   },
@@ -53,7 +53,7 @@ Add a `cache` block to your Wrangler configuration:
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-07"
 
 
 [cache]
@@ -78,7 +78,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-07",
   "cache": {
     "enabled": false,
   },
@@ -91,7 +91,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-07"
 
 
 [cache]
@@ -118,7 +118,7 @@ Requires Wrangler 4.107.0 or above.
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-07",
   "cache": {
     "enabled": true,
   },
@@ -137,7 +137,7 @@ Requires Wrangler 4.107.0 or above.
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-07"
 
 
 [cache]
@@ -177,7 +177,7 @@ The `cache` configuration is part of your Worker version:
 
 * Each version uploaded with [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/#deploy) or [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/#versions-upload) captures whatever `cache.enabled` value is in its Wrangler configuration.
 * Rolling back to a previous version also rolls back the `cache` setting attached to that version.
-* You can use [gradual deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) to turn caching on for a percentage of traffic before applying it to 100%. During a gradual rollout from a version with caching disabled to a version with caching enabled, traffic routed to the old version runs uncached as it did before, and traffic routed to the new version consults and populates the cache. By default, the Worker version is part of the cache key, so the two versions populate independent cache entries and do not serve each other's responses — see [Cross-version caching](#cross-version-caching).
+* You can use [gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) to turn caching on for a percentage of traffic before applying it to 100%. During a gradual rollout from a version with caching disabled to a version with caching enabled, traffic routed to the old version runs uncached as it did before, and traffic routed to the new version consults and populates the cache. By default, the Worker version is part of the cache key, so the two versions populate independent cache entries and do not serve each other's responses — see [Cross-version caching](#cross-version-caching).
 
 ## Cross-version caching
 
@@ -201,7 +201,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-07",
   "cache": {
     "enabled": true,
     "cross_version_cache": true,
@@ -215,7 +215,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-07"
 
 
 [cache]
@@ -223,7 +223,7 @@ enabled = true
 cross_version_cache = true
 ```
 
-Advanced users who deploy frequently and whose responses do not change between most deployments should consider enabling `cross_version_cache` — it avoids throwing away a warm cache on every deploy. The cost is that a deployment no longer invalidates the cache: after a change that alters response content, older cached responses continue to be served until they expire or you [purge](https://developers.cloudflare.com/workers/cache/purge/) them, and during a [gradual deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) both versions share one cache. When you need a deployment to take effect immediately with `cross_version_cache` enabled, purge the cache after deploying, or tag responses by version — see [Invalidating cache across deployments](https://developers.cloudflare.com/workers/cache/cache-keys/#invalidating-cache-across-deployments).
+Advanced users who deploy frequently and whose responses do not change between most deployments should consider enabling `cross_version_cache` — it avoids throwing away a warm cache on every deploy. The cost is that a deployment no longer invalidates the cache: after a change that alters response content, older cached responses continue to be served until they expire or you [purge](https://developers.cloudflare.com/workers/cache/purge/) them, and during a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) both versions share one cache. When you need a deployment to take effect immediately with `cross_version_cache` enabled, purge the cache after deploying, or tag responses by version — see [Invalidating cache across deployments](https://developers.cloudflare.com/workers/cache/cache-keys/#invalidating-cache-across-deployments).
 
 `cross_version_cache` only has an effect when caching is enabled. It applies to every entrypoint whose cache is on.
 
@@ -241,7 +241,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-07",
   "cache": {
     "enabled": false,
   },
@@ -261,7 +261,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-07"
 
 
 [cache]

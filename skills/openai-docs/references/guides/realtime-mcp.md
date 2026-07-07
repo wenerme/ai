@@ -28,7 +28,7 @@ const event = {
   type: "session.update",
   session: {
     type: "realtime",
-    model: "gpt-realtime-2",
+    model: "gpt-realtime-2.1",
     tools: [
       {
         type: "function",
@@ -58,7 +58,7 @@ event = {
     "type": "session.update",
     "session": {
         "type": "realtime",
-        "model": "gpt-realtime-2",
+        "model": "gpt-realtime-2.1",
         "tools": [
             {
                 "type": "function",
@@ -150,7 +150,7 @@ const event = {
   type: "session.update",
   session: {
     type: "realtime",
-    model: "gpt-realtime-2",
+    model: "gpt-realtime-2.1",
     output_modalities: ["text"],
     tools: [
       {
@@ -172,7 +172,7 @@ event = {
     "type": "session.update",
     "session": {
         "type": "realtime",
-        "model": "gpt-realtime-2",
+        "model": "gpt-realtime-2.1",
         "output_modalities": ["text"],
         "tools": [
             {
@@ -204,7 +204,7 @@ const event = {
   type: "session.update",
   session: {
     type: "realtime",
-    model: "gpt-realtime-2",
+    model: "gpt-realtime-2.1",
     output_modalities: ["text"],
     tools: [
       {
@@ -227,7 +227,7 @@ event = {
     "type": "session.update",
     "session": {
         "type": "realtime",
-        "model": "gpt-realtime-2",
+        "model": "gpt-realtime-2.1",
         "output_modalities": ["text"],
         "tools": [
             {

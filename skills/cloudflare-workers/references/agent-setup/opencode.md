@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Cloudflare platform access

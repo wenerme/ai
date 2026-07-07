@@ -243,7 +243,7 @@ Control output dimensions with `resolution`, `aspect_ratio`, or the convenience 
 
 * `resolution` — normalized tier (`512`, `1K`, `2K`, `4K`). Concrete pixel dimensions are derived per-provider.
 * `aspect_ratio` — normalized ratio. Pass `auto` to let the provider choose. Common values include `1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `3:2`, `2:3`, `4:5`, `5:4`, and extended ratios like `1:2`, `2:1`, `1:4`, `4:1`, `1:8`, `8:1`, `9:21`, `21:9`. Providers clamp to their supported subset — check the model's `supported_parameters` for accepted values.
-* `size` — convenience shorthand. Pass a tier (`"2K"`) or explicit pixels (`"2048x2048"`) and it gets normalized for the provider. Interchangeable with `resolution` + `aspect_ratio`; conflicting values are rejected.
+* `size` — convenience shorthand. Pass a tier (`"2K"`) or explicit pixels (`"2048x2048"`) and it gets normalized for the provider. A tier size is equivalent to setting `resolution` and combines with `aspect_ratio`. An explicit pixel size is authoritative — a mismatched `resolution` or `aspect_ratio` alongside it is rejected with a 400.
 
 Check the model's `supported_parameters` to see which values each endpoint accepts.
 
@@ -260,7 +260,7 @@ Check the model's `supported_parameters` to see which values each endpoint accep
 ```
 
 * `quality` — `auto`, `low`, `medium`, or `high`. Providers without a quality knob ignore this.
-* `output_format` — `png`, `jpeg`, or `webp`.
+* `output_format` — `png`, `jpeg`, `webp`, or `svg` (vectorization models only; SVG markup is base64-encoded in `b64_json`).
 * `background` — `auto`, `transparent`, or `opaque`. `transparent` requires an alpha-capable format (png or webp).
 * `output_compression` — 0–100 for webp/jpeg. Ignored for png.
 
@@ -436,6 +436,17 @@ API_KEY_REF,
   </CodeGroup>
 </Template>
 
+## Billing and Cancellation
+
+Image generation billing is **all-or-nothing**. A generation is either completed and billed in full, or it fails and is not billed — there is no partial or fractional image billing. This differs from chat completions, where a cancelled stream still bills for the tokens produced before cancellation.
+
+* **Completed generations** are billed for the full image output based on the endpoint's pricing.
+* **Failed or cancelled generations** are not billed. When a generation does not complete, the request returns a `502 Bad Gateway` rather than a partial result, and no charge is recorded.
+
+If a client disconnects mid-generation, the upstream provider may still finish rendering the image and charge OpenRouter for it. Regardless, the client only ever observes one of two outcomes: a fully-billed result, or an error. OpenRouter does not attempt to bill the user for work they did not receive.
+
+For streaming requests, any partial preview images delivered before the stream ends do **not** create partial charges. Billing keys off completion of the final image, so a stream that terminates early (client disconnect or mid-stream error) is billed exactly as a failed generation: not at all.
+
 ## Request Parameters
 
 | Parameter            | Type    | Required | Description                                                            |
@@ -447,7 +458,7 @@ API_KEY_REF,
 | `aspect_ratio`       | string  | No       | Aspect ratio (`1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `1:4`, `4:1`, etc.) |
 | `size`               | string  | No       | Convenience shorthand — a tier or explicit pixels (`"2048x2048"`)      |
 | `quality`            | string  | No       | `auto`, `low`, `medium`, or `high`                                     |
-| `output_format`      | string  | No       | `png`, `jpeg`, or `webp`                                               |
+| `output_format`      | string  | No       | `png`, `jpeg`, `webp`, or `svg`                                        |
 | `background`         | string  | No       | `auto`, `transparent`, or `opaque`                                     |
 | `output_compression` | integer | No       | Compression level (0–100) for webp/jpeg                                |
 | `seed`               | integer | No       | Seed for deterministic generation (where supported)                    |
