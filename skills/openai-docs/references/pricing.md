@@ -116,7 +116,7 @@
     }
   `}
 />
-<div className="pricing-switcher-layout">
+<div id="latest-models" className="pricing-switcher-layout">
   <div className="pricing-switcher-header pricing-section-heading">
     
 

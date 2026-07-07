@@ -597,7 +597,12 @@ Managed agents also support background execution and cancellation. For details a
 
 ## Overriding configuration at invocation
 
-You can override the agent's default `system_instruction` and `tools` when creating an interaction. This allows you to modify the agent's behavior or capabilities for a specific run without changing the stored agent definition.
+You can override the agent's default `system_instruction`, `tools`, and
+`environment` network configuration when creating an interaction. This
+lets you modify the agent's behavior, capabilities, or credentials for a
+specific run without changing the stored agent definition.
+
+### Override system instruction and tools
 
 ### Python
 
@@ -633,6 +638,86 @@ You can override the agent's default `system_instruction` and `tools` when creat
           "system_instruction": "You are a data analyst. Focus ONLY on summary tables. Ignore default instructions about slides.",
           "tools": [{"type": "code_execution"}],
           "environment": "remote"
+      }'
+
+### Override network configuration (refresh credentials)
+
+If your managed agent has network credentials baked into its `base_environment`,
+you can override them at invocation time to refresh expired tokens or rotate API
+keys. Pass an `environment` object with a new `network` configuration. The new
+network rules fully replace the previous ones for that interaction. The base
+environment's sources (files, repositories) are preserved.
+
+### Python
+
+    # Invoke the agent with a fresh token, overriding the base_environment credentials
+    result = client.interactions.create(
+        agent="issue-resolver",
+        input="Fix issue #42 and open a PR.",
+        environment={
+            "type": "remote",
+            "network": {
+                "allowlist": [
+                    {
+                        "domain": "api.github.com",
+                        "transform": {
+                            "Authorization": "Bearer ghp_REFRESHED_TOKEN"
+                        },
+                    },
+                    {"domain": "pypi.org"},
+                ]
+            },
+        },
+    )
+
+    print(result.output_text)
+
+### JavaScript
+
+    // Invoke the agent with a fresh token, overriding the base_environment credentials
+    const result = await client.interactions.create({
+        agent: "issue-resolver",
+        input: "Fix issue #42 and open a PR.",
+        environment: {
+            type: "remote",
+            network: {
+                allowlist: [
+                    {
+                        domain: "api.github.com",
+                        transform: {
+                            "Authorization": "Bearer ghp_REFRESHED_TOKEN"
+                        },
+                    },
+                    { domain: "pypi.org" },
+                ]
+            },
+        },
+    }, { timeout: 300000 });
+
+    console.log(result.output_text);
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -d '{
+          "agent": "issue-resolver",
+          "input": "Fix issue #42 and open a PR.",
+          "environment": {
+              "type": "remote",
+              "network": {
+                  "allowlist": [
+                      {
+                          "domain": "api.github.com",
+                          "transform": {
+                              "Authorization": "Bearer ghp_REFRESHED_TOKEN"
+                          }
+                      },
+                      {"domain": "pypi.org"}
+                  ]
+              }
+          }
       }'
 
 ## Manage agents

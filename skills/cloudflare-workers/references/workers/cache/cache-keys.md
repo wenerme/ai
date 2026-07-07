@@ -66,7 +66,7 @@ By default, the currently invoked Worker version **is** part of the cache key. E
 
 * A new deployment starts from a cold cache and never serves responses that a previous version wrote.
 * Cache-affecting changes apply immediately when the new version goes live — you do not have to purge anything to stop serving old content.
-* During a [gradual deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/), the old and new versions populate independent caches, so a slice of traffic on the new version never receives the old version's responses.
+* During a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/), the old and new versions populate independent caches, so a slice of traffic on the new version never receives the old version's responses.
 
 This is the default because it is the simplest behavior to reason about. The trade-off is that **cache hit rate resets on every deployment** — the first requests to a new version are misses while its cache fills. This is the most common reason a Worker's cache hit rate drops right after a deploy.
 
@@ -328,7 +328,7 @@ In this pattern the default entrypoint is a gateway that should run on every req
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-07",
   "cache": { "enabled": true },
   "exports": {
     "default": { "type": "worker", "cache": { "enabled": false } },
@@ -343,7 +343,7 @@ In this pattern the default entrypoint is a gateway that should run on every req
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-07"
 
 
 [cache]

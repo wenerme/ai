@@ -21,7 +21,7 @@ Start with the outcome you want to build. Realtime sessions are best for live au
     <tr>
       <td>Build a low-latency voice agent</td>
       <td className="whitespace-nowrap">
-        [`gpt-realtime-2`](https://developers.openai.com/api/docs/models/gpt-realtime-2)
+        [`gpt-realtime-2.1`](https://developers.openai.com/api/docs/models/gpt-realtime-2.1)
       </td>
       <td>
         <a href="/api/docs/guides/voice-agents">Voice agents</a>

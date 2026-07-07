@@ -1,11 +1,11 @@
 ---
 title: "Subconscious | Models"
-description: "Use Subconscious models with Mastra. 1 model available."
+description: "Use Subconscious models with Mastra. 2 models available."
 ---
 
 # [Subconscious logo]Subconscious
 
-Access 1 Subconscious model through Mastra's model router. Authentication is handled automatically using the `SUBCONSCIOUS_API_KEY` environment variable.
+Access 2 Subconscious models through Mastra's model router. Authentication is handled automatically using the `SUBCONSCIOUS_API_KEY` environment variable.
 
 Learn more in the [Subconscious documentation](https://docs.subconscious.dev).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "subconscious/subconscious/tim-qwen3.6-27b"
+  model: "subconscious/subconscious/glm-5.2"
 });
 
 // Generate a response
@@ -40,6 +40,18 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
+    "model": "subconscious/subconscious/glm-5.2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 1.4,
+    "outputCost": 4.4
+  },
+  {
     "model": "subconscious/subconscious/tim-qwen3.6-27b",
     "imageInput": false,
     "audioInput": false,
@@ -48,8 +60,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 8192,
     "maxOutput": 5000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.3,
+    "outputCost": 3
   }
 ]}
 />
@@ -64,7 +76,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.subconscious.dev/v1",
-    id: "subconscious/subconscious/tim-qwen3.6-27b",
+    id: "subconscious/subconscious/glm-5.2",
     apiKey: process.env.SUBCONSCIOUS_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -83,7 +95,15 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "subconscious/subconscious/tim-qwen3.6-27b"
-      : "subconscious/subconscious/tim-qwen3.6-27b";
+      : "subconscious/subconscious/glm-5.2";
   }
 });
+```
+
+## Direct provider installation
+
+This provider can also be installed directly as a standalone package, which can be used instead of the Mastra model router string. View the [package documentation](https://www.npmjs.com/package/@ai-sdk/anthropic) for more details.
+
+```bash npm2yarn
+npm install @ai-sdk/anthropic
 ```

@@ -129,7 +129,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
  "name": "my-worker",
  "main": "src/index.ts",
  // Set this to today's date
- "compatibility_date": "2026-07-06",
+ "compatibility_date": "2026-07-07",
  "cache": {
   "enabled": true,
  },
@@ -142,7 +142,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-07"
 
 
 [cache]
@@ -245,7 +245,7 @@ The second request receives the cached response. The `timestamp` and `random` va
 * Other invocation types — [scheduled](https://developers.cloudflare.com/workers/configuration/cron-triggers/) (Cron Triggers), [queue](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) consumers, [Workflows](https://developers.cloudflare.com/workflows/), [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/), [Durable Object](https://developers.cloudflare.com/durable-objects/) invocations, [Email Workers](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) — always run without cache involvement.
 * Cacheability is determined by the response headers your Worker returns. Workers Caching follows the semantics defined in [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111), including [heuristic freshness ↗](https://www.rfc-editor.org/rfc/rfc9111#name-calculating-heuristic-fresh) for responses that do not carry `Cache-Control`. Refer to [Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/) for the full list of directives Cloudflare respects.
 * Cloudflare's standard [cache bypass conditions](https://developers.cloudflare.com/cache/concepts/cache-responses/#bypass) apply. In particular, responses with a `Set-Cookie` header and requests with an `Authorization` header trigger automatic bypass.
-* [Preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are supported. Each preview caches independently of your production deployment, so testing a cache-affecting change in a preview never touches production's cached responses.
+* [Preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/) are supported. Each preview caches independently of your production deployment, so testing a cache-affecting change in a preview never touches production's cached responses.
 * [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) is supported. Each user Worker has its own cache, isolated from the dispatcher and from other user Workers in the namespace.
 
 The `Cf-Cache-Status` response header tells you what happened for each request. The values you will see most often are `HIT`, `MISS`, `EXPIRED`, `REVALIDATED`, `UPDATING`, `STALE`, and `BYPASS`. Refer to [Cloudflare cache responses](https://developers.cloudflare.com/cache/concepts/cache-responses/) for the full set of values.
@@ -350,7 +350,7 @@ The default entrypoint here is a gateway that should run on every request, so di
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-07",
   "cache": { "enabled": true },
   "exports": {
     "default": { "type": "worker", "cache": { "enabled": false } },
@@ -365,7 +365,7 @@ The default entrypoint here is a gateway that should run on every request, so di
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-07"
 
 
 [cache]

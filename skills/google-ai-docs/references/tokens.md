@@ -1,5 +1,3 @@
-# Understand and count tokens
-
 > [!NOTE]
 > **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/tokens).
 

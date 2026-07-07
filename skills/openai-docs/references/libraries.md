@@ -65,6 +65,9 @@ Use the official OpenAI SDKs above for direct API requests. Use the Agents SDK
 when your application needs code-first orchestration for agents, tools,
 handoffs, guardrails, tracing, or sandbox execution.
 
+If you are deciding between direct API requests and code-first orchestration,
+see [how the Responses API compares with the Agents SDK](https://developers.openai.com/api/docs/guides/agents#agents-sdk-vs-responses-api).
+
 <a href="/api/docs/guides/agents/quickstart">
   
 

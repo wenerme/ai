@@ -37,7 +37,7 @@ app.use(express.text({ type: ["application/sdp", "text/plain"] }));
 
 const sessionConfig = JSON.stringify({
   type: "realtime",
-  model: "gpt-realtime-2",
+  model: "gpt-realtime-2.1",
   audio: { output: { voice: "marin" } },
 });
 
@@ -141,7 +141,7 @@ const app = express();
 const sessionConfig = JSON.stringify({
   session: {
     type: "realtime",
-    model: "gpt-realtime-2",
+    model: "gpt-realtime-2.1",
     audio: {
       output: {
         voice: "marin",

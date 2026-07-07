@@ -9,6 +9,8 @@ Use the SDK when you need to:
 - Build Codex into your own internal tools and workflows
 - Integrate Codex within your own application
 
+Use the Codex SDK for coding-focused Codex threads. If Codex is one specialist inside a broader orchestrated workflow, [run Codex CLI as an MCP server and orchestrate it with the Agents SDK](https://developers.openai.com/codex/guides/agents-sdk).
+
 ## TypeScript library
 
 The TypeScript library provides a way to control Codex from within your application that's more comprehensive and flexible than non-interactive mode.

@@ -23,12 +23,26 @@ AI Search consists of two core processes:
 
 Indexing begins automatically when you connect a data source or upload files through the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/).
 
-![Indexing](https://developers.cloudflare.com/_astro/indexing.CQ13F9Js_2Tvxs.webp)
+[ Your content e.g. PDF, image ](https://developers.cloudflare.com/ai-search/configuration/data-source/)
+
+source
+
+[ Data source Optional R2 bucket ](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) [ Data source · Browser Run Optional Website ](https://developers.cloudflare.com/ai-search/configuration/data-source/website/)
+
+[ AI Search · R2 Built-in storage ](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/)
+
+[ Workers AI · toMarkdown() Parsing ](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) [ AI Search Chunking ](https://developers.cloudflare.com/ai-search/configuration/indexing/chunking/)
+
+index & store
+
+[ AI Gateway / Workers AI Optional Embedding ](https://developers.cloudflare.com/ai-search/configuration/models/) [ AI Search · Vectorize Optional Vector index ](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/)
+
+[ AI Search Optional Keyword tokenizer ](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/) [ AI Search Optional Inverted index ](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)
 
 Here is what happens during indexing:
 
 1. **Data ingestion:** AI Search reads from your connected data source or receives files uploaded through the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/).
-2. **Markdown conversion:** AI Search uses [Workers AI's Markdown Conversion](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) to convert [supported data types](https://developers.cloudflare.com/ai-search/configuration/data-source/) into structured Markdown. This ensures consistency across diverse file types. For images, Workers AI is used to perform object detection followed by vision-to-language transformation to convert images into Markdown text.
+2. **Markdown conversion:** AI Search uses [Workers AI's Markdown Conversion](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) to convert [supported data types](https://developers.cloudflare.com/ai-search/configuration/data-source/) into structured Markdown. This ensures consistency across diverse file types. For images, Workers AI is used to perform object detection followed by vision-to-language transformation to convert images into Markdown text. Refer to [how images are converted](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#images) for details.
 3. **Chunking:** The extracted text is [chunked](https://developers.cloudflare.com/ai-search/configuration/indexing/chunking/) into smaller pieces to improve retrieval granularity.
 4. **Embedding:** Each chunk is embedded using Workers AI's embedding model to transform the content into vectors.
 5. **Keyword indexing:** When keyword search is enabled, each chunk is also indexed for BM25 keyword matching.
@@ -40,7 +54,19 @@ For instances with a connected data source, AI Search regularly checks for updat
 
 Once indexing is complete, AI Search is ready to respond to end-user queries in real time.
 
-![Querying](https://developers.cloudflare.com/_astro/querying.c_RrR1YL_1ECh9s.webp)
+Your query
+
+[ AI Gateway / Workers AI Optional Query rewriting ](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/)
+
+hybrid search
+
+[ AI Gateway / Workers AI Optional Query embedding ](https://developers.cloudflare.com/ai-search/configuration/models/) [ AI Search · Vectorize Optional Vector retrieval ](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/)
+
+[ AI Search Optional Query tokenization ](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/) [ AI Search · BM25 Optional Keyword retrieval ](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)
+
+[ AI Search Optional Fusion ](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/)
+
+[ AI Gateway / Workers AI Optional Reranking ](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/) [ AI Search · R2 Chunk content retrieval ](https://developers.cloudflare.com/ai-search/api/search/rest-api/) [ Search result ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#search) [ AI Gateway / Workers AI Optional Response generation ](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/) [ Chat Completions result ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#chatcompletions)
 
 Here is how the querying pipeline works:
 
@@ -54,7 +80,21 @@ Here is how the querying pipeline works:
 8. **Content retrieval:** The most relevant chunks and their source content are returned. If you are using the Search endpoint, the content is returned at this point.
 9. **Response generation:** If you are using the Chat Completions endpoint, a text-generation model generates a response using the retrieved content. Refer to [System prompt](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/) for details.
 
+## When to use AI Search vs. Vectorize
+
+AI Search is built on [Vectorize](https://developers.cloudflare.com/vectorize/) and adds the rest of the search pipeline around it. Use Vectorize when you want to manage vectors yourself, and AI Search when you want managed search over your content.
+
+| Capability              | AI Search                                                  | Vectorize                                        |
+| ----------------------- | ---------------------------------------------------------- | ------------------------------------------------ |
+| What it is              | Managed, end-to-end search over your content               | A vector database you build on                   |
+| You give it             | Files, or a connected data source                          | Vectors you generate yourself                    |
+| Chunking and embeddings | Handled for you                                            | You generate and insert them                     |
+| Indexing                | Automatic, with continuous sync                            | You upsert and manage vectors                    |
+| Retrieval               | Vector and keyword (hybrid), reranking, metadata filtering | Vector similarity search with metadata filtering |
+| Generated answers       | Optional, built in                                         | Not included                                     |
+| Best when               | You want to add search or RAG quickly                      | You need full control of the retrieval pipeline  |
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/#page","headline":"How AI Search works · Cloudflare AI Search docs","description":"Understand how AI Search indexes your content and retrieves results using vector and keyword search.","url":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/#page","headline":"How AI Search works · Cloudflare AI Search docs","description":"Understand how AI Search indexes your content and retrieves results using vector and keyword search.","url":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/concepts/how-ai-search-works/","name":"How AI Search works"}}]}
 ```

@@ -27,6 +27,8 @@ Challenge Pages and Turnstile rely on the same underlying mechanism to issue cha
 
 JavaScript Detections is an optional feature within [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/). When enabled, Cloudflare injects a JavaScript snippet into HTML responses to gather client-side signals. Unlike Challenge Pages, JavaScript Detections runs on every HTML request without pausing or interrupting the visitor. It populates a pass/fail result (`cf.bot_management.js_detection.passed`) that you can then act on using a [WAF custom rule](https://developers.cloudflare.com/waf/custom-rules/).
 
+For session-level detection that informs when challenges should be applied, refer to [Precursor](https://developers.cloudflare.com/cloudflare-challenges/precursor/).
+
 ---
 
 ## Available challenges
@@ -36,6 +38,7 @@ Refer to the following pages for more information on the different challenge typ
 * [Interstitial Challenge Pages](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/)
 * [Turnstile](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/turnstile/)
 * [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/)
+* [Precursor](https://developers.cloudflare.com/cloudflare-challenges/precursor/)
 
 ---
 
@@ -49,6 +52,6 @@ Cloudflare Challenges cannot support the following:
 * Client software where the solve request of a Managed Challenge comes from a different IP than the original IP a Challenge request was issued to. For example, if you receive the Challenge from one IP and solve it using another IP, the solve is not valid and you may encounter a Challenge loop.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/#page","headline":"How Challenges work · Cloudflare challenges docs","description":"How Cloudflare issues challenges through WAF rules, Bot Management, and Bot Fight Mode.","url":"https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/#page","headline":"How Challenges work · Cloudflare challenges docs","description":"How Cloudflare issues challenges through WAF rules, Bot Management, and Bot Fight Mode.","url":"https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/concepts/how-challenges-work/","name":"How Challenges work"}}]}
 ```

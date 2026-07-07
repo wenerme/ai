@@ -1,11 +1,11 @@
 ---
 title: "Hugging Face | Models"
-description: "Use Hugging Face models with Mastra. 50 models available."
+description: "Use Hugging Face models with Mastra. 51 models available."
 ---
 
 # [Hugging Face logo]Hugging Face
 
-Access 50 Hugging Face models through Mastra's model router. Authentication is handled automatically using the `HF_TOKEN` environment variable.
+Access 51 Hugging Face models through Mastra's model router. Authentication is handled automatically using the `HF_TOKEN` environment variable.
 
 Learn more in the [Hugging Face documentation](https://huggingface.co).
 
@@ -278,6 +278,18 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 0.25,
     "outputCost": 0.69
+  },
+  {
+    "model": "huggingface/openai/gpt-oss-20b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 32768,
+    "inputCost": 0.1,
+    "outputCost": 0.5
   },
   {
     "model": "huggingface/Qwen/Qwen3-235B-A22B",

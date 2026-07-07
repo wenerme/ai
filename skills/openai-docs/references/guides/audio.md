@@ -43,7 +43,7 @@ For build-path guidance, see the [Realtime and audio overview](https://developer
 
 ## Add audio to your existing application
 
-Models such as [`gpt-realtime-2`](https://developers.openai.com/api/docs/models/gpt-realtime-2) and [`gpt-audio-1.5`](https://developers.openai.com/api/docs/models/gpt-audio-1.5) are natively multimodal, meaning they can understand and generate audio and text as input and output.
+Models such as [`gpt-realtime-2.1`](https://developers.openai.com/api/docs/models/gpt-realtime-2.1) and [`gpt-audio-1.5`](https://developers.openai.com/api/docs/models/gpt-audio-1.5) are natively multimodal, meaning they can understand and generate audio and text as input and output.
 
 For live browser speech-to-speech interactions, start with a realtime session in the JavaScript SDK:
 
@@ -58,7 +58,7 @@ const agent = new RealtimeAgent({
 });
 
 const session = new RealtimeSession(agent, {
-  model: "gpt-realtime-2",
+  model: "gpt-realtime-2.1",
 });
 
 await session.connect({
