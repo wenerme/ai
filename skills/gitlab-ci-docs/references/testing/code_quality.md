@@ -136,7 +136,7 @@ that were found on the branch it was run on.
 - Offering: GitLab.com, GitLab Self-Managed
 - Status: Beta
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/72724) in GitLab 14.5 [with a flag](../../administration/feature_flags/_index.md) named `project_quality_summary_page`. This feature is in [beta](../../policy/development_stages_support.md). Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/72724) in GitLab 14.5 [with a feature flag](../../administration/feature_flags/_index.md) named `project_quality_summary_page`. This feature is in [beta](../../policy/development_stages_support.md). Disabled by default.
 
 The project quality view displays an overview of the code quality findings. The view can be found under **Analyze** > **CI/CD analytics**, and requires [`project_quality_summary_page`](../../administration/feature_flags/_index.md) feature flag to be enabled for this particular project.
 

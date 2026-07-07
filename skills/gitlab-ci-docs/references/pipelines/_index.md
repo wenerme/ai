@@ -75,7 +75,7 @@ and [view your pipeline status](../../editor_extensions/visual_studio_code/cicd.
 ### Run a pipeline manually
 
 - **Run pipeline** name [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/482718) to **New pipeline** in GitLab 17.7.
-- **Inputs** option [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/525504) in GitLab 17.11 [with a flag](../../administration/feature_flags/_index.md) named `ci_inputs_for_pipelines`. Enabled by default.
+- **Inputs** option [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/525504) in GitLab 17.11 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_inputs_for_pipelines`. Enabled by default.
 - **Inputs** option [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/536548) in GitLab 18.1. Feature flag `ci_inputs_for_pipelines` removed.
 
 Pipelines can be manually executed, with predefined or manually-specified [variables](../variables/_index.md).
@@ -101,7 +101,7 @@ The pipeline now executes the jobs as configured.
 
 #### View manual pipeline variables
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/323097) in GitLab 17.2 [with a flag](../../administration/feature_flags/_index.md) named `ci_show_manual_variables_in_pipeline`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/323097) in GitLab 17.2 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_show_manual_variables_in_pipeline`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/505440) in GitLab 18.4 with a project setting. Feature flag `ci_show_manual_variables_in_pipeline` removed.
 
 You can see all variables that are specified when the pipeline runs manually.

@@ -47,7 +47,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 1. **Download Codex**

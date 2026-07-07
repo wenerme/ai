@@ -467,7 +467,7 @@ test:
 
 ### `include` with `rules:exists`
 
-- `regexp:` support [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236982) in GitLab 19.2 [with a flag](../../administration/feature_flags/_index.md) named `ci_rules_regexp`. Disabled by default. When disabled, a job with `regexp:` always runs.
+- `regexp:` support [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236982) in GitLab 19.2 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_rules_regexp`. Disabled by default. When disabled, a job with `regexp:` always runs.
 
 Use [`rules:exists`](_index.md#rulesexists) to conditionally include other configuration files
 based on the existence of files. For example:
@@ -542,7 +542,7 @@ include:
 
 ### `include` with `rules:changes`
 
-- `regexp:` support [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236982) in GitLab 19.2 [with a flag](../../administration/feature_flags/_index.md) named `ci_rules_regexp`. Disabled by default. When disabled, a job with `regexp:` always runs.
+- `regexp:` support [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236982) in GitLab 19.2 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_rules_regexp`. Disabled by default. When disabled, a job with `regexp:` always runs.
 
 Use [`rules:changes`](_index.md#ruleschanges) to conditionally include other configuration files
 based on changed files. For example:

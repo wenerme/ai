@@ -5,7 +5,7 @@ Display line-by-line test coverage annotations in merge request diffs using JaCo
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/227345) in GitLab 17.3 [with a flag](../../../administration/feature_flags/_index.md) named `jacoco_coverage_reports`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/227345) in GitLab 17.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `jacoco_coverage_reports`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/170513) in GitLab 17.6. Feature flag `jacoco_coverage_reports` removed.
 
 Use JaCoCo coverage reports to display line-by-line coverage annotations in merge request

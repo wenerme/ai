@@ -151,7 +151,7 @@ For more details, see [Delete job logs](../../user/storage_management_automation
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/455582) in GitLab 17.1 [with a flag](../../administration/feature_flags/_index.md) named `parse_ci_job_timestamps`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/455582) in GitLab 17.1 [with a feature flag](../../administration/feature_flags/_index.md) named `parse_ci_job_timestamps`. Disabled by default.
 - Feature flag `parse_ci_job_timestamps` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/464785) in GitLab 17.2.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/202293) in GitLab 18.9.
 

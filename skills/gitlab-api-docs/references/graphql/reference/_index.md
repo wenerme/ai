@@ -33069,6 +33069,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="cdapplicationflowdefinition-application"></a>`application` | [`CdApplication`](#cdapplication) | Application the flow definition belongs to. |
 | <a id="cdapplicationflowdefinition-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the application flow definition was created. |
+| <a id="cdapplicationflowdefinition-definition"></a>`definition`  | [`String`](#string) | Introduced in GitLab 19.2. Status: Experiment. Body of the application flow definition. |
 | <a id="cdapplicationflowdefinition-id"></a>`id` | [`CdApplicationFlowDefinitionID!`](#cdapplicationflowdefinitionid) | Global ID of the application flow definition. |
 | <a id="cdapplicationflowdefinition-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the application flow definition was last updated. |
 | <a id="cdapplicationflowdefinition-version"></a>`version` | [`Int!`](#int) | Version of the application flow definition. |
@@ -33184,6 +33185,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="cdrollout-application"></a>`application` | [`CdApplication`](#cdapplication) | Application the rollout belongs to. |
+| <a id="cdrollout-applicationflowdefinition"></a>`applicationFlowDefinition`  | [`CdApplicationFlowDefinition`](#cdapplicationflowdefinition) | Introduced in GitLab 19.2. Status: Experiment. Flow definition the rollout was created from. |
 | <a id="cdrollout-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the rollout was created. |
 | <a id="cdrollout-finishedat"></a>`finishedAt` | [`Time`](#time) | Timestamp of when the rollout finished. |
 | <a id="cdrollout-id"></a>`id` | [`CdRolloutID!`](#cdrolloutid) | Global ID of the rollout. |
@@ -54765,6 +54767,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="scanprofiletype-configuration"></a>`configuration`  | [`JSON!`](#json) | Introduced in GitLab 19.2. Status: Experiment. Configuration object of the scan profile. |
 | <a id="scanprofiletype-createdat"></a>`createdAt` | [`ISO8601DateTime!`](#iso8601datetime) | Timestamp of when the scan profile was created. |
 | <a id="scanprofiletype-description"></a>`description` | [`String!`](#string) | Description of the security scan profile. |
 | <a id="scanprofiletype-gitlabrecommended"></a>`gitlabRecommended` | [`Boolean!`](#boolean) | Indicates whether the scan profile is a default profile. |

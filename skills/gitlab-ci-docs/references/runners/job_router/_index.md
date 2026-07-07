@@ -12,7 +12,7 @@ Route CI/CD jobs through the job router for advanced job orchestration.
 > This feature is available for testing, but not ready for production use.
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/19607) in GitLab 18.7 [with feature flags](../../../administration/feature_flags/_index.md) named `job_router` and `job_router_instance_runners`. Disabled by default.
-- [Admission control introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/584394) in GitLab 18.9 [with a flag](../../../administration/feature_flags/_index.md) named `job_router_admission_control`. Disabled by default.
+- [Admission control introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/584394) in GitLab 18.9 [with a feature flag](../../../administration/feature_flags/_index.md) named `job_router_admission_control`. Disabled by default.
 
 The job router is a component of GitLab Relay (KAS) that provides advanced
 job orchestration capabilities for GitLab CI/CD. Instead of runners that poll GitLab

@@ -240,7 +240,7 @@ CI/CD jobs can have the following statuses:
 
 ### View the source of a job
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/181159) job source in GitLab 17.9 [with a flag](../../administration/feature_flags/_index.md) named `populate_and_use_build_source_table`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/181159) job source in GitLab 17.9 [with a feature flag](../../administration/feature_flags/_index.md) named `populate_and_use_build_source_table`. Enabled by default.
 - [Generally available](https://gitlab.com/groups/gitlab-org/-/epics/11796) on GitLab.com, GitLab Self-Managed, and GitLab Dedicated in GitLab 17.11.
 
 GitLab CI/CD jobs include a source attribute that indicates the action that triggered the job.
@@ -289,7 +289,7 @@ jobs. Hovering over them shows you if all jobs have passed or any has failed. Se
 To create a group of jobs, in the `.gitlab-ci.yml` file,
 separate each job name with a number and one of the following:
 
-- A forward or backward slash (`/` or `\`), for example, `slash-test 1/3`,
+- A forward or backward slash (`/` or ` \ `), for example, `slash-test 1/3`,
   `slash-test 2/3`, `slash-test 3/3`.
 - A colon (`:`), for example, `colon-test 1:3`, `colon-test 2:3`, `colon-test 3:3`.
 - A space, for example `space-test 0 3`, `space-test 1 3`, `space-test 2 3`.
@@ -428,7 +428,7 @@ You can cancel all jobs in a running pipeline at once.
 
 ### Force cancel a job
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/467107) as an [experiment](../../policy/development_stages_support.md) in GitLab 17.10 [with a flag](../../administration/feature_flags/_index.md) named `force_cancel_build`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/467107) as an [experiment](../../policy/development_stages_support.md) in GitLab 17.10 [with a feature flag](../../administration/feature_flags/_index.md) named `force_cancel_build`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/519313) in GitLab 17.11. Feature flag `force_cancel_build` removed.
 
 If you don't want to wait for `after_script` to finish or a job is unresponsive, you can force cancel it.

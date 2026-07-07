@@ -200,7 +200,7 @@ the job dynamically inherits the correct caching configuration based on the sele
 
 ### Use component context to reference versioned resources
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/438275) in GitLab 18.6 as a [beta](../../policy/development_stages_support.md#beta) [with a flag](../../administration/feature_flags/_index.md) named `ci_component_context_interpolation`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/438275) in GitLab 18.6 as a [beta](../../policy/development_stages_support.md#beta) [with a feature flag](../../administration/feature_flags/_index.md) named `ci_component_context_interpolation`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/571986) in GitLab 18.7. Feature flag `ci_component_context_interpolation` removed.
 
 Use component context [CI/CD expressions](../yaml/expressions.md) to reference component metadata, like version and commit SHA.

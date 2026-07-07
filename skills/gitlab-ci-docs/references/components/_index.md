@@ -5,7 +5,7 @@ Reusable, versioned CI/CD components for pipelines.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Introduced as an [experimental feature](../../policy/development_stages_support.md#experiment) in GitLab 16.0, [with a flag](../../administration/feature_flags/_index.md) named `ci_namespace_catalog_experimental`. Disabled by default.
+- Introduced as an [experimental feature](../../policy/development_stages_support.md#experiment) in GitLab 16.0, [with a feature flag](../../administration/feature_flags/_index.md) named `ci_namespace_catalog_experimental`. Disabled by default.
 - [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/groups/gitlab-org/-/epics/9897) in GitLab 16.2.
 - [Feature flag `ci_namespace_catalog_experimental` removed](https://gitlab.com/gitlab-org/gitlab/-/issues/394772) in GitLab 16.3.
 - [Moved](https://gitlab.com/gitlab-com/www-gitlab-com/-/merge_requests/130824) to [beta](../../policy/development_stages_support.md#beta) in GitLab 16.6.
@@ -233,7 +233,7 @@ a pre-release version, specify the full version, for example `1.0.1-rc`.
 
 ### Use component context in components
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/438275) in GitLab 18.6 as a [beta](../../policy/development_stages_support.md#beta) [with a flag](../../administration/feature_flags/_index.md) named `ci_component_context_interpolation`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/438275) in GitLab 18.6 as a [beta](../../policy/development_stages_support.md#beta) [with a feature flag](../../administration/feature_flags/_index.md) named `ci_component_context_interpolation`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/571986) in GitLab 18.7. Feature flag `ci_component_context_interpolation` removed.
 
 Components can access metadata about themselves with a component context [CI/CD expression](../yaml/expressions.md).

@@ -1,12 +1,12 @@
 ---
 title: "Agent Tools / MCP"
 description: "通过 Model Context Protocol (MCP) 将 AI 代理连接到 ComfyUI，用于生成图像、视频、音频和 3D 内容。"
-translationSourceHash: 1d8d589d
+translationSourceHash: 52f434b2
 translationFrom: agent-tools/index.mdx
 translationBlockHashes:
-  "_intro": de00d389
+  "_intro": 72089b69
   "Which One Should I Use?": fa16d052
-  "What about local ComfyUI?": 26614358
+  "What about local ComfyUI?": 345c7907
   "What is MCP?": bb62fbe5
 ---
 
@@ -21,7 +21,7 @@ ComfyUI 提供了 **MCP 服务器** 和 **Comfy CLI**，让 AI 代理和开发�
     使用 Comfy Partner-Node SDK 运行本地 MCP 服务器。提供统一的 <code>generate_image</code>、<code>generate_video</code>、<code>generate_3d</code> 等工具，覆盖 30+ 合作伙伴提供商。
   
   
-    第一方本地 MCP 服务器，通过 <code>comfy-cli</code> 驱动您**自己的** ComfyUI 安装，运行工作流并检查您的机器实际拥有的节点和模型。*早期预览。*
+    第一方本地 MCP 服务器，通过 <code>comfy-cli</code> 驱动您**自己的** ComfyUI 安装。*私有测试；尚未公开提供。*
   
   
     关于 <code>comfy generate</code> 的简短代理导向概述。完整 CLI 指南请参见 [入门](/zh/comfy-cli/getting-started)。
@@ -44,9 +44,7 @@ ComfyUI 提供了 **MCP 服务器** 和 **Comfy CLI**，让 AI 代理和开发�
 
 ## 那本地 ComfyUI 呢？
 
-想用 AI 代理驱动**本地** ComfyUI 安装，而不是（或同时使用）Comfy Cloud MCP 吗？Comfy 现已提供第一方选项。
-
-**Comfy Local MCP（第一方）。** [**comfy-local-mcp**](https://github.com/Comfy-Org/comfy-local-mcp) 是我们官方的本地 MCP 服务器。这是 [comfy-cli](https://github.com/Comfy-Org/comfy-cli) 的轻量封装，让 AI 代理能在**您自己的** ComfyUI 上运行工作流，并检查您安装中实际拥有的节点、自定义节点和模型。这是一个**早期预览**。请参阅 [**Comfy Local MCP**](/zh/agent-tools/local) 了解设置和客户端配置。
+想用 AI 代理驱动**本地** ComfyUI 安装，而不是（或同时使用）Comfy Cloud MCP 吗？请参阅 [**Comfy Local MCP**](/zh/agent-tools/local) 了解我们的第一方本地 MCP 服务器、设置和客户端配置。目前处于**私有测试**阶段，尚未公开发布。
 
 **社区 MCP 服务器。** 多个社区项目也将 MCP 客户端连接到本地 ComfyUI 实例：
 

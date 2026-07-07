@@ -11,7 +11,7 @@ Control job admission with runner controllers.
 > For more information, see the history.
 > This feature is available for testing, but not ready for production use.
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/218229) in GitLab 18.9 [with a flag](../../../administration/feature_flags/_index.md) named `job_router_admission_control`. Disabled by default. This feature is an [experiment](../../../policy/development_stages_support.md) and subject to the [GitLab Testing Agreement](https://handbook.gitlab.com/handbook/legal/testing-agreement/).
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/218229) in GitLab 18.9 [with a feature flag](../../../administration/feature_flags/_index.md) named `job_router_admission_control`. Disabled by default. This feature is an [experiment](../../../policy/development_stages_support.md) and subject to the [GitLab Testing Agreement](https://handbook.gitlab.com/handbook/legal/testing-agreement/).
 - [Runner scope introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/586417) in GitLab 18.10.
 
 Runner controllers enable admission control for CI/CD jobs routed through the

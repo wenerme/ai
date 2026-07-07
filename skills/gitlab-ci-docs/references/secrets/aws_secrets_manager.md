@@ -3,7 +3,7 @@
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/17822) in GitLab 18.2 [with a flag](../../administration/feature_flags/_index.md) named `ci_aws_secrets_manager`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/17822) in GitLab 18.2 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_aws_secrets_manager`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/553970) in GitLab 18.3.
 
 You can use secrets stored in [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/)

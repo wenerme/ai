@@ -4,7 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed
 - Status: Beta
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/151640) as a [beta](../../policy/development_stages_support.md#beta) in GitLab 17.0 [with a flag](../../administration/feature_flags/_index.md) named `runners_dashboard_for_groups`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/151640) as a [beta](../../policy/development_stages_support.md#beta) in GitLab 17.0 [with a feature flag](../../administration/feature_flags/_index.md) named `runners_dashboard_for_groups`. Disabled by default.
 - Feature flag `runners_dashboard_for_groups` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/459052) in GitLab 17.2.
 
 Users with the Maintainer or Owner role for a group can use the runner fleet dashboard to assess the health of group runners.
