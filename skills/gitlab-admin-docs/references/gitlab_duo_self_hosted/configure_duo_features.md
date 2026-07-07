@@ -1,0 +1,253 @@
+# Configure GitLab to use self-hosted models
+
+Learn how to integrate your self-hosted models with your GitLab instance
+
+- Tier: Premium, Ultimate
+- Offering: GitLab Self-Managed, GitLab Dedicated for Government
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/12972) in GitLab 17.1 [with a flag](../feature_flags/_index.md) named `ai_custom_model`. Disabled by default.
+- [Enabled on GitLab Self-Managed](https://gitlab.com/groups/gitlab-org/-/epics/15176) in GitLab 17.6.
+- Changed to require GitLab Duo add-on in GitLab 17.6 and later.
+- Feature flag `ai_custom_model` removed in GitLab 17.8
+- Ability to set AI Gateway URL using UI [added](https://gitlab.com/gitlab-org/gitlab/-/issues/473143) in GitLab 17.9.
+- Generally available in GitLab 17.9.
+- Changed to include Premium in GitLab 18.0.
+- [Enabled on GitLab Dedicated for Government](https://gitlab.com/gitlab-org/gitlab/-/issues/569874) in GitLab 18.5.
+
+Prerequisites:
+
+- [Upgrade GitLab to version 17.9 or later](../../update/_index.md).
+- You must be an administrator.
+
+To configure your GitLab instance to access self-hosted models in your infrastructure:
+
+1. Configure your GitLab instance to access the AI Gateway.
+1. In GitLab 18.4 and later, configure your GitLab instance to access the GitLab Duo Agent Platform service.
+1. Add self-hosted models to your GitLab instance.
+1. Select a self-hosted model for a feature.
+
+## Configure access to the local AI Gateway
+
+To configure access between your GitLab instance and your local AI Gateway:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Change configuration**.
+1. Under **Local AI Gateway URL**, enter your AI Gateway URL.
+1. Select **Save changes**.
+
+> [!note]
+> If your AI Gateway URL points to a local network or private IP address (for example, `172.31.x.x` or internal hostnames like `ip-172-xx-xx-xx.region.compute.internal`), GitLab might block the request for security reasons. To allow requests to this address, [add the address to the IP allowlist](../../security/webhooks.md#allow-outbound-requests-to-certain-ip-addresses-and-domains).
+
+### Configure timeout for the AI Gateway
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/567878) in GitLab 18.7 for Self-Managed.
+- [Available on GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/603860) in GitLab 19.2.
+
+To conserve resources and prevent long-running queries, configure the timeout for GitLab requests to the AI Gateway when waiting for model responses.
+Use longer timeouts for self-hosted models with large context windows or complex queries.
+
+You can configure a timeout between 60 and 600 seconds (10 minutes). If you don't set the timeout, GitLab uses the default timeout of 60 seconds.
+
+To configure the AI Gateway timeout:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Change configuration**.
+1. Under **AI Gateway request timeout**, enter the timeout value in seconds (between 60 and 600).
+1. Select **Save changes**.
+
+### Determine the timeout value
+
+The timeout value depends on your specific deployment and use case.
+
+To determine the timeout value:
+
+- Start with the default timeout of 60 seconds and monitor for timeout errors.
+- Monitor your logs for `A1000` timeout errors in your logs. If these errors occur frequently, consider increasing the timeout.
+- Consider your use case. Larger prompts, complex code generation tasks, or processing large design documents might require longer timeouts.
+- Consider your infrastructure. Model performance depends on available GPU resources, network latency between the AI Gateway and model endpoint, and the model's processing capabilities.
+- Increase incrementally. If you experience timeouts, increase the value gradually (for example, by 30-60 seconds) and monitor the results.
+
+For more information on troubleshooting timeout errors, see [Error A1000](troubleshooting.md#error-a1000).
+
+## Configure access to the GitLab Duo Agent Platform
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/19213) in GitLab 18.4, as an [experiment](../../policy/development_stages_support.md#experiment) with a [feature flag](../feature_flags/_index.md) named `self_hosted_agent_platform`. Disabled by default.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/558083) from experiment to beta in GitLab 18.5.
+- [Enabled](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/208951) in GitLab 18.7.
+- [Generally available](https://gitlab.com/groups/gitlab-org/-/work_items/19125) in GitLab 18.8.
+- Feature flag `self_hosted_agent_platform` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/218589) in GitLab 18.9.
+- On GitLab 18.7 and 18.8, this feature is beta for customers with an online licenses. To use this feature, you must [turn on](#turn-on-self-hosted-beta-models-and-features) self-hosted beta models and features.
+
+Prerequisites:
+
+- If your instance has an offline license, you must have the [GitLab Duo Agent Platform Self-Hosted](../../subscriptions/subscription-add-ons.md) add-on.
+
+To access the Agent Platform service from your GitLab instance:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Change configuration**.
+1. Under **Local URL for the GitLab Duo Agent Platform service**, enter the URL for the local Agent Platform service.
+   - The URL is typically the same as the **Local AI Gateway URL** but on gRPC port :50052.
+   - Do not include a URL prefix such as `http://` or `https://`.
+   - If you have set up SSL with an [NGINX reverse proxy as recommended](../../install/install_ai_gateway.md#set-up-docker-with-nginx-and-ssl), or use the [Helm chart with Ingress enabled](../../install/install_ai_gateway.md#install-by-using-helm-chart) do not specify port. The NGINX Ingress handles port-forwarding.
+1. Optional. If your local GitLab Duo Agent Platform endpoint uses TLS, under **Security**, select the **Use secure connection (TLS) for GitLab Duo Agent Platform service** checkbox.
+1. Select **Save changes**.
+
+## Add a self-hosted model
+
+You must add a self-hosted model to your GitLab instance to use it with GitLab Duo features.
+
+To add a self-hosted model:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Configure models for GitLab Duo**.
+   - If **Configure models for GitLab Duo** is not available, synchronize your
+     subscription after purchase:
+     1. In the left sidebar, select **Subscription**.
+     1. In **Subscription details**, to the right of **Last sync**, select
+        synchronize subscription ().
+1. Select **Add self-hosted model**.
+1. Complete the fields:
+   - **Deployment name**: Enter a name to uniquely identify the model deployment, for example, `Mixtral-8x7B-it-v0.1 on GCP`.
+   - **Model family**: Select the model family the deployment belongs to. You can select either a supported or compatible model.
+   - **Endpoint**: Enter the URL where the model is hosted.
+   - **API key**: Optional. Add an API key if you need one to access the model.
+   - **Model identifier**: Enter the model identifier based on your deployment method. The model identifier should match the following format:
+
+     | Deployment method | Format | Example |
+     |-------------|---------|---------|
+     | [vLLM](supported_llm_serving_platforms.md#find-the-model-name)        | `custom_openai/<name of the model served through vLLM>` | `custom_openai/Mixtral-8x7B-Instruct-v0.1` |
+     | [Amazon Bedrock - Set the model identifier](#set-the-model-identifier) | `bedrock/<model ID of the model>` | `bedrock/mistral.mixtral-8x7b-instruct-v0:1` |
+     | [Amazon Bedrock - Use an application inference profile ARN](#use-an-application-inference-profile-arn) | `bedrock/converse/<application inference profile ARN>` | `bedrock/converse/arn:aws:bedrock:us-east-1:123456789012:application-inference-profile/abcd1234efgh` |
+     | [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/claude) | `vertex_ai/<model ID of the model>` | `vertex_ai/claude-sonnet-4-6@default` |
+     | [Anthropic](https://platform.claude.com/docs/en/about-claude/models/overview)                                                             | `anthropic/<model ID of the model>`                     | `anthropic/claude-opus-4-6` |
+     | [OpenAI](https://developers.openai.com/api/docs/models)                                                                | `openai/<model ID of the model>`                        | `openai/gpt-5` |
+     | Azure OpenAI                                                          | `azure/<model ID of the model>`                         | `azure/gpt-35-turbo` |
+
+1. Select **Add self-hosted model**.
+
+### Add an Amazon Bedrock model
+
+When you add an Amazon Bedrock self-hosted model, you can do either of the following:
+
+- Set the model identifier. This is the default method.
+- Use an [application inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-create.html) ARN. Use this method when you want to track cost allocation or spend per team or project.
+
+#### Set the model identifier
+
+To set a model identifier for an Amazon Bedrock model:
+
+1. Set your `AWS_REGION`. Ensure you have access to models in that region in your AI Gateway Docker configuration.
+1. Add the region prefix to the model's inference profile ID for cross-region inferencing.
+1. Use the `bedrock/` prefix region as the prefix for the model identifier.
+
+   For example, for the Anthropic Claude 4.0 model in the Tokyo region:
+
+   - The `AWS_REGION` is `ap-northeast-1`.
+   - The cross-region inferencing prefix is `apac.`.
+   - The model identifier is `bedrock/apac.anthropic.claude-sonnet-4-20250514-v1:0`.
+
+Some regions are not supported by cross-region inferencing. For these regions, do not specify a region prefix in the model identifier. For example:
+
+- The `AWS_REGION` is `eu-west-2`.
+- The model identifier is `anthropic.claude-sonnet-4-5-20250929-v1:0`.
+
+#### Use an application inference profile ARN
+
+To use an application inference profile ARN as the model identifier, use the following format:
+
+```plaintext
+bedrock/converse/arn:aws:bedrock:<region>:<account-id>:application-inference-profile/<id>
+```
+
+For example:
+
+```plaintext
+bedrock/converse/arn:aws:bedrock:us-east-1:123456789012:application-inference-profile/abcd1234efgh
+```
+
+The `converse/` prefix routes the request through the Amazon Bedrock Converse API, which is
+required for ARN-based identifiers.
+
+## Turn on self-hosted beta models and features
+
+> [!note]
+> Turning on beta self-hosted models and features also accepts the [GitLab Testing Agreement](https://handbook.gitlab.com/handbook/legal/testing-agreement/).
+
+To enable self-hosted beta models and features:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Change configuration**.
+1. Under **Self-hosted beta models and features**, select the **Use beta models and features in GitLab Duo Self-Hosted** checkbox.
+1. Select **Save changes**.
+
+## Configure GitLab Duo features to use self-hosted models
+
+### View configured features
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Configure models for GitLab Duo**.
+   - If **Configure models for GitLab Duo** is not available, synchronize your
+     subscription after purchase:
+     1. In the left sidebar, select **Subscription**.
+     1. In **Subscription details**, to the right of **Last sync**, select
+        synchronize subscription ().
+1. Select the **AI-native features** tab.
+
+### Select a self-hosted model for a feature
+
+To select a self-hosted model:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Configure models for GitLab Duo**.
+1. Select the **AI-native features** tab.
+1. For the feature you want to select a self-hosted model for, select the model from dropdown list.
+
+> [!note]
+> If you don't specify a model for a GitLab Duo Chat sub-feature, it automatically uses the model configured for **General Chat**.
+> This ensures all Chat functionality works without requiring individual model selection for each sub-feature.
+
+### Select a GitLab-managed model for a feature
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/17192) in GitLab 18.3, as a [beta](../../policy/development_stages_support.md#beta) with a [feature flag](../feature_flags/_index.md) named `ai_self_hosted_vendored_features`. Disabled by default.
+- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/214030) in GitLab 18.7
+- Generally available in GitLab 18.9. Feature flag `ai_self_hosted_vendored_features` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/218595).
+
+You can select a GitLab-managed model for a feature, even if you use a self-hosted AI Gateway and self-hosted models.
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Configure models for GitLab Duo**.
+1. Select the **AI-native features** tab.
+1. For the feature and sub-feature you want to configure, from the dropdown list, select **GitLab-managed model**.
+
+### Turn off GitLab Duo features
+
+GitLab Duo features remain turned on even if you have not chosen a model for a feature.
+
+To turn off a GitLab Duo feature:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Configure models for GitLab Duo**.
+1. Select the **AI-native features** tab.
+1. For the feature you want to turn off, from the dropdown list, select **Disabled**.
+
+### Self-host the GitLab documentation
+
+If your setup prevents you from accessing the GitLab documentation at
+`docs.gitlab.com`, you can self-host the documentation.
+For more information, see [Host the GitLab product documentation](../docs_self_host.md).
+
+## Related topics
+
+- [Supported models](supported_models_and_hardware_requirements.md#supported-models)
+- [Compatible models](supported_models_and_hardware_requirements.md#compatible-models)
+- [AI Gateway configuration types](_index.md#ai-gateway-configurations)

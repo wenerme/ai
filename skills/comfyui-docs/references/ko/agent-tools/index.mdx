@@ -1,12 +1,12 @@
 ---
 title: "Agent Tools / MCP"
 description: "AI 에이전트를 모델 컨텍스트 프로토콜(MCP)을 통해 ComfyUI에 연결하여 이미지, 비디오, 오디오 및 3D 콘텐츠를 생성합니다."
-translationSourceHash: 1d8d589d
+translationSourceHash: 52f434b2
 translationFrom: agent-tools/index.mdx
 translationBlockHashes:
-  "_intro": de00d389
+  "_intro": 72089b69
   "Which One Should I Use?": fa16d052
-  "What about local ComfyUI?": 26614358
+  "What about local ComfyUI?": 345c7907
   "What is MCP?": bb62fbe5
 ---
 
@@ -21,7 +21,7 @@ ComfyUI는 **MCP 서버**와 **Comfy CLI**를 제공하여 AI 에이전트와 �
     Comfy Partner-Node SDK를 사용해 로컬 MCP 서버를 실행하세요. 30개 이상의 파트너 제공업체에서 통합된 <code>generate_image</code>, <code>generate_video</code>, <code>generate_3d</code> 및 기타 도구를 제공합니다.
   
   
-    <code>comfy-cli</code>를 통해 자신의 ComfyUI 설치를 구동하는 공식 로컬 MCP 서버입니다. 워크플로를 실행하고 실제 머신에 있는 노드와 모델을 검사할 수 있습니다. <em>초기 미리보기</em>
+    <code>comfy-cli</code>를 통해 사용자 **자신의** ComfyUI 설치를 구동하는 자사 로컬 MCP 서버입니다. <em>비공개 테스트; 아직 공개적으로 사용할 수 없습니다.</em>
   
   
     <code>comfy generate</code>에 대한 에이전트 중심의 간략한 개요입니다. 전체 CLI 가이드는 [시작하기](/ko/comfy-cli/getting-started)를 참조하세요.
@@ -44,9 +44,7 @@ ComfyUI는 **MCP 서버**와 **Comfy CLI**를 제공하여 AI 에이전트와 �
 
 ## 로컬 ComfyUI는 어떻게 하나요?
 
-Comfy Cloud MCP 대신(또는 함께) **로컬** ComfyUI 설치를 에이전트로 구동하고 싶으신가요? 이제 Comfy에서 자체(first-party) 옵션을 제공합니다.
-
-**Comfy Local MCP (자체 제공).** [**comfy-local-mcp**](https://github.com/Comfy-Org/comfy-local-mcp)는 공식 로컬 MCP 서버입니다. [comfy-cli](https://github.com/Comfy-Org/comfy-cli) 위의 가벼운 래퍼로, AI 에이전트가 **자신의** ComfyUI에서 워크플로를 실행하고 설치된 노드, 커스텀 노드, 모델을 검사할 수 있습니다. **초기 미리보기**입니다. 설정 및 클라이언트 구성은 [**Comfy Local MCP**](/ko/agent-tools/local)를 참조하세요.
+Comfy Cloud MCP 대신(또는 함께) **로컬** ComfyUI 설치를 에이전트로 구동하고 싶으신가요? 자체(first-party) 로컬 MCP 서버, 설정 및 클라이언트 구성은 [**Comfy Local MCP**](/ko/agent-tools/local)를 참조하세요. 현재 **비공개 테스트** 중이며 아직 공개적으로 사용할 수 없습니다.
 
 **커뮤니티 MCP 서버.** 여러 커뮤니티 프로젝트도 MCP 클라이언트를 로컬 ComfyUI 인스턴스에 연결합니다:
 

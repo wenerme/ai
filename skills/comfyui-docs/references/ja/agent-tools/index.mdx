@@ -1,12 +1,12 @@
 ---
 title: "Agent Tools / MCP"
 description: "Model Context Protocol (MCP) を使用して AI エージェントを ComfyUI に接続し、画像、動画、オーディオ、3D コンテンツを生成します。"
-translationSourceHash: 1d8d589d
+translationSourceHash: 52f434b2
 translationFrom: agent-tools/index.mdx
 translationBlockHashes:
-  "_intro": de00d389
+  "_intro": 72089b69
   "Which One Should I Use?": fa16d052
-  "What about local ComfyUI?": 26614358
+  "What about local ComfyUI?": 345c7907
   "What is MCP?": bb62fbe5
 ---
 
@@ -21,13 +21,11 @@ ComfyUI は **MCP サーバー** と **Comfy CLI** を提供しているので�
     Comfy Partner-Node SDK を使用したローカル MCP サーバー。30以上のパートナープロバイダーに対応する統一された <code>generate_image</code>、<code>generate_video</code>、<code>generate_3d</code> などのツールを提供します。
   
   
-    公式のローカル MCP サーバーです。<code>comfy-cli</code> を使用して <strong>お使いの</strong> ComfyUI インストールを操作し、実際にマシンにあるノードやモデルを確認しながらワークフローを実行できます。<em>早期プレビュー。</em>
+    ファーストパーティのローカル MCP サーバーです。<code>comfy-cli</code> を使用して、<strong>お使いの</strong> ComfyUI インストールを操作します。<em>非公開テスト。まだ一般公開されていません。</em>
   
   
     <code>comfy generate</code> の短いエージェント向け概要。完全な CLI ガイドは [はじめに](/ja/comfy-cli/getting-started) をご覧ください。
   
-
----
 
 ## どちらを使うべき？
 
@@ -44,11 +42,9 @@ ComfyUI は **MCP サーバー** と **Comfy CLI** を提供しているので�
 
 ## ローカルのComfyUIは？
 
-エージェントを使って（Comfy Cloud MCP の代わりに、または併用して）**ローカル**の ComfyUI インストールを操作したいですか？ Comfy は現在、ファーストパーティのオプションを提供しています。
+エージェントを使って（Comfy Cloud MCP の代わりに、または併用して）**ローカル**の ComfyUI インストールを操作したいですか？ ファーストパーティのローカル MCP サーバー、セットアップ、クライアント設定については [**Comfy Local MCP**](/ja/agent-tools/local) をご覧ください。現在**非公開テスト**中で、まだ一般公開されていません。
 
-**Comfy Local MCP（ファーストパーティ）。** [**comfy-local-mcp**](https://github.com/Comfy-Org/comfy-local-mcp) は公式のローカル MCP サーバーです。[comfy-cli](https://github.com/Comfy-Org/comfy-cli) のシンプルなラッパーで、AI エージェントが**あなた自身の** ComfyUI でワークフローを実行し、インストールされているノード、カスタムノード、モデルを確認できるようにします。**早期プレビュー**です。セットアップとクライアント設定については [**Comfy Local MCP**](/ja/agent-tools/local) をご覧ください。
-
-**コミュニティ MCP サーバー** いくつかのコミュニティプロジェクトも MCP クライアントをローカルの ComfyUI インスタンスに接続しています：
+**コミュニティ MCP サーバー。** いくつかのコミュニティプロジェクトも MCP クライアントをローカルの ComfyUI インスタンスに接続しています：
 
 | プロジェクト | リポジトリ |
 | --- | --- |

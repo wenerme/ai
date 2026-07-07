@@ -1,0 +1,48 @@
+# Security and compliance settings
+
+Configure security and compliance administration settings, including which package repositories are synchronized.
+
+- Tier: Ultimate
+- Offering: GitLab Self-Managed, GitLab Dedicated
+
+## Dependency scanning
+
+### SBOM Scan API limits
+
+The [dependency scanning using SBOM feature](../../user/application_security/dependency_scanning/dependency_scanning_sbom/_index.md) uses an internal API
+with [predefined limits](../instance_limits.md#dependency-scanning-using-sbom-limits).
+
+Prerequisites:
+
+- Administrator access.
+
+To configure different values for these limits:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **Security and compliance**.
+1. Expand **Dependency Scanning**.
+1. Change the value of any rate limit, or set a rate limit to `0` to disable it.
+1. Select **Save changes**.
+
+## Package Metadata Database synchronization
+
+### Choose package registry metadata to sync
+
+To choose the packages you want to synchronize with the GitLab Package Metadata Database (PMDB) for [license compliance](../../user/compliance/license_scanning_of_cyclonedx_files/_index.md) and [continuous vulnerability scanning](../../user/application_security/continuous_vulnerability_scanning/_index.md):
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **Security and compliance**.
+1. Expand **License Compliance**.
+1. In **Package registry metadata to sync**, select or clear checkboxes for the
+   package registries that you want to sync.
+1. Select **Save changes**.
+
+For this data synchronization to work, you must allow outbound network traffic from your GitLab instance to the domain `storage.googleapis.com`. See also the offline setup instructions described in [Enabling the Package Metadata Database](../../topics/offline/quick_start_guide.md#enabling-the-package-metadata-database).
+
+### Security considerations
+
+PMDB is a service that publishes license and advisory data to publicly accessible (read-only) Google Cloud Storage buckets.
+The buckets can be read by anyone, but only authorized GitLab maintainers have write access through IAM controls.
+GitLab continuously ingests data from a secured PostgreSQL database and exports it by using a private service using OIDC authentication.
+GitLab instances sync data from the public buckets, perform schema validation,
+and then upsert the validated data into the GitLab database.

@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 108 skills available
+> 112 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -57,6 +57,10 @@ npx skills add wenerme/ai --skill <skill-name>
 | [gemini-enterprise-agent-platform-docs](./skills/gemini-enterprise-agent-platform-docs/SKILL.md) | Use when working with Google Cloud Gemini Enterprise Agent Platform: Agent Studio, Agent Runtime, Managed Agents API,... | [docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform) |
 | [ghostty-docs](./skills/ghostty-docs/SKILL.md) | Ghostty terminal emulator documentation — fast, native, cross-platform GPU-accelerated terminal. Covers configuration... | [ghostty-org/website](https://github.com/ghostty-org/website) |
 | [gitea-docs](./skills/gitea-docs/SKILL.md) | Gitea documentation — self-hosted Git service (lightweight GitHub/GitLab alternative) written in Go. Covers installation... | [gitea.com](https://gitea.com/gitea/docs) |
+| [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | Use when administering GitLab Self-Managed or Dedicated: installation, configuration, Admin area settings, users, auth,... | [gitlab-org/gitlab/doc/administration](https://gitlab.com/gitlab-org/gitlab/-/tree/master/doc/administration) |
+| [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | Use when working with GitLab API docs: REST API endpoints, GraphQL API, authentication, pagination, rate limits, groups,... | [gitlab-org/gitlab/doc/api](https://gitlab.com/gitlab-org/gitlab/-/tree/master/doc/api) |
+| [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | Use when working with GitLab CI/CD docs: .gitlab-ci.yml syntax, jobs, stages, rules, workflow, include, inputs,... | [gitlab-org/gitlab/doc/ci](https://gitlab.com/gitlab-org/gitlab/-/tree/master/doc/ci) |
+| [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | Use when working with GitLab user-facing product docs: projects, groups, repositories, issues, merge requests, wikis,... | [gitlab-org/gitlab/doc/user](https://gitlab.com/gitlab-org/gitlab/-/tree/master/doc/user) |
 | [glab-cli](./skills/glab-cli/SKILL.md) | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... | [gitlab-org/cli](https://github.com/gitlab-org/cli) |
 | [glab-docs](./skills/glab-docs/SKILL.md) | glab CLI documentation — GitLab's official command-line tool. Covers merge requests, issues, CI/CD pipelines,... | [gitlab-org/cli](https://github.com/gitlab-org/cli) |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... | [ai.google.dev](https://ai.google.dev) |
@@ -551,6 +555,46 @@ npx skills add wenerme/ai --skill gitea-docs
 ```
 
 Gitea documentation — self-hosted Git service (lightweight GitHub/GitLab alternative) written in Go. Covers installation (Docker, binary, source, Kubernetes, cloud providers), administration (config cheat sheet, environment variables, reverse proxy, HTTPS, email, logging, authentication, backup/restore, Git LFS, GPG signing, fail2ban), usage (Actions CI/CD, packages registry for npm/PyPI/Docker/Maven/Go/Helm/Cargo/etc, webhooks, pull requests, AGit flow, protected branches/tags, repository mirroring, code owners, markdown), and development (API, OAuth2 provider, migrations, contributing guidelines). USE THIS SKILL WHEN the user asks about Gitea setup, configuration, Actions, package registry, API, or administration.
+
+</details>
+<details>
+<summary><code>gitlab-admin-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill gitlab-admin-docs
+```
+
+Use when administering GitLab Self-Managed or Dedicated: installation, configuration, Admin area settings, users, auth, Geo, Gitaly, PostgreSQL, Redis, Sidekiq, object storage, backups, monitoring, logs, upgrades, instance limits, feature flags, security, and troubleshooting.
+
+</details>
+<details>
+<summary><code>gitlab-api-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill gitlab-api-docs
+```
+
+Use when working with GitLab API docs: REST API endpoints, GraphQL API, authentication, pagination, rate limits, groups, projects, issues, merge requests, pipelines, jobs, packages, releases, users, access tokens, webhooks, admin APIs, and OpenAPI schemas.
+
+</details>
+<details>
+<summary><code>gitlab-ci-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill gitlab-ci-docs
+```
+
+Use when working with GitLab CI/CD docs: .gitlab-ci.yml syntax, jobs, stages, rules, workflow, include, inputs, components, variables, secrets, runners, executors, pipelines, artifacts, cache, environments, deployments, Docker, services, test reports, and pipeline troubleshooting.
+
+</details>
+<details>
+<summary><code>gitlab-user-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill gitlab-user-docs
+```
+
+Use when working with GitLab user-facing product docs: projects, groups, repositories, issues, merge requests, wikis, snippets, packages, releases, environments, application security, compliance, GitLab Duo, imports, search, permissions, profile, SSH, storage, and end-user workflows.
 
 </details>
 <details>
@@ -1206,7 +1250,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 108 skills, 29337 files, 303 MiB total
+> 112 skills, 31020 files, 331 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1247,12 +1291,16 @@ Use when implementing React state management with Zustand, including context-sco
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1585 | 9.5 MiB |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
-| [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 291 | 1.8 MiB |
+| [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 293 | 1.8 MiB |
 | [find-skills](./skills/find-skills/SKILL.md) | 1 | 4.5 KiB |
 | [gemini-cli-docs](./skills/gemini-cli-docs/SKILL.md) | 90 | 802 KiB |
 | [gemini-enterprise-agent-platform-docs](./skills/gemini-enterprise-agent-platform-docs/SKILL.md) | 427 | 5.9 MiB |
 | [ghostty-docs](./skills/ghostty-docs/SKILL.md) | 103 | 554 KiB |
 | [gitea-docs](./skills/gitea-docs/SKILL.md) | 102 | 693 KiB |
+| [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 372 | 4.6 MiB |
+| [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 243 | 13 MiB |
+| [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 171 | 1.9 MiB |
+| [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 894 | 8.0 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
 | [glab-docs](./skills/glab-docs/SKILL.md) | 295 | 458 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 693 KiB |
@@ -1272,7 +1320,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 20 | 152 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 10 | 51 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 783 | 6.2 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 786 | 6.2 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 150 | 370 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |
@@ -1285,7 +1333,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 455 KiB |
 | [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 447 | 2.4 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2334 | 13 MiB |
-| [orpc-docs](./skills/orpc-docs/SKILL.md) | 75 | 308 KiB |
+| [orpc-docs](./skills/orpc-docs/SKILL.md) | 75 | 309 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
 | [peekaboo](./skills/peekaboo/SKILL.md) | 1 | 15 KiB |
@@ -1308,7 +1356,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 36 | 1.7 MiB |
 | [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 486 | 4.2 MiB |
 | [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 538 KiB |
-| [vitest-docs](./skills/vitest-docs/SKILL.md) | 220 | 1.3 MiB |
+| [vitest-docs](./skills/vitest-docs/SKILL.md) | 218 | 1.3 MiB |
 | [vllm-docs](./skills/vllm-docs/SKILL.md) | 171 | 1.3 MiB |
 | [wails-docs](./skills/wails-docs/SKILL.md) | 56 | 314 KiB |
 | [waku-docs](./skills/waku-docs/SKILL.md) | 24 | 152 KiB |

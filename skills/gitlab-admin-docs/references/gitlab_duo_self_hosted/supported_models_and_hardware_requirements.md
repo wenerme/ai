@@ -1,0 +1,186 @@
+# Models and hardware requirements
+
+Supported models and hardware requirements.
+
+- Tier: Premium, Ultimate
+- Offering: GitLab Self-Managed, GitLab Dedicated for Government
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/12972) in GitLab 17.1 [with a flag](../feature_flags/_index.md) named `ai_custom_model`. Disabled by default.
+- [Enabled on GitLab Self-Managed](https://gitlab.com/groups/gitlab-org/-/epics/15176) in GitLab 17.6.
+- Changed to require GitLab Duo add-on in GitLab 17.6 and later.
+- Feature flag `ai_custom_model` removed in GitLab 17.8.
+- Generally available in GitLab 17.9.
+- Changed to include Premium in GitLab 18.0.
+- [Enabled on GitLab Dedicated for Government](https://gitlab.com/gitlab-org/gitlab/-/issues/569874) in GitLab 18.5.
+
+You can integrate with industry-leading models from Mistral, Meta, Anthropic, and OpenAI through your preferred serving platform.
+
+You can use:
+
+- Supported models to match your specific performance needs and use cases.
+- In GitLab 18.3 and later, your own compatible model to experiment with models beyond the officially supported options.
+- GitLab-managed models to connect to AI models without the need to host your own infrastructure. These models are managed entirely by GitLab.
+
+## Supported models
+
+GitLab-supported models offer different levels of functionality for GitLab Duo features,
+depending on the specific model and feature combination.
+
+-  Full functionality: The model can likely handle the feature without any loss of quality.
+-  Partial functionality: The model supports the feature, but there might be compromises or limitations.
+-  Limited functionality: The model is unsuitable for the feature, likely resulting in significant quality loss or performance issues.
+  Models that have limited functionality for a feature will not receive GitLab support for that specific feature.
+
+| Model family | Model | Code completion | Code generation | GitLab Duo Non-Agentic Chat | GitLab Duo Agent Platform |
+|--------------|-------|-----------------|-----------------|---------------------------|---------------------------|
+| Claude 4 | [Claude 4 Sonnet](https://www.anthropic.com/news/claude-4) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Claude 4 | [Claude Haiku 4.5](https://www.anthropic.com/news/claude-haiku-4-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Claude 4 | [Claude Sonnet 4.6](https://www.anthropic.com/news/claude-sonnet-4-6) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Claude 4 | [Claude Opus 4.8](https://www.anthropic.com/news/claude-opus-4-8) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| GPT | [GPT-4 Turbo](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
+| GPT | [GPT-4o](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4o-and-gpt-4-turbo) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
+| GPT | [GPT-4o-mini](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4o-and-gpt-4-turbo) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
+| GPT | [GPT-5](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| GPT | [GPT-5 Mini](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) |  Full functionality |  Full functionality |  Full functionality |  Partial functionality |
+| GPT | [GPT-5 Codex](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| GPT | [GPT-5.1](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-51) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| GPT | [GPT-5.2](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-52) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| GPT | [GPT-oss-120B](https://huggingface.co/openai/gpt-oss-120b) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
+| Mistral Medium 3.5 | [Mistral Medium 3.5 128B](https://huggingface.co/mistralai/Mistral-Medium-3.5-128B) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Mistral Devstral | [Devstral 2 123B](https://huggingface.co/mistralai/Devstral-2-123B-Instruct-2512) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Mistral Codestral | [Codestral 22B v0.1](https://huggingface.co/mistralai/Codestral-22B-v0.1) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
+| Mistral | [Mistral Small 24B Instruct 2506](https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
+| GLM | [GLM-5.1-FP8](https://huggingface.co/zai-org/GLM-5.1-FP8) |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |
+| Kimi | [Kimi-K2.5](https://huggingface.co/moonshotai/Kimi-K2.5) |  Limited functionality |  Limited functionality |  Partial functionality |  Partial functionality |
+| Kimi | [Kimi-K2.6](https://huggingface.co/moonshotai/Kimi-K2.6) |  Limited functionality |  Limited functionality |  Partial functionality |  Partial functionality |
+| MiniMax | [MiniMax-M2.7](https://huggingface.co/MiniMaxAI/MiniMax-M2.7) |  Limited functionality |  Limited functionality |  Partial functionality |  Partial functionality |
+| Llama | [Llama 3 8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) |  Partial functionality |  Full functionality |  Limited functionality |  Limited functionality |
+| Llama | [Llama 3.1 8B](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) |  Partial functionality |  Full functionality |  Partial functionality |  Limited functionality |
+| Llama | [Llama 3 70B](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct) |  Partial functionality |  Full functionality |  Limited functionality |  Limited functionality |
+| Llama | [Llama 3.1 70B](https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
+| Llama | [Llama 3.3 70B](https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
+
+### Compatible models
+
+- Status: Beta
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/18556) in GitLab 18.3 as a [beta](../../policy/development_stages_support.md#beta).
+
+You can use your own compatible models and platform with GitLab Duo Agent Platform and GitLab Duo features. For compatible models not included in supported model families, use the general model family. This includes models that you host yourself (for example, served through vLLM or LiteLLM), with the requirement that they are exposed through an OpenAI API-compatible `/v1` endpoint.
+
+Compatible models are excluded from the definition of Customer Integrated Models in the [AI Functionality Terms](https://handbook.gitlab.com/handbook/legal/ai-functionality-terms/). Compatible models and platforms must adhere to the OpenAI API specification. Models and platforms that have
+previously been marked as experimental or beta are now considered compatible models.
+
+This feature is in beta and is therefore subject to change as we gather feedback and improve the integration:
+
+- GitLab does not provide technical support for issues specific to your chosen model or platform.
+- Not all Agent Platform or GitLab Duo features are guaranteed to work optimally with every compatible model.
+- Response quality, speed, and performance overall might vary significantly based on your model choice.
+
+#### GitLab Duo
+
+| Model family   | Model |
+|----------------|-------|
+| General        | Any model compatible with the [OpenAI API specification](https://platform.openai.com/docs/api-reference) |
+| CodeGemma      | [CodeGemma 2b](https://huggingface.co/google/codegemma-2b) |
+| CodeGemma      | [CodeGemma 7b-it](https://huggingface.co/google/codegemma-7b-it) |
+| CodeGemma      | [CodeGemma 7b-code](https://huggingface.co/google/codegemma-7b) |
+| Code Llama     | [Code-Llama 13b](https://huggingface.co/meta-llama/CodeLlama-13b-Instruct-hf) |
+| DeepSeek Coder | [DeepSeek Coder 33b Instruct](https://huggingface.co/deepseek-ai/deepseek-coder-33b-instruct) |
+| DeepSeek Coder | [DeepSeek Coder 33b Base](https://huggingface.co/deepseek-ai/deepseek-coder-33b-base) |
+
+#### GitLab Duo Agent Platform
+
+| Model family   | Model |
+|----------------|-------|
+| General        | Any model compatible with the [OpenAI API specification](https://platform.openai.com/docs/api-reference) |
+| Gemini         | [Gemini 3.1 Pro](https://deepmind.google/models/gemini/pro/) |
+| Gemini         | [Gemini 3.0 Flash](https://deepmind.google/models/gemini/flash/) |
+| Gemma 4        | [Gemma-4-31B-IT](https://huggingface.co/google/gemma-4-31B-it) |
+| Qwen 3.6       | [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B) |
+
+## GitLab-managed models
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/17192) in GitLab 18.3 as a [beta](../../policy/development_stages_support.md#beta) feature, with a [feature flag](../feature_flags/_index.md) named `ai_self_hosted_vendored_features`. Disabled by default.
+- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/214030) in GitLab 18.7
+- Feature flag `ai_self_hosted_vendored_features` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/218595) in GitLab 18.9.
+
+GitLab-managed models integrate with GitLab-hosted AI Gateway infrastructure to provide access to AI models curated and made available by GitLab. Instead of using your own self-hosted models, you can choose to use GitLab-managed models for specific GitLab Duo features.
+
+To choose which features use GitLab-managed models, see [select a GitLab-managed model for a feature](configure_duo_features.md#select-a-gitlab-managed-model-for-a-feature).
+
+When enabled for a specific feature:
+
+- All calls to those features configured with a GitLab-managed model use the GitLab-hosted AI Gateway, not the self-hosted AI Gateway.
+- No detailed logs are generated in the GitLab-hosted AI Gateway, even when [AI logs are enabled](logging.md#turn-on-data-collection-for-gitlab-duo). This prevents unintended leaks of sensitive information.
+
+## Hardware requirements
+
+The following hardware specifications are the minimum requirements for running GitLab Duo Self-Hosted on-premise. Requirements vary significantly based on the model size and intended usage:
+
+### Base system requirements
+
+- **CPU**:
+  - Minimum: 8 cores (16 threads)
+  - Recommended: 16+ cores for production environments
+- **RAM**:
+  - Minimum: 32 GB
+  - Recommended: 64 GB for most models
+- **Storage**:
+  - SSD with sufficient space for model weights and data.
+
+### GPU requirements by model size
+
+| Model size                                 | Minimum GPU configuration | Minimum VRAM required |
+|--------------------------------------------|---------------------------|-----------------------|
+| 7B models(for example, Mistral 7B)     | 1x NVIDIA A100 (40 GB)    | 35 GB                 |
+| 22B models(for example, Codestral 22B) | 2x NVIDIA A100 (80 GB)    | 110 GB                |
+| Mixtral 8x7B                               | 2x NVIDIA A100 (80 GB)    | 220 GB                |
+| Mixtral 8x22B                              | 8x NVIDIA A100 (80 GB)    | 526 GB                |
+
+Use [Hugging Face's memory utility](https://huggingface.co/spaces/hf-accelerate/model-memory-usage) to verify memory requirements.
+
+### Response time by model size and GPU
+
+#### Small machine
+
+With a `a2-highgpu-2g` (2x NVIDIA A100 40 GB - 150 GB vRAM) or equivalent:
+
+| Model name               | Number of requests | Average time per request (sec) | Average tokens in response | Average tokens per second per request | Total time for requests | Total TPS |
+|--------------------------|--------------------|------------------------------|----------------------------|---------------------------------------|-------------------------|-----------|
+| Mistral-7B-Instruct-v0.3 | 1                  | 7.09                         | 717.0                      | 101.19                                | 7.09                    | 101.17    |
+| Mistral-7B-Instruct-v0.3 | 10                 | 8.41                         | 764.2                      | 90.35                                 | 13.70                   | 557.80    |
+| Mistral-7B-Instruct-v0.3 | 100                | 13.97                        | 693.23                     | 49.17                                 | 20.81                   | 3331.59   |
+
+#### Medium machine
+
+With a `a2-ultragpu-4g` (4x NVIDIA A100 40 GB - 340 GB vRAM) machine on GCP or equivalent:
+
+| Model name                 | Number of requests | Average time per request (sec) | Average tokens in response | Average tokens per second per request | Total time for requests | Total TPS |
+|----------------------------|--------------------|------------------------------|----------------------------|---------------------------------------|-------------------------|-----------|
+| Mistral-7B-Instruct-v0.3   | 1                  | 3.80                         | 499.0                      | 131.25                                | 3.80                    | 131.23    |
+| Mistral-7B-Instruct-v0.3   | 10                 | 6.00                         | 740.6                      | 122.85                                | 8.19                    | 904.22    |
+| Mistral-7B-Instruct-v0.3   | 100                | 11.71                        | 695.71                     | 59.06                                 | 15.54                   | 4477.34   |
+| Mixtral-8x7B-Instruct-v0.1 | 1                  | 6.50                         | 400.0                      | 61.55                                 | 6.50                    | 61.53     |
+| Mixtral-8x7B-Instruct-v0.1 | 10                 | 16.58                        | 768.9                      | 40.33                                 | 32.56                   | 236.13    |
+| Mixtral-8x7B-Instruct-v0.1 | 100                | 25.90                        | 767.38                     | 26.87                                 | 55.57                   | 1380.68   |
+
+#### Large machine
+
+With a `a2-ultragpu-8g` (8 x NVIDIA A100 80 GB - 1360 GB vRAM) machine on GCP or equivalent:
+
+| Model name                  | Number of requests | Average time per request (sec) | Average tokens in response | Average tokens per second per request | Total time for requests (sec) | Total TPS |
+|-----------------------------|--------------------|------------------------------|----------------------------|---------------------------------------|-----------------------------|-----------|
+| Mistral-7B-Instruct-v0.3    | 1                  | 3.23                         | 479.0                      | 148.41                                | 3.22                        | 148.36    |
+| Mistral-7B-Instruct-v0.3    | 10                 | 4.95                         | 678.3                      | 135.98                                | 6.85                        | 989.11    |
+| Mistral-7B-Instruct-v0.3    | 100                | 10.14                        | 713.27                     | 69.63                                 | 13.96                       | 5108.75   |
+| Mixtral-8x7B-Instruct-v0.1  | 1                  | 6.08                         | 709.0                      | 116.69                                | 6.07                        | 116.64    |
+| Mixtral-8x7B-Instruct-v0.1  | 10                 | 9.95                         | 645.0                      | 63.68                                 | 13.40                       | 481.06    |
+| Mixtral-8x7B-Instruct-v0.1  | 100                | 13.83                        | 585.01                     | 41.80                                 | 20.38                       | 2869.12   |
+| Mixtral-8x22B-Instruct-v0.1 | 1                  | 14.39                        | 828.0                      | 57.56                                 | 14.38                       | 57.55     |
+| Mixtral-8x22B-Instruct-v0.1 | 10                 | 20.57                        | 629.7                      | 30.24                                 | 28.02                       | 224.71    |
+| Mixtral-8x22B-Instruct-v0.1 | 100                | 27.58                        | 592.49                     | 21.34                                 | 36.80                       | 1609.85   |
+
+### AI Gateway Hardware Requirements
+
+For recommendations on AI Gateway hardware, see the [AI Gateway scaling recommendations](../../install/install_ai_gateway.md#scaling-recommendations).
