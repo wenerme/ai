@@ -1,0 +1,93 @@
+# Git file blame
+
+Documentation on Git file blame.
+
+- Tier: Free, Premium, Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+
+[Git blame](https://git-scm.com/docs/git-blame) provides more information
+about every line in a file, including the last modified time, author, and
+commit hash.
+
+## View blame for a file
+
+- Viewing blame directly in the file view [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/430950) in GitLab 16.7 [with flag](../../../../administration/feature_flags/_index.md) named `inline_blame`. Disabled by default.
+- [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/501539) in GitLab 19.1.
+
+Prerequisites:
+
+- The file must contain readable text content. The GitLab UI displays `git blame` results for text
+  files like `.rb`, `.js`, `.md`, `.txt`, `.yml`, and similar formats. Binary files, such as images
+  and PDFs, are not supported.
+
+To view the blame for a file:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. In the left sidebar, select **Code** > **Repository**.
+1. Select the file you want to review.
+1. Either:
+   - To change the view of the current file, in the file header, select **Blame**.
+   - To open the full blame page, in the upper-right corner, select **Blame**.
+1. Go to the line you want to see.
+
+When you select **Blame**, this information is displayed:
+
+[Git blame output]
+
+To see the precise date and time of the commit, hover over the date.
+To display a color legend for commit age, see [Show age indicator legend](#show-age-indicator-legend).
+
+### Blame previous commit
+
+To see earlier revisions of a specific line:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. In the left sidebar, select **Code** > **Repository**.
+1. Select the file you want to review.
+1. In the upper-right corner, select **Blame**, and go to the line you want to see.
+1. Select **View blame prior to this change** ()
+   until you've found the changes you're interested in viewing.
+
+### Ignore specific revisions
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/514684) in GitLab 17.10 [with a flag](../../../../administration/feature_flags/_index.md) named `blame_ignore_revs`. Disabled by default.
+- [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/514325) in GitLab 17.10.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/525095) in GitLab 17.11. Feature flag `blame_ignore_revs` removed.
+
+To configure Git blame to ignore specific revisions:
+
+1. In the root of your repository, create a `.git-blame-ignore-revs` file.
+1. Add the commit hashes you want to ignore, one per line.
+   For example:
+
+   ```plaintext
+   a24cb33c0e1390b0719e9d9a4a4fc0e4a3a069cc
+   676c1c7e8b9e2c9c93e4d5266c6f3a50ad602a4c
+   ```
+
+1. Open a file in the blame view.
+1. Select **Blame preferences** ().
+1. Select the **Ignore specific revisions** checkbox.
+
+The blame view refreshes and skips the revisions specified in the `.git-blame-ignore-revs` file,
+showing the previous meaningful changes instead.
+
+### Show age indicator legend
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/589722) in GitLab 18.11.
+
+In the inline blame view, you can show or hide the age indicator legend.
+The legend displays a color scale from **Newer** to **Older** to help you interpret the age of each commit.
+
+To show or hide the age indicator legend:
+
+1. Open a file in the blame view.
+1. Select **Blame preferences** ().
+1. Select or clear the **Show age indicator legend** checkbox.
+
+## Related topics
+
+- [Git file blame REST API](../../../../api/repository_files.md#retrieve-file-blame-history-from-a-repository)
+- [Common Git commands](../../../../topics/git/commands.md)
+- [File management with Git](../../../../topics/git/file_management.md)
+- [File tree browser](file_tree_browser.md)

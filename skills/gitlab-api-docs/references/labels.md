@@ -1,0 +1,368 @@
+# Project labels API
+
+- Tier: Free, Premium, Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+
+- `archived` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/4233) in GitLab 18.3 [with a flag](../administration/feature_flags/_index.md) named `labels_archive`.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/556700) in GitLab 18.10. Feature flag `labels_archive` removed.
+
+Use this API to manage [project labels](../user/project/labels.md).
+
+For group labels, use the [group labels API](group_labels.md).
+
+## List all project labels
+
+Lists all labels for a specified project.
+
+By default, this request returns 20 results at a time because the API results [are paginated](rest/_index.md#pagination).
+
+```plaintext
+GET /projects/:id/labels
+```
+
+| Attribute     | Type           | Required | Description                                                                                                                                                                  |
+| ---------     | -------        | -------- | ---------------------                                                                                                                                                        |
+| `id`          | integer or string | yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths)                                                              |
+| `with_counts` | boolean        | no       | Whether or not to include issue and merge request counts. Defaults to `false`. |
+| `include_ancestor_groups` | boolean | no | Include ancestor groups. Defaults to `true`. |
+| `search` | string | no | Keyword to filter labels by. |
+| `archived` | boolean | no | If `true`, returns only archived labels. If unset, returns all labels. |
+
+```shell
+curl \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/projects/1/labels?with_counts=true"
+```
+
+Example response:
+
+```json
+[
+  {
+    "id" : 1,
+    "name" : "bug",
+    "color" : "#d9534f",
+    "text_color" : "#FFFFFF",
+    "description": "Bug reported by user",
+    "description_html": "Bug reported by user",
+    "open_issues_count": 1,
+    "closed_issues_count": 0,
+    "open_merge_requests_count": 1,
+    "subscribed": false,
+    "priority": 10,
+    "is_project_label": true,
+    "archived": false
+  },
+  {
+    "id" : 4,
+    "color" : "#d9534f",
+    "text_color" : "#FFFFFF",
+    "name" : "confirmed",
+    "description": "Confirmed issue",
+    "description_html": "Confirmed issue",
+    "open_issues_count": 2,
+    "closed_issues_count": 5,
+    "open_merge_requests_count": 0,
+    "subscribed": false,
+    "priority": null,
+    "is_project_label": true,
+    "archived": false
+  },
+  {
+    "id" : 7,
+    "name" : "critical",
+    "color" : "#d9534f",
+    "text_color" : "#FFFFFF",
+    "description": "Critical issue. Need fix ASAP",
+    "description_html": "Critical issue. Need fix ASAP",
+    "open_issues_count": 1,
+    "closed_issues_count": 3,
+    "open_merge_requests_count": 1,
+    "subscribed": false,
+    "priority": null,
+    "is_project_label": true,
+    "archived": false
+  },
+  {
+    "id" : 8,
+    "name" : "documentation",
+    "color" : "#f0ad4e",
+    "text_color" : "#FFFFFF",
+    "description": "Issue about documentation",
+    "description_html": "Issue about documentation",
+    "open_issues_count": 1,
+    "closed_issues_count": 0,
+    "open_merge_requests_count": 2,
+    "subscribed": false,
+    "priority": null,
+    "is_project_label": false,
+    "archived": false
+  },
+  {
+    "id" : 9,
+    "color" : "#5cb85c",
+    "text_color" : "#FFFFFF",
+    "name" : "enhancement",
+    "description": "Enhancement proposal",
+    "description_html": "Enhancement proposal",
+    "open_issues_count": 1,
+    "closed_issues_count": 0,
+    "open_merge_requests_count": 1,
+    "subscribed": true,
+    "priority": null,
+    "is_project_label": true,
+    "archived": false
+  }
+]
+```
+
+## Retrieve a project label
+
+Retrieves a specified label for a project.
+
+```plaintext
+GET /projects/:id/labels/:label_id
+```
+
+| Attribute     | Type           | Required | Description                                                                                                                                                                  |
+| ---------     | -------        | -------- | ---------------------                                                                                                                                                        |
+| `id`          | integer or string | yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths)                                                              |
+| `label_id` | integer or string | yes | The ID or title of a project's label. |
+| `include_ancestor_groups` | boolean | no | Include ancestor groups. Defaults to `true`. |
+
+```shell
+curl \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/projects/1/labels/bug"
+```
+
+Example response:
+
+```json
+{
+  "id" : 1,
+  "name" : "bug",
+  "color" : "#d9534f",
+  "text_color" : "#FFFFFF",
+  "description": "Bug reported by user",
+  "description_html": "Bug reported by user",
+  "open_issues_count": 1,
+  "closed_issues_count": 0,
+  "open_merge_requests_count": 1,
+  "subscribed": false,
+  "priority": 10,
+  "is_project_label": true,
+  "archived": false
+}
+```
+
+## Create a project label
+
+Creates a label for a specified project with the specified name and color.
+
+```plaintext
+POST /projects/:id/labels
+```
+
+| Attribute     | Type    | Required | Description                  |
+| ------------- | ------- | -------- | ---------------------------- |
+| `id`      | integer or string    | yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) |
+| `name`        | string  | yes      | The name of the label        |
+| `color`       | string  | yes      | The color of the label given in 6-digit hex notation with leading '#' sign (for example, #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords) |
+| `description` | string  | no       | The description of the label |
+| `priority`    | integer | no       | The priority of the label. Must be greater or equal than zero or `null` to remove the priority. |
+| `archived`    | boolean | no       | If `true`, marks the label as archived. Default value: `false`. |
+
+```shell
+curl --request POST \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/projects/1/labels" \
+  --data "name=feature&color=#5843AD"
+```
+
+Example response:
+
+```json
+{
+  "id" : 10,
+  "name" : "feature",
+  "color" : "#5843AD",
+  "text_color" : "#FFFFFF",
+  "description":null,
+  "description_html":null,
+  "open_issues_count": 0,
+  "closed_issues_count": 0,
+  "open_merge_requests_count": 0,
+  "subscribed": false,
+  "priority": null,
+  "is_project_label": true,
+  "archived": false
+}
+```
+
+## Delete a project label
+
+Deletes a specified label from a project.
+
+```plaintext
+DELETE /projects/:id/labels/:label_id
+```
+
+| Attribute | Type    | Required | Description           |
+| --------- | ------- | -------- | --------------------- |
+| `id`            | integer or string | yes | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) |
+| `label_id` | integer or string | yes | The ID or title of a project's label. |
+
+```shell
+curl --request DELETE \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/projects/1/labels/bug"
+```
+
+> [!note]
+> An older endpoint `DELETE /projects/:id/labels` with `name` in the parameters is still available, but deprecated.
+
+## Update a project label
+
+Updates a specified label for a project with a new name or color. At least one parameter is required to update the label.
+
+```plaintext
+PUT /projects/:id/labels/:label_id
+```
+
+| Attribute       | Type    | Required                          | Description                      |
+| --------------- | ------- | --------------------------------- | -------------------------------  |
+| `id`      | integer or string    | yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) |
+| `label_id` | integer or string | yes | The ID or title of a project's label. |
+| `new_name`      | string  | yes if `color` is not provided    | The new name of the label        |
+| `color`         | string  | yes if `new_name` is not provided | The color of the label given in 6-digit hex notation with leading '#' sign (for example, #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords) |
+| `description`   | string  | no                                | The new description of the label |
+| `priority`    | integer | no       | The new priority of the label. Must be greater or equal than zero or `null` to remove the priority. |
+| `archived`    | boolean | no       | If `true`, marks the label as archived. Default value: `false`. |
+
+```shell
+curl --request PUT \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/projects/1/labels/documentation" \
+  --data "new_name=docs&color=#8E44AD&description=Documentation"
+```
+
+Example response:
+
+```json
+{
+  "id" : 8,
+  "name" : "docs",
+  "color" : "#8E44AD",
+  "text_color" : "#FFFFFF",
+  "description": "Documentation",
+  "description_html": "Documentation",
+  "open_issues_count": 1,
+  "closed_issues_count": 0,
+  "open_merge_requests_count": 2,
+  "subscribed": false,
+  "priority": null,
+  "is_project_label": true,
+  "archived": false
+}
+```
+
+> [!note]
+> An older endpoint `PUT /projects/:id/labels` with `name` or `label_id` in the parameters is still available, but deprecated.
+
+## Promote a project label to a group label
+
+Promotes a specified project label to a group label. The label keeps its ID.
+
+```plaintext
+PUT /projects/:id/labels/:label_id/promote
+```
+
+| Attribute       | Type    | Required                          | Description                      |
+| --------------- | ------- | --------------------------------- | -------------------------------  |
+| `id`      | integer or string    | yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) |
+| `label_id` | integer or string | yes | The ID or title of a project's label. |
+
+```shell
+curl --request PUT \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/projects/1/labels/documentation/promote"
+```
+
+Example response:
+
+```json
+{
+  "id" : 8,
+  "name" : "documentation",
+  "color" : "#8E44AD",
+  "description": "Documentation",
+  "description_html": "Documentation",
+  "open_issues_count": 1,
+  "closed_issues_count": 0,
+  "open_merge_requests_count": 2,
+  "subscribed": false,
+  "archived": false
+}
+```
+
+> [!note]
+> An older endpoint `PUT /projects/:id/labels/promote` with `name` in the parameters is still available, but deprecated.
+
+## Subscribe to a project label
+
+Subscribes the authenticated user to a specified project label to receive notifications. If the user is already subscribed to the label, status code `304` is returned.
+
+```plaintext
+POST /projects/:id/labels/:label_id/subscribe
+```
+
+| Attribute  | Type              | Required | Description                          |
+| ---------- | ----------------- | -------- | ------------------------------------ |
+| `id`      | integer or string    | yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) |
+| `label_id` | integer or string | yes      | The ID or title of a project's label |
+
+```shell
+curl --request POST \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/projects/5/labels/1/subscribe"
+```
+
+Example response:
+
+```json
+{
+  "id" : 1,
+  "name" : "bug",
+  "color" : "#d9534f",
+  "text_color" : "#FFFFFF",
+  "description": "Bug reported by user",
+  "description_html": "Bug reported by user",
+  "open_issues_count": 1,
+  "closed_issues_count": 0,
+  "open_merge_requests_count": 1,
+  "subscribed": true,
+  "priority": null,
+  "is_project_label": true,
+  "archived": false
+}
+```
+
+## Unsubscribe from a project label
+
+Unsubscribes the authenticated user from a specified project label to stop receiving notifications. If the user is not subscribed to the label, status code `304` is returned.
+
+```plaintext
+POST /projects/:id/labels/:label_id/unsubscribe
+```
+
+| Attribute  | Type              | Required | Description                          |
+| ---------- | ----------------- | -------- | ------------------------------------ |
+| `id`      | integer or string    | yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) |
+| `label_id` | integer or string | yes      | The ID or title of a project's label |
+
+```shell
+curl --request POST \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/projects/5/labels/1/unsubscribe"
+```

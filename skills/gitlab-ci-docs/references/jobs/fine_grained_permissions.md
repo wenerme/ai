@@ -1,0 +1,306 @@
+# Fine-grained permissions for CI/CD job tokens
+
+- Tier: Free, Premium, Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/15234) as an [experiment](../../policy/development_stages_support.md#experiment) in GitLab 17.10.
+- [Changed](https://gitlab.com/groups/gitlab-org/-/epics/16199) from experiment to beta in GitLab 18.0.
+- [Generally available](https://gitlab.com/groups/gitlab-org/-/epics/15258) in GitLab 18.3.
+
+You can use fine-grained permissions to explicitly allow access to a limited set of REST API endpoints.
+These permissions are applied to the CI/CD job tokens in a specified project.
+
+Share your feedback in [issue 519575](https://gitlab.com/gitlab-org/gitlab/-/issues/519575).
+
+## Add fine-grained permissions to the job token allowlist
+
+Prerequisites:
+
+- You must have the Maintainer or Owner role for the project.
+- You must enable the use of fine-grained permissions for a project.
+
+You can add fine-grained permissions to groups and projects on your job token allowlist. This allows
+them to use job tokens to access specific project resources and more accurately control which
+resources are available to these groups and projects.
+
+To add fine-grained permissions to groups or projects on the job token allowlist:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. Select **Settings** > **CI/CD**.
+1. Expand **Job token permissions**.
+1. In the **CI/CD job token allowlist** section, select **Add**.
+1. From the dropdown list, select **Group or project**.
+1. Enter the path to an existing group or project.
+1. Select **Fine-grained permissions**.
+1. Grant permissions to any [available API endpoints](#available-api-endpoints).
+1. Select **Add**.
+
+GitLab adds the group or project to the job token allowlist with the specified permissions. The group or project can now
+access any allowed resources in the current project.
+
+## Available API endpoints
+
+CI/CD job tokens can access the following REST API endpoints:
+
+### Badges endpoints
+
+| Permission | API endpoint | Permission name | Scope |
+| ---------- | ------------ | --------------- | ----- |
+| Get a badge of a project. | `GET /projects/:id/badges/:badge_id` | `READ_BADGES` | Read |
+| List project badges. | `GET /projects/:id/badges` | `READ_BADGES` | Read |
+| Add a badge to a project. | `POST /projects/:id/badges` | `ADMIN_BADGES` | Read and write |
+| Preview a badge from a project. | `GET /projects/:id/badges/render` | `ADMIN_BADGES` | Read and write |
+| Remove a badge from the project. | `DELETE /projects/:id/badges/:badge_id` | `ADMIN_BADGES` | Read and write |
+| Update a badge of a project. | `PUT /projects/:id/badges/:badge_id` | `ADMIN_BADGES` | Read and write |
+
+### Deployments endpoints
+
+| Permission | API endpoint | Permission name | Scope |
+| ---------- | ------------ | --------------- | ----- |
+| List all merge requests associated with a deployment | `GET /projects/:id/deployments/:deployment_id/merge_requests` | `READ_DEPLOYMENTS` | Read |
+| List all project deployments | `GET /projects/:id/deployments` | `READ_DEPLOYMENTS` | Read |
+| Retrieve a deployment | `GET /projects/:id/deployments/:deployment_id` | `READ_DEPLOYMENTS` | Read |
+| Approve or reject a deployment | `POST /projects/:id/deployments/:deployment_id/approval` | `ADMIN_DEPLOYMENTS` | Read and write |
+| Create a deployment | `POST /projects/:id/deployments` | `ADMIN_DEPLOYMENTS`, `ADMIN_ENVIRONMENTS` | Read and write |
+| Delete a deployment | `DELETE /projects/:id/deployments/:deployment_id` | `ADMIN_DEPLOYMENTS` | Read and write |
+| Update a deployment | `PUT /projects/:id/deployments/:deployment_id` | `ADMIN_DEPLOYMENTS` | Read and write |
+
+### Environments endpoints
+
+| Permission | API endpoint | Permission name | Scope |
+| ---------- | ------------ | --------------- | ----- |
+| List all environments | `GET /projects/:id/environments` | `READ_ENVIRONMENTS` | Read |
+| Retrieve an environment | `GET /projects/:id/environments/:environment_id` | `READ_ENVIRONMENTS` | Read |
+| Create an environment | `POST /projects/:id/environments` | `ADMIN_ENVIRONMENTS` | Read and write |
+| Delete an environment | `DELETE /projects/:id/environments/:environment_id` | `ADMIN_ENVIRONMENTS` | Read and write |
+| Schedule multiple stopped review apps for deletion | `DELETE /projects/:id/environments/review_apps` | `ADMIN_ENVIRONMENTS` | Read and write |
+| Stop an environment | `POST /projects/:id/environments/:environment_id/stop` | `ADMIN_ENVIRONMENTS` | Read and write |
+| Stop stale environments | `POST /projects/:id/environments/stop_stale` | `ADMIN_ENVIRONMENTS` | Read and write |
+| Update an existing environment | `PUT /projects/:id/environments/:environment_id` | `ADMIN_ENVIRONMENTS` | Read and write |
+
+### Jobs endpoints
+
+| Permission | API endpoint | Permission name | Scope |
+| ---------- | ------------ | --------------- | ----- |
+| Download a specific file from artifacts archive | `GET /projects/:id/jobs/:job_id/artifacts/*artifact_path` | `READ_JOBS` | Read |
+| Download a specific file from artifacts archive from a ref | `GET /projects/:id/jobs/artifacts/:ref_name/raw/*artifact_path` | `READ_JOBS` | Read |
+| Download the artifacts archive from a job | `GET /projects/:id/jobs/:job_id/artifacts` | `READ_JOBS` | Read |
+| Download the artifacts file for job | `GET /jobs/:id/artifacts` | `READ_JOBS` | Read |
+| List all files in an artifacts archive | `GET /projects/:id/jobs/:job_id/artifacts/tree` | `READ_JOBS` | Read |
+| List all jobs by pipeline | `GET /projects/:id/pipelines/:pipeline_id/jobs` | `READ_JOBS` | Read |
+| List all jobs for a project | `GET /projects/:id/jobs` | `READ_JOBS` | Read |
+| Retrieve job artifacts | `GET /projects/:id/jobs/artifacts/:ref_name/download` | `READ_JOBS` | Read |
+
+### Merge requests endpoints
+
+| Permission | API endpoint | Permission name | Scope |
+| ---------- | ------------ | --------------- | ----- |
+| Get a list of merge request notes | `GET /projects/:id/merge_requests/:noteable_id/notes` | `READ_MERGE_REQUESTS` | Read |
+| Get a single merge request note | `GET /projects/:id/merge_requests/:noteable_id/notes/:note_id` | `READ_MERGE_REQUESTS` | Read |
+| List all project merge requests | `GET /projects/:id/merge_requests` | `READ_MERGE_REQUESTS` | Read |
+| Retrieve a merge request | `GET /projects/:id/merge_requests/:merge_request_iid` | `READ_MERGE_REQUESTS` | Read |
+
+### Packages endpoints
+
+| Permission | API endpoint | Permission name | Scope |
+| ---------- | ------------ | --------------- | ----- |
+| Composer package endpoint to download a package archive | `GET /projects/:id/packages/composer/archives/*package_name` | `READ_PACKAGES` | Read |
+| Download a package file | `GET /projects/:id/packages/:package_id/package_files/:package_file_id/download` | `READ_PACKAGES` | Read |
+| Download module file | `GET /projects/:id/packages/go/*module_name/@v/:module_version.mod` | `READ_PACKAGES` | Read |
+| Download module source | `GET /projects/:id/packages/go/*module_name/@v/:module_version.zip` | `READ_PACKAGES` | Read |
+| Download package file | `GET /projects/:id/packages/generic/:package_name/*package_version/(*path/):file_name` | `READ_PACKAGES` | Read |
+| Download package files | `GET /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name` | `READ_PACKAGES` | Read |
+| Download package files | `GET /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name` | `READ_PACKAGES` | Read |
+| Download recipe files | `GET /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name` | `READ_PACKAGES` | Read |
+| Download recipe files | `GET /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name` | `READ_PACKAGES` | Read |
+| Download the NPM tarball | `GET /projects/:id/packages/npm/*package_name/-/*file_name` | `READ_PACKAGES` | Read |
+| Download the maven package file at a group level | `GET /groups/:id/-/packages/maven/*path/:file_name` | `READ_PACKAGES` | Read |
+| Download the maven package file at a project level | `GET /projects/:id/packages/maven/*path/:file_name` | `READ_PACKAGES` | Read |
+| Download the maven package file at instance level | `GET /packages/maven/*path/:file_name` | `READ_PACKAGES` | Read |
+| Get all tags for a given an NPM package | `GET /groups/:id/-/packages/npm/-/package/*package_name/dist-tags` | `READ_PACKAGES` | Read |
+| Get all tags for a given an NPM package | `GET /packages/npm/-/package/*package_name/dist-tags` | `READ_PACKAGES` | Read |
+| Get all tags for a given an NPM package | `GET /projects/:id/packages/npm/-/package/*package_name/dist-tags` | `READ_PACKAGES` | Read |
+| List | `GET /projects/:id/packages/go/*module_name/@v/list` | `READ_PACKAGES` | Read |
+| List all package files | `GET /projects/:id/packages/:package_id/package_files` | `READ_PACKAGES` | Read |
+| List all package files | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/revisions/:package_revision/files` | `READ_PACKAGES` | Read |
+| List all package revisions | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/revisions` | `READ_PACKAGES` | Read |
+| List all packages for a project | `GET /projects/:id/packages` | `READ_PACKAGES` | Read |
+| List all packages for a project | `GET /projects/:id/packages/pypi/simple` | `READ_PACKAGES` | Read |
+| List all recipe files | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/files` | `READ_PACKAGES` | Read |
+| List all recipe revisions | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions` | `READ_PACKAGES` | Read |
+| NPM registry bulk advisory endpoint | `POST /groups/:id/-/packages/npm/-/npm/v1/security/advisories/bulk` | `READ_PACKAGES` | Read |
+| NPM registry bulk advisory endpoint | `POST /packages/npm/-/npm/v1/security/advisories/bulk` | `READ_PACKAGES` | Read |
+| NPM registry bulk advisory endpoint | `POST /projects/:id/packages/npm/-/npm/v1/security/advisories/bulk` | `READ_PACKAGES` | Read |
+| NPM registry metadata endpoint | `GET /projects/:id/packages/npm/*package_name` | `READ_PACKAGES` | Read |
+| NPM registry quick audit endpoint | `POST /groups/:id/-/packages/npm/-/npm/v1/security/audits/quick` | `READ_PACKAGES` | Read |
+| NPM registry quick audit endpoint | `POST /packages/npm/-/npm/v1/security/audits/quick` | `READ_PACKAGES` | Read |
+| NPM registry quick audit endpoint | `POST /projects/:id/packages/npm/-/npm/v1/security/audits/quick` | `READ_PACKAGES` | Read |
+| Package Digest | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/digest` | `READ_PACKAGES` | Read |
+| Package Digest | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/digest` | `READ_PACKAGES` | Read |
+| Package Download Urls | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/download_urls` | `READ_PACKAGES` | Read |
+| Package Download Urls | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/download_urls` | `READ_PACKAGES` | Read |
+| Package Snapshot | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference` | `READ_PACKAGES` | Read |
+| Package Snapshot | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference` | `READ_PACKAGES` | Read |
+| Package Upload Urls | `POST /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/upload_urls` | `READ_PACKAGES` | Read |
+| Package Upload Urls | `POST /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/upload_urls` | `READ_PACKAGES` | Read |
+| Recipe Digest | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/digest` | `READ_PACKAGES` | Read |
+| Recipe Digest | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/digest` | `READ_PACKAGES` | Read |
+| Recipe Download Urls | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/download_urls` | `READ_PACKAGES` | Read |
+| Recipe Download Urls | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/download_urls` | `READ_PACKAGES` | Read |
+| Recipe Snapshot | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel` | `READ_PACKAGES` | Read |
+| Recipe Snapshot | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel` | `READ_PACKAGES` | Read |
+| Recipe Upload Urls | `POST /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/upload_urls` | `READ_PACKAGES` | Read |
+| Recipe Upload Urls | `POST /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/upload_urls` | `READ_PACKAGES` | Read |
+| Retrieve a package file | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/revisions/:package_revision/files/:file_name` | `READ_PACKAGES` | Read |
+| Retrieve a project package | `GET /projects/:id/packages/:package_id` | `READ_PACKAGES` | Read |
+| Retrieve a recipe file | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/files/:file_name` | `READ_PACKAGES` | Read |
+| Retrieve latest package revision | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/latest` | `READ_PACKAGES` | Read |
+| Retrieve latest recipe revision | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/latest` | `READ_PACKAGES` | Read |
+| Retrieve package references metadata | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/search` | `READ_PACKAGES` | Read |
+| Retrieve package references metadata | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/search` | `READ_PACKAGES` | Read |
+| Retrieve package references metadata | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/search` | `READ_PACKAGES` | Read |
+| Retrieve package references metadata by recipe revision | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/search` | `READ_PACKAGES` | Read |
+| The PyPi Simple Project Package Endpoint | `GET /projects/:id/packages/pypi/simple/*package_name` | `READ_PACKAGES` | Read |
+| The PyPi package download endpoint | `GET /projects/:id/packages/pypi/files/:sha256/*file_identifier` | `READ_PACKAGES` | Read |
+| Version metadata | `GET /projects/:id/packages/go/*module_name/@v/:module_version.info` | `READ_PACKAGES` | Read |
+| Authorize NPM package upload | `PUT /projects/:id/packages/npm/:package_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Authorize the PyPi package upload from workhorse | `POST /projects/:id/packages/pypi/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Create a package | `POST /projects/:id/packages/composer` | `ADMIN_PACKAGES` | Read and write |
+| Create or Update the given tag for the given NPM package and version | `PUT /groups/:id/-/packages/npm/-/package/*package_name/dist-tags/:tag` | `ADMIN_PACKAGES` | Read and write |
+| Create or Update the given tag for the given NPM package and version | `PUT /packages/npm/-/package/*package_name/dist-tags/:tag` | `ADMIN_PACKAGES` | Read and write |
+| Create or Update the given tag for the given NPM package and version | `PUT /projects/:id/packages/npm/-/package/*package_name/dist-tags/:tag` | `ADMIN_PACKAGES` | Read and write |
+| Create or deprecate an NPM package | `PUT /projects/:id/packages/npm/:package_name` | `ADMIN_PACKAGES` | Read and write |
+| Delete Package | `DELETE /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel` | `ADMIN_PACKAGES` | Read and write |
+| Delete Package | `DELETE /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel` | `ADMIN_PACKAGES` | Read and write |
+| Delete a package file | `DELETE /projects/:id/packages/:package_id/package_files/:package_file_id` | `ADMIN_PACKAGES` | Read and write |
+| Delete a package revision | `DELETE /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/revisions/:package_revision` | `ADMIN_PACKAGES` | Read and write |
+| Delete a project package | `DELETE /projects/:id/packages/:package_id` | `ADMIN_PACKAGES` | Read and write |
+| Delete recipe revision | `DELETE /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision` | `ADMIN_PACKAGES` | Read and write |
+| Deletes the given tag | `DELETE /groups/:id/-/packages/npm/-/package/*package_name/dist-tags/:tag` | `ADMIN_PACKAGES` | Read and write |
+| Deletes the given tag | `DELETE /packages/npm/-/package/*package_name/dist-tags/:tag` | `ADMIN_PACKAGES` | Read and write |
+| Deletes the given tag | `DELETE /projects/:id/packages/npm/-/package/*package_name/dist-tags/:tag` | `ADMIN_PACKAGES` | Read and write |
+| Upload a package | `POST /projects/:id/packages/pypi` | `ADMIN_PACKAGES` | Read and write |
+| Upload a package file | `PUT /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/revisions/:package_revision/files/:file_name` | `ADMIN_PACKAGES` | Read and write |
+| Upload a recipe file | `PUT /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/files/:file_name` | `ADMIN_PACKAGES` | Read and write |
+| Upload package file | `PUT /projects/:id/packages/generic/:package_name/*package_version/(*path/):file_name` | `ADMIN_PACKAGES` | Read and write |
+| Upload package files | `PUT /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name` | `ADMIN_PACKAGES` | Read and write |
+| Upload package files | `PUT /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name` | `ADMIN_PACKAGES` | Read and write |
+| Upload recipe package files | `PUT /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name` | `ADMIN_PACKAGES` | Read and write |
+| Upload recipe package files | `PUT /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name` | `ADMIN_PACKAGES` | Read and write |
+| Upload the maven package file | `PUT /projects/:id/packages/maven/*path/:file_name` | `ADMIN_PACKAGES` | Read and write |
+| Workhorse authorize generic package file | `PUT /projects/:id/packages/generic/:package_name/*package_version/(*path/):file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Workhorse authorize the Conan package file | `PUT /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/revisions/:package_revision/files/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Workhorse authorize the Conan recipe file | `PUT /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/files/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Workhorse authorize the conan package file | `PUT /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Workhorse authorize the conan package file | `PUT /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Workhorse authorize the conan recipe file | `PUT /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Workhorse authorize the conan recipe file | `PUT /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Workhorse authorize the maven package file upload | `PUT /projects/:id/packages/maven/*path/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+
+### Pipelines endpoints
+
+| Permission | API endpoint | Permission name | Scope |
+| ---------- | ------------ | --------------- | ----- |
+| List all bridge jobs by pipeline | `GET /projects/:id/pipelines/:pipeline_id/bridges` | `READ_PIPELINES` | Read |
+| List all package pipelines | `GET /projects/:id/packages/:package_id/pipelines` | `READ_PIPELINES` | Read |
+| List all project pipelines | `GET /projects/:id/pipelines` | `READ_PIPELINES` | Read |
+| List all trigger jobs by pipeline | `GET /projects/:id/pipelines/:pipeline_id/trigger_jobs` | `READ_PIPELINES` | Read |
+| Retrieve a pipeline | `GET /projects/:id/pipelines/:pipeline_id` | `READ_PIPELINES` | Read |
+| Update pipeline metadata | `PUT /projects/:id/pipelines/:pipeline_id/metadata` | `ADMIN_PIPELINES` | Read and write |
+
+### Releases endpoints
+
+| Permission | API endpoint | Permission name | Scope |
+| ---------- | ------------ | --------------- | ----- |
+| Download a project release asset file | `GET /projects/:id/releases/:tag_name/downloads/*direct_asset_path` | `READ_RELEASES` | Read |
+| Generates a changelog section for a release and returns it | `GET /projects/:id/repository/changelog` | `READ_RELEASES` | Read |
+| Get the latest project release | `GET /projects/:id/releases/permalink/latest(/)(*suffix_path)` | `READ_RELEASES` | Read |
+| List all release links | `GET /projects/:id/releases/:tag_name/assets/links` | `READ_RELEASES` | Read |
+| List all releases in a project | `GET /projects/:id/releases` | `READ_RELEASES` | Read |
+| Retrieve a release by tag name | `GET /projects/:id/releases/:tag_name` | `READ_RELEASES` | Read |
+| Retrieve a release link | `GET /projects/:id/releases/:tag_name/assets/links/:link_id` | `READ_RELEASES` | Read |
+| Create a release | `POST /projects/:id/releases` | `ADMIN_RELEASES` | Read and write |
+| Create a release link | `POST /projects/:id/releases/:tag_name/assets/links` | `ADMIN_RELEASES` | Read and write |
+| Delete a release | `DELETE /projects/:id/releases/:tag_name` | `ADMIN_RELEASES` | Read and write |
+| Delete a release link | `DELETE /projects/:id/releases/:tag_name/assets/links/:link_id` | `ADMIN_RELEASES` | Read and write |
+| Generate release evidence | `POST /projects/:id/releases/:tag_name/evidence` | `ADMIN_RELEASES` | Read and write |
+| Publish a new component project release as version to the CI/CD catalog | `POST /projects/:id/catalog/publish` | `ADMIN_RELEASES` | Read and write |
+| Update a release | `PUT /projects/:id/releases/:tag_name` | `ADMIN_RELEASES` | Read and write |
+| Update a release link | `PUT /projects/:id/releases/:tag_name/assets/links/:link_id` | `ADMIN_RELEASES` | Read and write |
+
+### Repositories endpoints
+
+| Permission | API endpoint | Permission name | Scope |
+| ---------- | ------------ | --------------- | ----- |
+| Get a project repository tags | `GET /projects/:id/repository/tags` | `READ_REPOSITORIES` | Read |
+| Get a single repository tag | `GET /projects/:id/repository/tags/:tag_name` | `READ_REPOSITORIES` | Read |
+| List all merge requests for a commit | `GET /projects/:id/repository/commits/:sha/merge_requests` | `READ_REPOSITORIES` | Read |
+| List all repository branches | `GET /projects/:id/repository/branches` | `READ_REPOSITORIES` | Read |
+| Retrieve a commit | `GET /projects/:id/repository/commits/:sha` | `READ_REPOSITORIES` | Read |
+| Retrieve a raw file from a repository | `GET /projects/:id/repository/files/:file_path/raw` | `READ_REPOSITORIES` | Read |
+
+### Secure files endpoints
+
+| Permission | API endpoint | Permission name | Scope |
+| ---------- | ------------ | --------------- | ----- |
+| Download a secure file | `GET /projects/:id/secure_files/:secure_file_id/download` | `READ_SECURE_FILES` | Read |
+| List all secure files for a project | `GET /projects/:id/secure_files` | `READ_SECURE_FILES` | Read |
+| Retrieve details of a secure file | `GET /projects/:id/secure_files/:secure_file_id` | `READ_SECURE_FILES` | Read |
+| Create a secure file | `POST /projects/:id/secure_files` | `ADMIN_SECURE_FILES` | Read and write |
+| Delete a secure file | `DELETE /projects/:id/secure_files/:secure_file_id` | `ADMIN_SECURE_FILES` | Read and write |
+
+### Terraform state endpoints
+
+| Permission | API endpoint | Permission name | Scope |
+| ---------- | ------------ | --------------- | ----- |
+| Get a Terraform state by its name | `GET /projects/:id/terraform/state/:name` | `READ_TERRAFORM_STATE` | Read |
+| Get a Terraform state version | `GET /projects/:id/terraform/state/:name/versions/:serial` | `READ_TERRAFORM_STATE` | Read |
+| Add a new Terraform state or update an existing one | `POST /projects/:id/terraform/state/:name` | `ADMIN_TERRAFORM_STATE` | Read and write |
+| Delete a Terraform state of a certain name | `DELETE /projects/:id/terraform/state/:name` | `ADMIN_TERRAFORM_STATE` | Read and write |
+| Delete a Terraform state version | `DELETE /projects/:id/terraform/state/:name/versions/:serial` | `ADMIN_TERRAFORM_STATE` | Read and write |
+| Lock a Terraform state of a certain name | `POST /projects/:id/terraform/state/:name/lock` | `ADMIN_TERRAFORM_STATE` | Read and write |
+| Unlock a Terraform state of a certain name | `DELETE /projects/:id/terraform/state/:name/lock` | `ADMIN_TERRAFORM_STATE` | Read and write |
+
+### Work items endpoints
+
+| Permission | API endpoint | Permission name | Scope |
+| ---------- | ------------ | --------------- | ----- |
+| Get a list of project issues | `GET /projects/:id/issues` | `READ_WORK_ITEMS` | Read |
+| Get a single project issue | `GET /projects/:id/issues/:issue_iid` | `READ_WORK_ITEMS` | Read |
+
+## Unavailable API endpoints
+
+CI/CD job tokens cannot access the following endpoints:
+
+| Permission | API endpoint |
+| ---------- | ------------ |
+| Delete registry repository | `DELETE /projects/:id/registry/repositories/:repository_id` |
+| Delete multiple registry repository tags | `DELETE /projects/:id/registry/repositories/:repository_id/tags` |
+| Delete a registry repository tag | `DELETE /projects/:id/registry/repositories/:repository_id/tags/:tag_name` |
+| Composer packages endpoint at group level for package versions metadata | `GET /group/:id/-/packages/composer/*package_name` |
+| List all packages for a group | `GET /group/:id/-/packages/composer/p/:sha` |
+| Composer v2 packages p2 endpoint at group level for package versions metadata | `GET /group/:id/-/packages/composer/p2/*package_name` |
+| Retrieve repository URL templates | `GET /group/:id/-/packages/composer/packages` |
+| NPM registry metadata endpoint | `GET /groups/:id/-/packages/npm/*package_name` |
+| Download a package file from a group | `GET /groups/:id/-/packages/pypi/files/:sha256/*file_identifier` |
+| List all packages for a group | `GET /groups/:id/-/packages/pypi/simple` |
+| The PyPi Simple Group Package Endpoint | `GET /groups/:id/-/packages/pypi/simple/*package_name` |
+| Retrieve a job by job token | `GET /job` |
+| List all GitLab agents for Kubernetes by job token | `GET /job/allowed_agents` |
+| Search for a Conan package | `GET /packages/conan/v1/conans/search` |
+| Ping the Conan API | `GET /packages/conan/v1/ping` |
+| Retrieve an authentication token | `GET /packages/conan/v1/users/authenticate` |
+| Verify authentication credentials | `GET /packages/conan/v1/users/check_credentials` |
+| NPM registry metadata endpoint | `GET /packages/npm/*package_name` |
+| Search for a Conan package | `GET /projects/:id/packages/conan/v1/conans/search` |
+| Ping the Conan API | `GET /projects/:id/packages/conan/v1/ping` |
+| Retrieve an authentication token | `GET /projects/:id/packages/conan/v1/users/authenticate` |
+| Verify authentication credentials | `GET /projects/:id/packages/conan/v1/users/check_credentials` |
+| Search for a Conan package | `GET /projects/:id/packages/conan/v2/conans/search` |
+| Retrieve an authentication token | `GET /projects/:id/packages/conan/v2/users/authenticate` |
+| Verify authentication credentials | `GET /projects/:id/packages/conan/v2/users/check_credentials` |
+| List all registry repositories for a project | `GET /projects/:id/registry/repositories` |
+| List all registry repository tags for a project | `GET /projects/:id/registry/repositories/:repository_id/tags` |
+| Retrieve details of a registry repository tag | `GET /projects/:id/registry/repositories/:repository_id/tags/:tag_name` |
+| Transitions a DAST site validation to a new state. | `POST /internal/dast/site_validations/:id/transition` |
+| Issue a short-lived JWT for a single modular-service audience | `POST /token_exchange` |

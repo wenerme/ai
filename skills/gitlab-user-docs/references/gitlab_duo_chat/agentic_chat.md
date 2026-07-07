@@ -1,0 +1,477 @@
+# GitLab Duo Agentic Chat
+
+Use GitLab Duo Agentic Chat to answer complex questions and create or edit files autonomously.
+
+- Tier: [Free](../../subscriptions/gitlab_credits.md#for-the-free-tier), Premium, Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+
+### Model information
+
+- [Default LLM](../duo_agent_platform/model_selection.md#default-models)
+- Available on [GitLab Duo with self-hosted models](../../administration/gitlab_duo_self_hosted/_index.md)
+
+- VS Code [introduced on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/work_items/540917) in GitLab 18.1 as an [experiment](../../policy/development_stages_support.md) with a [flag](../../administration/feature_flags/_index.md) named `duo_agentic_chat`. Disabled by default.
+- VS Code [enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/196688) in GitLab 18.2.
+- GitLab UI [introduced on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/546140) in GitLab 18.2 [with flags](../../administration/feature_flags/_index.md) named `duo_workflow_workhorse` and `duo_workflow_web_chat_mutation_tools`. Both flags are enabled by default.
+- Feature flag `duo_agentic_chat` enabled by default in GitLab 18.2.
+- JetBrains IDEs [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-jetbrains-plugin/-/issues/1077) in GitLab 18.2.
+- Changed to beta in GitLab 18.2.
+- Visual Studio for Windows [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-visual-studio-extension/-/issues/245) in GitLab 18.3.
+- [Added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/201721) to GitLab Duo Core in GitLab 18.3.
+- Feature flags `duo_workflow_workhorse` and `duo_workflow_web_chat_mutation_tools` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/198487) in GitLab 18.4.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/19213) GitLab Duo Agent Platform on GitLab Self-Managed (both with [self-hosted models](../../administration/gitlab_duo_self_hosted/_index.md) and cloud-connected GitLab models) in GitLab 18.4 as an [experiment](../../policy/development_stages_support.md#experiment) with a [feature flag](../../administration/feature_flags/_index.md) named `self_hosted_agent_platform`. Disabled by default.
+- GitLab Duo Agent Platform on GitLab Self-Managed changed from experiment to [beta](https://gitlab.com/groups/gitlab-org/-/epics/19402) in GitLab 18.5.
+- [Updated default LLM](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/issues/1541) to Claude Sonnet 4.5 in GitLab 18.6.
+- Feature flag `self_hosted_agent_platform` [enabled](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/208951) in GitLab 18.7.
+- [Updated default LLM](https://gitlab.com/groups/gitlab-org/-/epics/19998) to Claude Haiku 4.5 in GitLab 18.7.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/581872) in GitLab 18.8 with [flags](../../administration/feature_flags/_index.md) named `agentic_chat_ga` and `ai_duo_agent_platform_ga_rollout_self_managed`. Both flags are enabled by default. Feature flag `duo_agentic_chat` removed.
+- Feature flags [`self_hosted_agent_platform`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/218589), [`agentic_chat_ga`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/219679), and [`ai_duo_agent_platform_ga_rollout_self_managed`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/219679) removed in GitLab 18.10.
+- Available on the Free tier on GitLab.com with GitLab Credits in GitLab 18.10.
+
+GitLab Duo Agentic Chat is an enhanced version of GitLab Duo Non-Agentic Chat. This new Chat can autonomously
+perform actions on your behalf, to help you answer complex questions more comprehensively.
+
+While the non-agentic Chat answers questions based on a single context, the agentic Chat searches,
+retrieves, and combines information from multiple sources across your GitLab projects
+to provide more thorough and relevant answers.
+
+Agentic Chat can:
+
+- Search projects to find relevant issues, merge requests, and other artifacts using keyword-based search (not semantic search).
+- Access files in your local project without manually specifying file paths.
+- Create and edit files in multiple locations.
+- Retrieve resources like issues, merge requests, and CI/CD pipelines.
+- Analyze multiple sources to provide complete answers.
+  Use [Model Context Protocol](../gitlab_duo/model_context_protocol/_index.md) to
+  connect to external data sources and tools.
+- Provide customized responses by using your customized rules.
+- Create commits, when you use Chat in the GitLab UI.
+
+<i class="fa-youtube-play" aria-hidden="true"></i>
+For an overview, see [GitLab Duo Chat (agentic)](https://youtu.be/uG9-QLAJrrg?si=c25SR7DoRAep7jvQ).
+
+## Use GitLab Duo Chat
+
+You can use GitLab Duo Chat in:
+
+- The GitLab UI.
+- VS Code.
+- A JetBrains IDE.
+- Visual Studio for Windows.
+
+### Use GitLab Duo Chat in the GitLab UI
+
+- Ability for Chat to remember your most recent conversation [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/203653) in GitLab 18.4.
+- New navigation and GitLab Duo sidebar introduced on GitLab.com in GitLab 18.6 with a [flag](../../administration/feature_flags/_index.md) named `paneled_view`. Enabled by default.
+- Previous navigation instructions removed in GitLab 18.7.
+- New navigation and GitLab Duo sidebar [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/574049) in GitLab 18.8. Feature flag `paneled_view` removed.
+
+Prerequisites:
+
+- Meet the [GitLab Duo Agent Platform prerequisites](../duo_agent_platform/_index.md#prerequisites).
+- Set a [default GitLab Duo namespace](../profile/preferences.md#set-a-default-gitlab-duo-namespace).
+
+To use Chat in the GitLab UI:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. On the GitLab Duo sidebar, select either **Add new chat** ()
+   or **Current GitLab Duo Chat** ().
+
+   If you have selected a new chat, from the dropdown list, select an agent.
+
+   A Chat conversation opens in the GitLab Duo sidebar on the right side of your screen.
+1. Under the chat text box, ensure the **Agentic** toggle is turned on.
+1. Enter your question in the chat text box and press <kbd>Enter</kbd> or select **Send**.
+   - You can provide additional [context](../duo_agent_platform/context.md#gitlab-duo-agentic-chat) for your chat.
+   - It might take a few seconds for the interactive AI chat to produce an answer.
+1. Optional. You can:
+   - Ask a follow-up question.
+   - Start [another conversation](#have-multiple-conversations).
+
+If you reload the webpage you are on, or go to another webpage, Chat remembers your
+most recent conversation, and that conversation is still active in the Chat drawer.
+
+### Use GitLab Duo Chat in VS Code
+
+Prerequisites:
+
+- [Install and configure the GitLab for VS Code extension](../../editor_extensions/visual_studio_code/setup.md) version 6.15.1 or later.
+- Meet the [GitLab Duo Agent Platform prerequisites](../duo_agent_platform/_index.md#prerequisites).
+- Set a [default GitLab Duo namespace](../profile/preferences.md#set-a-default-gitlab-duo-namespace).
+
+Turn on GitLab Duo Chat:
+
+1. In VS Code, open the Settings editor:
+   - For macOS, press <kbd>Command</kbd>+<kbd>,</kbd>.
+   - For Windows or Linux, press <kbd>Control</kbd>+<kbd>,</kbd>.
+1. Select **Extensions** > **GitLab** > **GitLab Duo**.
+1. Under **GitLab › Duo Agent Platform: Enabled**, select the
+   **Enable GitLab Duo Agent Platform** checkbox.
+
+Then, to use GitLab Duo Chat:
+
+1. In the left sidebar, select **GitLab Duo Agent Platform** ().
+1. Select the **Chat** tab.
+1. Select **Refresh page** if prompted.
+1. In the message box, enter your question and press <kbd>Enter</kbd> or select **Send**.
+
+### Use GitLab Duo Chat in JetBrains IDEs
+
+Prerequisites:
+
+- [Install and configure the GitLab Duo plugin for JetBrains IDEs](../../editor_extensions/jetbrains_ide/setup.md) version 3.11.1 or later.
+- Meet the [GitLab Duo Agent Platform prerequisites](../duo_agent_platform/_index.md#prerequisites).
+- Set a [default GitLab Duo namespace](../profile/preferences.md#set-a-default-gitlab-duo-namespace).
+
+Turn on GitLab Duo Chat:
+
+1. In your JetBrains IDE, go to **Settings** > **Tools** > **GitLab Duo**.
+1. Under **GitLab Duo Agent Platform**, select the **Enable GitLab Duo Agent Platform** checkbox.
+1. Restart your IDE if prompted.
+
+Then, to use GitLab Duo Chat:
+
+1. On the right tool window bar, select **GitLab Duo Agent Platform** ().
+1. Select the **Chat** tab.
+1. In the message box, enter your question and press <kbd>Enter</kbd> or select **Send**.
+
+### Use GitLab Duo Chat in Visual Studio
+
+Prerequisites:
+
+- Install and configure the [GitLab for Visual Studio extension](../../editor_extensions/visual_studio/setup.md) version 0.60.0 or later.
+- Meet the [GitLab Duo Agent Platform prerequisites](../duo_agent_platform/_index.md#prerequisites).
+- Set a [default GitLab Duo namespace](../profile/preferences.md#set-a-default-gitlab-duo-namespace).
+
+Turn on GitLab Duo Chat:
+
+1. In Visual Studio, go to **Tools** > **Options** > **GitLab**.
+1. Under **GitLab**, select **General**.
+1. For **Enable Agentic Duo Chat**, select **True**, and then **OK**.
+
+Then, to use GitLab Duo Chat:
+
+1. Select **Extensions** > **GitLab** > **Open Agentic Chat**.
+1. In the message box, enter your question and press **Enter**.
+
+## View the chat history
+
+- Chat history [introduced](https://gitlab.com/groups/gitlab-org/-/epics/17922) on IDEs in GitLab 18.2.
+- [Added](https://gitlab.com/gitlab-org/gitlab/-/issues/556875) for GitLab UI in GitLab 18.3.
+
+To view your chat history:
+
+- In the GitLab UI, on the GitLab Duo sidebar, select **GitLab Duo Chat history**
+  ().
+
+- In your IDE, in the upper-right corner of the message box, select
+  **Chat history** ().
+
+In the GitLab UI, all of the conversations in your chat history are visible.
+
+In your IDE, the last 20 conversations are visible. [Issue 1308](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/issues/1308) proposes to change this.
+
+## Have multiple conversations
+
+- Multiple conversations [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/556875) in GitLab 18.3.
+- Search capability for chat history in the GitLab UI [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/582513) in GitLab 18.9.
+
+You can have an unlimited number of simultaneous conversations with GitLab Duo Chat.
+
+Your conversations synchronize across GitLab Duo Chat in the GitLab UI and your IDE.
+
+1. Open GitLab Duo Chat in the GitLab UI or your IDE.
+1. Enter your question and press <kbd>Enter</kbd> or select **Send**.
+1. Create a new Chat conversation:
+
+   - In the GitLab UI, you can do either of the following:
+
+     - To create a new conversation with a specific agent:
+       1. On the GitLab Duo sidebar, select **Add new chat** ().
+       1. From the dropdown list, select an agent.
+     - To create a new conversation with the same agent as the existing conversation,
+       in the message box, type `/new` and press <kbd>Enter</kbd> or select **Send**.
+
+     A new Chat conversation replaces the existing one.
+   - Under the Chat text box, ensure the **Agentic** toggle is turned on.
+   - In your IDE, in the upper-right corner of the message box, select **New chat**
+     ().
+1. Enter your question and press <kbd>Enter</kbd> or select **Send**.
+1. To view all of your conversations, look at your [chat history](#view-the-chat-history).
+1. To switch between conversations, in your chat history, select the
+   appropriate conversation.
+1. To search for a specific conversation in the chat history:
+   - GitLab UI: In the **Search for a thread** text box, enter your search term.
+   - IDE: In the **Search chats** text box, enter your search term.
+
+Because of LLM context window limits, conversations are truncated to 200,000 tokens
+(roughly 800,000 characters) each.
+
+## Delete a conversation
+
+- Ability to delete a conversation [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/545289) in GitLab 18.2.
+
+1. In the GitLab UI or your IDE, select the [chat history](#view-the-chat-history).
+1. In the history, select **Delete this chat** ().
+
+Individual conversations expire and are automatically deleted after 30 days of inactivity.
+
+## Customize GitLab Duo Chat in your local environment
+
+Customize how GitLab Duo Chat behaves in your local environment by providing instructions that
+reflect your coding style, team practices, and project requirements.
+
+GitLab Duo Chat supports two approaches:
+
+- [Custom rules](../duo_agent_platform/customize/custom_rules.md) in `chat-rules.md`: For GitLab only.
+  Best for personal preferences and team standards.
+- [Shared rules in `AGENTS.md`](../duo_agent_platform/customize/agents_md.md): For GitLab and other AI
+  tools that support the `AGENTS.md` specification. Best for project context, monorepo organization,
+  and directory-specific conventions.
+
+You can use both files simultaneously. GitLab Duo Chat applies instructions from all available rule
+files.
+
+Learn more about how to [customize GitLab Duo](../duo_agent_platform/customize/_index.md).
+
+## Select a model
+
+- Offering: GitLab.com, GitLab Self-Managed
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/19251) in GitLab 18.4 as a [beta](../../policy/development_stages_support.md#beta) feature with a [flag](../../administration/feature_flags/_index.md) called `ai_user_model_switching`. Disabled by default.
+- [Enabled](https://gitlab.com/gitlab-org/gitlab/-/issues/560319) in GitLab 18.4.
+- [Available on GitLab Self-Managed](https://gitlab.com/groups/gitlab-org/-/epics/19344) in GitLab 18.6.
+- [Added](https://gitlab.com/groups/gitlab-org/-/epics/19345) to VS Code and JetBrains IDEs in GitLab 18.6.
+- Feature flag `ai_user_model_switching` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/214042) in GitLab 18.7.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/569140) in GitLab 18.8.
+
+When you use Chat in the GitLab UI, VS Code, or a JetBrains IDE, you can select
+the model to use for conversations.
+
+If you open a previous chat from the chat history and continue that conversation,
+Chat uses the model that you previously selected.
+
+If you select a new model when in an existing conversation, Chat creates a new
+conversation.
+
+Prerequisites:
+
+- The Owner of the top-level group has not selected a model for the GitLab Duo Agent Platform. If a [model has been selected for the group](../gitlab_duo/model_selection.md), you cannot change the model for Chat.
+- You must be using Chat in the top-level group. You cannot change the model if you access Chat in the organization.
+
+### Self-managed
+
+- The administrator has not selected a model for the instance. If a model has been selected for the instance,
+  you cannot change the model for Chat.
+- Your instance must be connected to the GitLab AI Gateway.
+
+To select a model:
+
+- In the GitLab UI:
+  1. Under the chat text box, ensure the **Agentic** toggle is turned on.
+  1. Select a model from the dropdown list.
+- In your IDE:
+  1. In the sidebar, select **GitLab Duo Agent Platform** ().
+  1. Select the **Chat** tab.
+  1. Select a model from the dropdown list.
+
+## Select an agent
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/562708) in GitLab 18.4.
+- [Added](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/merge_requests/2196) to VS Code and JetBrains IDEs in GitLab 18.5.
+
+When you use Chat in a project in the GitLab UI, VS Code, or a JetBrains IDE,
+you can select a specific agent for Chat to use.
+
+Prerequisites:
+
+- In your project, [an agent from the AI Catalog must be enabled](../duo_agent_platform/agents/custom.md#enable-an-agent).
+- You must be a member of the project the agent is enabled in.
+- For VS Code, [install and configure the GitLab for VS Code extension](../../editor_extensions/visual_studio_code/setup.md) version 6.49.12 or later.
+- For a JetBrains IDE, [install and configure the GitLab Duo plugin for JetBrains IDEs](../../editor_extensions/jetbrains_ide/setup.md) version 3.22.0 or later.
+
+To select an agent:
+
+1. In the GitLab UI or your IDE, open a new conversation in GitLab Duo Chat.
+1. In the GitLab UI, under the Chat text box, ensure the **Agentic** toggle is turned on.
+1. In the dropdown list, select an agent. If you have not set up any
+   agents, there is no dropdown list, and Chat uses the default GitLab Duo agent.
+1. Enter your question and press <kbd>Enter</kbd> or select **Send**.
+
+After you create a conversation with an agent:
+
+- The conversation remembers the agent you selected. You cannot select a different
+  agent for that conversation.
+- If you use the chat history to go back to the same conversation, it uses the same agent.
+- If you go back to a conversation and the associated agent is no longer available,
+  you cannot continue that conversation.
+
+## Prompt caching
+
+- Introduced in GitLab 18.7.
+
+Prompt caching is enabled by default, and only works when the selected Agentic
+Chat model is from Anthropic or is an Anthropic model served through Vertex.
+
+When prompt caching is enabled, chat prompt data is temporarily stored in memory
+by the model vendor.
+
+Prompt caching significantly improves latency by avoiding the
+re-processing of cached prompt and input data.
+
+You can [turn off prompt caching](../gitlab_duo/data_usage.md#turn-off-prompt-caching):
+
+- On GitLab.com: For a top-level group.
+- On GitLab Self-Managed: For an instance.
+
+This setting applies to all GitLab Duo Agent Platform features.
+
+## Tool approvals
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20519) in GitLab 19.0
+  - Introduced in [GitLab for VS Code](https://gitlab.com/gitlab-org/gitlab-vscode-extension/-/releases/v6.72.0) 6.72.0
+  - Introduced in [GitLab Duo plugin for JetBrains IDEs](https://gitlab.com/gitlab-org/editor-extensions/gitlab-jetbrains-plugin/-/releases/v3.33.0) 3.33.0
+  - Introduced in [GitLab Duo CLI](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v8.80.0) 8.80.0.
+- Pattern-based tool approval [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21850) in GitLab 19.1
+  - Introduced in [GitLab for VS Code](https://gitlab.com/gitlab-org/gitlab-vscode-extension/-/releases/v6.83.2) 6.83.2.
+  - Introduced in [GitLab Duo plugin for JetBrains IDEs](https://gitlab.com/gitlab-org/editor-extensions/gitlab-jetbrains-plugin/-/releases/v3.38.0) 3.38.0.
+  - Introduced in [GitLab Duo CLI](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v8.101.0) 8.101.0.
+
+Before Agentic Chat can use a tool on your behalf, it requires your approval.
+By default, each tool invocation requires approval.
+
+If you trust a tool and want to streamline your workflow, you can approve it
+once for the entire session instead.
+
+Session approvals apply to Chat only, not to flows.
+
+### Manage tool approvals
+
+Owners and administrators can control whether users can approve tools for a session. Settings cascade from instance to group to project.
+
+Configure one of the following options for a group or instance:
+
+- **On by default**: Users can approve tools once for a session. Groups and subgroups can turn this off.
+- **Off by default**: (default) Users must approve each tool invocation. Groups and subgroups can turn this on.
+- **Always off**: Users cannot approve tools for a session. Groups and subgroups cannot override this setting.
+
+#### Manage default settings
+
+Configure the default tool approval setting for your instance or top-level group.
+
+### GitLab.com
+
+Prerequisites:
+
+- The Owner role for the top-level group.
+
+To configure default tool approval settings:
+
+1. In the top bar, select **Search or go to** and find your group.
+1. Select **Settings** > **GitLab Duo**.
+1. From the **Tool approval for session** dropdown list, select your preferred option.
+
+### GitLab Self-Managed
+
+Prerequisites:
+
+- Administrator access.
+
+To configure default tool approval settings:
+
+1. In the upper-right corner, select **Admin**.
+1. Select **GitLab Duo**.
+1. From the **Tool approval for session** dropdown list, select your preferred option.
+
+### GitLab Dedicated
+
+Prerequisites:
+
+- Administrator access.
+
+To configure default tool approval settings:
+
+1. In the upper-right corner, select **Admin**.
+1. Select **GitLab Duo**.
+1. From the **Tool approval for session** dropdown list, select your preferred option.
+
+#### Manage group or project settings
+
+Configure tool approval settings for a specific group or project.
+
+Prerequisites:
+
+- The Owner role for the group, or the Maintainer role for the project.
+
+To configure tool approval settings:
+
+1. In the top bar, select **Search or go to** and find your group or project.
+1. Select **Settings** > **GitLab Duo**.
+1. For groups, from the **Tool approval for session** dropdown list, select your preferred option.
+1. For projects, select or clear the **Allow tool approval for session** checkbox.
+
+### Approve tools in your local environment
+
+Prerequisites:
+
+- Tool approvals are turned on for your group or instance.
+- For GitLab Duo Chat in your local environment, install and configure one of the following:
+  - [GitLab for VS Code](../../editor_extensions/visual_studio_code/setup.md) 6.72.0 or later. For pattern-based tool approval, 6.83.2 or later.
+  - [GitLab Duo plugin for JetBrains IDEs](../../editor_extensions/jetbrains_ide/setup.md) 3.33.0 or later. For pattern-based tool approval, 3.38.0 or later.
+  - [GitLab Duo CLI](../gitlab_duo_cli/_index.md) 8.80.0 or later. For pattern-based tool approval, 8.101.0 or later.
+
+To approve or deny a tool for your current session:
+
+1. When a tool approval prompt appears, select the dropdown next to the approval button.
+1. Select one of the following options:
+   - **Approve**: Chat can use the tool with these arguments once.
+   - **Approve for session**: Chat can use the tool with these arguments for the remainder of the
+     session. Different arguments require additional approval.
+   - **Approve all uses of this tool for session** (pattern or wildcard approval): Chat can use this
+     tool for the remainder of the session whenever the arguments match the approved pattern.
+     > [!note]
+     > If tool arguments contain shell metacharacters (`;`, `&&`, `|`, `$`, and others),
+     > pattern-based approval is not available. Use **Approve for session** instead.
+   - **Deny**: Chat cannot use the tool.
+
+All approvals reset when you start a new conversation.
+
+## Chat feature comparison
+
+| Capability                                              | GitLab Duo Non-Agentic Chat |                                                         GitLab Duo Agentic Chat                                                                                                           |
+| ------------                                            |------|                                                         -------------                                                                                                          |
+| Ask general programming questions |                       Yes  |                                                          Yes                                                                                                                   |
+| Get answers about an open file in the editor |     Yes  |                                                          Yes. Provide the path of the file in your question.                                                                   |
+| Provide context about specified files |                   Yes. Use `/include` to add a file to the conversation. <sup>1</sup> |        Yes. Provide the path of the file in your question.                                                                   |
+| Autonomously search project contents |                    No |                                                            Yes                                                                                                                   |
+| Autonomously create files and change files |              No |                                                            Yes. Ask it to change files. Note, it may overwrite changes that you have made manually and have not committed, yet.  |
+| Retrieve issues and MRs without specifying IDs |          No |                                                            Yes. Search by other criteria. For example, an MR or issue's title or assignee.                                       |
+| Combine information from multiple sources |               No |                                                            Yes                                                                                                                   |
+| Analyze pipeline logs |                                   Yes. Requires GitLab Duo Enterprise add-on. |                          Yes                                                                                                                   |
+| Restart a conversation |                                  Yes. Use `/new` or `/reset`. |                             Yes. Use `/new` or, if in the UI, `/reset`.                                                                                       |
+| Delete a conversation |                                   Yes, in the chat history.|                                             Yes, in the chat history                                                                                                            |
+| Create issues and MRs |                                   No |                                                            Yes                                                                                                                   |
+| Use Git read-only commands |                                                 No |                                                            Yes                                                  |
+| Use Git write commands |                                                 No |                                                            Yes, UI only                                                  |
+| Run Shell commands |                                      No |                                                            Yes, IDEs only                                                                                                        |
+| Run MCP tools |                                      No |                                                            Yes, IDEs only                                                                                                          |
+| Approve tools for a session |                        No |                                                            Yes, IDEs only                                                                                                          |
+
+**Footnotes**:
+
+1. Not available when using GitLab Duo Non-Agentic Chat in the Web IDE.
+
+## Troubleshooting
+
+When working with GitLab Duo Chat, you might encounter issues.
+
+For information on resolving these issues, see [Troubleshooting](troubleshooting.md).
+
+## Feedback
+
+Your feedback is valuable in helping us improve this feature.
+Share your experience in [issue 542198](https://gitlab.com/gitlab-org/gitlab/-/issues/542198).
+
+## Related topics
+
+- [Blog: GitLab Duo Chat gets agentic AI makeover](https://about.gitlab.com/blog/gitlab-duo-chat-gets-agentic-ai-makeover/)
