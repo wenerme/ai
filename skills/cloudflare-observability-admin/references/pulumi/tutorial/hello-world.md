@@ -60,13 +60,13 @@ A Pulumi program is code written in a [supported programming language ↗](https
 
 To create a program, select your language of choice and run the `pulumi` command:
 
-* [  JavaScript ](#tab-panel-9983)
-* [  TypeScript ](#tab-panel-9984)
-* [  Python ](#tab-panel-9985)
-* [ go ](#tab-panel-9986)
-* [ Java ](#tab-panel-9987)
-* [ .NET ](#tab-panel-9988)
-* [ YAML ](#tab-panel-9989)
+* [  JavaScript ](#tab-panel-10008)
+* [  TypeScript ](#tab-panel-10009)
+* [  Python ](#tab-panel-10010)
+* [ go ](#tab-panel-10011)
+* [ Java ](#tab-panel-10012)
+* [ .NET ](#tab-panel-10013)
+* [ YAML ](#tab-panel-10014)
 
 ```sh
 pulumi new javascript --name serverless-cloudflare --yes
@@ -155,13 +155,13 @@ You need to install the Cloudflare package for your language of choice in order 
 
 Install the Cloudflare package by running the following command:
 
-* [  JavaScript ](#tab-panel-9990)
-* [  TypeScript ](#tab-panel-9991)
-* [  Python ](#tab-panel-9992)
-* [ go ](#tab-panel-9993)
-* [ Java ](#tab-panel-9994)
-* [ .NET ](#tab-panel-9995)
-* [ YAML ](#tab-panel-9996)
+* [  JavaScript ](#tab-panel-10015)
+* [  TypeScript ](#tab-panel-10016)
+* [  Python ](#tab-panel-10017)
+* [ go ](#tab-panel-10018)
+* [ Java ](#tab-panel-10019)
+* [ .NET ](#tab-panel-10020)
+* [ YAML ](#tab-panel-10021)
 
 ```sh
 npm install @pulumi/cloudflare
@@ -242,13 +242,13 @@ The [Workers Script resource ↗](https://www.pulumi.com/registry/packages/cloud
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-9997)
-* [  TypeScript ](#tab-panel-9998)
-* [  Python ](#tab-panel-9999)
-* [ go ](#tab-panel-10000)
-* [ Java ](#tab-panel-10001)
-* [ .NET ](#tab-panel-10002)
-* [ YAML ](#tab-panel-10003)
+* [  JavaScript ](#tab-panel-10022)
+* [  TypeScript ](#tab-panel-10023)
+* [  Python ](#tab-panel-10024)
+* [ go ](#tab-panel-10025)
+* [ Java ](#tab-panel-10026)
+* [ .NET ](#tab-panel-10027)
+* [ YAML ](#tab-panel-10028)
 
 **Filename: `index.js`**
 
@@ -487,13 +487,13 @@ You will now add a [Workers Route resource ↗](https://www.pulumi.com/registry/
 
 Add the following code snippet to your entrypoint file **after** the Worker script resource:
 
-* [  JavaScript ](#tab-panel-10004)
-* [  TypeScript ](#tab-panel-10005)
-* [  Python ](#tab-panel-10006)
-* [ go ](#tab-panel-10007)
-* [ Java ](#tab-panel-10008)
-* [ .NET ](#tab-panel-10009)
-* [ YAML ](#tab-panel-10010)
+* [  JavaScript ](#tab-panel-10029)
+* [  TypeScript ](#tab-panel-10030)
+* [  Python ](#tab-panel-10031)
+* [ go ](#tab-panel-10032)
+* [ Java ](#tab-panel-10033)
+* [ .NET ](#tab-panel-10034)
+* [ YAML ](#tab-panel-10035)
 
 **Filename: `index.js`**
 
@@ -639,13 +639,13 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Route resource:
 
-* [  JavaScript ](#tab-panel-10011)
-* [  TypeScript ](#tab-panel-10012)
-* [  Python ](#tab-panel-10013)
-* [ go ](#tab-panel-10014)
-* [ Java ](#tab-panel-10015)
-* [ .NET ](#tab-panel-10016)
-* [ YAML ](#tab-panel-10017)
+* [  JavaScript ](#tab-panel-10036)
+* [  TypeScript ](#tab-panel-10037)
+* [  Python ](#tab-panel-10038)
+* [ go ](#tab-panel-10039)
+* [ Java ](#tab-panel-10040)
+* [ .NET ](#tab-panel-10041)
+* [ YAML ](#tab-panel-10042)
 
 **Filename: `index.js`**
 
@@ -780,13 +780,13 @@ You may need to use `http` instead depending on your domain settings.
 
 Confirm all your changes match the full solution below:
 
-* [  JavaScript ](#tab-panel-10018)
-* [  TypeScript ](#tab-panel-10019)
-* [  Python ](#tab-panel-10020)
-* [ go ](#tab-panel-10021)
-* [ Java ](#tab-panel-10022)
-* [ .NET ](#tab-panel-10023)
-* [ YAML ](#tab-panel-10024)
+* [  JavaScript ](#tab-panel-10043)
+* [  TypeScript ](#tab-panel-10044)
+* [  Python ](#tab-panel-10045)
+* [ go ](#tab-panel-10046)
+* [ Java ](#tab-panel-10047)
+* [ .NET ](#tab-panel-10048)
+* [ YAML ](#tab-panel-10049)
 
 **Filename: `index.js`**
 

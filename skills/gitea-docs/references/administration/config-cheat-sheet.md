@@ -173,6 +173,7 @@ In addition, there is _`StaticRootPath`_ which can be set as a built-in at build
 - `DEFAULT_TITLE_SOURCE`: **auto**: Default source for the pull request title when opening a new PR. Valid options:
   - `first-commit`: Uses the oldest commit's summary as the title. If there are multiple commits, still uses the first commit's message.
   - `auto`: Uses the commit's summary when the PR contains a single commit; when there are multiple commits, converts the branch name into a human-readable title by normalizing separators and casing.
+  - `branch-name`: Always uses the PR's branch name.
 
 ### Repository - Issue (`repository.issue`)
 

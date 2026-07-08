@@ -340,8 +340,8 @@ If any entrypoint contains a Bun shebang (`#!/usr/bin/env bun`), the bundler def
 
 When using `target: "bun"` and `format: "cjs"` together, the `// @bun @bun-cjs` pragma is added and the CommonJS wrapper function is not compatible with Node.js.
 
-  For bundles that run in Node.js. Prioritizes the `"node"` export condition when resolving imports, and outputs `.mjs`.
-  Bun does not polyfill the `Bun` global or the built-in `bun:*` modules.
+  For bundles that run in Node.js. Prioritizes the `"node"` export condition when resolving imports. Bun does not
+  polyfill the `Bun` global or the built-in `bun:*` modules.
 
 ### format
 
@@ -632,8 +632,6 @@ The associated `*.js.map` sourcemap is a JSON file containing an equivalent `deb
 ### minify
 
 Whether to enable minification. Default `false`.
-
-When targeting `bun`, identifiers are minified by default.
 
 To enable all minification options:
 
@@ -1336,7 +1334,7 @@ interface BuildOutput {
 }
 
 interface BuildArtifact extends Blob {
-  kind: "entry-point" | "chunk" | "asset" | "sourcemap";
+  kind: "entry-point" | "chunk" | "asset" | "sourcemap" | "bytecode";
   path: string;
   loader: Loader;
   hash: string | null;
@@ -1569,7 +1567,7 @@ interface BuildConfig {
         asset?: string;
       };
   root?: string; // project root
-  splitting?: boolean; // default true, enable code splitting
+  splitting?: boolean; // default false, enable code splitting
   plugins?: BunPlugin[];
   external?: string[];
   packages?: "bundle" | "external";

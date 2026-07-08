@@ -42,9 +42,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-7635)
-* [ API ](#tab-panel-7636)
-* [ Terraform ](#tab-panel-7637)
+* [ Dashboard ](#tab-panel-7699)
+* [ API ](#tab-panel-7700)
+* [ Terraform ](#tab-panel-7701)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -170,7 +170,7 @@ You can only enable browser-based RDP on domains and subdomains, not for specifi
 10. Under **Access policies**, add an existing policy or [create a new policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) to control who can connect to your application. All Access applications are deny by default -- a user must match an Allow policy before they are granted access.
 Note
 Ensure that only **Allow** or **Block** policies are present. **Bypass** and **Service Auth** are not supported for browser-rendered applications.
-11. (Optional) In your Access policy, configure [clipboard controls](#clipboard-controls) to restrict copy and paste actions between the user's local machine and the browser-based RDP session.
+11. (Optional) In your Access policy, configure [connection settings](#connection-settings) to restrict clipboard and file transfer actions between the user's local machine and the browser-based RDP session.
 12. Configure how users will authenticate:
 
   1. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.
@@ -228,50 +228,53 @@ Virtual network ID
 `vnet-id` refers to the [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) (VNET) that the RDP target is assigned to in your Cloudflare Tunnel configuration. If you did not specify a VNET when routing the target through Cloudflare Tunnel, the target is automatically added to the default VNET.
 To fetch a list of all VNETs and their IDs, make a `GET` request to the [List Virtual Networks](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/virtual%5Fnetworks/methods/list/) endpoint. The default VNET will have the parameter `"is_default_network": true`.
 4. Select the port that you want to connect to. The port selection screen only appears if the Access application allows RDP traffic on multiple ports (for example, port `3389` and port `65321`).
-5. (Optional) In your browser settings, allow the Access application to access the clipboard. Clipboard access is subject to [policy restrictions](#configure-clipboard-controls) configured by your administrator.
+5. (Optional) In your browser settings, allow the Access application to access the clipboard. Clipboard access is subject to [policy restrictions](#configure-connection-settings) configured by your administrator.
 Note
 Automatic clipboard sharing only works by default in Chromium-based browsers; Firefox requires additional configuration. Refer to [Known limitations](#known-limitations) for details.
 6. Enter your Windows username and password. For more information on how to format your username, refer to [User identifier formats](#user-identifier-formats).
 
 You now have access to the remote Windows desktop.
 
-## Clipboard controls
+## Connection settings
 
-Clipboard controls allow you to restrict whether users can copy or paste text between their local machine and the browser-based RDP session. They are are configured per policy within your Access application. You can configure different clipboard permissions for different groups of users by creating multiple policies.
+Connection settings restrict data transfer between the user's local machine and the browser-based RDP session. You can control text (copy and paste) and file transfers. Text controls manage clipboard content. File controls Beta manage file uploads and downloads. These controls are configured per policy, so you can grant different permissions to different groups of users.
 
 ### Default behavior
 
-* **New policies**: Clipboard access is denied by default. You must explicitly allow clipboard actions.
-* **Existing applications**: Access applications for browser-based RDP created before this feature was available retain full clipboard access to preserve backward compatibility.
+For new policies, both text controls and file controls are denied by default. You must explicitly allow each action. Existing applications retain full text clipboard access for backward compatibility. File controls are denied unless explicitly enabled.
 
 ### Available settings
 
-For each Access policy, you can choose one of the following clipboard control options:
+Text controls and file controls use the same directional options:
 
-| Setting                                | Description                                                                                                |
-| -------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| _Client to remote RDP session allowed_ | Users can copy and paste text from their local client into the browser-based RDP session.                  |
-| _Remote RDP session to client allowed_ | Users can copy and paste text from the browser-based RDP session to their local client.                    |
-| _Both directions allowed_              | Users can copy and paste text between the browser-based RDP session and their local client.                |
-| _Off_                                  | Users are not allowed to copy and paste text between the browser-based RDP session and their local client. |
+| Setting                                | Description                                                                                          |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| _Client to remote RDP session allowed_ | Users can transfer data from their local client into the browser-based RDP session.                  |
+| _Remote RDP session to client allowed_ | Users can transfer data from the browser-based RDP session to their local client.                    |
+| _Both directions allowed_              | Users can transfer data in both directions.                                                          |
+| _Disable copying/pasting_              | Users are not allowed to transfer data between the browser-based RDP session and their local client. |
 
-When a user attempts a restricted clipboard action, the clipboard content is replaced with a message informing them that the action is not allowed.
+For example, you can allow text copy and paste in both directions while restricting file transfers to uploads only.
 
-### Configure clipboard controls
+When a user attempts a restricted clipboard action, the clipboard content is replaced with a message informing them that the action is not allowed. When file transfer is restricted, upload methods are disabled and download buttons do not appear in the control panel.
 
-* [ Dashboard ](#tab-panel-7632)
-* [ API ](#tab-panel-7633)
-* [ Terraform ](#tab-panel-7634)
+### Configure connection settings
+
+* [ Dashboard ](#tab-panel-7696)
+* [ API ](#tab-panel-7697)
+* [ Terraform ](#tab-panel-7698)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.
 3. Select the **Policies** tab.
 4. Create a new policy or select an existing policy to edit.
 5. Expand **Connection context**.
-6. Under **RDP data flow control**, choose a **Text clipboard control** setting. Refer to [Available settings](#available-settings) for setting descriptions.
+6. Under **Connection settings**, configure the following settings:
+  * **Text controls** — Select a directional setting for text copy and paste.
+  * **File controls** — Select a directional setting for file uploads and downloads.
 7. Select **Save policy**.
 
-When [creating or updating an Access policy](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/policies/) for an RDP application, configure the allowed copy/paste formats in each direction. For example, the following policy allows users to copy text from their local client into the browser-based RDP session, but blocks copying content out of the RDP session.
+When [creating or updating an Access policy](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/policies/) for an RDP application, configure the allowed formats in each direction. Use `text` for text clipboard and `file` for file transfer. For example, the following policy allows text clipboard in both directions but only allows file uploads (local to remote).
 
 Required API token permissions
 
@@ -285,7 +288,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
   --request POST \
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
   --json '{
-    "name": "Allow engineers with restricted clipboard",
+    "name": "Allow engineers with clipboard and upload",
     "decision": "allow",
     "include": [
         {
@@ -297,20 +300,23 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
     "connection_rules": {
         "rdp": {
             "allowed_clipboard_local_to_remote_formats": [
-                "text"
+                "text",
+                "file"
             ],
-            "allowed_clipboard_remote_to_local_formats": []
+            "allowed_clipboard_remote_to_local_formats": [
+                "text"
+            ]
         }
     }
   }'
 ```
 
-Using the `connection_rules` attribute within a [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource, configure the allowed copy/paste formats in each direction. For example, the following policy allows users to copy text from their local client into the browser-based RDP session, but blocks copying content out of the RDP session.
+Using the `connection_rules` attribute within a [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource, configure the allowed formats in each direction. Use `text` for text clipboard and `file` for file transfer. For example, the following policy allows text clipboard in both directions but only allows file uploads (local to remote).
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "rdp-policy" {
   account_id = var.cloudflare_account_id
-  name       = "Allow engineers with restricted clipboard"
+  name       = "Allow engineers with clipboard and upload"
   decision   = "allow"
 
 
@@ -325,12 +331,46 @@ resource "cloudflare_zero_trust_access_policy" "rdp-policy" {
 
   connection_rules = {
     rdp = {
-      allowed_clipboard_local_to_remote_formats = ["text"]
-      allowed_clipboard_remote_to_local_formats = []
+      allowed_clipboard_local_to_remote_formats = ["text", "file"]
+      allowed_clipboard_remote_to_local_formats = ["text"]
     }
   }
 }
 ```
+
+### Transfer files Beta
+
+To manage transfers, select the settings gear icon on the left side of the RDP session. You can drag this icon along the left edge to reposition it.
+
+File transfer has the following limits:
+
+* **Maximum file size:** 2 GB per file (upload and download)
+* **Maximum files per upload:** 1,000 files
+
+#### Upload files (local to remote)
+
+To transfer files from your local machine to the remote Windows session, drag files onto the browser window or use the control panel. Drag and drop supports individual files and folders (including subfolders, up to 1,000 total entries). The control panel file picker selects individual files only. Files land on the active element of the remote desktop. For example, if you have a folder open in File Explorer, the file lands in that folder.
+
+#### Download files (remote to local)
+
+To transfer files from the remote Windows session to your local machine:
+
+1. In the remote Windows session, copy the file you want to download. Right-click the file and select **Copy**, or select the file and press **Ctrl+C**.
+2. The control panel icon does a small hop to indicate that a file is available. Open the control panel to view the file.
+3. Select one of the following options:
+  * **Download**: Download the file to your local machine.
+  * **Download zip**: Download multiple files at once as a zipped folder to your local machine.
+  * **Print** (PDF files only): Print the file to a local printer on your network.
+
+Note
+
+Printing to a local printer is available for PDF files in Chromium-based browsers and Firefox. In Safari, download the PDF and print from your system viewer.
+
+#### Limitations
+
+* Transfer history is discarded when the RDP session ends.
+* The remote Windows server must support file transfer via the RDP clipboard virtual channel. Windows Server 2012 and later support this by default.
+* If the remote server does not support file transfer, text clipboard continues to work normally.
 
 ## Compatibility
 
@@ -427,9 +467,9 @@ Google tag gateway is configured at the zone level and cannot be scoped to speci
 * **Device authentication identity**: Since browser-based RDP traffic does not go through the Cloudflare One Client, users cannot use their [Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/#configure-warp-sessions-in-access) to authenticate.
 * **Audio over RDP**: Users cannot use their microphone and speaker to interact with the remote machine.
 * **Clipboard size limit**: Data copied between the local machine and the browser-based RDP session may not exceed 500 KB.
-* **Clipboard data types**: Clipboard controls only support text data. Image and file clipboard transfers are not supported.
-* **File transfers**: Users cannot transfer files from their local machine to the remote machine and vice versa.
-* **Print to local printer**: Users cannot print information from their browser-based RDP session to a printer in their local network.
+* **Clipboard data types**: Text clipboard controls only support text data. Image clipboard transfers are not supported.
+* **File transfer availability**: File transfer is in beta. Refer to [Transfer files](#transfer-files) for supported functionality and limitations.
+* **Print to local printer**: Local printing from a browser-based RDP session is only supported for PDF files through the [file transfer control panel](#download-files-remote-to-local).
 * **Network Level Authentication for Entra-joined accounts**: Browser-based RDP does not support PKU2U authentication which is required for [Network Level Authentication (NLA) ↗](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/remotepc/remote-desktop-allow-access#why-allow-connections-only-with-network-level-authentication) with Entra-joined accounts. Connecting to Entra-joined accounts requires disabling enforcement of NLA on the remote Windows machine. You can disable NLA from **Settings** \> **System** \> **Remote Desktop**, or use the Local Group Policy Editor to disable **Require user authentication for remote connections by using Network Level Authentication**.
 * **Clipboard browser compatibility**: Automatic clipboard sharing between the local and remote machine is only available in Chromium-based browsers by default (Google Chrome, Microsoft Edge, Opera, Brave). To enable this functionality in Firefox:
   1. Type `about:config` into the browser address bar and press **Enter**.
@@ -439,6 +479,6 @@ Google tag gateway is configured at the zone level and cannot be scoped to speci
   5. Search for `dom.events.asyncClipboard.readText` and set it to `true`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#page","headline":"Connect to RDP in a browser · Cloudflare One docs","description":"Connect to RDP in a browser in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RDP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#page","headline":"Connect to RDP in a browser · Cloudflare One docs","description":"Connect to RDP in a browser in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RDP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/","name":"RDP"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/","name":"Connect to RDP in a browser"}}]}
 ```

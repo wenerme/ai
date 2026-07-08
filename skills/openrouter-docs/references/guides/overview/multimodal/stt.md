@@ -182,6 +182,38 @@ MODEL: 'openai/whisper-1'
 | `temperature`        | number | No       | Sampling temperature between 0 and 1. Lower values produce more deterministic results |
 | `provider`           | object | No       | Provider-specific passthrough configuration                                           |
 
+### OpenAI-Compatible Multipart Requests
+
+The endpoint also accepts OpenAI-style `multipart/form-data` requests, so clients built for OpenAI's `/v1/audio/transcriptions` (including the official OpenAI SDKs) work by pointing their base URL at `https://openrouter.ai/api/v1`:
+
+```python title="OpenAI SDK (Python)" lines theme={null}
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key="<OPENROUTER_API_KEY>",
+)
+
+with open("audio.wav", "rb") as f:
+    result = client.audio.transcriptions.create(
+        model="openai/whisper-large-v3",
+        file=f,
+    )
+
+print(result.text)
+```
+
+```bash title="cURL (multipart)" lines theme={null}
+curl https://openrouter.ai/api/v1/audio/transcriptions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -F file="@audio.wav" \
+  -F model="openai/whisper-large-v3"
+```
+
+The `file`, `model`, `language`, and `temperature` fields are supported. `prompt` and `timestamp_granularities` are accepted but ignored. `response_format` may only be `json` (the default); `text`, `srt`, `vtt`, and `verbose_json` are rejected with a 400.
+
+Multipart uploads are limited to 25 MB, the same cap OpenAI enforces. For compressed formats this covers long recordings — roughly 26 minutes of 128 kbps MP3, 52 minutes at 64 kbps, or over 2 hours of 24 kbps Opus voice notes. Uncompressed WAV fills the cap much faster (about 13 minutes at 16 kHz mono); prefer `mp3` or `opus` for long recordings. Larger files should be sent as base64 JSON via `input_audio`, which supports streaming offload — and recordings longer than about a minute of processing time should be split anyway, since upstream providers time out after 60 seconds per request.
+
 ### Provider-Specific Options
 
 You can pass provider-specific options using the `provider` parameter. Options are keyed by provider slug, and only the options for the matched provider are forwarded:

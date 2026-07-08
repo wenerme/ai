@@ -46,6 +46,7 @@ After you configure the BigQuery data source, you can:
 - Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
 - Set up [Alerting](/docs/plugins/grafana-bigquery-datasource/latest/alerting/) rules based on your BigQuery data.
 - Use [Explore](/docs/grafana/latest/explore/) to investigate your BigQuery data without building a dashboard.
+- Build queries with [Grafana Assistant](/docs/plugins/grafana-bigquery-datasource/latest/query-editor/#query-with-grafana-assistant) when it’s available in your Grafana instance.
 
 ## Pre-built dashboards
 

@@ -40,10 +40,15 @@ For a large monorepo, start with one meaningful product or service boundary.
 
 </WorkflowSteps>
 
-Repository-specific guidance in `AGENTS.md` can also establish the product
-surfaces, trust boundaries, supported validation commands, and out-of-scope
-areas. Prefer concrete repository context over a generic planning step before
-the scan.
+For persistent repository security guidance, add a `SECURITY.md` at the
+repository root. Use it to describe the threat model, security invariants,
+reportable finding criteria, exclusions, and severity context. For
+directory-specific guidance, add nested `SECURITY.md` files. When policies
+conflict, the file closest to the code takes precedence. Codex Security treats
+this content as policy context, not executable instructions.
+
+Use `AGENTS.md` for supported build and validation commands and other
+repository-specific instructions.
 
 ## Let the phases complete
 

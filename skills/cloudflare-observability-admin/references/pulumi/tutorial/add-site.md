@@ -60,13 +60,13 @@ A Pulumi program is code written in a [supported programming language ↗](https
 
 To create a program, select your language of choice and run the `pulumi` command:
 
-* [  JavaScript ](#tab-panel-9914)
-* [  TypeScript ](#tab-panel-9915)
-* [  Python ](#tab-panel-9916)
-* [ go ](#tab-panel-9917)
-* [ Java ](#tab-panel-9918)
-* [ .NET ](#tab-panel-9919)
-* [ YAML ](#tab-panel-9920)
+* [  JavaScript ](#tab-panel-9980)
+* [  TypeScript ](#tab-panel-9981)
+* [  Python ](#tab-panel-9982)
+* [ go ](#tab-panel-9983)
+* [ Java ](#tab-panel-9984)
+* [ .NET ](#tab-panel-9985)
+* [ YAML ](#tab-panel-9986)
 
 ```sh
 pulumi new javascript --name addsite-cloudflare --yes
@@ -155,13 +155,13 @@ You need to install the Cloudflare package for your language of choice in order 
 
 Install the Cloudflare package by running the following command:
 
-* [  JavaScript ](#tab-panel-9921)
-* [  TypeScript ](#tab-panel-9922)
-* [  Python ](#tab-panel-9923)
-* [ go ](#tab-panel-9924)
-* [ Java ](#tab-panel-9925)
-* [ .NET ](#tab-panel-9926)
-* [ YAML ](#tab-panel-9927)
+* [  JavaScript ](#tab-panel-9987)
+* [  TypeScript ](#tab-panel-9988)
+* [  Python ](#tab-panel-9989)
+* [ go ](#tab-panel-9990)
+* [ Java ](#tab-panel-9991)
+* [ .NET ](#tab-panel-9992)
+* [ YAML ](#tab-panel-9993)
 
 ```sh
 npm install @pulumi/cloudflare
@@ -242,13 +242,13 @@ A domain, or site, is known as a Zone in Cloudflare. In Pulumi, the [Zone resour
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-9928)
-* [  TypeScript ](#tab-panel-9929)
-* [  Python ](#tab-panel-9930)
-* [ go ](#tab-panel-9931)
-* [ Java ](#tab-panel-9932)
-* [ .NET ](#tab-panel-9933)
-* [ YAML ](#tab-panel-9934)
+* [  JavaScript ](#tab-panel-9994)
+* [  TypeScript ](#tab-panel-9995)
+* [  Python ](#tab-panel-9996)
+* [ go ](#tab-panel-9997)
+* [ Java ](#tab-panel-9998)
+* [ .NET ](#tab-panel-9999)
+* [ YAML ](#tab-panel-10000)
 
 **Filename: `index.js`**
 
@@ -484,13 +484,13 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Zone resource definition:
 
-* [  JavaScript ](#tab-panel-9935)
-* [  TypeScript ](#tab-panel-9936)
-* [  Python ](#tab-panel-9937)
-* [ go ](#tab-panel-9938)
-* [ Java ](#tab-panel-9939)
-* [ .NET ](#tab-panel-9940)
-* [ YAML ](#tab-panel-9941)
+* [  JavaScript ](#tab-panel-10001)
+* [  TypeScript ](#tab-panel-10002)
+* [  Python ](#tab-panel-10003)
+* [ go ](#tab-panel-10004)
+* [ Java ](#tab-panel-10005)
+* [ .NET ](#tab-panel-10006)
+* [ YAML ](#tab-panel-10007)
 
 **Filename: `index.js`**
 

@@ -10778,10 +10778,10 @@
   "codex-docs/security/plugin/scans.md": {
     "url": "https://developers.openai.com/codex/security/plugin/scans.md",
     "skill": "codex-docs",
-    "etag": "W/\"9e95aa56f8b0fd152df8aff8696caffb\"",
-    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
-    "size": 4861,
-    "updatedAt": "2026-06-19T00:52:54.082Z"
+    "etag": "W/\"8d0eb0149940ffb267681d4a23017ba8\"",
+    "lastModified": "Wed, 08 Jul 2026 01:55:41 GMT",
+    "size": 5156,
+    "updatedAt": "2026-07-08T03:46:55.128Z"
   },
   "codex-docs/security/plugin/triage-backlog.md": {
     "url": "https://developers.openai.com/codex/security/plugin/triage-backlog.md",

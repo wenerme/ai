@@ -52,10 +52,10 @@ Choosing the NLWeb Website option extends a normal AI Search by tailoring it for
 
 Your deployed Worker provides two endpoints:
 
-* `/ask` — NLWeb’s standard conversational endpoint
+* `/ask`: NLWeb’s standard conversational endpoint
   * Powers the conversational UI at the root (`/`)
   * Powers the embeddable preview widget (`/snippet.html`)
-* `/mcp` — NLWeb’s MCP server endpoint for trusted AI agents
+* `/mcp`: NLWeb’s MCP server endpoint for trusted AI agents
 
 These endpoints give both people and agents structured access to your content.
 
@@ -65,26 +65,26 @@ You can use the embeddable snippet to add a search UI directly into your website
 
 ```html
 <!-- Add css on head -->
-    <link rel="stylesheet" href="https://ask.example.com/nlweb-dropdown-chat.css">
-    <link rel="stylesheet" href="https://ask.example.com/common-chat-styles.css">
+<link rel="stylesheet" href="https://ask.example.com/nlweb-dropdown-chat.css" />
+<link rel="stylesheet" href="https://ask.example.com/common-chat-styles.css" />
 
 
-    <!-- Add container on body -->
-    <div id="docs-search-container"></div>
+<!-- Add container on body -->
+<div id="docs-search-container"></div>
 
 
-    <!-- Include JavaScript -->
-    <script type="module">
-      import { NLWebDropdownChat } from 'https://ask.example.com/nlweb-dropdown-chat.js';
+<!-- Include JavaScript -->
+<script type="module">
+  import { NLWebDropdownChat } from "https://ask.example.com/nlweb-dropdown-chat.js";
 
 
-      const chat = new NLWebDropdownChat({
-        containerId: 'docs-search-container',
-        site: 'https://ask.example.com',
-        placeholder: 'Search for docs...',
-        endpoint: 'https://ask.example.com'
-      });
-    </script>
+  const chat = new NLWebDropdownChat({
+    containerId: "docs-search-container",
+    site: "https://ask.example.com",
+    placeholder: "Search for docs...",
+    endpoint: "https://ask.example.com",
+  });
+</script>
 ```
 
 This lets you serve conversational AI search directly from your own domain, with control over how people and agents access your content.
@@ -109,6 +109,6 @@ The simplest way to apply changes or updates is to redeploy the Worker template:
 Now you can use this Worker as the new NLWeb endpoint for your website.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/nlweb/#page","headline":"NLWeb · Cloudflare AI Search docs","description":"Deploy NLWeb with AI Search to enable conversational natural language queries on your website.","url":"https://developers.cloudflare.com/ai-search/how-to/nlweb/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/nlweb/#page","headline":"NLWeb · Cloudflare AI Search docs","description":"Deploy NLWeb with AI Search to enable conversational natural language queries on your website.","url":"https://developers.cloudflare.com/ai-search/how-to/nlweb/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/nlweb/","name":"NLWeb"}}]}
 ```

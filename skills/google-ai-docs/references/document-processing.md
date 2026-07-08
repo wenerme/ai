@@ -148,6 +148,55 @@ You can also upload a local PDF file for processing:
 
     main();
 
+### REST
+
+    PDF_PATH="file.pdf"
+    NUM_BYTES=$(wc -c < "${PDF_PATH}")
+    DISPLAY_NAME="file.pdf"
+    tmp_header_file=upload-header.tmp
+
+    # Initial resumable request defining metadata.
+    # The upload url is in the response headers dump them to a file.
+    curl "https://generativelanguage.googleapis.com/upload/v1beta/files?key=${GEMINI_API_KEY}" \
+      -D upload-header.tmp \
+      -H "X-Goog-Upload-Protocol: resumable" \
+      -H "X-Goog-Upload-Command: start" \
+      -H "X-Goog-Upload-Header-Content-Length: ${NUM_BYTES}" \
+      -H "X-Goog-Upload-Header-Content-Type: application/pdf" \
+      -H "Content-Type: application/json" \
+      -d "{'file': {'display_name': '${DISPLAY_NAME}'}}" 2> /dev/null
+
+    upload_url=$(grep -i "x-goog-upload-url: " "${tmp_header_file}" | cut -d" " -f2 | tr -d "\r")
+    rm "${tmp_header_file}"
+
+    # Upload the actual bytes.
+    curl "${upload_url}" \
+      -H "Content-Length: ${NUM_BYTES}" \
+      -H "X-Goog-Upload-Offset: 0" \
+      -H "X-Goog-Upload-Command: upload, finalize" \
+      --data-binary "@${PDF_PATH}" 2> /dev/null > file_info.json
+
+    file_uri=$(jq -r ".file.uri" file_info.json)
+    echo file_uri=$file_uri
+
+    # Now create an interaction using that file
+    curl "https://generativelanguage.googleapis.com/v1beta/interactions" \
+        -H "x-goog-api-key: $GEMINI_API_KEY" \
+        -H 'Content-Type: application/json' \
+        -X POST \
+        -d '{
+          "model": "gemini-3.5-flash",
+          "input": [
+            {"type": "document", "uri": "'$file_uri'", "mime_type": "application/pdf"},
+            {"type": "text", "text": "Summarize this document"}
+          ]
+        }' 2> /dev/null > response.json
+
+    cat response.json
+    echo
+
+    jq -r ".steps[-1].content[0].text" response.json
+
 ## Uploading PDFs using the Files API
 
 We recommend you use Files API for larger files or when you intend to reuse a
@@ -337,7 +386,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
     async function main() {
         const file = await ai.files.upload({
-            file: 'path-to-localfile.pdf',
+            file: 'large_file.pdf',
             config: {
                 displayName: 'A17_FlightPlan.pdf',
             },
@@ -373,7 +422,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
 ### REST
 
-    PDF_PATH="path/to/large_file.pdf"
+    PDF_PATH="large_file.pdf"
     NUM_BYTES=$(wc -c < "${PDF_PATH}")
     DISPLAY_NAME=TEXT
     tmp_header_file=upload-header.tmp
@@ -399,7 +448,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
       -H "X-Goog-Upload-Command: upload, finalize" \
       --data-binary "@${PDF_PATH}" 2> /dev/null > file_info.json
 
-    file_uri=$(jq ".file.uri" file_info.json)
+    file_uri=$(jq -r ".file.uri" file_info.json)
     echo file_uri=$file_uri
 
     # Now create an interaction using that file
@@ -410,7 +459,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         -d '{
           "model": "gemini-3.5-flash",
           "input": [
-            {"type": "document", "uri": '$file_uri', "mime_type": "application/pdf"},
+            {"type": "document", "uri": "'$file_uri'", "mime_type": "application/pdf"},
             {"type": "text", "text": "Can you add a few more lines to this poem?"}
           ]
         }' 2> /dev/null > response.json
@@ -418,7 +467,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     cat response.json
     echo
 
-    jq ".steps[-1].content[0].text" response.json
+    jq -r ".steps[-1].content[0].text" response.json
 
 You can verify the API successfully stored the uploaded file and get its
 metadata by calling [`files.get`](https://ai.google.dev/api/rest/v1beta/files/get). Only the `name`
@@ -438,6 +487,27 @@ metadata by calling [`files.get`](https://ai.google.dev/api/rest/v1beta/files/ge
 
     file_info = client.files.get(name=file.name)
     print(file_info.model_dump_json(indent=4))
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+    import * as fs from "node:fs";
+
+    const ai = new GoogleGenAI({});
+
+    async function main() {
+        fs.writeFileSync("example.pdf", "hello");
+
+        const file = await ai.files.upload({
+            file: "example.pdf",
+            config: { mime_type: "application/pdf" }
+        });
+
+        const fileInfo = await ai.files.get({ name: file.name });
+        console.log(fileInfo);
+    }
+
+    main();
 
 ### REST
 
@@ -665,7 +735,7 @@ documents has been updated:
    - In the `usage_metadata` section of the API response, tokens generated from processing PDF pages (as images) are now counted under the `IMAGE` modality, not a separate `DOCUMENT` modality as in some earlier versions.
 
 For more details about the media resolution parameter, see the
-[Media resolution](https://ai.google.dev/gemini-api/docs/media-resolution) guide.
+[Media resolution](https://ai.google.dev/gemini-api/docs/interactions/media-resolution) guide.
 
 ### Document types
 

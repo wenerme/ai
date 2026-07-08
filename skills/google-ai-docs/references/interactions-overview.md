@@ -98,7 +98,7 @@ The system processes Interaction objects according to the [terms](https://ai.goo
 
 ## Best practices
 
-- **Cache hit rate** : Using `previous_interaction_id` to continue conversations allows the system to more easily utilize implicit caching for the conversation history, which improves performance and reduces costs.
+- **Cache hit rate** : Implicit caching is supported in both stateful and stateless modes (see [Quickstart](https://ai.google.dev/gemini-api/docs/get-started#4_multi-turn_conversations)). Using `previous_interaction_id` (stateful) to continue conversations allows the system to more easily utilize implicit caching for the conversation history, which improves performance and reduces costs.
 - **Mixing interactions** : You have the flexibility to mix and match Agent and Model interactions within a conversation. For example, you can use a specialized agent, like the Deep Research agent, for initial data collection, and then use a standard Gemini model for follow-up tasks such as summarizing or reformatting, linking these steps with the `previous_interaction_id`.
 
 ## Supported models \& agents
@@ -137,6 +137,7 @@ You can learn more about how to install the SDKs on
 ## Limitations
 
 - **Remote MCP**: Gemini 3 does not support remote MCP, this is coming soon.
+- **Multi-turn model compatibility** : When mixing different models in a conversation (either stateful or stateless), subsequent models must support the output modalities of the previous models as input. For example, if you generate an image using `gemini-3.1-flash-image`, you cannot continue that conversation with a model that doesn't accept image inputs (such as a text-only model or a music-generation model like Lyria).
 
 The following features are supported by the
 [`generateContent`](https://ai.google.dev/gemini-api/docs/generate-content/text-generation) API but are **not yet
@@ -146,6 +147,7 @@ available** in the Interactions API:
 - **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)**
 - **[Automatic function calling (Python)](https://ai.google.dev/gemini-api/docs/function-calling?example=meeting#automatic_function_calling_python_only)**
 - **[Explicit caching](https://ai.google.dev/gemini-api/docs/caching)** : Note that server-side implicit caching is available in the Interactions API via `previous_interaction_id`.
+- **[Safety settings](https://ai.google.dev/gemini-api/docs/safety-settings)**: Custom safety settings are not supported in the Interactions API.
 
 ## Feedback
 

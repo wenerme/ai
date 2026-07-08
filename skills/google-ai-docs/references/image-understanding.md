@@ -7,8 +7,8 @@ image captioning, classification, and visual question answering without having
 to train specialized ML models.
 
 In addition to their general multimodal capabilities, Gemini models offer
-**enhanced accuracy** for specific use cases like [object detection](https://ai.google.dev/gemini-api/docs/image-understanding#object-detection) and [segmentation](https://ai.google.dev/gemini-api/docs/image-understanding#segmentation), through additional
-training.
+**enhanced accuracy** for specific use cases like [object detection](https://ai.google.dev/gemini-api/docs/image-understanding#object-detection)
+and [segmentation](https://ai.google.dev/gemini-api/docs/image-understanding#segmentation), through additional training.
 
 ## Passing images to Gemini
 
@@ -52,7 +52,7 @@ in the request:
 
     const uploadedFile = await client.files.upload({
         file: "path/to/organ.jpg",
-        config: { mime_type: "image/jpeg" }
+        config: { mimeType: "image/jpeg" }
     });
 
     const interaction = await client.interactions.create({
@@ -316,6 +316,9 @@ image and get their bounding box coordinates. The coordinates, relative to image
 dimensions, scale to \[0, 1000\]. You need to descale these coordinates based on
 your original image size.
 
+> [!NOTE]
+> **Note:** Using Zod for structured output schema validation in TypeScript/JavaScript requires installing the `zod` package (`npm install zod`).
+
 ### Python
 
     from google import genai
@@ -432,18 +435,13 @@ your original image size.
 > [!NOTE]
 > **Note:** The model also supports generating bounding boxes based on custom instructions, such as: "Show bounding boxes of all green objects in this image".
 
-For more examples, check following notebooks in the [Gemini Cookbook](https://github.com/google-gemini/cookbook):
+For more examples, visit the [Gemini Cookbook](https://github.com/google-gemini/cookbook).
 
 ## Segmentation
 
-Starting with Gemini 2.5, models not only detect items but also segment them
-and provide their contour masks.
+Gemini models not only detect items but also segment them and provide their contour masks.
 
-The model predicts a JSON list, where each item represents a segmentation mask.
-Each item has a bounding box ("`box_2d`") in the format `[y0, x0, y1, x1]` with
-normalized coordinates between 0 and 1000, a label ("`label`") that identifies
-the object, and finally the segmentation mask inside the bounding box, as base64
-encoded png that is a probability map with values between 0 and 255.
+The model predicts a JSON list, where each item represents a segmentation mask. Each item has a bounding box ("`box_2d`") in the format `[ymin, xmin, ymax, xmax]` with normalized coordinates between 0 and 1000, a label ("`label`") that identifies the object, and finally the segmentation mask inside the bounding box as a polygon of `[x, y]` coordinates normalized to 0-1000.
 
 > [!NOTE]
 > **Note:** For better results, disable [thinking](https://ai.google.dev/gemini-api/docs/thinking) by setting the thinking level to "minimal".
@@ -606,7 +604,7 @@ object detection and segmentation.
 Gemini can reduce the need to use specialized ML models depending on your
 quality and performance requirements.
 
-The latest model versions are specifically trained improve accuracy of
+The latest model versions are specifically trained to improve accuracy of
 specialized tasks in addition to generic capabilities, like enhanced
 [object detection](https://ai.google.dev/gemini-api/docs/image-understanding#object-detection) and [segmentation](https://ai.google.dev/gemini-api/docs/image-understanding#segmentation).
 
@@ -633,8 +631,7 @@ of 360. Divide each dimension by 360 and the number of tile is 3 \* 2 = 6.
 Gemini 3 introduces granular control over multimodal vision processing with the
 `media_resolution` parameter. The `media_resolution` parameter determines the
 **maximum number of tokens allocated per input image or video frame.**
-Higher resolutions improve the model's ability to
-read fine text or identify small details, but increase token usage and latency.
+Higher resolutions improve the model's ability to read fine text or identify small details, but increase token usage and latency.
 
 ## Tips and best practices
 
