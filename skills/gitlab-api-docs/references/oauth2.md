@@ -78,7 +78,7 @@ authorization with each flow.
 
 ### Authorization code with Proof Key for Code Exchange (PKCE)
 
-- Group SAML SSO support for OAuth applications [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/461212) in GitLab 18.2 [with a flag](../administration/feature_flags/_index.md) named `ff_oauth_redirect_to_sso_login`. Disabled by default.
+- Group SAML SSO support for OAuth applications [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/461212) in GitLab 18.2 [with a feature flag](../administration/feature_flags/_index.md) named `ff_oauth_redirect_to_sso_login`. Disabled by default.
 - Group SAML SSO support for OAuth applications [enabled on GitLab.com, GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/200682) in GitLab 18.3.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/561778) in GitLab 18.5. Feature flag `ff_oauth_redirect_to_sso_login` removed.
 
@@ -177,7 +177,7 @@ You can now make requests to the API with the access token.
 
 ### Authorization code flow
 
-- Group SAML SSO support for OAuth applications [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/461212) in GitLab 18.2 [with a flag](../administration/feature_flags/_index.md) named `ff_oauth_redirect_to_sso_login`. Disabled by default.
+- Group SAML SSO support for OAuth applications [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/461212) in GitLab 18.2 [with a feature flag](../administration/feature_flags/_index.md) named `ff_oauth_redirect_to_sso_login`. Disabled by default.
 - Group SAML SSO support for OAuth applications [enabled on GitLab.com, GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/200682) in GitLab 18.3.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/561778) in GitLab 18.5. Feature flag `ff_oauth_redirect_to_sso_login` removed.
 
@@ -263,7 +263,7 @@ You can now make requests to the API with the access token returned.
 
 ### Device authorization grant flow
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/332682) in GitLab 17.2 [with a flag](../administration/feature_flags/_index.md) named `oauth2_device_grant_flow`.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/332682) in GitLab 17.2 [with a feature flag](../administration/feature_flags/_index.md) named `oauth2_device_grant_flow`.
 - [Enabled](https://gitlab.com/gitlab-org/gitlab/-/issues/468479) by default in 17.3.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/505557) in GitLab 17.9. Feature flag `oauth2_device_grant_flow` removed.
 

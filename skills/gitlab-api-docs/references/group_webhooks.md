@@ -475,7 +475,7 @@ Example response:
 ## Create a group hook
 
 - `name` and `description` attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460887) in GitLab 17.1.
-- `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
+- `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
 - Feature flag `webhook_signing_token` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/596374) in GitLab 19.1.
 
 Creates a group hook for a specified group.
@@ -572,7 +572,7 @@ Example response:
 ## Update a group hook
 
 - `name` and `description` attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460887) in GitLab 17.1.
-- `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
+- `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
 - Feature flag `webhook_signing_token` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/596374) in GitLab 19.1.
 
 Updates a group hook for a specified group.
@@ -702,7 +702,7 @@ On success, no message is returned.
 ## Trigger a test group hook
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/455589) in GitLab 17.1.
-- Special rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/150486) in GitLab 17.1 [with a flag](../administration/feature_flags/_index.md) named `web_hook_test_api_endpoint_rate_limit`. Enabled by default.
+- Special rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/150486) in GitLab 17.1 [with a feature flag](../administration/feature_flags/_index.md) named `web_hook_test_api_endpoint_rate_limit`. Enabled by default.
 
 Trigger a test hook for a specified group.
 

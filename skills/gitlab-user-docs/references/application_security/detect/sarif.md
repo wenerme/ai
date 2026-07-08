@@ -6,7 +6,7 @@ Add findings from third-party SARIF scanners into GitLab vulnerability managemen
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/452042) in GitLab 18.11
-  [with a flag](../../../administration/feature_flags/_index.md) named `sarif_ingestion`.
+  [with a feature flag](../../../administration/feature_flags/_index.md) named `sarif_ingestion`.
   Disabled by default.
 - Enabled by default in GitLab 19.1.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/602748) in GitLab 19.2.

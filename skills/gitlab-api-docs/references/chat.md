@@ -15,8 +15,8 @@ Prerequisites:
 
 Generates a response for a GitLab Duo Chat question.
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/133015) in GitLab 16.7 [with a flag](../administration/feature_flags/_index.md) named `access_rest_chat`. Disabled by default. This feature is internal-only.
-- `additional_context` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/162650) in GitLab 17.4 [with a flag](../administration/feature_flags/_index.md) named `duo_additional_context`. Disabled by default. This feature is internal-only.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/133015) in GitLab 16.7 [with a feature flag](../administration/feature_flags/_index.md) named `access_rest_chat`. Disabled by default. This feature is internal-only.
+- `additional_context` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/162650) in GitLab 17.4 [with a feature flag](../administration/feature_flags/_index.md) named `duo_additional_context`. Disabled by default. This feature is internal-only.
 - `additional_context` parameter [enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/181305) in GitLab 17.9.
 - `additional_context` parameter [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/514559) in GitLab 18.0. Feature flag `duo_additional_context` removed.
 

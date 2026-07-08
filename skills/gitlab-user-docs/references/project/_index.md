@@ -118,7 +118,7 @@ To create a project from a custom template:
 
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/431864) in GitLab 16.7 [with a flag](../../administration/feature_flags/_index.md) named `support_sha256_repositories`. Disabled by default. This feature is an [experiment](../../policy/development_stages_support.md#experiment).
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/431864) in GitLab 16.7 [with a feature flag](../../administration/feature_flags/_index.md) named `support_sha256_repositories`. Disabled by default. This feature is an [experiment](../../policy/development_stages_support.md#experiment).
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

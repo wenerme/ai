@@ -3,7 +3,7 @@
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/186525) in GitLab 17.11 [with a flag](../../../administration/feature_flags/_index.md) named `enable_standards_adherence_dashboard_v2`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/186525) in GitLab 17.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `enable_standards_adherence_dashboard_v2`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/535563) in GitLab 18.3. Feature flag `enable_standards_adherence_dashboard_v2` removed.
 
 The compliance status report displays the most recent instances where projects do not adhere to [compliance framework requirements](../compliance_frameworks/_index.md#requirements). It is part of the

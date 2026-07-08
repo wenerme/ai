@@ -3,7 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- `archived` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/4233) in GitLab 18.3 [with a flag](../administration/feature_flags/_index.md) named `labels_archive`.
+- `archived` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/4233) in GitLab 18.3 [with a feature flag](../administration/feature_flags/_index.md) named `labels_archive`.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/556700) in GitLab 18.10. Feature flag `labels_archive` removed.
 
 Use this API to manage [group labels](../user/project/labels.md#types-of-labels).

@@ -12,7 +12,7 @@ Use GitLab Duo Agentic Chat to answer complex questions and create or edit files
 
 - VS Code [introduced on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/work_items/540917) in GitLab 18.1 as an [experiment](../../policy/development_stages_support.md) with a [flag](../../administration/feature_flags/_index.md) named `duo_agentic_chat`. Disabled by default.
 - VS Code [enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/196688) in GitLab 18.2.
-- GitLab UI [introduced on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/546140) in GitLab 18.2 [with flags](../../administration/feature_flags/_index.md) named `duo_workflow_workhorse` and `duo_workflow_web_chat_mutation_tools`. Both flags are enabled by default.
+- GitLab UI [introduced on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/546140) in GitLab 18.2 [with feature flags](../../administration/feature_flags/_index.md) named `duo_workflow_workhorse` and `duo_workflow_web_chat_mutation_tools`. Both flags are enabled by default.
 - Feature flag `duo_agentic_chat` enabled by default in GitLab 18.2.
 - JetBrains IDEs [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-jetbrains-plugin/-/issues/1077) in GitLab 18.2.
 - Changed to beta in GitLab 18.2.

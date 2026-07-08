@@ -75,7 +75,7 @@ information, see the [relevant documentation](monitoring.md#monitor-gitaly-concu
 
 ### Separate limits for unauthenticated requests
 
-- Introduced in GitLab 18.7 [with a flag](../../operations/feature_flags.md) named `gitaly_limit_unauthenticated`. Disabled by default.
+- Introduced in GitLab 18.7 [with a feature flag](../../operations/feature_flags.md) named `gitaly_limit_unauthenticated`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

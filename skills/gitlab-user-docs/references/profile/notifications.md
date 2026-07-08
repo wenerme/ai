@@ -299,7 +299,7 @@ To toggle notifications on a specific issue, merge request, or epic:
 
 - Offering: GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/132678) in GitLab 16.5 [with a flag](../../administration/feature_flags/_index.md) named `notifications_todos_buttons`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/132678) in GitLab 16.5 [with a feature flag](../../administration/feature_flags/_index.md) named `notifications_todos_buttons`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag. For more information, see the history. Enabling this feature flag moves the notifications and to-do item buttons to the upper-right corner of the page.

@@ -697,7 +697,7 @@ administrative duties.
 
 #### Minimal Access role assignment with restricted access
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/206932) in GitLab 18.6 [with a flag](../../feature_flags/_index.md) named `bso_minimal_access_fallback`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/206932) in GitLab 18.6 [with a feature flag](../../feature_flags/_index.md) named `bso_minimal_access_fallback`. Disabled by default.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/225777) in GitLab 18.10.
 
 When [restricted access](../../../subscriptions/manage_seats.md#restricted-access) is enabled and no subscription seats are available, users are assigned the Minimal Access role during LDAP group synchronization.

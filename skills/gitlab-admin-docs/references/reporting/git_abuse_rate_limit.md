@@ -5,7 +5,7 @@ Configure Git abuse rate limiting to automatically restrict and ban users who ex
 - Tier: Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/8066) in GitLab 15.2 [with a flag](../feature_flags/_index.md) named `git_abuse_rate_limit_feature_flag`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/8066) in GitLab 15.2 [with a feature flag](../feature_flags/_index.md) named `git_abuse_rate_limit_feature_flag`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/394996) in GitLab 15.11. Feature flag `git_abuse_rate_limit_feature_flag` removed.
 
 This is the administration documentation. For information about Git abuse rate limiting for a group, see the [group documentation](../../user/group/reporting/git_abuse_rate_limit.md).

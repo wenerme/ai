@@ -5,7 +5,7 @@ Use comments and threads to discuss and manage work item conversations.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Comments and threads on Wiki pages [introduced](https://gitlab.com/groups/gitlab-org/-/epics/14461) in GitLab 17.7 [with a flag](../../administration/feature_flags/_index.md) named `wiki_comments`. Disabled by default.
+- Comments and threads on Wiki pages [introduced](https://gitlab.com/groups/gitlab-org/-/epics/14461) in GitLab 17.7 [with a feature flag](../../administration/feature_flags/_index.md) named `wiki_comments`. Disabled by default.
 - Comments and threads on Wiki pages [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/502847) in GitLab 17.9. Feature flag `wiki_comments` removed.
 
 GitLab encourages communication through comments, threads, and
@@ -148,7 +148,7 @@ To edit a comment:
 
 ### Edit a comment to add a mention
 
-- Sending notification emails [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224837) in GitLab 18.10 [with a flag](../../administration/feature_flags/_index.md) named `email_on_added_mentions`. Disabled by default.
+- Sending notification emails [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224837) in GitLab 18.10 [with a feature flag](../../administration/feature_flags/_index.md) named `email_on_added_mentions`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/591869) in GitLab 18.11. Feature flag `email_on_added_mentions` removed.
 
 By default, when you mention a user, GitLab [creates a to-do item](../todos.md#actions-that-create-to-do-items)
@@ -306,7 +306,7 @@ To create a thread:
 ## Resolve a thread
 
 - Resolvable threads for issues:
-  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/31114) in GitLab 16.3 [with a flag](../../administration/feature_flags/_index.md) named `resolvable_issue_threads`. Disabled by default.
+  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/31114) in GitLab 16.3 [with a feature flag](../../administration/feature_flags/_index.md) named `resolvable_issue_threads`. Disabled by default.
   - [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/31114) in GitLab 16.4.
   - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/31114) in GitLab 16.7. Feature flag `resolvable_issue_threads` removed.
 - Resolvable threads for tasks, objectives, and key results [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/458818) in GitLab 17.3.
@@ -352,7 +352,7 @@ such as:
 - Available on [GitLab Duo with self-hosted models](../../administration/gitlab_duo_self_hosted/_index.md)
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/10344) in GitLab 16.0 as an [experiment](../../policy/development_stages_support.md#experiment).
-- [Moved](https://gitlab.com/gitlab-org/gitlab/-/issues/454550) to GitLab Duo and changed to [beta](../../policy/development_stages_support.md#beta) in GitLab 17.3 [with a flag](../../administration/feature_flags/_index.md) named `summarize_notes_with_duo`. Disabled by default.
+- [Moved](https://gitlab.com/gitlab-org/gitlab/-/issues/454550) to GitLab Duo and changed to [beta](../../policy/development_stages_support.md#beta) in GitLab 17.3 [with a feature flag](../../administration/feature_flags/_index.md) named `summarize_notes_with_duo`. Disabled by default.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/162122) in GitLab 17.4.
 - Changed to require GitLab Duo add-on in GitLab 17.6 and later.
 - Changed to include Premium in GitLab 18.0.

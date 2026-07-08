@@ -4,7 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Beta for GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/443696) in GitLab 16.11 [with a flag](../../administration/feature_flags/_index.md) named `ai_impact_analytics_dashboard`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/443696) in GitLab 16.11 [with a feature flag](../../administration/feature_flags/_index.md) named `ai_impact_analytics_dashboard`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/451873) in GitLab 17.2. Feature flag `ai_impact_analytics_dashboard` removed.
 - Changed to require GitLab Duo add-on in GitLab 17.6.
 - Moved from GitLab Ultimate to GitLab Premium in 18.2.
@@ -73,7 +73,7 @@ Upward trends are positive (green) for some metrics (like [deployment frequency]
 
 ### GitLab Duo usage metrics
 
-- GitLab Duo Root Cause Analysis usage [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/513252) in GitLab 18.1 [with a flag](../../administration/feature_flags/_index.md) named `duo_rca_usage_rate`. Disabled by default.
+- GitLab Duo Root Cause Analysis usage [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/513252) in GitLab 18.1 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_rca_usage_rate`. Disabled by default.
 - GitLab Duo Root Cause Analysis usage [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/543987) in GitLab 18.3.
 - GitLab Duo Root Cause Analysis usage [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/556726) in GitLab 18.4. Feature flag `duo_rca_usage_rate` removed.
 - GitLab Duo features usage [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/207562) in GitLab 18.6.
@@ -181,6 +181,20 @@ When interpreting your analytics, keep in mind that:
 - Negativity bias is expected. Users tend to flag problems, but rarely acknowledge good suggestions, even when applying them.
 - Low reaction rates are common. Focus on whether code improves and reviews complete faster.
 - Rising disapproval (👎) rates signal issues. Stable or declining disapproval rates indicate healthy adoption of GitLab Duo Code Review.
+
+## Returning GitLab Duo users by feature
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/576752) in GitLab 19.2.
+
+The **Returning GitLab Duo users by feature** chart displays the retention rate over the last 180 days for each GitLab Duo feature: Code Suggestions, GitLab Duo Chat, Root cause analysis, and GitLab Duo Code Review.
+
+Hover over a point to view for the selected feature and period:
+
+- **Retention rate**: Percentage of users from the previous period who use the feature again in the selected period.
+  Calculated as the number of returning users in the selected period divided by the number of users in the previous period.
+
+The chart starts from the second period in the selected date range.
+The first period doesn't show a retention rate because there is no earlier period to compare against.
 
 ## GitLab Duo metrics by user
 

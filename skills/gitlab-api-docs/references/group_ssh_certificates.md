@@ -3,7 +3,7 @@
 - Tier: Premium, Ultimate
 - Offering: GitLab.com
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/421915) in GitLab 16.4 [with a flag](../administration/feature_flags/_index.md) named `ssh_certificates_rest_endpoints`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/421915) in GitLab 16.4 [with a feature flag](../administration/feature_flags/_index.md) named `ssh_certificates_rest_endpoints`. Disabled by default.
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/424501) in GitLab 16.9.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/424501) in GitLab 17.7. Feature flag `ssh_certificates_rest_endpoints` removed.
 

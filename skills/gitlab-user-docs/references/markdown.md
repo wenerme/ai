@@ -691,11 +691,11 @@ When rendered, the example looks similar to:
 - Autocomplete for wiki pages [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/442229) in GitLab 16.11.
 - Option to reference labels from groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/455120) in GitLab 17.1.
 - Option to reference issues, epics, and work items with `[work_item:123]` syntax:
-  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/352861) in GitLab 18.1 [with a flag](../administration/feature_flags/_index.md) named `extensible_reference_filters`. Disabled by default.
+  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/352861) in GitLab 18.1 [with a feature flag](../administration/feature_flags/_index.md) named `extensible_reference_filters`. Disabled by default.
   - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197052) in GitLab 18.2. Feature flag `extensible_reference_filters` removed.
 - Option to reference epics with `[epic:123]` syntax [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/352864) in GitLab 18.4.
 - Ability to reference personal snippets:
-  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/217306) in GitLab 19.0 [with a flag](../administration/feature_flags/_index.md) named `personal_snippet_reference_filters`. Disabled by default.
+  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/217306) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `personal_snippet_reference_filters`. Disabled by default.
   - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/241935) in GitLab 19.2. Feature flag `personal_snippet_reference_filters` removed.
 
 GitLab Flavored Markdown renders GitLab-specific references. For example, you can reference
@@ -805,7 +805,7 @@ To update the rendered references if the assignee, milestone, or health status c
 
 ### Comment preview on hover
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/29663) in GitLab 17.3 [with a flag](../administration/feature_flags/_index.md) named `comment_tooltips`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/29663) in GitLab 17.3 [with a feature flag](../administration/feature_flags/_index.md) named `comment_tooltips`. Disabled by default.
 - Feature flag removed in GitLab 17.6
 
 Hovering over a link to a comment shows the author and first line of the comment.
@@ -1924,7 +1924,7 @@ When rendered, the example looks similar to:
 
 ## Placeholders
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/14389) in GitLab 18.2 [with a flag](../administration/feature_flags/_index.md) named `markdown_placeholders`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/14389) in GitLab 18.2 [with a feature flag](../administration/feature_flags/_index.md) named `markdown_placeholders`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

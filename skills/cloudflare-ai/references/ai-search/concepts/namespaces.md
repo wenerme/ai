@@ -30,6 +30,8 @@ Common reasons to use namespaces include:
 * **Tenant isolation**: Assign each tenant their own namespace so that instance names do not collide across tenants.
 * **Agent isolation**: Give each agent its own namespace for independent context management.
 
+For a step-by-step guide to isolating search per tenant, see [Multitenancy](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/).
+
 ## Requirements
 
 The namespace binding requires the following minimum package versions for TypeScript types and local development support.
@@ -166,6 +168,6 @@ namespace = "support"
 An instance name must be unique within a namespace. This means you can have an instance named `docs` in both the `blog` and `support` namespaces without conflict.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/namespaces/#page","headline":"Namespaces · Cloudflare AI Search docs","description":"Group AI Search instances into namespaces and manage them dynamically from a Workers binding.","url":"https://developers.cloudflare.com/ai-search/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/namespaces/#page","headline":"Namespaces · Cloudflare AI Search docs","description":"Group AI Search instances into namespaces and manage them dynamically from a Workers binding.","url":"https://developers.cloudflare.com/ai-search/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/concepts/namespaces/","name":"Namespaces"}}]}
 ```

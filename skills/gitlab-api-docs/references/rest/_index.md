@@ -248,7 +248,7 @@ In boolean arguments, you should only set `true` or `false` values (not `null`).
 
 ### Redirects
 
-- Introduced in GitLab 16.4 [with a flag](../../administration/feature_flags/_index.md) named `api_redirect_moved_projects`. Disabled by default.
+- Introduced in GitLab 16.4 [with a feature flag](../../administration/feature_flags/_index.md) named `api_redirect_moved_projects`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/137578) in GitLab 16.7. Feature flag `api_redirect_moved_projects` removed.
 
 After [path changes](../../user/project/repository/_index.md#repository-path-changes) the

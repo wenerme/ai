@@ -7,13 +7,13 @@
 
 - Available on [GitLab Duo with self-hosted models](../../../administration/gitlab_duo_self_hosted/_index.md)
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/549914) in GitLab 18.5 [with a flag](../../../administration/feature_flags/_index.md) named `global_ai_catalog`. Enabled on GitLab.com.
-- Enabling in groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/580307) in GitLab 18.7 [with a flag](../../../administration/feature_flags/_index.md) named `ai_catalog_agents`. Enabled on GitLab.com.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/549914) in GitLab 18.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `global_ai_catalog`. Enabled on GitLab.com.
+- Enabling in groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/580307) in GitLab 18.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_agents`. Enabled on GitLab.com.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/568176) to beta in GitLab 18.7.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8.
 - Feature flag `ai_catalog_agents` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/217802) in GitLab 18.9.
 - Feature flag `global_ai_catalog` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/223135) in 18.10.
-- Enabling directly in projects as a maintainer [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20743) in GitLab 18.10 [with a flag](../../../administration/feature_flags/_index.md) named `ai_catalog_project_level_enablement`. Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated by default.
+- Enabling directly in projects as a maintainer [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20743) in GitLab 18.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_project_level_enablement`. Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated by default.
 - Available on the Free tier on GitLab.com with GitLab Credits in GitLab 18.10.
 - Feature flag `ai_catalog_project_level_enablement` removed in GitLab 18.11.
 

@@ -6,7 +6,7 @@ Capture the intent, approach, and steps for a unit of work in a structured workp
 - Offering: GitLab.com, GitLab Self-Managed
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240718) in GitLab 19.0 [with a flag](../../administration/feature_flags/_index.md) named `workplan`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240718) in GitLab 19.0 [with a feature flag](../../administration/feature_flags/_index.md) named `workplan`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

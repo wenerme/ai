@@ -89,6 +89,9 @@ You can view these in the Jobs tab of your AI Search instance to verify your fil
 | Exclude temp and backup files   | Exclude: \*\*/\*.tmp, \*\*/\*.bak               | /docs/guide.md                     | /data/cache.tmp, /old.bak         |
 | Exclude temp and backup folders | Exclude: /temp/\*\*, /backup/\*\*               | /docs/guide.md                     | /temp/file.txt, /backup/data.json |
 | Index docs but exclude drafts   | Include: /docs/\*\*, Exclude: /docs/drafts/\*\* | /docs/guide.md                     | /docs/drafts/wip.md               |
+| Scope an instance to one tenant | Include: /customers/acme/\*\*                   | /customers/acme/report.pdf         | /customers/globex/report.pdf      |
+
+To give each tenant an isolated instance backed by a single shared bucket, refer to [Multitenancy](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/#r2).
 
 ### Website data source
 
@@ -113,6 +116,6 @@ When using the API, specify patterns in `source_params`:
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/#page","headline":"Path filtering · Cloudflare AI Search docs","description":"Control which files or URLs AI Search indexes by defining include and exclude path patterns.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/#page","headline":"Path filtering · Cloudflare AI Search docs","description":"Control which files or URLs AI Search indexes by defining include and exclude path patterns.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/indexing/","name":"Indexing"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/indexing/path-filtering/","name":"Path filtering"}}]}
 ```

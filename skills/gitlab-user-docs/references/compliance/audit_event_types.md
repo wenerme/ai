@@ -364,6 +364,7 @@ Audit event types belong to the following product categories.
 | [`prompt_injection_protection_level_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/232180) | Prompt injection protection level setting on group changed | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/work_items/593025) | Group |
 | [`third_party_agent_token_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227761) | A third-party agent access token was generated | Yes | GitLab [18.11](https://gitlab.com/gitlab-org/gitlab/-/issues/593031) | User |
 | [`api_request_access_with_scope`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/172548) | A subset of API requests authenticated by a token with an audited scope | Yes | GitLab [17.7](https://gitlab.com/gitlab-org/gitlab/-/issues/499461) | User |
+| [`duo_cli_session_blocked`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/242484) | A Duo CLI session was blocked because the administrator disabled Duo CLI | Yes | GitLab [19.2](https://gitlab.com/gitlab-org/gitlab/-/work_items/597833) | User |
 | [`lock_duo_features_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235370) | Added when lock_duo_features_enabled is changed. | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/work_items/598658) | Group |
 
 ### Dynamic application security testing

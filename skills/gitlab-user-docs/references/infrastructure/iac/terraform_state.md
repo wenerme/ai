@@ -3,7 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Support for state names that contain periods introduced in GitLab 15.7 [with a flag](../../../administration/feature_flags/_index.md) named `allow_dots_on_tf_state_names`. Disabled by default.
+- Support for state names that contain periods introduced in GitLab 15.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `allow_dots_on_tf_state_names`. Disabled by default.
 - Support for state names that contain periods [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/385597) in GitLab 16.0. Feature flag `allow_dots_on_tf_state_names` removed.
 - Support for GitLab-managed OpenTofu and Terraform states [introduced](https://gitlab.com/gitlab-org/cli/-/issues/7954) in GitLab 18.3. Requires GitLab CLI (`glab`) 1.66 or later.
 

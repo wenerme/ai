@@ -52,6 +52,29 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="query-addonpurchases-namespaceid"></a>`namespaceId` | [`NamespaceID`](#namespaceid) | ID of namespace that the add-ons were purchased for. |
 
+### `Query.adminDuoAvailabilityNamespaces`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+List groups with their resolved GitLab Duo availability for admin overrides. Available only when the `admin_duo_availability_namespace_overrides` feature flag is enabled.
+
+Returns [`AdminDuoAvailabilityNamespaceConnection`](#adminduoavailabilitynamespaceconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="query-adminduoavailabilitynamespaces-adminlocked"></a>`adminLocked` | [`Boolean`](#boolean) | Filter to groups that are (or are not) the introducer of an admin lock. |
+| <a id="query-adminduoavailabilitynamespaces-duoavailability"></a>`duoAvailability` | [`[DuoAvailability!]`](#duoavailability) | Filter to groups whose effective availability is one of these values. |
+| <a id="query-adminduoavailabilitynamespaces-includedescendants"></a>`includeDescendants` | [`Boolean`](#boolean) | Include all descendants, not just direct children, of the parent group. |
+| <a id="query-adminduoavailabilitynamespaces-parentid"></a>`parentId` | [`GroupID`](#groupid) | Restrict the list to descendants of the given group. |
+| <a id="query-adminduoavailabilitynamespaces-search"></a>`search` | [`String`](#string) | Filter groups by name or full path. |
+
 ### `Query.adminGroups`
 
 - Introduced in GitLab 18.4.
@@ -2831,6 +2854,31 @@ Fields:
 | <a id="mutation-addprojecttosecuritydashboard-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-addprojecttosecuritydashboard-project"></a>`project` | [`Project`](#project) | Project that was added to the Instance Security Dashboard. |
 
+### `Mutation.adminClearDuoAvailability`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+Clears an admin-locked GitLab Duo availability override from a group. Available only when the `admin_duo_availability_namespace_overrides` feature flag is enabled.
+
+Input type: `AdminClearDuoAvailabilityInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-adminclearduoavailability-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-adminclearduoavailability-groupid"></a>`groupId` | [`GroupID!`](#groupid) | Group to clear the GitLab Duo availability override from. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-adminclearduoavailability-adminlocked"></a>`adminLocked` | [`Boolean`](#boolean) | Whether the group has an admin-locked GitLab Duo availability override. |
+| <a id="mutation-adminclearduoavailability-availability"></a>`availability` | [`DuoAvailability`](#duoavailability) | Resolved GitLab Duo availability for the group after the override is cleared. |
+| <a id="mutation-adminclearduoavailability-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-adminclearduoavailability-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
 ### `Mutation.adminRolesLdapSync`
 
 - Introduced in GitLab 18.0.
@@ -2851,6 +2899,34 @@ Fields:
 | <a id="mutation-adminrolesldapsync-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-adminrolesldapsync-errors"></a>`errors` | [`[String!]`](#string) | Errors encountered during operation. |
 | <a id="mutation-adminrolesldapsync-success"></a>`success` | [`Boolean`](#boolean) | Whether the sync was successfully enqueued. |
+
+### `Mutation.adminSetDuoAvailability`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+Sets an admin-locked GitLab Duo availability override on a group. Available only when the `admin_duo_availability_namespace_overrides` feature flag is enabled.
+
+Input type: `AdminSetDuoAvailabilityInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-adminsetduoavailability-availability"></a>`availability` | [`DuoAvailability!`](#duoavailability) | GitLab Duo availability state to lock on the group. |
+| <a id="mutation-adminsetduoavailability-cleardescendants"></a>`clearDescendants` | [`Boolean`](#boolean) | Clear conflicting admin-locked overrides on descendant groups instead of rejecting. |
+| <a id="mutation-adminsetduoavailability-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-adminsetduoavailability-groupid"></a>`groupId` | [`GroupID!`](#groupid) | Group to set the GitLab Duo availability override on. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-adminsetduoavailability-adminlocked"></a>`adminLocked` | [`Boolean`](#boolean) | Whether the group has an admin-locked GitLab Duo availability override. |
+| <a id="mutation-adminsetduoavailability-availability"></a>`availability` | [`DuoAvailability`](#duoavailability) | Resolved GitLab Duo availability for the group after the mutation. |
+| <a id="mutation-adminsetduoavailability-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-adminsetduoavailability-conflictingancestor"></a>`conflictingAncestor` | [`AdminDuoAvailabilityLockedAncestor`](#adminduoavailabilitylockedancestor) | Ancestor group whose admin lock blocked the mutation, if any. When present, the override was not applied. |
+| <a id="mutation-adminsetduoavailability-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
 ### `Mutation.adminSidekiqQueuesDeleteJobs`
 
@@ -18322,6 +18398,52 @@ Fields:
 | <a id="addonuseredge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="addonuseredge-node"></a>`node` | [`AddOnUser`](#addonuser) | The item at the end of the edge. |
 
+#### `AdminDuoAvailabilityLockedAncestorConnection`
+
+The connection type for [`AdminDuoAvailabilityLockedAncestor`](#adminduoavailabilitylockedancestor).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="adminduoavailabilitylockedancestorconnection-edges"></a>`edges` | [`[AdminDuoAvailabilityLockedAncestorEdge]`](#adminduoavailabilitylockedancestoredge) | A list of edges. |
+| <a id="adminduoavailabilitylockedancestorconnection-nodes"></a>`nodes` | [`[AdminDuoAvailabilityLockedAncestor]`](#adminduoavailabilitylockedancestor) | A list of nodes. |
+| <a id="adminduoavailabilitylockedancestorconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `AdminDuoAvailabilityLockedAncestorEdge`
+
+The edge type for [`AdminDuoAvailabilityLockedAncestor`](#adminduoavailabilitylockedancestor).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="adminduoavailabilitylockedancestoredge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="adminduoavailabilitylockedancestoredge-node"></a>`node` | [`AdminDuoAvailabilityLockedAncestor`](#adminduoavailabilitylockedancestor) | The item at the end of the edge. |
+
+#### `AdminDuoAvailabilityNamespaceConnection`
+
+The connection type for [`AdminDuoAvailabilityNamespace`](#adminduoavailabilitynamespace).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="adminduoavailabilitynamespaceconnection-edges"></a>`edges` | [`[AdminDuoAvailabilityNamespaceEdge]`](#adminduoavailabilitynamespaceedge) | A list of edges. |
+| <a id="adminduoavailabilitynamespaceconnection-nodes"></a>`nodes` | [`[AdminDuoAvailabilityNamespace]`](#adminduoavailabilitynamespace) | A list of nodes. |
+| <a id="adminduoavailabilitynamespaceconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `AdminDuoAvailabilityNamespaceEdge`
+
+The edge type for [`AdminDuoAvailabilityNamespace`](#adminduoavailabilitynamespace).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="adminduoavailabilitynamespaceedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="adminduoavailabilitynamespaceedge-node"></a>`node` | [`AdminDuoAvailabilityNamespace`](#adminduoavailabilitynamespace) | The item at the end of the edge. |
+
 #### `AdminMemberRoleConnection`
 
 The connection type for [`AdminMemberRole`](#adminmemberrole).
@@ -29668,6 +29790,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="accesstokengranularscope-access"></a>`access` | [`AccessTokenGranularScopeAccess!`](#accesstokengranularscopeaccess) | Access configured on a granular scope. |
+| <a id="accesstokengranularscope-group"></a>`group` | [`Group`](#group) | Group of the granular scope, when the scope targets a specific group. |
 | <a id="accesstokengranularscope-namespace"></a>`namespace` | [`Namespace`](#namespace) | Namespace of the granular scope. |
 | <a id="accesstokengranularscope-permissions"></a>`permissions` | [`[AccessTokenPermission!]`](#accesstokenpermission) | List of permissions of a granular scope. |
 | <a id="accesstokengranularscope-project"></a>`project` | [`Project`](#project) | Project of the granular scope, when the scope targets a specific project. |
@@ -30263,6 +30386,33 @@ Arguments:
 | <a id="addonuser-workspaces-ids"></a>`ids` | [`[RemoteDevelopmentWorkspaceID!]`](#remotedevelopmentworkspaceid) | Filter workspaces by workspace GlobalIDs. For example, `["gid://gitlab/RemoteDevelopment::Workspace/1"]`. |
 | <a id="addonuser-workspaces-includeactualstates"></a>`includeActualStates`  | [`[String!]`](#string) | Deprecated in GitLab 16.7. Use actual_states instead. |
 | <a id="addonuser-workspaces-projectids"></a>`projectIds` | [`[ProjectID!]`](#projectid) | Filter workspaces by project GlobalIDs. |
+
+### `AdminDuoAvailabilityLockedAncestor`
+
+The ancestor group that introduced an admin-locked GitLab Duo availability override.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="adminduoavailabilitylockedancestor-fullpath"></a>`fullPath` | [`String!`](#string) | Full path of the locking ancestor group. |
+| <a id="adminduoavailabilitylockedancestor-id"></a>`id` | [`GroupID!`](#groupid) | Global ID of the locking ancestor group. |
+
+### `AdminDuoAvailabilityNamespace`
+
+A group with its resolved GitLab Duo availability, for the admin override list.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="adminduoavailabilitynamespace-adminlocked"></a>`adminLocked` | [`Boolean!`](#boolean) | Whether this group is the introducer of an admin-locked override. False on descendants that merely inherit a locking value. |
+| <a id="adminduoavailabilitynamespace-duoavailability"></a>`duoAvailability` | [`DuoAvailability!`](#duoavailability) | Effective GitLab Duo availability: the group own override if set, otherwise the inherited value. |
+| <a id="adminduoavailabilitynamespace-fullpath"></a>`fullPath` | [`String!`](#string) | Full path of the group. |
+| <a id="adminduoavailabilitynamespace-id"></a>`id` | [`GroupID!`](#groupid) | Global ID of the group. |
+| <a id="adminduoavailabilitynamespace-inheritedvalue"></a>`inheritedValue` | [`DuoAvailability!`](#duoavailability) | GitLab Duo availability the group resolves to from its nearest ancestor override, or the instance default, ignoring the group own override. |
+| <a id="adminduoavailabilitynamespace-lockedbyancestor"></a>`lockedByAncestor` | [`AdminDuoAvailabilityLockedAncestor`](#adminduoavailabilitylockedancestor) | Nearest strict ancestor that introduced an admin lock, or null when the group is not locked by an ancestor. |
+| <a id="adminduoavailabilitynamespace-name"></a>`name` | [`String!`](#string) | Name of the group. |
 
 ### `AdminMemberRole`
 
@@ -33049,14 +33199,18 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="cdapplication-applicationflowdefinitions"></a>`applicationFlowDefinitions`  | [`CdApplicationFlowDefinitionConnection`](#cdapplicationflowdefinitionconnection) | Introduced in GitLab 19.2. Status: Experiment. Flow definitions of the application. |
 | <a id="cdapplication-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the application was created. |
+| <a id="cdapplication-deployments"></a>`deployments`  | [`CdDeploymentConnection`](#cddeploymentconnection) | Introduced in GitLab 19.2. Status: Experiment. Deployments actuated by the application, across its most recent rollouts and environments. |
 | <a id="cdapplication-description"></a>`description` | [`String`](#string) | Description of the application. |
+| <a id="cdapplication-environments"></a>`environments`  | [`CdEnvironmentConnection`](#cdenvironmentconnection) | Introduced in GitLab 19.2. Status: Experiment. Distinct environments the application has been rolled out to, based on the application's most recent rollouts. |
 | <a id="cdapplication-id"></a>`id` | [`CdApplicationID!`](#cdapplicationid) | Global ID of the application. |
+| <a id="cdapplication-lastdeployedat"></a>`lastDeployedAt`  | [`Time`](#time) | Introduced in GitLab 19.2. Status: Experiment. Timestamp of the application's most recently finished deployment, among its most recent rollouts. |
 | <a id="cdapplication-links"></a>`links`  | [`CdApplicationLinkConnection`](#cdapplicationlinkconnection) | Introduced in GitLab 19.2. Status: Experiment. Links belonging to the application. |
 | <a id="cdapplication-name"></a>`name` | [`String!`](#string) | Name of the application. |
 | <a id="cdapplication-organization"></a>`organization` | [`Organization`](#organization) | Organization the application belongs to. |
 | <a id="cdapplication-rollouts"></a>`rollouts`  | [`CdRolloutConnection`](#cdrolloutconnection) | Introduced in GitLab 19.2. Status: Experiment. Rollouts of the application. |
 | <a id="cdapplication-services"></a>`services`  | [`CdServiceConnection`](#cdserviceconnection) | Introduced in GitLab 19.2. Status: Experiment. Services belonging to the application. |
 | <a id="cdapplication-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the application was last updated. |
+| <a id="cdapplication-userpermissions"></a>`userPermissions`  | [`CdApplicationPermissions`](#cdapplicationpermissions) | Introduced in GitLab 19.2. Status: Experiment. Permissions of the current user for the application. |
 | <a id="cdapplication-versionsets"></a>`versionSets`  | [`CdVersionSetConnection`](#cdversionsetconnection) | Introduced in GitLab 19.2. Status: Experiment. Version sets of the application. |
 
 ### `CdApplicationFlowDefinition`
@@ -33089,6 +33243,24 @@ Fields:
 | <a id="cdapplicationlink-name"></a>`name` | [`String!`](#string) | Name of the link. |
 | <a id="cdapplicationlink-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the link was last updated. |
 | <a id="cdapplicationlink-url"></a>`url` | [`String!`](#string) | URL of the link. |
+
+### `CdApplicationPermissions`
+
+Check permissions for the current user on a continuous deployment application.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cdapplicationpermissions-createcdapplicationflowdefinition"></a>`createCdApplicationFlowDefinition` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_cd_application_flow_definition` on this resource. |
+| <a id="cdapplicationpermissions-createcdapplicationlink"></a>`createCdApplicationLink` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_cd_application_link` on this resource. |
+| <a id="cdapplicationpermissions-createcdrollout"></a>`createCdRollout` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_cd_rollout` on this resource. |
+| <a id="cdapplicationpermissions-createcdservice"></a>`createCdService` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_cd_service` on this resource. |
+| <a id="cdapplicationpermissions-createcdversionset"></a>`createCdVersionSet` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_cd_version_set` on this resource. |
+| <a id="cdapplicationpermissions-readcdapplication"></a>`readCdApplication` | [`Boolean!`](#boolean) | If `true`, the user can perform `read_cd_application` on this resource. |
+| <a id="cdapplicationpermissions-resolvecdrolloutgate"></a>`resolveCdRolloutGate` | [`Boolean!`](#boolean) | If `true`, the user can perform `resolve_cd_rollout_gate` on this resource. |
+| <a id="cdapplicationpermissions-updatecdapplication"></a>`updateCdApplication` | [`Boolean!`](#boolean) | If `true`, the user can perform `update_cd_application` on this resource. |
+| <a id="cdapplicationpermissions-updatecdservice"></a>`updateCdService` | [`Boolean!`](#boolean) | If `true`, the user can perform `update_cd_service` on this resource. |
 
 ### `CdArtifactSource`
 
@@ -33248,7 +33420,7 @@ Fields:
 | <a id="cdservice-description"></a>`description` | [`String`](#string) | Description of the service. |
 | <a id="cdservice-id"></a>`id` | [`CdServiceID!`](#cdserviceid) | Global ID of the service. |
 | <a id="cdservice-name"></a>`name` | [`String!`](#string) | Name of the service. |
-| <a id="cdservice-serviceenvironmenthealths"></a>`serviceEnvironmentHealths`  | [`CdServiceEnvironmentHealthConnection`](#cdserviceenvironmenthealthconnection) | Introduced in GitLab 19.2. Status: Experiment. Observed health of the service across environments. |
+| <a id="cdservice-serviceenvironmenthealths"></a>`serviceEnvironmentHealths`  | [`CdServiceEnvironmentHealthConnection`](#cdserviceenvironmenthealthconnection) | Introduced in GitLab 19.2. Status: Experiment. Observed health of the service across environments, ordered from worst to best. Request the first result to get the worst observed health of the service overall. |
 | <a id="cdservice-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the service was last updated. |
 
 ### `CdServiceEnvironmentHealth`
@@ -37047,6 +37219,7 @@ Fields:
 | <a id="dependency-name"></a>`name` | [`String!`](#string) | Name of the dependency. |
 | <a id="dependency-packager"></a>`packager` | [`PackageManager`](#packagemanager) | Description of the tool used to manage the dependency. |
 | <a id="dependency-reachability"></a>`reachability` | [`ReachabilityType`](#reachabilitytype) | Information about reachability of a dependency. |
+| <a id="dependency-trackedrefscount"></a>`trackedRefsCount`  | [`Int!`](#int) | Introduced in GitLab 19.2. Status: Experiment. Number of tracked refs (branches or tags) associated with the dependency. |
 | <a id="dependency-version"></a>`version`  | [`String`](#string) | Deprecated in GitLab 18.1. Replaced by component_version. |
 | <a id="dependency-vulnerabilities"></a>`vulnerabilities` | [`VulnerabilityConnection`](#vulnerabilityconnection) | Vulnerabilities associated with the dependency. (see [Connections](#connections)) |
 | <a id="dependency-vulnerabilitycount"></a>`vulnerabilityCount` | [`Int!`](#int) | Number of vulnerabilities within the dependency. |
@@ -62148,6 +62321,17 @@ All possible ways that DORA metrics can be aggregated.
 | <a id="dorametricbucketinginterval-all"></a>`ALL` | All data points are combined into a single value. |
 | <a id="dorametricbucketinginterval-daily"></a>`DAILY` | Data points are combined into chunks by day. |
 | <a id="dorametricbucketinginterval-monthly"></a>`MONTHLY` | Data points are combined into chunks by month. |
+
+### `DuoAvailability`
+
+GitLab Duo availability states for an admin-locked namespace override.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="duoavailability-always_on"></a>`ALWAYS_ON` | Duo is on and group Owners cannot turn it off. |
+| <a id="duoavailability-default_off"></a>`DEFAULT_OFF` | Duo is off by default but group Owners can turn it on. |
+| <a id="duoavailability-default_on"></a>`DEFAULT_ON` | Duo is on by default but group Owners can turn it off. |
+| <a id="duoavailability-never_on"></a>`NEVER_ON` | Duo is off and group Owners cannot turn it on. |
 
 ### `DuoLicensedFeature`
 

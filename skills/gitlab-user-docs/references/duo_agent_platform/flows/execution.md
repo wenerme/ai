@@ -83,10 +83,6 @@ When a flow runs in CI/CD, the runner:
 
 The executor version is managed by GitLab and updated as part of regular releases.
 
-> [!note]
-> The `@gitlab/duo-cli` npm package is labeled "Experimental" for standalone CLI usage.
-> When used within flows, the relevant capabilities are covered by the same support level as flows.
-
 ## Configure CI/CD execution
 
 You can customize how flows are executed in CI/CD by creating an agent configuration file in your project.

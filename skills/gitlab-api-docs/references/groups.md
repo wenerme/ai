@@ -1506,7 +1506,7 @@ Parameters:
 
 ### Archive a group
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/481969) in GitLab 18.0 [with a flag](../administration/feature_flags/_index.md) named `archive_group`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/481969) in GitLab 18.0 [with a feature flag](../administration/feature_flags/_index.md) named `archive_group`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/526771) in GitLab 18.9. Feature flag `archive_group` removed.
 
 Archive a group.
@@ -1589,7 +1589,7 @@ Example response:
 
 #### Unarchive a group
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/481969) in GitLab 18.0 [with a flag](../administration/feature_flags/_index.md) named `archive_group`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/481969) in GitLab 18.0 [with a feature flag](../administration/feature_flags/_index.md) named `archive_group`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/526771) in GitLab 18.9. Feature flag `archive_group` removed.
 
 Unarchive a group.
@@ -1814,11 +1814,11 @@ Returns `204` and no content on success.
 ## Update group attributes
 
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/183101) in GitLab 18.0. Feature flag `limit_unique_project_downloads_per_namespace_user` removed.
-- `web_based_commit_signing_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/193928) in GitLab 18.2 [with a flag](../administration/feature_flags/_index.md) named `use_web_based_commit_signing_enabled`. Disabled by default.
+- `web_based_commit_signing_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/193928) in GitLab 18.2 [with a feature flag](../administration/feature_flags/_index.md) named `use_web_based_commit_signing_enabled`. Disabled by default.
 - `web_based_commit_signing_enabled` [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/542975) in GitLab 18.10. Feature flag `use_web_based_commit_signing_enabled` removed.
-- `allow_personal_snippets` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/200575) in GitLab 18.5 [with a flag](../administration/feature_flags/_index.md) named `allow_personal_snippets_setting`. Disabled by default.
+- `allow_personal_snippets` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/200575) in GitLab 18.5 [with a feature flag](../administration/feature_flags/_index.md) named `allow_personal_snippets_setting`. Disabled by default.
 - `allow_personal_snippets` [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/583564) in GitLab 18.9. Feature flag `allow_personal_snippets_setting` removed.
-- `built_in_project_templates_enabled` and `lock_built_in_project_templates_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235504) in GitLab 19.0 [with a flag](../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default.
+- `built_in_project_templates_enabled` and `lock_built_in_project_templates_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235504) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default.
 
 Updates the attributes for a specified group.
 
@@ -1837,8 +1837,8 @@ PUT /groups/:id
 | `path`                                               | string            | no       | The path of the group. |
 | `auto_devops_enabled`                                | boolean           | no       | Default to Auto DevOps pipeline for all projects within this group. |
 | `avatar`                                             | mixed             | no       | Image file for avatar of the group. |
-| `built_in_project_templates_enabled`                | boolean           | no       | Enable built-in project templates when users create projects in the group. Premium and Ultimate only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235504) in GitLab 19.0 [with a flag](../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default. |
-| `lock_built_in_project_templates_enabled`           | boolean           | no       | Enforce the `built_in_project_templates_enabled` setting for all subgroups. Premium and Ultimate only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235504) in GitLab 19.0 [with a flag](../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default. |
+| `built_in_project_templates_enabled`                | boolean           | no       | Enable built-in project templates when users create projects in the group. Premium and Ultimate only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235504) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default. |
+| `lock_built_in_project_templates_enabled`           | boolean           | no       | Enforce the `built_in_project_templates_enabled` setting for all subgroups. Premium and Ultimate only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235504) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default. |
 | `default_branch`                                     | string            | no       | The [default branch](../user/project/repository/branches/default.md) name for group's projects. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/442298) in GitLab 16.11. |
 | `default_branch_protection`                          | integer           | no       | [Deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/408314) in GitLab 17.0. Use `default_branch_protection_defaults` instead. |
 | `default_branch_protection_defaults`                 | hash              | no       | [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/408314) in GitLab 17.0. For available options, see [Options for `default_branch_protection_defaults`](#options-for-default_branch_protection_defaults). |
@@ -2094,7 +2094,7 @@ POST /groups/:id/ldap_sync
 - Tier: Premium, Ultimate
 - Offering: GitLab.com
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/16343) in GitLab 18.6 [with a flag](../administration/feature_flags/_index.md) named `manage_pat_by_group_owners_ready`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/16343) in GitLab 18.6 [with a feature flag](../administration/feature_flags/_index.md) named `manage_pat_by_group_owners_ready`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/578133) in GitLab 18.7. Feature flag `manage_pat_by_group_owners_ready` removed.
 
 View, revoke, and rotate the credentials of enterprise users on GitLab.com.

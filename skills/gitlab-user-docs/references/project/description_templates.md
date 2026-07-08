@@ -6,7 +6,7 @@ Issue templates, merge request templates, instance, and group templates.
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Work item support](https://gitlab.com/gitlab-org/gitlab/-/issues/512208) introduced in GitLab 17.10.
-- Support for epics [introduced](https://gitlab.com/groups/gitlab-org/-/epics/16088) in GitLab 17.10 [with a flag](../../administration/feature_flags/_index.md) named `work_item_epics`. Enabled by default. Introduced in [beta](../../policy/development_stages_support.md#beta).
+- Support for epics [introduced](https://gitlab.com/groups/gitlab-org/-/epics/16088) in GitLab 17.10 [with a feature flag](../../administration/feature_flags/_index.md) named `work_item_epics`. Enabled by default. Introduced in [beta](../../policy/development_stages_support.md#beta).
 - Support for epics [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/468310) in GitLab 18.1. Feature flag `work_item_epics` removed.
 
 Description templates standardize and automate how issues and merge requests are created in GitLab.

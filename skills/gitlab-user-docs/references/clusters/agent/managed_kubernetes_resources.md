@@ -3,7 +3,7 @@
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/16130) in GitLab 17.9 [with a flag](../../../administration/feature_flags/_index.md) named `gitlab_managed_cluster_resources`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/16130) in GitLab 17.9 [with a feature flag](../../../administration/feature_flags/_index.md) named `gitlab_managed_cluster_resources`. Disabled by default.
 - Feature flag `gitlab_managed_cluster_resources` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/520042) in GitLab 18.1.
 
 Use GitLab-managed Kubernetes resources to provision Kubernetes resources with environment templates. An environment template can:

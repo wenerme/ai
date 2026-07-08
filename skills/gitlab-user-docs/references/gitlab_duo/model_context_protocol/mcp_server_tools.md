@@ -399,11 +399,11 @@ Show me all labels in project gitlab-org/gitlab
 
 ## `semantic_code_search`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/569624) as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.5 [with a flag](../../../administration/feature_flags/_index.md) named `code_snippet_search_graphqlapi`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/569624) as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `code_snippet_search_graphqlapi`. Disabled by default.
 - Search by project path [added](https://gitlab.com/gitlab-org/gitlab/-/issues/575234) in GitLab 18.6.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/568359) from experiment to [beta](../../../policy/development_stages_support.md#beta) in GitLab 18.7. Feature flag `code_snippet_search_graphqlapi` removed.
-- [Added](https://gitlab.com/gitlab-org/gitlab/-/issues/581105) to the GitLab UI in GitLab 18.7 [with a flag](../../../administration/feature_flags/_index.md) named `mcp_client`. Disabled by default.
-- [Updated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228569) in GitLab 18.11 to use the [REST API](../../../api/search.md#semantic-search) [with a flag](../../../administration/feature_flags/_index.md) named `mcp_semantic_code_search_use_rest_api`. Disabled by default.
+- [Added](https://gitlab.com/gitlab-org/gitlab/-/issues/581105) to the GitLab UI in GitLab 18.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `mcp_client`. Disabled by default.
+- [Updated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228569) in GitLab 18.11 to use the [REST API](../../../api/search.md#semantic-search) [with a feature flag](../../../administration/feature_flags/_index.md) named `mcp_semantic_code_search_use_rest_api`. Disabled by default.
 - Semantic search using the REST API enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated in GitLab 19.1. Feature flag `mcp_semantic_code_search_use_rest_api` removed.
 
 Searches for relevant code snippets in a GitLab project.

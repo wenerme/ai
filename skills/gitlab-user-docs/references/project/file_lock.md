@@ -45,7 +45,7 @@ default branch locks. For more information, see [roles and permissions](../permi
 
 ### Lock a file or directory
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/519325) in GitLab 17.10 [with a flag](../../administration/feature_flags/_index.md) named `blob_overflow_menu`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/519325) in GitLab 17.10 [with a feature flag](../../administration/feature_flags/_index.md) named `blob_overflow_menu`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/522993) in GitLab 18.1. Feature flag `blob_overflow_menu` removed.
 
 The method for locking depends on whether you're locking a file or directory:

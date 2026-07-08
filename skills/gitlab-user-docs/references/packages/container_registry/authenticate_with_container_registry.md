@@ -105,7 +105,7 @@ To use CI/CD to authenticate with the container registry, you can use:
 
 ## Troubleshooting
 
-### `docker login` command fails with `access forbidden`
+### Error: `docker login` command fails with `access forbidden`
 
 The container registry returns the GitLab API URL to the Docker client
 to validate credentials. The Docker client uses basic auth, so the request contains
@@ -128,7 +128,7 @@ For example, a proxy in front of GitLab might be redirecting to the `/jwt/auth` 
 
 For more information about credential validation with Docker clients, see [Container registry architecture](../../../administration/packages/container_registry.md#container-registry-architecture).
 
-### `unauthorized: authentication required` when pushing large images
+### Error: `unauthorized: authentication required` when pushing large images
 
 When pushing large images, you may see an authentication error like the following:
 

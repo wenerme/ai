@@ -3,7 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- Displaying **Verified** badge for signed GitLab UI commits [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124218) in GitLab 16.3 [with a flag](../../../../administration/feature_flags/_index.md) named `gitaly_gpg_signing`. Disabled by default.
+- Displaying **Verified** badge for signed GitLab UI commits [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124218) in GitLab 16.3 [with a feature flag](../../../../administration/feature_flags/_index.md) named `gitaly_gpg_signing`. Disabled by default.
 - Verifying the signatures using multiple keys specified in `rotated_signing_keys` option [introduced](https://gitlab.com/gitlab-org/gitaly/-/merge_requests/6163) in GitLab 16.3.
 - `gitaly_gpg_signing` feature flag [enabled by default](https://gitlab.com/gitlab-org/gitaly/-/merge_requests/6876) on GitLab Self-Managed and GitLab Dedicated in GitLab 17.0.
 
@@ -38,7 +38,7 @@ Before you can use commit signing for GitLab UI commits, you must
 
 Offering: GitLab.com
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/200425) in GitLab 18.3 [with a flag](../../../../administration/feature_flags/_index.md) named `configure_web_based_commit_signing`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/200425) in GitLab 18.3 [with a feature flag](../../../../administration/feature_flags/_index.md) named `configure_web_based_commit_signing`. Disabled by default.
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/542975) in GitLab 18.9.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/542975) in GitLab 18.10. Feature flag `configure_web_based_commit_signing` removed.
 

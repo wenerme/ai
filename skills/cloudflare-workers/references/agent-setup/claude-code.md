@@ -45,7 +45,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**
 For example:
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ## Cloudflare platform access

@@ -4,7 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/52147) in GitLab 13.9 [with a flag](../../../administration/feature_flags/_index.md) named `rubygem_packages`. Disabled by default. This feature is an [experiment](../../../policy/development_stages_support.md).
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/52147) in GitLab 13.9 [with a feature flag](../../../administration/feature_flags/_index.md) named `rubygem_packages`. Disabled by default. This feature is an [experiment](../../../policy/development_stages_support.md).
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

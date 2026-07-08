@@ -50,7 +50,7 @@ If you do not have access to Agentic Chat and therefore the GitLab Duo Agent Pla
 - GitLab Duo Non-Agentic Chat: GitLab UI, Web IDE, VS Code, JetBrains IDEs, Visual Studio, and Eclipse
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/117695) for GitLab.com in GitLab 16.0.
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/451215) ability to ask doc-related questions on GitLab Self-Managed in GitLab 17.0 [with a flag](../../administration/feature_flags/_index.md) named `ai_gateway_docs_search`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/451215) ability to ask doc-related questions on GitLab Self-Managed in GitLab 17.0 [with a feature flag](../../administration/feature_flags/_index.md) named `ai_gateway_docs_search`. Enabled by default.
 - [Generally available and feature flag removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/154876) in GitLab 17.1.
 - Changed to require GitLab Duo add-on in GitLab 17.6.
 - [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
@@ -323,7 +323,7 @@ Programming languages that require compiling the source code may throw cryptic e
 
 - GitLab Duo Non-Agentic Chat: VS Code, JetBrains IDEs, Visual Studio, and Eclipse
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/477258) in GitLab 17.7 [with flags](../../administration/feature_flags/_index.md) named `duo_additional_context` and `duo_include_context_file`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/477258) in GitLab 17.7 [with feature flags](../../administration/feature_flags/_index.md) named `duo_additional_context` and `duo_include_context_file`. Disabled by default.
 - [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/groups/gitlab-org/-/epics/15183) in GitLab 17.9.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/188613) in GitLab 18.0. All feature flags removed.

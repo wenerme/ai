@@ -805,7 +805,7 @@ The following example sets the job to run every 30 minutes. Adjust the cron sche
 
 #### Use pre-calculated verification summaries
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/590853) in GitLab 19.0 [with a flag](../../../../administration/feature_flags/_index.md) named `geo_job_artifact_verification_summaries`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/590853) in GitLab 19.0 [with a feature flag](../../../../administration/feature_flags/_index.md) named `geo_job_artifact_verification_summaries`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

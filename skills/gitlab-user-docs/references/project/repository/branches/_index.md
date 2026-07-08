@@ -339,7 +339,7 @@ To do this:
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/127115) in GitLab 16.4 [with a flag](../../../../administration/feature_flags/_index.md) named `target_branch_rules_flag`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/127115) in GitLab 16.4 [with a feature flag](../../../../administration/feature_flags/_index.md) named `target_branch_rules_flag`. Enabled by default.
 - [Feature flag removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/136431) in GitLab 16.7.
 
 Some projects use multiple long-term branches for development, like `develop` and `qa`.

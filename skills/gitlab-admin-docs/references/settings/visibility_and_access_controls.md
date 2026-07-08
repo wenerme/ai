@@ -166,7 +166,7 @@ For more details on group visibility, see
 
 ## Restrict visibility levels
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124649) in GitLab 16.3 to prevent restricting default project and group visibility, [with a flag](../feature_flags/_index.md) named `prevent_visibility_restriction`. Disabled by default.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124649) in GitLab 16.3 to prevent restricting default project and group visibility, [with a feature flag](../feature_flags/_index.md) named `prevent_visibility_restriction`. Disabled by default.
 - `prevent_visibility_restriction` [enabled](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/131203) by default in GitLab 16.4.
 - `prevent_visibility_restriction` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/433280) in GitLab 16.7.
 
@@ -352,7 +352,7 @@ To prevent invitations:
 
 - Instance setting to allow the display of user data
   [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/214538) in GitLab 18.7
-  [with a flag](../feature_flags/_index.md) named `usage_billing_dev`. [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/215714).
+  [with a feature flag](../feature_flags/_index.md) named `usage_billing_dev`. [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/215714).
 - Feature flag `usage_billing_dev` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/566581) in GitLab 18.10.
 
 Prerequisites:
@@ -370,7 +370,7 @@ To turn on the display of user data on the [GitLab Credits dashboard](../../subs
 ## Allow access to the MCP server
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230311) in GitLab 19.0
-  [with a flag](../feature_flags/_index.md) named `mcp_server_availability_setting`.
+  [with a feature flag](../feature_flags/_index.md) named `mcp_server_availability_setting`.
   Disabled by default.
 
 > [!flag]

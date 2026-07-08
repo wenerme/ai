@@ -5,7 +5,7 @@ A specific step in a work item's workflow ('In progress', 'Done', 'Won't do') th
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/543862) in GitLab 18.2 [with a flag](../../administration/feature_flags/_index.md) named `work_item_status_feature_flag`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/543862) in GitLab 18.2 [with a feature flag](../../administration/feature_flags/_index.md) named `work_item_status_feature_flag`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/521286) in GitLab 18.4. Feature flag `work_item_status_feature_flag` removed.
 
 Work item status represents a specific step in a work item's workflow, such as **In progress**, **Done**, or **Won't do**.
@@ -51,7 +51,7 @@ Statuses in the **Done** and **Canceled** categories automatically set work item
 
 ## Lifecycles
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/556113) in GitLab 18.5 [with a flag](../../administration/feature_flags/_index.md) named `work_item_status_mvc2`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/556113) in GitLab 18.5 [with a feature flag](../../administration/feature_flags/_index.md) named `work_item_status_mvc2`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/576610) in GitLab 18.6. Feature flag `work_item_status_mvc2` removed.
 
 A lifecycle is a collection of statuses that can be applied to a work item type. Lifecycles group statuses into meaningful workflows that can be reused consistently across work item types and namespaces.

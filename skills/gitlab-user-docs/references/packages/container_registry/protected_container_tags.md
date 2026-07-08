@@ -5,7 +5,7 @@ Control who can push or delete container tags with role-based protection rules u
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/505455) as an [experiment](../../../policy/development_stages_support.md) in GitLab 17.9 [with a flag](../../../administration/feature_flags/_index.md) named `container_registry_protected_tags`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/505455) as an [experiment](../../../policy/development_stages_support.md) in GitLab 17.9 [with a feature flag](../../../administration/feature_flags/_index.md) named `container_registry_protected_tags`. Disabled by default.
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/505455) in GitLab 17.10.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/524076) in GitLab 17.11. Feature flag `container_registry_protected_tags` removed.
 

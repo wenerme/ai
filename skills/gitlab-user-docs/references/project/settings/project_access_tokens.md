@@ -33,7 +33,7 @@ Prerequisites:
 ## Create a project access token
 
 - Ability to create non-expiring project access tokens was [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/392855) in GitLab 16.0.
-- Maximum allowable lifetime limit [extended to 400 days](https://gitlab.com/gitlab-org/gitlab/-/issues/461901) in GitLab 17.6 [with a flag](../../../administration/feature_flags/_index.md) named `buffered_token_expiration_limit`. Disabled by default.
+- Maximum allowable lifetime limit [extended to 400 days](https://gitlab.com/gitlab-org/gitlab/-/issues/461901) in GitLab 17.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `buffered_token_expiration_limit`. Disabled by default.
 - Project access token description [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/443819) in GitLab 17.7.
 
 > [!flag]
@@ -72,7 +72,7 @@ configured for personal access tokens.
 
 - In GitLab 16.0 and earlier, token usage information is updated every 24 hours.
 - The frequency of token usage information updates [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/410168) in GitLab 16.1 from 24 hours to 10 minutes.
-- Ability to view IP addresses [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/428577) in GitLab 17.8 [with a flag](../../../administration/feature_flags/_index.md) named `pat_ip`. Enabled by default in 17.9.
+- Ability to view IP addresses [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/428577) in GitLab 17.8 [with a feature flag](../../../administration/feature_flags/_index.md) named `pat_ip`. Enabled by default in 17.9.
 - Ability to view IP addresses made [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/513302) in GitLab 17.10. Feature flag `pat_ip` removed.
 
 The project access tokens page displays information about your access tokens.
@@ -99,7 +99,7 @@ Expired, rotated, or revoked tokens are stored in the **Inactive project access 
 
 ## Rotate a project access token
 
-- Ability to view expired and revoked tokens [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462217) in GitLab 17.3 [with a flag](../../../administration/feature_flags/_index.md) named `retain_resource_access_token_user_after_revoke`. Disabled by default.
+- Ability to view expired and revoked tokens [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462217) in GitLab 17.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `retain_resource_access_token_user_after_revoke`. Disabled by default.
 - Ability to view expired and revoked tokens until they are automatically deleted [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/471683) in GitLab 17.9. Feature flag `retain_resource_access_token_user_after_revoke` removed.
 
 Rotate a token to create a new token with the same permissions and scope as the original.
@@ -122,7 +122,7 @@ To rotate a project access token:
 
 ## Revoke a project access token
 
-- Ability to view expired and revoked tokens [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462217) in GitLab 17.3 [with a flag](../../../administration/feature_flags/_index.md) named `retain_resource_access_token_user_after_revoke`. Disabled by default.
+- Ability to view expired and revoked tokens [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462217) in GitLab 17.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `retain_resource_access_token_user_after_revoke`. Disabled by default.
 - Ability to view expired and revoked tokens until they are automatically deleted [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/471683) in GitLab 17.9. Feature flag `retain_resource_access_token_user_after_revoke` removed.
 
 Revoke a token to immediately invalidate it and prevent further use. Revoked tokens are not
@@ -158,9 +158,9 @@ see [non-expiring access tokens](../../../update/deprecations.md#non-expiring-ac
 
 ### Project access token expiry emails
 
-- 60 and 30 day expiry notifications [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/464040) in GitLab 17.6 [with a flag](../../../administration/feature_flags/_index.md) named `expiring_pats_30d_60d_notifications`. Disabled by default.
+- 60 and 30 day expiry notifications [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/464040) in GitLab 17.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `expiring_pats_30d_60d_notifications`. Disabled by default.
 - 60 and 30 day notifications [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/173792) in GitLab 17.7. Feature flag `expiring_pats_30d_60d_notifications` removed.
-- Notifications to inherited group members [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/463016) in GitLab 17.7 [with a flag](../../../administration/feature_flags/_index.md) named `pat_expiry_inherited_members_notification`. Disabled by default.
+- Notifications to inherited group members [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/463016) in GitLab 17.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `pat_expiry_inherited_members_notification`. Disabled by default.
 - Feature flag `pat_expiry_inherited_members_notification` [enabled by default in GitLab 17.10](https://gitlab.com/gitlab-org/gitlab/-/issues/393772).
 - Feature flag `pat_expiry_inherited_members_notification` removed in GitLab `17.11`
 
@@ -180,7 +180,7 @@ deleted. On GitLab Self-Managed, you can modify this
 
 ## Bot users for projects
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/462217) in GitLab 17.2 [with a flag](../../../administration/feature_flags/_index.md) named `retain_resource_access_token_user_after_revoke`. Disabled by default. When enabled new bot users are made members with no expiry date and, when the token is later revoked or expires, the bot user is retained for 30 days.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/462217) in GitLab 17.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `retain_resource_access_token_user_after_revoke`. Disabled by default. When enabled new bot users are made members with no expiry date and, when the token is later revoked or expires, the bot user is retained for 30 days.
 - Inactive bot users retention is [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/462217) in GitLab 17.9. Feature flag `retain_resource_access_token_user_after_revoke` removed.
 
 When you create a project access token, GitLab creates a bot user and associates it with the token.

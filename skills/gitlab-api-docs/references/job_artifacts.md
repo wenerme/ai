@@ -51,7 +51,7 @@ artifact_download:
 
 ## Download job artifacts by reference name
 
-- `search_recent_successful_pipelines` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/515864) in GitLab 18.7 [with a flag](../administration/feature_flags/_index.md) named `ci_search_recent_successful_pipelines`. Disabled by default.
+- `search_recent_successful_pipelines` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/515864) in GitLab 18.7 [with a feature flag](../administration/feature_flags/_index.md) named `ci_search_recent_successful_pipelines`. Disabled by default.
 - Feature flag `ci_search_recent_successful_pipelines` removed in GitLab 18.10
 
 Download a job's artifacts archive from the latest successful pipeline using a reference name.
@@ -248,7 +248,7 @@ list_artifacts:
 
 ## Download a single artifact file by reference name
 
-- `search_recent_successful_pipelines` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/515864) in GitLab 18.9 [with a flag](../administration/feature_flags/_index.md) named `ci_search_recent_successful_pipelines`. Disabled by default.
+- `search_recent_successful_pipelines` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/515864) in GitLab 18.9 [with a feature flag](../administration/feature_flags/_index.md) named `ci_search_recent_successful_pipelines`. Disabled by default.
 - Feature flag `ci_search_recent_successful_pipelines` removed in GitLab 18.10
 
 Download a single file from a job's artifacts in the latest successful pipeline

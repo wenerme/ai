@@ -7,11 +7,11 @@
 
 - Not available on GitLab Duo with self-hosted models
 
-- Introduced on GitLab.com in GitLab 18.3 [with a flag](../../../administration/feature_flags/_index.md) named `ai_flow_triggers`. Enabled by default.
+- Introduced on GitLab.com in GitLab 18.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_flow_triggers`. Enabled by default.
 - Renamed from CLI agents in GitLab 18.6
 - Claude Code Agent and Codex Agent enabled on GitLab Self-Managed and GitLab Dedicated in GitLab 18.6.
-- Enabling in groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/578318) in GitLab 18.7 [with a flag](../../../administration/feature_flags/_index.md) named `ai_catalog_agents`. Enabled on GitLab.com.
-- Enabling directly in projects as a maintainer [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20743) in GitLab 18.10 [with a flag](../../../administration/feature_flags/_index.md) named `ai_catalog_project_level_enablement`. Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated by default.
+- Enabling in groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/578318) in GitLab 18.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_agents`. Enabled on GitLab.com.
+- Enabling directly in projects as a maintainer [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20743) in GitLab 18.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_project_level_enablement`. Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated by default.
 - Feature flag `ai_catalog_project_level_enablement` removed in GitLab 18.11.
 - **Merge request ready** trigger event type [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/592454) in GitLab 19.0 with a [flag](../../../administration/feature_flags/_index.md) named `merge_request_ready_flow_trigger`. Disabled by default.
 - **Merge request code conflict** trigger event type [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/592455) in GitLab 19.1.

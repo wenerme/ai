@@ -6,7 +6,7 @@ GitLab service accounts API manages service accounts at instance or group level,
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/225913) on Free tier in GitLab 18.10
-  [with a flag](../administration/feature_flags/_index.md) named `service_accounts_available_on_free_or_unlicensed`.
+  [with a feature flag](../administration/feature_flags/_index.md) named `service_accounts_available_on_free_or_unlicensed`.
   Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227910) on Free tier in GitLab 18.11.
   Feature flag `service_accounts_available_on_free_or_unlicensed` removed.
@@ -19,8 +19,8 @@ The number of service accounts you can create depends on your subscription and o
 - On GitLab Free, limits vary by offering:
   - For GitLab.com, you can create up to 100 service accounts for each top-level group.
     This includes service accounts created in subgroups or projects.
-  - For GitLab Self-Managed, you can create up to 100 service accounts per instance.
-    This includes all service accounts regardless of how they are provisioned (instance, group, or project level).
+  - For GitLab Self-Managed, you can create up to 100 service accounts for the entire instance.
+    This includes service accounts created at the instance, group, or project level.
 
 You can also interact with service accounts through the [users API](users.md).
 To manage SSH keys for service accounts, use the [user SSH and GPG keys API](user_keys.md).
@@ -233,7 +233,7 @@ Example response:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/407775) in GitLab 16.1.
 - `username` and `name` attributes [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/144841) in GitLab 16.10.
-- `email` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/181456) in GitLab 17.9 [with a flag](../administration/feature_flags/_index.md) named `group_service_account_custom_email`.
+- `email` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/181456) in GitLab 17.9 [with a feature flag](../administration/feature_flags/_index.md) named `group_service_account_custom_email`.
 - `email` attribute [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/186476) in GitLab 17.11. Feature flag `group_service_account_custom_email` removed.
 
 Creates a service account in a specified group.
@@ -534,7 +534,7 @@ Example response:
 
 ## Project service accounts
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/585509) in GitLab 18.9 [with a flag](../administration/feature_flags/_index.md) named `allow_projects_to_create_service_accounts`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/585509) in GitLab 18.9 [with a feature flag](../administration/feature_flags/_index.md) named `allow_projects_to_create_service_accounts`. Disabled by default.
 - Project service accounts [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/225485/) in GitLab 18.11. Feature flag `allow_projects_to_create_service_accounts` removed.
 
 Project service accounts are owned by a specific project and are available only to their associated project.

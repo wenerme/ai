@@ -110,7 +110,7 @@ On the GitLab Duo sidebar, select **GitLab Duo Chat history** ().
 
 ### Have multiple conversations
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/16108) in GitLab 17.10 [with a flag](../../administration/feature_flags/_index.md) named `duo_chat_multi_thread`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/16108) in GitLab 17.10 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_chat_multi_thread`. Disabled by default.
 - [Enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/187443) in GitLab 17.11.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/190042) in GitLab 18.1. Feature flag `duo_chat_multi_thread` removed.
 - Search capability for chat history in the GitLab UI [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/582513) in GitLab 18.9.

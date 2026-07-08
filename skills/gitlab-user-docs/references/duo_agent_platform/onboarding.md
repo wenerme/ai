@@ -4,9 +4,9 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - Initialize project context [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/229847) as a [beta](../../policy/development_stages_support.md) in GitLab 19.0
-  [with a flag](../../administration/feature_flags/_index.md) named `duo_agent_onboarding`. Disabled by default.
+  [with a feature flag](../../administration/feature_flags/_index.md) named `duo_agent_onboarding`. Disabled by default.
 - Improve CI setup [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/234426) as a [beta](../../policy/development_stages_support.md) in GitLab 19.1
-  [with a flag](../../administration/feature_flags/_index.md) named `duo_agent_onboarding`. Disabled by default.
+  [with a feature flag](../../administration/feature_flags/_index.md) named `duo_agent_onboarding`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

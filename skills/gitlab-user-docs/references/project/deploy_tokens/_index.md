@@ -60,7 +60,7 @@ A deploy token's scope determines the actions it can perform.
 
 ## GitLab deploy token
 
-- Support for `gitlab-deploy-token` at the group level [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/214014) in GitLab 15.1 [with a flag](../../../administration/feature_flags/_index.md) named `ci_variable_for_group_gitlab_deploy_token`. Enabled by default.
+- Support for `gitlab-deploy-token` at the group level [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/214014) in GitLab 15.1 [with a feature flag](../../../administration/feature_flags/_index.md) named `ci_variable_for_group_gitlab_deploy_token`. Enabled by default.
 - [Feature flag `ci_variable_for_group_gitlab_deploy_token`](https://gitlab.com/gitlab-org/gitlab/-/issues/363621) removed in GitLab 15.4.
 
 A GitLab deploy token is a special type of deploy token. If you create a deploy token named
@@ -86,7 +86,7 @@ CI/CD variables are available only to immediate child projects of the group.
 
 ## Deploy token expiration
 
-- Email notifications for deploy token expiration [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/512197) in GitLab 18.3 [with a flag](../../../administration/feature_flags/_index.md) named `project_deploy_token_expiring_notifications`. Disabled by default.
+- Email notifications for deploy token expiration [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/512197) in GitLab 18.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `project_deploy_token_expiring_notifications`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

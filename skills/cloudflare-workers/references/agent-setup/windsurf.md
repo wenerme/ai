@@ -48,7 +48,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**
 Open Cascade and try a prompt — for example:
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Cloudflare platform access
