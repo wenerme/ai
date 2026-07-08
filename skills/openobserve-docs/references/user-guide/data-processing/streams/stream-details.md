@@ -34,11 +34,11 @@ Inspect and manage the schema of a stream.
 This tab allows you to review detected fields, assign index types, define user-defined schemas, and apply sensitive data redaction patterns. 
 [schema settings]
 
-To learn more about Schema Settings, visit the [Schema Settings](https://openobserve.ai/docs/user-guide/streams/schema-settings/) page. 
+To learn more about Schema Settings, visit the [Schema Settings](https://openobserve.ai/docs/user-guide/data-processing/streams/schema-settings/) page. 
 
 ## Extended Retention
 [extended retention]
-Allows you to retain specific segments of your stream data beyond the configured stream-level or global retention period. To learn more, see the [Extended Retention](https://openobserve.ai/docs/user-guide/streams/extended-retention/) page.
+Allows you to retain specific segments of your stream data beyond the configured stream-level or global retention period. To learn more, see the [Extended Retention](https://openobserve.ai/docs/user-guide/data-processing/streams/extended-retention/) page.
 
 ## Configuration
 The **Configuration** tab provides options to configure stream-level limits and ingestion behavior.

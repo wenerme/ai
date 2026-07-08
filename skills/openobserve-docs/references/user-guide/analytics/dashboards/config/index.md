@@ -4,5 +4,5 @@ The **Config** tab is organized into collapsible sections (General, Legend, Data
 
 Learn more: 
 
-- [Trellis Layout](../config/trellis-layout/)
-- [Show Symbol](../config/show-symbol/)
+- [Trellis Layout](trellis-layout.md)
+- [Show Symbol](show-symbol.md)

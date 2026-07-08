@@ -235,6 +235,21 @@ Queues billing examples
 
 To learn more about Queues pricing and review billing examples, refer to [Queues Pricing](https://developers.cloudflare.com/queues/platform/pricing/).
 
+## Workflows
+
+| Unit                | Workers Free                                                                                                          | Workers Paid                                                                                   |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Requests (millions) | 100,000 per day ([shared with Workers requests](https://developers.cloudflare.com/workers/platform/pricing/#workers)) | 10 million included per month + $0.30 per additional million                                   |
+| CPU time (ms)       | 10 milliseconds of CPU time per invocation                                                                            | 30 million CPU milliseconds included per month + $0.02 per additional million CPU milliseconds |
+| Storage (GB-mo)     | 1 GB                                                                                                                  | 1 GB included per month + $0.20/ GB-month                                                      |
+| Steps               | 3,000 per day                                                                                                         | 500,000 included per month + $0.80/ additional 100,000 per month                               |
+
+Cloudflare will not bill step and storage usage before the start date announced in the [Workflows billing changelog](https://developers.cloudflare.com/changelog/post/2026-07-07-workflows-billing-updates/).
+
+Workflows pricing
+
+To learn more about Workflows billing, refer to [Workflows pricing](https://developers.cloudflare.com/workflows/reference/pricing/).
+
 ## D1
 
 D1 is available on both the Workers Free and Workers Paid plans.
@@ -449,6 +464,6 @@ Workers Paid plan is separate from any other Cloudflare plan (Free, Professional
 Only requests that hit a Worker will count against your limits and your bill. Since Cloudflare Workers runs before the Cloudflare cache, the caching of a request still incurs costs. Refer to [Limits](https://developers.cloudflare.com/workers/platform/limits/) to review definitions and behavior after a limit is hit.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/pricing/#page","headline":"Pricing · Cloudflare Workers docs","description":"Workers plans and pricing information.","url":"https://developers.cloudflare.com/workers/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/pricing/#page","headline":"Pricing · Cloudflare Workers docs","description":"Workers plans and pricing information.","url":"https://developers.cloudflare.com/workers/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/pricing/","name":"Pricing"}}]}
 ```

@@ -33,7 +33,7 @@ How JSX constructs are transformed into vanilla JavaScript internally. The follo
 
 | Compiler options                                    | Transpiled output                                                                                                                                                                                                                                                                                                                                                                                                       |
 | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `json{  "jsx": "react"}`        | `tsximport { createElement } from "react";createElement("Box", { width: 5 }, "Hello");`                                                                                                                                                                                                                                                                                                                  |
+| `json{  "jsx": "react"}`        | `tsxReact.createElement(Box, { width: 5 }, "Hello");`                                                                                                                                                                                                                                                                                                                                                         |
 | `json{  "jsx": "react-jsx"}`    | `tsximport { jsx } from "react/jsx-runtime";jsx("Box", { width: 5 }, "Hello");`                                                                                                                                                                                                                                                                                                                          |
 | `json{  "jsx": "react-jsxdev"}` | `tsximport { jsxDEV } from "react/jsx-dev-runtime";jsxDEV(  "Box",  { width: 5, children: "Hello" },  undefined,  false,  undefined,  this,);`The `jsxDEV` variable name is a React convention. The `DEV` suffix marks code intended for development. The development version of React is slower and includes additional validity checks & debugging tools. |
 | `json{  "jsx": "preserve"}`     | `tsx// JSX is not transpiled// "preserve" is not supported by Bun currently<Box width={5}>Hello</Box>`                                                                                                                                                                                                                                                                                              |
@@ -42,21 +42,21 @@ How JSX constructs are transformed into vanilla JavaScript internally. The follo
 
 Only applicable when `jsx` is `react`.
 
-The function name used to represent JSX constructs. Default value is `"createElement"`. Set this for libraries like [Preact](https://preactjs.com/) that use a different function name (`"h"`).
+The function name used to represent JSX constructs. Default value is `"React.createElement"`. Set this for libraries like [Preact](https://preactjs.com/) that use a different function name (`"h"`).
 
-| Compiler options                                                      | Transpiled output                                                              |
-| --------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| `json{  "jsx": "react",  "jsxFactory": "h"}` | `tsximport { h } from "react";h("Box", { width: 5 }, "Hello");` |
+| Compiler options                                                      | Transpiled output                             |
+| --------------------------------------------------------------------- | --------------------------------------------- |
+| `json{  "jsx": "react",  "jsxFactory": "h"}` | `tsxh(Box, { width: 5 }, "Hello");` |
 
 ### [`jsxFragmentFactory`](https://www.typescriptlang.org/tsconfig#jsxFragmentFactory)
 
 Only applicable when `jsx` is `react`.
 
-The function name used to represent [JSX fragments](https://react.dev/reference/react/Fragment) such as `<>Hello</>`. Default value is `"Fragment"`.
+The function name used to represent [JSX fragments](https://react.dev/reference/react/Fragment) such as `<>Hello</>`. Default value is `"React.Fragment"`.
 
-| Compiler options                                                                                                    | Transpiled output                                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `json{  "jsx": "react",  "jsxFactory": "myjsx",  "jsxFragmentFactory": "MyFragment"}` | `tsx// input<>Hello</>;// outputimport { myjsx, MyFragment } from "react";myjsx(MyFragment, null, "Hello");` |
+| Compiler options                                                                                                    | Transpiled output                                                                                |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `json{  "jsx": "react",  "jsxFactory": "myjsx",  "jsxFragmentFactory": "MyFragment"}` | `tsx// input<>Hello</>;// outputmyjsx(MyFragment, null, "Hello");` |
 
 ### [`jsxImportSource`](https://www.typescriptlang.org/tsconfig#jsxImportSource)
 
@@ -64,11 +64,11 @@ Only applicable when `jsx` is `react-jsx` or `react-jsxdev`.
 
 The module the component factory function (such as `createElement`, `jsx`, or `jsxDEV`) is imported from. Default value is `"react"`. You'll typically need this when using a component library like Preact.
 
-| Compiler options                                                                                                   | Transpiled output                                                                                                                                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `jsonc{  "jsx": "react",  // jsxImportSource is not defined  // default to "react"}` | `tsximport { jsx } from "react/jsx-runtime";jsx("Box", { width: 5, children: "Hello" });`                                                                                                                                        |
-| `jsonc{  "jsx": "react-jsx",  "jsxImportSource": "preact",}`                              | `tsximport { jsx } from "preact/jsx-runtime";jsx("Box", { width: 5, children: "Hello" });`                                                                                                                                       |
-| `jsonc{  "jsx": "react-jsxdev",  "jsxImportSource": "preact",}`                           | `tsx// /jsx-runtime is automatically appendedimport { jsxDEV } from "preact/jsx-dev-runtime";jsxDEV(  "Box",  { width: 5, children: "Hello" },  undefined,  false,  undefined,  this,);` |
+| Compiler options                                                                                                       | Transpiled output                                                                                                                                                                                                                               |
+| ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `jsonc{  "jsx": "react-jsx",  // jsxImportSource is not defined  // default to "react"}` | `tsximport { jsx } from "react/jsx-runtime";jsx("Box", { width: 5, children: "Hello" });`                                                                                                                                        |
+| `jsonc{  "jsx": "react-jsx",  "jsxImportSource": "preact",}`                                  | `tsximport { jsx } from "preact/jsx-runtime";jsx("Box", { width: 5, children: "Hello" });`                                                                                                                                       |
+| `jsonc{  "jsx": "react-jsxdev",  "jsxImportSource": "preact",}`                               | `tsx// /jsx-runtime is automatically appendedimport { jsxDEV } from "preact/jsx-dev-runtime";jsxDEV(  "Box",  { width: 5, children: "Hello" },  undefined,  false,  undefined,  this,);` |
 
 ### JSX pragma
 

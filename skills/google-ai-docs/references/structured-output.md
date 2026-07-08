@@ -70,6 +70,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
 
 ### JavaScript
 
+    // Note: Ensure zod is installed (npm install zod)
     import { GoogleGenAI } from "@google/genai";
     import * as z from "zod";
 
@@ -248,6 +249,7 @@ classification, allowing the output structure to vary based on the content.
 
 ### JavaScript
 
+    // Note: Ensure zod is installed (npm install zod)
     import { GoogleGenAI } from "@google/genai";
     import * as z from "zod";
 
@@ -400,6 +402,7 @@ organization chart.
 
 ### JavaScript
 
+    // Note: Ensure zod is installed (npm install zod)
     import { GoogleGenAI } from "@google/genai";
     import * as z from "zod";
 
@@ -526,11 +529,13 @@ strings that can be concatenated to form the final JSON object.
         stream=True
     )
     for event in stream:
-        if event.event_type == "step.delta" and event.delta.text:
-            print(event.delta.text, end="")
+        if event.event_type == "step.delta":
+            if event.delta.type == "text" and getattr(event.delta, "text", None):
+                print(event.delta.text, end="", flush=True)
 
 ### JavaScript
 
+    // Note: Ensure zod is installed (npm install zod)
     import { GoogleGenAI } from "@google/genai";
     import * as z from "zod";
 
@@ -559,10 +564,35 @@ strings that can be concatenated to form the final JSON object.
     });
 
     for await (const event of stream) {
-      if (event.type === "step.delta" && event.delta?.text) {
-        process.stdout.write(event.delta.text);
+      if (event.event_type === "step.delta") {
+        if (event.delta.type === "text") {
+          process.stdout.write(event.delta.text);
+        }
       }
     }
+
+### REST
+
+    curl -N -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+        -H "x-goog-api-key: $GEMINI_API_KEY" \
+        -H 'Content-Type: application/json' \
+        -d '{
+          "model": "gemini-3.5-flash",
+          "input": "The new UI is incredibly intuitive. Add a very long summary!",
+          "response_format": {
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "sentiment": { "type": "string", "enum": ["positive", "neutral", "negative"] },
+                "summary": { "type": "string" }
+              },
+              "required": ["sentiment", "summary"]
+            }
+          },
+          "stream": true
+        }'
 
 ## Structured outputs with tools
 
@@ -605,6 +635,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
 
 ### JavaScript
 
+    // Note: Ensure zod is installed (npm install zod)
     import { GoogleGenAI } from "@google/genai";
     import * as z from "zod";
 

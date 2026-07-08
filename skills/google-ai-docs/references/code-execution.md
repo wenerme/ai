@@ -169,7 +169,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
     interaction = client.interactions.create(
         model="gemini-3.5-flash",
         input=[
-            {"type": "image", "data": base64.b64encode(image_bytes).decode('\utf-8'), "mime_type": "image/jpeg"},
+            {"type": "image", "data": base64.b64encode(image_bytes).decode('utf-8'), "mime_type": "image/jpeg"},
             {"type": "text", "text": "Zoom into the expression pedals and tell me how many pedals are there?"}
         ],
         tools=[{"type": "code_execution"}]
@@ -181,7 +181,8 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
                 if content_block.type == "text":
                     print(content_block.text)
                 elif content_block.type == "image":
-                    display(Image.open(io.BytesIO(base64.b64decode(content_block.data))))
+                    img = Image.open(io.BytesIO(base64.b64decode(content_block.data)))
+                    img.show()  # or: img.save("output_image.jpg")
         elif step.type == "code_execution_call":
             print(step.arguments.code)
         elif step.type == "code_execution_result":
@@ -364,8 +365,8 @@ You can also use code execution as part of a multi-turn conversation using
 
 ## Input/output (I/O)
 
-Starting with
-[Gemini 2.0 Flash](https://ai.google.dev/gemini-api/docs/models/gemini#gemini-2.0-flash), code
+In current Gemini models such as
+[Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini#gemini-3.5-flash), code
 execution supports file input and graph output. Using these input and output
 capabilities, you can upload CSV and text files, ask questions about the
 files, and have [Matplotlib](https://matplotlib.org/) graphs generated as part
@@ -483,7 +484,7 @@ You can't install your own libraries.
 
 ## What's next
 
-- Try the
+- Try the [Interactions API Quickstart](https://ai.google.dev/gemini-api/docs/quickstart).
 - Learn about other Gemini API tools:
   - [Function calling](https://ai.google.dev/gemini-api/docs/function-calling)
   - [Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search)

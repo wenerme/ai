@@ -503,7 +503,7 @@ const out = encode_png(
 );
 ```
 
-The [auto-generated wrapper](https://github.com/oven-sh/bun/blob/6a65631cbdcae75bfa1e64323a6ad613a922cd1a/src/bun.js/ffi.exports.js#L180-L182) converts the pointer to a `TypedArray`.
+The [auto-generated wrapper](https://github.com/oven-sh/bun/blob/6a65631cbdcae75bfa1e64323a6ad613a922cd1a/src/bun.js/ffi.exports.js#L180-L182) converts the `TypedArray` to a pointer.
 
 If you don't want the automatic conversion, or you want a pointer to a specific byte offset within the `TypedArray`, get the pointer to the `TypedArray` directly:
 

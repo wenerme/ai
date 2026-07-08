@@ -178,10 +178,10 @@ Connection context settings allow you to control how users interact with an appl
 
 Connection context is configured per policy, allowing you to grant different permissions to different groups of users. For example, you could allow full-time employees to copy data from a remote RDP session while restricting contractors to read-only access.
 
-| Application type                                                                                                                                          | Available settings                           |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| [Infrastructure (SSH)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/)                       | Allowed UNIX usernames                       |
-| [Browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#clipboard-controls) | Clipboard controls (copy/paste restrictions) |
+| Application type                                                                                                                                           | Available settings                         |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| [Infrastructure (SSH)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/)                        | Allowed UNIX usernames                     |
+| [Browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#connection-settings) | Clipboard controls, file transfer controls |
 
 ## Cloudflare Access policy order of execution
 
@@ -222,6 +222,6 @@ The following table shows a Cloudflare Access policy that includes all users wit
 [API and Terraform](https://developers.cloudflare.com/cloudflare-one/api-terraform/) provide programmatic ways to manage your Access policies and configurations.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#page","headline":"Access policies · Cloudflare One docs","description":"Configure Policies in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#page","headline":"Access policies · Cloudflare One docs","description":"Configure Policies in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/policies/","name":"Policies"}}]}
 ```

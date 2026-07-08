@@ -24,6 +24,7 @@ The following are the available options:
 * [ /pdf - Render PDF ](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/)
 * [ /markdown - Extract Markdown from a webpage ](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/)
 * [ /snapshot - Capture multiple page formats ](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/)
+* [ /accessibilityTree - Capture accessibility tree ](https://developers.cloudflare.com/browser-run/quick-actions/accessibility-tree-endpoint/)
 * [ /scrape - Scrape HTML elements ](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/)
 * [ /json - Capture structured data using AI ](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/)
 * [ /links - Retrieve links from a webpage ](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/)

@@ -16,6 +16,15 @@ Review recent changes to the Cloudflare One Client (formerly WARP).
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one-client.xml)
 
+## 2026-07-07
+
+
+**Cloudflare One Client for Windows (version 2026.6.850.0)**
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix addresses a Windows authentication issue in the embedded WebView2 browser. Single sign-on could fail to use the Windows primary account, causing users to be prompted for an interactive sign-in. The embedded authentication browser now allows SSO providers to use the OS primary account when available.
+
 ## 2026-07-01
 
 
@@ -75,6 +84,7 @@ This release introduces multiple features from our previous beta release into st
 
 **Known issues**
 
+* Single sign-on in the embedded WebView2 authentication browser may fail to use the Windows primary account, prompting for an interactive sign-in.
 * An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
 * In rare cases, a registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Windows ARM may prompt the user to close running applications while trying to install this version. Simply click "Ok" with the default highlighted option.

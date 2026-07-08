@@ -4,7 +4,7 @@
 
 # Create transcription
 
-> Transcribes audio into text. Accepts base64-encoded audio input and returns the transcribed text.
+> Transcribes audio into text. Accepts base64-encoded audio input as JSON or an OpenAI-style multipart/form-data file upload, and returns the transcribed text.
 
 
 
@@ -98,8 +98,9 @@ paths:
         - STT
       summary: Create transcription
       description: >-
-        Transcribes audio into text. Accepts base64-encoded audio input and
-        returns the transcribed text.
+        Transcribes audio into text. Accepts base64-encoded audio input as JSON
+        or an OpenAI-style multipart/form-data file upload, and returns the
+        transcribed text.
       operationId: createAudioTranscriptions
       requestBody:
         content:
@@ -112,6 +113,38 @@ paths:
               model: openai/whisper-large-v3
             schema:
               $ref: '#/components/schemas/STTRequest'
+          multipart/form-data:
+            example:
+              file: audio.wav
+              language: en
+              model: openai/whisper-large-v3
+            schema:
+              properties:
+                file:
+                  description: >-
+                    The audio file to transcribe. The format is derived from the
+                    filename extension or the file part content type. Max 25 MB;
+                    send larger files as base64 JSON via input_audio.
+                  format: binary
+                  type: string
+                language:
+                  description: The language of the input audio (ISO-639-1).
+                  type: string
+                model:
+                  description: The model to use for transcription.
+                  type: string
+                response_format:
+                  description: The response format. Only "json" is supported.
+                  enum:
+                    - json
+                  type: string
+                temperature:
+                  description: The sampling temperature.
+                  type: number
+              required:
+                - file
+                - model
+              type: object
         required: true
       responses:
         '200':

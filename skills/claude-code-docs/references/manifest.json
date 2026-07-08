@@ -73,9 +73,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"a8ff2a7c028b7e7a3610ca23ef9ebeca2bee42c3cc8fc8f913238d981c0b58a8\"",
-    "size": 417253,
-    "updatedAt": "2026-07-07T04:08:46.144Z"
+    "etag": "W/\"a00057140f61d5bd9ee1f37df6cf1f3384bd3efe11db761b7902d1a1324c70a8\"",
+    "size": 421849,
+    "updatedAt": "2026-07-08T03:34:23.043Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -85,9 +85,9 @@
   },
   "channels-reference.md": {
     "url": "https://code.claude.com/docs/en/channels-reference",
-    "lastModified": "Wed, 10 Jun 2026 00:32:51 GMT",
-    "size": 45486,
-    "updatedAt": "2026-06-10T00:32:51.300Z"
+    "lastModified": "Wed, 08 Jul 2026 03:32:58 GMT",
+    "size": 45474,
+    "updatedAt": "2026-07-08T03:32:58.596Z"
   },
   "checkpointing.md": {
     "url": "https://code.claude.com/docs/en/checkpointing",
@@ -337,15 +337,15 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Tue, 07 Jul 2026 04:07:43 GMT",
-    "size": 225410,
-    "updatedAt": "2026-07-07T04:07:43.615Z"
+    "lastModified": "Wed, 08 Jul 2026 03:33:29 GMT",
+    "size": 227029,
+    "updatedAt": "2026-07-08T03:33:29.325Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
-    "lastModified": "Fri, 03 Jul 2026 03:58:59 GMT",
-    "size": 58437,
-    "updatedAt": "2026-07-03T03:58:59.801Z"
+    "lastModified": "Wed, 08 Jul 2026 03:33:29 GMT",
+    "size": 58591,
+    "updatedAt": "2026-07-08T03:33:29.817Z"
   },
   "how-claude-code-works.md": {
     "url": "https://code.claude.com/docs/en/how-claude-code-works",
@@ -415,9 +415,9 @@
   },
   "mcp.md": {
     "url": "https://code.claude.com/docs/en/mcp",
-    "lastModified": "Tue, 07 Jul 2026 04:07:53 GMT",
-    "size": 61848,
-    "updatedAt": "2026-07-07T04:07:53.811Z"
+    "lastModified": "Wed, 08 Jul 2026 03:33:38 GMT",
+    "size": 62384,
+    "updatedAt": "2026-07-08T03:33:38.931Z"
   },
   "mcp-quickstart.md": {
     "url": "https://code.claude.com/docs/en/mcp-quickstart",
@@ -517,9 +517,9 @@
   },
   "plugins-reference.md": {
     "url": "https://code.claude.com/docs/en/plugins-reference",
-    "lastModified": "Fri, 03 Jul 2026 03:59:24 GMT",
-    "size": 79479,
-    "updatedAt": "2026-07-03T03:59:24.913Z"
+    "lastModified": "Wed, 08 Jul 2026 03:33:52 GMT",
+    "size": 79948,
+    "updatedAt": "2026-07-08T03:33:52.230Z"
   },
   "prompt-caching.md": {
     "url": "https://code.claude.com/docs/en/prompt-caching",
@@ -601,9 +601,9 @@
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",
-    "lastModified": "Tue, 07 Jul 2026 04:08:18 GMT",
-    "size": 28239,
-    "updatedAt": "2026-07-07T04:08:18.742Z"
+    "lastModified": "Wed, 08 Jul 2026 03:34:01 GMT",
+    "size": 27979,
+    "updatedAt": "2026-07-08T03:34:01.670Z"
   },
   "slack.md": {
     "url": "https://code.claude.com/docs/en/slack",

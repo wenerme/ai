@@ -226,7 +226,7 @@ There are two ways to enable prompt caching with Anthropic:
 * **Explicit cache breakpoints**: Place `cache_control` directly on individual content blocks for fine-grained control over exactly what gets cached. There is a limit of four explicit breakpoints. It is recommended to reserve the cache breakpoints for large bodies of text, such as character cards, CSV data, RAG data, book chapters, etc.
 
 <Note>
-  **Automatic caching** (top-level `cache_control`) is only supported when requests are routed to the **Anthropic** provider directly. Amazon Bedrock and Google Vertex AI currently do not support top-level `cache_control` — when it is present, OpenRouter will only route to the Anthropic provider and exclude Bedrock and Vertex endpoints. Explicit per-block `cache_control` breakpoints work across all Anthropic-compatible providers including Bedrock and Vertex.
+  **Automatic caching** (top-level `cache_control`) is supported on the **Anthropic**, **Google Vertex AI**, and **Azure** providers, as well as Claude Platform on AWS. Amazon Bedrock's InvokeModel/Converse APIs do not support top-level `cache_control` — when it is present, OpenRouter routes only to supporting endpoints. Explicit per-block `cache_control` breakpoints work across all Anthropic-compatible providers including Bedrock and Vertex.
 </Note>
 
 <Note>

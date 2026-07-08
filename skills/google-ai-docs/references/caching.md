@@ -6,8 +6,10 @@ a model. The Gemini API offers implicit caching to optimize performance and cost
 
 ## Implicit caching
 
-Implicit caching is enabled by default for all Gemini 2.5 and newer models. We automatically
-pass on cost savings if your request hits caches. There is nothing you need to do
+Implicit caching is enabled by default for all Gemini 2.5 and newer models. It is
+supported for both [stateful](https://ai.google.dev/gemini-api/docs/text-generation#multi-turn-conversations) (using `previous_interaction_id`)
+and [stateless](https://ai.google.dev/gemini-api/docs/text-generation#stateless-conversations) conversation modes.
+We automatically pass on cost savings if your request hits caches. There is nothing you need to do
 in order to enable this. The minimum input
 token count for context caching is listed in the following table for each model:
 
@@ -24,4 +26,4 @@ To increase the chance of an implicit cache hit:
 - Try to send requests with similar prefix in a short amount of time
 
 You can see the number of tokens which were cache hits in the response object's
-`usage_metadata` (Python) or `usageMetadata` (JavaScript) field.
+`usage.total_cached_tokens` (Python and JavaScript) field.

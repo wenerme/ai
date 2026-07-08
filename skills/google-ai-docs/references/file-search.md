@@ -72,7 +72,7 @@ This example shows how to directly upload a file to the
 
 ### JavaScript
 
-    const { GoogleGenAI } = require('@google/genai');
+    import { GoogleGenAI } from '@google/genai';
 
     const ai = new GoogleGenAI({});
 
@@ -127,6 +127,53 @@ This example shows how to directly upload a file to the
 
     run();
 
+### REST
+
+    # 1. Create a File Search store
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/fileSearchStores?key=$GEMINI_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "displayName": "your-file-search-store-name",
+          "embeddingModel": "models/gemini-embedding-2"
+        }' > store_res.json
+
+    FILE_SEARCH_STORE_NAME=$(jq -r ".name" store_res.json)
+
+    # 2. Upload directly to File Search store using resumable upload
+    NUM_BYTES=$(wc -c < "sample.txt")
+    curl "https://generativelanguage.googleapis.com/upload/v1beta/fileSearchStores/$FILE_SEARCH_STORE_NAME:uploadToFileSearchStore?key=$GEMINI_API_KEY" \
+        -D upload-header.tmp \
+        -H "X-Goog-Upload-Protocol: resumable" \
+        -H "X-Goog-Upload-Command: start" \
+        -H "X-Goog-Upload-Header-Content-Length: $NUM_BYTES" \
+        -H "X-Goog-Upload-Header-Content-Type: text/plain" \
+        -H "Content-Type: application/json" \
+        -d '{"displayName": "sample.txt"}' 2> /dev/null
+
+    upload_url=$(grep -i "x-goog-upload-url: " upload-header.tmp | cut -d" " -f2 | tr -d "\r")
+    rm upload-header.tmp
+
+    curl "${upload_url}" \
+        -H "Content-Length: $NUM_BYTES" \
+        -H "X-Goog-Upload-Offset: 0" \
+        -H "X-Goog-Upload-Command: upload, finalize" \
+        --data-binary "@sample.txt" 2> /dev/null > upload_response.json
+
+    cat upload_response.json
+
+    # 3. Query using the File Search store
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+        -H "x-goog-api-key: $GEMINI_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "gemini-3.5-flash",
+          "input": "Can you tell me about [insert question]",
+          "tools": [{
+            "type": "file_search",
+            "file_search_store_names": ["'"$FILE_SEARCH_STORE_NAME"'"]
+          }]
+        }'
+
 Check the API reference for [`uploadToFileSearchStore`](https://ai.google.dev/api/file-search/file-search-stores#method:-media.uploadtofilesearchstore) for more information.
 
 ## Importing files
@@ -176,7 +223,7 @@ Alternatively, you can upload an existing file and [import it to your file searc
 
 ### JavaScript
 
-    const { GoogleGenAI } = require('@google/genai');
+    import { GoogleGenAI } from '@google/genai';
 
     const ai = new GoogleGenAI({});
 
@@ -225,6 +272,58 @@ Alternatively, you can upload an existing file and [import it to your file searc
 
     run();
 
+### REST
+
+    # 1. Upload file using the Files API
+    NUM_BYTES=$(wc -c < "sample.txt")
+    curl "https://generativelanguage.googleapis.com/upload/v1beta/files?key=$GEMINI_API_KEY" \
+        -D upload-header.tmp \
+        -H "X-Goog-Upload-Protocol: resumable" \
+        -H "X-Goog-Upload-Command: start" \
+        -H "X-Goog-Upload-Header-Content-Length: $NUM_BYTES" \
+        -H "X-Goog-Upload-Header-Content-Type: text/plain" \
+        -H "Content-Type: application/json" \
+        -d '{"file": {"displayName": "sample.txt"}}' 2> /dev/null
+
+    upload_url=$(grep -i "x-goog-upload-url: " upload-header.tmp | cut -d" " -f2 | tr -d "\r")
+    rm upload-header.tmp
+
+    curl "${upload_url}" \
+        -H "Content-Length: $NUM_BYTES" \
+        -H "X-Goog-Upload-Offset: 0" \
+        -H "X-Goog-Upload-Command: upload, finalize" \
+        --data-binary "@sample.txt" 2> /dev/null > file_info.json
+
+    FILE_NAME=$(jq -r ".file.name" file_info.json)
+
+    # 2. Create a File Search store
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/fileSearchStores?key=$GEMINI_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "displayName": "your-file-search-store-name",
+          "embeddingModel": "models/gemini-embedding-2"
+        }' > store_res.json
+
+    FILE_SEARCH_STORE_NAME=$(jq -r ".name" store_res.json)
+
+    # 3. Import the file into the File Search store
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/$FILE_SEARCH_STORE_NAME:importFile?key=$GEMINI_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{"fileName": "'"$FILE_NAME"'"}'
+
+    # 4. Query using the File Search store
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+        -H "x-goog-api-key: $GEMINI_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "gemini-3.5-flash",
+          "input": "Can you tell me about [insert question]",
+          "tools": [{
+            "type": "file_search",
+            "file_search_store_names": ["'"$FILE_SEARCH_STORE_NAME"'"]
+          }]
+        }'
+
 Check the API reference for [`importFile`](https://ai.google.dev/api/file-search/file-search-stores#method:-filesearchstores.importfile) for more information.
 
 ## Chunking configuration
@@ -265,7 +364,7 @@ tokens.
 
 ### JavaScript
 
-    const { GoogleGenAI } = require('@google/genai');
+    import { GoogleGenAI } from '@google/genai';
 
     const ai = new GoogleGenAI({});
 
@@ -288,6 +387,37 @@ tokens.
       operation = await ai.operations.get({ operation });
     }
     console.log("Custom chunking complete.");
+
+### REST
+
+    NUM_BYTES=$(wc -c < "sample.txt")
+    curl "https://generativelanguage.googleapis.com/upload/v1beta/fileSearchStores/$FILE_SEARCH_STORE_NAME:uploadToFileSearchStore?key=$GEMINI_API_KEY" \
+        -D upload-header.tmp \
+        -H "X-Goog-Upload-Protocol: resumable" \
+        -H "X-Goog-Upload-Command: start" \
+        -H "X-Goog-Upload-Header-Content-Length: $NUM_BYTES" \
+        -H "X-Goog-Upload-Header-Content-Type: text/plain" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "displayName": "sample.txt",
+          "chunkingConfig": {
+            "whiteSpaceConfig": {
+              "maxTokensPerChunk": 200,
+              "maxOverlapTokens": 20
+            }
+          }
+        }' 2> /dev/null
+
+    upload_url=$(grep -i "x-goog-upload-url: " upload-header.tmp | cut -d" " -f2 | tr -d "\r")
+    rm upload-header.tmp
+
+    curl "${upload_url}" \
+        -H "Content-Length: $NUM_BYTES" \
+        -H "X-Goog-Upload-Offset: 0" \
+        -H "X-Goog-Upload-Command: upload, finalize" \
+        --data-binary "@sample.txt" 2> /dev/null > upload_response.json
+
+    cat upload_response.json
 
 To use your File Search store, pass it as a tool to the `interactions.create`
 method, as shown in the [Upload](https://ai.google.dev/gemini-api/docs/file-search#upload) and [Import](https://ai.google.dev/gemini-api/docs/file-search#importing-files) examples.
@@ -353,23 +483,23 @@ Here are some examples of how to manage your File Search stores:
 
     file_search_store = client.file_search_stores.create(
         config={
-            'display_name': 'my-file_search-store-123',
+            'display_name': 'myfilesearchstore123',
             'embedding_model': 'models/gemini-embedding-2'
         }
     )
 
-    for file_search_store in client.file_search_stores.list():
-        print(file_search_store)
+    for store in client.file_search_stores.list():
+        print(store)
 
-    my_file_search_store = client.file_search_stores.get(name='fileSearchStores/my-file_search-store-123')
+    my_file_search_store = client.file_search_stores.get(name=file_search_store.name)
 
-    client.file_search_stores.delete(name='fileSearchStores/my-file_search-store-123', config={'force': True})
+    client.file_search_stores.delete(name=file_search_store.name, config={'force': True})
 
 ### JavaScript
 
     const fileSearchStore = await ai.fileSearchStores.create({
       config: {
-        displayName: 'my-file_search-store-123',
+        displayName: 'myfilesearchstore123',
         embeddingModel: 'models/gemini-embedding-2'
       }
     });
@@ -380,11 +510,11 @@ Here are some examples of how to manage your File Search stores:
     }
 
     const myFileSearchStore = await ai.fileSearchStores.get({
-      name: 'fileSearchStores/my-file_search-store-123'
+      name: fileSearchStore.name
     });
 
     await ai.fileSearchStores.delete({
-      name: 'fileSearchStores/my-file_search-store-123',
+      name: fileSearchStore.name,
       config: { force: true }
     });
 
@@ -394,11 +524,11 @@ Here are some examples of how to manage your File Search stores:
         -H "Content-Type: application/json" \
         -d '{ "displayName": "My Store", "embedding_model": "models/gemini-embedding-2" }'
 
-    curl "https://generativelanguage.googleapis.com/v1beta/fileSearchStores?key=${GEMINI_API_KEY}" \
+    curl "https://generativelanguage.googleapis.com/v1beta/fileSearchStores?key=${GEMINI_API_KEY}"
 
-    curl "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/my-file_search-store-123?key=${GEMINI_API_KEY}"
+    curl "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/myfilesearchstore123?key=${GEMINI_API_KEY}"
 
-    curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/my-file_search-store-123?key=${GEMINI_API_KEY}"
+    curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/myfilesearchstore123?key=${GEMINI_API_KEY}"
 
 ## File Search documents
 
@@ -409,38 +539,39 @@ document by name.
 
 ### Python
 
-    for document_in_store in client.file_search_stores.documents.list(parent='fileSearchStores/my-file_search-store-123'):
+    for document_in_store in client.file_search_stores.documents.list(parent='fileSearchStores/myfilesearchstore123'):
       print(document_in_store)
 
-    file_search_document = client.file_search_stores.documents.get(name='fileSearchStores/my-file_search-store-123/documents/my_doc')
+    file_search_document = client.file_search_stores.documents.get(name='fileSearchStores/myfilesearchstore123/documents/sampletxt123')
     print(file_search_document)
 
-    client.file_search_stores.documents.delete(name='fileSearchStores/my-file_search-store-123/documents/my_doc', config={'force': True})
+    client.file_search_stores.documents.delete(name='fileSearchStores/myfilesearchstore123/documents/sampletxt123', config={'force': True})
 
 ### JavaScript
 
     const documents = await ai.fileSearchStores.documents.list({
-      parent: 'fileSearchStores/my-file_search-store-123'
+      parent: 'fileSearchStores/myfilesearchstore123'
     });
     for await (const doc of documents) {
       console.log(doc);
     }
 
     const fileSearchDocument = await ai.fileSearchStores.documents.get({
-      name: 'fileSearchStores/my-file_search-store-123/documents/my_doc'
+      name: 'fileSearchStores/myfilesearchstore123/documents/sampletxt123'
     });
 
     await ai.fileSearchStores.documents.delete({
-      name: 'fileSearchStores/my-file_search-store-123/documents/my_doc'
+      name: 'fileSearchStores/myfilesearchstore123/documents/sampletxt123',
+      config: { force: true }
     });
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/my-file_search-store-123/documents?key=${GEMINI_API_KEY}"
+    curl "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/myfilesearchstore123/documents?key=${GEMINI_API_KEY}"
 
-    curl "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/my-file_search-store-123/documents/my_doc?key=${GEMINI_API_KEY}"
+    curl "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/myfilesearchstore123/documents/sampletxt123?key=${GEMINI_API_KEY}"
 
-    curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/my-file_search-store-123/documents/my_doc?key=${GEMINI_API_KEY}&force=true"
+    curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/myfilesearchstore123/documents/sampletxt123?key=${GEMINI_API_KEY}&force=true"
 
 ## File metadata
 
@@ -614,6 +745,29 @@ You can access citation information through the `annotations` attribute inside t
       }
     }
 
+### REST
+
+    {
+      "steps": [
+        {
+          "type": "model_output",
+          "content": [
+            {
+              "type": "text",
+              "text": "...",
+              "annotations": [
+                {
+                  "type": "file_citation",
+                  "file_name": "sample.txt",
+                  "source": "..."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+
 For detailed information on the structure of the citations, see the
 [API reference for Interactions](https://ai.google.dev/api/interactions-api#Resource:FileCitation).
 
@@ -648,6 +802,30 @@ You can access this information through the `page_number` attribute of a
           }
         }
       }
+    }
+
+### REST
+
+    {
+      "steps": [
+        {
+          "type": "model_output",
+          "content": [
+            {
+              "type": "text",
+              "text": "...",
+              "annotations": [
+                {
+                  "type": "file_citation",
+                  "file_name": "document.pdf",
+                  "page_number": 1,
+                  "source": "..."
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
 
 ### Media citations
@@ -743,26 +921,26 @@ contains this custom metadata.
 
 ### JavaScript
 
-      const interaction = await ai.interactions.create({
-        model: "gemini-3.5-flash",
-        input: "Tell me about [insert question]",
-        tools: [{
-          type: "file_search",
-          file_search_store_names: [fileSearchStore.name]
-        }]
-      });
+    const interaction = await ai.interactions.create({
+      model: "gemini-3.5-flash",
+      input: "Tell me about [insert question]",
+      tools: [{
+        type: "file_search",
+        file_search_store_names: [fileSearchStore.name]
+      }]
+    });
 
-      for (const step of interaction.steps) {
-        if (step.type === 'model_output') {
-          for (const contentBlock of step.content) {
-            if (contentBlock.annotations) {
-              contentBlock.annotations.forEach((annotation) => {
-                console.log(annotation);
-              });
-            }
+    for (const step of interaction.steps) {
+      if (step.type === 'model_output') {
+        for (const contentBlock of step.content) {
+          if (contentBlock.annotations) {
+            contentBlock.annotations.forEach((annotation) => {
+              console.log(annotation);
+            });
           }
         }
       }
+    }
 
 ### REST
 
@@ -898,14 +1076,6 @@ The following models support File Search:
 | [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ✔️ |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ |
 | [Gemini 3 Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ✔️ |
-| [Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro) | ✔️ |
-| [Gemini 2.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite) | ✔️ |
-
-## Supported tool combinations
-
-Gemini 3 models support combining built-in tools (like File Search) with custom
-tools (function calling). Learn more on the
-[tool combinations](https://ai.google.dev/gemini-api/docs/tool-combination) page.
 
 ## Supported file types
 
@@ -1107,7 +1277,7 @@ sections.
 ## Limitations
 
 - **Live API:** File Search is not supported in the [Live API](https://ai.google.dev/gemini-api/docs/live).
-- **Tool incompatibility:** File Search cannot be combined with other tools like [Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search), [URL Context](https://ai.google.dev/gemini-api/docs/url-context), etc. at this time.
+- **Tool incompatibility:** Built-in grounding tools cannot be combined with one another; for example, File Search cannot be used simultaneously with [Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search) or [URL Context](https://ai.google.dev/gemini-api/docs/url-context) in the same request.
 
 ### Rate limits
 

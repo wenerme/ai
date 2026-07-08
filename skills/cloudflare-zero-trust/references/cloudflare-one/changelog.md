@@ -14,6 +14,62 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-07-07
+
+[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+
+**Cloudflare One Client for Windows (version 2026.6.850.0)**
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix addresses a Windows authentication issue in the embedded WebView2 browser. Single sign-on could fail to use the Windows primary account, causing users to be prompted for an interactive sign-in. The embedded authentication browser now allows SSO providers to use the OS primary account when available.
+
+## 2026-07-07
+
+[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**File transfer controls for browser-based RDP (beta)**
+
+You can now configure file transfer controls for browser-based RDP with Cloudflare Access, allowing you to restrict whether users can upload or download files between their local machine and the remote Windows server.
+
+![File transfer connection settings in the Access policy configuration.](https://developers.cloudflare.com/_astro/file-transfer-policy-control.CiSEa5rr_Z1oqxAg.webp)
+
+This feature is useful for organizations that support bring-your-own-device (BYOD) policies or third-party contractors using unmanaged devices. By restricting file transfers, you can prevent sensitive data from being moved out of the remote session to a user's personal device.
+
+#### Configuration options
+
+File transfer controls are configured per policy within your Access application, alongside existing [text clipboard controls](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#connection-settings). For each policy, you can select one of the following options:
+
+* **Client to remote RDP session allowed** — Users can upload files from their local machine into the browser-based RDP session.
+* **Remote RDP session to client allowed** — Users can download files from the browser-based RDP session to their local machine.
+* **Both directions allowed** — Users can upload and download files between their local machine and the browser-based RDP session.
+* **Disable copying/pasting** — Users are not allowed to transfer files between their local machine and the browser-based RDP session.
+
+By default, file transfer is denied for new policies. For existing Access applications created before this feature was available, file transfer remains denied.
+
+#### How it works
+
+To upload, drag files into the browser window or select the settings gear icon on the left side of the RDP session. To download, copy a file in the remote session and select the settings gear to download it, download multiple files as a zip, or print PDFs to a local printer.
+
+![The clipboard side panel showing files available for transfer.](https://developers.cloudflare.com/_astro/clipboard-side-panel.Us2RfXfs_Z1hkXRl.webp) ![A remote document ready for download or local printing.](https://developers.cloudflare.com/_astro/remote-doc-ready-for-download-or-print-local.Dcm5hrGD_kMExI.webp)
+
+This feature is in beta and available on all Zero Trust plans. For more information, refer to [File transfer for browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#transfer-files).
+
+## 2026-07-07
+
+[ Browser Isolation ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**Browser Isolation support for authorization proxy endpoints**
+
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) now supports Gateway [authorization proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint). You can apply [HTTP Isolate policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) to traffic routed through authorization proxy endpoints, the same way you can for traffic from the Cloudflare One Client.
+
+Previously, only [source IP proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#source-ip-endpoint) supported Browser Isolation, and only with non-identity policies. Because authorization proxy endpoints authenticate users through an identity provider, you can now apply identity-based Isolate policies to PAC file-proxied traffic without requiring the Cloudflare One Client.
+
+To get started, [create an authorization proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint) and [build an Isolate policy](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/).
+
 ## 2026-07-06
 
 [ Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
@@ -199,6 +255,7 @@ This release introduces multiple features from our previous beta release into st
 
 **Known issues**
 
+* Single sign-on in the embedded WebView2 authentication browser may fail to use the Windows primary account, prompting for an interactive sign-in.
 * An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
 * In rare cases, a registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Windows ARM may prompt the user to close running applications while trying to install this version. Simply click "Ok" with the default highlighted option.
@@ -450,8 +507,8 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7537)
-* [  wrangler.toml ](#tab-panel-7538)
+* [  wrangler.jsonc ](#tab-panel-7562)
+* [  wrangler.toml ](#tab-panel-7563)
 
 **JSONC**
 
@@ -476,8 +533,8 @@ network_id = "cf1:network"
 remote = true
 ```
 
-* [  JavaScript ](#tab-panel-7539)
-* [  TypeScript ](#tab-panel-7540)
+* [  JavaScript ](#tab-panel-7564)
+* [  TypeScript ](#tab-panel-7565)
 
 **JavaScript**
 
@@ -5046,8 +5103,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp)
 
-* [ Zero Trust Dashboard ](#tab-panel-7535)
-* [ Core Dashboard ](#tab-panel-7536)
+* [ Zero Trust Dashboard ](#tab-panel-7560)
+* [ Core Dashboard ](#tab-panel-7561)
 
 To update your view preference in the Zero Trust dashboard:
 

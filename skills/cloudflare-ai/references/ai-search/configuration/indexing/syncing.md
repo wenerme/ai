@@ -16,9 +16,27 @@ AI Search automatically indexes your content for search. How indexing works depe
 
 ## External data sources
 
-For instances connected to a [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) or [R2 bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/), AI Search creates jobs to sync your data source. Jobs run automatically every 6 hours and process new, modified, or deleted files to keep your search index up to date.
+For instances connected to a [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) or [R2 bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/), AI Search creates jobs to sync your data source. Jobs run automatically on a schedule, every 6 hours by default, and process new, modified, or deleted files to keep your search index up to date.
 
 You can view job status and history in the **Jobs** tab in the dashboard or using the [Instances API](https://developers.cloudflare.com/ai-search/api/instances/rest-api/).
+
+### Sync interval
+
+By default, AI Search runs a sync job every 6 hours. To change how often scheduled syncs run, use the **Sync interval** setting in the dashboard, or set the `sync_interval` field when you [create](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#create) or [update](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#update) an instance through the Workers binding or [REST API](https://developers.cloudflare.com/ai-search/api/instances/rest-api/).
+
+The interval can be 1, 2, 4, 6, 12, or 24 hours. In the API, `sync_interval` is specified in seconds, so the allowed values are `3600` (1 hour), `7200` (2 hours), `14400` (4 hours), `21600` (6 hours, the default), `43200` (12 hours), and `86400` (24 hours).
+
+### Trigger syncs from automated pipelines
+
+Sync jobs normally run on a schedule, but you can also start one programmatically whenever your source content changes. This is useful for connecting AI Search to a CMS or a content pipeline: when a publish event or a build step completes, have it trigger a sync so the index reflects the change without waiting for the next scheduled run.
+
+Trigger a sync job with the Wrangler CLI, for example from a CI/CD step or deploy hook:
+
+```sh
+npx wrangler ai-search jobs create <INSTANCE_NAME>
+```
+
+Or call the [Create job REST API](https://developers.cloudflare.com/ai-search/api/instances/rest-api/#jobs) from a CMS webhook or a Worker. Sync jobs can be triggered at most once every 30 seconds.
 
 ## Built-in storage
 
@@ -59,6 +77,6 @@ To ensure smooth and reliable indexing:
 * Regularly clean up outdated or unnecessary content to stay within [instance limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/#page","headline":"Syncing · Cloudflare AI Search docs","description":"Understand how AI Search automatically syncs and indexes content from connected data sources.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/#page","headline":"Syncing · Cloudflare AI Search docs","description":"Understand how AI Search automatically syncs and indexes content from connected data sources.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/indexing/","name":"Indexing"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/indexing/syncing/","name":"Syncing"}}]}
 ```

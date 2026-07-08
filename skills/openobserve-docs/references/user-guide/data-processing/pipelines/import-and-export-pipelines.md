@@ -48,8 +48,8 @@ If any validation errors occur during import, refer to the following resolutions
 - **Remote Destination does not exist:** Ensure the remote destination is accurate. 
 
 ## Related links
-- [Pipelines in OpenObserve](../pipelines/pipelines/)
-- [Create and Use Real-time Pipeline](../pipelines/create-and-use-real-time-pipeline/)
-- [Create and Use Scheduled Pipeline](../pipelines/create-and-use-scheduled-pipeline/)
-- [Manage Pipelines](../pipelines/manage-pipelines/)
-- [Configurable Delay in Scheduled Pipelines](../pipelines/configurable-delay-in-scheduled-pipelines/)
+- [Pipelines in OpenObserve](index.md)
+- [Create and Use Real-time Pipeline](create-and-use-real-time-pipeline.md)
+- [Create and Use Scheduled Pipeline](create-and-use-scheduled-pipeline.md)
+- [Manage Pipelines](manage-pipelines.md)
+- [Configurable Delay in Scheduled Pipelines](configurable-delay-in-scheduled-pipelines.md)

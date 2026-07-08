@@ -16,6 +16,11 @@ This is a detailed changelog of every update to Browser Run (formerly Browser Re
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/browser-run/changelog/index.xml)
 
+## 2026-07-07
+
+**New endpoint: /accessibilityTree**
+* Added the [/accessibilityTree endpoint](https://developers.cloudflare.com/browser-run/quick-actions/accessibility-tree-endpoint/) to capture the accessibility tree from a rendered webpage. The accessibility tree includes roles, names, values, states, and hierarchy, giving AI agents and automation workflows a structured view of page elements without parsing raw HTML or interpreting screenshots. You can capture the full page tree, return only semantically meaningful nodes with `interestingOnly`, or capture a subtree with `root`.
+
 ## 2026-06-12
 
 **New tutorial: Pre-render pages for crawlers**

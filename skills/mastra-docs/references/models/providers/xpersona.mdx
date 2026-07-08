@@ -1,11 +1,11 @@
 ---
 title: "Xpersona | Models"
-description: "Use Xpersona models with Mastra. 2 models available."
+description: "Use Xpersona models with Mastra. 3 models available."
 ---
 
 # [Xpersona logo]Xpersona
 
-Access 2 Xpersona models through Mastra's model router. Authentication is handled automatically using the `XPERSONA_API_KEY` environment variable.
+Access 3 Xpersona models through Mastra's model router. Authentication is handled automatically using the `XPERSONA_API_KEY` environment variable.
 
 Learn more in the [Xpersona documentation](https://www.xpersona.co/docs).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "xpersona/xpersona-frieren-coder"
+  model: "xpersona/claude-fable-5"
 });
 
 // Generate a response
@@ -39,6 +39,18 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "xpersona/claude-fable-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 3,
+    "outputCost": 18
+  },
   {
     "model": "xpersona/xpersona-frieren-coder",
     "imageInput": true,
@@ -76,7 +88,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://www.xpersona.co/v1",
-    id: "xpersona/xpersona-frieren-coder",
+    id: "xpersona/claude-fable-5",
     apiKey: process.env.XPERSONA_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -95,7 +107,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "xpersona/xpersona-gpt-5.5"
-      : "xpersona/xpersona-frieren-coder";
+      : "xpersona/claude-fable-5";
   }
 });
 ```
