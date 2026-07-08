@@ -97,6 +97,68 @@ To apply profiles to projects that lack scanner coverage, use the
 [scanner enablement wizard](scanner_enablement_wizard.md). The wizard identifies uncovered projects
 and lets you apply default or custom profiles across your group.
 
+## Apply a profile with the GraphQL API
+
+Use the GraphQL API to apply any security configuration profile, including profiles that
+are not yet available in the UI. You can run these queries with the
+[interactive GraphQL explorer](../../../api/graphql/_index.md#interactive-graphql-explorer),
+or by sending requests directly to the `/api/graphql` endpoint.
+
+For more information about running queries, authentication, and pagination, see
+[run GraphQL API queries and mutations](../../../api/graphql/getting_started.md).
+
+Prerequisites:
+
+- At least the Maintainer role or the Security Manager role for the associated projects or groups.
+
+To apply a security configuration profile:
+
+1. Get the available profiles and their IDs for a group:
+
+```graphql
+   query {
+     group(fullPath: "my-group") {
+       availableSecurityScanProfiles {
+         id
+         name
+         scanType
+       }
+     }
+   }
+```
+
+   A default profile that is not yet saved returns a virtual ID based on its scan type.
+   For example: `gid://gitlab/Security::ScanProfile/dependency_scanning_post_processing`.
+
+   For more information, see the
+   [`Group.availableSecurityScanProfiles` field](../../../api/graphql/reference/_index.md#groupavailablesecurityscanprofiles).
+
+1. Apply the profile with the `securityScanProfileAttach` mutation, using the virtual ID or
+   the real ID of the profile you want:
+
+```graphql
+   mutation {
+     securityScanProfileAttach(input: {
+       securityScanProfileId: "gid://gitlab/Security::ScanProfile/dependency_scanning_post_processing",
+       projectIds: ["gid://gitlab/Project/123"]
+     }) {
+       errors
+     }
+   }
+```
+
+   For more information, see the
+   [`securityScanProfileAttach` mutation](../../../api/graphql/reference/_index.md#mutationsecurityscanprofileattach).
+
+1. To choose where the profile applies, set one or both of these arguments:
+   - `projectIds`: Applies the profile to specific projects.
+   - `groupIds`: Applies the profile to all projects in one or more groups.
+
+   All specified projects and groups must belong to the same top-level group.
+   A single mutation accepts a maximum of 100 IDs, counting project and group IDs together.
+
+1. Check the `errors` field in the response to confirm that the profile was applied.
+
 ## Coverage status indicators
 
 The system uses visual cues in the inventory to indicate whether your projects are protected:

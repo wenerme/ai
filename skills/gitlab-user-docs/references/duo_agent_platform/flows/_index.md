@@ -9,7 +9,7 @@ Use foundational and custom flows to automate complex development tasks with mul
 
 - LLM: Anthropic [Claude Sonnet 4](https://www.anthropic.com/claude/sonnet)
 
-- Introduced as an [experiment](../../../policy/development_stages_support.md) in GitLab 18.4 [with a flag](../../../administration/feature_flags/_index.md) named `ai_catalog_flows`. Disabled by default.
+- Introduced as an [experiment](../../../policy/development_stages_support.md) in GitLab 18.4 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_flows`. Disabled by default.
 - Changed to [beta](../../../policy/development_stages_support.md) in GitLab 18.7.
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/569060) in GitLab 18.7.
 - [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/569060) in GitLab 18.8.
@@ -17,10 +17,7 @@ Use foundational and custom flows to automate complex development tasks with mul
 - Additional flags are required for foundational flows.
 - Foundational flows [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8.
 - Custom flows [changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) to beta in GitLab 18.8.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- Feature flag `ai_catalog_flows` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239459) in GitLab 19.2.
 
 A flow is a combination of one or more agents working together to solve a complex problem.
 

@@ -5,7 +5,7 @@ Troubleshooting tips for deploying GitLab Duo Self-Hosted
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated for Government
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/12972) in GitLab 17.1 [with a flag](../feature_flags/_index.md) named `ai_custom_model`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/12972) in GitLab 17.1 [with a feature flag](../feature_flags/_index.md) named `ai_custom_model`. Disabled by default.
 - [Enabled on GitLab Self-Managed](https://gitlab.com/groups/gitlab-org/-/epics/15176) in GitLab 17.6.
 - Changed to require GitLab Duo add-on in GitLab 17.6 and later.
 - Feature flag `ai_custom_model` removed in GitLab 17.8.
@@ -377,6 +377,7 @@ Common causes include:
 To resolve timeout errors:
 
 1. [Configure a higher AI Gateway timeout value](configure_duo_features.md#configure-timeout-for-the-ai-gateway). You can set the timeout between 60 and 600 seconds (10 minutes).
+1. For GitLab Duo Chat, if requests still time out, [increase the chat model request timeout](configure_duo_features.md#configure-the-chat-model-request-timeout) on the AI Gateway.
 1. Monitor your logs after adjusting the timeout to verify the errors are resolved.
 1. If timeout errors persist even with a higher timeout value:
    - Check your model's performance and resource allocation.

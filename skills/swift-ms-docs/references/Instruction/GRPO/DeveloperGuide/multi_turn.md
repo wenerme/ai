@@ -148,7 +148,7 @@ Specify the scheduler via `multi_turn_scheduler` in the `swift rollout` command:
 ```bash
 swift rollout \
     --model Qwen/Qwen3-1.7B \
-    --use_async_engine true \
+    --vllm_use_async_engine true \
     --multi_turn_scheduler thinking_tips_scheduler \
     --vllm_max_model_len 32768 \
     --vllm_gpu_memory_utilization 0.8 \
@@ -163,7 +163,7 @@ A full multi-turn training script can be found [here](https://github.com/modelsc
 For multi-turn rollout we use `AsyncEngine` to perform efficient batched asynchronous sampling.
 AsyncEngine reduces compute bubbles in multi-turn inference:
 
-Use the `use_async_engine` argument in the `rollout` command to specify the engine type (async is the default).
+Use the `vllm_use_async_engine` argument in the `rollout` command to specify the engine type (async is the default).
 
 > Note: The async engine is only available in server mode.
 

@@ -299,7 +299,7 @@ You can find a link to the commit that resolved the vulnerability at the top or 
 
 ## Vulnerability dismissal reasons
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/4942) in GitLab 15.11 [with a flag](../../../administration/feature_flags/_index.md) named `dismissal_reason`.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/4942) in GitLab 15.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `dismissal_reason`.
 - [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/393005) in GitLab 16.0.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124397) in GitLab 16.2. Feature flag `dismissal_reason` removed.
 
@@ -500,7 +500,7 @@ To view the security training for a vulnerability:
 
 ## View the location of a vulnerability in transitive dependencies
 
-- View dependency paths option [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/519965) in GitLab 17.11 [with a flag](../../../administration/feature_flags/_index.md) named `dependency_paths`. Disabled by default.
+- View dependency paths option [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/519965) in GitLab 17.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `dependency_paths`. Disabled by default.
 - View dependency paths option [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197224) in GitLab 18.2. Feature flag `dependency_paths` enabled by default.
 
 > [!flag]

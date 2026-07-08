@@ -4,7 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/113156) in GitLab 15.10 [with a flag](../../administration/feature_flags/_index.md) named `achievements`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/113156) in GitLab 15.10 [with a feature flag](../../administration/feature_flags/_index.md) named `achievements`. Disabled by default.
 
 > [!flag]
 > On GitLab Self-Managed, by default this feature is not available. To make it available,

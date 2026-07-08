@@ -210,7 +210,7 @@ During the synchronization process, all new users:
 
 ### Provisioning behavior with restricted access
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/206932) in GitLab 18.6 [with a flag](../../../administration/feature_flags/_index.md) named `bso_minimal_access_fallback`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/206932) in GitLab 18.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `bso_minimal_access_fallback`. Disabled by default.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/225777) in GitLab 18.10.
 
 When [restricted access](../../../subscriptions/manage_seats.md#restricted-access) is enabled and no subscription seats are available, users provisioned through SCIM are assigned the Minimal Access role.
@@ -302,7 +302,7 @@ accDescr: How removing users from your SCIM app removes them from GitLab groups.
 
 ### Reactivate access
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/379149) in GitLab 16.0 [with a flag](../../../administration/feature_flags/list.md) named `skip_saml_identity_destroy_during_scim_deprovision`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/379149) in GitLab 16.0 [with a feature flag](../../../administration/feature_flags/list.md) named `skip_saml_identity_destroy_during_scim_deprovision`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/121226) in GitLab 16.4. Feature flag `skip_saml_identity_destroy_during_scim_deprovision` removed.
 
 After a user is removed or deactivated through SCIM, you can reactivate that user by

@@ -1307,7 +1307,7 @@ Supported attributes:
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/428051) in GitLab 16.7 [with a flag](../administration/feature_flags/_index.md) named `approval_group_rules`. Disabled by default. This feature is an [experiment](../policy/development_stages_support.md).
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/428051) in GitLab 16.7 [with a feature flag](../administration/feature_flags/_index.md) named `approval_group_rules`. Disabled by default. This feature is an [experiment](../policy/development_stages_support.md).
 
 > [!flag]
 > On GitLab Self-Managed, by default this feature is not available. To make it available, an administrator can [enable the feature flag](../administration/feature_flags/_index.md) named `approval_group_rules`.

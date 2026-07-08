@@ -97,7 +97,7 @@ Example response:
 ## Add new system hook
 
 - `name` and `description` attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460887) in GitLab 17.1.
-- `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
+- `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
 - Feature flag `webhook_signing_token` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/596374) in GitLab 19.1.
 
 Adds a new system hook.
@@ -154,7 +154,7 @@ Example response:
 ## Update system hook
 
 - `name` and `description` attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460887) in GitLab 17.1.
-- `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
+- `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
 - Feature flag `webhook_signing_token` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/596374) in GitLab 19.1.
 
 Updates an existing system hook.

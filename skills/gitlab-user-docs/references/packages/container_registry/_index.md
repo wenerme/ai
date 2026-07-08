@@ -41,7 +41,7 @@ You can share a filtered view by copying the URL from your browser.
 
 ### View supported platforms for multi-architecture images
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228384) in GitLab 19.1 [with a flag](../../../administration/feature_flags/_index.md) named `container_registry_display_supported_platforms`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228384) in GitLab 19.1 [with a feature flag](../../../administration/feature_flags/_index.md) named `container_registry_display_supported_platforms`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240791) in GitLab 19.2. Feature flag `container_registry_display_supported_platforms` removed.
 
 View tags that point to a Docker manifest list or OCI image index (multi-architecture images) to see which platforms it supports.

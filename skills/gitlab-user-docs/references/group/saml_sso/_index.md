@@ -394,7 +394,7 @@ When a user tries to sign in with Group SSO, GitLab attempts to find or create a
 
 ### Provisioning behavior with restricted access
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/206932) in GitLab 18.6 [with a flag](../../../administration/feature_flags/_index.md) named `bso_minimal_access_fallback`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/206932) in GitLab 18.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `bso_minimal_access_fallback`. Disabled by default.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/225777) in GitLab 18.10.
 
 When [restricted access](../../../subscriptions/manage_seats.md#restricted-access) is enabled with no available seats, users provisioned through SAML are assigned the Minimal Access role.
@@ -537,7 +537,7 @@ convert the information to XML. An example SAML response is shown here.
 
 ### Customize SAML session timeout
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/262074) in GitLab 18.2 [with a flag](../../../administration/feature_flags/_index.md) named `saml_timeout_supplied_by_idp_override`.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/262074) in GitLab 18.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `saml_timeout_supplied_by_idp_override`.
 
 By default, GitLab ends SAML sessions after 24 hours. You can customize this duration with
 the `SessionNotOnOrAfter` attribute in the SAML2 AuthnStatement. This attribute contains an
@@ -628,7 +628,7 @@ For example, to unlink the `MyOrg` account:
 
 ## SSO enforcement
 
-- [Improved](https://gitlab.com/gitlab-org/gitlab/-/issues/215155) in GitLab 15.5 [with a flag](../../../administration/feature_flags/_index.md) named `transparent_sso_enforcement` to include transparent enforcement even when SSO enforcement is not enabled. Disabled on GitLab.com.
+- [Improved](https://gitlab.com/gitlab-org/gitlab/-/issues/215155) in GitLab 15.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `transparent_sso_enforcement` to include transparent enforcement even when SSO enforcement is not enabled. Disabled on GitLab.com.
 - [Improved](https://gitlab.com/gitlab-org/gitlab/-/issues/375788) in GitLab 15.8 by enabling transparent SSO by default on GitLab.com.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/389562) in GitLab 15.10. Feature flag `transparent_sso_enforcement` removed.
 

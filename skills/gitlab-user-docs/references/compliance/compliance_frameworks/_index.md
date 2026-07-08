@@ -31,7 +31,7 @@ For a click-through demo, see [Custom Compliance frameworks](https://gitlab.nava
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/16808) in GitLab 19.0 [with a flag](../../../administration/feature_flags/_index.md) named `compliance_framework_templates`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/16808) in GitLab 19.0 [with a feature flag](../../../administration/feature_flags/_index.md) named `compliance_framework_templates`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239045) in GitLab 19.1. Feature flag `compliance_framework_templates` removed.
 
 Instead of building a compliance framework from scratch, you can create one from a predefined
@@ -305,7 +305,7 @@ Here's a simplified example that shows the complete structure:
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/186525) in GitLab 17.11 [with a flag](../../../administration/feature_flags/_index.md) named `enable_standards_adherence_dashboard_v2`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/186525) in GitLab 17.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `enable_standards_adherence_dashboard_v2`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/535563) in GitLab 18.3. Feature flag `enable_standards_adherence_dashboard_v2` removed.
 
 In GitLab Ultimate, you can define specific **requirements** for a compliance framework. Requirements are made up of one

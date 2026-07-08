@@ -351,7 +351,7 @@ can change the project setting to another value if needed.
 - Offering: GitLab.com
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230311) in GitLab 19.0
-  [with a flag](../../administration/feature_flags/_index.md) named `mcp_server_availability_setting`.
+  [with a feature flag](../../administration/feature_flags/_index.md) named `mcp_server_availability_setting`.
   Disabled by default.
 
 > [!flag]

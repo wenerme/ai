@@ -340,7 +340,7 @@ You can also configure the prefix by using the
 
 ## Instance token prefix
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/179852) in GitLab 17.10 [with a flag](../feature_flags/_index.md) named `custom_prefix_for_all_token_types`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/179852) in GitLab 17.10 [with a feature flag](../feature_flags/_index.md) named `custom_prefix_for_all_token_types`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -393,7 +393,7 @@ To set a custom token prefix:
 - Tier: Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/461901) the maximum allowable lifetime limit to an increased value of 400 days in GitLab 17.6 [with a flag](../feature_flags/_index.md) named `buffered_token_expiration_limit`. Disabled by default.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/461901) the maximum allowable lifetime limit to an increased value of 400 days in GitLab 17.6 [with a feature flag](../feature_flags/_index.md) named `buffered_token_expiration_limit`. Disabled by default.
 
 > [!flag]
 > The availability of the extended maximum allowable lifetime limit is controlled by a feature flag.
@@ -547,7 +547,7 @@ When selected, GitLab administrators can still update usernames in the
 
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/423302) in GitLab 16.7 [with a flag](../feature_flags/_index.md) named `ui_for_organizations`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/423302) in GitLab 16.7 [with a feature flag](../feature_flags/_index.md) named `ui_for_organizations`. Disabled by default.
 
 > [!flag]
 > On GitLab Self-Managed, by default this feature is not available. To make it available, an administrator
@@ -595,7 +595,7 @@ GitLab administrators can prevent this behavior:
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/421310) in GitLab 17.1 [with a flag](../feature_flags/_index.md) named `disallow_private_profiles`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/421310) in GitLab 17.1 [with a feature flag](../feature_flags/_index.md) named `disallow_private_profiles`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/427400) in GitLab 17.9. Feature flag `disallow_private_profiles` removed.
 
 By default, users can make their profiles private.
@@ -637,7 +637,7 @@ By default, newly created users have a public profile. GitLab administrators can
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/26053) in GitLab 16.1 [with a flag](../feature_flags/_index.md) named `deleting_account_disabled_for_users`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/26053) in GitLab 16.1 [with a feature flag](../feature_flags/_index.md) named `deleting_account_disabled_for_users`. Enabled by default.
 
 By default, users can delete their own accounts. GitLab administrators can prevent
 users from deleting their own accounts:

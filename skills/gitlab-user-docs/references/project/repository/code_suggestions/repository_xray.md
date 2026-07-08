@@ -37,7 +37,7 @@ When a code generation request is made, a maximum of 300 libraries from the pars
 
 ## Enable Repository X-Ray
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/476180) in GitLab 17.4 [with a flag](../../../../administration/feature_flags/list.md) named `ai_enable_internal_repository_xray_service`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/476180) in GitLab 17.4 [with a feature flag](../../../../administration/feature_flags/list.md) named `ai_enable_internal_repository_xray_service`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/483928) in GitLab 17.6. Feature flag `ai_enable_internal_repository_xray_service` removed.
 
 The Repository X-Ray service is automatically enabled if your project has access to [GitLab Duo Code Suggestions](_index.md).

@@ -5,7 +5,7 @@ Pipeline execution policies manage and enforce the execution of CI/CD pipelines,
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/13266) in GitLab 17.2 [with a flag](../../../administration/feature_flags/_index.md) named `pipeline_execution_policy_type`. Enabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/13266) in GitLab 17.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `pipeline_execution_policy_type`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/454278) in GitLab 17.3. Feature flag `pipeline_execution_policy_type` removed.
 
 Use pipeline execution policies to manage and enforce CI/CD jobs for multiple projects with a single configuration.
@@ -71,7 +71,7 @@ Note the following:
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/589650) in GitLab 18.11 [with a flag](../../../administration/feature_flags/_index.md) named `security_policy_pipeline_check`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/589650) in GitLab 18.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_policy_pipeline_check`. Disabled by default.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/issues/592205) in GitLab 18.11.
 
 When pipeline execution policies or [scan execution policies](scan_execution_policies.md) are configured
@@ -643,7 +643,7 @@ execute.
 ### `override_project_ci`
 
 - Updated handling of workflow rules:
-  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/175088) in GitLab 17.8 [with a flag](../../../administration/feature_flags/_index.md) named `policies_always_override_project_ci`. Enabled by default.
+  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/175088) in GitLab 17.8 [with a feature flag](../../../administration/feature_flags/_index.md) named `policies_always_override_project_ci`. Enabled by default.
   - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/512877) in GitLab 17.10. Feature flag `policies_always_override_project_ci` removed.
 - Handling of `override_project_ci` [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/504434) to allow scan execution policies to run together with pipeline execution policies, in GitLab 17.9.
 

@@ -3,7 +3,7 @@
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/422973) in GitLab 16.5 [with a flag](../../../administration/feature_flags/_index.md) named `compliance_framework_report_ui`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/422973) in GitLab 16.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `compliance_framework_report_ui`. Disabled by default.
 - In GitLab 16.4 and earlier, **Compliance frameworks report** referred to what is now called **Compliance projects report**. The formally-named **Compliance frameworks report** was [renamed to **Compliance projects report**](https://gitlab.com/gitlab-org/gitlab/-/issues/422963) in GitLab 16.5.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/140825) in GitLab 16.8.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/425242) in GitLab 16.10. Feature flag `compliance_framework_report_ui` removed.
@@ -92,7 +92,7 @@ To remove a compliance framework as default from the compliance frameworks repor
 
 ## Export a report of compliance frameworks in a group
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/413736) in GitLab 16.11 [with a flag](../../../administration/feature_flags/_index.md) named `compliance_frameworks_report_csv_export`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/413736) in GitLab 16.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `compliance_frameworks_report_csv_export`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/152644) in GitLab 17.1. Feature flag `compliance_frameworks_report_csv_export` removed.
 
 Exports the contents of a compliance frameworks report in a group. Reports are truncated at 15 MB to avoid a large email attachment.

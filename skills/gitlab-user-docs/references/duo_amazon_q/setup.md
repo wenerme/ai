@@ -6,7 +6,7 @@ Set up and manage GitLab Duo with Amazon Q on a Self-Managed instance using AWS 
 - Add-on: GitLab Duo with Amazon Q
 - Offering: GitLab Self-Managed
 
-- Introduced as an [experiment](../../policy/development_stages_support.md#experiment) in GitLab 17.7 [with a flag](../../administration/feature_flags/_index.md) named `amazon_q_integration`. Disabled by default.
+- Introduced as an [experiment](../../policy/development_stages_support.md#experiment) in GitLab 17.7 [with a feature flag](../../administration/feature_flags/_index.md) named `amazon_q_integration`. Disabled by default.
 - Feature flag `amazon_q_integration` removed in GitLab 17.8.
 - Generally available in GitLab 17.11.
 

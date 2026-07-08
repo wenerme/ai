@@ -187,7 +187,7 @@ This setting applies to all GitLab Duo Agent Platform features.
 
 ### Direct and indirect connections
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462791) in GitLab 17.2 [with a flag](../../../../administration/feature_flags/_index.md) named `code_suggestions_direct_access`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462791) in GitLab 17.2 [with a feature flag](../../../../administration/feature_flags/_index.md) named `code_suggestions_direct_access`. Disabled by default.
 
 By default, code completion requests are sent from the IDE directly to the AI Gateway to minimize the latency.
 For this direct connection to work, the IDE must be able to connect to `https://cloud.gitlab.com:443`. If this is not

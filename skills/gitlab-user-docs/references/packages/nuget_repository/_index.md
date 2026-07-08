@@ -508,7 +508,7 @@ for `development` and `production` environments:
 
 ### Turn off duplicate NuGet packages
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/293748) in GitLab 16.3 [with a flag](../../../administration/feature_flags/_index.md) named `nuget_duplicates_option`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/293748) in GitLab 16.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `nuget_duplicates_option`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/419078) in GitLab 16.6. Feature flag `nuget_duplicates_option` removed.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/370471) the required role from Maintainer to Owner in GitLab 17.0.
 

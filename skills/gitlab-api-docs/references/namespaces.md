@@ -3,7 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Visibility of billing-related fields changed in GitLab 18.3 [with a flag](../administration/feature_flags/_index.md) named `restrict_namespace_api_billing_fields`. Disabled by default.
+- Visibility of billing-related fields changed in GitLab 18.3 [with a feature flag](../administration/feature_flags/_index.md) named `restrict_namespace_api_billing_fields`. Disabled by default.
 - Visibility of billing-related fields [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/565598) in GitLab 18.9. Feature flag `restrict_namespace_api_billing_fields` removed.
 
 Use this API to interact with namespaces, a special resource category used to organize users and groups. For more information, see [namespaces](../user/namespace/_index.md).

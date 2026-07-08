@@ -5,7 +5,7 @@ Import repositories from GitHub or Bitbucket Server with the REST API.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Reassigning contributions to a personal namespace owner when importing to a personal namespace [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/525342) in GitLab 18.3 [with a flag](../administration/feature_flags/_index.md) named `user_mapping_to_personal_namespace_owner`. Disabled by default.
+- Reassigning contributions to a personal namespace owner when importing to a personal namespace [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/525342) in GitLab 18.3 [with a feature flag](../administration/feature_flags/_index.md) named `user_mapping_to_personal_namespace_owner`. Disabled by default.
 - Reassigning contributions to a personal namespace owner when importing to a personal namespace [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/211626) in GitLab 18.6. Feature flag `user_mapping_to_personal_namespace_owner` removed.
 
 > [!flag]

@@ -161,7 +161,7 @@ Several known issues exist when you allow anyone to pull from the package regist
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/329588) in GitLab 17.10 [with a flag](../../../administration/feature_flags/_index.md) named `package_registry_audit_events`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/329588) in GitLab 17.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `package_registry_audit_events`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/554817) in GitLab 18.2. Feature flag `package_registry_audit_events` removed.
 
 Create audit events when a package is published or deleted. Namespace Owners can turn on the `audit_events_enabled` setting through the [GraphQL API](../../../api/graphql/reference/_index.md#packagesettings).

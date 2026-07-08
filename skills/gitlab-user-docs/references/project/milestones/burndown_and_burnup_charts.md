@@ -150,7 +150,7 @@ When an issue is closed, the **Total** line remains the same and the **Completed
 
 - Offering: GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/381879) in GitLab 17.1 [with a flag](../../../administration/feature_flags/_index.md) named `rollup_timebox_chart`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/381879) in GitLab 17.1 [with a feature flag](../../../administration/feature_flags/_index.md) named `rollup_timebox_chart`. Disabled by default.
 
 > [!flag]
 > On GitLab Self-Managed, by default this feature is not available. For more information, see the history.

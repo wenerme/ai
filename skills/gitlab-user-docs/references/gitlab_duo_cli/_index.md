@@ -4,7 +4,6 @@ Command-line interface tool that brings the GitLab Duo Agent Platform to your te
 
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-- Status: Beta
 
 ### Model information
 
@@ -28,6 +27,7 @@ Command-line interface tool that brings the GitLab Duo Agent Platform to your te
 - Pattern-based tool approval [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21850) in GitLab 19.1.
   - Introduced in [GitLab Duo CLI](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v8.101.0) 8.101.0.
 - System notifications [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v8.105.0) in GitLab Duo CLI 8.105.0, during the GitLab 19.1 release.
+- [Generally available](https://gitlab.com/groups/gitlab-org/-/work_items/19717) as GitLab Duo CLI 9.0.0 in GitLab 19.2.
 
 The GitLab Duo CLI is a command-line interface tool that brings [GitLab Duo Agentic Chat](../gitlab_duo_chat/agentic_chat.md)
 to your terminal. Available for use with any operating system and editor, use the CLI to ask complex
@@ -41,6 +41,10 @@ The GitLab Duo CLI can help you:
 - Automate CI/CD configuration, troubleshoot pipeline errors, and optimize pipelines.
 - Perform multi-step development tasks autonomously.
 
+> [!note]
+> The GitLab Duo CLI is now generally available. Update to
+> GitLab Duo CLI 9.0.0 or later for the full generally available experience.
+
 The GitLab Duo CLI offers two modes:
 
 - Interactive mode: Provides a chat experience similar to GitLab Duo Chat in the GitLab UI or in
@@ -52,10 +56,31 @@ the GitLab Duo Agent Platform, including `chat-rules.md`, `AGENTS.md`, and `SKIL
 
 ## Prerequisites
 
-- GitLab 18.11 or later.
-- Meet the [prerequisites for GitLab Duo Agent Platform](../duo_agent_platform/_index.md#prerequisites).
-- [Beta and experimental features](../duo_agent_platform/turn_on_off.md#turn-on-beta-and-experimental-features)
-  turned on.
+- GitLab 19.2 or later.
+- The [prerequisites for GitLab Duo Agent Platform](../duo_agent_platform/_index.md#prerequisites).
+
+> [!note]
+> If you are on GitLab 18.11 to 19.1, you can use the latest version of the GitLab Duo CLI by turning on [beta and experimental features](../duo_agent_platform/turn_on_off.md#turn-on-beta-and-experimental-features).
+
+## Turn GitLab Duo CLI access on or off
+
+- Offering: GitLab Self-Managed, GitLab Dedicated
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/242250) in GitLab 19.2.
+
+By default, GitLab Duo CLI access is turned on.
+
+On GitLab Self-Managed and GitLab Dedicated, you can turn GitLab Duo CLI access on or off for an instance.
+
+Prerequisites:
+
+- You must be an administrator.
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Change configuration**.
+1. Under **GitLab Duo CLI**, select or clear the **Turn on GitLab Duo CLI access** checkbox.
+1. Select **Save changes**.
 
 ## Set up the GitLab Duo CLI
 
@@ -71,7 +96,7 @@ and functionality.
 
 Prerequisites:
 
-- [GitLab CLI](https://docs.gitlab.com/cli/) 1.87.0 or later.
+- [GitLab CLI](https://docs.gitlab.com/cli/) 1.107.0 or later.
 - GitLab CLI is [authenticated](https://docs.gitlab.com/cli/#authenticate-with-gitlab).
 
 To set up the GitLab Duo CLI for use through the GitLab CLI:
@@ -93,10 +118,6 @@ To use the GitLab Duo CLI as a standalone tool, install it and then authenticate
 
 #### Install
 
-Install the GitLab Duo CLI as a compiled binary.
-
-### Compiled binary
-
 To install the GitLab Duo CLI as a compiled binary, download and run the install script.
 
 On macOS and Linux:
@@ -109,25 +130,6 @@ On Windows:
 
 ```shell
 irm "https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/raw/main/packages/cli/scripts/install_duo_cli.ps1" | iex
-```
-
-### npm package (deprecated)
-
-> [!warning]
-> The GitLab Duo CLI npm package was [deprecated](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/work_items/2399) in GitLab 19.1.
-> Install using the GitLab CLI (`glab`) or the compiled binary instead.
-
-Prerequisites:
-
-- Node.js 22 or later.
-- For GitLab Self-Managed with a self-signed certificate, either:
-  - Node.js LTS 22.20.0 or later
-  - Node.js 23.8.0 or later
-
-To install the GitLab Duo CLI as an npm package, run:
-
-```shell
-npm install --global @gitlab/duo-cli
 ```
 
 #### Authenticate

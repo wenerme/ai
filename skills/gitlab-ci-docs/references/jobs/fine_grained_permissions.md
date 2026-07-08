@@ -109,10 +109,6 @@ CI/CD job tokens can access the following REST API endpoints:
 | Download module file | `GET /projects/:id/packages/go/*module_name/@v/:module_version.mod` | `READ_PACKAGES` | Read |
 | Download module source | `GET /projects/:id/packages/go/*module_name/@v/:module_version.zip` | `READ_PACKAGES` | Read |
 | Download package file | `GET /projects/:id/packages/generic/:package_name/*package_version/(*path/):file_name` | `READ_PACKAGES` | Read |
-| Download package files | `GET /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name` | `READ_PACKAGES` | Read |
-| Download package files | `GET /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name` | `READ_PACKAGES` | Read |
-| Download recipe files | `GET /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name` | `READ_PACKAGES` | Read |
-| Download recipe files | `GET /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name` | `READ_PACKAGES` | Read |
 | Download the NPM tarball | `GET /projects/:id/packages/npm/*package_name/-/*file_name` | `READ_PACKAGES` | Read |
 | Download the maven package file at a group level | `GET /groups/:id/-/packages/maven/*path/:file_name` | `READ_PACKAGES` | Read |
 | Download the maven package file at a project level | `GET /projects/:id/packages/maven/*path/:file_name` | `READ_PACKAGES` | Read |
@@ -121,13 +117,21 @@ CI/CD job tokens can access the following REST API endpoints:
 | Get all tags for a given an NPM package | `GET /packages/npm/-/package/*package_name/dist-tags` | `READ_PACKAGES` | Read |
 | Get all tags for a given an NPM package | `GET /projects/:id/packages/npm/-/package/*package_name/dist-tags` | `READ_PACKAGES` | Read |
 | List | `GET /projects/:id/packages/go/*module_name/@v/list` | `READ_PACKAGES` | Read |
+| List all package download URLs | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/download_urls` | `READ_PACKAGES` | Read |
+| List all package download URLs | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/download_urls` | `READ_PACKAGES` | Read |
 | List all package files | `GET /projects/:id/packages/:package_id/package_files` | `READ_PACKAGES` | Read |
 | List all package files | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/revisions/:package_revision/files` | `READ_PACKAGES` | Read |
 | List all package revisions | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/revisions` | `READ_PACKAGES` | Read |
+| List all package upload URLs | `POST /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/upload_urls` | `READ_PACKAGES` | Read |
+| List all package upload URLs | `POST /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/upload_urls` | `READ_PACKAGES` | Read |
 | List all packages for a project | `GET /projects/:id/packages` | `READ_PACKAGES` | Read |
 | List all packages for a project | `GET /projects/:id/packages/pypi/simple` | `READ_PACKAGES` | Read |
+| List all recipe download URLs | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/download_urls` | `READ_PACKAGES` | Read |
+| List all recipe download URLs | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/download_urls` | `READ_PACKAGES` | Read |
 | List all recipe files | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/files` | `READ_PACKAGES` | Read |
 | List all recipe revisions | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions` | `READ_PACKAGES` | Read |
+| List all recipe upload URLs | `POST /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/upload_urls` | `READ_PACKAGES` | Read |
+| List all recipe upload URLs | `POST /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/upload_urls` | `READ_PACKAGES` | Read |
 | NPM registry bulk advisory endpoint | `POST /groups/:id/-/packages/npm/-/npm/v1/security/advisories/bulk` | `READ_PACKAGES` | Read |
 | NPM registry bulk advisory endpoint | `POST /packages/npm/-/npm/v1/security/advisories/bulk` | `READ_PACKAGES` | Read |
 | NPM registry bulk advisory endpoint | `POST /projects/:id/packages/npm/-/npm/v1/security/advisories/bulk` | `READ_PACKAGES` | Read |
@@ -135,25 +139,21 @@ CI/CD job tokens can access the following REST API endpoints:
 | NPM registry quick audit endpoint | `POST /groups/:id/-/packages/npm/-/npm/v1/security/audits/quick` | `READ_PACKAGES` | Read |
 | NPM registry quick audit endpoint | `POST /packages/npm/-/npm/v1/security/audits/quick` | `READ_PACKAGES` | Read |
 | NPM registry quick audit endpoint | `POST /projects/:id/packages/npm/-/npm/v1/security/audits/quick` | `READ_PACKAGES` | Read |
-| Package Digest | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/digest` | `READ_PACKAGES` | Read |
-| Package Digest | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/digest` | `READ_PACKAGES` | Read |
-| Package Download Urls | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/download_urls` | `READ_PACKAGES` | Read |
-| Package Download Urls | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/download_urls` | `READ_PACKAGES` | Read |
-| Package Snapshot | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference` | `READ_PACKAGES` | Read |
-| Package Snapshot | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference` | `READ_PACKAGES` | Read |
-| Package Upload Urls | `POST /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/upload_urls` | `READ_PACKAGES` | Read |
-| Package Upload Urls | `POST /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/upload_urls` | `READ_PACKAGES` | Read |
-| Recipe Digest | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/digest` | `READ_PACKAGES` | Read |
-| Recipe Digest | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/digest` | `READ_PACKAGES` | Read |
-| Recipe Download Urls | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/download_urls` | `READ_PACKAGES` | Read |
-| Recipe Download Urls | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/download_urls` | `READ_PACKAGES` | Read |
-| Recipe Snapshot | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel` | `READ_PACKAGES` | Read |
-| Recipe Snapshot | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel` | `READ_PACKAGES` | Read |
-| Recipe Upload Urls | `POST /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/upload_urls` | `READ_PACKAGES` | Read |
-| Recipe Upload Urls | `POST /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/upload_urls` | `READ_PACKAGES` | Read |
+| Retrieve a package file | `GET /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name` | `READ_PACKAGES` | Read |
+| Retrieve a package file | `GET /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name` | `READ_PACKAGES` | Read |
 | Retrieve a package file | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/revisions/:package_revision/files/:file_name` | `READ_PACKAGES` | Read |
+| Retrieve a package manifest | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/digest` | `READ_PACKAGES` | Read |
+| Retrieve a package manifest | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference/digest` | `READ_PACKAGES` | Read |
+| Retrieve a package snapshot | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference` | `READ_PACKAGES` | Read |
+| Retrieve a package snapshot | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/packages/:conan_package_reference` | `READ_PACKAGES` | Read |
 | Retrieve a project package | `GET /projects/:id/packages/:package_id` | `READ_PACKAGES` | Read |
+| Retrieve a recipe file | `GET /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name` | `READ_PACKAGES` | Read |
+| Retrieve a recipe file | `GET /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name` | `READ_PACKAGES` | Read |
 | Retrieve a recipe file | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/files/:file_name` | `READ_PACKAGES` | Read |
+| Retrieve a recipe manifest | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/digest` | `READ_PACKAGES` | Read |
+| Retrieve a recipe manifest | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/digest` | `READ_PACKAGES` | Read |
+| Retrieve a recipe snapshot | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel` | `READ_PACKAGES` | Read |
+| Retrieve a recipe snapshot | `GET /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel` | `READ_PACKAGES` | Read |
 | Retrieve latest package revision | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/latest` | `READ_PACKAGES` | Read |
 | Retrieve latest recipe revision | `GET /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/latest` | `READ_PACKAGES` | Read |
 | Retrieve package references metadata | `GET /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel/search` | `READ_PACKAGES` | Read |
@@ -170,31 +170,31 @@ CI/CD job tokens can access the following REST API endpoints:
 | Create or Update the given tag for the given NPM package and version | `PUT /packages/npm/-/package/*package_name/dist-tags/:tag` | `ADMIN_PACKAGES` | Read and write |
 | Create or Update the given tag for the given NPM package and version | `PUT /projects/:id/packages/npm/-/package/*package_name/dist-tags/:tag` | `ADMIN_PACKAGES` | Read and write |
 | Create or deprecate an NPM package | `PUT /projects/:id/packages/npm/:package_name` | `ADMIN_PACKAGES` | Read and write |
-| Delete Package | `DELETE /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel` | `ADMIN_PACKAGES` | Read and write |
-| Delete Package | `DELETE /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel` | `ADMIN_PACKAGES` | Read and write |
 | Delete a package file | `DELETE /projects/:id/packages/:package_id/package_files/:package_file_id` | `ADMIN_PACKAGES` | Read and write |
 | Delete a package revision | `DELETE /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/revisions/:package_revision` | `ADMIN_PACKAGES` | Read and write |
 | Delete a project package | `DELETE /projects/:id/packages/:package_id` | `ADMIN_PACKAGES` | Read and write |
+| Delete a recipe and package | `DELETE /packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel` | `ADMIN_PACKAGES` | Read and write |
+| Delete a recipe and package | `DELETE /projects/:id/packages/conan/v1/conans/:package_name/:package_version/:package_username/:package_channel` | `ADMIN_PACKAGES` | Read and write |
 | Delete recipe revision | `DELETE /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision` | `ADMIN_PACKAGES` | Read and write |
 | Deletes the given tag | `DELETE /groups/:id/-/packages/npm/-/package/*package_name/dist-tags/:tag` | `ADMIN_PACKAGES` | Read and write |
 | Deletes the given tag | `DELETE /packages/npm/-/package/*package_name/dist-tags/:tag` | `ADMIN_PACKAGES` | Read and write |
 | Deletes the given tag | `DELETE /projects/:id/packages/npm/-/package/*package_name/dist-tags/:tag` | `ADMIN_PACKAGES` | Read and write |
 | Upload a package | `POST /projects/:id/packages/pypi` | `ADMIN_PACKAGES` | Read and write |
+| Upload a package file | `PUT /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name` | `ADMIN_PACKAGES` | Read and write |
+| Upload a package file | `PUT /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name` | `ADMIN_PACKAGES` | Read and write |
 | Upload a package file | `PUT /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/revisions/:package_revision/files/:file_name` | `ADMIN_PACKAGES` | Read and write |
+| Upload a recipe file | `PUT /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name` | `ADMIN_PACKAGES` | Read and write |
+| Upload a recipe file | `PUT /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name` | `ADMIN_PACKAGES` | Read and write |
 | Upload a recipe file | `PUT /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/files/:file_name` | `ADMIN_PACKAGES` | Read and write |
 | Upload package file | `PUT /projects/:id/packages/generic/:package_name/*package_version/(*path/):file_name` | `ADMIN_PACKAGES` | Read and write |
-| Upload package files | `PUT /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name` | `ADMIN_PACKAGES` | Read and write |
-| Upload package files | `PUT /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name` | `ADMIN_PACKAGES` | Read and write |
-| Upload recipe package files | `PUT /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name` | `ADMIN_PACKAGES` | Read and write |
-| Upload recipe package files | `PUT /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name` | `ADMIN_PACKAGES` | Read and write |
 | Upload the maven package file | `PUT /projects/:id/packages/maven/*path/:file_name` | `ADMIN_PACKAGES` | Read and write |
 | Workhorse authorize generic package file | `PUT /projects/:id/packages/generic/:package_name/*package_version/(*path/):file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Workhorse authorize the Conan package file | `PUT /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Workhorse authorize the Conan package file | `PUT /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
 | Workhorse authorize the Conan package file | `PUT /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/packages/:conan_package_reference/revisions/:package_revision/files/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Workhorse authorize the Conan recipe file | `PUT /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
+| Workhorse authorize the Conan recipe file | `PUT /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
 | Workhorse authorize the Conan recipe file | `PUT /projects/:id/packages/conan/v2/conans/:package_name/:package_version/:package_username/:package_channel/revisions/:recipe_revision/files/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
-| Workhorse authorize the conan package file | `PUT /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
-| Workhorse authorize the conan package file | `PUT /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/package/:conan_package_reference/:package_revision/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
-| Workhorse authorize the conan recipe file | `PUT /packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
-| Workhorse authorize the conan recipe file | `PUT /projects/:id/packages/conan/v1/files/:package_name/:package_version/:package_username/:package_channel/:recipe_revision/export/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
 | Workhorse authorize the maven package file upload | `PUT /projects/:id/packages/maven/*path/:file_name/authorize` | `ADMIN_PACKAGES` | Read and write |
 
 ### Pipelines endpoints
@@ -288,12 +288,12 @@ CI/CD job tokens cannot access the following endpoints:
 | Retrieve a job by job token | `GET /job` |
 | List all GitLab agents for Kubernetes by job token | `GET /job/allowed_agents` |
 | Search for a Conan package | `GET /packages/conan/v1/conans/search` |
-| Ping the Conan API | `GET /packages/conan/v1/ping` |
+| Verify availability of a Conan repository | `GET /packages/conan/v1/ping` |
 | Retrieve an authentication token | `GET /packages/conan/v1/users/authenticate` |
 | Verify authentication credentials | `GET /packages/conan/v1/users/check_credentials` |
 | NPM registry metadata endpoint | `GET /packages/npm/*package_name` |
 | Search for a Conan package | `GET /projects/:id/packages/conan/v1/conans/search` |
-| Ping the Conan API | `GET /projects/:id/packages/conan/v1/ping` |
+| Verify availability of a Conan repository | `GET /projects/:id/packages/conan/v1/ping` |
 | Retrieve an authentication token | `GET /projects/:id/packages/conan/v1/users/authenticate` |
 | Verify authentication credentials | `GET /projects/:id/packages/conan/v1/users/check_credentials` |
 | Search for a Conan package | `GET /projects/:id/packages/conan/v2/conans/search` |

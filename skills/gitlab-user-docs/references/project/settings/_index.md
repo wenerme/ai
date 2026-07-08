@@ -95,7 +95,7 @@ Prerequisites:
 
 ### Turn off diff previews in project email notifications
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/24733) in GitLab 15.6 [with a flag](../../../administration/feature_flags/_index.md) named `diff_preview_in_email`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/24733) in GitLab 15.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `diff_preview_in_email`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/382055) in GitLab 17.1. Feature flag `diff_preview_in_email` removed.
 
 When you review code in a merge request and comment on a line of code, GitLab
@@ -151,7 +151,7 @@ To set this default:
 
 ## Add additional webhook triggers for project access token expiration
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/499732) 60- and 30-day triggers to project and group access token webhooks in GitLab 17.9 [with a flag](../../../administration/feature_flags/_index.md) named `extended_expiry_webhook_execution_setting`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/499732) 60- and 30-day triggers to project and group access token webhooks in GitLab 17.9 [with a feature flag](../../../administration/feature_flags/_index.md) named `extended_expiry_webhook_execution_setting`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/513684) in GitLab 17.10. Feature flag `extended_expiry_webhook_execution_setting` removed.
 
 GitLab sends multiple [expiry emails](project_access_tokens.md#project-access-token-expiry-emails)

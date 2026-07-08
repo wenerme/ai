@@ -2,7 +2,7 @@
 
 Learn how composite identity combines a service account and a human user into a single token to enable secure, traceable agent actions.
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/554156) in GitLab 18.3 [with a flag](../../administration/feature_flags/_index.md) named `duo_workflow_use_composite_identity`.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/554156) in GitLab 18.3 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_workflow_use_composite_identity`.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8.
 - Composite identity automatically included in GitLab Duo Agent Platform and setting to turn composite identity on or off [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/588629) in GitLab 18.9.
 

@@ -47,7 +47,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 1. **Download Codex**

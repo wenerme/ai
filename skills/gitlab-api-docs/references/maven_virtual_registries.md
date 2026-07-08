@@ -4,7 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Beta
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/161615) in GitLab 17.4 [with a flag](../administration/feature_flags/_index.md) named `virtual_registry_maven`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/161615) in GitLab 17.4 [with a feature flag](../administration/feature_flags/_index.md) named `virtual_registry_maven`. Disabled by default.
 - Feature flag [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/540276) to `maven_virtual_registry` in GitLab 18.1. Disabled by default. Feature flag `virtual_registry_maven` removed.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/540276) from experiment to beta in GitLab 18.1.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197432) in GitLab 18.2.
@@ -189,7 +189,7 @@ If successful, returns a [`204 No Content`](rest/troubleshooting.md#status-codes
 
 ### Delete cache entries for a virtual registry
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/538327) in GitLab 18.2 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/538327) in GitLab 18.2 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
 
 Schedules all cache entries for deletion in all exclusive upstream registries for a Maven virtual registry. Cache entries are not scheduled for deletion for upstream registries that are associated with other virtual registries.
 
@@ -217,7 +217,7 @@ Use the following endpoints to configure and manage upstream Maven registries.
 
 ### List all upstream registries
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/550728) in GitLab 18.3 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/550728) in GitLab 18.3 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
 - `upstream_name` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/561675) in GitLab 18.4.
 
 Lists all upstream Maven registries for a specified top-level group.
@@ -278,7 +278,7 @@ Example response:
 
 ### Test upstream registry connection before creation
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/535637) in GitLab 18.3 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/535637) in GitLab 18.3 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
 
 Tests the connection to a Maven upstream registry that has not yet been added to the virtual registry. This endpoint validates connectivity and credentials before creating the upstream registry.
 
@@ -471,8 +471,8 @@ POST /virtual_registries/packages/maven/registries/:id/local/upstreams
 | --------- | ---- | -------- | ----------- |
 | `id` | integer | Yes | The ID of the Maven virtual registry. |
 | `name` | string | Yes | The name of the local upstream registry. |
-| `local_group_id` | integer | Yes (one of) | The ID of the target group. Exactly one of `local_group_id` or `local_project_id` is required. |
-| `local_project_id` | integer | Yes (one of) | The ID of the target project. Exactly one of `local_group_id` or `local_project_id` is required. |
+| `local_group_id` | integer | Conditional | The ID of the target group. Required if `local_project_id` is not set. |
+| `local_project_id` | integer | Conditional | The ID of the target project. Required if `local_group_id` is not set. |
 | `cache_validity_hours` | integer | No | The cache validity period. Defaults to 24 hours. |
 | `description` | string | No | The description of the local upstream registry. |
 | `metadata_cache_validity_hours` | integer | No | The metadata cache validity period. Defaults to 24 hours. |
@@ -512,6 +512,96 @@ Example response:
   }
 }
 ```
+
+### Retrieve a local upstream registry
+
+Retrieves a local upstream registry. Local upstreams use an ID space separate from remote upstreams.
+
+```plaintext
+GET /virtual_registries/packages/maven/local/upstreams/:id
+```
+
+| Attribute | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `id` | integer | Yes | The ID of the Maven local upstream registry. |
+
+Example request:
+
+```shell
+curl --request GET --header "PRIVATE-TOKEN: <your_access_token>" \
+     --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/local/upstreams/3"
+```
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following response attributes:
+
+| Attribute | Type | Description |
+| --------- | ---- | ----------- |
+| `cache_validity_hours` | integer | Number of hours the cached packages are considered valid. |
+| `created_at` | date/time | Date and time the upstream was created. |
+| `description` | string | Description of the upstream. |
+| `group_id` | integer | ID of the group the upstream belongs to. |
+| `id` | integer | ID of the upstream. |
+| `local_group_id` | integer | ID of the local group used as the upstream source. |
+| `local_project_id` | integer | ID of the local project used as the upstream source. |
+| `metadata_cache_validity_hours` | integer | Number of hours the cached metadata is considered valid. |
+| `name` | string | Name of the upstream. |
+| `registry_upstreams` | array of objects | List of virtual registry upstreams associated with this upstream. |
+| `registry_upstreams[].id` | integer | ID of the registry upstream. |
+| `registry_upstreams[].local_upstream_id` | integer | ID of the local upstream. |
+| `registry_upstreams[].position` | integer | Position of the upstream in the registry resolution order. |
+| `registry_upstreams[].registry_id` | integer | ID of the virtual registry. |
+| `updated_at` | date/time | Date and time the upstream was last updated. |
+| `upstream_type` | string | Type of the upstream. |
+
+### Update a local upstream registry
+
+Updates a local upstream registry.
+
+```plaintext
+PATCH /virtual_registries/packages/maven/local/upstreams/:id
+```
+
+| Attribute | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `id` | integer | Yes | The ID of the Maven local upstream registry. |
+| `cache_validity_hours` | integer | No | The cache validity period. |
+| `description` | string | No | The description of the local upstream registry. |
+| `metadata_cache_validity_hours` | integer | No | The metadata cache validity period. |
+| `name` | string | No | The name of the local upstream registry. |
+
+You must set at least one optional attribute.
+
+Example request:
+
+```shell
+curl --request PATCH --header "PRIVATE-TOKEN: <your_access_token>" \
+     --header "Content-Type: application/json" \
+     --data '{"name": "Renamed group", "cache_validity_hours": 48}' \
+     --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/local/upstreams/3"
+```
+
+If successful, returns a [`200 OK`](rest/troubleshooting.md#status-codes) status code.
+
+### Delete a local upstream registry
+
+Deletes a local upstream registry and removes its association with any virtual registries.
+
+```plaintext
+DELETE /virtual_registries/packages/maven/local/upstreams/:id
+```
+
+| Attribute | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `id` | integer | Yes | The ID of the Maven local upstream registry. |
+
+Example request:
+
+```shell
+curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
+     --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/local/upstreams/3"
+```
+
+If successful, returns a [`204 No Content`](rest/troubleshooting.md#status-codes) status code.
 
 ### Retrieve an upstream registry
 
@@ -646,7 +736,7 @@ If successful, returns a [`204 No Content`](rest/troubleshooting.md#status-codes
 
 ### Associate an upstream registry with a virtual registry
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/540276) in GitLab 18.1 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/540276) in GitLab 18.1 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197432) in GitLab 18.2.
 
 Associates an existing upstream registry with a specified Maven virtual registry.
@@ -687,7 +777,7 @@ Example response:
 
 ### Disassociate an upstream registry from a virtual registry
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/540276) in GitLab 18.1 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/540276) in GitLab 18.1 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197432) in GitLab 18.2.
 
 Disassociates an upstream registry from a specified Maven virtual registry.
@@ -714,7 +804,7 @@ If successful, returns a [`204 No Content`](rest/troubleshooting.md#status-codes
 
 ### Delete cache entries for an upstream registry
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/538327) in GitLab 18.2 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/538327) in GitLab 18.2 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
 
 Schedules all cache entries for deletion for a specified upstream registry.
 
@@ -738,7 +828,7 @@ If successful, returns a [`204 No Content`](rest/troubleshooting.md#status-codes
 
 ### Test upstream registry connection
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/535637) in GitLab 18.3 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/535637) in GitLab 18.3 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
 
 Tests the connection to a specified Maven upstream registry.
 
@@ -780,7 +870,7 @@ Example response:
 
 ### Test upstream registry connection with override parameters
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/565897) in GitLab 18.7 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/565897) in GitLab 18.7 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
 
 Tests the connection to a specified Maven upstream registry with optional parameter overrides.
 

@@ -17,7 +17,7 @@ Users can be deleted from a GitLab instance, either by:
 
 - Offering: GitLab.com, GitLab Self-Managed
 
-- Delay between a user deleting their own account and deletion of the user record introduced in GitLab 16.0 [with a flag](../../../administration/feature_flags/_index.md) named `delay_delete_own_user`. Enabled by default on GitLab.com.
+- Delay between a user deleting their own account and deletion of the user record introduced in GitLab 16.0 [with a feature flag](../../../administration/feature_flags/_index.md) named `delay_delete_own_user`. Enabled by default on GitLab.com.
 
 > [!note]
 > On GitLab Self-Managed, this feature is disabled by default. Use the

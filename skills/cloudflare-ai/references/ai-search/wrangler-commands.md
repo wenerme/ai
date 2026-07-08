@@ -1,5 +1,5 @@
 ---
-title: Wrangler commands
+title: Wrangler CLI
 description: Manage AI Search instances from the command line using Wrangler.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -10,15 +10,15 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop)
 
-# Wrangler commands
+# Wrangler CLI
 
 ## `ai-search list`
 
 List all AI Search instances
 
-* [  npm ](#tab-panel-6977)
-* [  pnpm ](#tab-panel-6978)
-* [  yarn ](#tab-panel-6979)
+* [  npm ](#tab-panel-6999)
+* [  pnpm ](#tab-panel-7000)
+* [  yarn ](#tab-panel-7001)
 
 ```sh
 npx wrangler ai-search list
@@ -66,9 +66,9 @@ Use a specific auth profile
 
 Create a new AI Search instance
 
-* [  npm ](#tab-panel-6980)
-* [  pnpm ](#tab-panel-6981)
-* [  yarn ](#tab-panel-6982)
+* [  npm ](#tab-panel-7002)
+* [  pnpm ](#tab-panel-7003)
+* [  yarn ](#tab-panel-7004)
 
 ```sh
 npx wrangler ai-search create [NAME]
@@ -150,9 +150,9 @@ Use a specific auth profile
 
 Get details of an AI Search instance
 
-* [  npm ](#tab-panel-6983)
-* [  pnpm ](#tab-panel-6984)
-* [  yarn ](#tab-panel-6985)
+* [  npm ](#tab-panel-7005)
+* [  pnpm ](#tab-panel-7006)
+* [  yarn ](#tab-panel-7007)
 
 ```sh
 npx wrangler ai-search get [NAME]
@@ -198,9 +198,9 @@ Use a specific auth profile
 
 Update an AI Search instance configuration
 
-* [  npm ](#tab-panel-6986)
-* [  pnpm ](#tab-panel-6987)
-* [  yarn ](#tab-panel-6988)
+* [  npm ](#tab-panel-7008)
+* [  pnpm ](#tab-panel-7009)
+* [  yarn ](#tab-panel-7010)
 
 ```sh
 npx wrangler ai-search update [NAME]
@@ -268,9 +268,9 @@ Use a specific auth profile
 
 Delete an AI Search instance
 
-* [  npm ](#tab-panel-6989)
-* [  pnpm ](#tab-panel-6990)
-* [  yarn ](#tab-panel-6991)
+* [  npm ](#tab-panel-7011)
+* [  pnpm ](#tab-panel-7012)
+* [  yarn ](#tab-panel-7013)
 
 ```sh
 npx wrangler ai-search delete [NAME]
@@ -316,9 +316,9 @@ Use a specific auth profile
 
 Get usage statistics for an AI Search instance
 
-* [  npm ](#tab-panel-6992)
-* [  pnpm ](#tab-panel-6993)
-* [  yarn ](#tab-panel-6994)
+* [  npm ](#tab-panel-7014)
+* [  pnpm ](#tab-panel-7015)
+* [  yarn ](#tab-panel-7016)
 
 ```sh
 npx wrangler ai-search stats [NAME]
@@ -364,9 +364,9 @@ Use a specific auth profile
 
 Execute a semantic search query against an AI Search instance
 
-* [  npm ](#tab-panel-6995)
-* [  pnpm ](#tab-panel-6996)
-* [  yarn ](#tab-panel-6997)
+* [  npm ](#tab-panel-7017)
+* [  pnpm ](#tab-panel-7018)
+* [  yarn ](#tab-panel-7019)
 
 ```sh
 npx wrangler ai-search search [NAME]
@@ -422,9 +422,9 @@ Use a specific auth profile
 
 List all AI Search namespaces
 
-* [  npm ](#tab-panel-6998)
-* [  pnpm ](#tab-panel-6999)
-* [  yarn ](#tab-panel-7000)
+* [  npm ](#tab-panel-7020)
+* [  pnpm ](#tab-panel-7021)
+* [  yarn ](#tab-panel-7022)
 
 ```sh
 npx wrangler ai-search namespace list
@@ -472,9 +472,9 @@ Use a specific auth profile
 
 Create a new AI Search namespace
 
-* [  npm ](#tab-panel-7001)
-* [  pnpm ](#tab-panel-7002)
-* [  yarn ](#tab-panel-7003)
+* [  npm ](#tab-panel-7023)
+* [  pnpm ](#tab-panel-7024)
+* [  yarn ](#tab-panel-7025)
 
 ```sh
 npx wrangler ai-search namespace create [NAME]
@@ -520,9 +520,9 @@ Use a specific auth profile
 
 Get details of an AI Search namespace
 
-* [  npm ](#tab-panel-7004)
-* [  pnpm ](#tab-panel-7005)
-* [  yarn ](#tab-panel-7006)
+* [  npm ](#tab-panel-7026)
+* [  pnpm ](#tab-panel-7027)
+* [  yarn ](#tab-panel-7028)
 
 ```sh
 npx wrangler ai-search namespace get [NAME]
@@ -566,9 +566,9 @@ Use a specific auth profile
 
 Update an AI Search namespace
 
-* [  npm ](#tab-panel-7007)
-* [  pnpm ](#tab-panel-7008)
-* [  yarn ](#tab-panel-7009)
+* [  npm ](#tab-panel-7029)
+* [  pnpm ](#tab-panel-7030)
+* [  yarn ](#tab-panel-7031)
 
 ```sh
 npx wrangler ai-search namespace update [NAME]
@@ -614,9 +614,9 @@ Use a specific auth profile
 
 Delete an AI Search namespace
 
-* [  npm ](#tab-panel-7010)
-* [  pnpm ](#tab-panel-7011)
-* [  yarn ](#tab-panel-7012)
+* [  npm ](#tab-panel-7032)
+* [  pnpm ](#tab-panel-7033)
+* [  yarn ](#tab-panel-7034)
 
 ```sh
 npx wrangler ai-search namespace delete [NAME]
@@ -660,9 +660,9 @@ Use a specific auth profile
 
 List indexing jobs for an AI Search instance
 
-* [  npm ](#tab-panel-7013)
-* [  pnpm ](#tab-panel-7014)
-* [  yarn ](#tab-panel-7015)
+* [  npm ](#tab-panel-7035)
+* [  pnpm ](#tab-panel-7036)
+* [  yarn ](#tab-panel-7037)
 
 ```sh
 npx wrangler ai-search jobs list [NAME]
@@ -712,9 +712,9 @@ Use a specific auth profile
 
 Trigger a new indexing job for an AI Search instance
 
-* [  npm ](#tab-panel-7016)
-* [  pnpm ](#tab-panel-7017)
-* [  yarn ](#tab-panel-7018)
+* [  npm ](#tab-panel-7038)
+* [  pnpm ](#tab-panel-7039)
+* [  yarn ](#tab-panel-7040)
 
 ```sh
 npx wrangler ai-search jobs create [NAME]
@@ -762,9 +762,9 @@ Use a specific auth profile
 
 Get details of an AI Search indexing job
 
-* [  npm ](#tab-panel-7019)
-* [  pnpm ](#tab-panel-7020)
-* [  yarn ](#tab-panel-7021)
+* [  npm ](#tab-panel-7041)
+* [  pnpm ](#tab-panel-7042)
+* [  yarn ](#tab-panel-7043)
 
 ```sh
 npx wrangler ai-search jobs get [NAME] [JOB-ID]
@@ -812,9 +812,9 @@ Use a specific auth profile
 
 Cancel an in-progress AI Search indexing job
 
-* [  npm ](#tab-panel-7022)
-* [  pnpm ](#tab-panel-7023)
-* [  yarn ](#tab-panel-7024)
+* [  npm ](#tab-panel-7044)
+* [  pnpm ](#tab-panel-7045)
+* [  yarn ](#tab-panel-7046)
 
 ```sh
 npx wrangler ai-search jobs cancel [NAME] [JOB-ID]
@@ -862,9 +862,9 @@ Use a specific auth profile
 
 List log entries for an AI Search indexing job
 
-* [  npm ](#tab-panel-7025)
-* [  pnpm ](#tab-panel-7026)
-* [  yarn ](#tab-panel-7027)
+* [  npm ](#tab-panel-7047)
+* [  pnpm ](#tab-panel-7048)
+* [  yarn ](#tab-panel-7049)
 
 ```sh
 npx wrangler ai-search jobs logs [NAME] [JOB-ID]
@@ -913,6 +913,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare AI Search docs","description":"Manage AI Search instances from the command line using Wrangler.","url":"https://developers.cloudflare.com/ai-search/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/wrangler-commands/","name":"Wrangler commands"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/wrangler-commands/#page","headline":"Wrangler CLI · Cloudflare AI Search docs","description":"Manage AI Search instances from the command line using Wrangler.","url":"https://developers.cloudflare.com/ai-search/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/wrangler-commands/","name":"Wrangler CLI"}}]}
 ```

@@ -390,7 +390,7 @@ Example response:
 ## Add a webhook to a project
 
 - `name` and `description` attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460887) in GitLab 17.1.
-- `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
+- `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
 - Feature flag `webhook_signing_token` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/596374) in GitLab 19.1.
 
 Add a webhook to a specified project.
@@ -434,7 +434,7 @@ Supported attributes:
 ## Update a project webhook
 
 - `name` and `description` attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460887) in GitLab 17.1.
-- `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
+- `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
 - Feature flag `webhook_signing_token` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/596374) in GitLab 19.1.
 
 Updates a project webhook for a specified project.
@@ -499,7 +499,7 @@ is returned.
 ## Trigger a test project webhook
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147656) in GitLab 16.11.
-- Special rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/150066) in GitLab 17.0 [with a flag](../administration/feature_flags/_index.md) named `web_hook_test_api_endpoint_rate_limit`. Enabled by default.
+- Special rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/150066) in GitLab 17.0 [with a feature flag](../administration/feature_flags/_index.md) named `web_hook_test_api_endpoint_rate_limit`. Enabled by default.
 
 Trigger a test project webhook for a specified project.
 

@@ -5,7 +5,7 @@ Automatically assign Code Owners as reviewers when a merge request is ready.
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224175) in GitLab 18.10 [with a flag](../../../../administration/feature_flags/_index.md) named `auto_assign_code_owner_reviewers`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224175) in GitLab 18.10 [with a feature flag](../../../../administration/feature_flags/_index.md) named `auto_assign_code_owner_reviewers`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239965) in GitLab 19.1. Feature flag `auto_assign_code_owner_reviewers` removed.
 
 When you enable automatic reviewer assignment, GitLab assigns the

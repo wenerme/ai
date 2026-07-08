@@ -5,7 +5,7 @@ Security dashboards, vulnerability trends, project ratings, and metrics.
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- New dashboard with advanced search [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/570504) in GitLab 18.6 [with flags](../../../administration/feature_flags/_index.md) named `project_security_dashboard_new` and `group_security_dashboard_new`. The flags are disabled by default.
+- New dashboard with advanced search [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/570504) in GitLab 18.6 [with feature flags](../../../administration/feature_flags/_index.md) named `project_security_dashboard_new` and `group_security_dashboard_new`. The flags are disabled by default.
 - New dashboard with advanced search [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/215574) in GitLab 18.7.
 - New dashboard with advanced search [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/107661) in GitLab 18.8. Feature flags `project_security_dashboard_new` and `group_security_dashboard_new` removed.
 
@@ -17,7 +17,7 @@ If your organization has not enabled advanced vulnerability management, see [leg
 
 ## Security dashboards
 
-- New dashboard that uses [advanced vulnerability management](../vulnerability_report/_index.md#advanced-vulnerability-management) [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/570504) in GitLab 18.6 [with flags](../../../administration/feature_flags/_index.md) named `project_security_dashboard_new` and `group_security_dashboard_new`. The flags are disabled by default.
+- New dashboard that uses [advanced vulnerability management](../vulnerability_report/_index.md#advanced-vulnerability-management) [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/570504) in GitLab 18.6 [with feature flags](../../../administration/feature_flags/_index.md) named `project_security_dashboard_new` and `group_security_dashboard_new`. The flags are disabled by default.
 - New dashboard [enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/215574) in GitLab 18.7.
 - New dashboard [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/107661) in GitLab 18.8. Feature flags `project_security_dashboard_new` and `group_security_dashboard_new` removed.
 
@@ -129,7 +129,7 @@ To view details:
 #### Risk score panel
 
 - Risk score panel for group dashboards:
-  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/570504) in GitLab 18.6 [with a flag](../../../administration/feature_flags/_index.md) named `security_dashboard_risk_score`. Disabled by default.
+  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/570504) in GitLab 18.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_dashboard_risk_score`. Disabled by default.
   - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/215574) in GitLab 18.7.
   - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/107661) in GitLab 18.8. Feature flag `security_dashboard_risk_score` removed.
 - Risk score chart for project dashboards:
@@ -221,7 +221,7 @@ To apply a filter to the whole dashboard:
 
 ### Export as PDF
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224664) in GitLab 18.10 [with a flag](../../../administration/feature_flags/_index.md) named `new_security_dashboard_pdf_export`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224664) in GitLab 18.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `new_security_dashboard_pdf_export`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/589201) in GitLab 18.11.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/589201) in GitLab 19.0. Feature flag `new_security_dashboard_pdf_export` removed.
 

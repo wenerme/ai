@@ -5,7 +5,7 @@ Use the file tree browser to navigate repository files and directories.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/19530) in GitLab 18.0 [with a flag](../../../../administration/feature_flags/_index.md) named `repository_file_tree_browser`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/19530) in GitLab 18.0 [with a feature flag](../../../../administration/feature_flags/_index.md) named `repository_file_tree_browser`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/19530) in GitLab 18.9.
 
 > [!flag]

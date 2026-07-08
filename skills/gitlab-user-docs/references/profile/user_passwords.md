@@ -37,7 +37,7 @@ On GitLab Self-Managed and GitLab Dedicated, administrators can
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/188723) in GitLab 18.0 [with a flag](../../administration/feature_flags/_index.md) named `notify_compromised_passwords`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/188723) in GitLab 18.0 [with a feature flag](../../administration/feature_flags/_index.md) named `notify_compromised_passwords`. Disabled by default.
 - Enabled on GitLab.com in GitLab 18.1. Feature flag `notify_compromised_passwords` removed.
 
 GitLab can notify you if your GitLab.com credentials are compromised as part of a data breach on another service or platform. GitLab credentials are encrypted and GitLab itself does not have direct access to them.

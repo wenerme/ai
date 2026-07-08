@@ -524,7 +524,7 @@ Approves or rejects a deployment.
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/343864) in GitLab 14.7 [with a flag](../administration/feature_flags/_index.md) named `deployment_approvals`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/343864) in GitLab 14.7 [with a feature flag](../administration/feature_flags/_index.md) named `deployment_approvals`. Disabled by default.
 - [Feature flag removed](https://gitlab.com/gitlab-org/gitlab/-/issues/347342) in GitLab 14.8.
 
 See [Deployment Approvals](../ci/environments/deployment_approvals.md) for more information about this feature.

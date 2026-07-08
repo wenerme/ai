@@ -6,6 +6,7 @@ packages:
   - "@mastra/fastembed"
   - "@mastra/libsql"
   - "@mastra/memory"
+  - "@mastra/mongodb"
   - "@mastra/pg"
 ---
 
@@ -33,33 +34,67 @@ After getting a response from the LLM, all new messages (user, assistant, and to
 
 Semantic recall is disabled by default. To enable it, set `semanticRecall: true` in `options` and provide a `vector` store and `embedder`:
 
-```typescript title="src/mastra/agents/index.ts"
-import { Agent } from '@mastra/core/agent'
-import { Memory } from '@mastra/memory'
-import { LibSQLStore, LibSQLVector } from '@mastra/libsql'
-import { ModelRouterEmbeddingModel } from '@mastra/core/llm'
+  
+    ```typescript title="src/mastra/agents/index.ts"
+    import { Agent } from '@mastra/core/agent'
+    import { Memory } from '@mastra/memory'
+    import { LibSQLStore, LibSQLVector } from '@mastra/libsql'
+    import { ModelRouterEmbeddingModel } from '@mastra/core/llm'
 
-const agent = new Agent({
-  id: 'support-agent',
-  name: 'SupportAgent',
-  instructions: 'You are a helpful support agent.',
-  model: '__GATEWAY_OPENAI_MODEL__',
-  memory: new Memory({
-    storage: new LibSQLStore({
-      id: 'agent-storage',
-      url: 'file:./local.db',
-    }),
-    vector: new LibSQLVector({
-      id: 'agent-vector',
-      url: 'file:./local.db',
-    }),
-    embedder: new ModelRouterEmbeddingModel('openai/text-embedding-3-small'),
-    options: {
-      semanticRecall: true,
-    },
-  }),
-})
-```
+    const agent = new Agent({
+      id: 'support-agent',
+      name: 'SupportAgent',
+      instructions: 'You are a helpful support agent.',
+      model: '__GATEWAY_OPENAI_MODEL__',
+      memory: new Memory({
+        storage: new LibSQLStore({
+          id: 'agent-storage',
+          url: 'file:./local.db',
+        }),
+        vector: new LibSQLVector({
+          id: 'agent-vector',
+          url: 'file:./local.db',
+        }),
+        embedder: new ModelRouterEmbeddingModel('openai/text-embedding-3-small'),
+        options: {
+          semanticRecall: true,
+        },
+      }),
+    })
+    ```
+  
+
+  
+    ```typescript title="src/mastra/agents/index.ts"
+    import { Agent } from '@mastra/core/agent'
+    import { Memory } from '@mastra/memory'
+    import { MongoDBStore, MongoDBVector } from '@mastra/mongodb'
+    import { ModelRouterEmbeddingModel } from '@mastra/core/llm'
+
+    const agent = new Agent({
+      id: 'support-agent',
+      name: 'SupportAgent',
+      instructions: 'You are a helpful support agent.',
+      model: '__GATEWAY_OPENAI_MODEL__',
+      memory: new Memory({
+        storage: new MongoDBStore({
+          id: 'agent-storage',
+          uri: process.env.MONGODB_URI,
+          dbName: process.env.MONGODB_DB_NAME,
+        }),
+        vector: new MongoDBVector({
+          id: 'agent-vector',
+          uri: process.env.MONGODB_URI,
+          dbName: process.env.MONGODB_DB_NAME,
+        }),
+        embedder: new ModelRouterEmbeddingModel('openai/text-embedding-3-small'),
+        options: {
+          semanticRecall: true,
+        },
+      }),
+    })
+    ```
+  
 
 ## Using the `recall()` method
 
@@ -157,7 +192,7 @@ const agent = new Agent({
 })
 ```
 
-> **note**: `scope: 'resource'` is supported by the LibSQL, PostgreSQL, and Upstash storage adapters.
+> **note**: `scope: 'resource'` is supported by the LibSQL, PostgreSQL, MongoDB, and Upstash storage adapters.
 
 ### Metadata filtering
 

@@ -4,7 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/572839) in GitLab 18.6 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/572839) in GitLab 18.6 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
 
 > [!flag]
 > The availability of these endpoints is controlled by a feature flag.
@@ -23,7 +23,7 @@ Use the following endpoints to create and manage virtual registries cleanup poli
 
 ### Retrieve the cleanup policy for a group
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/572839) in GitLab 18.6 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/572839) in GitLab 18.6 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
 
 Retrieves the cleanup policy for a specified group. Each group can have only one cleanup policy.
 
@@ -74,7 +74,7 @@ Example response:
 
 ### Create a cleanup policy
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/572839) in GitLab 18.6 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/572839) in GitLab 18.6 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
 
 Creates a cleanup policy for a specified group. Each group can have only one cleanup policy.
 
@@ -126,7 +126,7 @@ Example response:
 
 ### Update a cleanup policy
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/572839) in GitLab 18.6 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/572839) in GitLab 18.6 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
 
 Updates the cleanup policy for a specified group.
 
@@ -185,7 +185,7 @@ Example response:
 
 ### Delete a cleanup policy
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/572839) in GitLab 18.6 [with a flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/572839) in GitLab 18.6 [with a feature flag](../administration/feature_flags/_index.md) named `maven_virtual_registry`. Enabled by default.
 
 Deletes the cleanup policy for a specified group.
 

@@ -200,7 +200,7 @@ this:
 
 ## Error: `User is pending deprovisioning`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228156) in GitLab 18.11 [with a flag](../../../administration/feature_flags/_index.md) named `group_scim_async_member_removal`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228156) in GitLab 18.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `group_scim_async_member_removal`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/233454) in GitLab 19.0. Feature flag `group_scim_async_member_removal` removed.
 
 SCIM deprovisions are handled asynchronously. When a SCIM user is deprovisioned, subsequent `POST` or `PATCH` SCIM requests fail with HTTP status `409` and the following error message:

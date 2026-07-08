@@ -6,7 +6,7 @@ Connect custom agents in the AI Catalog to external data sources and third-party
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/590708) in GitLab 18.10 [with a flag](../../../administration/feature_flags/_index.md) named `ai_catalog_mcp_servers`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/590708) in GitLab 18.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_mcp_servers`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

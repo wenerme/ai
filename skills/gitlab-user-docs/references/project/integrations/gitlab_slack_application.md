@@ -27,7 +27,7 @@ Although functionality has not changed, you should [reinstall the app](#reinstal
 
 ### From the project or group settings
 
-- Installation at the group level [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/391526) in GitLab 16.10 [with a flag](../../../administration/feature_flags/_index.md) named `gitlab_for_slack_app_instance_and_group_level`. Disabled by default.
+- Installation at the group level [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/391526) in GitLab 16.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `gitlab_for_slack_app_instance_and_group_level`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147820) in GitLab 16.11.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/175803) in GitLab 17.8. Feature flag `gitlab_for_slack_app_instance_and_group_level` removed.
 
@@ -84,7 +84,7 @@ Alternatively, you can [configure the integration](https://about.gitlab.com/solu
 - Offering: GitLab.com, GitLab Dedicated
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/590434) in GitLab 19.1 [with a flag](../../../administration/feature_flags/_index.md) named `slack_duo_agent`. Disabled by default. This feature is an [experiment](../../../policy/development_stages_support.md).
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/590434) in GitLab 19.1 [with a feature flag](../../../administration/feature_flags/_index.md) named `slack_duo_agent`. Disabled by default. This feature is an [experiment](../../../policy/development_stages_support.md).
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -289,7 +289,7 @@ The following GitLab events can trigger notifications in Slack:
 
 ### Trigger notifications for group mentions
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/391526) in GitLab 16.10 [with a flag](../../../administration/feature_flags/_index.md) named `gitlab_for_slack_app_instance_and_group_level`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/391526) in GitLab 16.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `gitlab_for_slack_app_instance_and_group_level`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147820) in GitLab 16.11.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/175803) in GitLab 17.8. Feature flag `gitlab_for_slack_app_instance_and_group_level` removed.
 

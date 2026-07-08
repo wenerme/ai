@@ -24,6 +24,16 @@ import {
   </VPTeamPageTitle>
   <VPTeamMembers :members="core" />
   <VPTeamPageSection>
+    <template #title>Advisors</template>
+    <template #lead>
+      Advisors help guide Vite from the ecosystem side, sharing their
+      experience to shape the Environment API and the design of future APIs.
+    </template>
+    <template #members>
+      <VPTeamMembers size="small" :members="advisors" />
+    </template>
+  </VPTeamPageSection>
+  <VPTeamPageSection>
     <template #title>Team Emeriti</template>
     <template #lead>
       Here we honor some no-longer-active team members who have made valuable

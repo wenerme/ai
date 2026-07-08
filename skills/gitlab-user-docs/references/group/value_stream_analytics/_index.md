@@ -197,7 +197,7 @@ Keep in mind the following observations related to this example:
 
 ### Cumulative label event duration
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/432576) in GitLab 16.9 [with flags](../../../administration/feature_flags/_index.md) named `enable_vsa_cumulative_label_duration_calculation` and `vsa_duration_from_db`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/432576) in GitLab 16.9 [with feature flags](../../../administration/feature_flags/_index.md) named `enable_vsa_cumulative_label_duration_calculation` and `vsa_duration_from_db`. Disabled by default.
 - [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-com/gl-infra/production/-/issues/17476) in GitLab 16.10. Feature flag `vsa_duration_from_db` removed.
 - Feature flag `enable_vsa_cumulative_label_duration_calculation` [removed](https://gitlab.com/gitlab-com/gl-infra/production/-/issues/17478) in GitLab 17.0.
 
@@ -264,7 +264,7 @@ To view when the data was most recently updated, in the right corner next to **E
 
 ## View value stream analytics
 
-- Predefined date ranges dropdown list [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/408656/) in GitLab 16.5 [with a flag](../../../administration/feature_flags/_index.md) named `vsa_predefined_date_ranges`. Disabled by default.
+- Predefined date ranges dropdown list [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/408656/) in GitLab 16.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `vsa_predefined_date_ranges`. Disabled by default.
 - Predefined date ranges dropdown list [enabled on GitLab Self-Managed and GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/433149) in GitLab 16.7.
 - Predefined date ranges dropdown list [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/438051) in GitLab 16.9. Feature flag `vsa_predefined_date_ranges` removed.
 
@@ -388,7 +388,7 @@ To view tasks by type:
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- **New value stream** [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/381002) from a dialog to a page in GitLab 16.10 [with a flag](../../../administration/feature_flags/_index.md) named `vsa_standalone_settings_page`. Disabled by default.
+- **New value stream** [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/381002) from a dialog to a page in GitLab 16.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `vsa_standalone_settings_page`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/171856) in GitLab 17.7. Feature flag `vsa_standalone_settings_page` removed.
 
 ### With default stages
@@ -433,7 +433,7 @@ For a video explanation, see [Optimizing merge request review process with Value
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- **Edit value stream** [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/381002) from a dialog to a page in GitLab 16.10 [with a flag](../../../administration/feature_flags/_index.md) named `vsa_standalone_settings_page`. Disabled by default.
+- **Edit value stream** [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/381002) from a dialog to a page in GitLab 16.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `vsa_standalone_settings_page`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/171856) in GitLab 17.7. Feature flag `vsa_standalone_settings_page` removed.
 
 After you create a value stream, you can customize it to suit your purposes. To edit a value stream:

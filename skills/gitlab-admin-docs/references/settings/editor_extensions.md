@@ -40,7 +40,7 @@ To create an OAuth application for JetBrains IDEs:
 
 ## Require a minimum language server version
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/541744) in GitLab 18.1 [with a flag](../feature_flags/_index.md) named `enforce_language_server_version`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/541744) in GitLab 18.1 [with a feature flag](../feature_flags/_index.md) named `enforce_language_server_version`. Disabled by default.
 
 > [!flag]
 > On GitLab Self-Managed, by default this feature is not available. To make it available, an administrator can [enable the feature flag](../feature_flags/_index.md) named `enforce_language_server_version`.

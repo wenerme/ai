@@ -539,7 +539,7 @@ List projects and project attributes.
 
 ### List all projects
 
-- `web_based_commit_signing_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/194650) in GitLab 18.2 [with a flag](../administration/feature_flags/_index.md) named `use_web_based_commit_signing_enabled`. Disabled by default.
+- `web_based_commit_signing_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/194650) in GitLab 18.2 [with a feature flag](../administration/feature_flags/_index.md) named `use_web_based_commit_signing_enabled`. Disabled by default.
 - `web_based_commit_signing_enabled` [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/542975) in GitLab 19.1. Feature flag `use_web_based_commit_signing_enabled` removed.
 - `mr_default_title_template` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228442) in GitLab 18.11 [with a feature flag](../administration/feature_flags/_index.md) named `mr_default_title_template`. Disabled by default.
 - Feature flag `mr_default_title_template` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235642) in GitLab 19.0.
@@ -2344,8 +2344,9 @@ Supported general project attributes:
 | `default_branch`                                   | string            | No       | The [default branch](../user/project/repository/branches/default.md) name. |
 | `description`                                      | string            | No       | Short project description. |
 | `duo_remote_flows_enabled`                         | boolean           | No       | Determine whether or not [flows](../user/duo_agent_platform/flows/_index.md) can run in your project. |
-| `duo_sast_fp_detection_enabled` | boolean | No | Enable or disable SAST false positive detection. See [turn on SAST false positive detection](../user/application_security/vulnerabilities/false_positive_detection.md#turn-on-for-a-project). |
-| `duo_sast_vr_workflow_enabled` | boolean | No | Enable or disable SAST vulnerability resolution workflow. See [turn on SAST vulnerability resolution workflow](../user/application_security/vulnerabilities/agentic_vulnerability_resolution.md#turn-on-for-a-project). |
+| `duo_sast_fp_detection_enabled` | boolean | No | If `true`, turns on SAST false positive detection. Requires the Security Manager, Maintainer, or Owner role. See [turn on SAST false positive detection](../user/application_security/vulnerabilities/false_positive_detection.md#turn-on-for-a-project). |
+| `duo_secret_detection_fp_enabled` | boolean | No | If `true`, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role. See [turn on secret detection false positive detection](../user/application_security/vulnerabilities/secret_false_positive_detection.md#turn-on-for-a-project). |
+| `duo_sast_vr_workflow_enabled` | boolean | No | If `true`, turns on SAST vulnerability resolution workflow. Requires the Security Manager, Maintainer, or Owner role. See [turn on SAST vulnerability resolution workflow](../user/application_security/vulnerabilities/agentic_vulnerability_resolution.md#turn-on-for-a-project). |
 | `emails_disabled`                                  | boolean           | No       | _(Deprecated)_ Disable email notifications. Use `emails_enabled` instead |
 | `emails_enabled`                                   | boolean           | No       | Enable email notifications. |
 | `enforce_auth_checks_on_uploads`                   | boolean           | No       | Enforce [auth checks](../security/user_file_uploads.md#enable-authorization-checks-for-all-media-files) on uploads. |

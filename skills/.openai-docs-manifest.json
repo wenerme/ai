@@ -106,10 +106,10 @@
   "openai-docs/bots.md": {
     "url": "https://developers.openai.com/api/docs/bots.md",
     "skill": "openai-docs",
-    "etag": "W/\"4029ce1d8d9075ffe1b351ad35702cc1\"",
-    "lastModified": "Thu, 25 Jun 2026 01:21:51 GMT",
-    "size": 4047,
-    "updatedAt": "2026-06-25T01:21:51.301Z"
+    "etag": "W/\"dba43c56c5ae415552b9890c29df10ca\"",
+    "lastModified": "Wed, 08 Jul 2026 09:06:26 GMT",
+    "size": 4819,
+    "updatedAt": "2026-07-08T12:05:25.532Z"
   },
   "openai-docs/concepts.md": {
     "url": "https://developers.openai.com/api/docs/concepts.md",

@@ -1585,7 +1585,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_ce398b1ce62b"
+              "$ref": "#/components/schemas/RequestBody_39c987677cfb"
       x-gitlab-lifecycle: experiment
   "/api/v4/ai/duo_workflows/workflows/agent_privileges":
     get:
@@ -4075,7 +4075,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_3c400bb4e6e3"
+              "$ref": "#/components/schemas/RequestBody_1bb359633f1e"
   "/api/v4/security/groups/{id}/vulnerability_exports":
     post:
       operationId: postApiV4SecurityGroupsIdVulnerabilityExports
@@ -4107,7 +4107,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_3c400bb4e6e3"
+              "$ref": "#/components/schemas/RequestBody_1bb359633f1e"
   "/api/v4/security/vulnerability_exports":
     post:
       operationId: postApiV4SecurityVulnerabilityExports
@@ -4131,7 +4131,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_6c51c6a72a61"
+              "$ref": "#/components/schemas/RequestBody_a847a040849c"
   "/api/v4/security/vulnerability_exports/{id}":
     get:
       operationId: getApiV4SecurityVulnerabilityExportsId
@@ -28634,6 +28634,16 @@ paths:
           nullable: true
         in: query
         example: 7d70e02340bac451f281cecf0a980907974bd8be
+      - name: ref_type
+        required: false
+        description: Type of ref in sha, heads (branch) or tags (tag)
+        schema:
+          type: string
+          enum:
+          - heads
+          - tags
+          nullable: true
+        in: query
       - name: format
         required: false
         description: The archive format
@@ -59990,8 +60000,8 @@ paths:
   "/api/v4/projects/{id}/packages/conan/v1/ping":
     get:
       operationId: getApiV4ProjectsIdPackagesConanV1Ping
-      summary: Ping the Conan API
-      description: This feature was introduced in GitLab 12.2
+      summary: Verify availability of a Conan repository
+      description: Verifies availability of a Conan repository.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60011,8 +60021,10 @@ paths:
   ? "/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/packages/{conan_package_reference}"
   : get:
       operationId: getApiV4ProjectsIdPackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReference
-      summary: Package Snapshot
-      description: This feature was introduced in GitLab 12.5
+      summary: Retrieve a package snapshot
+      description: Retrieves a snapshot of the files for a specified Conan package
+        and reference. The snapshot is a list of filenames with their associated MD5
+        hash.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60075,8 +60087,9 @@ paths:
   "/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}":
     get:
       operationId: getApiV4ProjectsIdPackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannel
-      summary: Recipe Snapshot
-      description: This feature was introduced in GitLab 12.5
+      summary: Retrieve a recipe snapshot
+      description: Retrieves a snapshot of the files for a specified Conan recipe.
+        The snapshot is a list of filenames with their associated MD5 hash.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60131,8 +60144,9 @@ paths:
         example: stable
     delete:
       operationId: deleteApiV4ProjectsIdPackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannel
-      summary: Delete Package
-      description: This feature was introduced in GitLab 12.5
+      summary: Delete a recipe and package
+      description: Deletes a specified Conan recipe and associated package files from
+        the package registry.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60184,8 +60198,9 @@ paths:
   ? "/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/packages/{conan_package_reference}/digest"
   : get:
       operationId: getApiV4ProjectsIdPackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigest
-      summary: Package Digest
-      description: This feature was introduced in GitLab 12.5
+      summary: Retrieve a package manifest
+      description: Retrieves a manifest that includes a list of files and associated
+        download URLs for a specified package.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60248,8 +60263,9 @@ paths:
   "/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/digest":
     get:
       operationId: getApiV4ProjectsIdPackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigest
-      summary: Recipe Digest
-      description: This feature was introduced in GitLab 12.5
+      summary: Retrieve a recipe manifest
+      description: Retrieves a manifest that includes a list of files and associated
+        download URLs for a specified recipe.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60305,8 +60321,10 @@ paths:
   ? "/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/packages/{conan_package_reference}/download_urls"
   : get:
       operationId: getApiV4ProjectsIdPackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrls
-      summary: Package Download Urls
-      description: This feature was introduced in GitLab 12.5
+      summary: List all package download URLs
+      description: Lists all files and associated download URLs for a specified package
+        in the package registry. Returns the same payload as the package manifest
+        endpoint.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60369,8 +60387,9 @@ paths:
   ? "/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/download_urls"
   : get:
       operationId: getApiV4ProjectsIdPackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrls
-      summary: Recipe Download Urls
-      description: This feature was introduced in GitLab 12.5
+      summary: List all recipe download URLs
+      description: Lists all files and associated download URLs for a specified recipe
+        in the package registry. Returns the same payload as the recipe manifest endpoint.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60426,8 +60445,10 @@ paths:
   ? "/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/packages/{conan_package_reference}/upload_urls"
   : post:
       operationId: postApiV4ProjectsIdPackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrls
-      summary: Package Upload Urls
-      description: This feature was introduced in GitLab 12.4
+      summary: List all package upload URLs
+      description: Lists all the upload URLs for a specified collection of package
+        files. The request must include a JSON object with the name and size of the
+        individual files.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60490,8 +60511,10 @@ paths:
   "/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/upload_urls":
     post:
       operationId: postApiV4ProjectsIdPackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrls
-      summary: Recipe Upload Urls
-      description: This feature was introduced in GitLab 12.4
+      summary: List all recipe upload URLs
+      description: Lists all the upload URLs for a specified collection of recipe
+        files. The request must include a JSON object with the name and size of the
+        individual files.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60547,8 +60570,9 @@ paths:
   ? "/api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}"
   : get:
       operationId: getApiV4ProjectsIdPackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileName
-      summary: Download recipe files
-      description: This feature was introduced in GitLab 12.6
+      summary: Retrieve a recipe file
+      description: Retrieves a specified recipe file from the package registry. You
+        must use the download URL returned from the recipe download URLs endpoint.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60621,8 +60645,9 @@ paths:
         example: conanfile.py
     put:
       operationId: putApiV4ProjectsIdPackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileName
-      summary: Upload recipe package files
-      description: This feature was introduced in GitLab 12.6
+      summary: Upload a recipe file
+      description: Uploads a specified recipe file to the package registry. You must
+        use the upload URL returned from the recipe upload URLs endpoint.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60704,8 +60729,8 @@ paths:
   ? "/api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}/authorize"
   : put:
       operationId: putApiV4ProjectsIdPackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorize
-      summary: Workhorse authorize the conan recipe file
-      description: This feature was introduced in GitLab 12.6
+      summary: Workhorse authorize the Conan recipe file
+      description: Authorizes the Conan recipe file.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60781,8 +60806,9 @@ paths:
   ? "/api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}"
   : get:
       operationId: getApiV4ProjectsIdPackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileName
-      summary: Download package files
-      description: This feature was introduced in GitLab 12.5
+      summary: Retrieve a package file
+      description: Retrieves a specified package file from the package registry. You
+        must use the download URL returned from the package download URLs endpoint.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60867,8 +60893,9 @@ paths:
         example: conaninfo.txt
     put:
       operationId: putApiV4ProjectsIdPackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileName
-      summary: Upload package files
-      description: This feature was introduced in GitLab 12.6
+      summary: Upload a package file
+      description: Uploads a specified package file to the package registry. You must
+        use the upload URL returned from the package upload URLs endpoint.
       tags:
       - 'Packages: Conan'
       responses:
@@ -60964,8 +60991,8 @@ paths:
   ? "/api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}/authorize"
   : put:
       operationId: putApiV4ProjectsIdPackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorize
-      summary: Workhorse authorize the conan package file
-      description: This feature was introduced in GitLab 12.6
+      summary: Workhorse authorize the Conan package file
+      description: Authorizes the Conan package file.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61163,8 +61190,8 @@ paths:
   "/api/v4/packages/conan/v1/ping":
     get:
       operationId: getApiV4PackagesConanV1Ping
-      summary: Ping the Conan API
-      description: This feature was introduced in GitLab 12.2
+      summary: Verify availability of a Conan repository
+      description: Verifies availability of a Conan repository.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61175,8 +61202,10 @@ paths:
   ? "/api/v4/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/packages/{conan_package_reference}"
   : get:
       operationId: getApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReference
-      summary: Package Snapshot
-      description: This feature was introduced in GitLab 12.5
+      summary: Retrieve a package snapshot
+      description: Retrieves a snapshot of the files for a specified Conan package
+        and reference. The snapshot is a list of filenames with their associated MD5
+        hash.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61231,8 +61260,9 @@ paths:
   "/api/v4/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}":
     get:
       operationId: getApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannel
-      summary: Recipe Snapshot
-      description: This feature was introduced in GitLab 12.5
+      summary: Retrieve a recipe snapshot
+      description: Retrieves a snapshot of the files for a specified Conan recipe.
+        The snapshot is a list of filenames with their associated MD5 hash.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61279,8 +61309,9 @@ paths:
         example: stable
     delete:
       operationId: deleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannel
-      summary: Delete Package
-      description: This feature was introduced in GitLab 12.5
+      summary: Delete a recipe and package
+      description: Deletes a specified Conan recipe and associated package files from
+        the package registry.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61324,8 +61355,9 @@ paths:
   ? "/api/v4/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/packages/{conan_package_reference}/digest"
   : get:
       operationId: getApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigest
-      summary: Package Digest
-      description: This feature was introduced in GitLab 12.5
+      summary: Retrieve a package manifest
+      description: Retrieves a manifest that includes a list of files and associated
+        download URLs for a specified package.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61380,8 +61412,9 @@ paths:
   "/api/v4/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/digest":
     get:
       operationId: getApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigest
-      summary: Recipe Digest
-      description: This feature was introduced in GitLab 12.5
+      summary: Retrieve a recipe manifest
+      description: Retrieves a manifest that includes a list of files and associated
+        download URLs for a specified recipe.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61429,8 +61462,10 @@ paths:
   ? "/api/v4/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/packages/{conan_package_reference}/download_urls"
   : get:
       operationId: getApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrls
-      summary: Package Download Urls
-      description: This feature was introduced in GitLab 12.5
+      summary: List all package download URLs
+      description: Lists all files and associated download URLs for a specified package
+        in the package registry. Returns the same payload as the package manifest
+        endpoint.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61485,8 +61520,9 @@ paths:
   "/api/v4/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/download_urls":
     get:
       operationId: getApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrls
-      summary: Recipe Download Urls
-      description: This feature was introduced in GitLab 12.5
+      summary: List all recipe download URLs
+      description: Lists all files and associated download URLs for a specified recipe
+        in the package registry. Returns the same payload as the recipe manifest endpoint.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61534,8 +61570,10 @@ paths:
   ? "/api/v4/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/packages/{conan_package_reference}/upload_urls"
   : post:
       operationId: postApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrls
-      summary: Package Upload Urls
-      description: This feature was introduced in GitLab 12.4
+      summary: List all package upload URLs
+      description: Lists all the upload URLs for a specified collection of package
+        files. The request must include a JSON object with the name and size of the
+        individual files.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61590,8 +61628,10 @@ paths:
   "/api/v4/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/upload_urls":
     post:
       operationId: postApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrls
-      summary: Recipe Upload Urls
-      description: This feature was introduced in GitLab 12.4
+      summary: List all recipe upload URLs
+      description: Lists all the upload URLs for a specified collection of recipe
+        files. The request must include a JSON object with the name and size of the
+        individual files.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61639,8 +61679,9 @@ paths:
   ? "/api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}"
   : get:
       operationId: getApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileName
-      summary: Download recipe files
-      description: This feature was introduced in GitLab 12.6
+      summary: Retrieve a recipe file
+      description: Retrieves a specified recipe file from the package registry. You
+        must use the download URL returned from the recipe download URLs endpoint.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61705,8 +61746,9 @@ paths:
         example: conanfile.py
     put:
       operationId: putApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileName
-      summary: Upload recipe package files
-      description: This feature was introduced in GitLab 12.6
+      summary: Upload a recipe file
+      description: Uploads a specified recipe file to the package registry. You must
+        use the upload URL returned from the recipe upload URLs endpoint.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61780,8 +61822,8 @@ paths:
   ? "/api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}/authorize"
   : put:
       operationId: putApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorize
-      summary: Workhorse authorize the conan recipe file
-      description: This feature was introduced in GitLab 12.6
+      summary: Workhorse authorize the Conan recipe file
+      description: Authorizes the Conan recipe file.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61849,8 +61891,9 @@ paths:
   ? "/api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}"
   : get:
       operationId: getApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileName
-      summary: Download package files
-      description: This feature was introduced in GitLab 12.5
+      summary: Retrieve a package file
+      description: Retrieves a specified package file from the package registry. You
+        must use the download URL returned from the package download URLs endpoint.
       tags:
       - 'Packages: Conan'
       responses:
@@ -61927,8 +61970,9 @@ paths:
         example: conaninfo.txt
     put:
       operationId: putApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileName
-      summary: Upload package files
-      description: This feature was introduced in GitLab 12.6
+      summary: Upload a package file
+      description: Uploads a specified package file to the package registry. You must
+        use the upload URL returned from the package upload URLs endpoint.
       tags:
       - 'Packages: Conan'
       responses:
@@ -62016,8 +62060,8 @@ paths:
   ? "/api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}/authorize"
   : put:
       operationId: putApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorize
-      summary: Workhorse authorize the conan package file
-      description: This feature was introduced in GitLab 12.6
+      summary: Workhorse authorize the Conan package file
+      description: Authorizes the Conan package file.
       tags:
       - 'Packages: Conan'
       responses:
@@ -74136,6 +74180,7 @@ components:
       properties:
         id:
           type: integer
+          format: int64
           example: 1
         access_level:
           type: integer
@@ -74145,12 +74190,15 @@ components:
           example: Maintainers
         deploy_key_id:
           type: integer
+          format: int64
           example: 1
         user_id:
           type: integer
+          format: int64
           example: 1
         group_id:
           type: integer
+          format: int64
           example: 1
         member_role_id:
           type: integer
@@ -74164,6 +74212,7 @@ components:
       properties:
         id:
           type: integer
+          format: int64
           example: 1
         name:
           type: string
@@ -74366,6 +74415,7 @@ components:
       properties:
         id:
           type: integer
+          format: int64
           example: 1
         access_level:
           type: integer
@@ -74375,12 +74425,15 @@ components:
           example: Maintainers
         deploy_key_id:
           type: integer
+          format: int64
           example: 1
         user_id:
           type: integer
+          format: int64
           example: 1
         group_id:
           type: integer
+          format: int64
           example: 1
         member_role_id:
           type: integer
@@ -76260,6 +76313,7 @@ components:
       properties:
         id:
           type: integer
+          format: int64
           example: 101486
         update_status:
           type: string
@@ -79563,6 +79617,7 @@ components:
       properties:
         id:
           type: integer
+          format: int64
           example: 1
         name:
           type: string
@@ -81617,6 +81672,7 @@ components:
       properties:
         id:
           type: integer
+          format: int64
           example: 1
         title:
           type: string
@@ -81639,6 +81695,7 @@ components:
           example: '2012-06-28T10:52:04Z'
         project_id:
           type: integer
+          format: int64
           example: 1
         web_url:
           type: string
@@ -83678,6 +83735,7 @@ components:
           example: success
         project_id:
           type: integer
+          format: int64
           example: 1
         last_pipeline:
           type: object
@@ -83733,6 +83791,7 @@ components:
       properties:
         id:
           type: integer
+          format: int64
           example: 1
         title:
           type: string
@@ -83755,6 +83814,7 @@ components:
           example: '2012-06-28T10:52:04Z'
         project_id:
           type: integer
+          format: int64
           example: 1
         web_url:
           type: string
@@ -83792,6 +83852,7 @@ components:
       properties:
         id:
           type: integer
+          format: int64
           example: 1
         title:
           type: string
@@ -83814,6 +83875,7 @@ components:
           example: '2012-06-28T10:52:04Z'
         project_id:
           type: integer
+          format: int64
           example: 1
         web_url:
           type: string
@@ -84202,6 +84264,7 @@ components:
       properties:
         id:
           type: integer
+          format: int64
           example: 101486
         enabled:
           type: boolean
@@ -84246,6 +84309,7 @@ components:
       properties:
         id:
           type: integer
+          format: int64
           example: 1
         name:
           type: string
@@ -85314,6 +85378,7 @@ components:
       properties:
         id:
           type: integer
+          format: int64
           example: 1
         title:
           type: string
@@ -85336,6 +85401,7 @@ components:
           example: '2012-06-28T10:52:04Z'
         project_id:
           type: integer
+          format: int64
           example: 1
         web_url:
           type: string
@@ -91244,14 +91310,9 @@ components:
           description: The ID or path of the project
           example: '1'
           nullable: true
-    RequestBody_ce398b1ce62b:
+    RequestBody_39c987677cfb:
       type: object
       properties:
-        requires_duo_cli_enabled:
-          type: boolean
-          description: Whether this workflow requires Duo CLI to be enabled
-          example: true
-          nullable: true
         project_id:
           type: string
           description: The ID or path of the workflow project
@@ -92127,7 +92188,7 @@ components:
           type: boolean
           description: Whether hidden groups should be removed
           nullable: true
-    RequestBody_3c400bb4e6e3:
+    RequestBody_1bb359633f1e:
       type: object
       properties:
         export_format:
@@ -92140,6 +92201,8 @@ components:
           nullable: true
         send_email:
           type: boolean
+          description: If `true`, sends an email notification to the requesting user
+            when the export completes.
           nullable: true
         report_data:
           type: object
@@ -92298,7 +92361,7 @@ components:
               description: The full path of the vulnerable
               nullable: true
           nullable: true
-    RequestBody_6c51c6a72a61:
+    RequestBody_a847a040849c:
       type: object
       properties:
         export_format:
@@ -92311,6 +92374,8 @@ components:
           nullable: true
         send_email:
           type: boolean
+          description: If `true`, sends an email notification to the requesting user
+            when the export completes.
           nullable: true
     RequestBody_bf3947cbe8c2:
       type: object
