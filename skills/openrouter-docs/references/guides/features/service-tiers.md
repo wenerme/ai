@@ -186,6 +186,16 @@ curl https://openrouter.ai/api/v1/messages \
   }'
 ```
 
+### How Routing Works
+
+Non-default tier endpoints (`flex`, `priority`) are only considered when your request asks for them. There are two ways to do that:
+
+1. **The `service_tier` parameter.** For `priority`, matching endpoints are tried first (sorted by throughput), with fallback to other endpoints if none succeed; billing always follows the endpoint actually used, so a priority request that falls back off-tier is charged at that endpoint's standard rate, not the tier rate. For `flex`, routing is restricted to flex endpoints (sorted by price) — flex never falls back to a default-tier endpoint, since that would cost more than the tier you requested, so a flex capacity error surfaces instead. If the pool contains no flex endpoints at all (for example, the model has no flex-capable provider), the request routes normally at standard rates. Combine with [`allow_fallbacks: false`](/docs/features/provider-routing#disabling-fallbacks) to route only to the top endpoint of that tier.
+
+2. **Tier endpoint slugs in [`provider.order` or `provider.only`](/docs/features/provider-routing).** Each tier has its own endpoint slug, formed by appending the tier to the provider slug, e.g. `openai/priority` or `google-vertex/flex`. For example, `"provider": { "only": ["openai/priority"] }` restricts routing to OpenAI's priority tier.
+
+Requests that don't use either of these are never routed to a non-default service tier.
+
 ### Supported Providers
 
 The following providers support `flex` and `priority` service tiers for select models:

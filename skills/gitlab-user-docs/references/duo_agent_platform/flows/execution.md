@@ -432,11 +432,10 @@ In this example, if the job name is `test` and the SHA checksum is `abc123`, the
 
 To authenticate with third-party services from a flow, configure
 [ID tokens](../../../ci/secrets/id_token_authentication.md).
-An ID token is a JSON web token (JWT) that GitLab CI/CD generates and injects into the flow job.
 
-Use ID tokens to authenticate with OpenID Connect (OIDC) services without storing long-lived
-credentials. For example, you can use ID tokens for keyless signing of binaries and Git commits,
-or to retrieve secrets from a secrets manager.
+ID tokens are JSON web tokens (JWT) that GitLab CI/CD generates and injects into the job that runs the flow
+for keyless OpenID Connect (OIDC) authentication without storing long-lived credentials.
+For example, you can use ID tokens to retrieve secrets from a secrets manager or sign binaries and Git commits.
 
 To configure ID tokens, in the `agent-config.yml` file, add an `id_tokens` block.
 Each token requires an `aud` (audience) claim:

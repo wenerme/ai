@@ -3386,8 +3386,8 @@ paths:
       operationId: deleteApiV4GroupsIdDeployTokensTokenId
   "/api/v4/groups/{id}/avatar":
     get:
-      summary: Download the group avatar
-      description: This feature was introduced in GitLab 14.0
+      summary: Download a group avatar
+      description: Downloads a group avatar image.
       produces:
       - application/json
       parameters:
@@ -3398,7 +3398,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Download the group avatar
+          description: Download a group avatar
       tags:
       - avatars
       operationId: getApiV4GroupsIdAvatar
@@ -3576,9 +3576,8 @@ paths:
       operationId: postApiV4GroupsIdClustersUser
   "/api/v4/groups/{id}/registry/repositories":
     get:
-      summary: List registry repositories within a group
-      description: Get a list of registry repositories in a group. This feature was
-        introduced in GitLab 12.2.
+      summary: List all registry repositories for a group
+      description: Lists all registry repositories for a specified group.
       produces:
       - application/json
       parameters:
@@ -3606,7 +3605,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: List registry repositories within a group
+          description: List all registry repositories for a group
           schema:
             type: array
             items:
@@ -4186,9 +4185,11 @@ paths:
       operationId: postApiV4GroupsImport
   "/api/v4/groups/{id}/packages":
     get:
-      summary: List packages within a group
-      description: Get a list of project packages at the group level. This feature
-        was introduced in GitLab 12.5
+      summary: List all packages for a group
+      description: Lists all packages for a specified group. When accessed without
+        authentication, only packages of public projects are returned. By default,
+        packages with `default`, `deprecated`, and `error` status are returned. Use
+        the `status` parameter to view other packages.
       produces:
       - application/json
       parameters:
@@ -4291,7 +4292,7 @@ paths:
         required: false
       responses:
         '200':
-          description: List packages within a group
+          description: List all packages for a group
           schema:
             type: array
             items:
@@ -6645,7 +6646,10 @@ paths:
       operationId: deleteApiV4GroupsIdInvitationsEmail
   "/api/v4/groups/{id}/issues":
     get:
-      description: Get a list of group issues
+      summary: List all issues for a group
+      description: Lists all issues for a specified group. If the group is private,
+        you must provide credentials to authorize. In most cases, you should authenticate
+        with a personal access token.
       produces:
       - application/json
       parameters:
@@ -6987,7 +6991,7 @@ paths:
         required: false
       responses:
         '200':
-          description: Get a list of group issues
+          description: List all issues for a group
           schema:
             "$ref": "#/definitions/API_Entities_Issue"
       tags:
@@ -6995,7 +6999,8 @@ paths:
       operationId: getApiV4GroupsIdIssues
   "/api/v4/groups/{id}/issues_statistics":
     get:
-      description: Get statistics for the list of group issues
+      summary: Retrieve issues statistics for a group
+      description: Retrieves statistics for issues in a specified group.
       produces:
       - application/json
       parameters:
@@ -7234,7 +7239,7 @@ paths:
         required: false
       responses:
         '200':
-          description: Get statistics for the list of group issues
+          description: Retrieve issues statistics for a group
       tags:
       - groups
       operationId: getApiV4GroupsIdIssuesStatistics
@@ -7574,7 +7579,8 @@ paths:
       - members
       operationId: getApiV4GroupsIdMembers
     post:
-      description: Adds a member to a group or project.
+      summary: Add a member to a group
+      description: Adds a member to a specified group.
       produces:
       - application/json
       consumes:
@@ -7592,7 +7598,7 @@ paths:
           "$ref": "#/definitions/postApiV4GroupsIdMembers"
       responses:
         '201':
-          description: Adds a member to a group or project.
+          description: Add a member to a group
           schema:
             "$ref": "#/definitions/API_Entities_Member"
       tags:
@@ -7669,7 +7675,9 @@ paths:
       operationId: getApiV4GroupsIdMembersAll
   "/api/v4/groups/{id}/members/{user_id}":
     get:
-      description: Gets a member of a group or project.
+      summary: Retrieve a direct group member
+      description: Retrieves a specified member of a group. Returns only direct members
+        and not inherited members through ancestor groups.
       produces:
       - application/json
       parameters:
@@ -7686,14 +7694,15 @@ paths:
         required: true
       responses:
         '200':
-          description: Gets a member of a group or project.
+          description: Retrieve a direct group member
           schema:
             "$ref": "#/definitions/API_Entities_Member"
       tags:
       - members
       operationId: getApiV4GroupsIdMembersUserId
     put:
-      description: Updates a member of a group or project.
+      summary: Update a group member
+      description: Updates a specified member of a group.
       produces:
       - application/json
       consumes:
@@ -7717,14 +7726,16 @@ paths:
           "$ref": "#/definitions/putApiV4GroupsIdMembersUserId"
       responses:
         '200':
-          description: Updates a member of a group or project.
+          description: Update a group member
           schema:
             "$ref": "#/definitions/API_Entities_Member"
       tags:
       - members
       operationId: putApiV4GroupsIdMembersUserId
     delete:
-      description: Removes a user from a group or project.
+      summary: Remove a member from a group
+      description: Removes a specified user from a group. The user must be a direct
+        member.
       produces:
       - application/json
       parameters:
@@ -7741,15 +7752,15 @@ paths:
         required: true
       - in: query
         name: skip_subresources
-        description: Flag indicating if the deletion of direct memberships of the
-          removed member in subgroups and projects should be skipped
+        description: If `true`, the member retains any direct memberships in subgroups
+          or projects.
         type: boolean
         default: false
         required: false
       - in: query
         name: unassign_issuables
-        description: Flag indicating if the removed member should be unassigned from
-          any issues or merge requests within given group or project
+        description: If `true`, unassigns the member from any issues or merge requests
+          in the group.
         type: boolean
         default: false
         required: false
@@ -7761,8 +7772,9 @@ paths:
       operationId: deleteApiV4GroupsIdMembersUserId
   "/api/v4/groups/{id}/members/all/{user_id}":
     get:
-      description: Gets a member of a group or project, including those who gained
-        membership through ancestor group
+      summary: Retrieve a group member
+      description: Retrieves a specified member of a group. Returns direct members
+        and members inherited or invited through ancestor groups.
       produces:
       - application/json
       parameters:
@@ -7779,8 +7791,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Gets a member of a group or project, including those who gained
-            membership through ancestor group
+          description: Retrieve a group member
           schema:
             "$ref": "#/definitions/API_Entities_Member"
       tags:
@@ -7788,7 +7799,10 @@ paths:
       operationId: getApiV4GroupsIdMembersAllUserId
   "/api/v4/groups/{id}/members/{user_id}/override":
     post:
-      description: Overrides the access level of an LDAP group member.
+      summary: Set override flag for a member of a group
+      description: Sets the override flag for a member of a group. By default, the
+        access level of LDAP group members is set to the value specified by LDAP through
+        Group Sync.
       produces:
       - application/json
       consumes:
@@ -7807,14 +7821,15 @@ paths:
         required: true
       responses:
         '201':
-          description: Overrides the access level of an LDAP group member.
+          description: Set override flag for a member of a group
           schema:
             "$ref": "#/definitions/API_Entities_Member"
       tags:
       - members
       operationId: postApiV4GroupsIdMembersUserIdOverride
     delete:
-      description: Remove an LDAP group member access level override.
+      summary: Remove an LDAP access level override
+      description: Removes an LDAP access level override for a member of a group.
       produces:
       - application/json
       parameters:
@@ -7831,7 +7846,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Remove an LDAP group member access level override.
+          description: Remove an LDAP access level override
           schema:
             "$ref": "#/definitions/API_Entities_Member"
       tags:
@@ -7839,7 +7854,9 @@ paths:
       operationId: deleteApiV4GroupsIdMembersUserIdOverride
   "/api/v4/groups/{id}/members/{member_id}/approve":
     put:
-      description: Approves a pending member
+      summary: Approve a group member
+      description: Approves a specified pending user for a top-level group and any
+        subgroups or projects.
       produces:
       - application/json
       consumes:
@@ -7858,13 +7875,15 @@ paths:
         required: true
       responses:
         '200':
-          description: Approves a pending member
+          description: Approve a group member
       tags:
       - members
       operationId: putApiV4GroupsIdMembersMemberIdApprove
   "/api/v4/groups/{id}/members/approve_all":
     post:
-      description: Approves all pending members
+      summary: Approve all pending group members
+      description: Approves all pending users for a specified top-level group and
+        any subgroups or projects.
       produces:
       - application/json
       consumes:
@@ -7877,13 +7896,17 @@ paths:
         required: true
       responses:
         '201':
-          description: Approves all pending members
+          description: Approve all pending group members
       tags:
       - members
       operationId: postApiV4GroupsIdMembersApproveAll
   "/api/v4/groups/{id}/pending_members":
     get:
-      description: Lists all pending members for a group including invited users
+      summary: List all pending group members
+      description: Lists all members in an `awaiting` state and those who are invited
+        but do not have a GitLab account for a specified group and any subgroups and
+        projects. This operation works on top-level groups only. It does not work
+        on subgroups.
       produces:
       - application/json
       parameters:
@@ -7910,13 +7933,16 @@ paths:
         example: 20
       responses:
         '200':
-          description: Lists all pending members for a group including invited users
+          description: List all pending group members
       tags:
       - members
       operationId: getApiV4GroupsIdPendingMembers
   "/api/v4/groups/{id}/billable_members":
     get:
-      description: Gets a list of billable users of top-level group.
+      summary: List all billable group members
+      description: Lists all billable members of a specified top-level group. Includes
+        members in any subgroups or projects. You must have the Owner role for the
+        group.
       produces:
       - application/json
       parameters:
@@ -7964,7 +7990,7 @@ paths:
         required: false
       responses:
         '200':
-          description: Gets a list of billable users of top-level group.
+          description: List all billable group members
           schema:
             "$ref": "#/definitions/API_Entities_Member"
       tags:
@@ -7972,7 +7998,8 @@ paths:
       operationId: getApiV4GroupsIdBillableMembers
   "/api/v4/groups/{id}/members/{user_id}/state":
     put:
-      description: Changes the state of the memberships of a user in the group
+      summary: Update group membership state for a user
+      description: Updates the membership state for a specified user in a group.
       produces:
       - application/json
       consumes:
@@ -7996,13 +8023,16 @@ paths:
           "$ref": "#/definitions/putApiV4GroupsIdMembersUserIdState"
       responses:
         '200':
-          description: Changes the state of the memberships of a user in the group
+          description: Update group membership state for a user
       tags:
       - members
       operationId: putApiV4GroupsIdMembersUserIdState
   "/api/v4/groups/{id}/billable_members/{user_id}/memberships":
     get:
-      description: Get the direct memberships of a billable user of a top-level group.
+      summary: List all memberships for a billable group member
+      description: Lists all memberships for a specified billable member of a group.
+        The response represents only direct memberships. Inherited memberships are
+        not included.
       produces:
       - application/json
       parameters:
@@ -8035,8 +8065,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: Get the direct memberships of a billable user of a top-level
-            group.
+          description: List all memberships for a billable group member
           schema:
             "$ref": "#/definitions/API_Entities_BillableMembership"
       tags:
@@ -8044,8 +8073,9 @@ paths:
       operationId: getApiV4GroupsIdBillableMembersUserIdMemberships
   "/api/v4/groups/{id}/billable_members/{user_id}/indirect":
     get:
-      description: Get the indirect memberships of a billable user of a top-level
-        group.
+      summary: List all indirect memberships for a billable group member
+      description: Lists all indirect memberships for a billable member of a group.
+        This operation works on top-level groups only. It does not work on subgroups.
       produces:
       - application/json
       parameters:
@@ -8078,8 +8108,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: Get the indirect memberships of a billable user of a top-level
-            group.
+          description: List all indirect memberships for a billable group member
           schema:
             "$ref": "#/definitions/API_Entities_BillableMembership"
       tags:
@@ -8087,7 +8116,11 @@ paths:
       operationId: getApiV4GroupsIdBillableMembersUserIdIndirect
   "/api/v4/groups/{id}/billable_members/{user_id}":
     delete:
-      description: Removes a billable member from a group or project.
+      summary: Remove a billable member from a group
+      description: Removes a specified billable member from a group and its subgroups
+        and projects. The user does not need to be a group member to qualify for removal.
+        For example, if the user was added directly to a project in the group, you
+        can still remove them using this operation.
       produces:
       - application/json
       parameters:
@@ -25248,9 +25281,9 @@ paths:
       operationId: deleteApiV4ProjectsIdInvitationsEmail
   "/api/v4/projects/{id}/issues/{issue_iid}/links":
     get:
-      summary: List issue relations
-      description: Get a list of a given issue’s linked issues, sorted by the relationship
-        creation datetime (ascending).Issues are filtered according to the user authorizations.
+      summary: List all issue links
+      description: Lists all linked issues for a specified issue, sorted by the relationship
+        creation datetime (ascending). Issues are filtered according to the user authorizations.
       produces:
       - application/json
       parameters:
@@ -25268,7 +25301,7 @@ paths:
         required: true
       responses:
         '200':
-          description: List issue relations
+          description: List all issue links
           schema:
             type: array
             items:
@@ -25320,9 +25353,8 @@ paths:
       operationId: postApiV4ProjectsIdIssuesIssueIidLinks
   "/api/v4/projects/{id}/issues/{issue_iid}/links/{issue_link_id}":
     get:
-      summary: Get an issue link
-      description: Gets details about an issue link. This feature was introduced in
-        GitLab 15.1.
+      summary: Retrieve an issue link
+      description: Retrieves a specified issue link.
       produces:
       - application/json
       parameters:
@@ -25345,7 +25377,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get an issue link
+          description: Retrieve an issue link
           schema:
             "$ref": "#/definitions/API_Entities_IssueLink"
         '401':
@@ -25357,7 +25389,7 @@ paths:
       operationId: getApiV4ProjectsIdIssuesIssueIidLinksIssueLinkId
     delete:
       summary: Delete an issue link
-      description: Deletes an issue link, thus removes the two-way relationship.
+      description: Deletes a specified issue link, removing the two-way relationship.
       produces:
       - application/json
       parameters:
@@ -25562,7 +25594,10 @@ paths:
       operationId: getApiV4ProjectsIdIssuesIssueIidTimeStats
   "/api/v4/projects/{id}/issues":
     get:
-      description: Get a list of project issues
+      summary: List all project issues
+      description: Lists all issues for a specified project. If the project is private,
+        you need to provide credentials to authorize. In most cases, you should authenticate
+        with a personal access token.
       produces:
       - application/json
       parameters:
@@ -25903,14 +25938,15 @@ paths:
         required: false
       responses:
         '200':
-          description: Get a list of project issues
+          description: List all project issues
           schema:
             "$ref": "#/definitions/API_Entities_Issue"
       tags:
       - projects
       operationId: getApiV4ProjectsIdIssues
     post:
-      description: Create a new project issue
+      summary: Create an issue
+      description: Creates an issue for a specified project.
       produces:
       - application/json
       consumes:
@@ -25928,7 +25964,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdIssues"
       responses:
         '201':
-          description: Create a new project issue
+          description: Create an issue
           schema:
             "$ref": "#/definitions/API_Entities_Issue"
       tags:
@@ -25936,7 +25972,8 @@ paths:
       operationId: postApiV4ProjectsIdIssues
   "/api/v4/projects/{id}/issues_statistics":
     get:
-      description: Get statistics for the list of project issues
+      summary: Retrieve issues statistics for a project
+      description: Retrieves statistics for issues in a specified project.
       produces:
       - application/json
       parameters:
@@ -26175,13 +26212,16 @@ paths:
         required: false
       responses:
         '200':
-          description: Get statistics for the list of project issues
+          description: Retrieve issues statistics for a project
       tags:
       - projects
       operationId: getApiV4ProjectsIdIssuesStatistics
   "/api/v4/projects/{id}/issues/{issue_iid}":
     get:
-      description: Get a single project issue
+      summary: Retrieve a project issue
+      description: Retrieves a specified issue for a project. If the project is private
+        or the issue is confidential, you need to provide credentials to authorize.
+        In most cases, you should authenticate with a personal access token.
       produces:
       - application/json
       parameters:
@@ -26198,14 +26238,20 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single project issue
+          description: Retrieve a project issue
           schema:
             "$ref": "#/definitions/API_Entities_Issue"
       tags:
       - projects
       operationId: getApiV4ProjectsIdIssuesIssueIid
     put:
-      description: Update an existing issue
+      summary: Update an issue
+      description: 'Updates a specified issue for a project. This request is also
+        used to close or reopen an issue using the `state_event` parameter. At least
+        one of the following parameters is required for the request to be successful:
+        `assignee_id`, `assignee_ids`, `confidential`, `created_at`, `description`,
+        `discussion_locked`, `due_date`, `issue_type`, `labels`, `milestone_id`, `state_event`,
+        `title`.'
       produces:
       - application/json
       consumes:
@@ -26229,14 +26275,15 @@ paths:
           "$ref": "#/definitions/putApiV4ProjectsIdIssuesIssueIid"
       responses:
         '200':
-          description: Update an existing issue
+          description: Update an issue
           schema:
             "$ref": "#/definitions/API_Entities_Issue"
       tags:
       - projects
       operationId: putApiV4ProjectsIdIssuesIssueIid
     delete:
-      description: Delete a project issue
+      summary: Delete an issue
+      description: Deletes a specified issue.
       produces:
       - application/json
       parameters:
@@ -26253,13 +26300,15 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete a project issue
+          description: Delete an issue
       tags:
       - projects
       operationId: deleteApiV4ProjectsIdIssuesIssueIid
   "/api/v4/projects/{id}/issues/{issue_iid}/reorder":
     put:
-      description: Reorder an existing issue
+      summary: Update the order of an issue
+      description: Updates the order of a specified issue in a project. You can see
+        the results when sorting issues manually.
       produces:
       - application/json
       consumes:
@@ -26283,7 +26332,7 @@ paths:
           "$ref": "#/definitions/putApiV4ProjectsIdIssuesIssueIidReorder"
       responses:
         '200':
-          description: Reorder an existing issue
+          description: Update the order of an issue
           schema:
             "$ref": "#/definitions/API_Entities_Issue"
       tags:
@@ -26291,7 +26340,12 @@ paths:
       operationId: putApiV4ProjectsIdIssuesIssueIidReorder
   "/api/v4/projects/{id}/issues/{issue_iid}/move":
     post:
-      description: Move an existing issue
+      summary: Move an issue
+      description: Moves a specified issue to a different project. If the target project
+        is the source project or the user has insufficient permissions, an error message
+        with status code `400` is returned. If a label or milestone with the same
+        name also exists in the target project, it is then assigned to the issue being
+        moved.
       produces:
       - application/json
       consumes:
@@ -26315,7 +26369,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdIssuesIssueIidMove"
       responses:
         '201':
-          description: Move an existing issue
+          description: Move an issue
           schema:
             "$ref": "#/definitions/API_Entities_Issue"
       tags:
@@ -26323,7 +26377,11 @@ paths:
       operationId: postApiV4ProjectsIdIssuesIssueIidMove
   "/api/v4/projects/{id}/issues/{issue_iid}/clone":
     post:
-      description: Clone an existing issue
+      summary: Clone an issue
+      description: Clones a specified issue to a project. Copies as much data as possible
+        as long as the target project contains equivalent criteria, such as labels
+        or milestones. If you have insufficient permissions, an error message with
+        status code `400` is returned.
       produces:
       - application/json
       consumes:
@@ -26347,7 +26405,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdIssuesIssueIidClone"
       responses:
         '201':
-          description: Clone an existing issue
+          description: Clone an issue
           schema:
             "$ref": "#/definitions/API_Entities_Issue"
       tags:
@@ -26355,7 +26413,11 @@ paths:
       operationId: postApiV4ProjectsIdIssuesIssueIidClone
   "/api/v4/projects/{id}/issues/{issue_iid}/related_merge_requests":
     get:
-      description: List merge requests that are related to the issue
+      summary: List all merge requests related to an issue
+      description: Lists all merge requests that are related to a specified issue.
+        If the project is private or the issue is confidential, you need to provide
+        credentials to authorize. In most cases, you should authenticate with a personal
+        access token.
       produces:
       - application/json
       parameters:
@@ -26372,7 +26434,7 @@ paths:
         required: true
       responses:
         '200':
-          description: List merge requests that are related to the issue
+          description: List all merge requests related to an issue
           schema:
             "$ref": "#/definitions/API_Entities_MergeRequestBasic"
       tags:
@@ -26380,7 +26442,11 @@ paths:
       operationId: getApiV4ProjectsIdIssuesIssueIidRelatedMergeRequests
   "/api/v4/projects/{id}/issues/{issue_iid}/closed_by":
     get:
-      description: List merge requests closing issue
+      summary: List all merge requests that close an issue on merge
+      description: Lists all merge requests that close a specified issue when merged.
+        If the project is private or the issue is confidential, you need to provide
+        credentials to authorize. In most cases, you should authenticate with a personal
+        access token.
       produces:
       - application/json
       parameters:
@@ -26397,7 +26463,7 @@ paths:
         required: true
       responses:
         '200':
-          description: List merge requests closing issue
+          description: List all merge requests that close an issue on merge
           schema:
             "$ref": "#/definitions/API_Entities_MergeRequestBasic"
       tags:
@@ -26434,7 +26500,8 @@ paths:
       operationId: getApiV4ProjectsIdIssuesIssueIidParticipants
   "/api/v4/projects/{id}/issues/{issue_iid}/user_agent_detail":
     get:
-      description: Get the user agent details for an issue
+      summary: Retrieve user agent details for an issue
+      description: Retrieves user agent details for an issue.
       produces:
       - application/json
       parameters:
@@ -26451,7 +26518,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get the user agent details for an issue
+          description: Retrieve user agent details for an issue
           schema:
             "$ref": "#/definitions/API_Entities_UserAgentDetail"
       tags:
@@ -27104,7 +27171,8 @@ paths:
       - members
       operationId: getApiV4ProjectsIdMembers
     post:
-      description: Adds a member to a group or project.
+      summary: Add a member to a project
+      description: Adds a member to a specified project.
       produces:
       - application/json
       consumes:
@@ -27122,7 +27190,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdMembers"
       responses:
         '201':
-          description: Adds a member to a group or project.
+          description: Add a member to a project
           schema:
             "$ref": "#/definitions/API_Entities_Member"
       tags:
@@ -27199,7 +27267,9 @@ paths:
       operationId: getApiV4ProjectsIdMembersAll
   "/api/v4/projects/{id}/members/{user_id}":
     get:
-      description: Gets a member of a group or project.
+      summary: Retrieve a direct project member
+      description: Retrieves a specified member of a project. Returns only direct
+        members and not inherited members through ancestor groups.
       produces:
       - application/json
       parameters:
@@ -27216,14 +27286,15 @@ paths:
         required: true
       responses:
         '200':
-          description: Gets a member of a group or project.
+          description: Retrieve a direct project member
           schema:
             "$ref": "#/definitions/API_Entities_Member"
       tags:
       - members
       operationId: getApiV4ProjectsIdMembersUserId
     put:
-      description: Updates a member of a group or project.
+      summary: Update a project member
+      description: Updates a specified member of a project.
       produces:
       - application/json
       consumes:
@@ -27247,14 +27318,16 @@ paths:
           "$ref": "#/definitions/putApiV4ProjectsIdMembersUserId"
       responses:
         '200':
-          description: Updates a member of a group or project.
+          description: Update a project member
           schema:
             "$ref": "#/definitions/API_Entities_Member"
       tags:
       - members
       operationId: putApiV4ProjectsIdMembersUserId
     delete:
-      description: Removes a user from a group or project.
+      summary: Remove a member from a project
+      description: Removes a specified user from a project. The user must be a direct
+        member.
       produces:
       - application/json
       parameters:
@@ -27271,15 +27344,15 @@ paths:
         required: true
       - in: query
         name: skip_subresources
-        description: Flag indicating if the deletion of direct memberships of the
-          removed member in subgroups and projects should be skipped
+        description: If `true`, the member retains any direct memberships in subgroups
+          or projects.
         type: boolean
         default: false
         required: false
       - in: query
         name: unassign_issuables
-        description: Flag indicating if the removed member should be unassigned from
-          any issues or merge requests within given group or project
+        description: If `true`, unassigns the member from any issues or merge requests
+          in the project.
         type: boolean
         default: false
         required: false
@@ -27291,8 +27364,9 @@ paths:
       operationId: deleteApiV4ProjectsIdMembersUserId
   "/api/v4/projects/{id}/members/all/{user_id}":
     get:
-      description: Gets a member of a group or project, including those who gained
-        membership through ancestor group
+      summary: Retrieve a project member
+      description: Retrieves a specified member of a project. Returns direct members
+        and members inherited or invited through ancestor groups.
       produces:
       - application/json
       parameters:
@@ -27309,8 +27383,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Gets a member of a group or project, including those who gained
-            membership through ancestor group
+          description: Retrieve a project member
           schema:
             "$ref": "#/definitions/API_Entities_Member"
       tags:
@@ -45688,7 +45761,10 @@ paths:
       operationId: deleteApiV4IntegrationsJiraForgeSubscriptionsId
   "/api/v4/issues":
     get:
-      description: Get currently authenticated user's issues
+      summary: List all issues for the currently authenticated user
+      description: Lists all issues accessible by the currently authenticated user.
+        By default, returns only issues created by the current user. To list all issues,
+        use parameter `scope=all`.
       produces:
       - application/json
       parameters:
@@ -46026,7 +46102,7 @@ paths:
         required: false
       responses:
         '200':
-          description: Get currently authenticated user's issues
+          description: List all issues for the currently authenticated user
           schema:
             "$ref": "#/definitions/API_Entities_Issue"
       tags:
@@ -46034,7 +46110,8 @@ paths:
       operationId: getApiV4Issues
   "/api/v4/issues/{id}":
     get:
-      description: Get specified issue (admin only)
+      summary: Retrieve an issue
+      description: Retrieves a specified issue. Administrators only.
       produces:
       - application/json
       parameters:
@@ -46045,7 +46122,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get specified issue (admin only)
+          description: Retrieve an issue
           schema:
             "$ref": "#/definitions/API_Entities_Issue"
       tags:
@@ -46558,7 +46635,8 @@ paths:
       operationId: getApiV4NamespacesId
   "/api/v4/namespaces/{id}/gitlab_subscription":
     get:
-      description: Returns the subscription for the namespace
+      summary: Retrieve namespace subscription
+      description: Retrieves GitLab subscription details for a specified namespace.
       produces:
       - application/json
       parameters:
@@ -46569,7 +46647,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Returns the subscription for the namespace
+          description: Retrieve namespace subscription
           schema:
             "$ref": "#/definitions/API_Entities_GitlabSubscription"
       tags:
@@ -48918,7 +48996,10 @@ paths:
       operationId: postApiV4SlackTrigger
   "/api/v4/issues_statistics":
     get:
-      description: Get currently authenticated user's issues statistics
+      summary: Retrieve issues statistics for the currently authenticated user
+      description: Retrieves statistics for issues accessible by the currently authenticated
+        user. By default, returns only issues created by the current user. To get
+        all issues, set the `scope` attribute to `all`.
       produces:
       - application/json
       parameters:
@@ -49151,7 +49232,8 @@ paths:
         required: false
       responses:
         '200':
-          description: Get currently authenticated user's issues statistics
+          description: Retrieve issues statistics for the currently authenticated
+            user
       tags:
       - issues
       operationId: getApiV4IssuesStatistics
@@ -56036,7 +56118,7 @@ definitions:
         default: members-api
     required:
     - access_level
-    description: Adds a member to a group or project.
+    description: Add a member to a group
   putApiV4GroupsIdMembersUserId:
     type: object
     properties:
@@ -56054,7 +56136,7 @@ definitions:
         description: The ID of the Member Role to be updated
     required:
     - access_level
-    description: Updates a member of a group or project.
+    description: Update a group member
   putApiV4GroupsIdMembersUserIdState:
     type: object
     properties:
@@ -56066,7 +56148,7 @@ definitions:
         - active
     required:
     - state
-    description: Changes the state of the memberships of a user in the group
+    description: Update group membership state for a user
   API_Entities_BillableMembership:
     type: object
     properties:
@@ -65651,7 +65733,7 @@ definitions:
         description: The IID of an epic to associate the issue with (deprecated)
     required:
     - title
-    description: Create a new project issue
+    description: Create an issue
   putApiV4ProjectsIdIssuesIssueIid:
     type: object
     properties:
@@ -65752,7 +65834,7 @@ definitions:
         description: The IID of an epic to associate the issue with (deprecated)
       created_at:
         type: string
-    description: Update an existing issue
+    description: Update an issue
   putApiV4ProjectsIdIssuesIssueIidReorder:
     type: object
     properties:
@@ -65764,7 +65846,7 @@ definitions:
         type: integer
         format: int32
         description: The ID of the issue we want to be before
-    description: Reorder an existing issue
+    description: Update the order of an issue
   postApiV4ProjectsIdIssuesIssueIidMove:
     type: object
     properties:
@@ -65774,7 +65856,7 @@ definitions:
         description: The ID of the new project
     required:
     - to_project_id
-    description: Move an existing issue
+    description: Move an issue
   postApiV4ProjectsIdIssuesIssueIidClone:
     type: object
     properties:
@@ -65788,7 +65870,7 @@ definitions:
         default: false
     required:
     - to_project_id
-    description: Clone an existing issue
+    description: Clone an issue
   API_Entities_UserAgentDetail:
     type: object
     properties:
@@ -66047,7 +66129,7 @@ definitions:
         default: members-api
     required:
     - access_level
-    description: Adds a member to a group or project.
+    description: Add a member to a project
   putApiV4ProjectsIdMembersUserId:
     type: object
     properties:
@@ -66065,7 +66147,7 @@ definitions:
         description: The ID of the Member Role to be updated
     required:
     - access_level
-    description: Updates a member of a group or project.
+    description: Update a project member
   API_Entities_MergeRequest:
     type: object
     properties:

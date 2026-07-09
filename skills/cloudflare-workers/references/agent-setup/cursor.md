@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ## Cloudflare platform access

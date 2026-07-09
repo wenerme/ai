@@ -48,7 +48,7 @@ For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-
 4. **Try a prompt**
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ## Cloudflare platform access

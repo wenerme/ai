@@ -122,6 +122,12 @@ The flow appears in the AI Catalog.
 
 ## Enable a flow
 
+- Enabling a public flow for multiple projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/600526) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_bulk_item_consumer_create`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
 Enable a flow to trigger it from an issue, merge request, or discussion.
 
 When you enable a flow in a project:
@@ -158,6 +164,10 @@ To enable a flow:
 1. Select the flow you want to enable.
 1. In the upper-right corner, select **Enable**.
 1. Under **Project**, select the project you want to enable the flow in.
+
+   To enable a public flow for multiple projects, from the **Project** dropdown list,
+   select the relevant projects. You can select up to 100 projects.
+
 1. For **Add triggers**, select:
    - The [event types that trigger the flow](../triggers/_index.md#trigger-event-types).
    - If needed for the trigger event type, a trigger event action.

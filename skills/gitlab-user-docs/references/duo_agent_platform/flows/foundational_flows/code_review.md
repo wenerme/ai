@@ -381,6 +381,15 @@ This error occurs when GitLab Duo Agent Platform is unable to start Code Review 
 
 Try to restart the review. If the error persists, contact your administrator.
 
+### `Error DCR5001`
+
+You might get an error that states
+`Code Review Flow completed the review but could not post the review comments. Please request a new review to try again. Error code: DCR5001`.
+
+This error occurs when Code Review Flow completes the review but, after several attempts, cannot post the review comments. This is often due to transient infrastructure issues.
+
+Request a new review. If the error persists, contact your administrator.
+
 ### Missing context in large merge request reviews
 
 Code Review Flow might miss context when a merge request contains many large changed files.

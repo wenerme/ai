@@ -20,11 +20,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-12235)
-* [  TypeScript ](#tab-panel-12236)
-* [  Python ](#tab-panel-12237)
-* [  Rust ](#tab-panel-12238)
-* [  Hono ](#tab-panel-12239)
+* [  JavaScript ](#tab-panel-12245)
+* [  TypeScript ](#tab-panel-12246)
+* [  Python ](#tab-panel-12247)
+* [  Rust ](#tab-panel-12248)
+* [  Hono ](#tab-panel-12249)
 
 **JavaScript**
 
@@ -47,7 +47,7 @@ export default {
 };
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWAMwAOAGyiAnLIBM84QC4WLNsA5wuNPgJETpcmYuEBYAFABhdFQgBTO9gAiUAM4x0bqNFvKSGngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ3JMcQwGAkDCQAAwAPABCZwAeSslQAmgAFACin2+YAAfM8tkCKLg6GiXi8gccAIwogAS9jAYHQJAA6pgwLggcgibi8SQgTAUZVju4SMBEABrEAwEgAd16JAA5o57AgCPZcOQ6NsSFZKSBcKgwIh7DTMPyZYlGRz0WzkFicQCiBYTRcICAEFRQvYRSQAEq3TxUNz2U5fH4AGierM+9jgCwQbn8G2DWyibzKTggNXsUX8UQc8RQfrARBOiG9EAYAFVKgAxbDiKL+k1bAC+1bxtfuVrr1drREsamYGi0Oh4-CEYiksgUShKtgcTlcHi8PjaVH8gS0pDCEWiEUIWnSASyOTXUTIlLIxWsE-KVWT9UazV4rXaqVsUwsayifNiAH1RuNsqn8gtCmktadl2PbBH2eiDoYI4mEozCWEAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAOAJwBmAKwB2UQCZhc0aIBcLFm2Ac4XGnwEiJM+YuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ3JMcQwGAkDCQAAwAPABCZwAeSslQAmgAFACin2+YAAfM8tkCKLg6GiXi8gccAIwogAS9jAYHQJAA6pgwLggcgibi8SQgTAUZVju4SMBEABrEAwEgAd16JAA5o57AgCPZcOQ6NsSFZKSBcKgwIh7DTMPyZYlGRz0WzkFicQCiBYTRcICAEFRQvYRSQAEq3TxUNz2U5fH4AGierM+9jgCwQbn8G2DWyibzKTggNXsUX8UQc8RQfrARBOiG9EAYAFVKgAxbDCKL+k1bAC+1bxtfuVrr1drREs6mYmm0uh4-CEYiksgUSlEJVsDicrg8Xh8bSo-kC2lIYQi0QihG06QCWRy66iZEpZGK1kn5SqyfqjWavFa7VStimFjWUT5sQA+qNxtlU-kFoUaS1p2XY9sEfb6IORgjqYojMJYQA)
 
 **TypeScript**
 

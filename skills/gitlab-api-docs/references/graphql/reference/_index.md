@@ -2145,21 +2145,6 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="query-securityconfiguration-projectid"></a>`projectId` | [`ProjectID!`](#projectid) | Project to get the security configuration for. |
 
-### `Query.securityPoliciesSyncStatus`
-
-- Introduced in GitLab 18.4.
-- Status: Experiment.
-
-Get the current security policy synchronization status.
-
-Returns [`PoliciesSyncUpdated`](#policiessyncupdated).
-
-Arguments:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="query-securitypoliciessyncstatus-policyconfigurationid"></a>`policyConfigurationId` | [`SecurityOrchestrationPolicyConfigurationID!`](#securityorchestrationpolicyconfigurationid) | ID of the security orchestration policy configuration. |
-
 ### `Query.securityScanProfile`
 
 - Introduced in GitLab 18.7.
@@ -12241,6 +12226,29 @@ Fields:
 | <a id="mutation-orbitupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-orbitupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-orbitupdate-group"></a>`group` | [`Group`](#group) | Group after mutation. |
+
+### `Mutation.organizationConfirm`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+Input type: `OrganizationConfirmInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-organizationconfirm-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-organizationconfirm-groups"></a>`groups` | [`[GroupID!]`](#groupid) | Global IDs of top-level groups to transfer to the organization. |
+| <a id="mutation-organizationconfirm-id"></a>`id` | [`OrganizationsOrganizationID!`](#organizationsorganizationid) | Global ID of the organization to confirm. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-organizationconfirm-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-organizationconfirm-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-organizationconfirm-organization"></a>`organization` | [`Organization`](#organization) | Organization after mutation. |
 
 ### `Mutation.organizationCreate`
 
@@ -31787,7 +31795,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="analyzergroupstatustype-analyzertype"></a>`analyzerType` | [`AnalyzerTypeEnum!`](#analyzertypeenum) | Analyzer type. |
+| <a id="analyzergroupstatustype-analyzertype"></a>`analyzerType` | [`AnalyzerTypeForStatus!`](#analyzertypeforstatus) | Analyzer type. |
 | <a id="analyzergroupstatustype-failure"></a>`failure` | [`Int!`](#int) | Number of projects where `analyzer_type` failed to execute. |
 | <a id="analyzergroupstatustype-namespaceid"></a>`namespaceId` | [`Int!`](#int) | Namespace ID. |
 | <a id="analyzergroupstatustype-notconfigured"></a>`notConfigured` | [`Int!`](#int) | Number of projects where `analyzer_type` is not configured. |
@@ -31804,7 +31812,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="analyzerprojectstatustype-analyzertype"></a>`analyzerType` | [`AnalyzerTypeEnum!`](#analyzertypeenum) | Analyzer type. |
+| <a id="analyzerprojectstatustype-analyzertype"></a>`analyzerType` | [`AnalyzerTypeForStatus!`](#analyzertypeforstatus) | Analyzer type. |
 | <a id="analyzerprojectstatustype-buildid"></a>`buildId` | [`JobID`](#jobid) | Build ID. |
 | <a id="analyzerprojectstatustype-lastcall"></a>`lastCall` | [`Time!`](#time) | Last time analyzer was called. |
 | <a id="analyzerprojectstatustype-projectid"></a>`projectId` | [`Int!`](#int) | Project ID. |
@@ -38581,6 +38589,7 @@ Fields:
 | <a id="duoworkflowenablement-checks"></a>`checks` | [`[DuoWorkflowEnablementCheck!]`](#duoworkflowenablementcheck) | Enablement checks. |
 | <a id="duoworkflowenablement-createduoworkflowforciallowed"></a>`createDuoWorkflowForCiAllowed`  | [`Boolean!`](#boolean) | Introduced in GitLab 18.9. Status: Experiment. Indicates whether the user can create Duo Workflows for CI in the project. |
 | <a id="duoworkflowenablement-enabled"></a>`enabled` | [`Boolean!`](#boolean) | Indicates whether Duo Agent Platform is enabled for current user and the project. |
+| <a id="duoworkflowenablement-enabledfoundationalflows"></a>`enabledFoundationalFlows` | [`[String!]`](#string) | References of the foundational flows enabled for the project, for example "code_review/v1". |
 | <a id="duoworkflowenablement-foundationalflowsenabled"></a>`foundationalFlowsEnabled` | [`Boolean`](#boolean) | Indicates if Duo Agent Platform foundational flows are enabled for the project. |
 | <a id="duoworkflowenablement-remoteflowsenabled"></a>`remoteFlowsEnabled` | [`Boolean`](#boolean) | Indicates if Duo Agent Platform remote flows are enabled for the project. |
 
@@ -60043,6 +60052,7 @@ Fields:
 | <a id="codereviewmetrics-findnoissuesduocodereviewafterrevieweventcount"></a>`findNoIssuesDuoCodeReviewAfterReviewEventCount` | [`Int`](#int) | Total count of `find_no_issues_duo_code_review_after_review` event. |
 | <a id="codereviewmetrics-findnothingtoreviewduocodereviewonmreventcount"></a>`findNothingToReviewDuoCodeReviewOnMrEventCount` | [`Int`](#int) | Total count of `find_nothing_to_review_duo_code_review_on_mr` event. |
 | <a id="codereviewmetrics-postcommentduocodereviewondiffeventcount"></a>`postCommentDuoCodeReviewOnDiffEventCount` | [`Int`](#int) | Total count of `post_comment_duo_code_review_on_diff` event. |
+| <a id="codereviewmetrics-publishduocodereviewcommentseventcount"></a>`publishDuoCodeReviewCommentsEventCount` | [`Int`](#int) | Total count of `publish_duo_code_review_comments` event. |
 | <a id="codereviewmetrics-reactthumbsdownonduocodereviewcommenteventcount"></a>`reactThumbsDownOnDuoCodeReviewCommentEventCount` | [`Int`](#int) | Total count of `react_thumbs_down_on_duo_code_review_comment` event. |
 | <a id="codereviewmetrics-reactthumbsuponduocodereviewcommenteventcount"></a>`reactThumbsUpOnDuoCodeReviewCommentEventCount` | [`Int`](#int) | Total count of `react_thumbs_up_on_duo_code_review_comment` event. |
 | <a id="codereviewmetrics-requestreviewduocodereviewonmrbyauthoreventcount"></a>`requestReviewDuoCodeReviewOnMrByAuthorEventCount` | [`Int`](#int) | Total count of `request_review_duo_code_review_on_mr_by_author` event. |
@@ -60062,6 +60072,7 @@ Fields:
 | <a id="codereviewusermetrics-findnothingtoreviewduocodereviewonmreventcount"></a>`findNothingToReviewDuoCodeReviewOnMrEventCount` | [`Int`](#int) | Total count of `find_nothing_to_review_duo_code_review_on_mr` event. |
 | <a id="codereviewusermetrics-lastduoactivityon"></a>`lastDuoActivityOn` | [`Date`](#date) | Date of the last Code Review activity for the user. |
 | <a id="codereviewusermetrics-postcommentduocodereviewondiffeventcount"></a>`postCommentDuoCodeReviewOnDiffEventCount` | [`Int`](#int) | Total count of `post_comment_duo_code_review_on_diff` event. |
+| <a id="codereviewusermetrics-publishduocodereviewcommentseventcount"></a>`publishDuoCodeReviewCommentsEventCount` | [`Int`](#int) | Total count of `publish_duo_code_review_comments` event. |
 | <a id="codereviewusermetrics-reactthumbsdownonduocodereviewcommenteventcount"></a>`reactThumbsDownOnDuoCodeReviewCommentEventCount` | [`Int`](#int) | Total count of `react_thumbs_down_on_duo_code_review_comment` event. |
 | <a id="codereviewusermetrics-reactthumbsuponduocodereviewcommenteventcount"></a>`reactThumbsUpOnDuoCodeReviewCommentEventCount` | [`Int`](#int) | Total count of `react_thumbs_up_on_duo_code_review_comment` event. |
 | <a id="codereviewusermetrics-requestreviewduocodereviewonmrbyauthoreventcount"></a>`requestReviewDuoCodeReviewOnMrByAuthorEventCount` | [`Int`](#int) | Total count of `request_review_duo_code_review_on_mr_by_author` event. |
@@ -60494,8 +60505,10 @@ AI features that can be configured through the Duo self-hosted feature settings.
 | <a id="aifeatures-duo_chat_summarize_comments"></a>`DUO_CHAT_SUMMARIZE_COMMENTS` | Duo chat summarize comment feature setting. |
 | <a id="aifeatures-duo_chat_troubleshoot_job"></a>`DUO_CHAT_TROUBLESHOOT_JOB` | Duo chat troubleshoot job feature setting. |
 | <a id="aifeatures-duo_chat_write_tests"></a>`DUO_CHAT_WRITE_TESTS` | Duo chat write test feature setting. |
+| <a id="aifeatures-feature_discovery_search"></a>`FEATURE_DISCOVERY_SEARCH` | Feature discovery search feature setting. |
 | <a id="aifeatures-generate_commit_message"></a>`GENERATE_COMMIT_MESSAGE` | Generate commit message feature setting. |
 | <a id="aifeatures-glab_ask_git_command"></a>`GLAB_ASK_GIT_COMMAND` | Glab ask git command feature setting. |
+| <a id="aifeatures-resolve_dependency_bump"></a>`RESOLVE_DEPENDENCY_BUMP` | Resolve dependency bump feature setting. |
 | <a id="aifeatures-resolve_vulnerability"></a>`RESOLVE_VULNERABILITY` | Resolve vulnerability feature setting. |
 | <a id="aifeatures-review_merge_request"></a>`REVIEW_MERGE_REQUEST` | Review merge request feature setting. |
 | <a id="aifeatures-review_merge_request_dap"></a>`REVIEW_MERGE_REQUEST_DAP` | Review merge request dap feature setting. |
@@ -60559,6 +60572,7 @@ AI features that can be configured through the Model Selection feature settings.
 | <a id="aimodelselectionfeatures-duo_chat_write_tests"></a>`DUO_CHAT_WRITE_TESTS` | Duo chat write test feature setting. |
 | <a id="aimodelselectionfeatures-generate_commit_message"></a>`GENERATE_COMMIT_MESSAGE` | Generate commit message feature setting. |
 | <a id="aimodelselectionfeatures-glab_ask_git_command"></a>`GLAB_ASK_GIT_COMMAND` | Glab ask git command feature setting. |
+| <a id="aimodelselectionfeatures-resolve_dependency_bump"></a>`RESOLVE_DEPENDENCY_BUMP` | Resolve dependency bump feature setting. |
 | <a id="aimodelselectionfeatures-resolve_vulnerability"></a>`RESOLVE_VULNERABILITY` | Resolve vulnerability feature setting. |
 | <a id="aimodelselectionfeatures-review_merge_request"></a>`REVIEW_MERGE_REQUEST` | Review merge request feature setting. |
 | <a id="aimodelselectionfeatures-review_merge_request_dap"></a>`REVIEW_MERGE_REQUEST_DAP` | Review merge request dap feature setting. |
@@ -60646,6 +60660,7 @@ Type of AI usage event.
 | <a id="aiusageeventtype-fix_pipeline_suggestion_applied"></a>`FIX_PIPELINE_SUGGESTION_APPLIED` | Fix pipeline suggestion was applied. |
 | <a id="aiusageeventtype-fix_pipeline_suggestion_posted"></a>`FIX_PIPELINE_SUGGESTION_POSTED` | Fix pipeline suggestion was posted. |
 | <a id="aiusageeventtype-post_comment_duo_code_review_on_diff"></a>`POST_COMMENT_DUO_CODE_REVIEW_ON_DIFF` | Duo Code Review posted a diff comment. |
+| <a id="aiusageeventtype-publish_duo_code_review_comments"></a>`PUBLISH_DUO_CODE_REVIEW_COMMENTS` | Duo Code Review comments were published. |
 | <a id="aiusageeventtype-react_thumbs_down_on_duo_code_review_comment"></a>`REACT_THUMBS_DOWN_ON_DUO_CODE_REVIEW_COMMENT` | User gave thumbs-down reaction to Duo Code Review comment. |
 | <a id="aiusageeventtype-react_thumbs_up_on_duo_code_review_comment"></a>`REACT_THUMBS_UP_ON_DUO_CODE_REVIEW_COMMENT` | User gave thumbs-up reaction to Duo Code Review comment. |
 | <a id="aiusageeventtype-request_duo_chat_response"></a>`REQUEST_DUO_CHAT_RESPONSE` | Duo Chat response was requested. |
@@ -60724,6 +60739,8 @@ Values for sorting AI user metrics.
 | <a id="aiusermetricssort-mcp_total_count_desc"></a>`MCP_TOTAL_COUNT_DESC` | Mcp total event count in descending order. |
 | <a id="aiusermetricssort-post_comment_duo_code_review_on_diff_asc"></a>`POST_COMMENT_DUO_CODE_REVIEW_ON_DIFF_ASC` | Post Comment Duo Code Review On Diff event count in ascending order. |
 | <a id="aiusermetricssort-post_comment_duo_code_review_on_diff_desc"></a>`POST_COMMENT_DUO_CODE_REVIEW_ON_DIFF_DESC` | Post Comment Duo Code Review On Diff event count in descending order. |
+| <a id="aiusermetricssort-publish_duo_code_review_comments_asc"></a>`PUBLISH_DUO_CODE_REVIEW_COMMENTS_ASC` | Publish Duo Code Review Comments event count in ascending order. |
+| <a id="aiusermetricssort-publish_duo_code_review_comments_desc"></a>`PUBLISH_DUO_CODE_REVIEW_COMMENTS_DESC` | Publish Duo Code Review Comments event count in descending order. |
 | <a id="aiusermetricssort-react_thumbs_down_on_duo_code_review_comment_asc"></a>`REACT_THUMBS_DOWN_ON_DUO_CODE_REVIEW_COMMENT_ASC` | React Thumbs Down On Duo Code Review Comment event count in ascending order. |
 | <a id="aiusermetricssort-react_thumbs_down_on_duo_code_review_comment_desc"></a>`REACT_THUMBS_DOWN_ON_DUO_CODE_REVIEW_COMMENT_DESC` | React Thumbs Down On Duo Code Review Comment event count in descending order. |
 | <a id="aiusermetricssort-react_thumbs_up_on_duo_code_review_comment_asc"></a>`REACT_THUMBS_UP_ON_DUO_CODE_REVIEW_COMMENT_ASC` | React Thumbs Up On Duo Code Review Comment event count in ascending order. |
@@ -60908,6 +60925,28 @@ Enum for types of analyzers.
 | <a id="analyzertypeenum-secret_detection"></a>`SECRET_DETECTION` | Any kind of secret detection. |
 | <a id="analyzertypeenum-secret_detection_pipeline_based"></a>`SECRET_DETECTION_PIPELINE_BASED` | Secret detection analyzer. |
 | <a id="analyzertypeenum-secret_detection_secret_push_protection"></a>`SECRET_DETECTION_SECRET_PUSH_PROTECTION` | Secret push protection. Managed via project security settings. |
+
+### `AnalyzerTypeForStatus`
+
+Analyzer types that can appear in project and group analyzer statuses.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="analyzertypeforstatus-api_fuzzing"></a>`API_FUZZING` | Api fuzzing analyzer. |
+| <a id="analyzertypeforstatus-cluster_image_scanning"></a>`CLUSTER_IMAGE_SCANNING` | Cluster image scanning analyzer. |
+| <a id="analyzertypeforstatus-container_scanning"></a>`CONTAINER_SCANNING` | Any kind of container scanning. |
+| <a id="analyzertypeforstatus-container_scanning_for_registry"></a>`CONTAINER_SCANNING_FOR_REGISTRY` | Container scanning for registry. Managed via project security settings. |
+| <a id="analyzertypeforstatus-container_scanning_pipeline_based"></a>`CONTAINER_SCANNING_PIPELINE_BASED` | Container scanning analyzer. |
+| <a id="analyzertypeforstatus-coverage_fuzzing"></a>`COVERAGE_FUZZING` | Coverage fuzzing analyzer. |
+| <a id="analyzertypeforstatus-dast"></a>`DAST` | Dast analyzer. |
+| <a id="analyzertypeforstatus-dependency_scanning"></a>`DEPENDENCY_SCANNING` | Dependency scanning analyzer. |
+| <a id="analyzertypeforstatus-dependency_scanning_post_processing"></a>`DEPENDENCY_SCANNING_POST_PROCESSING` | Dependency scanning post-processing. |
+| <a id="analyzertypeforstatus-sast"></a>`SAST` | Sast analyzer. |
+| <a id="analyzertypeforstatus-sast_advanced"></a>`SAST_ADVANCED` | Sast advanced analyzer. |
+| <a id="analyzertypeforstatus-sast_iac"></a>`SAST_IAC` | Sast iac analyzer. |
+| <a id="analyzertypeforstatus-secret_detection"></a>`SECRET_DETECTION` | Any kind of secret detection. |
+| <a id="analyzertypeforstatus-secret_detection_pipeline_based"></a>`SECRET_DETECTION_PIPELINE_BASED` | Secret detection analyzer. |
+| <a id="analyzertypeforstatus-secret_detection_secret_push_protection"></a>`SECRET_DETECTION_SECRET_PUSH_PROTECTION` | Secret push protection. Managed via project security settings. |
 
 ### `ApiFuzzingScanMode`
 
@@ -64017,6 +64056,7 @@ Values for package manager.
 | Value | Description |
 | ----- | ----------- |
 | <a id="packagemanager-apk"></a>`APK` | Package manager: apk. |
+| <a id="packagemanager-bun"></a>`BUN` | Package manager: bun. |
 | <a id="packagemanager-bundler"></a>`BUNDLER` | Package manager: bundler. |
 | <a id="packagemanager-cargo"></a>`CARGO` | Package manager: cargo. |
 | <a id="packagemanager-composer"></a>`COMPOSER` | Package manager: composer. |
@@ -64716,6 +64756,7 @@ Actions that can be performed on secrets.
 | ----- | ----------- |
 | <a id="secretsmanagementaction-delete"></a>`DELETE` | Delete secrets. |
 | <a id="secretsmanagementaction-read"></a>`READ` | Read secrets. |
+| <a id="secretsmanagementaction-read_value"></a>`READ_VALUE` | Read secret values. |
 | <a id="secretsmanagementaction-write"></a>`WRITE` | Create and update secrets. |
 
 ### `SecretsManagerEntitlementBlockedReason`
