@@ -25,6 +25,8 @@ proxies:
   reality-opts:
     public-key: xxxx
     short-id: xxxx
+  tlsmirror-opts:
+    primary-key: xxxx
 
   network: tcp
 
@@ -62,6 +64,6 @@ Protocol parameter. Enables encrypted length blocks.
 
 ## network
 
-Transport layer. Supports `ws`/`http`/`h2`/`grpc`. If unset or set to another value, TCP is used.
+Transport layer. Supports `ws`/`http`/`h2`/`grpc`/`mkcp`/`mekya`. If unset or set to another value, TCP is used.
 
 See [Transport configuration](./transport.md).

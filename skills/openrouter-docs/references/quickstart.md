@@ -304,3 +304,15 @@ You can also use the OpenAI SDK pointed at OpenRouter as a drop-in replacement. 
 ## Using third-party SDKs
 
 For information about using third-party SDKs and frameworks with OpenRouter, please [see our frameworks documentation.](/guides/community/frameworks-and-integrations-overview)
+
+***
+
+## Building with an AI assistant
+
+If you write code with an AI coding tool (Claude Code, Cursor, Codex, and others), connect the [OpenRouter MCP server](/guides/overview/mcp-server). It's a remote server hosted by OpenRouter — nothing to install — that lets your assistant pull live OpenRouter data (which models exist, what they cost, your credit balance, usage rankings) and search these docs while you build, so its suggestions reflect current data instead of stale training knowledge. Add one URL to your MCP client and approve an OAuth login:
+
+```bash theme={null}
+https://mcp.openrouter.ai/mcp
+```
+
+See the [MCP server guide](/guides/overview/mcp-server) for per-client setup and the full tool list. To run models in your app, keep calling the OpenRouter API directly.

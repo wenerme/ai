@@ -119,6 +119,10 @@ MODEL: '~anthropic/claude-opus-latest',
   </CodeGroup>
 </Template>
 
+<Note title="Chat Completions support is in beta">
+  Fusion in the `tools` array works on `/chat/completions` today, but it's slower there than on the [Responses API](/api/reference/responses). For latency-sensitive use, send the same `tools: [{ type: "openrouter:fusion" }]` payload to the Responses API instead.
+</Note>
+
 ## When does the model invoke it?
 
 The tool's description tells the model to call `openrouter:fusion` only when a task genuinely benefits from multiple perspectives — research questions, multi-domain critique, "compare and contrast" prompts, or anything where being wrong is expensive. Simple tactical prompts won't trigger it.

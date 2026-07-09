@@ -138,10 +138,10 @@
   "openai-docs/guides/admin-apis.md": {
     "url": "https://developers.openai.com/api/docs/guides/admin-apis.md",
     "skill": "openai-docs",
-    "etag": "W/\"ca9f298dedf915b6196459918f0da3c8\"",
-    "lastModified": "Sat, 13 Jun 2026 00:37:08 GMT",
-    "size": 11382,
-    "updatedAt": "2026-06-13T00:43:45.208Z"
+    "etag": "W/\"55683636fb75217a319723d0da67e421\"",
+    "lastModified": "Wed, 08 Jul 2026 21:47:29 GMT",
+    "size": 11220,
+    "updatedAt": "2026-07-09T04:12:00.819Z"
   },
   "openai-docs/guides/advanced-usage.md": {
     "url": "https://developers.openai.com/api/docs/guides/advanced-usage.md",
@@ -614,6 +614,14 @@
     "lastModified": "Thu, 04 Jun 2026 00:50:19 GMT",
     "size": 3732,
     "updatedAt": "2026-06-04T00:50:19.968Z"
+  },
+  "openai-docs/guides/private-link.md": {
+    "url": "https://developers.openai.com/api/docs/guides/private-link.md",
+    "skill": "openai-docs",
+    "etag": "W/\"93d26d9c05717cdcf300c84073af5fe9\"",
+    "lastModified": "Wed, 08 Jul 2026 21:47:29 GMT",
+    "size": 14034,
+    "updatedAt": "2026-07-09T04:12:16.119Z"
   },
   "openai-docs/guides/production-best-practices.md": {
     "url": "https://developers.openai.com/api/docs/guides/production-best-practices.md",

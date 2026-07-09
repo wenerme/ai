@@ -1,11 +1,11 @@
 ---
 title: "xAI | Models"
-description: "Use xAI models with Mastra. 8 models available."
+description: "Use xAI models with Mastra. 9 models available."
 ---
 
 # [xAI logo]xAI
 
-Access 8 xAI models through Mastra's model router. Authentication is handled automatically using the `XAI_API_KEY` environment variable.
+Access 9 xAI models through Mastra's model router. Authentication is handled automatically using the `XAI_API_KEY` environment variable.
 
 Learn more in the [xAI documentation](https://docs.x.ai/docs/models).
 
@@ -84,6 +84,18 @@ for await (const chunk of stream) {
     "maxOutput": 30000,
     "inputCost": 1.25,
     "outputCost": 2.5
+  },
+  {
+    "model": "xai/grok-4.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 500000,
+    "maxOutput": 500000,
+    "inputCost": 2,
+    "outputCost": 6
   },
   {
     "model": "xai/grok-build-0.1",

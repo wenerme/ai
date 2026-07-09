@@ -210,7 +210,7 @@ curl https://openrouter.ai/api/v1/audio/transcriptions \
   -F model="openai/whisper-large-v3"
 ```
 
-The `file`, `model`, `language`, and `temperature` fields are supported. `prompt` and `timestamp_granularities` are accepted but ignored. `response_format` may only be `json` (the default); `text`, `srt`, `vtt`, and `verbose_json` are rejected with a 400.
+The `file`, `model`, `language`, `temperature`, `response_format`, and `timestamp_granularities` fields are supported. `prompt` is accepted but ignored. `response_format` may be `json` (the default) or `verbose_json`, which adds `task`, `language`, `duration`, and segment-level timestamps to the response; `verbose_json` is only available on OpenAI-compatible providers (OpenAI, Groq, Together) — other providers reject it with a 400. `text`, `srt`, and `vtt` are rejected with a 400. With `verbose_json`, pass `timestamp_granularities[]=word` to also receive word-level timestamps in the `words` array (`segment` is the provider default). The same `response_format` and `timestamp_granularities` fields work on the base64 JSON path.
 
 Multipart uploads are limited to 25 MB, the same cap OpenAI enforces. For compressed formats this covers long recordings — roughly 26 minutes of 128 kbps MP3, 52 minutes at 64 kbps, or over 2 hours of 24 kbps Opus voice notes. Uncompressed WAV fills the cap much faster (about 13 minutes at 16 kHz mono); prefer `mp3` or `opus` for long recordings. Larger files should be sent as base64 JSON via `input_audio`, which supports streaming offload — and recordings longer than about a minute of processing time should be split anyway, since upstream providers time out after 60 seconds per request.
 

@@ -14,6 +14,26 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-07-08
+
+[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+
+
+**IPsec downgrade protection (beta)**
+
+Cloudflare IPsec now supports the [IKE\_SA\_INIT\_FULL\_TRANSCRIPT\_AUTH ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/) IKEv2 extension to protect against downgrade attacks on IPsec tunnels.
+
+IKEv2's original authentication design has each endpoint sign only its own outbound messages, not the full handshake transcript. A quantum-capable [on-path attacker ↗](https://www.cloudflare.com/learning/security/threats/on-path-attack/) can exploit this to bypass post-quantum key exchange by downgrading the connection to classical cryptography. The `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` extension addresses this by having both peers sign the entire handshake transcript during the authentication exchange, preventing an attacker from manipulating the negotiation without detection.
+
+Key details:
+
+* Available in beta for Cloudflare WAN and Magic Transit IPsec tunnels.
+* Cloudflare sends the `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` notification unconditionally as a responder when the feature flag is enabled.
+* Both the initiator (your device) and responder (Cloudflare) must support the extension for downgrade protection to be effective.
+* This feature is currently gated by a per-account feature flag. Contact your account team to turn it on.
+
+Refer to [Downgrade protection](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#improved-downgrade-protection-beta) for more details.
+
 ## 2026-07-07
 
 [ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
@@ -507,8 +527,8 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7562)
-* [  wrangler.toml ](#tab-panel-7563)
+* [  wrangler.jsonc ](#tab-panel-7566)
+* [  wrangler.toml ](#tab-panel-7567)
 
 **JSONC**
 
@@ -533,8 +553,8 @@ network_id = "cf1:network"
 remote = true
 ```
 
-* [  JavaScript ](#tab-panel-7564)
-* [  TypeScript ](#tab-panel-7565)
+* [  JavaScript ](#tab-panel-7568)
+* [  TypeScript ](#tab-panel-7569)
 
 **JavaScript**
 
@@ -5103,8 +5123,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp)
 
-* [ Zero Trust Dashboard ](#tab-panel-7560)
-* [ Core Dashboard ](#tab-panel-7561)
+* [ Zero Trust Dashboard ](#tab-panel-7564)
+* [ Core Dashboard ](#tab-panel-7565)
 
 To update your view preference in the Zero Trust dashboard:
 

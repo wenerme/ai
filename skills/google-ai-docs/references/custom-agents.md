@@ -285,6 +285,8 @@ Skills loaded from `.agents/skills/` and `/.agents/skills/` are both discovered 
 
 Once you've iterated on your configuration, you can create it as a managed agent with `agents.create`. This lets you invoke the agent by ID without repeating the configuration each time.
 
+The `id` you specify when creating a managed agent must be unique to your project and must not start with reserved prefixes (e.g., `google-`, `gemini-`). See [Agent ID restrictions](https://ai.google.dev/gemini-api/docs/custom-agents#agent-id-restrictions) for the full list of restricted prefixes.
+
 ### From sources
 
 Specify `base_agent`, `id`, `system_instruction` and `base_environment` with sources. The platform provisions a fresh sandbox with your files on every invocation. See [Environments](https://ai.google.dev/gemini-api/docs/agent-environment) for available source types (Git, GCS, inline).
@@ -784,12 +786,35 @@ Deleting removes the configuration. Existing environments and interactions creat
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `id` | string | Yes | Unique agent identifier. Used to invoke the agent. |
+| `id` | string | Yes | Unique agent identifier within the Google Cloud project. Used to invoke the agent. Must not use reserved prefixes. See [Agent ID restrictions](https://ai.google.dev/gemini-api/docs/custom-agents#agent-id-restrictions). |
 | `description` | string | No | Human-readable description of the agent. |
 | `base_agent` | string | Yes | Base agent ID (e.g., `antigravity-preview-05-2026`). |
 | `system_instruction` | string | No | System prompt defining behavior and persona. |
 | `tools` | array | No | Tools the agent can use. If omitted, defaults to `code_execution`, `google_search`, and `url_context`. Supported tools include `code_execution`, `google_search`, `url_context`, `mcp_server`, and custom `function` definitions. |
 | `base_environment` | string or object | No | `"remote"`, an `environment_id`, or a config object with `sources` and `network`. See Environments. |
+
+### Agent ID restrictions
+
+When creating a managed agent, the `id` you specify must follow these rules:
+
+- It must be unique to your Google Cloud project.
+- It must **not** start with any of the following reserved prefixes (case-insensitive), otherwise creation will fail:
+  - `antigravity-`
+  - `veo-`
+  - `omni-`
+  - `lyria-`
+  - `imagen-`
+  - `gemma-`
+  - `gemini-`
+  - `google-`
+  - `youtube-`
+  - `android-`
+  - `chrome-`
+  - `pixel-`
+  - `waze-`
+  - `fitbit-`
+  - `nest-`
+  - `kaggle-`
 
 ## Iteration workflow
 

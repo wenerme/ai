@@ -77,6 +77,12 @@ Cache status.
 Possible values are _unknown_ | _miss_ | _expired_ | _updating_ | _stale_ | _hit_ | _ignored_ | _bypass_ | _revalidated_ | _dynamic_ | _stream\_hit_ | _deferred_
 "dynamic" means that a request is not eligible for cache. This can mean, for example that it was blocked by the firewall. Refer to [Cloudflare cache responses](https://developers.cloudflare.com/cache/concepts/cache-responses/) for more details.
 
+## CacheLockWaitedMs
+
+Type: `int`
+
+Maximum time spent waiting on a cache lock across all cache tiers, in milliseconds.
+
 ## CacheReserveUsed
 
 Type: `bool`
@@ -733,6 +739,6 @@ Type: `string`
 The human-readable name of the zone (for example, 'cloudflare.com').
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#page","headline":"HTTP requests · Cloudflare Logs docs","description":"The descriptions below detail the fields available for http_requests.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#page","headline":"HTTP requests · Cloudflare Logs docs","description":"The descriptions below detail the fields available for http_requests.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/datasets/","name":"Datasets"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/datasets/zone/","name":"Zone-scoped datasets"}},{"@type":"ListItem","position":7,"item":{"@id":"/logs/logpush/logpush-job/datasets/zone/http_requests/","name":"HTTP requests"}}]}
 ```

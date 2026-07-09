@@ -41,18 +41,18 @@ client = OpenAI(
 package main
 
 import (
-    "os"
+	"os"
 
-    "github.com/openai/openai-go/v3"
-    "github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
 )
 
 func main() {
-    client := openai.NewClient(
-        option.WithAdminAPIKey(os.Getenv("OPENAI_ADMIN_KEY")),
-    )
+	client := openai.NewClient(
+		option.WithAdminAPIKey(os.Getenv("OPENAI_ADMIN_KEY")),
+	)
 
-    _ = client
+	_ = client
 }
 ```
 
@@ -104,15 +104,15 @@ print(model_permissions.mode)
 ctx := context.Background()
 
 modelPermissions, err := client.Admin.Organization.Projects.ModelPermissions.Update(
-    ctx,
-    "proj_abc",
-    openai.AdminOrganizationProjectModelPermissionUpdateParams{
-        Mode:     openai.AdminOrganizationProjectModelPermissionUpdateParamsModeAllowList,
-        ModelIDs: []string{"gpt-4.1", "o3"},
-    },
+	ctx,
+	"proj_abc",
+	openai.AdminOrganizationProjectModelPermissionUpdateParams{
+		Mode:     openai.AdminOrganizationProjectModelPermissionUpdateParamsModeAllowList,
+		ModelIDs: []string{"gpt-4.1", "o3"},
+	},
 )
 if err != nil {
-    panic(err)
+	panic(err)
 }
 
 println(modelPermissions.Mode)
@@ -191,21 +191,21 @@ print(spend_alert.id)
 ctx := context.Background()
 
 spendAlert, err := client.Admin.Organization.Projects.SpendAlerts.New(
-    ctx,
-    "proj_abc",
-    openai.AdminOrganizationProjectSpendAlertNewParams{
-        Currency: openai.AdminOrganizationProjectSpendAlertNewParamsCurrencyUsd,
-        Interval: openai.AdminOrganizationProjectSpendAlertNewParamsIntervalMonth,
-        NotificationChannel: openai.AdminOrganizationProjectSpendAlertNewParamsNotificationChannel{
-            Recipients:    []string{"billing@example.com"},
-            Type:          "email",
-            SubjectPrefix: openai.String("[OpenAI spend]"),
-        },
-        ThresholdAmount: 50000,
-    },
+	ctx,
+	"proj_abc",
+	openai.AdminOrganizationProjectSpendAlertNewParams{
+		Currency: openai.AdminOrganizationProjectSpendAlertNewParamsCurrencyUsd,
+		Interval: openai.AdminOrganizationProjectSpendAlertNewParamsIntervalMonth,
+		NotificationChannel: openai.AdminOrganizationProjectSpendAlertNewParamsNotificationChannel{
+			Recipients:    []string{"billing@example.com"},
+			Type:          "email",
+			SubjectPrefix: openai.String("[OpenAI spend]"),
+		},
+		ThresholdAmount: 50000,
+	},
 )
 if err != nil {
-    panic(err)
+	panic(err)
 }
 
 println(spendAlert.ID)
@@ -282,14 +282,14 @@ print(data_retention.type)
 ctx := context.Background()
 
 dataRetention, err := client.Admin.Organization.Projects.DataRetention.Update(
-    ctx,
-    "proj_abc",
-    openai.AdminOrganizationProjectDataRetentionUpdateParams{
-        RetentionType: openai.AdminOrganizationProjectDataRetentionUpdateParamsRetentionTypeOrganizationDefault,
-    },
+	ctx,
+	"proj_abc",
+	openai.AdminOrganizationProjectDataRetentionUpdateParams{
+		RetentionType: openai.AdminOrganizationProjectDataRetentionUpdateParamsRetentionTypeOrganizationDefault,
+	},
 )
 if err != nil {
-    panic(err)
+	panic(err)
 }
 
 println(dataRetention.Type)
@@ -351,11 +351,11 @@ print(invite.id)
 ctx := context.Background()
 
 invite, err := client.Admin.Organization.Invites.New(ctx, openai.AdminOrganizationInviteNewParams{
-    Email: "user@example.com",
-    Role:  openai.AdminOrganizationInviteNewParamsRoleReader,
+	Email: "user@example.com",
+	Role:  openai.AdminOrganizationInviteNewParamsRoleReader,
 })
 if err != nil {
-    panic(err)
+	panic(err)
 }
 
 println(invite.ID)
@@ -410,14 +410,14 @@ for audit_log in audit_logs.data:
 ctx := context.Background()
 
 auditLogs, err := client.Admin.Organization.AuditLogs.List(ctx, openai.AdminOrganizationAuditLogListParams{
-    Limit: openai.Int(10),
+	Limit: openai.Int(10),
 })
 if err != nil {
-    panic(err)
+	panic(err)
 }
 
 for _, auditLog := range auditLogs.Data {
-    println(auditLog.ID)
+	println(auditLog.ID)
 }
 ```
 

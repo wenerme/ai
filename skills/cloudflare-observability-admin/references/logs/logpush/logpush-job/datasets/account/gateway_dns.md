@@ -32,6 +32,12 @@ Type: `string`
 
 Name of the application the domain belongs to (for example, 'Cloudflare Dashboard').
 
+## AppliedMaxTTL
+
+Type: `int`
+
+Maximum TTL cap applied to the response records, in seconds. Set to 0 when no cap was applied.
+
 ## AuthoritativeNameServerIPs
 
 Type: `array[string]`
@@ -488,6 +494,12 @@ Type: `string`
 
 Method used to pick the time zone for the schedule (from rule/ from user ip/ from local time).
 
+## UpstreamRecordTTLs
+
+Type: `array[int]`
+
+TTL of each record in the upstream response, in seconds. Maps one-to-one with the resource records (for example, \[3600, 300\]).
+
 ## UserID
 
 Type: `string`
@@ -495,6 +507,6 @@ Type: `string`
 User identity where the HTTP request originated from (for example, '00000000-0000-0000-0000-000000000000').
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/#page","headline":"Gateway DNS · Cloudflare Logs docs","description":"The descriptions below detail the fields available for gateway_dns.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/#page","headline":"Gateway DNS · Cloudflare Logs docs","description":"The descriptions below detail the fields available for gateway_dns.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/datasets/","name":"Datasets"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/datasets/account/","name":"Account-scoped datasets"}},{"@type":"ListItem","position":7,"item":{"@id":"/logs/logpush/logpush-job/datasets/account/gateway_dns/","name":"Gateway DNS"}}]}
 ```

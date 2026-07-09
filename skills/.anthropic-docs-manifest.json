@@ -368,8 +368,8 @@
   "anthropic-docs/build-with-claude/skills-guide.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide",
     "skill": "anthropic-docs",
-    "size": 145798,
-    "updatedAt": "2026-07-01T01:22:06.145Z"
+    "size": 144746,
+    "updatedAt": "2026-07-09T04:03:51.386Z"
   },
   "anthropic-docs/agents-and-tools/remote-mcp-servers.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/remote-mcp-servers",
@@ -584,8 +584,8 @@
   "anthropic-docs/managed-agents/files.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/files",
     "skill": "anthropic-docs",
-    "size": 19770,
-    "updatedAt": "2026-06-27T10:50:36.977Z"
+    "size": 19757,
+    "updatedAt": "2026-07-09T04:04:04.502Z"
   },
   "anthropic-docs/managed-agents/memory.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/memory",

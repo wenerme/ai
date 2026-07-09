@@ -1124,35 +1124,55 @@
     "size": 15642,
     "updatedAt": "2026-06-25T05:42:51.449Z"
   },
-  "grafana-oracle-datasource/configure-oracle-data-source.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure-oracle-data-source.md",
-    "size": 8610,
-    "updatedAt": "2026-06-25T05:42:51.803Z"
+  "grafana-oracle-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/alerting.md",
+    "size": 4883,
+    "updatedAt": "2026-07-09T04:41:52.576Z"
+  },
+  "grafana-oracle-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/annotations.md",
+    "size": 4553,
+    "updatedAt": "2026-07-09T04:41:52.738Z"
+  },
+  "grafana-oracle-datasource/cloud-quickstart.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/cloud-quickstart.md",
+    "size": 5990,
+    "updatedAt": "2026-07-09T04:41:52.894Z"
+  },
+  "grafana-oracle-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure.md",
+    "size": 16770,
+    "updatedAt": "2026-07-09T04:41:53.100Z"
   },
   "grafana-oracle-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest.md",
-    "size": 1931,
-    "updatedAt": "2026-06-25T05:42:52.415Z"
+    "size": 5273,
+    "updatedAt": "2026-07-09T04:41:53.274Z"
   },
-  "grafana-oracle-datasource/oracle-and-kerberos.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/oracle-and-kerberos.md",
-    "size": 6676,
-    "updatedAt": "2026-06-25T05:42:52.777Z"
+  "grafana-oracle-datasource/install.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/install.md",
+    "size": 9362,
+    "updatedAt": "2026-07-09T04:41:53.428Z"
   },
-  "grafana-oracle-datasource/oracle-query-editor.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/oracle-query-editor.md",
-    "size": 9533,
-    "updatedAt": "2026-06-25T05:42:53.131Z"
+  "grafana-oracle-datasource/kerberos.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/kerberos.md",
+    "size": 6921,
+    "updatedAt": "2026-07-09T04:41:53.600Z"
   },
-  "grafana-oracle-datasource/oracle-templates-and-variables.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/oracle-templates-and-variables.md",
-    "size": 3885,
-    "updatedAt": "2026-06-25T05:42:53.482Z"
+  "grafana-oracle-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/query-editor.md",
+    "size": 17557,
+    "updatedAt": "2026-07-09T04:41:53.759Z"
   },
-  "grafana-oracle-datasource/troubleshoot-oracle-data-source.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/troubleshoot-oracle-data-source.md",
-    "size": 11795,
-    "updatedAt": "2026-06-25T05:42:53.848Z"
+  "grafana-oracle-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/template-variables.md",
+    "size": 3472,
+    "updatedAt": "2026-07-09T04:41:53.917Z"
+  },
+  "grafana-oracle-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/troubleshooting.md",
+    "size": 32144,
+    "updatedAt": "2026-07-09T04:41:54.085Z"
   },
   "grafana-pagerduty-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pagerduty-datasource/latest.md",
@@ -1448,26 +1468,6 @@
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/reports.md",
     "size": 3757,
     "updatedAt": "2026-06-25T05:43:15.757Z"
-  },
-  "grafana-slo-app/service-center.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/service-center.md",
-    "size": 2147,
-    "updatedAt": "2026-06-25T05:43:16.117Z"
-  },
-  "grafana-slo-app/service-center/create-a-service.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/service-center/create-a-service.md",
-    "size": 3206,
-    "updatedAt": "2026-06-25T05:43:16.478Z"
-  },
-  "grafana-slo-app/service-center/escalate-to-irm.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/service-center/escalate-to-irm.md",
-    "size": 4486,
-    "updatedAt": "2026-06-25T05:43:16.846Z"
-  },
-  "grafana-slo-app/service-center/overview.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/service-center/overview.md",
-    "size": 4552,
-    "updatedAt": "2026-06-25T05:43:17.212Z"
   },
   "grafana-slo-app/set-up.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up.md",
@@ -1801,8 +1801,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 8872,
-    "updatedAt": "2026-07-04T04:08:54.267Z"
+    "size": 8856,
+    "updatedAt": "2026-07-09T04:42:14.537Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

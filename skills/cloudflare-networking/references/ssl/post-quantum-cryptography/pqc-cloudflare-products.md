@@ -135,12 +135,13 @@ Reference: [Proxy endpoints](https://developers.cloudflare.com/cloudflare-one/ne
 
 IKEv2 key exchange for IPsec tunnels between third-party branch connectors and Cloudflare's global network.
 
-| Protection    | Status                                           |
-| ------------- | ------------------------------------------------ |
-| Key agreement | ✅ ML-KEM-768/1024 + DH Group 20 (P-384) in IKEv2 |
-| Signatures    | Not yet                                          |
+| Protection           | Status                                                                                                                                         |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Key agreement        | ✅ ML-KEM-768/1024 + DH Group 20 (P-384) in IKEv2                                                                                               |
+| Downgrade protection | 🚧 [IKE\_SA\_INIT\_FULL\_TRANSCRIPT\_AUTH](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#downgrade-protection) |
+| Signatures           | Not yet                                                                                                                                        |
 
-Reference: [PQC SASE ↗](https://blog.cloudflare.com/post-quantum-sase/), [GRE and IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#tested-third-party-vendor-interoperability), [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/).
+Reference: [PQC SASE ↗](https://blog.cloudflare.com/post-quantum-sase/), [GRE and IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#tested-third-party-vendor-interoperability), [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/), [draft-ietf-ipsecme-ikev2-downgrade-prevention ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/).
 
 The IPsec ESP dataplane can alternatively be keyed using the [Cloudflare One Appliance](#cloudflare-one-appliance) control plane instead of IKEv2.
 
@@ -160,6 +161,6 @@ Reference: [PQC SASE ↗](https://blog.cloudflare.com/post-quantum-sase/), [Clou
 This listing is maintained alongside the rest of the Cloudflare SSL/TLS documentation. If you spot an inaccuracy or have an update after a product announcement, [contributions](https://developers.cloudflare.com/style-guide/contributions/) are welcome.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/#page","headline":"PQC in Cloudflare products · Cloudflare SSL/TLS docs","description":"Track which Cloudflare products support post-quantum key agreement and post-quantum signatures.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/#page","headline":"PQC in Cloudflare products · Cloudflare SSL/TLS docs","description":"Track which Cloudflare products support post-quantum key agreement and post-quantum signatures.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/post-quantum-cryptography/","name":"Post-quantum cryptography (PQC)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/post-quantum-cryptography/pqc-cloudflare-products/","name":"PQC in Cloudflare products"}}]}
 ```

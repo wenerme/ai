@@ -2,7 +2,7 @@
 title: "가격 정책"
 description: "이 문서에는 현재 파트너 노드의 가격 정책이 나와 있습니다. 모든 가격은 크레딧 단위로 표시됩니다(211 크레딧 = 1 USD)."
 mode: wide
-translationSourceHash: 3fa4c2a6
+translationSourceHash: 5df0676f
 translationFrom: tutorials/partner-nodes/pricing.mdx
 translationBlockHashes:
   "_intro": 845592d4
@@ -10,7 +10,7 @@ translationBlockHashes:
   "Beeble": d1b19f61
   "BFL": 3ff6bff0
   "Bria": 232ed8f6
-  "ByteDance": 6438c82e
+  "ByteDance": 5d6f5635
   "ElevenLabs": 166ecbf9
   "Magnific": 4000e7e1
   "Google": 21dc3165
@@ -124,15 +124,18 @@ Anthropic 파트너 노드는 공개 Anthropic API와 동일한 기본 USD 사�
 
 선택적 이미지와 비디오는 입력 가격으로 입력 토큰이 추가됩니다.
 
-### 이미지: ByteDance Seedream 4.5 & 5.0
+### 이미지: ByteDance Seedream
 
 성공적으로 생성된 이미지당 가격입니다.
 
-| 모델                                     | 크레딧 / 이미지 |
-| :---------------------------------------- | :-------------: |
-| seedream 5.0 lite (`seedream-5-0-260128`) |      7.39       |
-| seedream-4-5-251128                       |      8.44       |
-| seedream-4-0-250828                       |      6.33       |
+| 모델                                               | 크레딧 / 이미지      |
+| :-------------------------------------------------- | :------------------- |
+| seedream 5.0 pro (`seedream-5-0-pro-260628`)        | 9.50 (1K) / 18.99 (2K) |
+| seedream 5.0 lite (`seedream-5-0-260128`)           | 7.39                 |
+| seedream-4-5-251128                                 | 8.44                 |
+| seedream-4-0-250828                                 | 6.33                 |
+
+Seedream 5.0 Pro는 해상도 기반 요금제를 사용합니다: **1K** (≤2.36 MP, **9.50 크레딧**) 및 **2K** (>2.36 MP, **18.99 크레딧**). 각 요청의 첫 번째 이미지는 **무료**입니다. 첫 번째 이미지 이후의 추가 이미지(출력 이미지와 입력/참조 이미지 모두 포함)마다 **0.63 크레딧**이 추가됩니다.
 
 ### 이미지: ByteDance 이미지 (지원 중단됨)
 
