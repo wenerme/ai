@@ -26,7 +26,9 @@ Bindings can be configured in the Cloudflare dashboard for your Worker or in the
 
 Billing
 
-Every call to the Images binding counts as one unique transformation. Refer to [Images pricing](https://developers.cloudflare.com/images/pricing/) for more information about billing.
+Calls to the Images binding are billed as [unique transformations](https://developers.cloudflare.com/images/pricing/#images-transformed): each unique combination of source image and parameters is billed only once per calendar month, and repeat requests within the same month do not incur additional usage. Calls to [.info()](#infostream) are free.
+
+Refer to [Images pricing](https://developers.cloudflare.com/images/pricing/) for more information about billing.
 
 ## Setup
 
@@ -36,8 +38,8 @@ You can define variables in the Wrangler configuration file of your Worker proje
 
 To bind Images to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9209)
-* [  wrangler.toml ](#tab-panel-9210)
+* [  wrangler.jsonc ](#tab-panel-9281)
+* [  wrangler.toml ](#tab-panel-9282)
 
 **JSONC**
 
@@ -60,9 +62,72 @@ Within your Worker code, use `env.IMAGES.input()` to build an object that can ma
 
 ## Methods
 
-Note
+Enable caching
 
-Responses from the Images binding are not automatically cached. Workers lets you interact directly with the [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) to customize cache behavior. You can implement logic in your script to store transformations in Cloudflare's cache.
+Responses from the Images binding are not automatically cached. Every uncached call performs a full decode and re-encode of the source image, which adds unnecessary latency to every request.
+
+We strongly recommend enabling [Workers Cache](https://developers.cloudflare.com/workers/cache/) so that repeat requests are served from cache without re-running your Worker or re-transforming the image. Add the following to your Wrangler configuration file:
+
+* [  wrangler.jsonc ](#tab-panel-9283)
+* [  wrangler.toml ](#tab-panel-9284)
+
+**JSONC**
+
+```jsonc
+{
+  "cache": {
+    "enabled": true,
+  },
+}
+```
+
+**TOML**
+
+```toml
+[cache]
+enabled = true
+```
+
+Then set `Cache-Control` headers on your response to control how long transformed images are cached:
+
+* [  JavaScript ](#tab-panel-9285)
+* [  TypeScript ](#tab-panel-9286)
+
+**JavaScript**
+
+```js
+const response = (
+  await env.IMAGES.input(stream)
+    .transform({ width: 800 })
+    .output({ format: "image/webp" })
+).response();
+
+
+return new Response(response.body, {
+  headers: {
+    ...Object.fromEntries(response.headers),
+    "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
+  },
+});
+```
+
+**TypeScript**
+
+```ts
+const response = (
+  await env.IMAGES.input(stream)
+    .transform({ width: 800 })
+    .output({ format: "image/webp" })
+).response();
+
+
+return new Response(response.body, {
+  headers: {
+    ...Object.fromEntries(response.headers),
+    "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
+  },
+});
+```
 
 ### `.input(stream)`
 
@@ -70,8 +135,8 @@ Creates an optimization handle for an image. All operations begin with this meth
 
 Returns a handle that you can use to chain `.transform()`, `.draw()`, and `.output()` calls.
 
-* [  JavaScript ](#tab-panel-9215)
-* [  TypeScript ](#tab-panel-9216)
+* [  JavaScript ](#tab-panel-9291)
+* [  TypeScript ](#tab-panel-9292)
 
 **JavaScript**
 
@@ -122,8 +187,8 @@ For the full list of parameters, refer to [Features](https://developers.cloudfla
 
 The example below shows how you can resize an image that is [stored in Images](https://developers.cloudflare.com/images/storage/binding/) by getting the image bytes:
 
-* [  JavaScript ](#tab-panel-9211)
-* [  TypeScript ](#tab-panel-9212)
+* [  JavaScript ](#tab-panel-9287)
+* [  TypeScript ](#tab-panel-9288)
 
 **JavaScript**
 
@@ -179,8 +244,8 @@ Accepts the following options:
 * `quality` — Specifies the output [quality](https://developers.cloudflare.com/images/optimization/features/#quality--q) of an image for JPEG, WebP, and AVIF formats, expressed as a fixed value or perceptual quality level.
 * `anim` — Specifies whether to [preserve animation frames](https://developers.cloudflare.com/images/optimization/features/#anim) from input files. Set `anim:false` to convert animations to still images.
 
-* [  JavaScript ](#tab-panel-9213)
-* [  TypeScript ](#tab-panel-9214)
+* [  JavaScript ](#tab-panel-9289)
+* [  TypeScript ](#tab-panel-9290)
 
 **JavaScript**
 
@@ -242,6 +307,6 @@ npx wrangler dev --remote
 When testing with the [Workers Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/), the low-fidelity offline version is used by default, to avoid hitting the Cloudflare API in tests.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/binding/#page","headline":"Optimize with Workers · Cloudflare Images docs","description":"Use the Images binding to optimize, resize, and manipulate images directly in a Worker from any source.","url":"https://developers.cloudflare.com/images/optimization/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/binding/#page","headline":"Optimize with Workers · Cloudflare Images docs","description":"Use the Images binding to optimize, resize, and manipulate images directly in a Worker from any source.","url":"https://developers.cloudflare.com/images/optimization/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/binding/","name":"Optimize with Workers"}}]}
 ```

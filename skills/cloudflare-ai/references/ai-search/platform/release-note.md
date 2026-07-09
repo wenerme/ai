@@ -14,6 +14,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 This release notes section covers regular updates and minor fixes. For major feature releases or significant updates, see the [changelog](https://developers.cloudflare.com/changelog).
 
+## 2026-07-08
+
+**GIF and BMP image support**
+
+AI Search now indexes `.gif` and `.bmp` image files. They are converted to searchable text with Workers AI [Markdown conversion](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) during sync, with no configuration changes. Refer to [supported file types](https://developers.cloudflare.com/ai-search/configuration/data-source/#supported-file-types) for the full list.
+
+## 2026-07-08
+
+**Filter list items by exact object key**
+
+The [list items endpoint](https://developers.cloudflare.com/ai-search/api/items/rest-api/) now accepts a `key` query parameter to return the item matching an exact object key. Keys are unique per data source, so combine `key` with `source` to disambiguate when the same key exists across multiple sources.
+
 ## 2026-06-24
 
 **Configurable similarity cache duration and on-demand purge**

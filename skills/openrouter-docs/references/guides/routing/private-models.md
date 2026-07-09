@@ -6,10 +6,8 @@
 
 > Bring your own model to OpenRouter, scoped to approved users and organizations
 
-<Badge color="blue">Beta</Badge>
-
 <Note>
-  Private Models are currently in **invite-only beta** for Enterprise Plan customers. To request access, email [product@openrouter.ai](mailto:product@openrouter.ai) or contact your OpenRouter account representative.
+  Private Models are available for Enterprise Plan customers. Talk to your OpenRouter account representative, or visit [openrouter.ai/enterprise/form](https://openrouter.ai/enterprise/form) to learn about upgrading to Enterprise.
 </Note>
 
 Private Models let you route to your own custom, fine-tuned, or dedicated model deployments through OpenRouter, alongside the public models you already use. Think of it as "bring your own model" to OpenRouter, with the same API surface your team already uses.
@@ -31,16 +29,15 @@ Private Models is a good fit if:
 * You already have a hosted model endpoint, a fine-tuned model, or a dedicated deployment of a public model that you want to route through OpenRouter.
 * Your endpoint is OpenAI-compatible, or close enough that we can integrate it quickly.
 * You want your team or organization to access these models through OpenRouter without exposing them publicly.
-* You're on the Enterprise Plan and can share product feedback during the beta.
+* You're on the Enterprise Plan.
 
-## Requesting Access
+## Requesting an Endpoint
 
-Email [product@openrouter.ai](mailto:product@openrouter.ai) or reach out to your account representative with:
+Reach out to your account representative with:
 
 * A short description of the model or endpoint you want to connect.
 * The provider or hosting setup you use today.
-* Whether the endpoint supports standard chat completions.
+* The API shape/spec of the model you are routing to.
 * The users or organization who should be given access.
-* Any context on how you plan to use it, so we can prioritize the right integration work.
 
-During the beta, the OpenRouter team handles onboarding and access management directly with you. We'll share feedback channels for setup friction, routing behavior, and anything that feels confusing.
+The OpenRouter team will handle onboarding each endpoint and access management directly with you.

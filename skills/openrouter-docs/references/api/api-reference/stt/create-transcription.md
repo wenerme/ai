@@ -134,13 +134,29 @@ paths:
                   description: The model to use for transcription.
                   type: string
                 response_format:
-                  description: The response format. Only "json" is supported.
+                  description: >-
+                    The response format. "json" (default) returns { text, usage
+                    }; "verbose_json" additionally returns task, language,
+                    duration, and segment-level timestamps (OpenAI-compatible
+                    providers only).
                   enum:
                     - json
+                    - verbose_json
                   type: string
                 temperature:
                   description: The sampling temperature.
                   type: number
+                timestamp_granularities[]:
+                  description: >-
+                    Timestamp detail levels to include when response_format is
+                    "verbose_json". "word" additionally returns word-level
+                    timestamps in the words array.
+                  items:
+                    enum:
+                      - word
+                      - segment
+                    type: string
+                  type: array
               required:
                 - file
                 - model
@@ -294,11 +310,33 @@ components:
             options:
               $ref: '#/components/schemas/ProviderOptions'
           type: object
+        response_format:
+          description: >-
+            Output format. "json" (default) returns { text, usage }.
+            "verbose_json" additionally returns task, language, duration, and
+            segment-level timestamps; only supported by OpenAI-compatible
+            providers.
+          enum:
+            - json
+            - verbose_json
+          example: json
+          type: string
         temperature:
           description: Sampling temperature for transcription
           example: 0
           format: double
           type: number
+        timestamp_granularities:
+          description: >-
+            Timestamp detail levels to include when response_format is
+            "verbose_json". "segment" returns segment-level timestamps; "word"
+            additionally returns word-level timestamps in the words array.
+            Ignored unless response_format is "verbose_json".
+          example:
+            - segment
+          items:
+            $ref: '#/components/schemas/STTTimestampGranularity'
+          type: array
       required:
         - model
         - input_audio
@@ -314,6 +352,30 @@ components:
           seconds: 9.2
           total_tokens: 113
       properties:
+        duration:
+          description: >-
+            Duration of the input audio in seconds, present when response_format
+            is verbose_json
+          example: 9.2
+          format: double
+          type: number
+        language:
+          description: >-
+            Detected or forced language, present when response_format is
+            verbose_json
+          example: english
+          type: string
+        segments:
+          description: >-
+            Timestamped transcript segments, present when response_format is
+            verbose_json
+          items:
+            $ref: '#/components/schemas/STTSegment'
+          type: array
+        task:
+          description: The task performed, present when response_format is verbose_json
+          example: transcribe
+          type: string
         text:
           description: The transcribed text
           example: >-
@@ -322,6 +384,13 @@ components:
           type: string
         usage:
           $ref: '#/components/schemas/STTUsage'
+        words:
+          description: >-
+            Timestamped words, present when the provider returns word-level
+            timestamps
+          items:
+            $ref: '#/components/schemas/STTWord'
+          type: array
       required:
         - text
       type: object
@@ -1033,6 +1102,81 @@ components:
             nullable: true
           type: object
       type: object
+    STTTimestampGranularity:
+      description: A timestamp detail level for verbose_json transcription responses.
+      enum:
+        - word
+        - segment
+      example: word
+      type: string
+    STTSegment:
+      description: >-
+        A timestamped transcript segment, returned when response_format is
+        verbose_json
+      example:
+        avg_logprob: -0.28
+        compression_ratio: 1.13
+        end: 3.2
+        id: 0
+        no_speech_prob: 0.01
+        seek: 0
+        start: 0
+        temperature: 0
+        text: Hello there.
+        tokens:
+          - 50364
+          - 2425
+          - 456
+      properties:
+        avg_logprob:
+          description: Average log probability of the segment
+          format: double
+          type: number
+        compression_ratio:
+          description: Compression ratio of the segment
+          format: double
+          type: number
+        end:
+          description: Segment end time in seconds
+          example: 3.2
+          format: double
+          type: number
+        id:
+          description: Segment index within the transcript
+          example: 0
+          type: integer
+        no_speech_prob:
+          description: Probability the segment contains no speech
+          format: double
+          type: number
+        seek:
+          description: Seek offset of the segment
+          example: 0
+          type: integer
+        start:
+          description: Segment start time in seconds
+          example: 0
+          format: double
+          type: number
+        temperature:
+          description: Temperature used for the segment
+          format: double
+          type: number
+        text:
+          description: Transcribed text of the segment
+          example: Hello there.
+          type: string
+        tokens:
+          description: Token IDs of the segment
+          items:
+            type: integer
+          type: array
+      required:
+        - id
+        - start
+        - end
+        - text
+      type: object
     STTUsage:
       description: Aggregated usage statistics for the request
       example:
@@ -1064,6 +1208,34 @@ components:
           description: Total number of tokens used (input + output)
           example: 113
           type: integer
+      type: object
+    STTWord:
+      description: >-
+        A timestamped word, returned when the provider includes word-level
+        timestamps
+      example:
+        end: 0.4
+        start: 0
+        word: Hello
+      properties:
+        end:
+          description: Word end time in seconds
+          example: 0.4
+          format: double
+          type: number
+        start:
+          description: Word start time in seconds
+          example: 0
+          format: double
+          type: number
+        word:
+          description: The transcribed word
+          example: Hello
+          type: string
+      required:
+        - word
+        - start
+        - end
       type: object
     BadRequestResponseErrorData:
       description: Error data for BadRequestResponse

@@ -187,14 +187,15 @@ MODEL: 'bytedance-seed/seedream-4.5'
 
 Images are returned as base64-encoded bytes. The `usage` field reports token counts and cost when available.
 
-For raster PNG outputs (most models), `media_type` is omitted:
+The `media_type` field is present whenever the format is identifiable (including `image/png`), and omitted only when it could not be determined:
 
 ```json lines theme={null}
 {
   "created": 1748372400,
   "data": [
     {
-      "b64_json": "<base64-encoded-image>"
+      "b64_json": "<base64-encoded-image>",
+      "media_type": "image/png"
     }
   ],
   "usage": {
@@ -206,7 +207,7 @@ For raster PNG outputs (most models), `media_type` is omitted:
 }
 ```
 
-For vector outputs (e.g., SVG from Recraft vector models), the `media_type` field is included:
+For non-PNG outputs (e.g., JPEG, WebP, or SVG from Recraft vector models), `media_type` reflects the actual format:
 
 ```json lines theme={null}
 {
@@ -340,13 +341,13 @@ The response is an SSE stream with three event types:
 data: {"type":"image_generation.partial_image","partial_image_index":0,"b64_json":"<base64>"}
 ```
 
-**Completed** — emitted when the final image is ready. For raster PNG outputs, `media_type` is omitted:
+**Completed** — emitted when the final image is ready. The `media_type` field is present whenever the format is identifiable:
 
 ```
-data: {"type":"image_generation.completed","b64_json":"<base64>","created":1748372400,"usage":{"prompt_tokens":16,"completion_tokens":272,"total_tokens":288,"cost":0.011}}
+data: {"type":"image_generation.completed","b64_json":"<base64>","media_type":"image/png","created":1748372400,"usage":{"prompt_tokens":16,"completion_tokens":272,"total_tokens":288,"cost":0.011}}
 ```
 
-For vector outputs (e.g., SVG from Recraft vector models), `media_type` is included:
+For non-PNG outputs (e.g., SVG from Recraft vector models), `media_type` reflects the actual format:
 
 ```
 data: {"type":"image_generation.completed","b64_json":"<base64>","media_type":"image/svg+xml","created":1748372400,"usage":{"prompt_tokens":16,"completion_tokens":272,"total_tokens":288,"cost":0.011}}

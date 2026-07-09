@@ -1,18 +1,12 @@
-The Interactions API is our new interface and the most straightforward way
-to build with Gemini models and agents. As of June 2026, it is Generally
-Available and the recommended interface for all new projects.
-
-While it is now considered legacy, the original
-[`generateContent`](https://ai.google.dev/gemini-api/docs/generate-content/text-generation) API
-remains fully supported.
+The Interactions API is our simplest and best way to build with Gemini models and agents. As of June 2026, it is Generally Available and recommended for all new projects. While it is now considered legacy, the original [`generateContent`](https://ai.google.dev/gemini-api/docs/generate-content/text-generation) API remains fully supported.
 
 ## Why use the Interactions API?
 
-- **New capabilities out of the box** : Optional server-side conversation state using `previous_interaction_id`, observable execution steps for debugging and UI rendering, and [background execution](https://ai.google.dev/gemini-api/docs/background-execution) for long-running tasks using `background=true`.
-- **Lower cost with higher cache hit rates**: Server-side state management enables more efficient context caching across turns, reducing token costs for multi-turn conversations.
-- **Built for frontier models and agents**: Purpose-built for thinking models, multi-step tool use, and complex reasoning flows --- simplifying the process of building, debugging, and orchestrating agentic applications.
-- **Single API for models and agents**: One unified interface for calling Gemini models and agents directly such as Deep Research and custom managed agents --- no separate endpoints or patterns to learn.
-- **Where new things launch**: Going forward, new models and capabilities beyond the core mainline family, along with new agentic capabilities and tools, will launch on the Interactions API.
+- **Universal interface for all applications**: Designed as the standard interface for every use case, including single-turn text generation, multimodal understanding, structured outputs, tool orchestration, and agentic workflows.
+- **Single API for models and agents**: One unified endpoint and pattern for calling standard Gemini models as well as specialized agents directly (such as Deep Research and custom managed agents).
+- **New capabilities out of the box** : Features like optional server-side conversation state using `previous_interaction_id`, observable execution steps for debugging and UI rendering, and [background execution](https://ai.google.dev/gemini-api/docs/background-execution) for long-running tasks using `background=true`.
+- **Lower cost with higher cache hit rates**: When using multi-turn conversations, optional server-side state management enables more efficient context caching across turns, reducing token costs.
+- **Where new features launch**: Going forward, all new models, multimodal capabilities, tools, and agentic features will launch on the Interactions API.
 
 By default, the Interactions API stores requests so you can leverage
 the server-side state management features by using

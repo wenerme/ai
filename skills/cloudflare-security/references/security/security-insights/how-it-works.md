@@ -26,7 +26,7 @@ Security Insights also checks [non-proxied (DNS-only) hostnames](https://develop
 
 Each insight has the following properties:
 
-* **Severity**: The security risk of the insight. The severity values are: _Moderate_, _High_, and _Critical_. The higher the severity level, the higher the risk of threat to your environment.
+* **Severity**: The security risk of the insight. The severity values are: _Low_, _Moderate_, and _Critical_. The higher the severity level, the higher the risk of threat to your environment.
 * **Insight**: The insight description detailing the current configuration that is causing the risk or vulnerability.
 * **Risk**: A description of the risk associated with not addressing the issue.
 * **Type**: The insight category.

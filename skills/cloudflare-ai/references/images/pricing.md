@@ -53,11 +53,11 @@ Images Stored and Images Delivered apply only to images that are stored in your 
 
 ### Images Transformed
 
-A unique transformation is a request to transform an original image based on a set of [supported parameters](https://developers.cloudflare.com/images/optimization/features/). This metric is used when using the Images binding or optimizing images that are stored outside of Images. When using the [Images binding](https://developers.cloudflare.com/images/optimization/binding/) in Workers, every call to the binding counts as a transformation, regardless of whether the image or parameters are unique.
+A unique transformation is a request to transform an original image based on a set of [supported parameters](https://developers.cloudflare.com/images/optimization/features/). This metric is used when using the [Images binding](https://developers.cloudflare.com/images/optimization/binding/) or optimizing images that are stored outside of Images.
 
 For example, if you transform `thumbnail.jpg` as 100x100, then this counts as one unique transformation. If you transform the same `thumbnail.jpg` as 200x200, then this counts as a separate unique transformation.
 
-You are billed on the number of unique transformations that are requested within each calendar month. Repeat requests for the same transformation within the same month are counted only once for that month.
+You are billed on the number of unique transformations that are requested within each calendar month. Repeat requests for the same transformation within the same month are counted only once for that month. Calls to the Images binding's [.info()](https://developers.cloudflare.com/images/optimization/binding/#infostream) method are not billed.
 
 The `format` parameter counts as only one billable transformation, even if multiple copies of an image are served. In other words, if `width=100,format=auto/thumbnail.jpg` is served to some users as AVIF and to others as WebP, then this counts as one unique transformation instead of two.
 
@@ -115,6 +115,6 @@ A retail website has a product page that uses Images to serve 10 images. If the 
 10. (5,000 transformations / 1,000) × $0.50 [↩](#user-content-fnref-10)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/pricing/#page","headline":"Pricing · Cloudflare Images docs","description":"Cloudflare Images pricing for transformations, storage, and delivery on Free and Paid plans.","url":"https://developers.cloudflare.com/images/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/pricing/#page","headline":"Pricing · Cloudflare Images docs","description":"Cloudflare Images pricing for transformations, storage, and delivery on Free and Paid plans.","url":"https://developers.cloudflare.com/images/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/pricing/","name":"Pricing"}}]}
 ```

@@ -35,6 +35,8 @@ When we detect an HTML file, a series of things happen to the HTML content befor
 
 Images take a bit more work to prepare for conversion.
 
+For animated GIF files, only the first frame is extracted and analyzed. The remaining frames are discarded.
+
 As a first step, we detect what type the image is. If it is an SVG (Scalable Vector Graphics) file, we need to convert it into a raster format so that using the necessary Workers AI models does not fail. In this case, SVGs are converted into PNGs internally.
 
 Afterwards:
@@ -55,6 +57,6 @@ Afterwards:
 * If we manage to obtain a `StructTree`, we traverse its nodes to build a semantic Markdown representation of its contents.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#page","headline":"How it works · Cloudflare Workers AI docs","description":"Learn how Workers AI pre-processes and converts HTML, images, and other files to Markdown.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#page","headline":"How it works · Cloudflare Workers AI docs","description":"Learn how Workers AI pre-processes and converts HTML, images, and other files to Markdown.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/markdown-conversion/","name":"Markdown Conversion"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/markdown-conversion/how-it-works/","name":"How it works"}}]}
 ```

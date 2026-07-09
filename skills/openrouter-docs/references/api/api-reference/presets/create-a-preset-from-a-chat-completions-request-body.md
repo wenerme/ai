@@ -1523,6 +1523,7 @@ components:
         - $ref: '#/components/schemas/BashServerTool'
         - $ref: '#/components/schemas/DatetimeServerTool'
         - $ref: '#/components/schemas/FilesServerTool'
+        - $ref: '#/components/schemas/FusionServerTool_OpenRouter'
         - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
         - $ref: '#/components/schemas/ChatSearchModelsServerTool'
         - $ref: '#/components/schemas/SubagentServerTool_OpenRouter'
@@ -2293,6 +2294,27 @@ components:
       required:
         - type
       type: object
+    FusionServerTool_OpenRouter:
+      description: >-
+        OpenRouter built-in server tool: fans out the user prompt to a panel of
+        analysis models, then asks a judge model to summarize their collective
+        output as structured JSON the outer model can synthesize from.
+      example:
+        parameters:
+          analysis_models:
+            - ~anthropic/claude-opus-latest
+            - ~openai/gpt-latest
+        type: openrouter:fusion
+      properties:
+        parameters:
+          $ref: '#/components/schemas/FusionServerToolConfig'
+        type:
+          enum:
+            - openrouter:fusion
+          type: string
+      required:
+        - type
+      type: object
     ImageGenerationServerTool_OpenRouter:
       description: >-
         OpenRouter built-in server tool: generates images from text prompts
@@ -2953,6 +2975,124 @@ components:
       description: Configuration for the openrouter:files server tool
       example: {}
       properties: {}
+      type: object
+    FusionServerToolConfig:
+      description: Configuration for the openrouter:fusion server tool.
+      example:
+        analysis_models:
+          - ~anthropic/claude-opus-latest
+          - ~openai/gpt-latest
+          - ~google/gemini-pro-latest
+      properties:
+        analysis_models:
+          description: >-
+            Slugs of models to run in parallel as the analysis panel. Each model
+            receives the user prompt with openrouter:web_search and
+            openrouter:web_fetch enabled, then a judge model summarizes the
+            collective output into structured analysis JSON. Capped at 8 models
+            to bound cost amplification. Defaults to the Quality preset from
+            /labs/fusion.
+          example:
+            - ~anthropic/claude-opus-latest
+            - ~openai/gpt-latest
+            - ~google/gemini-pro-latest
+          items:
+            type: string
+          maxItems: 8
+          minItems: 1
+          type: array
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+        max_completion_tokens:
+          description: >-
+            Maximum number of output tokens (including reasoning tokens) each
+            panelist and the judge model may produce per inner call. Controls
+            the total output budget so reasoning-heavy models like GPT-5.5 do
+            not exhaust their token allowance before producing visible text.
+            When omitted, panelists default to 32000 and the judge to 50000.
+          example: 16384
+          type: integer
+        max_tool_calls:
+          description: >-
+            Maximum number of tool-calling steps each panelist (analysis model)
+            and the judge model may take during their agentic web-research loop.
+            Models with web_search/web_fetch enabled iterate until they produce
+            a text response or hit this ceiling. Defaults to 8. Capped at 16.
+          example: 12
+          maximum: 16
+          minimum: 1
+          type: integer
+        model:
+          description: >-
+            Slug of the judge model that produces the structured analysis JSON.
+            Defaults to the model used in the outer API request.
+          example: ~anthropic/claude-opus-latest
+          type: string
+        reasoning:
+          description: >-
+            Reasoning configuration forwarded to panelist and judge inner calls.
+            Use this to control reasoning effort and token budget for models
+            that support extended thinking.
+          properties:
+            effort:
+              description: Reasoning effort level for panelist and judge inner calls.
+              enum:
+                - max
+                - xhigh
+                - high
+                - medium
+                - low
+                - minimal
+                - none
+              type: string
+            max_tokens:
+              description: >-
+                Maximum number of reasoning tokens each panelist and judge model
+                may use. Helps bound cost when models allocate too much budget
+                to chain-of-thought.
+              type: integer
+          type: object
+        temperature:
+          description: >-
+            Temperature forwarded to panelist inner calls. The judge always runs
+            at temperature 0 regardless of this value. When omitted, the
+            provider's default applies.
+          example: 0.7
+          format: double
+          type: number
+        tools:
+          description: >-
+            Server tools available to panelist and judge inner calls. Each entry
+            uses the same `{ type, parameters? }` shorthand as the outer Chat
+            Completions request. When omitted, defaults to `[{ type:
+            "openrouter:web_search" }, { type: "openrouter:web_fetch" }]`. Pass
+            an empty array to disable tools entirely (panelists answer from
+            parametric knowledge only).
+          example:
+            - parameters:
+                excluded_domains:
+                  - example.com
+              type: openrouter:web_search
+            - type: openrouter:web_fetch
+          items:
+            properties:
+              parameters:
+                additionalProperties:
+                  nullable: true
+                description: >-
+                  Optional configuration forwarded as the tool's `parameters`
+                  object.
+                type: object
+              type:
+                description: >-
+                  Server tool type identifier (e.g. "openrouter:web_search",
+                  "openrouter:web_fetch").
+                type: string
+            required:
+              - type
+            type: object
+          maxItems: 8
+          type: array
       type: object
     ImageGenerationServerToolConfig:
       additionalProperties:

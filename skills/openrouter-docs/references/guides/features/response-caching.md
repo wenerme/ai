@@ -48,14 +48,6 @@ export const LlmsOnly = ({children}) => null;
 
 export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
-<Badge color="blue">Beta</Badge>
-
-<Note>
-  **Beta**
-
-  Response caching is currently in beta. The API and behavior may change.
-</Note>
-
 Response caching allows you to cache responses for identical API requests. When a cached response is available, OpenRouter returns it immediately from cache with no billing (all billable usage counters are reported as `0`), reducing both latency and cost.
 
 Response caching is **model-agnostic** and works with every model available on OpenRouter across all [supported endpoints](#supported-endpoints), regardless of provider. Caching operates at the OpenRouter layer before the request reaches any provider, so no provider-side support is required.

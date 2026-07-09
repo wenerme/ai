@@ -14,6 +14,41 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/logs.xml)
 
+## 2026-07-07
+
+
+**New WebSocket Analytics Logpush dataset**
+
+Enterprise customers can now push per-connection WebSocket analytics to any [Logpush destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/) using the new `websocket_analytics` dataset. Each log record is emitted when a WebSocket connection closes and includes fields that were previously only available to Cloudflare engineers via internal tooling.
+
+Key fields include:
+
+* **`ConnectionCloseReason`** — why the connection ended: `peerReset`, `peerNoError`, `timedOut`, `upstreamReset`, `protocolViolation`, `unspecifiedError`, or `none`.
+* **`ConnectionCloseSource`** — which side initiated the close: `upstream`, `downstream`, `me`, or `both`.
+* **`ConnectionTransportCloseCode`** — the TLS alert code or TCP-level close code for additional precision.
+* **`RayID`** — correlate WebSocket connection events with your existing HTTP Request logs.
+
+The dataset also includes directional byte counts (`BytesSentClient`, `BytesReceivedClient`, `BytesSentOrigin`, `BytesReceivedOrigin`), connection timestamps, client IP, colo code, and request metadata from the original WebSocket upgrade.
+
+This data lets you build alerts on connection close patterns — for example, detecting spikes in TCP resets (`ConnectionCloseReason == "peerReset"`) grouped by host and data center — directly in your existing log analysis tools.
+
+For the full list of available fields, refer to [WebSocket Analytics](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/websocket%5Fanalytics/).
+
+## 2026-07-02
+
+
+**Updated fields across multiple Logpush datasets in Cloudflare Logs**
+
+Cloudflare has updated [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/):
+
+#### Updated fields in existing datasets
+
+* **Gateway DNS** (added): `AppliedMaxTTL` and `UpstreamRecordTTLs`.
+* **Gateway HTTP** (added): `Warnings`.
+* **HTTP requests** (added): `CacheLockWaitedMs`.
+
+For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
+
 ## 2026-06-30
 
 

@@ -185,6 +185,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundResponse'
           description: Not Found - Resource does not exist
+        '413':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 413
+                  message: Request payload too large
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeResponse'
+          description: Payload Too Large - Request payload exceeds size limits
         '429':
           content:
             application/json:
@@ -408,10 +418,10 @@ components:
                 type: string
               media_type:
                 description: >-
-                  Media type (MIME type) of the image. Omitted when the output
-                  is a standard raster format (PNG). Present for non-raster
-                  outputs such as SVG (`image/svg+xml`).
-                example: image/svg+xml
+                  Media type (MIME type) of the image, e.g. `image/png`,
+                  `image/jpeg`, `image/webp`, `image/svg+xml`. May be omitted if
+                  the format could not be determined.
+                example: image/png
                 type: string
             required:
               - b64_json
@@ -433,6 +443,7 @@ components:
         data:
           anyOf:
             - $ref: '#/components/schemas/ImageGenPartialImageEvent'
+            - $ref: '#/components/schemas/ImageGenTextChunkEvent'
             - $ref: '#/components/schemas/ImageGenCompletedEvent'
             - $ref: '#/components/schemas/ImageGenStreamErrorEvent'
       required:
@@ -527,6 +538,26 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
+        openrouter_metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        user_id:
+          nullable: true
+          type: string
+      required:
+        - error
+      type: object
+    PayloadTooLargeResponse:
+      description: Payload Too Large - Request payload exceeds size limits
+      example:
+        error:
+          code: 413
+          message: Request payload too large
+      properties:
+        error:
+          $ref: '#/components/schemas/PayloadTooLargeResponseErrorData'
         openrouter_metadata:
           additionalProperties:
             nullable: true
@@ -1286,6 +1317,40 @@ components:
         - partial_image_index
         - b64_json
       type: object
+    ImageGenTextChunkEvent:
+      description: >-
+        Emitted when a text chunk becomes available during streaming generation
+        of text-based formats (e.g. SVG)
+      example:
+        phase: content
+        text: <svg xmlns="http://www.w3.org/2000/svg">
+        type: image_generation.text_chunk
+      properties:
+        phase:
+          description: >-
+            The generation phase this chunk belongs to. `content` is the
+            renderable output; `reasoning` and `draft` are intermediate provider
+            phases.
+          enum:
+            - content
+            - reasoning
+            - draft
+          type: string
+        text:
+          description: >-
+            A text fragment of the image being generated (e.g. partial SVG
+            markup)
+          type: string
+        type:
+          description: The event type
+          enum:
+            - image_generation.text_chunk
+          type: string
+      required:
+        - type
+        - text
+        - phase
+      type: object
     ImageGenCompletedEvent:
       description: Emitted when generation completes and the final image is available
       example:
@@ -1306,10 +1371,10 @@ components:
           type: integer
         media_type:
           description: >-
-            Media type (MIME type) of the image. Omitted when the output is a
-            standard raster format (PNG). Present for non-raster outputs such as
-            SVG (`image/svg+xml`).
-          example: image/svg+xml
+            Media type (MIME type) of the image, e.g. `image/png`, `image/jpeg`,
+            `image/webp`, `image/svg+xml`. May be omitted if the format could
+            not be determined.
+          example: image/png
           type: string
         type:
           description: The event type
@@ -1444,6 +1509,25 @@ components:
       example:
         code: 404
         message: Resource not found
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+      required:
+        - code
+        - message
+      type: object
+    PayloadTooLargeResponseErrorData:
+      description: Error data for PayloadTooLargeResponse
+      example:
+        code: 413
+        message: Request payload too large
       properties:
         code:
           type: integer

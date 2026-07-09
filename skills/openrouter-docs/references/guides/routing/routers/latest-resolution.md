@@ -148,6 +148,20 @@ If a family has no eligible model available, the request returns an error rather
 
 When a new model is promoted to "latest", these fields update automatically.
 
+## Compatibility Contract
+
+`~latest` slugs trade exactness for continuity: your existing request shape keeps working when the alias retargets, even if the new model doesn't support every parameter you send. Instead of rejecting the request, OpenRouter remaps unsupported reasoning parameters to the nearest supported value.
+
+Concretely, if the alias starts pointing at a model that requires reasoning:
+
+* `reasoning: { effort: "none" }` is upgraded to the lowest effort the model supports (for example `minimal` or `low`).
+* `reasoning: { enabled: false }` is flipped to enabled, again at the lowest supported effort.
+* `reasoning: { max_tokens: 0 }` is treated the same way, and the zero token budget is dropped.
+
+This remapping only applies to `~latest` slugs. Concrete model slugs keep strict validation: sending `effort: "none"` to a model that mandates reasoning returns a `400`. If you need exact parameter semantics, pin a concrete slug.
+
+Separately from the `~latest` contract, unsupported non-`none` efforts are mapped to the nearest supported level on all slugs (for example `xhigh` → `high` on a model without `xhigh`).
+
 ## Use Cases
 
 * **Always-on assistants**: Point user-facing agents at `~anthropic/claude-sonnet-latest` and get new releases for free.

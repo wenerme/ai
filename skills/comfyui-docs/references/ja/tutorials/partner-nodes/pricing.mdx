@@ -2,7 +2,7 @@
 title: "価格"
 description: "本記事では、現在提供中のパートナーノードの価格を一覧表示します。すべての価格はクレジット単位（211クレジット = 1米ドル）で表記されています。"
 mode: wide
-translationSourceHash: 3fa4c2a6
+translationSourceHash: 5df0676f
 translationFrom: tutorials/partner-nodes/pricing.mdx
 translationBlockHashes:
   "_intro": 845592d4
@@ -10,7 +10,7 @@ translationBlockHashes:
   "Beeble": d1b19f61
   "BFL": 3ff6bff0
   "Bria": 232ed8f6
-  "ByteDance": 6438c82e
+  "ByteDance": 5d6f5635
   "ElevenLabs": 166ecbf9
   "Magnific": 4000e7e1
   "Google": 21dc3165
@@ -124,15 +124,18 @@ Anthropicのパートナーノードは、公開Anthropic APIと同じUSDベー�
 
 オプションの画像と動画は、入力レートで入力トークンが追加されます。
 
-### 画像: ByteDance Seedream 4.5 & 5.0
+### 画像: ByteDance Seedream
 
 正常に生成された画像1枚あたり。
 
-| モデル                                    | クレジット / 画像 |
-| :---------------------------------------- | :---------------: |
-| seedream 5.0 lite (`seedream-5-0-260128`) |       7.39        |
-| seedream-4-5-251128                       |       8.44        |
-| seedream-4-0-250828                       |       6.33        |
+| モデル                                               | クレジット / 画像      |
+| :-------------------------------------------------- | :------------------- |
+| seedream 5.0 pro (`seedream-5-0-pro-260628`)        | 9.50 (1K) / 18.99 (2K) |
+| seedream 5.0 lite (`seedream-5-0-260128`)           | 7.39                 |
+| seedream-4-5-251128                                 | 8.44                 |
+| seedream-4-0-250828                                 | 6.33                 |
+
+Seedream 5.0 Proは解像度に基づく課金を使用します: **1K** (≤2.36 MP、**9.50クレジット**) および **2K** (>2.36 MP、**18.99クレジット**)。各リクエストの最初の画像は無料です。最初の画像を超える追加画像（出力画像と入力/参照画像の両方を含む）ごとに **0.63クレジット** が追加されます。
 
 ### 画像: ByteDance Image（非推奨）
 
