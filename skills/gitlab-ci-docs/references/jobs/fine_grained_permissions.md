@@ -265,8 +265,8 @@ CI/CD job tokens can access the following REST API endpoints:
 
 | Permission | API endpoint | Permission name | Scope |
 | ---------- | ------------ | --------------- | ----- |
-| Get a list of project issues | `GET /projects/:id/issues` | `READ_WORK_ITEMS` | Read |
-| Get a single project issue | `GET /projects/:id/issues/:issue_iid` | `READ_WORK_ITEMS` | Read |
+| List all project issues | `GET /projects/:id/issues` | `READ_WORK_ITEMS` | Read |
+| Retrieve a project issue | `GET /projects/:id/issues/:issue_iid` | `READ_WORK_ITEMS` | Read |
 
 ## Unavailable API endpoints
 

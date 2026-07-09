@@ -88,6 +88,38 @@ the review.
 
 After the review completes, you can also look for a Code Review Flow session in [sessions for your project](../../duo_agent_platform/sessions/_index.md#view-sessions-for-your-project).
 
+## Resolve a discussion with GitLab Duo
+
+- Tier: Premium, Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Status: Beta
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/600990) as a [beta](../../../policy/development_stages_support.md) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `resolve_discussion_with_duo`. Enabled by default.
+
+Use GitLab Duo to resolve review discussions on merge requests.
+
+When you ask GitLab Duo to resolve a discussion, it reads the review comment and the surrounding code, makes the requested change on the source branch, then commits and pushes the change.
+GitLab Duo then replies to the discussion with a summary of the change and resolves the thread.
+
+This feature uses the Developer Flow
+on the [GitLab Duo Agent Platform](../../duo_agent_platform/_index.md).
+
+Prerequisites:
+
+- The Developer, Maintainer, or Owner role for the project.
+- The [prerequisites for the GitLab Duo Agent Platform](../../duo_agent_platform/_index.md#prerequisites).
+- **Allow foundational flows** and **Developer** turned on [for the top-level group](../../duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off).
+- [Push rules configured to allow a service account](../../duo_agent_platform/troubleshooting.md#configure-push-rules-to-allow-a-service-account).
+- [Your own runners configured](../../duo_agent_platform/flows/execution.md#configure-runners), or [GitLab hosted runners](../../../ci/runners/hosted_runners/_index.md) turned on for your project.
+
+To resolve a discussion with GitLab Duo:
+
+1. In the merge request, go to an unresolved discussion.
+1. Next to **Resolve thread**, select **More resolve options** ().
+1. Select **Resolve with GitLab Duo**.
+
+GitLab Duo starts a session you can track in the [sessions for your project](../../duo_agent_platform/sessions/_index.md#view-sessions-for-your-project).
+
 ## Summarize a code review
 
 - Tier: Premium, Ultimate

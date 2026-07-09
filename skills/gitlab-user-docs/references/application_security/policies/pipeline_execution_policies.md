@@ -405,43 +405,11 @@ The project becomes a security policy project, and the setting becomes available
 ### Allow access to private or internal projects
 
 Your policy `include:` value might reference a CI/CD configuration file stored
-in a private or internal project other than the security policy project. In
-this case, you can allow access for users who trigger pipelines in projects
+in a private or internal project other than the security policy project.
+In this case, you can allow access for users who trigger pipelines in projects
 with enforced pipeline execution policies.
 
-1. To enable the `pipeline_execution_policy_bot_access` experiment, add the
-   following to the `.gitlab/security-policies/policy.yml` file in your
-   security policy project:
-
-   ```yaml
-   experiments:
-     pipeline_execution_policy_bot_access:
-       enabled: true
-   ```
-
-   > [!note]
-   > Your private or internal project, or one of its parent groups, must be linked to this security
-   > policy project. If not yet linked, [link the security policy project](enforcement/security_policy_projects.md#link-to-a-security-policy-project).
-
-1. In the private or internal project that stores CI/CD files, in the left sidebar, select
-   **Settings** > **General**.
-1. Expand **Visibility, project features, permissions**.
-1. In **Pipeline execution policies**, select
-   **Allow access to CI/CD configuration files in this project**.
-1. In **Allowed file patterns**, add one or more glob patterns to specify the files that can be accessed,
-   separated by commas.
-1. Optional. In **Allowed group**, select a group to allow only users from projects
-   in that group to access CI/CD configuration files.
-
-   If not specified, users from any project in the root ancestor group can access the files.
-1. Select **Save changes**.
-
-The glob patterns for the allowed files must match the paths specified in the `include:file:` value. For example:
-
-- For `include:file: ci/security-scan.yml`, use `ci/**/*.yml` or `ci/security-scan.yml`.
-- For `include:file: policy-ci.yml`, use `*.yml` or `policy-ci.yml`.
-- For multiple directories, use multiple patterns separated by commas,
-  like `ci/**/*.yml, templates/**/*.yml`.
+For configuration steps, see [Allow access to private or internal projects](scheduled_pipeline_execution_policies.md#option-2-allow-access-to-private-or-internal-projects).
 
 ## Pipeline configuration strategies
 

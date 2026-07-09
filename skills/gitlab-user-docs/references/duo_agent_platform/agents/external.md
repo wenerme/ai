@@ -281,6 +281,12 @@ For more information about the token payload, see
 
 ## Enable the agent
 
+- Enabling a public agent for multiple projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/600526) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_bulk_item_consumer_create`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
 Enable an agent to trigger it from an issue, merge request, or discussion.
 
 When you enable an agent in a project, it is enabled in the top-level group for that project at the same time.
@@ -312,6 +318,10 @@ To enable an external agent:
 1. Select the agent you want to enable.
 1. In the upper-right corner, select **Enable**.
 1. Under **Project**, select the project you want to enable the agent in.
+
+   To enable a public agent for multiple projects, from the **Project** dropdown list,
+   select the relevant projects. You can select up to 100 projects.
+
 1. For **Add triggers**, select:
    - One or more [trigger event types](../triggers/_index.md#trigger-event-types).
    - If needed for the trigger event type, a trigger event action.

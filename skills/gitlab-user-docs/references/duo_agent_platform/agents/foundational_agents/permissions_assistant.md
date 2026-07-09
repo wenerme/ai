@@ -2,9 +2,9 @@
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-- Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/592230) as a [beta](../../../../policy/development_stages_support.md#beta) feature in GitLab 18.11.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/596613) in GitLab 19.2.
 
 The Permissions Assistant is a GitLab Duo agent that helps you choose the right
 [fine-grained permissions](../../../../auth/tokens/fine_grained_access_tokens.md) when creating a
@@ -18,10 +18,8 @@ until the selection matches your needs.
 
 - Meet the [prerequisites for the GitLab Duo Agent Platform](../../_index.md#prerequisites).
 - Have [foundational agents turned on](_index.md#turn-foundational-agents-on-or-off).
-- Have fine-grained personal access tokens enabled. This feature depends on the
-  `granular_personal_access_tokens` feature flag, which is enabled by default on GitLab.com.
-  On GitLab Self-Managed and GitLab Dedicated, an administrator must
-  [enable it](../../../../administration/feature_flags/_index.md).
+- Have fine-grained personal access tokens enabled. This feature is controlled by the
+  `granular_personal_access_tokens` feature flag, which is enabled by default.
 
 ## Use the Permissions Assistant
 

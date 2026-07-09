@@ -2,10 +2,10 @@
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-- Status: Beta
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/14147) as an experiment in GitLab 18.0 with a flag named `scheduled_pipeline_execution_policy_type` defined in the `policy.yml` file.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/238197) to beta in GitLab 18.2.
+- [Generally available](https://gitlab.com/groups/gitlab-org/-/work_items/17875) in GitLab 19.2.
 
 Pipeline execution policies enforce custom CI/CD jobs in your projects' pipelines. With scheduled pipeline execution policies, you can extend this enforcement to run the CI/CD job on a regular cadence (daily, weekly, or monthly), ensuring that compliance scripts, security scans, or other custom CI/CD job are executed even when there are no new commits.
 
@@ -275,20 +275,6 @@ This setting applies to any user who triggers a pipeline with pipeline execution
 If your policy `include:` value references a CI/CD configuration file stored in a private or internal
 project other than the security policy project, use this option.
 
-1. Enable the `pipeline_execution_policy_bot_access` experiment in your security policy project.
-   In the `.gitlab/security-policies/policy.yml` file, add the following lines:
-
-   ```yaml
-   experiments:
-     pipeline_execution_policy_bot_access:
-       enabled: true
-   ```
-
-   > [!note]
-   > Your private or internal project, or one of its parent groups, must be linked to this security
-   > policy project. If it is not already linked, you must
-   > [link the security policy project](enforcement/security_policy_projects.md#link-to-a-security-policy-project).
-
 1. In the private or internal project that stores CI/CD files, in the left sidebar, select
    **Settings** > **General**.
 1. Expand **Visibility, project features, permissions**.
@@ -332,8 +318,7 @@ Because the bot user is not a member of other projects, it cannot complete any o
 
 ## Scheduling limits
 
-This feature is in beta and may change in future releases. Be aware of the following limits when
-creating scheduled pipeline execution policies:
+Be aware of the following limits when creating scheduled pipeline execution policies:
 
 - The maximum number of scheduled pipeline execution policies per security policy project is limited to one policy with one schedule.
 - The maximum frequency for schedules is once per day (daily).

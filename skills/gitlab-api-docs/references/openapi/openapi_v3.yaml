@@ -429,7 +429,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_44670369f631"
     get:
       operationId: getApiV4NamespacesIdGitlabSubscription
-      summary: Returns the subscription for the namespace
+      summary: Retrieve namespace subscription
+      description: Retrieves GitLab subscription details for a specified namespace.
       tags:
       - Namespaces
       responses:
@@ -3693,8 +3694,8 @@ paths:
       - name: package_manager
         required: false
         description: 'Returns dependencies belonging to specified package managers:
-          bundler, yarn, npm, pnpm, maven, composer, pip, conan, go, nuget, sbt, gradle,
-          pipenv, poetry, setuptools, apk, conda, pub, cargo.'
+          bundler, yarn, npm, pnpm, bun, maven, composer, pip, conan, go, nuget, sbt,
+          gradle, pipenv, poetry, setuptools, apk, conda, pub, cargo.'
         schema:
           type: array
           items:
@@ -21289,7 +21290,9 @@ paths:
   "/api/v4/projects/{id}/labels":
     get:
       operationId: getApiV4ProjectsIdLabels
-      summary: Get all labels of the project
+      summary: List all project labels
+      description: Lists all labels for a specified project. By default, this request
+        returns 20 results at a time because the API results are paginated.
       tags:
       - Labels
       responses:
@@ -21362,7 +21365,8 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdLabels
-      summary: Create a new label
+      summary: Create a project label
+      description: Creates a label for a specified project.
       tags:
       - Labels
       responses:
@@ -21394,7 +21398,7 @@ paths:
     put:
       operationId: putApiV4ProjectsIdLabels
       summary: Update an existing label. At least one optional parameter is required.
-      description: This feature was deprecated in GitLab 12.4.
+      description: Deprecated in GitLab 12.4. Use PUT /projects/:id/labels/:name instead.
       tags:
       - Labels
       responses:
@@ -21408,6 +21412,7 @@ paths:
           description: Not Found
         '400':
           description: Bad Request
+      deprecated: true
       parameters:
       - name: id
         required: true
@@ -21426,7 +21431,8 @@ paths:
     delete:
       operationId: deleteApiV4ProjectsIdLabels
       summary: Delete an existing label
-      description: This feature was deprecated in GitLab 12.4.
+      description: Deprecated in GitLab 12.4. Use DELETE /projects/:id/labels/:name
+        instead.
       tags:
       - Labels
       responses:
@@ -21440,6 +21446,7 @@ paths:
           description: Not Found
         '400':
           description: Bad Request
+      deprecated: true
       parameters:
       - name: id
         required: true
@@ -21466,8 +21473,8 @@ paths:
   "/api/v4/projects/{id}/labels/{name}":
     get:
       operationId: getApiV4ProjectsIdLabelsName
-      summary: Get a single label
-      description: This feature was added in GitLab 12.4.
+      summary: Retrieve a project label
+      description: Retrieves a specified label for a project.
       tags:
       - Labels
       responses:
@@ -21506,8 +21513,9 @@ paths:
         in: path
     put:
       operationId: putApiV4ProjectsIdLabelsName
-      summary: Update an existing label. At least one optional parameter is required.
-      description: This feature was added in GitLab 12.4.
+      summary: Update a project label
+      description: Updates a specified label for a project with a different name or
+        color. At least one parameter is required to update the label.
       tags:
       - Labels
       responses:
@@ -21544,8 +21552,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_57a19d02f2c7"
     delete:
       operationId: deleteApiV4ProjectsIdLabelsName
-      summary: Delete an existing label
-      description: This feature was added in GitLab 12.4.
+      summary: Delete a project label
+      description: Deletes a specified label from a project.
       tags:
       - Labels
       responses:
@@ -21578,8 +21586,8 @@ paths:
     put:
       operationId: putApiV4ProjectsIdLabelsPromote
       summary: Promote a label to a group label
-      description: This feature was added in GitLab 12.3 and deprecated in GitLab
-        12.4.
+      description: Added in GitLab 12.3 and deprecated in GitLab 12.4. Use PUT /projects/:id/labels/:name/promote
+        instead.
       tags:
       - Labels
       responses:
@@ -21593,6 +21601,7 @@ paths:
           description: Not Found
         '400':
           description: Bad Request
+      deprecated: true
       parameters:
       - name: id
         required: true
@@ -21611,8 +21620,9 @@ paths:
   "/api/v4/projects/{id}/labels/{name}/promote":
     put:
       operationId: putApiV4ProjectsIdLabelsNamePromote
-      summary: Promote a label to a group label
-      description: This feature was added in GitLab 12.4.
+      summary: Promote a project label to a group label
+      description: Promotes a specified project label to a group label. The label
+        keeps its ID.
       tags:
       - Labels
       responses:
@@ -41259,7 +41269,8 @@ paths:
         example: 20
     post:
       operationId: postApiV4GroupsIdMembers
-      summary: Adds a member to a group or project.
+      summary: Add a member to a group
+      description: Adds a member to a specified group.
       tags:
       - Members
       responses:
@@ -41372,7 +41383,9 @@ paths:
   "/api/v4/groups/{id}/members/{user_id}":
     get:
       operationId: getApiV4GroupsIdMembersUserId
-      summary: Gets a member of a group or project.
+      summary: Retrieve a direct group member
+      description: Retrieves a specified member of a group. Returns only direct members
+        and not inherited members through ancestor groups.
       tags:
       - Members
       responses:
@@ -41401,7 +41414,8 @@ paths:
         in: path
     put:
       operationId: putApiV4GroupsIdMembersUserId
-      summary: Updates a member of a group or project.
+      summary: Update a group member
+      description: Updates a specified member of a group.
       tags:
       - Members
       responses:
@@ -41436,7 +41450,9 @@ paths:
               "$ref": "#/components/schemas/RequestBody_c64319e2de56"
     delete:
       operationId: deleteApiV4GroupsIdMembersUserId
-      summary: Removes a user from a group or project.
+      summary: Remove a member from a group
+      description: Removes a specified user from a group. The user must be a direct
+        member.
       tags:
       - Members
       responses:
@@ -41461,16 +41477,16 @@ paths:
         in: path
       - name: skip_subresources
         required: false
-        description: Flag indicating if the deletion of direct memberships of the
-          removed member in subgroups and projects should be skipped
+        description: If `true`, the member retains any direct memberships in subgroups
+          or projects.
         schema:
           type: boolean
           nullable: true
         in: query
       - name: unassign_issuables
         required: false
-        description: Flag indicating if the removed member should be unassigned from
-          any issues or merge requests within given group or project
+        description: If `true`, unassigns the member from any issues or merge requests
+          in the group.
         schema:
           type: boolean
           nullable: true
@@ -41478,8 +41494,9 @@ paths:
   "/api/v4/groups/{id}/members/all/{user_id}":
     get:
       operationId: getApiV4GroupsIdMembersAllUserId
-      summary: Gets a member of a group or project, including those who gained membership
-        through ancestor group
+      summary: Retrieve a group member
+      description: Retrieves a specified member of a group. Returns direct members
+        and members inherited or invited through ancestor groups.
       tags:
       - Members
       responses:
@@ -41596,7 +41613,8 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdMembers
-      summary: Adds a member to a group or project.
+      summary: Add a member to a project
+      description: Adds a member to a specified project.
       tags:
       - Members
       responses:
@@ -41709,7 +41727,9 @@ paths:
   "/api/v4/projects/{id}/members/{user_id}":
     get:
       operationId: getApiV4ProjectsIdMembersUserId
-      summary: Gets a member of a group or project.
+      summary: Retrieve a direct project member
+      description: Retrieves a specified member of a project. Returns only direct
+        members and not inherited members through ancestor groups.
       tags:
       - Members
       responses:
@@ -41738,7 +41758,8 @@ paths:
         in: path
     put:
       operationId: putApiV4ProjectsIdMembersUserId
-      summary: Updates a member of a group or project.
+      summary: Update a project member
+      description: Updates a specified member of a project.
       tags:
       - Members
       responses:
@@ -41773,7 +41794,9 @@ paths:
               "$ref": "#/components/schemas/RequestBody_c64319e2de56"
     delete:
       operationId: deleteApiV4ProjectsIdMembersUserId
-      summary: Removes a user from a group or project.
+      summary: Remove a member from a project
+      description: Removes a specified user from a project. The user must be a direct
+        member.
       tags:
       - Members
       responses:
@@ -41798,16 +41821,16 @@ paths:
         in: path
       - name: skip_subresources
         required: false
-        description: Flag indicating if the deletion of direct memberships of the
-          removed member in subgroups and projects should be skipped
+        description: If `true`, the member retains any direct memberships in subgroups
+          or projects.
         schema:
           type: boolean
           nullable: true
         in: query
       - name: unassign_issuables
         required: false
-        description: Flag indicating if the removed member should be unassigned from
-          any issues or merge requests within given group or project
+        description: If `true`, unassigns the member from any issues or merge requests
+          in the project.
         schema:
           type: boolean
           nullable: true
@@ -41815,8 +41838,9 @@ paths:
   "/api/v4/projects/{id}/members/all/{user_id}":
     get:
       operationId: getApiV4ProjectsIdMembersAllUserId
-      summary: Gets a member of a group or project, including those who gained membership
-        through ancestor group
+      summary: Retrieve a project member
+      description: Retrieves a specified member of a project. Returns direct members
+        and members inherited or invited through ancestor groups.
       tags:
       - Members
       responses:
@@ -41846,7 +41870,10 @@ paths:
   "/api/v4/groups/{id}/members/{user_id}/override":
     post:
       operationId: postApiV4GroupsIdMembersUserIdOverride
-      summary: Overrides the access level of an LDAP group member.
+      summary: Set override flag for a member of a group
+      description: Sets the override flag for a member of a group. By default, the
+        access level of LDAP group members is set to the value specified by LDAP through
+        Group Sync.
       tags:
       - Members
       responses:
@@ -41875,7 +41902,8 @@ paths:
         in: path
     delete:
       operationId: deleteApiV4GroupsIdMembersUserIdOverride
-      summary: Remove an LDAP group member access level override.
+      summary: Remove an LDAP access level override
+      description: Removes an LDAP access level override for a member of a group.
       tags:
       - Members
       responses:
@@ -41905,7 +41933,9 @@ paths:
   "/api/v4/groups/{id}/members/{member_id}/approve":
     put:
       operationId: putApiV4GroupsIdMembersMemberIdApprove
-      summary: Approves a pending member
+      summary: Approve a group member
+      description: Approves a specified pending user for a top-level group and any
+        subgroups or projects.
       tags:
       - Members
       responses:
@@ -41931,7 +41961,9 @@ paths:
   "/api/v4/groups/{id}/members/approve_all":
     post:
       operationId: postApiV4GroupsIdMembersApproveAll
-      summary: Approves all pending members
+      summary: Approve all pending group members
+      description: Approves all pending users for a specified top-level group and
+        any subgroups or projects.
       tags:
       - Members
       responses:
@@ -41951,7 +41983,11 @@ paths:
   "/api/v4/groups/{id}/pending_members":
     get:
       operationId: getApiV4GroupsIdPendingMembers
-      summary: Lists all pending members for a group including invited users
+      summary: List all pending group members
+      description: Lists all members in an `awaiting` state and those who are invited
+        but do not have a GitLab account for a specified group and any subgroups and
+        projects. This operation works on top-level groups only. It does not work
+        on subgroups.
       tags:
       - Members
       responses:
@@ -41989,7 +42025,10 @@ paths:
   "/api/v4/groups/{id}/billable_members":
     get:
       operationId: getApiV4GroupsIdBillableMembers
-      summary: Gets a list of billable users of top-level group.
+      summary: List all billable group members
+      description: Lists all billable members of a specified top-level group. Includes
+        members in any subgroups or projects. You must have the Owner role for the
+        group.
       tags:
       - Groups
       responses:
@@ -42056,7 +42095,8 @@ paths:
   "/api/v4/groups/{id}/members/{user_id}/state":
     put:
       operationId: putApiV4GroupsIdMembersUserIdState
-      summary: Changes the state of the memberships of a user in the group
+      summary: Update group membership state for a user
+      description: Updates the membership state for a specified user in a group.
       tags:
       - Members
       responses:
@@ -42088,7 +42128,10 @@ paths:
   "/api/v4/groups/{id}/billable_members/{user_id}/memberships":
     get:
       operationId: getApiV4GroupsIdBillableMembersUserIdMemberships
-      summary: Get the direct memberships of a billable user of a top-level group.
+      summary: List all memberships for a billable group member
+      description: Lists all memberships for a specified billable member of a group.
+        The response represents only direct memberships. Inherited memberships are
+        not included.
       tags:
       - Members
       responses:
@@ -42136,7 +42179,9 @@ paths:
   "/api/v4/groups/{id}/billable_members/{user_id}/indirect":
     get:
       operationId: getApiV4GroupsIdBillableMembersUserIdIndirect
-      summary: Get the indirect memberships of a billable user of a top-level group.
+      summary: List all indirect memberships for a billable group member
+      description: Lists all indirect memberships for a billable member of a group.
+        This operation works on top-level groups only. It does not work on subgroups.
       tags:
       - Members
       responses:
@@ -42184,7 +42229,11 @@ paths:
   "/api/v4/groups/{id}/billable_members/{user_id}":
     delete:
       operationId: deleteApiV4GroupsIdBillableMembersUserId
-      summary: Removes a billable member from a group or project.
+      summary: Remove a billable member from a group
+      description: Removes a specified billable member from a group and its subgroups
+        and projects. The user does not need to be a group member to qualify for removal.
+        For example, if the user was added directly to a project in the group, you
+        can still remove them using this operation.
       tags:
       - Members
       responses:
@@ -42868,7 +42917,10 @@ paths:
   "/api/v4/issues_statistics":
     get:
       operationId: getApiV4IssuesStatistics
-      summary: Get currently authenticated user's issues statistics
+      summary: Retrieve issues statistics for the currently authenticated user
+      description: Retrieves statistics for issues accessible by the currently authenticated
+        user. By default, returns only issues created by the current user. To get
+        all issues, set the `scope` attribute to `all`.
       tags:
       - Issues
       responses:
@@ -43188,7 +43240,10 @@ paths:
   "/api/v4/issues":
     get:
       operationId: getApiV4Issues
-      summary: Get currently authenticated user's issues
+      summary: List all issues for the currently authenticated user
+      description: Lists all issues accessible by the currently authenticated user.
+        By default, returns only issues created by the current user. To list all issues,
+        use parameter `scope=all`.
       tags:
       - Issues
       responses:
@@ -43633,7 +43688,8 @@ paths:
   "/api/v4/issues/{id}":
     get:
       operationId: getApiV4IssuesId
-      summary: Get specified issue (admin only)
+      summary: Retrieve an issue
+      description: Retrieves a specified issue. Administrators only.
       tags:
       - Issues
       responses:
@@ -43657,7 +43713,10 @@ paths:
   "/api/v4/groups/{id}/issues":
     get:
       operationId: getApiV4GroupsIdIssues
-      summary: Get a list of group issues
+      summary: List all issues for a group
+      description: Lists all issues for a specified group. If the group is private,
+        you must provide credentials to authorize. In most cases, you should authenticate
+        with a personal access token.
       tags:
       - Groups
       responses:
@@ -44109,7 +44168,8 @@ paths:
   "/api/v4/groups/{id}/issues_statistics":
     get:
       operationId: getApiV4GroupsIdIssuesStatistics
-      summary: Get statistics for the list of group issues
+      summary: Retrieve issues statistics for a group
+      description: Retrieves statistics for issues in a specified group.
       tags:
       - Groups
       responses:
@@ -44617,7 +44677,10 @@ paths:
   "/api/v4/projects/{id}/issues":
     get:
       operationId: getApiV4ProjectsIdIssues
-      summary: Get a list of project issues
+      summary: List all project issues
+      description: Lists all issues for a specified project. If the project is private,
+        you need to provide credentials to authorize. In most cases, you should authenticate
+        with a personal access token.
       tags:
       - Projects
       responses:
@@ -45069,7 +45132,8 @@ paths:
         in: query
     post:
       operationId: postApiV4ProjectsIdIssues
-      summary: Create a new project issue
+      summary: Create an issue
+      description: Creates an issue for a specified project.
       tags:
       - Projects
       responses:
@@ -45101,7 +45165,8 @@ paths:
   "/api/v4/projects/{id}/issues_statistics":
     get:
       operationId: getApiV4ProjectsIdIssuesStatistics
-      summary: Get statistics for the list of project issues
+      summary: Retrieve issues statistics for a project
+      description: Retrieves statistics for issues in a specified project.
       tags:
       - Projects
       responses:
@@ -45432,7 +45497,10 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}":
     get:
       operationId: getApiV4ProjectsIdIssuesIssueIid
-      summary: Get a single project issue
+      summary: Retrieve a project issue
+      description: Retrieves a specified issue for a project. If the project is private
+        or the issue is confidential, you need to provide credentials to authorize.
+        In most cases, you should authenticate with a personal access token.
       tags:
       - Projects
       responses:
@@ -45463,7 +45531,13 @@ paths:
         in: path
     put:
       operationId: putApiV4ProjectsIdIssuesIssueIid
-      summary: Update an existing issue
+      summary: Update an issue
+      description: 'Updates a specified issue for a project. This request is also
+        used to close or reopen an issue using the `state_event` parameter. At least
+        one of the following parameters is required for the request to be successful:
+        `assignee_id`, `assignee_ids`, `confidential`, `created_at`, `description`,
+        `discussion_locked`, `due_date`, `issue_type`, `labels`, `milestone_id`, `state_event`,
+        `title`.'
       tags:
       - Projects
       responses:
@@ -45500,7 +45574,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_87ffe09df217"
     delete:
       operationId: deleteApiV4ProjectsIdIssuesIssueIid
-      summary: Delete a project issue
+      summary: Delete an issue
+      description: Deletes a specified issue.
       tags:
       - Projects
       responses:
@@ -45528,7 +45603,9 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/reorder":
     put:
       operationId: putApiV4ProjectsIdIssuesIssueIidReorder
-      summary: Reorder an existing issue
+      summary: Update the order of an issue
+      description: Updates the order of a specified issue in a project. You can see
+        the results when sorting issues manually.
       tags:
       - Projects
       responses:
@@ -45566,7 +45643,12 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/move":
     post:
       operationId: postApiV4ProjectsIdIssuesIssueIidMove
-      summary: Move an existing issue
+      summary: Move an issue
+      description: Moves a specified issue to a different project. If the target project
+        is the source project or the user has insufficient permissions, an error message
+        with status code `400` is returned. If a label or milestone with the same
+        name also exists in the target project, it is then assigned to the issue being
+        moved.
       tags:
       - Projects
       responses:
@@ -45604,7 +45686,11 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/clone":
     post:
       operationId: postApiV4ProjectsIdIssuesIssueIidClone
-      summary: Clone an existing issue
+      summary: Clone an issue
+      description: Clones a specified issue to a project. Copies as much data as possible
+        as long as the target project contains equivalent criteria, such as labels
+        or milestones. If you have insufficient permissions, an error message with
+        status code `400` is returned.
       tags:
       - Projects
       responses:
@@ -45642,7 +45728,11 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/related_merge_requests":
     get:
       operationId: getApiV4ProjectsIdIssuesIssueIidRelatedMergeRequests
-      summary: List merge requests that are related to the issue
+      summary: List all merge requests related to an issue
+      description: Lists all merge requests that are related to a specified issue.
+        If the project is private or the issue is confidential, you need to provide
+        credentials to authorize. In most cases, you should authenticate with a personal
+        access token.
       tags:
       - Issues
       responses:
@@ -45674,7 +45764,11 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/closed_by":
     get:
       operationId: getApiV4ProjectsIdIssuesIssueIidClosedBy
-      summary: List merge requests closing issue
+      summary: List all merge requests that close an issue on merge
+      description: Lists all merge requests that close a specified issue when merged.
+        If the project is private or the issue is confidential, you need to provide
+        credentials to authorize. In most cases, you should authenticate with a personal
+        access token.
       tags:
       - Projects
       responses:
@@ -45742,7 +45836,8 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/user_agent_detail":
     get:
       operationId: getApiV4ProjectsIdIssuesIssueIidUserAgentDetail
-      summary: Get the user agent details for an issue
+      summary: Retrieve user agent details for an issue
+      description: Retrieves user agent details for an issue.
       tags:
       - Issues
       responses:
@@ -45957,9 +46052,9 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/links":
     get:
       operationId: getApiV4ProjectsIdIssuesIssueIidLinks
-      summary: List issue relations
-      description: Get a list of a given issue’s linked issues, sorted by the relationship
-        creation datetime (ascending).Issues are filtered according to the user authorizations.
+      summary: List all issue links
+      description: Lists all linked issues for a specified issue, sorted by the relationship
+        creation datetime (ascending). Issues are filtered according to the user authorizations.
       tags:
       - Issues
       responses:
@@ -46032,9 +46127,8 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/links/{issue_link_id}":
     get:
       operationId: getApiV4ProjectsIdIssuesIssueIidLinksIssueLinkId
-      summary: Get an issue link
-      description: Gets details about an issue link. This feature was introduced in
-        GitLab 15.1.
+      summary: Retrieve an issue link
+      description: Retrieves a specified issue link.
       tags:
       - Issues
       responses:
@@ -46075,7 +46169,7 @@ paths:
     delete:
       operationId: deleteApiV4ProjectsIdIssuesIssueIidLinksIssueLinkId
       summary: Delete an issue link
-      description: Deletes an issue link, thus removes the two-way relationship.
+      description: Deletes a specified issue link, removing the two-way relationship.
       tags:
       - Issues
       responses:
@@ -53627,9 +53721,11 @@ paths:
   "/api/v4/groups/{id}/packages":
     get:
       operationId: getApiV4GroupsIdPackages
-      summary: List packages within a group
-      description: Get a list of project packages at the group level. This feature
-        was introduced in GitLab 12.5
+      summary: List all packages for a group
+      description: Lists all packages for a specified group. When accessed without
+        authentication, only packages of public projects are returned. By default,
+        packages with `default`, `deprecated`, and `error` status are returned. Use
+        the `status` parameter to view other packages.
       tags:
       - Packages
       responses:
@@ -54370,9 +54466,8 @@ paths:
   "/api/v4/groups/{id}/registry/repositories":
     get:
       operationId: getApiV4GroupsIdRegistryRepositories
-      summary: List registry repositories within a group
-      description: Get a list of registry repositories in a group. This feature was
-        introduced in GitLab 12.2.
+      summary: List all registry repositories for a group
+      description: Lists all registry repositories for a specified group.
       tags:
       - Container registry
       responses:
@@ -54592,8 +54687,8 @@ paths:
   "/api/v4/groups/{id}/avatar":
     get:
       operationId: getApiV4GroupsIdAvatar
-      summary: Download the group avatar
-      description: This feature was introduced in GitLab 14.0
+      summary: Download a group avatar
+      description: Downloads a group avatar image.
       tags:
       - Avatars
       responses:
@@ -81230,6 +81325,17 @@ components:
           type: string
           format: date-time
           example: '2020-08-31T15:53:00.073Z'
+        last_used_ips:
+          type: array
+          description: The five most recent unique IP addresses that have authenticated
+            with this token. When the limit is reached, the oldest IP address is removed.
+            The list updates once per minute per token.
+          example:
+          - 127.0.0.1
+          - 127.0.0.2
+          - 127.0.0.3
+          items:
+            type: string
         impersonation:
           type: string
     APIEntitiesImpersonationTokenWithToken:
@@ -81270,9 +81376,20 @@ components:
           type: string
           format: date-time
           example: '2020-08-31T15:53:00.073Z'
-        token:
-          type: string
+        last_used_ips:
+          type: array
+          description: The five most recent unique IP addresses that have authenticated
+            with this token. When the limit is reached, the oldest IP address is removed.
+            The list updates once per minute per token.
+          example:
+          - 127.0.0.1
+          - 127.0.0.2
+          - 127.0.0.3
+          items:
+            type: string
         impersonation:
+          type: string
+        token:
           type: string
     APIEntitiesUserCreditCardValidations:
       type: object

@@ -7,6 +7,7 @@
 - Secret detection profile [added](https://gitlab.com/groups/gitlab-org/-/epics/19903) in GitLab 18.10.
 - SAST profile [added](https://gitlab.com/groups/gitlab-org/-/epics/19951) in GitLab 18.11.
 - Dependency scanning profile [introduced](https://gitlab.com/groups/gitlab-org/-/epics/19952) in GitLab 19.0 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_scan_profiles_dependency_scanning`. Enabled by default.
+- Dependency scanning auto-remediation profile [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/604588) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_remediation_profiles`. Enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -78,6 +79,30 @@ When you enable the dependency scanning profile, your project's dependencies are
 
 - **Merge Request Pipelines**: Automatically runs a dependency scan each time new commits are pushed to a branch with an open merge request. Results include only new vulnerabilities introduced by the merge request. Targets all branches.
 - **Branch Pipelines (default only)**: Runs automatically when changes are merged or pushed to the default branch, providing a complete picture of your default branch's dependency vulnerability posture. Targets the default branch.
+
+### Dependency scanning auto-remediation profile
+
+When you enable the dependency scanning auto-remediation profile, GitLab opens merge requests
+that bump vulnerable dependencies to non-vulnerable versions. For more information about this
+capability, see [dependency scanning auto-remediation](../remediate/dependency_scanning_auto_remediation.md).
+
+Prerequisites:
+
+- The `security_remediation_profiles` [feature flag](../../../administration/feature_flags/_index.md)
+  must be enabled for the project's root namespace. This flag is enabled by default in GitLab 19.2.
+
+Use the [GitLab CLI](../../../editor_extensions/gitlab_cli/_index.md) (`glab`) to attach the
+profile to a project:
+
+```shell
+glab security config enable dependency_scanning_post_processing -R <project-path>
+```
+
+For example, to enable the profile for `my-group/my-project`:
+
+```shell
+glab security config enable dependency_scanning_post_processing -R my-group/my-project
+```
 
 ### View details about a profile
 
