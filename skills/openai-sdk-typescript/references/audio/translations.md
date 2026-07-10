@@ -6,7 +6,7 @@
 
 **post** `/audio/translations`
 
-Translates audio into English.
+Create translation
 
 ### Parameters
 

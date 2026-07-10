@@ -4,7 +4,7 @@
 
 **get** `/organization/usage/audio_speeches`
 
-Get audio speeches usage details for the organization.
+Audio speeches
 
 ### Query Parameters
 
@@ -525,7 +525,7 @@ curl "https://api.openai.com/v1/organization/usage/audio_speeches?start_time=173
 
 **get** `/organization/usage/audio_transcriptions`
 
-Get audio transcriptions usage details for the organization.
+Audio transcriptions
 
 ### Query Parameters
 
@@ -1046,7 +1046,7 @@ curl "https://api.openai.com/v1/organization/usage/audio_transcriptions?start_ti
 
 **get** `/organization/usage/code_interpreter_sessions`
 
-Get code interpreter sessions usage details for the organization.
+Code interpreter sessions
 
 ### Query Parameters
 
@@ -1545,7 +1545,7 @@ curl "https://api.openai.com/v1/organization/usage/code_interpreter_sessions?sta
 
 **get** `/organization/usage/completions`
 
-Get completions usage details for the organization.
+Completions
 
 ### Query Parameters
 
@@ -2080,7 +2080,7 @@ curl "https://api.openai.com/v1/organization/usage/completions?start_time=173041
 
 **get** `/organization/usage/embeddings`
 
-Get embeddings usage details for the organization.
+Embeddings
 
 ### Query Parameters
 
@@ -2601,7 +2601,7 @@ curl "https://api.openai.com/v1/organization/usage/embeddings?start_time=1730419
 
 **get** `/organization/usage/images`
 
-Get images usage details for the organization.
+Images
 
 ### Query Parameters
 
@@ -3152,7 +3152,7 @@ curl "https://api.openai.com/v1/organization/usage/images?start_time=1730419200&
 
 **get** `/organization/usage/moderations`
 
-Get moderations usage details for the organization.
+Moderations
 
 ### Query Parameters
 
@@ -3673,7 +3673,7 @@ curl "https://api.openai.com/v1/organization/usage/moderations?start_time=173041
 
 **get** `/organization/usage/vector_stores`
 
-Get vector stores usage details for the organization.
+Vector stores
 
 ### Query Parameters
 
@@ -4172,7 +4172,7 @@ curl "https://api.openai.com/v1/organization/usage/vector_stores?start_time=1730
 
 **get** `/organization/usage/file_search_calls`
 
-Get file search calls usage details for the organization.
+File search calls
 
 ### Query Parameters
 
@@ -4692,7 +4692,7 @@ curl "https://api.openai.com/v1/organization/usage/file_search_calls?start_time=
 
 **get** `/organization/usage/web_search_calls`
 
-Get web search calls usage details for the organization.
+Web search calls
 
 ### Query Parameters
 
@@ -5226,7 +5226,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
 **get** `/organization/costs`
 
-Get costs details for the organization.
+Costs
 
 ### Query Parameters
 

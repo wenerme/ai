@@ -58,7 +58,7 @@ The tabs in the datasets dashboard let multiple prompts interact with the same d
 
 1. To add a new prompt, click **Add prompt**.
 
-   Datasets are designed to be used with your OpenAI [prompts](https://developers.openai.com/api/docs/guides/prompt-engineering#reusable-prompts). If you’ve saved a prompt on the OpenAI platform, you’ll be able to select it from the dropdown and make changes in this interface. To save your prompt changes, click **Save**.
+   Datasets are designed to be used with your OpenAI [prompts](https://developers.openai.com/api/docs/guides/prompt-engineering#version-prompts-in-code). If you’ve saved a prompt on the OpenAI platform, you’ll be able to select it from the dropdown and make changes in this interface. To save your prompt changes, click **Save**.
 
    Our prompts use a versioning system so you can safely make updates.
      Clicking **Save** creates a new version of your prompt, which you can refer
@@ -68,7 +68,7 @@ The tabs in the datasets dashboard let multiple prompts interact with the same d
 
 - Click the slider icon in the top right to control model [`temperature`](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-temperature) and [`top_p`](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-top_p).
 - Add tools to grant your inference call the ability to access the web, use an MCP, or complete other tool-call actions.
-- Add variables. The prompt and your [graders](#adding-graders) can both refer to these variables.
+- Add variables. The prompt and your [graders](#add-graders) can both refer to these variables.
 - Type your system message directly, or click the pencil icon to have a model help generate a prompt for you, based on basic instructions you provide.
 
 In our example, we'll add the [web search](https://developers.openai.com/api/docs/guides/tools-web-search) tool so our model call can pull financial data from the internet. In our variables list, we'll add `company` so our prompt can reference the company column in our dataset. And for the prompt, we’ll generate one by telling the model to “generate a financial report."

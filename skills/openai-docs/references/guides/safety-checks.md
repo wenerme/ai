@@ -36,7 +36,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-model="gpt-5.4-mini",
+model="gpt-5.6-terra",
 input="This is a test",
 safety_identifier="user_123456",
 )
@@ -47,7 +47,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-"model": "gpt-5.4-mini",
+"model": "gpt-5.6-terra",
 "input": "This is a test",
 "safety_identifier": "user_123456"
 }'
@@ -63,7 +63,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.chat.completions.create(
-model="gpt-5.4-mini",
+model="gpt-5.6-terra",
 messages=[
 {"role": "user", "content": "This is a test"}
 ],
@@ -76,7 +76,7 @@ curl https://api.openai.com/v1/chat/completions \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-"model": "gpt-5.4-mini",
+"model": "gpt-5.6-terra",
 "messages": [
 {"role": "user", "content": "This is a test"}
 ],
@@ -118,7 +118,7 @@ If OpenAI monitoring systems identify potential abuse, we may take different lev
   - In a high confidence policy violation, the associated `safety_identifier` is completely blocked from OpenAI model access.
   - The safety identifier receives an `identifier blocked` error on all future GPT-5 requests for the same identifier. OpenAI cannot currently unblock an individual identifier.
 
-For these blocks to be effective, ensure you have controls in place to prevent blocked users from simply opening a new account. As a reminder, repeated policy violations from your organization can lead to losing access for your entire organization.
+For these blocks to be effective, ensure you have controls in place to prevent blocked users from opening a new account. As a reminder, repeated policy violations from your organization can lead to losing access for your entire organization.
 
 ### Why we're doing this
 
@@ -131,6 +131,6 @@ To help ensure safety in your use of the OpenAI API and tools, we run safety che
 Learn more:
 
 - [Model evaluations hub](https://openai.com/safety/evaluations-hub)
-- [Cyber Safety](https://developers.openai.com/codex/concepts/cyber-safety)
+- [Cyber Safety](https://developers.openai.com/codex/cyber-safety)
 - [Fine-tuning safety](https://developers.openai.com/api/docs/guides/supervised-fine-tuning#safety-checks)
-- [Safety checks in computer use](https://developers.openai.com/api/docs/guides/tools-computer-use#acknowledge-safety-checks)
+- [Safety checks in computer use](https://developers.openai.com/api/docs/guides/tools-computer-use#handle-user-confirmation-and-consent)

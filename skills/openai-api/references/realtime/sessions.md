@@ -4,15 +4,7 @@
 
 **post** `/realtime/sessions`
 
-Create an ephemeral API token for use in client-side applications with the
-Realtime API. Can be configured with the same session parameters as the
-`session.update` client event.
-
-It responds with a session object, plus a `client_secret` key which contains
-a usable ephemeral API token that can be used to authenticate browser clients
-for the Realtime API.
-
-Returns the created Realtime session object, plus an ephemeral key.
+Create session
 
 ### Body Parameters
 
@@ -81,7 +73,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 - `prompt: optional ResponsePrompt`
 
   Reference to a prompt template and its variables.
-  [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
+  [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
 
   - `id: string`
 
@@ -95,7 +87,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     - `string`
 
-    - `ResponseInputText object { text, type }`
+    - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
       A text input to the model.
 
@@ -109,9 +101,19 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         - `"input_text"`
 
-    - `ResponseInputImage object { detail, type, file_id, image_url }`
+      - `prompt_cache_breakpoint: optional object { mode }`
 
-      An image input to the model. Learn about [image inputs](/docs/guides/vision).
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
+    - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+      An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
       - `detail: "low" or "high" or "auto" or "original"`
 
@@ -139,7 +141,17 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-    - `ResponseInputFile object { type, detail, file_data, 3 more }`
+      - `prompt_cache_breakpoint: optional object { mode }`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
+    - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
       A file input to the model.
 
@@ -149,9 +161,11 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         - `"input_file"`
 
-      - `detail: optional "low" or "high"`
+      - `detail: optional "auto" or "low" or "high"`
 
-        The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+        The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+        - `"auto"`
 
         - `"low"`
 
@@ -172,6 +186,16 @@ Returns the created Realtime session object, plus an ephemeral key.
       - `filename: optional string`
 
         The name of the file to be sent to the model.
+
+      - `prompt_cache_breakpoint: optional object { mode }`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
   - `version: optional string`
 
@@ -259,7 +283,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
   Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-  - `"auto" or "disabled"`
+  - `RealtimeTruncationStrategy = "auto" or "disabled"`
 
     The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -267,7 +291,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     - `"disabled"`
 
-  - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
+  - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
 
     Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -372,7 +396,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
       The PCM audio format. Only a 24kHz sample rate is supported.
 
-      - `PCMAudioFormat object { rate, type }`
+      - `AudioPCM object { rate, type }`
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -388,7 +412,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
           - `"audio/pcm"`
 
-      - `PCMUAudioFormat object { type }`
+      - `AudioPCMU object { type }`
 
         The G.711 μ-law format.
 
@@ -398,7 +422,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
           - `"audio/pcmu"`
 
-      - `PCMAAudioFormat object { type }`
+      - `AudioPCMA object { type }`
 
         The G.711 A-law format.
 
@@ -420,23 +444,39 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         - `"far_field"`
 
-    - `transcription: optional object { language, model, prompt }`
+    - `transcription: optional AudioTranscription`
 
-      Configuration for input audio transcription.
+      - `delay: optional "minimal" or "low" or "medium" or 2 more`
+
+        Controls how long the model waits before emitting transcription text.
+        Higher values can improve transcription accuracy at the cost of latency.
+        Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
+
+        - `"minimal"`
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+        - `"xhigh"`
 
       - `language: optional string`
 
-        The language of the input audio.
+        The language of the input audio. Supplying the input language in
+        [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
+        will improve accuracy and latency.
 
       - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-        The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+        The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
         - `string`
 
         - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-          The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
           - `"whisper-1"`
 
@@ -452,7 +492,11 @@ Returns the created Realtime session object, plus an ephemeral key.
 
       - `prompt: optional string`
 
-        The prompt configured for input audio transcription, when present.
+        An optional text to guide the model's style or continue a previous audio
+        segment.
+        For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+        For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
+        Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
     - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
 
@@ -677,6 +721,7 @@ curl https://api.openai.com/v1/realtime/sessions \
         "type": "near_field"
       },
       "transcription": {
+        "delay": "minimal",
         "language": "language",
         "model": "whisper-1",
         "prompt": "prompt"
@@ -791,7 +836,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
-        - `PCMAudioFormat object { rate, type }`
+        - `AudioPCM object { rate, type }`
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -807,7 +852,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
             - `"audio/pcm"`
 
-        - `PCMUAudioFormat object { type }`
+        - `AudioPCMU object { type }`
 
           The G.711 μ-law format.
 
@@ -817,7 +862,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
             - `"audio/pcmu"`
 
-        - `PCMAAudioFormat object { type }`
+        - `AudioPCMA object { type }`
 
           The G.711 A-law format.
 
@@ -839,23 +884,39 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
           - `"far_field"`
 
-      - `transcription: optional object { language, model, prompt }`
+      - `transcription: optional AudioTranscription`
 
-        Configuration for input audio transcription.
+        - `delay: optional "minimal" or "low" or "medium" or 2 more`
+
+          Controls how long the model waits before emitting transcription text.
+          Higher values can improve transcription accuracy at the cost of latency.
+          Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
 
         - `language: optional string`
 
-          The language of the input audio.
+          The language of the input audio. Supplying the input language in
+          [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
+          will improve accuracy and latency.
 
         - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-          The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
           - `string`
 
           - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-            The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
             - `"whisper-1"`
 
@@ -871,7 +932,11 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
         - `prompt: optional string`
 
-          The prompt configured for input audio transcription, when present.
+          An optional text to guide the model's style or continue a previous audio
+          segment.
+          For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+          For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
+          Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
       - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
 

@@ -4,7 +4,7 @@
 
 **post** `/vector_stores/{vector_store_id}/file_batches/{batch_id}/cancel`
 
-Cancel a vector store file batch. This attempts to cancel the processing of files in this batch as soon as possible.
+Cancel vector store file batch
 
 ### Parameters
 

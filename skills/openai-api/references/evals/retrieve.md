@@ -2,7 +2,7 @@
 
 **get** `/evals/{eval_id}`
 
-Get an evaluation by ID.
+Get an eval
 
 ### Path Parameters
 
@@ -41,7 +41,7 @@ Get an evaluation by ID.
 
       - `"custom"`
 
-  - `LogsDataSourceConfig object { schema, type, metadata }`
+  - `Logs object { schema, type, metadata }`
 
     A LogsDataSourceConfig which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -130,7 +130,7 @@ Get an evaluation by ID.
 
           A text input to the model.
 
-        - `ResponseInputText object { text, type }`
+        - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
           A text input to the model.
 
@@ -143,6 +143,16 @@ Get an evaluation by ID.
             The type of the input item. Always `input_text`.
 
             - `"input_text"`
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
         - `OutputText object { text, type }`
 
@@ -210,7 +220,7 @@ Get an evaluation by ID.
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -325,7 +335,7 @@ Get an evaluation by ID.
 
       - `"string_check"`
 
-  - `TextSimilarityGrader = TextSimilarityGrader`
+  - `EvalGraderTextSimilarity = TextSimilarityGrader`
 
     A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -333,7 +343,7 @@ Get an evaluation by ID.
 
       The threshold for the score.
 
-  - `PythonGrader = PythonGrader`
+  - `EvalGraderPython = PythonGrader`
 
     A PythonGrader object that runs a python script on the input.
 
@@ -341,7 +351,7 @@ Get an evaluation by ID.
 
       The threshold for the score.
 
-  - `ScoreModelGrader = ScoreModelGrader`
+  - `EvalGraderScoreModel = ScoreModelGrader`
 
     A ScoreModelGrader object that uses a model to assign a score to the input.
 

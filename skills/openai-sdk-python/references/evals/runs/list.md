@@ -4,7 +4,7 @@
 
 **get** `/evals/{eval_id}/runs`
 
-Get a list of runs for an evaluation.
+Get eval runs
 
 ### Parameters
 
@@ -220,6 +220,16 @@ Get a list of runs for an evaluation.
 
                       - `"input_text"`
 
+                    - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: Literal["explicit"]`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
+
                   - `class ResponseInputImage: …`
 
                     An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -250,6 +260,16 @@ Get a list of runs for an evaluation.
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                    - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: Literal["explicit"]`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
+
                   - `class ResponseInputFile: …`
 
                     A file input to the model.
@@ -260,9 +280,11 @@ Get a list of runs for an evaluation.
 
                       - `"input_file"`
 
-                    - `detail: Optional[Literal["low", "high"]]`
+                    - `detail: Optional[Literal["auto", "low", "high"]]`
 
-                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                      The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                      - `"auto"`
 
                       - `"low"`
 
@@ -283,6 +305,16 @@ Get a list of runs for an evaluation.
                     - `filename: Optional[str]`
 
                       The name of the file to be sent to the model.
+
+                    - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: Literal["explicit"]`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
 
               - `role: Literal["user", "assistant", "system", "developer"]`
 
@@ -485,16 +517,13 @@ Get a list of runs for an evaluation.
 
         - `reasoning_effort: Optional[ReasoningEffort]`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -507,6 +536,8 @@ Get a list of runs for an evaluation.
           - `"high"`
 
           - `"xhigh"`
+
+          - `"max"`
 
         - `response_format: Optional[SamplingParamsResponseFormat]`
 
@@ -692,16 +723,13 @@ Get a list of runs for an evaluation.
 
           - `reasoning_effort: Optional[ReasoningEffort]`
 
-            Constrains effort on reasoning for
-            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-            reasoning effort can result in faster responses and fewer tokens used
-            on reasoning in a response.
-
-            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+            Constrains effort on reasoning for reasoning models. Currently supported
+            values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+            Reducing reasoning effort can result in faster responses and fewer tokens
+            used on reasoning in a response. Not all reasoning models support every
+            value. See the
+            [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+            for model-specific support.
 
           - `temperature: Optional[float]`
 
@@ -872,16 +900,13 @@ Get a list of runs for an evaluation.
 
         - `reasoning_effort: Optional[ReasoningEffort]`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
         - `seed: Optional[int]`
 
@@ -989,13 +1014,21 @@ Get a list of runs for an evaluation.
 
             - `strict: Optional[bool]`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: Literal["function"]`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading: Optional[bool]`
 
@@ -1004,6 +1037,10 @@ Get a list of runs for an evaluation.
             - `description: Optional[str]`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema: Optional[Dict[str, object]]`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `class FileSearchTool: …`
 
@@ -1060,7 +1097,7 @@ Get a list of runs for an evaluation.
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[Union[str, float]]]`
+                - `value: Union[str, float, bool, List[object]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1070,11 +1107,7 @@ Get a list of runs for an evaluation.
 
                   - `bool`
 
-                  - `List[Union[str, float]]`
-
-                    - `str`
-
-                    - `float`
+                  - `List[object]`
 
               - `class CompoundFilter: …`
 
@@ -1246,6 +1279,14 @@ Get a list of runs for an evaluation.
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools: Optional[McpAllowedTools]`
 
@@ -1465,6 +1506,22 @@ Get a list of runs for an evaluation.
 
               - `"code_interpreter"`
 
+            - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `class ProgrammaticToolCalling: …`
+
+            - `type: Literal["programmatic_tool_calling"]`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `class ImageGeneration: …`
 
             A tool that generates images using the GPT image models.
@@ -1628,6 +1685,14 @@ Get a list of runs for an evaluation.
 
               - `"shell"`
 
+            - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `environment: Optional[Environment]`
 
               - `class ContainerAuto: …`
@@ -1768,6 +1833,14 @@ Get a list of runs for an evaluation.
 
               - `"custom"`
 
+            - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading: Optional[bool]`
 
               Whether this tool should be deferred and discovered via tool search.
@@ -1836,15 +1909,29 @@ Get a list of runs for an evaluation.
 
                   - `"function"`
 
+                - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading: Optional[bool]`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description: Optional[str]`
 
+                - `output_schema: Optional[Dict[str, object]]`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters: Optional[object]`
 
                 - `strict: Optional[bool]`
+
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
               - `class CustomTool: …`
 
@@ -1945,6 +2032,14 @@ Get a list of runs for an evaluation.
               The type of the tool. Always `apply_patch`.
 
               - `"apply_patch"`
+
+            - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
         - `top_p: Optional[float]`
 

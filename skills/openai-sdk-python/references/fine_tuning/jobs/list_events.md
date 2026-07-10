@@ -4,7 +4,7 @@
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}/events`
 
-Get status updates for a fine-tuning job.
+List fine-tuning events
 
 ### Parameters
 

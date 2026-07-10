@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/users/{user_id}`
 
-Retrieves a user in the project.
+Retrieve project user
 
 ### Parameters
 

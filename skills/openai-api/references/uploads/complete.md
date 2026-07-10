@@ -2,14 +2,7 @@
 
 **post** `/uploads/{upload_id}/complete`
 
-Completes the [Upload](/docs/api-reference/uploads/object).
-
-Within the returned Upload object, there is a nested [File](/docs/api-reference/files/object) object that is ready to use in the rest of the platform.
-
-You can specify the order of the Parts by passing in an ordered list of the Part IDs.
-
-The number of bytes uploaded upon completion must match the number of bytes initially specified when creating the Upload object. No Parts may be added after an Upload is completed.
-Returns the Upload object with status `completed`, including an additional `file` property containing the created usable File object.
+Complete upload
 
 ### Path Parameters
 
@@ -51,9 +44,15 @@ Returns the Upload object with status `completed`, including an additional `file
 
     The name of the file to be uploaded.
 
+  - `object: "upload"`
+
+    The object type, which is always "upload".
+
+    - `"upload"`
+
   - `purpose: string`
 
-    The intended purpose of the file. [Please refer here](/docs/api-reference/files/object#files/object-purpose) for acceptable values.
+    The intended purpose of the file. [Please refer here](https://platform.openai.com/docs/api-reference/files/object#files/object-purpose) for acceptable values.
 
   - `status: "pending" or "completed" or "cancelled" or "expired"`
 
@@ -131,12 +130,6 @@ Returns the Upload object with status `completed`, including an additional `file
 
       Deprecated. For details on why a fine-tuning training file failed validation, see the `error` field on `fine_tuning.job`.
 
-  - `object: optional "upload"`
-
-    The object type, which is always "upload".
-
-    - `"upload"`
-
 ### Example
 
 ```http
@@ -159,6 +152,7 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/complete \
   "created_at": 0,
   "expires_at": 0,
   "filename": "filename",
+  "object": "upload",
   "purpose": "purpose",
   "status": "pending",
   "file": {
@@ -171,8 +165,7 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/complete \
     "status": "uploaded",
     "expires_at": 0,
     "status_details": "status_details"
-  },
-  "object": "upload"
+  }
 }
 ```
 

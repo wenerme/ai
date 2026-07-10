@@ -6,7 +6,7 @@
 
 **get** `/organization/groups/{group_id}/users`
 
-Lists the users assigned to a group.
+List group users
 
 ### Parameters
 
@@ -86,7 +86,7 @@ for await (const organizationGroupUser of client.admin.organization.groups.users
 
 **post** `/organization/groups/{group_id}/users`
 
-Adds a user to a group.
+Add group user
 
 ### Parameters
 
@@ -150,7 +150,7 @@ console.log(user.group_id);
 
 **get** `/organization/groups/{group_id}/users/{user_id}`
 
-Retrieves a user in a group.
+Retrieve group user
 
 ### Parameters
 
@@ -231,7 +231,7 @@ console.log(user.id);
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
 
-Removes a user from a group.
+Remove group user
 
 ### Parameters
 

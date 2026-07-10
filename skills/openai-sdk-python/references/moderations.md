@@ -6,8 +6,7 @@
 
 **post** `/moderations`
 
-Classifies if text and/or image inputs are potentially harmful. Learn
-more in the [moderation guide](https://platform.openai.com/docs/guides/moderation).
+Create moderation
 
 ### Parameters
 
@@ -27,38 +26,6 @@ more in the [moderation guide](https://platform.openai.com/docs/guides/moderatio
   - `Iterable[ModerationMultiModalInputParam]`
 
     An array of multi-modal inputs to the moderation model.
-
-    - `class ModerationImageURLInput: …`
-
-      An object describing an image to classify.
-
-      - `image_url: ImageURL`
-
-        Contains either an image URL or a data URL for a base64 encoded image.
-
-        - `url: str`
-
-          Either a URL of the image or the base64 encoded image data.
-
-      - `type: Literal["image_url"]`
-
-        Always `image_url`.
-
-        - `"image_url"`
-
-    - `class ModerationTextInput: …`
-
-      An object describing text to classify.
-
-      - `text: str`
-
-        A string of text to classify.
-
-      - `type: Literal["text"]`
-
-        Always `text`.
-
-        - `"text"`
 
 - `model: Optional[Union[str, ModerationModel]]`
 
@@ -789,23 +756,7 @@ print(response)
 
 ### Moderation Image URL Input
 
-- `class ModerationImageURLInput: …`
-
-  An object describing an image to classify.
-
-  - `image_url: ImageURL`
-
-    Contains either an image URL or a data URL for a base64 encoded image.
-
-    - `url: str`
-
-      Either a URL of the image or the base64 encoded image data.
-
-  - `type: Literal["image_url"]`
-
-    Always `image_url`.
-
-    - `"image_url"`
+- `object`
 
 ### Moderation Model
 
@@ -821,57 +772,11 @@ print(response)
 
 ### Moderation Multi Modal Input
 
-- `ModerationMultiModalInput`
-
-  An object describing an image to classify.
-
-  - `class ModerationImageURLInput: …`
-
-    An object describing an image to classify.
-
-    - `image_url: ImageURL`
-
-      Contains either an image URL or a data URL for a base64 encoded image.
-
-      - `url: str`
-
-        Either a URL of the image or the base64 encoded image data.
-
-    - `type: Literal["image_url"]`
-
-      Always `image_url`.
-
-      - `"image_url"`
-
-  - `class ModerationTextInput: …`
-
-    An object describing text to classify.
-
-    - `text: str`
-
-      A string of text to classify.
-
-    - `type: Literal["text"]`
-
-      Always `text`.
-
-      - `"text"`
+- `object`
 
 ### Moderation Text Input
 
-- `class ModerationTextInput: …`
-
-  An object describing text to classify.
-
-  - `text: str`
-
-    A string of text to classify.
-
-  - `type: Literal["text"]`
-
-    Always `text`.
-
-    - `"text"`
+- `object`
 
 ### Moderation Create Response
 

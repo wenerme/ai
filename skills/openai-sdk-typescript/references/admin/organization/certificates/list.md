@@ -4,7 +4,7 @@
 
 **get** `/organization/certificates`
 
-List uploaded certificates for this organization.
+List organization certificates
 
 ### Parameters
 

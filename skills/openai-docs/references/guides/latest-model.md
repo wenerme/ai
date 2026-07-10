@@ -1,88 +1,240 @@
 ---
 latestModelInfo:
-  model: gpt-5.5
-  migrationGuide: /api/docs/guides/upgrading-to-gpt-5p5.md
-  promptingGuide: /api/docs/guides/prompt-guidance.md
+  model: gpt-5.6-sol
+  migrationGuide: /api/docs/guides/upgrading-to-gpt-5p6-sol.md
+  promptingGuide: /api/docs/guides/prompt-guidance-gpt-5p6.md
 ---
 
-# Using GPT-5.5
+# Using GPT-5.6
 
 ## Introduction
 
-GPT-5.5 raises the baseline for complex production workflows. It’s a strong fit for coding use cases, tool-heavy agents, grounded assistants, long-context retrieval, product-spec-to-plan workflows, and customer-facing workflows where execution quality and response polish are critical.
+GPT-5.6 sets a new quality and efficiency baseline for complex production workflows. GPT-5.6 is especially token-efficient and improves frontend aesthetics, including layout, visual hierarchy, and design judgment.
 
-To get the most out of GPT-5.5, treat it as a new model family to tune for, not a drop-in replacement for `gpt-5.2` or `gpt-5.4`. Begin migration with a fresh baseline instead of carrying over every instruction from an older prompt stack. Start with the smallest prompt that preserves the product contract, then tune reasoning effort, verbosity, tool descriptions, and output format against representative examples.
+GPT-5.6 also introduces a new naming scheme. The `gpt-5.6` alias routes requests to `gpt-5.6-sol`, the model for flagship capability. Use `gpt-5.6-terra` for strong performance at a lower price and `gpt-5.6-luna` for efficient, high-volume workloads.
 
-GPT-5.5 supports all API features that were already available with GPT-5.4, including [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching), [hosted tools](https://developers.openai.com/api/docs/guides/tools#available-tools), [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search), [compaction](https://developers.openai.com/api/docs/guides/compaction), and `phase` handling for manually replayed assistant items.
+Treat migration as a tuning pass, not only a model-slug change. Start with your current GPT-5.5 or GPT-5.4 reasoning setting, then test the same setting and one level lower on representative tasks. GPT-5.6 can often maintain or improve quality with fewer tokens, but the best setting depends on your workload.
 
-See the [GPT-5.5 Prompting Guide](https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5) for examples of successful prompting patterns.
+## What is new
 
-## What's new
+- **Programmatic Tool Calling:** GPT-5.6 can write JavaScript to call eligible tools, pass results between calls, and process intermediate outputs in a hosted runtime. Use [Programmatic Tool Calling](https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling) for bounded, tool-heavy workflows that do not require fresh model judgment between each step.
+- **Multi-agent [beta]:** [Multi-agent](https://developers.openai.com/api/docs/guides/tools-multi-agent) lets a GPT-5.6 instance coordinate multiple subagents in parallel and synthesize their results. Similar to ultra mode in Codex, this can reduce wall-clock time and improve performance for complex tasks that divide cleanly into independent workstreams. Multi-agent is available as a beta feature in the Responses API as we iterate on developer feedback.
+- **Explicit prompt caching:** GPT-5.6 lets you mark exactly which reusable prompt prefixes OpenAI caches. You can still use automatic caching in implicit mode. OpenAI bills cache writes at 1.25× the uncached input rate, while cache reads remain discounted. Learn how to [configure prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching).
+- **Persisted reasoning:** GPT-5.6 can reuse available reasoning items across turns to improve multi-turn quality and cache efficiency. Use `reasoning.context` to select the behavior. Learn how to [preserve reasoning across calls](https://developers.openai.com/api/docs/guides/reasoning#preserve-reasoning-across-calls).
+- **Max reasoning effort:** GPT-5.6 supports `max` reasoning effort for demanding tasks that need more exploration and verification. If you currently use `xhigh`, compare both settings on representative workloads.
+- **Pro mode:** GPT-5.6 can perform more model work to improve reliability on difficult tasks and return a single final answer. Enable it with `reasoning.mode: "pro"` when quality matters more than latency and token usage. Learn how to [use pro mode](https://developers.openai.com/api/docs/guides/reasoning#reasoning-mode).
+- **Token efficiency:** GPT-5.6 reaches frontier performance with fewer output tokens.
+- **Frontend design:** GPT-5.6 creates more polished and usable websites and applications, with stronger layout, visual hierarchy, and design judgment.
+- **Intent understanding:** GPT-5.6 can better infer the user's underlying goal and intended level of work without you specifying every step. Continue to state important constraints, approval boundaries, and success criteria explicitly.
+- **Original image detail:** GPT-5.6 preserves the original dimensions of images sent with `original` or `auto` detail instead of resizing them to a patch budget or pixel-dimension limit. Large images can use more input tokens and increase latency. Learn how to [choose an image detail level](https://developers.openai.com/api/docs/guides/images-vision#choose-an-image-detail-level).
 
-- **More efficient reasoning:** GPT-5.5 reaches strong results with fewer reasoning tokens than prior models, even at the same reasoning effort. This is especially useful in complex, tool-heavy, or multi-step workflows where token savings compound.
-- **Stronger task execution with outcome-first prompts:** GPT-5.5 is better at working from a clear goal, preserving constraints, and turning product intent into concrete next steps. Describe the expected outcome, success criteria, allowed side effects, evidence rules, and output shape. Avoid step-by-step process guidance unless the exact path matters.
-- **Stronger and more precise tool use:** GPT-5.5 is especially useful on large tool surfaces, multi-step service workflows, and long-running agent tasks. It tends to be more precise in tool selection and argument use.
-- **Tone is often more polished, but can be more direct:** GPT-5.5 often produces warmer, more readable answers with less prompt scaffolding.
+## Safeguards
 
-## Behavioral changes
+When using GPT-5.6 models, users may encounter safeguards that block or refuse some requests due to real-time cyber and biology misuse classifiers that are run as model outputs are generated. Other requests may take longer because generation is paused for several seconds mid-stream while these classifiers synchronously review outputs. Safeguards may occasionally intervene on legitimate work, particularly in dual-use areas where defensive and offensive activity can initially look similar.
 
-1. **Reasoning effort now defaults to `medium`:** GPT-5.5 defaults to `medium` reasoning effort. Treat `medium` as the recommended balanced starting point for quality, reliability, latency, and cost. For latency-sensitive workflows, evaluate `low` before `none` when tool use, planning, search, or multi-step decision making still matters. Reserve `none` for latency-critical tasks that don't need reasoning or multi-chained tool calls, such as lightweight voice turns, fast information retrieval, and classification. Increase to `high` or `xhigh` only when evals show a measurable quality gain that justifies the extra latency and cost. See the [Reasoning models documentation](https://developers.openai.com/api/docs/guides/reasoning) for more details on recommended settings.
+If your application serves individual end users, send a stable, privacy-preserving `safety_identifier` with each request. See [Implement safety identifiers](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers) for guidance.
 
-   Higher reasoning effort isn't automatically better. If the task has conflicting instructions, weak stopping criteria, or open-ended tool access, higher effort can lead to overthinking, unnecessary searching, or output quality regressions. Increase effort only when evals show a measurable quality gain.
+We are continuously evolving these safeguards so that they are robust and effective in holding up to adversarial pressure, while preserving access to legitimate work such as code review, vulnerability research, patch development, debugging, security education, and defensive testing.
 
-2. **Image inputs preserve more visual detail by default:** GPT-5.5 updates the default handling for image inputs to preserve more visual detail and improve computer use performance. When `image_detail` is unset or set to `auto`, the model now uses `original` behavior, preserving images without resizing up to 10,240,000 pixels or a 6,000-pixel dimension limit. For `high`, specify the value directly; it preserves images without resizing up to 2,500,000 pixels or a 2,048-pixel dimension limit. `low` now focuses on context efficiency and resizes images above a 512-pixel dimension limit more aggressively than previous models. See the [Images and vision documentation](https://developers.openai.com/api/docs/guides/images-vision).
-
-3. **Improved instruction following:** GPT-5.5 interprets prompts in a literal and thorough manner, enabling specific, descriptive instructions when the product requires them. Define success criteria and stopping rules, especially for long-running, tool-heavy, or evidence-gathering workflows. See [Write outcome-first prompts](https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5#outcome-first-prompts-and-stopping-conditions) and [Keep the right specificity](https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5#formatting).
-
-4. **Default style is more concise and direct:** GPT-5.5 tends to be efficient, direct, and task-oriented by default. This is useful for many production workflows, but customer-facing or conversational experiences may need explicit personality, warmth, rationale, and formatting guidance. Use `text.verbosity` intentionally: `medium` is the default, and `low` is often a better starting point for concise responses. See the [GPT-5.5 prompting guide](https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5).
-
-5. **Coding workflows need stronger orchestration:** GPT-5.5 is better suited to complex coding tasks that require planning, tool use, codebase navigation, verification, and multi-step execution. For coding agents, be explicit about reuse, subagent delegation, test expectations, acceptance criteria, and when to continue versus ask for help.
+<div id="migrate-to-gpt-56" aria-hidden="true"></div>
 
 ## Migration quickstart
 
-### Automated migration with Codex
+### Migrate with Codex
 
-Codex can apply the recommended changes in this guide with the [OpenAI Docs Skill](https://github.com/openai/skills/tree/main/skills/.curated/openai-docs).
+Codex can apply the recommended changes in this guide with the [OpenAI Docs skill](https://github.com/openai/skills/tree/main/skills/.curated/openai-docs).
 
 ```text
-$openai-docs migrate this project to gpt-5.5
+$openai-docs migrate this project to the GPT-5.6 model family
 ```
 
 To use this skill in other coding agents, download it from the [OpenAI skills repository](https://github.com/openai/skills/tree/main/skills/.curated/openai-docs).
 
-### API and model parameters
+### Update API and model parameters
 
-- Update the model slug to `gpt-5.5`.
-- Use the Responses API for any reasoning, tool-calling, or multi-turn use case.
-- Tune `reasoning.effort`. Use `low` for efficient reasoning, `medium` for a balanced point on the latency/performance curve, `high` for complex agentic tasks that require hard reasoning and where latency matters less, and `xhigh` for the hardest asynchronous agentic tasks or evals that test the bounds of model intelligence. See the [Reasoning models documentation](https://developers.openai.com/api/docs/guides/reasoning).
-- To configure for more concise responses, set `text.verbosity` to `low`. On GPT-5.5, this will result in proportionally more concise responses than `low` verbosity with GPT-5.4.
-- For tool-heavy or long-running workflows, verify that your application handles `phase`, preambles, and assistant-item replay correctly.
-- Benchmark against other models on accuracy, token consumption, and end-to-end latency.
+- Choose the target model for the workload. Use `gpt-5.6-sol` for frontier capability, `gpt-5.6-terra` for a balance of intelligence and cost, or `gpt-5.6-luna` for efficient, high-volume workloads. The `gpt-5.6` alias routes requests to `gpt-5.6-sol`.
+- Use the [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses) for reasoning, tool-calling, and multi-turn workflows.
+- Set `reasoning.effort` intentionally. GPT-5.6 supports `none`, `low`, `medium`, `high`, `xhigh`, and `max`.
+  - If you are migrating from GPT-5.5 or GPT-5.4, preserve your current reasoning effort as the baseline, then compare one level lower.
+  - If you use `none`, keep it as your latency baseline and also test `low` when the workflow benefits from reasoning or tool use.
+  - Use `medium` as a balanced starting point and `low` for latency-sensitive workloads.
+  - Use `high` or `xhigh` when more reasoning produces a measured quality gain.
+  - Reserve `max` for the hardest quality-first workloads. Compare `max` and `xhigh` to find the best quality, latency, and cost tradeoff for your use case.
+- To use pro mode, keep your selected GPT-5.6 model and set `reasoning.mode` to `pro` in the Responses API; do not switch to a separate Pro model slug. Choose `reasoning.effort` independently. If you omit it, GPT-5.6 defaults to `medium` in both standard and pro modes. See [reasoning mode](https://developers.openai.com/api/docs/guides/reasoning#reasoning-mode) for a request example and billing details.
+- Configure persisted reasoning based on how much prior reasoning is still relevant.
+  - Omit `reasoning.context` or set it to `auto` to use the model's default. Check the response's `reasoning.context` field to confirm the effective mode.
+  - Set `reasoning.context` to `all_turns` when the task's goals, assumptions, and priorities stay stable across turns.
+  - With `all_turns`, continue with `previous_response_id` to make reasoning from earlier responses available to the model.
+  - When managing history manually, preserve and resend previous user inputs and every response output item. For `store: false` or Zero Data Retention, add `include: ["reasoning.encrypted_content"]` and replay the returned encrypted reasoning items.
+  - Set `reasoning.context` to `current_turn` when earlier reasoning is no longer relevant.
+- Review prompt caching. You do not need to change code to keep using implicit caching. Because GPT-5.6 cache writes cost 1.25× the uncached input rate, track `cached_tokens` and `cache_write_tokens` to understand net cost. Use explicit breakpoints or `prompt_cache_options.mode: "explicit"` to avoid unnecessary writes, and replace `prompt_cache_retention` with `prompt_cache_options.ttl`.
+- To use Programmatic Tool Calling, add the `programmatic_tool_calling` tool and opt eligible tools in with `allowed_callers`. Update your application to handle `program` items, program-issued function calls, and `program_output` items while preserving each call's `call_id` and `caller` linkage. See the [Programmatic Tool Calling guide](https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling) for request and continuation examples.
+- Benchmark the migrated workflow on representative tasks. Compare task success, final-answer completeness, required evidence, total tokens, latency, and cost. Fewer calls, turns, or intermediate outputs are improvements only when the final user-visible answer still meets the required quality bar.
 
-### Prompting
+## Prompting best practices
 
-- State the expected outcome and success criteria.
-- Reduce or remove detailed step-by-step process guidance. Let GPT-5.5 choose the path unless the product requires that path.
-- Remove output schema definitions from the prompt where possible. Use [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs) instead.
-- Optimize your prompt for caching: [static parts first, dynamic parts last](https://developers.openai.com/api/docs/guides/prompt-caching).
-- Drop the current date. The model is already aware of the current UTC date.
-- Review and optimize your prompts based on the guidance in [Prompting GPT-5.5](https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5).
 
-## Using reasoning models
+Prompting guidance applicable to GPT-5.5 remains applicable to GPT-5.6.
 
-This guidance applies to GPT-5 series models and is worth revisiting whenever teams move workloads onto reasoning models. GPT-5.5 carries forward many capabilities that first appeared in earlier models, but they're still worth reviewing if you are moving from an earlier GPT-5 model, GPT-4.1, or a reasoning model such as o3.
+### Use shorter prompts
 
-Teams can overlook these features because they sit partly in API configuration and orchestration rather than in the prompt itself. Used together, the Responses API, reasoning controls, verbosity, structured outputs, prompt caching, tool design, hosted tools, and state management help reasoning models deliver their best intelligence, reliability, latency, and cost profile.
+In internal evaluations, replacing long, explicit system prompts with minimal prompts improved scores by roughly 10–15%, while reducing total tokens by 41–66% and cost by 33–67%.
 
-- **Responses API:** GPT-5.5 works best in the [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses). Use `previous_response_id` for multi-turn state handling. For stateless or Zero Data Retention flows, pass back the relevant returned output items each turn. See [Passing context from the previous response](https://developers.openai.com/api/docs/guides/conversation-state#passing-context-from-the-previous-response) for details.
-- **Reasoning effort:** Use `reasoning.effort` to choose between `low`, `medium`, `high`, or `xhigh`. The default is `medium`, but many workloads will perform well with `low`. Reserve `none` for use cases where low latency is more important than intelligence. See [Reasoning Models](https://developers.openai.com/api/docs/guides/reasoning) for detailed recommendations.
-- **Verbosity:** Use `text.verbosity` to control output length. Treat final answer length as separate from reasoning quality; specify word budgets, section counts, table widths, or JSON-only output where needed.
-- **Structured Outputs:** Avoid describing the expected output schema in the prompt. Use [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs) for automatic validation and increased accuracy.
-- **Prompt caching:** [Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching) works automatically for eligible long prompts and can reduce latency and input-token cost. To maximize cache hits, keep stable content at the beginning of the request. Put dynamic user-specific context near the end. For repeated traffic with common prefixes, use `prompt_cache_key` consistently and track `usage.prompt_tokens_details.cached_tokens`.
-- **Tool calling:** GPT-5.5 supports the same tool-calling patterns as GPT-5.4, including function tools and tool-heavy agent workflows. Put most tool-specific guidance in the tool descriptions themselves: what the tool does, when to use it, required inputs, side effects, retry safety, and common error modes. Add tool-specific context to system instructions only when it applies across tools or materially changes the agent's operating policy.
-- **Hosted tools and tool search:** Prefer [OpenAI-hosted tools](https://developers.openai.com/api/docs/guides/tools) where they fit the workflow, such as web search, file search, code interpreter, image generation, and computer use. Hosted tools reduce custom orchestration burden and keep common tool patterns aligned with the Responses API and Agents SDK. Use custom function tools when you need to call your own systems, enforce domain-specific side effects, or expose internal business workflows. For large tool catalogs, consider using [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search) to defer tool definitions and load only the relevant subset.
-- **Tool preambles:** Preambles can improve chat UX because the user sees an initial, useful status update before the model generates the final response. They also make tool use easier to follow: the model can state what it's about to check or do, then continue from that same assistant state after tool results arrive.
-- **`phase` handling:** If your application manually manages Responses state by passing output items back each turn instead of using `previous_response_id`, preserve the `phase` parameter on returned assistant output items and pass it back unchanged. This is especially important when using reasoning effort, preambles, or repeated tool calls. See [Phase parameter](https://developers.openai.com/api/docs/guides/reasoning#phase-parameter).
-- **Compaction:** For long-running agents, use [conversation/state compaction](https://developers.openai.com/api/docs/guides/compaction) intentionally. Preserve completed actions, active assumptions, IDs, tool outcomes, unresolved blockers, and the next concrete goal.
-- **Agents SDK:** For new agentic systems, use the latest [Agents SDK](https://developers.openai.com/api/docs/guides/agents) patterns for tool orchestration, tracing, handoffs, and state management rather than rebuilding orchestration from scratch.
-- **Current date:** GPT-5.5 is aware of the current date in UTC. You don't need to add the current date to system instructions. Add explicit date or timezone context only when the application needs a business-specific timezone, policy-effective date, user-local date, or other non-UTC reference point.
+Removing redundant instructions and examples and simplifying tool descriptions produced clearer efficiency gains than adding model-specific guidance. Heavier prompts tended to encourage extra exploration, repeated validation, and larger accumulated context.
+
+Over time, we have found that many older prompt instructions that have accumulated in harnesses have become default model behavior. Focusing on only the behavior the model does not perform naturally produces the largest gains.
+
+- Start with the smallest prompt and tool set that reliably completes the task. Add instructions, tools, or examples only when evaluations reveal a specific gap.
+- Expose only task-relevant tools, and keep tool descriptions concise and precise. Large tool sets and verbose definitions increase starting context and can make tool selection less consistent.
+- Use examples and style guidance sparingly. Keep frontend, formatting, or stylistic instructions only for product-specific requirements, and avoid repeated phrasing or “X, not Y” patterns the model may mirror.
+- Monitor both starting and accumulated context. Heavy prompts and stale context can encourage unnecessary exploration and repeated validation while increasing latency and cost.
+
+### Define autonomy and permissions clearly
+
+GPT-5.6 can be proactive and persistent. Define what level of action each request authorizes.
+
+A compact policy is usually sufficient:
+
+```text
+For requests to answer, explain, review, diagnose, or plan, inspect the relevant
+materials and report the result. Do not implement changes unless the request also
+asks for them.
+
+For requests to change, build, or fix, make the requested in-scope local changes
+and run relevant non-destructive validation without asking first.
+
+Require confirmation for external writes, destructive actions, purchases, or a
+material expansion of scope.
+```
+
+Specify which local actions are safe without approval, such as reading files, inspecting logs, searching, editing in-scope code, or running non-destructive tests.
+
+Avoid repeating “ask first,” “do not mutate,” or “wait for approval” throughout the prompt. Repetition can cause unnecessary permission checks even for safe, expected actions.
+
+### Personality and style
+
+#### Response length
+
+On average, GPT-5.6 responses are shorter than responses from recent models:
+
+- Fewer generic introductions
+- Fewer speculative branches
+- Shorter lists
+- Less repetition between answer and rationale
+- More likely to ask one targeted question instead of providing a large placeholder framework
+
+For example, when asked to investigate churn without access to data, GPT-5.5 listed several possible datasets and business-context inputs. GPT-5.6 asked for a dashboard export or table access, listed the minimum useful fields, and described the analysis it would perform.
+
+#### Avoid generic brevity instructions
+
+GPT-5.6 is more sensitive than GPT-5.5 to instructions such as “Be concise,” “Keep it short,” or “Use minimal text.”
+
+GPT-5.6 is already biased toward compression. An instruction such as “Be concise. Use minimal text.” does more than remove filler—it can change how the model prioritizes the task. GPT-5.6 may decide that a shorter substitute is preferable to producing the full requested artifact.
+
+Instead of asking for the shortest possible answer, replace brevity instructions with prioritization:
+
+```text
+Lead with the conclusion. Include the evidence needed to support it, any material
+caveat, and the next action. Omit secondary detail and repetition.
+
+Keep all required facts, decisions, caveats, and next steps. Trim introductions,
+repetition, generic reassurance, and optional background first.
+```
+
+This preserves useful concision without encouraging the model to remove required content.
+
+#### Keep structure guidance lightweight
+
+GPT-5.6 benefits from a small amount of task-specific structure. Give GPT-5.6 a lightweight outline, not a global response template. Add narrow constraints only if evaluations prove the requirement.
+
+#### Control warmth
+
+GPT-5.6 does not become meaningfully better when prompted to be broadly friendlier or more empathetic. Instead of generic instructions such as “Be friendly and warm,” use concrete guidance:
+
+```text
+Be direct and tactful. Acknowledge friction specifically when relevant. Avoid
+canned reassurance and unnecessary sign-offs.
+```
+
+### Pro mode
+
+#### Choose pro mode when quality matters most
+
+Pro mode is a Responses API execution mode that applies more model work to a request before returning a single final answer. It can improve reliability on difficult tasks, but it increases latency and aggregates the tokens from that work in reported usage. Those tokens are billed at the selected model's standard token rates.
+
+Use pro mode when a marginal quality improvement materially affects the outcome and the task is difficult enough to benefit, such as complex optimization, high-value coding or review, or deep analysis with clear evaluation criteria. Prefer standard mode for routine, latency-sensitive, or high-volume work, and whenever your evaluations do not show a meaningful gain from pro mode.
+
+Reasoning mode and reasoning effort are independent. Pro mode works with any GPT-5.6 model and its supported reasoning efforts. Start with the same model and effort as your standard-mode baseline, then compare configurations on representative tasks instead of assuming that the highest effort is always the best tradeoff.
+
+#### Prompt for the task, not the mode
+
+Enable pro mode in the API request, not in the prompt. You do not need to ask the model to “use pro mode,” “think harder,” or generate several candidate answers. Give it the same outcome-focused prompt you would use in standard mode: state the goal, relevant context, constraints, required evidence, success criteria, and output format.
+
+For example:
+
+```text
+Review this database migration plan for failure modes that could cause data loss
+or extended downtime. For each finding, cite the relevant step, estimate impact
+and likelihood, and recommend a specific mitigation. Return the five most
+important risks in severity order.
+```
+
+#### Evaluate the quality and cost tradeoff
+
+Compare standard and pro modes on the same representative tasks. Measure task success, answer completeness, required evidence, total tokens, latency, and cost. Use pro mode selectively where its quality or reliability gain justifies the additional model work.
+
+Learn more in the [reasoning mode guide](https://developers.openai.com/api/docs/guides/reasoning#reasoning-mode).
+
+### Programmatic Tool Calling
+
+#### Choose Programmatic Tool Calling by task shape
+
+Programmatic Tool Calling (PTC) works best for bounded workflows where code can process several tool results or large intermediate outputs and return a much smaller structured result. Use it for filtering, joining, ranking, deduplication, aggregation, validation, or other predictable processing.
+
+Multiple, parallel, or dependent calls alone do not justify Programmatic Tool Calling. Prefer direct, non-PTC tool calls when:
+
+- One call is sufficient
+- The intermediate outputs are already small
+- Each result may change the model’s next decision
+- An action requires approval
+- The final output must preserve citations or native artifacts
+
+#### Make routing instructions task-specific
+
+Do not rely on tool availability or generic instructions such as “use Programmatic Tool Calling efficiently” to produce the right route. When both direct and programmatic calling are available, explicitly state:
+
+- Which bounded stage should use Programmatic Tool Calling.
+- Which tools it may call.
+- The exact output schema and required evidence.
+- Concurrency, retry, and stopping limits.
+- Which work should remain direct.
+
+Tool descriptions should document their expected return fields, types, and error behavior. If the model cannot determine the return shape before writing the program, prefer direct tool calling so it can inspect the result before deciding how to use it.
+
+If both routes are needed, define one clear handoff and tell the model not to switch routes or repeat completed work.
+
+For example:
+
+```text
+<tool_orchestration>
+Use Programmatic Tool Calling for [bounded stage] using only [eligible tools].
+Run independent calls concurrently when safe. Use only documented tool input
+and output fields.
+
+Process and reduce the intermediate results, then emit exactly [output schema],
+including the evidence needed for the final answer.
+
+Stop when [condition] is met. Retry transient failures at most [R] times.
+Do not repeat completed calls or perform side-effecting actions. If a required
+result is still missing, return a clear structured failure.
+
+Use direct tool calls for [semantic judgment, approval, or final validation].
+</tool_orchestration>
+```
+
+#### Evaluate the final answer
+
+Evaluate the final user-visible answer, not only the program result. Define the required quality bar and primary efficiency goal in advance. Lower token usage, latency, calls, or turns are improvements only when the answer meets that quality bar; any accepted quality tradeoff should be explicit.
+
+Learn more in the [Programmatic Tool Calling guide](https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling).
+

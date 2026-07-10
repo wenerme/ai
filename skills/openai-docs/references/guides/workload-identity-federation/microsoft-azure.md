@@ -176,7 +176,7 @@ const client = new OpenAI({
 });
 
 const response = await client.responses.create({
-  model: "gpt-5.4-mini",
+  model: "gpt-5.6-terra",
   input: "Say hello from Azure managed identity workload identity federation.",
 });
 
@@ -232,7 +232,7 @@ client = OpenAI(
 )
 
 response = client.responses.create(
-    model="gpt-5.4-mini",
+    model="gpt-5.6-terra",
     input="Say hello from Azure managed identity workload identity federation.",
 )
 
@@ -541,7 +541,7 @@ workload_identity = OpenAI::Auth::WorkloadIdentity.new(
 client = OpenAI::Client.new(workload_identity: workload_identity)
 
 response = client.responses.create(
-  model: "gpt-5.4-mini",
+  model: "gpt-5.6-terra",
   input: "Say hello from Azure managed identity workload identity federation."
 )
 
@@ -741,7 +741,7 @@ const client = new OpenAI({
 });
 
 const response = await client.responses.create({
-  model: "gpt-5.4-mini",
+  model: "gpt-5.6-terra",
   input: "Say hello from AKS workload identity federation.",
 });
 
@@ -777,7 +777,7 @@ client = OpenAI(
 )
 
 response = client.responses.create(
-    model="gpt-5.4-mini",
+    model="gpt-5.6-terra",
     input="Say hello from AKS workload identity federation.",
 )
 
@@ -987,7 +987,7 @@ workload_identity = OpenAI::Auth::WorkloadIdentity.new(
 client = OpenAI::Client.new(workload_identity: workload_identity)
 
 response = client.responses.create(
-  model: "gpt-5.4-mini",
+  model: "gpt-5.6-terra",
   input: "Say hello from AKS workload identity federation."
 )
 

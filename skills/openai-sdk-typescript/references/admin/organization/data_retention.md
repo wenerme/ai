@@ -6,7 +6,7 @@
 
 **get** `/organization/data_retention`
 
-Retrieves organization data retention controls.
+Retrieve organization data retention
 
 ### Returns
 
@@ -61,7 +61,7 @@ console.log(organizationDataRetention.object);
 
 **post** `/organization/data_retention`
 
-Updates organization data retention controls.
+Update organization data retention
 
 ### Parameters
 

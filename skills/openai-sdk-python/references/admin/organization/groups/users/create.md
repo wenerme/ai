@@ -4,7 +4,7 @@
 
 **post** `/organization/groups/{group_id}/users`
 
-Adds a user to a group.
+Add group user
 
 ### Parameters
 

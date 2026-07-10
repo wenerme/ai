@@ -2,7 +2,7 @@
 
 **get** `/organization/groups/{group_id}`
 
-Retrieves a group.
+Retrieve group
 
 ### Path Parameters
 

@@ -223,7 +223,7 @@ If the origin expects HTTPS but the tunnel route specifies `http://`, or vice ve
 error="net/http: HTTP/1.x transport connection broken: malformed HTTP response \"\x15\x03\x01\x00\x02\x02\""
 ```
 
-To resolve, update the service URL in your tunnel route to match the [protocol](https://developers.cloudflare.com/tunnel/routing/#supported-protocols) your origin expects. For example, change `http://localhost:8080` to `https://localhost:8080`. If you are using a locally-managed tunnel, update your ingress rule in the [configuration file](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/configuration-file/).
+To resolve, update the service URL in your tunnel route to match the [protocol](https://developers.cloudflare.com/tunnel/routing/#supported-protocols) your origin expects. For example, change `http://localhost:8080` to `https://localhost:8080`. If you are using a locally-managed tunnel, update your ingress rule in the [configuration file](https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/).
 
 #### Origin service URL points to the wrong port
 
@@ -241,7 +241,7 @@ This commonly occurs when the origin uses a self-signed certificate or when an S
 
 To resolve, use one of the following approaches:
 
-* Set [originServerName](https://developers.cloudflare.com/tunnel/configuration/#originservername) to the hostname on the origin certificate in your tunnel route. If you are using a locally-managed tunnel, here is an example of a [configuration file](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/configuration-file/):
+* Set [originServerName](https://developers.cloudflare.com/tunnel/configuration/#originservername) to the hostname on the origin certificate in your tunnel route. If you are using a locally-managed tunnel, here is an example of a [configuration file](https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/):
 ```yml
 ingress:
   - hostname: app.example.com
@@ -365,6 +365,6 @@ cloudflared tunnel --loglevel debug --logfile /var/log/cloudflared/cloudflared.l
 Attach the debug logs when contacting support — refer to the checklist above for the full list of information to include.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Docs","description":"Resolve common Cloudflare Tunnel connection and configuration issues.","url":"https://developers.cloudflare.com/tunnel/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Docs","description":"Resolve common Cloudflare Tunnel connection and configuration issues.","url":"https://developers.cloudflare.com/tunnel/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/troubleshooting/","name":"Troubleshooting"}}]}
 ```

@@ -124,8 +124,8 @@ After a `ReadableStream<Uint8Array>` object has been persisted within a step, it
 
 :::
 
-* [  JavaScript ](#tab-panel-13416)
-* [  TypeScript ](#tab-panel-13417)
+* [  JavaScript ](#tab-panel-13645)
+* [  TypeScript ](#tab-panel-13646)
 
 **JavaScript**
 
@@ -196,8 +196,8 @@ More information about the limits imposed on Workflow can be found in the [Workf
 
 * `step.waitForEvent(name: string, options: ): Promise<void>`\- `name` \- the name of the step. - `options` \- an object with properties for `type` (up to 100 characters [1](#user-content-fn-1)), which determines which event type this `waitForEvent` call will match on when calling `instance.sendEvent`, and an optional `timeout` property, which defines how long the `waitForEvent` call will block for before throwing a timeout exception. The default timeout is 24 hours.
 
-* [  JavaScript ](#tab-panel-13412)
-* [  TypeScript ](#tab-panel-13413)
+* [  JavaScript ](#tab-panel-13641)
+* [  TypeScript ](#tab-panel-13642)
 
 **JavaScript**
 
@@ -236,10 +236,21 @@ Review the documentation on [events and parameters](https://developers.cloudflar
 **TypeScript**
 
 ```ts
+export type WorkflowDynamicDelayContext = {
+  ctx: WorkflowStepContext;
+  error: Error;
+};
+
+
+export type WorkflowDelayFunction = (
+  input: WorkflowDynamicDelayContext,
+) => string | number | Promise<string | number>;
+
+
 export type WorkflowStepConfig = {
   retries?: {
     limit: number;
-    delay: string | number;
+    delay: string | number | WorkflowDelayFunction;
     backoff?: WorkflowBackoff;
   };
   timeout?: string | number;
@@ -247,6 +258,7 @@ export type WorkflowStepConfig = {
 ```
 
 * A `WorkflowStepConfig` is an optional argument to the `do` method of a `WorkflowStep` and defines properties that allow you to configure the retry behaviour of that step.
+* Set `retries.delay` to a fixed duration, or pass a `WorkflowDelayFunction` to calculate the next retry delay from the current step context and thrown error.
 
 Refer to the [documentation on sleeping and retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/) to learn more about how Workflows are retried.
 
@@ -283,8 +295,8 @@ type WorkflowStepRollbackOptions<T = unknown> = {
 * `rollback` receives the original step context, the error that caused the Workflow to fail, and the step output returned by the forward step.
 * `rollbackConfig` applies retry and timeout settings to the rollback handler itself.
 
-* [  JavaScript ](#tab-panel-13420)
-* [  TypeScript ](#tab-panel-13421)
+* [  JavaScript ](#tab-panel-13649)
+* [  TypeScript ](#tab-panel-13650)
 
 **JavaScript**
 
@@ -377,8 +389,8 @@ Refer to the [step context documentation](https://developers.cloudflare.com/work
 
 Each workflow on Workers Paid supports 10,000 steps by default. You can increase this up to 25,000 steps by configuring `steps` within the `limits` property of your Workflow definition in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-13408)
-* [  wrangler.toml ](#tab-panel-13409)
+* [  wrangler.jsonc ](#tab-panel-13637)
+* [  wrangler.toml ](#tab-panel-13638)
 
 **JSONC**
 
@@ -429,8 +441,8 @@ You can bind to a Workflow by defining a `[[workflows]]` binding within your Wra
 
 For example, to bind to a Workflow called `workflows-starter` and to make it available on the `MY_WORKFLOW` variable to your Worker script, you would configure the following fields within the `[[workflows]]` binding definition:
 
-* [  wrangler.jsonc ](#tab-panel-13410)
-* [  wrangler.toml ](#tab-panel-13411)
+* [  wrangler.jsonc ](#tab-panel-13639)
+* [  wrangler.toml ](#tab-panel-13640)
 
 **JSONC**
 
@@ -440,7 +452,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
   "name": "workflows-starter",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-09",
   "workflows": [
     {
       // name of your workflow
@@ -461,7 +473,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 name = "workflows-starter"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-09"
 
 
 [[workflows]]
@@ -482,8 +494,8 @@ You can also bind to a Workflow that is defined in a different Worker script fro
 
 For example, if your Workflow is defined in a Worker script named `billing-worker`, but you are calling it from your `web-api-worker` script, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-13414)
-* [  wrangler.toml ](#tab-panel-13415)
+* [  wrangler.jsonc ](#tab-panel-13643)
+* [  wrangler.toml ](#tab-panel-13644)
 
 **JSONC**
 
@@ -493,7 +505,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
   "name": "web-api-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-09",
   "workflows": [
     {
       // name of your workflow
@@ -517,7 +529,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 name = "web-api-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-09"
 
 
 [[workflows]]
@@ -858,8 +870,8 @@ Terminate a Workflow instance.
 
 Return `void` on success; throws an exception if the Workflow is not running or is an errored state.
 
-* [  JavaScript ](#tab-panel-13418)
-* [  TypeScript ](#tab-panel-13419)
+* [  JavaScript ](#tab-panel-13647)
+* [  TypeScript ](#tab-panel-13648)
 
 **JavaScript**
 
@@ -955,6 +967,6 @@ If a Workflow enters rollback, the Workers API continues to report `status: "run
 1. Match pattern: `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API · Cloudflare Workflows docs","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API · Cloudflare Workflows docs","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/workers-api/","name":"Workers API"}}]}
 ```

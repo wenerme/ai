@@ -6,7 +6,7 @@
 
 **get** `/organization/spend_alerts`
 
-Lists organization spend alerts.
+List organization spend alerts
 
 ### Parameters
 
@@ -127,7 +127,7 @@ print(page.id)
 
 **post** `/organization/spend_alerts`
 
-Creates an organization spend alert.
+Create organization spend alert
 
 ### Parameters
 
@@ -261,7 +261,7 @@ print(organization_spend_alert.id)
 
 **get** `/organization/spend_alerts/{alert_id}`
 
-Retrieves an organization spend alert.
+Retrieve organization spend alert
 
 ### Parameters
 
@@ -357,7 +357,7 @@ print(organization_spend_alert.id)
 
 **post** `/organization/spend_alerts/{alert_id}`
 
-Updates an organization spend alert.
+Update organization spend alert
 
 ### Parameters
 
@@ -494,7 +494,7 @@ print(organization_spend_alert.id)
 
 **delete** `/organization/spend_alerts/{alert_id}`
 
-Deletes an organization spend alert.
+Delete organization spend alert
 
 ### Parameters
 

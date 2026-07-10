@@ -2,7 +2,7 @@
 
 **get** `/organization/data_retention`
 
-Retrieves organization data retention controls.
+Retrieve organization data retention
 
 ### Returns
 

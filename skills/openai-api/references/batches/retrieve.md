@@ -2,7 +2,7 @@
 
 **get** `/batches/{batch_id}`
 
-Retrieves a batch.
+Retrieve batch
 
 ### Path Parameters
 
@@ -74,7 +74,7 @@ Retrieves a batch.
 
   - `errors: optional object { data, object }`
 
-    - `data: optional array of object { code, line, message, param }`
+    - `data: optional array of BatchError`
 
       - `code: optional string`
 
@@ -130,13 +130,13 @@ Retrieves a batch.
     Model ID used to process the batch, like `gpt-5-2025-08-07`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model
-    guide](/docs/models) to browse and compare available models.
+    guide](https://platform.openai.com/docs/models) to browse and compare available models.
 
   - `output_file_id: optional string`
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts: optional object { completed, failed, total }`
+  - `request_counts: optional BatchRequestCounts`
 
     The request counts for different statuses within the batch.
 
@@ -169,7 +169,7 @@ Retrieves a batch.
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache. [More on
-        prompt caching](/docs/guides/prompt-caching).
+        prompt caching](https://platform.openai.com/docs/guides/prompt-caching).
 
     - `output_tokens: number`
 

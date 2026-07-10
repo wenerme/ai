@@ -2,7 +2,7 @@
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 
-Lists the project roles assigned to a group within a project.
+List project group role assignments
 
 ### Path Parameters
 

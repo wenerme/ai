@@ -4,7 +4,7 @@
 
 **get** `/organization/groups/{group_id}/roles/{role_id}`
 
-Retrieves an organization role assigned to a group.
+Retrieve group organization role
 
 ### Parameters
 

@@ -6,7 +6,7 @@
 
 **get** `/organization/admin_api_keys`
 
-List organization API keys
+List all organization and project API keys.
 
 ### Parameters
 
@@ -141,7 +141,7 @@ for await (const adminAPIKey of client.admin.organization.adminAPIKeys.list()) {
 
 **post** `/organization/admin_api_keys`
 
-Create an organization admin API key
+Create admin API key
 
 ### Parameters
 
@@ -206,7 +206,7 @@ console.log(adminAPIKey);
 
 **get** `/organization/admin_api_keys/{key_id}`
 
-Retrieve a single organization API key
+Retrieve admin API key
 
 ### Parameters
 
@@ -318,7 +318,7 @@ console.log(adminAPIKey.id);
 
 **delete** `/organization/admin_api_keys/{key_id}`
 
-Delete an organization admin API key
+Delete admin API key
 
 ### Parameters
 

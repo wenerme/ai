@@ -472,6 +472,8 @@ components:
         prompt_cache_key:
           nullable: true
           type: string
+        prompt_cache_options:
+          $ref: '#/components/schemas/PromptCacheOptions'
         provider:
           $ref: '#/components/schemas/ProviderPreferences'
         reasoning:
@@ -1090,6 +1092,7 @@ components:
               - $ref: '#/components/schemas/CustomToolCallOutputItem'
               - $ref: '#/components/schemas/CompactionItem'
               - $ref: '#/components/schemas/ItemReferenceItem'
+              - $ref: '#/components/schemas/AdditionalToolsItem'
           type: array
       description: Input for a response request - can be a string or array of items
       example:
@@ -1516,6 +1519,27 @@ components:
           type: object
       required:
         - id
+      type: object
+    PromptCacheOptions:
+      description: >-
+        Request-level prompt-cache controls. `mode: "explicit"` disables
+        OpenAI-managed breakpoints so only blocks marked with
+        `prompt_cache_breakpoint` are cached. Only supported by OpenAI GPT-5.6
+        and newer.
+      example:
+        mode: explicit
+        ttl: 30m
+      nullable: true
+      properties:
+        mode:
+          enum:
+            - explicit
+          type: string
+        ttl:
+          nullable: true
+          type: string
+      required:
+        - mode
       type: object
     ProviderPreferences:
       additionalProperties: false
@@ -2177,9 +2201,6 @@ components:
               type: string
           type: object
         model:
-          enum:
-            - gpt-image-1
-            - gpt-image-1-mini
           type: string
         moderation:
           enum:
@@ -2204,11 +2225,6 @@ components:
             - auto
           type: string
         size:
-          enum:
-            - 1024x1024
-            - 1024x1536
-            - 1536x1024
-            - auto
           type: string
         type:
           enum:
@@ -4994,6 +5010,102 @@ components:
         - type
         - id
       type: object
+    AdditionalToolsItem:
+      description: Additional tools made available to the model at this point in the input
+      example:
+        role: developer
+        tools:
+          - name: get_weather
+            parameters:
+              properties:
+                location:
+                  type: string
+              type: object
+            type: function
+        type: additional_tools
+      properties:
+        id:
+          nullable: true
+          type: string
+        role:
+          enum:
+            - unknown
+            - user
+            - assistant
+            - system
+            - critic
+            - discriminator
+            - developer
+            - tool
+          type: string
+        tools:
+          items:
+            anyOf:
+              - allOf:
+                  - $ref: '#/components/schemas/FunctionTool'
+                  - properties: {}
+                    type: object
+                description: Function tool definition
+                example:
+                  description: Get the current weather in a location
+                  name: get_weather
+                  parameters:
+                    properties:
+                      location:
+                        description: The city and state
+                        type: string
+                      unit:
+                        enum:
+                          - celsius
+                          - fahrenheit
+                        type: string
+                    required:
+                      - location
+                    type: object
+                  type: function
+              - $ref: '#/components/schemas/Preview_WebSearchServerTool'
+              - $ref: '#/components/schemas/Preview_20250311_WebSearchServerTool'
+              - $ref: '#/components/schemas/Legacy_WebSearchServerTool'
+              - $ref: '#/components/schemas/WebSearchServerTool'
+              - $ref: '#/components/schemas/FileSearchServerTool'
+              - $ref: '#/components/schemas/ComputerUseServerTool'
+              - $ref: '#/components/schemas/CodeInterpreterServerTool'
+              - $ref: '#/components/schemas/McpServerTool'
+              - $ref: '#/components/schemas/ImageGenerationServerTool'
+              - $ref: '#/components/schemas/CodexLocalShellTool'
+              - $ref: '#/components/schemas/ShellServerTool'
+              - $ref: '#/components/schemas/ApplyPatchServerTool'
+              - $ref: '#/components/schemas/CustomTool'
+              - $ref: '#/components/schemas/AdvisorServerTool_OpenRouter'
+              - $ref: '#/components/schemas/SubagentServerTool_OpenRouter'
+              - $ref: '#/components/schemas/DatetimeServerTool'
+              - $ref: '#/components/schemas/FilesServerTool'
+              - $ref: '#/components/schemas/FusionServerTool_OpenRouter'
+              - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
+              - $ref: '#/components/schemas/ChatSearchModelsServerTool'
+              - $ref: '#/components/schemas/WebFetchServerTool'
+              - $ref: '#/components/schemas/WebSearchServerTool_OpenRouter'
+              - $ref: '#/components/schemas/ApplyPatchServerTool_OpenRouter'
+              - $ref: '#/components/schemas/BashServerTool'
+              - $ref: '#/components/schemas/ShellServerTool_OpenRouter'
+              - additionalProperties:
+                  nullable: true
+                properties:
+                  type:
+                    type: string
+                required:
+                  - type
+                type: object
+          type: array
+        type:
+          enum:
+            - additional_tools
+          type: string
+      required:
+        - type
+        - role
+        - tools
+      type: object
     ContextCompressionEngine:
       description: The compression engine to use. Defaults to "middle-out".
       enum:
@@ -5051,6 +5163,8 @@ components:
         text: Hello, how can I help you?
         type: input_text
       properties:
+        prompt_cache_breakpoint:
+          $ref: '#/components/schemas/PromptCacheBreakpoint'
         text:
           type: string
         type:
@@ -5289,8 +5403,12 @@ components:
         summary: auto
       nullable: true
       properties:
+        context:
+          $ref: '#/components/schemas/ReasoningContext'
         effort:
           $ref: '#/components/schemas/ReasoningEffort'
+        mode:
+          $ref: '#/components/schemas/ReasoningMode'
         summary:
           $ref: '#/components/schemas/ReasoningSummaryVerbosity'
       type: object
@@ -5926,6 +6044,7 @@ components:
             - empty_image_file
             - failed_to_download_image
             - image_file_not_found
+            - bio_policy
           type: string
         message:
           type: string
@@ -6404,6 +6523,9 @@ components:
           type: integer
         input_tokens_details:
           properties:
+            cache_write_tokens:
+              nullable: true
+              type: integer
             cached_tokens:
               type: integer
           required:
@@ -8005,6 +8127,22 @@ components:
         The engine to use for parsing PDF files. "pdf-text" is deprecated and
         automatically redirected to "cloudflare-ai".
       example: cloudflare-ai
+    PromptCacheBreakpoint:
+      description: >-
+        Marks an explicit prompt-cache boundary on this content block.
+        Everything through the block carrying this marker is part of the
+        candidate cached prefix. Only supported by OpenAI GPT-5.6 and newer.
+      example:
+        mode: explicit
+      nullable: true
+      properties:
+        mode:
+          enum:
+            - explicit
+          type: string
+      required:
+        - mode
+      type: object
     PercentileLatencyCutoffs:
       description: >-
         Percentile-based latency cutoffs. All specified cutoffs must be met for
@@ -8063,6 +8201,20 @@ components:
           nullable: true
           type: number
       type: object
+    ReasoningContext:
+      description: >-
+        Controls which reasoning is available to the model. `auto` uses the
+        model default (same as omitting); `all_turns` includes reasoning from
+        earlier turns passed in input; `current_turn` limits to the current turn
+        only. Only supported by OpenAI GPT-5.6 and newer.
+      enum:
+        - auto
+        - all_turns
+        - current_turn
+        - null
+      example: all_turns
+      nullable: true
+      type: string
     ReasoningEffort:
       enum:
         - max
@@ -8074,6 +8226,18 @@ components:
         - none
         - null
       example: medium
+      nullable: true
+      type: string
+    ReasoningMode:
+      description: >-
+        Selects the reasoning mode. `standard` is the default; `pro` engages
+        deeper reasoning on models that support it, billed at standard token
+        rates. Only supported by OpenAI GPT-5.6 and newer.
+      enum:
+        - standard
+        - pro
+        - null
+      example: standard
       nullable: true
       type: string
     ReasoningSummaryVerbosity:

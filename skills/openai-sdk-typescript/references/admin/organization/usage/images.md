@@ -4,7 +4,7 @@
 
 **get** `/organization/usage/images`
 
-Get images usage details for the organization.
+Images
 
 ### Parameters
 

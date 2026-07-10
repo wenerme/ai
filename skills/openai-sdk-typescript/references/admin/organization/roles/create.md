@@ -4,7 +4,7 @@
 
 **post** `/organization/roles`
 
-Creates a custom role for the organization.
+Create organization role
 
 ### Parameters
 

@@ -4,7 +4,7 @@
 
 **get** `/organization/usage/audio_transcriptions`
 
-Get audio transcriptions usage details for the organization.
+Audio transcriptions
 
 ### Parameters
 

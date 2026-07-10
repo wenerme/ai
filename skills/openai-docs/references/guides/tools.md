@@ -1,6 +1,6 @@
 # Using tools
 
-When generating model responses or building agents, you can extend capabilities using built‑in tools, function calling, tool search, and remote MCP servers. These enable the model to search the web, retrieve from your files, load deferred tool definitions at runtime, call your own functions, or access third‑party services. Only `gpt-5.4` and later models support `tool_search`.
+When generating model responses or building agents, you can extend capabilities using built‑in tools, function calling, Programmatic Tool Calling, tool search, and remote MCP servers. These enable the model to search the web, retrieve from your files, load deferred tool definitions at runtime, call your own functions, compose tool calls in JavaScript, or access third‑party services. Only `gpt-5.4` and later models support `tool_search`.
 
 
 
@@ -16,7 +16,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="What is deep research by OpenAI?",
     tools=[{
         "type": "file_search",
@@ -31,7 +31,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     input: "What is deep research by OpenAI?",
     tools: [
         {
@@ -47,7 +47,7 @@ console.log(response);
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 ResponseCreationOptions options = new();
 options.Tools.Add(ResponseTool.CreateFileSearchTool(["<vector_store_id>"]));
@@ -109,7 +109,7 @@ crm_namespace = {
 }
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="List open orders for customer CUST-12345.",
     tools=[
         crm_namespace,
@@ -166,7 +166,7 @@ const crmNamespace = {
 };
 
 const response = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: "List open orders for customer CUST-12345.",
   // highlight-start:subtle
   tools: [crmNamespace, { type: "tool_search" }],
@@ -190,7 +190,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \ 
 -H "Authorization: Bearer $OPENAI_API_KEY" \ 
 -d '{
-  "model": "gpt-5.5",
+  "model": "gpt-5.6",
     "tools": [
       {
         "type": "mcp",
@@ -209,7 +209,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [
     {
       type: "mcp",
@@ -231,7 +231,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[
         {
             "type": "mcp",
@@ -251,7 +251,7 @@ print(resp.output_text)
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 ResponseCreationOptions options = new();
 options.Tools.Add(ResponseTool.CreateMcpTool(
@@ -368,6 +368,16 @@ Here's an overview of the tools available in the OpenAI platform—select one of
       </span>
     Dynamically load relevant tools into the model’s context to optimize token
     usage.
+
+
+</a>
+
+<a href="/api/docs/guides/tools-programmatic-tool-calling">
+  
+
+<span slot="icon">
+      </span>
+    Let models compose and run JavaScript that orchestrates tool calls.
 
 
 </a>

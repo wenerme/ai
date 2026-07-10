@@ -6,7 +6,7 @@
 
 **get** `/organization/groups`
 
-Lists all groups in the organization.
+List groups
 
 ### Parameters
 
@@ -95,7 +95,7 @@ print(page.id)
 
 **post** `/organization/groups`
 
-Creates a new group in the organization.
+Create group
 
 ### Parameters
 
@@ -166,7 +166,7 @@ print(group.id)
 
 **get** `/organization/groups/{group_id}`
 
-Retrieves a group.
+Retrieve group
 
 ### Parameters
 
@@ -235,7 +235,7 @@ print(group.id)
 
 **post** `/organization/groups/{group_id}`
 
-Updates a group's information.
+Update group
 
 ### Parameters
 
@@ -300,7 +300,7 @@ print(group.id)
 
 **delete** `/organization/groups/{group_id}`
 
-Deletes a group from the organization.
+Delete group
 
 ### Parameters
 
@@ -433,7 +433,7 @@ print(group.id)
 
 **get** `/organization/groups/{group_id}/users`
 
-Lists the users assigned to a group.
+List group users
 
 ### Parameters
 
@@ -512,7 +512,7 @@ print(page.id)
 
 **post** `/organization/groups/{group_id}/users`
 
-Adds a user to a group.
+Add group user
 
 ### Parameters
 
@@ -574,7 +574,7 @@ print(user.group_id)
 
 **get** `/organization/groups/{group_id}/users/{user_id}`
 
-Retrieves a user in a group.
+Retrieve group user
 
 ### Parameters
 
@@ -651,7 +651,7 @@ print(user.id)
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
 
-Removes a user from a group.
+Remove group user
 
 ### Parameters
 
@@ -798,7 +798,7 @@ print(user.deleted)
 
 **get** `/organization/groups/{group_id}/roles`
 
-Lists the organization roles assigned to a group within the organization.
+List group organization role assignments
 
 ### Parameters
 
@@ -937,7 +937,7 @@ print(page.id)
 
 **post** `/organization/groups/{group_id}/roles`
 
-Assigns an organization role to a group within the organization.
+Assign organization role to group
 
 ### Parameters
 
@@ -1067,7 +1067,7 @@ print(role.group)
 
 **get** `/organization/groups/{group_id}/roles/{role_id}`
 
-Retrieves an organization role assigned to a group.
+Retrieve group organization role
 
 ### Parameters
 
@@ -1185,7 +1185,7 @@ print(role.id)
 
 **delete** `/organization/groups/{group_id}/roles/{role_id}`
 
-Unassigns an organization role from a group within the organization.
+Unassign organization role from group
 
 ### Parameters
 

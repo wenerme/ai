@@ -4,9 +4,7 @@
 
 **post** `/uploads/{upload_id}/cancel`
 
-Cancels the Upload. No Parts may be added after an Upload is cancelled.
-
-Returns the Upload object with status `cancelled`.
+Cancel upload
 
 ### Parameters
 

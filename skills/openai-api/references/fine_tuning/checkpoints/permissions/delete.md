@@ -2,9 +2,7 @@
 
 **delete** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions/{permission_id}`
 
-**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
-
-Organization owners can use this endpoint to delete a permission for a fine-tuned model checkpoint.
+Delete checkpoint permission
 
 ### Path Parameters
 

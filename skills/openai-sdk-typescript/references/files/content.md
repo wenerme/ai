@@ -4,7 +4,7 @@
 
 **get** `/files/{file_id}/content`
 
-Returns the contents of the specified file.
+Retrieve file content
 
 ### Parameters
 
@@ -12,7 +12,7 @@ Returns the contents of the specified file.
 
 ### Returns
 
-- `unnamed_schema_0 = Response`
+- `unnamed_schema_7 = Response`
 
 ### Example
 

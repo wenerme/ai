@@ -2,7 +2,7 @@
 
 **get** `/chatkit/threads`
 
-List ChatKit threads with optional pagination and user filters.
+List ChatKit threads
 
 ### Query Parameters
 

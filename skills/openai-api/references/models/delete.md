@@ -2,7 +2,7 @@
 
 **delete** `/models/{model}`
 
-Delete a fine-tuned model. You must have the Owner role in your organization to delete a model.
+Delete a fine-tuned model
 
 ### Path Parameters
 

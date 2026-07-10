@@ -4,10 +4,7 @@
 
 **delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Deletes an API key from the project.
-
-Returns confirmation of the key deletion, or an error if the key belonged to
-a service account.
+Delete project API key
 
 ### Parameters
 

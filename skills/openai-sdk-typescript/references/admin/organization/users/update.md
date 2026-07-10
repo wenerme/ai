@@ -4,7 +4,7 @@
 
 **post** `/organization/users/{user_id}`
 
-Modifies a user's role in the organization.
+Modify user
 
 ### Parameters
 

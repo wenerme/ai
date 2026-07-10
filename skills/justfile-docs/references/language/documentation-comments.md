@@ -40,4 +40,4 @@ Available recipes:
     test
 ```
 
-The value of `[doc]` may be a const expression<sup>master</sup>.
+The value of `[doc]` may be a const expression<sup>1.56.0</sup>.

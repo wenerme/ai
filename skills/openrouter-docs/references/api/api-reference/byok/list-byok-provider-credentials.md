@@ -220,7 +220,7 @@ paths:
               - recraft
               - reka
               - relace
-              - sakana-ai
+              - sakana
               - sambanova
               - seed
               - siliconflow
@@ -569,7 +569,7 @@ components:
         - recraft
         - reka
         - relace
-        - sakana-ai
+        - sakana
         - sambanova
         - seed
         - siliconflow

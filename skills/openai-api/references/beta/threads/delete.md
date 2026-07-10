@@ -2,7 +2,7 @@
 
 **delete** `/threads/{thread_id}`
 
-Delete a thread.
+Delete thread
 
 ### Path Parameters
 

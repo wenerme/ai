@@ -6,7 +6,7 @@
 
 **get** `/chatkit/threads/{thread_id}/items`
 
-List items that belong to a ChatKit thread.
+List ChatKit thread items
 
 ### Parameters
 
@@ -518,7 +518,7 @@ print(page)
 
 **get** `/chatkit/threads/{thread_id}`
 
-Retrieve a ChatKit thread by its identifier.
+Retrieve ChatKit thread
 
 ### Parameters
 
@@ -680,7 +680,7 @@ print(chatkit_thread.id)
 
 **delete** `/chatkit/threads/{thread_id}`
 
-Delete a ChatKit thread along with its items and stored attachments.
+Delete ChatKit thread
 
 ### Parameters
 
@@ -749,7 +749,7 @@ print(thread.id)
 
 **get** `/chatkit/threads`
 
-List ChatKit threads with optional pagination and user filters.
+List ChatKit threads
 
 ### Parameters
 

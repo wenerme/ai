@@ -2,7 +2,7 @@
 
 **get** `/organization/users/{user_id}`
 
-Retrieves a user by their identifier.
+Retrieve user
 
 ### Path Parameters
 

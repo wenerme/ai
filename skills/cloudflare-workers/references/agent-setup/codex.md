@@ -26,8 +26,8 @@ TerminalStandaloneCloudExtensionOpen Source
 
 ## Quick start
 
-* [ Terminal ](#tab-panel-5369)
-* [ Standalone ](#tab-panel-5370)
+* [ Terminal ](#tab-panel-5401)
+* [ Standalone ](#tab-panel-5402)
 
 1. **Install Codex**
 Install the Codex CLI. macOS and Linux are fully supported; use WSL2 on Windows. For Homebrew or other install methods, see the [Codex CLI setup guide ↗](https://developers.openai.com/codex/cli/).
@@ -47,7 +47,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 1. **Download Codex**

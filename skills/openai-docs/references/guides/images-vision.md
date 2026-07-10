@@ -37,7 +37,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools: [{type: "image_generation"}],
 });
@@ -61,7 +61,7 @@ import base64
 client = OpenAI() 
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -81,7 +81,7 @@ if image_data:
 
 ```cli
 openai responses create \
-  --model gpt-5.5 \
+  --model gpt-5.6 \
   --raw-output \
   --transform 'output.#(type=="image_generation_call").result' <<'YAML' | base64 --decode > cat_and_otter.png
 tools:
@@ -132,7 +132,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     input: [{
         role: "user",
         content: [
@@ -154,7 +154,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=[{
         "role": "user",
         "content": [
@@ -174,7 +174,7 @@ print(response.output_text)
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 Uri imageUrl = new("https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg");
 
@@ -193,7 +193,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "input": [
       {
         "role": "user",
@@ -211,7 +211,7 @@ curl https://api.openai.com/v1/responses \
 
 ```cli
 openai responses create \
-  --model gpt-5.5 \
+  --model gpt-5.6 \
   --raw-output \
   --transform 'output.#(type=="message").content.0.text' <<'YAML'
 input:
@@ -239,7 +239,7 @@ const imagePath = "path_to_your_image.jpg";
 const base64Image = fs.readFileSync(imagePath, "base64");
 
 const response = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     input: [
         {
             role: "user",
@@ -277,7 +277,7 @@ base64_image = encode_image(image_path)
 
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=[
         {
             "role": "user",
@@ -299,7 +299,7 @@ print(response.output_text)
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 Uri imageUrl = new("https://openai-documentation.vercel.app/images/cat_and_otter.png");
 using HttpClient http = new();
@@ -354,7 +354,7 @@ async function createFile(filePath) {
 const fileId = await createFile("path_to_your_image.jpg");
 
 const response = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: [
     {
       role: "user",
@@ -390,7 +390,7 @@ def create_file(file_path):
 file_id = create_file("path_to_your_image.jpg")
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=[{
         "role": "user",
         "content": [
@@ -411,7 +411,7 @@ using OpenAI.Files;
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 string filename = "cat_and_otter.png";
 Uri imageUrl = new($"https://openai-documentation.vercel.app/images/{filename}");
@@ -468,7 +468,7 @@ Input images must meet the following requirements to be used in the API.
 
 ### Choose an image detail level
 
-The `detail` parameter tells the model what level of detail to use when processing and understanding the image (`low`, `high`, `original`, or `auto`). If you skip the parameter, the model will use `auto`. This behavior is the same in both the Responses API and the Chat Completions API. On `gpt-5.5`, `auto` and the default omitted behavior are equivalent to `original`.
+The `detail` parameter tells the model what level of detail to use when processing and understanding the image (`low`, `high`, `original`, or `auto`). If you skip the parameter, the model will use `auto`. This behavior is the same in both the Responses API and the Chat Completions API. On `gpt-5.5` and GPT-5.6 models, `auto` and the default omitted behavior are equivalent to `original`.
 
 
 
@@ -490,7 +490,7 @@ Use the following guidance to choose a detail level:
 | `low`        | Fast, low-cost understanding when fine visual detail is not important. The model receives a low-resolution 512px x 512px version of the image. |
 | `high`       | Standard high-fidelity image understanding.                                                                                                    |
 | `original`   | Large, dense, spatially sensitive, or computer-use images. Available on `gpt-5.4` and future models.                                           |
-| `auto`       | Automatic detail selection. On `gpt-5.5`, `auto` and the omitted/default behavior are equivalent to `original`.                                |
+| `auto`       | Automatic detail selection. On `gpt-5.5` and GPT-5.6 models, `auto` and the omitted/default behavior are equivalent to `original`.             |
 
 For computer use, localization, and click-accuracy use cases on `gpt-5.4` and future models, we recommend `"detail": "original"`. See the [Computer use guide](https://developers.openai.com/api/docs/guides/tools-computer-use) for more detail.
 
@@ -507,6 +507,21 @@ Different models use different resizing rules before image tokenization:
     <th>Model family</th>
     <th>Supported detail levels</th>
     <th>Patch and resizing behavior</th>
+  </tr>
+  <tr>
+    <td>GPT-5.6 family</td>
+    <td>
+      <code>low</code>, <code>high</code>, <code>original</code>,
+      <code>auto</code>
+    </td>
+    <td>
+      <code>low</code> and <code>high</code> can resize images under their
+      finite limits. <code>original</code> preserves the input dimensions and
+      does not resize the image to a pixel-dimension or patch-budget limit.
+      <code>auto</code> and omitted <code>detail</code> use the same sizing
+      behavior as <code>original</code>. Request payload and other image-input
+      limits still apply.
+    </td>
   </tr>
   <tr>
     <td>
@@ -542,7 +557,7 @@ Different models use different resizing rules before image tokenization:
       image while preserving aspect ratio to fit within the lesser of those two
       constraints for the selected detail level. <code>auto</code> and omitted
       <code>detail</code> use the same sizing behavior as
-      <code>high</code>.[Full resizing details
+      <code>high</code>. [Full resizing details
       below.](#patch-based-image-tokenization)
     </td>
   </tr>
@@ -590,13 +605,15 @@ Image inputs are metered and charged in token units similar to text inputs. How 
 
 ### Patch-based image tokenization
 
-Some models tokenize images by covering them with 32px x 32px patches. Each model defines a maximum patch budget. The token cost of an image is determined as follows:
+Some models tokenize images by covering them with 32px x 32px patches. Many model and detail-level combinations define a maximum patch budget. The token cost of an image is determined as follows:
 
 A. Compute how many 32px x 32px patches are needed to cover the original image. A patch may extend beyond the image boundary.
 
 ```
 original_patch_count = ceil(width/32)×ceil(height/32)
 ```
+
+For GPT-5.6 models with `detail` set to `original` or `auto`, the service uses the original patch count without resizing the image to a patch budget or pixel-dimension limit. This means large images can use more input tokens than they did with earlier models. To control token use and latency, resize the image before sending it or select `low` or `high` detail.
 
 B. If the original image would exceed the model's patch budget, scale it down proportionally until it fits within that budget. Then adjust the scale so the final resized image stays within budget after converting to integer pixel dimensions and computing patch coverage.
 
@@ -630,17 +647,17 @@ _For `gpt-4.1-mini` and `gpt-4.1-nano`, this applies to the 2025-04-14 snapshot 
 
 **Cost calculation examples for a model with a 1,536-patch budget**
 
-- A 1024 x 1024 image has a post-resize patch count of **1024**
+- A 1024 × 1024 image has a post-resize patch count of **1024**
   - A. `original_patch_count = ceil(1024 / 32) * ceil(1024 / 32) = 32 * 32 = 1024`
   - B. `1024` is below the `1,536` patch budget, so no resize is needed.
   - C. `resized_patch_count = 1024`
   - Resized patch count before the model multiplier: `1024`
   - Multiply by the model's token multiplier to get the billed token units.
-- A 1800 x 2400 image has a post-resize patch count of **1452**
+- A 1800 × 2400 image has a post-resize patch count of **1452**
   - A. `original_patch_count = ceil(1800 / 32) * ceil(2400 / 32) = 57 * 75 = 4275`
   - B. `4275` exceeds the `1,536` patch budget, so we first compute `shrink_factor = sqrt((32^2 * 1536) / (1800 * 2400)) = 0.603`.
   - We then adjust that scale so the final integer pixel dimensions stay within budget after patch counting: `adjusted_shrink_factor = 0.603 * min(floor(1800 * 0.603 / 32) / (1800 * 0.603 / 32), floor(2400 * 0.603 / 32) / (2400 * 0.603 / 32)) = 0.586`.
-  - Resized image in integer pixels: `1056 x 1408`
+  - Resized image dimensions: `1056 × 1408`
   - C. `resized_patch_count = ceil(1056 / 32) * ceil(1408 / 32) = 33 * 44 = 1452`
   - Resized patch count before the model multiplier: `1452`
   - Multiply by the model's token multiplier to get the billed token units.
@@ -658,18 +675,18 @@ Any image with `"detail": "low"` costs a set, base number of tokens. This amount
 - Count the number of 512px squares in the image. Each square costs a set amount of tokens, shown below.
 - Add the base tokens to the total
 
-| Model                    | Base tokens | Tile tokens |
-| ------------------------ | ----------- | ----------- |
-| gpt-5, gpt-5-chat-latest | 70          | 140         |
-| 4o, 4.1, 4.5             | 85          | 170         |
-| 4o-mini                  | 2833        | 5667        |
-| o1, o1-pro, o3           | 75          | 150         |
-| computer-use-preview     | 65          | 129         |
+| Model                          | Base tokens | Tile tokens |
+| ------------------------------ | ----------- | ----------- |
+| `gpt-5`, `gpt-5-chat-latest`   | 70          | 140         |
+| `gpt-4o`, `gpt-4.1`, `gpt-4.5` | 85          | 170         |
+| `gpt-4o-mini`                  | 2833        | 5667        |
+| `o1`, `o1-pro`, `o3`           | 75          | 150         |
+| `computer-use-preview`         | 65          | 129         |
 
 ### GPT Image 1
 
 For GPT Image 1, we calculate the cost of an image input the same way as described above, except that we scale down the image so that the shortest side is 512px instead of 768px.
-The price depends on the dimensions of the image and the [input fidelity](https://developers.openai.com/api/docs/guides/image-generation?image-generation-model=gpt-image-1#input-fidelity).
+The price depends on the dimensions of the image and the [input fidelity](https://developers.openai.com/api/docs/guides/image-generation?image-generation-model=gpt-image-1#image-input-fidelity).
 
 When input fidelity is set to low, the base cost is 65 image tokens, and each tile costs 129 image tokens.
 When using high input fidelity, we add a set number of tokens based on the image's aspect ratio in addition to the image tokens described above.
@@ -677,7 +694,7 @@ When using high input fidelity, we add a set number of tokens based on the image
 - If your image is square, we add 4160 extra input image tokens.
 - If it is closer to portrait or landscape, we add 6240 extra tokens.
 
-To see pricing for image input tokens, refer to our [pricing page](https://developers.openai.com/api/docs/pricing#latest-models).
+To see pricing for image input tokens, refer to the [image pricing section](https://developers.openai.com/api/docs/pricing#multimodal-image-pricing).
 
 ## Limitations
 
@@ -691,9 +708,9 @@ While models with vision capabilities are powerful and can be used in many situa
 - **Spatial reasoning**: The model struggles with tasks requiring precise spatial localization, such as identifying chess positions.
 - **Accuracy**: The model may generate incorrect descriptions or captions in certain scenarios.
 - **Image shape**: The model struggles with panoramic and fisheye images.
-- **Metadata and resizing**: The model doesn't process original file names or metadata. Depending on image size and `detail` level, images may be resized before analysis, affecting their original dimensions.
+- **Metadata and resizing**: The model doesn't process original file names or metadata. `low` and `high` detail, and models with finite image budgets, may resize images before analysis. GPT-5.6 models preserve the input dimensions with `original` and `auto` detail.
 - **Counting**: The model may give approximate counts for objects in images.
-- **CAPTCHAS**: For safety reasons, our system blocks the submission of CAPTCHAs.
+- **CAPTCHAs**: For safety reasons, our system blocks the submission of CAPTCHAs.
 
 ---
 

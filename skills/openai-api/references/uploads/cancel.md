@@ -2,9 +2,7 @@
 
 **post** `/uploads/{upload_id}/cancel`
 
-Cancels the Upload. No Parts may be added after an Upload is cancelled.
-
-Returns the Upload object with status `cancelled`.
+Cancel upload
 
 ### Path Parameters
 
@@ -36,9 +34,15 @@ Returns the Upload object with status `cancelled`.
 
     The name of the file to be uploaded.
 
+  - `object: "upload"`
+
+    The object type, which is always "upload".
+
+    - `"upload"`
+
   - `purpose: string`
 
-    The intended purpose of the file. [Please refer here](/docs/api-reference/files/object#files/object-purpose) for acceptable values.
+    The intended purpose of the file. [Please refer here](https://platform.openai.com/docs/api-reference/files/object#files/object-purpose) for acceptable values.
 
   - `status: "pending" or "completed" or "cancelled" or "expired"`
 
@@ -116,12 +120,6 @@ Returns the Upload object with status `cancelled`.
 
       Deprecated. For details on why a fine-tuning training file failed validation, see the `error` field on `fine_tuning.job`.
 
-  - `object: optional "upload"`
-
-    The object type, which is always "upload".
-
-    - `"upload"`
-
 ### Example
 
 ```http
@@ -139,6 +137,7 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/cancel \
   "created_at": 0,
   "expires_at": 0,
   "filename": "filename",
+  "object": "upload",
   "purpose": "purpose",
   "status": "pending",
   "file": {
@@ -151,8 +150,7 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/cancel \
     "status": "uploaded",
     "expires_at": 0,
     "status_details": "status_details"
-  },
-  "object": "upload"
+  }
 }
 ```
 

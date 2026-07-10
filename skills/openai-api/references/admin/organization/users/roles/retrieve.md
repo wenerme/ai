@@ -2,7 +2,7 @@
 
 **get** `/organization/users/{user_id}/roles/{role_id}`
 
-Retrieves an organization role assigned to a user.
+Retrieve user organization role
 
 ### Path Parameters
 

@@ -4,7 +4,7 @@
 
 **post** `/realtime/calls/{call_id}/refer`
 
-Transfer an active SIP call to a new destination using the SIP REFER verb.
+Refer call
 
 ### Parameters
 

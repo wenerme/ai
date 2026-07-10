@@ -4,7 +4,7 @@
 
 **get** `/vector_stores/{vector_store_id}/file_batches/{batch_id}/files`
 
-Returns a list of vector store files in a batch.
+List vector store files in a batch
 
 ### Parameters
 
@@ -116,39 +116,7 @@ Returns a list of vector store files in a batch.
 
     - `bool`
 
-  - `chunking_strategy: Optional[FileChunkingStrategy]`
-
-    The strategy used to chunk the file.
-
-    - `class StaticFileChunkingStrategyObject: …`
-
-      - `static: StaticFileChunkingStrategy`
-
-        - `chunk_overlap_tokens: int`
-
-          The number of tokens that overlap between chunks. The default value is `400`.
-
-          Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-        - `max_chunk_size_tokens: int`
-
-          The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-      - `type: Literal["static"]`
-
-        Always `static`.
-
-        - `"static"`
-
-    - `class OtherFileChunkingStrategyObject: …`
-
-      This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
-
-      - `type: Literal["other"]`
-
-        Always `other`.
-
-        - `"other"`
+  - `chunking_strategy: Optional[object]`
 
 ### Example
 
@@ -186,13 +154,7 @@ print(page.id)
       "attributes": {
         "foo": "string"
       },
-      "chunking_strategy": {
-        "static": {
-          "chunk_overlap_tokens": 0,
-          "max_chunk_size_tokens": 100
-        },
-        "type": "static"
-      }
+      "chunking_strategy": {}
     }
   ],
   "first_id": "file-abc123",

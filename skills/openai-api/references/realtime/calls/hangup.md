@@ -2,8 +2,7 @@
 
 **post** `/realtime/calls/{call_id}/hangup`
 
-End an active Realtime API call, whether it was initiated over SIP or
-WebRTC.
+Hang up call
 
 ### Path Parameters
 

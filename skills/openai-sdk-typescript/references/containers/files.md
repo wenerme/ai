@@ -6,7 +6,7 @@
 
 **get** `/containers/{container_id}/files`
 
-List Container files
+List container files
 
 ### Parameters
 
@@ -107,9 +107,7 @@ for await (const fileListResponse of client.containers.files.list('container_id'
 
 **post** `/containers/{container_id}/files`
 
-Create a Container File
-
-You can send either a multipart/form-data request with the raw file content, or a JSON request with a file ID.
+Create container file
 
 ### Parameters
 
@@ -194,7 +192,7 @@ console.log(file.id);
 
 **get** `/containers/{container_id}/files/{file_id}`
 
-Retrieve Container File
+Retrieve container file
 
 ### Parameters
 
@@ -272,7 +270,7 @@ console.log(file.id);
 
 **delete** `/containers/{container_id}/files/{file_id}`
 
-Delete Container File
+Delete a container file
 
 ### Parameters
 
@@ -406,7 +404,7 @@ await client.containers.files.delete('file_id', { container_id: 'container_id' }
 
 **get** `/containers/{container_id}/files/{file_id}/content`
 
-Retrieve Container File Content
+Retrieve container file content
 
 ### Parameters
 

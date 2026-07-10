@@ -74,7 +74,7 @@ In this function, `audio_file_path` is the path to the audio file you want to tr
 
 ## Summarizing and analyzing the transcript with a GPT model
 
-Having obtained the transcript, we now pass it to a GPT model via the [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat/create). The snippets below use a tested model to generate a summary, extract key points, action items, and perform sentiment analysis. For new projects, start with [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5).
+Having obtained the transcript, we now pass it to a GPT model via the [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat/create). The snippets below use a tested model to generate a summary, extract key points, action items, and perform sentiment analysis. For new projects, start with [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol).
 
 This tutorial uses distinct functions for each task we want the model to perform. This is not the most efficient way to do this task - you can put these instructions into one function, however, splitting them up can lead to higher quality summarization.
 
@@ -170,7 +170,7 @@ def action_item_extraction(transcription):
 
 ### Sentiment analysis
 
-The `sentiment_analysis` function analyzes the overall sentiment of the discussion. It considers the tone, the emotions conveyed by the language used, and the context in which words and phrases are used. For less complicated tasks, it may also be worthwhile to try [`gpt-5.4-mini`](https://developers.openai.com/api/docs/models/gpt-5.4-mini) to see if you can get a similar level of performance at lower cost and latency. It might also be useful to experiment with taking the results of the `sentiment_analysis` function and passing it to the other functions to see how having the sentiment of the conversation impacts the other attributes.
+The `sentiment_analysis` function analyzes the overall sentiment of the discussion. It considers the tone, the emotions conveyed by the language used, and the context in which words and phrases are used. For less complicated tasks, it may also be worthwhile to try [`gpt-5.6-terra`](https://developers.openai.com/api/docs/models/gpt-5.6-terra) to see if you can get a similar level of performance at lower cost and latency. It might also be useful to experiment with taking the results of the `sentiment_analysis` function and passing it to the other functions to see how having the sentiment of the conversation impacts the other attributes.
 
 ```python
 def sentiment_analysis(transcription):

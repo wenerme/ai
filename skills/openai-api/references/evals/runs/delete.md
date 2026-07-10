@@ -2,7 +2,7 @@
 
 **delete** `/evals/{eval_id}/runs/{run_id}`
 
-Delete an eval run.
+Delete eval run
 
 ### Path Parameters
 

@@ -6,7 +6,7 @@
 
 **get** `/organization/audit_logs`
 
-List user actions and configuration changes within this organization.
+List audit logs
 
 ### Parameters
 

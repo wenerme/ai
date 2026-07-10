@@ -33,8 +33,8 @@ class Default(WorkerEntrypoint):
 
 ...and a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) that points to this `.py` file:
 
-* [  wrangler.jsonc ](#tab-panel-12171)
-* [  wrangler.toml ](#tab-panel-12172)
+* [  wrangler.jsonc ](#tab-panel-12371)
+* [  wrangler.toml ](#tab-panel-12372)
 
 **JSONC**
 
@@ -44,7 +44,7 @@ class Default(WorkerEntrypoint):
   "name": "hello-world-python-worker",
   "main": "src/entry.py",
   // Set this to today's date
-  "compatibility_date": "2026-07-01"
+  "compatibility_date": "2026-07-09"
 }
 ```
 
@@ -55,7 +55,7 @@ class Default(WorkerEntrypoint):
 name = "hello-world-python-worker"
 main = "src/entry.py"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-09"
 ```
 
 When you run `uv run pywrangler dev` to do local dev, the Workers runtime will:
@@ -76,7 +76,7 @@ To reduce cold start times, when you deploy a Python Worker, Cloudflare performs
 1. Wrangler uploads your Python code and any packages included in your `pyproject.toml` to the Workers API.
 2. Cloudflare sends your Python code to the Workers runtime to be validated.
 3. Cloudflare creates a new v8 isolate for your Worker, automatically injecting Pyodide.
-4. Cloudflare scans the Worker’s code for import statements, execute them, and then take a snapshot of the Worker’s WebAssembly linear memory. Effectively, we perform the expensive work of importing packages at deploy time, rather than at runtime.
+4. Cloudflare executes the Worker entrypoint module and everything it imports at top level and then take a snapshot of the Worker’s WebAssembly linear memory. Effectively, we perform the expensive initialization work at deploy time, rather than at runtime.
 5. Cloudflare deploys this snapshot alongside your Worker’s Python code to the Cloudflare network.
 
 When a request comes in to your Worker, we load this snapshot and use it to bootstrap your Worker in an isolate, avoiding expensive initialization time:
@@ -92,6 +92,6 @@ A new version of Python is released every year in August, and a new version of P
 Each Python release has a [five (5) year support window ↗](https://devguide.python.org/versions/). Once this support window has passed for a given version of Python, security patches are no longer applied, making this version unsafe to rely on. Following the Workers Runtime policy to never break an application that is live in production, existing Python Workers on versions outside the support window will continue to work. However, we do not recommend using Python versions outside the support window for new projects, and we will not provide patches for issues arising from using these versions. We also cannot guarantee that these older Python versions won't suffer from degraded performance, including higher latency or CPU time usage.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/#page","headline":"How Python Workers Work · Cloudflare Workers docs","description":"Learn how Python Workers run via Pyodide in V8 isolates and how local development works.","url":"https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/#page","headline":"How Python Workers Work · Cloudflare Workers docs","description":"Learn how Python Workers run via Pyodide in V8 isolates and how local development works.","url":"https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/python/","name":"Python Workers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/languages/python/how-python-workers-work/","name":"How Python Workers Work"}}]}
 ```

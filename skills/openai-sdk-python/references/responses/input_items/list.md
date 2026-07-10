@@ -4,7 +4,7 @@
 
 **get** `/responses/{response_id}/input_items`
 
-Returns a list of input items for a given response.
+List input items
 
 ### Parameters
 
@@ -82,6 +82,16 @@ Returns a list of input items for a given response.
 
           - `"input_text"`
 
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `class ResponseInputImage: …`
 
         An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -112,6 +122,16 @@ Returns a list of input items for a given response.
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `class ResponseInputFile: …`
 
         A file input to the model.
@@ -122,9 +142,11 @@ Returns a list of input items for a given response.
 
           - `"input_file"`
 
-        - `detail: Optional[Literal["low", "high"]]`
+        - `detail: Optional[Literal["auto", "low", "high"]]`
 
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+          The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+          - `"auto"`
 
           - `"low"`
 
@@ -145,6 +167,16 @@ Returns a list of input items for a given response.
         - `filename: Optional[str]`
 
           The name of the file to be sent to the model.
+
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
     - `role: Literal["user", "system", "developer"]`
 
@@ -1108,6 +1140,30 @@ Returns a list of input items for a given response.
 
       - `"function_call_output"`
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
     - `created_by: Optional[str]`
 
       The identifier of the actor that created the item.
@@ -1200,13 +1256,21 @@ Returns a list of input items for a given response.
 
         - `strict: Optional[bool]`
 
-          Whether to enforce strict parameter validation. Default `true`.
+          Whether strict parameter validation is enforced for this function tool.
 
         - `type: Literal["function"]`
 
           The type of the function tool. Always `function`.
 
           - `"function"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `defer_loading: Optional[bool]`
 
@@ -1215,6 +1279,10 @@ Returns a list of input items for a given response.
         - `description: Optional[str]`
 
           A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `output_schema: Optional[Dict[str, object]]`
+
+          A JSON schema object describing the JSON value encoded in string outputs for this function.
 
       - `class FileSearchTool: …`
 
@@ -1271,7 +1339,7 @@ Returns a list of input items for a given response.
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[Union[str, float]]]`
+            - `value: Union[str, float, bool, List[object]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1281,11 +1349,7 @@ Returns a list of input items for a given response.
 
               - `bool`
 
-              - `List[Union[str, float]]`
-
-                - `str`
-
-                - `float`
+              - `List[object]`
 
           - `class CompoundFilter: …`
 
@@ -1457,6 +1521,14 @@ Returns a list of input items for a given response.
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools: Optional[McpAllowedTools]`
 
@@ -1676,6 +1748,22 @@ Returns a list of input items for a given response.
 
           - `"code_interpreter"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
+      - `class ProgrammaticToolCalling: …`
+
+        - `type: Literal["programmatic_tool_calling"]`
+
+          The type of the tool. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `class ImageGeneration: …`
 
         A tool that generates images using the GPT image models.
@@ -1839,6 +1927,14 @@ Returns a list of input items for a given response.
 
           - `"shell"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `environment: Optional[Environment]`
 
           - `class ContainerAuto: …`
@@ -1979,6 +2075,14 @@ Returns a list of input items for a given response.
 
           - `"custom"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading: Optional[bool]`
 
           Whether this tool should be deferred and discovered via tool search.
@@ -2047,15 +2151,29 @@ Returns a list of input items for a given response.
 
               - `"function"`
 
+            - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading: Optional[bool]`
 
               Whether this function should be deferred and discovered via tool search.
 
             - `description: Optional[str]`
 
+            - `output_schema: Optional[Dict[str, object]]`
+
+              A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
             - `parameters: Optional[object]`
 
             - `strict: Optional[bool]`
+
+              Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
           - `class CustomTool: …`
 
@@ -2157,6 +2275,14 @@ Returns a list of input items for a given response.
 
           - `"apply_patch"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
     - `type: Literal["tool_search_output"]`
 
       The type of the item. Always `tool_search_output`.
@@ -2226,6 +2352,8 @@ Returns a list of input items for a given response.
       - `class CodeInterpreter: …`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `class ProgrammaticToolCalling: …`
 
       - `class ImageGeneration: …`
 
@@ -2325,6 +2453,58 @@ Returns a list of input items for a given response.
       - `"completed"`
 
       - `"incomplete"`
+
+  - `class Program: …`
+
+    - `id: str`
+
+      The unique ID of the program item.
+
+    - `call_id: str`
+
+      The stable call ID of the program item.
+
+    - `code: str`
+
+      The JavaScript source executed by programmatic tool calling.
+
+    - `fingerprint: str`
+
+      Opaque program replay fingerprint that must be round-tripped.
+
+    - `type: Literal["program"]`
+
+      The type of the item. Always `program`.
+
+      - `"program"`
+
+  - `class ProgramOutput: …`
+
+    - `id: str`
+
+      The unique ID of the program output item.
+
+    - `call_id: str`
+
+      The call ID of the program item.
+
+    - `result: str`
+
+      The result produced by the program item.
+
+    - `status: Literal["completed", "incomplete"]`
+
+      The terminal status of the program output item.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `type: Literal["program_output"]`
+
+      The type of the item. Always `program_output`.
+
+      - `"program_output"`
 
   - `class ResponseCompactionItem: …`
 
@@ -2601,6 +2781,26 @@ Returns a list of input items for a given response.
 
       - `"shell_call"`
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `created_by: Optional[str]`
 
       The ID of the entity that created this tool call.
@@ -2680,6 +2880,26 @@ Returns a list of input items for a given response.
       The type of the shell call output. Always `shell_call_output`.
 
       - `"shell_call_output"`
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
 
     - `created_by: Optional[str]`
 
@@ -2765,6 +2985,26 @@ Returns a list of input items for a given response.
 
       - `"apply_patch_call"`
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `created_by: Optional[str]`
 
       The ID of the entity that created this tool call.
@@ -2794,6 +3034,26 @@ Returns a list of input items for a given response.
       The type of the item. Always `apply_patch_call_output`.
 
       - `"apply_patch_call_output"`
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
 
     - `created_by: Optional[str]`
 
@@ -3022,7 +3282,10 @@ print(page)
       "content": [
         {
           "text": "text",
-          "type": "input_text"
+          "type": "input_text",
+          "prompt_cache_breakpoint": {
+            "mode": "explicit"
+          }
         }
       ],
       "role": "user",

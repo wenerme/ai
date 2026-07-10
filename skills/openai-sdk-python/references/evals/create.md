@@ -4,9 +4,7 @@
 
 **post** `/evals`
 
-Create the structure of an evaluation that can be used to test a model's performance.
-An evaluation is a set of testing criteria and the config for a data source, which dictates the schema of the data used in the evaluation. After creating an evaluation, you can run it on different models and model parameters. We support several types of graders and datasources.
-For more information, see the [Evals guide](https://platform.openai.com/docs/guides/evals).
+Create eval
 
 ### Parameters
 
@@ -117,6 +115,16 @@ For more information, see the [Evals guide](https://platform.openai.com/docs/gui
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `class TestingCriterionLabelModelInputEvalItemContentOutputText: …`
 
@@ -478,6 +486,16 @@ For more information, see the [Evals guide](https://platform.openai.com/docs/gui
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `class InputContentOutputText: …`
 

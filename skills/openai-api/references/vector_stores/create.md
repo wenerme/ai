@@ -2,11 +2,11 @@
 
 **post** `/vector_stores`
 
-Create a vector store.
+Create vector store
 
 ### Body Parameters
 
-- `chunking_strategy: optional AutoFileChunkingStrategyParam or StaticFileChunkingStrategyObjectParam`
+- `chunking_strategy: optional FileChunkingStrategyParam`
 
   The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
 
@@ -62,7 +62,7 @@ Create a vector store.
 
 - `file_ids: optional array of string`
 
-  A list of [File](/docs/api-reference/files) IDs that the vector store should use. Useful for tools like `file_search` that can access files.
+  A list of [File](https://platform.openai.com/docs/api-reference/files) IDs that the vector store should use. Useful for tools like `file_search` that can access files.
 
 - `metadata: optional Metadata`
 

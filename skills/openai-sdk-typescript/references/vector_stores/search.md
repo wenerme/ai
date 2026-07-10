@@ -4,7 +4,7 @@
 
 **post** `/vector_stores/{vector_store_id}/search`
 
-Search a vector store for relevant chunks based on a query and file attributes filter.
+Search vector store
 
 ### Parameters
 
@@ -61,7 +61,7 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
         - `"nin"`
 
-      - `value: string | number | boolean | Array<string | number>`
+      - `value: string | number | boolean | Array<unknown>`
 
         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -71,11 +71,7 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
         - `boolean`
 
-        - `Array<string | number>`
-
-          - `string`
-
-          - `number`
+        - `Array<unknown>`
 
     - `CompoundFilter`
 

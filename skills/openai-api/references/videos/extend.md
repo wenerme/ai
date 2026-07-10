@@ -4,30 +4,6 @@
 
 Create an extension of a completed video.
 
-### Body Parameters
-
-- `prompt: string`
-
-  Updated text prompt that directs the extension generation.
-
-- `seconds: VideoSeconds`
-
-  Length of the newly generated extension segment in seconds (allowed values: 4, 8, 12, 16, 20).
-
-  - `"4"`
-
-  - `"8"`
-
-  - `"12"`
-
-- `video: object { id }`
-
-  Reference to the completed video to extend.
-
-  - `id: string`
-
-    The identifier of the completed video.
-
 ### Returns
 
 - `Video object { id, completed_at, created_at, 10 more }`
@@ -98,9 +74,19 @@ Create an extension of a completed video.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string`
+  - `seconds: string or VideoSeconds`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
+
+    - `string`
+
+    - `VideoSeconds = "4" or "8" or "12"`
+
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
 
   - `size: VideoSize`
 
@@ -130,15 +116,11 @@ Create an extension of a completed video.
 
 ```http
 curl https://api.openai.com/v1/videos/extensions \
-    -H 'Content-Type: application/json' \
+    -H 'Content-Type: multipart/form-data' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "prompt": "x",
-          "seconds": "4",
-          "video": {
-            "id": "video_123"
-          }
-        }'
+    -F prompt=x \
+    -F seconds=4 \
+    -F video='Example data'
 ```
 
 #### Response
@@ -153,12 +135,12 @@ curl https://api.openai.com/v1/videos/extensions \
     "message": "message"
   },
   "expires_at": 0,
-  "model": "string",
+  "model": "sora-2",
   "object": "video",
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "seconds",
+  "seconds": "4",
   "size": "720x1280",
   "status": "queued"
 }

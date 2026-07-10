@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/certificates`
 
-List certificates for this project.
+List project certificates
 
 ### Parameters
 

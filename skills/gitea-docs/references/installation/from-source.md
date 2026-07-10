@@ -4,6 +4,8 @@ aliases:
   - /en-us/install-from-source
 ---
 
+> **warning**: This document is outdated, pleaes refer to [build-source.md](https://github.com/go-gitea/gitea/tree/main/docs/build-source.md):::
+
 # Installation from source
 
 You should [install go](https://go.dev/doc/install) and set up your go

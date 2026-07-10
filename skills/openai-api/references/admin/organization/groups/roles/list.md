@@ -2,7 +2,7 @@
 
 **get** `/organization/groups/{group_id}/roles`
 
-Lists the organization roles assigned to a group within the organization.
+List group organization role assignments
 
 ### Path Parameters
 

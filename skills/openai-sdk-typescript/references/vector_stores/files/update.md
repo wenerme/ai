@@ -4,7 +4,7 @@
 
 **post** `/vector_stores/{vector_store_id}/files/{file_id}`
 
-Update attributes on a vector store file.
+Update vector store file attributes
 
 ### Parameters
 
@@ -102,39 +102,7 @@ Update attributes on a vector store file.
 
     - `boolean`
 
-  - `chunking_strategy?: FileChunkingStrategy`
-
-    The strategy used to chunk the file.
-
-    - `StaticFileChunkingStrategyObject`
-
-      - `static: StaticFileChunkingStrategy`
-
-        - `chunk_overlap_tokens: number`
-
-          The number of tokens that overlap between chunks. The default value is `400`.
-
-          Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-        - `max_chunk_size_tokens: number`
-
-          The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-      - `type: "static"`
-
-        Always `static`.
-
-        - `"static"`
-
-    - `OtherFileChunkingStrategyObject`
-
-      This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
-
-      - `type: "other"`
-
-        Always `other`.
-
-        - `"other"`
+  - `chunking_strategy?: unknown`
 
 ### Example
 
@@ -170,12 +138,6 @@ console.log(vectorStoreFile.id);
   "attributes": {
     "foo": "string"
   },
-  "chunking_strategy": {
-    "static": {
-      "chunk_overlap_tokens": 0,
-      "max_chunk_size_tokens": 100
-    },
-    "type": "static"
-  }
+  "chunking_strategy": {}
 }
 ```

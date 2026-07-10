@@ -2,7 +2,7 @@
 
 **get** `/organization/invites/{invite_id}`
 
-Retrieves an invite.
+Retrieve invite
 
 ### Path Parameters
 

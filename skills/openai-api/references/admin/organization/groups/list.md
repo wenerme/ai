@@ -2,7 +2,7 @@
 
 **get** `/organization/groups`
 
-Lists all groups in the organization.
+List groups
 
 ### Query Parameters
 

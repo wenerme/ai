@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/api_keys`
 
-Returns a list of API keys in the project.
+List project API keys
 
 ### Path Parameters
 
@@ -201,7 +201,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys?after=key
 
 **get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Retrieves an API key in the project.
+Retrieve project API key
 
 ### Path Parameters
 
@@ -366,10 +366,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
 
 **delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Deletes an API key from the project.
-
-Returns confirmation of the key deletion, or an error if the key belonged to
-a service account.
+Delete project API key
 
 ### Path Parameters
 

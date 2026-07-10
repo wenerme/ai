@@ -35,9 +35,11 @@ model can work from a smaller, structured view of the data.
 ## PDF detail levels
 
 For PDF inputs in the Responses API, set the optional `detail` field on an
-`input_file` item to control how page images are processed. `low` is the default
-and uses fewer input tokens. Use `high` when you need more visual detail from PDF
-page images, such as dense charts, small print, or diagrams.
+`input_file` item to `auto`, `low`, or `high` to control how the API processes
+page images. If omitted, `detail` defaults to `auto`. For GPT-5.6 and later
+models, `auto` uses `high`; for earlier models, it uses `low`. Use `low` for fewer
+input tokens, or `high` for more visual detail, such as dense charts, small print,
+or diagrams.
 
 The `detail` setting only affects PDF page image processing. Text extracted from
 the PDF is still included. Chat Completions file inputs don't support `detail`.
@@ -93,7 +95,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-5.5",
+        "model": "gpt-5.6",
         "input": [
             {
                 "role": "user",
@@ -117,7 +119,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     input: [
         {
             role: "user",
@@ -143,7 +145,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=[
         {
             "role": "user",
@@ -169,7 +171,7 @@ using OpenAI.Files;
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 using HttpClient http = new();
 using Stream stream = await http.GetStreamAsync("https://www.berkshirehathaway.com/letters/2024ltr.pdf");
@@ -209,7 +211,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-5.5",
+        "model": "gpt-5.6",
         "input": [
             {
                 "role": "user",
@@ -239,7 +241,7 @@ const file = await client.files.create({
 });
 
 const response = await client.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     input: [
         {
             role: "user",
@@ -270,7 +272,7 @@ file = client.files.create(
 )
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=[
         {
             "role": "user",
@@ -296,7 +298,7 @@ using OpenAI.Files;
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 OpenAIFileClient files = new(key);
 OpenAIFile file = files.UploadFile("draconomicon.pdf", FileUploadPurpose.UserData);
@@ -329,7 +331,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-5.5",
+        "model": "gpt-5.6",
         "input": [
             {
                 "role": "user",
@@ -358,7 +360,7 @@ const data = fs.readFileSync("draconomicon.pdf");
 const base64String = data.toString("base64");
 
 const response = await client.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     input: [
         {
             role: "user",
@@ -391,7 +393,7 @@ with open("draconomicon.pdf", "rb") as f:
 base64_string = base64.b64encode(data).decode("utf-8")
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=[
         {
             "role": "user",
@@ -422,7 +424,7 @@ print(response.output_text)
 
 Keep these constraints in mind when you use file inputs:
 
-- **Token usage:** PDF parsing includes both extracted text and page images in context, which can increase token usage. In the Responses API, set `detail` to `low` (the default) or `high` to control how much visual detail is processed for PDF page images. Before deploying at scale, review pricing and token implications. [More on pricing](https://developers.openai.com/api/docs/pricing).
+- **Token usage:** PDF parsing includes both extracted text and page images in context, which can increase token usage. In the Responses API, set `detail` to `auto` (the default), `low`, or `high` to control the amount of visual detail for PDF page images. Before deploying at scale, review pricing and token implications. [More on pricing](https://developers.openai.com/api/docs/pricing).
 - **File size limits:** A single request can include more than one file, but each file must be under 50 MB. The combined limit across all files in the request is 50 MB.
 - **Supported models:** PDF parsing that includes text and page images requires models with vision capabilities, such as `gpt-4o` and later models.
 - **File upload purpose:** You can upload files with any supported [purpose](https://developers.openai.com/api/docs/api-reference/files/create#files-create-purpose), but use `user_data` for files you plan to pass as model inputs.

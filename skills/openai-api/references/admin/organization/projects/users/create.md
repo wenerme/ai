@@ -2,7 +2,7 @@
 
 **post** `/organization/projects/{project_id}/users`
 
-Adds a user to the project. Users must already be members of the organization to be added to a project.
+Create project user
 
 ### Path Parameters
 

@@ -2,9 +2,7 @@
 
 **post** `/evals`
 
-Create the structure of an evaluation that can be used to test a model's performance.
-An evaluation is a set of testing criteria and the config for a data source, which dictates the schema of the data used in the evaluation. After creating an evaluation, you can run it on different models and model parameters. We support several types of graders and datasources.
-For more information, see the [Evals guide](/docs/guides/evals).
+Create eval
 
 ### Body Parameters
 
@@ -12,7 +10,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
   The configuration for the data source used for the evaluation runs. Dictates the schema of the data used in the evaluation.
 
-  - `CustomDataSourceConfig object { item_schema, type, include_sample_schema }`
+  - `Custom object { item_schema, type, include_sample_schema }`
 
     A CustomDataSourceConfig object that defines the schema for the data source used for the evaluation runs.
     This schema is used to define the shape of the data that will be:
@@ -34,7 +32,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       Whether the eval should expect you to populate the sample namespace (ie, by generating responses off of your data source)
 
-  - `LogsDataSourceConfig object { type, metadata }`
+  - `Logs object { type, metadata }`
 
     A data source config which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -49,7 +47,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       Metadata filters for the logs data source.
 
-  - `StoredCompletionsDataSourceConfig object { type, metadata }`
+  - `StoredCompletions object { type, metadata }`
 
     Deprecated in favor of LogsDataSourceConfig.
 
@@ -67,7 +65,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
   A list of graders for all eval runs in this group. Graders can reference variables in the data source using double curly braces notation, like `{{item.variable_name}}`. To reference the model's output, use the `sample` namespace (ie, `{{sample.output_text}}`).
 
-  - `LabelModelGrader object { input, labels, model, 3 more }`
+  - `LabelModel object { input, labels, model, 3 more }`
 
     A LabelModelGrader object which uses a model to assign labels to each item
     in the evaluation.
@@ -86,7 +84,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
           The role of the message (e.g. "system", "assistant", "user").
 
-      - `EvalMessageObject object { content, role, type }`
+      - `EvalItem object { content, role, type }`
 
         A message input to the model with a role indicating instruction following
         hierarchy. Instructions given with the `developer` or `system` role take
@@ -102,7 +100,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -115,6 +113,16 @@ For more information, see the [Evals guide](/docs/guides/evals).
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint: optional object { mode }`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `OutputText object { text, type }`
 
@@ -182,7 +190,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
               A text input to the model.
 
-            - `ResponseInputText object { text, type }`
+            - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
               A text input to the model.
 
@@ -297,7 +305,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       - `"string_check"`
 
-  - `TextSimilarityGrader = TextSimilarityGrader`
+  - `TextSimilarity = TextSimilarityGrader`
 
     A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -305,7 +313,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       The threshold for the score.
 
-  - `PythonGrader = PythonGrader`
+  - `Python = PythonGrader`
 
     A PythonGrader object that runs a python script on the input.
 
@@ -313,7 +321,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       The threshold for the score.
 
-  - `ScoreModelGrader = ScoreModelGrader`
+  - `ScoreModel = ScoreModelGrader`
 
     A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -367,7 +375,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       - `"custom"`
 
-  - `LogsDataSourceConfig object { schema, type, metadata }`
+  - `Logs object { schema, type, metadata }`
 
     A LogsDataSourceConfig which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -456,7 +464,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
           A text input to the model.
 
-        - `ResponseInputText object { text, type }`
+        - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
           A text input to the model.
 
@@ -469,6 +477,16 @@ For more information, see the [Evals guide](/docs/guides/evals).
             The type of the input item. Always `input_text`.
 
             - `"input_text"`
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
         - `OutputText object { text, type }`
 
@@ -536,7 +554,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -651,7 +669,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       - `"string_check"`
 
-  - `TextSimilarityGrader = TextSimilarityGrader`
+  - `EvalGraderTextSimilarity = TextSimilarityGrader`
 
     A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -659,7 +677,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       The threshold for the score.
 
-  - `PythonGrader = PythonGrader`
+  - `EvalGraderPython = PythonGrader`
 
     A PythonGrader object that runs a python script on the input.
 
@@ -667,7 +685,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       The threshold for the score.
 
-  - `ScoreModelGrader = ScoreModelGrader`
+  - `EvalGraderScoreModel = ScoreModelGrader`
 
     A ScoreModelGrader object that uses a model to assign a score to the input.
 

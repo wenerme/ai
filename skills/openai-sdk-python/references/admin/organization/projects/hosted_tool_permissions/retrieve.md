@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/hosted_tool_permissions`
 
-Returns hosted tool permissions for a project.
+Retrieve project hosted tool permissions
 
 ### Parameters
 

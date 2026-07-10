@@ -82,7 +82,7 @@ const defaultConfig: WorkflowStepConfig = {
 When providing your own `StepConfig`, you can configure:
 
 * The total number of attempts to make for a step (limited to 10,000 retries per step)
-* The delay between attempts (accepts both `number` (ms) or a human-readable format)
+* The delay between attempts. Use a fixed duration as a `number` in milliseconds or a human-readable string, or use a function that returns the next delay.
 * What backoff algorithm to apply between each attempt: any of `constant`, `linear`, or `exponential`
 * When to timeout (in duration) before considering the step as failed (including during a retry attempt, as the timeout is set per attempt)
 
@@ -103,6 +103,68 @@ let someState = await step.do(
   },
   async () => {
     /* Step code goes here */
+  },
+);
+```
+
+### Set a dynamic retry delay
+
+Use a delay function when the next retry delay should depend on the failed attempt or the thrown error. This gives you more control than a fixed delay with `constant`, `linear`, or `exponential` backoff. It is useful for rate limits, downstream provider recovery, and short network failures.
+
+The delay function receives an object with:
+
+* `ctx` \- the current [WorkflowStepContext](https://developers.cloudflare.com/workflows/build/step-context/), including `ctx.attempt`.
+* `error` \- the error that caused the retry.
+
+Return a duration string, a number in milliseconds, or a promise that resolves to either value.
+
+* [  JavaScript ](#tab-panel-13627)
+* [  TypeScript ](#tab-panel-13628)
+
+**JavaScript**
+
+```js
+await step.do(
+  "sync customer",
+  {
+    retries: {
+      limit: 5,
+      delay: ({ ctx, error }) => {
+        if (error.message.includes("rate limit")) {
+          return `${ctx.attempt * 30} seconds`;
+        }
+
+
+        return "10 seconds";
+      },
+    },
+  },
+  async () => {
+    await syncCustomer();
+  },
+);
+```
+
+**TypeScript**
+
+```ts
+await step.do(
+  "sync customer",
+  {
+    retries: {
+      limit: 5,
+      delay: ({ ctx, error }) => {
+        if (error.message.includes("rate limit")) {
+          return `${ctx.attempt * 30} seconds`;
+        }
+
+
+        return "10 seconds";
+      },
+    },
+  },
+  async () => {
+    await syncCustomer();
   },
 );
 ```
@@ -149,8 +211,8 @@ You can attach a rollback handler to `step.do()` to implement saga-style compens
 
 A failed step with rollback options can also participate in rollback alongside any completed steps which have a rollback handler registered. For example, if a steps throws a `NonRetryableError` after registering rollback, its rollback handler runs with `output` set to `undefined`.
 
-* [  JavaScript ](#tab-panel-13400)
-* [  TypeScript ](#tab-panel-13401)
+* [  JavaScript ](#tab-panel-13629)
+* [  TypeScript ](#tab-panel-13630)
 
 **JavaScript**
 
@@ -273,6 +335,6 @@ await step.do('next-task', async() => {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/#page","headline":"Sleeping and retrying · Cloudflare Workflows docs","description":"Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.","url":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/#page","headline":"Sleeping and retrying · Cloudflare Workflows docs","description":"Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.","url":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/sleeping-and-retrying/","name":"Sleeping and retrying"}}]}
 ```

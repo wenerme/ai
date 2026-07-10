@@ -4,7 +4,7 @@
 
 **get** `/responses/{response_id}`
 
-Retrieves a model response with the given ID.
+Get a model response
 
 ### Parameters
 
@@ -94,7 +94,7 @@ Retrieves a model response with the given ID.
 
     An error object returned when the model fails to generate a Response.
 
-    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
       The error code for the response.
 
@@ -103,6 +103,8 @@ Retrieves a model response with the given ID.
       - `"rate_limit_exceeded"`
 
       - `"invalid_prompt"`
+
+      - `"bio_policy"`
 
       - `"vector_store_timeout"`
 
@@ -196,6 +198,16 @@ Retrieves a model response with the given ID.
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImage`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -226,6 +238,16 @@ Retrieves a model response with the given ID.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFile`
 
               A file input to the model.
@@ -236,9 +258,11 @@ Retrieves a model response with the given ID.
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -259,6 +283,16 @@ Retrieves a model response with the given ID.
               - `filename?: string`
 
                 The name of the file to be sent to the model.
+
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
 
         - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -1207,6 +1241,26 @@ Retrieves a model response with the given ID.
 
           The unique ID of the function tool call.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `namespace?: string`
 
           The namespace of the function to run.
@@ -1254,6 +1308,16 @@ Retrieves a model response with the given ID.
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImageContent`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -1284,6 +1348,16 @@ Retrieves a model response with the given ID.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFileContent`
 
               A file input to the model.
@@ -1294,9 +1368,11 @@ Retrieves a model response with the given ID.
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -1318,6 +1394,16 @@ Retrieves a model response with the given ID.
 
                 The name of the file to be sent to the model.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
         - `type: "function_call_output"`
 
           The type of the function tool call output. Always `function_call_output`.
@@ -1327,6 +1413,30 @@ Retrieves a model response with the given ID.
         - `id?: string | null`
 
           The unique ID of the function tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -1396,13 +1506,21 @@ Retrieves a model response with the given ID.
 
             - `strict: boolean | null`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading?: boolean`
 
@@ -1411,6 +1529,10 @@ Retrieves a model response with the given ID.
             - `description?: string | null`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearchTool`
 
@@ -1467,7 +1589,7 @@ Retrieves a model response with the given ID.
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<string | number>`
+                - `value: string | number | boolean | Array<unknown>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1477,11 +1599,7 @@ Retrieves a model response with the given ID.
 
                   - `boolean`
 
-                  - `Array<string | number>`
-
-                    - `string`
-
-                    - `number`
+                  - `Array<unknown>`
 
               - `CompoundFilter`
 
@@ -1653,6 +1771,14 @@ Retrieves a model response with the given ID.
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -1864,6 +1990,22 @@ Retrieves a model response with the given ID.
 
               - `"code_interpreter"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -2023,6 +2165,14 @@ Retrieves a model response with the given ID.
 
               - `"shell"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
               - `ContainerAuto`
@@ -2163,6 +2313,14 @@ Retrieves a model response with the given ID.
 
               - `"custom"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this tool should be deferred and discovered via tool search.
@@ -2231,15 +2389,29 @@ Retrieves a model response with the given ID.
 
                   - `"function"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading?: boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description?: string | null`
 
+                - `output_schema?: Record<string, unknown> | null`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters?: unknown`
 
                 - `strict?: boolean | null`
+
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
               - `CustomTool`
 
@@ -2341,6 +2513,14 @@ Retrieves a model response with the given ID.
 
               - `"apply_patch"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
         - `type: "tool_search_output"`
 
           The item type. Always `tool_search_output`.
@@ -2414,6 +2594,8 @@ Retrieves a model response with the given ID.
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -2755,6 +2937,30 @@ Retrieves a model response with the given ID.
 
           The unique ID of the shell tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `environment?: LocalEnvironment | ContainerReference | null`
 
           The environment to execute the shell commands in.
@@ -2830,6 +3036,30 @@ Retrieves a model response with the given ID.
         - `id?: string | null`
 
           The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `max_output_length?: number | null`
 
@@ -2925,6 +3155,30 @@ Retrieves a model response with the given ID.
 
           The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ApplyPatchCallOutput`
 
         The streamed output emitted by an apply patch tool call.
@@ -2950,6 +3204,30 @@ Retrieves a model response with the given ID.
         - `id?: string | null`
 
           The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `output?: string | null`
 
@@ -3141,6 +3419,30 @@ Retrieves a model response with the given ID.
 
           The unique ID of the custom tool call output in the OpenAI platform.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ResponseCustomToolCall`
 
         A call to a custom tool created by the model.
@@ -3166,6 +3468,26 @@ Retrieves a model response with the given ID.
         - `id?: string`
 
           The unique ID of the custom tool call in the OpenAI platform.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `namespace?: string`
 
@@ -3195,6 +3517,58 @@ Retrieves a model response with the given ID.
 
           - `"item_reference"`
 
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of this program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The item type. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of this program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The item type. Always `program_output`.
+
+          - `"program_output"`
+
   - `metadata: Metadata | null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
@@ -3213,7 +3587,13 @@ Retrieves a model response with the given ID.
 
     - `(string & {})`
 
-    - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+    - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+      - `"gpt-5.6-sol"`
+
+      - `"gpt-5.6-terra"`
+
+      - `"gpt-5.6-luna"`
 
       - `"gpt-5.4"`
 
@@ -3480,6 +3860,30 @@ Retrieves a model response with the given ID.
 
         - `"function_call_output"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
       - `created_by?: string`
 
         The identifier of the actor that created the item.
@@ -3554,6 +3958,58 @@ Retrieves a model response with the given ID.
       a response. Be sure to include these items in your `input` to the Responses API
       for subsequent turns of a conversation if you are manually
       [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of the program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
 
     - `ResponseToolSearchCall`
 
@@ -3659,6 +4115,8 @@ Retrieves a model response with the given ID.
 
           A tool that runs Python code to help generate a response to a prompt.
 
+        - `ProgrammaticToolCalling`
+
         - `ImageGeneration`
 
           A tool that generates images using the GPT image models.
@@ -3760,6 +4218,8 @@ Retrieves a model response with the given ID.
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -4009,6 +4469,26 @@ Retrieves a model response with the given ID.
 
         - `"shell_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -4088,6 +4568,26 @@ Retrieves a model response with the given ID.
         The type of the shell call output. Always `shell_call_output`.
 
         - `"shell_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -4173,6 +4673,26 @@ Retrieves a model response with the given ID.
 
         - `"apply_patch_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -4202,6 +4722,26 @@ Retrieves a model response with the given ID.
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -4394,7 +4934,7 @@ Retrieves a model response with the given ID.
     What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
     We generally recommend altering this or `top_p` but not both.
 
-  - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+  - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
     How the model should select which tool (or tools) to use when generating
     a response. See the `tools` parameter to see how to specify which tools
@@ -4536,6 +5076,14 @@ Retrieves a model response with the given ID.
 
         - `"custom"`
 
+    - `SpecificProgrammaticToolCallingParam`
+
+      - `type: "programmatic_tool_calling"`
+
+        The tool to call. Always `programmatic_tool_calling`.
+
+        - `"programmatic_tool_calling"`
+
     - `ToolChoiceApplyPatch`
 
       Forces the model to call the apply_patch tool when executing a tool call.
@@ -4605,6 +5153,8 @@ Retrieves a model response with the given ID.
     - `CodeInterpreter`
 
       A tool that runs Python code to help generate a response to a prompt.
+
+    - `ProgrammaticToolCalling`
 
     - `ImageGeneration`
 
@@ -4832,9 +5382,32 @@ Retrieves a model response with the given ID.
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+  - `prompt_cache_options?: PromptCacheOptions`
+
+    The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+    - `mode: "implicit" | "explicit"`
+
+      Whether implicit prompt-cache breakpoints were enabled.
+
+      - `"implicit"`
+
+      - `"explicit"`
+
+    - `ttl: "30m"`
+
+      The minimum lifetime applied to each cache breakpoint.
+
+      - `"30m"`
+
   - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+    Deprecated. Use `prompt_cache_options.ttl` instead.
+
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+    This field expresses a maximum retention policy, while
+    `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+    fields are independent and do not interact.
     For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
     For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -4867,16 +5440,13 @@ Retrieves a model response with the given ID.
 
     - `effort?: ReasoningEffort | null`
 
-      Constrains effort on reasoning for
-      [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-      Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-      reasoning effort can result in faster responses and fewer tokens used
-      on reasoning in a response.
-
-      - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-      - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-      - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-      - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+      Constrains effort on reasoning for reasoning models. Currently supported
+      values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+      Reducing reasoning effort can result in faster responses and fewer tokens
+      used on reasoning in a response. Not all reasoning models support every
+      value. See the
+      [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+      for model-specific support.
 
       - `"none"`
 
@@ -4889,6 +5459,8 @@ Retrieves a model response with the given ID.
       - `"high"`
 
       - `"xhigh"`
+
+      - `"max"`
 
     - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -4903,6 +5475,20 @@ Retrieves a model response with the given ID.
       - `"concise"`
 
       - `"detailed"`
+
+    - `mode?: (string & {}) | "standard" | "pro"`
+
+      Controls the reasoning execution mode for the request.
+
+      When returned on a response, this is the effective execution mode.
+
+      - `(string & {})`
+
+      - `"standard" | "pro"`
+
+        - `"standard"`
+
+        - `"pro"`
 
     - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -5088,6 +5674,10 @@ Retrieves a model response with the given ID.
 
       A detailed breakdown of the input tokens.
 
+      - `cache_write_tokens: number`
+
+        The number of input tokens that were written to the cache.
+
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache.
@@ -5200,8 +5790,14 @@ console.log(response.id);
       },
       "strict": true,
       "type": "function",
+      "allowed_callers": [
+        "direct"
+      ],
       "defer_loading": true,
-      "description": "description"
+      "description": "description",
+      "output_schema": {
+        "foo": "bar"
+      }
     }
   ],
   "top_p": 1,
@@ -5256,11 +5852,16 @@ console.log(response.id);
     "version": "version"
   },
   "prompt_cache_key": "prompt-cache-key-1234",
+  "prompt_cache_options": {
+    "mode": "implicit",
+    "ttl": "30m"
+  },
   "prompt_cache_retention": "in_memory",
   "reasoning": {
     "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
+    "mode": "standard",
     "summary": "auto"
   },
   "safety_identifier": "safety-identifier-1234",
@@ -5277,6 +5878,7 @@ console.log(response.id);
   "usage": {
     "input_tokens": 0,
     "input_tokens_details": {
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     },
     "output_tokens": 0,

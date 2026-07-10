@@ -4,9 +4,7 @@
 
 **post** `/audio/speech`
 
-Generates audio from the input text.
-
-Returns the audio file content, or a stream of audio events.
+Create speech
 
 ### Parameters
 

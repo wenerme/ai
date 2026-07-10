@@ -207,7 +207,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [{ type: "computer" }],
   input:
     "Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
@@ -222,7 +222,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[{"type": "computer"}],
     input="Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
 )
@@ -1374,7 +1374,7 @@ def capture_screenshot(vm):
 
 Send that screenshot back as a `computer_call_output` item:
 
-For Computer use, prefer `detail: "original"` on screenshot inputs. This preserves the full screenshot resolution, up to 10.24M pixels, and improves click accuracy. If `detail: "original"` uses too many tokens, you can downscale the image before sending it to the API, and make sure you remap model-generated coordinates from the downscaled coordinate space to the original image's coordinate space. Avoid using `high` or `low` image detail for computer use tasks. When downscaling, we observe strong performance with 1440x900 and 1600x900 desktop resolutions. See the [Images and Vision guide](https://developers.openai.com/api/docs/guides/images-vision) for more details on image input detail levels.
+For Computer use, prefer `detail: "original"` on screenshot inputs to preserve resolution and improve click accuracy. GPT-5.6 models do not resize `original` image inputs to a pixel-dimension or patch-budget limit, so large screenshots can use more input tokens. If `detail: "original"` uses too many tokens, you can downscale the image before sending it to the API, and make sure you remap model-generated coordinates from the downscaled coordinate space to the original image's coordinate space. Avoid using `high` or `low` image detail for computer use tasks. When downscaling, we observe strong performance with 1440x900 and 1600x900 desktop resolutions. See the [Images and Vision guide](https://developers.openai.com/api/docs/guides/images-vision) for more details on image input detail levels.
 
 Send the updated screenshot
 
@@ -1385,7 +1385,7 @@ const client = new OpenAI();
 
 async function sendComputerScreenshot(response, callId, screenshotBase64) {
   return await client.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     tools: [{ type: "computer" }],
     previous_response_id: response.id,
     input: [
@@ -1411,7 +1411,7 @@ client = OpenAI()
 
 def send_computer_screenshot(response, call_id, screenshot_base64):
     return client.responses.create(
-        model="gpt-5.5",
+        model="gpt-5.6",
         tools=[{"type": "computer"}],
         previous_response_id=response.id,
         input=[
@@ -1453,7 +1453,7 @@ async function computerUseLoop(target, response) {
     const screenshotBase64 = Buffer.from(screenshot).toString("base64");
 
     response = await client.responses.create({
-      model: "gpt-5.5",
+      model: "gpt-5.6",
       tools: [{ type: "computer" }],
       previous_response_id: response.id,
       input: [
@@ -1495,7 +1495,7 @@ def computer_use_loop(target, response):
         screenshot_base64 = base64.b64encode(screenshot).decode("utf-8")
 
         response = client.responses.create(
-            model="gpt-5.5",
+            model="gpt-5.6",
             tools=[{"type": "computer"}],
             previous_response_id=response.id,
             input=[
@@ -1589,7 +1589,7 @@ import util from "node:util";
 async function main(
   prompt: string = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
   max_steps: number = 50,
-  model: string = "gpt-5.5"
+  model: string = "gpt-5.6"
 ) {
   type Phase = null | "commentary" | "final_answer";
   const client = new OpenAI();
@@ -1843,7 +1843,7 @@ async def _ainput(prompt: str) -> str:
 async def main(
     prompt: str = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
     max_steps: int = 20,
-    model: str = "gpt-5.5",
+    model: str = "gpt-5.6",
 ) -> None:
     client = OpenAI()
 
@@ -2055,7 +2055,7 @@ import util from "node:util";
 async function main(
   prompt: string = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
   max_steps: number = 50,
-  model: string = "gpt-5.5"
+  model: string = "gpt-5.6"
 ) {
   type Phase = null | "commentary" | "final_answer";
   const client = new OpenAI();
@@ -2309,7 +2309,7 @@ async def _ainput(prompt: str) -> str:
 async def main(
     prompt: str = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
     max_steps: int = 20,
-    model: str = "gpt-5.5",
+    model: str = "gpt-5.6",
 ) -> None:
     client = OpenAI()
 
@@ -2622,7 +2622,7 @@ If a task asks you to transmit, copy, or share sensitive user data such as finan
 
 ## Migration from computer-use-preview
 
-It's simple to migrate from the deprecated `computer-use-preview` tool to the new `computer` tool.
+To migrate from the deprecated `computer-use-preview` tool, make the following changes.
 | | Preview integration | GA integration |
 | --- | --- | --- |
 | **Model** | `model: "computer-use-preview"` | `model: "gpt-5.5"` |

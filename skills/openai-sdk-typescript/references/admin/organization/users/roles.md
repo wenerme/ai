@@ -6,7 +6,7 @@
 
 **get** `/organization/users/{user_id}/roles`
 
-Lists the organization roles assigned to a user within the organization.
+List user organization role assignments
 
 ### Parameters
 
@@ -146,7 +146,7 @@ for await (const roleListResponse of client.admin.organization.users.roles.list(
 
 **post** `/organization/users/{user_id}/roles`
 
-Assigns an organization role to a user within the organization.
+Assign organization role to user
 
 ### Parameters
 
@@ -379,7 +379,7 @@ console.log(role.object);
 
 **get** `/organization/users/{user_id}/roles/{role_id}`
 
-Retrieves an organization role assigned to a user.
+Retrieve user organization role
 
 ### Parameters
 
@@ -501,7 +501,7 @@ console.log(role.id);
 
 **delete** `/organization/users/{user_id}/roles/{role_id}`
 
-Unassigns an organization role from a user within the organization.
+Unassign organization role from user
 
 ### Parameters
 

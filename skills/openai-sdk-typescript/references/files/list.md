@@ -4,7 +4,7 @@
 
 **get** `/files`
 
-Returns a list of files.
+List files
 
 ### Parameters
 

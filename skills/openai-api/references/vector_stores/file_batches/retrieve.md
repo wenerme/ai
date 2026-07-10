@@ -2,7 +2,7 @@
 
 **get** `/vector_stores/{vector_store_id}/file_batches/{batch_id}`
 
-Retrieves a vector store file batch.
+Retrieve vector store file batch
 
 ### Path Parameters
 
@@ -66,7 +66,7 @@ Retrieves a vector store file batch.
 
   - `vector_store_id: string`
 
-    The ID of the [vector store](/docs/api-reference/vector-stores/object) that the [File](/docs/api-reference/files) is attached to.
+    The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) that the [File](https://platform.openai.com/docs/api-reference/files) is attached to.
 
 ### Example
 

@@ -6,7 +6,7 @@
 
 **get** `/containers`
 
-List Containers
+List containers
 
 ### Parameters
 
@@ -154,7 +154,7 @@ print(page.id)
 
 **post** `/containers`
 
-Create Container
+Create container
 
 ### Parameters
 
@@ -403,7 +403,7 @@ print(container.id)
 
 **get** `/containers/{container_id}`
 
-Retrieve Container
+Retrieve container
 
 ### Parameters
 
@@ -526,7 +526,7 @@ print(container.id)
 
 **delete** `/containers/{container_id}`
 
-Delete Container
+Delete a container
 
 ### Parameters
 
@@ -772,7 +772,7 @@ client.containers.delete(
 
 **get** `/containers/{container_id}/files`
 
-List Container files
+List container files
 
 ### Parameters
 
@@ -872,9 +872,7 @@ print(page.id)
 
 **post** `/containers/{container_id}/files`
 
-Create a Container File
-
-You can send either a multipart/form-data request with the raw file content, or a JSON request with a file ID.
+Create container file
 
 ### Parameters
 
@@ -957,7 +955,7 @@ print(file.id)
 
 **get** `/containers/{container_id}/files/{file_id}`
 
-Retrieve Container File
+Retrieve container file
 
 ### Parameters
 
@@ -1035,7 +1033,7 @@ print(file.id)
 
 **delete** `/containers/{container_id}/files/{file_id}`
 
-Delete Container File
+Delete a container file
 
 ### Parameters
 
@@ -1170,7 +1168,7 @@ client.containers.files.delete(
 
 **get** `/containers/{container_id}/files/{file_id}/content`
 
-Retrieve Container File Content
+Retrieve container file content
 
 ### Parameters
 

@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/api_keys`
 
-Returns a list of API keys in the project.
+List project API keys
 
 ### Parameters
 
@@ -166,7 +166,7 @@ for await (const projectAPIKey of client.admin.organization.projects.apiKeys.lis
 
 **get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Retrieves an API key in the project.
+Retrieve project API key
 
 ### Parameters
 
@@ -315,10 +315,7 @@ console.log(projectAPIKey.id);
 
 **delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Deletes an API key from the project.
-
-Returns confirmation of the key deletion, or an error if the key belonged to
-a service account.
+Delete project API key
 
 ### Parameters
 

@@ -4,21 +4,19 @@
 
 **post** `/completions`
 
-Creates a completion for the provided prompt and parameters.
-
-Returns a completion object, or a sequence of completion objects if the request is streamed.
+Create completion
 
 ### Body Parameters
 
 - `model: string or "gpt-3.5-turbo-instruct" or "davinci-002" or "babbage-002"`
 
-  ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
+  ID of the model to use. You can use the [List models](https://platform.openai.com/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](https://platform.openai.com/docs/models) for descriptions of them.
 
   - `string`
 
-  - `"gpt-3.5-turbo-instruct" or "davinci-002" or "babbage-002"`
+  - `Preset = "gpt-3.5-turbo-instruct" or "davinci-002" or "babbage-002"`
 
-    ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
+    ID of the model to use. You can use the [List models](https://platform.openai.com/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](https://platform.openai.com/docs/models) for descriptions of them.
 
     - `"gpt-3.5-turbo-instruct"`
 
@@ -34,11 +32,11 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   - `string`
 
-  - `array of string`
+  - `ArrayOfStrings = array of string`
 
-  - `array of number`
+  - `ArrayOfTokens = array of number`
 
-  - `array of array of number`
+  - `ArrayOfTokenArrays = array of array of number`
 
 - `best_of: optional number`
 
@@ -56,7 +54,7 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
 
-  [See more information about frequency and presence penalties.](/docs/guides/text-generation)
+  [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
 
 - `logit_bias: optional map[number]`
 
@@ -88,7 +86,7 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
 
-  [See more information about frequency and presence penalties.](/docs/guides/text-generation)
+  [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
 
 - `seed: optional number`
 
@@ -156,7 +154,7 @@ Returns a completion object, or a sequence of completion objects if the request 
 
 - `user: optional string`
 
-  A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices#end-user-ids).
+  A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#end-user-ids).
 
 ### Returns
 
@@ -259,13 +257,17 @@ Returns a completion object, or a sequence of completion objects if the request 
         completion tokens for purposes of billing, output, and context window
         limits.
 
-    - `prompt_tokens_details: optional object { audio_tokens, cached_tokens }`
+    - `prompt_tokens_details: optional object { audio_tokens, cache_write_tokens, cached_tokens }`
 
       Breakdown of tokens used in the prompt.
 
       - `audio_tokens: optional number`
 
         Audio input tokens present in the prompt.
+
+      - `cache_write_tokens: optional number`
+
+        The unadjusted number of prompt tokens written to cache.
 
       - `cached_tokens: optional number`
 
@@ -333,6 +335,7 @@ curl https://api.openai.com/v1/completions \
     },
     "prompt_tokens_details": {
       "audio_tokens": 0,
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     }
   }
@@ -516,13 +519,17 @@ curl https://api.openai.com/v1/completions \
         completion tokens for purposes of billing, output, and context window
         limits.
 
-    - `prompt_tokens_details: optional object { audio_tokens, cached_tokens }`
+    - `prompt_tokens_details: optional object { audio_tokens, cache_write_tokens, cached_tokens }`
 
       Breakdown of tokens used in the prompt.
 
       - `audio_tokens: optional number`
 
         Audio input tokens present in the prompt.
+
+      - `cache_write_tokens: optional number`
+
+        The unadjusted number of prompt tokens written to cache.
 
       - `cached_tokens: optional number`
 
@@ -601,13 +608,17 @@ curl https://api.openai.com/v1/completions \
       completion tokens for purposes of billing, output, and context window
       limits.
 
-  - `prompt_tokens_details: optional object { audio_tokens, cached_tokens }`
+  - `prompt_tokens_details: optional object { audio_tokens, cache_write_tokens, cached_tokens }`
 
     Breakdown of tokens used in the prompt.
 
     - `audio_tokens: optional number`
 
       Audio input tokens present in the prompt.
+
+    - `cache_write_tokens: optional number`
+
+      The unadjusted number of prompt tokens written to cache.
 
     - `cached_tokens: optional number`
 

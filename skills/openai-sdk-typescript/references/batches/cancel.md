@@ -4,7 +4,7 @@
 
 **post** `/batches/{batch_id}/cancel`
 
-Cancels an in-progress batch. The batch will be in status `cancelling` for up to 10 minutes, before changing to `cancelled`, where it will have partial results (if any) available in the output file.
+Cancel batch
 
 ### Parameters
 
@@ -76,23 +76,7 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 
   - `errors?: Errors`
 
-    - `data?: Array<BatchError>`
-
-      - `code?: string`
-
-        An error code identifying the error type.
-
-      - `line?: number | null`
-
-        The line number of the input file where the error occurred, if applicable.
-
-      - `message?: string`
-
-        A human-readable message providing more details about the error.
-
-      - `param?: string | null`
-
-        The name of the parameter that caused the error, if applicable.
+    - `data?: Array<unknown>`
 
     - `object?: string`
 
@@ -138,21 +122,7 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts?: BatchRequestCounts`
-
-    The request counts for different statuses within the batch.
-
-    - `completed: number`
-
-      Number of requests that have been completed successfully.
-
-    - `failed: number`
-
-      Number of requests that have failed.
-
-    - `total: number`
-
-      Total number of requests in the batch.
+  - `request_counts?: unknown`
 
   - `usage?: BatchUsage`
 
@@ -220,12 +190,7 @@ console.log(batch.id);
   "error_file_id": "error_file_id",
   "errors": {
     "data": [
-      {
-        "code": "code",
-        "line": 0,
-        "message": "message",
-        "param": "param"
-      }
+      {}
     ],
     "object": "object"
   },
@@ -239,11 +204,7 @@ console.log(batch.id);
   },
   "model": "model",
   "output_file_id": "output_file_id",
-  "request_counts": {
-    "completed": 0,
-    "failed": 0,
-    "total": 0
-  },
+  "request_counts": {},
   "usage": {
     "input_tokens": 0,
     "input_tokens_details": {

@@ -4,8 +4,7 @@
 
 **get** `/chat/completions`
 
-List stored Chat Completions. Only Chat Completions that have been stored
-with the `store` parameter set to `true` will be returned.
+List Chat Completions
 
 ### Parameters
 
@@ -505,6 +504,10 @@ with the `store` parameter set to `true` will be returned.
 
         Audio input tokens present in the prompt.
 
+      - `cache_write_tokens?: number`
+
+        The unadjusted number of prompt tokens written to cache.
+
       - `cached_tokens?: number`
 
         Cached tokens present in the prompt.
@@ -674,6 +677,7 @@ for await (const chatCompletion of client.chat.completions.list()) {
         },
         "prompt_tokens_details": {
           "audio_tokens": 0,
+          "cache_write_tokens": 0,
           "cached_tokens": 0
         }
       }

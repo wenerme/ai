@@ -43,7 +43,7 @@ A key choice to make when generating content through the API is which model you 
 - **GPT models** are fast, cost-efficient, and highly intelligent, but benefit from more explicit instructions around how to accomplish tasks.
 - **Large and small (mini or nano) models** offer trade-offs for speed, cost, and intelligence. Large models are more effective at understanding prompts and solving problems across domains, while small models are generally faster and cheaper to use.
 
-When in doubt, [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) offers a strong default for general-purpose text generation and prompt iteration.
+When in doubt, [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol) offers a strong default for general-purpose text generation and prompt iteration.
 
 ## Prompt engineering
 
@@ -73,7 +73,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     reasoning: { effort: "low" },
     instructions: "${semicolonsDevMsg}",
     input: "${semicolonsPrompt}",
@@ -87,7 +87,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     reasoning={"effort": "low"},
     instructions="${semicolonsDevMsg}",
     input="${semicolonsPrompt}",
@@ -101,7 +101,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-5.5",
+        "model": "gpt-5.6",
         "reasoning": {"effort": "low"},
         "instructions": "${semicolonsDevMsg}",
         "input": "${semicolonsPrompt}"
@@ -118,7 +118,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     reasoning: { effort: "low" },
     input: [
         {
@@ -140,7 +140,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     reasoning={"effort": "low"},
     input=[
         {
@@ -162,7 +162,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-5.5",
+        "model": "gpt-5.6",
         "reasoning": {"effort": "low"},
         "input": [
             {
@@ -278,7 +278,7 @@ const client = new OpenAI();
 const instructions = await fs.readFile("prompt.txt", "utf-8");
 
 const response = await client.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     instructions,
     input: "How would I declare a variable for a last name?",
 });
@@ -294,7 +294,7 @@ with open("prompt.txt", "r", encoding="utf-8") as f:
     instructions = f.read()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     instructions=instructions,
     input="How would I declare a variable for a last name?",
 )
@@ -307,7 +307,7 @@ curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "instructions": "'"$(< prompt.txt)"'",
     "input": "How would I declare a variable for a last name?"
   }'
@@ -384,9 +384,9 @@ Models have different context window sizes from the low 100k range up to one mil
 
 ## Prompting current GPT-5 series models
 
-GPT models like [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) benefit from precise instructions that explicitly provide the logic and data required to complete the task in the prompt. To get the most out of the latest GPT-5 series model, start with the current prompting guide.
+GPT models like [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol) benefit from precise instructions that explicitly provide the logic and data required to complete the task in the prompt. To get the most out of the latest GPT-5 series model, start with the current prompting guide.
 
-<a href="/api/docs/guides/prompt-guidance">
+<a href="/api/docs/guides/latest-model#prompting-best-practices">
   
 
 <span slot="icon">
@@ -399,13 +399,13 @@ GPT models like [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.
 
 ### Prompting best practices for the latest GPT-5 series model
 
-For the full current treatment, use the [prompt guidance](https://developers.openai.com/api/docs/guides/prompt-guidance) guide. The practical reminders below still apply.
+For the full current treatment, use the [latest GPT-5 prompting best practices](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices). The practical reminders below still apply.
 
 Coding
 
 #### Coding
 
-Prompting `gpt-5.5` for coding tasks is most effective when following a few best practices: define the agent's role, enforce structured tool use with examples, require thorough testing for correctness, and set Markdown standards for clean output.
+Prompting `gpt-5.6` for coding tasks is most effective when following a few best practices: define the agent's role, enforce structured tool use with examples, require thorough testing for correctness, and set Markdown standards for clean output.
 
 **Explicit role and workflow guidance**
 Frame the model as a software engineering agent with well-defined responsibilities. Provide clear instructions for using tools like `functions.run` for code tasks, and specify when not to use certain modes—for example, avoid interactive execution unless necessary.
@@ -419,11 +419,11 @@ Include concrete examples of how to invoke commands with the provided functions,
 **Markdown standards**
 Guide the model to generate clean, semantically correct markdown using inline code, code fences, lists, and tables where appropriate—and to format file paths, functions, and classes with backticks.
 
-For detailed guidance and prompt samples specific to coding, see our [prompt guidance](https://developers.openai.com/api/docs/guides/prompt-guidance) guide.
+For detailed guidance and prompt samples specific to coding, see the [latest GPT-5 prompting best practices](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices).
 
 Front-end engineering
 
-[GPT-5.5](https://developers.openai.com/api/docs/models/gpt-5.5)
+[GPT-5.6](https://developers.openai.com/api/docs/models/gpt-5.6-sol)
 performs well at building front ends from scratch as well as contributing to
 large, established codebases. To get the best results, we recommend using the
 following libraries:
@@ -456,11 +456,11 @@ For front-end engineering work in larger codebases, we've found that adding thes
 - **Pages:** Provide templates for common layouts.
 - **Agent Instructions:** Ask the model to confirm design assumptions, scaffold projects, enforce standards, integrate APIs, test states, and document code.
 
-For detailed guidance and prompt samples specific to frontend development, see our [prompt guidance](https://developers.openai.com/api/docs/guides/prompt-guidance) guide.
+For detailed guidance and prompt samples specific to frontend development, see the [latest GPT-5 prompting best practices](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices).
 
 Agentic tasks
 
-For agentic and long-running rollouts with `gpt-5.5`, focus your prompts on three core practices: plan tasks thoroughly to ensure complete resolution, provide clear preambles for major tool usage decisions, and use a TODO tool to track workflow and progress in an organized manner.
+For agentic and long-running rollouts with `gpt-5.6`, focus your prompts on three core practices: plan tasks thoroughly to ensure complete resolution, provide clear preambles for major tool usage decisions, and use a TODO tool to track workflow and progress in an organized manner.
 
 **Planning and persistence**
 Instruct the model to resolve the full query before yielding control, decomposing it into sub-tasks and reflecting after each tool call to confirm completeness.
@@ -494,7 +494,7 @@ Before you call a tool explain why you are calling it
 
 Use a TODO list tool or rubric to enforce structured planning and avoid missed steps.
 
-For detailed guidance and prompt samples specific to building agents, see the [prompt guidance](https://developers.openai.com/api/docs/guides/prompt-guidance) guide.
+For detailed guidance and prompt samples specific to building agents, see the [latest GPT-5 prompting best practices](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices).
 
 ## Prompting reasoning models
 

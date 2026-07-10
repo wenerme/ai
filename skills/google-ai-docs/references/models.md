@@ -10,7 +10,7 @@ Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) [### Gemi
 Frontier-class performance rivaling larger models at a fraction of the cost.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) [### Nano Banana 2
 Powerful, high-efficiency image generation and editing, optimized for speed and high-volume use cases.
-Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) [### Nano Banana Lite
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) [### Nano Banana 2 Lite
 Ultra-low latency and cost-effective image generation and editing, designed for high-volume interactive use cases.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) [### Nano Banana Pro
 State-of-the-art image generation and editing models for highly contextual native image creation.
@@ -108,7 +108,7 @@ High-fidelity speech synthesis optimized for quality in structured workflows lik
 
 High-efficiency production-scale visual creation, combining the intelligence of the Gemini 3 series with lightning-fast generation speeds.
 
-### [Nano Banana Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image)
+### [Nano Banana 2 Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image)
 
 Designed as the efficiency specialist of the image generation family, offering ultra-low latency and cost-effective image generation and editing.
 

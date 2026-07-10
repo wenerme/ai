@@ -4,7 +4,7 @@
 
 **get** `/audio/voice_consents`
 
-Returns a list of voice consent recordings.
+List voice consents
 
 ### Query Parameters
 
@@ -90,7 +90,7 @@ curl https://api.openai.com/v1/audio/voice_consents?limit=20 \
 
 **post** `/audio/voice_consents`
 
-Upload a voice consent recording.
+Create voice consent
 
 ### Returns
 
@@ -154,7 +154,7 @@ curl https://api.openai.com/v1/audio/voice_consents \
 
 **get** `/audio/voice_consents/{consent_id}`
 
-Retrieves a voice consent recording.
+Retrieve voice consent
 
 ### Path Parameters
 
@@ -214,7 +214,7 @@ curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
 
 **post** `/audio/voice_consents/{consent_id}`
 
-Updates a voice consent recording (metadata only).
+Update voice consent
 
 ### Path Parameters
 
@@ -289,7 +289,7 @@ curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
 
 **delete** `/audio/voice_consents/{consent_id}`
 
-Deletes a voice consent recording.
+Delete voice consent
 
 ### Path Parameters
 

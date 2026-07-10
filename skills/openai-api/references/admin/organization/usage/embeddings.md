@@ -2,7 +2,7 @@
 
 **get** `/organization/usage/embeddings`
 
-Get embeddings usage details for the organization.
+Embeddings
 
 ### Query Parameters
 

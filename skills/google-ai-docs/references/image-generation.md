@@ -2512,7 +2512,7 @@ Choose the model best suited for your specific use case.
   intelligence to cost and latency balance. Check the model [pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-flash-image) and [capabilities](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) page for more
   details.
 
-- **Gemini 3.1 Flash Lite Image (Nano Banana Lite)** is the most efficient
+- **Gemini 3.1 Flash Lite Image (Nano Banana 2 Lite)** is the most efficient
   model in the image generation family, offering
   ultra-low latency and cost-effective image generation and editing.
   Check the model [pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-flash-lite-image)

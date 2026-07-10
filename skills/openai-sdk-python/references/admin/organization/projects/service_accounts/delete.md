@@ -4,10 +4,7 @@
 
 **delete** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Deletes a service account from the project.
-
-Returns confirmation of service account deletion, or an error if the project
-is archived (archived projects have no service accounts).
+Delete project service account
 
 ### Parameters
 

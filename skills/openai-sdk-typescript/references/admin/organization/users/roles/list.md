@@ -4,7 +4,7 @@
 
 **get** `/organization/users/{user_id}/roles`
 
-Lists the organization roles assigned to a user within the organization.
+List user organization role assignments
 
 ### Parameters
 

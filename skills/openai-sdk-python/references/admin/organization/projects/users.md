@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/users`
 
-Returns a list of users in the project.
+List project users
 
 ### Parameters
 
@@ -95,7 +95,7 @@ print(page.id)
 
 **post** `/organization/projects/{project_id}/users`
 
-Adds a user to the project. Users must already be members of the organization to be added to a project.
+Create project user
 
 ### Parameters
 
@@ -180,7 +180,7 @@ print(project_user.id)
 
 **get** `/organization/projects/{project_id}/users/{user_id}`
 
-Retrieves a user in the project.
+Retrieve project user
 
 ### Parameters
 
@@ -255,7 +255,7 @@ print(project_user.id)
 
 **post** `/organization/projects/{project_id}/users/{user_id}`
 
-Modifies a user's role in the project.
+Modify project user
 
 ### Parameters
 
@@ -334,10 +334,7 @@ print(project_user.id)
 
 **delete** `/organization/projects/{project_id}/users/{user_id}`
 
-Deletes a user from the project.
-
-Returns confirmation of project user deletion, or an error if the project is
-archived (archived projects have no users).
+Delete project user
 
 ### Parameters
 
@@ -437,7 +434,7 @@ print(user.id)
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 
-Lists the project roles assigned to a user within a project.
+List project user role assignments
 
 ### Parameters
 
@@ -579,7 +576,7 @@ print(page.id)
 
 **post** `/projects/{project_id}/users/{user_id}/roles`
 
-Assigns a project role to a user within a project.
+Assign project role to user
 
 ### Parameters
 
@@ -815,7 +812,7 @@ print(role.object)
 
 **get** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Retrieves a project role assigned to a user.
+Retrieve project user role
 
 ### Parameters
 
@@ -936,7 +933,7 @@ print(role.id)
 
 **delete** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Unassigns a project role from a user within a project.
+Unassign project role from user
 
 ### Parameters
 

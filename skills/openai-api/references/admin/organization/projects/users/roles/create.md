@@ -2,7 +2,7 @@
 
 **post** `/projects/{project_id}/users/{user_id}/roles`
 
-Assigns a project role to a user within a project.
+Assign project role to user
 
 ### Path Parameters
 

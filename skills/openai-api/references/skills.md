@@ -8,7 +8,7 @@ Create a new skill.
 
 ### Body Parameters
 
-- `files: array of string or string`
+- `files: optional array of string or string`
 
   Skill files to upload (directory upload) or a single zip file.
 
@@ -58,9 +58,8 @@ Create a new skill.
 
 ```http
 curl https://api.openai.com/v1/skills \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F files='["Example data"]'
+    -X POST \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
 #### Response
@@ -503,7 +502,11 @@ Create a new immutable skill version.
 
 ### Body Parameters
 
-- `files: array of string or string`
+- `default: optional boolean`
+
+  Whether to set this version as the default.
+
+- `files: optional array of string or string`
 
   Skill files to upload (directory upload) or a single zip file.
 
@@ -514,10 +517,6 @@ Create a new immutable skill version.
   - `string`
 
     Skill zip file to upload.
-
-- `default: optional boolean`
-
-  Whether to set this version as the default.
 
 ### Returns
 
@@ -557,9 +556,8 @@ Create a new immutable skill version.
 
 ```http
 curl https://api.openai.com/v1/skills/$SKILL_ID/versions \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F files='["Example data"]'
+    -X POST \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
 #### Response

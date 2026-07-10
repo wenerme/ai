@@ -4,7 +4,7 @@
 
 **post** `/conversations`
 
-Create a conversation.
+Create a conversation
 
 ### Parameters
 
@@ -48,6 +48,16 @@ Create a conversation.
 
               - `"input_text"`
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `ResponseInputImage`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -78,6 +88,16 @@ Create a conversation.
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `ResponseInputFile`
 
             A file input to the model.
@@ -88,9 +108,11 @@ Create a conversation.
 
               - `"input_file"`
 
-            - `detail?: "low" | "high"`
+            - `detail?: "auto" | "low" | "high"`
 
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
 
               - `"low"`
 
@@ -111,6 +133,16 @@ Create a conversation.
             - `filename?: string`
 
               The name of the file to be sent to the model.
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
       - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -1059,6 +1091,26 @@ Create a conversation.
 
         The unique ID of the function tool call.
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `namespace?: string`
 
         The namespace of the function to run.
@@ -1106,6 +1158,16 @@ Create a conversation.
 
               - `"input_text"`
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `ResponseInputImageContent`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -1136,6 +1198,16 @@ Create a conversation.
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `ResponseInputFileContent`
 
             A file input to the model.
@@ -1146,9 +1218,11 @@ Create a conversation.
 
               - `"input_file"`
 
-            - `detail?: "low" | "high"`
+            - `detail?: "auto" | "low" | "high"`
 
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
 
               - `"low"`
 
@@ -1170,6 +1244,16 @@ Create a conversation.
 
               The name of the file to be sent to the model.
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
       - `type: "function_call_output"`
 
         The type of the function tool call output. Always `function_call_output`.
@@ -1179,6 +1263,30 @@ Create a conversation.
       - `id?: string | null`
 
         The unique ID of the function tool call output. Populated when this item is returned via API.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -1248,13 +1356,21 @@ Create a conversation.
 
           - `strict: boolean | null`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading?: boolean`
 
@@ -1263,6 +1379,10 @@ Create a conversation.
           - `description?: string | null`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema?: Record<string, unknown> | null`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearchTool`
 
@@ -1319,7 +1439,7 @@ Create a conversation.
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<string | number>`
+              - `value: string | number | boolean | Array<unknown>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1329,11 +1449,7 @@ Create a conversation.
 
                 - `boolean`
 
-                - `Array<string | number>`
-
-                  - `string`
-
-                  - `number`
+                - `Array<unknown>`
 
             - `CompoundFilter`
 
@@ -1505,6 +1621,14 @@ Create a conversation.
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -1716,6 +1840,22 @@ Create a conversation.
 
             - `"code_interpreter"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration`
 
           A tool that generates images using the GPT image models.
@@ -1875,6 +2015,14 @@ Create a conversation.
 
             - `"shell"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
             - `ContainerAuto`
@@ -2015,6 +2163,14 @@ Create a conversation.
 
             - `"custom"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `defer_loading?: boolean`
 
             Whether this tool should be deferred and discovered via tool search.
@@ -2083,15 +2239,29 @@ Create a conversation.
 
                 - `"function"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description?: string | null`
 
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters?: unknown`
 
               - `strict?: boolean | null`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
             - `CustomTool`
 
@@ -2193,6 +2363,14 @@ Create a conversation.
 
             - `"apply_patch"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
       - `type: "tool_search_output"`
 
         The item type. Always `tool_search_output`.
@@ -2266,6 +2444,8 @@ Create a conversation.
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -2607,6 +2787,30 @@ Create a conversation.
 
         The unique ID of the shell tool call. Populated when this item is returned via API.
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
       - `environment?: LocalEnvironment | ContainerReference | null`
 
         The environment to execute the shell commands in.
@@ -2682,6 +2886,30 @@ Create a conversation.
       - `id?: string | null`
 
         The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `max_output_length?: number | null`
 
@@ -2777,6 +3005,30 @@ Create a conversation.
 
         The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
     - `ApplyPatchCallOutput`
 
       The streamed output emitted by an apply patch tool call.
@@ -2802,6 +3054,30 @@ Create a conversation.
       - `id?: string | null`
 
         The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `output?: string | null`
 
@@ -2993,6 +3269,30 @@ Create a conversation.
 
         The unique ID of the custom tool call output in the OpenAI platform.
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
     - `ResponseCustomToolCall`
 
       A call to a custom tool created by the model.
@@ -3018,6 +3318,26 @@ Create a conversation.
       - `id?: string`
 
         The unique ID of the custom tool call in the OpenAI platform.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `namespace?: string`
 
@@ -3046,6 +3366,58 @@ Create a conversation.
         The type of item to reference. Always `item_reference`.
 
         - `"item_reference"`
+
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of this program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The item type. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of this program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The item type. Always `program_output`.
+
+        - `"program_output"`
 
   - `metadata?: Metadata | null`
 

@@ -2,15 +2,15 @@
 
 **post** `/threads`
 
-Create a thread.
+Create thread
 
 ### Body Parameters
 
 - `messages: optional array of object { content, role, attachments, metadata }`
 
-  A list of [messages](/docs/api-reference/messages) to start the thread with.
+  A list of [messages](https://platform.openai.com/docs/api-reference/messages) to start the thread with.
 
-  - `content: string or array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlockParam`
+  - `content: string or array of MessageContentPartParam`
 
     The text contents of the message.
 
@@ -18,19 +18,19 @@ Create a thread.
 
       The text contents of the message.
 
-    - `ArrayOfContentParts = array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlockParam`
+    - `ArrayOfContentParts = array of MessageContentPartParam`
 
-      An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](/docs/models).
+      An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](https://platform.openai.com/docs/models).
 
       - `ImageFileContentBlock object { image_file, type }`
 
-        References an image [File](/docs/api-reference/files) in the content of a message.
+        References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
         - `image_file: ImageFile`
 
           - `file_id: string`
 
-            The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+            The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
           - `detail: optional "auto" or "low" or "high"`
 
@@ -119,7 +119,7 @@ Create a thread.
 
           - `"code_interpreter"`
 
-      - `FileSearchTool object { type }`
+      - `FileSearch object { type }`
 
         - `type: "file_search"`
 
@@ -153,23 +153,23 @@ Create a thread.
 
     - `file_ids: optional array of string`
 
-      A list of [file](/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
+      A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
 
   - `file_search: optional object { vector_store_ids, vector_stores }`
 
     - `vector_store_ids: optional array of string`
 
-      The [vector store](/docs/api-reference/vector-stores/object) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
+      The [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
 
     - `vector_stores: optional array of object { chunking_strategy, file_ids, metadata }`
 
-      A helper to create a [vector store](/docs/api-reference/vector-stores/object) with file_ids and attach it to this thread. There can be a maximum of 1 vector store attached to the thread.
+      A helper to create a [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) with file_ids and attach it to this thread. There can be a maximum of 1 vector store attached to the thread.
 
       - `chunking_strategy: optional object { type }  or object { static, type }`
 
         The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-        - `AutoChunkingStrategy object { type }`
+        - `Auto object { type }`
 
           The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -179,7 +179,7 @@ Create a thread.
 
             - `"auto"`
 
-        - `StaticChunkingStrategy object { static, type }`
+        - `Static object { static, type }`
 
           - `static: object { chunk_overlap_tokens, max_chunk_size_tokens }`
 
@@ -201,7 +201,7 @@ Create a thread.
 
       - `file_ids: optional array of string`
 
-        A list of [file](/docs/api-reference/files) IDs to add to the vector store. For vector stores created before Nov 2025, there can be a maximum of 10,000 files in a vector store. For vector stores created starting in Nov 2025, the limit is 100,000,000 files.
+        A list of [file](https://platform.openai.com/docs/api-reference/files) IDs to add to the vector store. For vector stores created before Nov 2025, there can be a maximum of 10,000 files in a vector store. For vector stores created starting in Nov 2025, the limit is 100,000,000 files.
 
       - `metadata: optional Metadata`
 
@@ -216,7 +216,7 @@ Create a thread.
 
 - `Thread object { id, created_at, metadata, 2 more }`
 
-  Represents a thread that contains [messages](/docs/api-reference/messages).
+  Represents a thread that contains [messages](https://platform.openai.com/docs/api-reference/messages).
 
   - `id: string`
 
@@ -249,13 +249,13 @@ Create a thread.
 
       - `file_ids: optional array of string`
 
-        A list of [file](/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
+        A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
 
     - `file_search: optional object { vector_store_ids }`
 
       - `vector_store_ids: optional array of string`
 
-        The [vector store](/docs/api-reference/vector-stores/object) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
+        The [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
 
 ### Example
 

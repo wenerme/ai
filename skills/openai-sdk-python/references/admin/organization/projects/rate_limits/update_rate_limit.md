@@ -4,7 +4,7 @@
 
 **post** `/organization/projects/{project_id}/rate_limits/{rate_limit_id}`
 
-Updates a project rate limit.
+Modify project rate limit
 
 ### Parameters
 

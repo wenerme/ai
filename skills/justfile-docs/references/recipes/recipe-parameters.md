@@ -123,7 +123,7 @@ test +FLAGS='-q':
 ```
 
 The number of arguments a variadic parameter accepts may be limited with the
-`[arg(ARG, min=MIN)]` and `[arg(ARG, max=MAX)]` attributes<sup>master</sup>,
+`[arg(ARG, min=MIN)]` and `[arg(ARG, max=MAX)]` attributes<sup>1.56.0</sup>,
 which require lists to be enabled:
 
 ```just

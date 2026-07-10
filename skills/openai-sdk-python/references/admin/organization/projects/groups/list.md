@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/groups`
 
-Lists the groups that have access to a project.
+List project groups
 
 ### Parameters
 

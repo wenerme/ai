@@ -4,7 +4,7 @@
 
 **delete** `/vector_stores/{vector_store_id}`
 
-Delete a vector store.
+Delete vector store
 
 ### Parameters
 

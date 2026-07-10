@@ -32,6 +32,8 @@ This document uses the following convention:
 
 Gitea supports setting `app.ini` values via environment variables of the form `GITEA__<section>__<KEY>`. These require running `gitea config edit-ini --in-place --apply-env` before starting Gitea to write them into `app.ini`. The official Docker images do this automatically on container startup.
 
+> **info**: If `<section>` or `<KEY>` contains a `.`, replace that with `_0X2E_`; if it contains a `-`, replace it with `_0X2C_`
+
 For example, to configure the database connection via environment variables:
 
 ```
@@ -969,7 +971,7 @@ Release attachment has its own config options in `[repository.release]` section.
 
   - `PATH`: **attachments**: Path to store attachments only available when STORAGE_TYPE is `local`, relative paths will be resolved to `{AppDataPath}/{attachment.PATH}`.
 
-  For `STORAGE_TYPE = minio`, the configurations can be found at [Storage Minio](#storage_minio), you can override some configurations like below.
+  For `STORAGE_TYPE = minio`, the configurations can be found at [Storage Minio](#minio-storage-configuration-storage_minio), you can override some configurations like below.
 
   - `MINIO_BASE_PATH`: **attachments/**: Minio base path on the bucket only available when STORAGE_TYPE is `minio`
 
@@ -1300,8 +1302,10 @@ Synchronize external user data (only LDAP user synchronization is supported)
 
 ### Git - Config options (`git.config`)
 
-The key/value pairs in this section will be used as git config.
-This section only does "set" config, a removed config key from this section won't be removed from git config automatically. The format is `some.configKey = value`.
+The key/value pairs in this section will be used as git config. The format is `some.configKey = value`.
+These options are written into the gitconfig file under `[git] HOME_PATH` when Gitea starts, and are applied **after** Gitea's built-in defaults — so values set here take precedence over the defaults listed below.
+
+**Note:** This section only does "set" config; a removed config key from this section won't be removed from git config automatically. Some config options might affect the behavior of git and cause Gitea's git operations to fail — make sure you know what you are doing before making changes.
 
 - `diff.algorithm`: **histogram**
 - `core.logAllRefUpdates`: **true**
@@ -1488,7 +1492,7 @@ is `data/lfs` and the default of `MINIO_BASE_PATH` is `lfs/`.
 
 - `PATH`: **./data/lfs**: Where to store LFS files, only available when `STORAGE_TYPE` is `local`. If not set it fall back to deprecated LFS_CONTENT_PATH value in [server] section.
 
-  For `STORAGE_TYPE = minio`, the configurations can be found at [Storage Minio](#storage_minio), you can also define configurations like below to override derived or default values.
+  For `STORAGE_TYPE = minio`, the configurations can be found at [Storage Minio](#minio-storage-configuration-storage_minio), you can also define configurations like below to override derived or default values.
 
   - `MINIO_BASE_PATH`: **attachments/**: Minio base path on the bucket only available when STORAGE_TYPE is `minio`
 
@@ -1639,7 +1643,7 @@ is `data/repo-archive` and the default of `MINIO_BASE_PATH` is `repo-archive/`.
 
   - `PATH`: **./data/repo-archive**: Where to store archive files, only available when `STORAGE_TYPE` is `local`.
 
-  For `STORAGE_TYPE = minio`, the configurations can be found at [Storage Minio](#storage_minio), you can override some configurations like below.
+  For `STORAGE_TYPE = minio`, the configurations can be found at [Storage Minio](#minio-storage-configuration-storage_minio), you can override some configurations like below.
 
   - `MINIO_BASE_PATH`: **repo-archive/**: Minio base path on the bucket only available when `STORAGE_TYPE` is `minio`
 

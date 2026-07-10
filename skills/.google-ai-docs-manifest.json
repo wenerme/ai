@@ -152,8 +152,8 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 59573,
-    "updatedAt": "2026-07-01T01:37:25.246Z"
+    "size": 59594,
+    "updatedAt": "2026-07-10T04:34:50.647Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
@@ -260,8 +260,8 @@
   "google-ai-docs/interactions-overview.md": {
     "url": "https://ai.google.dev/gemini-api/docs/interactions-overview",
     "skill": "google-ai-docs",
-    "size": 10749,
-    "updatedAt": "2026-07-09T04:40:32.346Z"
+    "size": 11493,
+    "updatedAt": "2026-07-10T04:35:05.432Z"
   },
   "google-ai-docs/streaming.md": {
     "url": "https://ai.google.dev/gemini-api/docs/streaming",
@@ -278,8 +278,8 @@
   "google-ai-docs/image-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/image-generation",
     "skill": "google-ai-docs",
-    "size": 107337,
-    "updatedAt": "2026-07-01T01:37:41.014Z"
+    "size": 107339,
+    "updatedAt": "2026-07-10T04:35:06.879Z"
   },
   "google-ai-docs/speech-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/speech-generation",
@@ -368,8 +368,8 @@
   "google-ai-docs/models.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models",
     "skill": "google-ai-docs",
-    "size": 12272,
-    "updatedAt": "2026-07-01T01:37:49.165Z"
+    "size": 12276,
+    "updatedAt": "2026-07-10T04:35:14.728Z"
   },
   "google-ai-docs/gemini-3.md": {
     "url": "https://ai.google.dev/gemini-api/docs/gemini-3",

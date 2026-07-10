@@ -6,7 +6,7 @@
 
 **get** `/organization/usage/audio_speeches`
 
-Get audio speeches usage details for the organization.
+Audio speeches
 
 ### Parameters
 
@@ -504,7 +504,7 @@ console.log(response.data);
 
 **get** `/organization/usage/audio_transcriptions`
 
-Get audio transcriptions usage details for the organization.
+Audio transcriptions
 
 ### Parameters
 
@@ -1002,7 +1002,7 @@ console.log(response.data);
 
 **get** `/organization/usage/code_interpreter_sessions`
 
-Get code interpreter sessions usage details for the organization.
+Code interpreter sessions
 
 ### Parameters
 
@@ -1482,7 +1482,7 @@ console.log(response.data);
 
 **get** `/organization/usage/completions`
 
-Get completions usage details for the organization.
+Completions
 
 ### Parameters
 
@@ -1988,7 +1988,7 @@ console.log(response.data);
 
 **get** `/organization/usage/embeddings`
 
-Get embeddings usage details for the organization.
+Embeddings
 
 ### Parameters
 
@@ -2486,7 +2486,7 @@ console.log(response.data);
 
 **get** `/organization/usage/images`
 
-Get images usage details for the organization.
+Images
 
 ### Parameters
 
@@ -3012,7 +3012,7 @@ console.log(response.data);
 
 **get** `/organization/usage/moderations`
 
-Get moderations usage details for the organization.
+Moderations
 
 ### Parameters
 
@@ -3510,7 +3510,7 @@ console.log(response.data);
 
 **get** `/organization/usage/vector_stores`
 
-Get vector stores usage details for the organization.
+Vector stores
 
 ### Parameters
 
@@ -3990,7 +3990,7 @@ console.log(response.data);
 
 **get** `/organization/usage/file_search_calls`
 
-Get file search calls usage details for the organization.
+File search calls
 
 ### Parameters
 
@@ -4488,7 +4488,7 @@ console.log(response.data);
 
 **get** `/organization/usage/web_search_calls`
 
-Get web search calls usage details for the organization.
+Web search calls
 
 ### Parameters
 
@@ -4998,7 +4998,7 @@ console.log(response.data);
 
 **get** `/organization/costs`
 
-Get costs details for the organization.
+Costs
 
 ### Parameters
 

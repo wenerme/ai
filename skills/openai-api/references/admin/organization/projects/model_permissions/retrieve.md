@@ -2,7 +2,7 @@
 
 **get** `/organization/projects/{project_id}/model_permissions`
 
-Returns model permissions for a project.
+Retrieve project model permissions
 
 ### Path Parameters
 

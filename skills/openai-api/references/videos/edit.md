@@ -4,20 +4,6 @@
 
 Create a new video generation job by editing a source video or existing generated video.
 
-### Body Parameters
-
-- `prompt: string`
-
-  Text prompt that describes how to edit the source video.
-
-- `video: object { id }`
-
-  Reference to the completed video to edit.
-
-  - `id: string`
-
-    The identifier of the completed video.
-
 ### Returns
 
 - `Video object { id, completed_at, created_at, 10 more }`
@@ -88,9 +74,19 @@ Create a new video generation job by editing a source video or existing generate
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string`
+  - `seconds: string or VideoSeconds`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
+
+    - `string`
+
+    - `VideoSeconds = "4" or "8" or "12"`
+
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
 
   - `size: VideoSize`
 
@@ -120,14 +116,10 @@ Create a new video generation job by editing a source video or existing generate
 
 ```http
 curl https://api.openai.com/v1/videos/edits \
-    -H 'Content-Type: application/json' \
+    -H 'Content-Type: multipart/form-data' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "prompt": "x",
-          "video": {
-            "id": "video_123"
-          }
-        }'
+    -F prompt=x \
+    -F video='Example data'
 ```
 
 #### Response
@@ -142,12 +134,12 @@ curl https://api.openai.com/v1/videos/edits \
     "message": "message"
   },
   "expires_at": 0,
-  "model": "string",
+  "model": "sora-2",
   "object": "video",
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "seconds",
+  "seconds": "4",
   "size": "720x1280",
   "status": "queued"
 }

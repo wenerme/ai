@@ -2,7 +2,7 @@
 
 **Reasoning models** like [GPT-5.5](https://developers.openai.com/api/docs/models/gpt-5.5) use internal reasoning tokens before producing a response. This helps the model plan, use tools effectively, inspect alternatives, recover from ambiguity, and solve harder multi-step tasks. Reasoning models work especially well for complex problem solving, coding, scientific reasoning, and multi-step agentic workflows. They're also the best models for [Codex CLI](https://github.com/openai/codex), our lightweight coding agent.
 
-Start with `gpt-5.5` for most reasoning workloads. If you need the highest-intelligence API option for more challenging problems that can tolerate more latency, use [`gpt-5.5-pro`](https://developers.openai.com/api/docs/models/gpt-5.5-pro). For lower cost, consider `gpt-5.4` and for lower cost and latency, consider `gpt-5.4-mini`.
+Start with `gpt-5.6` for most reasoning workloads. If you need the highest-intelligence API option for more challenging problems that can tolerate more latency, use [`gpt-5.5-pro`](https://developers.openai.com/api/docs/models/gpt-5.5-pro). For lower cost, consider `gpt-5.4` and for lower cost and latency, consider `gpt-5.4-mini`.
 
 **Reasoning models work better with the [Responses
   API](https://developers.openai.com/api/docs/guides/migrate-to-responses)**. While the Chat Completions API
@@ -26,7 +26,7 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 `;
 
 const response = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     reasoning: { effort: "low" },
     input: [
         {
@@ -50,7 +50,7 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 """
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     reasoning={"effort": "low"},
     input=[
         {
@@ -68,7 +68,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "reasoning": {"effort": "low"},
     "input": [
       {
@@ -88,25 +88,50 @@ Supported values are model-dependent and can include `none`, `minimal`, `low`, `
 
 Defaults are also model-dependent rather than universal. `gpt-5.5` defaults to `medium` reasoning effort. This is the best starting point for `gpt-5.5`’s full balance of quality, reliability and performance.
 
-| Effort   | Best for...                                                                                                                                                                                                                                                                                                                                                          |
+| Effort   | Best for                                                                                                                                                                                                                                                                                                                                                             |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `none`   | Latency-critical tasks that do not benefit from any reasoning or multi-chained tool calls. For latency-sensitive use cases with `gpt-5.5`, we recommend trying `low` to begin with and then moving to `none` if required.<br /><br />Common use cases include voice, fast information retrieval, and classification.                                                 |
 | `low`    | Efficient reasoning with a modest latency increase. Ideal for use cases requiring tool-use, planning, search, or multi-step decision making, while optimizing for speed and cost.<br /><br />Common use cases include data analysis, drafting, execution-oriented coding, and customer support / chat assistant workflows.                                           |
 | `medium` | When quality and reliability matter, and the task involves planning, complex reasoning, and judgement. Default configuration for most workloads, and a well-balanced point on the pareto curve of latency, performance and cost.<br /><br />Common use cases include agentic coding, research, working with spreadsheets & slides, and delegating long-horizon work. |
 | `high`   | Hard reasoning, complex debugging, deep planning, and high-value tasks where quality and intelligence matters more than latency. Recommended for complex workflows and agentic tasks.<br /><br />Common use cases include agentic coding, long-horizon research, and knowledge work. Depending on the complexity of the task, evaluate both `medium` and `high`.     |
-| `xhigh`  | Deep research, asynchronous workflows and agentic tasks that require very long rollouts. Only use when your evals show a clear benefit that justifies the extra latency and cost.<br /><br />Common use cases include security and code review, enterprise productivity, deeper research tasks, and challenging coding workflows.                                    |
+| `xhigh`  | Deep research, asynchronous workflows and agentic tasks that require long runs. Only use when your evals show a clear benefit that justifies the extra latency and cost.<br /><br />Common use cases include security and code review, enterprise productivity, deeper research tasks, and challenging coding workflows.                                             |
 
 For faster time to first visible token in latency-sensitive applications, ask the model to generate a short preamble before continuing with deeper reasoning.
 
 Some models support only a subset of these values, so check the relevant [model page](https://developers.openai.com/api/docs/models) before choosing a setting.
 
+## Reasoning mode
+
+GPT-5.6 models support `standard` and `pro` reasoning modes in the Responses API. `standard` is the default. Set `reasoning.mode` to `pro` for difficult tasks that need more model work and can tolerate higher latency and token usage.
+
+Reasoning mode and reasoning effort are independent. Mode selects standard or pro execution, while `reasoning.effort` controls how much reasoning the model applies within that mode. If you omit `reasoning.effort`, GPT-5.6 defaults to `medium` in both modes.
+
+Using pro reasoning mode
+
+```bash
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.6",
+    "reasoning": {
+      "mode": "pro",
+      "effort": "medium"
+    },
+    "input": "Review this database migration plan and identify potential failure modes."
+  }'
+```
+
+
+Pro mode aggregates the model work performed to produce the final answer and bills those tokens at the selected model's standard [token rates](https://developers.openai.com/api/docs/pricing). Pro mode performs more model work than standard mode, increasing token usage and cost. Existing Pro model IDs keep their current behavior and pricing.
+
 ## How reasoning works
 
-Reasoning models introduce **reasoning tokens** in addition to input and output tokens. The models use these reasoning tokens to "think," breaking down the prompt and considering multiple approaches to generating a response. Our reasoning models like gpt-5.5 and gpt-5.4 support interleaved thinking, where the model is able to generate visible output tokens before and in between thinking, and is able to think in between tool calls.
+Reasoning models introduce **reasoning tokens** in addition to input and output tokens. The models use these reasoning tokens to "think," breaking down the prompt and considering multiple approaches to generating a response. Our reasoning models like `gpt-5.5` and `gpt-5.4` support interleaved thinking, where the model is able to generate visible output tokens before and in between thinking, and is able to think in between tool calls.
 
-Here is an example of a multi-step conversation between a user and an assistant. Input and output tokens from each step are carried over, while reasoning tokens are discarded.
+Here is the default behavior for a multi-step conversation between a user and an assistant. Input and output tokens from each step are carried over, while reasoning from earlier turns is not rendered into the next sample. Models that support persisted reasoning can change this behavior with `reasoning.context`.
 
-![Reasoning tokens aren't retained in context](https://cdn.openai.com/API/docs/images/context-window.png)
+![Reasoning tokens with current-turn context](https://cdn.openai.com/API/docs/images/context-window.png)
 
 While reasoning tokens are not visible via the API, they still occupy space in
   the model's context window and are billed as [output
@@ -161,7 +186,7 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 `;
 
 const response = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     reasoning: { effort: "medium" },
     input: [
         {
@@ -196,7 +221,7 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 """
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     reasoning={"effort": "medium"},
     input=[
         {
@@ -226,16 +251,87 @@ For advanced use cases where you might be truncating and optimizing parts of the
 
 Check out [this guide](https://developers.openai.com/api/docs/guides/conversation-state) to learn more about manual context management.
 
-### Encrypted reasoning items
+## Preserve reasoning across calls
 
-When using the Responses API in a stateless mode (either with `store` set to `false`, or when an organization is enrolled in zero data retention), you must still retain reasoning items across conversation turns using the techniques described above. But in order to have reasoning items that can be sent with subsequent API requests, each of your API requests must have `reasoning.encrypted_content` in the `include` parameter of API requests, like so:
+Conversation state and reasoning state serve different purposes. Passing messages across calls gives the model the visible conversation history. On supported models, persisted reasoning also lets the model render compatible reasoning items from earlier turns into its next context.
+
+Persisted reasoning provides continuity; it does not expose the model's raw reasoning. The reasoning items remain opaque, and the API does not return their reasoning text. Set `reasoning.context` to control which available reasoning items the model can use:
+
+Support for <code>reasoning.context</code> modes is model-dependent. Replace
+  <code>YOUR_MODEL_ID</code> in the examples with a model that supports the mode
+  you select.
+
+| Value          | Behavior                                                                                                                        |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `auto`         | Uses the selected model's default. Omitting `reasoning.context` has the same effect as `auto`.                                  |
+| `current_turn` | Makes reasoning from the active turn available, but does not render reasoning from earlier turns into the next sample.          |
+| `all_turns`    | Renders available, compatible reasoning items from earlier turns into the next sample. Only supported models accept this value. |
+
+The response's `reasoning.context` field contains the effective mode, either `current_turn` or `all_turns`. Check this field on each response to confirm which mode the model used. The setting does not create reasoning items that are not already available.
+
+`all_turns` has an effect only when the request has access to earlier response items. Use `previous_response_id`, attach the response to a conversation, or manually replay the complete response history. On the first request, `current_turn` and `all_turns` behave the same because no earlier reasoning exists.
+
+### Continue reasoning with stored responses
+
+Use `previous_response_id` for the shortest stateful integration:
+
+Preserve reasoning with a previous response
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const first = await client.responses.create({
+  model: "YOUR_MODEL_ID",
+  input: "Inspect this repository and identify the likely bug.",
+  reasoning: { context: "current_turn" },
+});
+
+const second = await client.responses.create({
+  model: "YOUR_MODEL_ID",
+  previous_response_id: first.id,
+  input: "Now patch the bug and explain the change.",
+  reasoning: { context: "all_turns" },
+});
+
+console.log(second.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+first = client.responses.create(
+    model="YOUR_MODEL_ID",
+    input="Inspect this repository and identify the likely bug.",
+    reasoning={"context": "current_turn"},
+)
+
+second = client.responses.create(
+    model="YOUR_MODEL_ID",
+    previous_response_id=first.id,
+    input="Now patch the bug and explain the change.",
+    reasoning={"context": "all_turns"},
+)
+
+print(second.output_text)
+```
+
+
+Use `current_turn` when replaying older response items that the model no longer needs. Those reasoning items can remain in the API payload for continuity, but the service does not render them into the new sample. This can reduce the rendered context for long-running workflows.
+
+### Preserve reasoning without stored responses
+
+When using the Responses API in a stateless mode, either with `store` set to `false` or for an organization enrolled in zero data retention, request `reasoning.encrypted_content` in the `include` parameter on every call:
 
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "reasoning": {"effort": "medium"},
     "input": "What is the weather like today?",
     "tools": [ ... function config here ... ],
@@ -244,7 +340,90 @@ curl https://api.openai.com/v1/responses \
 ```
 
 
-Any reasoning items in the `output` array will now have an `encrypted_content` property, which will contain encrypted reasoning tokens that can be passed along with future conversation turns.
+Reasoning items in the `output` array will include an `encrypted_content` property containing encrypted reasoning tokens that you can pass to future calls.
+
+To use `all_turns` with `store: false`, request encrypted reasoning content on every call, preserve every output item, append the next user message, and replay the complete history:
+
+Preserve reasoning without storing responses
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const history = [
+  {
+    role: "user",
+    content: "Inspect this repository and identify the likely bug.",
+  },
+];
+
+const first = await client.responses.create({
+  model: "YOUR_MODEL_ID",
+  store: false,
+  input: history,
+  include: ["reasoning.encrypted_content"],
+  reasoning: { context: "current_turn" },
+});
+
+// Keep every output item, including encrypted reasoning and assistant phase.
+history.push(...first.output);
+history.push({
+  role: "user",
+  content: "Now patch the bug and explain the change.",
+});
+
+const second = await client.responses.create({
+  model: "YOUR_MODEL_ID",
+  store: false,
+  input: history,
+  include: ["reasoning.encrypted_content"],
+  reasoning: { context: "all_turns" },
+});
+
+console.log(second.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+history = [
+    {
+        "role": "user",
+        "content": "Inspect this repository and identify the likely bug.",
+    }
+]
+
+first = client.responses.create(
+    model="YOUR_MODEL_ID",
+    store=False,
+    input=history,
+    include=["reasoning.encrypted_content"],
+    reasoning={"context": "current_turn"},
+)
+
+# Keep every output item, including encrypted reasoning and assistant phase.
+history.extend(item.model_dump() for item in first.output)
+history.append(
+    {
+        "role": "user",
+        "content": "Now patch the bug and explain the change.",
+    }
+)
+
+second = client.responses.create(
+    model="YOUR_MODEL_ID",
+    store=False,
+    input=history,
+    include=["reasoning.encrypted_content"],
+    reasoning={"context": "all_turns"},
+)
+
+print(second.output_text)
+```
+
 
 ## Reasoning summaries
 
@@ -263,7 +442,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: "What is the capital of France?",
   reasoning: {
     effort: "low",
@@ -279,7 +458,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="What is the capital of France?",
     reasoning={
         "effort": "low",
@@ -295,7 +474,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "input": "What is the capital of France?",
     "reasoning": {
         "effort": "low",
@@ -347,7 +526,7 @@ Before using summarizers with our latest reasoning models, you may need to
 For long-running or tool-heavy flows with GPT-5.5 and GPT-5.4 in the Responses API, use the assistant message `phase` field to avoid early stopping and other misbehavior.
 `phase` is optional at the API level, but OpenAI recommends using it. Use `phase: "commentary"` for intermediate assistant updates, such as preambles before tool calls, and `phase: "final_answer"` for the completed answer. Don't add `phase` to user messages.
 Using `previous_response_id` is usually the simplest path because prior assistant state is preserved. If you replay assistant history manually, preserve each original `phase` value.
-Missing or dropped `phase` can cause preambles to be treated as final answers in those workflows. For model-specific prompt guidance, see [Prompting GPT-5.5](https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5#phase-parameter).
+Missing or dropped `phase` can cause preambles to be treated as final answers in those workflows. For model-specific prompt guidance, see [Prompting GPT-5.5](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.5#prompting-best-practices).
 
 ### Round-trip assistant phase values
 
@@ -358,7 +537,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: [
     {
       role: "assistant",
@@ -387,7 +566,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=[
         {
             "role": "assistant",
@@ -412,7 +591,7 @@ print(response.output_text)
 
 ## Advice on prompting
 
-There are some differences to consider when prompting a reasoning model. Reasoning-capable GPT-5 models usually work best when you give them a clear goal, strong constraints, and an explicit output contract without prescribing every intermediate step.
+Consider these differences when prompting a reasoning model. Reasoning-capable GPT-5 models usually work best when you give them a clear goal, strong constraints, and an explicit output contract without prescribing every intermediate step.
 
 - Give the model the task, constraints, and desired output format.
 - Treat `reasoning.effort` as a tuning knob, not the primary way to recover quality.

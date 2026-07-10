@@ -4,7 +4,7 @@
 
 **get** `/files/{file_id}`
 
-Returns information about a specific file.
+Retrieve file
 
 ### Parameters
 

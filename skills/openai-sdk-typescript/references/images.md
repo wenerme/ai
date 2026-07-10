@@ -6,7 +6,7 @@
 
 **post** `/images/generations`
 
-Creates an image given a prompt. [Learn more](https://platform.openai.com/docs/guides/images).
+Create image
 
 ### Parameters
 
@@ -417,7 +417,7 @@ data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_toke
 
 **post** `/images/edits`
 
-Creates an edited or extended image given one or more source images and a prompt. This endpoint supports GPT Image models (`gpt-image-1.5`, `gpt-image-1`, `gpt-image-1-mini`, and `chatgpt-image-latest`) and `dall-e-2`.
+Create image edit
 
 ### Parameters
 
@@ -843,7 +843,7 @@ data: {"type":"image_edit.completed","b64_json":"...","usage":{"total_tokens":10
 
 **post** `/images/variations`
 
-Creates a variation of a given image. This endpoint only supports `dall-e-2`.
+Create image variation
 
 ### Parameters
 

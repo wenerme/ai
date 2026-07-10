@@ -52,6 +52,50 @@ Update the URL path from `/workers/namespaces/` to `/storage/kv/namespaces/` in 
 
 After October 15, 2026, requests to the legacy `/accounts/{account_id}/workers/namespaces/*` routes will no longer be supported. Update integrations to use the documented Workers KV API endpoints before that date to ensure uninterrupted service.
 
+## 2026-07-09
+
+**Zero Trust Networks Route Endpoints and Cloudflare Tunnel Connections Field**
+
+Deprecation date: July 9, 2026
+
+End of life date: October 5, 2026
+
+Two related changes to the [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/) and [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/) take effect on October 5, 2026.
+
+**Route endpoints**
+
+The CIDR-encoded route endpoints are deprecated in favor of the standard, `route_id`\-based endpoints that already exist today.
+
+Deprecated APIs:
+
+* `POST /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}`
+* `PATCH /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}`
+* `DELETE /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}`
+
+Replacements:
+
+* `POST /accounts/{account_id}/teamnet/routes`
+* `PATCH /accounts/{account_id}/teamnet/routes/{route_id}`
+* `DELETE /accounts/{account_id}/teamnet/routes/{route_id}`
+
+**Cloudflare Tunnel and Cloudflare Mesh connections**
+
+The `connections` array is removed from list and get responses for Cloudflare Tunnel and Cloudflare Mesh nodes (the `cfd_tunnel` and `warp_connector` API resources). Query the dedicated connections endpoint instead of reading the field off the tunnel or node object.
+
+Affected APIs:
+
+* `GET /accounts/{account_id}/cfd_tunnel`
+* `GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}`
+* `GET /accounts/{account_id}/warp_connector`
+* `GET /accounts/{account_id}/warp_connector/{tunnel_id}`
+
+Replacements:
+
+* `GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections`
+* `GET /accounts/{account_id}/warp_connector/{tunnel_id}/connections`
+
+For full migration guidance, including `curl` examples and `cloudflared` and Terraform notes, refer to the [Cloudflare Tunnel changelog](https://developers.cloudflare.com/changelog/2026-07-09-tunnel-routes-and-connections-api-changes/).
+
 ## 2026-07-08
 
 **AMP/SXG API and Rules**

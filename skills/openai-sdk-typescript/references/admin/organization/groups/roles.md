@@ -6,7 +6,7 @@
 
 **get** `/organization/groups/{group_id}/roles`
 
-Lists the organization roles assigned to a group within the organization.
+List group organization role assignments
 
 ### Parameters
 
@@ -146,7 +146,7 @@ for await (const roleListResponse of client.admin.organization.groups.roles.list
 
 **post** `/organization/groups/{group_id}/roles`
 
-Assigns an organization role to a group within the organization.
+Assign organization role to group
 
 ### Parameters
 
@@ -278,7 +278,7 @@ console.log(role.group);
 
 **get** `/organization/groups/{group_id}/roles/{role_id}`
 
-Retrieves an organization role assigned to a group.
+Retrieve group organization role
 
 ### Parameters
 
@@ -400,7 +400,7 @@ console.log(role.id);
 
 **delete** `/organization/groups/{group_id}/roles/{role_id}`
 
-Unassigns an organization role from a group within the organization.
+Unassign organization role from group
 
 ### Parameters
 

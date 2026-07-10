@@ -2,9 +2,7 @@
 
 **post** `/responses/input_tokens`
 
-Returns input token counts of the request.
-
-Returns an object with `object` set to `response.input_tokens` and an `input_tokens` count.
+Get input token counts
 
 ### Body Parameters
 
@@ -25,7 +23,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       The unique ID of the conversation.
 
-- `input: optional string or array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 27 more`
+- `input: optional string or array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 29 more`
 
   Text, image, or file inputs to the model, used to generate a response
 
@@ -33,7 +31,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     A text input to the model, equivalent to a text input with the `user` role.
 
-  - `array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 27 more`
+  - `array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 29 more`
 
     A list of one or many input items to the model, containing different content types.
 
@@ -59,7 +57,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           A list of one or many input items to the model, containing different content
           types.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -73,9 +71,19 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"input_text"`
 
-          - `ResponseInputImage object { detail, type, file_id, image_url }`
+            - `prompt_cache_breakpoint: optional object { mode }`
 
-            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
             - `detail: "low" or "high" or "auto" or "original"`
 
@@ -103,7 +111,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile object { type, detail, file_data, 3 more }`
+            - `prompt_cache_breakpoint: optional object { mode }`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
             A file input to the model.
 
@@ -113,9 +131,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"input_file"`
 
-            - `detail: optional "low" or "high"`
+            - `detail: optional "auto" or "low" or "high"`
 
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
 
               - `"low"`
 
@@ -136,6 +156,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `filename: optional string`
 
               The name of the file to be sent to the model.
+
+            - `prompt_cache_breakpoint: optional object { mode }`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
       - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -216,7 +246,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The content of the output message.
 
-        - `ResponseOutputText object { annotations, logprobs, text, type }`
+        - `ResponseOutputText object { annotations, text, type, logprobs }`
 
           A text output from the model.
 
@@ -320,7 +350,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"file_path"`
 
-          - `logprobs: array of object { token, bytes, logprob, top_logprobs }`
+          - `text: string`
+
+            The text output from the model.
+
+          - `type: "output_text"`
+
+            The type of the output text. Always `output_text`.
+
+            - `"output_text"`
+
+          - `logprobs: optional array of object { token, bytes, logprob, top_logprobs }`
 
             - `token: string`
 
@@ -335,16 +375,6 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
               - `bytes: array of number`
 
               - `logprob: number`
-
-          - `text: string`
-
-            The text output from the model.
-
-          - `type: "output_text"`
-
-            The type of the output text. Always `output_text`.
-
-            - `"output_text"`
 
         - `ResponseOutputRefusal object { refusal, type }`
 
@@ -396,7 +426,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `FileSearchCall object { id, queries, status, 2 more }`
 
       The results of a file search tool call. See the
-      [file search guide](/docs/guides/tools-file-search) for more information.
+      [file search guide](https://platform.openai.com/docs/guides/tools-file-search) for more information.
 
       - `id: string`
 
@@ -464,7 +494,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
       A tool call to a computer use tool. See the
-      [computer use guide](/docs/guides/tools-computer-use) for more information.
+      [computer use guide](https://platform.openai.com/docs/guides/tools-computer-use) for more information.
 
       - `id: string`
 
@@ -507,7 +537,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"computer_call"`
 
-      - `action: optional ComputerAction`
+      - `action: optional object { button, type, x, 2 more }  or object { keys, type, x, y }  or object { path, type, keys }  or 6 more`
 
         A click action.
 
@@ -711,37 +741,192 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           A click action.
 
+          - `button: "left" or "right" or "wheel" or 2 more`
+
+            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
+
+            - `"left"`
+
+            - `"right"`
+
+            - `"wheel"`
+
+            - `"back"`
+
+            - `"forward"`
+
+          - `type: "click"`
+
+            Specifies the event type. For a click action, this property is always `click`.
+
+            - `"click"`
+
+          - `x: number`
+
+            The x-coordinate where the click occurred.
+
+          - `y: number`
+
+            The y-coordinate where the click occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
         - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
+
+          - `type: "double_click"`
+
+            Specifies the event type. For a double click action, this property is always set to `double_click`.
+
+            - `"double_click"`
+
+          - `x: number`
+
+            The x-coordinate where the double click occurred.
+
+          - `y: number`
+
+            The y-coordinate where the double click occurred.
 
         - `Drag object { path, type, keys }`
 
           A drag action.
 
+          - `path: array of object { x, y }`
+
+            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
+
+            ```
+            [
+              { x: 100, y: 200 },
+              { x: 200, y: 300 }
+            ]
+            ```
+
+            - `x: number`
+
+              The x-coordinate.
+
+            - `y: number`
+
+              The y-coordinate.
+
+          - `type: "drag"`
+
+            Specifies the event type. For a drag action, this property is always set to `drag`.
+
+            - `"drag"`
+
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
+
+          - `keys: array of string`
+
+            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
+
+          - `type: "keypress"`
+
+            Specifies the event type. For a keypress action, this property is always set to `keypress`.
+
+            - `"keypress"`
 
         - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
+          - `type: "move"`
+
+            Specifies the event type. For a move action, this property is always set to `move`.
+
+            - `"move"`
+
+          - `x: number`
+
+            The x-coordinate to move to.
+
+          - `y: number`
+
+            The y-coordinate to move to.
+
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot object { type }`
 
           A screenshot action.
+
+          - `type: "screenshot"`
+
+            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
+
+            - `"screenshot"`
 
         - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
+          - `scroll_x: number`
+
+            The horizontal scroll distance.
+
+          - `scroll_y: number`
+
+            The vertical scroll distance.
+
+          - `type: "scroll"`
+
+            Specifies the event type. For a scroll action, this property is always set to `scroll`.
+
+            - `"scroll"`
+
+          - `x: number`
+
+            The x-coordinate where the scroll occurred.
+
+          - `y: number`
+
+            The y-coordinate where the scroll occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
+
         - `Type object { text, type }`
 
           An action to type in text.
 
+          - `text: string`
+
+            The text to type.
+
+          - `type: "type"`
+
+            Specifies the event type. For a type action, this property is always set to `type`.
+
+            - `"type"`
+
         - `Wait object { type }`
 
           A wait action.
+
+          - `type: "wait"`
+
+            Specifies the event type. For a wait action, this property is always set to `wait`.
+
+            - `"wait"`
 
     - `ComputerCallOutput object { call_id, output, type, 3 more }`
 
@@ -809,7 +994,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `WebSearchCall object { id, action, status, type }`
 
       The results of a web search tool call. See the
-      [web search guide](/docs/guides/tools-web-search) for more information.
+      [web search guide](https://platform.openai.com/docs/guides/tools-web-search) for more information.
 
       - `id: string`
 
@@ -902,10 +1087,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"web_search_call"`
 
-    - `FunctionCall object { arguments, call_id, name, 4 more }`
+    - `FunctionCall object { arguments, call_id, name, 5 more }`
 
       A tool call to run a function. See the
-      [function calling guide](/docs/guides/function-calling) for more information.
+      [function calling guide](https://platform.openai.com/docs/guides/function-calling) for more information.
 
       - `arguments: string`
 
@@ -929,6 +1114,26 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the function tool call.
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `namespace: optional string`
 
         The namespace of the function to run.
@@ -944,7 +1149,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"incomplete"`
 
-    - `FunctionCallOutput object { call_id, output, type, 2 more }`
+    - `FunctionCallOutput object { call_id, output, type, 3 more }`
 
       The output of a function tool call.
 
@@ -952,7 +1157,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the function tool call generated by the model.
 
-      - `output: string or array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
+      - `output: string or ResponseFunctionCallOutputItemList`
 
         Text, image, or file output of the function tool call.
 
@@ -960,11 +1165,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           A JSON string of the output of the function tool call.
 
-        - `array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
+        - `ResponseFunctionCallOutputItemList = array of ResponseFunctionCallOutputItem`
 
           An array of content outputs (text, image, file) for the function tool call.
 
-          - `ResponseInputTextContent object { text, type }`
+          - `ResponseInputTextContent object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -978,9 +1183,19 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"input_text"`
 
-          - `ResponseInputImageContent object { type, detail, file_id, image_url }`
+            - `prompt_cache_breakpoint: optional object { mode }`
 
-            An image input to the model. Learn about [image inputs](/docs/guides/vision)
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `ResponseInputImageContent object { type, detail, file_id, 2 more }`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
 
             - `type: "input_image"`
 
@@ -1008,7 +1223,17 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFileContent object { type, detail, file_data, 3 more }`
+            - `prompt_cache_breakpoint: optional object { mode }`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `ResponseInputFileContent object { type, detail, file_data, 4 more }`
 
             A file input to the model.
 
@@ -1018,9 +1243,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"input_file"`
 
-            - `detail: optional "low" or "high"`
+            - `detail: optional "auto" or "low" or "high"`
 
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
 
               - `"low"`
 
@@ -1042,6 +1269,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The name of the file to be sent to the model.
 
+            - `prompt_cache_breakpoint: optional object { mode }`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
       - `type: "function_call_output"`
 
         The type of the function tool call output. Always `function_call_output`.
@@ -1051,6 +1288,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: optional string`
 
         The unique ID of the function tool call output. Populated when this item is returned via API.
+
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -1102,11 +1363,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     - `ToolSearchOutput object { tools, type, id, 3 more }`
 
-      - `tools: array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+      - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
         The loaded tool definitions returned by the tool search output.
 
-        - `Function object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 5 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -1120,13 +1381,21 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `strict: boolean`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -1135,6 +1404,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: optional map[unknown]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -1306,7 +1579,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -1363,10 +1636,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 8 more }`
+        - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -1377,6 +1650,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -1410,7 +1691,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -1510,7 +1791,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `CodeInterpreter object { container, type }`
+        - `CodeInterpreter object { container, type, allowed_callers }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -1596,6 +1877,22 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"code_interpreter"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling object { type }`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
@@ -1618,8 +1915,19 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -1648,13 +1956,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -1662,7 +1970,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -1732,7 +2046,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"local_shell"`
 
-        - `Shell object { type, environment }`
+        - `Shell object { type, allowed_callers, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -1741,6 +2055,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             The type of the shell tool. Always `shell`.
 
             - `"shell"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
@@ -1868,9 +2190,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"container_reference"`
 
-        - `Custom object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -1881,6 +2203,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -1938,11 +2268,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, allowed_callers, 5 more }`
 
               - `name: string`
 
@@ -1950,19 +2280,33 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"function"`
 
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: optional boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: optional string`
 
+              - `output_schema: optional map[unknown]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: optional unknown`
 
               - `strict: optional boolean`
 
-            - `Custom object { name, type, defer_loading, 2 more }`
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            - `Custom object { name, type, allowed_callers, 3 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -1973,6 +2317,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                 The type of the custom tool. Always `custom`.
 
                 - `"custom"`
+
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading: optional boolean`
 
@@ -2072,7 +2424,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch object { type }`
+        - `ApplyPatch object { type, allowed_callers }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -2081,6 +2433,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             The type of the tool. Always `apply_patch`.
 
             - `"apply_patch"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
       - `type: "tool_search_output"`
 
@@ -2122,11 +2482,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"developer"`
 
-      - `tools: array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+      - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
         A list of additional tools made available at this item.
 
-        - `Function object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 5 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -2140,13 +2500,21 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `strict: boolean`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -2155,6 +2523,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: optional map[unknown]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -2259,7 +2631,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -2316,10 +2688,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 8 more }`
+        - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -2330,6 +2702,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -2363,7 +2743,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -2463,7 +2843,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `CodeInterpreter object { container, type }`
+        - `CodeInterpreter object { container, type, allowed_callers }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -2517,6 +2897,22 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"code_interpreter"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling object { type }`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
@@ -2539,8 +2935,19 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -2569,13 +2976,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -2583,7 +2990,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -2653,7 +3066,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"local_shell"`
 
-        - `Shell object { type, environment }`
+        - `Shell object { type, allowed_callers, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -2663,6 +3076,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"shell"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
             - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
@@ -2671,9 +3092,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `ContainerReference object { container_id, type }`
 
-        - `Custom object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -2684,6 +3105,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -2709,11 +3138,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, allowed_callers, 5 more }`
 
               - `name: string`
 
@@ -2721,19 +3150,33 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"function"`
 
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: optional boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: optional string`
 
+              - `output_schema: optional map[unknown]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: optional unknown`
 
               - `strict: optional boolean`
 
-            - `Custom object { name, type, defer_loading, 2 more }`
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            - `Custom object { name, type, allowed_callers, 3 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -2744,6 +3187,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                 The type of the custom tool. Always `custom`.
 
                 - `"custom"`
+
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading: optional boolean`
 
@@ -2843,7 +3294,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch object { type }`
+        - `ApplyPatch object { type, allowed_callers }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -2852,6 +3303,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             The type of the tool. Always `apply_patch`.
 
             - `"apply_patch"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
       - `type: "additional_tools"`
 
@@ -2868,13 +3327,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       A description of the chain of thought used by a reasoning model while generating
       a response. Be sure to include these items in your `input` to the Responses API
       for subsequent turns of a conversation if you are manually
-      [managing context](/docs/guides/conversation-state).
+      [managing context](https://platform.openai.com/docs/guides/conversation-state).
 
       - `id: string`
 
         The unique identifier of the reasoning content.
 
-      - `summary: array of SummaryTextContent`
+      - `summary: array of object { text, type }`
 
         Reasoning summary content.
 
@@ -2926,7 +3385,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     - `Compaction object { encrypted_content, type, id }`
 
-      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
+      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
 
       - `encrypted_content: string`
 
@@ -3127,7 +3586,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"incomplete"`
 
-    - `ShellCall object { action, call_id, type, 3 more }`
+    - `ShellCall object { action, call_id, type, 4 more }`
 
       A tool representing a request to execute one or more shell commands.
 
@@ -3161,6 +3620,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the shell tool call. Populated when this item is returned via API.
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
       - `environment: optional LocalEnvironment or ContainerReference`
 
         The environment to execute the shell commands in.
@@ -3179,7 +3662,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"incomplete"`
 
-    - `ShellCallOutput object { call_id, output, type, 3 more }`
+    - `ShellCallOutput object { call_id, output, type, 4 more }`
 
       The streamed output items emitted by a shell tool call.
 
@@ -3237,6 +3720,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the shell tool call output. Populated when this item is returned via API.
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
       - `max_output_length: optional number`
 
         The maximum number of UTF-8 characters captured for this shell call's combined output.
@@ -3251,7 +3758,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"incomplete"`
 
-    - `ApplyPatchCall object { call_id, operation, status, 2 more }`
+    - `ApplyPatchCall object { call_id, operation, status, 3 more }`
 
       A tool call representing a request to create, delete, or update files using diff patches.
 
@@ -3331,7 +3838,31 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
-    - `ApplyPatchCallOutput object { call_id, status, type, 2 more }`
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+    - `ApplyPatchCallOutput object { call_id, status, type, 3 more }`
 
       The streamed output emitted by an apply patch tool call.
 
@@ -3356,6 +3887,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: optional string`
 
         The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `output: optional string`
 
@@ -3508,7 +4063,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"failed"`
 
-    - `CustomToolCallOutput object { call_id, output, type, id }`
+    - `CustomToolCallOutput object { call_id, output, type, 2 more }`
 
       The output of a custom tool call from your code, being sent back to the model.
 
@@ -3529,15 +4084,15 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           Text, image, or file output of the custom tool call.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
-          - `ResponseInputImage object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `ResponseInputFile object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
             A file input to the model.
 
@@ -3551,7 +4106,31 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the custom tool call output in the OpenAI platform.
 
-    - `CustomToolCall object { call_id, input, name, 3 more }`
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+    - `CustomToolCall object { call_id, input, name, 4 more }`
 
       A call to a custom tool created by the model.
 
@@ -3576,6 +4155,26 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: optional string`
 
         The unique ID of the custom tool call in the OpenAI platform.
+
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `namespace: optional string`
 
@@ -3605,6 +4204,58 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"item_reference"`
 
+    - `Program object { id, call_id, code, 2 more }`
+
+      - `id: string`
+
+        The unique ID of this program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The item type. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput object { id, call_id, result, 2 more }`
+
+      - `id: string`
+
+        The unique ID of this program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" or "incomplete"`
+
+        The terminal status of the program output.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The item type. Always `program_output`.
+
+        - `"program_output"`
+
 - `instructions: optional string`
 
   A system (or developer) message inserted into the model's context.
@@ -3612,7 +4263,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
 - `model: optional string`
 
-  Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
+  Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](https://platform.openai.com/docs/models) to browse and compare available models.
 
 - `parallel_tool_calls: optional boolean`
 
@@ -3634,7 +4285,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
 - `previous_response_id: optional string`
 
-  The unique ID of the previous response to the model. Use this to create multi-turn conversations. Learn more about [conversation state](/docs/guides/conversation-state). Cannot be used in conjunction with `conversation`.
+  The unique ID of the previous response to the model. Use this to create multi-turn conversations. Learn more about [conversation state](https://platform.openai.com/docs/guides/conversation-state). Cannot be used in conjunction with `conversation`.
 
 - `reasoning: optional Reasoning`
 
@@ -3654,16 +4305,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
   - `effort: optional ReasoningEffort`
 
-    Constrains effort on reasoning for
-    [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-    Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-    reasoning effort can result in faster responses and fewer tokens used
-    on reasoning in a response.
-
-    - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-    - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-    - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-    - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+    Constrains effort on reasoning for reasoning models. Currently supported
+    values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+    Reducing reasoning effort can result in faster responses and fewer tokens
+    used on reasoning in a response. Not all reasoning models support every
+    value. See the
+    [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+    for model-specific support.
 
     - `"none"`
 
@@ -3676,6 +4324,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `"high"`
 
     - `"xhigh"`
+
+    - `"max"`
 
   - `generate_summary: optional "auto" or "concise" or "detailed"`
 
@@ -3690,6 +4340,24 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `"concise"`
 
     - `"detailed"`
+
+  - `mode: optional string or "standard" or "pro"`
+
+    Controls the reasoning execution mode for the request.
+
+    When returned on a response, this is the effective execution mode.
+
+    - `string`
+
+    - `"standard" or "pro"`
+
+      Controls the reasoning execution mode for the request.
+
+      When returned on a response, this is the effective execution mode.
+
+      - `"standard"`
+
+      - `"pro"`
 
   - `summary: optional "auto" or "concise" or "detailed"`
 
@@ -3710,8 +4378,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
   Configuration options for a text response from the model. Can be plain
   text or structured JSON data. Learn more:
 
-  - [Text inputs and outputs](/docs/guides/text)
-  - [Structured Outputs](/docs/guides/structured-outputs)
+  - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+  - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
 
   - `format: optional ResponseFormatTextConfig`
 
@@ -3719,7 +4387,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     Configuring `{ "type": "json_schema" }` enables Structured Outputs,
     which ensures the model will match your supplied JSON schema. Learn more in the
-    [Structured Outputs guide](/docs/guides/structured-outputs).
+    [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
     The default format is `{ "type": "text" }` with no additional options.
 
@@ -3742,7 +4410,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
       JSON Schema response format. Used to generate structured JSON responses.
-      Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+      Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
       - `name: string`
 
@@ -3771,7 +4439,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         If set to true, the model will always follow the exact schema defined
         in the `schema` field. Only a subset of JSON Schema is supported when
         `strict` is `true`. To learn more, read the [Structured Outputs
-        guide](/docs/guides/structured-outputs).
+        guide](https://platform.openai.com/docs/guides/structured-outputs).
 
     - `ResponseFormatJSONObject object { type }`
 
@@ -3798,7 +4466,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     - `"high"`
 
-- `tool_choice: optional ToolChoiceOptions or ToolChoiceAllowed or ToolChoiceTypes or 5 more`
+- `tool_choice: optional ToolChoiceOptions or ToolChoiceAllowed or ToolChoiceTypes or 6 more`
 
   Controls which tool the model should use, if any.
 
@@ -3859,12 +4527,12 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
   - `ToolChoiceTypes object { type }`
 
     Indicates that the model should use a built-in tool to generate a response.
-    [Learn more about built-in tools](/docs/guides/tools).
+    [Learn more about built-in tools](https://platform.openai.com/docs/guides/tools).
 
     - `type: "file_search" or "web_search_preview" or "computer" or 5 more`
 
       The type of hosted tool the model should to use. Learn more about
-      [built-in tools](/docs/guides/tools).
+      [built-in tools](https://platform.openai.com/docs/guides/tools).
 
       Allowed values are:
 
@@ -3938,6 +4606,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"custom"`
 
+  - `SpecificProgrammaticToolCallingParam object { type }`
+
+    - `type: "programmatic_tool_calling"`
+
+      The tool to call. Always `programmatic_tool_calling`.
+
+      - `"programmatic_tool_calling"`
+
   - `ToolChoiceApplyPatch object { type }`
 
     Forces the model to call the apply_patch tool when executing a tool call.
@@ -3958,11 +4634,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"shell"`
 
-- `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+- `tools: optional array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
   An array of tools the model may call while generating a response. You can specify which tool to use by setting the `tool_choice` parameter.
 
-  - `Function object { name, parameters, strict, 3 more }`
+  - `Function object { name, parameters, strict, 5 more }`
 
     Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -3976,13 +4652,21 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     - `strict: boolean`
 
-      Whether to enforce strict parameter validation. Default `true`.
+      Whether strict parameter validation is enforced for this function tool.
 
     - `type: "function"`
 
       The type of the function tool. Always `function`.
 
       - `"function"`
+
+    - `allowed_callers: optional array of "direct" or "programmatic"`
+
+      The tool invocation context(s).
+
+      - `"direct"`
+
+      - `"programmatic"`
 
     - `defer_loading: optional boolean`
 
@@ -3991,6 +4675,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `description: optional string`
 
       A description of the function. Used by the model to determine whether or not to call the function.
+
+    - `output_schema: optional map[unknown]`
+
+      A JSON schema object describing the JSON value encoded in string outputs for this function.
 
   - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -4095,7 +4783,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
   - `WebSearch object { type, filters, search_context_size, user_location }`
 
     Search the Internet for sources related to the prompt. Learn more about the
-    [web search tool](/docs/guides/tools-web-search).
+    [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
     - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -4152,10 +4840,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"approximate"`
 
-  - `Mcp object { server_label, type, allowed_tools, 8 more }`
+  - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
     Give the model access to additional tools via remote Model Context Protocol
-    (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+    (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
     - `server_label: string`
 
@@ -4166,6 +4854,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       The type of the MCP tool. Always `mcp`.
 
       - `"mcp"`
+
+    - `allowed_callers: optional array of "direct" or "programmatic"`
+
+      The tool invocation context(s).
+
+      - `"direct"`
+
+      - `"programmatic"`
 
     - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -4199,7 +4895,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       Identifier for service connectors, like those available in ChatGPT. One of
       `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-      about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+      about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
       Currently supported `connector_id` values are:
 
@@ -4299,7 +4995,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       The Secure MCP Tunnel ID to use instead of a direct server URL. One of
       `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-  - `CodeInterpreter object { container, type }`
+  - `CodeInterpreter object { container, type, allowed_callers }`
 
     A tool that runs Python code to help generate a response to a prompt.
 
@@ -4353,6 +5049,22 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"code_interpreter"`
 
+    - `allowed_callers: optional array of "direct" or "programmatic"`
+
+      The tool invocation context(s).
+
+      - `"direct"`
+
+      - `"programmatic"`
+
+  - `ProgrammaticToolCalling object { type }`
+
+    - `type: "programmatic_tool_calling"`
+
+      The type of the tool. Always `programmatic_tool_calling`.
+
+      - `"programmatic_tool_calling"`
+
   - `ImageGeneration object { type, action, background, 9 more }`
 
     A tool that generates images using the GPT image models.
@@ -4375,8 +5087,19 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     - `background: optional "transparent" or "opaque" or "auto"`
 
-      Background type for the generated image. One of `transparent`,
-      `opaque`, or `auto`. Default: `auto`.
+      Allows to set transparency for the background of the generated image(s).
+      This parameter is only supported for GPT image models that support
+      transparent backgrounds. Must be one of `transparent`, `opaque`, or
+      `auto` (default value). When `auto` is used, the model will
+      automatically determine the best background for the image.
+
+      `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+      transparent backgrounds. Requests with `background` set to
+      `transparent` will return an error for these models; use `opaque` or
+      `auto` instead.
+
+      If `transparent`, the output format needs to support transparency,
+      so it should be set to either `png` (default value) or `webp`.
 
       - `"transparent"`
 
@@ -4405,13 +5128,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         Base64-encoded mask image.
 
-    - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+    - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
       The image generation model to use. Default: `gpt-image-1`.
 
       - `string`
 
-      - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+      - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
         The image generation model to use. Default: `gpt-image-1`.
 
@@ -4419,7 +5142,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"gpt-image-1-mini"`
 
+        - `"gpt-image-2"`
+
+        - `"gpt-image-2-2026-04-21"`
+
         - `"gpt-image-1.5"`
+
+        - `"chatgpt-image-latest"`
 
     - `moderation: optional "auto" or "low"`
 
@@ -4489,7 +5218,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"local_shell"`
 
-  - `Shell object { type, environment }`
+  - `Shell object { type, allowed_callers, environment }`
 
     A tool that allows the model to execute shell commands.
 
@@ -4499,6 +5228,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"shell"`
 
+    - `allowed_callers: optional array of "direct" or "programmatic"`
+
+      The tool invocation context(s).
+
+      - `"direct"`
+
+      - `"programmatic"`
+
     - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
       - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
@@ -4507,9 +5244,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `ContainerReference object { container_id, type }`
 
-  - `Custom object { name, type, defer_loading, 2 more }`
+  - `Custom object { name, type, allowed_callers, 3 more }`
 
-    A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+    A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
     - `name: string`
 
@@ -4520,6 +5257,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       The type of the custom tool. Always `custom`.
 
       - `"custom"`
+
+    - `allowed_callers: optional array of "direct" or "programmatic"`
+
+      The tool invocation context(s).
+
+      - `"direct"`
+
+      - `"programmatic"`
 
     - `defer_loading: optional boolean`
 
@@ -4545,11 +5290,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       The namespace name used in tool calls (for example, `crm`).
 
-    - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+    - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
       The function/custom tools available inside this namespace.
 
-      - `Function object { name, type, defer_loading, 3 more }`
+      - `Function object { name, type, allowed_callers, 5 more }`
 
         - `name: string`
 
@@ -4557,19 +5302,33 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `"function"`
 
+        - `allowed_callers: optional array of "direct" or "programmatic"`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading: optional boolean`
 
           Whether this function should be deferred and discovered via tool search.
 
         - `description: optional string`
 
+        - `output_schema: optional map[unknown]`
+
+          A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
         - `parameters: optional unknown`
 
         - `strict: optional boolean`
 
-      - `Custom object { name, type, defer_loading, 2 more }`
+          Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-        A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+      - `Custom object { name, type, allowed_callers, 3 more }`
+
+        A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
         - `name: string`
 
@@ -4580,6 +5339,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           The type of the custom tool. Always `custom`.
 
           - `"custom"`
+
+        - `allowed_callers: optional array of "direct" or "programmatic"`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `defer_loading: optional boolean`
 
@@ -4679,7 +5446,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-  - `ApplyPatch object { type }`
+  - `ApplyPatch object { type, allowed_callers }`
 
     Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -4688,6 +5455,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       The type of the tool. Always `apply_patch`.
 
       - `"apply_patch"`
+
+    - `allowed_callers: optional array of "direct" or "programmatic"`
+
+      The tool invocation context(s).
+
+      - `"direct"`
+
+      - `"programmatic"`
 
 - `truncation: optional "auto" or "disabled"`
 

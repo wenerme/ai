@@ -4,7 +4,7 @@
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps`
 
-Returns a list of run steps belonging to a run.
+List run steps
 
 ### Parameters
 
@@ -151,153 +151,9 @@ Returns a list of run steps belonging to a run.
 
       Details of the tool call.
 
-      - `tool_calls: Array<ToolCall>`
+      - `tool_calls: Array<unknown>`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
-
-        - `CodeInterpreterToolCall`
-
-          Details of the Code Interpreter tool call the run step was involved in.
-
-          - `id: string`
-
-            The ID of the tool call.
-
-          - `code_interpreter: CodeInterpreter`
-
-            The Code Interpreter tool call definition.
-
-            - `input: string`
-
-              The input to the Code Interpreter tool call.
-
-            - `outputs: Array<Logs | Image>`
-
-              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-              - `Logs`
-
-                Text output from the Code Interpreter tool call as part of a run step.
-
-                - `logs: string`
-
-                  The text output from the Code Interpreter tool call.
-
-                - `type: "logs"`
-
-                  Always `logs`.
-
-                  - `"logs"`
-
-              - `Image`
-
-                - `image: Image`
-
-                  - `file_id: string`
-
-                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-                - `type: "image"`
-
-                  Always `image`.
-
-                  - `"image"`
-
-          - `type: "code_interpreter"`
-
-            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-            - `"code_interpreter"`
-
-        - `FileSearchToolCall`
-
-          - `id: string`
-
-            The ID of the tool call object.
-
-          - `file_search: FileSearch`
-
-            For now, this is always going to be an empty object.
-
-            - `ranking_options?: RankingOptions`
-
-              The ranking options for the file search.
-
-              - `ranker: "auto" | "default_2024_08_21"`
-
-                The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-                - `"auto"`
-
-                - `"default_2024_08_21"`
-
-              - `score_threshold: number`
-
-                The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-            - `results?: Array<Result>`
-
-              The results of the file search.
-
-              - `file_id: string`
-
-                The ID of the file that result was found in.
-
-              - `file_name: string`
-
-                The name of the file that result was found in.
-
-              - `score: number`
-
-                The score of the result. All values must be a floating point number between 0 and 1.
-
-              - `content?: Array<Content>`
-
-                The content of the result that was found. The content is only included if requested via the include query parameter.
-
-                - `text?: string`
-
-                  The text content of the file.
-
-                - `type?: "text"`
-
-                  The type of the content.
-
-                  - `"text"`
-
-          - `type: "file_search"`
-
-            The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-            - `"file_search"`
-
-        - `FunctionToolCall`
-
-          - `id: string`
-
-            The ID of the tool call object.
-
-          - `function: Function`
-
-            The definition of the function that was called.
-
-            - `arguments: string`
-
-              The arguments passed to the function.
-
-            - `name: string`
-
-              The name of the function.
-
-            - `output: string | null`
-
-              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
-
-          - `type: "function"`
-
-            The type of tool call. This is always going to be `function` for this type of tool call.
-
-            - `"function"`
 
       - `type: "tool_calls"`
 

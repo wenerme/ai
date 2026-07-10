@@ -2,7 +2,7 @@
 
 **delete** `/conversations/{conversation_id}`
 
-Delete a conversation. Items in the conversation will not be deleted.
+Delete a conversation
 
 ### Path Parameters
 

@@ -140,12 +140,15 @@ Flagship models
           'Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details. <a href="/api/docs/guides/amazon-bedrock">OpenAI models in Amazon Bedrock</a> are billed through AWS and may differ from direct OpenAI pricing.'
         )}
         rows={[
-          ["gpt-5.5 (<272K context length)", 5, 0.5, 30],
-          ["gpt-5.5-pro (<272K context length)", 30, "", 180],
-          ["gpt-5.4 (<272K context length)", 2.5, 0.25, 15],
-          ["gpt-5.4-mini", 0.75, 0.075, 4.5],
-          ["gpt-5.4-nano", 0.2, 0.02, 1.25],
-          ["gpt-5.4-pro (<272K context length)", 30, "", 180],
+          ["gpt-5.6-sol", 5, 0.5, 6.25, 30],
+          ["gpt-5.6-terra", 2.5, 0.25, 3.125, 15],
+          ["gpt-5.6-luna", 1, 0.1, 1.25, 6],
+          ["gpt-5.5 (<272K context length)", 5, 0.5, "-", 30],
+          ["gpt-5.5-pro (<272K context length)", 30, "-", "-", 180],
+          ["gpt-5.4 (<272K context length)", 2.5, 0.25, "-", 15],
+          ["gpt-5.4-mini", 0.75, 0.075, "-", 4.5],
+          ["gpt-5.4-nano", 0.2, 0.02, "-", 1.25],
+          ["gpt-5.4-pro (<272K context length)", 30, "-", "-", 180],
           ["gpt-5.2", 1.75, 0.175, 14],
           ["gpt-5.2-pro", 21, "-", 168],
           ["gpt-5.1", 1.25, 0.125, 10],
@@ -196,12 +199,15 @@ Flagship models
           'Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details.'
         )}
         rows={[
-          ["gpt-5.5 (<272K context length)", 2.5, 0.25, 15],
-          ["gpt-5.5-pro (<272K context length)", 15, "", 90],
-          ["gpt-5.4 (<272K context length)", 1.25, 0.13, 7.5],
-          ["gpt-5.4-mini", 0.375, 0.0375, 2.25],
-          ["gpt-5.4-nano", 0.1, 0.01, 0.625],
-          ["gpt-5.4-pro (<272K context length)", 15, "", 90],
+          ["gpt-5.6-sol", 2.5, 0.25, 3.125, 15],
+          ["gpt-5.6-terra", 1.25, 0.125, 1.5625, 7.5],
+          ["gpt-5.6-luna", 0.5, 0.05, 0.625, 3],
+          ["gpt-5.5 (<272K context length)", 2.5, 0.25, "-", 15],
+          ["gpt-5.5-pro (<272K context length)", 15, "-", "-", 90],
+          ["gpt-5.4 (<272K context length)", 1.25, 0.13, "-", 7.5],
+          ["gpt-5.4-mini", 0.375, 0.0375, "-", 2.25],
+          ["gpt-5.4-nano", 0.1, 0.01, "-", 0.625],
+          ["gpt-5.4-pro (<272K context length)", 15, "-", "-", 90],
           ["gpt-5.2", 0.875, 0.0875, 7],
           ["gpt-5.2-pro", 10.5, "-", 84],
           ["gpt-5.1", 0.625, 0.0625, 5],
@@ -250,12 +256,15 @@ Flagship models
           'Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details.'
         )}
         rows={[
-          ["gpt-5.5 (<272K context length)", 2.5, 0.25, 15],
-          ["gpt-5.5-pro (<272K context length)", 15, "", 90],
-          ["gpt-5.4 (<272K context length)", 1.25, 0.13, 7.5],
-          ["gpt-5.4-mini", 0.375, 0.0375, 2.25],
-          ["gpt-5.4-nano", 0.1, 0.01, 0.625],
-          ["gpt-5.4-pro (<272K context length)", 15, "", 90],
+          ["gpt-5.6-sol", 2.5, 0.25, 3.125, 15],
+          ["gpt-5.6-terra", 1.25, 0.125, 1.5625, 7.5],
+          ["gpt-5.6-luna", 0.5, 0.05, 0.625, 3],
+          ["gpt-5.5 (<272K context length)", 2.5, 0.25, "-", 15],
+          ["gpt-5.5-pro (<272K context length)", 15, "-", "-", 90],
+          ["gpt-5.4 (<272K context length)", 1.25, 0.13, "-", 7.5],
+          ["gpt-5.4-mini", 0.375, 0.0375, "-", 2.25],
+          ["gpt-5.4-nano", 0.1, 0.01, "-", 0.625],
+          ["gpt-5.4-pro (<272K context length)", 15, "-", "-", 90],
           ["gpt-5.2", 0.875, 0.0875, 7],
           ["gpt-5.1", 0.625, 0.0625, 5],
           ["gpt-5", 0.625, 0.0625, 5],
@@ -277,9 +286,12 @@ Flagship models
           'Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details.'
         )}
         rows={[
-          ["gpt-5.5 (<272K context length)", 12.5, 1.25, 75],
-          ["gpt-5.4 (<272K context length)", 5, 0.5, 30],
-          ["gpt-5.4-mini", 1.5, 0.15, 9],
+          ["gpt-5.6-sol", 10, 1, 12.5, 60],
+          ["gpt-5.6-terra", 5, 0.5, 6.25, 30],
+          ["gpt-5.6-luna", 2, 0.2, 2.5, 12],
+          ["gpt-5.5 (<272K context length)", 12.5, 1.25, "-", 75],
+          ["gpt-5.4 (<272K context length)", 5, 0.5, "-", 30],
+          ["gpt-5.4-mini", 1.5, 0.15, "-", 9],
           ["gpt-5.2", 3.5, 0.35, 28],
           ["gpt-5.1", 2.5, 0.25, 20],
           ["gpt-5", 2.5, 0.25, 20],

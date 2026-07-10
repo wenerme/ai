@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/data_retention`
 
-Retrieves project data retention controls.
+Retrieve project data retention
 
 ### Parameters
 

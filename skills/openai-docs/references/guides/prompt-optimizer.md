@@ -20,7 +20,7 @@ The prompt optimizer can use the following from your dataset to improve your pro
 - Text critiques written in **output_feedback**
 - Results from graders
 
-For effective results, add annotations containing a Good/Bad rating _and_ detailed, specific critiques. Create [graders](https://developers.openai.com/api/docs/guides/evaluation-getting-started#adding-graders) that precisely capture the properties that you desire from your prompt.
+For effective results, add annotations containing a Good/Bad rating _and_ detailed, specific critiques. Create [graders](https://developers.openai.com/api/docs/guides/evaluation-getting-started#add-graders) that precisely capture the properties that you desire from your prompt.
 
 ## Optimize your prompt
 

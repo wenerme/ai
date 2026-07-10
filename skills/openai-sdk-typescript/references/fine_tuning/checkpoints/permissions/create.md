@@ -4,9 +4,7 @@
 
 **post** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-**NOTE:** Calling this endpoint requires an [admin API key](../admin-api-keys).
-
-This enables organization owners to share fine-tuned models with other projects in their organization.
+Create checkpoint permissions
 
 ### Parameters
 

@@ -2,7 +2,7 @@
 
 **post** `/threads/{thread_id}/runs`
 
-Create a run.
+Create run
 
 ### Path Parameters
 
@@ -14,7 +14,7 @@ Create a run.
 
   A list of additional fields to include in the response. Currently the only supported value is `step_details.tool_calls[*].file_search.results[*].content` to fetch the file search result content.
 
-  See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+  See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
   - `"step_details.tool_calls[*].file_search.results[*].content"`
 
@@ -22,7 +22,7 @@ Create a run.
 
 - `assistant_id: string`
 
-  The ID of the [assistant](/docs/api-reference/assistants) to use to execute this run.
+  The ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to execute this run.
 
 - `additional_instructions: optional string`
 
@@ -32,7 +32,7 @@ Create a run.
 
   Adds additional messages to the thread before creating the run.
 
-  - `content: string or array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlockParam`
+  - `content: string or array of MessageContentPartParam`
 
     The text contents of the message.
 
@@ -40,19 +40,19 @@ Create a run.
 
       The text contents of the message.
 
-    - `ArrayOfContentParts = array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlockParam`
+    - `ArrayOfContentParts = array of MessageContentPartParam`
 
-      An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](/docs/models).
+      An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](https://platform.openai.com/docs/models).
 
       - `ImageFileContentBlock object { image_file, type }`
 
-        References an image [File](/docs/api-reference/files) in the content of a message.
+        References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
         - `image_file: ImageFile`
 
           - `file_id: string`
 
-            The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+            The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
           - `detail: optional "auto" or "low" or "high"`
 
@@ -141,7 +141,7 @@ Create a run.
 
           - `"code_interpreter"`
 
-      - `FileSearchTool object { type }`
+      - `FileSearch object { type }`
 
         - `type: "file_search"`
 
@@ -160,7 +160,7 @@ Create a run.
 
 - `instructions: optional string`
 
-  Overrides the [instructions](/docs/api-reference/assistants/createAssistant) of the assistant. This is useful for modifying the behavior on a per-run basis.
+  Overrides the [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant) of the assistant. This is useful for modifying the behavior on a per-run basis.
 
 - `max_completion_tokens: optional number`
 
@@ -179,15 +179,51 @@ Create a run.
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
 
-- `model: optional string or "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 39 more`
+- `model: optional string or ChatModel`
 
-  The ID of the [Model](/docs/api-reference/models) to be used to execute this run. If a value is provided here, it will override the model associated with the assistant. If not, the model associated with the assistant will be used.
+  The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to be used to execute this run. If a value is provided here, it will override the model associated with the assistant. If not, the model associated with the assistant will be used.
 
   - `string`
 
-  - `AssistantSupportedModels = "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 39 more`
+  - `ChatModel = "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 78 more`
 
-    The ID of the [Model](/docs/api-reference/models) to be used to execute this run. If a value is provided here, it will override the model associated with the assistant. If not, the model associated with the assistant will be used.
+    - `"gpt-5.6-sol"`
+
+    - `"gpt-5.6-terra"`
+
+    - `"gpt-5.6-luna"`
+
+    - `"gpt-5.4"`
+
+    - `"gpt-5.4-mini"`
+
+    - `"gpt-5.4-nano"`
+
+    - `"gpt-5.4-mini-2026-03-17"`
+
+    - `"gpt-5.4-nano-2026-03-17"`
+
+    - `"gpt-5.3-chat-latest"`
+
+    - `"gpt-5.2"`
+
+    - `"gpt-5.2-2025-12-11"`
+
+    - `"gpt-5.2-chat-latest"`
+
+    - `"gpt-5.2-pro"`
+
+    - `"gpt-5.2-pro-2025-12-11"`
+
+    - `"gpt-5.1"`
+
+    - `"gpt-5.1-2025-11-13"`
+
+    - `"gpt-5.1-codex"`
+
+    - `"gpt-5.1-mini"`
+
+    - `"gpt-5.1-chat-latest"`
 
     - `"gpt-5"`
 
@@ -201,6 +237,8 @@ Create a run.
 
     - `"gpt-5-nano-2025-08-07"`
 
+    - `"gpt-5-chat-latest"`
+
     - `"gpt-4.1"`
 
     - `"gpt-4.1-mini"`
@@ -213,6 +251,14 @@ Create a run.
 
     - `"gpt-4.1-nano-2025-04-14"`
 
+    - `"o4-mini"`
+
+    - `"o4-mini-2025-04-16"`
+
+    - `"o3"`
+
+    - `"o3-2025-04-16"`
+
     - `"o3-mini"`
 
     - `"o3-mini-2025-01-31"`
@@ -220,6 +266,14 @@ Create a run.
     - `"o1"`
 
     - `"o1-2024-12-17"`
+
+    - `"o1-preview"`
+
+    - `"o1-preview-2024-09-12"`
+
+    - `"o1-mini"`
+
+    - `"o1-mini-2024-09-12"`
 
     - `"gpt-4o"`
 
@@ -229,13 +283,33 @@ Create a run.
 
     - `"gpt-4o-2024-05-13"`
 
+    - `"gpt-4o-audio-preview"`
+
+    - `"gpt-4o-audio-preview-2024-10-01"`
+
+    - `"gpt-4o-audio-preview-2024-12-17"`
+
+    - `"gpt-4o-audio-preview-2025-06-03"`
+
+    - `"gpt-4o-mini-audio-preview"`
+
+    - `"gpt-4o-mini-audio-preview-2024-12-17"`
+
+    - `"gpt-4o-search-preview"`
+
+    - `"gpt-4o-mini-search-preview"`
+
+    - `"gpt-4o-search-preview-2025-03-11"`
+
+    - `"gpt-4o-mini-search-preview-2025-03-11"`
+
+    - `"chatgpt-4o-latest"`
+
+    - `"codex-mini-latest"`
+
     - `"gpt-4o-mini"`
 
     - `"gpt-4o-mini-2024-07-18"`
-
-    - `"gpt-4.5-preview"`
-
-    - `"gpt-4.5-preview-2025-02-27"`
 
     - `"gpt-4-turbo"`
 
@@ -265,6 +339,8 @@ Create a run.
 
     - `"gpt-3.5-turbo-16k"`
 
+    - `"gpt-3.5-turbo-0301"`
+
     - `"gpt-3.5-turbo-0613"`
 
     - `"gpt-3.5-turbo-1106"`
@@ -275,20 +351,17 @@ Create a run.
 
 - `parallel_tool_calls: optional boolean`
 
-  Whether to enable [parallel function calling](/docs/guides/function-calling#configuring-parallel-function-calling) during tool use.
+  Whether to enable [parallel function calling](https://platform.openai.com/docs/guides/function-calling#configuring-parallel-function-calling) during tool use.
 
 - `reasoning_effort: optional ReasoningEffort`
 
-  Constrains effort on reasoning for
-  [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-  Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-  reasoning effort can result in faster responses and fewer tokens used
-  on reasoning in a response.
-
-  - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-  - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-  - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-  - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+  Constrains effort on reasoning for reasoning models. Currently supported
+  values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+  Reducing reasoning effort can result in faster responses and fewer tokens
+  used on reasoning in a response. Not all reasoning models support every
+  value. See the
+  [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+  for model-specific support.
 
   - `"none"`
 
@@ -302,11 +375,13 @@ Create a run.
 
   - `"xhigh"`
 
+  - `"max"`
+
 - `response_format: optional AssistantResponseFormatOption`
 
-  Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
+  Specifies the format that the model must output. Compatible with [GPT-4o](https://platform.openai.com/docs/models#gpt-4o), [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
-  Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](/docs/guides/structured-outputs).
+  Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
   Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is valid JSON.
 
@@ -344,7 +419,7 @@ Create a run.
   - `ResponseFormatJSONSchema object { json_schema, type }`
 
     JSON Schema response format. Used to generate structured JSON responses.
-    Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+    Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
     - `json_schema: object { name, description, schema, strict }`
 
@@ -371,7 +446,7 @@ Create a run.
         If set to true, the model will always follow the exact schema defined
         in the `schema` field. Only a subset of JSON Schema is supported when
         `strict` is `true`. To learn more, read the [Structured Outputs
-        guide](/docs/guides/structured-outputs).
+        guide](https://platform.openai.com/docs/guides/structured-outputs).
 
     - `type: "json_schema"`
 
@@ -395,7 +470,7 @@ Create a run.
   `required` means the model must call one or more tools before responding to the user.
   Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-  - `"none" or "auto" or "required"`
+  - `Auto = "none" or "auto" or "required"`
 
     `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -425,7 +500,7 @@ Create a run.
 
         The name of the function to call.
 
-- `tools: optional array of CodeInterpreterTool or FileSearchTool or FunctionTool`
+- `tools: optional array of AssistantTool`
 
   Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
 
@@ -447,13 +522,13 @@ Create a run.
 
         The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
 
-        Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+        Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
       - `ranking_options: optional object { score_threshold, ranker }`
 
         The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
 
-        See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+        See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
         - `score_threshold: number`
 
@@ -481,13 +556,13 @@ Create a run.
 
       - `parameters: optional FunctionParameters`
 
-        The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+        The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
         Omitting `parameters` defines a function with an empty parameter list.
 
       - `strict: optional boolean`
 
-        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
     - `type: "function"`
 
@@ -521,7 +596,7 @@ Create a run.
 
 - `Run object { id, assistant_id, cancelled_at, 24 more }`
 
-  Represents an execution run on a [thread](/docs/api-reference/threads).
+  Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
 
   - `id: string`
 
@@ -529,7 +604,7 @@ Create a run.
 
   - `assistant_id: string`
 
-    The ID of the [assistant](/docs/api-reference/assistants) used for execution of this run.
+    The ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for execution of this run.
 
   - `cancelled_at: number`
 
@@ -565,7 +640,7 @@ Create a run.
 
   - `instructions: string`
 
-    The instructions that the [assistant](/docs/api-reference/assistants) used for this run.
+    The instructions that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
 
   - `last_error: object { code, message }`
 
@@ -604,7 +679,7 @@ Create a run.
 
   - `model: string`
 
-    The model that the [assistant](/docs/api-reference/assistants) used for this run.
+    The model that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
 
   - `object: "thread.run"`
 
@@ -614,7 +689,7 @@ Create a run.
 
   - `parallel_tool_calls: boolean`
 
-    Whether to enable [parallel function calling](/docs/guides/function-calling#configuring-parallel-function-calling) during tool use.
+    Whether to enable [parallel function calling](https://platform.openai.com/docs/guides/function-calling#configuring-parallel-function-calling) during tool use.
 
   - `required_action: object { submit_tool_outputs, type }`
 
@@ -630,7 +705,7 @@ Create a run.
 
         - `id: string`
 
-          The ID of the tool call. This ID must be referenced when you submit the tool outputs in using the [Submit tool outputs to run](/docs/api-reference/runs/submitToolOutputs) endpoint.
+          The ID of the tool call. This ID must be referenced when you submit the tool outputs in using the [Submit tool outputs to run](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) endpoint.
 
         - `function: object { arguments, name }`
 
@@ -658,9 +733,9 @@ Create a run.
 
   - `response_format: AssistantResponseFormatOption`
 
-    Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
+    Specifies the format that the model must output. Compatible with [GPT-4o](https://platform.openai.com/docs/models#gpt-4o), [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
-    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](/docs/guides/structured-outputs).
+    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
     Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is valid JSON.
 
@@ -698,7 +773,7 @@ Create a run.
     - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
-      Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+      Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
       - `json_schema: object { name, description, schema, strict }`
 
@@ -725,7 +800,7 @@ Create a run.
           If set to true, the model will always follow the exact schema defined
           in the `schema` field. Only a subset of JSON Schema is supported when
           `strict` is `true`. To learn more, read the [Structured Outputs
-          guide](/docs/guides/structured-outputs).
+          guide](https://platform.openai.com/docs/guides/structured-outputs).
 
       - `type: "json_schema"`
 
@@ -737,7 +812,7 @@ Create a run.
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: "queued" or "in_progress" or "requires_action" or 6 more`
+  - `status: RunStatus`
 
     The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
 
@@ -761,7 +836,7 @@ Create a run.
 
   - `thread_id: string`
 
-    The ID of the [thread](/docs/api-reference/threads) that was executed on as a part of this run.
+    The ID of the [thread](https://platform.openai.com/docs/api-reference/threads) that was executed on as a part of this run.
 
   - `tool_choice: AssistantToolChoiceOption`
 
@@ -771,7 +846,7 @@ Create a run.
     `required` means the model must call one or more tools before responding to the user.
     Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-    - `"none" or "auto" or "required"`
+    - `Auto = "none" or "auto" or "required"`
 
       `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -801,9 +876,9 @@ Create a run.
 
           The name of the function to call.
 
-  - `tools: array of CodeInterpreterTool or FileSearchTool or FunctionTool`
+  - `tools: array of AssistantTool`
 
-    The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
+    The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
 
     - `CodeInterpreterTool object { type }`
 
@@ -829,13 +904,13 @@ Create a run.
 
           The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
 
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
         - `ranking_options: optional object { score_threshold, ranker }`
 
           The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
 
-          See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
           - `score_threshold: number`
 
@@ -863,13 +938,13 @@ Create a run.
 
         - `parameters: optional FunctionParameters`
 
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
           Omitting `parameters` defines a function with an empty parameter list.
 
         - `strict: optional boolean`
 
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
       - `type: "function"`
 

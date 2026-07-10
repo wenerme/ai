@@ -2,7 +2,7 @@
 
 **get** `/organization/projects/{project_id}/service_accounts`
 
-Returns a list of service accounts in the project.
+List project service accounts
 
 ### Path Parameters
 

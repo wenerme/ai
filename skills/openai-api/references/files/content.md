@@ -2,7 +2,7 @@
 
 **get** `/files/{file_id}/content`
 
-Returns the contents of the specified file.
+Retrieve file content
 
 ### Path Parameters
 

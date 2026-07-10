@@ -2,7 +2,7 @@
 
 **delete** `/responses/{response_id}`
 
-Deletes a model response with the given ID.
+Delete a model response
 
 ### Path Parameters
 

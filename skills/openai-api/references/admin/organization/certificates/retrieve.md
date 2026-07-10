@@ -2,9 +2,7 @@
 
 **get** `/organization/certificates/{certificate_id}`
 
-Get a certificate that has been uploaded to the organization.
-
-You can get a certificate regardless of whether it is active or not.
+Get certificate
 
 ### Path Parameters
 

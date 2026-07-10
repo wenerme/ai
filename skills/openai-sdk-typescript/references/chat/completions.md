@@ -6,24 +6,7 @@
 
 **post** `/chat/completions`
 
-**Starting a new project?** We recommend trying [Responses](https://platform.openai.com/docs/api-reference/responses)
-to take advantage of the latest OpenAI platform features. Compare
-[Chat Completions with Responses](https://platform.openai.com/docs/guides/responses-vs-chat-completions?api-mode=responses).
-
----
-
-Creates a model response for the given chat conversation. Learn more in the
-[text generation](https://platform.openai.com/docs/guides/text-generation), [vision](https://platform.openai.com/docs/guides/vision),
-and [audio](https://platform.openai.com/docs/guides/audio) guides.
-
-Parameter support can differ depending on the model used to generate the
-response, particularly for newer reasoning models. Parameters that are only
-supported for reasoning models are noted below. For the current state of
-unsupported parameters in reasoning models,
-[refer to the reasoning guide](https://platform.openai.com/docs/guides/reasoning).
-
-Returns a chat completion object, or a streamed sequence of chat completion
-chunk objects if the request is streamed.
+Create chat completion
 
 ### Parameters
 
@@ -62,6 +45,16 @@ chunk objects if the request is streamed.
 
               - `"text"`
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
         - `role: "developer"`
 
           The role of the messages author, in this case `developer`.
@@ -93,6 +86,10 @@ chunk objects if the request is streamed.
             - `type: "text"`
 
               The type of the content part.
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
         - `role: "system"`
 
@@ -129,6 +126,10 @@ chunk objects if the request is streamed.
 
                 The type of the content part.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
             - `ChatCompletionContentPartImage`
 
               Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -155,6 +156,16 @@ chunk objects if the request is streamed.
 
                 - `"image_url"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ChatCompletionContentPartInputAudio`
 
               Learn about [audio inputs](https://platform.openai.com/docs/guides/audio).
@@ -178,6 +189,16 @@ chunk objects if the request is streamed.
                 The type of the content part. Always `input_audio`.
 
                 - `"input_audio"`
+
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
 
             - `File`
 
@@ -204,6 +225,16 @@ chunk objects if the request is streamed.
                 The type of the content part. Always `file`.
 
                 - `"file"`
+
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
 
         - `role: "user"`
 
@@ -352,6 +383,10 @@ chunk objects if the request is streamed.
 
               The type of the content part.
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
         - `role: "tool"`
 
           The role of the messages author, in this case `tool`.
@@ -387,7 +422,13 @@ chunk objects if the request is streamed.
 
       - `(string & {})`
 
-      - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+      - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+        - `"gpt-5.6-sol"`
+
+        - `"gpt-5.6-terra"`
+
+        - `"gpt-5.6-luna"`
 
         - `"gpt-5.4"`
 
@@ -728,6 +769,30 @@ chunk objects if the request is streamed.
 
         The moderation model to use for moderated completions, e.g. 'omni-moderation-latest'.
 
+      - `policy?: Policy | null`
+
+        The policy to apply to moderated response input and output.
+
+        - `input?: Input | null`
+
+          The moderation policy for the response input.
+
+          - `mode: "score" | "block"`
+
+            - `"score"`
+
+            - `"block"`
+
+        - `output?: Output | null`
+
+          The moderation policy for the response output.
+
+          - `mode: "score" | "block"`
+
+            - `"score"`
+
+            - `"block"`
+
     - `n?: number | null`
 
       How many chat completion choices to generate for each input message. Note that you will be charged based on the number of generated tokens across all of the choices. Keep `n` as `1` to minimize costs.
@@ -759,6 +824,10 @@ chunk objects if the request is streamed.
 
             The type of the content part.
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
       - `type: "content"`
 
         The type of the predicted content you want to provide. This type is
@@ -776,9 +845,32 @@ chunk objects if the request is streamed.
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+    - `prompt_cache_options?: PromptCacheOptions`
+
+      Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](https://platform.openai.com/docs/guides/prompt-caching) for current details.
+
+      - `mode?: "implicit" | "explicit"`
+
+        Controls whether OpenAI automatically creates an implicit cache breakpoint. Defaults to `implicit`. With `implicit`, OpenAI creates one implicit breakpoint and writes up to the latest three explicit breakpoints in the request. With `explicit`, OpenAI does not create an implicit breakpoint and writes up to the latest four explicit breakpoints. If there are no explicit breakpoints, the request does not use prompt caching.
+
+        - `"implicit"`
+
+        - `"explicit"`
+
+      - `ttl?: "30m"`
+
+        The minimum lifetime applied to every implicit and explicit cache breakpoint written by the request. Defaults to `30m`, which is currently the only supported value. The backend may retain cache entries for longer.
+
+        - `"30m"`
+
     - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+      Deprecated. Use `prompt_cache_options.ttl` instead.
+
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      This field expresses a maximum retention policy, while
+      `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+      fields are independent and do not interact.
       For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
       For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -792,16 +884,13 @@ chunk objects if the request is streamed.
 
     - `reasoning_effort?: ReasoningEffort | null`
 
-      Constrains effort on reasoning for
-      [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-      Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-      reasoning effort can result in faster responses and fewer tokens used
-      on reasoning in a response.
-
-      - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-      - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-      - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-      - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+      Constrains effort on reasoning for reasoning models. Currently supported
+      values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+      Reducing reasoning effort can result in faster responses and fewer tokens
+      used on reasoning in a response. Not all reasoning models support every
+      value. See the
+      [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+      for model-specific support.
 
       - `"none"`
 
@@ -814,6 +903,8 @@ chunk objects if the request is streamed.
       - `"high"`
 
       - `"xhigh"`
+
+      - `"max"`
 
     - `response_format?: ResponseFormatText | ResponseFormatJSONSchema | ResponseFormatJSONObject`
 
@@ -1742,6 +1833,10 @@ chunk objects if the request is streamed.
 
         Audio input tokens present in the prompt.
 
+      - `cache_write_tokens?: number`
+
+        The unadjusted number of prompt tokens written to cache.
+
       - `cached_tokens?: number`
 
         Cached tokens present in the prompt.
@@ -1911,6 +2006,7 @@ console.log(chatCompletion);
     },
     "prompt_tokens_details": {
       "audio_tokens": 0,
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     }
   }
@@ -2390,8 +2486,7 @@ main();
 
 **get** `/chat/completions`
 
-List stored Chat Completions. Only Chat Completions that have been stored
-with the `store` parameter set to `true` will be returned.
+List Chat Completions
 
 ### Parameters
 
@@ -2891,6 +2986,10 @@ with the `store` parameter set to `true` will be returned.
 
         Audio input tokens present in the prompt.
 
+      - `cache_write_tokens?: number`
+
+        The unadjusted number of prompt tokens written to cache.
+
       - `cached_tokens?: number`
 
         Cached tokens present in the prompt.
@@ -3060,6 +3159,7 @@ for await (const chatCompletion of client.chat.completions.list()) {
         },
         "prompt_tokens_details": {
           "audio_tokens": 0,
+          "cache_write_tokens": 0,
           "cached_tokens": 0
         }
       }
@@ -3078,8 +3178,7 @@ for await (const chatCompletion of client.chat.completions.list()) {
 
 **get** `/chat/completions/{completion_id}`
 
-Get a stored chat completion. Only Chat Completions that have been created
-with the `store` parameter set to `true` will be returned.
+Get chat completion
 
 ### Parameters
 
@@ -3553,6 +3652,10 @@ with the `store` parameter set to `true` will be returned.
 
         Audio input tokens present in the prompt.
 
+      - `cache_write_tokens?: number`
+
+        The unadjusted number of prompt tokens written to cache.
+
       - `cached_tokens?: number`
 
         Cached tokens present in the prompt.
@@ -3719,6 +3822,7 @@ console.log(chatCompletion.id);
     },
     "prompt_tokens_details": {
       "audio_tokens": 0,
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     }
   }
@@ -3731,9 +3835,7 @@ console.log(chatCompletion.id);
 
 **post** `/chat/completions/{completion_id}`
 
-Modify a stored chat completion. Only Chat Completions that have been
-created with the `store` parameter set to `true` can be modified. Currently,
-the only supported modification is to update the `metadata` field.
+Update chat completion
 
 ### Parameters
 
@@ -4218,6 +4320,10 @@ the only supported modification is to update the `metadata` field.
 
         Audio input tokens present in the prompt.
 
+      - `cache_write_tokens?: number`
+
+        The unadjusted number of prompt tokens written to cache.
+
       - `cached_tokens?: number`
 
         Cached tokens present in the prompt.
@@ -4386,6 +4492,7 @@ console.log(chatCompletion.id);
     },
     "prompt_tokens_details": {
       "audio_tokens": 0,
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     }
   }
@@ -4398,8 +4505,7 @@ console.log(chatCompletion.id);
 
 **delete** `/chat/completions/{completion_id}`
 
-Delete a stored chat completion. Only Chat Completions that have been
-created with the `store` parameter set to `true` can be deleted.
+Delete chat completion
 
 ### Parameters
 
@@ -4917,6 +5023,10 @@ console.log(chatCompletionDeleted.id);
 
         Audio input tokens present in the prompt.
 
+      - `cache_write_tokens?: number`
+
+        The unadjusted number of prompt tokens written to cache.
+
       - `cached_tokens?: number`
 
         Cached tokens present in the prompt.
@@ -5005,6 +5115,16 @@ console.log(chatCompletionDeleted.id);
           The type of the content part.
 
           - `"text"`
+
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
       - `ChatCompletionContentPartRefusal`
 
@@ -5580,6 +5700,10 @@ console.log(chatCompletionDeleted.id);
 
         Audio input tokens present in the prompt.
 
+      - `cache_write_tokens?: number`
+
+        The unadjusted number of prompt tokens written to cache.
+
       - `cached_tokens?: number`
 
         Cached tokens present in the prompt.
@@ -5603,6 +5727,16 @@ console.log(chatCompletionDeleted.id);
       The type of the content part.
 
       - `"text"`
+
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
 
   - `ChatCompletionContentPartImage`
 
@@ -5630,6 +5764,16 @@ console.log(chatCompletionDeleted.id);
 
       - `"image_url"`
 
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
   - `ChatCompletionContentPartInputAudio`
 
     Learn about [audio inputs](https://platform.openai.com/docs/guides/audio).
@@ -5653,6 +5797,16 @@ console.log(chatCompletionDeleted.id);
       The type of the content part. Always `input_audio`.
 
       - `"input_audio"`
+
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
 
   - `File`
 
@@ -5679,6 +5833,16 @@ console.log(chatCompletionDeleted.id);
       The type of the content part. Always `file`.
 
       - `"file"`
+
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
 
 ### Chat Completion Content Part Image
 
@@ -5708,6 +5872,16 @@ console.log(chatCompletionDeleted.id);
 
     - `"image_url"`
 
+  - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
+
 ### Chat Completion Content Part Input Audio
 
 - `ChatCompletionContentPartInputAudio`
@@ -5733,6 +5907,16 @@ console.log(chatCompletionDeleted.id);
     The type of the content part. Always `input_audio`.
 
     - `"input_audio"`
+
+  - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
 
 ### Chat Completion Content Part Refusal
 
@@ -5763,6 +5947,16 @@ console.log(chatCompletionDeleted.id);
     The type of the content part.
 
     - `"text"`
+
+  - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
 
 ### Chat Completion Custom Tool
 
@@ -5871,6 +6065,16 @@ console.log(chatCompletionDeleted.id);
         The type of the content part.
 
         - `"text"`
+
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
   - `role: "developer"`
 
@@ -6173,6 +6377,16 @@ console.log(chatCompletionDeleted.id);
 
           - `"text"`
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
     - `role: "developer"`
 
       The role of the messages author, in this case `developer`.
@@ -6204,6 +6418,10 @@ console.log(chatCompletionDeleted.id);
         - `type: "text"`
 
           The type of the content part.
+
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
     - `role: "system"`
 
@@ -6240,6 +6458,10 @@ console.log(chatCompletionDeleted.id);
 
             The type of the content part.
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
         - `ChatCompletionContentPartImage`
 
           Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -6266,6 +6488,16 @@ console.log(chatCompletionDeleted.id);
 
             - `"image_url"`
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ChatCompletionContentPartInputAudio`
 
           Learn about [audio inputs](https://platform.openai.com/docs/guides/audio).
@@ -6289,6 +6521,16 @@ console.log(chatCompletionDeleted.id);
             The type of the content part. Always `input_audio`.
 
             - `"input_audio"`
+
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
         - `File`
 
@@ -6315,6 +6557,16 @@ console.log(chatCompletionDeleted.id);
             The type of the content part. Always `file`.
 
             - `"file"`
+
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
     - `role: "user"`
 
@@ -6462,6 +6714,10 @@ console.log(chatCompletionDeleted.id);
         - `type: "text"`
 
           The type of the content part.
+
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
     - `role: "tool"`
 
@@ -6618,6 +6874,16 @@ console.log(chatCompletionDeleted.id);
 
         - `"text"`
 
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
   - `type: "content"`
 
     The type of the predicted content you want to provide. This type is
@@ -6672,6 +6938,16 @@ console.log(chatCompletionDeleted.id);
 
         - `"text"`
 
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
     - `ChatCompletionContentPartImage`
 
       Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -6697,6 +6973,16 @@ console.log(chatCompletionDeleted.id);
         The type of the content part.
 
         - `"image_url"`
+
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
 ### Chat Completion Stream Options
 
@@ -6750,6 +7036,16 @@ console.log(chatCompletionDeleted.id);
         The type of the content part.
 
         - `"text"`
+
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
   - `role: "system"`
 
@@ -7005,6 +7301,16 @@ console.log(chatCompletionDeleted.id);
 
         - `"text"`
 
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
   - `role: "tool"`
 
     The role of the messages author, in this case `tool`.
@@ -7044,6 +7350,16 @@ console.log(chatCompletionDeleted.id);
 
           - `"text"`
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `ChatCompletionContentPartImage`
 
         Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -7070,6 +7386,16 @@ console.log(chatCompletionDeleted.id);
 
           - `"image_url"`
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `ChatCompletionContentPartInputAudio`
 
         Learn about [audio inputs](https://platform.openai.com/docs/guides/audio).
@@ -7093,6 +7419,16 @@ console.log(chatCompletionDeleted.id);
           The type of the content part. Always `input_audio`.
 
           - `"input_audio"`
+
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
       - `File`
 
@@ -7119,6 +7455,16 @@ console.log(chatCompletionDeleted.id);
           The type of the content part. Always `file`.
 
           - `"file"`
+
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
   - `role: "user"`
 
@@ -7170,9 +7516,7 @@ console.log(chatCompletionDeleted.id);
 
 **get** `/chat/completions/{completion_id}/messages`
 
-Get the messages in a stored chat completion. Only Chat Completions that
-have been created with the `store` parameter set to `true` will be
-returned.
+Get chat messages
 
 ### Parameters
 
@@ -7225,6 +7569,16 @@ returned.
 
         - `"text"`
 
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
     - `ChatCompletionContentPartImage`
 
       Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -7250,6 +7604,16 @@ returned.
         The type of the content part.
 
         - `"image_url"`
+
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
 ### Example
 
@@ -7312,7 +7676,10 @@ for await (const chatCompletionStoreMessage of client.chat.completions.messages.
       "content_parts": [
         {
           "text": "text",
-          "type": "text"
+          "type": "text",
+          "prompt_cache_breakpoint": {
+            "mode": "explicit"
+          }
         }
       ]
     }

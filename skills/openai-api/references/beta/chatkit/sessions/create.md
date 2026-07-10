@@ -2,7 +2,7 @@
 
 **post** `/chatkit/sessions`
 
-Create a ChatKit session.
+Create ChatKit session
 
 ### Body Parameters
 

@@ -2,7 +2,7 @@
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
 
-Removes a user from a group.
+Remove group user
 
 ### Path Parameters
 

@@ -2,7 +2,7 @@
 
 **get** `/organization/projects/{project_id}/spend_alerts`
 
-Lists project spend alerts.
+List project spend alerts
 
 ### Path Parameters
 

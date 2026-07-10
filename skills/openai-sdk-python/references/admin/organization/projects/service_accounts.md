@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/service_accounts`
 
-Returns a list of service accounts in the project.
+List project service accounts
 
 ### Parameters
 
@@ -94,7 +94,7 @@ print(page.id)
 
 **post** `/organization/projects/{project_id}/service_accounts`
 
-Creates a new service account in the project. This also returns an unredacted API key for the service account.
+Create project service account
 
 ### Parameters
 
@@ -181,7 +181,7 @@ print(service_account.id)
 
 **get** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Retrieves a service account in the project.
+Retrieve project service account
 
 ### Parameters
 
@@ -255,7 +255,7 @@ print(project_service_account.id)
 
 **post** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Updates a service account in the project.
+Update project service account
 
 ### Parameters
 
@@ -341,10 +341,7 @@ print(project_service_account.id)
 
 **delete** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Deletes a service account from the project.
-
-Returns confirmation of service account deletion, or an error if the project
-is archived (archived projects have no service accounts).
+Delete project service account
 
 ### Parameters
 

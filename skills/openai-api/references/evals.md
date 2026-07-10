@@ -4,7 +4,7 @@
 
 **get** `/evals`
 
-List evaluations for a project.
+List evals
 
 ### Query Parameters
 
@@ -70,7 +70,7 @@ List evaluations for a project.
 
         - `"custom"`
 
-    - `LogsDataSourceConfig object { schema, type, metadata }`
+    - `Logs object { schema, type, metadata }`
 
       A LogsDataSourceConfig which specifies the metadata property of your logs query.
       This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -159,7 +159,7 @@ List evaluations for a project.
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -172,6 +172,16 @@ List evaluations for a project.
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint: optional object { mode }`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `OutputText object { text, type }`
 
@@ -239,7 +249,7 @@ List evaluations for a project.
 
               A text input to the model.
 
-            - `ResponseInputText object { text, type }`
+            - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
               A text input to the model.
 
@@ -354,7 +364,7 @@ List evaluations for a project.
 
         - `"string_check"`
 
-    - `TextSimilarityGrader = TextSimilarityGrader`
+    - `EvalGraderTextSimilarity = TextSimilarityGrader`
 
       A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -362,7 +372,7 @@ List evaluations for a project.
 
         The threshold for the score.
 
-    - `PythonGrader = PythonGrader`
+    - `EvalGraderPython = PythonGrader`
 
       A PythonGrader object that runs a python script on the input.
 
@@ -370,7 +380,7 @@ List evaluations for a project.
 
         The threshold for the score.
 
-    - `ScoreModelGrader = ScoreModelGrader`
+    - `EvalGraderScoreModel = ScoreModelGrader`
 
       A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -540,9 +550,7 @@ curl https://api.openai.com/v1/evals?limit=1 \
 
 **post** `/evals`
 
-Create the structure of an evaluation that can be used to test a model's performance.
-An evaluation is a set of testing criteria and the config for a data source, which dictates the schema of the data used in the evaluation. After creating an evaluation, you can run it on different models and model parameters. We support several types of graders and datasources.
-For more information, see the [Evals guide](/docs/guides/evals).
+Create eval
 
 ### Body Parameters
 
@@ -550,7 +558,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
   The configuration for the data source used for the evaluation runs. Dictates the schema of the data used in the evaluation.
 
-  - `CustomDataSourceConfig object { item_schema, type, include_sample_schema }`
+  - `Custom object { item_schema, type, include_sample_schema }`
 
     A CustomDataSourceConfig object that defines the schema for the data source used for the evaluation runs.
     This schema is used to define the shape of the data that will be:
@@ -572,7 +580,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       Whether the eval should expect you to populate the sample namespace (ie, by generating responses off of your data source)
 
-  - `LogsDataSourceConfig object { type, metadata }`
+  - `Logs object { type, metadata }`
 
     A data source config which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -587,7 +595,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       Metadata filters for the logs data source.
 
-  - `StoredCompletionsDataSourceConfig object { type, metadata }`
+  - `StoredCompletions object { type, metadata }`
 
     Deprecated in favor of LogsDataSourceConfig.
 
@@ -605,7 +613,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
   A list of graders for all eval runs in this group. Graders can reference variables in the data source using double curly braces notation, like `{{item.variable_name}}`. To reference the model's output, use the `sample` namespace (ie, `{{sample.output_text}}`).
 
-  - `LabelModelGrader object { input, labels, model, 3 more }`
+  - `LabelModel object { input, labels, model, 3 more }`
 
     A LabelModelGrader object which uses a model to assign labels to each item
     in the evaluation.
@@ -624,7 +632,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
           The role of the message (e.g. "system", "assistant", "user").
 
-      - `EvalMessageObject object { content, role, type }`
+      - `EvalItem object { content, role, type }`
 
         A message input to the model with a role indicating instruction following
         hierarchy. Instructions given with the `developer` or `system` role take
@@ -640,7 +648,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -653,6 +661,16 @@ For more information, see the [Evals guide](/docs/guides/evals).
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint: optional object { mode }`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `OutputText object { text, type }`
 
@@ -720,7 +738,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
               A text input to the model.
 
-            - `ResponseInputText object { text, type }`
+            - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
               A text input to the model.
 
@@ -835,7 +853,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       - `"string_check"`
 
-  - `TextSimilarityGrader = TextSimilarityGrader`
+  - `TextSimilarity = TextSimilarityGrader`
 
     A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -843,7 +861,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       The threshold for the score.
 
-  - `PythonGrader = PythonGrader`
+  - `Python = PythonGrader`
 
     A PythonGrader object that runs a python script on the input.
 
@@ -851,7 +869,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       The threshold for the score.
 
-  - `ScoreModelGrader = ScoreModelGrader`
+  - `ScoreModel = ScoreModelGrader`
 
     A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -905,7 +923,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       - `"custom"`
 
-  - `LogsDataSourceConfig object { schema, type, metadata }`
+  - `Logs object { schema, type, metadata }`
 
     A LogsDataSourceConfig which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -994,7 +1012,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
           A text input to the model.
 
-        - `ResponseInputText object { text, type }`
+        - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
           A text input to the model.
 
@@ -1007,6 +1025,16 @@ For more information, see the [Evals guide](/docs/guides/evals).
             The type of the input item. Always `input_text`.
 
             - `"input_text"`
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
         - `OutputText object { text, type }`
 
@@ -1074,7 +1102,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -1189,7 +1217,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       - `"string_check"`
 
-  - `TextSimilarityGrader = TextSimilarityGrader`
+  - `EvalGraderTextSimilarity = TextSimilarityGrader`
 
     A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -1197,7 +1225,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       The threshold for the score.
 
-  - `PythonGrader = PythonGrader`
+  - `EvalGraderPython = PythonGrader`
 
     A PythonGrader object that runs a python script on the input.
 
@@ -1205,7 +1233,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       The threshold for the score.
 
-  - `ScoreModelGrader = ScoreModelGrader`
+  - `EvalGraderScoreModel = ScoreModelGrader`
 
     A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -1401,7 +1429,7 @@ curl https://api.openai.com/v1/evals \
 
 **get** `/evals/{eval_id}`
 
-Get an evaluation by ID.
+Get an eval
 
 ### Path Parameters
 
@@ -1440,7 +1468,7 @@ Get an evaluation by ID.
 
       - `"custom"`
 
-  - `LogsDataSourceConfig object { schema, type, metadata }`
+  - `Logs object { schema, type, metadata }`
 
     A LogsDataSourceConfig which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -1529,7 +1557,7 @@ Get an evaluation by ID.
 
           A text input to the model.
 
-        - `ResponseInputText object { text, type }`
+        - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
           A text input to the model.
 
@@ -1542,6 +1570,16 @@ Get an evaluation by ID.
             The type of the input item. Always `input_text`.
 
             - `"input_text"`
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
         - `OutputText object { text, type }`
 
@@ -1609,7 +1647,7 @@ Get an evaluation by ID.
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -1724,7 +1762,7 @@ Get an evaluation by ID.
 
       - `"string_check"`
 
-  - `TextSimilarityGrader = TextSimilarityGrader`
+  - `EvalGraderTextSimilarity = TextSimilarityGrader`
 
     A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -1732,7 +1770,7 @@ Get an evaluation by ID.
 
       The threshold for the score.
 
-  - `PythonGrader = PythonGrader`
+  - `EvalGraderPython = PythonGrader`
 
     A PythonGrader object that runs a python script on the input.
 
@@ -1740,7 +1778,7 @@ Get an evaluation by ID.
 
       The threshold for the score.
 
-  - `ScoreModelGrader = ScoreModelGrader`
+  - `EvalGraderScoreModel = ScoreModelGrader`
 
     A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -1855,7 +1893,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
 **post** `/evals/{eval_id}`
 
-Update certain properties of an evaluation.
+Update an eval
 
 ### Path Parameters
 
@@ -1909,7 +1947,7 @@ Update certain properties of an evaluation.
 
       - `"custom"`
 
-  - `LogsDataSourceConfig object { schema, type, metadata }`
+  - `Logs object { schema, type, metadata }`
 
     A LogsDataSourceConfig which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -1998,7 +2036,7 @@ Update certain properties of an evaluation.
 
           A text input to the model.
 
-        - `ResponseInputText object { text, type }`
+        - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
           A text input to the model.
 
@@ -2011,6 +2049,16 @@ Update certain properties of an evaluation.
             The type of the input item. Always `input_text`.
 
             - `"input_text"`
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
         - `OutputText object { text, type }`
 
@@ -2078,7 +2126,7 @@ Update certain properties of an evaluation.
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -2193,7 +2241,7 @@ Update certain properties of an evaluation.
 
       - `"string_check"`
 
-  - `TextSimilarityGrader = TextSimilarityGrader`
+  - `EvalGraderTextSimilarity = TextSimilarityGrader`
 
     A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -2201,7 +2249,7 @@ Update certain properties of an evaluation.
 
       The threshold for the score.
 
-  - `PythonGrader = PythonGrader`
+  - `EvalGraderPython = PythonGrader`
 
     A PythonGrader object that runs a python script on the input.
 
@@ -2209,7 +2257,7 @@ Update certain properties of an evaluation.
 
       The threshold for the score.
 
-  - `ScoreModelGrader = ScoreModelGrader`
+  - `EvalGraderScoreModel = ScoreModelGrader`
 
     A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -2327,7 +2375,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
 **delete** `/evals/{eval_id}`
 
-Delete an evaluation.
+Delete an eval
 
 ### Path Parameters
 
@@ -2469,7 +2517,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         - `"custom"`
 
-    - `LogsDataSourceConfig object { schema, type, metadata }`
+    - `Logs object { schema, type, metadata }`
 
       A LogsDataSourceConfig which specifies the metadata property of your logs query.
       This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -2558,7 +2606,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -2571,6 +2619,16 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint: optional object { mode }`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `OutputText object { text, type }`
 
@@ -2638,7 +2696,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
               A text input to the model.
 
-            - `ResponseInputText object { text, type }`
+            - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
               A text input to the model.
 
@@ -2753,7 +2811,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         - `"string_check"`
 
-    - `TextSimilarityGrader = TextSimilarityGrader`
+    - `EvalGraderTextSimilarity = TextSimilarityGrader`
 
       A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -2761,7 +2819,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         The threshold for the score.
 
-    - `PythonGrader = PythonGrader`
+    - `EvalGraderPython = PythonGrader`
 
       A PythonGrader object that runs a python script on the input.
 
@@ -2769,7 +2827,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         The threshold for the score.
 
-    - `ScoreModelGrader = ScoreModelGrader`
+    - `EvalGraderScoreModel = ScoreModelGrader`
 
       A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -2820,7 +2878,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         - `"custom"`
 
-    - `LogsDataSourceConfig object { schema, type, metadata }`
+    - `Logs object { schema, type, metadata }`
 
       A LogsDataSourceConfig which specifies the metadata property of your logs query.
       This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -2909,7 +2967,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -2922,6 +2980,16 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint: optional object { mode }`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `OutputText object { text, type }`
 
@@ -2989,7 +3057,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
               A text input to the model.
 
-            - `ResponseInputText object { text, type }`
+            - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
               A text input to the model.
 
@@ -3104,7 +3172,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         - `"string_check"`
 
-    - `TextSimilarityGrader = TextSimilarityGrader`
+    - `EvalGraderTextSimilarity = TextSimilarityGrader`
 
       A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -3112,7 +3180,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         The threshold for the score.
 
-    - `PythonGrader = PythonGrader`
+    - `EvalGraderPython = PythonGrader`
 
       A PythonGrader object that runs a python script on the input.
 
@@ -3120,7 +3188,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         The threshold for the score.
 
-    - `ScoreModelGrader = ScoreModelGrader`
+    - `EvalGraderScoreModel = ScoreModelGrader`
 
       A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -3171,7 +3239,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         - `"custom"`
 
-    - `LogsDataSourceConfig object { schema, type, metadata }`
+    - `Logs object { schema, type, metadata }`
 
       A LogsDataSourceConfig which specifies the metadata property of your logs query.
       This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -3260,7 +3328,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -3273,6 +3341,16 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint: optional object { mode }`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `OutputText object { text, type }`
 
@@ -3340,7 +3418,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
               A text input to the model.
 
-            - `ResponseInputText object { text, type }`
+            - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
               A text input to the model.
 
@@ -3455,7 +3533,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         - `"string_check"`
 
-    - `TextSimilarityGrader = TextSimilarityGrader`
+    - `EvalGraderTextSimilarity = TextSimilarityGrader`
 
       A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -3463,7 +3541,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         The threshold for the score.
 
-    - `PythonGrader = PythonGrader`
+    - `EvalGraderPython = PythonGrader`
 
       A PythonGrader object that runs a python script on the input.
 
@@ -3471,7 +3549,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         The threshold for the score.
 
-    - `ScoreModelGrader = ScoreModelGrader`
+    - `EvalGraderScoreModel = ScoreModelGrader`
 
       A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -3522,7 +3600,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         - `"custom"`
 
-    - `LogsDataSourceConfig object { schema, type, metadata }`
+    - `Logs object { schema, type, metadata }`
 
       A LogsDataSourceConfig which specifies the metadata property of your logs query.
       This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -3611,7 +3689,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -3624,6 +3702,16 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint: optional object { mode }`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `OutputText object { text, type }`
 
@@ -3691,7 +3779,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
               A text input to the model.
 
-            - `ResponseInputText object { text, type }`
+            - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
               A text input to the model.
 
@@ -3806,7 +3894,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         - `"string_check"`
 
-    - `TextSimilarityGrader = TextSimilarityGrader`
+    - `EvalGraderTextSimilarity = TextSimilarityGrader`
 
       A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -3814,7 +3902,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         The threshold for the score.
 
-    - `PythonGrader = PythonGrader`
+    - `EvalGraderPython = PythonGrader`
 
       A PythonGrader object that runs a python script on the input.
 
@@ -3822,7 +3910,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
         The threshold for the score.
 
-    - `ScoreModelGrader = ScoreModelGrader`
+    - `EvalGraderScoreModel = ScoreModelGrader`
 
       A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -3846,7 +3934,7 @@ curl https://api.openai.com/v1/evals/eval_abc123 \
 
 **get** `/evals/{eval_id}/runs`
 
-Get a list of runs for an evaluation.
+Get eval runs
 
 ### Path Parameters
 
@@ -3910,7 +3998,7 @@ Get a list of runs for an evaluation.
 
         Determines what populates the `item` namespace in the data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -3926,7 +4014,7 @@ Get a list of runs for an evaluation.
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -3952,7 +4040,7 @@ Get a list of runs for an evaluation.
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -3968,7 +4056,7 @@ Get a list of runs for an evaluation.
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -3980,7 +4068,7 @@ Get a list of runs for an evaluation.
 
             - `"file_id"`
 
-        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+        - `StoredCompletions object { type, created_after, created_before, 3 more }`
 
           A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -4025,7 +4113,7 @@ Get a list of runs for an evaluation.
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `TemplateInputMessages object { template, type }`
+        - `Template object { template, type }`
 
           - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -4053,7 +4141,7 @@ Get a list of runs for an evaluation.
                   A list of one or many input items to the model, containing different content
                   types.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -4067,9 +4155,19 @@ Get a list of runs for an evaluation.
 
                       - `"input_text"`
 
-                  - `ResponseInputImage object { detail, type, file_id, image_url }`
+                    - `prompt_cache_breakpoint: optional object { mode }`
 
-                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
+
+                  - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
                     - `detail: "low" or "high" or "auto" or "original"`
 
@@ -4097,7 +4195,17 @@ Get a list of runs for an evaluation.
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                  - `ResponseInputFile object { type, detail, file_data, 3 more }`
+                    - `prompt_cache_breakpoint: optional object { mode }`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
+
+                  - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
                     A file input to the model.
 
@@ -4107,9 +4215,11 @@ Get a list of runs for an evaluation.
 
                       - `"input_file"`
 
-                    - `detail: optional "low" or "high"`
+                    - `detail: optional "auto" or "low" or "high"`
 
-                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                      The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                      - `"auto"`
 
                       - `"low"`
 
@@ -4130,6 +4240,16 @@ Get a list of runs for an evaluation.
                     - `filename: optional string`
 
                       The name of the file to be sent to the model.
+
+                    - `prompt_cache_breakpoint: optional object { mode }`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
 
               - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -4160,7 +4280,7 @@ Get a list of runs for an evaluation.
 
                 - `"message"`
 
-            - `EvalMessageObject object { content, role, type }`
+            - `EvalItem object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -4176,7 +4296,7 @@ Get a list of runs for an evaluation.
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -4246,7 +4366,7 @@ Get a list of runs for an evaluation.
 
                     A text input to the model.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -4311,7 +4431,7 @@ Get a list of runs for an evaluation.
 
             - `"template"`
 
-        - `ItemReferenceInputMessages object { item_reference, type }`
+        - `ItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -4335,16 +4455,13 @@ Get a list of runs for an evaluation.
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -4358,6 +4475,8 @@ Get a list of runs for an evaluation.
 
           - `"xhigh"`
 
+          - `"max"`
+
         - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
 
           An object specifying the format that the model must output.
@@ -4365,7 +4484,7 @@ Get a list of runs for an evaluation.
           Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
           Structured Outputs which ensures the model will match your supplied JSON
           schema. Learn more in the [Structured Outputs
-          guide](/docs/guides/structured-outputs).
+          guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           Setting to `{ "type": "json_object" }` enables the older JSON mode, which
           ensures the message the model generates is valid JSON. Using `json_schema`
@@ -4384,7 +4503,7 @@ Get a list of runs for an evaluation.
           - `ResponseFormatJSONSchema object { json_schema, type }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `json_schema: object { name, description, schema, strict }`
 
@@ -4411,7 +4530,7 @@ Get a list of runs for an evaluation.
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](/docs/guides/structured-outputs).
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `type: "json_schema"`
 
@@ -4456,13 +4575,13 @@ Get a list of runs for an evaluation.
 
             - `parameters: optional FunctionParameters`
 
-              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
               Omitting `parameters` defines a function with an empty parameter list.
 
             - `strict: optional boolean`
 
-              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
           - `type: "function"`
 
@@ -4474,7 +4593,7 @@ Get a list of runs for an evaluation.
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+    - `Responses object { source, type, input_messages, 2 more }`
 
       A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -4482,7 +4601,7 @@ Get a list of runs for an evaluation.
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -4498,7 +4617,7 @@ Get a list of runs for an evaluation.
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -4510,7 +4629,7 @@ Get a list of runs for an evaluation.
 
             - `"file_id"`
 
-        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+        - `Responses object { type, created_after, created_before, 8 more }`
 
           A EvalResponsesSource object describing a run data source configuration.
 
@@ -4542,16 +4661,13 @@ Get a list of runs for an evaluation.
 
           - `reasoning_effort: optional ReasoningEffort`
 
-            Constrains effort on reasoning for
-            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-            reasoning effort can result in faster responses and fewer tokens used
-            on reasoning in a response.
-
-            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+            Constrains effort on reasoning for reasoning models. Currently supported
+            values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+            Reducing reasoning effort can result in faster responses and fewer tokens
+            used on reasoning in a response. Not all reasoning models support every
+            value. See the
+            [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+            for model-specific support.
 
           - `temperature: optional number`
 
@@ -4579,7 +4695,7 @@ Get a list of runs for an evaluation.
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `InputMessagesTemplate object { template, type }`
+        - `Template object { template, type }`
 
           - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -4595,7 +4711,7 @@ Get a list of runs for an evaluation.
 
                 The role of the message (e.g. "system", "assistant", "user").
 
-            - `EvalMessageObject object { content, role, type }`
+            - `EvalItem object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -4611,7 +4727,7 @@ Get a list of runs for an evaluation.
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -4681,7 +4797,7 @@ Get a list of runs for an evaluation.
 
             - `"template"`
 
-        - `InputMessagesItemReference object { item_reference, type }`
+        - `ItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -4705,16 +4821,13 @@ Get a list of runs for an evaluation.
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
         - `seed: optional number`
 
@@ -4729,8 +4842,8 @@ Get a list of runs for an evaluation.
           Configuration options for a text response from the model. Can be plain
           text or structured JSON data. Learn more:
 
-          - [Text inputs and outputs](/docs/guides/text)
-          - [Structured Outputs](/docs/guides/structured-outputs)
+          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
 
           - `format: optional ResponseFormatTextConfig`
 
@@ -4738,7 +4851,7 @@ Get a list of runs for an evaluation.
 
             Configuring `{ "type": "json_schema" }` enables Structured Outputs,
             which ensures the model will match your supplied JSON schema. Learn more in the
-            [Structured Outputs guide](/docs/guides/structured-outputs).
+            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             The default format is `{ "type": "text" }` with no additional options.
 
@@ -4755,7 +4868,7 @@ Get a list of runs for an evaluation.
             - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
               JSON Schema response format. Used to generate structured JSON responses.
-              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
               - `name: string`
 
@@ -4784,7 +4897,7 @@ Get a list of runs for an evaluation.
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](/docs/guides/structured-outputs).
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `ResponseFormatJSONObject object { type }`
 
@@ -4793,7 +4906,7 @@ Get a list of runs for an evaluation.
               model will not generate JSON without a system or user message instructing it
               to do so.
 
-        - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+        - `tools: optional array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
           An array of tools the model may call while generating a response. You
           can specify which tool to use by setting the `tool_choice` parameter.
@@ -4801,14 +4914,14 @@ Get a list of runs for an evaluation.
           The two categories of tools you can provide the model are:
 
           - **Built-in tools**: Tools that are provided by OpenAI that extend the
-            model's capabilities, like [web search](/docs/guides/tools-web-search)
-            or [file search](/docs/guides/tools-file-search). Learn more about
-            [built-in tools](/docs/guides/tools).
+            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+            [built-in tools](https://platform.openai.com/docs/guides/tools).
           - **Function calls (custom tools)**: Functions that are defined by you,
             enabling the model to call your own code. Learn more about
-            [function calling](/docs/guides/function-calling).
+            [function calling](https://platform.openai.com/docs/guides/function-calling).
 
-          - `Function object { name, parameters, strict, 3 more }`
+          - `Function object { name, parameters, strict, 5 more }`
 
             Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -4822,13 +4935,21 @@ Get a list of runs for an evaluation.
 
             - `strict: boolean`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading: optional boolean`
 
@@ -4837,6 +4958,10 @@ Get a list of runs for an evaluation.
             - `description: optional string`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema: optional map[unknown]`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -5008,7 +5133,7 @@ Get a list of runs for an evaluation.
           - `WebSearch object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
-            [web search tool](/docs/guides/tools-web-search).
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
             - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -5065,10 +5190,10 @@ Get a list of runs for an evaluation.
 
                 - `"approximate"`
 
-          - `Mcp object { server_label, type, allowed_tools, 8 more }`
+          - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
-            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
             - `server_label: string`
 
@@ -5079,6 +5204,14 @@ Get a list of runs for an evaluation.
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -5112,7 +5245,7 @@ Get a list of runs for an evaluation.
 
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-              about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -5212,7 +5345,7 @@ Get a list of runs for an evaluation.
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-          - `CodeInterpreter object { container, type }`
+          - `CodeInterpreter object { container, type, allowed_callers }`
 
             A tool that runs Python code to help generate a response to a prompt.
 
@@ -5298,6 +5431,22 @@ Get a list of runs for an evaluation.
 
               - `"code_interpreter"`
 
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling object { type }`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration object { type, action, background, 9 more }`
 
             A tool that generates images using the GPT image models.
@@ -5320,8 +5469,19 @@ Get a list of runs for an evaluation.
 
             - `background: optional "transparent" or "opaque" or "auto"`
 
-              Background type for the generated image. One of `transparent`,
-              `opaque`, or `auto`. Default: `auto`.
+              Allows to set transparency for the background of the generated image(s).
+              This parameter is only supported for GPT image models that support
+              transparent backgrounds. Must be one of `transparent`, `opaque`, or
+              `auto` (default value). When `auto` is used, the model will
+              automatically determine the best background for the image.
+
+              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+              transparent backgrounds. Requests with `background` set to
+              `transparent` will return an error for these models; use `opaque` or
+              `auto` instead.
+
+              If `transparent`, the output format needs to support transparency,
+              so it should be set to either `png` (default value) or `webp`.
 
               - `"transparent"`
 
@@ -5350,13 +5510,13 @@ Get a list of runs for an evaluation.
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -5364,7 +5524,13 @@ Get a list of runs for an evaluation.
 
                 - `"gpt-image-1-mini"`
 
+                - `"gpt-image-2"`
+
+                - `"gpt-image-2-2026-04-21"`
+
                 - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low"`
 
@@ -5434,7 +5600,7 @@ Get a list of runs for an evaluation.
 
               - `"local_shell"`
 
-          - `Shell object { type, environment }`
+          - `Shell object { type, allowed_callers, environment }`
 
             A tool that allows the model to execute shell commands.
 
@@ -5443,6 +5609,14 @@ Get a list of runs for an evaluation.
               The type of the shell tool. Always `shell`.
 
               - `"shell"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
@@ -5570,9 +5744,9 @@ Get a list of runs for an evaluation.
 
                   - `"container_reference"`
 
-          - `Custom object { name, type, defer_loading, 2 more }`
+          - `Custom object { name, type, allowed_callers, 3 more }`
 
-            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
             - `name: string`
 
@@ -5583,6 +5757,14 @@ Get a list of runs for an evaluation.
               The type of the custom tool. Always `custom`.
 
               - `"custom"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading: optional boolean`
 
@@ -5640,11 +5822,11 @@ Get a list of runs for an evaluation.
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+            - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
               The function/custom tools available inside this namespace.
 
-              - `Function object { name, type, defer_loading, 3 more }`
+              - `Function object { name, type, allowed_callers, 5 more }`
 
                 - `name: string`
 
@@ -5652,19 +5834,33 @@ Get a list of runs for an evaluation.
 
                   - `"function"`
 
+                - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading: optional boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description: optional string`
 
+                - `output_schema: optional map[unknown]`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters: optional unknown`
 
                 - `strict: optional boolean`
 
-              - `Custom object { name, type, defer_loading, 2 more }`
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+              - `Custom object { name, type, allowed_callers, 3 more }`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
                 - `name: string`
 
@@ -5675,6 +5871,14 @@ Get a list of runs for an evaluation.
                   The type of the custom tool. Always `custom`.
 
                   - `"custom"`
+
+                - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
 
                 - `defer_loading: optional boolean`
 
@@ -5774,7 +5978,7 @@ Get a list of runs for an evaluation.
 
                 The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-          - `ApplyPatch object { type }`
+          - `ApplyPatch object { type, allowed_callers }`
 
             Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -5783,6 +5987,14 @@ Get a list of runs for an evaluation.
               The type of the tool. Always `apply_patch`.
 
               - `"apply_patch"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
         - `top_p: optional number`
 
@@ -6089,7 +6301,7 @@ curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/run
 
 **post** `/evals/{eval_id}/runs`
 
-Kicks off a new run for a given evaluation, specifying the data source, and what model configuration to use to test. The datasource will be validated against the schema specified in the config of the evaluation.
+Create eval run
 
 ### Path Parameters
 
@@ -6109,7 +6321,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Determines what populates the `item` namespace in the data source.
 
-      - `EvalJSONLFileContentSource object { content, type }`
+      - `FileContent object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -6125,7 +6337,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource object { id, type }`
+      - `FileID object { id, type }`
 
         - `id: string`
 
@@ -6151,7 +6363,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource object { content, type }`
+      - `FileContent object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -6167,7 +6379,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource object { id, type }`
+      - `FileID object { id, type }`
 
         - `id: string`
 
@@ -6179,7 +6391,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_id"`
 
-      - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+      - `StoredCompletions object { type, created_after, created_before, 3 more }`
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -6224,7 +6436,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `TemplateInputMessages object { template, type }`
+      - `Template object { template, type }`
 
         - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -6252,7 +6464,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 A list of one or many input items to the model, containing different content
                 types.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -6266,9 +6478,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"input_text"`
 
-                - `ResponseInputImage object { detail, type, file_id, image_url }`
+                  - `prompt_cache_breakpoint: optional object { mode }`
 
-                  An image input to the model. Learn about [image inputs](/docs/guides/vision).
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
+                - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+                  An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
                   - `detail: "low" or "high" or "auto" or "original"`
 
@@ -6296,7 +6518,17 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile object { type, detail, file_data, 3 more }`
+                  - `prompt_cache_breakpoint: optional object { mode }`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
+                - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
                   A file input to the model.
 
@@ -6306,9 +6538,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"input_file"`
 
-                  - `detail: optional "low" or "high"`
+                  - `detail: optional "auto" or "low" or "high"`
 
-                    The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                    The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                    - `"auto"`
 
                     - `"low"`
 
@@ -6329,6 +6563,16 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                   - `filename: optional string`
 
                     The name of the file to be sent to the model.
+
+                  - `prompt_cache_breakpoint: optional object { mode }`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
 
             - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -6359,7 +6603,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"message"`
 
-          - `EvalMessageObject object { content, role, type }`
+          - `EvalItem object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -6375,7 +6619,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -6445,7 +6689,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -6510,7 +6754,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"template"`
 
-      - `ItemReferenceInputMessages object { item_reference, type }`
+      - `ItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -6534,16 +6778,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       - `reasoning_effort: optional ReasoningEffort`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -6557,6 +6798,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         - `"xhigh"`
 
+        - `"max"`
+
       - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
 
         An object specifying the format that the model must output.
@@ -6564,7 +6807,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
         Structured Outputs which ensures the model will match your supplied JSON
         schema. Learn more in the [Structured Outputs
-        guide](/docs/guides/structured-outputs).
+        guide](https://platform.openai.com/docs/guides/structured-outputs).
 
         Setting to `{ "type": "json_object" }` enables the older JSON mode, which
         ensures the message the model generates is valid JSON. Using `json_schema`
@@ -6583,7 +6826,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
-          Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+          Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
           - `json_schema: object { name, description, schema, strict }`
 
@@ -6610,7 +6853,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](/docs/guides/structured-outputs).
+              guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           - `type: "json_schema"`
 
@@ -6655,13 +6898,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `parameters: optional FunctionParameters`
 
-            The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+            The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
             Omitting `parameters` defines a function with an empty parameter list.
 
           - `strict: optional boolean`
 
-            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
         - `type: "function"`
 
@@ -6673,7 +6916,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-  - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+  - `CreateEvalResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
     A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -6681,7 +6924,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource object { content, type }`
+      - `FileContent object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -6697,7 +6940,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource object { id, type }`
+      - `FileID object { id, type }`
 
         - `id: string`
 
@@ -6709,7 +6952,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_id"`
 
-      - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+      - `Responses object { type, created_after, created_before, 8 more }`
 
         A EvalResponsesSource object describing a run data source configuration.
 
@@ -6741,16 +6984,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
         - `temperature: optional number`
 
@@ -6778,7 +7018,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `InputMessagesTemplate object { template, type }`
+      - `Template object { template, type }`
 
         - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -6794,7 +7034,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The role of the message (e.g. "system", "assistant", "user").
 
-          - `EvalMessageObject object { content, role, type }`
+          - `EvalItem object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -6810,7 +7050,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -6880,7 +7120,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"template"`
 
-      - `InputMessagesItemReference object { item_reference, type }`
+      - `ItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -6904,16 +7144,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       - `reasoning_effort: optional ReasoningEffort`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
       - `seed: optional number`
 
@@ -6928,8 +7165,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         Configuration options for a text response from the model. Can be plain
         text or structured JSON data. Learn more:
 
-        - [Text inputs and outputs](/docs/guides/text)
-        - [Structured Outputs](/docs/guides/structured-outputs)
+        - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+        - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
 
         - `format: optional ResponseFormatTextConfig`
 
@@ -6937,7 +7174,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           Configuring `{ "type": "json_schema" }` enables Structured Outputs,
           which ensures the model will match your supplied JSON schema. Learn more in the
-          [Structured Outputs guide](/docs/guides/structured-outputs).
+          [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           The default format is `{ "type": "text" }` with no additional options.
 
@@ -6954,7 +7191,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `name: string`
 
@@ -6983,7 +7220,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](/docs/guides/structured-outputs).
+              guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           - `ResponseFormatJSONObject object { type }`
 
@@ -6992,7 +7229,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             model will not generate JSON without a system or user message instructing it
             to do so.
 
-      - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+      - `tools: optional array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
         An array of tools the model may call while generating a response. You
         can specify which tool to use by setting the `tool_choice` parameter.
@@ -7000,14 +7237,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         The two categories of tools you can provide the model are:
 
         - **Built-in tools**: Tools that are provided by OpenAI that extend the
-          model's capabilities, like [web search](/docs/guides/tools-web-search)
-          or [file search](/docs/guides/tools-file-search). Learn more about
-          [built-in tools](/docs/guides/tools).
+          model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+          or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+          [built-in tools](https://platform.openai.com/docs/guides/tools).
         - **Function calls (custom tools)**: Functions that are defined by you,
           enabling the model to call your own code. Learn more about
-          [function calling](/docs/guides/function-calling).
+          [function calling](https://platform.openai.com/docs/guides/function-calling).
 
-        - `Function object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 5 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -7021,13 +7258,21 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `strict: boolean`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -7036,6 +7281,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: optional map[unknown]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -7207,7 +7456,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -7264,10 +7513,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 8 more }`
+        - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -7278,6 +7527,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -7311,7 +7568,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -7411,7 +7668,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `CodeInterpreter object { container, type }`
+        - `CodeInterpreter object { container, type, allowed_callers }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -7497,6 +7754,22 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"code_interpreter"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling object { type }`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
@@ -7519,8 +7792,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -7549,13 +7833,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -7563,7 +7847,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -7633,7 +7923,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"local_shell"`
 
-        - `Shell object { type, environment }`
+        - `Shell object { type, allowed_callers, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -7642,6 +7932,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The type of the shell tool. Always `shell`.
 
             - `"shell"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
@@ -7769,9 +8067,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"container_reference"`
 
-        - `Custom object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -7782,6 +8080,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -7839,11 +8145,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, allowed_callers, 5 more }`
 
               - `name: string`
 
@@ -7851,19 +8157,33 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"function"`
 
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: optional boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: optional string`
 
+              - `output_schema: optional map[unknown]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: optional unknown`
 
               - `strict: optional boolean`
 
-            - `Custom object { name, type, defer_loading, 2 more }`
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            - `Custom object { name, type, allowed_callers, 3 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -7874,6 +8194,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 The type of the custom tool. Always `custom`.
 
                 - `"custom"`
+
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading: optional boolean`
 
@@ -7973,7 +8301,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch object { type }`
+        - `ApplyPatch object { type, allowed_callers }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -7982,6 +8310,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The type of the tool. Always `apply_patch`.
 
             - `"apply_patch"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
       - `top_p: optional number`
 
@@ -8022,7 +8358,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Determines what populates the `item` namespace in the data source.
 
-      - `EvalJSONLFileContentSource object { content, type }`
+      - `FileContent object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -8038,7 +8374,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource object { id, type }`
+      - `FileID object { id, type }`
 
         - `id: string`
 
@@ -8064,7 +8400,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource object { content, type }`
+      - `FileContent object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -8080,7 +8416,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource object { id, type }`
+      - `FileID object { id, type }`
 
         - `id: string`
 
@@ -8092,7 +8428,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_id"`
 
-      - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+      - `StoredCompletions object { type, created_after, created_before, 3 more }`
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -8137,7 +8473,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `TemplateInputMessages object { template, type }`
+      - `Template object { template, type }`
 
         - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -8165,7 +8501,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 A list of one or many input items to the model, containing different content
                 types.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -8179,9 +8515,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"input_text"`
 
-                - `ResponseInputImage object { detail, type, file_id, image_url }`
+                  - `prompt_cache_breakpoint: optional object { mode }`
 
-                  An image input to the model. Learn about [image inputs](/docs/guides/vision).
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
+                - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+                  An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
                   - `detail: "low" or "high" or "auto" or "original"`
 
@@ -8209,7 +8555,17 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile object { type, detail, file_data, 3 more }`
+                  - `prompt_cache_breakpoint: optional object { mode }`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
+                - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
                   A file input to the model.
 
@@ -8219,9 +8575,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"input_file"`
 
-                  - `detail: optional "low" or "high"`
+                  - `detail: optional "auto" or "low" or "high"`
 
-                    The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                    The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                    - `"auto"`
 
                     - `"low"`
 
@@ -8242,6 +8600,16 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                   - `filename: optional string`
 
                     The name of the file to be sent to the model.
+
+                  - `prompt_cache_breakpoint: optional object { mode }`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
 
             - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -8272,7 +8640,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"message"`
 
-          - `EvalMessageObject object { content, role, type }`
+          - `EvalItem object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -8288,7 +8656,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -8358,7 +8726,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -8423,7 +8791,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"template"`
 
-      - `ItemReferenceInputMessages object { item_reference, type }`
+      - `ItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -8447,16 +8815,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       - `reasoning_effort: optional ReasoningEffort`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -8470,6 +8835,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         - `"xhigh"`
 
+        - `"max"`
+
       - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
 
         An object specifying the format that the model must output.
@@ -8477,7 +8844,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
         Structured Outputs which ensures the model will match your supplied JSON
         schema. Learn more in the [Structured Outputs
-        guide](/docs/guides/structured-outputs).
+        guide](https://platform.openai.com/docs/guides/structured-outputs).
 
         Setting to `{ "type": "json_object" }` enables the older JSON mode, which
         ensures the message the model generates is valid JSON. Using `json_schema`
@@ -8496,7 +8863,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
-          Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+          Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
           - `json_schema: object { name, description, schema, strict }`
 
@@ -8523,7 +8890,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](/docs/guides/structured-outputs).
+              guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           - `type: "json_schema"`
 
@@ -8568,13 +8935,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `parameters: optional FunctionParameters`
 
-            The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+            The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
             Omitting `parameters` defines a function with an empty parameter list.
 
           - `strict: optional boolean`
 
-            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
         - `type: "function"`
 
@@ -8586,7 +8953,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-  - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+  - `Responses object { source, type, input_messages, 2 more }`
 
     A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -8594,7 +8961,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource object { content, type }`
+      - `FileContent object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -8610,7 +8977,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource object { id, type }`
+      - `FileID object { id, type }`
 
         - `id: string`
 
@@ -8622,7 +8989,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_id"`
 
-      - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+      - `Responses object { type, created_after, created_before, 8 more }`
 
         A EvalResponsesSource object describing a run data source configuration.
 
@@ -8654,16 +9021,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
         - `temperature: optional number`
 
@@ -8691,7 +9055,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `InputMessagesTemplate object { template, type }`
+      - `Template object { template, type }`
 
         - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -8707,7 +9071,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The role of the message (e.g. "system", "assistant", "user").
 
-          - `EvalMessageObject object { content, role, type }`
+          - `EvalItem object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -8723,7 +9087,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -8793,7 +9157,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"template"`
 
-      - `InputMessagesItemReference object { item_reference, type }`
+      - `ItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -8817,16 +9181,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       - `reasoning_effort: optional ReasoningEffort`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
       - `seed: optional number`
 
@@ -8841,8 +9202,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         Configuration options for a text response from the model. Can be plain
         text or structured JSON data. Learn more:
 
-        - [Text inputs and outputs](/docs/guides/text)
-        - [Structured Outputs](/docs/guides/structured-outputs)
+        - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+        - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
 
         - `format: optional ResponseFormatTextConfig`
 
@@ -8850,7 +9211,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           Configuring `{ "type": "json_schema" }` enables Structured Outputs,
           which ensures the model will match your supplied JSON schema. Learn more in the
-          [Structured Outputs guide](/docs/guides/structured-outputs).
+          [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           The default format is `{ "type": "text" }` with no additional options.
 
@@ -8867,7 +9228,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `name: string`
 
@@ -8896,7 +9257,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](/docs/guides/structured-outputs).
+              guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           - `ResponseFormatJSONObject object { type }`
 
@@ -8905,7 +9266,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             model will not generate JSON without a system or user message instructing it
             to do so.
 
-      - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+      - `tools: optional array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
         An array of tools the model may call while generating a response. You
         can specify which tool to use by setting the `tool_choice` parameter.
@@ -8913,14 +9274,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         The two categories of tools you can provide the model are:
 
         - **Built-in tools**: Tools that are provided by OpenAI that extend the
-          model's capabilities, like [web search](/docs/guides/tools-web-search)
-          or [file search](/docs/guides/tools-file-search). Learn more about
-          [built-in tools](/docs/guides/tools).
+          model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+          or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+          [built-in tools](https://platform.openai.com/docs/guides/tools).
         - **Function calls (custom tools)**: Functions that are defined by you,
           enabling the model to call your own code. Learn more about
-          [function calling](/docs/guides/function-calling).
+          [function calling](https://platform.openai.com/docs/guides/function-calling).
 
-        - `Function object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 5 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -8934,13 +9295,21 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `strict: boolean`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -8949,6 +9318,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: optional map[unknown]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -9120,7 +9493,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -9177,10 +9550,10 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 8 more }`
+        - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -9191,6 +9564,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -9224,7 +9605,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -9324,7 +9705,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `CodeInterpreter object { container, type }`
+        - `CodeInterpreter object { container, type, allowed_callers }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -9410,6 +9791,22 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"code_interpreter"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling object { type }`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
@@ -9432,8 +9829,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -9462,13 +9870,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -9476,7 +9884,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -9546,7 +9960,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"local_shell"`
 
-        - `Shell object { type, environment }`
+        - `Shell object { type, allowed_callers, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -9555,6 +9969,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The type of the shell tool. Always `shell`.
 
             - `"shell"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
@@ -9682,9 +10104,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"container_reference"`
 
-        - `Custom object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -9695,6 +10117,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -9752,11 +10182,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, allowed_callers, 5 more }`
 
               - `name: string`
 
@@ -9764,19 +10194,33 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"function"`
 
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: optional boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: optional string`
 
+              - `output_schema: optional map[unknown]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: optional unknown`
 
               - `strict: optional boolean`
 
-            - `Custom object { name, type, defer_loading, 2 more }`
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            - `Custom object { name, type, allowed_callers, 3 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -9787,6 +10231,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 The type of the custom tool. Always `custom`.
 
                 - `"custom"`
+
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading: optional boolean`
 
@@ -9886,7 +10338,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch object { type }`
+        - `ApplyPatch object { type, allowed_callers }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -9895,6 +10347,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The type of the tool. Always `apply_patch`.
 
             - `"apply_patch"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
       - `top_p: optional number`
 
@@ -10176,7 +10636,7 @@ curl https://api.openai.com/v1/evals/eval_67e579652b548190aaa83ada4b125f47/runs 
 
 **get** `/evals/{eval_id}/runs/{run_id}`
 
-Get an evaluation run by ID.
+Get an eval run
 
 ### Path Parameters
 
@@ -10206,7 +10666,7 @@ Get an evaluation run by ID.
 
       Determines what populates the `item` namespace in the data source.
 
-      - `EvalJSONLFileContentSource object { content, type }`
+      - `FileContent object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -10222,7 +10682,7 @@ Get an evaluation run by ID.
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource object { id, type }`
+      - `FileID object { id, type }`
 
         - `id: string`
 
@@ -10248,7 +10708,7 @@ Get an evaluation run by ID.
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource object { content, type }`
+      - `FileContent object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -10264,7 +10724,7 @@ Get an evaluation run by ID.
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource object { id, type }`
+      - `FileID object { id, type }`
 
         - `id: string`
 
@@ -10276,7 +10736,7 @@ Get an evaluation run by ID.
 
           - `"file_id"`
 
-      - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+      - `StoredCompletions object { type, created_after, created_before, 3 more }`
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -10321,7 +10781,7 @@ Get an evaluation run by ID.
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `TemplateInputMessages object { template, type }`
+      - `Template object { template, type }`
 
         - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -10349,7 +10809,7 @@ Get an evaluation run by ID.
                 A list of one or many input items to the model, containing different content
                 types.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -10363,9 +10823,19 @@ Get an evaluation run by ID.
 
                     - `"input_text"`
 
-                - `ResponseInputImage object { detail, type, file_id, image_url }`
+                  - `prompt_cache_breakpoint: optional object { mode }`
 
-                  An image input to the model. Learn about [image inputs](/docs/guides/vision).
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
+                - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+                  An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
                   - `detail: "low" or "high" or "auto" or "original"`
 
@@ -10393,7 +10863,17 @@ Get an evaluation run by ID.
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile object { type, detail, file_data, 3 more }`
+                  - `prompt_cache_breakpoint: optional object { mode }`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
+                - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
                   A file input to the model.
 
@@ -10403,9 +10883,11 @@ Get an evaluation run by ID.
 
                     - `"input_file"`
 
-                  - `detail: optional "low" or "high"`
+                  - `detail: optional "auto" or "low" or "high"`
 
-                    The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                    The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                    - `"auto"`
 
                     - `"low"`
 
@@ -10426,6 +10908,16 @@ Get an evaluation run by ID.
                   - `filename: optional string`
 
                     The name of the file to be sent to the model.
+
+                  - `prompt_cache_breakpoint: optional object { mode }`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
 
             - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -10456,7 +10948,7 @@ Get an evaluation run by ID.
 
               - `"message"`
 
-          - `EvalMessageObject object { content, role, type }`
+          - `EvalItem object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -10472,7 +10964,7 @@ Get an evaluation run by ID.
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -10542,7 +11034,7 @@ Get an evaluation run by ID.
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -10607,7 +11099,7 @@ Get an evaluation run by ID.
 
           - `"template"`
 
-      - `ItemReferenceInputMessages object { item_reference, type }`
+      - `ItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -10631,16 +11123,13 @@ Get an evaluation run by ID.
 
       - `reasoning_effort: optional ReasoningEffort`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -10654,6 +11143,8 @@ Get an evaluation run by ID.
 
         - `"xhigh"`
 
+        - `"max"`
+
       - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
 
         An object specifying the format that the model must output.
@@ -10661,7 +11152,7 @@ Get an evaluation run by ID.
         Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
         Structured Outputs which ensures the model will match your supplied JSON
         schema. Learn more in the [Structured Outputs
-        guide](/docs/guides/structured-outputs).
+        guide](https://platform.openai.com/docs/guides/structured-outputs).
 
         Setting to `{ "type": "json_object" }` enables the older JSON mode, which
         ensures the message the model generates is valid JSON. Using `json_schema`
@@ -10680,7 +11171,7 @@ Get an evaluation run by ID.
         - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
-          Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+          Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
           - `json_schema: object { name, description, schema, strict }`
 
@@ -10707,7 +11198,7 @@ Get an evaluation run by ID.
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](/docs/guides/structured-outputs).
+              guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           - `type: "json_schema"`
 
@@ -10752,13 +11243,13 @@ Get an evaluation run by ID.
 
           - `parameters: optional FunctionParameters`
 
-            The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+            The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
             Omitting `parameters` defines a function with an empty parameter list.
 
           - `strict: optional boolean`
 
-            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
         - `type: "function"`
 
@@ -10770,7 +11261,7 @@ Get an evaluation run by ID.
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-  - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+  - `Responses object { source, type, input_messages, 2 more }`
 
     A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -10778,7 +11269,7 @@ Get an evaluation run by ID.
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource object { content, type }`
+      - `FileContent object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -10794,7 +11285,7 @@ Get an evaluation run by ID.
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource object { id, type }`
+      - `FileID object { id, type }`
 
         - `id: string`
 
@@ -10806,7 +11297,7 @@ Get an evaluation run by ID.
 
           - `"file_id"`
 
-      - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+      - `Responses object { type, created_after, created_before, 8 more }`
 
         A EvalResponsesSource object describing a run data source configuration.
 
@@ -10838,16 +11329,13 @@ Get an evaluation run by ID.
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
         - `temperature: optional number`
 
@@ -10875,7 +11363,7 @@ Get an evaluation run by ID.
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `InputMessagesTemplate object { template, type }`
+      - `Template object { template, type }`
 
         - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -10891,7 +11379,7 @@ Get an evaluation run by ID.
 
               The role of the message (e.g. "system", "assistant", "user").
 
-          - `EvalMessageObject object { content, role, type }`
+          - `EvalItem object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -10907,7 +11395,7 @@ Get an evaluation run by ID.
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -10977,7 +11465,7 @@ Get an evaluation run by ID.
 
           - `"template"`
 
-      - `InputMessagesItemReference object { item_reference, type }`
+      - `ItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -11001,16 +11489,13 @@ Get an evaluation run by ID.
 
       - `reasoning_effort: optional ReasoningEffort`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
       - `seed: optional number`
 
@@ -11025,8 +11510,8 @@ Get an evaluation run by ID.
         Configuration options for a text response from the model. Can be plain
         text or structured JSON data. Learn more:
 
-        - [Text inputs and outputs](/docs/guides/text)
-        - [Structured Outputs](/docs/guides/structured-outputs)
+        - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+        - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
 
         - `format: optional ResponseFormatTextConfig`
 
@@ -11034,7 +11519,7 @@ Get an evaluation run by ID.
 
           Configuring `{ "type": "json_schema" }` enables Structured Outputs,
           which ensures the model will match your supplied JSON schema. Learn more in the
-          [Structured Outputs guide](/docs/guides/structured-outputs).
+          [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           The default format is `{ "type": "text" }` with no additional options.
 
@@ -11051,7 +11536,7 @@ Get an evaluation run by ID.
           - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `name: string`
 
@@ -11080,7 +11565,7 @@ Get an evaluation run by ID.
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](/docs/guides/structured-outputs).
+              guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           - `ResponseFormatJSONObject object { type }`
 
@@ -11089,7 +11574,7 @@ Get an evaluation run by ID.
             model will not generate JSON without a system or user message instructing it
             to do so.
 
-      - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+      - `tools: optional array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
         An array of tools the model may call while generating a response. You
         can specify which tool to use by setting the `tool_choice` parameter.
@@ -11097,14 +11582,14 @@ Get an evaluation run by ID.
         The two categories of tools you can provide the model are:
 
         - **Built-in tools**: Tools that are provided by OpenAI that extend the
-          model's capabilities, like [web search](/docs/guides/tools-web-search)
-          or [file search](/docs/guides/tools-file-search). Learn more about
-          [built-in tools](/docs/guides/tools).
+          model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+          or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+          [built-in tools](https://platform.openai.com/docs/guides/tools).
         - **Function calls (custom tools)**: Functions that are defined by you,
           enabling the model to call your own code. Learn more about
-          [function calling](/docs/guides/function-calling).
+          [function calling](https://platform.openai.com/docs/guides/function-calling).
 
-        - `Function object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 5 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -11118,13 +11603,21 @@ Get an evaluation run by ID.
 
           - `strict: boolean`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -11133,6 +11626,10 @@ Get an evaluation run by ID.
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: optional map[unknown]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -11304,7 +11801,7 @@ Get an evaluation run by ID.
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -11361,10 +11858,10 @@ Get an evaluation run by ID.
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 8 more }`
+        - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -11375,6 +11872,14 @@ Get an evaluation run by ID.
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -11408,7 +11913,7 @@ Get an evaluation run by ID.
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -11508,7 +12013,7 @@ Get an evaluation run by ID.
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `CodeInterpreter object { container, type }`
+        - `CodeInterpreter object { container, type, allowed_callers }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -11594,6 +12099,22 @@ Get an evaluation run by ID.
 
             - `"code_interpreter"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling object { type }`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
@@ -11616,8 +12137,19 @@ Get an evaluation run by ID.
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -11646,13 +12178,13 @@ Get an evaluation run by ID.
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -11660,7 +12192,13 @@ Get an evaluation run by ID.
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -11730,7 +12268,7 @@ Get an evaluation run by ID.
 
             - `"local_shell"`
 
-        - `Shell object { type, environment }`
+        - `Shell object { type, allowed_callers, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -11739,6 +12277,14 @@ Get an evaluation run by ID.
             The type of the shell tool. Always `shell`.
 
             - `"shell"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
@@ -11866,9 +12412,9 @@ Get an evaluation run by ID.
 
                 - `"container_reference"`
 
-        - `Custom object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -11879,6 +12425,14 @@ Get an evaluation run by ID.
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -11936,11 +12490,11 @@ Get an evaluation run by ID.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, allowed_callers, 5 more }`
 
               - `name: string`
 
@@ -11948,19 +12502,33 @@ Get an evaluation run by ID.
 
                 - `"function"`
 
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: optional boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: optional string`
 
+              - `output_schema: optional map[unknown]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: optional unknown`
 
               - `strict: optional boolean`
 
-            - `Custom object { name, type, defer_loading, 2 more }`
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            - `Custom object { name, type, allowed_callers, 3 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -11971,6 +12539,14 @@ Get an evaluation run by ID.
                 The type of the custom tool. Always `custom`.
 
                 - `"custom"`
+
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading: optional boolean`
 
@@ -12070,7 +12646,7 @@ Get an evaluation run by ID.
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch object { type }`
+        - `ApplyPatch object { type, allowed_callers }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -12079,6 +12655,14 @@ Get an evaluation run by ID.
             The type of the tool. Always `apply_patch`.
 
             - `"apply_patch"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
       - `top_p: optional number`
 
@@ -12426,7 +13010,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
 **post** `/evals/{eval_id}/runs/{run_id}`
 
-Cancel an ongoing evaluation run.
+Cancel eval run
 
 ### Path Parameters
 
@@ -12456,7 +13040,7 @@ Cancel an ongoing evaluation run.
 
       Determines what populates the `item` namespace in the data source.
 
-      - `EvalJSONLFileContentSource object { content, type }`
+      - `FileContent object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -12472,7 +13056,7 @@ Cancel an ongoing evaluation run.
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource object { id, type }`
+      - `FileID object { id, type }`
 
         - `id: string`
 
@@ -12498,7 +13082,7 @@ Cancel an ongoing evaluation run.
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource object { content, type }`
+      - `FileContent object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -12514,7 +13098,7 @@ Cancel an ongoing evaluation run.
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource object { id, type }`
+      - `FileID object { id, type }`
 
         - `id: string`
 
@@ -12526,7 +13110,7 @@ Cancel an ongoing evaluation run.
 
           - `"file_id"`
 
-      - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+      - `StoredCompletions object { type, created_after, created_before, 3 more }`
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -12571,7 +13155,7 @@ Cancel an ongoing evaluation run.
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `TemplateInputMessages object { template, type }`
+      - `Template object { template, type }`
 
         - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -12599,7 +13183,7 @@ Cancel an ongoing evaluation run.
                 A list of one or many input items to the model, containing different content
                 types.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -12613,9 +13197,19 @@ Cancel an ongoing evaluation run.
 
                     - `"input_text"`
 
-                - `ResponseInputImage object { detail, type, file_id, image_url }`
+                  - `prompt_cache_breakpoint: optional object { mode }`
 
-                  An image input to the model. Learn about [image inputs](/docs/guides/vision).
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
+                - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+                  An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
                   - `detail: "low" or "high" or "auto" or "original"`
 
@@ -12643,7 +13237,17 @@ Cancel an ongoing evaluation run.
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile object { type, detail, file_data, 3 more }`
+                  - `prompt_cache_breakpoint: optional object { mode }`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
+                - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
                   A file input to the model.
 
@@ -12653,9 +13257,11 @@ Cancel an ongoing evaluation run.
 
                     - `"input_file"`
 
-                  - `detail: optional "low" or "high"`
+                  - `detail: optional "auto" or "low" or "high"`
 
-                    The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                    The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                    - `"auto"`
 
                     - `"low"`
 
@@ -12676,6 +13282,16 @@ Cancel an ongoing evaluation run.
                   - `filename: optional string`
 
                     The name of the file to be sent to the model.
+
+                  - `prompt_cache_breakpoint: optional object { mode }`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
 
             - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -12706,7 +13322,7 @@ Cancel an ongoing evaluation run.
 
               - `"message"`
 
-          - `EvalMessageObject object { content, role, type }`
+          - `EvalItem object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -12722,7 +13338,7 @@ Cancel an ongoing evaluation run.
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -12792,7 +13408,7 @@ Cancel an ongoing evaluation run.
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -12857,7 +13473,7 @@ Cancel an ongoing evaluation run.
 
           - `"template"`
 
-      - `ItemReferenceInputMessages object { item_reference, type }`
+      - `ItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -12881,16 +13497,13 @@ Cancel an ongoing evaluation run.
 
       - `reasoning_effort: optional ReasoningEffort`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -12904,6 +13517,8 @@ Cancel an ongoing evaluation run.
 
         - `"xhigh"`
 
+        - `"max"`
+
       - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
 
         An object specifying the format that the model must output.
@@ -12911,7 +13526,7 @@ Cancel an ongoing evaluation run.
         Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
         Structured Outputs which ensures the model will match your supplied JSON
         schema. Learn more in the [Structured Outputs
-        guide](/docs/guides/structured-outputs).
+        guide](https://platform.openai.com/docs/guides/structured-outputs).
 
         Setting to `{ "type": "json_object" }` enables the older JSON mode, which
         ensures the message the model generates is valid JSON. Using `json_schema`
@@ -12930,7 +13545,7 @@ Cancel an ongoing evaluation run.
         - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
-          Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+          Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
           - `json_schema: object { name, description, schema, strict }`
 
@@ -12957,7 +13572,7 @@ Cancel an ongoing evaluation run.
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](/docs/guides/structured-outputs).
+              guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           - `type: "json_schema"`
 
@@ -13002,13 +13617,13 @@ Cancel an ongoing evaluation run.
 
           - `parameters: optional FunctionParameters`
 
-            The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+            The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
             Omitting `parameters` defines a function with an empty parameter list.
 
           - `strict: optional boolean`
 
-            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
         - `type: "function"`
 
@@ -13020,7 +13635,7 @@ Cancel an ongoing evaluation run.
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-  - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+  - `Responses object { source, type, input_messages, 2 more }`
 
     A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -13028,7 +13643,7 @@ Cancel an ongoing evaluation run.
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource object { content, type }`
+      - `FileContent object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -13044,7 +13659,7 @@ Cancel an ongoing evaluation run.
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource object { id, type }`
+      - `FileID object { id, type }`
 
         - `id: string`
 
@@ -13056,7 +13671,7 @@ Cancel an ongoing evaluation run.
 
           - `"file_id"`
 
-      - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+      - `Responses object { type, created_after, created_before, 8 more }`
 
         A EvalResponsesSource object describing a run data source configuration.
 
@@ -13088,16 +13703,13 @@ Cancel an ongoing evaluation run.
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
         - `temperature: optional number`
 
@@ -13125,7 +13737,7 @@ Cancel an ongoing evaluation run.
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `InputMessagesTemplate object { template, type }`
+      - `Template object { template, type }`
 
         - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -13141,7 +13753,7 @@ Cancel an ongoing evaluation run.
 
               The role of the message (e.g. "system", "assistant", "user").
 
-          - `EvalMessageObject object { content, role, type }`
+          - `EvalItem object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -13157,7 +13769,7 @@ Cancel an ongoing evaluation run.
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -13227,7 +13839,7 @@ Cancel an ongoing evaluation run.
 
           - `"template"`
 
-      - `InputMessagesItemReference object { item_reference, type }`
+      - `ItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -13251,16 +13863,13 @@ Cancel an ongoing evaluation run.
 
       - `reasoning_effort: optional ReasoningEffort`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
       - `seed: optional number`
 
@@ -13275,8 +13884,8 @@ Cancel an ongoing evaluation run.
         Configuration options for a text response from the model. Can be plain
         text or structured JSON data. Learn more:
 
-        - [Text inputs and outputs](/docs/guides/text)
-        - [Structured Outputs](/docs/guides/structured-outputs)
+        - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+        - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
 
         - `format: optional ResponseFormatTextConfig`
 
@@ -13284,7 +13893,7 @@ Cancel an ongoing evaluation run.
 
           Configuring `{ "type": "json_schema" }` enables Structured Outputs,
           which ensures the model will match your supplied JSON schema. Learn more in the
-          [Structured Outputs guide](/docs/guides/structured-outputs).
+          [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           The default format is `{ "type": "text" }` with no additional options.
 
@@ -13301,7 +13910,7 @@ Cancel an ongoing evaluation run.
           - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `name: string`
 
@@ -13330,7 +13939,7 @@ Cancel an ongoing evaluation run.
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](/docs/guides/structured-outputs).
+              guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           - `ResponseFormatJSONObject object { type }`
 
@@ -13339,7 +13948,7 @@ Cancel an ongoing evaluation run.
             model will not generate JSON without a system or user message instructing it
             to do so.
 
-      - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+      - `tools: optional array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
         An array of tools the model may call while generating a response. You
         can specify which tool to use by setting the `tool_choice` parameter.
@@ -13347,14 +13956,14 @@ Cancel an ongoing evaluation run.
         The two categories of tools you can provide the model are:
 
         - **Built-in tools**: Tools that are provided by OpenAI that extend the
-          model's capabilities, like [web search](/docs/guides/tools-web-search)
-          or [file search](/docs/guides/tools-file-search). Learn more about
-          [built-in tools](/docs/guides/tools).
+          model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+          or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+          [built-in tools](https://platform.openai.com/docs/guides/tools).
         - **Function calls (custom tools)**: Functions that are defined by you,
           enabling the model to call your own code. Learn more about
-          [function calling](/docs/guides/function-calling).
+          [function calling](https://platform.openai.com/docs/guides/function-calling).
 
-        - `Function object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 5 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -13368,13 +13977,21 @@ Cancel an ongoing evaluation run.
 
           - `strict: boolean`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -13383,6 +14000,10 @@ Cancel an ongoing evaluation run.
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: optional map[unknown]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -13554,7 +14175,7 @@ Cancel an ongoing evaluation run.
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -13611,10 +14232,10 @@ Cancel an ongoing evaluation run.
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 8 more }`
+        - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -13625,6 +14246,14 @@ Cancel an ongoing evaluation run.
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -13658,7 +14287,7 @@ Cancel an ongoing evaluation run.
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -13758,7 +14387,7 @@ Cancel an ongoing evaluation run.
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `CodeInterpreter object { container, type }`
+        - `CodeInterpreter object { container, type, allowed_callers }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -13844,6 +14473,22 @@ Cancel an ongoing evaluation run.
 
             - `"code_interpreter"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling object { type }`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
@@ -13866,8 +14511,19 @@ Cancel an ongoing evaluation run.
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -13896,13 +14552,13 @@ Cancel an ongoing evaluation run.
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -13910,7 +14566,13 @@ Cancel an ongoing evaluation run.
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -13980,7 +14642,7 @@ Cancel an ongoing evaluation run.
 
             - `"local_shell"`
 
-        - `Shell object { type, environment }`
+        - `Shell object { type, allowed_callers, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -13989,6 +14651,14 @@ Cancel an ongoing evaluation run.
             The type of the shell tool. Always `shell`.
 
             - `"shell"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
@@ -14116,9 +14786,9 @@ Cancel an ongoing evaluation run.
 
                 - `"container_reference"`
 
-        - `Custom object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -14129,6 +14799,14 @@ Cancel an ongoing evaluation run.
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -14186,11 +14864,11 @@ Cancel an ongoing evaluation run.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, allowed_callers, 5 more }`
 
               - `name: string`
 
@@ -14198,19 +14876,33 @@ Cancel an ongoing evaluation run.
 
                 - `"function"`
 
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: optional boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: optional string`
 
+              - `output_schema: optional map[unknown]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: optional unknown`
 
               - `strict: optional boolean`
 
-            - `Custom object { name, type, defer_loading, 2 more }`
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            - `Custom object { name, type, allowed_callers, 3 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -14221,6 +14913,14 @@ Cancel an ongoing evaluation run.
                 The type of the custom tool. Always `custom`.
 
                 - `"custom"`
+
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading: optional boolean`
 
@@ -14320,7 +15020,7 @@ Cancel an ongoing evaluation run.
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch object { type }`
+        - `ApplyPatch object { type, allowed_callers }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -14329,6 +15029,14 @@ Cancel an ongoing evaluation run.
             The type of the tool. Always `apply_patch`.
 
             - `"apply_patch"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
       - `top_p: optional number`
 
@@ -14678,7 +15386,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
 **delete** `/evals/{eval_id}/runs/{run_id}`
 
-Delete an eval run.
+Delete eval run
 
 ### Path Parameters
 
@@ -14743,7 +15451,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
     Determines what populates the `item` namespace in this run's data source.
 
-    - `EvalJSONLFileContentSource object { content, type }`
+    - `FileContent object { content, type }`
 
       - `content: array of object { item, sample }`
 
@@ -14759,7 +15467,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `"file_content"`
 
-    - `EvalJSONLFileIDSource object { id, type }`
+    - `FileID object { id, type }`
 
       - `id: string`
 
@@ -14771,7 +15479,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `"file_id"`
 
-    - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+    - `StoredCompletions object { type, created_after, created_before, 3 more }`
 
       A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -14816,7 +15524,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
     Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-    - `TemplateInputMessages object { template, type }`
+    - `Template object { template, type }`
 
       - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -14844,7 +15552,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               A list of one or many input items to the model, containing different content
               types.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -14858,9 +15566,19 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `"input_text"`
 
-              - `ResponseInputImage object { detail, type, file_id, image_url }`
+                - `prompt_cache_breakpoint: optional object { mode }`
 
-                An image input to the model. Learn about [image inputs](/docs/guides/vision).
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
+              - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+                An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
                 - `detail: "low" or "high" or "auto" or "original"`
 
@@ -14888,7 +15606,17 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-              - `ResponseInputFile object { type, detail, file_data, 3 more }`
+                - `prompt_cache_breakpoint: optional object { mode }`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
+              - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
                 A file input to the model.
 
@@ -14898,9 +15626,11 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `"input_file"`
 
-                - `detail: optional "low" or "high"`
+                - `detail: optional "auto" or "low" or "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -14921,6 +15651,16 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 - `filename: optional string`
 
                   The name of the file to be sent to the model.
+
+                - `prompt_cache_breakpoint: optional object { mode }`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
           - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -14951,7 +15691,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"message"`
 
-        - `EvalMessageObject object { content, role, type }`
+        - `EvalItem object { content, role, type }`
 
           A message input to the model with a role indicating instruction following
           hierarchy. Instructions given with the `developer` or `system` role take
@@ -14967,7 +15707,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               A text input to the model.
 
-            - `ResponseInputText object { text, type }`
+            - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
               A text input to the model.
 
@@ -15037,7 +15777,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -15102,7 +15842,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `"template"`
 
-    - `ItemReferenceInputMessages object { item_reference, type }`
+    - `ItemReference object { item_reference, type }`
 
       - `item_reference: string`
 
@@ -15126,16 +15866,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
     - `reasoning_effort: optional ReasoningEffort`
 
-      Constrains effort on reasoning for
-      [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-      Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-      reasoning effort can result in faster responses and fewer tokens used
-      on reasoning in a response.
-
-      - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-      - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-      - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-      - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+      Constrains effort on reasoning for reasoning models. Currently supported
+      values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+      Reducing reasoning effort can result in faster responses and fewer tokens
+      used on reasoning in a response. Not all reasoning models support every
+      value. See the
+      [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+      for model-specific support.
 
       - `"none"`
 
@@ -15149,6 +15886,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
       - `"xhigh"`
 
+      - `"max"`
+
     - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
 
       An object specifying the format that the model must output.
@@ -15156,7 +15895,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
       Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
       Structured Outputs which ensures the model will match your supplied JSON
       schema. Learn more in the [Structured Outputs
-      guide](/docs/guides/structured-outputs).
+      guide](https://platform.openai.com/docs/guides/structured-outputs).
 
       Setting to `{ "type": "json_object" }` enables the older JSON mode, which
       ensures the message the model generates is valid JSON. Using `json_schema`
@@ -15175,7 +15914,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
       - `ResponseFormatJSONSchema object { json_schema, type }`
 
         JSON Schema response format. Used to generate structured JSON responses.
-        Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+        Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
         - `json_schema: object { name, description, schema, strict }`
 
@@ -15202,7 +15941,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             If set to true, the model will always follow the exact schema defined
             in the `schema` field. Only a subset of JSON Schema is supported when
             `strict` is `true`. To learn more, read the [Structured Outputs
-            guide](/docs/guides/structured-outputs).
+            guide](https://platform.openai.com/docs/guides/structured-outputs).
 
         - `type: "json_schema"`
 
@@ -15247,13 +15986,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `parameters: optional FunctionParameters`
 
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
           Omitting `parameters` defines a function with an empty parameter list.
 
         - `strict: optional boolean`
 
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
       - `type: "function"`
 
@@ -15275,7 +16014,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
     Determines what populates the `item` namespace in the data source.
 
-    - `EvalJSONLFileContentSource object { content, type }`
+    - `FileContent object { content, type }`
 
       - `content: array of object { item, sample }`
 
@@ -15291,7 +16030,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `"file_content"`
 
-    - `EvalJSONLFileIDSource object { id, type }`
+    - `FileID object { id, type }`
 
       - `id: string`
 
@@ -15349,7 +16088,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in the data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -15365,7 +16104,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -15391,7 +16130,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -15407,7 +16146,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -15419,7 +16158,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+        - `StoredCompletions object { type, created_after, created_before, 3 more }`
 
           A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -15464,7 +16203,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `TemplateInputMessages object { template, type }`
+        - `Template object { template, type }`
 
           - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -15492,7 +16231,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                   A list of one or many input items to the model, containing different content
                   types.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -15506,9 +16245,19 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                       - `"input_text"`
 
-                  - `ResponseInputImage object { detail, type, file_id, image_url }`
+                    - `prompt_cache_breakpoint: optional object { mode }`
 
-                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
+
+                  - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
                     - `detail: "low" or "high" or "auto" or "original"`
 
@@ -15536,7 +16285,17 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                  - `ResponseInputFile object { type, detail, file_data, 3 more }`
+                    - `prompt_cache_breakpoint: optional object { mode }`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
+
+                  - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
                     A file input to the model.
 
@@ -15546,9 +16305,11 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                       - `"input_file"`
 
-                    - `detail: optional "low" or "high"`
+                    - `detail: optional "auto" or "low" or "high"`
 
-                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                      The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                      - `"auto"`
 
                       - `"low"`
 
@@ -15569,6 +16330,16 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                     - `filename: optional string`
 
                       The name of the file to be sent to the model.
+
+                    - `prompt_cache_breakpoint: optional object { mode }`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
 
               - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -15599,7 +16370,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"message"`
 
-            - `EvalMessageObject object { content, role, type }`
+            - `EvalItem object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -15615,7 +16386,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -15685,7 +16456,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                     A text input to the model.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -15750,7 +16521,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `ItemReferenceInputMessages object { item_reference, type }`
+        - `ItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -15774,16 +16545,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -15797,6 +16565,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `"xhigh"`
 
+          - `"max"`
+
         - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
 
           An object specifying the format that the model must output.
@@ -15804,7 +16574,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
           Structured Outputs which ensures the model will match your supplied JSON
           schema. Learn more in the [Structured Outputs
-          guide](/docs/guides/structured-outputs).
+          guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           Setting to `{ "type": "json_object" }` enables the older JSON mode, which
           ensures the message the model generates is valid JSON. Using `json_schema`
@@ -15823,7 +16593,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `ResponseFormatJSONSchema object { json_schema, type }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `json_schema: object { name, description, schema, strict }`
 
@@ -15850,7 +16620,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](/docs/guides/structured-outputs).
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `type: "json_schema"`
 
@@ -15895,13 +16665,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `parameters: optional FunctionParameters`
 
-              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
               Omitting `parameters` defines a function with an empty parameter list.
 
             - `strict: optional boolean`
 
-              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
           - `type: "function"`
 
@@ -15913,7 +16683,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+    - `Responses object { source, type, input_messages, 2 more }`
 
       A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -15921,7 +16691,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -15937,7 +16707,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -15949,7 +16719,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+        - `Responses object { type, created_after, created_before, 8 more }`
 
           A EvalResponsesSource object describing a run data source configuration.
 
@@ -15981,16 +16751,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `reasoning_effort: optional ReasoningEffort`
 
-            Constrains effort on reasoning for
-            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-            reasoning effort can result in faster responses and fewer tokens used
-            on reasoning in a response.
-
-            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+            Constrains effort on reasoning for reasoning models. Currently supported
+            values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+            Reducing reasoning effort can result in faster responses and fewer tokens
+            used on reasoning in a response. Not all reasoning models support every
+            value. See the
+            [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+            for model-specific support.
 
           - `temperature: optional number`
 
@@ -16018,7 +16785,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `InputMessagesTemplate object { template, type }`
+        - `Template object { template, type }`
 
           - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -16034,7 +16801,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The role of the message (e.g. "system", "assistant", "user").
 
-            - `EvalMessageObject object { content, role, type }`
+            - `EvalItem object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -16050,7 +16817,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -16120,7 +16887,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `InputMessagesItemReference object { item_reference, type }`
+        - `ItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -16144,16 +16911,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
         - `seed: optional number`
 
@@ -16168,8 +16932,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Configuration options for a text response from the model. Can be plain
           text or structured JSON data. Learn more:
 
-          - [Text inputs and outputs](/docs/guides/text)
-          - [Structured Outputs](/docs/guides/structured-outputs)
+          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
 
           - `format: optional ResponseFormatTextConfig`
 
@@ -16177,7 +16941,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             Configuring `{ "type": "json_schema" }` enables Structured Outputs,
             which ensures the model will match your supplied JSON schema. Learn more in the
-            [Structured Outputs guide](/docs/guides/structured-outputs).
+            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             The default format is `{ "type": "text" }` with no additional options.
 
@@ -16194,7 +16958,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
               JSON Schema response format. Used to generate structured JSON responses.
-              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
               - `name: string`
 
@@ -16223,7 +16987,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](/docs/guides/structured-outputs).
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `ResponseFormatJSONObject object { type }`
 
@@ -16232,7 +16996,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               model will not generate JSON without a system or user message instructing it
               to do so.
 
-        - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+        - `tools: optional array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
           An array of tools the model may call while generating a response. You
           can specify which tool to use by setting the `tool_choice` parameter.
@@ -16240,14 +17004,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           The two categories of tools you can provide the model are:
 
           - **Built-in tools**: Tools that are provided by OpenAI that extend the
-            model's capabilities, like [web search](/docs/guides/tools-web-search)
-            or [file search](/docs/guides/tools-file-search). Learn more about
-            [built-in tools](/docs/guides/tools).
+            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+            [built-in tools](https://platform.openai.com/docs/guides/tools).
           - **Function calls (custom tools)**: Functions that are defined by you,
             enabling the model to call your own code. Learn more about
-            [function calling](/docs/guides/function-calling).
+            [function calling](https://platform.openai.com/docs/guides/function-calling).
 
-          - `Function object { name, parameters, strict, 3 more }`
+          - `Function object { name, parameters, strict, 5 more }`
 
             Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -16261,13 +17025,21 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `strict: boolean`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading: optional boolean`
 
@@ -16276,6 +17048,10 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             - `description: optional string`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema: optional map[unknown]`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -16447,7 +17223,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `WebSearch object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
-            [web search tool](/docs/guides/tools-web-search).
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
             - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -16504,10 +17280,10 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"approximate"`
 
-          - `Mcp object { server_label, type, allowed_tools, 8 more }`
+          - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
-            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
             - `server_label: string`
 
@@ -16518,6 +17294,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -16551,7 +17335,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-              about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -16651,7 +17435,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-          - `CodeInterpreter object { container, type }`
+          - `CodeInterpreter object { container, type, allowed_callers }`
 
             A tool that runs Python code to help generate a response to a prompt.
 
@@ -16737,6 +17521,22 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `"code_interpreter"`
 
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling object { type }`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration object { type, action, background, 9 more }`
 
             A tool that generates images using the GPT image models.
@@ -16759,8 +17559,19 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `background: optional "transparent" or "opaque" or "auto"`
 
-              Background type for the generated image. One of `transparent`,
-              `opaque`, or `auto`. Default: `auto`.
+              Allows to set transparency for the background of the generated image(s).
+              This parameter is only supported for GPT image models that support
+              transparent backgrounds. Must be one of `transparent`, `opaque`, or
+              `auto` (default value). When `auto` is used, the model will
+              automatically determine the best background for the image.
+
+              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+              transparent backgrounds. Requests with `background` set to
+              `transparent` will return an error for these models; use `opaque` or
+              `auto` instead.
+
+              If `transparent`, the output format needs to support transparency,
+              so it should be set to either `png` (default value) or `webp`.
 
               - `"transparent"`
 
@@ -16789,13 +17600,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -16803,7 +17614,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"gpt-image-1-mini"`
 
+                - `"gpt-image-2"`
+
+                - `"gpt-image-2-2026-04-21"`
+
                 - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low"`
 
@@ -16873,7 +17690,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `"local_shell"`
 
-          - `Shell object { type, environment }`
+          - `Shell object { type, allowed_callers, environment }`
 
             A tool that allows the model to execute shell commands.
 
@@ -16882,6 +17699,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the shell tool. Always `shell`.
 
               - `"shell"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
@@ -17009,9 +17834,9 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `"container_reference"`
 
-          - `Custom object { name, type, defer_loading, 2 more }`
+          - `Custom object { name, type, allowed_callers, 3 more }`
 
-            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
             - `name: string`
 
@@ -17022,6 +17847,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the custom tool. Always `custom`.
 
               - `"custom"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading: optional boolean`
 
@@ -17079,11 +17912,11 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+            - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
               The function/custom tools available inside this namespace.
 
-              - `Function object { name, type, defer_loading, 3 more }`
+              - `Function object { name, type, allowed_callers, 5 more }`
 
                 - `name: string`
 
@@ -17091,19 +17924,33 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `"function"`
 
+                - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading: optional boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description: optional string`
 
+                - `output_schema: optional map[unknown]`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters: optional unknown`
 
                 - `strict: optional boolean`
 
-              - `Custom object { name, type, defer_loading, 2 more }`
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+              - `Custom object { name, type, allowed_callers, 3 more }`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
                 - `name: string`
 
@@ -17114,6 +17961,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                   The type of the custom tool. Always `custom`.
 
                   - `"custom"`
+
+                - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
 
                 - `defer_loading: optional boolean`
 
@@ -17213,7 +18068,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-          - `ApplyPatch object { type }`
+          - `ApplyPatch object { type, allowed_callers }`
 
             Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -17222,6 +18077,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the tool. Always `apply_patch`.
 
               - `"apply_patch"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
         - `top_p: optional number`
 
@@ -17364,7 +18227,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in the data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -17380,7 +18243,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -17406,7 +18269,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -17422,7 +18285,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -17434,7 +18297,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+        - `StoredCompletions object { type, created_after, created_before, 3 more }`
 
           A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -17479,7 +18342,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `TemplateInputMessages object { template, type }`
+        - `Template object { template, type }`
 
           - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -17507,7 +18370,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                   A list of one or many input items to the model, containing different content
                   types.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -17521,9 +18384,19 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                       - `"input_text"`
 
-                  - `ResponseInputImage object { detail, type, file_id, image_url }`
+                    - `prompt_cache_breakpoint: optional object { mode }`
 
-                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
+
+                  - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
                     - `detail: "low" or "high" or "auto" or "original"`
 
@@ -17551,7 +18424,17 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                  - `ResponseInputFile object { type, detail, file_data, 3 more }`
+                    - `prompt_cache_breakpoint: optional object { mode }`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
+
+                  - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
                     A file input to the model.
 
@@ -17561,9 +18444,11 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                       - `"input_file"`
 
-                    - `detail: optional "low" or "high"`
+                    - `detail: optional "auto" or "low" or "high"`
 
-                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                      The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                      - `"auto"`
 
                       - `"low"`
 
@@ -17584,6 +18469,16 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                     - `filename: optional string`
 
                       The name of the file to be sent to the model.
+
+                    - `prompt_cache_breakpoint: optional object { mode }`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
 
               - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -17614,7 +18509,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"message"`
 
-            - `EvalMessageObject object { content, role, type }`
+            - `EvalItem object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -17630,7 +18525,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -17700,7 +18595,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                     A text input to the model.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -17765,7 +18660,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `ItemReferenceInputMessages object { item_reference, type }`
+        - `ItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -17789,16 +18684,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -17812,6 +18704,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `"xhigh"`
 
+          - `"max"`
+
         - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
 
           An object specifying the format that the model must output.
@@ -17819,7 +18713,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
           Structured Outputs which ensures the model will match your supplied JSON
           schema. Learn more in the [Structured Outputs
-          guide](/docs/guides/structured-outputs).
+          guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           Setting to `{ "type": "json_object" }` enables the older JSON mode, which
           ensures the message the model generates is valid JSON. Using `json_schema`
@@ -17838,7 +18732,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `ResponseFormatJSONSchema object { json_schema, type }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `json_schema: object { name, description, schema, strict }`
 
@@ -17865,7 +18759,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](/docs/guides/structured-outputs).
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `type: "json_schema"`
 
@@ -17910,13 +18804,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `parameters: optional FunctionParameters`
 
-              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
               Omitting `parameters` defines a function with an empty parameter list.
 
             - `strict: optional boolean`
 
-              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
           - `type: "function"`
 
@@ -17928,7 +18822,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+    - `Responses object { source, type, input_messages, 2 more }`
 
       A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -17936,7 +18830,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -17952,7 +18846,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -17964,7 +18858,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+        - `Responses object { type, created_after, created_before, 8 more }`
 
           A EvalResponsesSource object describing a run data source configuration.
 
@@ -17996,16 +18890,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `reasoning_effort: optional ReasoningEffort`
 
-            Constrains effort on reasoning for
-            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-            reasoning effort can result in faster responses and fewer tokens used
-            on reasoning in a response.
-
-            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+            Constrains effort on reasoning for reasoning models. Currently supported
+            values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+            Reducing reasoning effort can result in faster responses and fewer tokens
+            used on reasoning in a response. Not all reasoning models support every
+            value. See the
+            [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+            for model-specific support.
 
           - `temperature: optional number`
 
@@ -18033,7 +18924,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `InputMessagesTemplate object { template, type }`
+        - `Template object { template, type }`
 
           - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -18049,7 +18940,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The role of the message (e.g. "system", "assistant", "user").
 
-            - `EvalMessageObject object { content, role, type }`
+            - `EvalItem object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -18065,7 +18956,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -18135,7 +19026,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `InputMessagesItemReference object { item_reference, type }`
+        - `ItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -18159,16 +19050,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
         - `seed: optional number`
 
@@ -18183,8 +19071,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Configuration options for a text response from the model. Can be plain
           text or structured JSON data. Learn more:
 
-          - [Text inputs and outputs](/docs/guides/text)
-          - [Structured Outputs](/docs/guides/structured-outputs)
+          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
 
           - `format: optional ResponseFormatTextConfig`
 
@@ -18192,7 +19080,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             Configuring `{ "type": "json_schema" }` enables Structured Outputs,
             which ensures the model will match your supplied JSON schema. Learn more in the
-            [Structured Outputs guide](/docs/guides/structured-outputs).
+            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             The default format is `{ "type": "text" }` with no additional options.
 
@@ -18209,7 +19097,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
               JSON Schema response format. Used to generate structured JSON responses.
-              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
               - `name: string`
 
@@ -18238,7 +19126,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](/docs/guides/structured-outputs).
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `ResponseFormatJSONObject object { type }`
 
@@ -18247,7 +19135,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               model will not generate JSON without a system or user message instructing it
               to do so.
 
-        - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+        - `tools: optional array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
           An array of tools the model may call while generating a response. You
           can specify which tool to use by setting the `tool_choice` parameter.
@@ -18255,14 +19143,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           The two categories of tools you can provide the model are:
 
           - **Built-in tools**: Tools that are provided by OpenAI that extend the
-            model's capabilities, like [web search](/docs/guides/tools-web-search)
-            or [file search](/docs/guides/tools-file-search). Learn more about
-            [built-in tools](/docs/guides/tools).
+            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+            [built-in tools](https://platform.openai.com/docs/guides/tools).
           - **Function calls (custom tools)**: Functions that are defined by you,
             enabling the model to call your own code. Learn more about
-            [function calling](/docs/guides/function-calling).
+            [function calling](https://platform.openai.com/docs/guides/function-calling).
 
-          - `Function object { name, parameters, strict, 3 more }`
+          - `Function object { name, parameters, strict, 5 more }`
 
             Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -18276,13 +19164,21 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `strict: boolean`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading: optional boolean`
 
@@ -18291,6 +19187,10 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             - `description: optional string`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema: optional map[unknown]`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -18462,7 +19362,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `WebSearch object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
-            [web search tool](/docs/guides/tools-web-search).
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
             - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -18519,10 +19419,10 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"approximate"`
 
-          - `Mcp object { server_label, type, allowed_tools, 8 more }`
+          - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
-            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
             - `server_label: string`
 
@@ -18533,6 +19433,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -18566,7 +19474,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-              about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -18666,7 +19574,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-          - `CodeInterpreter object { container, type }`
+          - `CodeInterpreter object { container, type, allowed_callers }`
 
             A tool that runs Python code to help generate a response to a prompt.
 
@@ -18752,6 +19660,22 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `"code_interpreter"`
 
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling object { type }`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration object { type, action, background, 9 more }`
 
             A tool that generates images using the GPT image models.
@@ -18774,8 +19698,19 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `background: optional "transparent" or "opaque" or "auto"`
 
-              Background type for the generated image. One of `transparent`,
-              `opaque`, or `auto`. Default: `auto`.
+              Allows to set transparency for the background of the generated image(s).
+              This parameter is only supported for GPT image models that support
+              transparent backgrounds. Must be one of `transparent`, `opaque`, or
+              `auto` (default value). When `auto` is used, the model will
+              automatically determine the best background for the image.
+
+              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+              transparent backgrounds. Requests with `background` set to
+              `transparent` will return an error for these models; use `opaque` or
+              `auto` instead.
+
+              If `transparent`, the output format needs to support transparency,
+              so it should be set to either `png` (default value) or `webp`.
 
               - `"transparent"`
 
@@ -18804,13 +19739,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -18818,7 +19753,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"gpt-image-1-mini"`
 
+                - `"gpt-image-2"`
+
+                - `"gpt-image-2-2026-04-21"`
+
                 - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low"`
 
@@ -18888,7 +19829,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `"local_shell"`
 
-          - `Shell object { type, environment }`
+          - `Shell object { type, allowed_callers, environment }`
 
             A tool that allows the model to execute shell commands.
 
@@ -18897,6 +19838,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the shell tool. Always `shell`.
 
               - `"shell"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
@@ -19024,9 +19973,9 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `"container_reference"`
 
-          - `Custom object { name, type, defer_loading, 2 more }`
+          - `Custom object { name, type, allowed_callers, 3 more }`
 
-            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
             - `name: string`
 
@@ -19037,6 +19986,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the custom tool. Always `custom`.
 
               - `"custom"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading: optional boolean`
 
@@ -19094,11 +20051,11 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+            - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
               The function/custom tools available inside this namespace.
 
-              - `Function object { name, type, defer_loading, 3 more }`
+              - `Function object { name, type, allowed_callers, 5 more }`
 
                 - `name: string`
 
@@ -19106,19 +20063,33 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `"function"`
 
+                - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading: optional boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description: optional string`
 
+                - `output_schema: optional map[unknown]`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters: optional unknown`
 
                 - `strict: optional boolean`
 
-              - `Custom object { name, type, defer_loading, 2 more }`
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+              - `Custom object { name, type, allowed_callers, 3 more }`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
                 - `name: string`
 
@@ -19129,6 +20100,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                   The type of the custom tool. Always `custom`.
 
                   - `"custom"`
+
+                - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
 
                 - `defer_loading: optional boolean`
 
@@ -19228,7 +20207,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-          - `ApplyPatch object { type }`
+          - `ApplyPatch object { type, allowed_callers }`
 
             Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -19237,6 +20216,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the tool. Always `apply_patch`.
 
               - `"apply_patch"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
         - `top_p: optional number`
 
@@ -19379,7 +20366,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in the data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -19395,7 +20382,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -19421,7 +20408,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -19437,7 +20424,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -19449,7 +20436,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+        - `StoredCompletions object { type, created_after, created_before, 3 more }`
 
           A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -19494,7 +20481,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `TemplateInputMessages object { template, type }`
+        - `Template object { template, type }`
 
           - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -19522,7 +20509,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                   A list of one or many input items to the model, containing different content
                   types.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -19536,9 +20523,19 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                       - `"input_text"`
 
-                  - `ResponseInputImage object { detail, type, file_id, image_url }`
+                    - `prompt_cache_breakpoint: optional object { mode }`
 
-                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
+
+                  - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
                     - `detail: "low" or "high" or "auto" or "original"`
 
@@ -19566,7 +20563,17 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                  - `ResponseInputFile object { type, detail, file_data, 3 more }`
+                    - `prompt_cache_breakpoint: optional object { mode }`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
+
+                  - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
                     A file input to the model.
 
@@ -19576,9 +20583,11 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                       - `"input_file"`
 
-                    - `detail: optional "low" or "high"`
+                    - `detail: optional "auto" or "low" or "high"`
 
-                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                      The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                      - `"auto"`
 
                       - `"low"`
 
@@ -19599,6 +20608,16 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                     - `filename: optional string`
 
                       The name of the file to be sent to the model.
+
+                    - `prompt_cache_breakpoint: optional object { mode }`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
 
               - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -19629,7 +20648,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"message"`
 
-            - `EvalMessageObject object { content, role, type }`
+            - `EvalItem object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -19645,7 +20664,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -19715,7 +20734,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                     A text input to the model.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -19780,7 +20799,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `ItemReferenceInputMessages object { item_reference, type }`
+        - `ItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -19804,16 +20823,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -19827,6 +20843,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `"xhigh"`
 
+          - `"max"`
+
         - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
 
           An object specifying the format that the model must output.
@@ -19834,7 +20852,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
           Structured Outputs which ensures the model will match your supplied JSON
           schema. Learn more in the [Structured Outputs
-          guide](/docs/guides/structured-outputs).
+          guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           Setting to `{ "type": "json_object" }` enables the older JSON mode, which
           ensures the message the model generates is valid JSON. Using `json_schema`
@@ -19853,7 +20871,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `ResponseFormatJSONSchema object { json_schema, type }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `json_schema: object { name, description, schema, strict }`
 
@@ -19880,7 +20898,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](/docs/guides/structured-outputs).
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `type: "json_schema"`
 
@@ -19925,13 +20943,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `parameters: optional FunctionParameters`
 
-              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
               Omitting `parameters` defines a function with an empty parameter list.
 
             - `strict: optional boolean`
 
-              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
           - `type: "function"`
 
@@ -19943,7 +20961,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+    - `Responses object { source, type, input_messages, 2 more }`
 
       A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -19951,7 +20969,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -19967,7 +20985,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -19979,7 +20997,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+        - `Responses object { type, created_after, created_before, 8 more }`
 
           A EvalResponsesSource object describing a run data source configuration.
 
@@ -20011,16 +21029,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `reasoning_effort: optional ReasoningEffort`
 
-            Constrains effort on reasoning for
-            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-            reasoning effort can result in faster responses and fewer tokens used
-            on reasoning in a response.
-
-            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+            Constrains effort on reasoning for reasoning models. Currently supported
+            values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+            Reducing reasoning effort can result in faster responses and fewer tokens
+            used on reasoning in a response. Not all reasoning models support every
+            value. See the
+            [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+            for model-specific support.
 
           - `temperature: optional number`
 
@@ -20048,7 +21063,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `InputMessagesTemplate object { template, type }`
+        - `Template object { template, type }`
 
           - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -20064,7 +21079,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The role of the message (e.g. "system", "assistant", "user").
 
-            - `EvalMessageObject object { content, role, type }`
+            - `EvalItem object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -20080,7 +21095,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -20150,7 +21165,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `InputMessagesItemReference object { item_reference, type }`
+        - `ItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -20174,16 +21189,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
         - `seed: optional number`
 
@@ -20198,8 +21210,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Configuration options for a text response from the model. Can be plain
           text or structured JSON data. Learn more:
 
-          - [Text inputs and outputs](/docs/guides/text)
-          - [Structured Outputs](/docs/guides/structured-outputs)
+          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
 
           - `format: optional ResponseFormatTextConfig`
 
@@ -20207,7 +21219,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             Configuring `{ "type": "json_schema" }` enables Structured Outputs,
             which ensures the model will match your supplied JSON schema. Learn more in the
-            [Structured Outputs guide](/docs/guides/structured-outputs).
+            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             The default format is `{ "type": "text" }` with no additional options.
 
@@ -20224,7 +21236,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
               JSON Schema response format. Used to generate structured JSON responses.
-              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
               - `name: string`
 
@@ -20253,7 +21265,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](/docs/guides/structured-outputs).
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `ResponseFormatJSONObject object { type }`
 
@@ -20262,7 +21274,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               model will not generate JSON without a system or user message instructing it
               to do so.
 
-        - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+        - `tools: optional array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
           An array of tools the model may call while generating a response. You
           can specify which tool to use by setting the `tool_choice` parameter.
@@ -20270,14 +21282,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           The two categories of tools you can provide the model are:
 
           - **Built-in tools**: Tools that are provided by OpenAI that extend the
-            model's capabilities, like [web search](/docs/guides/tools-web-search)
-            or [file search](/docs/guides/tools-file-search). Learn more about
-            [built-in tools](/docs/guides/tools).
+            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+            [built-in tools](https://platform.openai.com/docs/guides/tools).
           - **Function calls (custom tools)**: Functions that are defined by you,
             enabling the model to call your own code. Learn more about
-            [function calling](/docs/guides/function-calling).
+            [function calling](https://platform.openai.com/docs/guides/function-calling).
 
-          - `Function object { name, parameters, strict, 3 more }`
+          - `Function object { name, parameters, strict, 5 more }`
 
             Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -20291,13 +21303,21 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `strict: boolean`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading: optional boolean`
 
@@ -20306,6 +21326,10 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             - `description: optional string`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema: optional map[unknown]`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -20477,7 +21501,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `WebSearch object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
-            [web search tool](/docs/guides/tools-web-search).
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
             - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -20534,10 +21558,10 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"approximate"`
 
-          - `Mcp object { server_label, type, allowed_tools, 8 more }`
+          - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
-            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
             - `server_label: string`
 
@@ -20548,6 +21572,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -20581,7 +21613,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-              about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -20681,7 +21713,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-          - `CodeInterpreter object { container, type }`
+          - `CodeInterpreter object { container, type, allowed_callers }`
 
             A tool that runs Python code to help generate a response to a prompt.
 
@@ -20767,6 +21799,22 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `"code_interpreter"`
 
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling object { type }`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration object { type, action, background, 9 more }`
 
             A tool that generates images using the GPT image models.
@@ -20789,8 +21837,19 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `background: optional "transparent" or "opaque" or "auto"`
 
-              Background type for the generated image. One of `transparent`,
-              `opaque`, or `auto`. Default: `auto`.
+              Allows to set transparency for the background of the generated image(s).
+              This parameter is only supported for GPT image models that support
+              transparent backgrounds. Must be one of `transparent`, `opaque`, or
+              `auto` (default value). When `auto` is used, the model will
+              automatically determine the best background for the image.
+
+              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+              transparent backgrounds. Requests with `background` set to
+              `transparent` will return an error for these models; use `opaque` or
+              `auto` instead.
+
+              If `transparent`, the output format needs to support transparency,
+              so it should be set to either `png` (default value) or `webp`.
 
               - `"transparent"`
 
@@ -20819,13 +21878,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -20833,7 +21892,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"gpt-image-1-mini"`
 
+                - `"gpt-image-2"`
+
+                - `"gpt-image-2-2026-04-21"`
+
                 - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low"`
 
@@ -20903,7 +21968,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `"local_shell"`
 
-          - `Shell object { type, environment }`
+          - `Shell object { type, allowed_callers, environment }`
 
             A tool that allows the model to execute shell commands.
 
@@ -20912,6 +21977,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the shell tool. Always `shell`.
 
               - `"shell"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
@@ -21039,9 +22112,9 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `"container_reference"`
 
-          - `Custom object { name, type, defer_loading, 2 more }`
+          - `Custom object { name, type, allowed_callers, 3 more }`
 
-            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
             - `name: string`
 
@@ -21052,6 +22125,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the custom tool. Always `custom`.
 
               - `"custom"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading: optional boolean`
 
@@ -21109,11 +22190,11 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+            - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
               The function/custom tools available inside this namespace.
 
-              - `Function object { name, type, defer_loading, 3 more }`
+              - `Function object { name, type, allowed_callers, 5 more }`
 
                 - `name: string`
 
@@ -21121,19 +22202,33 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `"function"`
 
+                - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading: optional boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description: optional string`
 
+                - `output_schema: optional map[unknown]`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters: optional unknown`
 
                 - `strict: optional boolean`
 
-              - `Custom object { name, type, defer_loading, 2 more }`
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+              - `Custom object { name, type, allowed_callers, 3 more }`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
                 - `name: string`
 
@@ -21144,6 +22239,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                   The type of the custom tool. Always `custom`.
 
                   - `"custom"`
+
+                - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
 
                 - `defer_loading: optional boolean`
 
@@ -21243,7 +22346,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-          - `ApplyPatch object { type }`
+          - `ApplyPatch object { type, allowed_callers }`
 
             Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -21252,6 +22355,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the tool. Always `apply_patch`.
 
               - `"apply_patch"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
         - `top_p: optional number`
 
@@ -21394,7 +22505,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in the data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -21410,7 +22521,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -21436,7 +22547,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -21452,7 +22563,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -21464,7 +22575,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+        - `StoredCompletions object { type, created_after, created_before, 3 more }`
 
           A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -21509,7 +22620,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `TemplateInputMessages object { template, type }`
+        - `Template object { template, type }`
 
           - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -21537,7 +22648,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                   A list of one or many input items to the model, containing different content
                   types.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -21551,9 +22662,19 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                       - `"input_text"`
 
-                  - `ResponseInputImage object { detail, type, file_id, image_url }`
+                    - `prompt_cache_breakpoint: optional object { mode }`
 
-                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
+
+                  - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
                     - `detail: "low" or "high" or "auto" or "original"`
 
@@ -21581,7 +22702,17 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                  - `ResponseInputFile object { type, detail, file_data, 3 more }`
+                    - `prompt_cache_breakpoint: optional object { mode }`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
+
+                  - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
                     A file input to the model.
 
@@ -21591,9 +22722,11 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                       - `"input_file"`
 
-                    - `detail: optional "low" or "high"`
+                    - `detail: optional "auto" or "low" or "high"`
 
-                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                      The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                      - `"auto"`
 
                       - `"low"`
 
@@ -21614,6 +22747,16 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                     - `filename: optional string`
 
                       The name of the file to be sent to the model.
+
+                    - `prompt_cache_breakpoint: optional object { mode }`
+
+                      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                      - `mode: "explicit"`
+
+                        The breakpoint mode. Always `explicit`.
+
+                        - `"explicit"`
 
               - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -21644,7 +22787,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"message"`
 
-            - `EvalMessageObject object { content, role, type }`
+            - `EvalItem object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -21660,7 +22803,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -21730,7 +22873,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                     A text input to the model.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -21795,7 +22938,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `ItemReferenceInputMessages object { item_reference, type }`
+        - `ItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -21819,16 +22962,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -21842,6 +22982,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `"xhigh"`
 
+          - `"max"`
+
         - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
 
           An object specifying the format that the model must output.
@@ -21849,7 +22991,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
           Structured Outputs which ensures the model will match your supplied JSON
           schema. Learn more in the [Structured Outputs
-          guide](/docs/guides/structured-outputs).
+          guide](https://platform.openai.com/docs/guides/structured-outputs).
 
           Setting to `{ "type": "json_object" }` enables the older JSON mode, which
           ensures the message the model generates is valid JSON. Using `json_schema`
@@ -21868,7 +23010,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `ResponseFormatJSONSchema object { json_schema, type }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `json_schema: object { name, description, schema, strict }`
 
@@ -21895,7 +23037,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](/docs/guides/structured-outputs).
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `type: "json_schema"`
 
@@ -21940,13 +23082,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `parameters: optional FunctionParameters`
 
-              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
               Omitting `parameters` defines a function with an empty parameter list.
 
             - `strict: optional boolean`
 
-              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
           - `type: "function"`
 
@@ -21958,7 +23100,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+    - `Responses object { source, type, input_messages, 2 more }`
 
       A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -21966,7 +23108,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `EvalJSONLFileContentSource object { content, type }`
+        - `FileContent object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -21982,7 +23124,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource object { id, type }`
+        - `FileID object { id, type }`
 
           - `id: string`
 
@@ -21994,7 +23136,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+        - `Responses object { type, created_after, created_before, 8 more }`
 
           A EvalResponsesSource object describing a run data source configuration.
 
@@ -22026,16 +23168,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `reasoning_effort: optional ReasoningEffort`
 
-            Constrains effort on reasoning for
-            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-            reasoning effort can result in faster responses and fewer tokens used
-            on reasoning in a response.
-
-            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+            Constrains effort on reasoning for reasoning models. Currently supported
+            values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+            Reducing reasoning effort can result in faster responses and fewer tokens
+            used on reasoning in a response. Not all reasoning models support every
+            value. See the
+            [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+            for model-specific support.
 
           - `temperature: optional number`
 
@@ -22063,7 +23202,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `InputMessagesTemplate object { template, type }`
+        - `Template object { template, type }`
 
           - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -22079,7 +23218,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The role of the message (e.g. "system", "assistant", "user").
 
-            - `EvalMessageObject object { content, role, type }`
+            - `EvalItem object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -22095,7 +23234,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -22165,7 +23304,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `InputMessagesItemReference object { item_reference, type }`
+        - `ItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -22189,16 +23328,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `reasoning_effort: optional ReasoningEffort`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
         - `seed: optional number`
 
@@ -22213,8 +23349,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Configuration options for a text response from the model. Can be plain
           text or structured JSON data. Learn more:
 
-          - [Text inputs and outputs](/docs/guides/text)
-          - [Structured Outputs](/docs/guides/structured-outputs)
+          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
+          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
 
           - `format: optional ResponseFormatTextConfig`
 
@@ -22222,7 +23358,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             Configuring `{ "type": "json_schema" }` enables Structured Outputs,
             which ensures the model will match your supplied JSON schema. Learn more in the
-            [Structured Outputs guide](/docs/guides/structured-outputs).
+            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             The default format is `{ "type": "text" }` with no additional options.
 
@@ -22239,7 +23375,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
               JSON Schema response format. Used to generate structured JSON responses.
-              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
               - `name: string`
 
@@ -22268,7 +23404,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](/docs/guides/structured-outputs).
+                guide](https://platform.openai.com/docs/guides/structured-outputs).
 
             - `ResponseFormatJSONObject object { type }`
 
@@ -22277,7 +23413,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               model will not generate JSON without a system or user message instructing it
               to do so.
 
-        - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+        - `tools: optional array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
           An array of tools the model may call while generating a response. You
           can specify which tool to use by setting the `tool_choice` parameter.
@@ -22285,14 +23421,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           The two categories of tools you can provide the model are:
 
           - **Built-in tools**: Tools that are provided by OpenAI that extend the
-            model's capabilities, like [web search](/docs/guides/tools-web-search)
-            or [file search](/docs/guides/tools-file-search). Learn more about
-            [built-in tools](/docs/guides/tools).
+            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
+            [built-in tools](https://platform.openai.com/docs/guides/tools).
           - **Function calls (custom tools)**: Functions that are defined by you,
             enabling the model to call your own code. Learn more about
-            [function calling](/docs/guides/function-calling).
+            [function calling](https://platform.openai.com/docs/guides/function-calling).
 
-          - `Function object { name, parameters, strict, 3 more }`
+          - `Function object { name, parameters, strict, 5 more }`
 
             Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -22306,13 +23442,21 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `strict: boolean`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading: optional boolean`
 
@@ -22321,6 +23465,10 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             - `description: optional string`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema: optional map[unknown]`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -22492,7 +23640,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `WebSearch object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
-            [web search tool](/docs/guides/tools-web-search).
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
             - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -22549,10 +23697,10 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"approximate"`
 
-          - `Mcp object { server_label, type, allowed_tools, 8 more }`
+          - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
-            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
             - `server_label: string`
 
@@ -22563,6 +23711,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -22596,7 +23752,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-              about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -22696,7 +23852,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-          - `CodeInterpreter object { container, type }`
+          - `CodeInterpreter object { container, type, allowed_callers }`
 
             A tool that runs Python code to help generate a response to a prompt.
 
@@ -22782,6 +23938,22 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `"code_interpreter"`
 
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling object { type }`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration object { type, action, background, 9 more }`
 
             A tool that generates images using the GPT image models.
@@ -22804,8 +23976,19 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `background: optional "transparent" or "opaque" or "auto"`
 
-              Background type for the generated image. One of `transparent`,
-              `opaque`, or `auto`. Default: `auto`.
+              Allows to set transparency for the background of the generated image(s).
+              This parameter is only supported for GPT image models that support
+              transparent backgrounds. Must be one of `transparent`, `opaque`, or
+              `auto` (default value). When `auto` is used, the model will
+              automatically determine the best background for the image.
+
+              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+              transparent backgrounds. Requests with `background` set to
+              `transparent` will return an error for these models; use `opaque` or
+              `auto` instead.
+
+              If `transparent`, the output format needs to support transparency,
+              so it should be set to either `png` (default value) or `webp`.
 
               - `"transparent"`
 
@@ -22834,13 +24017,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -22848,7 +24031,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"gpt-image-1-mini"`
 
+                - `"gpt-image-2"`
+
+                - `"gpt-image-2-2026-04-21"`
+
                 - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low"`
 
@@ -22918,7 +24107,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `"local_shell"`
 
-          - `Shell object { type, environment }`
+          - `Shell object { type, allowed_callers, environment }`
 
             A tool that allows the model to execute shell commands.
 
@@ -22927,6 +24116,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the shell tool. Always `shell`.
 
               - `"shell"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
@@ -23054,9 +24251,9 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `"container_reference"`
 
-          - `Custom object { name, type, defer_loading, 2 more }`
+          - `Custom object { name, type, allowed_callers, 3 more }`
 
-            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
             - `name: string`
 
@@ -23067,6 +24264,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the custom tool. Always `custom`.
 
               - `"custom"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading: optional boolean`
 
@@ -23124,11 +24329,11 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+            - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
               The function/custom tools available inside this namespace.
 
-              - `Function object { name, type, defer_loading, 3 more }`
+              - `Function object { name, type, allowed_callers, 5 more }`
 
                 - `name: string`
 
@@ -23136,19 +24341,33 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `"function"`
 
+                - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading: optional boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description: optional string`
 
+                - `output_schema: optional map[unknown]`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters: optional unknown`
 
                 - `strict: optional boolean`
 
-              - `Custom object { name, type, defer_loading, 2 more }`
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+              - `Custom object { name, type, allowed_callers, 3 more }`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
                 - `name: string`
 
@@ -23159,6 +24378,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                   The type of the custom tool. Always `custom`.
 
                   - `"custom"`
+
+                - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
 
                 - `defer_loading: optional boolean`
 
@@ -23258,7 +24485,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-          - `ApplyPatch object { type }`
+          - `ApplyPatch object { type, allowed_callers }`
 
             Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -23267,6 +24494,14 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               The type of the tool. Always `apply_patch`.
 
               - `"apply_patch"`
+
+            - `allowed_callers: optional array of "direct" or "programmatic"`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
         - `top_p: optional number`
 
@@ -23399,7 +24634,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items`
 
-Get a list of output items for an evaluation run.
+Get eval run output items
 
 ### Path Parameters
 
@@ -23759,7 +24994,7 @@ curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/run
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items/{output_item_id}`
 
-Get an evaluation run output item by ID.
+Get an output item of an eval run
 
 ### Path Parameters
 

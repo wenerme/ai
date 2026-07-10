@@ -131,6 +131,55 @@ Prompt caching with OpenAI is automated and does not require any additional conf
 
 [Click here to read more about OpenAI prompt caching and its limitation.](https://platform.openai.com/docs/guides/prompt-caching)
 
+### Explicit prompt caching (Responses API)
+
+Caching price changes:
+
+* **Cache writes**: charged at 1.25x the price of the original input pricing
+* **Cache reads**: charged at the model's discounted cache read rate, same as automatic caching
+
+OpenAI supports explicit prompt caching through the [Responses API](/api/api-reference/responses-api). Explicit caching gives you direct control over cache boundaries instead of relying on OpenAI's automatic breakpoint placement. Cached prefixes have a minimum 30-minute TTL.
+
+<Info>
+  OpenAI explicit prompt caching is only supported by OpenAI GPT-5.6 and newer, and only through the Responses API.
+</Info>
+
+There are two controls:
+
+* `prompt_cache_breakpoint`: placed on an individual `input_text` content block to mark the end of a reusable prefix. Everything through that block becomes the candidate cached prefix. Automatic caching remains enabled.
+* `prompt_cache_options`: placed at the request root. Setting `mode` to `"explicit"` disables OpenAI-managed breakpoints so only blocks marked with `prompt_cache_breakpoint` participate in caching. Use `ttl` to request a cache duration (e.g. `"30m"`).
+
+```json theme={null}
+{
+  "model": "openai/...",
+  "prompt_cache_key": "my-session-key",
+  "prompt_cache_options": {
+    "mode": "explicit",
+    "ttl": "30m"
+  },
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "<REUSABLE_PREFIX>",
+          "prompt_cache_breakpoint": {
+            "mode": "explicit"
+          }
+        },
+        {
+          "type": "input_text",
+          "text": "<TASK_SPECIFIC_SUFFIX>"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Cache activity is reported in the Responses API's `usage.input_tokens_details`: `cache_write_tokens` counts prompt tokens written to the cache, and `cached_tokens` counts prompt tokens read from it.
+
 ## Grok
 
 Caching price changes:

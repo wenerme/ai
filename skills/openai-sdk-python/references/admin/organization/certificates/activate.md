@@ -4,9 +4,7 @@
 
 **post** `/organization/certificates/activate`
 
-Activate certificates at the organization level.
-
-You can atomically and idempotently activate up to 10 certificates at a time.
+Activate certificates for organization
 
 ### Parameters
 

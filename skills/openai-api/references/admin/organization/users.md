@@ -4,7 +4,7 @@
 
 **get** `/organization/users`
 
-Lists all of the users in the organization.
+List users
 
 ### Query Parameters
 
@@ -219,7 +219,7 @@ curl https://api.openai.com/v1/organization/users?after=user_abc&limit=20 \
 
 **get** `/organization/users/{user_id}`
 
-Retrieves a user by their identifier.
+Retrieve user
 
 ### Path Parameters
 
@@ -400,7 +400,7 @@ curl https://api.openai.com/v1/organization/users/user_abc \
 
 **post** `/organization/users/{user_id}`
 
-Modifies a user's role in the organization.
+Modify user
 
 ### Path Parameters
 
@@ -604,7 +604,7 @@ curl -X POST https://api.openai.com/v1/organization/users/user_abc \
 
 **delete** `/organization/users/{user_id}`
 
-Deletes a user from the organization.
+Delete user
 
 ### Path Parameters
 
@@ -778,7 +778,7 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc \
 
 **get** `/organization/users/{user_id}/roles`
 
-Lists the organization roles assigned to a user within the organization.
+List user organization role assignments
 
 ### Path Parameters
 
@@ -962,7 +962,7 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles \
 
 **post** `/organization/users/{user_id}/roles`
 
-Assigns an organization role to a user within the organization.
+Assign organization role to user
 
 ### Path Parameters
 
@@ -1225,7 +1225,7 @@ curl -X POST https://api.openai.com/v1/organization/users/user_abc123/roles \
 
 **get** `/organization/users/{user_id}/roles/{role_id}`
 
-Retrieves an organization role assigned to a user.
+Retrieve user organization role
 
 ### Path Parameters
 
@@ -1358,7 +1358,7 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
 **delete** `/organization/users/{user_id}/roles/{role_id}`
 
-Unassigns an organization role from a user within the organization.
+Unassign organization role from user
 
 ### Path Parameters
 

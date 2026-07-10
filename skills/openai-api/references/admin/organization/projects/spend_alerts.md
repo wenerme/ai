@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/spend_alerts`
 
-Lists project spend alerts.
+List project spend alerts
 
 ### Path Parameters
 
@@ -171,7 +171,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts?limit
 
 **post** `/organization/projects/{project_id}/spend_alerts`
 
-Creates a project spend alert.
+Create project spend alert
 
 ### Path Parameters
 
@@ -340,7 +340,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_aler
 
 **get** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Retrieves a project spend alert.
+Retrieve project spend alert
 
 ### Path Parameters
 
@@ -453,7 +453,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts/alert
 
 **post** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Updates a project spend alert.
+Update project spend alert
 
 ### Path Parameters
 
@@ -624,7 +624,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_aler
 
 **delete** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Deletes a project spend alert.
+Delete project spend alert
 
 ### Path Parameters
 

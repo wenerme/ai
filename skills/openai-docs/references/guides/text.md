@@ -44,7 +44,7 @@ Now, let's examine some tools and techniques available to you to construct promp
 
 ## Choosing models and APIs
 
-OpenAI has many different [models](https://developers.openai.com/api/docs/models) and several APIs to choose from. [Reasoning models](https://developers.openai.com/api/docs/guides/reasoning), like [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5), behave differently from chat models and respond better to different prompts. One important note is that reasoning models perform better and demonstrate higher intelligence when used with the Responses API.
+OpenAI has many different [models](https://developers.openai.com/api/docs/models) and several APIs to choose from. [Reasoning models](https://developers.openai.com/api/docs/guides/reasoning), like [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol), behave differently from chat models and respond better to different prompts. One important note is that reasoning models perform better and demonstrate higher intelligence when used with the Responses API.
 
 If you're building any text generation app, we recommend using the Responses API over the older Chat Completions API. And if you're using a reasoning model, it's especially useful to [migrate to Responses](https://developers.openai.com/api/docs/guides/migrate-to-responses).
 
@@ -61,7 +61,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     reasoning: { effort: "low" },
     instructions: "${semicolonsDevMsg}",
     input: "${semicolonsPrompt}",
@@ -75,7 +75,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     reasoning={"effort": "low"},
     instructions="${semicolonsDevMsg}",
     input="${semicolonsPrompt}",
@@ -89,7 +89,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-5.5",
+        "model": "gpt-5.6",
         "reasoning": {"effort": "low"},
         "instructions": "${semicolonsDevMsg}",
         "input": "${semicolonsPrompt}"
@@ -106,7 +106,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     reasoning: { effort: "low" },
     input: [
         {
@@ -128,7 +128,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     reasoning={"effort": "low"},
     input=[
         {
@@ -150,7 +150,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-5.5",
+        "model": "gpt-5.6",
         "reasoning": {"effort": "low"},
         "input": [
             {

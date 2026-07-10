@@ -4,7 +4,7 @@
 
 **delete** `/organization/spend_alerts/{alert_id}`
 
-Deletes an organization spend alert.
+Delete organization spend alert
 
 ### Parameters
 

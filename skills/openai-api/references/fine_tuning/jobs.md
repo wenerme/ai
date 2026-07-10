@@ -4,25 +4,21 @@
 
 **post** `/fine_tuning/jobs`
 
-Creates a fine-tuning job which begins the process of creating a new model from a given dataset.
-
-Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
-
-[Learn more about fine-tuning](/docs/guides/model-optimization)
+Create fine-tuning job
 
 ### Body Parameters
 
 - `model: string or "babbage-002" or "davinci-002" or "gpt-3.5-turbo" or "gpt-4o-mini"`
 
   The name of the model to fine-tune. You can select one of the
-  [supported models](/docs/guides/fine-tuning#which-models-can-be-fine-tuned).
+  [supported models](https://platform.openai.com/docs/guides/fine-tuning#which-models-can-be-fine-tuned).
 
   - `string`
 
-  - `"babbage-002" or "davinci-002" or "gpt-3.5-turbo" or "gpt-4o-mini"`
+  - `Preset = "babbage-002" or "davinci-002" or "gpt-3.5-turbo" or "gpt-4o-mini"`
 
     The name of the model to fine-tune. You can select one of the
-    [supported models](/docs/guides/fine-tuning#which-models-can-be-fine-tuned).
+    [supported models](https://platform.openai.com/docs/guides/fine-tuning#which-models-can-be-fine-tuned).
 
     - `"babbage-002"`
 
@@ -36,13 +32,13 @@ Response includes details of the enqueued job including job status and the name 
 
   The ID of an uploaded file that contains training data.
 
-  See [upload file](/docs/api-reference/files/create) for how to upload a file.
+  See [upload file](https://platform.openai.com/docs/api-reference/files/create) for how to upload a file.
 
   Your dataset must be formatted as a JSONL file. Additionally, you must upload your file with the purpose `fine-tune`.
 
-  The contents of the file should differ depending on if the model uses the [chat](/docs/api-reference/fine-tuning/chat-input), [completions](/docs/api-reference/fine-tuning/completions-input) format, or if the fine-tuning method uses the [preference](/docs/api-reference/fine-tuning/preference-input) format.
+  The contents of the file should differ depending on if the model uses the [chat](https://platform.openai.com/docs/api-reference/fine-tuning/chat-input), [completions](https://platform.openai.com/docs/api-reference/fine-tuning/completions-input) format, or if the fine-tuning method uses the [preference](https://platform.openai.com/docs/api-reference/fine-tuning/preference-input) format.
 
-  See the [fine-tuning guide](/docs/guides/model-optimization) for more details.
+  See the [fine-tuning guide](https://platform.openai.com/docs/guides/model-optimization) for more details.
 
 - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }`
 
@@ -54,7 +50,7 @@ Response includes details of the enqueued job including job status and the name 
     Number of examples in each batch. A larger batch size means that model parameters
     are updated less frequently, but with lower variance.
 
-    - `"auto"`
+    - `Auto = "auto"`
 
       - `"auto"`
 
@@ -65,7 +61,7 @@ Response includes details of the enqueued job including job status and the name 
     Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
     overfitting.
 
-    - `"auto"`
+    - `Auto = "auto"`
 
       - `"auto"`
 
@@ -76,7 +72,7 @@ Response includes details of the enqueued job including job status and the name 
     The number of epochs to train the model for. An epoch refers to one full cycle
     through the training dataset.
 
-    - `"auto"`
+    - `Auto = "auto"`
 
       - `"auto"`
 
@@ -317,7 +313,7 @@ Response includes details of the enqueued job including job status and the name 
 
               A text input to the model.
 
-            - `ResponseInputText object { text, type }`
+            - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
               A text input to the model.
 
@@ -330,6 +326,16 @@ Response includes details of the enqueued job including job status and the name 
                 The type of the input item. Always `input_text`.
 
                 - `"input_text"`
+
+              - `prompt_cache_breakpoint: optional object { mode }`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
 
             - `OutputText object { text, type }`
 
@@ -397,7 +403,7 @@ Response includes details of the enqueued job including job status and the name 
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -484,16 +490,13 @@ Response includes details of the enqueued job including job status and the name 
 
           - `reasoning_effort: optional ReasoningEffort`
 
-            Constrains effort on reasoning for
-            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-            reasoning effort can result in faster responses and fewer tokens used
-            on reasoning in a response.
-
-            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+            Constrains effort on reasoning for reasoning models. Currently supported
+            values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+            Reducing reasoning effort can result in faster responses and fewer tokens
+            used on reasoning in a response. Not all reasoning models support every
+            value. See the
+            [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+            for model-specific support.
 
             - `"none"`
 
@@ -506,6 +509,8 @@ Response includes details of the enqueued job including job status and the name 
             - `"high"`
 
             - `"xhigh"`
+
+            - `"max"`
 
           - `seed: optional number`
 
@@ -562,7 +567,7 @@ Response includes details of the enqueued job including job status and the name 
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -794,7 +799,7 @@ Response includes details of the enqueued job including job status and the name 
 
   Your dataset must be formatted as a JSONL file. You must upload your file with the purpose `fine-tune`.
 
-  See the [fine-tuning guide](/docs/guides/model-optimization) for more details.
+  See the [fine-tuning guide](https://platform.openai.com/docs/guides/model-optimization) for more details.
 
 ### Returns
 
@@ -854,7 +859,7 @@ Response includes details of the enqueued job including job status and the name 
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -865,7 +870,7 @@ Response includes details of the enqueued job including job status and the name 
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -887,7 +892,7 @@ Response includes details of the enqueued job including job status and the name 
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -915,11 +920,11 @@ Response includes details of the enqueued job including job status and the name 
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -1160,7 +1165,7 @@ Response includes details of the enqueued job including job status and the name 
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -1173,6 +1178,16 @@ Response includes details of the enqueued job including job status and the name 
                   The type of the input item. Always `input_text`.
 
                   - `"input_text"`
+
+                - `prompt_cache_breakpoint: optional object { mode }`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
               - `OutputText object { text, type }`
 
@@ -1240,7 +1255,7 @@ Response includes details of the enqueued job including job status and the name 
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -1327,16 +1342,13 @@ Response includes details of the enqueued job including job status and the name 
 
             - `reasoning_effort: optional ReasoningEffort`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -1349,6 +1361,8 @@ Response includes details of the enqueued job including job status and the name 
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed: optional number`
 
@@ -1405,7 +1419,7 @@ Response includes details of the enqueued job including job status and the name 
 
                     A text input to the model.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -2069,7 +2083,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
 
 **get** `/fine_tuning/jobs`
 
-List your organization's fine-tuning jobs
+List fine-tuning jobs
 
 ### Query Parameters
 
@@ -2141,7 +2155,7 @@ List your organization's fine-tuning jobs
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -2152,7 +2166,7 @@ List your organization's fine-tuning jobs
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -2174,7 +2188,7 @@ List your organization's fine-tuning jobs
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -2202,11 +2216,11 @@ List your organization's fine-tuning jobs
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -2447,7 +2461,7 @@ List your organization's fine-tuning jobs
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -2460,6 +2474,16 @@ List your organization's fine-tuning jobs
                   The type of the input item. Always `input_text`.
 
                   - `"input_text"`
+
+                - `prompt_cache_breakpoint: optional object { mode }`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
               - `OutputText object { text, type }`
 
@@ -2527,7 +2551,7 @@ List your organization's fine-tuning jobs
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -2614,16 +2638,13 @@ List your organization's fine-tuning jobs
 
             - `reasoning_effort: optional ReasoningEffort`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -2636,6 +2657,8 @@ List your organization's fine-tuning jobs
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed: optional number`
 
@@ -2692,7 +2715,7 @@ List your organization's fine-tuning jobs
 
                     A text input to the model.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -3044,9 +3067,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs?limit=2&metadata[key]=value \
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}`
 
-Get info about a fine-tuning job.
-
-[Learn more about fine-tuning](/docs/guides/model-optimization)
+Retrieve fine-tuning job
 
 ### Path Parameters
 
@@ -3110,7 +3131,7 @@ Get info about a fine-tuning job.
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -3121,7 +3142,7 @@ Get info about a fine-tuning job.
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -3143,7 +3164,7 @@ Get info about a fine-tuning job.
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -3171,11 +3192,11 @@ Get info about a fine-tuning job.
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -3416,7 +3437,7 @@ Get info about a fine-tuning job.
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -3429,6 +3450,16 @@ Get info about a fine-tuning job.
                   The type of the input item. Always `input_text`.
 
                   - `"input_text"`
+
+                - `prompt_cache_breakpoint: optional object { mode }`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
               - `OutputText object { text, type }`
 
@@ -3496,7 +3527,7 @@ Get info about a fine-tuning job.
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -3583,16 +3614,13 @@ Get info about a fine-tuning job.
 
             - `reasoning_effort: optional ReasoningEffort`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -3605,6 +3633,8 @@ Get info about a fine-tuning job.
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed: optional number`
 
@@ -3661,7 +3691,7 @@ Get info about a fine-tuning job.
 
                     A text input to the model.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -4013,7 +4043,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}/events`
 
-Get status updates for a fine-tuning job.
+List fine-tuning events
 
 ### Path Parameters
 
@@ -4146,7 +4176,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/events \
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/cancel`
 
-Immediately cancel a fine-tune job.
+Cancel fine-tuning
 
 ### Path Parameters
 
@@ -4210,7 +4240,7 @@ Immediately cancel a fine-tune job.
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -4221,7 +4251,7 @@ Immediately cancel a fine-tune job.
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -4243,7 +4273,7 @@ Immediately cancel a fine-tune job.
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -4271,11 +4301,11 @@ Immediately cancel a fine-tune job.
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -4516,7 +4546,7 @@ Immediately cancel a fine-tune job.
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -4529,6 +4559,16 @@ Immediately cancel a fine-tune job.
                   The type of the input item. Always `input_text`.
 
                   - `"input_text"`
+
+                - `prompt_cache_breakpoint: optional object { mode }`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
               - `OutputText object { text, type }`
 
@@ -4596,7 +4636,7 @@ Immediately cancel a fine-tune job.
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -4683,16 +4723,13 @@ Immediately cancel a fine-tune job.
 
             - `reasoning_effort: optional ReasoningEffort`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -4705,6 +4742,8 @@ Immediately cancel a fine-tune job.
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed: optional number`
 
@@ -4761,7 +4800,7 @@ Immediately cancel a fine-tune job.
 
                     A text input to the model.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -5092,7 +5131,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/cancel \
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/pause`
 
-Pause a fine-tune job.
+Pause fine-tuning
 
 ### Path Parameters
 
@@ -5156,7 +5195,7 @@ Pause a fine-tune job.
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -5167,7 +5206,7 @@ Pause a fine-tune job.
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -5189,7 +5228,7 @@ Pause a fine-tune job.
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -5217,11 +5256,11 @@ Pause a fine-tune job.
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -5462,7 +5501,7 @@ Pause a fine-tune job.
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -5475,6 +5514,16 @@ Pause a fine-tune job.
                   The type of the input item. Always `input_text`.
 
                   - `"input_text"`
+
+                - `prompt_cache_breakpoint: optional object { mode }`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
               - `OutputText object { text, type }`
 
@@ -5542,7 +5591,7 @@ Pause a fine-tune job.
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -5629,16 +5678,13 @@ Pause a fine-tune job.
 
             - `reasoning_effort: optional ReasoningEffort`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -5651,6 +5697,8 @@ Pause a fine-tune job.
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed: optional number`
 
@@ -5707,7 +5755,7 @@ Pause a fine-tune job.
 
                     A text input to the model.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -6038,7 +6086,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/pause \
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/resume`
 
-Resume a fine-tune job.
+Resume fine-tuning
 
 ### Path Parameters
 
@@ -6102,7 +6150,7 @@ Resume a fine-tune job.
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -6113,7 +6161,7 @@ Resume a fine-tune job.
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -6135,7 +6183,7 @@ Resume a fine-tune job.
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -6163,11 +6211,11 @@ Resume a fine-tune job.
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -6408,7 +6456,7 @@ Resume a fine-tune job.
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -6421,6 +6469,16 @@ Resume a fine-tune job.
                   The type of the input item. Always `input_text`.
 
                   - `"input_text"`
+
+                - `prompt_cache_breakpoint: optional object { mode }`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
               - `OutputText object { text, type }`
 
@@ -6488,7 +6546,7 @@ Resume a fine-tune job.
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -6575,16 +6633,13 @@ Resume a fine-tune job.
 
             - `reasoning_effort: optional ReasoningEffort`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -6597,6 +6652,8 @@ Resume a fine-tune job.
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed: optional number`
 
@@ -6653,7 +6710,7 @@ Resume a fine-tune job.
 
                     A text input to the model.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -7040,7 +7097,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -7051,7 +7108,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `"auto"`
+      - `Auto = "auto"`
 
         - `"auto"`
 
@@ -7073,7 +7130,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -7101,11 +7158,11 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -7346,7 +7403,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
                 A text input to the model.
 
-              - `ResponseInputText object { text, type }`
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                 A text input to the model.
 
@@ -7359,6 +7416,16 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
                   The type of the input item. Always `input_text`.
 
                   - `"input_text"`
+
+                - `prompt_cache_breakpoint: optional object { mode }`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
               - `OutputText object { text, type }`
 
@@ -7426,7 +7493,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
                   A text input to the model.
 
-                - `ResponseInputText object { text, type }`
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                   A text input to the model.
 
@@ -7513,16 +7580,13 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
             - `reasoning_effort: optional ReasoningEffort`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -7535,6 +7599,8 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed: optional number`
 
@@ -7591,7 +7657,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
                     A text input to the model.
 
-                  - `ResponseInputText object { text, type }`
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
                     A text input to the model.
 
@@ -7913,7 +7979,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}/checkpoints`
 
-List checkpoints for a fine-tuning job.
+List fine-tuning checkpoints
 
 ### Path Parameters
 

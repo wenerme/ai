@@ -4,7 +4,7 @@
 
 **get** `/organization/groups/{group_id}/users`
 
-Lists the users assigned to a group.
+List group users
 
 ### Path Parameters
 
@@ -113,7 +113,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?lim
 
 **post** `/organization/groups/{group_id}/users`
 
-Adds a user to a group.
+Add group user
 
 ### Path Parameters
 
@@ -187,7 +187,7 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/u
 
 **get** `/organization/groups/{group_id}/users/{user_id}`
 
-Retrieves a user in a group.
+Retrieve group user
 
 ### Path Parameters
 
@@ -270,7 +270,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/use
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
 
-Removes a user from a group.
+Remove group user
 
 ### Path Parameters
 

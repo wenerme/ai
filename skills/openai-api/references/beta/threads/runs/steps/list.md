@@ -2,7 +2,7 @@
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps`
 
-Returns a list of run steps belonging to a run.
+List run steps
 
 ### Path Parameters
 
@@ -24,7 +24,7 @@ Returns a list of run steps belonging to a run.
 
   A list of additional fields to include in the response. Currently the only supported value is `step_details.tool_calls[*].file_search.results[*].content` to fetch the file search result content.
 
-  See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+  See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
   - `"step_details.tool_calls[*].file_search.results[*].content"`
 
@@ -50,7 +50,7 @@ Returns a list of run steps belonging to a run.
 
   - `assistant_id: string`
 
-    The ID of the [assistant](/docs/api-reference/assistants) associated with the run step.
+    The ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) associated with the run step.
 
   - `cancelled_at: number`
 
@@ -105,7 +105,7 @@ Returns a list of run steps belonging to a run.
 
   - `run_id: string`
 
-    The ID of the [run](/docs/api-reference/runs) that this run step is a part of.
+    The ID of the [run](https://platform.openai.com/docs/api-reference/runs) that this run step is a part of.
 
   - `status: "in_progress" or "cancelled" or "failed" or 2 more`
 
@@ -145,7 +145,7 @@ Returns a list of run steps belonging to a run.
 
       Details of the tool call.
 
-      - `tool_calls: array of CodeInterpreterToolCall or FileSearchToolCall or FunctionToolCall`
+      - `tool_calls: array of ToolCall`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
@@ -169,7 +169,7 @@ Returns a list of run steps belonging to a run.
 
               The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-              - `CodeInterpreterLogOutput object { logs, type }`
+              - `Logs object { logs, type }`
 
                 Text output from the Code Interpreter tool call as part of a run step.
 
@@ -183,13 +183,13 @@ Returns a list of run steps belonging to a run.
 
                   - `"logs"`
 
-              - `CodeInterpreterImageOutput object { image, type }`
+              - `Image object { image, type }`
 
                 - `image: object { file_id }`
 
                   - `file_id: string`
 
-                    The [file](/docs/api-reference/files) ID of the image.
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
 
                 - `type: "image"`
 
@@ -285,7 +285,7 @@ Returns a list of run steps belonging to a run.
 
             - `output: string`
 
-              The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
           - `type: "function"`
 
@@ -301,7 +301,7 @@ Returns a list of run steps belonging to a run.
 
   - `thread_id: string`
 
-    The ID of the [thread](/docs/api-reference/threads) that was run.
+    The ID of the [thread](https://platform.openai.com/docs/api-reference/threads) that was run.
 
   - `type: "message_creation" or "tool_calls"`
 

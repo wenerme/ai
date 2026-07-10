@@ -2,7 +2,7 @@
 
 **get** `/videos/{video_id}`
 
-Fetch the latest metadata for a generated video.
+Retrieve video
 
 ### Path Parameters
 
@@ -78,9 +78,19 @@ Fetch the latest metadata for a generated video.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string`
+  - `seconds: string or VideoSeconds`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
+
+    - `string`
+
+    - `VideoSeconds = "4" or "8" or "12"`
+
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
 
   - `size: VideoSize`
 
@@ -125,12 +135,12 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
     "message": "message"
   },
   "expires_at": 0,
-  "model": "string",
+  "model": "sora-2",
   "object": "video",
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "seconds",
+  "seconds": "4",
   "size": "720x1280",
   "status": "queued"
 }

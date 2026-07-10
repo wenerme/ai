@@ -2,7 +2,7 @@
 
 **get** `/organization/projects/{project_id}/groups/{group_id}`
 
-Retrieves a project's group.
+Retrieve project group
 
 ### Path Parameters
 
