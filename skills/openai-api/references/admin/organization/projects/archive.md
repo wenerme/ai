@@ -2,7 +2,7 @@
 
 **post** `/organization/projects/{project_id}/archive`
 
-Archives a project in the organization. Archived projects cannot be used or updated.
+Archive project
 
 ### Path Parameters
 

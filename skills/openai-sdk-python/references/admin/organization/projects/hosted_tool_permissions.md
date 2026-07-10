@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/hosted_tool_permissions`
 
-Returns hosted tool permissions for a project.
+Retrieve project hosted tool permissions
 
 ### Parameters
 
@@ -101,7 +101,7 @@ print(project_hosted_tool_permissions.code_interpreter)
 
 **post** `/organization/projects/{project_id}/hosted_tool_permissions`
 
-Updates hosted tool permissions for a project.
+Modify project hosted tool permissions
 
 ### Parameters
 

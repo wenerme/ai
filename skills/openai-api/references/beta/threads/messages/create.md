@@ -2,7 +2,7 @@
 
 **post** `/threads/{thread_id}/messages`
 
-Create a message.
+Create message
 
 ### Path Parameters
 
@@ -10,7 +10,7 @@ Create a message.
 
 ### Body Parameters
 
-- `content: string or array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlockParam`
+- `content: string or array of MessageContentPartParam`
 
   The text contents of the message.
 
@@ -18,19 +18,19 @@ Create a message.
 
     The text contents of the message.
 
-  - `ArrayOfContentParts = array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlockParam`
+  - `ArrayOfContentParts = array of MessageContentPartParam`
 
-    An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](/docs/models).
+    An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](https://platform.openai.com/docs/models).
 
     - `ImageFileContentBlock object { image_file, type }`
 
-      References an image [File](/docs/api-reference/files) in the content of a message.
+      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
       - `image_file: ImageFile`
 
         - `file_id: string`
 
-          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
         - `detail: optional "auto" or "low" or "high"`
 
@@ -119,7 +119,7 @@ Create a message.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool object { type }`
+    - `FileSearch object { type }`
 
       - `type: "file_search"`
 
@@ -140,7 +140,7 @@ Create a message.
 
 - `Message object { id, assistant_id, attachments, 11 more }`
 
-  Represents a message within a [thread](/docs/api-reference/threads).
+  Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
 
   - `id: string`
 
@@ -148,7 +148,7 @@ Create a message.
 
   - `assistant_id: string`
 
-    If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
+    If applicable, the ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) that authored this message.
 
   - `attachments: array of object { file_id, tools }`
 
@@ -170,7 +170,7 @@ Create a message.
 
           - `"code_interpreter"`
 
-      - `FileSearchTool object { type }`
+      - `AssistantToolsFileSearchTypeOnly object { type }`
 
         - `type: "file_search"`
 
@@ -182,19 +182,19 @@ Create a message.
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
+  - `content: array of MessageContent`
 
     The content of the message in array of text and/or images.
 
     - `ImageFileContentBlock object { image_file, type }`
 
-      References an image [File](/docs/api-reference/files) in the content of a message.
+      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
       - `image_file: ImageFile`
 
         - `file_id: string`
 
-          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
         - `detail: optional "auto" or "low" or "high"`
 
@@ -244,7 +244,7 @@ Create a message.
 
       - `text: Text`
 
-        - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
+        - `annotations: array of Annotation`
 
           - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
@@ -367,7 +367,7 @@ Create a message.
 
   - `run_id: string`
 
-    The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
+    The ID of the [run](https://platform.openai.com/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
 
   - `status: "in_progress" or "incomplete" or "completed"`
 
@@ -381,7 +381,7 @@ Create a message.
 
   - `thread_id: string`
 
-    The [thread](/docs/api-reference/threads) ID that this message belongs to.
+    The [thread](https://platform.openai.com/docs/api-reference/threads) ID that this message belongs to.
 
 ### Example
 

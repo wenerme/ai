@@ -2,63 +2,7 @@
 
 **post** `/videos`
 
-Create a new video generation job from a prompt and optional reference assets.
-
-### Body Parameters
-
-- `prompt: string`
-
-  Text prompt that describes the video to generate.
-
-- `input_reference: optional ImageInputReferenceParam`
-
-  Optional reference object that guides generation. Provide exactly one of `image_url` or `file_id`.
-
-  - `file_id: optional string`
-
-  - `image_url: optional string`
-
-    A fully qualified URL or base64-encoded data URL.
-
-- `model: optional VideoModel`
-
-  The video generation model to use (allowed values: sora-2, sora-2-pro). Defaults to `sora-2`.
-
-  - `string`
-
-  - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
-
-    - `"sora-2"`
-
-    - `"sora-2-pro"`
-
-    - `"sora-2-2025-10-06"`
-
-    - `"sora-2-pro-2025-10-06"`
-
-    - `"sora-2-2025-12-08"`
-
-- `seconds: optional VideoSeconds`
-
-  Clip duration in seconds (allowed values: 4, 8, 12). Defaults to 4 seconds.
-
-  - `"4"`
-
-  - `"8"`
-
-  - `"12"`
-
-- `size: optional VideoSize`
-
-  Output resolution formatted as width x height (allowed values: 720x1280, 1280x720, 1024x1792, 1792x1024). Defaults to 720x1280.
-
-  - `"720x1280"`
-
-  - `"1280x720"`
-
-  - `"1024x1792"`
-
-  - `"1792x1024"`
+Create video
 
 ### Returns
 
@@ -130,9 +74,19 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string`
+  - `seconds: string or VideoSeconds`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
+
+    - `string`
+
+    - `VideoSeconds = "4" or "8" or "12"`
+
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
 
   - `size: VideoSize`
 
@@ -162,11 +116,9 @@ Create a new video generation job from a prompt and optional reference assets.
 
 ```http
 curl https://api.openai.com/v1/videos \
-    -H 'Content-Type: application/json' \
+    -H 'Content-Type: multipart/form-data' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "prompt": "x"
-        }'
+    -F prompt=x
 ```
 
 #### Response
@@ -181,12 +133,12 @@ curl https://api.openai.com/v1/videos \
     "message": "message"
   },
   "expires_at": 0,
-  "model": "string",
+  "model": "sora-2",
   "object": "video",
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "seconds",
+  "seconds": "4",
   "size": "720x1280",
   "status": "queued"
 }

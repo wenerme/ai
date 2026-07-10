@@ -105,7 +105,7 @@ Example code for printing errors in JavaScript:
 const request = await fetch('https://openrouter.ai/...');
 console.log(request.status); // Will be an error code unless the model started processing your request
 const response = await request.json();
-console.error(response.error?.status); // Will be an error code
+console.error(response.error?.code); // Will be an error code
 console.error(response.error?.message);
 ```
 
@@ -258,7 +258,7 @@ provider was selected, fallback attempts, etc.) is carried in the
 `openrouter_metadata` object when the request sets `X-OpenRouter-Metadata`
 — it follows the same shape as on successful responses (routing-summary
 fields only; see
-[Pipeline Stages](/features/router-metadata#pipeline-stages)).
+[Pipeline Stages](/guides/features/router-metadata#pipeline-stages)).
 
 ## When No Content is Generated
 

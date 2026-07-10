@@ -18,7 +18,7 @@ import { Agent, Runner } from "@openai/agents";
 const fastAgent = new Agent({
   name: "Fast support agent",
   instructions: "Handle routine support questions.",
-  model: "gpt-5.4-mini",
+  model: "gpt-5.6-terra",
 });
 
 const generalAgent = new Agent({
@@ -27,7 +27,7 @@ const generalAgent = new Agent({
 });
 
 const runner = new Runner({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
 });
 
 await runner.run(fastAgent, "Summarize ticket 123.");
@@ -47,7 +47,7 @@ from agents import Agent, RunConfig, Runner
 fast_agent = Agent(
     name="Fast support agent",
     instructions="Handle routine support questions.",
-    model="gpt-5.4-mini",
+    model="gpt-5.6-terra",
 )
 
 general_agent = Agent(
@@ -62,7 +62,7 @@ async def main() -> None:
     result = await Runner.run(
         general_agent,
         "Investigate the billing issue on account 456.",
-        run_config=RunConfig(model="gpt-5.5"),
+        run_config=RunConfig(model="gpt-5.6"),
     )
     print(result.final_output)
 
@@ -72,7 +72,7 @@ if __name__ == "__main__":
 ```
 
 
-For most new SDK workflows, start with [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) and move to a smaller variant only when latency or cost matters enough to justify it. Use the platform-wide <a href="/api/docs/guides/latest-model">Using GPT-5.5</a> guide for current model-selection advice.
+For most new SDK workflows, start with [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol) and move to a smaller variant only when latency or cost matters enough to justify it. Use the platform-wide <a href="/api/docs/guides/latest-model">Model guidance</a> page for current model-selection advice.
 
 ## Choose the simplest default strategy
 

@@ -5,9 +5,7 @@ description: "Query and visualize LogicMonitor device metrics in Grafana"
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-[Documentation](/docs/)[breadcrumb arrow] [Plugins](/docs/plugins/)[breadcrumb arrow] LogicMonitor Devices
-
-Grafana Cloud Enterprise
+# LogicMonitor Devices data source
 
 The LogicMonitor Devices data source allows you to query and visualize LogicMonitor device metrics in Grafana.
 
@@ -37,7 +35,7 @@ Before configuring the LogicMonitor Devices data source, ensure you have:
 
 - **Grafana permissions:** Organization administrator role to add data sources
 - **LogicMonitor account:** Access to a LogicMonitor portal with REST API v3 bearer token
-- **Grafana version:** Grafana 11.6.7 or later, on any free or paid [Grafana Cloud](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/)
+- **Grafana version:** Grafana 11.6.7 or later, on any free or paid [Grafana Cloud](/pricing/) plan or on a self-managed instance with an [activated Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/)
 
 ## Install the plugin
 
@@ -53,6 +51,8 @@ To add the LogicMonitor Devices data source:
 4. Select **LogicMonitor Devices**.
 5. Click **Add new data source**.
 
+After the data source form opens, complete the fields in the following sections.
+
 ### Basic settings
 
 Expand table
@@ -64,7 +64,7 @@ Expand table
 
 ### Authentication
 
-This plugin supports bearer token–based authentication. To create a token:
+This plugin supports bearer token-based authentication. To create a token:
 
 1. Log in to your LogicMonitor portal.
 2. Navigate to **Settings** &gt; **Users and Roles**.
@@ -135,6 +135,15 @@ Replace `<ACCOUNT_NAME>` with your LogicMonitor account name and `<TOKEN>` with 
 
 The query editor allows you to run queries by selecting an **Action Type** and providing the required parameters.
 
+The **Device** drop-down filters server-side as you type. The plugin sends the typed value to LogicMonitor as a `displayName~"<value>"` glob filter, so matching happens against the full inventory rather than only the results already loaded in the browser.
+
+The **Datasource** drop-down filters client-side against the data sources already loaded for the selected device, so filtering only starts narrowing results after you pick a **Device**.
+
+Keep two points in mind when using the server-side filter on the **Device** drop-down:
+
+- Filtering matches the LogicMonitor `displayName` field. Devices with the same display name appear together in the results.
+- Special characters such as `"` and `\` must be escaped in LogicMonitor glob filters. If typed values contain these characters, the filter returns no matches. Avoid those characters or scope the query with a [template variable](#template-variables) instead.
+
 ### Device Instance Data
 
 Retrieve time series data for individual device instances.
@@ -172,11 +181,22 @@ Use these query types to retrieve and display data in table format:
 
 > Note
 >
-> Table queries return up to 1000 results per request, which is the maximum the LogicMonitor API allows in a single response. Accounts with more devices, data sources, or instances than this limit see truncated lists. To narrow results, scope your queries with template variables. For more information, refer to [API rate limits and performance](#api-rate-limits-and-performance).
+> Starting in `v0.5.0-preview`, table queries and drop-down selectors paginate automatically. The plugin follows offset-based pages of 1000 results and returns up to approximately 10,000 items per query by default. Accounts larger than the effective cap still see truncated lists; scope those queries with the type-to-filter drop-downs or template variables. For more information, refer to [Large result sets and pagination](#large-result-sets-and-pagination).
 
-### Use Explore
+### Large result sets and pagination
 
-Use Explore to run queries and visualize results without building a dashboard. For more information, refer to [Explore](/docs/grafana/latest/explore/).
+The data source paginates every list query against the LogicMonitor REST API using offset-based paging. Each request asks for 1000 results, and the plugin follows successive pages until the API reports no more items or an internal safety cap is reached.
+
+- **Default page size:** 1000 items per request.
+- **Default safety cap:** 10 pages per query, so a single selector or table query fetches up to approximately 10,000 items before stopping.
+- **Selector “load more” path:** The **Device**, **Device Group**, **Datasource**, and **Instance** drop-downs use an on-demand pagination path in the query editor. Each additional page loads only when you request it, so this path isn’t bounded by the same cap as the eager fetch.
+- **Rate-limit impact:** Because a single list query can issue up to `maxPages` API requests, pagination increases the number of requests per query. Refer to [Default rate limits](#default-rate-limits) when tuning dashboard refresh intervals.
+
+Accounts larger than the effective cap still see truncated lists. To narrow results:
+
+- Use the server-side type-to-filter behavior on the **Device** drop-down to narrow results before picking downstream selectors.
+- Scope dashboards with [template variables](#template-variables) instead of listing every device or group.
+- Split large dashboards into smaller ones by device group to keep each query within the effective cap.
 
 ### Query examples
 
@@ -190,7 +210,7 @@ To monitor CPU performance for a specific device:
 2. Select your target device from the **Device** drop-down.
 3. Select **CPU** from the **Datasource** drop-down.
 4. Select the CPU instance from the **Instance** drop-down.
-5. (Optional) Select specific data points like `cpu_utilization` from **DataPoints**.
+5. (Optional) Select specific data points such as `cpu_utilization` from **DataPoints**.
 
 #### Compare devices across a group
 
@@ -200,6 +220,10 @@ To compare metrics across all devices in a group:
 2. Select your device group from the **Device Group** drop-down.
 3. Select a device, data source, and instance.
 4. Duplicate the query for each device you want to compare.
+
+### Use Explore
+
+Use Explore to run queries and visualize results without building a dashboard. For more information, refer to [Explore](/docs/grafana/latest/explore/).
 
 ## Template variables
 
@@ -266,10 +290,6 @@ Expand table
 
 For the complete list of LogicMonitor API rate limits and response headers (`X-Rate-Limit-Limit`, `X-Rate-Limit-Remaining`, `X-Rate-Limit-Window`), refer to [REST API Rate Limit](https://www.logicmonitor.com/support/rest-api-developers-guide/overview/rest-api-rate-limit) in the LogicMonitor documentation.
 
-### Result set size
-
-The data source requests up to 1000 results per list query. Accounts with more than 1000 devices or device groups don’t see all entries in the **Device** or **Device Group** drop-downs. To work around this limit, use template variables or other dashboard filters to scope your queries.
-
 ### Reduce API usage
 
 A single Device Instance Data panel can issue several API requests as you build the query (one each for devices, data sources, instances, and time series data). When the dashboard refreshes, only the time series request runs per panel. To stay within rate limits:
@@ -285,29 +305,99 @@ A single Device Instance Data panel can issue several API requests as you build 
 
 ## Troubleshoot LogicMonitor data source issues
 
-This section provides solutions to common issues when configuring or using the LogicMonitor Devices data source.
+This section provides solutions to common issues when configuring or using the LogicMonitor Devices data source. Entries are grouped by the layer where the problem surfaces, from the network up through alerting.
+
+### Connection errors
+
+Connection errors indicate that Grafana can’t reach `<account>.logicmonitor.com` at all, so the request never reaches LogicMonitor authentication.
+
+Expand table
+
+| Error message                                 | Cause                                                                                                                    | Solution                                                                                                                                                                  |
+|-----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| “no such host” or `dial tcp: lookup` failures | Incorrect account name or DNS resolution failure                                                                         | Verify the account name matches your LogicMonitor portal URL. For `foo.logicmonitor.com`, enter `foo`. Confirm the Grafana host can resolve `<account>.logicmonitor.com`. |
+| `x509` or `tls: handshake failure`            | The Grafana host can’t complete the TLS handshake, often because of a corporate proxy or a missing certificate authority | Confirm that outbound HTTPS to `<account>.logicmonitor.com` is allowed and that the system trust store includes the CA that signs the LogicMonitor certificate.           |
 
 ### Authentication errors
 
+Authentication errors indicate that Grafana reached the LogicMonitor API but the request was rejected before it could return data.
+
 Expand table
 
-| Error message                             | Cause                     | Solution                                                                                             |
-|-------------------------------------------|---------------------------|------------------------------------------------------------------------------------------------------|
-| “Account Name missing”                    | Account name not provided | Enter your LogicMonitor account name in the configuration.                                           |
-| “invalid/empty bearer token”              | Token field is empty      | Enter your LogicMonitor REST API v3 bearer token.                                                    |
-| “health check failed… (status code: 401)” | Invalid or expired token  | Verify your token is correct and hasn’t expired. Generate a new token in LogicMonitor if needed.     |
-| “no such host”                            | Incorrect account name    | Verify the account name matches your LogicMonitor portal URL. For `foo.logicmonitor.com`, use `foo`. |
+| Error message                                                                        | Cause                                                                                                                            | Solution                                                                                                                                                                                                              |
+|--------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| “Account Name missing”                                                               | Account name not provided                                                                                                        | Enter your LogicMonitor account name in the configuration.                                                                                                                                                            |
+| `health check failed` with `authentication failure` and `invalid/empty bearer token` | Token field is empty                                                                                                             | Enter your LogicMonitor REST API v3 bearer token.                                                                                                                                                                     |
+| `health check failed` with `status code: 401` or `status code: 403`                  | Bearer token is invalid, expired, revoked, disabled, or belongs to a user whose role lacks read access to the requested resource | Verify the token in the LogicMonitor portal, confirm the associated user is still active, and confirm the user’s role grants read access to devices, device groups, and data sources. Generate a new token if needed. |
 
 ### Query errors
 
+Query errors surface when the API request succeeds but the data source can’t build a complete result.
+
 Expand table
 
-| Error message                                    | Cause                                                    | Solution                                                                                                                                                                                                                      |
-|--------------------------------------------------|----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Missing parameter error                          | Required fields not selected                             | Select values for all required fields (Device, Datasource, Instance) before running the query.                                                                                                                                |
-| No data returned                                 | Time range or permissions issue                          | Verify data exists for the selected time range and that your token has read permissions.                                                                                                                                      |
-| “status code: 429” or “Too Many Requests”        | LogicMonitor API rate limit exceeded                     | Reduce dashboard refresh frequency, the number of LogicMonitor panels, or the number of dashboards loaded simultaneously. For more information, refer to [API rate limits and performance](#api-rate-limits-and-performance). |
-| Device or Device Group drop-down missing entries | Account contains more than 1000 devices or device groups | The data source returns up to 1000 results per list query. Use template variables to scope your queries. For more information, refer to [Result set size](#result-set-size).                                                  |
+| Error message                                               | Cause                                                                                                                                                                                                                                           | Solution                                                                                                                                                                                                                                                                                              |
+|-------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Missing parameter error                                     | Required fields not selected                                                                                                                                                                                                                    | Select values for all required fields (**Device**, **Datasource**, **Instance**) before running the query.                                                                                                                                                                                            |
+| No data returned                                            | Time range or permissions issue                                                                                                                                                                                                                 | Verify data exists for the selected time range and that your token has read access to the target device.                                                                                                                                                                                              |
+| Drop-down missing entries in **Device** or **Device Group** | Account contains more devices or device groups than the plugin’s paginated fetch cap (approximately 10,000 by default)                                                                                                                          | For **Device**, use the server-side type-to-filter to narrow results. For **Device Group**, or if the account exceeds the cap in either selector, scope the dashboard with a template variable. For more information, refer to [Large result sets and pagination](#large-result-sets-and-pagination). |
+| Drop-down missing entries in **Datasource** or **Instance** | Because both selectors filter client-side against the results returned for the parent selection, missing entries indicate the item isn’t associated with the selected **Device** (or **Device** and **Datasource** combination) in LogicMonitor | Try selecting a different **Device** or **Datasource**, or verify the association in the LogicMonitor portal.                                                                                                                                                                                         |
+| Type-to-filter in **Device** drop-down returns no matches   | Typed value contains characters that must be escaped in the LogicMonitor `displayName~"..."` glob, such as `"` or `\`                                                                                                                           | Retype the value without those characters, or scope the query with a [template variable](#template-variables) instead.                                                                                                                                                                                |
+
+### Rate-limit errors
+
+The plugin issues one API request per selector page and one per time series panel refresh. Pagination can multiply the request count per query up to the effective page cap.
+
+**Symptoms**
+
+- Panels show `status code: 429` or `Too Many Requests`.
+- Dashboards intermittently fail to load some panels while others succeed.
+
+**Cause**
+
+The LogicMonitor REST API rate limit for the affected endpoint has been reached across the entire account. Limits are per endpoint and shared across all bearer tokens.
+
+**Solutions**
+
+1. Increase dashboard refresh intervals so fewer requests hit each endpoint per minute.
+2. Reduce the number of LogicMonitor panels on a single dashboard, or stagger loads across dashboards.
+3. Use template variables to reduce the number of duplicate queries.
+4. Review the specific endpoint’s default limit in [Default rate limits](#default-rate-limits) and contact your LogicMonitor customer success manager if your usage consistently exceeds the limit.
+
+### Alert rule errors
+
+Alert rules evaluate queries outside a dashboard panel context, so time and variable substitutions behave differently from the panel preview.
+
+Expand table
+
+| Error message                                | Cause                                                                                                                                                                 | Solution                                                                                                                                                                                     |
+|----------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| “failed to evaluate queries and expressions” | Alert rule references a dashboard template variable that Alerting can’t resolve, or relies on `$__timeFrom` and `$__timeTo` bounds that aren’t set in the alert query | Replace template variables with concrete device, data source, and instance IDs in the alert rule. Verify the query returns data in the dashboard panel preview before saving the alert rule. |
+
+### Template variable errors
+
+Template variable queries evaluate before any panel query, so referenced parameters must resolve at variable-eval time.
+
+Expand table
+
+| Symptom                                                | Cause                                                                                                                                       | Solution                                                                                                                                        |
+|--------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| Variable drop-down is empty after saving the dashboard | The variable query depends on another variable that hasn’t resolved yet, or on a parameter the plugin can’t resolve outside a panel context | Chain variables so that each depends only on variables defined above it in the dashboard, or replace the upstream reference with a concrete ID. |
+| Variable expansion returns an unexpected value         | Variable syntax doesn’t match the plugin’s expected format                                                                                  | Verify the variable syntax against [variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/).                               |
+
+### Debug logging
+
+To capture additional diagnostic information for a support case, enable debug logging in Grafana.
+
+1. Open your Grafana configuration file (typically `grafana.ini` on self-managed installations) and set `[log]` `level = debug`. On Grafana Cloud, contact support to enable debug logging temporarily.
+2. Alternatively, set the environment variable `GF_LOG_LEVEL=debug` on the Grafana process.
+3. Restart Grafana for the setting to take effect.
+
+The LogicMonitor data source writes its debug output to the standard Grafana server log. No plugin-specific environment variables are required.
+
+> Caution
+>
+> Debug logging is verbose and can significantly increase log volume. Disable it after you’ve captured the information you need.
 
 ### Get additional help
 

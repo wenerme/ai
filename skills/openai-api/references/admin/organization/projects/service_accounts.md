@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/service_accounts`
 
-Returns a list of service accounts in the project.
+List project service accounts
 
 ### Path Parameters
 
@@ -119,7 +119,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts?a
 
 **post** `/organization/projects/{project_id}/service_accounts`
 
-Creates a new service account in the project. This also returns an unredacted API key for the service account.
+Create project service account
 
 ### Path Parameters
 
@@ -229,7 +229,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
 **get** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Retrieves a service account in the project.
+Retrieve project service account
 
 ### Path Parameters
 
@@ -312,7 +312,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/s
 
 **post** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Updates a service account in the project.
+Update project service account
 
 ### Path Parameters
 
@@ -415,10 +415,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
 **delete** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Deletes a service account from the project.
-
-Returns confirmation of service account deletion, or an error if the project
-is archived (archived projects have no service accounts).
+Delete project service account
 
 ### Path Parameters
 

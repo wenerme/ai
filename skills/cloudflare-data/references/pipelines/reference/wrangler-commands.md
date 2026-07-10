@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Interactive setup for a complete pipeline
 
-* [  npm ](#tab-panel-9907)
-* [  pnpm ](#tab-panel-9908)
-* [  yarn ](#tab-panel-9909)
+* [  npm ](#tab-panel-9986)
+* [  pnpm ](#tab-panel-9987)
+* [  yarn ](#tab-panel-9988)
 
 ```sh
 npx wrangler pipelines setup
@@ -60,9 +60,9 @@ Use a specific auth profile
 
 Create a new pipeline
 
-* [  npm ](#tab-panel-9910)
-* [  pnpm ](#tab-panel-9911)
-* [  yarn ](#tab-panel-9912)
+* [  npm ](#tab-panel-9989)
+* [  pnpm ](#tab-panel-9990)
+* [  yarn ](#tab-panel-9991)
 
 ```sh
 npx wrangler pipelines create [PIPELINE]
@@ -108,9 +108,9 @@ Use a specific auth profile
 
 List all pipelines
 
-* [  npm ](#tab-panel-9913)
-* [  pnpm ](#tab-panel-9914)
-* [  yarn ](#tab-panel-9915)
+* [  npm ](#tab-panel-9992)
+* [  pnpm ](#tab-panel-9993)
+* [  yarn ](#tab-panel-9994)
 
 ```sh
 npx wrangler pipelines list
@@ -156,9 +156,9 @@ Use a specific auth profile
 
 Get details about a specific pipeline
 
-* [  npm ](#tab-panel-9916)
-* [  pnpm ](#tab-panel-9917)
-* [  yarn ](#tab-panel-9918)
+* [  npm ](#tab-panel-9995)
+* [  pnpm ](#tab-panel-9996)
+* [  yarn ](#tab-panel-9997)
 
 ```sh
 npx wrangler pipelines get [PIPELINE]
@@ -202,9 +202,9 @@ Use a specific auth profile
 
 Update a pipeline configuration (legacy pipelines only)
 
-* [  npm ](#tab-panel-9919)
-* [  pnpm ](#tab-panel-9920)
-* [  yarn ](#tab-panel-9921)
+* [  npm ](#tab-panel-9998)
+* [  pnpm ](#tab-panel-9999)
+* [  yarn ](#tab-panel-10000)
 
 ```sh
 npx wrangler pipelines update [PIPELINE]
@@ -270,9 +270,9 @@ Use a specific auth profile
 
 Delete a pipeline
 
-* [  npm ](#tab-panel-9922)
-* [  pnpm ](#tab-panel-9923)
-* [  yarn ](#tab-panel-9924)
+* [  npm ](#tab-panel-10001)
+* [  pnpm ](#tab-panel-10002)
+* [  yarn ](#tab-panel-10003)
 
 ```sh
 npx wrangler pipelines delete [PIPELINE]
@@ -316,9 +316,9 @@ Use a specific auth profile
 
 Create a new stream
 
-* [  npm ](#tab-panel-9925)
-* [  pnpm ](#tab-panel-9926)
-* [  yarn ](#tab-panel-9927)
+* [  npm ](#tab-panel-10004)
+* [  pnpm ](#tab-panel-10005)
+* [  yarn ](#tab-panel-10006)
 
 ```sh
 npx wrangler pipelines streams create [STREAM]
@@ -368,9 +368,9 @@ Use a specific auth profile
 
 List all streams
 
-* [  npm ](#tab-panel-9928)
-* [  pnpm ](#tab-panel-9929)
-* [  yarn ](#tab-panel-9930)
+* [  npm ](#tab-panel-10007)
+* [  pnpm ](#tab-panel-10008)
+* [  yarn ](#tab-panel-10009)
 
 ```sh
 npx wrangler pipelines streams list
@@ -418,9 +418,9 @@ Use a specific auth profile
 
 Get details about a specific stream
 
-* [  npm ](#tab-panel-9931)
-* [  pnpm ](#tab-panel-9932)
-* [  yarn ](#tab-panel-9933)
+* [  npm ](#tab-panel-10010)
+* [  pnpm ](#tab-panel-10011)
+* [  yarn ](#tab-panel-10012)
 
 ```sh
 npx wrangler pipelines streams get [STREAM]
@@ -464,9 +464,9 @@ Use a specific auth profile
 
 Delete a stream
 
-* [  npm ](#tab-panel-9934)
-* [  pnpm ](#tab-panel-9935)
-* [  yarn ](#tab-panel-9936)
+* [  npm ](#tab-panel-10013)
+* [  pnpm ](#tab-panel-10014)
+* [  yarn ](#tab-panel-10015)
 
 ```sh
 npx wrangler pipelines streams delete [STREAM]
@@ -510,9 +510,9 @@ Use a specific auth profile
 
 Create a new sink
 
-* [  npm ](#tab-panel-9937)
-* [  pnpm ](#tab-panel-9938)
-* [  yarn ](#tab-panel-9939)
+* [  npm ](#tab-panel-10016)
+* [  pnpm ](#tab-panel-10017)
+* [  yarn ](#tab-panel-10018)
 
 ```sh
 npx wrangler pipelines sinks create [SINK]
@@ -582,9 +582,9 @@ Use a specific auth profile
 
 List all sinks
 
-* [  npm ](#tab-panel-9940)
-* [  pnpm ](#tab-panel-9941)
-* [  yarn ](#tab-panel-9942)
+* [  npm ](#tab-panel-10019)
+* [  pnpm ](#tab-panel-10020)
+* [  yarn ](#tab-panel-10021)
 
 ```sh
 npx wrangler pipelines sinks list
@@ -632,9 +632,9 @@ Use a specific auth profile
 
 Get details about a specific sink
 
-* [  npm ](#tab-panel-9943)
-* [  pnpm ](#tab-panel-9944)
-* [  yarn ](#tab-panel-9945)
+* [  npm ](#tab-panel-10022)
+* [  pnpm ](#tab-panel-10023)
+* [  yarn ](#tab-panel-10024)
 
 ```sh
 npx wrangler pipelines sinks get [SINK]
@@ -678,9 +678,9 @@ Use a specific auth profile
 
 Delete a sink
 
-* [  npm ](#tab-panel-9946)
-* [  pnpm ](#tab-panel-9947)
-* [  yarn ](#tab-panel-9948)
+* [  npm ](#tab-panel-10025)
+* [  pnpm ](#tab-panel-10026)
+* [  yarn ](#tab-panel-10027)
 
 ```sh
 npx wrangler pipelines sinks delete [SINK]

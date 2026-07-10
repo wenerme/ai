@@ -1576,59 +1576,78 @@ In Xcode, add a Broadcast Upload Extension through `File` → `New` → `Target`
 
 Add your extension to an app group:
 
-1. Go to your extension's target in the project
-2. In the Signings & Capabilities tab, click the + button in the top left
-3. Add App Groups
-4. Add App Groups to your main app as well, ensuring the App Group identifier is the same for both
+1. Go to your extension's target in the project.
+2. In the **Signing & Capabilities** tab, click **+** and add **App Groups**.
+3. Add the same App Group to your main app target, using the same identifier for both.
 
-### Add RealtimeKitCore Pod to Broadcast Extension
+### Add screenshare sources via Podfile
 
-You need to add the `RealtimeKitCore` pod to your Broadcast Upload Extension target in your `Podfile` so the extension can access the screen share handler. Add the following to your `Podfile`:
+The SDK ships a Ruby helper script that adds the required screenshare Swift source files directly to your Broadcast Upload Extension target. Add the following to your `Podfile`:
 
 ```ruby
-target '<YourScreenShareExtensionTarget>' do
-  config = use_native_modules!
+# Add this line at the top
+require Pod::Executable.execute_command('node', ['-p',
+  'require.resolve(
+    "@cloudflare/realtimekit-react-native/ios/scripts/screenshare_sources.rb",
+    {paths: [process.argv[1]]},
+  )', __dir__]).strip
 
 
-  use_react_native!(
-    :path => config[:reactNativePath],
-    :hermes_enabled => true,
-    :app_path => "#{Pod::Config.instance.installation_root}/.."
-  )
-  # Add this line to include the RealtimeKitCore pod in Broadcast Extension
-  pod 'RealtimeKitCore', :path => '../node_modules/@cloudflare/realtimekit-react-native'
+target 'YourApp' do
+  ...
+  post_install do |installer|
+    ...
+    # Add this line here
+    add_screenshare_sources(
+      installer,
+      project_name: 'YourApp',              # your Xcode project name (without .xcodeproj)
+      extension_target_name: 'YourAppScreenshare' # your Broadcast Upload Extension target name
+    )
+    ...
+  end
+end
+
+
+target 'YourAppScreenshare' do
+# Remove the old steps added if any
 end
 ```
 
-Replace `<YourScreenShareExtensionTarget>` with the name of the Broadcast Upload Extension target you created in Xcode.
+Then run:
+
+```bash
+pod install
+```
 
 ### Configure SampleHandler
 
-Edit your SampleHandler class:
+In your Broadcast Upload Extension, edit `SampleHandler.swift`:
 
 **Swift**
 
 ```swift
-import RealtimeKitCore
-
-
 class SampleHandler: RTKScreenshareHandler {
   override init() {
-       super.init(appGroupIdentifier: "<YOUR_APP_GROUP_IDENTIFIER>", bundleIdentifier: "<YOUR_APP_BUNDLE_IDENTIFIER>")
-   }
+    super.init(
+      appGroupIdentifier: "<YOUR_APP_GROUP_IDENTIFIER>",
+      bundleIdentifier: "<YOUR_APP_BUNDLE_IDENTIFIER>"
+    )
+  }
 }
 ```
 
+Replace `<YOUR_APP_GROUP_IDENTIFIER>` with the App Group you created (for example, `group.com.yourcompany.yourapp`) and `<YOUR_APP_BUNDLE_IDENTIFIER>` with your main app's bundle identifier.
+
 ### Update Info.plist
 
-Ensure **both** App and Extension Info.plist files contain these keys:
+Add the following key to **both** your main app and extension `Info.plist` files:
 
 ```xml
 <key>RTCAppGroupIdentifier</key>
 <string>(YOUR_APP_GROUP_IDENTIFIER)</string>
 ```
 
-Add this key inside the Info.plist of the main App:
+Add this key to the main app `Info.plist` only:
 
 ```xml
 <key>RTCAppScreenSharingExtension</key>
@@ -1636,8 +1655,6 @@ Add this key inside the Info.plist of the main App:
 ```
 
 ### Enable screen share
-
-Launch the broadcast extension and enable screen share:
 
 **JavaScript**
 
@@ -2878,6 +2895,6 @@ meeting.self.updateScreenshareConstraints({
 Flutter SDK does not currently expose runtime constraint updates.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/#page","headline":"Local Participant · Cloudflare Realtime docs","description":"Manage local user media devices, audio, video, and screenshare in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/#page","headline":"Local Participant · Cloudflare Realtime docs","description":"Manage local user media devices, audio, video, and screenshare in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/local-participant/","name":"Local Participant"}}]}
 ```

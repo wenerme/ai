@@ -2,7 +2,7 @@
 
 **post** `/fine_tuning/alpha/graders/validate`
 
-Validate a grader.
+Validate grader
 
 ### Body Parameters
 
@@ -132,7 +132,7 @@ Validate a grader.
 
           A text input to the model.
 
-        - `ResponseInputText object { text, type }`
+        - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
           A text input to the model.
 
@@ -145,6 +145,16 @@ Validate a grader.
             The type of the input item. Always `input_text`.
 
             - `"input_text"`
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
         - `OutputText object { text, type }`
 
@@ -212,7 +222,7 @@ Validate a grader.
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -299,16 +309,13 @@ Validate a grader.
 
       - `reasoning_effort: optional ReasoningEffort`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -321,6 +328,8 @@ Validate a grader.
         - `"high"`
 
         - `"xhigh"`
+
+        - `"max"`
 
       - `seed: optional number`
 
@@ -377,7 +386,7 @@ Validate a grader.
 
               A text input to the model.
 
-            - `ResponseInputText object { text, type }`
+            - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
               A text input to the model.
 
@@ -601,7 +610,7 @@ Validate a grader.
 
           A text input to the model.
 
-        - `ResponseInputText object { text, type }`
+        - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
           A text input to the model.
 
@@ -614,6 +623,16 @@ Validate a grader.
             The type of the input item. Always `input_text`.
 
             - `"input_text"`
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
         - `OutputText object { text, type }`
 
@@ -681,7 +700,7 @@ Validate a grader.
 
             A text input to the model.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
@@ -768,16 +787,13 @@ Validate a grader.
 
       - `reasoning_effort: optional ReasoningEffort`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -790,6 +806,8 @@ Validate a grader.
         - `"high"`
 
         - `"xhigh"`
+
+        - `"max"`
 
       - `seed: optional number`
 
@@ -846,7 +864,7 @@ Validate a grader.
 
               A text input to the model.
 
-            - `ResponseInputText object { text, type }`
+            - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
               A text input to the model.
 

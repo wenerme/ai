@@ -4,7 +4,7 @@
 
 **delete** `/organization/groups/{group_id}/roles/{role_id}`
 
-Unassigns an organization role from a group within the organization.
+Unassign organization role from group
 
 ### Parameters
 

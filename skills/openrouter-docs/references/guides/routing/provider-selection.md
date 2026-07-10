@@ -993,7 +993,7 @@ Each provider on OpenRouter may host multiple endpoints for the same model, such
 
 ### Base Slug Matching
 
-When you use a base provider slug (e.g. `"google-vertex"`) in any provider routing field (`order`, `only`, or `ignore`), it matches **all** endpoints for that provider, including any variants or regions. For example, `"google-vertex"` matches `google-vertex`, `google-vertex/us-east5`, `google-vertex/us-central1`, and so on.
+When you use a base provider slug (e.g. `"google-vertex"`) in any provider routing field (`order`, `only`, or `ignore`), it matches **all** endpoints for that provider, including any variants or regions. For example, `"google-vertex"` matches `google-vertex`, `google-vertex/us-east5`, `google-vertex/us-central1`, and so on. Note that [service tier endpoints](/guides/features/service-tiers) (e.g. `openai/priority`, `google-vertex/flex`) are **not** matched by base slugs — they require explicit opt-in via the `service_tier` parameter or a tier-suffixed slug.
 
 To target a **specific** variant or region, use the full slug including the suffix (e.g. `"google-vertex/us-east5"` or `"deepinfra/turbo"`).
 

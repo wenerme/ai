@@ -2,7 +2,7 @@
 
 **post** `/projects/{project_id}/roles`
 
-Creates a custom role for a project.
+Create project role
 
 ### Path Parameters
 

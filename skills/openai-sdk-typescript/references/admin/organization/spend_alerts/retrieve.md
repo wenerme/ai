@@ -4,7 +4,7 @@
 
 **get** `/organization/spend_alerts/{alert_id}`
 
-Retrieves an organization spend alert.
+Retrieve organization spend alert
 
 ### Parameters
 

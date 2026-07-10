@@ -23,7 +23,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     input: [
         { role: "user", content: "knock knock." },
         { role: "assistant", content: "Who's there?" },
@@ -40,7 +40,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=[
         {"role": "user", "content": "knock knock."},
         {"role": "assistant", "content": "Who's there?"},
@@ -56,6 +56,8 @@ print(response.output_text)
 By using alternating `user` and `assistant` messages, you capture the previous state of a conversation in one request to the model.
 
 To manually share context across generated responses, include the model's previous response output as input, and append that input to your next request.
+
+For stateless reasoning-model requests, add `reasoning.encrypted_content` to `include` and preserve every item in the response's `output` array. This keeps encrypted reasoning items and assistant `phase` values intact. Models that support persisted reasoning can use `reasoning.context: "all_turns"` to render the available reasoning from earlier turns into the next sample. See [preserve reasoning across calls](https://developers.openai.com/api/docs/guides/reasoning#preserve-reasoning-across-calls).
 
 In the following example, we ask the model to tell a joke, followed by a request for another joke. Appending previous responses to new requests in this way helps ensure conversations feel natural and retain the context of previous interactions.
 
@@ -77,9 +79,10 @@ let history = [
 ];
 
 const response = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     input: history,
-    store: true,
+    store: false,
+    include: ["reasoning.encrypted_content"],
 });
 
 console.log(response.output_text);
@@ -93,9 +96,10 @@ history.push({
 });
 
 const secondResponse = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     input: history,
-    store: true,
+    store: false,
+    include: ["reasoning.encrypted_content"],
 });
 
 console.log(secondResponse.output_text);
@@ -114,7 +118,7 @@ history = [
 ]
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=history,
     store=False,
     include=["reasoning.encrypted_content"],
@@ -128,7 +132,7 @@ history += response.output
 history.append({ "role": "user", "content": "tell me another" })
 
 second_response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=history,
     store=False,
     include=["reasoning.encrypted_content"],
@@ -166,7 +170,7 @@ In a multi-turn interaction, you can pass the `conversation` into subsequent res
 
 ```python
 response = openai.responses.create(
-  model="gpt-5.5",
+  model="gpt-5.6",
   input=[{"role": "user", "content": "What are the 5 Ds of dodgeball?"}],
   conversation="conv_689667905b048191b4740501625afd940c7533ace33a2dab"
 )
@@ -185,7 +189,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     input: "tell me a joke",
     store: true,
 });
@@ -193,7 +197,7 @@ const response = await openai.responses.create({
 console.log(response.output_text);
 
 const secondResponse = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     previous_response_id: response.id,
     input: [{"role": "user", "content": "explain why this is funny."}],
     store: true,
@@ -207,13 +211,13 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="tell me a joke",
 )
 print(response.output_text)
 
 second_response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     previous_response_id=response.id,
     input=[{"role": "user", "content": "explain why this is funny."}],
 )
@@ -232,7 +236,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     input: "tell me a joke",
     store: true,
 });
@@ -240,7 +244,7 @@ const response = await openai.responses.create({
 console.log(response.output_text);
 
 const secondResponse = await openai.responses.create({
-    model: "gpt-5.5",
+    model: "gpt-5.6",
     previous_response_id: response.id,
     input: [{"role": "user", "content": "explain why this is funny."}],
     store: true,
@@ -254,13 +258,13 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="tell me a joke",
 )
 print(response.output_text)
 
 second_response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     previous_response_id=response.id,
     input=[{"role": "user", "content": "explain why this is funny."}],
 )
@@ -306,7 +310,7 @@ As your inputs become more complex, or you include more turns in a conversation,
 - **Output tokens** are the tokens generated by a model in response to a prompt. Each model has different [limits for output tokens](https://developers.openai.com/api/docs/models). For example, `gpt-4o-2024-08-06` can generate a maximum of 16,384 output tokens.
 - A **context window** describes the total tokens that can be used for both input and output tokens (and for some models, [reasoning tokens](https://developers.openai.com/api/docs/guides/reasoning)). Compare the [context window limits](https://developers.openai.com/api/docs/models) of our models. For example, `gpt-4o-2024-08-06` has a total context window of 128k tokens.
 
-If you create a very large prompt—often by including extra context, data, or examples for the model—you run the risk of exceeding the allocated context window for a model, which might result in truncated outputs.
+If you create a large prompt—often by including extra context, data, or examples for the model—you run the risk of exceeding the allocated context window for a model, which might result in truncated outputs.
 
 Use the [tokenizer tool](https://platform.openai.com/tokenizer), built with the [tiktoken library](https://github.com/openai/tiktoken), to see how many tokens are in a particular string of text.
 

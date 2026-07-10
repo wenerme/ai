@@ -2,7 +2,7 @@
 
 **get** `/organization/admin_api_keys/{key_id}`
 
-Retrieve a single organization API key
+Retrieve admin API key
 
 ### Path Parameters
 

@@ -4,7 +4,7 @@
 
 **post** `/organization/data_retention`
 
-Updates organization data retention controls.
+Update organization data retention
 
 ### Parameters
 

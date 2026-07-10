@@ -2,9 +2,7 @@
 
 **post** `/containers/{container_id}/files`
 
-Create a Container File
-
-You can send either a multipart/form-data request with the raw file content, or a JSON request with a file ID.
+Create container file
 
 ### Path Parameters
 
@@ -38,9 +36,11 @@ You can send either a multipart/form-data request with the raw file content, or 
 
   Unix timestamp (in seconds) when the file was created.
 
-- `object: string`
+- `object: "container.file"`
 
   The type of this object (`container.file`).
+
+  - `"container.file"`
 
 - `path: string`
 
@@ -66,7 +66,7 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID/files \
   "bytes": 0,
   "container_id": "container_id",
   "created_at": 0,
-  "object": "object",
+  "object": "container.file",
   "path": "path",
   "source": "source"
 }

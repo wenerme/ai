@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/users`
 
-Returns a list of users in the project.
+List project users
 
 ### Path Parameters
 
@@ -119,7 +119,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/users?after=user_a
 
 **post** `/organization/projects/{project_id}/users`
 
-Adds a user to the project. Users must already be members of the organization to be added to a project.
+Create project user
 
 ### Path Parameters
 
@@ -223,7 +223,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users \
 
 **get** `/organization/projects/{project_id}/users/{user_id}`
 
-Retrieves a user in the project.
+Retrieve project user
 
 ### Path Parameters
 
@@ -308,7 +308,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/users/user_abc \
 
 **post** `/organization/projects/{project_id}/users/{user_id}`
 
-Modifies a user's role in the project.
+Modify project user
 
 ### Path Parameters
 
@@ -404,10 +404,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users/user
 
 **delete** `/organization/projects/{project_id}/users/{user_id}`
 
-Deletes a user from the project.
-
-Returns confirmation of project user deletion, or an error if the project is
-archived (archived projects have no users).
+Delete project user
 
 ### Path Parameters
 
@@ -513,7 +510,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/users/us
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 
-Lists the project roles assigned to a user within a project.
+List project user role assignments
 
 ### Path Parameters
 
@@ -699,7 +696,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles \
 
 **post** `/projects/{project_id}/users/{user_id}/roles`
 
-Assigns a project role to a user within a project.
+Assign project role to user
 
 ### Path Parameters
 
@@ -964,7 +961,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/ro
 
 **get** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Retrieves a project role assigned to a user.
+Retrieve project user role
 
 ### Path Parameters
 
@@ -1099,7 +1096,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
 **delete** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Unassigns a project role from a user within a project.
+Unassign project role from user
 
 ### Path Parameters
 

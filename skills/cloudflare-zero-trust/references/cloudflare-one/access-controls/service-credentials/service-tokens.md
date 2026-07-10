@@ -18,9 +18,9 @@ This section covers how to create, renew, and revoke a service token.
 
 ## Create a service token
 
-* [ Dashboard ](#tab-panel-7497)
-* [ API ](#tab-panel-7498)
-* [ Terraform (v5) ](#tab-panel-7499)
+* [ Dashboard ](#tab-panel-7603)
+* [ API ](#tab-panel-7604)
+* [ Terraform (v5) ](#tab-panel-7605)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.
@@ -197,7 +197,9 @@ If your Access application only has Service Auth policies, you must send the ser
 
 Service tokens expire according to the token duration you selected when you created the token.
 
-To renew the service token:
+* [ Dashboard ](#tab-panel-7600)
+* [ API ](#tab-panel-7601)
+* [ Terraform (v5) ](#tab-panel-7602)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Locate the token you want to renew.
@@ -207,14 +209,85 @@ To renew the service token:
   2. Choose a new **Service Token Duration**.
   3. Select **Save**. The expiration date will be extended by the selected amount of time.
 
+To extend the token's lifetime by one year, make a `POST` request to the [Refresh a service token](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/service%5Ftokens/methods/refresh/) endpoint:
+
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+* `Access: Service Tokens Write`
+
+**Refresh a service token**
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens/$SERVICE_TOKEN_ID/refresh" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+To extend the token's lifetime by a custom duration, make a `PUT` request to the [Update a service token](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/service%5Ftokens/methods/update/) endpoint with the new `duration`:
+
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+* `Access: Service Tokens Write`
+
+**Update a service token**
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens/$SERVICE_TOKEN_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "duration": "17520h"
+  }'
+```
+
+To renew the service token, update the `duration` attribute on the [cloudflare\_zero\_trust\_access\_service\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fservice%5Ftoken) resource and apply the change. Cloudflare resets the expiration relative to the time of the update.
+
+```tf
+resource "cloudflare_zero_trust_access_service_token" "example_service_token" {
+  account_id = var.cloudflare_account_id
+  name       = "Example service token"
+  duration   = "17520h"
+
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+```
+
 ## Revoke service tokens
 
-If you need to revoke access before the token expires, simply delete the token.
+If you need to revoke access before the token expires, delete the token. Services that rely on a deleted service token can no longer reach your application.
+
+* [ Dashboard ](#tab-panel-7597)
+* [ API ](#tab-panel-7598)
+* [ Terraform (v5) ](#tab-panel-7599)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. **Delete** the token you need to revoke.
 
-Services that rely on a deleted service token can no longer reach your application.
+Make a `DELETE` request to the [Delete a service token](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/service%5Ftokens/methods/delete/) endpoint:
+
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+* `Access: Service Tokens Write`
+
+**Delete a service token**
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens/$SERVICE_TOKEN_ID" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+To revoke the service token, remove the [cloudflare\_zero\_trust\_access\_service\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fservice%5Ftoken) resource from your configuration and run `terraform apply`, or target the resource for destruction:
+
+```sh
+terraform destroy -target=cloudflare_zero_trust_access_service_token.example_service_token
+```
 
 Note
 
@@ -254,6 +327,6 @@ To configure a service token expiration alert:
 Your alert has been set and is now visible on the **Notifications** page.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens · Cloudflare One docs","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens · Cloudflare One docs","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/service-credentials/","name":"Service credentials"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/service-credentials/service-tokens/","name":"Service tokens"}}]}
 ```

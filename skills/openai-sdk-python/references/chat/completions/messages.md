@@ -6,9 +6,7 @@
 
 **get** `/chat/completions/{completion_id}/messages`
 
-Get the messages in a stored chat completion. Only Chat Completions that
-have been created with the `store` parameter set to `true` will be
-returned.
+Get chat messages
 
 ### Parameters
 
@@ -59,6 +57,16 @@ returned.
 
         - `"text"`
 
+      - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: Literal["explicit"]`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
     - `class ChatCompletionContentPartImage: …`
 
       Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -84,6 +92,16 @@ returned.
         The type of the content part.
 
         - `"image_url"`
+
+      - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: Literal["explicit"]`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
 ### Example
 
@@ -145,7 +163,10 @@ print(page)
       "content_parts": [
         {
           "text": "text",
-          "type": "text"
+          "type": "text",
+          "prompt_cache_breakpoint": {
+            "mode": "explicit"
+          }
         }
       ]
     }

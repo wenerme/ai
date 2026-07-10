@@ -2,7 +2,7 @@
 
 **get** `/threads/{thread_id}`
 
-Retrieves a thread.
+Retrieve thread
 
 ### Path Parameters
 
@@ -12,7 +12,7 @@ Retrieves a thread.
 
 - `Thread object { id, created_at, metadata, 2 more }`
 
-  Represents a thread that contains [messages](/docs/api-reference/messages).
+  Represents a thread that contains [messages](https://platform.openai.com/docs/api-reference/messages).
 
   - `id: string`
 
@@ -45,13 +45,13 @@ Retrieves a thread.
 
       - `file_ids: optional array of string`
 
-        A list of [file](/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
+        A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
 
     - `file_search: optional object { vector_store_ids }`
 
       - `vector_store_ids: optional array of string`
 
-        The [vector store](/docs/api-reference/vector-stores/object) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
+        The [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
 
 ### Example
 

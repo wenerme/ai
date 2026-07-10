@@ -196,6 +196,10 @@ Non-default tier endpoints (`flex`, `priority`) are only considered when your re
 
 Requests that don't use either of these are never routed to a non-default service tier.
 
+### Tier Endpoints in the API
+
+Tier endpoints are listed in the [model endpoints API](/docs/api/api-reference/list-endpoints) alongside standard endpoints. Each appears as its own entry with a tier-suffixed `tag` (e.g. `openai/priority`) and pricing with the tier multiplier already applied — the same pricing used for billing. Their presence in the listing doesn't change routing: they remain opt-in as described above.
+
 ### Supported Providers
 
 The following providers support `flex` and `priority` service tiers for select models:
@@ -203,6 +207,7 @@ The following providers support `flex` and `priority` service tiers for select m
 * **OpenAI**
 * **Google Vertex**
 * **Google AI Studio**
+* **xAI** (`priority` only)
 
 The response's `service_tier` field reports which tier was actually used. Possible response values are `default`, `flex`, `priority`, or `null` when no service tier is available from upstream. Note that OpenRouter normalizes provider-equivalent base tier labels, such as Google's `standard`, to `default` — except in the Anthropic Messages API, which preserves `standard` to match Anthropic's spec (see [API Response Differences](#api-response-differences) below).
 
@@ -211,6 +216,7 @@ Provider documentation:
 * **OpenAI**: [Chat Completions](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create#\(resource\)%20chat.completions%20%3E%20\(method\)%20create%20%3E%20\(params\)%200.non_streaming%20%3E%20\(param\)%20service_tier%20%3E%20\(schema\)), [Responses](https://developers.openai.com/api/reference/resources/responses/methods/create#\(resource\)%20responses%20%3E%20\(method\)%20create%20%3E%20\(params\)%200.non_streaming%20%3E%20\(param\)%20service_tier%20%3E%20\(schema\)), and [pricing](https://developers.openai.com/api/docs/pricing)
 * **Google Vertex**: [Flex](https://cloud.google.com/vertex-ai/generative-ai/docs/flex-paygo) and [Priority](https://cloud.google.com/vertex-ai/generative-ai/docs/priority-paygo)
 * **Google AI Studio**: [Flex](https://ai.google.dev/gemini-api/docs/flex-inference) and [Priority](https://ai.google.dev/gemini-api/docs/priority-inference)
+* **xAI**: [Priority Processing](https://docs.x.ai/developers/advanced-api-usage/priority-processing)
 
 ### API Response Differences
 

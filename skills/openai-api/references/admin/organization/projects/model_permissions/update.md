@@ -2,7 +2,7 @@
 
 **post** `/organization/projects/{project_id}/model_permissions`
 
-Updates model permissions for a project.
+Modify project model permissions
 
 ### Path Parameters
 

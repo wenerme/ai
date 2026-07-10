@@ -691,6 +691,83 @@ For more detailed information about thinking encryption, redacted blocks, and ad
 
 For more information about OpenAI reasoning models, see [OpenAI's reasoning documentation](https://platform.openai.com/docs/guides/reasoning#keeping-reasoning-items-in-context).
 
+<span id="reasoning-context" />
+
+## Reasoning Context Mode
+
+When you echo reasoning items back in your conversation history, you can control which reasoning the model has access to with the `reasoning.context` parameter:
+
+* **`auto`**: The model uses its default context mode. Omitting `reasoning.context` has the same effect.
+* **`all_turns`**: The model can reference reasoning from all turns present in the input. Use this for multi-turn conversations where you want the model to build on its previous chain of thought.
+* **`current_turn`**: The model only uses reasoning from the current turn. Prior reasoning items in the input are ignored. Use this when you want a fresh reasoning pass without influence from earlier turns.
+
+<Note title="Provider Support">
+  `reasoning.context` is only supported by OpenAI GPT-5.6 and newer.
+</Note>
+
+When using the Responses API with manual state management (echoing output items back as input), set `reasoning.context` alongside `include`:
+
+```json theme={null}
+{
+  "model": "~openai/gpt-latest",
+  "input": [
+    { "role": "user", "content": "Solve this math problem step by step: ..." },
+    {
+      "type": "reasoning",
+      "id": "rs_abc123",
+      "encrypted_content": "...",
+      "summary": [{ "type": "summary_text", "text": "Analyzed the equation..." }]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [{ "type": "output_text", "text": "The answer is 42." }]
+    },
+    { "role": "user", "content": "Now explain it differently." }
+  ],
+  "reasoning": {
+    "effort": "high",
+    "context": "all_turns"
+  },
+  "include": ["reasoning.encrypted_content"]
+}
+```
+
+<Note title="Behavior">
+  The default value of `context` may vary by model. Set it explicitly if your use case requires a specific behavior.
+</Note>
+
+## Reasoning Mode
+
+For models that offer a pro reasoning variant, the `reasoning.mode` parameter controls which variant serves your request:
+
+* **`standard`**: The model's standard reasoning behavior. Omitting `reasoning.mode` has the same effect.
+* **`pro`**: Routes the request to the model's pro variant, which uses deeper multi-pass reasoning for harder problems.
+
+<Note title="Provider Support">
+  `reasoning.mode` is only supported by OpenAI GPT-5.6 and newer.
+</Note>
+
+For each supported model, there are two equivalent ways to request pro mode on OpenRouter:
+
+1. Send `reasoning.mode: "pro"` with the standard model — OpenRouter reroutes the request to the matching `*-pro` model.
+2. Call the `*-pro` model listing directly.
+
+```json theme={null}
+{
+  "model": "~openai/gpt-latest",
+  "input": "Prove that there are infinitely many primes.",
+  "reasoning": {
+    "mode": "pro"
+  }
+}
+```
+
+<Note title="Behavior">
+  * `mode` is independent of `effort`: you can combine `mode: "pro"` with any supported effort level.
+  * Pro mode bills at the same per-token rates as standard mode, but typically consumes more tokens.
+</Note>
+
 <span id="responses-api-shape" />
 
 ## Reasoning Details API Shape

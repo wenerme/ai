@@ -458,14 +458,14 @@ curl https://api.openai.com/v1/responses \
 
 ### Handle authentication
 
-As someone building a custom remote MCP server, authorization and authentication help you protect your data. We recommend using OAuth with [Client ID Metadata Documents](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization#client-id-metadata-documents) for client registration when your authorization server supports CIMD and the connector creator chooses it. ChatGPT supports CIMD with public-client token exchange (`none`) or signed client assertion token exchange (`private_key_jwt`). Dynamic client registration remains supported when configured. For ChatGPT app auth requirements, see [Authentication](https://developers.openai.com/apps-sdk/build/auth). For protocol details, read the [MCP user guide](https://modelcontextprotocol.io/docs/concepts/transports#authentication-and-authorization) or the [authorization specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization).
+As someone building a custom remote MCP server, authorization and authentication help you protect your data. We recommend using OAuth with [Client ID Metadata Documents](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization#client-id-metadata-documents) for client registration when your authorization server supports CIMD and the app creator chooses it. ChatGPT supports CIMD with public-client token exchange (`none`) or signed client assertion token exchange (`private_key_jwt`). Dynamic client registration remains supported when configured. For ChatGPT app auth requirements, see [Authentication](https://developers.openai.com/apps-sdk/build/auth). For protocol details, read the [MCP user guide](https://modelcontextprotocol.io/docs/concepts/transports#authentication-and-authorization) or the [authorization specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization).
 
 If you connect your custom remote MCP server in ChatGPT as an app, users in your workspace will get an OAuth flow to your application.
 
 ### Connect in ChatGPT
 
-1. Import your remote MCP server in [ChatGPT settings](https://chatgpt.com/#settings).
-1. Create and configure your app in **Apps & Connectors** using your server URL.
+1. In [ChatGPT](https://chatgpt.com), open **Settings → Security and login** and turn on **Developer mode**.
+1. Open **Settings → Plugins** or [chatgpt.com/plugins](https://chatgpt.com/plugins), select the plus button, and create a developer-mode app using your server URL.
 1. Test your app by running prompts in chat and deep research.
 
 For detailed setup steps, see [Connect from ChatGPT](https://developers.openai.com/apps-sdk/deploy/connect-chatgpt).

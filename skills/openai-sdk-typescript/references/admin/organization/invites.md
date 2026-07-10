@@ -6,7 +6,7 @@
 
 **get** `/organization/invites`
 
-Returns a list of invites in the organization.
+List invites
 
 ### Parameters
 
@@ -136,7 +136,7 @@ for await (const invite of client.admin.organization.invites.list()) {
 
 **post** `/organization/invites`
 
-Create an invite for a user to the organization. The invite must be accepted by the user before they have access to the organization.
+Create invite
 
 ### Parameters
 
@@ -277,7 +277,7 @@ console.log(invite.id);
 
 **get** `/organization/invites/{invite_id}`
 
-Retrieves an invite.
+Retrieve invite
 
 ### Parameters
 
@@ -390,7 +390,7 @@ console.log(invite.id);
 
 **delete** `/organization/invites/{invite_id}`
 
-Delete an invite. If the invite has already been accepted, it cannot be deleted.
+Delete invite
 
 ### Parameters
 

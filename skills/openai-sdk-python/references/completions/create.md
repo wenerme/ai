@@ -4,9 +4,7 @@
 
 **post** `/completions`
 
-Creates a completion for the provided prompt and parameters.
-
-Returns a completion object, or a sequence of completion objects if the request is streamed.
+Create completion
 
 ### Parameters
 
@@ -269,6 +267,10 @@ Returns a completion object, or a sequence of completion objects if the request 
 
         Audio input tokens present in the prompt.
 
+      - `cache_write_tokens: Optional[int]`
+
+        The unadjusted number of prompt tokens written to cache.
+
       - `cached_tokens: Optional[int]`
 
         Cached tokens present in the prompt.
@@ -333,6 +335,7 @@ for completion in client.completions.create(
     },
     "prompt_tokens_details": {
       "audio_tokens": 0,
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     }
   }

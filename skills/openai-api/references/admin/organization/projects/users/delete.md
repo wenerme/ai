@@ -2,10 +2,7 @@
 
 **delete** `/organization/projects/{project_id}/users/{user_id}`
 
-Deletes a user from the project.
-
-Returns confirmation of project user deletion, or an error if the project is
-archived (archived projects have no users).
+Delete project user
 
 ### Path Parameters
 

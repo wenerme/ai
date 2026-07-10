@@ -2,7 +2,7 @@
 
 **get** `/audio/voice_consents/{consent_id}`
 
-Retrieves a voice consent recording.
+Retrieve voice consent
 
 ### Path Parameters
 

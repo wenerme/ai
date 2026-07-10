@@ -16,7 +16,7 @@ This guide explains how to register, activate, and render plugins in a meeting u
 
 Plugins are interactive real-time applications that run inside a meeting, such as a shared whiteboard or a document viewer. When a participant activates a plugin, it becomes active for everyone in the session.
 
-This page is not available for the **Flutter, React Native**platform.
+This page is not available for the **Flutter**platform.
 
 WebMobile
 
@@ -88,6 +88,20 @@ let activePlugins = meeting.plugins.active
 let plugin = meeting.plugins.all.first { $0.id == pluginId }
 ```
 
+Use the `useRealtimeKitSelector` hook to read plugins reactively.
+
+```tsx
+import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react-native";
+
+
+const allPlugins = useRealtimeKitSelector((m) => m.plugins.all.toArray());
+const activePlugins = useRealtimeKitSelector((m) => m.plugins.active.toArray());
+
+
+// Get a single plugin by its namespaced id
+const plugin = useRealtimeKitSelector((m) => m.plugins.all.get(pluginId));
+```
+
 ## Register a plugin
 
 You register the plugins available in a session when you initialize the SDK. Each configuration provides the metadata RealtimeKit uses to list the plugin and the location it loads.
@@ -133,6 +147,48 @@ Each plugin configuration accepts the following fields:
 | icon        | Icon URL or data URI shown next to the name.                                               | string                                           | true     |
 | permissions | Controls whether the local participant can activate or deactivate the plugin.              | { canActivate: boolean; canDeactivate: boolean } | true     |
 | component   | Element rendered when the plugin is active.                                                | HTMLElement                                      | true     |
+
+Pass plugin configurations as `defaults.plugins` when calling `initMeeting`. In React Native, `component` should be an object with a `src` property containing the URL to render — you can load this in a `WebView` or use the UI Kit to handle rendering automatically.
+
+```tsx
+const [meeting, initMeeting] = useRealtimeKitClient();
+
+
+await initMeeting({
+  authToken: "<auth_token>",
+  defaults: {
+    plugins: [
+      {
+        // User-provided unique id. The SDK prefixes it with
+        // `{meetingId}:` to create the namespaced `plugin.id`.
+        id: "whiteboard",
+        // Display name shown in the plugins panel
+        name: "Whiteboard",
+        // Icon URL shown next to the name
+        icon: "https://example.com/whiteboard.png",
+        // Per-plugin permissions for the local participant
+        permissions: {
+          canActivate: true,
+          canDeactivate: true,
+        },
+        // URL to render when the plugin is active.
+        // Pass an object with a src property: { src: string }.
+        component: { src: "https://example.com/whiteboard/" },
+      },
+    ],
+  },
+});
+```
+
+Each plugin configuration accepts the following fields:
+
+| Field       | Description                                                                                | Type                                             | Required |
+| ----------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------ | -------- |
+| id          | Unique identifier for the plugin. The SDK prefixes it with {meetingId}: to form plugin.id. | string                                           | true     |
+| name        | Display name shown in the plugins panel.                                                   | string                                           | true     |
+| icon        | Icon URL shown next to the name.                                                           | string                                           | true     |
+| permissions | Controls whether the local participant can activate or deactivate the plugin.              | { canActivate: boolean; canDeactivate: boolean } | true     |
+| component   | Object with a src URL to render when the plugin is active.                                 | { src: string }                                  | true     |
 
 Pass a `pluginConfigs` list to `RtkMeetingInfo`. The SDK loads each plugin's `url` directly into a WebView when the plugin is activated.
 
@@ -307,6 +363,16 @@ While a plugin is active, call `getPluginView()` to obtain the Android `WebView`
 
 While a plugin is active, call `getPluginView()` to obtain the `WKWebView` that hosts it, and `sendData(eventName:data:)` to push data into that WebView.
 
+| Property    | Description                                                                              | Type                                             |
+| ----------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| id          | Namespaced plugin id, in the form {meetingId}:{configId}.                                | string                                           |
+| name        | Display name of the plugin.                                                              | string                                           |
+| icon        | Icon URL.                                                                                | string                                           |
+| permissions | Activation permissions for the local participant.                                        | { canActivate: boolean; canDeactivate: boolean } |
+| component   | The object provided at registration. Contains a src URL that your rendering layer loads. | { src: string }                                  |
+| active      | Whether the plugin is currently running.                                                 | boolean                                          |
+| enabledBy   | Id of the participant who activated the plugin.                                          | string                                           |
+
 ## Listen to plugin events
 
 A `Plugin` object emits events as its state changes. You can listen on a single plugin, or on a map to receive events for every plugin it contains.
@@ -448,7 +514,15 @@ guard let plugin = meeting.plugins.active.first else { return }
 let pluginView = plugin.getPluginView()
 ```
 
+The React Native UI Kit provides ready-made components for plugins:
+
+* [RtkPluginsToggle](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkpluginstoggle/): a control bar button that opens and closes the plugins sidebar.
+* [RtkPlugins](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkplugins/): a panel listing available plugins with controls to activate or deactivate each one.
+* [RtkPluginMain](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkpluginmain/): renders the active plugin in a `WebView`.
+
+These components read from `meeting.plugins` automatically once plugins are registered at initialization. If you use `RtkMeeting`, plugin UI is included without any additional setup.
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/plugins/#page","headline":"Plugins · Cloudflare Realtime docs","description":"Register and control plugins in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/plugins/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/plugins/#page","headline":"Plugins · Cloudflare Realtime docs","description":"Register and control plugins in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/plugins/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/plugins/","name":"Plugins"}}]}
 ```

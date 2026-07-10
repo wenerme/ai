@@ -6,7 +6,7 @@
 
 **get** `/organization/roles`
 
-Lists the roles configured for the organization.
+List organization roles
 
 ### Parameters
 
@@ -105,7 +105,7 @@ print(page.id)
 
 **post** `/organization/roles`
 
-Creates a custom role for the organization.
+Create organization role
 
 ### Parameters
 
@@ -195,7 +195,7 @@ print(role.id)
 
 **get** `/organization/roles/{role_id}`
 
-Retrieves an organization role.
+Retrieve organization role
 
 ### Parameters
 
@@ -274,7 +274,7 @@ print(role.id)
 
 **post** `/organization/roles/{role_id}`
 
-Updates an existing organization role.
+Update organization role
 
 ### Parameters
 
@@ -365,7 +365,7 @@ print(role.id)
 
 **delete** `/organization/roles/{role_id}`
 
-Deletes a custom role from the organization.
+Delete organization role
 
 ### Parameters
 

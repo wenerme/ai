@@ -544,9 +544,59 @@ await client.webhooks.unwrap();
 
     - `"event"`
 
+### Safety Identifier Blocked Webhook Event
+
+- `SafetyIdentifierBlockedWebhookEvent`
+
+  Sent when a request associated with a safety identifier has been blocked.
+
+  - `id: string`
+
+    The unique ID of the event.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the request was blocked.
+
+  - `data: Data`
+
+    Event data payload.
+
+    - `safety_category: string`
+
+      The safety category that triggered the block, such as `bio` or `cyber`.
+
+    - `safety_identifier: string`
+
+      The stable safety identifier associated with the blocked request.
+
+    - `model?: string`
+
+      The model used for the blocked request, if available.
+
+    - `project_id?: string`
+
+      The project associated with the blocked request, if available.
+
+    - `request_id?: string`
+
+      The OpenAI request ID for the blocked request, if available.
+
+  - `type: "safety_identifier.blocked"`
+
+    The type of the event. Always `safety_identifier.blocked`.
+
+    - `"safety_identifier.blocked"`
+
+  - `object?: "event"`
+
+    The object of the event. Always `event`.
+
+    - `"event"`
+
 ### Unwrap Webhook Event
 
-- `UnwrapWebhookEvent = BatchCancelledWebhookEvent | BatchCompletedWebhookEvent | BatchExpiredWebhookEvent | 12 more`
+- `UnwrapWebhookEvent = BatchCancelledWebhookEvent | BatchCompletedWebhookEvent | BatchExpiredWebhookEvent | 13 more`
 
   Sent when a batch API request has been cancelled.
 
@@ -1035,6 +1085,54 @@ await client.webhooks.unwrap();
       The type of the event. Always `response.incomplete`.
 
       - `"response.incomplete"`
+
+    - `object?: "event"`
+
+      The object of the event. Always `event`.
+
+      - `"event"`
+
+  - `SafetyIdentifierBlockedWebhookEvent`
+
+    Sent when a request associated with a safety identifier has been blocked.
+
+    - `id: string`
+
+      The unique ID of the event.
+
+    - `created_at: number`
+
+      The Unix timestamp (in seconds) of when the request was blocked.
+
+    - `data: Data`
+
+      Event data payload.
+
+      - `safety_category: string`
+
+        The safety category that triggered the block, such as `bio` or `cyber`.
+
+      - `safety_identifier: string`
+
+        The stable safety identifier associated with the blocked request.
+
+      - `model?: string`
+
+        The model used for the blocked request, if available.
+
+      - `project_id?: string`
+
+        The project associated with the blocked request, if available.
+
+      - `request_id?: string`
+
+        The OpenAI request ID for the blocked request, if available.
+
+    - `type: "safety_identifier.blocked"`
+
+      The type of the event. Always `safety_identifier.blocked`.
+
+      - `"safety_identifier.blocked"`
 
     - `object?: "event"`
 

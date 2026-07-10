@@ -2,7 +2,7 @@
 
 **get** `/vector_stores/{vector_store_id}/file_batches/{batch_id}/files`
 
-Returns a list of vector store files in a batch.
+List vector store files in a batch
 
 ### Path Parameters
 
@@ -98,7 +98,7 @@ Returns a list of vector store files in a batch.
 
   - `vector_store_id: string`
 
-    The ID of the [vector store](/docs/api-reference/vector-stores/object) that the [File](/docs/api-reference/files) is attached to.
+    The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) that the [File](https://platform.openai.com/docs/api-reference/files) is attached to.
 
   - `attributes: optional map[string or number or boolean]`
 
@@ -114,7 +114,7 @@ Returns a list of vector store files in a batch.
 
     - `boolean`
 
-  - `chunking_strategy: optional StaticFileChunkingStrategyObject or OtherFileChunkingStrategyObject`
+  - `chunking_strategy: optional FileChunkingStrategy`
 
     The strategy used to chunk the file.
 

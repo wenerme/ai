@@ -2,7 +2,7 @@
 
 **delete** `/containers/{container_id}/files/{file_id}`
 
-Delete Container File
+Delete a container file
 
 ### Path Parameters
 

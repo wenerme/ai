@@ -39,8 +39,8 @@ These selectors require additional configuration before they work.
 
 To turn on the selectors for your account:
 
-* [ Dashboard ](#tab-panel-7931)
-* [ API ](#tab-panel-7932)
+* [ Dashboard ](#tab-panel-8041)
+* [ API ](#tab-panel-8042)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Policy settings**, turn on **Allow egress policy host selectors**.
@@ -105,6 +105,14 @@ The Cloudflare One Client must be set to _Traffic and DNS mode_ for traffic affe
 
 ## Known issues
 
+### DNS resolution location
+
+For the [Application](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#application), [Content Categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#content-categories), [Domain](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#domain), and [Host](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#host) selectors, Gateway captures the destination IP address during the initial DNS resolution step described above. The egress policy does not change this IP address, so the destination Gateway connects to is independent of the location of the egress data center or dedicated egress IP you select.
+
+If the resolved destination IP and the egress IP are located in different regions, connections to destinations that enforce geo-restriction or IP-allowlisting based on the connection source may be rejected.
+
+This can affect you if you use Domain or Host egress selectors, your users are located outside the region associated with your egress IP, and the destination applies geo-restriction or IP-based access controls.
+
 ### Google Chrome restricts local network access
 
 Starting with [Chrome 142 ↗](https://developer.chrome.com/release-notes/142), the browser restricts requests from websites to local IP addresses, including the Gateway initial resolved IP CGNAT range (`100.80.0.0/16`). Because this range falls within `100.64.0.0/10`, Chrome categorizes these addresses as belonging to a local network. When a website loaded from a public IP makes subrequests to a domain resolved through an initial resolved IP, Chrome treats this as a public-to-local network request and displays a prompt asking the user to allow access to devices on the local network. Chrome will block requests to these domains until the user accepts this prompt.
@@ -141,6 +149,6 @@ Host selectors do not support HTTPS DNS record types. When a domain uses HTTPS r
 If you need to apply egress policies to a domain that uses HTTPS records, use an IP-based selector (such as [Destination IP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#destination-ip)) instead.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/#page","headline":"Host selectors · Cloudflare One docs","description":"Configure Host selectors in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/#page","headline":"Host selectors · Cloudflare One docs","description":"Configure Host selectors in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/egress-policies/","name":"Egress policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/egress-policies/host-selectors/","name":"Host selectors"}}]}
 ```

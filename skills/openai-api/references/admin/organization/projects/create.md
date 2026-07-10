@@ -2,7 +2,7 @@
 
 **post** `/organization/projects`
 
-Create a new project in the organization. Projects can be created and archived, but cannot be deleted.
+Create project
 
 ### Body Parameters
 
@@ -16,7 +16,7 @@ Create a new project in the organization. Projects can be created and archived, 
 
 - `geography: optional string`
 
-  Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
+  Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](https://platform.openai.com/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
 
 ### Returns
 

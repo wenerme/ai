@@ -2,7 +2,7 @@
 
 **delete** `/organization/projects/{project_id}/groups/{group_id}`
 
-Revokes a group's access to a project.
+Remove project group
 
 ### Path Parameters
 

@@ -6,7 +6,7 @@
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 
-Lists the project roles assigned to a user within a project.
+List project user role assignments
 
 ### Parameters
 
@@ -153,7 +153,7 @@ for await (const roleListResponse of client.admin.organization.projects.users.ro
 
 **post** `/projects/{project_id}/users/{user_id}/roles`
 
-Assigns a project role to a user within a project.
+Assign project role to user
 
 ### Parameters
 
@@ -393,7 +393,7 @@ console.log(role.object);
 
 **get** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Retrieves a project role assigned to a user.
+Retrieve project user role
 
 ### Parameters
 
@@ -520,7 +520,7 @@ console.log(role.id);
 
 **delete** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Unassigns a project role from a user within a project.
+Unassign project role from user
 
 ### Parameters
 

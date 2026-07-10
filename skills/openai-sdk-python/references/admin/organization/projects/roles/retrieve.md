@@ -4,7 +4,7 @@
 
 **get** `/projects/{project_id}/roles/{role_id}`
 
-Retrieves a project role.
+Retrieve project role
 
 ### Parameters
 

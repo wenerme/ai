@@ -2,7 +2,7 @@
 
 **delete** `/assistants/{assistant_id}`
 
-Delete an assistant.
+Delete assistant
 
 ### Path Parameters
 

@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/rate_limits`
 
-Returns the rate limits per model for a project.
+List project rate limits
 
 ### Parameters
 
@@ -101,10 +101,10 @@ print(page.id)
       "max_requests_per_1_day": 0
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -114,7 +114,7 @@ print(page.id)
 
 **post** `/organization/projects/{project_id}/rate_limits/{rate_limit_id}`
 
-Updates a project rate limit.
+Modify project rate limit
 
 ### Parameters
 

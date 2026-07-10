@@ -874,7 +874,7 @@ components:
           additionalProperties:
             nullable: true
           type: object
-        sakana-ai:
+        sakana:
           additionalProperties:
             nullable: true
           type: object

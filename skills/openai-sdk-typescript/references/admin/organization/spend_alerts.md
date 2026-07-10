@@ -6,7 +6,7 @@
 
 **get** `/organization/spend_alerts`
 
-Lists organization spend alerts.
+List organization spend alerts
 
 ### Parameters
 
@@ -130,7 +130,7 @@ for await (const organizationSpendAlert of client.admin.organization.spendAlerts
 
 **post** `/organization/spend_alerts`
 
-Creates an organization spend alert.
+Create organization spend alert
 
 ### Parameters
 
@@ -264,7 +264,7 @@ console.log(organizationSpendAlert.id);
 
 **get** `/organization/spend_alerts/{alert_id}`
 
-Retrieves an organization spend alert.
+Retrieve organization spend alert
 
 ### Parameters
 
@@ -359,7 +359,7 @@ console.log(organizationSpendAlert.id);
 
 **post** `/organization/spend_alerts/{alert_id}`
 
-Updates an organization spend alert.
+Update organization spend alert
 
 ### Parameters
 
@@ -495,7 +495,7 @@ console.log(organizationSpendAlert.id);
 
 **delete** `/organization/spend_alerts/{alert_id}`
 
-Deletes an organization spend alert.
+Delete organization spend alert
 
 ### Parameters
 

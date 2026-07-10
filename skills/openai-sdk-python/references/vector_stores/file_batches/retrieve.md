@@ -4,7 +4,7 @@
 
 **get** `/vector_stores/{vector_store_id}/file_batches/{batch_id}`
 
-Retrieves a vector store file batch.
+Retrieve vector store file batch
 
 ### Parameters
 

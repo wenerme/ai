@@ -4,7 +4,7 @@
 
 **post** `/threads/{thread_id}/runs`
 
-Create a run.
+Create run
 
 ### Parameters
 
@@ -46,7 +46,7 @@ Create a run.
 
         References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
-        - `image_file: ImageFile`
+        - `image_file: ImageFileParam`
 
           - `file_id: str`
 
@@ -72,7 +72,7 @@ Create a run.
 
         References an image URL in the content of a message.
 
-        - `image_url: ImageURL`
+        - `image_url: ImageURLParam`
 
           - `url: str`
 
@@ -183,7 +183,13 @@ Create a run.
 
   - `str`
 
-  - `Literal["gpt-5.4", "gpt-5.4-mini", "gpt-5.4-nano", 75 more]`
+  - `Literal["gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna", 78 more]`
+
+    - `"gpt-5.6-sol"`
+
+    - `"gpt-5.6-terra"`
+
+    - `"gpt-5.6-luna"`
 
     - `"gpt-5.4"`
 
@@ -347,16 +353,13 @@ Create a run.
 
 - `reasoning_effort: Optional[ReasoningEffort]`
 
-  Constrains effort on reasoning for
-  [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-  Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-  reasoning effort can result in faster responses and fewer tokens used
-  on reasoning in a response.
-
-  - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-  - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-  - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-  - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+  Constrains effort on reasoning for reasoning models. Currently supported
+  values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+  Reducing reasoning effort can result in faster responses and fewer tokens
+  used on reasoning in a response. Not all reasoning models support every
+  value. See the
+  [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+  for model-specific support.
 
   - `"none"`
 
@@ -369,6 +372,8 @@ Create a run.
   - `"high"`
 
   - `"xhigh"`
+
+  - `"max"`
 
 - `response_format: Optional[AssistantResponseFormatOptionParam]`
 
@@ -495,75 +500,9 @@ Create a run.
 
         The name of the function to call.
 
-- `tools: Optional[Iterable[AssistantToolParam]]`
+- `tools: Optional[Iterable[object]]`
 
   Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
-
-  - `class CodeInterpreterTool: …`
-
-  - `class FileSearchTool: …`
-
-    - `type: Literal["file_search"]`
-
-      The type of tool being defined: `file_search`
-
-      - `"file_search"`
-
-    - `file_search: Optional[FileSearch]`
-
-      Overrides for the file search tool.
-
-      - `max_num_results: Optional[int]`
-
-        The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-        Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-      - `ranking_options: Optional[FileSearchRankingOptions]`
-
-        The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-        See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-        - `score_threshold: float`
-
-          The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-        - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
-
-          The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-          - `"auto"`
-
-          - `"default_2024_08_21"`
-
-  - `class FunctionTool: …`
-
-    - `function: FunctionDefinition`
-
-      - `name: str`
-
-        The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-      - `description: Optional[str]`
-
-        A description of what the function does, used by the model to choose when and how to call the function.
-
-      - `parameters: Optional[FunctionParameters]`
-
-        The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-        Omitting `parameters` defines a function with an empty parameter list.
-
-      - `strict: Optional[bool]`
-
-        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-    - `type: Literal["function"]`
-
-      The type of tool being defined: `function`
-
-      - `"function"`
 
 - `top_p: Optional[float]`
 
@@ -807,27 +746,7 @@ Create a run.
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: RunStatus`
-
-    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
-
-    - `"queued"`
-
-    - `"in_progress"`
-
-    - `"requires_action"`
-
-    - `"cancelling"`
-
-    - `"cancelled"`
-
-    - `"failed"`
-
-    - `"completed"`
-
-    - `"incomplete"`
-
-    - `"expired"`
+  - `status: object`
 
   - `thread_id: str`
 
@@ -871,81 +790,9 @@ Create a run.
 
           The name of the function to call.
 
-  - `tools: List[AssistantTool]`
+  - `tools: List[object]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
-
-    - `class CodeInterpreterTool: …`
-
-      - `type: Literal["code_interpreter"]`
-
-        The type of tool being defined: `code_interpreter`
-
-        - `"code_interpreter"`
-
-    - `class FileSearchTool: …`
-
-      - `type: Literal["file_search"]`
-
-        The type of tool being defined: `file_search`
-
-        - `"file_search"`
-
-      - `file_search: Optional[FileSearch]`
-
-        Overrides for the file search tool.
-
-        - `max_num_results: Optional[int]`
-
-          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-        - `ranking_options: Optional[FileSearchRankingOptions]`
-
-          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-          - `score_threshold: float`
-
-            The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
-
-            The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-            - `"auto"`
-
-            - `"default_2024_08_21"`
-
-    - `class FunctionTool: …`
-
-      - `function: FunctionDefinition`
-
-        - `name: str`
-
-          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-        - `description: Optional[str]`
-
-          A description of what the function does, used by the model to choose when and how to call the function.
-
-        - `parameters: Optional[FunctionParameters]`
-
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-          Omitting `parameters` defines a function with an empty parameter list.
-
-        - `strict: Optional[bool]`
-
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-      - `type: Literal["function"]`
-
-        The type of tool being defined: `function`
-
-        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -1047,13 +894,11 @@ for run in client.beta.threads.runs.create(
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": "queued",
+  "status": {},
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {
-      "type": "code_interpreter"
-    }
+    {}
   ],
   "truncation_strategy": {
     "type": "auto",

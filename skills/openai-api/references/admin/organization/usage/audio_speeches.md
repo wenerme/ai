@@ -2,7 +2,7 @@
 
 **get** `/organization/usage/audio_speeches`
 
-Get audio speeches usage details for the organization.
+Audio speeches
 
 ### Query Parameters
 

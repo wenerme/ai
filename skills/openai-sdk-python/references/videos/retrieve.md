@@ -4,7 +4,7 @@
 
 **get** `/videos/{video_id}`
 
-Fetch the latest metadata for a generated video.
+Retrieve video
 
 ### Parameters
 

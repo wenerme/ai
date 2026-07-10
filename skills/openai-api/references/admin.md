@@ -8,7 +8,7 @@
 
 **get** `/organization/audit_logs`
 
-List user actions and configuration changes within this organization.
+List audit logs
 
 ### Query Parameters
 
@@ -50,7 +50,7 @@ List user actions and configuration changes within this organization.
 
 - `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 56 more`
 
-  Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/docs/api-reference/audit-logs/object).
+  Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](https://platform.openai.com/docs/api-reference/audit-logs/object).
 
   - `"api_key.created"`
 
@@ -2850,7 +2850,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
 **get** `/organization/admin_api_keys`
 
-List organization API keys
+List all organization and project API keys.
 
 ### Query Parameters
 
@@ -3019,7 +3019,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys?after=key_abc&limit=2
 
 **post** `/organization/admin_api_keys`
 
-Create an organization admin API key
+Create admin API key
 
 ### Body Parameters
 
@@ -3109,7 +3109,7 @@ curl -X POST https://api.openai.com/v1/organization/admin_api_keys \
 
 **get** `/organization/admin_api_keys/{key_id}`
 
-Retrieve a single organization API key
+Retrieve admin API key
 
 ### Path Parameters
 
@@ -3241,7 +3241,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys/key_abc \
 
 **delete** `/organization/admin_api_keys/{key_id}`
 
-Delete an organization admin API key
+Delete admin API key
 
 ### Path Parameters
 
@@ -3387,7 +3387,7 @@ curl -X DELETE https://api.openai.com/v1/organization/admin_api_keys/key_abc \
 
 **get** `/organization/usage/audio_speeches`
 
-Get audio speeches usage details for the organization.
+Audio speeches
 
 ### Query Parameters
 
@@ -3908,7 +3908,7 @@ curl "https://api.openai.com/v1/organization/usage/audio_speeches?start_time=173
 
 **get** `/organization/usage/audio_transcriptions`
 
-Get audio transcriptions usage details for the organization.
+Audio transcriptions
 
 ### Query Parameters
 
@@ -4429,7 +4429,7 @@ curl "https://api.openai.com/v1/organization/usage/audio_transcriptions?start_ti
 
 **get** `/organization/usage/code_interpreter_sessions`
 
-Get code interpreter sessions usage details for the organization.
+Code interpreter sessions
 
 ### Query Parameters
 
@@ -4928,7 +4928,7 @@ curl "https://api.openai.com/v1/organization/usage/code_interpreter_sessions?sta
 
 **get** `/organization/usage/completions`
 
-Get completions usage details for the organization.
+Completions
 
 ### Query Parameters
 
@@ -5463,7 +5463,7 @@ curl "https://api.openai.com/v1/organization/usage/completions?start_time=173041
 
 **get** `/organization/usage/embeddings`
 
-Get embeddings usage details for the organization.
+Embeddings
 
 ### Query Parameters
 
@@ -5984,7 +5984,7 @@ curl "https://api.openai.com/v1/organization/usage/embeddings?start_time=1730419
 
 **get** `/organization/usage/images`
 
-Get images usage details for the organization.
+Images
 
 ### Query Parameters
 
@@ -6535,7 +6535,7 @@ curl "https://api.openai.com/v1/organization/usage/images?start_time=1730419200&
 
 **get** `/organization/usage/moderations`
 
-Get moderations usage details for the organization.
+Moderations
 
 ### Query Parameters
 
@@ -7056,7 +7056,7 @@ curl "https://api.openai.com/v1/organization/usage/moderations?start_time=173041
 
 **get** `/organization/usage/vector_stores`
 
-Get vector stores usage details for the organization.
+Vector stores
 
 ### Query Parameters
 
@@ -7555,7 +7555,7 @@ curl "https://api.openai.com/v1/organization/usage/vector_stores?start_time=1730
 
 **get** `/organization/usage/file_search_calls`
 
-Get file search calls usage details for the organization.
+File search calls
 
 ### Query Parameters
 
@@ -8075,7 +8075,7 @@ curl "https://api.openai.com/v1/organization/usage/file_search_calls?start_time=
 
 **get** `/organization/usage/web_search_calls`
 
-Get web search calls usage details for the organization.
+Web search calls
 
 ### Query Parameters
 
@@ -8609,7 +8609,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
 **get** `/organization/costs`
 
-Get costs details for the organization.
+Costs
 
 ### Query Parameters
 
@@ -13298,7 +13298,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
 **get** `/organization/invites`
 
-Returns a list of invites in the organization.
+List invites
 
 ### Query Parameters
 
@@ -13463,7 +13463,7 @@ curl https://api.openai.com/v1/organization/invites?after=invite-abc&limit=20 \
 
 **post** `/organization/invites`
 
-Create an invite for a user to the organization. The invite must be accepted by the user before they have access to the organization.
+Create invite
 
 ### Body Parameters
 
@@ -13645,7 +13645,7 @@ curl -X POST https://api.openai.com/v1/organization/invites \
 
 **get** `/organization/invites/{invite_id}`
 
-Retrieves an invite.
+Retrieve invite
 
 ### Path Parameters
 
@@ -13772,7 +13772,7 @@ curl https://api.openai.com/v1/organization/invites/invite-abc \
 
 **delete** `/organization/invites/{invite_id}`
 
-Delete an invite. If the invite has already been accepted, it cannot be deleted.
+Delete invite
 
 ### Path Parameters
 
@@ -13914,7 +13914,7 @@ curl -X DELETE https://api.openai.com/v1/organization/invites/invite-abc \
 
 **get** `/organization/users`
 
-Lists all of the users in the organization.
+List users
 
 ### Query Parameters
 
@@ -14129,7 +14129,7 @@ curl https://api.openai.com/v1/organization/users?after=user_abc&limit=20 \
 
 **get** `/organization/users/{user_id}`
 
-Retrieves a user by their identifier.
+Retrieve user
 
 ### Path Parameters
 
@@ -14310,7 +14310,7 @@ curl https://api.openai.com/v1/organization/users/user_abc \
 
 **post** `/organization/users/{user_id}`
 
-Modifies a user's role in the organization.
+Modify user
 
 ### Path Parameters
 
@@ -14514,7 +14514,7 @@ curl -X POST https://api.openai.com/v1/organization/users/user_abc \
 
 **delete** `/organization/users/{user_id}`
 
-Deletes a user from the organization.
+Delete user
 
 ### Path Parameters
 
@@ -14688,7 +14688,7 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc \
 
 **get** `/organization/users/{user_id}/roles`
 
-Lists the organization roles assigned to a user within the organization.
+List user organization role assignments
 
 ### Path Parameters
 
@@ -14872,7 +14872,7 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles \
 
 **post** `/organization/users/{user_id}/roles`
 
-Assigns an organization role to a user within the organization.
+Assign organization role to user
 
 ### Path Parameters
 
@@ -15135,7 +15135,7 @@ curl -X POST https://api.openai.com/v1/organization/users/user_abc123/roles \
 
 **get** `/organization/users/{user_id}/roles/{role_id}`
 
-Retrieves an organization role assigned to a user.
+Retrieve user organization role
 
 ### Path Parameters
 
@@ -15268,7 +15268,7 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
 **delete** `/organization/users/{user_id}/roles/{role_id}`
 
-Unassigns an organization role from a user within the organization.
+Unassign organization role from user
 
 ### Path Parameters
 
@@ -15604,7 +15604,7 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc123/roles/ro
 
 **get** `/organization/groups`
 
-Lists all groups in the organization.
+List groups
 
 ### Query Parameters
 
@@ -15725,7 +15725,7 @@ curl https://api.openai.com/v1/organization/groups?limit=20&order=asc \
 
 **post** `/organization/groups`
 
-Creates a new group in the organization.
+Create group
 
 ### Body Parameters
 
@@ -15813,7 +15813,7 @@ curl -X POST https://api.openai.com/v1/organization/groups \
 
 **get** `/organization/groups/{group_id}`
 
-Retrieves a group.
+Retrieve group
 
 ### Path Parameters
 
@@ -15892,7 +15892,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
 
 **post** `/organization/groups/{group_id}`
 
-Updates a group's information.
+Update group
 
 ### Path Parameters
 
@@ -15970,7 +15970,7 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
 
 **delete** `/organization/groups/{group_id}`
 
-Deletes a group from the organization.
+Delete group
 
 ### Path Parameters
 
@@ -16108,7 +16108,7 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
 **get** `/organization/groups/{group_id}/users`
 
-Lists the users assigned to a group.
+List group users
 
 ### Path Parameters
 
@@ -16217,7 +16217,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?lim
 
 **post** `/organization/groups/{group_id}/users`
 
-Adds a user to a group.
+Add group user
 
 ### Path Parameters
 
@@ -16291,7 +16291,7 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/u
 
 **get** `/organization/groups/{group_id}/users/{user_id}`
 
-Retrieves a user in a group.
+Retrieve group user
 
 ### Path Parameters
 
@@ -16374,7 +16374,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/use
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
 
-Removes a user from a group.
+Remove group user
 
 ### Path Parameters
 
@@ -16524,7 +16524,7 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
 **get** `/organization/groups/{group_id}/roles`
 
-Lists the organization roles assigned to a group within the organization.
+List group organization role assignments
 
 ### Path Parameters
 
@@ -16708,7 +16708,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
 
 **post** `/organization/groups/{group_id}/roles`
 
-Assigns an organization role to a group within the organization.
+Assign organization role to group
 
 ### Path Parameters
 
@@ -16867,7 +16867,7 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/r
 
 **get** `/organization/groups/{group_id}/roles/{role_id}`
 
-Retrieves an organization role assigned to a group.
+Retrieve group organization role
 
 ### Path Parameters
 
@@ -17000,7 +17000,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 
 **delete** `/organization/groups/{group_id}/roles/{role_id}`
 
-Unassigns an organization role from a group within the organization.
+Unassign organization role from group
 
 ### Path Parameters
 
@@ -17262,7 +17262,7 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
 **get** `/organization/roles`
 
-Lists the roles configured for the organization.
+List organization roles
 
 ### Query Parameters
 
@@ -17398,7 +17398,7 @@ curl https://api.openai.com/v1/organization/roles?limit=20 \
 
 **post** `/organization/roles`
 
-Creates a custom role for the organization.
+Create organization role
 
 ### Body Parameters
 
@@ -17517,7 +17517,7 @@ curl -X POST https://api.openai.com/v1/organization/roles \
 
 **get** `/organization/roles/{role_id}`
 
-Retrieves an organization role.
+Retrieve organization role
 
 ### Path Parameters
 
@@ -17611,7 +17611,7 @@ curl https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
 
 **post** `/organization/roles/{role_id}`
 
-Updates an existing organization role.
+Update organization role
 
 ### Path Parameters
 
@@ -17729,7 +17729,7 @@ curl -X POST https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
 
 **delete** `/organization/roles/{role_id}`
 
-Deletes a custom role from the organization.
+Delete organization role
 
 ### Path Parameters
 
@@ -17851,7 +17851,7 @@ curl -X DELETE https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
 
 **get** `/organization/data_retention`
 
-Retrieves organization data retention controls.
+Retrieve organization data retention
 
 ### Returns
 
@@ -17914,7 +17914,7 @@ curl https://api.openai.com/v1/organization/data_retention \
 
 **post** `/organization/data_retention`
 
-Updates organization data retention controls.
+Update organization data retention
 
 ### Body Parameters
 
@@ -18026,7 +18026,7 @@ curl -X POST https://api.openai.com/v1/organization/data_retention \
 
 **get** `/organization/spend_alerts`
 
-Lists organization spend alerts.
+List organization spend alerts
 
 ### Query Parameters
 
@@ -18189,7 +18189,7 @@ curl https://api.openai.com/v1/organization/spend_alerts?limit=20&order=asc \
 
 **post** `/organization/spend_alerts`
 
-Creates an organization spend alert.
+Create organization spend alert
 
 ### Body Parameters
 
@@ -18354,7 +18354,7 @@ curl -X POST https://api.openai.com/v1/organization/spend_alerts \
 
 **get** `/organization/spend_alerts/{alert_id}`
 
-Retrieves an organization spend alert.
+Retrieve organization spend alert
 
 ### Path Parameters
 
@@ -18465,7 +18465,7 @@ curl https://api.openai.com/v1/organization/spend_alerts/alert_abc123 \
 
 **post** `/organization/spend_alerts/{alert_id}`
 
-Updates an organization spend alert.
+Update organization spend alert
 
 ### Path Parameters
 
@@ -18634,7 +18634,7 @@ curl -X POST https://api.openai.com/v1/organization/spend_alerts/alert_abc123 \
 
 **delete** `/organization/spend_alerts/{alert_id}`
 
-Deletes an organization spend alert.
+Delete organization spend alert
 
 ### Path Parameters
 
@@ -18774,7 +18774,7 @@ curl -X DELETE https://api.openai.com/v1/organization/spend_alerts/alert_abc123 
 
 **get** `/organization/certificates`
 
-List uploaded certificates for this organization.
+List organization certificates
 
 ### Query Parameters
 
@@ -18906,9 +18906,7 @@ curl https://api.openai.com/v1/organization/certificates \
 
 **post** `/organization/certificates`
 
-Upload a certificate to the organization. This does **not** automatically activate the certificate.
-
-Organizations can upload up to 50 certificates.
+Upload certificate
 
 ### Body Parameters
 
@@ -19029,9 +19027,7 @@ curl -X POST https://api.openai.com/v1/organization/certificates \
 
 **get** `/organization/certificates/{certificate_id}`
 
-Get a certificate that has been uploaded to the organization.
-
-You can get a certificate regardless of whether it is active or not.
+Get certificate
 
 ### Path Parameters
 
@@ -19146,7 +19142,7 @@ curl "https://api.openai.com/v1/organization/certificates/cert_abc?include[]=con
 
 **post** `/organization/certificates/{certificate_id}`
 
-Modify a certificate. Note that only the name can be modified.
+Modify certificate
 
 ### Path Parameters
 
@@ -19264,9 +19260,7 @@ curl -X POST https://api.openai.com/v1/organization/certificates/cert_abc \
 
 **delete** `/organization/certificates/{certificate_id}`
 
-Delete a certificate from the organization.
-
-The certificate must be inactive for the organization and all projects.
+Delete certificate
 
 ### Path Parameters
 
@@ -19321,9 +19315,7 @@ curl -X DELETE https://api.openai.com/v1/organization/certificates/cert_abc \
 
 **post** `/organization/certificates/activate`
 
-Activate certificates at the organization level.
-
-You can atomically and idempotently activate up to 10 certificates at a time.
+Activate certificates for organization
 
 ### Body Parameters
 
@@ -19452,9 +19444,7 @@ curl https://api.openai.com/v1/organization/certificates/activate \
 
 **post** `/organization/certificates/deactivate`
 
-Deactivate certificates at the organization level.
-
-You can atomically and idempotently deactivate up to 10 certificates at a time.
+Deactivate certificates for organization
 
 ### Body Parameters
 
@@ -19765,7 +19755,7 @@ curl https://api.openai.com/v1/organization/certificates/deactivate \
 
 **get** `/organization/projects`
 
-Returns a list of projects.
+List projects
 
 ### Query Parameters
 
@@ -19887,7 +19877,7 @@ curl https://api.openai.com/v1/organization/projects?after=proj_abc&limit=20&inc
 
 **post** `/organization/projects`
 
-Create a new project in the organization. Projects can be created and archived, but cannot be deleted.
+Create project
 
 ### Body Parameters
 
@@ -19901,7 +19891,7 @@ Create a new project in the organization. Projects can be created and archived, 
 
 - `geography: optional string`
 
-  Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
+  Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](https://platform.openai.com/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
 
 ### Returns
 
@@ -19992,7 +19982,7 @@ curl -X POST https://api.openai.com/v1/organization/projects \
 
 **get** `/organization/projects/{project_id}`
 
-Retrieves a project.
+Retrieve project
 
 ### Path Parameters
 
@@ -20080,7 +20070,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc \
 
 **post** `/organization/projects/{project_id}`
 
-Modifies a project in the organization.
+Modify project
 
 ### Path Parameters
 
@@ -20174,7 +20164,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
 **post** `/organization/projects/{project_id}/archive`
 
-Archives a project in the organization. Archived projects cannot be used or updated.
+Archive project
 
 ### Path Parameters
 
@@ -20303,7 +20293,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/archive \
 
 **get** `/organization/projects/{project_id}/users`
 
-Returns a list of users in the project.
+List project users
 
 ### Path Parameters
 
@@ -20418,7 +20408,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/users?after=user_a
 
 **post** `/organization/projects/{project_id}/users`
 
-Adds a user to the project. Users must already be members of the organization to be added to a project.
+Create project user
 
 ### Path Parameters
 
@@ -20522,7 +20512,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users \
 
 **get** `/organization/projects/{project_id}/users/{user_id}`
 
-Retrieves a user in the project.
+Retrieve project user
 
 ### Path Parameters
 
@@ -20607,7 +20597,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/users/user_abc \
 
 **post** `/organization/projects/{project_id}/users/{user_id}`
 
-Modifies a user's role in the project.
+Modify project user
 
 ### Path Parameters
 
@@ -20703,10 +20693,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users/user
 
 **delete** `/organization/projects/{project_id}/users/{user_id}`
 
-Deletes a user from the project.
-
-Returns confirmation of project user deletion, or an error if the project is
-archived (archived projects have no users).
+Delete project user
 
 ### Path Parameters
 
@@ -20812,7 +20799,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/users/us
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 
-Lists the project roles assigned to a user within a project.
+List project user role assignments
 
 ### Path Parameters
 
@@ -20998,7 +20985,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles \
 
 **post** `/projects/{project_id}/users/{user_id}/roles`
 
-Assigns a project role to a user within a project.
+Assign project role to user
 
 ### Path Parameters
 
@@ -21263,7 +21250,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/ro
 
 **get** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Retrieves a project role assigned to a user.
+Retrieve project user role
 
 ### Path Parameters
 
@@ -21398,7 +21385,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
 **delete** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Unassigns a project role from a user within a project.
+Unassign project role from user
 
 ### Path Parameters
 
@@ -21736,7 +21723,7 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/
 
 **get** `/organization/projects/{project_id}/service_accounts`
 
-Returns a list of service accounts in the project.
+List project service accounts
 
 ### Path Parameters
 
@@ -21851,7 +21838,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts?a
 
 **post** `/organization/projects/{project_id}/service_accounts`
 
-Creates a new service account in the project. This also returns an unredacted API key for the service account.
+Create project service account
 
 ### Path Parameters
 
@@ -21961,7 +21948,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
 **get** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Retrieves a service account in the project.
+Retrieve project service account
 
 ### Path Parameters
 
@@ -22044,7 +22031,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/s
 
 **post** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Updates a service account in the project.
+Update project service account
 
 ### Path Parameters
 
@@ -22147,10 +22134,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
 **delete** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Deletes a service account from the project.
-
-Returns confirmation of service account deletion, or an error if the project
-is archived (archived projects have no service accounts).
+Delete project service account
 
 ### Path Parameters
 
@@ -22292,7 +22276,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_
 
 **get** `/organization/projects/{project_id}/api_keys`
 
-Returns a list of API keys in the project.
+List project API keys
 
 ### Path Parameters
 
@@ -22489,7 +22473,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys?after=key
 
 **get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Retrieves an API key in the project.
+Retrieve project API key
 
 ### Path Parameters
 
@@ -22654,10 +22638,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
 
 **delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Deletes an API key from the project.
-
-Returns confirmation of the key deletion, or an error if the key belonged to
-a service account.
+Delete project API key
 
 ### Path Parameters
 
@@ -22817,7 +22798,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
 
 **get** `/organization/projects/{project_id}/rate_limits`
 
-Returns the rate limits per model for a project.
+List project rate limits
 
 ### Path Parameters
 
@@ -22953,7 +22934,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/rate_limits?after=
 
 **post** `/organization/projects/{project_id}/rate_limits/{rate_limit_id}`
 
-Updates a project rate limit.
+Modify project rate limit
 
 ### Path Parameters
 
@@ -23132,7 +23113,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/rate_limit
 
 **get** `/organization/projects/{project_id}/model_permissions`
 
-Returns model permissions for a project.
+Retrieve project model permissions
 
 ### Path Parameters
 
@@ -23206,7 +23187,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/model_permissions 
 
 **post** `/organization/projects/{project_id}/model_permissions`
 
-Updates model permissions for a project.
+Modify project model permissions
 
 ### Path Parameters
 
@@ -23306,7 +23287,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/model_perm
 
 **delete** `/organization/projects/{project_id}/model_permissions`
 
-Deletes model permissions for a project.
+Delete project model permissions
 
 ### Path Parameters
 
@@ -23410,7 +23391,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/model_pe
 
 **get** `/organization/projects/{project_id}/hosted_tool_permissions`
 
-Returns hosted tool permissions for a project.
+Retrieve project hosted tool permissions
 
 ### Path Parameters
 
@@ -23525,7 +23506,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/hosted_tool_permis
 
 **post** `/organization/projects/{project_id}/hosted_tool_permissions`
 
-Updates hosted tool permissions for a project.
+Modify project hosted tool permissions
 
 ### Path Parameters
 
@@ -23742,7 +23723,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/hosted_too
 
 **get** `/organization/projects/{project_id}/groups`
 
-Lists the groups that have access to a project.
+List project groups
 
 ### Path Parameters
 
@@ -23874,7 +23855,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc123/groups?limit=20
 
 **post** `/organization/projects/{project_id}/groups`
 
-Grants a group access to a project.
+Add project group
 
 ### Path Parameters
 
@@ -23979,7 +23960,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc123/groups 
 
 **get** `/organization/projects/{project_id}/groups/{group_id}`
 
-Retrieves a project's group.
+Retrieve project group
 
 ### Path Parameters
 
@@ -24078,7 +24059,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc123/groups/group_01
 
 **delete** `/organization/projects/{project_id}/groups/{group_id}`
 
-Revokes a group's access to a project.
+Remove project group
 
 ### Path Parameters
 
@@ -24192,7 +24173,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc123/group
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 
-Lists the project roles assigned to a group within a project.
+List project group role assignments
 
 ### Path Parameters
 
@@ -24378,7 +24359,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
 **post** `/projects/{project_id}/groups/{group_id}/roles`
 
-Assigns a project role to a group within a project.
+Assign project role to group
 
 ### Path Parameters
 
@@ -24539,7 +24520,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8A
 
 **get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Retrieves a project role assigned to a group.
+Retrieve project group role
 
 ### Path Parameters
 
@@ -24674,7 +24655,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
 **delete** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Unassigns a project role from a group within a project.
+Unassign project role from group
 
 ### Path Parameters
 
@@ -24938,7 +24919,7 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F
 
 **get** `/projects/{project_id}/roles`
 
-Lists the roles configured for a project.
+List project roles
 
 ### Path Parameters
 
@@ -25078,7 +25059,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/roles?limit=20 \
 
 **post** `/projects/{project_id}/roles`
 
-Creates a custom role for a project.
+Create project role
 
 ### Path Parameters
 
@@ -25201,7 +25182,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/roles \
 
 **get** `/projects/{project_id}/roles/{role_id}`
 
-Retrieves a project role.
+Retrieve project role
 
 ### Path Parameters
 
@@ -25297,7 +25278,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8PROJ \
 
 **post** `/projects/{project_id}/roles/{role_id}`
 
-Updates an existing project role.
+Update project role
 
 ### Path Parameters
 
@@ -25417,7 +25398,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8PRO
 
 **delete** `/projects/{project_id}/roles/{role_id}`
 
-Deletes a custom role from a project.
+Delete project role
 
 ### Path Parameters
 
@@ -25505,7 +25486,7 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8P
 
 **get** `/organization/projects/{project_id}/data_retention`
 
-Retrieves project data retention controls.
+Retrieve project data retention
 
 ### Path Parameters
 
@@ -25576,7 +25557,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/data_retention \
 
 **post** `/organization/projects/{project_id}/data_retention`
 
-Updates project data retention controls.
+Update project data retention
 
 ### Path Parameters
 
@@ -25704,7 +25685,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/data_reten
 
 **get** `/organization/projects/{project_id}/spend_alerts`
 
-Lists project spend alerts.
+List project spend alerts
 
 ### Path Parameters
 
@@ -25871,7 +25852,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts?limit
 
 **post** `/organization/projects/{project_id}/spend_alerts`
 
-Creates a project spend alert.
+Create project spend alert
 
 ### Path Parameters
 
@@ -26040,7 +26021,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_aler
 
 **get** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Retrieves a project spend alert.
+Retrieve project spend alert
 
 ### Path Parameters
 
@@ -26153,7 +26134,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts/alert
 
 **post** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Updates a project spend alert.
+Update project spend alert
 
 ### Path Parameters
 
@@ -26324,7 +26305,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_aler
 
 **delete** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Deletes a project spend alert.
+Delete project spend alert
 
 ### Path Parameters
 
@@ -26466,7 +26447,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/spend_al
 
 **get** `/organization/projects/{project_id}/certificates`
 
-List certificates for this project.
+List project certificates
 
 ### Path Parameters
 
@@ -26602,9 +26583,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
 
 **post** `/organization/projects/{project_id}/certificates/activate`
 
-Activate certificates at the project level.
-
-You can atomically and idempotently activate up to 10 certificates at a time.
+Activate certificates for project
 
 ### Path Parameters
 
@@ -26737,8 +26716,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/activ
 
 **post** `/organization/projects/{project_id}/certificates/deactivate`
 
-Deactivate certificates at the project level. You can atomically and
-idempotently deactivate up to 10 certificates at a time.
+Deactivate certificates for project
 
 ### Path Parameters
 

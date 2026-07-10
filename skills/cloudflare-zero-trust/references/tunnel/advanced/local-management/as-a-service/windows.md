@@ -16,7 +16,7 @@ You can install `cloudflared` as a system service on Windows.
 
 ## Configure `cloudflared` as a service
 
-By default, Cloudflare Tunnel expects all of the configuration to exist in the `%USERPROFILE%\.cloudflared\config.yml` [configuration file](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/configuration-file/). At a minimum you must specify the following arguments to run as a service:
+By default, Cloudflare Tunnel expects all of the configuration to exist in the `%USERPROFILE%\.cloudflared\config.yml` [configuration file](https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/). At a minimum you must specify the following arguments to run as a service:
 
 | Argument         | Description                                          |
 | ---------------- | ---------------------------------------------------- |
@@ -52,8 +52,8 @@ copy C:\Users\%USERNAME%\.cloudflared\cert.pem C:\Windows\System32\config\system
 ```bash
 cloudflared.exe tunnel create <Tunnel Name>
 ```
-This will generate a [credentials file](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/local-tunnel-terms/#credentials-file) in `.json` format.
-10. [Create a configuration file](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/create-local-tunnel/#4-create-a-configuration-file) with the following content:
+This will generate a [credentials file](https://developers.cloudflare.com/tunnel/advanced/local-management/local-tunnel-terms/#credentials-file) in `.json` format.
+10. [Create a configuration file](https://developers.cloudflare.com/tunnel/advanced/local-management/create-local-tunnel/#4-create-a-configuration-file) with the following content:
 ```txt
 tunnel: <Tunnel ID>
 credentials-file: C:\Windows\System32\config\systemprofile\.cloudflared\<Tunnel-ID>.json
@@ -99,7 +99,7 @@ SERVICE_NAME: cloudflared
 
 ## Next steps
 
-You can now [route traffic through your tunnel](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/create-local-tunnel/#5-start-routing-traffic). If you add IP routes or otherwise change the configuration, restart the service to load the new configuration:
+You can now [route traffic through your tunnel](https://developers.cloudflare.com/tunnel/advanced/local-management/create-local-tunnel/#5-start-routing-traffic). If you add IP routes or otherwise change the configuration, restart the service to load the new configuration:
 
 ```bash
 sc stop cloudflared
@@ -107,6 +107,6 @@ sc start cloudflared
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/as-a-service/windows/#page","headline":"Run as a service on Windows · Cloudflare Docs","description":"Install and run cloudflared as a Windows service.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/as-a-service/windows/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Windows"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/as-a-service/windows/#page","headline":"Run as a service on Windows · Cloudflare Docs","description":"Install and run cloudflared as a Windows service.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/as-a-service/windows/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Windows"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/advanced/","name":"Advanced"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/advanced/local-management/","name":"Locally-managed tunnels"}},{"@type":"ListItem","position":5,"item":{"@id":"/tunnel/advanced/local-management/as-a-service/","name":"Run as a service"}},{"@type":"ListItem","position":6,"item":{"@id":"/tunnel/advanced/local-management/as-a-service/windows/","name":"Windows"}}]}
 ```

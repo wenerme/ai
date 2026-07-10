@@ -6,7 +6,7 @@
 
 **get** `/vector_stores/{vector_store_id}/files`
 
-Returns a list of vector store files.
+List vector store files
 
 ### Parameters
 
@@ -116,39 +116,7 @@ Returns a list of vector store files.
 
     - `bool`
 
-  - `chunking_strategy: Optional[FileChunkingStrategy]`
-
-    The strategy used to chunk the file.
-
-    - `class StaticFileChunkingStrategyObject: …`
-
-      - `static: StaticFileChunkingStrategy`
-
-        - `chunk_overlap_tokens: int`
-
-          The number of tokens that overlap between chunks. The default value is `400`.
-
-          Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-        - `max_chunk_size_tokens: int`
-
-          The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-      - `type: Literal["static"]`
-
-        Always `static`.
-
-        - `"static"`
-
-    - `class OtherFileChunkingStrategyObject: …`
-
-      This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
-
-      - `type: Literal["other"]`
-
-        Always `other`.
-
-        - `"other"`
+  - `chunking_strategy: Optional[object]`
 
 ### Example
 
@@ -185,13 +153,7 @@ print(page.id)
       "attributes": {
         "foo": "string"
       },
-      "chunking_strategy": {
-        "static": {
-          "chunk_overlap_tokens": 0,
-          "max_chunk_size_tokens": 100
-        },
-        "type": "static"
-      }
+      "chunking_strategy": {}
     }
   ],
   "first_id": "file-abc123",
@@ -244,7 +206,7 @@ print(vector_store_files)
 
 **post** `/vector_stores/{vector_store_id}/files`
 
-Create a vector store file by attaching a [File](https://platform.openai.com/docs/api-reference/files) to a [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object).
+Create vector store file
 
 ### Parameters
 
@@ -268,41 +230,7 @@ Create a vector store file by attaching a [File](https://platform.openai.com/doc
 
   - `bool`
 
-- `chunking_strategy: Optional[FileChunkingStrategyParam]`
-
-  The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
-
-  - `class AutoFileChunkingStrategyParam: …`
-
-    The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
-
-    - `type: Literal["auto"]`
-
-      Always `auto`.
-
-      - `"auto"`
-
-  - `class StaticFileChunkingStrategyObjectParam: …`
-
-    Customize your own chunking strategy by setting chunk size and chunk overlap.
-
-    - `static: StaticFileChunkingStrategy`
-
-      - `chunk_overlap_tokens: int`
-
-        The number of tokens that overlap between chunks. The default value is `400`.
-
-        Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-      - `max_chunk_size_tokens: int`
-
-        The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-    - `type: Literal["static"]`
-
-      Always `static`.
-
-      - `"static"`
+- `chunking_strategy: Optional[object]`
 
 ### Returns
 
@@ -376,39 +304,7 @@ Create a vector store file by attaching a [File](https://platform.openai.com/doc
 
     - `bool`
 
-  - `chunking_strategy: Optional[FileChunkingStrategy]`
-
-    The strategy used to chunk the file.
-
-    - `class StaticFileChunkingStrategyObject: …`
-
-      - `static: StaticFileChunkingStrategy`
-
-        - `chunk_overlap_tokens: int`
-
-          The number of tokens that overlap between chunks. The default value is `400`.
-
-          Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-        - `max_chunk_size_tokens: int`
-
-          The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-      - `type: Literal["static"]`
-
-        Always `static`.
-
-        - `"static"`
-
-    - `class OtherFileChunkingStrategyObject: …`
-
-      This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
-
-      - `type: Literal["other"]`
-
-        Always `other`.
-
-        - `"other"`
+  - `chunking_strategy: Optional[object]`
 
 ### Example
 
@@ -443,13 +339,7 @@ print(vector_store_file.id)
   "attributes": {
     "foo": "string"
   },
-  "chunking_strategy": {
-    "static": {
-      "chunk_overlap_tokens": 0,
-      "max_chunk_size_tokens": 100
-    },
-    "type": "static"
-  }
+  "chunking_strategy": {}
 }
 ```
 
@@ -486,7 +376,7 @@ print(vector_store_file)
 
 **post** `/vector_stores/{vector_store_id}/files/{file_id}`
 
-Update attributes on a vector store file.
+Update vector store file attributes
 
 ### Parameters
 
@@ -580,39 +470,7 @@ Update attributes on a vector store file.
 
     - `bool`
 
-  - `chunking_strategy: Optional[FileChunkingStrategy]`
-
-    The strategy used to chunk the file.
-
-    - `class StaticFileChunkingStrategyObject: …`
-
-      - `static: StaticFileChunkingStrategy`
-
-        - `chunk_overlap_tokens: int`
-
-          The number of tokens that overlap between chunks. The default value is `400`.
-
-          Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-        - `max_chunk_size_tokens: int`
-
-          The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-      - `type: Literal["static"]`
-
-        Always `static`.
-
-        - `"static"`
-
-    - `class OtherFileChunkingStrategyObject: …`
-
-      This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
-
-      - `type: Literal["other"]`
-
-        Always `other`.
-
-        - `"other"`
+  - `chunking_strategy: Optional[object]`
 
 ### Example
 
@@ -650,13 +508,7 @@ print(vector_store_file.id)
   "attributes": {
     "foo": "string"
   },
-  "chunking_strategy": {
-    "static": {
-      "chunk_overlap_tokens": 0,
-      "max_chunk_size_tokens": 100
-    },
-    "type": "static"
-  }
+  "chunking_strategy": {}
 }
 ```
 
@@ -666,7 +518,7 @@ print(vector_store_file.id)
 
 **get** `/vector_stores/{vector_store_id}/files/{file_id}`
 
-Retrieves a vector store file.
+Retrieve vector store file
 
 ### Parameters
 
@@ -746,39 +598,7 @@ Retrieves a vector store file.
 
     - `bool`
 
-  - `chunking_strategy: Optional[FileChunkingStrategy]`
-
-    The strategy used to chunk the file.
-
-    - `class StaticFileChunkingStrategyObject: …`
-
-      - `static: StaticFileChunkingStrategy`
-
-        - `chunk_overlap_tokens: int`
-
-          The number of tokens that overlap between chunks. The default value is `400`.
-
-          Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-        - `max_chunk_size_tokens: int`
-
-          The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-      - `type: Literal["static"]`
-
-        Always `static`.
-
-        - `"static"`
-
-    - `class OtherFileChunkingStrategyObject: …`
-
-      This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
-
-      - `type: Literal["other"]`
-
-        Always `other`.
-
-        - `"other"`
+  - `chunking_strategy: Optional[object]`
 
 ### Example
 
@@ -813,13 +633,7 @@ print(vector_store_file.id)
   "attributes": {
     "foo": "string"
   },
-  "chunking_strategy": {
-    "static": {
-      "chunk_overlap_tokens": 0,
-      "max_chunk_size_tokens": 100
-    },
-    "type": "static"
-  }
+  "chunking_strategy": {}
 }
 ```
 
@@ -855,7 +669,7 @@ print(vector_store_file)
 
 **delete** `/vector_stores/{vector_store_id}/files/{file_id}`
 
-Delete a vector store file. This will remove the file from the vector store but the file itself will not be deleted. To delete the file, use the [delete file](https://platform.openai.com/docs/api-reference/files/delete) endpoint.
+Delete vector store file
 
 ### Parameters
 
@@ -930,7 +744,7 @@ print(deleted_vector_store_file)
 
 **get** `/vector_stores/{vector_store_id}/files/{file_id}/content`
 
-Retrieve the parsed contents of a vector store file.
+Retrieve vector store file content
 
 ### Parameters
 
@@ -1057,39 +871,7 @@ print(page.text)
 
     - `bool`
 
-  - `chunking_strategy: Optional[FileChunkingStrategy]`
-
-    The strategy used to chunk the file.
-
-    - `class StaticFileChunkingStrategyObject: …`
-
-      - `static: StaticFileChunkingStrategy`
-
-        - `chunk_overlap_tokens: int`
-
-          The number of tokens that overlap between chunks. The default value is `400`.
-
-          Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-        - `max_chunk_size_tokens: int`
-
-          The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-      - `type: Literal["static"]`
-
-        Always `static`.
-
-        - `"static"`
-
-    - `class OtherFileChunkingStrategyObject: …`
-
-      This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
-
-      - `type: Literal["other"]`
-
-        Always `other`.
-
-        - `"other"`
+  - `chunking_strategy: Optional[object]`
 
 ### Vector Store File Deleted
 

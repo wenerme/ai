@@ -2,7 +2,7 @@
 
 **delete** `/organization/admin_api_keys/{key_id}`
 
-Delete an organization admin API key
+Delete admin API key
 
 ### Path Parameters
 

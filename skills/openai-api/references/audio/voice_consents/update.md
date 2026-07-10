@@ -2,7 +2,7 @@
 
 **post** `/audio/voice_consents/{consent_id}`
 
-Updates a voice consent recording (metadata only).
+Update voice consent
 
 ### Path Parameters
 

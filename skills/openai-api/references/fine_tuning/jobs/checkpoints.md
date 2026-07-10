@@ -4,7 +4,7 @@
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}/checkpoints`
 
-List checkpoints for a fine-tuning job.
+List fine-tuning checkpoints
 
 ### Path Parameters
 

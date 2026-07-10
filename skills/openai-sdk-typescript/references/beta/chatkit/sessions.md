@@ -6,9 +6,7 @@
 
 **post** `/chatkit/sessions/{session_id}/cancel`
 
-Cancel an active ChatKit session and return its most recent metadata.
-
-Cancelling prevents new requests from using the issued client secret.
+Cancel chat session
 
 ### Parameters
 
@@ -227,7 +225,7 @@ console.log(chatSession.id);
 
 **post** `/chatkit/sessions`
 
-Create a ChatKit session.
+Create ChatKit session
 
 ### Parameters
 

@@ -2,7 +2,7 @@
 
 **post** `/images/generations`
 
-Creates an image given a prompt. [Learn more](/docs/guides/images).
+Create image
 
 ### Body Parameters
 
@@ -13,12 +13,18 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 - `background: optional "transparent" or "opaque" or "auto"`
 
   Allows to set transparency for the background of the generated image(s).
-  This parameter is only supported for the GPT image models. Must be one of
-  `transparent`, `opaque` or `auto` (default value). When `auto` is used, the
-  model will automatically determine the best background for the image.
+  This parameter is only supported for GPT image models that support
+  transparent backgrounds. Must be one of `transparent`, `opaque`, or
+  `auto` (default value). When `auto` is used, the model will
+  automatically determine the best background for the image.
 
-  If `transparent`, the output format needs to support transparency, so it
-  should be set to either `png` (default value) or `webp`.
+  `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+  transparent backgrounds. Requests with `background` set to
+  `transparent` will return an error for these models; use `opaque` or
+  `auto` instead.
+
+  If `transparent`, the output format needs to support transparency,
+  so it should be set to either `png` (default value) or `webp`.
 
   - `"transparent"`
 
@@ -28,21 +34,27 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
 - `model: optional string or ImageModel`
 
-  The model to use for image generation. One of `dall-e-2`, `dall-e-3`, or a GPT image model (`gpt-image-1`, `gpt-image-1-mini`, `gpt-image-1.5`). Defaults to `dall-e-2` unless a parameter specific to the GPT image models is used.
+  The model to use for image generation. One of `dall-e-2`, `dall-e-3`, or a GPT image model (`gpt-image-1`, `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`, or `gpt-image-2-2026-04-21`). Defaults to `dall-e-2` unless a parameter specific to the GPT image models is used.
 
   - `string`
 
-  - `ImageModel = "gpt-image-1.5" or "dall-e-2" or "dall-e-3" or 2 more`
-
-    - `"gpt-image-1.5"`
-
-    - `"dall-e-2"`
-
-    - `"dall-e-3"`
+  - `ImageModel = "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 5 more`
 
     - `"gpt-image-1"`
 
     - `"gpt-image-1-mini"`
+
+    - `"gpt-image-2"`
+
+    - `"gpt-image-2-2026-04-21"`
+
+    - `"gpt-image-1.5"`
+
+    - `"chatgpt-image-latest"`
+
+    - `"dall-e-2"`
+
+    - `"dall-e-3"`
 
 - `moderation: optional "low" or "auto"`
 
@@ -137,7 +149,7 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 - `stream: optional boolean`
 
   Generate the image in streaming mode. Defaults to `false`. See the
-  [Image generation guide](/docs/guides/image-generation) for more information.
+  [Image generation guide](https://platform.openai.com/docs/guides/image-generation) for more information.
   This parameter is only supported for the GPT image models.
 
 - `style: optional "vivid" or "natural"`
@@ -150,7 +162,7 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
 - `user: optional string`
 
-  A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices#end-user-ids).
+  A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#end-user-ids).
 
 ### Returns
 

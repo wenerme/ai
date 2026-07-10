@@ -2,9 +2,7 @@
 
 **get** `/chat/completions/{completion_id}/messages`
 
-Get the messages in a stored chat completion. Only Chat Completions that
-have been created with the `store` parameter set to `true` will be
-returned.
+Get chat messages
 
 ### Path Parameters
 
@@ -43,9 +41,9 @@ returned.
     If a content parts array was provided, this is an array of `text` and `image_url` parts.
     Otherwise, null.
 
-    - `ChatCompletionContentPartText object { text, type }`
+    - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-      Learn about [text inputs](/docs/guides/text-generation).
+      Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
       - `text: string`
 
@@ -57,9 +55,19 @@ returned.
 
         - `"text"`
 
-    - `ChatCompletionContentPartImage object { image_url, type }`
+      - `prompt_cache_breakpoint: optional object { mode }`
 
-      Learn about [image inputs](/docs/guides/vision).
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
+    - `ChatCompletionContentPartImage object { image_url, type, prompt_cache_breakpoint }`
+
+      Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
       - `image_url: object { url, detail }`
 
@@ -69,7 +77,7 @@ returned.
 
         - `detail: optional "auto" or "low" or "high"`
 
-          Specifies the detail level of the image. Learn more in the [Vision guide](/docs/guides/vision#low-or-high-fidelity-image-understanding).
+          Specifies the detail level of the image. Learn more in the [Vision guide](https://platform.openai.com/docs/guides/vision#low-or-high-fidelity-image-understanding).
 
           - `"auto"`
 
@@ -82,6 +90,16 @@ returned.
         The type of the content part.
 
         - `"image_url"`
+
+      - `prompt_cache_breakpoint: optional object { mode }`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
 - `first_id: string`
 
@@ -152,7 +170,10 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID/messages \
       "content_parts": [
         {
           "text": "text",
-          "type": "text"
+          "type": "text",
+          "prompt_cache_breakpoint": {
+            "mode": "explicit"
+          }
         }
       ]
     }

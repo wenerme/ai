@@ -12,6 +12,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Breakout Rooms
 
+This page is not available for the **Flutter**platform.
+
 WebMobile
 
 ReactWeb ComponentsAngular
@@ -21,10 +23,6 @@ Note
 The breakout rooms feature, also known as connected meetings, is currently in beta, which means it is still being tested and evaluated, and may undergo some changes.
 
 Breakout rooms allow participants of a meeting to split into smaller groups for targeted discussions and collaboration. With the rise of remote work and online learning, breakout rooms have become an essential tool for enhancing engagement and building community in virtual settings. They are an ideal choice for workshops, online classrooms, or when you need to speak privately with select participants outside the main meeting.
-
-Note
-
-Breakout rooms are currently supported on web only.
 
 In RealtimeKit, breakout rooms are created as a separate meeting. Each breakout room is an independent meeting and can be managed like any other RealtimeKit meeting. RealtimeKit provides a set of SDK APIs to create, manage, and switch between breakout rooms.
 
@@ -231,6 +229,26 @@ let hasPermissionToSwitchConnectedMeetings = permissions.canSwitchConnectedMeeti
 let hasPermissionToSwitchToParentMeeting = permissions.canSwitchToParentMeeting
 ```
 
+```tsx
+const [meeting] = useRealtimeKitClient();
+
+
+// Check if any breakout rooms are currently active
+const areBreakoutRoomsActive = meeting?.connectedMeetings.isActive;
+
+
+// Check whether the local participant can create, rename, or delete rooms and move any participant
+const canAlterBreakoutRooms = meeting?.self.permissions.connectedMeetings.canAlterConnectedMeetings;
+
+
+// Check whether the local participant can move themselves to any breakout room
+const canSwitchRooms = meeting?.self.permissions.connectedMeetings.canSwitchConnectedMeetings;
+
+
+// Check whether the local participant can return to the parent meeting
+const canReturnToParent = meeting?.self.permissions.connectedMeetings.canSwitchToParentMeeting;
+```
+
 ### Create breakout rooms
 
 **JavaScript**
@@ -310,6 +328,21 @@ meeting.connectedMeetings.createMeetings(titles: ["Breakout Room 1", "Breakout R
 ```
 
 `breakoutRooms` is an array of basic meeting information such as `id` and `title`. You can use the `id` of these objects to move participants to the breakout room.
+
+**JavaScript**
+
+```js
+const breakoutRooms = await meeting.connectedMeetings.createMeetings([
+  { title: "Breakout Room 1" },
+  { title: "Breakout Room 2" },
+  { title: "Breakout Room 3" },
+]);
+
+
+console.log("Created Breakout Rooms: ", breakoutRooms.map((room) => "Id:: " + room.id + " --- Title:: " + room.title).join("\n"));
+```
+
+`breakoutRooms` is an array of basic meeting information such as id and title. You can use the `id` of these objects to move participants to the breakout room.
 
 ### Retrieve list of breakout rooms and their participants
 
@@ -460,6 +493,31 @@ class MyListener: RtkConnectedMeetingsEventListener {
 meeting.addConnectedMeetingsEventListener(MyListener())
 ```
 
+**JavaScript**
+
+```js
+const breakoutRoomsInfo = await meeting.connectedMeetings.getConnectedMeetings();
+```
+
+`breakoutRoomsInfo` is an object containing the list of breakout rooms and their participants, along with details of the parent meeting.
+
+This data can be used to display the list of breakout rooms & participants in the UI. This API refetches the list of breakout rooms & participants, therefore can be considered the source of truth for breakout rooms & participants. It is advised to call this API, to get the latest list of breakout rooms & participants, if a lot of changes are in progress.
+
+You can also listen to `stateUpdate` event to get the latest list of breakout rooms & participants, as they are updated in real-time.
+
+**JavaScript**
+
+```js
+meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {
+  console.log("stateUpdate", {meetings, parentMeeting});
+
+
+  // Alternatively, you can access the meetings and parentMeeting from the connectedMeetings object
+  console.log("Meetings List", meeting.connectedMeetings.meetings);
+  console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);
+});
+```
+
 ### Move participants to breakout rooms
 
 Once you have created breakout rooms, assign participants to the rooms.
@@ -586,6 +644,27 @@ meeting.connectedMeetings.getConnectedMeetings { result in
 }
 ```
 
+**JavaScript**
+
+```js
+// Retrieve list of breakout rooms & participants
+const breakoutRoomsInfo = await meeting.connectedMeetings.getConnectedMeetings();
+
+
+/*
+* You can retrieve meetingIds and participantIds from the breakoutRoomsInfo object.
+* Based on where the participant currently is, you can decide the sourceMeetingId and targetMeetingId.
+*/
+
+
+// Move participants to breakout rooms
+const response = await meeting.connectedMeetings.moveParticipants(
+  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in
+  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved
+  ["PARTICIPANT_ID_1", "PARTICIPANT_ID_2"], // participantIds, array of participant ids to be moved
+);
+```
+
 ### Move participants, with a specific preset, to breakout rooms
 
 Once you have created breakout rooms, assign participants to the rooms.
@@ -656,6 +735,16 @@ meeting.connectedMeetings.moveParticipantsWithCustomPreset(
         print("Participants moved with custom preset successfully")
     }
 }
+```
+
+**JavaScript**
+
+```js
+const response = await meeting.connectedMeetings.moveParticipantsWithCustomPreset(
+  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in
+  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved
+  [{ presetId: "PRESET_ID_1" }, { presetId: "PRESET_ID_2" }], // array of objects with presetId field
+);
 ```
 
 ### Move local participant to breakout room
@@ -768,6 +857,28 @@ class MyListener: RtkConnectedMeetingsEventListener {
 
 
 meeting.addConnectedMeetingsEventListener(MyListener())
+```
+
+The `useRealtimeKitClient` hook automatically handles the `meetingChanged` event and swaps the active client reference when the local participant is moved to a breakout room or back to the main meeting. No additional setup is needed.
+
+If you are using the `RtkMeeting` UI Kit component, the transition UI (the "Joining…" screen) is also handled automatically.
+
+To show a custom loading screen during the switch, listen to the `changingMeeting` event:
+
+```tsx
+useEffect(() => {
+  if (!meeting) return;
+
+
+  const onChangingMeeting = (meetingId: string) => {
+    console.log("Switching to meeting:", meetingId);
+    // Show a loading indicator
+  };
+
+
+  meeting.connectedMeetings.on("changingMeeting", onChangingMeeting);
+  return () => meeting.connectedMeetings.removeListener("changingMeeting", onChangingMeeting);
+}, [meeting]);
 ```
 
 ### Close breakout rooms
@@ -917,6 +1028,30 @@ class MyListener: RtkConnectedMeetingsEventListener {
 meeting.addConnectedMeetingsEventListener(MyListener())
 ```
 
+**JavaScript**
+
+```js
+await meeting.connectedMeetings.deleteMeetings([
+  "MEETING_ID_TO_CLOSE_1",
+  "MEETING_ID_TO_CLOSE_2",
+]);
+```
+
+This would also trigger `stateUpdate` event updating the list of breakout rooms & participants.
+
+**JavaScript**
+
+```js
+meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {
+  console.log("stateUpdate", {meetings, parentMeeting});
+});
+
+
+// Alternatively, you can access the meetings and parentMeeting from the connectedMeetings object
+console.log("Meetings List", meeting.connectedMeetings.meetings);
+console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);
+```
+
 ## Next steps
 
 You have successfully integrated breakout rooms into your RealtimeKit application. Participants can now:
@@ -933,6 +1068,6 @@ For more advanced customization, explore the following:
 * [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/build-your-own-ui/) \- Create custom meeting interfaces
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/breakout-rooms/#page","headline":"Breakout Rooms · Cloudflare Realtime docs","description":"Create and manage breakout rooms to split participants into smaller groups in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/breakout-rooms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/breakout-rooms/#page","headline":"Breakout Rooms · Cloudflare Realtime docs","description":"Create and manage breakout rooms to split participants into smaller groups in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/breakout-rooms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/breakout-rooms/","name":"Breakout Rooms"}}]}
 ```

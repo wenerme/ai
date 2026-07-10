@@ -6,7 +6,7 @@
 
 **post** `/threads`
 
-Create a thread.
+Create thread
 
 ### Parameters
 
@@ -371,7 +371,7 @@ main();
 
 **post** `/threads/runs`
 
-Create a thread and run it in one request.
+Create thread and run
 
 ### Parameters
 
@@ -410,7 +410,13 @@ Create a thread and run it in one request.
 
       - `(string & {})`
 
-      - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+      - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+        - `"gpt-5.6-sol"`
+
+        - `"gpt-5.6-terra"`
+
+        - `"gpt-5.6-luna"`
 
         - `"gpt-5.4"`
 
@@ -916,75 +922,9 @@ Create a thread and run it in one request.
 
           The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
-    - `tools?: Array<AssistantTool> | null`
+    - `tools?: Array<unknown> | null`
 
       Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
-
-      - `CodeInterpreterTool`
-
-      - `FileSearchTool`
-
-        - `type: "file_search"`
-
-          The type of tool being defined: `file_search`
-
-          - `"file_search"`
-
-        - `file_search?: FileSearch`
-
-          Overrides for the file search tool.
-
-          - `max_num_results?: number`
-
-            The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-            Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-          - `ranking_options?: RankingOptions`
-
-            The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-            See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-            - `score_threshold: number`
-
-              The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-            - `ranker?: "auto" | "default_2024_08_21"`
-
-              The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-              - `"auto"`
-
-              - `"default_2024_08_21"`
-
-      - `FunctionTool`
-
-        - `function: FunctionDefinition`
-
-          - `name: string`
-
-            The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-          - `description?: string`
-
-            A description of what the function does, used by the model to choose when and how to call the function.
-
-          - `parameters?: FunctionParameters`
-
-            The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-            Omitting `parameters` defines a function with an empty parameter list.
-
-          - `strict?: boolean | null`
-
-            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-        - `type: "function"`
-
-          The type of tool being defined: `function`
-
-          - `"function"`
 
     - `top_p?: number | null`
 
@@ -1240,27 +1180,7 @@ Create a thread and run it in one request.
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: RunStatus`
-
-    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
-
-    - `"queued"`
-
-    - `"in_progress"`
-
-    - `"requires_action"`
-
-    - `"cancelling"`
-
-    - `"cancelled"`
-
-    - `"failed"`
-
-    - `"completed"`
-
-    - `"incomplete"`
-
-    - `"expired"`
+  - `status: unknown`
 
   - `thread_id: string`
 
@@ -1302,81 +1222,9 @@ Create a thread and run it in one request.
 
           The name of the function to call.
 
-  - `tools: Array<AssistantTool>`
+  - `tools: Array<unknown>`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
-
-    - `CodeInterpreterTool`
-
-      - `type: "code_interpreter"`
-
-        The type of tool being defined: `code_interpreter`
-
-        - `"code_interpreter"`
-
-    - `FileSearchTool`
-
-      - `type: "file_search"`
-
-        The type of tool being defined: `file_search`
-
-        - `"file_search"`
-
-      - `file_search?: FileSearch`
-
-        Overrides for the file search tool.
-
-        - `max_num_results?: number`
-
-          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-        - `ranking_options?: RankingOptions`
-
-          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-          - `score_threshold: number`
-
-            The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-          - `ranker?: "auto" | "default_2024_08_21"`
-
-            The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-            - `"auto"`
-
-            - `"default_2024_08_21"`
-
-    - `FunctionTool`
-
-      - `function: FunctionDefinition`
-
-        - `name: string`
-
-          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-        - `description?: string`
-
-          A description of what the function does, used by the model to choose when and how to call the function.
-
-        - `parameters?: FunctionParameters`
-
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-          Omitting `parameters` defines a function with an empty parameter list.
-
-        - `strict?: boolean | null`
-
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-      - `type: "function"`
-
-        The type of tool being defined: `function`
-
-        - `"function"`
 
   - `truncation_strategy: TruncationStrategy | null`
 
@@ -1476,13 +1324,11 @@ console.log(run.id);
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": "queued",
+  "status": {},
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {
-      "type": "code_interpreter"
-    }
+    {}
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -1735,7 +1581,7 @@ data: [DONE]
 
 **get** `/threads/{thread_id}`
 
-Retrieves a thread.
+Retrieve thread
 
 ### Parameters
 
@@ -1865,7 +1711,7 @@ main();
 
 **post** `/threads/{thread_id}`
 
-Modifies a thread.
+Modify thread
 
 ### Parameters
 
@@ -2024,7 +1870,7 @@ main();
 
 **delete** `/threads/{thread_id}`
 
-Delete a thread.
+Delete thread
 
 ### Parameters
 
@@ -2303,7 +2149,7 @@ main();
 
 **get** `/threads/{thread_id}/runs`
 
-Returns a list of runs belonging to a thread.
+List runs
 
 ### Parameters
 
@@ -2549,27 +2395,7 @@ Returns a list of runs belonging to a thread.
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: RunStatus`
-
-    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
-
-    - `"queued"`
-
-    - `"in_progress"`
-
-    - `"requires_action"`
-
-    - `"cancelling"`
-
-    - `"cancelled"`
-
-    - `"failed"`
-
-    - `"completed"`
-
-    - `"incomplete"`
-
-    - `"expired"`
+  - `status: unknown`
 
   - `thread_id: string`
 
@@ -2611,81 +2437,9 @@ Returns a list of runs belonging to a thread.
 
           The name of the function to call.
 
-  - `tools: Array<AssistantTool>`
+  - `tools: Array<unknown>`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
-
-    - `CodeInterpreterTool`
-
-      - `type: "code_interpreter"`
-
-        The type of tool being defined: `code_interpreter`
-
-        - `"code_interpreter"`
-
-    - `FileSearchTool`
-
-      - `type: "file_search"`
-
-        The type of tool being defined: `file_search`
-
-        - `"file_search"`
-
-      - `file_search?: FileSearch`
-
-        Overrides for the file search tool.
-
-        - `max_num_results?: number`
-
-          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-        - `ranking_options?: RankingOptions`
-
-          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-          - `score_threshold: number`
-
-            The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-          - `ranker?: "auto" | "default_2024_08_21"`
-
-            The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-            - `"auto"`
-
-            - `"default_2024_08_21"`
-
-    - `FunctionTool`
-
-      - `function: FunctionDefinition`
-
-        - `name: string`
-
-          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-        - `description?: string`
-
-          A description of what the function does, used by the model to choose when and how to call the function.
-
-        - `parameters?: FunctionParameters`
-
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-          Omitting `parameters` defines a function with an empty parameter list.
-
-        - `strict?: boolean | null`
-
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-      - `type: "function"`
-
-        The type of tool being defined: `function`
-
-        - `"function"`
 
   - `truncation_strategy: TruncationStrategy | null`
 
@@ -2788,13 +2542,11 @@ for await (const run of client.beta.threads.runs.list('thread_id')) {
       },
       "response_format": "auto",
       "started_at": 0,
-      "status": "queued",
+      "status": {},
       "thread_id": "thread_id",
       "tool_choice": "none",
       "tools": [
-        {
-          "type": "code_interpreter"
-        }
+        {}
       ],
       "truncation_strategy": {
         "type": "auto",
@@ -2947,7 +2699,7 @@ main();
 
 **post** `/threads/{thread_id}/runs`
 
-Create a run.
+Create run
 
 ### Parameters
 
@@ -3126,7 +2878,13 @@ Create a run.
 
       - `(string & {})`
 
-      - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+      - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+        - `"gpt-5.6-sol"`
+
+        - `"gpt-5.6-terra"`
+
+        - `"gpt-5.6-luna"`
 
         - `"gpt-5.4"`
 
@@ -3290,16 +3048,13 @@ Create a run.
 
     - `reasoning_effort?: ReasoningEffort | null`
 
-      Body param: Constrains effort on reasoning for
-      [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-      Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-      reasoning effort can result in faster responses and fewer tokens used
-      on reasoning in a response.
-
-      - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-      - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-      - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-      - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+      Body param: Constrains effort on reasoning for reasoning models. Currently supported
+      values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+      Reducing reasoning effort can result in faster responses and fewer tokens
+      used on reasoning in a response. Not all reasoning models support every
+      value. See the
+      [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+      for model-specific support.
 
       - `"none"`
 
@@ -3312,6 +3067,8 @@ Create a run.
       - `"high"`
 
       - `"xhigh"`
+
+      - `"max"`
 
     - `response_format?: AssistantResponseFormatOption | null`
 
@@ -3434,75 +3191,9 @@ Create a run.
 
             The name of the function to call.
 
-    - `tools?: Array<AssistantTool> | null`
+    - `tools?: Array<unknown> | null`
 
       Body param: Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
-
-      - `CodeInterpreterTool`
-
-      - `FileSearchTool`
-
-        - `type: "file_search"`
-
-          The type of tool being defined: `file_search`
-
-          - `"file_search"`
-
-        - `file_search?: FileSearch`
-
-          Overrides for the file search tool.
-
-          - `max_num_results?: number`
-
-            The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-            Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-          - `ranking_options?: RankingOptions`
-
-            The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-            See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-            - `score_threshold: number`
-
-              The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-            - `ranker?: "auto" | "default_2024_08_21"`
-
-              The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-              - `"auto"`
-
-              - `"default_2024_08_21"`
-
-      - `FunctionTool`
-
-        - `function: FunctionDefinition`
-
-          - `name: string`
-
-            The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-          - `description?: string`
-
-            A description of what the function does, used by the model to choose when and how to call the function.
-
-          - `parameters?: FunctionParameters`
-
-            The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-            Omitting `parameters` defines a function with an empty parameter list.
-
-          - `strict?: boolean | null`
-
-            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-        - `type: "function"`
-
-          The type of tool being defined: `function`
-
-          - `"function"`
 
     - `top_p?: number | null`
 
@@ -3758,27 +3449,7 @@ Create a run.
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: RunStatus`
-
-    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
-
-    - `"queued"`
-
-    - `"in_progress"`
-
-    - `"requires_action"`
-
-    - `"cancelling"`
-
-    - `"cancelled"`
-
-    - `"failed"`
-
-    - `"completed"`
-
-    - `"incomplete"`
-
-    - `"expired"`
+  - `status: unknown`
 
   - `thread_id: string`
 
@@ -3820,81 +3491,9 @@ Create a run.
 
           The name of the function to call.
 
-  - `tools: Array<AssistantTool>`
+  - `tools: Array<unknown>`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
-
-    - `CodeInterpreterTool`
-
-      - `type: "code_interpreter"`
-
-        The type of tool being defined: `code_interpreter`
-
-        - `"code_interpreter"`
-
-    - `FileSearchTool`
-
-      - `type: "file_search"`
-
-        The type of tool being defined: `file_search`
-
-        - `"file_search"`
-
-      - `file_search?: FileSearch`
-
-        Overrides for the file search tool.
-
-        - `max_num_results?: number`
-
-          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-        - `ranking_options?: RankingOptions`
-
-          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-          - `score_threshold: number`
-
-            The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-          - `ranker?: "auto" | "default_2024_08_21"`
-
-            The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-            - `"auto"`
-
-            - `"default_2024_08_21"`
-
-    - `FunctionTool`
-
-      - `function: FunctionDefinition`
-
-        - `name: string`
-
-          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-        - `description?: string`
-
-          A description of what the function does, used by the model to choose when and how to call the function.
-
-        - `parameters?: FunctionParameters`
-
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-          Omitting `parameters` defines a function with an empty parameter list.
-
-        - `strict?: boolean | null`
-
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-      - `type: "function"`
-
-        The type of tool being defined: `function`
-
-        - `"function"`
 
   - `truncation_strategy: TruncationStrategy | null`
 
@@ -3994,13 +3593,11 @@ console.log(run.id);
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": "queued",
+  "status": {},
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {
-      "type": "code_interpreter"
-    }
+    {}
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -4244,7 +3841,7 @@ data: [DONE]
 
 **get** `/threads/{thread_id}/runs/{run_id}`
 
-Retrieves a run.
+Retrieve run
 
 ### Parameters
 
@@ -4474,27 +4071,7 @@ Retrieves a run.
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: RunStatus`
-
-    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
-
-    - `"queued"`
-
-    - `"in_progress"`
-
-    - `"requires_action"`
-
-    - `"cancelling"`
-
-    - `"cancelled"`
-
-    - `"failed"`
-
-    - `"completed"`
-
-    - `"incomplete"`
-
-    - `"expired"`
+  - `status: unknown`
 
   - `thread_id: string`
 
@@ -4536,81 +4113,9 @@ Retrieves a run.
 
           The name of the function to call.
 
-  - `tools: Array<AssistantTool>`
+  - `tools: Array<unknown>`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
-
-    - `CodeInterpreterTool`
-
-      - `type: "code_interpreter"`
-
-        The type of tool being defined: `code_interpreter`
-
-        - `"code_interpreter"`
-
-    - `FileSearchTool`
-
-      - `type: "file_search"`
-
-        The type of tool being defined: `file_search`
-
-        - `"file_search"`
-
-      - `file_search?: FileSearch`
-
-        Overrides for the file search tool.
-
-        - `max_num_results?: number`
-
-          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-        - `ranking_options?: RankingOptions`
-
-          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-          - `score_threshold: number`
-
-            The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-          - `ranker?: "auto" | "default_2024_08_21"`
-
-            The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-            - `"auto"`
-
-            - `"default_2024_08_21"`
-
-    - `FunctionTool`
-
-      - `function: FunctionDefinition`
-
-        - `name: string`
-
-          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-        - `description?: string`
-
-          A description of what the function does, used by the model to choose when and how to call the function.
-
-        - `parameters?: FunctionParameters`
-
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-          Omitting `parameters` defines a function with an empty parameter list.
-
-        - `strict?: boolean | null`
-
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-      - `type: "function"`
-
-        The type of tool being defined: `function`
-
-        - `"function"`
 
   - `truncation_strategy: TruncationStrategy | null`
 
@@ -4710,13 +4215,11 @@ console.log(run.id);
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": "queued",
+  "status": {},
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {
-      "type": "code_interpreter"
-    }
+    {}
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -4801,7 +4304,7 @@ main();
 
 **post** `/threads/{thread_id}/runs/{run_id}`
 
-Modifies a run.
+Modify run
 
 ### Parameters
 
@@ -5040,27 +4543,7 @@ Modifies a run.
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: RunStatus`
-
-    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
-
-    - `"queued"`
-
-    - `"in_progress"`
-
-    - `"requires_action"`
-
-    - `"cancelling"`
-
-    - `"cancelled"`
-
-    - `"failed"`
-
-    - `"completed"`
-
-    - `"incomplete"`
-
-    - `"expired"`
+  - `status: unknown`
 
   - `thread_id: string`
 
@@ -5102,81 +4585,9 @@ Modifies a run.
 
           The name of the function to call.
 
-  - `tools: Array<AssistantTool>`
+  - `tools: Array<unknown>`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
-
-    - `CodeInterpreterTool`
-
-      - `type: "code_interpreter"`
-
-        The type of tool being defined: `code_interpreter`
-
-        - `"code_interpreter"`
-
-    - `FileSearchTool`
-
-      - `type: "file_search"`
-
-        The type of tool being defined: `file_search`
-
-        - `"file_search"`
-
-      - `file_search?: FileSearch`
-
-        Overrides for the file search tool.
-
-        - `max_num_results?: number`
-
-          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-        - `ranking_options?: RankingOptions`
-
-          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-          - `score_threshold: number`
-
-            The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-          - `ranker?: "auto" | "default_2024_08_21"`
-
-            The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-            - `"auto"`
-
-            - `"default_2024_08_21"`
-
-    - `FunctionTool`
-
-      - `function: FunctionDefinition`
-
-        - `name: string`
-
-          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-        - `description?: string`
-
-          A description of what the function does, used by the model to choose when and how to call the function.
-
-        - `parameters?: FunctionParameters`
-
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-          Omitting `parameters` defines a function with an empty parameter list.
-
-        - `strict?: boolean | null`
-
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-      - `type: "function"`
-
-        The type of tool being defined: `function`
-
-        - `"function"`
 
   - `truncation_strategy: TruncationStrategy | null`
 
@@ -5276,13 +4687,11 @@ console.log(run.id);
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": "queued",
+  "status": {},
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {
-      "type": "code_interpreter"
-    }
+    {}
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -5382,7 +4791,7 @@ main();
 
 **post** `/threads/{thread_id}/runs/{run_id}/submit_tool_outputs`
 
-When a run has the `status: "requires_action"` and `required_action.type` is `submit_tool_outputs`, this endpoint can be used to submit the outputs from the tool calls once they're all completed. All outputs must be submitted in a single request.
+Submit tool outputs to run
 
 ### Parameters
 
@@ -5646,27 +5055,7 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: RunStatus`
-
-    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
-
-    - `"queued"`
-
-    - `"in_progress"`
-
-    - `"requires_action"`
-
-    - `"cancelling"`
-
-    - `"cancelled"`
-
-    - `"failed"`
-
-    - `"completed"`
-
-    - `"incomplete"`
-
-    - `"expired"`
+  - `status: unknown`
 
   - `thread_id: string`
 
@@ -5708,81 +5097,9 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
           The name of the function to call.
 
-  - `tools: Array<AssistantTool>`
+  - `tools: Array<unknown>`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
-
-    - `CodeInterpreterTool`
-
-      - `type: "code_interpreter"`
-
-        The type of tool being defined: `code_interpreter`
-
-        - `"code_interpreter"`
-
-    - `FileSearchTool`
-
-      - `type: "file_search"`
-
-        The type of tool being defined: `file_search`
-
-        - `"file_search"`
-
-      - `file_search?: FileSearch`
-
-        Overrides for the file search tool.
-
-        - `max_num_results?: number`
-
-          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-        - `ranking_options?: RankingOptions`
-
-          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-          - `score_threshold: number`
-
-            The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-          - `ranker?: "auto" | "default_2024_08_21"`
-
-            The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-            - `"auto"`
-
-            - `"default_2024_08_21"`
-
-    - `FunctionTool`
-
-      - `function: FunctionDefinition`
-
-        - `name: string`
-
-          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-        - `description?: string`
-
-          A description of what the function does, used by the model to choose when and how to call the function.
-
-        - `parameters?: FunctionParameters`
-
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-          Omitting `parameters` defines a function with an empty parameter list.
-
-        - `strict?: boolean | null`
-
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-      - `type: "function"`
-
-        The type of tool being defined: `function`
-
-        - `"function"`
 
   - `truncation_strategy: TruncationStrategy | null`
 
@@ -5885,13 +5202,11 @@ console.log(run.id);
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": "queued",
+  "status": {},
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {
-      "type": "code_interpreter"
-    }
+    {}
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -6080,7 +5395,7 @@ data: [DONE]
 
 **post** `/threads/{thread_id}/runs/{run_id}/cancel`
 
-Cancels a run that is `in_progress`.
+Cancel a run
 
 ### Parameters
 
@@ -6310,27 +5625,7 @@ Cancels a run that is `in_progress`.
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: RunStatus`
-
-    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
-
-    - `"queued"`
-
-    - `"in_progress"`
-
-    - `"requires_action"`
-
-    - `"cancelling"`
-
-    - `"cancelled"`
-
-    - `"failed"`
-
-    - `"completed"`
-
-    - `"incomplete"`
-
-    - `"expired"`
+  - `status: unknown`
 
   - `thread_id: string`
 
@@ -6372,81 +5667,9 @@ Cancels a run that is `in_progress`.
 
           The name of the function to call.
 
-  - `tools: Array<AssistantTool>`
+  - `tools: Array<unknown>`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
-
-    - `CodeInterpreterTool`
-
-      - `type: "code_interpreter"`
-
-        The type of tool being defined: `code_interpreter`
-
-        - `"code_interpreter"`
-
-    - `FileSearchTool`
-
-      - `type: "file_search"`
-
-        The type of tool being defined: `file_search`
-
-        - `"file_search"`
-
-      - `file_search?: FileSearch`
-
-        Overrides for the file search tool.
-
-        - `max_num_results?: number`
-
-          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-        - `ranking_options?: RankingOptions`
-
-          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-          - `score_threshold: number`
-
-            The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-          - `ranker?: "auto" | "default_2024_08_21"`
-
-            The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-            - `"auto"`
-
-            - `"default_2024_08_21"`
-
-    - `FunctionTool`
-
-      - `function: FunctionDefinition`
-
-        - `name: string`
-
-          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-        - `description?: string`
-
-          A description of what the function does, used by the model to choose when and how to call the function.
-
-        - `parameters?: FunctionParameters`
-
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-          Omitting `parameters` defines a function with an empty parameter list.
-
-        - `strict?: boolean | null`
-
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-      - `type: "function"`
-
-        The type of tool being defined: `function`
-
-        - `"function"`
 
   - `truncation_strategy: TruncationStrategy | null`
 
@@ -6546,13 +5769,11 @@ console.log(run.id);
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": "queued",
+  "status": {},
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {
-      "type": "code_interpreter"
-    }
+    {}
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -6873,27 +6094,7 @@ main();
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: RunStatus`
-
-    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
-
-    - `"queued"`
-
-    - `"in_progress"`
-
-    - `"requires_action"`
-
-    - `"cancelling"`
-
-    - `"cancelled"`
-
-    - `"failed"`
-
-    - `"completed"`
-
-    - `"incomplete"`
-
-    - `"expired"`
+  - `status: unknown`
 
   - `thread_id: string`
 
@@ -6935,81 +6136,9 @@ main();
 
           The name of the function to call.
 
-  - `tools: Array<AssistantTool>`
+  - `tools: Array<unknown>`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
-
-    - `CodeInterpreterTool`
-
-      - `type: "code_interpreter"`
-
-        The type of tool being defined: `code_interpreter`
-
-        - `"code_interpreter"`
-
-    - `FileSearchTool`
-
-      - `type: "file_search"`
-
-        The type of tool being defined: `file_search`
-
-        - `"file_search"`
-
-      - `file_search?: FileSearch`
-
-        Overrides for the file search tool.
-
-        - `max_num_results?: number`
-
-          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-        - `ranking_options?: RankingOptions`
-
-          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-          - `score_threshold: number`
-
-            The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-          - `ranker?: "auto" | "default_2024_08_21"`
-
-            The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-            - `"auto"`
-
-            - `"default_2024_08_21"`
-
-    - `FunctionTool`
-
-      - `function: FunctionDefinition`
-
-        - `name: string`
-
-          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-        - `description?: string`
-
-          A description of what the function does, used by the model to choose when and how to call the function.
-
-        - `parameters?: FunctionParameters`
-
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-          Omitting `parameters` defines a function with an empty parameter list.
-
-        - `strict?: boolean | null`
-
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-      - `type: "function"`
-
-        The type of tool being defined: `function`
-
-        - `"function"`
 
   - `truncation_strategy: TruncationStrategy | null`
 
@@ -7053,27 +6182,7 @@ main();
 
 ### Run Status
 
-- `RunStatus = "queued" | "in_progress" | "requires_action" | 6 more`
-
-  The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
-
-  - `"queued"`
-
-  - `"in_progress"`
-
-  - `"requires_action"`
-
-  - `"cancelling"`
-
-  - `"cancelled"`
-
-  - `"failed"`
-
-  - `"completed"`
-
-  - `"incomplete"`
-
-  - `"expired"`
+- `RunStatus = unknown`
 
 # Steps
 
@@ -7083,7 +6192,7 @@ main();
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps`
 
-Returns a list of run steps belonging to a run.
+List run steps
 
 ### Parameters
 
@@ -7230,153 +6339,9 @@ Returns a list of run steps belonging to a run.
 
       Details of the tool call.
 
-      - `tool_calls: Array<ToolCall>`
+      - `tool_calls: Array<unknown>`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
-
-        - `CodeInterpreterToolCall`
-
-          Details of the Code Interpreter tool call the run step was involved in.
-
-          - `id: string`
-
-            The ID of the tool call.
-
-          - `code_interpreter: CodeInterpreter`
-
-            The Code Interpreter tool call definition.
-
-            - `input: string`
-
-              The input to the Code Interpreter tool call.
-
-            - `outputs: Array<Logs | Image>`
-
-              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-              - `Logs`
-
-                Text output from the Code Interpreter tool call as part of a run step.
-
-                - `logs: string`
-
-                  The text output from the Code Interpreter tool call.
-
-                - `type: "logs"`
-
-                  Always `logs`.
-
-                  - `"logs"`
-
-              - `Image`
-
-                - `image: Image`
-
-                  - `file_id: string`
-
-                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-                - `type: "image"`
-
-                  Always `image`.
-
-                  - `"image"`
-
-          - `type: "code_interpreter"`
-
-            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-            - `"code_interpreter"`
-
-        - `FileSearchToolCall`
-
-          - `id: string`
-
-            The ID of the tool call object.
-
-          - `file_search: FileSearch`
-
-            For now, this is always going to be an empty object.
-
-            - `ranking_options?: RankingOptions`
-
-              The ranking options for the file search.
-
-              - `ranker: "auto" | "default_2024_08_21"`
-
-                The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-                - `"auto"`
-
-                - `"default_2024_08_21"`
-
-              - `score_threshold: number`
-
-                The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-            - `results?: Array<Result>`
-
-              The results of the file search.
-
-              - `file_id: string`
-
-                The ID of the file that result was found in.
-
-              - `file_name: string`
-
-                The name of the file that result was found in.
-
-              - `score: number`
-
-                The score of the result. All values must be a floating point number between 0 and 1.
-
-              - `content?: Array<Content>`
-
-                The content of the result that was found. The content is only included if requested via the include query parameter.
-
-                - `text?: string`
-
-                  The text content of the file.
-
-                - `type?: "text"`
-
-                  The type of the content.
-
-                  - `"text"`
-
-          - `type: "file_search"`
-
-            The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-            - `"file_search"`
-
-        - `FunctionToolCall`
-
-          - `id: string`
-
-            The ID of the tool call object.
-
-          - `function: Function`
-
-            The definition of the function that was called.
-
-            - `arguments: string`
-
-              The arguments passed to the function.
-
-            - `name: string`
-
-              The name of the function.
-
-            - `output: string | null`
-
-              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
-
-          - `type: "function"`
-
-            The type of tool call. This is always going to be `function` for this type of tool call.
-
-            - `"function"`
 
       - `type: "tool_calls"`
 
@@ -7536,7 +6501,7 @@ main();
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps/{step_id}`
 
-Retrieves a run step.
+Retrieve run step
 
 ### Parameters
 
@@ -7667,153 +6632,9 @@ Retrieves a run step.
 
       Details of the tool call.
 
-      - `tool_calls: Array<ToolCall>`
+      - `tool_calls: Array<unknown>`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
-
-        - `CodeInterpreterToolCall`
-
-          Details of the Code Interpreter tool call the run step was involved in.
-
-          - `id: string`
-
-            The ID of the tool call.
-
-          - `code_interpreter: CodeInterpreter`
-
-            The Code Interpreter tool call definition.
-
-            - `input: string`
-
-              The input to the Code Interpreter tool call.
-
-            - `outputs: Array<Logs | Image>`
-
-              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-              - `Logs`
-
-                Text output from the Code Interpreter tool call as part of a run step.
-
-                - `logs: string`
-
-                  The text output from the Code Interpreter tool call.
-
-                - `type: "logs"`
-
-                  Always `logs`.
-
-                  - `"logs"`
-
-              - `Image`
-
-                - `image: Image`
-
-                  - `file_id: string`
-
-                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-                - `type: "image"`
-
-                  Always `image`.
-
-                  - `"image"`
-
-          - `type: "code_interpreter"`
-
-            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-            - `"code_interpreter"`
-
-        - `FileSearchToolCall`
-
-          - `id: string`
-
-            The ID of the tool call object.
-
-          - `file_search: FileSearch`
-
-            For now, this is always going to be an empty object.
-
-            - `ranking_options?: RankingOptions`
-
-              The ranking options for the file search.
-
-              - `ranker: "auto" | "default_2024_08_21"`
-
-                The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-                - `"auto"`
-
-                - `"default_2024_08_21"`
-
-              - `score_threshold: number`
-
-                The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-            - `results?: Array<Result>`
-
-              The results of the file search.
-
-              - `file_id: string`
-
-                The ID of the file that result was found in.
-
-              - `file_name: string`
-
-                The name of the file that result was found in.
-
-              - `score: number`
-
-                The score of the result. All values must be a floating point number between 0 and 1.
-
-              - `content?: Array<Content>`
-
-                The content of the result that was found. The content is only included if requested via the include query parameter.
-
-                - `text?: string`
-
-                  The text content of the file.
-
-                - `type?: "text"`
-
-                  The type of the content.
-
-                  - `"text"`
-
-          - `type: "file_search"`
-
-            The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-            - `"file_search"`
-
-        - `FunctionToolCall`
-
-          - `id: string`
-
-            The ID of the tool call object.
-
-          - `function: Function`
-
-            The definition of the function that was called.
-
-            - `arguments: string`
-
-              The arguments passed to the function.
-
-            - `name: string`
-
-              The name of the function.
-
-            - `output: string | null`
-
-              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
-
-          - `type: "function"`
-
-            The type of tool call. This is always going to be `function` for this type of tool call.
-
-            - `"function"`
 
       - `type: "tool_calls"`
 
@@ -8392,153 +7213,9 @@ main();
 
       Details of the tool call.
 
-      - `tool_calls: Array<ToolCall>`
+      - `tool_calls: Array<unknown>`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
-
-        - `CodeInterpreterToolCall`
-
-          Details of the Code Interpreter tool call the run step was involved in.
-
-          - `id: string`
-
-            The ID of the tool call.
-
-          - `code_interpreter: CodeInterpreter`
-
-            The Code Interpreter tool call definition.
-
-            - `input: string`
-
-              The input to the Code Interpreter tool call.
-
-            - `outputs: Array<Logs | Image>`
-
-              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-              - `Logs`
-
-                Text output from the Code Interpreter tool call as part of a run step.
-
-                - `logs: string`
-
-                  The text output from the Code Interpreter tool call.
-
-                - `type: "logs"`
-
-                  Always `logs`.
-
-                  - `"logs"`
-
-              - `Image`
-
-                - `image: Image`
-
-                  - `file_id: string`
-
-                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-                - `type: "image"`
-
-                  Always `image`.
-
-                  - `"image"`
-
-          - `type: "code_interpreter"`
-
-            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-            - `"code_interpreter"`
-
-        - `FileSearchToolCall`
-
-          - `id: string`
-
-            The ID of the tool call object.
-
-          - `file_search: FileSearch`
-
-            For now, this is always going to be an empty object.
-
-            - `ranking_options?: RankingOptions`
-
-              The ranking options for the file search.
-
-              - `ranker: "auto" | "default_2024_08_21"`
-
-                The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-                - `"auto"`
-
-                - `"default_2024_08_21"`
-
-              - `score_threshold: number`
-
-                The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-            - `results?: Array<Result>`
-
-              The results of the file search.
-
-              - `file_id: string`
-
-                The ID of the file that result was found in.
-
-              - `file_name: string`
-
-                The name of the file that result was found in.
-
-              - `score: number`
-
-                The score of the result. All values must be a floating point number between 0 and 1.
-
-              - `content?: Array<Content>`
-
-                The content of the result that was found. The content is only included if requested via the include query parameter.
-
-                - `text?: string`
-
-                  The text content of the file.
-
-                - `type?: "text"`
-
-                  The type of the content.
-
-                  - `"text"`
-
-          - `type: "file_search"`
-
-            The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-            - `"file_search"`
-
-        - `FunctionToolCall`
-
-          - `id: string`
-
-            The ID of the tool call object.
-
-          - `function: Function`
-
-            The definition of the function that was called.
-
-            - `arguments: string`
-
-              The arguments passed to the function.
-
-            - `name: string`
-
-              The name of the function.
-
-            - `output: string | null`
-
-              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
-
-          - `type: "function"`
-
-            The type of tool call. This is always going to be `function` for this type of tool call.
-
-            - `"function"`
 
       - `type: "tool_calls"`
 
@@ -8576,161 +7253,7 @@ main();
 
 ### Run Step Delta
 
-- `RunStepDelta`
-
-  The delta containing the fields that have changed on the run step.
-
-  - `step_details?: RunStepDeltaMessageDelta | ToolCallDeltaObject`
-
-    The details of the run step.
-
-    - `RunStepDeltaMessageDelta`
-
-      Details of the message creation by the run step.
-
-      - `type: "message_creation"`
-
-        Always `message_creation`.
-
-        - `"message_creation"`
-
-      - `message_creation?: MessageCreation`
-
-        - `message_id?: string`
-
-          The ID of the message that was created by this run step.
-
-    - `ToolCallDeltaObject`
-
-      Details of the tool call.
-
-      - `type: "tool_calls"`
-
-        Always `tool_calls`.
-
-        - `"tool_calls"`
-
-      - `tool_calls?: Array<ToolCallDelta>`
-
-        An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
-
-        - `CodeInterpreterToolCallDelta`
-
-          Details of the Code Interpreter tool call the run step was involved in.
-
-          - `index: number`
-
-            The index of the tool call in the tool calls array.
-
-          - `type: "code_interpreter"`
-
-            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-            - `"code_interpreter"`
-
-          - `id?: string`
-
-            The ID of the tool call.
-
-          - `code_interpreter?: CodeInterpreter`
-
-            The Code Interpreter tool call definition.
-
-            - `input?: string`
-
-              The input to the Code Interpreter tool call.
-
-            - `outputs?: Array<CodeInterpreterLogs | CodeInterpreterOutputImage>`
-
-              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-              - `CodeInterpreterLogs`
-
-                Text output from the Code Interpreter tool call as part of a run step.
-
-                - `index: number`
-
-                  The index of the output in the outputs array.
-
-                - `type: "logs"`
-
-                  Always `logs`.
-
-                  - `"logs"`
-
-                - `logs?: string`
-
-                  The text output from the Code Interpreter tool call.
-
-              - `CodeInterpreterOutputImage`
-
-                - `index: number`
-
-                  The index of the output in the outputs array.
-
-                - `type: "image"`
-
-                  Always `image`.
-
-                  - `"image"`
-
-                - `image?: Image`
-
-                  - `file_id?: string`
-
-                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-        - `FileSearchToolCallDelta`
-
-          - `file_search: unknown`
-
-            For now, this is always going to be an empty object.
-
-          - `index: number`
-
-            The index of the tool call in the tool calls array.
-
-          - `type: "file_search"`
-
-            The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-            - `"file_search"`
-
-          - `id?: string`
-
-            The ID of the tool call object.
-
-        - `FunctionToolCallDelta`
-
-          - `index: number`
-
-            The index of the tool call in the tool calls array.
-
-          - `type: "function"`
-
-            The type of tool call. This is always going to be `function` for this type of tool call.
-
-            - `"function"`
-
-          - `id?: string`
-
-            The ID of the tool call object.
-
-          - `function?: Function`
-
-            The definition of the function that was called.
-
-            - `arguments?: string`
-
-              The arguments passed to the function.
-
-            - `name?: string`
-
-              The name of the function.
-
-            - `output?: string | null`
-
-              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+- `RunStepDelta = unknown`
 
 ### Run Step Delta Event
 
@@ -8742,161 +7265,7 @@ main();
 
     The identifier of the run step, which can be referenced in API endpoints.
 
-  - `delta: RunStepDelta`
-
-    The delta containing the fields that have changed on the run step.
-
-    - `step_details?: RunStepDeltaMessageDelta | ToolCallDeltaObject`
-
-      The details of the run step.
-
-      - `RunStepDeltaMessageDelta`
-
-        Details of the message creation by the run step.
-
-        - `type: "message_creation"`
-
-          Always `message_creation`.
-
-          - `"message_creation"`
-
-        - `message_creation?: MessageCreation`
-
-          - `message_id?: string`
-
-            The ID of the message that was created by this run step.
-
-      - `ToolCallDeltaObject`
-
-        Details of the tool call.
-
-        - `type: "tool_calls"`
-
-          Always `tool_calls`.
-
-          - `"tool_calls"`
-
-        - `tool_calls?: Array<ToolCallDelta>`
-
-          An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
-
-          - `CodeInterpreterToolCallDelta`
-
-            Details of the Code Interpreter tool call the run step was involved in.
-
-            - `index: number`
-
-              The index of the tool call in the tool calls array.
-
-            - `type: "code_interpreter"`
-
-              The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-              - `"code_interpreter"`
-
-            - `id?: string`
-
-              The ID of the tool call.
-
-            - `code_interpreter?: CodeInterpreter`
-
-              The Code Interpreter tool call definition.
-
-              - `input?: string`
-
-                The input to the Code Interpreter tool call.
-
-              - `outputs?: Array<CodeInterpreterLogs | CodeInterpreterOutputImage>`
-
-                The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-                - `CodeInterpreterLogs`
-
-                  Text output from the Code Interpreter tool call as part of a run step.
-
-                  - `index: number`
-
-                    The index of the output in the outputs array.
-
-                  - `type: "logs"`
-
-                    Always `logs`.
-
-                    - `"logs"`
-
-                  - `logs?: string`
-
-                    The text output from the Code Interpreter tool call.
-
-                - `CodeInterpreterOutputImage`
-
-                  - `index: number`
-
-                    The index of the output in the outputs array.
-
-                  - `type: "image"`
-
-                    Always `image`.
-
-                    - `"image"`
-
-                  - `image?: Image`
-
-                    - `file_id?: string`
-
-                      The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-          - `FileSearchToolCallDelta`
-
-            - `file_search: unknown`
-
-              For now, this is always going to be an empty object.
-
-            - `index: number`
-
-              The index of the tool call in the tool calls array.
-
-            - `type: "file_search"`
-
-              The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-              - `"file_search"`
-
-            - `id?: string`
-
-              The ID of the tool call object.
-
-          - `FunctionToolCallDelta`
-
-            - `index: number`
-
-              The index of the tool call in the tool calls array.
-
-            - `type: "function"`
-
-              The type of tool call. This is always going to be `function` for this type of tool call.
-
-              - `"function"`
-
-            - `id?: string`
-
-              The ID of the tool call object.
-
-            - `function?: Function`
-
-              The definition of the function that was called.
-
-              - `arguments?: string`
-
-                The arguments passed to the function.
-
-              - `name?: string`
-
-                The name of the function.
-
-              - `output?: string | null`
-
-                The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+  - `delta: unknown`
 
   - `object: "thread.run.step.delta"`
 
@@ -8930,277 +7299,11 @@ main();
 
 ### Tool Call
 
-- `ToolCall = CodeInterpreterToolCall | FileSearchToolCall | FunctionToolCall`
-
-  Details of the Code Interpreter tool call the run step was involved in.
-
-  - `CodeInterpreterToolCall`
-
-    Details of the Code Interpreter tool call the run step was involved in.
-
-    - `id: string`
-
-      The ID of the tool call.
-
-    - `code_interpreter: CodeInterpreter`
-
-      The Code Interpreter tool call definition.
-
-      - `input: string`
-
-        The input to the Code Interpreter tool call.
-
-      - `outputs: Array<Logs | Image>`
-
-        The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-        - `Logs`
-
-          Text output from the Code Interpreter tool call as part of a run step.
-
-          - `logs: string`
-
-            The text output from the Code Interpreter tool call.
-
-          - `type: "logs"`
-
-            Always `logs`.
-
-            - `"logs"`
-
-        - `Image`
-
-          - `image: Image`
-
-            - `file_id: string`
-
-              The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-          - `type: "image"`
-
-            Always `image`.
-
-            - `"image"`
-
-    - `type: "code_interpreter"`
-
-      The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-      - `"code_interpreter"`
-
-  - `FileSearchToolCall`
-
-    - `id: string`
-
-      The ID of the tool call object.
-
-    - `file_search: FileSearch`
-
-      For now, this is always going to be an empty object.
-
-      - `ranking_options?: RankingOptions`
-
-        The ranking options for the file search.
-
-        - `ranker: "auto" | "default_2024_08_21"`
-
-          The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-          - `"auto"`
-
-          - `"default_2024_08_21"`
-
-        - `score_threshold: number`
-
-          The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-      - `results?: Array<Result>`
-
-        The results of the file search.
-
-        - `file_id: string`
-
-          The ID of the file that result was found in.
-
-        - `file_name: string`
-
-          The name of the file that result was found in.
-
-        - `score: number`
-
-          The score of the result. All values must be a floating point number between 0 and 1.
-
-        - `content?: Array<Content>`
-
-          The content of the result that was found. The content is only included if requested via the include query parameter.
-
-          - `text?: string`
-
-            The text content of the file.
-
-          - `type?: "text"`
-
-            The type of the content.
-
-            - `"text"`
-
-    - `type: "file_search"`
-
-      The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-      - `"file_search"`
-
-  - `FunctionToolCall`
-
-    - `id: string`
-
-      The ID of the tool call object.
-
-    - `function: Function`
-
-      The definition of the function that was called.
-
-      - `arguments: string`
-
-        The arguments passed to the function.
-
-      - `name: string`
-
-        The name of the function.
-
-      - `output: string | null`
-
-        The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
-
-    - `type: "function"`
-
-      The type of tool call. This is always going to be `function` for this type of tool call.
-
-      - `"function"`
+- `ToolCall = unknown`
 
 ### Tool Call Delta
 
-- `ToolCallDelta = CodeInterpreterToolCallDelta | FileSearchToolCallDelta | FunctionToolCallDelta`
-
-  Details of the Code Interpreter tool call the run step was involved in.
-
-  - `CodeInterpreterToolCallDelta`
-
-    Details of the Code Interpreter tool call the run step was involved in.
-
-    - `index: number`
-
-      The index of the tool call in the tool calls array.
-
-    - `type: "code_interpreter"`
-
-      The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-      - `"code_interpreter"`
-
-    - `id?: string`
-
-      The ID of the tool call.
-
-    - `code_interpreter?: CodeInterpreter`
-
-      The Code Interpreter tool call definition.
-
-      - `input?: string`
-
-        The input to the Code Interpreter tool call.
-
-      - `outputs?: Array<CodeInterpreterLogs | CodeInterpreterOutputImage>`
-
-        The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-        - `CodeInterpreterLogs`
-
-          Text output from the Code Interpreter tool call as part of a run step.
-
-          - `index: number`
-
-            The index of the output in the outputs array.
-
-          - `type: "logs"`
-
-            Always `logs`.
-
-            - `"logs"`
-
-          - `logs?: string`
-
-            The text output from the Code Interpreter tool call.
-
-        - `CodeInterpreterOutputImage`
-
-          - `index: number`
-
-            The index of the output in the outputs array.
-
-          - `type: "image"`
-
-            Always `image`.
-
-            - `"image"`
-
-          - `image?: Image`
-
-            - `file_id?: string`
-
-              The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-  - `FileSearchToolCallDelta`
-
-    - `file_search: unknown`
-
-      For now, this is always going to be an empty object.
-
-    - `index: number`
-
-      The index of the tool call in the tool calls array.
-
-    - `type: "file_search"`
-
-      The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-      - `"file_search"`
-
-    - `id?: string`
-
-      The ID of the tool call object.
-
-  - `FunctionToolCallDelta`
-
-    - `index: number`
-
-      The index of the tool call in the tool calls array.
-
-    - `type: "function"`
-
-      The type of tool call. This is always going to be `function` for this type of tool call.
-
-      - `"function"`
-
-    - `id?: string`
-
-      The ID of the tool call object.
-
-    - `function?: Function`
-
-      The definition of the function that was called.
-
-      - `arguments?: string`
-
-        The arguments passed to the function.
-
-      - `name?: string`
-
-        The name of the function.
-
-      - `output?: string | null`
-
-        The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+- `ToolCallDelta = unknown`
 
 ### Tool Call Delta Object
 
@@ -9214,127 +7317,9 @@ main();
 
     - `"tool_calls"`
 
-  - `tool_calls?: Array<ToolCallDelta>`
+  - `tool_calls?: Array<unknown>`
 
     An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
-
-    - `CodeInterpreterToolCallDelta`
-
-      Details of the Code Interpreter tool call the run step was involved in.
-
-      - `index: number`
-
-        The index of the tool call in the tool calls array.
-
-      - `type: "code_interpreter"`
-
-        The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-        - `"code_interpreter"`
-
-      - `id?: string`
-
-        The ID of the tool call.
-
-      - `code_interpreter?: CodeInterpreter`
-
-        The Code Interpreter tool call definition.
-
-        - `input?: string`
-
-          The input to the Code Interpreter tool call.
-
-        - `outputs?: Array<CodeInterpreterLogs | CodeInterpreterOutputImage>`
-
-          The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-          - `CodeInterpreterLogs`
-
-            Text output from the Code Interpreter tool call as part of a run step.
-
-            - `index: number`
-
-              The index of the output in the outputs array.
-
-            - `type: "logs"`
-
-              Always `logs`.
-
-              - `"logs"`
-
-            - `logs?: string`
-
-              The text output from the Code Interpreter tool call.
-
-          - `CodeInterpreterOutputImage`
-
-            - `index: number`
-
-              The index of the output in the outputs array.
-
-            - `type: "image"`
-
-              Always `image`.
-
-              - `"image"`
-
-            - `image?: Image`
-
-              - `file_id?: string`
-
-                The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-    - `FileSearchToolCallDelta`
-
-      - `file_search: unknown`
-
-        For now, this is always going to be an empty object.
-
-      - `index: number`
-
-        The index of the tool call in the tool calls array.
-
-      - `type: "file_search"`
-
-        The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-        - `"file_search"`
-
-      - `id?: string`
-
-        The ID of the tool call object.
-
-    - `FunctionToolCallDelta`
-
-      - `index: number`
-
-        The index of the tool call in the tool calls array.
-
-      - `type: "function"`
-
-        The type of tool call. This is always going to be `function` for this type of tool call.
-
-        - `"function"`
-
-      - `id?: string`
-
-        The ID of the tool call object.
-
-      - `function?: Function`
-
-        The definition of the function that was called.
-
-        - `arguments?: string`
-
-          The arguments passed to the function.
-
-        - `name?: string`
-
-          The name of the function.
-
-        - `output?: string | null`
-
-          The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
 ### Tool Calls Step Details
 
@@ -9342,153 +7327,9 @@ main();
 
   Details of the tool call.
 
-  - `tool_calls: Array<ToolCall>`
+  - `tool_calls: Array<unknown>`
 
     An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
-
-    - `CodeInterpreterToolCall`
-
-      Details of the Code Interpreter tool call the run step was involved in.
-
-      - `id: string`
-
-        The ID of the tool call.
-
-      - `code_interpreter: CodeInterpreter`
-
-        The Code Interpreter tool call definition.
-
-        - `input: string`
-
-          The input to the Code Interpreter tool call.
-
-        - `outputs: Array<Logs | Image>`
-
-          The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-          - `Logs`
-
-            Text output from the Code Interpreter tool call as part of a run step.
-
-            - `logs: string`
-
-              The text output from the Code Interpreter tool call.
-
-            - `type: "logs"`
-
-              Always `logs`.
-
-              - `"logs"`
-
-          - `Image`
-
-            - `image: Image`
-
-              - `file_id: string`
-
-                The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-            - `type: "image"`
-
-              Always `image`.
-
-              - `"image"`
-
-      - `type: "code_interpreter"`
-
-        The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-        - `"code_interpreter"`
-
-    - `FileSearchToolCall`
-
-      - `id: string`
-
-        The ID of the tool call object.
-
-      - `file_search: FileSearch`
-
-        For now, this is always going to be an empty object.
-
-        - `ranking_options?: RankingOptions`
-
-          The ranking options for the file search.
-
-          - `ranker: "auto" | "default_2024_08_21"`
-
-            The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-            - `"auto"`
-
-            - `"default_2024_08_21"`
-
-          - `score_threshold: number`
-
-            The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-        - `results?: Array<Result>`
-
-          The results of the file search.
-
-          - `file_id: string`
-
-            The ID of the file that result was found in.
-
-          - `file_name: string`
-
-            The name of the file that result was found in.
-
-          - `score: number`
-
-            The score of the result. All values must be a floating point number between 0 and 1.
-
-          - `content?: Array<Content>`
-
-            The content of the result that was found. The content is only included if requested via the include query parameter.
-
-            - `text?: string`
-
-              The text content of the file.
-
-            - `type?: "text"`
-
-              The type of the content.
-
-              - `"text"`
-
-      - `type: "file_search"`
-
-        The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-        - `"file_search"`
-
-    - `FunctionToolCall`
-
-      - `id: string`
-
-        The ID of the tool call object.
-
-      - `function: Function`
-
-        The definition of the function that was called.
-
-        - `arguments: string`
-
-          The arguments passed to the function.
-
-        - `name: string`
-
-          The name of the function.
-
-        - `output: string | null`
-
-          The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
-
-      - `type: "function"`
-
-        The type of tool call. This is always going to be `function` for this type of tool call.
-
-        - `"function"`
 
   - `type: "tool_calls"`
 
@@ -9504,7 +7345,7 @@ main();
 
 **get** `/threads/{thread_id}/messages`
 
-Returns a list of messages for a given thread.
+List messages
 
 ### Parameters
 
@@ -9582,139 +7423,9 @@ Returns a list of messages for a given thread.
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: Array<MessageContent>`
+  - `content: Array<unknown>`
 
     The content of the message in array of text and/or images.
-
-    - `ImageFileContentBlock`
-
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-      - `image_file: ImageFile`
-
-        - `file_id: string`
-
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-        - `detail?: "auto" | "low" | "high"`
-
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_file"`
-
-        Always `image_file`.
-
-        - `"image_file"`
-
-    - `ImageURLContentBlock`
-
-      References an image URL in the content of a message.
-
-      - `image_url: ImageURL`
-
-        - `url: string`
-
-          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-        - `detail?: "auto" | "low" | "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_url"`
-
-        The type of the content part.
-
-        - `"image_url"`
-
-    - `TextContentBlock`
-
-      The text content that is part of a message.
-
-      - `text: Text`
-
-        - `annotations: Array<Annotation>`
-
-          - `FileCitationAnnotation`
-
-            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-            - `end_index: number`
-
-            - `file_citation: FileCitation`
-
-              - `file_id: string`
-
-                The ID of the specific File the citation is from.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_citation"`
-
-              Always `file_citation`.
-
-              - `"file_citation"`
-
-          - `FilePathAnnotation`
-
-            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-            - `end_index: number`
-
-            - `file_path: FilePath`
-
-              - `file_id: string`
-
-                The ID of the file that was generated.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_path"`
-
-              Always `file_path`.
-
-              - `"file_path"`
-
-        - `value: string`
-
-          The data that makes up the text.
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-    - `RefusalContentBlock`
-
-      The refusal content generated by the assistant.
-
-      - `refusal: string`
-
-      - `type: "refusal"`
-
-        Always `refusal`.
-
-        - `"refusal"`
 
   - `created_at: number`
 
@@ -9818,13 +7529,7 @@ for await (const message of client.beta.threads.messages.list('thread_id')) {
       ],
       "completed_at": 0,
       "content": [
-        {
-          "image_file": {
-            "file_id": "file_id",
-            "detail": "auto"
-          },
-          "type": "image_file"
-        }
+        {}
       ],
       "created_at": 0,
       "incomplete_at": 0,
@@ -9925,7 +7630,7 @@ main();
 
 **post** `/threads/{thread_id}/messages`
 
-Create a message.
+Create message
 
 ### Parameters
 
@@ -10101,139 +7806,9 @@ Create a message.
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: Array<MessageContent>`
+  - `content: Array<unknown>`
 
     The content of the message in array of text and/or images.
-
-    - `ImageFileContentBlock`
-
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-      - `image_file: ImageFile`
-
-        - `file_id: string`
-
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-        - `detail?: "auto" | "low" | "high"`
-
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_file"`
-
-        Always `image_file`.
-
-        - `"image_file"`
-
-    - `ImageURLContentBlock`
-
-      References an image URL in the content of a message.
-
-      - `image_url: ImageURL`
-
-        - `url: string`
-
-          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-        - `detail?: "auto" | "low" | "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_url"`
-
-        The type of the content part.
-
-        - `"image_url"`
-
-    - `TextContentBlock`
-
-      The text content that is part of a message.
-
-      - `text: Text`
-
-        - `annotations: Array<Annotation>`
-
-          - `FileCitationAnnotation`
-
-            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-            - `end_index: number`
-
-            - `file_citation: FileCitation`
-
-              - `file_id: string`
-
-                The ID of the specific File the citation is from.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_citation"`
-
-              Always `file_citation`.
-
-              - `"file_citation"`
-
-          - `FilePathAnnotation`
-
-            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-            - `end_index: number`
-
-            - `file_path: FilePath`
-
-              - `file_id: string`
-
-                The ID of the file that was generated.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_path"`
-
-              Always `file_path`.
-
-              - `"file_path"`
-
-        - `value: string`
-
-          The data that makes up the text.
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-    - `RefusalContentBlock`
-
-      The refusal content generated by the assistant.
-
-      - `refusal: string`
-
-      - `type: "refusal"`
-
-        Always `refusal`.
-
-        - `"refusal"`
 
   - `created_at: number`
 
@@ -10337,13 +7912,7 @@ console.log(message.id);
   ],
   "completed_at": 0,
   "content": [
-    {
-      "image_file": {
-        "file_id": "file_id",
-        "detail": "auto"
-      },
-      "type": "image_file"
-    }
+    {}
   ],
   "created_at": 0,
   "incomplete_at": 0,
@@ -10411,7 +7980,7 @@ main();
 
 **post** `/threads/{thread_id}/messages/{message_id}`
 
-Modifies a message.
+Modify message
 
 ### Parameters
 
@@ -10478,139 +8047,9 @@ Modifies a message.
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: Array<MessageContent>`
+  - `content: Array<unknown>`
 
     The content of the message in array of text and/or images.
-
-    - `ImageFileContentBlock`
-
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-      - `image_file: ImageFile`
-
-        - `file_id: string`
-
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-        - `detail?: "auto" | "low" | "high"`
-
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_file"`
-
-        Always `image_file`.
-
-        - `"image_file"`
-
-    - `ImageURLContentBlock`
-
-      References an image URL in the content of a message.
-
-      - `image_url: ImageURL`
-
-        - `url: string`
-
-          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-        - `detail?: "auto" | "low" | "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_url"`
-
-        The type of the content part.
-
-        - `"image_url"`
-
-    - `TextContentBlock`
-
-      The text content that is part of a message.
-
-      - `text: Text`
-
-        - `annotations: Array<Annotation>`
-
-          - `FileCitationAnnotation`
-
-            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-            - `end_index: number`
-
-            - `file_citation: FileCitation`
-
-              - `file_id: string`
-
-                The ID of the specific File the citation is from.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_citation"`
-
-              Always `file_citation`.
-
-              - `"file_citation"`
-
-          - `FilePathAnnotation`
-
-            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-            - `end_index: number`
-
-            - `file_path: FilePath`
-
-              - `file_id: string`
-
-                The ID of the file that was generated.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_path"`
-
-              Always `file_path`.
-
-              - `"file_path"`
-
-        - `value: string`
-
-          The data that makes up the text.
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-    - `RefusalContentBlock`
-
-      The refusal content generated by the assistant.
-
-      - `refusal: string`
-
-      - `type: "refusal"`
-
-        Always `refusal`.
-
-        - `"refusal"`
 
   - `created_at: number`
 
@@ -10711,13 +8150,7 @@ console.log(message.id);
   ],
   "completed_at": 0,
   "content": [
-    {
-      "image_file": {
-        "file_id": "file_id",
-        "detail": "auto"
-      },
-      "type": "image_file"
-    }
+    {}
   ],
   "created_at": 0,
   "incomplete_at": 0,
@@ -10789,7 +8222,7 @@ async function main() {
 
 **get** `/threads/{thread_id}/messages/{message_id}`
 
-Retrieve a message.
+Retrieve message
 
 ### Parameters
 
@@ -10847,139 +8280,9 @@ Retrieve a message.
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: Array<MessageContent>`
+  - `content: Array<unknown>`
 
     The content of the message in array of text and/or images.
-
-    - `ImageFileContentBlock`
-
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-      - `image_file: ImageFile`
-
-        - `file_id: string`
-
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-        - `detail?: "auto" | "low" | "high"`
-
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_file"`
-
-        Always `image_file`.
-
-        - `"image_file"`
-
-    - `ImageURLContentBlock`
-
-      References an image URL in the content of a message.
-
-      - `image_url: ImageURL`
-
-        - `url: string`
-
-          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-        - `detail?: "auto" | "low" | "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_url"`
-
-        The type of the content part.
-
-        - `"image_url"`
-
-    - `TextContentBlock`
-
-      The text content that is part of a message.
-
-      - `text: Text`
-
-        - `annotations: Array<Annotation>`
-
-          - `FileCitationAnnotation`
-
-            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-            - `end_index: number`
-
-            - `file_citation: FileCitation`
-
-              - `file_id: string`
-
-                The ID of the specific File the citation is from.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_citation"`
-
-              Always `file_citation`.
-
-              - `"file_citation"`
-
-          - `FilePathAnnotation`
-
-            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-            - `end_index: number`
-
-            - `file_path: FilePath`
-
-              - `file_id: string`
-
-                The ID of the file that was generated.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_path"`
-
-              Always `file_path`.
-
-              - `"file_path"`
-
-        - `value: string`
-
-          The data that makes up the text.
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-    - `RefusalContentBlock`
-
-      The refusal content generated by the assistant.
-
-      - `refusal: string`
-
-      - `type: "refusal"`
-
-        Always `refusal`.
-
-        - `"refusal"`
 
   - `created_at: number`
 
@@ -11082,13 +8385,7 @@ console.log(message.id);
   ],
   "completed_at": 0,
   "content": [
-    {
-      "image_file": {
-        "file_id": "file_id",
-        "detail": "auto"
-      },
-      "type": "image_file"
-    }
+    {}
   ],
   "created_at": 0,
   "incomplete_at": 0,
@@ -11156,7 +8453,7 @@ main();
 
 **delete** `/threads/{thread_id}/messages/{message_id}`
 
-Deletes a message.
+Delete message
 
 ### Parameters
 
@@ -11237,123 +8534,11 @@ async function main() {
 
 ### Annotation
 
-- `Annotation = FileCitationAnnotation | FilePathAnnotation`
-
-  A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-  - `FileCitationAnnotation`
-
-    A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-    - `end_index: number`
-
-    - `file_citation: FileCitation`
-
-      - `file_id: string`
-
-        The ID of the specific File the citation is from.
-
-    - `start_index: number`
-
-    - `text: string`
-
-      The text in the message content that needs to be replaced.
-
-    - `type: "file_citation"`
-
-      Always `file_citation`.
-
-      - `"file_citation"`
-
-  - `FilePathAnnotation`
-
-    A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-    - `end_index: number`
-
-    - `file_path: FilePath`
-
-      - `file_id: string`
-
-        The ID of the file that was generated.
-
-    - `start_index: number`
-
-    - `text: string`
-
-      The text in the message content that needs to be replaced.
-
-    - `type: "file_path"`
-
-      Always `file_path`.
-
-      - `"file_path"`
+- `Annotation = unknown`
 
 ### Annotation Delta
 
-- `AnnotationDelta = FileCitationDeltaAnnotation | FilePathDeltaAnnotation`
-
-  A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-  - `FileCitationDeltaAnnotation`
-
-    A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-    - `index: number`
-
-      The index of the annotation in the text content part.
-
-    - `type: "file_citation"`
-
-      Always `file_citation`.
-
-      - `"file_citation"`
-
-    - `end_index?: number`
-
-    - `file_citation?: FileCitation`
-
-      - `file_id?: string`
-
-        The ID of the specific File the citation is from.
-
-      - `quote?: string`
-
-        The specific quote in the file.
-
-    - `start_index?: number`
-
-    - `text?: string`
-
-      The text in the message content that needs to be replaced.
-
-  - `FilePathDeltaAnnotation`
-
-    A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-    - `index: number`
-
-      The index of the annotation in the text content part.
-
-    - `type: "file_path"`
-
-      Always `file_path`.
-
-      - `"file_path"`
-
-    - `end_index?: number`
-
-    - `file_path?: FilePath`
-
-      - `file_id?: string`
-
-        The ID of the file that was generated.
-
-    - `start_index?: number`
-
-    - `text?: string`
-
-      The text in the message content that needs to be replaced.
+- `AnnotationDelta = unknown`
 
 ### File Citation Annotation
 
@@ -11709,139 +8894,9 @@ async function main() {
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: Array<MessageContent>`
+  - `content: Array<unknown>`
 
     The content of the message in array of text and/or images.
-
-    - `ImageFileContentBlock`
-
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-      - `image_file: ImageFile`
-
-        - `file_id: string`
-
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-        - `detail?: "auto" | "low" | "high"`
-
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_file"`
-
-        Always `image_file`.
-
-        - `"image_file"`
-
-    - `ImageURLContentBlock`
-
-      References an image URL in the content of a message.
-
-      - `image_url: ImageURL`
-
-        - `url: string`
-
-          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-        - `detail?: "auto" | "low" | "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_url"`
-
-        The type of the content part.
-
-        - `"image_url"`
-
-    - `TextContentBlock`
-
-      The text content that is part of a message.
-
-      - `text: Text`
-
-        - `annotations: Array<Annotation>`
-
-          - `FileCitationAnnotation`
-
-            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-            - `end_index: number`
-
-            - `file_citation: FileCitation`
-
-              - `file_id: string`
-
-                The ID of the specific File the citation is from.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_citation"`
-
-              Always `file_citation`.
-
-              - `"file_citation"`
-
-          - `FilePathAnnotation`
-
-            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-            - `end_index: number`
-
-            - `file_path: FilePath`
-
-              - `file_id: string`
-
-                The ID of the file that was generated.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_path"`
-
-              Always `file_path`.
-
-              - `"file_path"`
-
-        - `value: string`
-
-          The data that makes up the text.
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-    - `RefusalContentBlock`
-
-      The refusal content generated by the assistant.
-
-      - `refusal: string`
-
-      - `type: "refusal"`
-
-        Always `refusal`.
-
-        - `"refusal"`
 
   - `created_at: number`
 
@@ -11912,303 +8967,11 @@ async function main() {
 
 ### Message Content
 
-- `MessageContent = ImageFileContentBlock | ImageURLContentBlock | TextContentBlock | RefusalContentBlock`
-
-  References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-  - `ImageFileContentBlock`
-
-    References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-    - `image_file: ImageFile`
-
-      - `file_id: string`
-
-        The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-      - `detail?: "auto" | "low" | "high"`
-
-        Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-        - `"auto"`
-
-        - `"low"`
-
-        - `"high"`
-
-    - `type: "image_file"`
-
-      Always `image_file`.
-
-      - `"image_file"`
-
-  - `ImageURLContentBlock`
-
-    References an image URL in the content of a message.
-
-    - `image_url: ImageURL`
-
-      - `url: string`
-
-        The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-      - `detail?: "auto" | "low" | "high"`
-
-        Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-        - `"auto"`
-
-        - `"low"`
-
-        - `"high"`
-
-    - `type: "image_url"`
-
-      The type of the content part.
-
-      - `"image_url"`
-
-  - `TextContentBlock`
-
-    The text content that is part of a message.
-
-    - `text: Text`
-
-      - `annotations: Array<Annotation>`
-
-        - `FileCitationAnnotation`
-
-          A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-          - `end_index: number`
-
-          - `file_citation: FileCitation`
-
-            - `file_id: string`
-
-              The ID of the specific File the citation is from.
-
-          - `start_index: number`
-
-          - `text: string`
-
-            The text in the message content that needs to be replaced.
-
-          - `type: "file_citation"`
-
-            Always `file_citation`.
-
-            - `"file_citation"`
-
-        - `FilePathAnnotation`
-
-          A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-          - `end_index: number`
-
-          - `file_path: FilePath`
-
-            - `file_id: string`
-
-              The ID of the file that was generated.
-
-          - `start_index: number`
-
-          - `text: string`
-
-            The text in the message content that needs to be replaced.
-
-          - `type: "file_path"`
-
-            Always `file_path`.
-
-            - `"file_path"`
-
-      - `value: string`
-
-        The data that makes up the text.
-
-    - `type: "text"`
-
-      Always `text`.
-
-      - `"text"`
-
-  - `RefusalContentBlock`
-
-    The refusal content generated by the assistant.
-
-    - `refusal: string`
-
-    - `type: "refusal"`
-
-      Always `refusal`.
-
-      - `"refusal"`
+- `MessageContent = unknown`
 
 ### Message Content Delta
 
-- `MessageContentDelta = ImageFileDeltaBlock | TextDeltaBlock | RefusalDeltaBlock | ImageURLDeltaBlock`
-
-  References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-  - `ImageFileDeltaBlock`
-
-    References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-    - `index: number`
-
-      The index of the content part in the message.
-
-    - `type: "image_file"`
-
-      Always `image_file`.
-
-      - `"image_file"`
-
-    - `image_file?: ImageFileDelta`
-
-      - `detail?: "auto" | "low" | "high"`
-
-        Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-        - `"auto"`
-
-        - `"low"`
-
-        - `"high"`
-
-      - `file_id?: string`
-
-        The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-  - `TextDeltaBlock`
-
-    The text content that is part of a message.
-
-    - `index: number`
-
-      The index of the content part in the message.
-
-    - `type: "text"`
-
-      Always `text`.
-
-      - `"text"`
-
-    - `text?: TextDelta`
-
-      - `annotations?: Array<AnnotationDelta>`
-
-        - `FileCitationDeltaAnnotation`
-
-          A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-          - `index: number`
-
-            The index of the annotation in the text content part.
-
-          - `type: "file_citation"`
-
-            Always `file_citation`.
-
-            - `"file_citation"`
-
-          - `end_index?: number`
-
-          - `file_citation?: FileCitation`
-
-            - `file_id?: string`
-
-              The ID of the specific File the citation is from.
-
-            - `quote?: string`
-
-              The specific quote in the file.
-
-          - `start_index?: number`
-
-          - `text?: string`
-
-            The text in the message content that needs to be replaced.
-
-        - `FilePathDeltaAnnotation`
-
-          A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-          - `index: number`
-
-            The index of the annotation in the text content part.
-
-          - `type: "file_path"`
-
-            Always `file_path`.
-
-            - `"file_path"`
-
-          - `end_index?: number`
-
-          - `file_path?: FilePath`
-
-            - `file_id?: string`
-
-              The ID of the file that was generated.
-
-          - `start_index?: number`
-
-          - `text?: string`
-
-            The text in the message content that needs to be replaced.
-
-      - `value?: string`
-
-        The data that makes up the text.
-
-  - `RefusalDeltaBlock`
-
-    The refusal content that is part of a message.
-
-    - `index: number`
-
-      The index of the refusal part in the message.
-
-    - `type: "refusal"`
-
-      Always `refusal`.
-
-      - `"refusal"`
-
-    - `refusal?: string`
-
-  - `ImageURLDeltaBlock`
-
-    References an image URL in the content of a message.
-
-    - `index: number`
-
-      The index of the content part in the message.
-
-    - `type: "image_url"`
-
-      Always `image_url`.
-
-      - `"image_url"`
-
-    - `image_url?: ImageURLDelta`
-
-      - `detail?: "auto" | "low" | "high"`
-
-        Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-        - `"auto"`
-
-        - `"low"`
-
-        - `"high"`
-
-      - `url?: string`
-
-        The URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
+- `MessageContentDelta = unknown`
 
 ### Message Content Part Param
 
@@ -12300,167 +9063,9 @@ async function main() {
 
   The delta containing the fields that have changed on the Message.
 
-  - `content?: Array<MessageContentDelta>`
+  - `content?: Array<unknown>`
 
     The content of the message in array of text and/or images.
-
-    - `ImageFileDeltaBlock`
-
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-      - `index: number`
-
-        The index of the content part in the message.
-
-      - `type: "image_file"`
-
-        Always `image_file`.
-
-        - `"image_file"`
-
-      - `image_file?: ImageFileDelta`
-
-        - `detail?: "auto" | "low" | "high"`
-
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-        - `file_id?: string`
-
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-    - `TextDeltaBlock`
-
-      The text content that is part of a message.
-
-      - `index: number`
-
-        The index of the content part in the message.
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-      - `text?: TextDelta`
-
-        - `annotations?: Array<AnnotationDelta>`
-
-          - `FileCitationDeltaAnnotation`
-
-            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-            - `index: number`
-
-              The index of the annotation in the text content part.
-
-            - `type: "file_citation"`
-
-              Always `file_citation`.
-
-              - `"file_citation"`
-
-            - `end_index?: number`
-
-            - `file_citation?: FileCitation`
-
-              - `file_id?: string`
-
-                The ID of the specific File the citation is from.
-
-              - `quote?: string`
-
-                The specific quote in the file.
-
-            - `start_index?: number`
-
-            - `text?: string`
-
-              The text in the message content that needs to be replaced.
-
-          - `FilePathDeltaAnnotation`
-
-            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-            - `index: number`
-
-              The index of the annotation in the text content part.
-
-            - `type: "file_path"`
-
-              Always `file_path`.
-
-              - `"file_path"`
-
-            - `end_index?: number`
-
-            - `file_path?: FilePath`
-
-              - `file_id?: string`
-
-                The ID of the file that was generated.
-
-            - `start_index?: number`
-
-            - `text?: string`
-
-              The text in the message content that needs to be replaced.
-
-        - `value?: string`
-
-          The data that makes up the text.
-
-    - `RefusalDeltaBlock`
-
-      The refusal content that is part of a message.
-
-      - `index: number`
-
-        The index of the refusal part in the message.
-
-      - `type: "refusal"`
-
-        Always `refusal`.
-
-        - `"refusal"`
-
-      - `refusal?: string`
-
-    - `ImageURLDeltaBlock`
-
-      References an image URL in the content of a message.
-
-      - `index: number`
-
-        The index of the content part in the message.
-
-      - `type: "image_url"`
-
-        Always `image_url`.
-
-        - `"image_url"`
-
-      - `image_url?: ImageURLDelta`
-
-        - `detail?: "auto" | "low" | "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-        - `url?: string`
-
-          The URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
 
   - `role?: "user" | "assistant"`
 
@@ -12484,167 +9089,9 @@ async function main() {
 
     The delta containing the fields that have changed on the Message.
 
-    - `content?: Array<MessageContentDelta>`
+    - `content?: Array<unknown>`
 
       The content of the message in array of text and/or images.
-
-      - `ImageFileDeltaBlock`
-
-        References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-        - `index: number`
-
-          The index of the content part in the message.
-
-        - `type: "image_file"`
-
-          Always `image_file`.
-
-          - `"image_file"`
-
-        - `image_file?: ImageFileDelta`
-
-          - `detail?: "auto" | "low" | "high"`
-
-            Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-            - `"auto"`
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_id?: string`
-
-            The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-      - `TextDeltaBlock`
-
-        The text content that is part of a message.
-
-        - `index: number`
-
-          The index of the content part in the message.
-
-        - `type: "text"`
-
-          Always `text`.
-
-          - `"text"`
-
-        - `text?: TextDelta`
-
-          - `annotations?: Array<AnnotationDelta>`
-
-            - `FileCitationDeltaAnnotation`
-
-              A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-              - `index: number`
-
-                The index of the annotation in the text content part.
-
-              - `type: "file_citation"`
-
-                Always `file_citation`.
-
-                - `"file_citation"`
-
-              - `end_index?: number`
-
-              - `file_citation?: FileCitation`
-
-                - `file_id?: string`
-
-                  The ID of the specific File the citation is from.
-
-                - `quote?: string`
-
-                  The specific quote in the file.
-
-              - `start_index?: number`
-
-              - `text?: string`
-
-                The text in the message content that needs to be replaced.
-
-            - `FilePathDeltaAnnotation`
-
-              A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-              - `index: number`
-
-                The index of the annotation in the text content part.
-
-              - `type: "file_path"`
-
-                Always `file_path`.
-
-                - `"file_path"`
-
-              - `end_index?: number`
-
-              - `file_path?: FilePath`
-
-                - `file_id?: string`
-
-                  The ID of the file that was generated.
-
-              - `start_index?: number`
-
-              - `text?: string`
-
-                The text in the message content that needs to be replaced.
-
-          - `value?: string`
-
-            The data that makes up the text.
-
-      - `RefusalDeltaBlock`
-
-        The refusal content that is part of a message.
-
-        - `index: number`
-
-          The index of the refusal part in the message.
-
-        - `type: "refusal"`
-
-          Always `refusal`.
-
-          - `"refusal"`
-
-        - `refusal?: string`
-
-      - `ImageURLDeltaBlock`
-
-        References an image URL in the content of a message.
-
-        - `index: number`
-
-          The index of the content part in the message.
-
-        - `type: "image_url"`
-
-          Always `image_url`.
-
-          - `"image_url"`
-
-        - `image_url?: ImageURLDelta`
-
-          - `detail?: "auto" | "low" | "high"`
-
-            Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-            - `"auto"`
-
-            - `"low"`
-
-            - `"high"`
-
-          - `url?: string`
-
-            The URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
 
     - `role?: "user" | "assistant"`
 
@@ -12696,55 +9143,7 @@ async function main() {
 
 - `Text`
 
-  - `annotations: Array<Annotation>`
-
-    - `FileCitationAnnotation`
-
-      A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-      - `end_index: number`
-
-      - `file_citation: FileCitation`
-
-        - `file_id: string`
-
-          The ID of the specific File the citation is from.
-
-      - `start_index: number`
-
-      - `text: string`
-
-        The text in the message content that needs to be replaced.
-
-      - `type: "file_citation"`
-
-        Always `file_citation`.
-
-        - `"file_citation"`
-
-    - `FilePathAnnotation`
-
-      A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-      - `end_index: number`
-
-      - `file_path: FilePath`
-
-        - `file_id: string`
-
-          The ID of the file that was generated.
-
-      - `start_index: number`
-
-      - `text: string`
-
-        The text in the message content that needs to be replaced.
-
-      - `type: "file_path"`
-
-        Always `file_path`.
-
-        - `"file_path"`
+  - `annotations: Array<unknown>`
 
   - `value: string`
 
@@ -12758,55 +9157,7 @@ async function main() {
 
   - `text: Text`
 
-    - `annotations: Array<Annotation>`
-
-      - `FileCitationAnnotation`
-
-        A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-        - `end_index: number`
-
-        - `file_citation: FileCitation`
-
-          - `file_id: string`
-
-            The ID of the specific File the citation is from.
-
-        - `start_index: number`
-
-        - `text: string`
-
-          The text in the message content that needs to be replaced.
-
-        - `type: "file_citation"`
-
-          Always `file_citation`.
-
-          - `"file_citation"`
-
-      - `FilePathAnnotation`
-
-        A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-        - `end_index: number`
-
-        - `file_path: FilePath`
-
-          - `file_id: string`
-
-            The ID of the file that was generated.
-
-        - `start_index: number`
-
-        - `text: string`
-
-          The text in the message content that needs to be replaced.
-
-        - `type: "file_path"`
-
-          Always `file_path`.
-
-          - `"file_path"`
+    - `annotations: Array<unknown>`
 
     - `value: string`
 
@@ -12838,67 +9189,7 @@ async function main() {
 
 - `TextDelta`
 
-  - `annotations?: Array<AnnotationDelta>`
-
-    - `FileCitationDeltaAnnotation`
-
-      A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-      - `index: number`
-
-        The index of the annotation in the text content part.
-
-      - `type: "file_citation"`
-
-        Always `file_citation`.
-
-        - `"file_citation"`
-
-      - `end_index?: number`
-
-      - `file_citation?: FileCitation`
-
-        - `file_id?: string`
-
-          The ID of the specific File the citation is from.
-
-        - `quote?: string`
-
-          The specific quote in the file.
-
-      - `start_index?: number`
-
-      - `text?: string`
-
-        The text in the message content that needs to be replaced.
-
-    - `FilePathDeltaAnnotation`
-
-      A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-      - `index: number`
-
-        The index of the annotation in the text content part.
-
-      - `type: "file_path"`
-
-        Always `file_path`.
-
-        - `"file_path"`
-
-      - `end_index?: number`
-
-      - `file_path?: FilePath`
-
-        - `file_id?: string`
-
-          The ID of the file that was generated.
-
-      - `start_index?: number`
-
-      - `text?: string`
-
-        The text in the message content that needs to be replaced.
+  - `annotations?: Array<unknown>`
 
   - `value?: string`
 
@@ -12922,67 +9213,7 @@ async function main() {
 
   - `text?: TextDelta`
 
-    - `annotations?: Array<AnnotationDelta>`
-
-      - `FileCitationDeltaAnnotation`
-
-        A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-        - `index: number`
-
-          The index of the annotation in the text content part.
-
-        - `type: "file_citation"`
-
-          Always `file_citation`.
-
-          - `"file_citation"`
-
-        - `end_index?: number`
-
-        - `file_citation?: FileCitation`
-
-          - `file_id?: string`
-
-            The ID of the specific File the citation is from.
-
-          - `quote?: string`
-
-            The specific quote in the file.
-
-        - `start_index?: number`
-
-        - `text?: string`
-
-          The text in the message content that needs to be replaced.
-
-      - `FilePathDeltaAnnotation`
-
-        A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-        - `index: number`
-
-          The index of the annotation in the text content part.
-
-        - `type: "file_path"`
-
-          Always `file_path`.
-
-          - `"file_path"`
-
-        - `end_index?: number`
-
-        - `file_path?: FilePath`
-
-          - `file_id?: string`
-
-            The ID of the file that was generated.
-
-        - `start_index?: number`
-
-        - `text?: string`
-
-          The text in the message content that needs to be replaced.
+    - `annotations?: Array<unknown>`
 
     - `value?: string`
 

@@ -2,12 +2,11 @@
 
 **post** `/moderations`
 
-Classifies if text and/or image inputs are potentially harmful. Learn
-more in the [moderation guide](/docs/guides/moderation).
+Create moderation
 
 ### Body Parameters
 
-- `input: string or array of string or array of object { image_url, type }  or object { text, type }`
+- `input: string or array of string or array of ModerationMultiModalInput`
 
   Input (or inputs) to classify. Can be a single string, an array of strings, or
   an array of multi-modal input objects similar to other models.
@@ -20,11 +19,11 @@ more in the [moderation guide](/docs/guides/moderation).
 
     An array of strings to classify for moderation.
 
-  - `array of object { image_url, type }  or object { text, type }`
+  - `ModerationMultiModalArray = array of ModerationMultiModalInput`
 
     An array of multi-modal inputs to the moderation model.
 
-    - `object { image_url, type }`
+    - `ModerationImageURLInput object { image_url, type }`
 
       An object describing an image to classify.
 
@@ -42,7 +41,7 @@ more in the [moderation guide](/docs/guides/moderation).
 
         - `"image_url"`
 
-    - `object { text, type }`
+    - `ModerationTextInput object { text, type }`
 
       An object describing text to classify.
 
@@ -59,8 +58,8 @@ more in the [moderation guide](/docs/guides/moderation).
 - `model: optional string or ModerationModel`
 
   The content moderation model you would like to use. Learn more in
-  [the moderation guide](/docs/guides/moderation), and learn about
-  available models [here](/docs/models#moderation).
+  [the moderation guide](https://platform.openai.com/docs/guides/moderation), and learn about
+  available models [here](https://platform.openai.com/docs/models#moderation).
 
   - `string`
 

@@ -4,9 +4,7 @@
 
 **post** `/responses/input_tokens`
 
-Returns input token counts of the request.
-
-Returns an object with `object` set to `response.input_tokens` and an `input_tokens` count.
+Get input token counts
 
 ### Parameters
 
@@ -72,6 +70,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"input_text"`
 
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `class ResponseInputImage: …`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -102,6 +110,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `class ResponseInputFile: …`
 
             A file input to the model.
@@ -112,9 +130,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"input_file"`
 
-            - `detail: Optional[Literal["low", "high"]]`
+            - `detail: Optional[Literal["auto", "low", "high"]]`
 
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
 
               - `"low"`
 
@@ -135,6 +155,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `filename: Optional[str]`
 
               The name of the file to be sent to the model.
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
       - `role: Literal["user", "assistant", "system", "developer"]`
 
@@ -1095,6 +1125,26 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the function tool call.
 
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
+
       - `namespace: Optional[str]`
 
         The namespace of the function to run.
@@ -1142,6 +1192,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"input_text"`
 
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `class ResponseInputImageContent: …`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -1172,6 +1232,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `class ResponseInputFileContent: …`
 
             A file input to the model.
@@ -1182,9 +1252,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"input_file"`
 
-            - `detail: Optional[Literal["low", "high"]]`
+            - `detail: Optional[Literal["auto", "low", "high"]]`
 
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
 
               - `"low"`
 
@@ -1206,6 +1278,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The name of the file to be sent to the model.
 
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
       - `type: Literal["function_call_output"]`
 
         The type of the function tool call output. Always `function_call_output`.
@@ -1215,6 +1297,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: Optional[str]`
 
         The unique ID of the function tool call output. Populated when this item is returned via API.
+
+      - `caller: Optional[FunctionCallOutputCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class FunctionCallOutputCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class FunctionCallOutputCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -1284,13 +1390,21 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `strict: Optional[bool]`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: Literal["function"]`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: Optional[bool]`
 
@@ -1299,6 +1413,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `description: Optional[str]`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: Optional[Dict[str, object]]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `class FileSearchTool: …`
 
@@ -1355,7 +1473,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[Union[str, float]]]`
+              - `value: Union[str, float, bool, List[object]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1365,11 +1483,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `bool`
 
-                - `List[Union[str, float]]`
-
-                  - `str`
-
-                  - `float`
+                - `List[object]`
 
             - `class CompoundFilter: …`
 
@@ -1541,6 +1655,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: Optional[McpAllowedTools]`
 
@@ -1760,6 +1882,22 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"code_interpreter"`
 
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `class ProgrammaticToolCalling: …`
+
+          - `type: Literal["programmatic_tool_calling"]`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `class ImageGeneration: …`
 
           A tool that generates images using the GPT image models.
@@ -1923,6 +2061,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"shell"`
 
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `environment: Optional[Environment]`
 
             - `class ContainerAuto: …`
@@ -2063,6 +2209,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"custom"`
 
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `defer_loading: Optional[bool]`
 
             Whether this tool should be deferred and discovered via tool search.
@@ -2131,15 +2285,29 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"function"`
 
+              - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: Optional[bool]`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: Optional[str]`
 
+              - `output_schema: Optional[Dict[str, object]]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: Optional[object]`
 
               - `strict: Optional[bool]`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
             - `class CustomTool: …`
 
@@ -2241,6 +2409,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"apply_patch"`
 
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
       - `type: Literal["tool_search_output"]`
 
         The item type. Always `tool_search_output`.
@@ -2314,6 +2490,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `class CodeInterpreter: …`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ProgrammaticToolCalling: …`
 
         - `class ImageGeneration: …`
 
@@ -2655,6 +2833,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the shell tool call. Populated when this item is returned via API.
 
+      - `caller: Optional[ShellCallCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class ShellCallCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class ShellCallCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
       - `environment: Optional[ShellCallEnvironment]`
 
         The environment to execute the shell commands in.
@@ -2730,6 +2932,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: Optional[str]`
 
         The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+      - `caller: Optional[ShellCallOutputCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class ShellCallOutputCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class ShellCallOutputCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `max_output_length: Optional[int]`
 
@@ -2825,6 +3051,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+      - `caller: Optional[ApplyPatchCallCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class ApplyPatchCallCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class ApplyPatchCallCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
     - `class ApplyPatchCallOutput: …`
 
       The streamed output emitted by an apply patch tool call.
@@ -2850,6 +3100,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: Optional[str]`
 
         The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+      - `caller: Optional[ApplyPatchCallOutputCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class ApplyPatchCallOutputCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class ApplyPatchCallOutputCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `output: Optional[str]`
 
@@ -3045,6 +3319,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the custom tool call output in the OpenAI platform.
 
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
     - `class ResponseCustomToolCall: …`
 
       A call to a custom tool created by the model.
@@ -3070,6 +3368,26 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: Optional[str]`
 
         The unique ID of the custom tool call in the OpenAI platform.
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
 
       - `namespace: Optional[str]`
 
@@ -3098,6 +3416,58 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         The type of item to reference. Always `item_reference`.
 
         - `"item_reference"`
+
+    - `class Program: …`
+
+      - `id: str`
+
+        The unique ID of this program item.
+
+      - `call_id: str`
+
+        The stable call ID of the program item.
+
+      - `code: str`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: str`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: Literal["program"]`
+
+        The item type. Always `program`.
+
+        - `"program"`
+
+    - `class ProgramOutput: …`
+
+      - `id: str`
+
+        The unique ID of this program output item.
+
+      - `call_id: str`
+
+        The call ID of the program item.
+
+      - `result: str`
+
+        The result produced by the program item.
+
+      - `status: Literal["completed", "incomplete"]`
+
+        The terminal status of the program output.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Literal["program_output"]`
+
+        The item type. Always `program_output`.
+
+        - `"program_output"`
 
 - `instructions: Optional[str]`
 
@@ -3148,16 +3518,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
   - `effort: Optional[ReasoningEffort]`
 
-    Constrains effort on reasoning for
-    [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-    Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-    reasoning effort can result in faster responses and fewer tokens used
-    on reasoning in a response.
-
-    - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-    - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-    - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-    - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+    Constrains effort on reasoning for reasoning models. Currently supported
+    values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+    Reducing reasoning effort can result in faster responses and fewer tokens
+    used on reasoning in a response. Not all reasoning models support every
+    value. See the
+    [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+    for model-specific support.
 
     - `"none"`
 
@@ -3170,6 +3537,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `"high"`
 
     - `"xhigh"`
+
+    - `"max"`
 
   - `generate_summary: Optional[Literal["auto", "concise", "detailed"]]`
 
@@ -3184,6 +3553,24 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `"concise"`
 
     - `"detailed"`
+
+  - `mode: Optional[Union[str, Literal["standard", "pro"], null]]`
+
+    Controls the reasoning execution mode for the request.
+
+    When returned on a response, this is the effective execution mode.
+
+    - `str`
+
+    - `Literal["standard", "pro"]`
+
+      Controls the reasoning execution mode for the request.
+
+      When returned on a response, this is the effective execution mode.
+
+      - `"standard"`
+
+      - `"pro"`
 
   - `summary: Optional[Literal["auto", "concise", "detailed"]]`
 
@@ -3423,6 +3810,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"custom"`
 
+  - `class ToolChoiceSpecificProgrammaticToolCallingParam: …`
+
+    - `type: Literal["programmatic_tool_calling"]`
+
+      The tool to call. Always `programmatic_tool_calling`.
+
+      - `"programmatic_tool_calling"`
+
   - `class ToolChoiceApplyPatch: …`
 
     Forces the model to call the apply_patch tool when executing a tool call.
@@ -3476,6 +3871,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
   - `class CodeInterpreter: …`
 
     A tool that runs Python code to help generate a response to a prompt.
+
+  - `class ProgrammaticToolCalling: …`
 
   - `class ImageGeneration: …`
 

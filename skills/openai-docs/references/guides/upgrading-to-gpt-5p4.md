@@ -82,7 +82,7 @@ Default action:
 
 - replace the model string with `gpt-5.4`
 - add one or two targeted prompt blocks
-- read [Prompt guidance for GPT-5.4](https://developers.openai.com/api/docs/guides/prompt-guidance) to choose the smallest prompt changes that recover the old behavior
+- read [Prompting best practices for GPT-5.4](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.4#prompting-best-practices) to choose the smallest prompt changes that recover the old behavior
 - avoid broad prompt cleanup unrelated to the upgrade
 - for research workflows, default to `research_mode` + `citation_rules` + `empty_result_handling`; add `tool_persistence_rules` when the host already uses retrieval tools
 - for dependency-aware or tool-heavy workflows, default to `tool_persistence_rules` + `dependency_checks` + `verification_loop`; add `parallel_tool_calling` only when retrieval steps are truly independent

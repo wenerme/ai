@@ -4,7 +4,7 @@
 
 **delete** `/threads/{thread_id}/messages/{message_id}`
 
-Deletes a message.
+Delete message
 
 ### Parameters
 

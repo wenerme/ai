@@ -2,7 +2,7 @@
 
 **get** `/organization/invites`
 
-Returns a list of invites in the organization.
+List invites
 
 ### Query Parameters
 

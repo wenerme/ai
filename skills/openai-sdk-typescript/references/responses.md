@@ -26,13 +26,7 @@ await client.responses.connect();
 
 **post** `/responses`
 
-Creates a model response. Provide [text](https://platform.openai.com/docs/guides/text) or
-[image](https://platform.openai.com/docs/guides/images) inputs to generate [text](https://platform.openai.com/docs/guides/text)
-or [JSON](https://platform.openai.com/docs/guides/structured-outputs) outputs. Have the model call
-your own [custom code](https://platform.openai.com/docs/guides/function-calling) or use built-in
-[tools](https://platform.openai.com/docs/guides/tools) like [web search](https://platform.openai.com/docs/guides/tools-web-search)
-or [file search](https://platform.openai.com/docs/guides/tools-file-search) to use your own data
-as input for the model's response.
+Create a model response
 
 ### Parameters
 
@@ -153,6 +147,16 @@ as input for the model's response.
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImage`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -183,6 +187,16 @@ as input for the model's response.
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFile`
 
                 A file input to the model.
@@ -193,9 +207,11 @@ as input for the model's response.
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -216,6 +232,16 @@ as input for the model's response.
                 - `filename?: string`
 
                   The name of the file to be sent to the model.
+
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
           - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -1164,6 +1190,26 @@ as input for the model's response.
 
             The unique ID of the function tool call.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
+
           - `namespace?: string`
 
             The namespace of the function to run.
@@ -1211,6 +1257,16 @@ as input for the model's response.
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImageContent`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -1241,6 +1297,16 @@ as input for the model's response.
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFileContent`
 
                 A file input to the model.
@@ -1251,9 +1317,11 @@ as input for the model's response.
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -1275,6 +1343,16 @@ as input for the model's response.
 
                   The name of the file to be sent to the model.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
           - `type: "function_call_output"`
 
             The type of the function tool call output. Always `function_call_output`.
@@ -1284,6 +1362,30 @@ as input for the model's response.
           - `id?: string | null`
 
             The unique ID of the function tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -1353,13 +1455,21 @@ as input for the model's response.
 
               - `strict: boolean | null`
 
-                Whether to enforce strict parameter validation. Default `true`.
+                Whether strict parameter validation is enforced for this function tool.
 
               - `type: "function"`
 
                 The type of the function tool. Always `function`.
 
                 - `"function"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading?: boolean`
 
@@ -1368,6 +1478,10 @@ as input for the model's response.
               - `description?: string | null`
 
                 A description of the function. Used by the model to determine whether or not to call the function.
+
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON schema object describing the JSON value encoded in string outputs for this function.
 
             - `FileSearchTool`
 
@@ -1424,7 +1538,7 @@ as input for the model's response.
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<string | number>`
+                  - `value: string | number | boolean | Array<unknown>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1434,11 +1548,7 @@ as input for the model's response.
 
                     - `boolean`
 
-                    - `Array<string | number>`
-
-                      - `string`
-
-                      - `number`
+                    - `Array<unknown>`
 
                 - `CompoundFilter`
 
@@ -1610,6 +1720,14 @@ as input for the model's response.
                 The type of the MCP tool. Always `mcp`.
 
                 - `"mcp"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -1821,6 +1939,22 @@ as input for the model's response.
 
                 - `"code_interpreter"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
+            - `ProgrammaticToolCalling`
+
+              - `type: "programmatic_tool_calling"`
+
+                The type of the tool. Always `programmatic_tool_calling`.
+
+                - `"programmatic_tool_calling"`
+
             - `ImageGeneration`
 
               A tool that generates images using the GPT image models.
@@ -1980,6 +2114,14 @@ as input for the model's response.
 
                 - `"shell"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
                 - `ContainerAuto`
@@ -2120,6 +2262,14 @@ as input for the model's response.
 
                 - `"custom"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this tool should be deferred and discovered via tool search.
@@ -2188,15 +2338,29 @@ as input for the model's response.
 
                     - `"function"`
 
+                  - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                    The tool invocation context(s).
+
+                    - `"direct"`
+
+                    - `"programmatic"`
+
                   - `defer_loading?: boolean`
 
                     Whether this function should be deferred and discovered via tool search.
 
                   - `description?: string | null`
 
+                  - `output_schema?: Record<string, unknown> | null`
+
+                    A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                   - `parameters?: unknown`
 
                   - `strict?: boolean | null`
+
+                    Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
                 - `CustomTool`
 
@@ -2298,6 +2462,14 @@ as input for the model's response.
 
                 - `"apply_patch"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
           - `type: "tool_search_output"`
 
             The item type. Always `tool_search_output`.
@@ -2371,6 +2543,8 @@ as input for the model's response.
             - `CodeInterpreter`
 
               A tool that runs Python code to help generate a response to a prompt.
+
+            - `ProgrammaticToolCalling`
 
             - `ImageGeneration`
 
@@ -2712,6 +2886,30 @@ as input for the model's response.
 
             The unique ID of the shell tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
           - `environment?: LocalEnvironment | ContainerReference | null`
 
             The environment to execute the shell commands in.
@@ -2787,6 +2985,30 @@ as input for the model's response.
           - `id?: string | null`
 
             The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `max_output_length?: number | null`
 
@@ -2882,6 +3104,30 @@ as input for the model's response.
 
             The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ApplyPatchCallOutput`
 
           The streamed output emitted by an apply patch tool call.
@@ -2907,6 +3153,30 @@ as input for the model's response.
           - `id?: string | null`
 
             The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `output?: string | null`
 
@@ -3098,6 +3368,30 @@ as input for the model's response.
 
             The unique ID of the custom tool call output in the OpenAI platform.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ResponseCustomToolCall`
 
           A call to a custom tool created by the model.
@@ -3123,6 +3417,26 @@ as input for the model's response.
           - `id?: string`
 
             The unique ID of the custom tool call in the OpenAI platform.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
 
           - `namespace?: string`
 
@@ -3151,6 +3465,58 @@ as input for the model's response.
             The type of item to reference. Always `item_reference`.
 
             - `"item_reference"`
+
+        - `Program`
+
+          - `id: string`
+
+            The unique ID of this program item.
+
+          - `call_id: string`
+
+            The stable call ID of the program item.
+
+          - `code: string`
+
+            The JavaScript source executed by programmatic tool calling.
+
+          - `fingerprint: string`
+
+            Opaque program replay fingerprint that must be round-tripped.
+
+          - `type: "program"`
+
+            The item type. Always `program`.
+
+            - `"program"`
+
+        - `ProgramOutput`
+
+          - `id: string`
+
+            The unique ID of this program output item.
+
+          - `call_id: string`
+
+            The call ID of the program item.
+
+          - `result: string`
+
+            The result produced by the program item.
+
+          - `status: "completed" | "incomplete"`
+
+            The terminal status of the program output.
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+          - `type: "program_output"`
+
+            The item type. Always `program_output`.
+
+            - `"program_output"`
 
     - `instructions?: string | null`
 
@@ -3186,7 +3552,13 @@ as input for the model's response.
 
       - `(string & {})`
 
-      - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+      - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+        - `"gpt-5.6-sol"`
+
+        - `"gpt-5.6-terra"`
+
+        - `"gpt-5.6-luna"`
 
         - `"gpt-5.4"`
 
@@ -3382,6 +3754,30 @@ as input for the model's response.
 
         The moderation model to use for moderated completions, e.g. 'omni-moderation-latest'.
 
+      - `policy?: Policy | null`
+
+        The policy to apply to moderated response input and output.
+
+        - `input?: Input | null`
+
+          The moderation policy for the response input.
+
+          - `mode: "score" | "block"`
+
+            - `"score"`
+
+            - `"block"`
+
+        - `output?: Output | null`
+
+          The moderation policy for the response output.
+
+          - `mode: "score" | "block"`
+
+            - `"score"`
+
+            - `"block"`
+
     - `parallel_tool_calls?: boolean | null`
 
       Whether to allow the model to run tool calls in parallel.
@@ -3429,9 +3825,32 @@ as input for the model's response.
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+    - `prompt_cache_options?: PromptCacheOptions`
+
+      Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](https://platform.openai.com/docs/guides/prompt-caching) for current details.
+
+      - `mode?: "implicit" | "explicit"`
+
+        Controls whether OpenAI automatically creates an implicit cache breakpoint. Defaults to `implicit`. With `implicit`, OpenAI creates one implicit breakpoint and writes up to the latest three explicit breakpoints in the request. With `explicit`, OpenAI does not create an implicit breakpoint and writes up to the latest four explicit breakpoints. If there are no explicit breakpoints, the request does not use prompt caching.
+
+        - `"implicit"`
+
+        - `"explicit"`
+
+      - `ttl?: "30m"`
+
+        The minimum lifetime applied to every implicit and explicit cache breakpoint written by the request. Defaults to `30m`, which is currently the only supported value. The backend may retain cache entries for longer.
+
+        - `"30m"`
+
     - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+      Deprecated. Use `prompt_cache_options.ttl` instead.
+
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      This field expresses a maximum retention policy, while
+      `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+      fields are independent and do not interact.
       For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
       For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -3464,16 +3883,13 @@ as input for the model's response.
 
       - `effort?: ReasoningEffort | null`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -3486,6 +3902,8 @@ as input for the model's response.
         - `"high"`
 
         - `"xhigh"`
+
+        - `"max"`
 
       - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -3500,6 +3918,20 @@ as input for the model's response.
         - `"concise"`
 
         - `"detailed"`
+
+      - `mode?: (string & {}) | "standard" | "pro"`
+
+        Controls the reasoning execution mode for the request.
+
+        When returned on a response, this is the effective execution mode.
+
+        - `(string & {})`
+
+        - `"standard" | "pro"`
+
+          - `"standard"`
+
+          - `"pro"`
 
       - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -3667,7 +4099,7 @@ as input for the model's response.
 
         - `"high"`
 
-    - `tool_choice?: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+    - `tool_choice?: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
       How the model should select which tool (or tools) to use when generating
       a response. See the `tools` parameter to see how to specify which tools
@@ -3809,6 +4241,14 @@ as input for the model's response.
 
           - `"custom"`
 
+      - `SpecificProgrammaticToolCallingParam`
+
+        - `type: "programmatic_tool_calling"`
+
+          The tool to call. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `ToolChoiceApplyPatch`
 
         Forces the model to call the apply_patch tool when executing a tool call.
@@ -3878,6 +4318,8 @@ as input for the model's response.
       - `CodeInterpreter`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `ProgrammaticToolCalling`
 
       - `ImageGeneration`
 
@@ -3983,7 +4425,7 @@ as input for the model's response.
 
     An error object returned when the model fails to generate a Response.
 
-    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
       The error code for the response.
 
@@ -3992,6 +4434,8 @@ as input for the model's response.
       - `"rate_limit_exceeded"`
 
       - `"invalid_prompt"`
+
+      - `"bio_policy"`
 
       - `"vector_store_timeout"`
 
@@ -4085,6 +4529,16 @@ as input for the model's response.
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImage`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -4115,6 +4569,16 @@ as input for the model's response.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFile`
 
               A file input to the model.
@@ -4125,9 +4589,11 @@ as input for the model's response.
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -4148,6 +4614,16 @@ as input for the model's response.
               - `filename?: string`
 
                 The name of the file to be sent to the model.
+
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
 
         - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -5096,6 +5572,26 @@ as input for the model's response.
 
           The unique ID of the function tool call.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `namespace?: string`
 
           The namespace of the function to run.
@@ -5143,6 +5639,16 @@ as input for the model's response.
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImageContent`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -5173,6 +5679,16 @@ as input for the model's response.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFileContent`
 
               A file input to the model.
@@ -5183,9 +5699,11 @@ as input for the model's response.
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -5207,6 +5725,16 @@ as input for the model's response.
 
                 The name of the file to be sent to the model.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
         - `type: "function_call_output"`
 
           The type of the function tool call output. Always `function_call_output`.
@@ -5216,6 +5744,30 @@ as input for the model's response.
         - `id?: string | null`
 
           The unique ID of the function tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -5285,13 +5837,21 @@ as input for the model's response.
 
             - `strict: boolean | null`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading?: boolean`
 
@@ -5300,6 +5860,10 @@ as input for the model's response.
             - `description?: string | null`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearchTool`
 
@@ -5356,7 +5920,7 @@ as input for the model's response.
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<string | number>`
+                - `value: string | number | boolean | Array<unknown>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5366,11 +5930,7 @@ as input for the model's response.
 
                   - `boolean`
 
-                  - `Array<string | number>`
-
-                    - `string`
-
-                    - `number`
+                  - `Array<unknown>`
 
               - `CompoundFilter`
 
@@ -5542,6 +6102,14 @@ as input for the model's response.
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -5753,6 +6321,22 @@ as input for the model's response.
 
               - `"code_interpreter"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -5912,6 +6496,14 @@ as input for the model's response.
 
               - `"shell"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
               - `ContainerAuto`
@@ -6052,6 +6644,14 @@ as input for the model's response.
 
               - `"custom"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this tool should be deferred and discovered via tool search.
@@ -6120,15 +6720,29 @@ as input for the model's response.
 
                   - `"function"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading?: boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description?: string | null`
 
+                - `output_schema?: Record<string, unknown> | null`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters?: unknown`
 
                 - `strict?: boolean | null`
+
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
               - `CustomTool`
 
@@ -6230,6 +6844,14 @@ as input for the model's response.
 
               - `"apply_patch"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
         - `type: "tool_search_output"`
 
           The item type. Always `tool_search_output`.
@@ -6303,6 +6925,8 @@ as input for the model's response.
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -6644,6 +7268,30 @@ as input for the model's response.
 
           The unique ID of the shell tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `environment?: LocalEnvironment | ContainerReference | null`
 
           The environment to execute the shell commands in.
@@ -6719,6 +7367,30 @@ as input for the model's response.
         - `id?: string | null`
 
           The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `max_output_length?: number | null`
 
@@ -6814,6 +7486,30 @@ as input for the model's response.
 
           The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ApplyPatchCallOutput`
 
         The streamed output emitted by an apply patch tool call.
@@ -6839,6 +7535,30 @@ as input for the model's response.
         - `id?: string | null`
 
           The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `output?: string | null`
 
@@ -7030,6 +7750,30 @@ as input for the model's response.
 
           The unique ID of the custom tool call output in the OpenAI platform.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ResponseCustomToolCall`
 
         A call to a custom tool created by the model.
@@ -7055,6 +7799,26 @@ as input for the model's response.
         - `id?: string`
 
           The unique ID of the custom tool call in the OpenAI platform.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `namespace?: string`
 
@@ -7084,6 +7848,58 @@ as input for the model's response.
 
           - `"item_reference"`
 
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of this program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The item type. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of this program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The item type. Always `program_output`.
+
+          - `"program_output"`
+
   - `metadata: Metadata | null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
@@ -7102,7 +7918,13 @@ as input for the model's response.
 
     - `(string & {})`
 
-    - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+    - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+      - `"gpt-5.6-sol"`
+
+      - `"gpt-5.6-terra"`
+
+      - `"gpt-5.6-luna"`
 
       - `"gpt-5.4"`
 
@@ -7369,6 +8191,30 @@ as input for the model's response.
 
         - `"function_call_output"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
       - `created_by?: string`
 
         The identifier of the actor that created the item.
@@ -7443,6 +8289,58 @@ as input for the model's response.
       a response. Be sure to include these items in your `input` to the Responses API
       for subsequent turns of a conversation if you are manually
       [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of the program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
 
     - `ResponseToolSearchCall`
 
@@ -7548,6 +8446,8 @@ as input for the model's response.
 
           A tool that runs Python code to help generate a response to a prompt.
 
+        - `ProgrammaticToolCalling`
+
         - `ImageGeneration`
 
           A tool that generates images using the GPT image models.
@@ -7649,6 +8549,8 @@ as input for the model's response.
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -7898,6 +8800,26 @@ as input for the model's response.
 
         - `"shell_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -7977,6 +8899,26 @@ as input for the model's response.
         The type of the shell call output. Always `shell_call_output`.
 
         - `"shell_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -8062,6 +9004,26 @@ as input for the model's response.
 
         - `"apply_patch_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -8091,6 +9053,26 @@ as input for the model's response.
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -8283,7 +9265,7 @@ as input for the model's response.
     What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
     We generally recommend altering this or `top_p` but not both.
 
-  - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+  - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
     How the model should select which tool (or tools) to use when generating
     a response. See the `tools` parameter to see how to specify which tools
@@ -8425,6 +9407,14 @@ as input for the model's response.
 
         - `"custom"`
 
+    - `SpecificProgrammaticToolCallingParam`
+
+      - `type: "programmatic_tool_calling"`
+
+        The tool to call. Always `programmatic_tool_calling`.
+
+        - `"programmatic_tool_calling"`
+
     - `ToolChoiceApplyPatch`
 
       Forces the model to call the apply_patch tool when executing a tool call.
@@ -8494,6 +9484,8 @@ as input for the model's response.
     - `CodeInterpreter`
 
       A tool that runs Python code to help generate a response to a prompt.
+
+    - `ProgrammaticToolCalling`
 
     - `ImageGeneration`
 
@@ -8721,9 +9713,32 @@ as input for the model's response.
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+  - `prompt_cache_options?: PromptCacheOptions`
+
+    The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+    - `mode: "implicit" | "explicit"`
+
+      Whether implicit prompt-cache breakpoints were enabled.
+
+      - `"implicit"`
+
+      - `"explicit"`
+
+    - `ttl: "30m"`
+
+      The minimum lifetime applied to each cache breakpoint.
+
+      - `"30m"`
+
   - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+    Deprecated. Use `prompt_cache_options.ttl` instead.
+
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+    This field expresses a maximum retention policy, while
+    `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+    fields are independent and do not interact.
     For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
     For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -8756,16 +9771,13 @@ as input for the model's response.
 
     - `effort?: ReasoningEffort | null`
 
-      Constrains effort on reasoning for
-      [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-      Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-      reasoning effort can result in faster responses and fewer tokens used
-      on reasoning in a response.
-
-      - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-      - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-      - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-      - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+      Constrains effort on reasoning for reasoning models. Currently supported
+      values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+      Reducing reasoning effort can result in faster responses and fewer tokens
+      used on reasoning in a response. Not all reasoning models support every
+      value. See the
+      [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+      for model-specific support.
 
       - `"none"`
 
@@ -8778,6 +9790,8 @@ as input for the model's response.
       - `"high"`
 
       - `"xhigh"`
+
+      - `"max"`
 
     - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -8792,6 +9806,20 @@ as input for the model's response.
       - `"concise"`
 
       - `"detailed"`
+
+    - `mode?: (string & {}) | "standard" | "pro"`
+
+      Controls the reasoning execution mode for the request.
+
+      When returned on a response, this is the effective execution mode.
+
+      - `(string & {})`
+
+      - `"standard" | "pro"`
+
+        - `"standard"`
+
+        - `"pro"`
 
     - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -8977,6 +10005,10 @@ as input for the model's response.
 
       A detailed breakdown of the input tokens.
 
+      - `cache_write_tokens: number`
+
+        The number of input tokens that were written to the cache.
+
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache.
@@ -9089,8 +10121,14 @@ console.log(response.id);
       },
       "strict": true,
       "type": "function",
+      "allowed_callers": [
+        "direct"
+      ],
       "defer_loading": true,
-      "description": "description"
+      "description": "description",
+      "output_schema": {
+        "foo": "bar"
+      }
     }
   ],
   "top_p": 1,
@@ -9145,11 +10183,16 @@ console.log(response.id);
     "version": "version"
   },
   "prompt_cache_key": "prompt-cache-key-1234",
+  "prompt_cache_options": {
+    "mode": "implicit",
+    "ttl": "30m"
+  },
   "prompt_cache_retention": "in_memory",
   "reasoning": {
     "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
+    "mode": "standard",
     "summary": "auto"
   },
   "safety_identifier": "safety-identifier-1234",
@@ -9166,6 +10209,7 @@ console.log(response.id);
   "usage": {
     "input_tokens": 0,
     "input_tokens_details": {
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     },
     "output_tokens": 0,
@@ -9361,6 +10405,7 @@ const response = await openai.responses.create({
                 {
                     type: "input_file",
                     file_url: "https://www.berkshirehathaway.com/letters/2024ltr.pdf",
+                    detail: "auto",
                 },
             ],
         },
@@ -9962,7 +11007,7 @@ console.log(response);
 
 **get** `/responses/{response_id}`
 
-Retrieves a model response with the given ID.
+Get a model response
 
 ### Parameters
 
@@ -10052,7 +11097,7 @@ Retrieves a model response with the given ID.
 
     An error object returned when the model fails to generate a Response.
 
-    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
       The error code for the response.
 
@@ -10061,6 +11106,8 @@ Retrieves a model response with the given ID.
       - `"rate_limit_exceeded"`
 
       - `"invalid_prompt"`
+
+      - `"bio_policy"`
 
       - `"vector_store_timeout"`
 
@@ -10154,6 +11201,16 @@ Retrieves a model response with the given ID.
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImage`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -10184,6 +11241,16 @@ Retrieves a model response with the given ID.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFile`
 
               A file input to the model.
@@ -10194,9 +11261,11 @@ Retrieves a model response with the given ID.
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -10217,6 +11286,16 @@ Retrieves a model response with the given ID.
               - `filename?: string`
 
                 The name of the file to be sent to the model.
+
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
 
         - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -11165,6 +12244,26 @@ Retrieves a model response with the given ID.
 
           The unique ID of the function tool call.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `namespace?: string`
 
           The namespace of the function to run.
@@ -11212,6 +12311,16 @@ Retrieves a model response with the given ID.
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImageContent`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -11242,6 +12351,16 @@ Retrieves a model response with the given ID.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFileContent`
 
               A file input to the model.
@@ -11252,9 +12371,11 @@ Retrieves a model response with the given ID.
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -11276,6 +12397,16 @@ Retrieves a model response with the given ID.
 
                 The name of the file to be sent to the model.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
         - `type: "function_call_output"`
 
           The type of the function tool call output. Always `function_call_output`.
@@ -11285,6 +12416,30 @@ Retrieves a model response with the given ID.
         - `id?: string | null`
 
           The unique ID of the function tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -11354,13 +12509,21 @@ Retrieves a model response with the given ID.
 
             - `strict: boolean | null`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading?: boolean`
 
@@ -11369,6 +12532,10 @@ Retrieves a model response with the given ID.
             - `description?: string | null`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearchTool`
 
@@ -11425,7 +12592,7 @@ Retrieves a model response with the given ID.
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<string | number>`
+                - `value: string | number | boolean | Array<unknown>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -11435,11 +12602,7 @@ Retrieves a model response with the given ID.
 
                   - `boolean`
 
-                  - `Array<string | number>`
-
-                    - `string`
-
-                    - `number`
+                  - `Array<unknown>`
 
               - `CompoundFilter`
 
@@ -11611,6 +12774,14 @@ Retrieves a model response with the given ID.
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -11822,6 +12993,22 @@ Retrieves a model response with the given ID.
 
               - `"code_interpreter"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -11981,6 +13168,14 @@ Retrieves a model response with the given ID.
 
               - `"shell"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
               - `ContainerAuto`
@@ -12121,6 +13316,14 @@ Retrieves a model response with the given ID.
 
               - `"custom"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this tool should be deferred and discovered via tool search.
@@ -12189,15 +13392,29 @@ Retrieves a model response with the given ID.
 
                   - `"function"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading?: boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description?: string | null`
 
+                - `output_schema?: Record<string, unknown> | null`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters?: unknown`
 
                 - `strict?: boolean | null`
+
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
               - `CustomTool`
 
@@ -12299,6 +13516,14 @@ Retrieves a model response with the given ID.
 
               - `"apply_patch"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
         - `type: "tool_search_output"`
 
           The item type. Always `tool_search_output`.
@@ -12372,6 +13597,8 @@ Retrieves a model response with the given ID.
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -12713,6 +13940,30 @@ Retrieves a model response with the given ID.
 
           The unique ID of the shell tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `environment?: LocalEnvironment | ContainerReference | null`
 
           The environment to execute the shell commands in.
@@ -12788,6 +14039,30 @@ Retrieves a model response with the given ID.
         - `id?: string | null`
 
           The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `max_output_length?: number | null`
 
@@ -12883,6 +14158,30 @@ Retrieves a model response with the given ID.
 
           The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ApplyPatchCallOutput`
 
         The streamed output emitted by an apply patch tool call.
@@ -12908,6 +14207,30 @@ Retrieves a model response with the given ID.
         - `id?: string | null`
 
           The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `output?: string | null`
 
@@ -13099,6 +14422,30 @@ Retrieves a model response with the given ID.
 
           The unique ID of the custom tool call output in the OpenAI platform.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ResponseCustomToolCall`
 
         A call to a custom tool created by the model.
@@ -13124,6 +14471,26 @@ Retrieves a model response with the given ID.
         - `id?: string`
 
           The unique ID of the custom tool call in the OpenAI platform.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `namespace?: string`
 
@@ -13153,6 +14520,58 @@ Retrieves a model response with the given ID.
 
           - `"item_reference"`
 
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of this program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The item type. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of this program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The item type. Always `program_output`.
+
+          - `"program_output"`
+
   - `metadata: Metadata | null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
@@ -13171,7 +14590,13 @@ Retrieves a model response with the given ID.
 
     - `(string & {})`
 
-    - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+    - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+      - `"gpt-5.6-sol"`
+
+      - `"gpt-5.6-terra"`
+
+      - `"gpt-5.6-luna"`
 
       - `"gpt-5.4"`
 
@@ -13438,6 +14863,30 @@ Retrieves a model response with the given ID.
 
         - `"function_call_output"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
       - `created_by?: string`
 
         The identifier of the actor that created the item.
@@ -13512,6 +14961,58 @@ Retrieves a model response with the given ID.
       a response. Be sure to include these items in your `input` to the Responses API
       for subsequent turns of a conversation if you are manually
       [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of the program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
 
     - `ResponseToolSearchCall`
 
@@ -13617,6 +15118,8 @@ Retrieves a model response with the given ID.
 
           A tool that runs Python code to help generate a response to a prompt.
 
+        - `ProgrammaticToolCalling`
+
         - `ImageGeneration`
 
           A tool that generates images using the GPT image models.
@@ -13718,6 +15221,8 @@ Retrieves a model response with the given ID.
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -13967,6 +15472,26 @@ Retrieves a model response with the given ID.
 
         - `"shell_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -14046,6 +15571,26 @@ Retrieves a model response with the given ID.
         The type of the shell call output. Always `shell_call_output`.
 
         - `"shell_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -14131,6 +15676,26 @@ Retrieves a model response with the given ID.
 
         - `"apply_patch_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -14160,6 +15725,26 @@ Retrieves a model response with the given ID.
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -14352,7 +15937,7 @@ Retrieves a model response with the given ID.
     What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
     We generally recommend altering this or `top_p` but not both.
 
-  - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+  - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
     How the model should select which tool (or tools) to use when generating
     a response. See the `tools` parameter to see how to specify which tools
@@ -14494,6 +16079,14 @@ Retrieves a model response with the given ID.
 
         - `"custom"`
 
+    - `SpecificProgrammaticToolCallingParam`
+
+      - `type: "programmatic_tool_calling"`
+
+        The tool to call. Always `programmatic_tool_calling`.
+
+        - `"programmatic_tool_calling"`
+
     - `ToolChoiceApplyPatch`
 
       Forces the model to call the apply_patch tool when executing a tool call.
@@ -14563,6 +16156,8 @@ Retrieves a model response with the given ID.
     - `CodeInterpreter`
 
       A tool that runs Python code to help generate a response to a prompt.
+
+    - `ProgrammaticToolCalling`
 
     - `ImageGeneration`
 
@@ -14790,9 +16385,32 @@ Retrieves a model response with the given ID.
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+  - `prompt_cache_options?: PromptCacheOptions`
+
+    The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+    - `mode: "implicit" | "explicit"`
+
+      Whether implicit prompt-cache breakpoints were enabled.
+
+      - `"implicit"`
+
+      - `"explicit"`
+
+    - `ttl: "30m"`
+
+      The minimum lifetime applied to each cache breakpoint.
+
+      - `"30m"`
+
   - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+    Deprecated. Use `prompt_cache_options.ttl` instead.
+
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+    This field expresses a maximum retention policy, while
+    `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+    fields are independent and do not interact.
     For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
     For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -14825,16 +16443,13 @@ Retrieves a model response with the given ID.
 
     - `effort?: ReasoningEffort | null`
 
-      Constrains effort on reasoning for
-      [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-      Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-      reasoning effort can result in faster responses and fewer tokens used
-      on reasoning in a response.
-
-      - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-      - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-      - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-      - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+      Constrains effort on reasoning for reasoning models. Currently supported
+      values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+      Reducing reasoning effort can result in faster responses and fewer tokens
+      used on reasoning in a response. Not all reasoning models support every
+      value. See the
+      [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+      for model-specific support.
 
       - `"none"`
 
@@ -14847,6 +16462,8 @@ Retrieves a model response with the given ID.
       - `"high"`
 
       - `"xhigh"`
+
+      - `"max"`
 
     - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -14861,6 +16478,20 @@ Retrieves a model response with the given ID.
       - `"concise"`
 
       - `"detailed"`
+
+    - `mode?: (string & {}) | "standard" | "pro"`
+
+      Controls the reasoning execution mode for the request.
+
+      When returned on a response, this is the effective execution mode.
+
+      - `(string & {})`
+
+      - `"standard" | "pro"`
+
+        - `"standard"`
+
+        - `"pro"`
 
     - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -15045,6 +16676,10 @@ Retrieves a model response with the given ID.
     - `input_tokens_details: InputTokensDetails`
 
       A detailed breakdown of the input tokens.
+
+      - `cache_write_tokens: number`
+
+        The number of input tokens that were written to the cache.
 
       - `cached_tokens: number`
 
@@ -15158,8 +16793,14 @@ console.log(response.id);
       },
       "strict": true,
       "type": "function",
+      "allowed_callers": [
+        "direct"
+      ],
       "defer_loading": true,
-      "description": "description"
+      "description": "description",
+      "output_schema": {
+        "foo": "bar"
+      }
     }
   ],
   "top_p": 1,
@@ -15214,11 +16855,16 @@ console.log(response.id);
     "version": "version"
   },
   "prompt_cache_key": "prompt-cache-key-1234",
+  "prompt_cache_options": {
+    "mode": "implicit",
+    "ttl": "30m"
+  },
   "prompt_cache_retention": "in_memory",
   "reasoning": {
     "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
+    "mode": "standard",
     "summary": "auto"
   },
   "safety_identifier": "safety-identifier-1234",
@@ -15235,6 +16881,7 @@ console.log(response.id);
   "usage": {
     "input_tokens": 0,
     "input_tokens_details": {
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     },
     "output_tokens": 0,
@@ -15325,7 +16972,7 @@ console.log(response);
 
 **delete** `/responses/{response_id}`
 
-Deletes a model response with the given ID.
+Delete a model response
 
 ### Parameters
 
@@ -15369,9 +17016,7 @@ console.log(response);
 
 **post** `/responses/{response_id}/cancel`
 
-Cancels a model response with the given ID. Only responses created with
-the `background` parameter set to `true` can be cancelled.
-[Learn more](https://platform.openai.com/docs/guides/background).
+Cancel a response
 
 ### Parameters
 
@@ -15393,7 +17038,7 @@ the `background` parameter set to `true` can be cancelled.
 
     An error object returned when the model fails to generate a Response.
 
-    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
       The error code for the response.
 
@@ -15402,6 +17047,8 @@ the `background` parameter set to `true` can be cancelled.
       - `"rate_limit_exceeded"`
 
       - `"invalid_prompt"`
+
+      - `"bio_policy"`
 
       - `"vector_store_timeout"`
 
@@ -15495,6 +17142,16 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImage`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -15525,6 +17182,16 @@ the `background` parameter set to `true` can be cancelled.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFile`
 
               A file input to the model.
@@ -15535,9 +17202,11 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -15558,6 +17227,16 @@ the `background` parameter set to `true` can be cancelled.
               - `filename?: string`
 
                 The name of the file to be sent to the model.
+
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
 
         - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -16506,6 +18185,26 @@ the `background` parameter set to `true` can be cancelled.
 
           The unique ID of the function tool call.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `namespace?: string`
 
           The namespace of the function to run.
@@ -16553,6 +18252,16 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImageContent`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -16583,6 +18292,16 @@ the `background` parameter set to `true` can be cancelled.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFileContent`
 
               A file input to the model.
@@ -16593,9 +18312,11 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -16617,6 +18338,16 @@ the `background` parameter set to `true` can be cancelled.
 
                 The name of the file to be sent to the model.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
         - `type: "function_call_output"`
 
           The type of the function tool call output. Always `function_call_output`.
@@ -16626,6 +18357,30 @@ the `background` parameter set to `true` can be cancelled.
         - `id?: string | null`
 
           The unique ID of the function tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -16695,13 +18450,21 @@ the `background` parameter set to `true` can be cancelled.
 
             - `strict: boolean | null`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading?: boolean`
 
@@ -16710,6 +18473,10 @@ the `background` parameter set to `true` can be cancelled.
             - `description?: string | null`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearchTool`
 
@@ -16766,7 +18533,7 @@ the `background` parameter set to `true` can be cancelled.
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<string | number>`
+                - `value: string | number | boolean | Array<unknown>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -16776,11 +18543,7 @@ the `background` parameter set to `true` can be cancelled.
 
                   - `boolean`
 
-                  - `Array<string | number>`
-
-                    - `string`
-
-                    - `number`
+                  - `Array<unknown>`
 
               - `CompoundFilter`
 
@@ -16952,6 +18715,14 @@ the `background` parameter set to `true` can be cancelled.
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -17163,6 +18934,22 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"code_interpreter"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -17322,6 +19109,14 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"shell"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
               - `ContainerAuto`
@@ -17462,6 +19257,14 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"custom"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this tool should be deferred and discovered via tool search.
@@ -17530,15 +19333,29 @@ the `background` parameter set to `true` can be cancelled.
 
                   - `"function"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading?: boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description?: string | null`
 
+                - `output_schema?: Record<string, unknown> | null`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters?: unknown`
 
                 - `strict?: boolean | null`
+
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
               - `CustomTool`
 
@@ -17640,6 +19457,14 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"apply_patch"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
         - `type: "tool_search_output"`
 
           The item type. Always `tool_search_output`.
@@ -17713,6 +19538,8 @@ the `background` parameter set to `true` can be cancelled.
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -18054,6 +19881,30 @@ the `background` parameter set to `true` can be cancelled.
 
           The unique ID of the shell tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `environment?: LocalEnvironment | ContainerReference | null`
 
           The environment to execute the shell commands in.
@@ -18129,6 +19980,30 @@ the `background` parameter set to `true` can be cancelled.
         - `id?: string | null`
 
           The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `max_output_length?: number | null`
 
@@ -18224,6 +20099,30 @@ the `background` parameter set to `true` can be cancelled.
 
           The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ApplyPatchCallOutput`
 
         The streamed output emitted by an apply patch tool call.
@@ -18249,6 +20148,30 @@ the `background` parameter set to `true` can be cancelled.
         - `id?: string | null`
 
           The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `output?: string | null`
 
@@ -18440,6 +20363,30 @@ the `background` parameter set to `true` can be cancelled.
 
           The unique ID of the custom tool call output in the OpenAI platform.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ResponseCustomToolCall`
 
         A call to a custom tool created by the model.
@@ -18465,6 +20412,26 @@ the `background` parameter set to `true` can be cancelled.
         - `id?: string`
 
           The unique ID of the custom tool call in the OpenAI platform.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `namespace?: string`
 
@@ -18494,6 +20461,58 @@ the `background` parameter set to `true` can be cancelled.
 
           - `"item_reference"`
 
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of this program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The item type. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of this program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The item type. Always `program_output`.
+
+          - `"program_output"`
+
   - `metadata: Metadata | null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
@@ -18512,7 +20531,13 @@ the `background` parameter set to `true` can be cancelled.
 
     - `(string & {})`
 
-    - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+    - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+      - `"gpt-5.6-sol"`
+
+      - `"gpt-5.6-terra"`
+
+      - `"gpt-5.6-luna"`
 
       - `"gpt-5.4"`
 
@@ -18779,6 +20804,30 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"function_call_output"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
       - `created_by?: string`
 
         The identifier of the actor that created the item.
@@ -18853,6 +20902,58 @@ the `background` parameter set to `true` can be cancelled.
       a response. Be sure to include these items in your `input` to the Responses API
       for subsequent turns of a conversation if you are manually
       [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of the program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
 
     - `ResponseToolSearchCall`
 
@@ -18958,6 +21059,8 @@ the `background` parameter set to `true` can be cancelled.
 
           A tool that runs Python code to help generate a response to a prompt.
 
+        - `ProgrammaticToolCalling`
+
         - `ImageGeneration`
 
           A tool that generates images using the GPT image models.
@@ -19059,6 +21162,8 @@ the `background` parameter set to `true` can be cancelled.
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -19308,6 +21413,26 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"shell_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -19387,6 +21512,26 @@ the `background` parameter set to `true` can be cancelled.
         The type of the shell call output. Always `shell_call_output`.
 
         - `"shell_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -19472,6 +21617,26 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"apply_patch_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -19501,6 +21666,26 @@ the `background` parameter set to `true` can be cancelled.
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -19693,7 +21878,7 @@ the `background` parameter set to `true` can be cancelled.
     What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
     We generally recommend altering this or `top_p` but not both.
 
-  - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+  - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
     How the model should select which tool (or tools) to use when generating
     a response. See the `tools` parameter to see how to specify which tools
@@ -19835,6 +22020,14 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"custom"`
 
+    - `SpecificProgrammaticToolCallingParam`
+
+      - `type: "programmatic_tool_calling"`
+
+        The tool to call. Always `programmatic_tool_calling`.
+
+        - `"programmatic_tool_calling"`
+
     - `ToolChoiceApplyPatch`
 
       Forces the model to call the apply_patch tool when executing a tool call.
@@ -19904,6 +22097,8 @@ the `background` parameter set to `true` can be cancelled.
     - `CodeInterpreter`
 
       A tool that runs Python code to help generate a response to a prompt.
+
+    - `ProgrammaticToolCalling`
 
     - `ImageGeneration`
 
@@ -20131,9 +22326,32 @@ the `background` parameter set to `true` can be cancelled.
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+  - `prompt_cache_options?: PromptCacheOptions`
+
+    The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+    - `mode: "implicit" | "explicit"`
+
+      Whether implicit prompt-cache breakpoints were enabled.
+
+      - `"implicit"`
+
+      - `"explicit"`
+
+    - `ttl: "30m"`
+
+      The minimum lifetime applied to each cache breakpoint.
+
+      - `"30m"`
+
   - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+    Deprecated. Use `prompt_cache_options.ttl` instead.
+
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+    This field expresses a maximum retention policy, while
+    `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+    fields are independent and do not interact.
     For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
     For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -20166,16 +22384,13 @@ the `background` parameter set to `true` can be cancelled.
 
     - `effort?: ReasoningEffort | null`
 
-      Constrains effort on reasoning for
-      [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-      Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-      reasoning effort can result in faster responses and fewer tokens used
-      on reasoning in a response.
-
-      - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-      - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-      - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-      - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+      Constrains effort on reasoning for reasoning models. Currently supported
+      values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+      Reducing reasoning effort can result in faster responses and fewer tokens
+      used on reasoning in a response. Not all reasoning models support every
+      value. See the
+      [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+      for model-specific support.
 
       - `"none"`
 
@@ -20188,6 +22403,8 @@ the `background` parameter set to `true` can be cancelled.
       - `"high"`
 
       - `"xhigh"`
+
+      - `"max"`
 
     - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -20202,6 +22419,20 @@ the `background` parameter set to `true` can be cancelled.
       - `"concise"`
 
       - `"detailed"`
+
+    - `mode?: (string & {}) | "standard" | "pro"`
+
+      Controls the reasoning execution mode for the request.
+
+      When returned on a response, this is the effective execution mode.
+
+      - `(string & {})`
+
+      - `"standard" | "pro"`
+
+        - `"standard"`
+
+        - `"pro"`
 
     - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -20387,6 +22618,10 @@ the `background` parameter set to `true` can be cancelled.
 
       A detailed breakdown of the input tokens.
 
+      - `cache_write_tokens: number`
+
+        The number of input tokens that were written to the cache.
+
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache.
@@ -20499,8 +22734,14 @@ console.log(response.id);
       },
       "strict": true,
       "type": "function",
+      "allowed_callers": [
+        "direct"
+      ],
       "defer_loading": true,
-      "description": "description"
+      "description": "description",
+      "output_schema": {
+        "foo": "bar"
+      }
     }
   ],
   "top_p": 1,
@@ -20555,11 +22796,16 @@ console.log(response.id);
     "version": "version"
   },
   "prompt_cache_key": "prompt-cache-key-1234",
+  "prompt_cache_options": {
+    "mode": "implicit",
+    "ttl": "30m"
+  },
   "prompt_cache_retention": "in_memory",
   "reasoning": {
     "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
+    "mode": "standard",
     "summary": "auto"
   },
   "safety_identifier": "safety-identifier-1234",
@@ -20576,6 +22822,7 @@ console.log(response.id);
   "usage": {
     "input_tokens": 0,
     "input_tokens_details": {
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     },
     "output_tokens": 0,
@@ -20657,19 +22904,23 @@ console.log(response);
 
 **post** `/responses/compact`
 
-Compact a conversation. Returns a compacted response object.
-
-Learn when and how to compact long-running conversations in the [conversation state guide](https://platform.openai.com/docs/guides/conversation-state#managing-the-context-window). For ZDR-compatible compaction details, see [Compaction (advanced)](https://platform.openai.com/docs/guides/conversation-state#compaction-advanced).
+Compact a response
 
 ### Parameters
 
 - `body: ResponseCompactParams`
 
-  - `model: "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 89 more | (string & {}) | null`
+  - `model: "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 92 more | (string & {}) | null`
 
     Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](https://platform.openai.com/docs/models) to browse and compare available models.
 
-    - `"gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 89 more`
+    - `"gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 92 more`
+
+      - `"gpt-5.6-sol"`
+
+      - `"gpt-5.6-terra"`
+
+      - `"gpt-5.6-luna"`
 
       - `"gpt-5.4"`
 
@@ -20899,6 +23150,16 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImage`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -20929,6 +23190,16 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFile`
 
               A file input to the model.
@@ -20939,9 +23210,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -20962,6 +23235,16 @@ Learn when and how to compact long-running conversations in the [conversation st
               - `filename?: string`
 
                 The name of the file to be sent to the model.
+
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
 
         - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -21910,6 +24193,26 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The unique ID of the function tool call.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `namespace?: string`
 
           The namespace of the function to run.
@@ -21957,6 +24260,16 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImageContent`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -21987,6 +24300,16 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFileContent`
 
               A file input to the model.
@@ -21997,9 +24320,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -22021,6 +24346,16 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 The name of the file to be sent to the model.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
         - `type: "function_call_output"`
 
           The type of the function tool call output. Always `function_call_output`.
@@ -22030,6 +24365,30 @@ Learn when and how to compact long-running conversations in the [conversation st
         - `id?: string | null`
 
           The unique ID of the function tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -22099,13 +24458,21 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `strict: boolean | null`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading?: boolean`
 
@@ -22114,6 +24481,10 @@ Learn when and how to compact long-running conversations in the [conversation st
             - `description?: string | null`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearchTool`
 
@@ -22170,7 +24541,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<string | number>`
+                - `value: string | number | boolean | Array<unknown>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -22180,11 +24551,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                   - `boolean`
 
-                  - `Array<string | number>`
-
-                    - `string`
-
-                    - `number`
+                  - `Array<unknown>`
 
               - `CompoundFilter`
 
@@ -22356,6 +24723,14 @@ Learn when and how to compact long-running conversations in the [conversation st
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -22567,6 +24942,22 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"code_interpreter"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -22726,6 +25117,14 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"shell"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
               - `ContainerAuto`
@@ -22866,6 +25265,14 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"custom"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this tool should be deferred and discovered via tool search.
@@ -22934,15 +25341,29 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                   - `"function"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading?: boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description?: string | null`
 
+                - `output_schema?: Record<string, unknown> | null`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters?: unknown`
 
                 - `strict?: boolean | null`
+
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
               - `CustomTool`
 
@@ -23044,6 +25465,14 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"apply_patch"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
         - `type: "tool_search_output"`
 
           The item type. Always `tool_search_output`.
@@ -23117,6 +25546,8 @@ Learn when and how to compact long-running conversations in the [conversation st
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -23458,6 +25889,30 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The unique ID of the shell tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `environment?: LocalEnvironment | ContainerReference | null`
 
           The environment to execute the shell commands in.
@@ -23533,6 +25988,30 @@ Learn when and how to compact long-running conversations in the [conversation st
         - `id?: string | null`
 
           The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `max_output_length?: number | null`
 
@@ -23628,6 +26107,30 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ApplyPatchCallOutput`
 
         The streamed output emitted by an apply patch tool call.
@@ -23653,6 +26156,30 @@ Learn when and how to compact long-running conversations in the [conversation st
         - `id?: string | null`
 
           The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `output?: string | null`
 
@@ -23844,6 +26371,30 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The unique ID of the custom tool call output in the OpenAI platform.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ResponseCustomToolCall`
 
         A call to a custom tool created by the model.
@@ -23869,6 +26420,26 @@ Learn when and how to compact long-running conversations in the [conversation st
         - `id?: string`
 
           The unique ID of the custom tool call in the OpenAI platform.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `namespace?: string`
 
@@ -23898,6 +26469,58 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `"item_reference"`
 
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of this program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The item type. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of this program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The item type. Always `program_output`.
+
+          - `"program_output"`
+
   - `instructions?: string | null`
 
     A system (or developer) message inserted into the model's context.
@@ -23910,6 +26533,24 @@ Learn when and how to compact long-running conversations in the [conversation st
   - `prompt_cache_key?: string | null`
 
     A key to use when reading from or writing to the prompt cache.
+
+  - `prompt_cache_options?: PromptCacheOptions | null`
+
+    Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](https://platform.openai.com/docs/guides/prompt-caching) for current details.
+
+    - `mode?: "implicit" | "explicit"`
+
+      Controls whether OpenAI automatically creates an implicit cache breakpoint. Defaults to `implicit`. With `implicit`, OpenAI creates one implicit breakpoint and writes up to the latest three explicit breakpoints in the request. With `explicit`, OpenAI does not create an implicit breakpoint and writes up to the latest four explicit breakpoints. If there are no explicit breakpoints, the request does not use prompt caching.
+
+      - `"implicit"`
+
+      - `"explicit"`
+
+    - `ttl?: "30m"`
+
+      The minimum lifetime applied to every implicit and explicit cache breakpoint written by the request. Defaults to `30m`, which is currently the only supported value. The backend may retain cache entries for longer.
+
+      - `"30m"`
 
   - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
@@ -24237,6 +26878,26 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The unique ID of the function tool call.
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `namespace?: string`
 
         The namespace of the function to run.
@@ -24285,6 +26946,16 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"input_text"`
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `ResponseInputImage`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -24315,6 +26986,16 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `ResponseInputFile`
 
             A file input to the model.
@@ -24325,9 +27006,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"input_file"`
 
-            - `detail?: "low" | "high"`
+            - `detail?: "auto" | "low" | "high"`
 
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
 
               - `"low"`
 
@@ -24349,6 +27032,16 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               The name of the file to be sent to the model.
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
       - `status: "in_progress" | "completed" | "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -24365,6 +27058,30 @@ Learn when and how to compact long-running conversations in the [conversation st
         The type of the function tool call output. Always `function_call_output`.
 
         - `"function_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -25033,6 +27750,58 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `"incomplete"`
 
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of the program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
+
     - `ResponseToolSearchCall`
 
       - `id: string`
@@ -25121,13 +27890,21 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `strict: boolean | null`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading?: boolean`
 
@@ -25136,6 +27913,10 @@ Learn when and how to compact long-running conversations in the [conversation st
           - `description?: string | null`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema?: Record<string, unknown> | null`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearchTool`
 
@@ -25192,7 +27973,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<string | number>`
+              - `value: string | number | boolean | Array<unknown>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -25202,11 +27983,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 - `boolean`
 
-                - `Array<string | number>`
-
-                  - `string`
-
-                  - `number`
+                - `Array<unknown>`
 
             - `CompoundFilter`
 
@@ -25378,6 +28155,14 @@ Learn when and how to compact long-running conversations in the [conversation st
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -25589,6 +28374,22 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"code_interpreter"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration`
 
           A tool that generates images using the GPT image models.
@@ -25748,6 +28549,14 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"shell"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
             - `ContainerAuto`
@@ -25888,6 +28697,14 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"custom"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `defer_loading?: boolean`
 
             Whether this tool should be deferred and discovered via tool search.
@@ -25956,15 +28773,29 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 - `"function"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description?: string | null`
 
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters?: unknown`
 
               - `strict?: boolean | null`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
             - `CustomTool`
 
@@ -26066,6 +28897,14 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"apply_patch"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
       - `type: "tool_search_output"`
 
         The type of the item. Always `tool_search_output`.
@@ -26135,6 +28974,8 @@ Learn when and how to compact long-running conversations in the [conversation st
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -26449,6 +29290,26 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `"shell_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -26528,6 +29389,26 @@ Learn when and how to compact long-running conversations in the [conversation st
         The type of the shell call output. Always `shell_call_output`.
 
         - `"shell_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -26613,6 +29494,26 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `"apply_patch_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -26642,6 +29543,26 @@ Learn when and how to compact long-running conversations in the [conversation st
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -26824,6 +29745,26 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The unique ID of the custom tool call in the OpenAI platform.
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `namespace?: string`
 
         The namespace of the custom tool being called.
@@ -26863,6 +29804,10 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       A detailed breakdown of the input tokens.
 
+      - `cache_write_tokens: number`
+
+        The number of input tokens that were written to the cache.
+
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache.
@@ -26893,7 +29838,7 @@ const client = new OpenAI({
   apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
 });
 
-const compactedResponse = await client.responses.compact({ model: 'gpt-5.4' });
+const compactedResponse = await client.responses.compact({ model: 'gpt-5.6-sol' });
 
 console.log(compactedResponse.id);
 ```
@@ -26949,6 +29894,7 @@ console.log(compactedResponse.id);
   "usage": {
     "input_tokens": 0,
     "input_tokens_details": {
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     },
     "output_tokens": 0,
@@ -27050,6 +29996,14 @@ console.log(compactedResponse);
     The type of the tool. Always `apply_patch`.
 
     - `"apply_patch"`
+
+  - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+    The tool invocation context(s).
+
+    - `"direct"`
+
+    - `"programmatic"`
 
 ### Compacted Response
 
@@ -27357,6 +30311,26 @@ console.log(compactedResponse);
 
         The unique ID of the function tool call.
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `namespace?: string`
 
         The namespace of the function to run.
@@ -27405,6 +30379,16 @@ console.log(compactedResponse);
 
               - `"input_text"`
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `ResponseInputImage`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -27435,6 +30419,16 @@ console.log(compactedResponse);
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `ResponseInputFile`
 
             A file input to the model.
@@ -27445,9 +30439,11 @@ console.log(compactedResponse);
 
               - `"input_file"`
 
-            - `detail?: "low" | "high"`
+            - `detail?: "auto" | "low" | "high"`
 
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
 
               - `"low"`
 
@@ -27469,6 +30465,16 @@ console.log(compactedResponse);
 
               The name of the file to be sent to the model.
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
       - `status: "in_progress" | "completed" | "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -27485,6 +30491,30 @@ console.log(compactedResponse);
         The type of the function tool call output. Always `function_call_output`.
 
         - `"function_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -28153,6 +31183,58 @@ console.log(compactedResponse);
 
         - `"incomplete"`
 
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of the program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
+
     - `ResponseToolSearchCall`
 
       - `id: string`
@@ -28241,13 +31323,21 @@ console.log(compactedResponse);
 
           - `strict: boolean | null`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading?: boolean`
 
@@ -28256,6 +31346,10 @@ console.log(compactedResponse);
           - `description?: string | null`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema?: Record<string, unknown> | null`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearchTool`
 
@@ -28312,7 +31406,7 @@ console.log(compactedResponse);
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<string | number>`
+              - `value: string | number | boolean | Array<unknown>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -28322,11 +31416,7 @@ console.log(compactedResponse);
 
                 - `boolean`
 
-                - `Array<string | number>`
-
-                  - `string`
-
-                  - `number`
+                - `Array<unknown>`
 
             - `CompoundFilter`
 
@@ -28498,6 +31588,14 @@ console.log(compactedResponse);
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -28709,6 +31807,22 @@ console.log(compactedResponse);
 
             - `"code_interpreter"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration`
 
           A tool that generates images using the GPT image models.
@@ -28868,6 +31982,14 @@ console.log(compactedResponse);
 
             - `"shell"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
             - `ContainerAuto`
@@ -29008,6 +32130,14 @@ console.log(compactedResponse);
 
             - `"custom"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `defer_loading?: boolean`
 
             Whether this tool should be deferred and discovered via tool search.
@@ -29076,15 +32206,29 @@ console.log(compactedResponse);
 
                 - `"function"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description?: string | null`
 
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters?: unknown`
 
               - `strict?: boolean | null`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
             - `CustomTool`
 
@@ -29186,6 +32330,14 @@ console.log(compactedResponse);
 
             - `"apply_patch"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
       - `type: "tool_search_output"`
 
         The type of the item. Always `tool_search_output`.
@@ -29255,6 +32407,8 @@ console.log(compactedResponse);
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -29569,6 +32723,26 @@ console.log(compactedResponse);
 
         - `"shell_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -29648,6 +32822,26 @@ console.log(compactedResponse);
         The type of the shell call output. Always `shell_call_output`.
 
         - `"shell_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -29733,6 +32927,26 @@ console.log(compactedResponse);
 
         - `"apply_patch_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -29762,6 +32976,26 @@ console.log(compactedResponse);
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -29944,6 +33178,26 @@ console.log(compactedResponse);
 
         The unique ID of the custom tool call in the OpenAI platform.
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `namespace?: string`
 
         The namespace of the custom tool being called.
@@ -29982,6 +33236,10 @@ console.log(compactedResponse);
     - `input_tokens_details: InputTokensDetails`
 
       A detailed breakdown of the input tokens.
+
+      - `cache_write_tokens: number`
+
+        The number of input tokens that were written to the cache.
 
       - `cached_tokens: number`
 
@@ -30653,6 +33911,14 @@ console.log(compactedResponse);
 
     - `"custom"`
 
+  - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+    The tool invocation context(s).
+
+    - `"direct"`
+
+    - `"programmatic"`
+
   - `defer_loading?: boolean`
 
     Whether this tool should be deferred and discovered via tool search.
@@ -30733,6 +33999,16 @@ console.log(compactedResponse);
 
           - `"input_text"`
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `ResponseInputImage`
 
         An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -30763,6 +34039,16 @@ console.log(compactedResponse);
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `ResponseInputFile`
 
         A file input to the model.
@@ -30773,9 +34059,11 @@ console.log(compactedResponse);
 
           - `"input_file"`
 
-        - `detail?: "low" | "high"`
+        - `detail?: "auto" | "low" | "high"`
 
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+          The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+          - `"auto"`
 
           - `"low"`
 
@@ -30796,6 +34084,16 @@ console.log(compactedResponse);
         - `filename?: string`
 
           The name of the file to be sent to the model.
+
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
   - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -30883,7 +34181,7 @@ console.log(compactedResponse);
 
         - `"nin"`
 
-      - `value: string | number | boolean | Array<string | number>`
+      - `value: string | number | boolean | Array<unknown>`
 
         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -30893,11 +34191,7 @@ console.log(compactedResponse);
 
         - `boolean`
 
-        - `Array<string | number>`
-
-          - `string`
-
-          - `number`
+        - `Array<unknown>`
 
     - `CompoundFilter`
 
@@ -30964,6 +34258,14 @@ console.log(compactedResponse);
     The type of the shell tool. Always `shell`.
 
     - `"shell"`
+
+  - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+    The tool invocation context(s).
+
+    - `"direct"`
+
+    - `"programmatic"`
 
   - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
@@ -31139,13 +34441,21 @@ console.log(compactedResponse);
 
   - `strict: boolean | null`
 
-    Whether to enforce strict parameter validation. Default `true`.
+    Whether strict parameter validation is enforced for this function tool.
 
   - `type: "function"`
 
     The type of the function tool. Always `function`.
 
     - `"function"`
+
+  - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+    The tool invocation context(s).
+
+    - `"direct"`
+
+    - `"programmatic"`
 
   - `defer_loading?: boolean`
 
@@ -31154,6 +34464,10 @@ console.log(compactedResponse);
   - `description?: string | null`
 
     A description of the function. Used by the model to determine whether or not to call the function.
+
+  - `output_schema?: Record<string, unknown> | null`
+
+    A JSON schema object describing the JSON value encoded in string outputs for this function.
 
 ### Inline Skill
 
@@ -31283,15 +34597,29 @@ console.log(compactedResponse);
 
         - `"function"`
 
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
+
       - `defer_loading?: boolean`
 
         Whether this function should be deferred and discovered via tool search.
 
       - `description?: string | null`
 
+      - `output_schema?: Record<string, unknown> | null`
+
+        A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
       - `parameters?: unknown`
 
       - `strict?: boolean | null`
+
+        Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
     - `CustomTool`
 
@@ -31306,6 +34634,14 @@ console.log(compactedResponse);
         The type of the custom tool. Always `custom`.
 
         - `"custom"`
+
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
 
       - `defer_loading?: boolean`
 
@@ -31373,7 +34709,7 @@ console.log(compactedResponse);
 
     An error object returned when the model fails to generate a Response.
 
-    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
       The error code for the response.
 
@@ -31382,6 +34718,8 @@ console.log(compactedResponse);
       - `"rate_limit_exceeded"`
 
       - `"invalid_prompt"`
+
+      - `"bio_policy"`
 
       - `"vector_store_timeout"`
 
@@ -31475,6 +34813,16 @@ console.log(compactedResponse);
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImage`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -31505,6 +34853,16 @@ console.log(compactedResponse);
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFile`
 
               A file input to the model.
@@ -31515,9 +34873,11 @@ console.log(compactedResponse);
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -31538,6 +34898,16 @@ console.log(compactedResponse);
               - `filename?: string`
 
                 The name of the file to be sent to the model.
+
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
 
         - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -32486,6 +35856,26 @@ console.log(compactedResponse);
 
           The unique ID of the function tool call.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `namespace?: string`
 
           The namespace of the function to run.
@@ -32533,6 +35923,16 @@ console.log(compactedResponse);
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImageContent`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -32563,6 +35963,16 @@ console.log(compactedResponse);
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFileContent`
 
               A file input to the model.
@@ -32573,9 +35983,11 @@ console.log(compactedResponse);
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -32597,6 +36009,16 @@ console.log(compactedResponse);
 
                 The name of the file to be sent to the model.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
         - `type: "function_call_output"`
 
           The type of the function tool call output. Always `function_call_output`.
@@ -32606,6 +36028,30 @@ console.log(compactedResponse);
         - `id?: string | null`
 
           The unique ID of the function tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -32675,13 +36121,21 @@ console.log(compactedResponse);
 
             - `strict: boolean | null`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading?: boolean`
 
@@ -32690,6 +36144,10 @@ console.log(compactedResponse);
             - `description?: string | null`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearchTool`
 
@@ -32746,7 +36204,7 @@ console.log(compactedResponse);
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<string | number>`
+                - `value: string | number | boolean | Array<unknown>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -32756,11 +36214,7 @@ console.log(compactedResponse);
 
                   - `boolean`
 
-                  - `Array<string | number>`
-
-                    - `string`
-
-                    - `number`
+                  - `Array<unknown>`
 
               - `CompoundFilter`
 
@@ -32932,6 +36386,14 @@ console.log(compactedResponse);
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -33143,6 +36605,22 @@ console.log(compactedResponse);
 
               - `"code_interpreter"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -33302,6 +36780,14 @@ console.log(compactedResponse);
 
               - `"shell"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
               - `ContainerAuto`
@@ -33442,6 +36928,14 @@ console.log(compactedResponse);
 
               - `"custom"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this tool should be deferred and discovered via tool search.
@@ -33510,15 +37004,29 @@ console.log(compactedResponse);
 
                   - `"function"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading?: boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description?: string | null`
 
+                - `output_schema?: Record<string, unknown> | null`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters?: unknown`
 
                 - `strict?: boolean | null`
+
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
               - `CustomTool`
 
@@ -33620,6 +37128,14 @@ console.log(compactedResponse);
 
               - `"apply_patch"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
         - `type: "tool_search_output"`
 
           The item type. Always `tool_search_output`.
@@ -33693,6 +37209,8 @@ console.log(compactedResponse);
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -34034,6 +37552,30 @@ console.log(compactedResponse);
 
           The unique ID of the shell tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `environment?: LocalEnvironment | ContainerReference | null`
 
           The environment to execute the shell commands in.
@@ -34109,6 +37651,30 @@ console.log(compactedResponse);
         - `id?: string | null`
 
           The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `max_output_length?: number | null`
 
@@ -34204,6 +37770,30 @@ console.log(compactedResponse);
 
           The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ApplyPatchCallOutput`
 
         The streamed output emitted by an apply patch tool call.
@@ -34229,6 +37819,30 @@ console.log(compactedResponse);
         - `id?: string | null`
 
           The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `output?: string | null`
 
@@ -34420,6 +38034,30 @@ console.log(compactedResponse);
 
           The unique ID of the custom tool call output in the OpenAI platform.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ResponseCustomToolCall`
 
         A call to a custom tool created by the model.
@@ -34445,6 +38083,26 @@ console.log(compactedResponse);
         - `id?: string`
 
           The unique ID of the custom tool call in the OpenAI platform.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `namespace?: string`
 
@@ -34474,6 +38132,58 @@ console.log(compactedResponse);
 
           - `"item_reference"`
 
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of this program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The item type. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of this program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The item type. Always `program_output`.
+
+          - `"program_output"`
+
   - `metadata: Metadata | null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
@@ -34492,7 +38202,13 @@ console.log(compactedResponse);
 
     - `(string & {})`
 
-    - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+    - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+      - `"gpt-5.6-sol"`
+
+      - `"gpt-5.6-terra"`
+
+      - `"gpt-5.6-luna"`
 
       - `"gpt-5.4"`
 
@@ -34759,6 +38475,30 @@ console.log(compactedResponse);
 
         - `"function_call_output"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
       - `created_by?: string`
 
         The identifier of the actor that created the item.
@@ -34833,6 +38573,58 @@ console.log(compactedResponse);
       a response. Be sure to include these items in your `input` to the Responses API
       for subsequent turns of a conversation if you are manually
       [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of the program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
 
     - `ResponseToolSearchCall`
 
@@ -34938,6 +38730,8 @@ console.log(compactedResponse);
 
           A tool that runs Python code to help generate a response to a prompt.
 
+        - `ProgrammaticToolCalling`
+
         - `ImageGeneration`
 
           A tool that generates images using the GPT image models.
@@ -35039,6 +38833,8 @@ console.log(compactedResponse);
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -35288,6 +39084,26 @@ console.log(compactedResponse);
 
         - `"shell_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -35367,6 +39183,26 @@ console.log(compactedResponse);
         The type of the shell call output. Always `shell_call_output`.
 
         - `"shell_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -35452,6 +39288,26 @@ console.log(compactedResponse);
 
         - `"apply_patch_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -35481,6 +39337,26 @@ console.log(compactedResponse);
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -35673,7 +39549,7 @@ console.log(compactedResponse);
     What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
     We generally recommend altering this or `top_p` but not both.
 
-  - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+  - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
     How the model should select which tool (or tools) to use when generating
     a response. See the `tools` parameter to see how to specify which tools
@@ -35815,6 +39691,14 @@ console.log(compactedResponse);
 
         - `"custom"`
 
+    - `SpecificProgrammaticToolCallingParam`
+
+      - `type: "programmatic_tool_calling"`
+
+        The tool to call. Always `programmatic_tool_calling`.
+
+        - `"programmatic_tool_calling"`
+
     - `ToolChoiceApplyPatch`
 
       Forces the model to call the apply_patch tool when executing a tool call.
@@ -35884,6 +39768,8 @@ console.log(compactedResponse);
     - `CodeInterpreter`
 
       A tool that runs Python code to help generate a response to a prompt.
+
+    - `ProgrammaticToolCalling`
 
     - `ImageGeneration`
 
@@ -36111,9 +39997,32 @@ console.log(compactedResponse);
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+  - `prompt_cache_options?: PromptCacheOptions`
+
+    The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+    - `mode: "implicit" | "explicit"`
+
+      Whether implicit prompt-cache breakpoints were enabled.
+
+      - `"implicit"`
+
+      - `"explicit"`
+
+    - `ttl: "30m"`
+
+      The minimum lifetime applied to each cache breakpoint.
+
+      - `"30m"`
+
   - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+    Deprecated. Use `prompt_cache_options.ttl` instead.
+
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+    This field expresses a maximum retention policy, while
+    `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+    fields are independent and do not interact.
     For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
     For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -36146,16 +40055,13 @@ console.log(compactedResponse);
 
     - `effort?: ReasoningEffort | null`
 
-      Constrains effort on reasoning for
-      [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-      Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-      reasoning effort can result in faster responses and fewer tokens used
-      on reasoning in a response.
-
-      - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-      - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-      - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-      - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+      Constrains effort on reasoning for reasoning models. Currently supported
+      values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+      Reducing reasoning effort can result in faster responses and fewer tokens
+      used on reasoning in a response. Not all reasoning models support every
+      value. See the
+      [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+      for model-specific support.
 
       - `"none"`
 
@@ -36168,6 +40074,8 @@ console.log(compactedResponse);
       - `"high"`
 
       - `"xhigh"`
+
+      - `"max"`
 
     - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -36182,6 +40090,20 @@ console.log(compactedResponse);
       - `"concise"`
 
       - `"detailed"`
+
+    - `mode?: (string & {}) | "standard" | "pro"`
+
+      Controls the reasoning execution mode for the request.
+
+      When returned on a response, this is the effective execution mode.
+
+      - `(string & {})`
+
+      - `"standard" | "pro"`
+
+        - `"standard"`
+
+        - `"pro"`
 
     - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -36367,6 +40289,10 @@ console.log(compactedResponse);
 
       A detailed breakdown of the input tokens.
 
+      - `cache_write_tokens: number`
+
+        The number of input tokens that were written to the cache.
+
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache.
@@ -36476,6 +40402,26 @@ console.log(compactedResponse);
 
     - `"apply_patch_call"`
 
+  - `caller?: Direct | Program | null`
+
+    The execution context that produced this tool call.
+
+    - `Direct`
+
+      - `type: "direct"`
+
+        - `"direct"`
+
+    - `Program`
+
+      - `caller_id: string`
+
+        The call ID of the program item that produced this tool call.
+
+      - `type: "program"`
+
+        - `"program"`
+
   - `created_by?: string`
 
     The ID of the entity that created this tool call.
@@ -36507,6 +40453,26 @@ console.log(compactedResponse);
     The type of the item. Always `apply_patch_call_output`.
 
     - `"apply_patch_call_output"`
+
+  - `caller?: Direct | Program | null`
+
+    The execution context that produced this tool call.
+
+    - `Direct`
+
+      - `type: "direct"`
+
+        - `"direct"`
+
+    - `Program`
+
+      - `caller_id: string`
+
+        The call ID of the program item that produced this tool call.
+
+      - `type: "program"`
+
+        - `"program"`
 
   - `created_by?: string`
 
@@ -36853,7 +40819,7 @@ console.log(compactedResponse);
 
       An error object returned when the model fails to generate a Response.
 
-      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
         The error code for the response.
 
@@ -36862,6 +40828,8 @@ console.log(compactedResponse);
         - `"rate_limit_exceeded"`
 
         - `"invalid_prompt"`
+
+        - `"bio_policy"`
 
         - `"vector_store_timeout"`
 
@@ -36955,6 +40923,16 @@ console.log(compactedResponse);
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImage`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -36985,6 +40963,16 @@ console.log(compactedResponse);
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFile`
 
                 A file input to the model.
@@ -36995,9 +40983,11 @@ console.log(compactedResponse);
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -37018,6 +41008,16 @@ console.log(compactedResponse);
                 - `filename?: string`
 
                   The name of the file to be sent to the model.
+
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
           - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -37966,6 +41966,26 @@ console.log(compactedResponse);
 
             The unique ID of the function tool call.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
+
           - `namespace?: string`
 
             The namespace of the function to run.
@@ -38013,6 +42033,16 @@ console.log(compactedResponse);
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImageContent`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -38043,6 +42073,16 @@ console.log(compactedResponse);
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFileContent`
 
                 A file input to the model.
@@ -38053,9 +42093,11 @@ console.log(compactedResponse);
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -38077,6 +42119,16 @@ console.log(compactedResponse);
 
                   The name of the file to be sent to the model.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
           - `type: "function_call_output"`
 
             The type of the function tool call output. Always `function_call_output`.
@@ -38086,6 +42138,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the function tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -38155,13 +42231,21 @@ console.log(compactedResponse);
 
               - `strict: boolean | null`
 
-                Whether to enforce strict parameter validation. Default `true`.
+                Whether strict parameter validation is enforced for this function tool.
 
               - `type: "function"`
 
                 The type of the function tool. Always `function`.
 
                 - `"function"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading?: boolean`
 
@@ -38170,6 +42254,10 @@ console.log(compactedResponse);
               - `description?: string | null`
 
                 A description of the function. Used by the model to determine whether or not to call the function.
+
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON schema object describing the JSON value encoded in string outputs for this function.
 
             - `FileSearchTool`
 
@@ -38226,7 +42314,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<string | number>`
+                  - `value: string | number | boolean | Array<unknown>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -38236,11 +42324,7 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<string | number>`
-
-                      - `string`
-
-                      - `number`
+                    - `Array<unknown>`
 
                 - `CompoundFilter`
 
@@ -38412,6 +42496,14 @@ console.log(compactedResponse);
                 The type of the MCP tool. Always `mcp`.
 
                 - `"mcp"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -38623,6 +42715,22 @@ console.log(compactedResponse);
 
                 - `"code_interpreter"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
+            - `ProgrammaticToolCalling`
+
+              - `type: "programmatic_tool_calling"`
+
+                The type of the tool. Always `programmatic_tool_calling`.
+
+                - `"programmatic_tool_calling"`
+
             - `ImageGeneration`
 
               A tool that generates images using the GPT image models.
@@ -38782,6 +42890,14 @@ console.log(compactedResponse);
 
                 - `"shell"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
                 - `ContainerAuto`
@@ -38922,6 +43038,14 @@ console.log(compactedResponse);
 
                 - `"custom"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this tool should be deferred and discovered via tool search.
@@ -38990,15 +43114,29 @@ console.log(compactedResponse);
 
                     - `"function"`
 
+                  - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                    The tool invocation context(s).
+
+                    - `"direct"`
+
+                    - `"programmatic"`
+
                   - `defer_loading?: boolean`
 
                     Whether this function should be deferred and discovered via tool search.
 
                   - `description?: string | null`
 
+                  - `output_schema?: Record<string, unknown> | null`
+
+                    A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                   - `parameters?: unknown`
 
                   - `strict?: boolean | null`
+
+                    Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
                 - `CustomTool`
 
@@ -39100,6 +43238,14 @@ console.log(compactedResponse);
 
                 - `"apply_patch"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
           - `type: "tool_search_output"`
 
             The item type. Always `tool_search_output`.
@@ -39173,6 +43319,8 @@ console.log(compactedResponse);
             - `CodeInterpreter`
 
               A tool that runs Python code to help generate a response to a prompt.
+
+            - `ProgrammaticToolCalling`
 
             - `ImageGeneration`
 
@@ -39514,6 +43662,30 @@ console.log(compactedResponse);
 
             The unique ID of the shell tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
           - `environment?: LocalEnvironment | ContainerReference | null`
 
             The environment to execute the shell commands in.
@@ -39589,6 +43761,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `max_output_length?: number | null`
 
@@ -39684,6 +43880,30 @@ console.log(compactedResponse);
 
             The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ApplyPatchCallOutput`
 
           The streamed output emitted by an apply patch tool call.
@@ -39709,6 +43929,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `output?: string | null`
 
@@ -39900,6 +44144,30 @@ console.log(compactedResponse);
 
             The unique ID of the custom tool call output in the OpenAI platform.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ResponseCustomToolCall`
 
           A call to a custom tool created by the model.
@@ -39925,6 +44193,26 @@ console.log(compactedResponse);
           - `id?: string`
 
             The unique ID of the custom tool call in the OpenAI platform.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
 
           - `namespace?: string`
 
@@ -39954,6 +44242,58 @@ console.log(compactedResponse);
 
             - `"item_reference"`
 
+        - `Program`
+
+          - `id: string`
+
+            The unique ID of this program item.
+
+          - `call_id: string`
+
+            The stable call ID of the program item.
+
+          - `code: string`
+
+            The JavaScript source executed by programmatic tool calling.
+
+          - `fingerprint: string`
+
+            Opaque program replay fingerprint that must be round-tripped.
+
+          - `type: "program"`
+
+            The item type. Always `program`.
+
+            - `"program"`
+
+        - `ProgramOutput`
+
+          - `id: string`
+
+            The unique ID of this program output item.
+
+          - `call_id: string`
+
+            The call ID of the program item.
+
+          - `result: string`
+
+            The result produced by the program item.
+
+          - `status: "completed" | "incomplete"`
+
+            The terminal status of the program output.
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+          - `type: "program_output"`
+
+            The item type. Always `program_output`.
+
+            - `"program_output"`
+
     - `metadata: Metadata | null`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
@@ -39972,7 +44312,13 @@ console.log(compactedResponse);
 
       - `(string & {})`
 
-      - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+      - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+        - `"gpt-5.6-sol"`
+
+        - `"gpt-5.6-terra"`
+
+        - `"gpt-5.6-luna"`
 
         - `"gpt-5.4"`
 
@@ -40239,6 +44585,30 @@ console.log(compactedResponse);
 
           - `"function_call_output"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `created_by?: string`
 
           The identifier of the actor that created the item.
@@ -40313,6 +44683,58 @@ console.log(compactedResponse);
         a response. Be sure to include these items in your `input` to the Responses API
         for subsequent turns of a conversation if you are manually
         [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of the program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The type of the item. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of the program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output item.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The type of the item. Always `program_output`.
+
+          - `"program_output"`
 
       - `ResponseToolSearchCall`
 
@@ -40418,6 +44840,8 @@ console.log(compactedResponse);
 
             A tool that runs Python code to help generate a response to a prompt.
 
+          - `ProgrammaticToolCalling`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -40519,6 +44943,8 @@ console.log(compactedResponse);
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -40768,6 +45194,26 @@ console.log(compactedResponse);
 
           - `"shell_call"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `created_by?: string`
 
           The ID of the entity that created this tool call.
@@ -40847,6 +45293,26 @@ console.log(compactedResponse);
           The type of the shell call output. Always `shell_call_output`.
 
           - `"shell_call_output"`
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `created_by?: string`
 
@@ -40932,6 +45398,26 @@ console.log(compactedResponse);
 
           - `"apply_patch_call"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `created_by?: string`
 
           The ID of the entity that created this tool call.
@@ -40961,6 +45447,26 @@ console.log(compactedResponse);
           The type of the item. Always `apply_patch_call_output`.
 
           - `"apply_patch_call_output"`
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `created_by?: string`
 
@@ -41153,7 +45659,7 @@ console.log(compactedResponse);
       What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
       We generally recommend altering this or `top_p` but not both.
 
-    - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+    - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
       How the model should select which tool (or tools) to use when generating
       a response. See the `tools` parameter to see how to specify which tools
@@ -41295,6 +45801,14 @@ console.log(compactedResponse);
 
           - `"custom"`
 
+      - `SpecificProgrammaticToolCallingParam`
+
+        - `type: "programmatic_tool_calling"`
+
+          The tool to call. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `ToolChoiceApplyPatch`
 
         Forces the model to call the apply_patch tool when executing a tool call.
@@ -41364,6 +45878,8 @@ console.log(compactedResponse);
       - `CodeInterpreter`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `ProgrammaticToolCalling`
 
       - `ImageGeneration`
 
@@ -41591,9 +46107,32 @@ console.log(compactedResponse);
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+    - `prompt_cache_options?: PromptCacheOptions`
+
+      The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+      - `mode: "implicit" | "explicit"`
+
+        Whether implicit prompt-cache breakpoints were enabled.
+
+        - `"implicit"`
+
+        - `"explicit"`
+
+      - `ttl: "30m"`
+
+        The minimum lifetime applied to each cache breakpoint.
+
+        - `"30m"`
+
     - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+      Deprecated. Use `prompt_cache_options.ttl` instead.
+
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      This field expresses a maximum retention policy, while
+      `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+      fields are independent and do not interact.
       For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
       For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -41626,16 +46165,13 @@ console.log(compactedResponse);
 
       - `effort?: ReasoningEffort | null`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -41648,6 +46184,8 @@ console.log(compactedResponse);
         - `"high"`
 
         - `"xhigh"`
+
+        - `"max"`
 
       - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -41662,6 +46200,20 @@ console.log(compactedResponse);
         - `"concise"`
 
         - `"detailed"`
+
+      - `mode?: (string & {}) | "standard" | "pro"`
+
+        Controls the reasoning execution mode for the request.
+
+        When returned on a response, this is the effective execution mode.
+
+        - `(string & {})`
+
+        - `"standard" | "pro"`
+
+          - `"standard"`
+
+          - `"pro"`
 
       - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -41846,6 +46398,10 @@ console.log(compactedResponse);
       - `input_tokens_details: InputTokensDetails`
 
         A detailed breakdown of the input tokens.
+
+        - `cache_write_tokens: number`
+
+          The number of input tokens that were written to the cache.
 
         - `cached_tokens: number`
 
@@ -42449,6 +47005,16 @@ console.log(compactedResponse);
 
       - `"input_text"`
 
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
   - `ResponseInputImage`
 
     An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -42479,6 +47045,16 @@ console.log(compactedResponse);
 
       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
   - `ResponseInputFile`
 
     A file input to the model.
@@ -42489,9 +47065,11 @@ console.log(compactedResponse);
 
       - `"input_file"`
 
-    - `detail?: "low" | "high"`
+    - `detail?: "auto" | "low" | "high"`
 
-      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+      The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+      - `"auto"`
 
       - `"low"`
 
@@ -42512,6 +47090,16 @@ console.log(compactedResponse);
     - `filename?: string`
 
       The name of the file to be sent to the model.
+
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
 
   - `ResponseOutputText`
 
@@ -43083,7 +47671,7 @@ console.log(compactedResponse);
 
       An error object returned when the model fails to generate a Response.
 
-      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
         The error code for the response.
 
@@ -43092,6 +47680,8 @@ console.log(compactedResponse);
         - `"rate_limit_exceeded"`
 
         - `"invalid_prompt"`
+
+        - `"bio_policy"`
 
         - `"vector_store_timeout"`
 
@@ -43185,6 +47775,16 @@ console.log(compactedResponse);
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImage`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -43215,6 +47815,16 @@ console.log(compactedResponse);
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFile`
 
                 A file input to the model.
@@ -43225,9 +47835,11 @@ console.log(compactedResponse);
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -43248,6 +47860,16 @@ console.log(compactedResponse);
                 - `filename?: string`
 
                   The name of the file to be sent to the model.
+
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
           - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -44196,6 +48818,26 @@ console.log(compactedResponse);
 
             The unique ID of the function tool call.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
+
           - `namespace?: string`
 
             The namespace of the function to run.
@@ -44243,6 +48885,16 @@ console.log(compactedResponse);
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImageContent`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -44273,6 +48925,16 @@ console.log(compactedResponse);
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFileContent`
 
                 A file input to the model.
@@ -44283,9 +48945,11 @@ console.log(compactedResponse);
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -44307,6 +48971,16 @@ console.log(compactedResponse);
 
                   The name of the file to be sent to the model.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
           - `type: "function_call_output"`
 
             The type of the function tool call output. Always `function_call_output`.
@@ -44316,6 +48990,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the function tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -44385,13 +49083,21 @@ console.log(compactedResponse);
 
               - `strict: boolean | null`
 
-                Whether to enforce strict parameter validation. Default `true`.
+                Whether strict parameter validation is enforced for this function tool.
 
               - `type: "function"`
 
                 The type of the function tool. Always `function`.
 
                 - `"function"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading?: boolean`
 
@@ -44400,6 +49106,10 @@ console.log(compactedResponse);
               - `description?: string | null`
 
                 A description of the function. Used by the model to determine whether or not to call the function.
+
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON schema object describing the JSON value encoded in string outputs for this function.
 
             - `FileSearchTool`
 
@@ -44456,7 +49166,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<string | number>`
+                  - `value: string | number | boolean | Array<unknown>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -44466,11 +49176,7 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<string | number>`
-
-                      - `string`
-
-                      - `number`
+                    - `Array<unknown>`
 
                 - `CompoundFilter`
 
@@ -44642,6 +49348,14 @@ console.log(compactedResponse);
                 The type of the MCP tool. Always `mcp`.
 
                 - `"mcp"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -44853,6 +49567,22 @@ console.log(compactedResponse);
 
                 - `"code_interpreter"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
+            - `ProgrammaticToolCalling`
+
+              - `type: "programmatic_tool_calling"`
+
+                The type of the tool. Always `programmatic_tool_calling`.
+
+                - `"programmatic_tool_calling"`
+
             - `ImageGeneration`
 
               A tool that generates images using the GPT image models.
@@ -45012,6 +49742,14 @@ console.log(compactedResponse);
 
                 - `"shell"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
                 - `ContainerAuto`
@@ -45152,6 +49890,14 @@ console.log(compactedResponse);
 
                 - `"custom"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this tool should be deferred and discovered via tool search.
@@ -45220,15 +49966,29 @@ console.log(compactedResponse);
 
                     - `"function"`
 
+                  - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                    The tool invocation context(s).
+
+                    - `"direct"`
+
+                    - `"programmatic"`
+
                   - `defer_loading?: boolean`
 
                     Whether this function should be deferred and discovered via tool search.
 
                   - `description?: string | null`
 
+                  - `output_schema?: Record<string, unknown> | null`
+
+                    A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                   - `parameters?: unknown`
 
                   - `strict?: boolean | null`
+
+                    Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
                 - `CustomTool`
 
@@ -45330,6 +50090,14 @@ console.log(compactedResponse);
 
                 - `"apply_patch"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
           - `type: "tool_search_output"`
 
             The item type. Always `tool_search_output`.
@@ -45403,6 +50171,8 @@ console.log(compactedResponse);
             - `CodeInterpreter`
 
               A tool that runs Python code to help generate a response to a prompt.
+
+            - `ProgrammaticToolCalling`
 
             - `ImageGeneration`
 
@@ -45744,6 +50514,30 @@ console.log(compactedResponse);
 
             The unique ID of the shell tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
           - `environment?: LocalEnvironment | ContainerReference | null`
 
             The environment to execute the shell commands in.
@@ -45819,6 +50613,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `max_output_length?: number | null`
 
@@ -45914,6 +50732,30 @@ console.log(compactedResponse);
 
             The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ApplyPatchCallOutput`
 
           The streamed output emitted by an apply patch tool call.
@@ -45939,6 +50781,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `output?: string | null`
 
@@ -46130,6 +50996,30 @@ console.log(compactedResponse);
 
             The unique ID of the custom tool call output in the OpenAI platform.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ResponseCustomToolCall`
 
           A call to a custom tool created by the model.
@@ -46155,6 +51045,26 @@ console.log(compactedResponse);
           - `id?: string`
 
             The unique ID of the custom tool call in the OpenAI platform.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
 
           - `namespace?: string`
 
@@ -46184,6 +51094,58 @@ console.log(compactedResponse);
 
             - `"item_reference"`
 
+        - `Program`
+
+          - `id: string`
+
+            The unique ID of this program item.
+
+          - `call_id: string`
+
+            The stable call ID of the program item.
+
+          - `code: string`
+
+            The JavaScript source executed by programmatic tool calling.
+
+          - `fingerprint: string`
+
+            Opaque program replay fingerprint that must be round-tripped.
+
+          - `type: "program"`
+
+            The item type. Always `program`.
+
+            - `"program"`
+
+        - `ProgramOutput`
+
+          - `id: string`
+
+            The unique ID of this program output item.
+
+          - `call_id: string`
+
+            The call ID of the program item.
+
+          - `result: string`
+
+            The result produced by the program item.
+
+          - `status: "completed" | "incomplete"`
+
+            The terminal status of the program output.
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+          - `type: "program_output"`
+
+            The item type. Always `program_output`.
+
+            - `"program_output"`
+
     - `metadata: Metadata | null`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
@@ -46202,7 +51164,13 @@ console.log(compactedResponse);
 
       - `(string & {})`
 
-      - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+      - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+        - `"gpt-5.6-sol"`
+
+        - `"gpt-5.6-terra"`
+
+        - `"gpt-5.6-luna"`
 
         - `"gpt-5.4"`
 
@@ -46469,6 +51437,30 @@ console.log(compactedResponse);
 
           - `"function_call_output"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `created_by?: string`
 
           The identifier of the actor that created the item.
@@ -46543,6 +51535,58 @@ console.log(compactedResponse);
         a response. Be sure to include these items in your `input` to the Responses API
         for subsequent turns of a conversation if you are manually
         [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of the program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The type of the item. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of the program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output item.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The type of the item. Always `program_output`.
+
+          - `"program_output"`
 
       - `ResponseToolSearchCall`
 
@@ -46648,6 +51692,8 @@ console.log(compactedResponse);
 
             A tool that runs Python code to help generate a response to a prompt.
 
+          - `ProgrammaticToolCalling`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -46749,6 +51795,8 @@ console.log(compactedResponse);
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -46998,6 +52046,26 @@ console.log(compactedResponse);
 
           - `"shell_call"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `created_by?: string`
 
           The ID of the entity that created this tool call.
@@ -47077,6 +52145,26 @@ console.log(compactedResponse);
           The type of the shell call output. Always `shell_call_output`.
 
           - `"shell_call_output"`
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `created_by?: string`
 
@@ -47162,6 +52250,26 @@ console.log(compactedResponse);
 
           - `"apply_patch_call"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `created_by?: string`
 
           The ID of the entity that created this tool call.
@@ -47191,6 +52299,26 @@ console.log(compactedResponse);
           The type of the item. Always `apply_patch_call_output`.
 
           - `"apply_patch_call_output"`
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `created_by?: string`
 
@@ -47383,7 +52511,7 @@ console.log(compactedResponse);
       What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
       We generally recommend altering this or `top_p` but not both.
 
-    - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+    - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
       How the model should select which tool (or tools) to use when generating
       a response. See the `tools` parameter to see how to specify which tools
@@ -47525,6 +52653,14 @@ console.log(compactedResponse);
 
           - `"custom"`
 
+      - `SpecificProgrammaticToolCallingParam`
+
+        - `type: "programmatic_tool_calling"`
+
+          The tool to call. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `ToolChoiceApplyPatch`
 
         Forces the model to call the apply_patch tool when executing a tool call.
@@ -47594,6 +52730,8 @@ console.log(compactedResponse);
       - `CodeInterpreter`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `ProgrammaticToolCalling`
 
       - `ImageGeneration`
 
@@ -47821,9 +52959,32 @@ console.log(compactedResponse);
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+    - `prompt_cache_options?: PromptCacheOptions`
+
+      The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+      - `mode: "implicit" | "explicit"`
+
+        Whether implicit prompt-cache breakpoints were enabled.
+
+        - `"implicit"`
+
+        - `"explicit"`
+
+      - `ttl: "30m"`
+
+        The minimum lifetime applied to each cache breakpoint.
+
+        - `"30m"`
+
     - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+      Deprecated. Use `prompt_cache_options.ttl` instead.
+
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      This field expresses a maximum retention policy, while
+      `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+      fields are independent and do not interact.
       For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
       For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -47856,16 +53017,13 @@ console.log(compactedResponse);
 
       - `effort?: ReasoningEffort | null`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -47878,6 +53036,8 @@ console.log(compactedResponse);
         - `"high"`
 
         - `"xhigh"`
+
+        - `"max"`
 
       - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -47892,6 +53052,20 @@ console.log(compactedResponse);
         - `"concise"`
 
         - `"detailed"`
+
+      - `mode?: (string & {}) | "standard" | "pro"`
+
+        Controls the reasoning execution mode for the request.
+
+        When returned on a response, this is the effective execution mode.
+
+        - `(string & {})`
+
+        - `"standard" | "pro"`
+
+          - `"standard"`
+
+          - `"pro"`
 
       - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -48077,6 +53251,10 @@ console.log(compactedResponse);
 
         A detailed breakdown of the input tokens.
 
+        - `cache_write_tokens: number`
+
+          The number of input tokens that were written to the cache.
+
         - `cached_tokens: number`
 
           The number of tokens that were retrieved from the cache.
@@ -48141,6 +53319,26 @@ console.log(compactedResponse);
   - `id?: string`
 
     The unique ID of the custom tool call in the OpenAI platform.
+
+  - `caller?: Direct | Program | null`
+
+    The execution context that produced this tool call.
+
+    - `Direct`
+
+      - `type: "direct"`
+
+        - `"direct"`
+
+    - `Program`
+
+      - `caller_id: string`
+
+        The call ID of the program item that produced this tool call.
+
+      - `type: "program"`
+
+        - `"program"`
 
   - `namespace?: string`
 
@@ -48260,6 +53458,16 @@ console.log(compactedResponse);
 
           - `"input_text"`
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `ResponseInputImage`
 
         An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -48290,6 +53498,16 @@ console.log(compactedResponse);
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `ResponseInputFile`
 
         A file input to the model.
@@ -48300,9 +53518,11 @@ console.log(compactedResponse);
 
           - `"input_file"`
 
-        - `detail?: "low" | "high"`
+        - `detail?: "auto" | "low" | "high"`
 
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+          The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+          - `"auto"`
 
           - `"low"`
 
@@ -48324,6 +53544,16 @@ console.log(compactedResponse);
 
           The name of the file to be sent to the model.
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
   - `type: "custom_tool_call_output"`
 
     The type of the custom tool call output. Always `custom_tool_call_output`.
@@ -48333,6 +53563,30 @@ console.log(compactedResponse);
   - `id?: string`
 
     The unique ID of the custom tool call output in the OpenAI platform.
+
+  - `caller?: Direct | Program | null`
+
+    The execution context that produced this tool call.
+
+    - `Direct`
+
+      - `type: "direct"`
+
+        The caller type. Always `direct`.
+
+        - `"direct"`
+
+    - `Program`
+
+      - `caller_id: string`
+
+        The call ID of the program item that produced this tool call.
+
+      - `type: "program"`
+
+        The caller type. Always `program`.
+
+        - `"program"`
 
 ### Response Custom Tool Call Output Item
 
@@ -48365,7 +53619,7 @@ console.log(compactedResponse);
 
   An error object returned when the model fails to generate a Response.
 
-  - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+  - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
     The error code for the response.
 
@@ -48374,6 +53628,8 @@ console.log(compactedResponse);
     - `"rate_limit_exceeded"`
 
     - `"invalid_prompt"`
+
+    - `"bio_policy"`
 
     - `"vector_store_timeout"`
 
@@ -48459,7 +53715,7 @@ console.log(compactedResponse);
 
       An error object returned when the model fails to generate a Response.
 
-      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
         The error code for the response.
 
@@ -48468,6 +53724,8 @@ console.log(compactedResponse);
         - `"rate_limit_exceeded"`
 
         - `"invalid_prompt"`
+
+        - `"bio_policy"`
 
         - `"vector_store_timeout"`
 
@@ -48561,6 +53819,16 @@ console.log(compactedResponse);
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImage`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -48591,6 +53859,16 @@ console.log(compactedResponse);
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFile`
 
                 A file input to the model.
@@ -48601,9 +53879,11 @@ console.log(compactedResponse);
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -48624,6 +53904,16 @@ console.log(compactedResponse);
                 - `filename?: string`
 
                   The name of the file to be sent to the model.
+
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
           - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -49572,6 +54862,26 @@ console.log(compactedResponse);
 
             The unique ID of the function tool call.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
+
           - `namespace?: string`
 
             The namespace of the function to run.
@@ -49619,6 +54929,16 @@ console.log(compactedResponse);
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImageContent`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -49649,6 +54969,16 @@ console.log(compactedResponse);
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFileContent`
 
                 A file input to the model.
@@ -49659,9 +54989,11 @@ console.log(compactedResponse);
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -49683,6 +55015,16 @@ console.log(compactedResponse);
 
                   The name of the file to be sent to the model.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
           - `type: "function_call_output"`
 
             The type of the function tool call output. Always `function_call_output`.
@@ -49692,6 +55034,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the function tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -49761,13 +55127,21 @@ console.log(compactedResponse);
 
               - `strict: boolean | null`
 
-                Whether to enforce strict parameter validation. Default `true`.
+                Whether strict parameter validation is enforced for this function tool.
 
               - `type: "function"`
 
                 The type of the function tool. Always `function`.
 
                 - `"function"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading?: boolean`
 
@@ -49776,6 +55150,10 @@ console.log(compactedResponse);
               - `description?: string | null`
 
                 A description of the function. Used by the model to determine whether or not to call the function.
+
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON schema object describing the JSON value encoded in string outputs for this function.
 
             - `FileSearchTool`
 
@@ -49832,7 +55210,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<string | number>`
+                  - `value: string | number | boolean | Array<unknown>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -49842,11 +55220,7 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<string | number>`
-
-                      - `string`
-
-                      - `number`
+                    - `Array<unknown>`
 
                 - `CompoundFilter`
 
@@ -50018,6 +55392,14 @@ console.log(compactedResponse);
                 The type of the MCP tool. Always `mcp`.
 
                 - `"mcp"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -50229,6 +55611,22 @@ console.log(compactedResponse);
 
                 - `"code_interpreter"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
+            - `ProgrammaticToolCalling`
+
+              - `type: "programmatic_tool_calling"`
+
+                The type of the tool. Always `programmatic_tool_calling`.
+
+                - `"programmatic_tool_calling"`
+
             - `ImageGeneration`
 
               A tool that generates images using the GPT image models.
@@ -50388,6 +55786,14 @@ console.log(compactedResponse);
 
                 - `"shell"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
                 - `ContainerAuto`
@@ -50528,6 +55934,14 @@ console.log(compactedResponse);
 
                 - `"custom"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this tool should be deferred and discovered via tool search.
@@ -50596,15 +56010,29 @@ console.log(compactedResponse);
 
                     - `"function"`
 
+                  - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                    The tool invocation context(s).
+
+                    - `"direct"`
+
+                    - `"programmatic"`
+
                   - `defer_loading?: boolean`
 
                     Whether this function should be deferred and discovered via tool search.
 
                   - `description?: string | null`
 
+                  - `output_schema?: Record<string, unknown> | null`
+
+                    A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                   - `parameters?: unknown`
 
                   - `strict?: boolean | null`
+
+                    Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
                 - `CustomTool`
 
@@ -50706,6 +56134,14 @@ console.log(compactedResponse);
 
                 - `"apply_patch"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
           - `type: "tool_search_output"`
 
             The item type. Always `tool_search_output`.
@@ -50779,6 +56215,8 @@ console.log(compactedResponse);
             - `CodeInterpreter`
 
               A tool that runs Python code to help generate a response to a prompt.
+
+            - `ProgrammaticToolCalling`
 
             - `ImageGeneration`
 
@@ -51120,6 +56558,30 @@ console.log(compactedResponse);
 
             The unique ID of the shell tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
           - `environment?: LocalEnvironment | ContainerReference | null`
 
             The environment to execute the shell commands in.
@@ -51195,6 +56657,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `max_output_length?: number | null`
 
@@ -51290,6 +56776,30 @@ console.log(compactedResponse);
 
             The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ApplyPatchCallOutput`
 
           The streamed output emitted by an apply patch tool call.
@@ -51315,6 +56825,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `output?: string | null`
 
@@ -51506,6 +57040,30 @@ console.log(compactedResponse);
 
             The unique ID of the custom tool call output in the OpenAI platform.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ResponseCustomToolCall`
 
           A call to a custom tool created by the model.
@@ -51531,6 +57089,26 @@ console.log(compactedResponse);
           - `id?: string`
 
             The unique ID of the custom tool call in the OpenAI platform.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
 
           - `namespace?: string`
 
@@ -51560,6 +57138,58 @@ console.log(compactedResponse);
 
             - `"item_reference"`
 
+        - `Program`
+
+          - `id: string`
+
+            The unique ID of this program item.
+
+          - `call_id: string`
+
+            The stable call ID of the program item.
+
+          - `code: string`
+
+            The JavaScript source executed by programmatic tool calling.
+
+          - `fingerprint: string`
+
+            Opaque program replay fingerprint that must be round-tripped.
+
+          - `type: "program"`
+
+            The item type. Always `program`.
+
+            - `"program"`
+
+        - `ProgramOutput`
+
+          - `id: string`
+
+            The unique ID of this program output item.
+
+          - `call_id: string`
+
+            The call ID of the program item.
+
+          - `result: string`
+
+            The result produced by the program item.
+
+          - `status: "completed" | "incomplete"`
+
+            The terminal status of the program output.
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+          - `type: "program_output"`
+
+            The item type. Always `program_output`.
+
+            - `"program_output"`
+
     - `metadata: Metadata | null`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
@@ -51578,7 +57208,13 @@ console.log(compactedResponse);
 
       - `(string & {})`
 
-      - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+      - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+        - `"gpt-5.6-sol"`
+
+        - `"gpt-5.6-terra"`
+
+        - `"gpt-5.6-luna"`
 
         - `"gpt-5.4"`
 
@@ -51845,6 +57481,30 @@ console.log(compactedResponse);
 
           - `"function_call_output"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `created_by?: string`
 
           The identifier of the actor that created the item.
@@ -51919,6 +57579,58 @@ console.log(compactedResponse);
         a response. Be sure to include these items in your `input` to the Responses API
         for subsequent turns of a conversation if you are manually
         [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of the program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The type of the item. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of the program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output item.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The type of the item. Always `program_output`.
+
+          - `"program_output"`
 
       - `ResponseToolSearchCall`
 
@@ -52024,6 +57736,8 @@ console.log(compactedResponse);
 
             A tool that runs Python code to help generate a response to a prompt.
 
+          - `ProgrammaticToolCalling`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -52125,6 +57839,8 @@ console.log(compactedResponse);
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -52374,6 +58090,26 @@ console.log(compactedResponse);
 
           - `"shell_call"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `created_by?: string`
 
           The ID of the entity that created this tool call.
@@ -52453,6 +58189,26 @@ console.log(compactedResponse);
           The type of the shell call output. Always `shell_call_output`.
 
           - `"shell_call_output"`
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `created_by?: string`
 
@@ -52538,6 +58294,26 @@ console.log(compactedResponse);
 
           - `"apply_patch_call"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `created_by?: string`
 
           The ID of the entity that created this tool call.
@@ -52567,6 +58343,26 @@ console.log(compactedResponse);
           The type of the item. Always `apply_patch_call_output`.
 
           - `"apply_patch_call_output"`
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `created_by?: string`
 
@@ -52759,7 +58555,7 @@ console.log(compactedResponse);
       What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
       We generally recommend altering this or `top_p` but not both.
 
-    - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+    - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
       How the model should select which tool (or tools) to use when generating
       a response. See the `tools` parameter to see how to specify which tools
@@ -52901,6 +58697,14 @@ console.log(compactedResponse);
 
           - `"custom"`
 
+      - `SpecificProgrammaticToolCallingParam`
+
+        - `type: "programmatic_tool_calling"`
+
+          The tool to call. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `ToolChoiceApplyPatch`
 
         Forces the model to call the apply_patch tool when executing a tool call.
@@ -52970,6 +58774,8 @@ console.log(compactedResponse);
       - `CodeInterpreter`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `ProgrammaticToolCalling`
 
       - `ImageGeneration`
 
@@ -53197,9 +59003,32 @@ console.log(compactedResponse);
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+    - `prompt_cache_options?: PromptCacheOptions`
+
+      The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+      - `mode: "implicit" | "explicit"`
+
+        Whether implicit prompt-cache breakpoints were enabled.
+
+        - `"implicit"`
+
+        - `"explicit"`
+
+      - `ttl: "30m"`
+
+        The minimum lifetime applied to each cache breakpoint.
+
+        - `"30m"`
+
     - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+      Deprecated. Use `prompt_cache_options.ttl` instead.
+
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      This field expresses a maximum retention policy, while
+      `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+      fields are independent and do not interact.
       For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
       For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -53232,16 +59061,13 @@ console.log(compactedResponse);
 
       - `effort?: ReasoningEffort | null`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -53254,6 +59080,8 @@ console.log(compactedResponse);
         - `"high"`
 
         - `"xhigh"`
+
+        - `"max"`
 
       - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -53268,6 +59096,20 @@ console.log(compactedResponse);
         - `"concise"`
 
         - `"detailed"`
+
+      - `mode?: (string & {}) | "standard" | "pro"`
+
+        Controls the reasoning execution mode for the request.
+
+        When returned on a response, this is the effective execution mode.
+
+        - `(string & {})`
+
+        - `"standard" | "pro"`
+
+          - `"standard"`
+
+          - `"pro"`
 
       - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -53452,6 +59294,10 @@ console.log(compactedResponse);
       - `input_tokens_details: InputTokensDetails`
 
         A detailed breakdown of the input tokens.
+
+        - `cache_write_tokens: number`
+
+          The number of input tokens that were written to the cache.
 
         - `cached_tokens: number`
 
@@ -53821,6 +59667,16 @@ console.log(compactedResponse);
 
       - `"input_text"`
 
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
   - `ResponseInputImageContent`
 
     An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -53851,6 +59707,16 @@ console.log(compactedResponse);
 
       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
   - `ResponseInputFileContent`
 
     A file input to the model.
@@ -53861,9 +59727,11 @@ console.log(compactedResponse);
 
       - `"input_file"`
 
-    - `detail?: "low" | "high"`
+    - `detail?: "auto" | "low" | "high"`
 
-      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+      The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+      - `"auto"`
 
       - `"low"`
 
@@ -53884,6 +59752,16 @@ console.log(compactedResponse);
     - `filename?: string | null`
 
       The name of the file to be sent to the model.
+
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
 
 ### Response Function Call Output Item List
 
@@ -53905,6 +59783,16 @@ console.log(compactedResponse);
 
       - `"input_text"`
 
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
   - `ResponseInputImageContent`
 
     An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -53935,6 +59823,16 @@ console.log(compactedResponse);
 
       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
   - `ResponseInputFileContent`
 
     A file input to the model.
@@ -53945,9 +59843,11 @@ console.log(compactedResponse);
 
       - `"input_file"`
 
-    - `detail?: "low" | "high"`
+    - `detail?: "auto" | "low" | "high"`
 
-      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+      The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+      - `"auto"`
 
       - `"low"`
 
@@ -53968,6 +59868,16 @@ console.log(compactedResponse);
     - `filename?: string | null`
 
       The name of the file to be sent to the model.
+
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
 
 ### Response Function Shell Call Output Content
 
@@ -54081,6 +59991,26 @@ console.log(compactedResponse);
 
     - `"shell_call"`
 
+  - `caller?: Direct | Program | null`
+
+    The execution context that produced this tool call.
+
+    - `Direct`
+
+      - `type: "direct"`
+
+        - `"direct"`
+
+    - `Program`
+
+      - `caller_id: string`
+
+        The call ID of the program item that produced this tool call.
+
+      - `type: "program"`
+
+        - `"program"`
+
   - `created_by?: string`
 
     The ID of the entity that created this tool call.
@@ -54163,6 +60093,26 @@ console.log(compactedResponse);
 
     - `"shell_call_output"`
 
+  - `caller?: Direct | Program | null`
+
+    The execution context that produced this tool call.
+
+    - `Direct`
+
+      - `type: "direct"`
+
+        - `"direct"`
+
+    - `Program`
+
+      - `caller_id: string`
+
+        The call ID of the program item that produced this tool call.
+
+      - `type: "program"`
+
+        - `"program"`
+
   - `created_by?: string`
 
     The identifier of the actor that created the item.
@@ -54195,6 +60145,26 @@ console.log(compactedResponse);
   - `id?: string`
 
     The unique ID of the function tool call.
+
+  - `caller?: Direct | Program | null`
+
+    The execution context that produced this tool call.
+
+    - `Direct`
+
+      - `type: "direct"`
+
+        - `"direct"`
+
+    - `Program`
+
+      - `caller_id: string`
+
+        The call ID of the program item that produced this tool call.
+
+      - `type: "program"`
+
+        - `"program"`
 
   - `namespace?: string`
 
@@ -54272,6 +60242,16 @@ console.log(compactedResponse);
 
           - `"input_text"`
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `ResponseInputImage`
 
         An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -54302,6 +60282,16 @@ console.log(compactedResponse);
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `ResponseInputFile`
 
         A file input to the model.
@@ -54312,9 +60302,11 @@ console.log(compactedResponse);
 
           - `"input_file"`
 
-        - `detail?: "low" | "high"`
+        - `detail?: "auto" | "low" | "high"`
 
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+          The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+          - `"auto"`
 
           - `"low"`
 
@@ -54336,6 +60328,16 @@ console.log(compactedResponse);
 
           The name of the file to be sent to the model.
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
   - `status: "in_progress" | "completed" | "incomplete"`
 
     The status of the item. One of `in_progress`, `completed`, or
@@ -54352,6 +60354,30 @@ console.log(compactedResponse);
     The type of the function tool call output. Always `function_call_output`.
 
     - `"function_call_output"`
+
+  - `caller?: Direct | Program | null`
+
+    The execution context that produced this tool call.
+
+    - `Direct`
+
+      - `type: "direct"`
+
+        The caller type. Always `direct`.
+
+        - `"direct"`
+
+    - `Program`
+
+      - `caller_id: string`
+
+        The call ID of the program item that produced this tool call.
+
+      - `type: "program"`
+
+        The caller type. Always `program`.
+
+        - `"program"`
 
   - `created_by?: string`
 
@@ -54581,7 +60607,7 @@ console.log(compactedResponse);
 
       An error object returned when the model fails to generate a Response.
 
-      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
         The error code for the response.
 
@@ -54590,6 +60616,8 @@ console.log(compactedResponse);
         - `"rate_limit_exceeded"`
 
         - `"invalid_prompt"`
+
+        - `"bio_policy"`
 
         - `"vector_store_timeout"`
 
@@ -54683,6 +60711,16 @@ console.log(compactedResponse);
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImage`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -54713,6 +60751,16 @@ console.log(compactedResponse);
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFile`
 
                 A file input to the model.
@@ -54723,9 +60771,11 @@ console.log(compactedResponse);
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -54746,6 +60796,16 @@ console.log(compactedResponse);
                 - `filename?: string`
 
                   The name of the file to be sent to the model.
+
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
           - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -55694,6 +61754,26 @@ console.log(compactedResponse);
 
             The unique ID of the function tool call.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
+
           - `namespace?: string`
 
             The namespace of the function to run.
@@ -55741,6 +61821,16 @@ console.log(compactedResponse);
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImageContent`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -55771,6 +61861,16 @@ console.log(compactedResponse);
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFileContent`
 
                 A file input to the model.
@@ -55781,9 +61881,11 @@ console.log(compactedResponse);
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -55805,6 +61907,16 @@ console.log(compactedResponse);
 
                   The name of the file to be sent to the model.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
           - `type: "function_call_output"`
 
             The type of the function tool call output. Always `function_call_output`.
@@ -55814,6 +61926,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the function tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -55883,13 +62019,21 @@ console.log(compactedResponse);
 
               - `strict: boolean | null`
 
-                Whether to enforce strict parameter validation. Default `true`.
+                Whether strict parameter validation is enforced for this function tool.
 
               - `type: "function"`
 
                 The type of the function tool. Always `function`.
 
                 - `"function"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading?: boolean`
 
@@ -55898,6 +62042,10 @@ console.log(compactedResponse);
               - `description?: string | null`
 
                 A description of the function. Used by the model to determine whether or not to call the function.
+
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON schema object describing the JSON value encoded in string outputs for this function.
 
             - `FileSearchTool`
 
@@ -55954,7 +62102,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<string | number>`
+                  - `value: string | number | boolean | Array<unknown>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -55964,11 +62112,7 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<string | number>`
-
-                      - `string`
-
-                      - `number`
+                    - `Array<unknown>`
 
                 - `CompoundFilter`
 
@@ -56140,6 +62284,14 @@ console.log(compactedResponse);
                 The type of the MCP tool. Always `mcp`.
 
                 - `"mcp"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -56351,6 +62503,22 @@ console.log(compactedResponse);
 
                 - `"code_interpreter"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
+            - `ProgrammaticToolCalling`
+
+              - `type: "programmatic_tool_calling"`
+
+                The type of the tool. Always `programmatic_tool_calling`.
+
+                - `"programmatic_tool_calling"`
+
             - `ImageGeneration`
 
               A tool that generates images using the GPT image models.
@@ -56510,6 +62678,14 @@ console.log(compactedResponse);
 
                 - `"shell"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
                 - `ContainerAuto`
@@ -56650,6 +62826,14 @@ console.log(compactedResponse);
 
                 - `"custom"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this tool should be deferred and discovered via tool search.
@@ -56718,15 +62902,29 @@ console.log(compactedResponse);
 
                     - `"function"`
 
+                  - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                    The tool invocation context(s).
+
+                    - `"direct"`
+
+                    - `"programmatic"`
+
                   - `defer_loading?: boolean`
 
                     Whether this function should be deferred and discovered via tool search.
 
                   - `description?: string | null`
 
+                  - `output_schema?: Record<string, unknown> | null`
+
+                    A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                   - `parameters?: unknown`
 
                   - `strict?: boolean | null`
+
+                    Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
                 - `CustomTool`
 
@@ -56828,6 +63026,14 @@ console.log(compactedResponse);
 
                 - `"apply_patch"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
           - `type: "tool_search_output"`
 
             The item type. Always `tool_search_output`.
@@ -56901,6 +63107,8 @@ console.log(compactedResponse);
             - `CodeInterpreter`
 
               A tool that runs Python code to help generate a response to a prompt.
+
+            - `ProgrammaticToolCalling`
 
             - `ImageGeneration`
 
@@ -57242,6 +63450,30 @@ console.log(compactedResponse);
 
             The unique ID of the shell tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
           - `environment?: LocalEnvironment | ContainerReference | null`
 
             The environment to execute the shell commands in.
@@ -57317,6 +63549,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `max_output_length?: number | null`
 
@@ -57412,6 +63668,30 @@ console.log(compactedResponse);
 
             The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ApplyPatchCallOutput`
 
           The streamed output emitted by an apply patch tool call.
@@ -57437,6 +63717,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `output?: string | null`
 
@@ -57628,6 +63932,30 @@ console.log(compactedResponse);
 
             The unique ID of the custom tool call output in the OpenAI platform.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ResponseCustomToolCall`
 
           A call to a custom tool created by the model.
@@ -57653,6 +63981,26 @@ console.log(compactedResponse);
           - `id?: string`
 
             The unique ID of the custom tool call in the OpenAI platform.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
 
           - `namespace?: string`
 
@@ -57682,6 +64030,58 @@ console.log(compactedResponse);
 
             - `"item_reference"`
 
+        - `Program`
+
+          - `id: string`
+
+            The unique ID of this program item.
+
+          - `call_id: string`
+
+            The stable call ID of the program item.
+
+          - `code: string`
+
+            The JavaScript source executed by programmatic tool calling.
+
+          - `fingerprint: string`
+
+            Opaque program replay fingerprint that must be round-tripped.
+
+          - `type: "program"`
+
+            The item type. Always `program`.
+
+            - `"program"`
+
+        - `ProgramOutput`
+
+          - `id: string`
+
+            The unique ID of this program output item.
+
+          - `call_id: string`
+
+            The call ID of the program item.
+
+          - `result: string`
+
+            The result produced by the program item.
+
+          - `status: "completed" | "incomplete"`
+
+            The terminal status of the program output.
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+          - `type: "program_output"`
+
+            The item type. Always `program_output`.
+
+            - `"program_output"`
+
     - `metadata: Metadata | null`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
@@ -57700,7 +64100,13 @@ console.log(compactedResponse);
 
       - `(string & {})`
 
-      - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+      - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+        - `"gpt-5.6-sol"`
+
+        - `"gpt-5.6-terra"`
+
+        - `"gpt-5.6-luna"`
 
         - `"gpt-5.4"`
 
@@ -57967,6 +64373,30 @@ console.log(compactedResponse);
 
           - `"function_call_output"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `created_by?: string`
 
           The identifier of the actor that created the item.
@@ -58041,6 +64471,58 @@ console.log(compactedResponse);
         a response. Be sure to include these items in your `input` to the Responses API
         for subsequent turns of a conversation if you are manually
         [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of the program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The type of the item. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of the program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output item.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The type of the item. Always `program_output`.
+
+          - `"program_output"`
 
       - `ResponseToolSearchCall`
 
@@ -58146,6 +64628,8 @@ console.log(compactedResponse);
 
             A tool that runs Python code to help generate a response to a prompt.
 
+          - `ProgrammaticToolCalling`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -58247,6 +64731,8 @@ console.log(compactedResponse);
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -58496,6 +64982,26 @@ console.log(compactedResponse);
 
           - `"shell_call"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `created_by?: string`
 
           The ID of the entity that created this tool call.
@@ -58575,6 +65081,26 @@ console.log(compactedResponse);
           The type of the shell call output. Always `shell_call_output`.
 
           - `"shell_call_output"`
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `created_by?: string`
 
@@ -58660,6 +65186,26 @@ console.log(compactedResponse);
 
           - `"apply_patch_call"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `created_by?: string`
 
           The ID of the entity that created this tool call.
@@ -58689,6 +65235,26 @@ console.log(compactedResponse);
           The type of the item. Always `apply_patch_call_output`.
 
           - `"apply_patch_call_output"`
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `created_by?: string`
 
@@ -58881,7 +65447,7 @@ console.log(compactedResponse);
       What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
       We generally recommend altering this or `top_p` but not both.
 
-    - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+    - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
       How the model should select which tool (or tools) to use when generating
       a response. See the `tools` parameter to see how to specify which tools
@@ -59023,6 +65589,14 @@ console.log(compactedResponse);
 
           - `"custom"`
 
+      - `SpecificProgrammaticToolCallingParam`
+
+        - `type: "programmatic_tool_calling"`
+
+          The tool to call. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `ToolChoiceApplyPatch`
 
         Forces the model to call the apply_patch tool when executing a tool call.
@@ -59092,6 +65666,8 @@ console.log(compactedResponse);
       - `CodeInterpreter`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `ProgrammaticToolCalling`
 
       - `ImageGeneration`
 
@@ -59319,9 +65895,32 @@ console.log(compactedResponse);
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+    - `prompt_cache_options?: PromptCacheOptions`
+
+      The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+      - `mode: "implicit" | "explicit"`
+
+        Whether implicit prompt-cache breakpoints were enabled.
+
+        - `"implicit"`
+
+        - `"explicit"`
+
+      - `ttl: "30m"`
+
+        The minimum lifetime applied to each cache breakpoint.
+
+        - `"30m"`
+
     - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+      Deprecated. Use `prompt_cache_options.ttl` instead.
+
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      This field expresses a maximum retention policy, while
+      `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+      fields are independent and do not interact.
       For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
       For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -59354,16 +65953,13 @@ console.log(compactedResponse);
 
       - `effort?: ReasoningEffort | null`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -59376,6 +65972,8 @@ console.log(compactedResponse);
         - `"high"`
 
         - `"xhigh"`
+
+        - `"max"`
 
       - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -59390,6 +65988,20 @@ console.log(compactedResponse);
         - `"concise"`
 
         - `"detailed"`
+
+      - `mode?: (string & {}) | "standard" | "pro"`
+
+        Controls the reasoning execution mode for the request.
+
+        When returned on a response, this is the effective execution mode.
+
+        - `(string & {})`
+
+        - `"standard" | "pro"`
+
+          - `"standard"`
+
+          - `"pro"`
 
       - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -59574,6 +66186,10 @@ console.log(compactedResponse);
       - `input_tokens_details: InputTokensDetails`
 
         A detailed breakdown of the input tokens.
+
+        - `cache_write_tokens: number`
+
+          The number of input tokens that were written to the cache.
 
         - `cached_tokens: number`
 
@@ -59665,7 +66281,7 @@ console.log(compactedResponse);
 
       An error object returned when the model fails to generate a Response.
 
-      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
         The error code for the response.
 
@@ -59674,6 +66290,8 @@ console.log(compactedResponse);
         - `"rate_limit_exceeded"`
 
         - `"invalid_prompt"`
+
+        - `"bio_policy"`
 
         - `"vector_store_timeout"`
 
@@ -59767,6 +66385,16 @@ console.log(compactedResponse);
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImage`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -59797,6 +66425,16 @@ console.log(compactedResponse);
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFile`
 
                 A file input to the model.
@@ -59807,9 +66445,11 @@ console.log(compactedResponse);
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -59830,6 +66470,16 @@ console.log(compactedResponse);
                 - `filename?: string`
 
                   The name of the file to be sent to the model.
+
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
           - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -60778,6 +67428,26 @@ console.log(compactedResponse);
 
             The unique ID of the function tool call.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
+
           - `namespace?: string`
 
             The namespace of the function to run.
@@ -60825,6 +67495,16 @@ console.log(compactedResponse);
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImageContent`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -60855,6 +67535,16 @@ console.log(compactedResponse);
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFileContent`
 
                 A file input to the model.
@@ -60865,9 +67555,11 @@ console.log(compactedResponse);
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -60889,6 +67581,16 @@ console.log(compactedResponse);
 
                   The name of the file to be sent to the model.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
           - `type: "function_call_output"`
 
             The type of the function tool call output. Always `function_call_output`.
@@ -60898,6 +67600,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the function tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -60967,13 +67693,21 @@ console.log(compactedResponse);
 
               - `strict: boolean | null`
 
-                Whether to enforce strict parameter validation. Default `true`.
+                Whether strict parameter validation is enforced for this function tool.
 
               - `type: "function"`
 
                 The type of the function tool. Always `function`.
 
                 - `"function"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading?: boolean`
 
@@ -60982,6 +67716,10 @@ console.log(compactedResponse);
               - `description?: string | null`
 
                 A description of the function. Used by the model to determine whether or not to call the function.
+
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON schema object describing the JSON value encoded in string outputs for this function.
 
             - `FileSearchTool`
 
@@ -61038,7 +67776,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<string | number>`
+                  - `value: string | number | boolean | Array<unknown>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -61048,11 +67786,7 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<string | number>`
-
-                      - `string`
-
-                      - `number`
+                    - `Array<unknown>`
 
                 - `CompoundFilter`
 
@@ -61224,6 +67958,14 @@ console.log(compactedResponse);
                 The type of the MCP tool. Always `mcp`.
 
                 - `"mcp"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -61435,6 +68177,22 @@ console.log(compactedResponse);
 
                 - `"code_interpreter"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
+            - `ProgrammaticToolCalling`
+
+              - `type: "programmatic_tool_calling"`
+
+                The type of the tool. Always `programmatic_tool_calling`.
+
+                - `"programmatic_tool_calling"`
+
             - `ImageGeneration`
 
               A tool that generates images using the GPT image models.
@@ -61594,6 +68352,14 @@ console.log(compactedResponse);
 
                 - `"shell"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
                 - `ContainerAuto`
@@ -61734,6 +68500,14 @@ console.log(compactedResponse);
 
                 - `"custom"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this tool should be deferred and discovered via tool search.
@@ -61802,15 +68576,29 @@ console.log(compactedResponse);
 
                     - `"function"`
 
+                  - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                    The tool invocation context(s).
+
+                    - `"direct"`
+
+                    - `"programmatic"`
+
                   - `defer_loading?: boolean`
 
                     Whether this function should be deferred and discovered via tool search.
 
                   - `description?: string | null`
 
+                  - `output_schema?: Record<string, unknown> | null`
+
+                    A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                   - `parameters?: unknown`
 
                   - `strict?: boolean | null`
+
+                    Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
                 - `CustomTool`
 
@@ -61912,6 +68700,14 @@ console.log(compactedResponse);
 
                 - `"apply_patch"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
           - `type: "tool_search_output"`
 
             The item type. Always `tool_search_output`.
@@ -61985,6 +68781,8 @@ console.log(compactedResponse);
             - `CodeInterpreter`
 
               A tool that runs Python code to help generate a response to a prompt.
+
+            - `ProgrammaticToolCalling`
 
             - `ImageGeneration`
 
@@ -62326,6 +69124,30 @@ console.log(compactedResponse);
 
             The unique ID of the shell tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
           - `environment?: LocalEnvironment | ContainerReference | null`
 
             The environment to execute the shell commands in.
@@ -62401,6 +69223,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `max_output_length?: number | null`
 
@@ -62496,6 +69342,30 @@ console.log(compactedResponse);
 
             The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ApplyPatchCallOutput`
 
           The streamed output emitted by an apply patch tool call.
@@ -62521,6 +69391,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `output?: string | null`
 
@@ -62712,6 +69606,30 @@ console.log(compactedResponse);
 
             The unique ID of the custom tool call output in the OpenAI platform.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ResponseCustomToolCall`
 
           A call to a custom tool created by the model.
@@ -62737,6 +69655,26 @@ console.log(compactedResponse);
           - `id?: string`
 
             The unique ID of the custom tool call in the OpenAI platform.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
 
           - `namespace?: string`
 
@@ -62766,6 +69704,58 @@ console.log(compactedResponse);
 
             - `"item_reference"`
 
+        - `Program`
+
+          - `id: string`
+
+            The unique ID of this program item.
+
+          - `call_id: string`
+
+            The stable call ID of the program item.
+
+          - `code: string`
+
+            The JavaScript source executed by programmatic tool calling.
+
+          - `fingerprint: string`
+
+            Opaque program replay fingerprint that must be round-tripped.
+
+          - `type: "program"`
+
+            The item type. Always `program`.
+
+            - `"program"`
+
+        - `ProgramOutput`
+
+          - `id: string`
+
+            The unique ID of this program output item.
+
+          - `call_id: string`
+
+            The call ID of the program item.
+
+          - `result: string`
+
+            The result produced by the program item.
+
+          - `status: "completed" | "incomplete"`
+
+            The terminal status of the program output.
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+          - `type: "program_output"`
+
+            The item type. Always `program_output`.
+
+            - `"program_output"`
+
     - `metadata: Metadata | null`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
@@ -62784,7 +69774,13 @@ console.log(compactedResponse);
 
       - `(string & {})`
 
-      - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+      - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+        - `"gpt-5.6-sol"`
+
+        - `"gpt-5.6-terra"`
+
+        - `"gpt-5.6-luna"`
 
         - `"gpt-5.4"`
 
@@ -63051,6 +70047,30 @@ console.log(compactedResponse);
 
           - `"function_call_output"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `created_by?: string`
 
           The identifier of the actor that created the item.
@@ -63125,6 +70145,58 @@ console.log(compactedResponse);
         a response. Be sure to include these items in your `input` to the Responses API
         for subsequent turns of a conversation if you are manually
         [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of the program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The type of the item. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of the program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output item.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The type of the item. Always `program_output`.
+
+          - `"program_output"`
 
       - `ResponseToolSearchCall`
 
@@ -63230,6 +70302,8 @@ console.log(compactedResponse);
 
             A tool that runs Python code to help generate a response to a prompt.
 
+          - `ProgrammaticToolCalling`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -63331,6 +70405,8 @@ console.log(compactedResponse);
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -63580,6 +70656,26 @@ console.log(compactedResponse);
 
           - `"shell_call"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `created_by?: string`
 
           The ID of the entity that created this tool call.
@@ -63659,6 +70755,26 @@ console.log(compactedResponse);
           The type of the shell call output. Always `shell_call_output`.
 
           - `"shell_call_output"`
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `created_by?: string`
 
@@ -63744,6 +70860,26 @@ console.log(compactedResponse);
 
           - `"apply_patch_call"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `created_by?: string`
 
           The ID of the entity that created this tool call.
@@ -63773,6 +70909,26 @@ console.log(compactedResponse);
           The type of the item. Always `apply_patch_call_output`.
 
           - `"apply_patch_call_output"`
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `created_by?: string`
 
@@ -63965,7 +71121,7 @@ console.log(compactedResponse);
       What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
       We generally recommend altering this or `top_p` but not both.
 
-    - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+    - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
       How the model should select which tool (or tools) to use when generating
       a response. See the `tools` parameter to see how to specify which tools
@@ -64107,6 +71263,14 @@ console.log(compactedResponse);
 
           - `"custom"`
 
+      - `SpecificProgrammaticToolCallingParam`
+
+        - `type: "programmatic_tool_calling"`
+
+          The tool to call. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `ToolChoiceApplyPatch`
 
         Forces the model to call the apply_patch tool when executing a tool call.
@@ -64176,6 +71340,8 @@ console.log(compactedResponse);
       - `CodeInterpreter`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `ProgrammaticToolCalling`
 
       - `ImageGeneration`
 
@@ -64403,9 +71569,32 @@ console.log(compactedResponse);
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+    - `prompt_cache_options?: PromptCacheOptions`
+
+      The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+      - `mode: "implicit" | "explicit"`
+
+        Whether implicit prompt-cache breakpoints were enabled.
+
+        - `"implicit"`
+
+        - `"explicit"`
+
+      - `ttl: "30m"`
+
+        The minimum lifetime applied to each cache breakpoint.
+
+        - `"30m"`
+
     - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+      Deprecated. Use `prompt_cache_options.ttl` instead.
+
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      This field expresses a maximum retention policy, while
+      `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+      fields are independent and do not interact.
       For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
       For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -64438,16 +71627,13 @@ console.log(compactedResponse);
 
       - `effort?: ReasoningEffort | null`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -64460,6 +71646,8 @@ console.log(compactedResponse);
         - `"high"`
 
         - `"xhigh"`
+
+        - `"max"`
 
       - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -64474,6 +71662,20 @@ console.log(compactedResponse);
         - `"concise"`
 
         - `"detailed"`
+
+      - `mode?: (string & {}) | "standard" | "pro"`
+
+        Controls the reasoning execution mode for the request.
+
+        When returned on a response, this is the effective execution mode.
+
+        - `(string & {})`
+
+        - `"standard" | "pro"`
+
+          - `"standard"`
+
+          - `"pro"`
 
       - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -64659,6 +71861,10 @@ console.log(compactedResponse);
 
         A detailed breakdown of the input tokens.
 
+        - `cache_write_tokens: number`
+
+          The number of input tokens that were written to the cache.
+
         - `cached_tokens: number`
 
           The number of tokens that were retrieved from the cache.
@@ -64737,6 +71943,16 @@ console.log(compactedResponse);
 
             - `"input_text"`
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ResponseInputImage`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -64767,6 +71983,16 @@ console.log(compactedResponse);
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ResponseInputFile`
 
           A file input to the model.
@@ -64777,9 +72003,11 @@ console.log(compactedResponse);
 
             - `"input_file"`
 
-          - `detail?: "low" | "high"`
+          - `detail?: "auto" | "low" | "high"`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -64800,6 +72028,16 @@ console.log(compactedResponse);
           - `filename?: string`
 
             The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
     - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -65748,6 +72986,26 @@ console.log(compactedResponse);
 
       The unique ID of the function tool call.
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
+
     - `namespace?: string`
 
       The namespace of the function to run.
@@ -65795,6 +73053,16 @@ console.log(compactedResponse);
 
             - `"input_text"`
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ResponseInputImageContent`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -65825,6 +73093,16 @@ console.log(compactedResponse);
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ResponseInputFileContent`
 
           A file input to the model.
@@ -65835,9 +73113,11 @@ console.log(compactedResponse);
 
             - `"input_file"`
 
-          - `detail?: "low" | "high"`
+          - `detail?: "auto" | "low" | "high"`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -65859,6 +73139,16 @@ console.log(compactedResponse);
 
             The name of the file to be sent to the model.
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
     - `type: "function_call_output"`
 
       The type of the function tool call output. Always `function_call_output`.
@@ -65868,6 +73158,30 @@ console.log(compactedResponse);
     - `id?: string | null`
 
       The unique ID of the function tool call output. Populated when this item is returned via API.
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -65937,13 +73251,21 @@ console.log(compactedResponse);
 
         - `strict: boolean | null`
 
-          Whether to enforce strict parameter validation. Default `true`.
+          Whether strict parameter validation is enforced for this function tool.
 
         - `type: "function"`
 
           The type of the function tool. Always `function`.
 
           - `"function"`
+
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `defer_loading?: boolean`
 
@@ -65952,6 +73274,10 @@ console.log(compactedResponse);
         - `description?: string | null`
 
           A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `output_schema?: Record<string, unknown> | null`
+
+          A JSON schema object describing the JSON value encoded in string outputs for this function.
 
       - `FileSearchTool`
 
@@ -66008,7 +73334,7 @@ console.log(compactedResponse);
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<string | number>`
+            - `value: string | number | boolean | Array<unknown>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -66018,11 +73344,7 @@ console.log(compactedResponse);
 
               - `boolean`
 
-              - `Array<string | number>`
-
-                - `string`
-
-                - `number`
+              - `Array<unknown>`
 
           - `CompoundFilter`
 
@@ -66194,6 +73516,14 @@ console.log(compactedResponse);
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -66405,6 +73735,22 @@ console.log(compactedResponse);
 
           - `"code_interpreter"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
+      - `ProgrammaticToolCalling`
+
+        - `type: "programmatic_tool_calling"`
+
+          The type of the tool. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `ImageGeneration`
 
         A tool that generates images using the GPT image models.
@@ -66564,6 +73910,14 @@ console.log(compactedResponse);
 
           - `"shell"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
           - `ContainerAuto`
@@ -66704,6 +74058,14 @@ console.log(compactedResponse);
 
           - `"custom"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading?: boolean`
 
           Whether this tool should be deferred and discovered via tool search.
@@ -66772,15 +74134,29 @@ console.log(compactedResponse);
 
               - `"function"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this function should be deferred and discovered via tool search.
 
             - `description?: string | null`
 
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
             - `parameters?: unknown`
 
             - `strict?: boolean | null`
+
+              Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
           - `CustomTool`
 
@@ -66882,6 +74258,14 @@ console.log(compactedResponse);
 
           - `"apply_patch"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
     - `type: "tool_search_output"`
 
       The item type. Always `tool_search_output`.
@@ -66955,6 +74339,8 @@ console.log(compactedResponse);
       - `CodeInterpreter`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `ProgrammaticToolCalling`
 
       - `ImageGeneration`
 
@@ -67296,6 +74682,30 @@ console.log(compactedResponse);
 
       The unique ID of the shell tool call. Populated when this item is returned via API.
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
     - `environment?: LocalEnvironment | ContainerReference | null`
 
       The environment to execute the shell commands in.
@@ -67371,6 +74781,30 @@ console.log(compactedResponse);
     - `id?: string | null`
 
       The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `max_output_length?: number | null`
 
@@ -67466,6 +74900,30 @@ console.log(compactedResponse);
 
       The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
   - `ApplyPatchCallOutput`
 
     The streamed output emitted by an apply patch tool call.
@@ -67491,6 +74949,30 @@ console.log(compactedResponse);
     - `id?: string | null`
 
       The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `output?: string | null`
 
@@ -67682,6 +75164,30 @@ console.log(compactedResponse);
 
       The unique ID of the custom tool call output in the OpenAI platform.
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
   - `ResponseCustomToolCall`
 
     A call to a custom tool created by the model.
@@ -67707,6 +75213,26 @@ console.log(compactedResponse);
     - `id?: string`
 
       The unique ID of the custom tool call in the OpenAI platform.
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
 
     - `namespace?: string`
 
@@ -67735,6 +75261,58 @@ console.log(compactedResponse);
       The type of item to reference. Always `item_reference`.
 
       - `"item_reference"`
+
+  - `Program`
+
+    - `id: string`
+
+      The unique ID of this program item.
+
+    - `call_id: string`
+
+      The stable call ID of the program item.
+
+    - `code: string`
+
+      The JavaScript source executed by programmatic tool calling.
+
+    - `fingerprint: string`
+
+      Opaque program replay fingerprint that must be round-tripped.
+
+    - `type: "program"`
+
+      The item type. Always `program`.
+
+      - `"program"`
+
+  - `ProgramOutput`
+
+    - `id: string`
+
+      The unique ID of this program output item.
+
+    - `call_id: string`
+
+      The call ID of the program item.
+
+    - `result: string`
+
+      The result produced by the program item.
+
+    - `status: "completed" | "incomplete"`
+
+      The terminal status of the program output.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `type: "program_output"`
+
+      The item type. Always `program_output`.
+
+      - `"program_output"`
 
 ### Response Input Audio
 
@@ -67783,6 +75361,16 @@ console.log(compactedResponse);
 
       - `"input_text"`
 
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
   - `ResponseInputImage`
 
     An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -67813,6 +75401,16 @@ console.log(compactedResponse);
 
       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
   - `ResponseInputFile`
 
     A file input to the model.
@@ -67823,9 +75421,11 @@ console.log(compactedResponse);
 
       - `"input_file"`
 
-    - `detail?: "low" | "high"`
+    - `detail?: "auto" | "low" | "high"`
 
-      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+      The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+      - `"auto"`
 
       - `"low"`
 
@@ -67847,6 +75447,16 @@ console.log(compactedResponse);
 
       The name of the file to be sent to the model.
 
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
 ### Response Input File
 
 - `ResponseInputFile`
@@ -67859,9 +75469,11 @@ console.log(compactedResponse);
 
     - `"input_file"`
 
-  - `detail?: "low" | "high"`
+  - `detail?: "auto" | "low" | "high"`
 
-    The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+    The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+    - `"auto"`
 
     - `"low"`
 
@@ -67883,6 +75495,16 @@ console.log(compactedResponse);
 
     The name of the file to be sent to the model.
 
+  - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
+
 ### Response Input File Content
 
 - `ResponseInputFileContent`
@@ -67895,9 +75517,11 @@ console.log(compactedResponse);
 
     - `"input_file"`
 
-  - `detail?: "low" | "high"`
+  - `detail?: "auto" | "low" | "high"`
 
-    The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+    The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+    - `"auto"`
 
     - `"low"`
 
@@ -67918,6 +75542,16 @@ console.log(compactedResponse);
   - `filename?: string | null`
 
     The name of the file to be sent to the model.
+
+  - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
 
 ### Response Input Image
 
@@ -67951,6 +75585,16 @@ console.log(compactedResponse);
 
     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+  - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
+
 ### Response Input Image Content
 
 - `ResponseInputImageContent`
@@ -67983,9 +75627,19 @@ console.log(compactedResponse);
 
     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+  - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
+
 ### Response Input Item
 
-- `ResponseInputItem = EasyInputMessage | Message | ResponseOutputMessage | 27 more`
+- `ResponseInputItem = EasyInputMessage | Message | ResponseOutputMessage | 29 more`
 
   A message input to the model with a role indicating instruction following
   hierarchy. Instructions given with the `developer` or `system` role take
@@ -68027,6 +75681,16 @@ console.log(compactedResponse);
 
             - `"input_text"`
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ResponseInputImage`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -68057,6 +75721,16 @@ console.log(compactedResponse);
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ResponseInputFile`
 
           A file input to the model.
@@ -68067,9 +75741,11 @@ console.log(compactedResponse);
 
             - `"input_file"`
 
-          - `detail?: "low" | "high"`
+          - `detail?: "auto" | "low" | "high"`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -68090,6 +75766,16 @@ console.log(compactedResponse);
           - `filename?: string`
 
             The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
     - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -69038,6 +76724,26 @@ console.log(compactedResponse);
 
       The unique ID of the function tool call.
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
+
     - `namespace?: string`
 
       The namespace of the function to run.
@@ -69085,6 +76791,16 @@ console.log(compactedResponse);
 
             - `"input_text"`
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ResponseInputImageContent`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -69115,6 +76831,16 @@ console.log(compactedResponse);
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ResponseInputFileContent`
 
           A file input to the model.
@@ -69125,9 +76851,11 @@ console.log(compactedResponse);
 
             - `"input_file"`
 
-          - `detail?: "low" | "high"`
+          - `detail?: "auto" | "low" | "high"`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -69149,6 +76877,16 @@ console.log(compactedResponse);
 
             The name of the file to be sent to the model.
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
     - `type: "function_call_output"`
 
       The type of the function tool call output. Always `function_call_output`.
@@ -69158,6 +76896,30 @@ console.log(compactedResponse);
     - `id?: string | null`
 
       The unique ID of the function tool call output. Populated when this item is returned via API.
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -69227,13 +76989,21 @@ console.log(compactedResponse);
 
         - `strict: boolean | null`
 
-          Whether to enforce strict parameter validation. Default `true`.
+          Whether strict parameter validation is enforced for this function tool.
 
         - `type: "function"`
 
           The type of the function tool. Always `function`.
 
           - `"function"`
+
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `defer_loading?: boolean`
 
@@ -69242,6 +77012,10 @@ console.log(compactedResponse);
         - `description?: string | null`
 
           A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `output_schema?: Record<string, unknown> | null`
+
+          A JSON schema object describing the JSON value encoded in string outputs for this function.
 
       - `FileSearchTool`
 
@@ -69298,7 +77072,7 @@ console.log(compactedResponse);
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<string | number>`
+            - `value: string | number | boolean | Array<unknown>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -69308,11 +77082,7 @@ console.log(compactedResponse);
 
               - `boolean`
 
-              - `Array<string | number>`
-
-                - `string`
-
-                - `number`
+              - `Array<unknown>`
 
           - `CompoundFilter`
 
@@ -69484,6 +77254,14 @@ console.log(compactedResponse);
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -69695,6 +77473,22 @@ console.log(compactedResponse);
 
           - `"code_interpreter"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
+      - `ProgrammaticToolCalling`
+
+        - `type: "programmatic_tool_calling"`
+
+          The type of the tool. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `ImageGeneration`
 
         A tool that generates images using the GPT image models.
@@ -69854,6 +77648,14 @@ console.log(compactedResponse);
 
           - `"shell"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
           - `ContainerAuto`
@@ -69994,6 +77796,14 @@ console.log(compactedResponse);
 
           - `"custom"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading?: boolean`
 
           Whether this tool should be deferred and discovered via tool search.
@@ -70062,15 +77872,29 @@ console.log(compactedResponse);
 
               - `"function"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this function should be deferred and discovered via tool search.
 
             - `description?: string | null`
 
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
             - `parameters?: unknown`
 
             - `strict?: boolean | null`
+
+              Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
           - `CustomTool`
 
@@ -70172,6 +77996,14 @@ console.log(compactedResponse);
 
           - `"apply_patch"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
     - `type: "tool_search_output"`
 
       The item type. Always `tool_search_output`.
@@ -70245,6 +78077,8 @@ console.log(compactedResponse);
       - `CodeInterpreter`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `ProgrammaticToolCalling`
 
       - `ImageGeneration`
 
@@ -70586,6 +78420,30 @@ console.log(compactedResponse);
 
       The unique ID of the shell tool call. Populated when this item is returned via API.
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
     - `environment?: LocalEnvironment | ContainerReference | null`
 
       The environment to execute the shell commands in.
@@ -70661,6 +78519,30 @@ console.log(compactedResponse);
     - `id?: string | null`
 
       The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `max_output_length?: number | null`
 
@@ -70756,6 +78638,30 @@ console.log(compactedResponse);
 
       The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
   - `ApplyPatchCallOutput`
 
     The streamed output emitted by an apply patch tool call.
@@ -70781,6 +78687,30 @@ console.log(compactedResponse);
     - `id?: string | null`
 
       The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `output?: string | null`
 
@@ -70972,6 +78902,30 @@ console.log(compactedResponse);
 
       The unique ID of the custom tool call output in the OpenAI platform.
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
   - `ResponseCustomToolCall`
 
     A call to a custom tool created by the model.
@@ -70997,6 +78951,26 @@ console.log(compactedResponse);
     - `id?: string`
 
       The unique ID of the custom tool call in the OpenAI platform.
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
 
     - `namespace?: string`
 
@@ -71026,6 +79000,58 @@ console.log(compactedResponse);
 
       - `"item_reference"`
 
+  - `Program`
+
+    - `id: string`
+
+      The unique ID of this program item.
+
+    - `call_id: string`
+
+      The stable call ID of the program item.
+
+    - `code: string`
+
+      The JavaScript source executed by programmatic tool calling.
+
+    - `fingerprint: string`
+
+      Opaque program replay fingerprint that must be round-tripped.
+
+    - `type: "program"`
+
+      The item type. Always `program`.
+
+      - `"program"`
+
+  - `ProgramOutput`
+
+    - `id: string`
+
+      The unique ID of this program output item.
+
+    - `call_id: string`
+
+      The call ID of the program item.
+
+    - `result: string`
+
+      The result produced by the program item.
+
+    - `status: "completed" | "incomplete"`
+
+      The terminal status of the program output.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `type: "program_output"`
+
+      The item type. Always `program_output`.
+
+      - `"program_output"`
+
 ### Response Input Message Content List
 
 - `ResponseInputMessageContentList = Array<ResponseInputContent>`
@@ -71046,6 +79072,16 @@ console.log(compactedResponse);
       The type of the input item. Always `input_text`.
 
       - `"input_text"`
+
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
 
   - `ResponseInputImage`
 
@@ -71077,6 +79113,16 @@ console.log(compactedResponse);
 
       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
   - `ResponseInputFile`
 
     A file input to the model.
@@ -71087,9 +79133,11 @@ console.log(compactedResponse);
 
       - `"input_file"`
 
-    - `detail?: "low" | "high"`
+    - `detail?: "auto" | "low" | "high"`
 
-      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+      The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+      - `"auto"`
 
       - `"low"`
 
@@ -71110,6 +79158,16 @@ console.log(compactedResponse);
     - `filename?: string`
 
       The name of the file to be sent to the model.
+
+    - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
 
 ### Response Input Message Item
 
@@ -71137,6 +79195,16 @@ console.log(compactedResponse);
         The type of the input item. Always `input_text`.
 
         - `"input_text"`
+
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
     - `ResponseInputImage`
 
@@ -71168,6 +79236,16 @@ console.log(compactedResponse);
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
     - `ResponseInputFile`
 
       A file input to the model.
@@ -71178,9 +79256,11 @@ console.log(compactedResponse);
 
         - `"input_file"`
 
-      - `detail?: "low" | "high"`
+      - `detail?: "auto" | "low" | "high"`
 
-        The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+        The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+        - `"auto"`
 
         - `"low"`
 
@@ -71201,6 +79281,16 @@ console.log(compactedResponse);
       - `filename?: string`
 
         The name of the file to be sent to the model.
+
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
   - `role: "user" | "system" | "developer"`
 
@@ -71245,6 +79335,16 @@ console.log(compactedResponse);
 
     - `"input_text"`
 
+  - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
+
 ### Response Input Text Content
 
 - `ResponseInputTextContent`
@@ -71261,9 +79361,19 @@ console.log(compactedResponse);
 
     - `"input_text"`
 
+  - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
+
 ### Response Item
 
-- `ResponseItem = ResponseInputMessageItem | ResponseOutputMessage | ResponseFileSearchToolCall | 24 more`
+- `ResponseItem = ResponseInputMessageItem | ResponseOutputMessage | ResponseFileSearchToolCall | 26 more`
 
   Content item used to generate a response.
 
@@ -71291,6 +79401,16 @@ console.log(compactedResponse);
           The type of the input item. Always `input_text`.
 
           - `"input_text"`
+
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
       - `ResponseInputImage`
 
@@ -71322,6 +79442,16 @@ console.log(compactedResponse);
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `ResponseInputFile`
 
         A file input to the model.
@@ -71332,9 +79462,11 @@ console.log(compactedResponse);
 
           - `"input_file"`
 
-        - `detail?: "low" | "high"`
+        - `detail?: "auto" | "low" | "high"`
 
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+          The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+          - `"auto"`
 
           - `"low"`
 
@@ -71355,6 +79487,16 @@ console.log(compactedResponse);
         - `filename?: string`
 
           The name of the file to be sent to the model.
+
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
     - `role: "user" | "system" | "developer"`
 
@@ -72314,6 +80456,30 @@ console.log(compactedResponse);
 
       - `"function_call_output"`
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
     - `created_by?: string`
 
       The identifier of the actor that created the item.
@@ -72406,13 +80572,21 @@ console.log(compactedResponse);
 
         - `strict: boolean | null`
 
-          Whether to enforce strict parameter validation. Default `true`.
+          Whether strict parameter validation is enforced for this function tool.
 
         - `type: "function"`
 
           The type of the function tool. Always `function`.
 
           - `"function"`
+
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `defer_loading?: boolean`
 
@@ -72421,6 +80595,10 @@ console.log(compactedResponse);
         - `description?: string | null`
 
           A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `output_schema?: Record<string, unknown> | null`
+
+          A JSON schema object describing the JSON value encoded in string outputs for this function.
 
       - `FileSearchTool`
 
@@ -72477,7 +80655,7 @@ console.log(compactedResponse);
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<string | number>`
+            - `value: string | number | boolean | Array<unknown>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -72487,11 +80665,7 @@ console.log(compactedResponse);
 
               - `boolean`
 
-              - `Array<string | number>`
-
-                - `string`
-
-                - `number`
+              - `Array<unknown>`
 
           - `CompoundFilter`
 
@@ -72663,6 +80837,14 @@ console.log(compactedResponse);
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -72874,6 +81056,22 @@ console.log(compactedResponse);
 
           - `"code_interpreter"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
+      - `ProgrammaticToolCalling`
+
+        - `type: "programmatic_tool_calling"`
+
+          The type of the tool. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `ImageGeneration`
 
         A tool that generates images using the GPT image models.
@@ -73033,6 +81231,14 @@ console.log(compactedResponse);
 
           - `"shell"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
           - `ContainerAuto`
@@ -73173,6 +81379,14 @@ console.log(compactedResponse);
 
           - `"custom"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading?: boolean`
 
           Whether this tool should be deferred and discovered via tool search.
@@ -73241,15 +81455,29 @@ console.log(compactedResponse);
 
               - `"function"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this function should be deferred and discovered via tool search.
 
             - `description?: string | null`
 
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
             - `parameters?: unknown`
 
             - `strict?: boolean | null`
+
+              Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
           - `CustomTool`
 
@@ -73351,6 +81579,14 @@ console.log(compactedResponse);
 
           - `"apply_patch"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
     - `type: "tool_search_output"`
 
       The type of the item. Always `tool_search_output`.
@@ -73420,6 +81656,8 @@ console.log(compactedResponse);
       - `CodeInterpreter`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `ProgrammaticToolCalling`
 
       - `ImageGeneration`
 
@@ -73519,6 +81757,58 @@ console.log(compactedResponse);
       - `"completed"`
 
       - `"incomplete"`
+
+  - `Program`
+
+    - `id: string`
+
+      The unique ID of the program item.
+
+    - `call_id: string`
+
+      The stable call ID of the program item.
+
+    - `code: string`
+
+      The JavaScript source executed by programmatic tool calling.
+
+    - `fingerprint: string`
+
+      Opaque program replay fingerprint that must be round-tripped.
+
+    - `type: "program"`
+
+      The type of the item. Always `program`.
+
+      - `"program"`
+
+  - `ProgramOutput`
+
+    - `id: string`
+
+      The unique ID of the program output item.
+
+    - `call_id: string`
+
+      The call ID of the program item.
+
+    - `result: string`
+
+      The result produced by the program item.
+
+    - `status: "completed" | "incomplete"`
+
+      The terminal status of the program output item.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `type: "program_output"`
+
+      The type of the item. Always `program_output`.
+
+      - `"program_output"`
 
   - `ResponseCompactionItem`
 
@@ -73795,6 +82085,26 @@ console.log(compactedResponse);
 
       - `"shell_call"`
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
+
     - `created_by?: string`
 
       The ID of the entity that created this tool call.
@@ -73874,6 +82184,26 @@ console.log(compactedResponse);
       The type of the shell call output. Always `shell_call_output`.
 
       - `"shell_call_output"`
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
 
     - `created_by?: string`
 
@@ -73959,6 +82289,26 @@ console.log(compactedResponse);
 
       - `"apply_patch_call"`
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
+
     - `created_by?: string`
 
       The ID of the entity that created this tool call.
@@ -73988,6 +82338,26 @@ console.log(compactedResponse);
       The type of the item. Always `apply_patch_call_output`.
 
       - `"apply_patch_call_output"`
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
 
     - `created_by?: string`
 
@@ -74424,7 +82794,7 @@ console.log(compactedResponse);
 
 ### Response Output Item
 
-- `ResponseOutputItem = ResponseOutputMessage | ResponseFileSearchToolCall | ResponseFunctionToolCall | 23 more`
+- `ResponseOutputItem = ResponseOutputMessage | ResponseFileSearchToolCall | ResponseFunctionToolCall | 25 more`
 
   An output message from the model.
 
@@ -74712,6 +83082,26 @@ console.log(compactedResponse);
 
       The unique ID of the function tool call.
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
+
     - `namespace?: string`
 
       The namespace of the function to run.
@@ -74760,6 +83150,16 @@ console.log(compactedResponse);
 
             - `"input_text"`
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ResponseInputImage`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -74790,6 +83190,16 @@ console.log(compactedResponse);
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ResponseInputFile`
 
           A file input to the model.
@@ -74800,9 +83210,11 @@ console.log(compactedResponse);
 
             - `"input_file"`
 
-          - `detail?: "low" | "high"`
+          - `detail?: "auto" | "low" | "high"`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -74824,6 +83236,16 @@ console.log(compactedResponse);
 
             The name of the file to be sent to the model.
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
     - `status: "in_progress" | "completed" | "incomplete"`
 
       The status of the item. One of `in_progress`, `completed`, or
@@ -74840,6 +83262,30 @@ console.log(compactedResponse);
       The type of the function tool call output. Always `function_call_output`.
 
       - `"function_call_output"`
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `created_by?: string`
 
@@ -75508,6 +83954,58 @@ console.log(compactedResponse);
 
       - `"incomplete"`
 
+  - `Program`
+
+    - `id: string`
+
+      The unique ID of the program item.
+
+    - `call_id: string`
+
+      The stable call ID of the program item.
+
+    - `code: string`
+
+      The JavaScript source executed by programmatic tool calling.
+
+    - `fingerprint: string`
+
+      Opaque program replay fingerprint that must be round-tripped.
+
+    - `type: "program"`
+
+      The type of the item. Always `program`.
+
+      - `"program"`
+
+  - `ProgramOutput`
+
+    - `id: string`
+
+      The unique ID of the program output item.
+
+    - `call_id: string`
+
+      The call ID of the program item.
+
+    - `result: string`
+
+      The result produced by the program item.
+
+    - `status: "completed" | "incomplete"`
+
+      The terminal status of the program output item.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `type: "program_output"`
+
+      The type of the item. Always `program_output`.
+
+      - `"program_output"`
+
   - `ResponseToolSearchCall`
 
     - `id: string`
@@ -75596,13 +84094,21 @@ console.log(compactedResponse);
 
         - `strict: boolean | null`
 
-          Whether to enforce strict parameter validation. Default `true`.
+          Whether strict parameter validation is enforced for this function tool.
 
         - `type: "function"`
 
           The type of the function tool. Always `function`.
 
           - `"function"`
+
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `defer_loading?: boolean`
 
@@ -75611,6 +84117,10 @@ console.log(compactedResponse);
         - `description?: string | null`
 
           A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `output_schema?: Record<string, unknown> | null`
+
+          A JSON schema object describing the JSON value encoded in string outputs for this function.
 
       - `FileSearchTool`
 
@@ -75667,7 +84177,7 @@ console.log(compactedResponse);
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<string | number>`
+            - `value: string | number | boolean | Array<unknown>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -75677,11 +84187,7 @@ console.log(compactedResponse);
 
               - `boolean`
 
-              - `Array<string | number>`
-
-                - `string`
-
-                - `number`
+              - `Array<unknown>`
 
           - `CompoundFilter`
 
@@ -75853,6 +84359,14 @@ console.log(compactedResponse);
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -76064,6 +84578,22 @@ console.log(compactedResponse);
 
           - `"code_interpreter"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
+      - `ProgrammaticToolCalling`
+
+        - `type: "programmatic_tool_calling"`
+
+          The type of the tool. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `ImageGeneration`
 
         A tool that generates images using the GPT image models.
@@ -76223,6 +84753,14 @@ console.log(compactedResponse);
 
           - `"shell"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
           - `ContainerAuto`
@@ -76363,6 +84901,14 @@ console.log(compactedResponse);
 
           - `"custom"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading?: boolean`
 
           Whether this tool should be deferred and discovered via tool search.
@@ -76431,15 +84977,29 @@ console.log(compactedResponse);
 
               - `"function"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this function should be deferred and discovered via tool search.
 
             - `description?: string | null`
 
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
             - `parameters?: unknown`
 
             - `strict?: boolean | null`
+
+              Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
           - `CustomTool`
 
@@ -76541,6 +85101,14 @@ console.log(compactedResponse);
 
           - `"apply_patch"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
     - `type: "tool_search_output"`
 
       The type of the item. Always `tool_search_output`.
@@ -76610,6 +85178,8 @@ console.log(compactedResponse);
       - `CodeInterpreter`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `ProgrammaticToolCalling`
 
       - `ImageGeneration`
 
@@ -76924,6 +85494,26 @@ console.log(compactedResponse);
 
       - `"shell_call"`
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
+
     - `created_by?: string`
 
       The ID of the entity that created this tool call.
@@ -77003,6 +85593,26 @@ console.log(compactedResponse);
       The type of the shell call output. Always `shell_call_output`.
 
       - `"shell_call_output"`
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
 
     - `created_by?: string`
 
@@ -77088,6 +85698,26 @@ console.log(compactedResponse);
 
       - `"apply_patch_call"`
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
+
     - `created_by?: string`
 
       The ID of the entity that created this tool call.
@@ -77117,6 +85747,26 @@ console.log(compactedResponse);
       The type of the item. Always `apply_patch_call_output`.
 
       - `"apply_patch_call_output"`
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
 
     - `created_by?: string`
 
@@ -77298,6 +85948,26 @@ console.log(compactedResponse);
     - `id?: string`
 
       The unique ID of the custom tool call in the OpenAI platform.
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
 
     - `namespace?: string`
 
@@ -77620,6 +86290,26 @@ console.log(compactedResponse);
 
         The unique ID of the function tool call.
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `namespace?: string`
 
         The namespace of the function to run.
@@ -77668,6 +86358,16 @@ console.log(compactedResponse);
 
               - `"input_text"`
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `ResponseInputImage`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -77698,6 +86398,16 @@ console.log(compactedResponse);
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `ResponseInputFile`
 
             A file input to the model.
@@ -77708,9 +86418,11 @@ console.log(compactedResponse);
 
               - `"input_file"`
 
-            - `detail?: "low" | "high"`
+            - `detail?: "auto" | "low" | "high"`
 
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
 
               - `"low"`
 
@@ -77732,6 +86444,16 @@ console.log(compactedResponse);
 
               The name of the file to be sent to the model.
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
       - `status: "in_progress" | "completed" | "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -77748,6 +86470,30 @@ console.log(compactedResponse);
         The type of the function tool call output. Always `function_call_output`.
 
         - `"function_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -78416,6 +87162,58 @@ console.log(compactedResponse);
 
         - `"incomplete"`
 
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of the program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
+
     - `ResponseToolSearchCall`
 
       - `id: string`
@@ -78504,13 +87302,21 @@ console.log(compactedResponse);
 
           - `strict: boolean | null`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading?: boolean`
 
@@ -78519,6 +87325,10 @@ console.log(compactedResponse);
           - `description?: string | null`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema?: Record<string, unknown> | null`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearchTool`
 
@@ -78575,7 +87385,7 @@ console.log(compactedResponse);
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<string | number>`
+              - `value: string | number | boolean | Array<unknown>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -78585,11 +87395,7 @@ console.log(compactedResponse);
 
                 - `boolean`
 
-                - `Array<string | number>`
-
-                  - `string`
-
-                  - `number`
+                - `Array<unknown>`
 
             - `CompoundFilter`
 
@@ -78761,6 +87567,14 @@ console.log(compactedResponse);
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -78972,6 +87786,22 @@ console.log(compactedResponse);
 
             - `"code_interpreter"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration`
 
           A tool that generates images using the GPT image models.
@@ -79131,6 +87961,14 @@ console.log(compactedResponse);
 
             - `"shell"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
             - `ContainerAuto`
@@ -79271,6 +88109,14 @@ console.log(compactedResponse);
 
             - `"custom"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `defer_loading?: boolean`
 
             Whether this tool should be deferred and discovered via tool search.
@@ -79339,15 +88185,29 @@ console.log(compactedResponse);
 
                 - `"function"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description?: string | null`
 
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters?: unknown`
 
               - `strict?: boolean | null`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
             - `CustomTool`
 
@@ -79449,6 +88309,14 @@ console.log(compactedResponse);
 
             - `"apply_patch"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
       - `type: "tool_search_output"`
 
         The type of the item. Always `tool_search_output`.
@@ -79518,6 +88386,8 @@ console.log(compactedResponse);
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -79832,6 +88702,26 @@ console.log(compactedResponse);
 
         - `"shell_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -79911,6 +88801,26 @@ console.log(compactedResponse);
         The type of the shell call output. Always `shell_call_output`.
 
         - `"shell_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -79996,6 +88906,26 @@ console.log(compactedResponse);
 
         - `"apply_patch_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -80025,6 +88955,26 @@ console.log(compactedResponse);
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -80206,6 +89156,26 @@ console.log(compactedResponse);
       - `id?: string`
 
         The unique ID of the custom tool call in the OpenAI platform.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `namespace?: string`
 
@@ -80542,6 +89512,26 @@ console.log(compactedResponse);
 
         The unique ID of the function tool call.
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `namespace?: string`
 
         The namespace of the function to run.
@@ -80590,6 +89580,16 @@ console.log(compactedResponse);
 
               - `"input_text"`
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `ResponseInputImage`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -80620,6 +89620,16 @@ console.log(compactedResponse);
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `ResponseInputFile`
 
             A file input to the model.
@@ -80630,9 +89640,11 @@ console.log(compactedResponse);
 
               - `"input_file"`
 
-            - `detail?: "low" | "high"`
+            - `detail?: "auto" | "low" | "high"`
 
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
 
               - `"low"`
 
@@ -80654,6 +89666,16 @@ console.log(compactedResponse);
 
               The name of the file to be sent to the model.
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
       - `status: "in_progress" | "completed" | "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -80670,6 +89692,30 @@ console.log(compactedResponse);
         The type of the function tool call output. Always `function_call_output`.
 
         - `"function_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -81338,6 +90384,58 @@ console.log(compactedResponse);
 
         - `"incomplete"`
 
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of the program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
+
     - `ResponseToolSearchCall`
 
       - `id: string`
@@ -81426,13 +90524,21 @@ console.log(compactedResponse);
 
           - `strict: boolean | null`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading?: boolean`
 
@@ -81441,6 +90547,10 @@ console.log(compactedResponse);
           - `description?: string | null`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema?: Record<string, unknown> | null`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearchTool`
 
@@ -81497,7 +90607,7 @@ console.log(compactedResponse);
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<string | number>`
+              - `value: string | number | boolean | Array<unknown>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -81507,11 +90617,7 @@ console.log(compactedResponse);
 
                 - `boolean`
 
-                - `Array<string | number>`
-
-                  - `string`
-
-                  - `number`
+                - `Array<unknown>`
 
             - `CompoundFilter`
 
@@ -81683,6 +90789,14 @@ console.log(compactedResponse);
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -81894,6 +91008,22 @@ console.log(compactedResponse);
 
             - `"code_interpreter"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration`
 
           A tool that generates images using the GPT image models.
@@ -82053,6 +91183,14 @@ console.log(compactedResponse);
 
             - `"shell"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
             - `ContainerAuto`
@@ -82193,6 +91331,14 @@ console.log(compactedResponse);
 
             - `"custom"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `defer_loading?: boolean`
 
             Whether this tool should be deferred and discovered via tool search.
@@ -82261,15 +91407,29 @@ console.log(compactedResponse);
 
                 - `"function"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description?: string | null`
 
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters?: unknown`
 
               - `strict?: boolean | null`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
             - `CustomTool`
 
@@ -82371,6 +91531,14 @@ console.log(compactedResponse);
 
             - `"apply_patch"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
       - `type: "tool_search_output"`
 
         The type of the item. Always `tool_search_output`.
@@ -82440,6 +91608,8 @@ console.log(compactedResponse);
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -82754,6 +91924,26 @@ console.log(compactedResponse);
 
         - `"shell_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -82833,6 +92023,26 @@ console.log(compactedResponse);
         The type of the shell call output. Always `shell_call_output`.
 
         - `"shell_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -82918,6 +92128,26 @@ console.log(compactedResponse);
 
         - `"apply_patch_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -82947,6 +92177,26 @@ console.log(compactedResponse);
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -83128,6 +92378,26 @@ console.log(compactedResponse);
       - `id?: string`
 
         The unique ID of the custom tool call in the OpenAI platform.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `namespace?: string`
 
@@ -83578,6 +92848,16 @@ console.log(compactedResponse);
 
         - `"input_text"`
 
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
     - `ResponseInputImage`
 
       An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -83608,6 +92888,16 @@ console.log(compactedResponse);
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
     - `ResponseInputFile`
 
       A file input to the model.
@@ -83618,9 +92908,11 @@ console.log(compactedResponse);
 
         - `"input_file"`
 
-      - `detail?: "low" | "high"`
+      - `detail?: "auto" | "low" | "high"`
 
-        The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+        The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+        - `"auto"`
 
         - `"low"`
 
@@ -83641,6 +92933,16 @@ console.log(compactedResponse);
       - `filename?: string`
 
         The name of the file to be sent to the model.
+
+      - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
   - `version?: string | null`
 
@@ -83668,7 +92970,7 @@ console.log(compactedResponse);
 
       An error object returned when the model fails to generate a Response.
 
-      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
         The error code for the response.
 
@@ -83677,6 +92979,8 @@ console.log(compactedResponse);
         - `"rate_limit_exceeded"`
 
         - `"invalid_prompt"`
+
+        - `"bio_policy"`
 
         - `"vector_store_timeout"`
 
@@ -83770,6 +93074,16 @@ console.log(compactedResponse);
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImage`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -83800,6 +93114,16 @@ console.log(compactedResponse);
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFile`
 
                 A file input to the model.
@@ -83810,9 +93134,11 @@ console.log(compactedResponse);
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -83833,6 +93159,16 @@ console.log(compactedResponse);
                 - `filename?: string`
 
                   The name of the file to be sent to the model.
+
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
 
           - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -84781,6 +94117,26 @@ console.log(compactedResponse);
 
             The unique ID of the function tool call.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
+
           - `namespace?: string`
 
             The namespace of the function to run.
@@ -84828,6 +94184,16 @@ console.log(compactedResponse);
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputImageContent`
 
                 An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -84858,6 +94224,16 @@ console.log(compactedResponse);
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `ResponseInputFileContent`
 
                 A file input to the model.
@@ -84868,9 +94244,11 @@ console.log(compactedResponse);
 
                   - `"input_file"`
 
-                - `detail?: "low" | "high"`
+                - `detail?: "auto" | "low" | "high"`
 
-                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                  The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                  - `"auto"`
 
                   - `"low"`
 
@@ -84892,6 +94270,16 @@ console.log(compactedResponse);
 
                   The name of the file to be sent to the model.
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
           - `type: "function_call_output"`
 
             The type of the function tool call output. Always `function_call_output`.
@@ -84901,6 +94289,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the function tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -84970,13 +94382,21 @@ console.log(compactedResponse);
 
               - `strict: boolean | null`
 
-                Whether to enforce strict parameter validation. Default `true`.
+                Whether strict parameter validation is enforced for this function tool.
 
               - `type: "function"`
 
                 The type of the function tool. Always `function`.
 
                 - `"function"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading?: boolean`
 
@@ -84985,6 +94405,10 @@ console.log(compactedResponse);
               - `description?: string | null`
 
                 A description of the function. Used by the model to determine whether or not to call the function.
+
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON schema object describing the JSON value encoded in string outputs for this function.
 
             - `FileSearchTool`
 
@@ -85041,7 +94465,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<string | number>`
+                  - `value: string | number | boolean | Array<unknown>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -85051,11 +94475,7 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<string | number>`
-
-                      - `string`
-
-                      - `number`
+                    - `Array<unknown>`
 
                 - `CompoundFilter`
 
@@ -85227,6 +94647,14 @@ console.log(compactedResponse);
                 The type of the MCP tool. Always `mcp`.
 
                 - `"mcp"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -85438,6 +94866,22 @@ console.log(compactedResponse);
 
                 - `"code_interpreter"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
+            - `ProgrammaticToolCalling`
+
+              - `type: "programmatic_tool_calling"`
+
+                The type of the tool. Always `programmatic_tool_calling`.
+
+                - `"programmatic_tool_calling"`
+
             - `ImageGeneration`
 
               A tool that generates images using the GPT image models.
@@ -85597,6 +95041,14 @@ console.log(compactedResponse);
 
                 - `"shell"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
                 - `ContainerAuto`
@@ -85737,6 +95189,14 @@ console.log(compactedResponse);
 
                 - `"custom"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this tool should be deferred and discovered via tool search.
@@ -85805,15 +95265,29 @@ console.log(compactedResponse);
 
                     - `"function"`
 
+                  - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                    The tool invocation context(s).
+
+                    - `"direct"`
+
+                    - `"programmatic"`
+
                   - `defer_loading?: boolean`
 
                     Whether this function should be deferred and discovered via tool search.
 
                   - `description?: string | null`
 
+                  - `output_schema?: Record<string, unknown> | null`
+
+                    A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                   - `parameters?: unknown`
 
                   - `strict?: boolean | null`
+
+                    Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
                 - `CustomTool`
 
@@ -85915,6 +95389,14 @@ console.log(compactedResponse);
 
                 - `"apply_patch"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
           - `type: "tool_search_output"`
 
             The item type. Always `tool_search_output`.
@@ -85988,6 +95470,8 @@ console.log(compactedResponse);
             - `CodeInterpreter`
 
               A tool that runs Python code to help generate a response to a prompt.
+
+            - `ProgrammaticToolCalling`
 
             - `ImageGeneration`
 
@@ -86329,6 +95813,30 @@ console.log(compactedResponse);
 
             The unique ID of the shell tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
           - `environment?: LocalEnvironment | ContainerReference | null`
 
             The environment to execute the shell commands in.
@@ -86404,6 +95912,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `max_output_length?: number | null`
 
@@ -86499,6 +96031,30 @@ console.log(compactedResponse);
 
             The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ApplyPatchCallOutput`
 
           The streamed output emitted by an apply patch tool call.
@@ -86524,6 +96080,30 @@ console.log(compactedResponse);
           - `id?: string | null`
 
             The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
 
           - `output?: string | null`
 
@@ -86715,6 +96295,30 @@ console.log(compactedResponse);
 
             The unique ID of the custom tool call output in the OpenAI platform.
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
         - `ResponseCustomToolCall`
 
           A call to a custom tool created by the model.
@@ -86740,6 +96344,26 @@ console.log(compactedResponse);
           - `id?: string`
 
             The unique ID of the custom tool call in the OpenAI platform.
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
 
           - `namespace?: string`
 
@@ -86769,6 +96393,58 @@ console.log(compactedResponse);
 
             - `"item_reference"`
 
+        - `Program`
+
+          - `id: string`
+
+            The unique ID of this program item.
+
+          - `call_id: string`
+
+            The stable call ID of the program item.
+
+          - `code: string`
+
+            The JavaScript source executed by programmatic tool calling.
+
+          - `fingerprint: string`
+
+            Opaque program replay fingerprint that must be round-tripped.
+
+          - `type: "program"`
+
+            The item type. Always `program`.
+
+            - `"program"`
+
+        - `ProgramOutput`
+
+          - `id: string`
+
+            The unique ID of this program output item.
+
+          - `call_id: string`
+
+            The call ID of the program item.
+
+          - `result: string`
+
+            The result produced by the program item.
+
+          - `status: "completed" | "incomplete"`
+
+            The terminal status of the program output.
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+          - `type: "program_output"`
+
+            The item type. Always `program_output`.
+
+            - `"program_output"`
+
     - `metadata: Metadata | null`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
@@ -86787,7 +96463,13 @@ console.log(compactedResponse);
 
       - `(string & {})`
 
-      - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+      - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+        - `"gpt-5.6-sol"`
+
+        - `"gpt-5.6-terra"`
+
+        - `"gpt-5.6-luna"`
 
         - `"gpt-5.4"`
 
@@ -87054,6 +96736,30 @@ console.log(compactedResponse);
 
           - `"function_call_output"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `created_by?: string`
 
           The identifier of the actor that created the item.
@@ -87128,6 +96834,58 @@ console.log(compactedResponse);
         a response. Be sure to include these items in your `input` to the Responses API
         for subsequent turns of a conversation if you are manually
         [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of the program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The type of the item. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of the program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output item.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The type of the item. Always `program_output`.
+
+          - `"program_output"`
 
       - `ResponseToolSearchCall`
 
@@ -87233,6 +96991,8 @@ console.log(compactedResponse);
 
             A tool that runs Python code to help generate a response to a prompt.
 
+          - `ProgrammaticToolCalling`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -87334,6 +97094,8 @@ console.log(compactedResponse);
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -87583,6 +97345,26 @@ console.log(compactedResponse);
 
           - `"shell_call"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `created_by?: string`
 
           The ID of the entity that created this tool call.
@@ -87662,6 +97444,26 @@ console.log(compactedResponse);
           The type of the shell call output. Always `shell_call_output`.
 
           - `"shell_call_output"`
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `created_by?: string`
 
@@ -87747,6 +97549,26 @@ console.log(compactedResponse);
 
           - `"apply_patch_call"`
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `created_by?: string`
 
           The ID of the entity that created this tool call.
@@ -87776,6 +97598,26 @@ console.log(compactedResponse);
           The type of the item. Always `apply_patch_call_output`.
 
           - `"apply_patch_call_output"`
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `created_by?: string`
 
@@ -87968,7 +97810,7 @@ console.log(compactedResponse);
       What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
       We generally recommend altering this or `top_p` but not both.
 
-    - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+    - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
       How the model should select which tool (or tools) to use when generating
       a response. See the `tools` parameter to see how to specify which tools
@@ -88110,6 +97952,14 @@ console.log(compactedResponse);
 
           - `"custom"`
 
+      - `SpecificProgrammaticToolCallingParam`
+
+        - `type: "programmatic_tool_calling"`
+
+          The tool to call. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `ToolChoiceApplyPatch`
 
         Forces the model to call the apply_patch tool when executing a tool call.
@@ -88179,6 +98029,8 @@ console.log(compactedResponse);
       - `CodeInterpreter`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `ProgrammaticToolCalling`
 
       - `ImageGeneration`
 
@@ -88406,9 +98258,32 @@ console.log(compactedResponse);
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+    - `prompt_cache_options?: PromptCacheOptions`
+
+      The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+      - `mode: "implicit" | "explicit"`
+
+        Whether implicit prompt-cache breakpoints were enabled.
+
+        - `"implicit"`
+
+        - `"explicit"`
+
+      - `ttl: "30m"`
+
+        The minimum lifetime applied to each cache breakpoint.
+
+        - `"30m"`
+
     - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+      Deprecated. Use `prompt_cache_options.ttl` instead.
+
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      This field expresses a maximum retention policy, while
+      `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+      fields are independent and do not interact.
       For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
       For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -88441,16 +98316,13 @@ console.log(compactedResponse);
 
       - `effort?: ReasoningEffort | null`
 
-        Constrains effort on reasoning for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-        Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-        reasoning effort can result in faster responses and fewer tokens used
-        on reasoning in a response.
-
-        - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-        - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-        - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-        - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+        Constrains effort on reasoning for reasoning models. Currently supported
+        values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+        Reducing reasoning effort can result in faster responses and fewer tokens
+        used on reasoning in a response. Not all reasoning models support every
+        value. See the
+        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        for model-specific support.
 
         - `"none"`
 
@@ -88463,6 +98335,8 @@ console.log(compactedResponse);
         - `"high"`
 
         - `"xhigh"`
+
+        - `"max"`
 
       - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -88477,6 +98351,20 @@ console.log(compactedResponse);
         - `"concise"`
 
         - `"detailed"`
+
+      - `mode?: (string & {}) | "standard" | "pro"`
+
+        Controls the reasoning execution mode for the request.
+
+        When returned on a response, this is the effective execution mode.
+
+        - `(string & {})`
+
+        - `"standard" | "pro"`
+
+          - `"standard"`
+
+          - `"pro"`
 
       - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -88662,6 +98550,10 @@ console.log(compactedResponse);
 
         A detailed breakdown of the input tokens.
 
+        - `cache_write_tokens: number`
+
+          The number of input tokens that were written to the cache.
+
         - `cached_tokens: number`
 
           The number of tokens that were retrieved from the cache.
@@ -88845,6 +98737,13 @@ console.log(compactedResponse);
     The type of the event. Always `response.reasoning_summary_part.done`.
 
     - `"response.reasoning_summary_part.done"`
+
+  - `status?: "incomplete"`
+
+    The completion status of the summary part. Omitted when the part completed
+    normally and set to `incomplete` when generation was interrupted.
+
+    - `"incomplete"`
 
 ### Response Reasoning Summary Text Delta Event
 
@@ -89265,7 +99164,7 @@ console.log(compactedResponse);
 
         An error object returned when the model fails to generate a Response.
 
-        - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+        - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
           The error code for the response.
 
@@ -89274,6 +99173,8 @@ console.log(compactedResponse);
           - `"rate_limit_exceeded"`
 
           - `"invalid_prompt"`
+
+          - `"bio_policy"`
 
           - `"vector_store_timeout"`
 
@@ -89367,6 +99268,16 @@ console.log(compactedResponse);
 
                     - `"input_text"`
 
+                  - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
                 - `ResponseInputImage`
 
                   An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -89397,6 +99308,16 @@ console.log(compactedResponse);
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                  - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
                 - `ResponseInputFile`
 
                   A file input to the model.
@@ -89407,9 +99328,11 @@ console.log(compactedResponse);
 
                     - `"input_file"`
 
-                  - `detail?: "low" | "high"`
+                  - `detail?: "auto" | "low" | "high"`
 
-                    The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                    The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                    - `"auto"`
 
                     - `"low"`
 
@@ -89430,6 +99353,16 @@ console.log(compactedResponse);
                   - `filename?: string`
 
                     The name of the file to be sent to the model.
+
+                  - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
 
             - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -90378,6 +100311,26 @@ console.log(compactedResponse);
 
               The unique ID of the function tool call.
 
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  - `"program"`
+
             - `namespace?: string`
 
               The namespace of the function to run.
@@ -90425,6 +100378,16 @@ console.log(compactedResponse);
 
                     - `"input_text"`
 
+                  - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
                 - `ResponseInputImageContent`
 
                   An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -90455,6 +100418,16 @@ console.log(compactedResponse);
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                  - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
                 - `ResponseInputFileContent`
 
                   A file input to the model.
@@ -90465,9 +100438,11 @@ console.log(compactedResponse);
 
                     - `"input_file"`
 
-                  - `detail?: "low" | "high"`
+                  - `detail?: "auto" | "low" | "high"`
 
-                    The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                    The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                    - `"auto"`
 
                     - `"low"`
 
@@ -90489,6 +100464,16 @@ console.log(compactedResponse);
 
                     The name of the file to be sent to the model.
 
+                  - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
             - `type: "function_call_output"`
 
               The type of the function tool call output. Always `function_call_output`.
@@ -90498,6 +100483,30 @@ console.log(compactedResponse);
             - `id?: string | null`
 
               The unique ID of the function tool call output. Populated when this item is returned via API.
+
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  The caller type. Always `direct`.
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  The caller type. Always `program`.
+
+                  - `"program"`
 
             - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -90567,13 +100576,21 @@ console.log(compactedResponse);
 
                 - `strict: boolean | null`
 
-                  Whether to enforce strict parameter validation. Default `true`.
+                  Whether strict parameter validation is enforced for this function tool.
 
                 - `type: "function"`
 
                   The type of the function tool. Always `function`.
 
                   - `"function"`
+
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
 
                 - `defer_loading?: boolean`
 
@@ -90582,6 +100599,10 @@ console.log(compactedResponse);
                 - `description?: string | null`
 
                   A description of the function. Used by the model to determine whether or not to call the function.
+
+                - `output_schema?: Record<string, unknown> | null`
+
+                  A JSON schema object describing the JSON value encoded in string outputs for this function.
 
               - `FileSearchTool`
 
@@ -90638,7 +100659,7 @@ console.log(compactedResponse);
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<string | number>`
+                    - `value: string | number | boolean | Array<unknown>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -90648,11 +100669,7 @@ console.log(compactedResponse);
 
                       - `boolean`
 
-                      - `Array<string | number>`
-
-                        - `string`
-
-                        - `number`
+                      - `Array<unknown>`
 
                   - `CompoundFilter`
 
@@ -90824,6 +100841,14 @@ console.log(compactedResponse);
                   The type of the MCP tool. Always `mcp`.
 
                   - `"mcp"`
+
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
 
                 - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -91035,6 +101060,22 @@ console.log(compactedResponse);
 
                   - `"code_interpreter"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
+              - `ProgrammaticToolCalling`
+
+                - `type: "programmatic_tool_calling"`
+
+                  The type of the tool. Always `programmatic_tool_calling`.
+
+                  - `"programmatic_tool_calling"`
+
               - `ImageGeneration`
 
                 A tool that generates images using the GPT image models.
@@ -91194,6 +101235,14 @@ console.log(compactedResponse);
 
                   - `"shell"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
                   - `ContainerAuto`
@@ -91334,6 +101383,14 @@ console.log(compactedResponse);
 
                   - `"custom"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading?: boolean`
 
                   Whether this tool should be deferred and discovered via tool search.
@@ -91402,15 +101459,29 @@ console.log(compactedResponse);
 
                       - `"function"`
 
+                    - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                      The tool invocation context(s).
+
+                      - `"direct"`
+
+                      - `"programmatic"`
+
                     - `defer_loading?: boolean`
 
                       Whether this function should be deferred and discovered via tool search.
 
                     - `description?: string | null`
 
+                    - `output_schema?: Record<string, unknown> | null`
+
+                      A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                     - `parameters?: unknown`
 
                     - `strict?: boolean | null`
+
+                      Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
                   - `CustomTool`
 
@@ -91512,6 +101583,14 @@ console.log(compactedResponse);
 
                   - `"apply_patch"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
             - `type: "tool_search_output"`
 
               The item type. Always `tool_search_output`.
@@ -91585,6 +101664,8 @@ console.log(compactedResponse);
               - `CodeInterpreter`
 
                 A tool that runs Python code to help generate a response to a prompt.
+
+              - `ProgrammaticToolCalling`
 
               - `ImageGeneration`
 
@@ -91926,6 +102007,30 @@ console.log(compactedResponse);
 
               The unique ID of the shell tool call. Populated when this item is returned via API.
 
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  The caller type. Always `direct`.
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  The caller type. Always `program`.
+
+                  - `"program"`
+
             - `environment?: LocalEnvironment | ContainerReference | null`
 
               The environment to execute the shell commands in.
@@ -92001,6 +102106,30 @@ console.log(compactedResponse);
             - `id?: string | null`
 
               The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  The caller type. Always `direct`.
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  The caller type. Always `program`.
+
+                  - `"program"`
 
             - `max_output_length?: number | null`
 
@@ -92096,6 +102225,30 @@ console.log(compactedResponse);
 
               The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  The caller type. Always `direct`.
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  The caller type. Always `program`.
+
+                  - `"program"`
+
           - `ApplyPatchCallOutput`
 
             The streamed output emitted by an apply patch tool call.
@@ -92121,6 +102274,30 @@ console.log(compactedResponse);
             - `id?: string | null`
 
               The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  The caller type. Always `direct`.
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  The caller type. Always `program`.
+
+                  - `"program"`
 
             - `output?: string | null`
 
@@ -92312,6 +102489,30 @@ console.log(compactedResponse);
 
               The unique ID of the custom tool call output in the OpenAI platform.
 
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  The caller type. Always `direct`.
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  The caller type. Always `program`.
+
+                  - `"program"`
+
           - `ResponseCustomToolCall`
 
             A call to a custom tool created by the model.
@@ -92337,6 +102538,26 @@ console.log(compactedResponse);
             - `id?: string`
 
               The unique ID of the custom tool call in the OpenAI platform.
+
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  - `"program"`
 
             - `namespace?: string`
 
@@ -92366,6 +102587,58 @@ console.log(compactedResponse);
 
               - `"item_reference"`
 
+          - `Program`
+
+            - `id: string`
+
+              The unique ID of this program item.
+
+            - `call_id: string`
+
+              The stable call ID of the program item.
+
+            - `code: string`
+
+              The JavaScript source executed by programmatic tool calling.
+
+            - `fingerprint: string`
+
+              Opaque program replay fingerprint that must be round-tripped.
+
+            - `type: "program"`
+
+              The item type. Always `program`.
+
+              - `"program"`
+
+          - `ProgramOutput`
+
+            - `id: string`
+
+              The unique ID of this program output item.
+
+            - `call_id: string`
+
+              The call ID of the program item.
+
+            - `result: string`
+
+              The result produced by the program item.
+
+            - `status: "completed" | "incomplete"`
+
+              The terminal status of the program output.
+
+              - `"completed"`
+
+              - `"incomplete"`
+
+            - `type: "program_output"`
+
+              The item type. Always `program_output`.
+
+              - `"program_output"`
+
       - `metadata: Metadata | null`
 
         Set of 16 key-value pairs that can be attached to an object. This can be
@@ -92384,7 +102657,13 @@ console.log(compactedResponse);
 
         - `(string & {})`
 
-        - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+        - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+          - `"gpt-5.6-sol"`
+
+          - `"gpt-5.6-terra"`
+
+          - `"gpt-5.6-luna"`
 
           - `"gpt-5.4"`
 
@@ -92651,6 +102930,30 @@ console.log(compactedResponse);
 
             - `"function_call_output"`
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
           - `created_by?: string`
 
             The identifier of the actor that created the item.
@@ -92725,6 +103028,58 @@ console.log(compactedResponse);
           a response. Be sure to include these items in your `input` to the Responses API
           for subsequent turns of a conversation if you are manually
           [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+        - `Program`
+
+          - `id: string`
+
+            The unique ID of the program item.
+
+          - `call_id: string`
+
+            The stable call ID of the program item.
+
+          - `code: string`
+
+            The JavaScript source executed by programmatic tool calling.
+
+          - `fingerprint: string`
+
+            Opaque program replay fingerprint that must be round-tripped.
+
+          - `type: "program"`
+
+            The type of the item. Always `program`.
+
+            - `"program"`
+
+        - `ProgramOutput`
+
+          - `id: string`
+
+            The unique ID of the program output item.
+
+          - `call_id: string`
+
+            The call ID of the program item.
+
+          - `result: string`
+
+            The result produced by the program item.
+
+          - `status: "completed" | "incomplete"`
+
+            The terminal status of the program output item.
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+          - `type: "program_output"`
+
+            The type of the item. Always `program_output`.
+
+            - `"program_output"`
 
         - `ResponseToolSearchCall`
 
@@ -92830,6 +103185,8 @@ console.log(compactedResponse);
 
               A tool that runs Python code to help generate a response to a prompt.
 
+            - `ProgrammaticToolCalling`
+
             - `ImageGeneration`
 
               A tool that generates images using the GPT image models.
@@ -92931,6 +103288,8 @@ console.log(compactedResponse);
             - `CodeInterpreter`
 
               A tool that runs Python code to help generate a response to a prompt.
+
+            - `ProgrammaticToolCalling`
 
             - `ImageGeneration`
 
@@ -93180,6 +103539,26 @@ console.log(compactedResponse);
 
             - `"shell_call"`
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
+
           - `created_by?: string`
 
             The ID of the entity that created this tool call.
@@ -93259,6 +103638,26 @@ console.log(compactedResponse);
             The type of the shell call output. Always `shell_call_output`.
 
             - `"shell_call_output"`
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
 
           - `created_by?: string`
 
@@ -93344,6 +103743,26 @@ console.log(compactedResponse);
 
             - `"apply_patch_call"`
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
+
           - `created_by?: string`
 
             The ID of the entity that created this tool call.
@@ -93373,6 +103792,26 @@ console.log(compactedResponse);
             The type of the item. Always `apply_patch_call_output`.
 
             - `"apply_patch_call_output"`
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
 
           - `created_by?: string`
 
@@ -93565,7 +104004,7 @@ console.log(compactedResponse);
         What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
         We generally recommend altering this or `top_p` but not both.
 
-      - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+      - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
         How the model should select which tool (or tools) to use when generating
         a response. See the `tools` parameter to see how to specify which tools
@@ -93707,6 +104146,14 @@ console.log(compactedResponse);
 
             - `"custom"`
 
+        - `SpecificProgrammaticToolCallingParam`
+
+          - `type: "programmatic_tool_calling"`
+
+            The tool to call. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ToolChoiceApplyPatch`
 
           Forces the model to call the apply_patch tool when executing a tool call.
@@ -93776,6 +104223,8 @@ console.log(compactedResponse);
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -94003,9 +104452,32 @@ console.log(compactedResponse);
 
         Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+      - `prompt_cache_options?: PromptCacheOptions`
+
+        The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+        - `mode: "implicit" | "explicit"`
+
+          Whether implicit prompt-cache breakpoints were enabled.
+
+          - `"implicit"`
+
+          - `"explicit"`
+
+        - `ttl: "30m"`
+
+          The minimum lifetime applied to each cache breakpoint.
+
+          - `"30m"`
+
       - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+        Deprecated. Use `prompt_cache_options.ttl` instead.
+
         The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+        This field expresses a maximum retention policy, while
+        `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+        fields are independent and do not interact.
         For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
         For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -94038,16 +104510,13 @@ console.log(compactedResponse);
 
         - `effort?: ReasoningEffort | null`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -94060,6 +104529,8 @@ console.log(compactedResponse);
           - `"high"`
 
           - `"xhigh"`
+
+          - `"max"`
 
         - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -94074,6 +104545,20 @@ console.log(compactedResponse);
           - `"concise"`
 
           - `"detailed"`
+
+        - `mode?: (string & {}) | "standard" | "pro"`
+
+          Controls the reasoning execution mode for the request.
+
+          When returned on a response, this is the effective execution mode.
+
+          - `(string & {})`
+
+          - `"standard" | "pro"`
+
+            - `"standard"`
+
+            - `"pro"`
 
         - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -94258,6 +104743,10 @@ console.log(compactedResponse);
         - `input_tokens_details: InputTokensDetails`
 
           A detailed breakdown of the input tokens.
+
+          - `cache_write_tokens: number`
+
+            The number of input tokens that were written to the cache.
 
           - `cached_tokens: number`
 
@@ -94661,6 +105150,10 @@ console.log(compactedResponse);
         for subsequent turns of a conversation if you are manually
         [managing context](https://platform.openai.com/docs/guides/conversation-state).
 
+      - `Program`
+
+      - `ProgramOutput`
+
       - `ResponseToolSearchCall`
 
       - `ResponseToolSearchOutputItem`
@@ -94842,6 +105335,13 @@ console.log(compactedResponse);
       The type of the event. Always `response.reasoning_summary_part.done`.
 
       - `"response.reasoning_summary_part.done"`
+
+    - `status?: "incomplete"`
+
+      The completion status of the summary part. Omitted when the part completed
+      normally and set to `incomplete` when generation was interrupted.
+
+      - `"incomplete"`
 
   - `ResponseReasoningSummaryTextDeltaEvent`
 
@@ -95880,13 +106380,21 @@ console.log(compactedResponse);
 
       - `strict: boolean | null`
 
-        Whether to enforce strict parameter validation. Default `true`.
+        Whether strict parameter validation is enforced for this function tool.
 
       - `type: "function"`
 
         The type of the function tool. Always `function`.
 
         - `"function"`
+
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
 
       - `defer_loading?: boolean`
 
@@ -95895,6 +106403,10 @@ console.log(compactedResponse);
       - `description?: string | null`
 
         A description of the function. Used by the model to determine whether or not to call the function.
+
+      - `output_schema?: Record<string, unknown> | null`
+
+        A JSON schema object describing the JSON value encoded in string outputs for this function.
 
     - `FileSearchTool`
 
@@ -95951,7 +106463,7 @@ console.log(compactedResponse);
 
             - `"nin"`
 
-          - `value: string | number | boolean | Array<string | number>`
+          - `value: string | number | boolean | Array<unknown>`
 
             The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -95961,11 +106473,7 @@ console.log(compactedResponse);
 
             - `boolean`
 
-            - `Array<string | number>`
-
-              - `string`
-
-              - `number`
+            - `Array<unknown>`
 
         - `CompoundFilter`
 
@@ -96137,6 +106645,14 @@ console.log(compactedResponse);
         The type of the MCP tool. Always `mcp`.
 
         - `"mcp"`
+
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
 
       - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -96348,6 +106864,22 @@ console.log(compactedResponse);
 
         - `"code_interpreter"`
 
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
+
+    - `ProgrammaticToolCalling`
+
+      - `type: "programmatic_tool_calling"`
+
+        The type of the tool. Always `programmatic_tool_calling`.
+
+        - `"programmatic_tool_calling"`
+
     - `ImageGeneration`
 
       A tool that generates images using the GPT image models.
@@ -96507,6 +107039,14 @@ console.log(compactedResponse);
 
         - `"shell"`
 
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
+
       - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
         - `ContainerAuto`
@@ -96647,6 +107187,14 @@ console.log(compactedResponse);
 
         - `"custom"`
 
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
+
       - `defer_loading?: boolean`
 
         Whether this tool should be deferred and discovered via tool search.
@@ -96715,15 +107263,29 @@ console.log(compactedResponse);
 
             - `"function"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `defer_loading?: boolean`
 
             Whether this function should be deferred and discovered via tool search.
 
           - `description?: string | null`
 
+          - `output_schema?: Record<string, unknown> | null`
+
+            A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
           - `parameters?: unknown`
 
           - `strict?: boolean | null`
+
+            Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
         - `CustomTool`
 
@@ -96824,6 +107386,14 @@ console.log(compactedResponse);
         The type of the tool. Always `apply_patch`.
 
         - `"apply_patch"`
+
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
 
   - `type: "tool_search_output"`
 
@@ -96857,13 +107427,21 @@ console.log(compactedResponse);
 
       - `strict: boolean | null`
 
-        Whether to enforce strict parameter validation. Default `true`.
+        Whether strict parameter validation is enforced for this function tool.
 
       - `type: "function"`
 
         The type of the function tool. Always `function`.
 
         - `"function"`
+
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
 
       - `defer_loading?: boolean`
 
@@ -96872,6 +107450,10 @@ console.log(compactedResponse);
       - `description?: string | null`
 
         A description of the function. Used by the model to determine whether or not to call the function.
+
+      - `output_schema?: Record<string, unknown> | null`
+
+        A JSON schema object describing the JSON value encoded in string outputs for this function.
 
     - `FileSearchTool`
 
@@ -96928,7 +107510,7 @@ console.log(compactedResponse);
 
             - `"nin"`
 
-          - `value: string | number | boolean | Array<string | number>`
+          - `value: string | number | boolean | Array<unknown>`
 
             The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -96938,11 +107520,7 @@ console.log(compactedResponse);
 
             - `boolean`
 
-            - `Array<string | number>`
-
-              - `string`
-
-              - `number`
+            - `Array<unknown>`
 
         - `CompoundFilter`
 
@@ -97114,6 +107692,14 @@ console.log(compactedResponse);
         The type of the MCP tool. Always `mcp`.
 
         - `"mcp"`
+
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
 
       - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -97325,6 +107911,22 @@ console.log(compactedResponse);
 
         - `"code_interpreter"`
 
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
+
+    - `ProgrammaticToolCalling`
+
+      - `type: "programmatic_tool_calling"`
+
+        The type of the tool. Always `programmatic_tool_calling`.
+
+        - `"programmatic_tool_calling"`
+
     - `ImageGeneration`
 
       A tool that generates images using the GPT image models.
@@ -97484,6 +108086,14 @@ console.log(compactedResponse);
 
         - `"shell"`
 
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
+
       - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
         - `ContainerAuto`
@@ -97624,6 +108234,14 @@ console.log(compactedResponse);
 
         - `"custom"`
 
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
+
       - `defer_loading?: boolean`
 
         Whether this tool should be deferred and discovered via tool search.
@@ -97692,15 +108310,29 @@ console.log(compactedResponse);
 
             - `"function"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `defer_loading?: boolean`
 
             Whether this function should be deferred and discovered via tool search.
 
           - `description?: string | null`
 
+          - `output_schema?: Record<string, unknown> | null`
+
+            A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
           - `parameters?: unknown`
 
           - `strict?: boolean | null`
+
+            Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
         - `CustomTool`
 
@@ -97801,6 +108433,14 @@ console.log(compactedResponse);
         The type of the tool. Always `apply_patch`.
 
         - `"apply_patch"`
+
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
 
   - `type: "tool_search_output"`
 
@@ -97848,6 +108488,10 @@ console.log(compactedResponse);
   - `input_tokens_details: InputTokensDetails`
 
     A detailed breakdown of the input tokens.
+
+    - `cache_write_tokens: number`
+
+      The number of input tokens that were written to the cache.
 
     - `cached_tokens: number`
 
@@ -98065,6 +108709,16 @@ console.log(compactedResponse);
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImage`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -98095,6 +108749,16 @@ console.log(compactedResponse);
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFile`
 
               A file input to the model.
@@ -98105,9 +108769,11 @@ console.log(compactedResponse);
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -98128,6 +108794,16 @@ console.log(compactedResponse);
               - `filename?: string`
 
                 The name of the file to be sent to the model.
+
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
 
         - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -99076,6 +109752,26 @@ console.log(compactedResponse);
 
           The unique ID of the function tool call.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `namespace?: string`
 
           The namespace of the function to run.
@@ -99123,6 +109819,16 @@ console.log(compactedResponse);
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImageContent`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -99153,6 +109859,16 @@ console.log(compactedResponse);
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFileContent`
 
               A file input to the model.
@@ -99163,9 +109879,11 @@ console.log(compactedResponse);
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -99187,6 +109905,16 @@ console.log(compactedResponse);
 
                 The name of the file to be sent to the model.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
         - `type: "function_call_output"`
 
           The type of the function tool call output. Always `function_call_output`.
@@ -99196,6 +109924,30 @@ console.log(compactedResponse);
         - `id?: string | null`
 
           The unique ID of the function tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -99265,13 +110017,21 @@ console.log(compactedResponse);
 
             - `strict: boolean | null`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading?: boolean`
 
@@ -99280,6 +110040,10 @@ console.log(compactedResponse);
             - `description?: string | null`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearchTool`
 
@@ -99336,7 +110100,7 @@ console.log(compactedResponse);
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<string | number>`
+                - `value: string | number | boolean | Array<unknown>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -99346,11 +110110,7 @@ console.log(compactedResponse);
 
                   - `boolean`
 
-                  - `Array<string | number>`
-
-                    - `string`
-
-                    - `number`
+                  - `Array<unknown>`
 
               - `CompoundFilter`
 
@@ -99522,6 +110282,14 @@ console.log(compactedResponse);
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -99733,6 +110501,22 @@ console.log(compactedResponse);
 
               - `"code_interpreter"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -99892,6 +110676,14 @@ console.log(compactedResponse);
 
               - `"shell"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
               - `ContainerAuto`
@@ -100032,6 +110824,14 @@ console.log(compactedResponse);
 
               - `"custom"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this tool should be deferred and discovered via tool search.
@@ -100100,15 +110900,29 @@ console.log(compactedResponse);
 
                   - `"function"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading?: boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description?: string | null`
 
+                - `output_schema?: Record<string, unknown> | null`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters?: unknown`
 
                 - `strict?: boolean | null`
+
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
               - `CustomTool`
 
@@ -100210,6 +111024,14 @@ console.log(compactedResponse);
 
               - `"apply_patch"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
         - `type: "tool_search_output"`
 
           The item type. Always `tool_search_output`.
@@ -100283,6 +111105,8 @@ console.log(compactedResponse);
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -100624,6 +111448,30 @@ console.log(compactedResponse);
 
           The unique ID of the shell tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `environment?: LocalEnvironment | ContainerReference | null`
 
           The environment to execute the shell commands in.
@@ -100699,6 +111547,30 @@ console.log(compactedResponse);
         - `id?: string | null`
 
           The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `max_output_length?: number | null`
 
@@ -100794,6 +111666,30 @@ console.log(compactedResponse);
 
           The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ApplyPatchCallOutput`
 
         The streamed output emitted by an apply patch tool call.
@@ -100819,6 +111715,30 @@ console.log(compactedResponse);
         - `id?: string | null`
 
           The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `output?: string | null`
 
@@ -101010,6 +111930,30 @@ console.log(compactedResponse);
 
           The unique ID of the custom tool call output in the OpenAI platform.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ResponseCustomToolCall`
 
         A call to a custom tool created by the model.
@@ -101035,6 +111979,26 @@ console.log(compactedResponse);
         - `id?: string`
 
           The unique ID of the custom tool call in the OpenAI platform.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `namespace?: string`
 
@@ -101063,6 +112027,58 @@ console.log(compactedResponse);
           The type of item to reference. Always `item_reference`.
 
           - `"item_reference"`
+
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of this program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The item type. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of this program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The item type. Always `program_output`.
+
+          - `"program_output"`
 
   - `instructions?: string | null`
 
@@ -101098,7 +112114,13 @@ console.log(compactedResponse);
 
     - `(string & {})`
 
-    - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+    - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+      - `"gpt-5.6-sol"`
+
+      - `"gpt-5.6-terra"`
+
+      - `"gpt-5.6-luna"`
 
       - `"gpt-5.4"`
 
@@ -101294,6 +112316,30 @@ console.log(compactedResponse);
 
       The moderation model to use for moderated completions, e.g. 'omni-moderation-latest'.
 
+    - `policy?: Policy | null`
+
+      The policy to apply to moderated response input and output.
+
+      - `input?: Input | null`
+
+        The moderation policy for the response input.
+
+        - `mode: "score" | "block"`
+
+          - `"score"`
+
+          - `"block"`
+
+      - `output?: Output | null`
+
+        The moderation policy for the response output.
+
+        - `mode: "score" | "block"`
+
+          - `"score"`
+
+          - `"block"`
+
   - `parallel_tool_calls?: boolean | null`
 
     Whether to allow the model to run tool calls in parallel.
@@ -101341,9 +112387,32 @@ console.log(compactedResponse);
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+  - `prompt_cache_options?: PromptCacheOptions`
+
+    Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](https://platform.openai.com/docs/guides/prompt-caching) for current details.
+
+    - `mode?: "implicit" | "explicit"`
+
+      Controls whether OpenAI automatically creates an implicit cache breakpoint. Defaults to `implicit`. With `implicit`, OpenAI creates one implicit breakpoint and writes up to the latest three explicit breakpoints in the request. With `explicit`, OpenAI does not create an implicit breakpoint and writes up to the latest four explicit breakpoints. If there are no explicit breakpoints, the request does not use prompt caching.
+
+      - `"implicit"`
+
+      - `"explicit"`
+
+    - `ttl?: "30m"`
+
+      The minimum lifetime applied to every implicit and explicit cache breakpoint written by the request. Defaults to `30m`, which is currently the only supported value. The backend may retain cache entries for longer.
+
+      - `"30m"`
+
   - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+    Deprecated. Use `prompt_cache_options.ttl` instead.
+
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+    This field expresses a maximum retention policy, while
+    `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+    fields are independent and do not interact.
     For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
     For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -101376,16 +112445,13 @@ console.log(compactedResponse);
 
     - `effort?: ReasoningEffort | null`
 
-      Constrains effort on reasoning for
-      [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-      Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-      reasoning effort can result in faster responses and fewer tokens used
-      on reasoning in a response.
-
-      - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-      - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-      - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-      - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+      Constrains effort on reasoning for reasoning models. Currently supported
+      values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+      Reducing reasoning effort can result in faster responses and fewer tokens
+      used on reasoning in a response. Not all reasoning models support every
+      value. See the
+      [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+      for model-specific support.
 
       - `"none"`
 
@@ -101398,6 +112464,8 @@ console.log(compactedResponse);
       - `"high"`
 
       - `"xhigh"`
+
+      - `"max"`
 
     - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -101412,6 +112480,20 @@ console.log(compactedResponse);
       - `"concise"`
 
       - `"detailed"`
+
+    - `mode?: (string & {}) | "standard" | "pro"`
+
+      Controls the reasoning execution mode for the request.
+
+      When returned on a response, this is the effective execution mode.
+
+      - `(string & {})`
+
+      - `"standard" | "pro"`
+
+        - `"standard"`
+
+        - `"pro"`
 
     - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -101577,7 +112659,7 @@ console.log(compactedResponse);
 
       - `"high"`
 
-  - `tool_choice?: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+  - `tool_choice?: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
     How the model should select which tool (or tools) to use when generating
     a response. See the `tools` parameter to see how to specify which tools
@@ -101719,6 +112801,14 @@ console.log(compactedResponse);
 
         - `"custom"`
 
+    - `SpecificProgrammaticToolCallingParam`
+
+      - `type: "programmatic_tool_calling"`
+
+        The tool to call. Always `programmatic_tool_calling`.
+
+        - `"programmatic_tool_calling"`
+
     - `ToolChoiceApplyPatch`
 
       Forces the model to call the apply_patch tool when executing a tool call.
@@ -101788,6 +112878,8 @@ console.log(compactedResponse);
     - `CodeInterpreter`
 
       A tool that runs Python code to help generate a response to a prompt.
+
+    - `ProgrammaticToolCalling`
 
     - `ImageGeneration`
 
@@ -102065,7 +113157,7 @@ console.log(compactedResponse);
 
         An error object returned when the model fails to generate a Response.
 
-        - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 15 more`
+        - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
 
           The error code for the response.
 
@@ -102074,6 +113166,8 @@ console.log(compactedResponse);
           - `"rate_limit_exceeded"`
 
           - `"invalid_prompt"`
+
+          - `"bio_policy"`
 
           - `"vector_store_timeout"`
 
@@ -102167,6 +113261,16 @@ console.log(compactedResponse);
 
                     - `"input_text"`
 
+                  - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
                 - `ResponseInputImage`
 
                   An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -102197,6 +113301,16 @@ console.log(compactedResponse);
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                  - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
                 - `ResponseInputFile`
 
                   A file input to the model.
@@ -102207,9 +113321,11 @@ console.log(compactedResponse);
 
                     - `"input_file"`
 
-                  - `detail?: "low" | "high"`
+                  - `detail?: "auto" | "low" | "high"`
 
-                    The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                    The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                    - `"auto"`
 
                     - `"low"`
 
@@ -102230,6 +113346,16 @@ console.log(compactedResponse);
                   - `filename?: string`
 
                     The name of the file to be sent to the model.
+
+                  - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
 
             - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -103178,6 +114304,26 @@ console.log(compactedResponse);
 
               The unique ID of the function tool call.
 
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  - `"program"`
+
             - `namespace?: string`
 
               The namespace of the function to run.
@@ -103225,6 +114371,16 @@ console.log(compactedResponse);
 
                     - `"input_text"`
 
+                  - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
                 - `ResponseInputImageContent`
 
                   An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -103255,6 +114411,16 @@ console.log(compactedResponse);
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                  - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
                 - `ResponseInputFileContent`
 
                   A file input to the model.
@@ -103265,9 +114431,11 @@ console.log(compactedResponse);
 
                     - `"input_file"`
 
-                  - `detail?: "low" | "high"`
+                  - `detail?: "auto" | "low" | "high"`
 
-                    The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                    The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                    - `"auto"`
 
                     - `"low"`
 
@@ -103289,6 +114457,16 @@ console.log(compactedResponse);
 
                     The name of the file to be sent to the model.
 
+                  - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                    - `mode: "explicit"`
+
+                      The breakpoint mode. Always `explicit`.
+
+                      - `"explicit"`
+
             - `type: "function_call_output"`
 
               The type of the function tool call output. Always `function_call_output`.
@@ -103298,6 +114476,30 @@ console.log(compactedResponse);
             - `id?: string | null`
 
               The unique ID of the function tool call output. Populated when this item is returned via API.
+
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  The caller type. Always `direct`.
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  The caller type. Always `program`.
+
+                  - `"program"`
 
             - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -103367,13 +114569,21 @@ console.log(compactedResponse);
 
                 - `strict: boolean | null`
 
-                  Whether to enforce strict parameter validation. Default `true`.
+                  Whether strict parameter validation is enforced for this function tool.
 
                 - `type: "function"`
 
                   The type of the function tool. Always `function`.
 
                   - `"function"`
+
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
 
                 - `defer_loading?: boolean`
 
@@ -103382,6 +114592,10 @@ console.log(compactedResponse);
                 - `description?: string | null`
 
                   A description of the function. Used by the model to determine whether or not to call the function.
+
+                - `output_schema?: Record<string, unknown> | null`
+
+                  A JSON schema object describing the JSON value encoded in string outputs for this function.
 
               - `FileSearchTool`
 
@@ -103438,7 +114652,7 @@ console.log(compactedResponse);
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<string | number>`
+                    - `value: string | number | boolean | Array<unknown>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -103448,11 +114662,7 @@ console.log(compactedResponse);
 
                       - `boolean`
 
-                      - `Array<string | number>`
-
-                        - `string`
-
-                        - `number`
+                      - `Array<unknown>`
 
                   - `CompoundFilter`
 
@@ -103624,6 +114834,14 @@ console.log(compactedResponse);
                   The type of the MCP tool. Always `mcp`.
 
                   - `"mcp"`
+
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
 
                 - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -103835,6 +115053,22 @@ console.log(compactedResponse);
 
                   - `"code_interpreter"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
+              - `ProgrammaticToolCalling`
+
+                - `type: "programmatic_tool_calling"`
+
+                  The type of the tool. Always `programmatic_tool_calling`.
+
+                  - `"programmatic_tool_calling"`
+
               - `ImageGeneration`
 
                 A tool that generates images using the GPT image models.
@@ -103994,6 +115228,14 @@ console.log(compactedResponse);
 
                   - `"shell"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
                   - `ContainerAuto`
@@ -104134,6 +115376,14 @@ console.log(compactedResponse);
 
                   - `"custom"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading?: boolean`
 
                   Whether this tool should be deferred and discovered via tool search.
@@ -104202,15 +115452,29 @@ console.log(compactedResponse);
 
                       - `"function"`
 
+                    - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                      The tool invocation context(s).
+
+                      - `"direct"`
+
+                      - `"programmatic"`
+
                     - `defer_loading?: boolean`
 
                       Whether this function should be deferred and discovered via tool search.
 
                     - `description?: string | null`
 
+                    - `output_schema?: Record<string, unknown> | null`
+
+                      A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                     - `parameters?: unknown`
 
                     - `strict?: boolean | null`
+
+                      Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
                   - `CustomTool`
 
@@ -104312,6 +115576,14 @@ console.log(compactedResponse);
 
                   - `"apply_patch"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
             - `type: "tool_search_output"`
 
               The item type. Always `tool_search_output`.
@@ -104385,6 +115657,8 @@ console.log(compactedResponse);
               - `CodeInterpreter`
 
                 A tool that runs Python code to help generate a response to a prompt.
+
+              - `ProgrammaticToolCalling`
 
               - `ImageGeneration`
 
@@ -104726,6 +116000,30 @@ console.log(compactedResponse);
 
               The unique ID of the shell tool call. Populated when this item is returned via API.
 
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  The caller type. Always `direct`.
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  The caller type. Always `program`.
+
+                  - `"program"`
+
             - `environment?: LocalEnvironment | ContainerReference | null`
 
               The environment to execute the shell commands in.
@@ -104801,6 +116099,30 @@ console.log(compactedResponse);
             - `id?: string | null`
 
               The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  The caller type. Always `direct`.
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  The caller type. Always `program`.
+
+                  - `"program"`
 
             - `max_output_length?: number | null`
 
@@ -104896,6 +116218,30 @@ console.log(compactedResponse);
 
               The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  The caller type. Always `direct`.
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  The caller type. Always `program`.
+
+                  - `"program"`
+
           - `ApplyPatchCallOutput`
 
             The streamed output emitted by an apply patch tool call.
@@ -104921,6 +116267,30 @@ console.log(compactedResponse);
             - `id?: string | null`
 
               The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  The caller type. Always `direct`.
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  The caller type. Always `program`.
+
+                  - `"program"`
 
             - `output?: string | null`
 
@@ -105112,6 +116482,30 @@ console.log(compactedResponse);
 
               The unique ID of the custom tool call output in the OpenAI platform.
 
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  The caller type. Always `direct`.
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  The caller type. Always `program`.
+
+                  - `"program"`
+
           - `ResponseCustomToolCall`
 
             A call to a custom tool created by the model.
@@ -105137,6 +116531,26 @@ console.log(compactedResponse);
             - `id?: string`
 
               The unique ID of the custom tool call in the OpenAI platform.
+
+            - `caller?: Direct | Program | null`
+
+              The execution context that produced this tool call.
+
+              - `Direct`
+
+                - `type: "direct"`
+
+                  - `"direct"`
+
+              - `Program`
+
+                - `caller_id: string`
+
+                  The call ID of the program item that produced this tool call.
+
+                - `type: "program"`
+
+                  - `"program"`
 
             - `namespace?: string`
 
@@ -105166,6 +116580,58 @@ console.log(compactedResponse);
 
               - `"item_reference"`
 
+          - `Program`
+
+            - `id: string`
+
+              The unique ID of this program item.
+
+            - `call_id: string`
+
+              The stable call ID of the program item.
+
+            - `code: string`
+
+              The JavaScript source executed by programmatic tool calling.
+
+            - `fingerprint: string`
+
+              Opaque program replay fingerprint that must be round-tripped.
+
+            - `type: "program"`
+
+              The item type. Always `program`.
+
+              - `"program"`
+
+          - `ProgramOutput`
+
+            - `id: string`
+
+              The unique ID of this program output item.
+
+            - `call_id: string`
+
+              The call ID of the program item.
+
+            - `result: string`
+
+              The result produced by the program item.
+
+            - `status: "completed" | "incomplete"`
+
+              The terminal status of the program output.
+
+              - `"completed"`
+
+              - `"incomplete"`
+
+            - `type: "program_output"`
+
+              The item type. Always `program_output`.
+
+              - `"program_output"`
+
       - `metadata: Metadata | null`
 
         Set of 16 key-value pairs that can be attached to an object. This can be
@@ -105184,7 +116650,13 @@ console.log(compactedResponse);
 
         - `(string & {})`
 
-        - `ChatModel = "gpt-5.4" | "gpt-5.4-mini" | "gpt-5.4-nano" | 75 more`
+        - `ChatModel = "gpt-5.6-sol" | "gpt-5.6-terra" | "gpt-5.6-luna" | 78 more`
+
+          - `"gpt-5.6-sol"`
+
+          - `"gpt-5.6-terra"`
+
+          - `"gpt-5.6-luna"`
 
           - `"gpt-5.4"`
 
@@ -105451,6 +116923,30 @@ console.log(compactedResponse);
 
             - `"function_call_output"`
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                The caller type. Always `direct`.
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                The caller type. Always `program`.
+
+                - `"program"`
+
           - `created_by?: string`
 
             The identifier of the actor that created the item.
@@ -105525,6 +117021,58 @@ console.log(compactedResponse);
           a response. Be sure to include these items in your `input` to the Responses API
           for subsequent turns of a conversation if you are manually
           [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+        - `Program`
+
+          - `id: string`
+
+            The unique ID of the program item.
+
+          - `call_id: string`
+
+            The stable call ID of the program item.
+
+          - `code: string`
+
+            The JavaScript source executed by programmatic tool calling.
+
+          - `fingerprint: string`
+
+            Opaque program replay fingerprint that must be round-tripped.
+
+          - `type: "program"`
+
+            The type of the item. Always `program`.
+
+            - `"program"`
+
+        - `ProgramOutput`
+
+          - `id: string`
+
+            The unique ID of the program output item.
+
+          - `call_id: string`
+
+            The call ID of the program item.
+
+          - `result: string`
+
+            The result produced by the program item.
+
+          - `status: "completed" | "incomplete"`
+
+            The terminal status of the program output item.
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+          - `type: "program_output"`
+
+            The type of the item. Always `program_output`.
+
+            - `"program_output"`
 
         - `ResponseToolSearchCall`
 
@@ -105630,6 +117178,8 @@ console.log(compactedResponse);
 
               A tool that runs Python code to help generate a response to a prompt.
 
+            - `ProgrammaticToolCalling`
+
             - `ImageGeneration`
 
               A tool that generates images using the GPT image models.
@@ -105731,6 +117281,8 @@ console.log(compactedResponse);
             - `CodeInterpreter`
 
               A tool that runs Python code to help generate a response to a prompt.
+
+            - `ProgrammaticToolCalling`
 
             - `ImageGeneration`
 
@@ -105980,6 +117532,26 @@ console.log(compactedResponse);
 
             - `"shell_call"`
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
+
           - `created_by?: string`
 
             The ID of the entity that created this tool call.
@@ -106059,6 +117631,26 @@ console.log(compactedResponse);
             The type of the shell call output. Always `shell_call_output`.
 
             - `"shell_call_output"`
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
 
           - `created_by?: string`
 
@@ -106144,6 +117736,26 @@ console.log(compactedResponse);
 
             - `"apply_patch_call"`
 
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
+
           - `created_by?: string`
 
             The ID of the entity that created this tool call.
@@ -106173,6 +117785,26 @@ console.log(compactedResponse);
             The type of the item. Always `apply_patch_call_output`.
 
             - `"apply_patch_call_output"`
+
+          - `caller?: Direct | Program | null`
+
+            The execution context that produced this tool call.
+
+            - `Direct`
+
+              - `type: "direct"`
+
+                - `"direct"`
+
+            - `Program`
+
+              - `caller_id: string`
+
+                The call ID of the program item that produced this tool call.
+
+              - `type: "program"`
+
+                - `"program"`
 
           - `created_by?: string`
 
@@ -106365,7 +117997,7 @@ console.log(compactedResponse);
         What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
         We generally recommend altering this or `top_p` but not both.
 
-      - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more`
+      - `tool_choice: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more`
 
         How the model should select which tool (or tools) to use when generating
         a response. See the `tools` parameter to see how to specify which tools
@@ -106507,6 +118139,14 @@ console.log(compactedResponse);
 
             - `"custom"`
 
+        - `SpecificProgrammaticToolCallingParam`
+
+          - `type: "programmatic_tool_calling"`
+
+            The tool to call. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ToolChoiceApplyPatch`
 
           Forces the model to call the apply_patch tool when executing a tool call.
@@ -106576,6 +118216,8 @@ console.log(compactedResponse);
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -106803,9 +118445,32 @@ console.log(compactedResponse);
 
         Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
+      - `prompt_cache_options?: PromptCacheOptions`
+
+        The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
+
+        - `mode: "implicit" | "explicit"`
+
+          Whether implicit prompt-cache breakpoints were enabled.
+
+          - `"implicit"`
+
+          - `"explicit"`
+
+        - `ttl: "30m"`
+
+          The minimum lifetime applied to each cache breakpoint.
+
+          - `"30m"`
+
       - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
+        Deprecated. Use `prompt_cache_options.ttl` instead.
+
         The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+        This field expresses a maximum retention policy, while
+        `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+        fields are independent and do not interact.
         For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
         For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -106838,16 +118503,13 @@ console.log(compactedResponse);
 
         - `effort?: ReasoningEffort | null`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -106860,6 +118522,8 @@ console.log(compactedResponse);
           - `"high"`
 
           - `"xhigh"`
+
+          - `"max"`
 
         - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -106874,6 +118538,20 @@ console.log(compactedResponse);
           - `"concise"`
 
           - `"detailed"`
+
+        - `mode?: (string & {}) | "standard" | "pro"`
+
+          Controls the reasoning execution mode for the request.
+
+          When returned on a response, this is the effective execution mode.
+
+          - `(string & {})`
+
+          - `"standard" | "pro"`
+
+            - `"standard"`
+
+            - `"pro"`
 
         - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -107058,6 +118736,10 @@ console.log(compactedResponse);
         - `input_tokens_details: InputTokensDetails`
 
           A detailed breakdown of the input tokens.
+
+          - `cache_write_tokens: number`
+
+            The number of input tokens that were written to the cache.
 
           - `cached_tokens: number`
 
@@ -107461,6 +119143,10 @@ console.log(compactedResponse);
         for subsequent turns of a conversation if you are manually
         [managing context](https://platform.openai.com/docs/guides/conversation-state).
 
+      - `Program`
+
+      - `ProgramOutput`
+
       - `ResponseToolSearchCall`
 
       - `ResponseToolSearchOutputItem`
@@ -107642,6 +119328,13 @@ console.log(compactedResponse);
       The type of the event. Always `response.reasoning_summary_part.done`.
 
       - `"response.reasoning_summary_part.done"`
+
+    - `status?: "incomplete"`
+
+      The completion status of the summary part. Omitted when the part completed
+      normally and set to `incomplete` when generation was interrupted.
+
+      - `"incomplete"`
 
   - `ResponseReasoningSummaryTextDeltaEvent`
 
@@ -108401,7 +120094,7 @@ console.log(compactedResponse);
 
 ### Tool
 
-- `Tool = FunctionTool | FileSearchTool | ComputerTool | 12 more`
+- `Tool = FunctionTool | FileSearchTool | ComputerTool | 13 more`
 
   A tool that can be used to generate a response.
 
@@ -108419,13 +120112,21 @@ console.log(compactedResponse);
 
     - `strict: boolean | null`
 
-      Whether to enforce strict parameter validation. Default `true`.
+      Whether strict parameter validation is enforced for this function tool.
 
     - `type: "function"`
 
       The type of the function tool. Always `function`.
 
       - `"function"`
+
+    - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+      The tool invocation context(s).
+
+      - `"direct"`
+
+      - `"programmatic"`
 
     - `defer_loading?: boolean`
 
@@ -108434,6 +120135,10 @@ console.log(compactedResponse);
     - `description?: string | null`
 
       A description of the function. Used by the model to determine whether or not to call the function.
+
+    - `output_schema?: Record<string, unknown> | null`
+
+      A JSON schema object describing the JSON value encoded in string outputs for this function.
 
   - `FileSearchTool`
 
@@ -108490,7 +120195,7 @@ console.log(compactedResponse);
 
           - `"nin"`
 
-        - `value: string | number | boolean | Array<string | number>`
+        - `value: string | number | boolean | Array<unknown>`
 
           The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -108500,11 +120205,7 @@ console.log(compactedResponse);
 
           - `boolean`
 
-          - `Array<string | number>`
-
-            - `string`
-
-            - `number`
+          - `Array<unknown>`
 
       - `CompoundFilter`
 
@@ -108676,6 +120377,14 @@ console.log(compactedResponse);
       The type of the MCP tool. Always `mcp`.
 
       - `"mcp"`
+
+    - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+      The tool invocation context(s).
+
+      - `"direct"`
+
+      - `"programmatic"`
 
     - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -108887,6 +120596,22 @@ console.log(compactedResponse);
 
       - `"code_interpreter"`
 
+    - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+      The tool invocation context(s).
+
+      - `"direct"`
+
+      - `"programmatic"`
+
+  - `ProgrammaticToolCalling`
+
+    - `type: "programmatic_tool_calling"`
+
+      The type of the tool. Always `programmatic_tool_calling`.
+
+      - `"programmatic_tool_calling"`
+
   - `ImageGeneration`
 
     A tool that generates images using the GPT image models.
@@ -109046,6 +120771,14 @@ console.log(compactedResponse);
 
       - `"shell"`
 
+    - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+      The tool invocation context(s).
+
+      - `"direct"`
+
+      - `"programmatic"`
+
     - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
       - `ContainerAuto`
@@ -109186,6 +120919,14 @@ console.log(compactedResponse);
 
       - `"custom"`
 
+    - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+      The tool invocation context(s).
+
+      - `"direct"`
+
+      - `"programmatic"`
+
     - `defer_loading?: boolean`
 
       Whether this tool should be deferred and discovered via tool search.
@@ -109254,15 +120995,29 @@ console.log(compactedResponse);
 
           - `"function"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading?: boolean`
 
           Whether this function should be deferred and discovered via tool search.
 
         - `description?: string | null`
 
+        - `output_schema?: Record<string, unknown> | null`
+
+          A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
         - `parameters?: unknown`
 
         - `strict?: boolean | null`
+
+          Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
       - `CustomTool`
 
@@ -109363,6 +121118,14 @@ console.log(compactedResponse);
       The type of the tool. Always `apply_patch`.
 
       - `"apply_patch"`
+
+    - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+      The tool invocation context(s).
+
+      - `"direct"`
+
+      - `"programmatic"`
 
 ### Tool Choice Allowed
 
@@ -109690,7 +121453,7 @@ console.log(compactedResponse);
 
 **get** `/responses/{response_id}/input_items`
 
-Returns a list of input items for a given response.
+List input items
 
 ### Parameters
 
@@ -109741,7 +121504,7 @@ Returns a list of input items for a given response.
 
 ### Returns
 
-- `ResponseItem = ResponseInputMessageItem | ResponseOutputMessage | ResponseFileSearchToolCall | 24 more`
+- `ResponseItem = ResponseInputMessageItem | ResponseOutputMessage | ResponseFileSearchToolCall | 26 more`
 
   Content item used to generate a response.
 
@@ -109769,6 +121532,16 @@ Returns a list of input items for a given response.
           The type of the input item. Always `input_text`.
 
           - `"input_text"`
+
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
       - `ResponseInputImage`
 
@@ -109800,6 +121573,16 @@ Returns a list of input items for a given response.
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `ResponseInputFile`
 
         A file input to the model.
@@ -109810,9 +121593,11 @@ Returns a list of input items for a given response.
 
           - `"input_file"`
 
-        - `detail?: "low" | "high"`
+        - `detail?: "auto" | "low" | "high"`
 
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+          The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+          - `"auto"`
 
           - `"low"`
 
@@ -109833,6 +121618,16 @@ Returns a list of input items for a given response.
         - `filename?: string`
 
           The name of the file to be sent to the model.
+
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
     - `role: "user" | "system" | "developer"`
 
@@ -110792,6 +122587,30 @@ Returns a list of input items for a given response.
 
       - `"function_call_output"`
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
     - `created_by?: string`
 
       The identifier of the actor that created the item.
@@ -110884,13 +122703,21 @@ Returns a list of input items for a given response.
 
         - `strict: boolean | null`
 
-          Whether to enforce strict parameter validation. Default `true`.
+          Whether strict parameter validation is enforced for this function tool.
 
         - `type: "function"`
 
           The type of the function tool. Always `function`.
 
           - `"function"`
+
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `defer_loading?: boolean`
 
@@ -110899,6 +122726,10 @@ Returns a list of input items for a given response.
         - `description?: string | null`
 
           A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `output_schema?: Record<string, unknown> | null`
+
+          A JSON schema object describing the JSON value encoded in string outputs for this function.
 
       - `FileSearchTool`
 
@@ -110955,7 +122786,7 @@ Returns a list of input items for a given response.
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<string | number>`
+            - `value: string | number | boolean | Array<unknown>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -110965,11 +122796,7 @@ Returns a list of input items for a given response.
 
               - `boolean`
 
-              - `Array<string | number>`
-
-                - `string`
-
-                - `number`
+              - `Array<unknown>`
 
           - `CompoundFilter`
 
@@ -111141,6 +122968,14 @@ Returns a list of input items for a given response.
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -111352,6 +123187,22 @@ Returns a list of input items for a given response.
 
           - `"code_interpreter"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
+      - `ProgrammaticToolCalling`
+
+        - `type: "programmatic_tool_calling"`
+
+          The type of the tool. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `ImageGeneration`
 
         A tool that generates images using the GPT image models.
@@ -111511,6 +123362,14 @@ Returns a list of input items for a given response.
 
           - `"shell"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
           - `ContainerAuto`
@@ -111651,6 +123510,14 @@ Returns a list of input items for a given response.
 
           - `"custom"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading?: boolean`
 
           Whether this tool should be deferred and discovered via tool search.
@@ -111719,15 +123586,29 @@ Returns a list of input items for a given response.
 
               - `"function"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this function should be deferred and discovered via tool search.
 
             - `description?: string | null`
 
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
             - `parameters?: unknown`
 
             - `strict?: boolean | null`
+
+              Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
           - `CustomTool`
 
@@ -111829,6 +123710,14 @@ Returns a list of input items for a given response.
 
           - `"apply_patch"`
 
+        - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
     - `type: "tool_search_output"`
 
       The type of the item. Always `tool_search_output`.
@@ -111898,6 +123787,8 @@ Returns a list of input items for a given response.
       - `CodeInterpreter`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `ProgrammaticToolCalling`
 
       - `ImageGeneration`
 
@@ -111997,6 +123888,58 @@ Returns a list of input items for a given response.
       - `"completed"`
 
       - `"incomplete"`
+
+  - `Program`
+
+    - `id: string`
+
+      The unique ID of the program item.
+
+    - `call_id: string`
+
+      The stable call ID of the program item.
+
+    - `code: string`
+
+      The JavaScript source executed by programmatic tool calling.
+
+    - `fingerprint: string`
+
+      Opaque program replay fingerprint that must be round-tripped.
+
+    - `type: "program"`
+
+      The type of the item. Always `program`.
+
+      - `"program"`
+
+  - `ProgramOutput`
+
+    - `id: string`
+
+      The unique ID of the program output item.
+
+    - `call_id: string`
+
+      The call ID of the program item.
+
+    - `result: string`
+
+      The result produced by the program item.
+
+    - `status: "completed" | "incomplete"`
+
+      The terminal status of the program output item.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `type: "program_output"`
+
+      The type of the item. Always `program_output`.
+
+      - `"program_output"`
 
   - `ResponseCompactionItem`
 
@@ -112273,6 +124216,26 @@ Returns a list of input items for a given response.
 
       - `"shell_call"`
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
+
     - `created_by?: string`
 
       The ID of the entity that created this tool call.
@@ -112352,6 +124315,26 @@ Returns a list of input items for a given response.
       The type of the shell call output. Always `shell_call_output`.
 
       - `"shell_call_output"`
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
 
     - `created_by?: string`
 
@@ -112437,6 +124420,26 @@ Returns a list of input items for a given response.
 
       - `"apply_patch_call"`
 
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
+
     - `created_by?: string`
 
       The ID of the entity that created this tool call.
@@ -112466,6 +124469,26 @@ Returns a list of input items for a given response.
       The type of the item. Always `apply_patch_call_output`.
 
       - `"apply_patch_call_output"`
+
+    - `caller?: Direct | Program | null`
+
+      The execution context that produced this tool call.
+
+      - `Direct`
+
+        - `type: "direct"`
+
+          - `"direct"`
+
+      - `Program`
+
+        - `caller_id: string`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: "program"`
+
+          - `"program"`
 
     - `created_by?: string`
 
@@ -112693,7 +124716,10 @@ for await (const responseItem of client.responses.inputItems.list('response_id')
       "content": [
         {
           "text": "text",
-          "type": "input_text"
+          "type": "input_text",
+          "prompt_cache_breakpoint": {
+            "mode": "explicit"
+          }
         }
       ],
       "role": "user",
@@ -112779,6 +124805,16 @@ console.log(response.data);
 
             - `"input_text"`
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ResponseInputImage`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -112809,6 +124845,16 @@ console.log(response.data);
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `ResponseInputFile`
 
           A file input to the model.
@@ -112819,9 +124865,11 @@ console.log(response.data);
 
             - `"input_file"`
 
-          - `detail?: "low" | "high"`
+          - `detail?: "auto" | "low" | "high"`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -112842,6 +124890,16 @@ console.log(response.data);
           - `filename?: string`
 
             The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
       - `role: "user" | "system" | "developer"`
 
@@ -113801,6 +125859,30 @@ console.log(response.data);
 
         - `"function_call_output"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
       - `created_by?: string`
 
         The identifier of the actor that created the item.
@@ -113893,13 +125975,21 @@ console.log(response.data);
 
           - `strict: boolean | null`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading?: boolean`
 
@@ -113908,6 +125998,10 @@ console.log(response.data);
           - `description?: string | null`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema?: Record<string, unknown> | null`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearchTool`
 
@@ -113964,7 +126058,7 @@ console.log(response.data);
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<string | number>`
+              - `value: string | number | boolean | Array<unknown>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -113974,11 +126068,7 @@ console.log(response.data);
 
                 - `boolean`
 
-                - `Array<string | number>`
-
-                  - `string`
-
-                  - `number`
+                - `Array<unknown>`
 
             - `CompoundFilter`
 
@@ -114150,6 +126240,14 @@ console.log(response.data);
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -114361,6 +126459,22 @@ console.log(response.data);
 
             - `"code_interpreter"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration`
 
           A tool that generates images using the GPT image models.
@@ -114520,6 +126634,14 @@ console.log(response.data);
 
             - `"shell"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
             - `ContainerAuto`
@@ -114660,6 +126782,14 @@ console.log(response.data);
 
             - `"custom"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `defer_loading?: boolean`
 
             Whether this tool should be deferred and discovered via tool search.
@@ -114728,15 +126858,29 @@ console.log(response.data);
 
                 - `"function"`
 
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading?: boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description?: string | null`
 
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters?: unknown`
 
               - `strict?: boolean | null`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
             - `CustomTool`
 
@@ -114838,6 +126982,14 @@ console.log(response.data);
 
             - `"apply_patch"`
 
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
       - `type: "tool_search_output"`
 
         The type of the item. Always `tool_search_output`.
@@ -114907,6 +127059,8 @@ console.log(response.data);
         - `CodeInterpreter`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
 
         - `ImageGeneration`
 
@@ -115006,6 +127160,58 @@ console.log(response.data);
         - `"completed"`
 
         - `"incomplete"`
+
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of the program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
 
     - `ResponseCompactionItem`
 
@@ -115282,6 +127488,26 @@ console.log(response.data);
 
         - `"shell_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -115361,6 +127587,26 @@ console.log(response.data);
         The type of the shell call output. Always `shell_call_output`.
 
         - `"shell_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -115446,6 +127692,26 @@ console.log(response.data);
 
         - `"apply_patch_call"`
 
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by?: string`
 
         The ID of the entity that created this tool call.
@@ -115475,6 +127741,26 @@ console.log(response.data);
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by?: string`
 
@@ -115703,9 +127989,7 @@ console.log(response.data);
 
 **post** `/responses/input_tokens`
 
-Returns input token counts of the request.
-
-Returns an object with `object` set to `response.input_tokens` and an `input_tokens` count.
+Get input token counts
 
 ### Parameters
 
@@ -115768,6 +128052,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImage`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -115798,6 +128092,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFile`
 
               A file input to the model.
@@ -115808,9 +128112,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -115831,6 +128137,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
               - `filename?: string`
 
                 The name of the file to be sent to the model.
+
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
 
         - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -116779,6 +129095,26 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The unique ID of the function tool call.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
+
         - `namespace?: string`
 
           The namespace of the function to run.
@@ -116826,6 +129162,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"input_text"`
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputImageContent`
 
               An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -116856,6 +129202,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `ResponseInputFileContent`
 
               A file input to the model.
@@ -116866,9 +129222,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"input_file"`
 
-              - `detail?: "low" | "high"`
+              - `detail?: "auto" | "low" | "high"`
 
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
 
                 - `"low"`
 
@@ -116890,6 +129248,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 The name of the file to be sent to the model.
 
+              - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
         - `type: "function_call_output"`
 
           The type of the function tool call output. Always `function_call_output`.
@@ -116899,6 +129267,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `id?: string | null`
 
           The unique ID of the function tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -116968,13 +129360,21 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `strict: boolean | null`
 
-              Whether to enforce strict parameter validation. Default `true`.
+              Whether strict parameter validation is enforced for this function tool.
 
             - `type: "function"`
 
               The type of the function tool. Always `function`.
 
               - `"function"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `defer_loading?: boolean`
 
@@ -116983,6 +129383,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `description?: string | null`
 
               A description of the function. Used by the model to determine whether or not to call the function.
+
+            - `output_schema?: Record<string, unknown> | null`
+
+              A JSON schema object describing the JSON value encoded in string outputs for this function.
 
           - `FileSearchTool`
 
@@ -117039,7 +129443,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<string | number>`
+                - `value: string | number | boolean | Array<unknown>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -117049,11 +129453,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                   - `boolean`
 
-                  - `Array<string | number>`
-
-                    - `string`
-
-                    - `number`
+                  - `Array<unknown>`
 
               - `CompoundFilter`
 
@@ -117225,6 +129625,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
               The type of the MCP tool. Always `mcp`.
 
               - `"mcp"`
+
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
 
             - `allowed_tools?: Array<string> | McpToolFilter | null`
 
@@ -117436,6 +129844,22 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"code_interpreter"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
+          - `ProgrammaticToolCalling`
+
+            - `type: "programmatic_tool_calling"`
+
+              The type of the tool. Always `programmatic_tool_calling`.
+
+              - `"programmatic_tool_calling"`
+
           - `ImageGeneration`
 
             A tool that generates images using the GPT image models.
@@ -117595,6 +130019,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"shell"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `environment?: ContainerAuto | LocalEnvironment | ContainerReference | null`
 
               - `ContainerAuto`
@@ -117735,6 +130167,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"custom"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading?: boolean`
 
               Whether this tool should be deferred and discovered via tool search.
@@ -117803,15 +130243,29 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                   - `"function"`
 
+                - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                  The tool invocation context(s).
+
+                  - `"direct"`
+
+                  - `"programmatic"`
+
                 - `defer_loading?: boolean`
 
                   Whether this function should be deferred and discovered via tool search.
 
                 - `description?: string | null`
 
+                - `output_schema?: Record<string, unknown> | null`
+
+                  A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
                 - `parameters?: unknown`
 
                 - `strict?: boolean | null`
+
+                  Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
               - `CustomTool`
 
@@ -117913,6 +130367,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"apply_patch"`
 
+            - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
         - `type: "tool_search_output"`
 
           The item type. Always `tool_search_output`.
@@ -117986,6 +130448,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `CodeInterpreter`
 
             A tool that runs Python code to help generate a response to a prompt.
+
+          - `ProgrammaticToolCalling`
 
           - `ImageGeneration`
 
@@ -118327,6 +130791,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The unique ID of the shell tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
         - `environment?: LocalEnvironment | ContainerReference | null`
 
           The environment to execute the shell commands in.
@@ -118402,6 +130890,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `id?: string | null`
 
           The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `max_output_length?: number | null`
 
@@ -118497,6 +131009,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ApplyPatchCallOutput`
 
         The streamed output emitted by an apply patch tool call.
@@ -118522,6 +131058,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `id?: string | null`
 
           The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
 
         - `output?: string | null`
 
@@ -118713,6 +131273,30 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The unique ID of the custom tool call output in the OpenAI platform.
 
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              The caller type. Always `direct`.
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              The caller type. Always `program`.
+
+              - `"program"`
+
       - `ResponseCustomToolCall`
 
         A call to a custom tool created by the model.
@@ -118738,6 +131322,26 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `id?: string`
 
           The unique ID of the custom tool call in the OpenAI platform.
+
+        - `caller?: Direct | Program | null`
+
+          The execution context that produced this tool call.
+
+          - `Direct`
+
+            - `type: "direct"`
+
+              - `"direct"`
+
+          - `Program`
+
+            - `caller_id: string`
+
+              The call ID of the program item that produced this tool call.
+
+            - `type: "program"`
+
+              - `"program"`
 
         - `namespace?: string`
 
@@ -118766,6 +131370,58 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           The type of item to reference. Always `item_reference`.
 
           - `"item_reference"`
+
+      - `Program`
+
+        - `id: string`
+
+          The unique ID of this program item.
+
+        - `call_id: string`
+
+          The stable call ID of the program item.
+
+        - `code: string`
+
+          The JavaScript source executed by programmatic tool calling.
+
+        - `fingerprint: string`
+
+          Opaque program replay fingerprint that must be round-tripped.
+
+        - `type: "program"`
+
+          The item type. Always `program`.
+
+          - `"program"`
+
+      - `ProgramOutput`
+
+        - `id: string`
+
+          The unique ID of this program output item.
+
+        - `call_id: string`
+
+          The call ID of the program item.
+
+        - `result: string`
+
+          The result produced by the program item.
+
+        - `status: "completed" | "incomplete"`
+
+          The terminal status of the program output.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "program_output"`
+
+          The item type. Always `program_output`.
+
+          - `"program_output"`
 
   - `instructions?: string | null`
 
@@ -118814,16 +131470,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     - `effort?: ReasoningEffort | null`
 
-      Constrains effort on reasoning for
-      [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-      Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-      reasoning effort can result in faster responses and fewer tokens used
-      on reasoning in a response.
-
-      - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-      - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-      - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-      - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+      Constrains effort on reasoning for reasoning models. Currently supported
+      values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+      Reducing reasoning effort can result in faster responses and fewer tokens
+      used on reasoning in a response. Not all reasoning models support every
+      value. See the
+      [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+      for model-specific support.
 
       - `"none"`
 
@@ -118836,6 +131489,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `"high"`
 
       - `"xhigh"`
+
+      - `"max"`
 
     - `generate_summary?: "auto" | "concise" | "detailed" | null`
 
@@ -118850,6 +131505,20 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `"concise"`
 
       - `"detailed"`
+
+    - `mode?: (string & {}) | "standard" | "pro"`
+
+      Controls the reasoning execution mode for the request.
+
+      When returned on a response, this is the effective execution mode.
+
+      - `(string & {})`
+
+      - `"standard" | "pro"`
+
+        - `"standard"`
+
+        - `"pro"`
 
     - `summary?: "auto" | "concise" | "detailed" | null`
 
@@ -118958,7 +131627,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"high"`
 
-  - `tool_choice?: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 5 more | null`
+  - `tool_choice?: ToolChoiceOptions | ToolChoiceAllowed | ToolChoiceTypes | 6 more | null`
 
     Controls which tool the model should use, if any.
 
@@ -119098,6 +131767,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"custom"`
 
+    - `SpecificProgrammaticToolCallingParam`
+
+      - `type: "programmatic_tool_calling"`
+
+        The tool to call. Always `programmatic_tool_calling`.
+
+        - `"programmatic_tool_calling"`
+
     - `ToolChoiceApplyPatch`
 
       Forces the model to call the apply_patch tool when executing a tool call.
@@ -119151,6 +131828,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `CodeInterpreter`
 
       A tool that runs Python code to help generate a response to a prompt.
+
+    - `ProgrammaticToolCalling`
 
     - `ImageGeneration`
 

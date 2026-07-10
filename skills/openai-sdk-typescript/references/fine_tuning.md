@@ -322,6 +322,16 @@
 
               - `"input_text"`
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `OutputText`
 
             A text output from the model.
@@ -473,16 +483,13 @@
 
         - `reasoning_effort?: ReasoningEffort | null`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -495,6 +502,8 @@
           - `"high"`
 
           - `"xhigh"`
+
+          - `"max"`
 
         - `seed?: number | null`
 
@@ -805,11 +814,7 @@
 
 **post** `/fine_tuning/jobs`
 
-Creates a fine-tuning job which begins the process of creating a new model from a given dataset.
-
-Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
-
-[Learn more about fine-tuning](https://platform.openai.com/docs/guides/model-optimization)
+Create fine-tuning job
 
 ### Parameters
 
@@ -1129,6 +1134,16 @@ Response includes details of the enqueued job including job status and the name 
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `OutputText`
 
                 A text output from the model.
@@ -1280,16 +1295,13 @@ Response includes details of the enqueued job including job status and the name 
 
             - `reasoning_effort?: ReasoningEffort | null`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -1302,6 +1314,8 @@ Response includes details of the enqueued job including job status and the name 
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed?: number | null`
 
@@ -1966,6 +1980,16 @@ Response includes details of the enqueued job including job status and the name 
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `OutputText`
 
                 A text output from the model.
@@ -2117,16 +2141,13 @@ Response includes details of the enqueued job including job status and the name 
 
             - `reasoning_effort?: ReasoningEffort | null`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -2139,6 +2160,8 @@ Response includes details of the enqueued job including job status and the name 
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed?: number | null`
 
@@ -2678,7 +2701,7 @@ main();
 
 **get** `/fine_tuning/jobs`
 
-List your organization's fine-tuning jobs
+List fine-tuning jobs
 
 ### Parameters
 
@@ -3072,6 +3095,16 @@ List your organization's fine-tuning jobs
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `OutputText`
 
                 A text output from the model.
@@ -3223,16 +3256,13 @@ List your organization's fine-tuning jobs
 
             - `reasoning_effort?: ReasoningEffort | null`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -3245,6 +3275,8 @@ List your organization's fine-tuning jobs
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed?: number | null`
 
@@ -3666,9 +3698,7 @@ main();
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}`
 
-Get info about a fine-tuning job.
-
-[Learn more about fine-tuning](https://platform.openai.com/docs/guides/model-optimization)
+Retrieve fine-tuning job
 
 ### Parameters
 
@@ -4050,6 +4080,16 @@ Get info about a fine-tuning job.
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `OutputText`
 
                 A text output from the model.
@@ -4201,16 +4241,13 @@ Get info about a fine-tuning job.
 
             - `reasoning_effort?: ReasoningEffort | null`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -4223,6 +4260,8 @@ Get info about a fine-tuning job.
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed?: number | null`
 
@@ -4647,7 +4686,7 @@ main();
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}/events`
 
-Get status updates for a fine-tuning job.
+List fine-tuning events
 
 ### Parameters
 
@@ -4799,7 +4838,7 @@ main();
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/cancel`
 
-Immediately cancel a fine-tune job.
+Cancel fine-tuning
 
 ### Parameters
 
@@ -5181,6 +5220,16 @@ Immediately cancel a fine-tune job.
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `OutputText`
 
                 A text output from the model.
@@ -5332,16 +5381,13 @@ Immediately cancel a fine-tune job.
 
             - `reasoning_effort?: ReasoningEffort | null`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -5354,6 +5400,8 @@ Immediately cancel a fine-tune job.
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed?: number | null`
 
@@ -5755,7 +5803,7 @@ main();
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/pause`
 
-Pause a fine-tune job.
+Pause fine-tuning
 
 ### Parameters
 
@@ -6137,6 +6185,16 @@ Pause a fine-tune job.
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `OutputText`
 
                 A text output from the model.
@@ -6288,16 +6346,13 @@ Pause a fine-tune job.
 
             - `reasoning_effort?: ReasoningEffort | null`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -6310,6 +6365,8 @@ Pause a fine-tune job.
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed?: number | null`
 
@@ -6711,7 +6768,7 @@ main();
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/resume`
 
-Resume a fine-tune job.
+Resume fine-tuning
 
 ### Parameters
 
@@ -7093,6 +7150,16 @@ Resume a fine-tune job.
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `OutputText`
 
                 A text output from the model.
@@ -7244,16 +7311,13 @@ Resume a fine-tune job.
 
             - `reasoning_effort?: ReasoningEffort | null`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -7266,6 +7330,8 @@ Resume a fine-tune job.
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed?: number | null`
 
@@ -8039,6 +8105,16 @@ main();
 
                   - `"input_text"`
 
+                - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
               - `OutputText`
 
                 A text output from the model.
@@ -8190,16 +8266,13 @@ main();
 
             - `reasoning_effort?: ReasoningEffort | null`
 
-              Constrains effort on reasoning for
-              [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-              Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-              reasoning effort can result in faster responses and fewer tokens used
-              on reasoning in a response.
-
-              - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-              - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-              - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-              - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
 
               - `"none"`
 
@@ -8212,6 +8285,8 @@ main();
               - `"high"`
 
               - `"xhigh"`
+
+              - `"max"`
 
             - `seed?: number | null`
 
@@ -8590,7 +8665,7 @@ main();
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}/checkpoints`
 
-List checkpoints for a fine-tuning job.
+List fine-tuning checkpoints
 
 ### Parameters
 
@@ -8765,9 +8840,7 @@ for await (const fineTuningJobCheckpoint of client.fineTuning.jobs.checkpoints.l
 
 **get** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
-
-Organization owners can use this endpoint to view all permissions for a fine-tuned model checkpoint.
+List checkpoint permissions
 
 ### Parameters
 
@@ -8870,9 +8943,7 @@ console.log(permission.first_id);
 
 **get** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
-
-Organization owners can use this endpoint to view all permissions for a fine-tuned model checkpoint.
+List checkpoint permissions
 
 ### Parameters
 
@@ -8966,9 +9037,7 @@ for await (const permissionListResponse of client.fineTuning.checkpoints.permiss
 
 **post** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-**NOTE:** Calling this endpoint requires an [admin API key](../admin-api-keys).
-
-This enables organization owners to share fine-tuned models with other projects in their organization.
+Create checkpoint permissions
 
 ### Parameters
 
@@ -9047,9 +9116,7 @@ for await (const permissionCreateResponse of client.fineTuning.checkpoints.permi
 
 **delete** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions/{permission_id}`
 
-**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
-
-Organization owners can use this endpoint to delete a permission for a fine-tuned model checkpoint.
+Delete checkpoint permission
 
 ### Parameters
 
@@ -9218,7 +9285,7 @@ console.log(permission.id);
 
 **post** `/fine_tuning/alpha/graders/run`
 
-Run a grader.
+Run grader
 
 ### Parameters
 
@@ -9361,6 +9428,16 @@ Run a grader.
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `OutputText`
 
@@ -9513,16 +9590,13 @@ Run a grader.
 
         - `reasoning_effort?: ReasoningEffort | null`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -9535,6 +9609,8 @@ Run a grader.
           - `"high"`
 
           - `"xhigh"`
+
+          - `"max"`
 
         - `seed?: number | null`
 
@@ -9897,7 +9973,7 @@ console.log(result);
 
 **post** `/fine_tuning/alpha/graders/validate`
 
-Validate a grader.
+Validate grader
 
 ### Parameters
 
@@ -10040,6 +10116,16 @@ Validate a grader.
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `OutputText`
 
@@ -10192,16 +10278,13 @@ Validate a grader.
 
         - `reasoning_effort?: ReasoningEffort | null`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -10214,6 +10297,8 @@ Validate a grader.
           - `"high"`
 
           - `"xhigh"`
+
+          - `"max"`
 
         - `seed?: number | null`
 
@@ -10506,6 +10591,16 @@ Validate a grader.
 
               - `"input_text"`
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `OutputText`
 
             A text output from the model.
@@ -10657,16 +10752,13 @@ Validate a grader.
 
         - `reasoning_effort?: ReasoningEffort | null`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -10679,6 +10771,8 @@ Validate a grader.
           - `"high"`
 
           - `"xhigh"`
+
+          - `"max"`
 
         - `seed?: number | null`
 
@@ -11063,6 +11157,16 @@ console.log(response.grader);
 
               - `"input_text"`
 
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `OutputText`
 
             A text output from the model.
@@ -11214,16 +11318,13 @@ console.log(response.grader);
 
         - `reasoning_effort?: ReasoningEffort | null`
 
-          Constrains effort on reasoning for
-          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-          reasoning effort can result in faster responses and fewer tokens used
-          on reasoning in a response.
-
-          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+          Constrains effort on reasoning for reasoning models. Currently supported
+          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+          Reducing reasoning effort can result in faster responses and fewer tokens
+          used on reasoning in a response. Not all reasoning models support every
+          value. See the
+          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          for model-specific support.
 
           - `"none"`
 
@@ -11236,6 +11337,8 @@ console.log(response.grader);
           - `"high"`
 
           - `"xhigh"`
+
+          - `"max"`
 
         - `seed?: number | null`
 

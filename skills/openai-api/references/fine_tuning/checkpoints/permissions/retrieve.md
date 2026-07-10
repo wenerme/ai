@@ -2,9 +2,7 @@
 
 **get** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
-
-Organization owners can use this endpoint to view all permissions for a fine-tuned model checkpoint.
+List checkpoint permissions
 
 ### Path Parameters
 

@@ -4,33 +4,16 @@
 
 **post** `/chat/completions`
 
-**Starting a new project?** We recommend trying [Responses](/docs/api-reference/responses)
-to take advantage of the latest OpenAI platform features. Compare
-[Chat Completions with Responses](/docs/guides/responses-vs-chat-completions?api-mode=responses).
-
----
-
-Creates a model response for the given chat conversation. Learn more in the
-[text generation](/docs/guides/text-generation), [vision](/docs/guides/vision),
-and [audio](/docs/guides/audio) guides.
-
-Parameter support can differ depending on the model used to generate the
-response, particularly for newer reasoning models. Parameters that are only
-supported for reasoning models are noted below. For the current state of
-unsupported parameters in reasoning models,
-[refer to the reasoning guide](/docs/guides/reasoning).
-
-Returns a chat completion object, or a streamed sequence of chat completion
-chunk objects if the request is streamed.
+Create chat completion
 
 ### Body Parameters
 
 - `messages: array of ChatCompletionMessageParam`
 
   A list of messages comprising the conversation so far. Depending on the
-  [model](/docs/models) you use, different message types (modalities) are
-  supported, like [text](/docs/guides/text-generation),
-  [images](/docs/guides/vision), and [audio](/docs/guides/audio).
+  [model](https://platform.openai.com/docs/models) you use, different message types (modalities) are
+  supported, like [text](https://platform.openai.com/docs/guides/text-generation),
+  [images](https://platform.openai.com/docs/guides/vision), and [audio](https://platform.openai.com/docs/guides/audio).
 
   - `ChatCompletionDeveloperMessageParam object { content, role, name }`
 
@@ -59,6 +42,16 @@ chunk objects if the request is streamed.
           The type of the content part.
 
           - `"text"`
+
+        - `prompt_cache_breakpoint: optional object { mode }`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
     - `role: "developer"`
 
@@ -96,6 +89,10 @@ chunk objects if the request is streamed.
 
           The type of the content part.
 
+        - `prompt_cache_breakpoint: optional object { mode }`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
     - `role: "system"`
 
       The role of the messages author, in this case `system`.
@@ -121,11 +118,11 @@ chunk objects if the request is streamed.
 
       - `ArrayOfContentParts = array of ChatCompletionContentPart`
 
-        An array of content parts with a defined type. Supported options differ based on the [model](/docs/models) being used to generate the response. Can contain text, image, or audio inputs.
+        An array of content parts with a defined type. Supported options differ based on the [model](https://platform.openai.com/docs/models) being used to generate the response. Can contain text, image, or audio inputs.
 
-        - `ChatCompletionContentPartText object { text, type }`
+        - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-          Learn about [text inputs](/docs/guides/text-generation).
+          Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
           - `text: string`
 
@@ -135,9 +132,13 @@ chunk objects if the request is streamed.
 
             The type of the content part.
 
-        - `ChatCompletionContentPartImage object { image_url, type }`
+          - `prompt_cache_breakpoint: optional object { mode }`
 
-          Learn about [image inputs](/docs/guides/vision).
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `ChatCompletionContentPartImage object { image_url, type, prompt_cache_breakpoint }`
+
+          Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
           - `image_url: object { url, detail }`
 
@@ -147,7 +148,7 @@ chunk objects if the request is streamed.
 
             - `detail: optional "auto" or "low" or "high"`
 
-              Specifies the detail level of the image. Learn more in the [Vision guide](/docs/guides/vision#low-or-high-fidelity-image-understanding).
+              Specifies the detail level of the image. Learn more in the [Vision guide](https://platform.openai.com/docs/guides/vision#low-or-high-fidelity-image-understanding).
 
               - `"auto"`
 
@@ -161,9 +162,19 @@ chunk objects if the request is streamed.
 
             - `"image_url"`
 
-        - `ChatCompletionContentPartInputAudio object { input_audio, type }`
+          - `prompt_cache_breakpoint: optional object { mode }`
 
-          Learn about [audio inputs](/docs/guides/audio).
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ChatCompletionContentPartInputAudio object { input_audio, type, prompt_cache_breakpoint }`
+
+          Learn about [audio inputs](https://platform.openai.com/docs/guides/audio).
 
           - `input_audio: object { data, format }`
 
@@ -185,9 +196,19 @@ chunk objects if the request is streamed.
 
             - `"input_audio"`
 
-        - `FileContentPart object { file, type }`
+          - `prompt_cache_breakpoint: optional object { mode }`
 
-          Learn about [file inputs](/docs/guides/text) for text generation.
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `File object { file, type, prompt_cache_breakpoint }`
+
+          Learn about [file inputs](https://platform.openai.com/docs/guides/text) for text generation.
 
           - `file: object { file_data, file_id, filename }`
 
@@ -210,6 +231,16 @@ chunk objects if the request is streamed.
             The type of the content part. Always `file`.
 
             - `"file"`
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
     - `role: "user"`
 
@@ -234,7 +265,7 @@ chunk objects if the request is streamed.
     - `audio: optional object { id }`
 
       Data about a previous audio response from the model.
-      [Learn more](/docs/guides/audio).
+      [Learn more](https://platform.openai.com/docs/guides/audio).
 
       - `id: string`
 
@@ -252,9 +283,9 @@ chunk objects if the request is streamed.
 
         An array of content parts with a defined type. Can be one or more of type `text`, or exactly one of type `refusal`.
 
-        - `ChatCompletionContentPartText object { text, type }`
+        - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-          Learn about [text inputs](/docs/guides/text-generation).
+          Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
         - `ChatCompletionContentPartRefusal object { refusal, type }`
 
@@ -366,6 +397,10 @@ chunk objects if the request is streamed.
 
           The type of the content part.
 
+        - `prompt_cache_breakpoint: optional object { mode }`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
     - `role: "tool"`
 
       The role of the messages author, in this case `tool`.
@@ -392,21 +427,22 @@ chunk objects if the request is streamed.
 
       - `"function"`
 
-- `model: string or "gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 75 more`
+- `model: string or ChatModel`
 
   Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
   offers a wide range of models with different capabilities, performance
-  characteristics, and price points. Refer to the [model guide](/docs/models)
+  characteristics, and price points. Refer to the [model guide](https://platform.openai.com/docs/models)
   to browse and compare available models.
 
   - `string`
 
-  - `"gpt-5.4" or "gpt-5.4-mini" or "gpt-5.4-nano" or 75 more`
+  - `ChatModel = "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 78 more`
 
-    Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
-    offers a wide range of models with different capabilities, performance
-    characteristics, and price points. Refer to the [model guide](/docs/models)
-    to browse and compare available models.
+    - `"gpt-5.6-sol"`
+
+    - `"gpt-5.6-terra"`
+
+    - `"gpt-5.6-luna"`
 
     - `"gpt-5.4"`
 
@@ -567,7 +603,7 @@ chunk objects if the request is streamed.
 - `audio: optional ChatCompletionAudioParam`
 
   Parameters for audio output. Required when audio output is requested with
-  `modalities: ["audio"]`. [Learn more](/docs/guides/audio).
+  `modalities: ["audio"]`. [Learn more](https://platform.openai.com/docs/guides/audio).
 
   - `format: "wav" or "aac" or "mp3" or 3 more`
 
@@ -649,7 +685,7 @@ chunk objects if the request is streamed.
   `none` is the default when no functions are present. `auto` is the default
   if functions are present.
 
-  - `"none" or "auto"`
+  - `FunctionCallMode = "none" or "auto"`
 
     `none` means the model will not call a function and instead generates a message. `auto` means the model can pick between generating a message or calling a function.
 
@@ -681,7 +717,7 @@ chunk objects if the request is streamed.
 
   - `parameters: optional FunctionParameters`
 
-    The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+    The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
     Omitting `parameters` defines a function with an empty parameter list.
 
@@ -704,7 +740,7 @@ chunk objects if the request is streamed.
 
 - `max_completion_tokens: optional number`
 
-  An upper bound for the number of tokens that can be generated for a completion, including visible output tokens and [reasoning tokens](/docs/guides/reasoning).
+  An upper bound for the number of tokens that can be generated for a completion, including visible output tokens and [reasoning tokens](https://platform.openai.com/docs/guides/reasoning).
 
 - `max_tokens: optional number`
 
@@ -713,7 +749,7 @@ chunk objects if the request is streamed.
   [costs](https://openai.com/api/pricing/) for text generated via API.
 
   This value is now deprecated in favor of `max_completion_tokens`, and is
-  not compatible with [o-series models](/docs/guides/reasoning).
+  not compatible with [o-series models](https://platform.openai.com/docs/guides/reasoning).
 
 - `metadata: optional Metadata`
 
@@ -732,7 +768,7 @@ chunk objects if the request is streamed.
   `["text"]`
 
   The `gpt-4o-audio-preview` model can also be used to
-  [generate audio](/docs/guides/audio). To request that this model generate
+  [generate audio](https://platform.openai.com/docs/guides/audio). To request that this model generate
   both text and audio responses, you can use:
 
   `["text", "audio"]`
@@ -741,7 +777,7 @@ chunk objects if the request is streamed.
 
   - `"audio"`
 
-- `moderation: optional object { model }`
+- `moderation: optional object { model, policy }`
 
   Configuration for running moderation on the request input and generated output.
 
@@ -749,13 +785,37 @@ chunk objects if the request is streamed.
 
     The moderation model to use for moderated completions, e.g. 'omni-moderation-latest'.
 
+  - `policy: optional object { input, output }`
+
+    The policy to apply to moderated response input and output.
+
+    - `input: optional object { mode }`
+
+      The moderation policy for the response input.
+
+      - `mode: "score" or "block"`
+
+        - `"score"`
+
+        - `"block"`
+
+    - `output: optional object { mode }`
+
+      The moderation policy for the response output.
+
+      - `mode: "score" or "block"`
+
+        - `"score"`
+
+        - `"block"`
+
 - `n: optional number`
 
   How many chat completion choices to generate for each input message. Note that you will be charged based on the number of generated tokens across all of the choices. Keep `n` as `1` to minimize costs.
 
 - `parallel_tool_calls: optional boolean`
 
-  Whether to enable [parallel function calling](/docs/guides/function-calling#configuring-parallel-function-calling) during tool use.
+  Whether to enable [parallel function calling](https://platform.openai.com/docs/guides/function-calling#configuring-parallel-function-calling) during tool use.
 
 - `prediction: optional ChatCompletionPredictionContent`
 
@@ -775,7 +835,7 @@ chunk objects if the request is streamed.
 
     - `ArrayOfContentParts = array of ChatCompletionContentPartText`
 
-      An array of content parts with a defined type. Supported options differ based on the [model](/docs/models) being used to generate the response. Can contain text inputs.
+      An array of content parts with a defined type. Supported options differ based on the [model](https://platform.openai.com/docs/models) being used to generate the response. Can contain text inputs.
 
       - `text: string`
 
@@ -784,6 +844,10 @@ chunk objects if the request is streamed.
       - `type: "text"`
 
         The type of the content part.
+
+      - `prompt_cache_breakpoint: optional object { mode }`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
   - `type: "content"`
 
@@ -800,11 +864,34 @@ chunk objects if the request is streamed.
 
 - `prompt_cache_key: optional string`
 
-  Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](/docs/guides/prompt-caching).
+  Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
+
+- `prompt_cache_options: optional object { mode, ttl }`
+
+  Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](https://platform.openai.com/docs/guides/prompt-caching) for current details.
+
+  - `mode: optional "implicit" or "explicit"`
+
+    Controls whether OpenAI automatically creates an implicit cache breakpoint. Defaults to `implicit`. With `implicit`, OpenAI creates one implicit breakpoint and writes up to the latest three explicit breakpoints in the request. With `explicit`, OpenAI does not create an implicit breakpoint and writes up to the latest four explicit breakpoints. If there are no explicit breakpoints, the request does not use prompt caching.
+
+    - `"implicit"`
+
+    - `"explicit"`
+
+  - `ttl: optional "30m"`
+
+    The minimum lifetime applied to every implicit and explicit cache breakpoint written by the request. Defaults to `30m`, which is currently the only supported value. The backend may retain cache entries for longer.
+
+    - `"30m"`
 
 - `prompt_cache_retention: optional "in_memory" or "24h"`
 
-  The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](/docs/guides/prompt-caching#prompt-cache-retention).
+  Deprecated. Use `prompt_cache_options.ttl` instead.
+
+  The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+  This field expresses a maximum retention policy, while
+  `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
+  fields are independent and do not interact.
   For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
 
   For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
@@ -818,16 +905,13 @@ chunk objects if the request is streamed.
 
 - `reasoning_effort: optional ReasoningEffort`
 
-  Constrains effort on reasoning for
-  [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-  Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
-  reasoning effort can result in faster responses and fewer tokens used
-  on reasoning in a response.
-
-  - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
-  - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
-  - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
-  - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+  Constrains effort on reasoning for reasoning models. Currently supported
+  values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+  Reducing reasoning effort can result in faster responses and fewer tokens
+  used on reasoning in a response. Not all reasoning models support every
+  value. See the
+  [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+  for model-specific support.
 
   - `"none"`
 
@@ -841,6 +925,8 @@ chunk objects if the request is streamed.
 
   - `"xhigh"`
 
+  - `"max"`
+
 - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
 
   An object specifying the format that the model must output.
@@ -848,7 +934,7 @@ chunk objects if the request is streamed.
   Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
   Structured Outputs which ensures the model will match your supplied JSON
   schema. Learn more in the [Structured Outputs
-  guide](/docs/guides/structured-outputs).
+  guide](https://platform.openai.com/docs/guides/structured-outputs).
 
   Setting to `{ "type": "json_object" }` enables the older JSON mode, which
   ensures the message the model generates is valid JSON. Using `json_schema`
@@ -867,7 +953,7 @@ chunk objects if the request is streamed.
   - `ResponseFormatJSONSchema object { json_schema, type }`
 
     JSON Schema response format. Used to generate structured JSON responses.
-    Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+    Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
     - `json_schema: object { name, description, schema, strict }`
 
@@ -894,7 +980,7 @@ chunk objects if the request is streamed.
         If set to true, the model will always follow the exact schema defined
         in the `schema` field. Only a subset of JSON Schema is supported when
         `strict` is `true`. To learn more, read the [Structured Outputs
-        guide](/docs/guides/structured-outputs).
+        guide](https://platform.openai.com/docs/guides/structured-outputs).
 
     - `type: "json_schema"`
 
@@ -918,7 +1004,7 @@ chunk objects if the request is streamed.
 - `safety_identifier: optional string`
 
   A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-  The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
+  The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
 
 - `seed: optional number`
 
@@ -932,7 +1018,7 @@ chunk objects if the request is streamed.
 
   - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.
   - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
-  - If set to '[flex](/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
+  - If set to '[flex](https://platform.openai.com/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
   - When not set, the default behavior is 'auto'.
 
   When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -961,8 +1047,8 @@ chunk objects if the request is streamed.
 - `store: optional boolean`
 
   Whether or not to store the output of this chat completion request for
-  use in our [model distillation](/docs/guides/distillation) or
-  [evals](/docs/guides/evals) products.
+  use in our [model distillation](https://platform.openai.com/docs/guides/distillation) or
+  [evals](https://platform.openai.com/docs/guides/evals) products.
 
   Supports text and image inputs. Note: image inputs over 8MB will be dropped.
 
@@ -970,8 +1056,8 @@ chunk objects if the request is streamed.
 
   If set to true, the model response data will be streamed to the client
   as it is generated using [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format).
-  See the [Streaming section below](/docs/api-reference/chat/streaming)
-  for more information, along with the [streaming responses](/docs/guides/streaming-responses)
+  See the [Streaming section below](https://platform.openai.com/docs/api-reference/chat/streaming)
+  for more information, along with the [streaming responses](https://platform.openai.com/docs/guides/streaming-responses)
   guide for more information on how to handle the streaming events.
 
 - `stream_options: optional ChatCompletionStreamOptions`
@@ -1014,7 +1100,7 @@ chunk objects if the request is streamed.
 
   `none` is the default when no tools are present. `auto` is the default if tools are present.
 
-  - `ToolChoiceMode = "none" or "auto" or "required"`
+  - `Auto = "none" or "auto" or "required"`
 
     `none` means the model will not call any tool and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools.
 
@@ -1099,8 +1185,8 @@ chunk objects if the request is streamed.
 - `tools: optional array of ChatCompletionTool`
 
   A list of tools the model may call. You can provide either
-  [custom tools](/docs/guides/function-calling#custom-tools) or
-  [function tools](/docs/guides/function-calling).
+  [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools) or
+  [function tools](https://platform.openai.com/docs/guides/function-calling).
 
   - `ChatCompletionFunctionTool object { function, type }`
 
@@ -1118,13 +1204,13 @@ chunk objects if the request is streamed.
 
       - `parameters: optional FunctionParameters`
 
-        The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+        The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
         Omitting `parameters` defines a function with an empty parameter list.
 
       - `strict: optional boolean`
 
-        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
     - `type: "function"`
 
@@ -1152,7 +1238,7 @@ chunk objects if the request is streamed.
 
         The input format for the custom tool. Default is unconstrained text.
 
-        - `TextFormat object { type }`
+        - `Text object { type }`
 
           Unconstrained free-form text.
 
@@ -1162,7 +1248,7 @@ chunk objects if the request is streamed.
 
             - `"text"`
 
-        - `GrammarFormat object { grammar, type }`
+        - `Grammar object { grammar, type }`
 
           A grammar defined by the user.
 
@@ -1215,7 +1301,7 @@ chunk objects if the request is streamed.
 
   This field is being replaced by `safety_identifier` and `prompt_cache_key`. Use `prompt_cache_key` instead to maintain caching optimizations.
   A stable identifier for your end-users.
-  Used to boost cache hit rates by better bucketing similar requests and  to help OpenAI detect and prevent abuse. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
+  Used to boost cache hit rates by better bucketing similar requests and  to help OpenAI detect and prevent abuse. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
 
 - `verbosity: optional "low" or "medium" or "high"`
 
@@ -1232,7 +1318,7 @@ chunk objects if the request is streamed.
 - `web_search_options: optional object { search_context_size, user_location }`
 
   This tool searches the web for relevant results to use in a response.
-  Learn more about the [web search tool](/docs/guides/tools-web-search?api-mode=chat).
+  Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat).
 
   - `search_context_size: optional "low" or "medium" or "high"`
 
@@ -1391,7 +1477,7 @@ chunk objects if the request is streamed.
       - `annotations: optional array of object { type, url_citation }`
 
         Annotations for the message, when applicable, as when using the
-        [web search tool](/docs/guides/tools-web-search?api-mode=chat).
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat).
 
         - `type: "url_citation"`
 
@@ -1422,7 +1508,7 @@ chunk objects if the request is streamed.
       - `audio: optional ChatCompletionAudio`
 
         If the audio output modality is requested, this object contains data
-        about the audio response from the model. [Learn more](/docs/guides/audio).
+        about the audio response from the model. [Learn more](https://platform.openai.com/docs/guides/audio).
 
         - `id: string`
 
@@ -1676,7 +1762,7 @@ chunk objects if the request is streamed.
 
     - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
-    - If set to '[flex](/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
+    - If set to '[flex](https://platform.openai.com/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
     - When not set, the default behavior is 'auto'.
 
     When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -1738,13 +1824,17 @@ chunk objects if the request is streamed.
         completion tokens for purposes of billing, output, and context window
         limits.
 
-    - `prompt_tokens_details: optional object { audio_tokens, cached_tokens }`
+    - `prompt_tokens_details: optional object { audio_tokens, cache_write_tokens, cached_tokens }`
 
       Breakdown of tokens used in the prompt.
 
       - `audio_tokens: optional number`
 
         Audio input tokens present in the prompt.
+
+      - `cache_write_tokens: optional number`
+
+        The unadjusted number of prompt tokens written to cache.
 
       - `cached_tokens: optional number`
 
@@ -1921,6 +2011,7 @@ curl https://api.openai.com/v1/chat/completions \
     },
     "prompt_tokens_details": {
       "audio_tokens": 0,
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     }
   }
@@ -2391,8 +2482,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 **get** `/chat/completions`
 
-List stored Chat Completions. Only Chat Completions that have been stored
-with the `store` parameter set to `true` will be returned.
+List Chat Completions
 
 ### Query Parameters
 
@@ -2535,7 +2625,7 @@ with the `store` parameter set to `true` will be returned.
       - `annotations: optional array of object { type, url_citation }`
 
         Annotations for the message, when applicable, as when using the
-        [web search tool](/docs/guides/tools-web-search?api-mode=chat).
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat).
 
         - `type: "url_citation"`
 
@@ -2566,7 +2656,7 @@ with the `store` parameter set to `true` will be returned.
       - `audio: optional ChatCompletionAudio`
 
         If the audio output modality is requested, this object contains data
-        about the audio response from the model. [Learn more](/docs/guides/audio).
+        about the audio response from the model. [Learn more](https://platform.openai.com/docs/guides/audio).
 
         - `id: string`
 
@@ -2820,7 +2910,7 @@ with the `store` parameter set to `true` will be returned.
 
     - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
-    - If set to '[flex](/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
+    - If set to '[flex](https://platform.openai.com/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
     - When not set, the default behavior is 'auto'.
 
     When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -2882,13 +2972,17 @@ with the `store` parameter set to `true` will be returned.
         completion tokens for purposes of billing, output, and context window
         limits.
 
-    - `prompt_tokens_details: optional object { audio_tokens, cached_tokens }`
+    - `prompt_tokens_details: optional object { audio_tokens, cache_write_tokens, cached_tokens }`
 
       Breakdown of tokens used in the prompt.
 
       - `audio_tokens: optional number`
 
         Audio input tokens present in the prompt.
+
+      - `cache_write_tokens: optional number`
+
+        The unadjusted number of prompt tokens written to cache.
 
       - `cached_tokens: optional number`
 
@@ -3069,6 +3163,7 @@ curl https://api.openai.com/v1/chat/completions \
         },
         "prompt_tokens_details": {
           "audio_tokens": 0,
+          "cache_write_tokens": 0,
           "cached_tokens": 0
         }
       }
@@ -3143,8 +3238,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 **get** `/chat/completions/{completion_id}`
 
-Get a stored chat completion. Only Chat Completions that have been created
-with the `store` parameter set to `true` will be returned.
+Get chat completion
 
 ### Path Parameters
 
@@ -3263,7 +3357,7 @@ with the `store` parameter set to `true` will be returned.
       - `annotations: optional array of object { type, url_citation }`
 
         Annotations for the message, when applicable, as when using the
-        [web search tool](/docs/guides/tools-web-search?api-mode=chat).
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat).
 
         - `type: "url_citation"`
 
@@ -3294,7 +3388,7 @@ with the `store` parameter set to `true` will be returned.
       - `audio: optional ChatCompletionAudio`
 
         If the audio output modality is requested, this object contains data
-        about the audio response from the model. [Learn more](/docs/guides/audio).
+        about the audio response from the model. [Learn more](https://platform.openai.com/docs/guides/audio).
 
         - `id: string`
 
@@ -3548,7 +3642,7 @@ with the `store` parameter set to `true` will be returned.
 
     - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
-    - If set to '[flex](/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
+    - If set to '[flex](https://platform.openai.com/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
     - When not set, the default behavior is 'auto'.
 
     When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -3610,13 +3704,17 @@ with the `store` parameter set to `true` will be returned.
         completion tokens for purposes of billing, output, and context window
         limits.
 
-    - `prompt_tokens_details: optional object { audio_tokens, cached_tokens }`
+    - `prompt_tokens_details: optional object { audio_tokens, cache_write_tokens, cached_tokens }`
 
       Breakdown of tokens used in the prompt.
 
       - `audio_tokens: optional number`
 
         Audio input tokens present in the prompt.
+
+      - `cache_write_tokens: optional number`
+
+        The unadjusted number of prompt tokens written to cache.
 
       - `cached_tokens: optional number`
 
@@ -3777,6 +3875,7 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
     },
     "prompt_tokens_details": {
       "audio_tokens": 0,
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     }
   }
@@ -3837,9 +3936,7 @@ curl https://api.openai.com/v1/chat/completions/chatcmpl-abc123 \
 
 **post** `/chat/completions/{completion_id}`
 
-Modify a stored chat completion. Only Chat Completions that have been
-created with the `store` parameter set to `true` can be modified. Currently,
-the only supported modification is to update the `metadata` field.
+Update chat completion
 
 ### Path Parameters
 
@@ -3969,7 +4066,7 @@ the only supported modification is to update the `metadata` field.
       - `annotations: optional array of object { type, url_citation }`
 
         Annotations for the message, when applicable, as when using the
-        [web search tool](/docs/guides/tools-web-search?api-mode=chat).
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat).
 
         - `type: "url_citation"`
 
@@ -4000,7 +4097,7 @@ the only supported modification is to update the `metadata` field.
       - `audio: optional ChatCompletionAudio`
 
         If the audio output modality is requested, this object contains data
-        about the audio response from the model. [Learn more](/docs/guides/audio).
+        about the audio response from the model. [Learn more](https://platform.openai.com/docs/guides/audio).
 
         - `id: string`
 
@@ -4254,7 +4351,7 @@ the only supported modification is to update the `metadata` field.
 
     - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
-    - If set to '[flex](/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
+    - If set to '[flex](https://platform.openai.com/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
     - When not set, the default behavior is 'auto'.
 
     When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -4316,13 +4413,17 @@ the only supported modification is to update the `metadata` field.
         completion tokens for purposes of billing, output, and context window
         limits.
 
-    - `prompt_tokens_details: optional object { audio_tokens, cached_tokens }`
+    - `prompt_tokens_details: optional object { audio_tokens, cache_write_tokens, cached_tokens }`
 
       Breakdown of tokens used in the prompt.
 
       - `audio_tokens: optional number`
 
         Audio input tokens present in the prompt.
+
+      - `cache_write_tokens: optional number`
+
+        The unadjusted number of prompt tokens written to cache.
 
       - `cached_tokens: optional number`
 
@@ -4489,6 +4590,7 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
     },
     "prompt_tokens_details": {
       "audio_tokens": 0,
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     }
   }
@@ -4552,8 +4654,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
 **delete** `/chat/completions/{completion_id}`
 
-Delete a stored chat completion. Only Chat Completions that have been
-created with the `store` parameter set to `true` can be deleted.
+Delete chat completion
 
 ### Path Parameters
 
@@ -4728,7 +4829,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
       - `annotations: optional array of object { type, url_citation }`
 
         Annotations for the message, when applicable, as when using the
-        [web search tool](/docs/guides/tools-web-search?api-mode=chat).
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat).
 
         - `type: "url_citation"`
 
@@ -4759,7 +4860,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
       - `audio: optional ChatCompletionAudio`
 
         If the audio output modality is requested, this object contains data
-        about the audio response from the model. [Learn more](/docs/guides/audio).
+        about the audio response from the model. [Learn more](https://platform.openai.com/docs/guides/audio).
 
         - `id: string`
 
@@ -5013,7 +5114,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
-    - If set to '[flex](/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
+    - If set to '[flex](https://platform.openai.com/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
     - When not set, the default behavior is 'auto'.
 
     When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -5075,13 +5176,17 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
         completion tokens for purposes of billing, output, and context window
         limits.
 
-    - `prompt_tokens_details: optional object { audio_tokens, cached_tokens }`
+    - `prompt_tokens_details: optional object { audio_tokens, cache_write_tokens, cached_tokens }`
 
       Breakdown of tokens used in the prompt.
 
       - `audio_tokens: optional number`
 
         Audio input tokens present in the prompt.
+
+      - `cache_write_tokens: optional number`
+
+        The unadjusted number of prompt tokens written to cache.
 
       - `cached_tokens: optional number`
 
@@ -5144,7 +5249,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
   - `audio: optional object { id }`
 
     Data about a previous audio response from the model.
-    [Learn more](/docs/guides/audio).
+    [Learn more](https://platform.openai.com/docs/guides/audio).
 
     - `id: string`
 
@@ -5162,9 +5267,9 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       An array of content parts with a defined type. Can be one or more of type `text`, or exactly one of type `refusal`.
 
-      - `ChatCompletionContentPartText object { text, type }`
+      - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-        Learn about [text inputs](/docs/guides/text-generation).
+        Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
         - `text: string`
 
@@ -5175,6 +5280,16 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
           The type of the content part.
 
           - `"text"`
+
+        - `prompt_cache_breakpoint: optional object { mode }`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
       - `ChatCompletionContentPartRefusal object { refusal, type }`
 
@@ -5269,7 +5384,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 - `ChatCompletionAudio object { id, data, expires_at, transcript }`
 
   If the audio output modality is requested, this object contains data
-  about the audio response from the model. [Learn more](/docs/guides/audio).
+  about the audio response from the model. [Learn more](https://platform.openai.com/docs/guides/audio).
 
   - `id: string`
 
@@ -5295,7 +5410,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 - `ChatCompletionAudioParam object { format, voice }`
 
   Parameters for audio output. Required when audio output is requested with
-  `modalities: ["audio"]`. [Learn more](/docs/guides/audio).
+  `modalities: ["audio"]`. [Learn more](https://platform.openai.com/docs/guides/audio).
 
   - `format: "wav" or "aac" or "mp3" or 3 more`
 
@@ -5359,7 +5474,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
   Represents a streamed chunk of a chat completion response returned
   by the model, based on the provided input.
-  [Learn more](/docs/guides/streaming-responses).
+  [Learn more](https://platform.openai.com/docs/guides/streaming-responses).
 
   - `id: string`
 
@@ -5674,7 +5789,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
-    - If set to '[flex](/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
+    - If set to '[flex](https://platform.openai.com/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
     - When not set, the default behavior is 'auto'.
 
     When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -5742,7 +5857,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
         completion tokens for purposes of billing, output, and context window
         limits.
 
-    - `prompt_tokens_details: optional object { audio_tokens, cached_tokens }`
+    - `prompt_tokens_details: optional object { audio_tokens, cache_write_tokens, cached_tokens }`
 
       Breakdown of tokens used in the prompt.
 
@@ -5750,19 +5865,23 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         Audio input tokens present in the prompt.
 
+      - `cache_write_tokens: optional number`
+
+        The unadjusted number of prompt tokens written to cache.
+
       - `cached_tokens: optional number`
 
         Cached tokens present in the prompt.
 
 ### Chat Completion Content Part
 
-- `ChatCompletionContentPart = ChatCompletionContentPartText or ChatCompletionContentPartImage or ChatCompletionContentPartInputAudio or object { file, type }`
+- `ChatCompletionContentPart = ChatCompletionContentPartText or ChatCompletionContentPartImage or ChatCompletionContentPartInputAudio or object { file, type, prompt_cache_breakpoint }`
 
-  Learn about [text inputs](/docs/guides/text-generation).
+  Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
-  - `ChatCompletionContentPartText object { text, type }`
+  - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-    Learn about [text inputs](/docs/guides/text-generation).
+    Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
     - `text: string`
 
@@ -5774,9 +5893,19 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       - `"text"`
 
-  - `ChatCompletionContentPartImage object { image_url, type }`
+    - `prompt_cache_breakpoint: optional object { mode }`
 
-    Learn about [image inputs](/docs/guides/vision).
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
+  - `ChatCompletionContentPartImage object { image_url, type, prompt_cache_breakpoint }`
+
+    Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
     - `image_url: object { url, detail }`
 
@@ -5786,7 +5915,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       - `detail: optional "auto" or "low" or "high"`
 
-        Specifies the detail level of the image. Learn more in the [Vision guide](/docs/guides/vision#low-or-high-fidelity-image-understanding).
+        Specifies the detail level of the image. Learn more in the [Vision guide](https://platform.openai.com/docs/guides/vision#low-or-high-fidelity-image-understanding).
 
         - `"auto"`
 
@@ -5800,9 +5929,19 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       - `"image_url"`
 
-  - `ChatCompletionContentPartInputAudio object { input_audio, type }`
+    - `prompt_cache_breakpoint: optional object { mode }`
 
-    Learn about [audio inputs](/docs/guides/audio).
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
+  - `ChatCompletionContentPartInputAudio object { input_audio, type, prompt_cache_breakpoint }`
+
+    Learn about [audio inputs](https://platform.openai.com/docs/guides/audio).
 
     - `input_audio: object { data, format }`
 
@@ -5824,9 +5963,19 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       - `"input_audio"`
 
-  - `FileContentPart object { file, type }`
+    - `prompt_cache_breakpoint: optional object { mode }`
 
-    Learn about [file inputs](/docs/guides/text) for text generation.
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
+  - `File object { file, type, prompt_cache_breakpoint }`
+
+    Learn about [file inputs](https://platform.openai.com/docs/guides/text) for text generation.
 
     - `file: object { file_data, file_id, filename }`
 
@@ -5850,11 +5999,21 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       - `"file"`
 
+    - `prompt_cache_breakpoint: optional object { mode }`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
 ### Chat Completion Content Part Image
 
-- `ChatCompletionContentPartImage object { image_url, type }`
+- `ChatCompletionContentPartImage object { image_url, type, prompt_cache_breakpoint }`
 
-  Learn about [image inputs](/docs/guides/vision).
+  Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
   - `image_url: object { url, detail }`
 
@@ -5864,7 +6023,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     - `detail: optional "auto" or "low" or "high"`
 
-      Specifies the detail level of the image. Learn more in the [Vision guide](/docs/guides/vision#low-or-high-fidelity-image-understanding).
+      Specifies the detail level of the image. Learn more in the [Vision guide](https://platform.openai.com/docs/guides/vision#low-or-high-fidelity-image-understanding).
 
       - `"auto"`
 
@@ -5878,11 +6037,21 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     - `"image_url"`
 
+  - `prompt_cache_breakpoint: optional object { mode }`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
+
 ### Chat Completion Content Part Input Audio
 
-- `ChatCompletionContentPartInputAudio object { input_audio, type }`
+- `ChatCompletionContentPartInputAudio object { input_audio, type, prompt_cache_breakpoint }`
 
-  Learn about [audio inputs](/docs/guides/audio).
+  Learn about [audio inputs](https://platform.openai.com/docs/guides/audio).
 
   - `input_audio: object { data, format }`
 
@@ -5904,6 +6073,16 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     - `"input_audio"`
 
+  - `prompt_cache_breakpoint: optional object { mode }`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
+
 ### Chat Completion Content Part Refusal
 
 - `ChatCompletionContentPartRefusal object { refusal, type }`
@@ -5920,9 +6099,9 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
 ### Chat Completion Content Part Text
 
-- `ChatCompletionContentPartText object { text, type }`
+- `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-  Learn about [text inputs](/docs/guides/text-generation).
+  Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
   - `text: string`
 
@@ -5933,6 +6112,16 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
     The type of the content part.
 
     - `"text"`
+
+  - `prompt_cache_breakpoint: optional object { mode }`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
 
 ### Chat Completion Custom Tool
 
@@ -5956,7 +6145,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       The input format for the custom tool. Default is unconstrained text.
 
-      - `TextFormat object { type }`
+      - `Text object { type }`
 
         Unconstrained free-form text.
 
@@ -5966,7 +6155,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           - `"text"`
 
-      - `GrammarFormat object { grammar, type }`
+      - `Grammar object { grammar, type }`
 
         A grammar defined by the user.
 
@@ -6046,6 +6235,16 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         - `"text"`
 
+      - `prompt_cache_breakpoint: optional object { mode }`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
   - `role: "developer"`
 
     The role of the messages author, in this case `developer`.
@@ -6102,13 +6301,13 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     - `parameters: optional FunctionParameters`
 
-      The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+      The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
       Omitting `parameters` defines a function with an empty parameter list.
 
     - `strict: optional boolean`
 
-      Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+      Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
   - `type: "function"`
 
@@ -6139,7 +6338,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
   - `annotations: optional array of object { type, url_citation }`
 
     Annotations for the message, when applicable, as when using the
-    [web search tool](/docs/guides/tools-web-search?api-mode=chat).
+    [web search tool](https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat).
 
     - `type: "url_citation"`
 
@@ -6170,7 +6369,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
   - `audio: optional ChatCompletionAudio`
 
     If the audio output modality is requested, this object contains data
-    about the audio response from the model. [Learn more](/docs/guides/audio).
+    about the audio response from the model. [Learn more](https://platform.openai.com/docs/guides/audio).
 
     - `id: string`
 
@@ -6351,6 +6550,16 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           - `"text"`
 
+        - `prompt_cache_breakpoint: optional object { mode }`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
     - `role: "developer"`
 
       The role of the messages author, in this case `developer`.
@@ -6387,6 +6596,10 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           The type of the content part.
 
+        - `prompt_cache_breakpoint: optional object { mode }`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
     - `role: "system"`
 
       The role of the messages author, in this case `system`.
@@ -6412,11 +6625,11 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       - `ArrayOfContentParts = array of ChatCompletionContentPart`
 
-        An array of content parts with a defined type. Supported options differ based on the [model](/docs/models) being used to generate the response. Can contain text, image, or audio inputs.
+        An array of content parts with a defined type. Supported options differ based on the [model](https://platform.openai.com/docs/models) being used to generate the response. Can contain text, image, or audio inputs.
 
-        - `ChatCompletionContentPartText object { text, type }`
+        - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-          Learn about [text inputs](/docs/guides/text-generation).
+          Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
           - `text: string`
 
@@ -6426,9 +6639,13 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             The type of the content part.
 
-        - `ChatCompletionContentPartImage object { image_url, type }`
+          - `prompt_cache_breakpoint: optional object { mode }`
 
-          Learn about [image inputs](/docs/guides/vision).
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `ChatCompletionContentPartImage object { image_url, type, prompt_cache_breakpoint }`
+
+          Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
           - `image_url: object { url, detail }`
 
@@ -6438,7 +6655,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             - `detail: optional "auto" or "low" or "high"`
 
-              Specifies the detail level of the image. Learn more in the [Vision guide](/docs/guides/vision#low-or-high-fidelity-image-understanding).
+              Specifies the detail level of the image. Learn more in the [Vision guide](https://platform.openai.com/docs/guides/vision#low-or-high-fidelity-image-understanding).
 
               - `"auto"`
 
@@ -6452,9 +6669,19 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             - `"image_url"`
 
-        - `ChatCompletionContentPartInputAudio object { input_audio, type }`
+          - `prompt_cache_breakpoint: optional object { mode }`
 
-          Learn about [audio inputs](/docs/guides/audio).
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ChatCompletionContentPartInputAudio object { input_audio, type, prompt_cache_breakpoint }`
+
+          Learn about [audio inputs](https://platform.openai.com/docs/guides/audio).
 
           - `input_audio: object { data, format }`
 
@@ -6476,9 +6703,19 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             - `"input_audio"`
 
-        - `FileContentPart object { file, type }`
+          - `prompt_cache_breakpoint: optional object { mode }`
 
-          Learn about [file inputs](/docs/guides/text) for text generation.
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `File object { file, type, prompt_cache_breakpoint }`
+
+          Learn about [file inputs](https://platform.openai.com/docs/guides/text) for text generation.
 
           - `file: object { file_data, file_id, filename }`
 
@@ -6501,6 +6738,16 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
             The type of the content part. Always `file`.
 
             - `"file"`
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
     - `role: "user"`
 
@@ -6525,7 +6772,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
     - `audio: optional object { id }`
 
       Data about a previous audio response from the model.
-      [Learn more](/docs/guides/audio).
+      [Learn more](https://platform.openai.com/docs/guides/audio).
 
       - `id: string`
 
@@ -6543,9 +6790,9 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         An array of content parts with a defined type. Can be one or more of type `text`, or exactly one of type `refusal`.
 
-        - `ChatCompletionContentPartText object { text, type }`
+        - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-          Learn about [text inputs](/docs/guides/text-generation).
+          Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
         - `ChatCompletionContentPartRefusal object { refusal, type }`
 
@@ -6656,6 +6903,10 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
         - `type: "text"`
 
           The type of the content part.
+
+        - `prompt_cache_breakpoint: optional object { mode }`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
     - `role: "tool"`
 
@@ -6805,7 +7056,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     - `ArrayOfContentParts = array of ChatCompletionContentPartText`
 
-      An array of content parts with a defined type. Supported options differ based on the [model](/docs/models) being used to generate the response. Can contain text inputs.
+      An array of content parts with a defined type. Supported options differ based on the [model](https://platform.openai.com/docs/models) being used to generate the response. Can contain text inputs.
 
       - `text: string`
 
@@ -6816,6 +7067,16 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
         The type of the content part.
 
         - `"text"`
+
+      - `prompt_cache_breakpoint: optional object { mode }`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
   - `type: "content"`
 
@@ -6857,9 +7118,9 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
     If a content parts array was provided, this is an array of `text` and `image_url` parts.
     Otherwise, null.
 
-    - `ChatCompletionContentPartText object { text, type }`
+    - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-      Learn about [text inputs](/docs/guides/text-generation).
+      Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
       - `text: string`
 
@@ -6871,9 +7132,19 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         - `"text"`
 
-    - `ChatCompletionContentPartImage object { image_url, type }`
+      - `prompt_cache_breakpoint: optional object { mode }`
 
-      Learn about [image inputs](/docs/guides/vision).
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
+    - `ChatCompletionContentPartImage object { image_url, type, prompt_cache_breakpoint }`
+
+      Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
       - `image_url: object { url, detail }`
 
@@ -6883,7 +7154,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         - `detail: optional "auto" or "low" or "high"`
 
-          Specifies the detail level of the image. Learn more in the [Vision guide](/docs/guides/vision#low-or-high-fidelity-image-understanding).
+          Specifies the detail level of the image. Learn more in the [Vision guide](https://platform.openai.com/docs/guides/vision#low-or-high-fidelity-image-understanding).
 
           - `"auto"`
 
@@ -6896,6 +7167,16 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
         The type of the content part.
 
         - `"image_url"`
+
+      - `prompt_cache_breakpoint: optional object { mode }`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
 ### Chat Completion Stream Options
 
@@ -6953,6 +7234,16 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
         The type of the content part.
 
         - `"text"`
+
+      - `prompt_cache_breakpoint: optional object { mode }`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
   - `role: "system"`
 
@@ -7018,13 +7309,13 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       - `parameters: optional FunctionParameters`
 
-        The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+        The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
         Omitting `parameters` defines a function with an empty parameter list.
 
       - `strict: optional boolean`
 
-        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
 
     - `type: "function"`
 
@@ -7052,7 +7343,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         The input format for the custom tool. Default is unconstrained text.
 
-        - `TextFormat object { type }`
+        - `Text object { type }`
 
           Unconstrained free-form text.
 
@@ -7062,7 +7353,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             - `"text"`
 
-        - `GrammarFormat object { grammar, type }`
+        - `Grammar object { grammar, type }`
 
           A grammar defined by the user.
 
@@ -7106,7 +7397,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
   `none` is the default when no tools are present. `auto` is the default if tools are present.
 
-  - `ToolChoiceMode = "none" or "auto" or "required"`
+  - `Auto = "none" or "auto" or "required"`
 
     `none` means the model will not call any tool and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools.
 
@@ -7214,6 +7505,16 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         - `"text"`
 
+      - `prompt_cache_breakpoint: optional object { mode }`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
   - `role: "tool"`
 
     The role of the messages author, in this case `tool`.
@@ -7241,11 +7542,11 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     - `ArrayOfContentParts = array of ChatCompletionContentPart`
 
-      An array of content parts with a defined type. Supported options differ based on the [model](/docs/models) being used to generate the response. Can contain text, image, or audio inputs.
+      An array of content parts with a defined type. Supported options differ based on the [model](https://platform.openai.com/docs/models) being used to generate the response. Can contain text, image, or audio inputs.
 
-      - `ChatCompletionContentPartText object { text, type }`
+      - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-        Learn about [text inputs](/docs/guides/text-generation).
+        Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
         - `text: string`
 
@@ -7257,9 +7558,19 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           - `"text"`
 
-      - `ChatCompletionContentPartImage object { image_url, type }`
+        - `prompt_cache_breakpoint: optional object { mode }`
 
-        Learn about [image inputs](/docs/guides/vision).
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
+      - `ChatCompletionContentPartImage object { image_url, type, prompt_cache_breakpoint }`
+
+        Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
         - `image_url: object { url, detail }`
 
@@ -7269,7 +7580,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           - `detail: optional "auto" or "low" or "high"`
 
-            Specifies the detail level of the image. Learn more in the [Vision guide](/docs/guides/vision#low-or-high-fidelity-image-understanding).
+            Specifies the detail level of the image. Learn more in the [Vision guide](https://platform.openai.com/docs/guides/vision#low-or-high-fidelity-image-understanding).
 
             - `"auto"`
 
@@ -7283,9 +7594,19 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           - `"image_url"`
 
-      - `ChatCompletionContentPartInputAudio object { input_audio, type }`
+        - `prompt_cache_breakpoint: optional object { mode }`
 
-        Learn about [audio inputs](/docs/guides/audio).
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
+      - `ChatCompletionContentPartInputAudio object { input_audio, type, prompt_cache_breakpoint }`
+
+        Learn about [audio inputs](https://platform.openai.com/docs/guides/audio).
 
         - `input_audio: object { data, format }`
 
@@ -7307,9 +7628,19 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           - `"input_audio"`
 
-      - `FileContentPart object { file, type }`
+        - `prompt_cache_breakpoint: optional object { mode }`
 
-        Learn about [file inputs](/docs/guides/text) for text generation.
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
+      - `File object { file, type, prompt_cache_breakpoint }`
+
+        Learn about [file inputs](https://platform.openai.com/docs/guides/text) for text generation.
 
         - `file: object { file_data, file_id, filename }`
 
@@ -7332,6 +7663,16 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
           The type of the content part. Always `file`.
 
           - `"file"`
+
+        - `prompt_cache_breakpoint: optional object { mode }`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
   - `role: "user"`
 
@@ -7381,9 +7722,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
 **get** `/chat/completions/{completion_id}/messages`
 
-Get the messages in a stored chat completion. Only Chat Completions that
-have been created with the `store` parameter set to `true` will be
-returned.
+Get chat messages
 
 ### Path Parameters
 
@@ -7422,9 +7761,9 @@ returned.
     If a content parts array was provided, this is an array of `text` and `image_url` parts.
     Otherwise, null.
 
-    - `ChatCompletionContentPartText object { text, type }`
+    - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-      Learn about [text inputs](/docs/guides/text-generation).
+      Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
       - `text: string`
 
@@ -7436,9 +7775,19 @@ returned.
 
         - `"text"`
 
-    - `ChatCompletionContentPartImage object { image_url, type }`
+      - `prompt_cache_breakpoint: optional object { mode }`
 
-      Learn about [image inputs](/docs/guides/vision).
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
+    - `ChatCompletionContentPartImage object { image_url, type, prompt_cache_breakpoint }`
+
+      Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
       - `image_url: object { url, detail }`
 
@@ -7448,7 +7797,7 @@ returned.
 
         - `detail: optional "auto" or "low" or "high"`
 
-          Specifies the detail level of the image. Learn more in the [Vision guide](/docs/guides/vision#low-or-high-fidelity-image-understanding).
+          Specifies the detail level of the image. Learn more in the [Vision guide](https://platform.openai.com/docs/guides/vision#low-or-high-fidelity-image-understanding).
 
           - `"auto"`
 
@@ -7461,6 +7810,16 @@ returned.
         The type of the content part.
 
         - `"image_url"`
+
+      - `prompt_cache_breakpoint: optional object { mode }`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
 - `first_id: string`
 
@@ -7531,7 +7890,10 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID/messages \
       "content_parts": [
         {
           "text": "text",
-          "type": "text"
+          "type": "text",
+          "prompt_cache_breakpoint": {
+            "mode": "explicit"
+          }
         }
       ]
     }

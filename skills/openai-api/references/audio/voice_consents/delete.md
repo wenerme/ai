@@ -2,7 +2,7 @@
 
 **delete** `/audio/voice_consents/{consent_id}`
 
-Deletes a voice consent recording.
+Delete voice consent
 
 ### Path Parameters
 

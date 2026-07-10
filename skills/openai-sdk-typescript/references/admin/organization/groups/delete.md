@@ -4,7 +4,7 @@
 
 **delete** `/organization/groups/{group_id}`
 
-Deletes a group from the organization.
+Delete group
 
 ### Parameters
 

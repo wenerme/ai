@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Cloudflare platform access

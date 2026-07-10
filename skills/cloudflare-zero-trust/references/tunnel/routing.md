@@ -43,7 +43,7 @@ The table below lists the service types you can route to a public hostname. Non-
 | SMB          | Streams SMB over a WebSocket connection. For more information, refer to [Connect to SMB with client-side cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/smb/#connect-to-smb-server-with-cloudflared-access).                                                                                                                                                    | smb://localhost:445                 |
 | HTTP\_STATUS | Responds to all requests with a fixed HTTP status code.                                                                                                                                                                                                                                                                                                                                                                        | http\_status:404                    |
 | BASTION      | Allows cloudflared to act as a jump host, providing access to any local address.                                                                                                                                                                                                                                                                                                                                               | bastion                             |
-| HELLO\_WORLD | Test server for validating your Cloudflare Tunnel connection (for [locally managed tunnels](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/configuration-file/#file-structure-for-published-applications) only).                                                                                                                                                                                 | hello\_world                        |
+| HELLO\_WORLD | Test server for validating your Cloudflare Tunnel connection (for [locally managed tunnels](https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/#file-structure-for-published-applications) only).                                                                                                                                                                                           | hello\_world                        |
 
 ## IPv6 service addresses
 
@@ -69,8 +69,8 @@ The `cfargotunnel.com` subdomain only proxies traffic for DNS records in the sam
 
 To create a DNS record for a Cloudflare Tunnel:
 
-* [ Dashboard ](#tab-panel-11360)
-* [ CLI ](#tab-panel-11361)
+* [ Dashboard ](#tab-panel-11478)
+* [ CLI ](#tab-panel-11479)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **DNS Records** for your domain.
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -94,7 +94,7 @@ This creates a CNAME record but does not proxy traffic unless the tunnel is runn
 
 Note
 
-To create DNS records using `cloudflared`, the [cert.pem](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/local-tunnel-terms/#certpem) file must be installed on your system.
+To create DNS records using `cloudflared`, the [cert.pem](https://developers.cloudflare.com/tunnel/advanced/local-management/local-tunnel-terms/#certpem) file must be installed on your system.
 
 The DNS record and the tunnel are independent. You can create DNS records that point to a tunnel that is not running. If a tunnel stops, the DNS record is not deleted — visitors will see a `1016` error.
 
@@ -199,6 +199,6 @@ Published applications inherit the Cloudflare settings for their hostname, inclu
 If you use a load balancer, settings are applied to the load balancer hostname instead.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/routing/#page","headline":"Routing · Cloudflare Docs","description":"Route traffic to private networks and services through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","WebSockets"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/routing/#page","headline":"Routing · Cloudflare Docs","description":"Route traffic to private networks and services through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","WebSockets"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/routing/","name":"Routing"}}]}
 ```

@@ -2,7 +2,7 @@
 
 **get** `/organization/usage/web_search_calls`
 
-Get web search calls usage details for the organization.
+Web search calls
 
 ### Query Parameters
 

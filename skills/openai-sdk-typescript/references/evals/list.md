@@ -4,7 +4,7 @@
 
 **get** `/evals`
 
-List evaluations for a project.
+List evals
 
 ### Parameters
 
@@ -178,6 +178,16 @@ List evaluations for a project.
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `OutputText`
 

@@ -14,6 +14,46 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-ui-kit/index.xml)
 
+## 2026-07-08
+
+**RealtimeKit React Native UI Kit 2.0.0**
+
+**Compatibility:** Requires `@cloudflare/realtimekit-react-native` (React Native Core) v2.0.0 or later
+
+This is a major breaking release. Review all breaking changes below before upgrading.
+
+**Breaking changes**
+
+* Upgraded to `@cloudflare/realtimekit-react-native` v2.0.0 and `@cloudflare/realtimekit` v2.0.0\. All [breaking changes from Web Core v2.0.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/#2026-06-18-realtimekit-web-core-200) and [React Native Core v2.0.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/) apply.
+* Removed the KeepAlive Service from the UI Kit. Background Audio/Video support for Android is now managed by `@cloudflare/realtimekit-react-native` v2.0.0\. Update your integration to use `useRealtimeKitClient({ keepAliveService })` from the Core SDK.
+* `RtkPluginMain` now uses `plugin.component` (an `HTMLElement`\-like object) instead of an iframe. This aligns with the plugin API redesign in Web Core 2.0.0.
+* RtkMoreMenu is now scrollable rather than a fixed-height container.
+
+**Features**
+
+* `Breakout Rooms` support:
+  * New `RtkBreakoutRoomsManager` component: full manager UI for creating, assigning participants, and starting or stopping breakout rooms.
+  * New `RtkBreakoutRoomsToggle` component: control-bar button to open or close the breakout rooms manager.
+* Connected meeting switching UI: `RtkMeeting` now handles `changingMeeting` events and shows a "Joining…" interstitial screen while switching between connected rooms.
+* New exported types: `ConnectedMeeting`, `ConnectedMeetingParticipant`, `ConnectedMeetingState`, `PluginIframe`.
+* New state fields in the `States` type:
+  * `activeBreakoutRoomsManager` — tracks breakout manager open/close state and room-switch destination.
+  * `activeBreakoutConfirmation` — breakout action confirmation dialog state.
+
+**Fixes**
+
+* Fixed an issue where the chat sent notification showed up when a message was edited rather than only when a new message was sent.
+* Fixed an issue where video from web participants did not update on mobile devices while screen sharing or a plugin was active.
+* Fixed an issue where the screenshare video appeared stretched or distorted in fullscreen when switching between landscape and portrait orientations.
+* Fixed an issue where host controls disappeared when the host was off stage.
+* Fixed an issue where the screenshare view shook when the device was held in landscape mode on iOS.
+* Fixed an issue where the screen orientation did not return to normal after closing a fullscreen plugin on Android.
+* Fixed an issue where the More menu could not be scrolled when the device was in landscape mode.
+* Fixed an issue where opening the More menu in landscape mode incorrectly locked the screen orientation.
+* Fixed inconsistent appearance across button and toggle controls.
+* Fixed an issue where participant video tiles occasionally showed outdated or frozen video.
+* Fixed an issue where the "Hide Result" option was not enabled by default when creating a poll.
+
 ## 2026-05-05
 
 **RealtimeKit React Native UI Kit 1.0.0**

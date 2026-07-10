@@ -2,7 +2,7 @@
 
 **get** `/organization/costs`
 
-Get costs details for the organization.
+Costs
 
 ### Query Parameters
 

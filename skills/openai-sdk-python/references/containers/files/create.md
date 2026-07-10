@@ -4,9 +4,7 @@
 
 **post** `/containers/{container_id}/files`
 
-Create a Container File
-
-You can send either a multipart/form-data request with the raw file content, or a JSON request with a file ID.
+Create container file
 
 ### Parameters
 

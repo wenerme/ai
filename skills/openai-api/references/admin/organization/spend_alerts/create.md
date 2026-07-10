@@ -2,7 +2,7 @@
 
 **post** `/organization/spend_alerts`
 
-Creates an organization spend alert.
+Create organization spend alert
 
 ### Body Parameters
 

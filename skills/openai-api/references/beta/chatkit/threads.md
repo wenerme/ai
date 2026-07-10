@@ -4,7 +4,7 @@
 
 **get** `/chatkit/threads/{thread_id}/items`
 
-List items that belong to a ChatKit thread.
+List ChatKit thread items
 
 ### Path Parameters
 
@@ -527,7 +527,7 @@ curl "https://api.openai.com/v1/chatkit/threads/cthr_abc123/items?limit=3" \
 
 **get** `/chatkit/threads/{thread_id}`
 
-Retrieve a ChatKit thread by its identifier.
+Retrieve ChatKit thread
 
 ### Path Parameters
 
@@ -676,7 +676,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
 **delete** `/chatkit/threads/{thread_id}`
 
-Delete a ChatKit thread along with its items and stored attachments.
+Delete ChatKit thread
 
 ### Path Parameters
 
@@ -721,7 +721,7 @@ curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
 
 **get** `/chatkit/threads`
 
-List ChatKit threads with optional pagination and user filters.
+List ChatKit threads
 
 ### Query Parameters
 

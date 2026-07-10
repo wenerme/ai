@@ -2,7 +2,7 @@
 
 **get** `/models/{model}`
 
-Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
+Retrieve model
 
 ### Path Parameters
 

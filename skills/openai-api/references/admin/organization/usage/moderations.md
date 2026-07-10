@@ -2,7 +2,7 @@
 
 **get** `/organization/usage/moderations`
 
-Get moderations usage details for the organization.
+Moderations
 
 ### Query Parameters
 

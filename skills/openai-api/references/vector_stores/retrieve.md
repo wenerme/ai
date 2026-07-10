@@ -2,7 +2,7 @@
 
 **get** `/vector_stores/{vector_store_id}`
 
-Retrieves a vector store.
+Retrieve vector store
 
 ### Path Parameters
 

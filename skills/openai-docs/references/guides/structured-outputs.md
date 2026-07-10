@@ -14,7 +14,7 @@ In addition to supporting JSON Schema in the REST API, the OpenAI SDKs for [Pyth
 
 ### Supported models
 
-Structured Outputs is available in our [latest large language models](https://developers.openai.com/api/docs/models), starting with GPT-4o. For new projects, start with [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5). Older models like `gpt-4-turbo` and earlier may use [JSON mode](#json-mode) instead.
+Structured Outputs is available in our [latest large language models](https://developers.openai.com/api/docs/models), starting with GPT-4o. For new projects, start with [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol). Older models like `gpt-4-turbo` and earlier may use [JSON mode](#json-mode) instead.
 
 
 

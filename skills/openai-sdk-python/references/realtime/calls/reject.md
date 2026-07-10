@@ -4,7 +4,7 @@
 
 **post** `/realtime/calls/{call_id}/reject`
 
-Decline an incoming SIP call by returning a SIP status code to the caller.
+Reject call
 
 ### Parameters
 

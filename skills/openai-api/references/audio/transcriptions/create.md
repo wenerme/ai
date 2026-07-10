@@ -2,10 +2,7 @@
 
 **post** `/audio/transcriptions`
 
-Transcribes audio into the input language.
-
-Returns a transcription object in `json`, `diarized_json`, or `verbose_json`
-format, or a stream of transcript events.
+Create transcription
 
 ### Returns
 
@@ -37,7 +34,7 @@ format, or a stream of transcript events.
 
     Token usage statistics for the request.
 
-    - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
+    - `Tokens object { input_tokens, output_tokens, total_tokens, 2 more }`
 
       Usage statistics for models billed by token usage.
 
@@ -71,7 +68,7 @@ format, or a stream of transcript events.
 
           Number of text tokens billed for this request.
 
-    - `DurationUsage object { seconds, type }`
+    - `Duration object { seconds, type }`
 
       Usage statistics for models billed by audio input duration.
 

@@ -4,10 +4,7 @@
 
 **post** `/audio/transcriptions`
 
-Transcribes audio into the input language.
-
-Returns a transcription object in `json`, `diarized_json`, or `verbose_json`
-format, or a stream of transcript events.
+Create transcription
 
 ### Returns
 
@@ -39,7 +36,7 @@ format, or a stream of transcript events.
 
     Token usage statistics for the request.
 
-    - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
+    - `Tokens object { input_tokens, output_tokens, total_tokens, 2 more }`
 
       Usage statistics for models billed by token usage.
 
@@ -73,7 +70,7 @@ format, or a stream of transcript events.
 
           Number of text tokens billed for this request.
 
-    - `DurationUsage object { seconds, type }`
+    - `Duration object { seconds, type }`
 
       Usage statistics for models billed by audio input duration.
 
@@ -663,7 +660,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     Token usage statistics for the request.
 
-    - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
+    - `Tokens object { input_tokens, output_tokens, total_tokens, 2 more }`
 
       Usage statistics for models billed by token usage.
 
@@ -697,7 +694,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
           Number of text tokens billed for this request.
 
-    - `DurationUsage object { seconds, type }`
+    - `Duration object { seconds, type }`
 
       Usage statistics for models billed by audio input duration.
 
@@ -899,11 +896,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 - `TranscriptionStreamEvent = TranscriptionTextSegmentEvent or TranscriptionTextDeltaEvent or TranscriptionTextDoneEvent`
 
-  Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
+  Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
 
   - `TranscriptionTextSegmentEvent object { id, end, speaker, 3 more }`
 
-    Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
+    Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
 
     - `id: string`
 
@@ -933,7 +930,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
   - `TranscriptionTextDeltaEvent object { delta, type, logprobs, segment_id }`
 
-    Emitted when there is an additional text delta. This is also the first event emitted when the transcription starts. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
+    Emitted when there is an additional text delta. This is also the first event emitted when the transcription starts. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
 
     - `delta: string`
 
@@ -947,7 +944,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     - `logprobs: optional array of object { token, bytes, logprob }`
 
-      The log probabilities of the delta. Only included if you [create a transcription](/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
+      The log probabilities of the delta. Only included if you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
 
       - `token: optional string`
 
@@ -967,7 +964,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
   - `TranscriptionTextDoneEvent object { text, type, logprobs, usage }`
 
-    Emitted when the transcription is complete. Contains the complete transcription text. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
+    Emitted when the transcription is complete. Contains the complete transcription text. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
 
     - `text: string`
 
@@ -981,7 +978,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     - `logprobs: optional array of object { token, bytes, logprob }`
 
-      The log probabilities of the individual tokens in the transcription. Only included if you [create a transcription](/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
+      The log probabilities of the individual tokens in the transcription. Only included if you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
 
       - `token: optional string`
 
@@ -1033,7 +1030,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 - `TranscriptionTextDeltaEvent object { delta, type, logprobs, segment_id }`
 
-  Emitted when there is an additional text delta. This is also the first event emitted when the transcription starts. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
+  Emitted when there is an additional text delta. This is also the first event emitted when the transcription starts. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
 
   - `delta: string`
 
@@ -1047,7 +1044,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
   - `logprobs: optional array of object { token, bytes, logprob }`
 
-    The log probabilities of the delta. Only included if you [create a transcription](/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
+    The log probabilities of the delta. Only included if you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
 
     - `token: optional string`
 
@@ -1069,7 +1066,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 - `TranscriptionTextDoneEvent object { text, type, logprobs, usage }`
 
-  Emitted when the transcription is complete. Contains the complete transcription text. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
+  Emitted when the transcription is complete. Contains the complete transcription text. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
 
   - `text: string`
 
@@ -1083,7 +1080,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
   - `logprobs: optional array of object { token, bytes, logprob }`
 
-    The log probabilities of the individual tokens in the transcription. Only included if you [create a transcription](/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
+    The log probabilities of the individual tokens in the transcription. Only included if you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
 
     - `token: optional string`
 
@@ -1135,7 +1132,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 - `TranscriptionTextSegmentEvent object { id, end, speaker, 3 more }`
 
-  Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
+  Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
 
   - `id: string`
 
@@ -1305,7 +1302,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Token usage statistics for the request.
 
-      - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
+      - `Tokens object { input_tokens, output_tokens, total_tokens, 2 more }`
 
         Usage statistics for models billed by token usage.
 
@@ -1339,7 +1336,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
             Number of text tokens billed for this request.
 
-      - `DurationUsage object { seconds, type }`
+      - `Duration object { seconds, type }`
 
         Usage statistics for models billed by audio input duration.
 

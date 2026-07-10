@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/certificates`
 
-List certificates for this project.
+List project certificates
 
 ### Parameters
 
@@ -115,9 +115,7 @@ for await (const certificateListResponse of client.admin.organization.projects.c
 
 **post** `/organization/projects/{project_id}/certificates/activate`
 
-Activate certificates at the project level.
-
-You can atomically and idempotently activate up to 10 certificates at a time.
+Activate certificates for project
 
 ### Parameters
 
@@ -210,8 +208,7 @@ for await (const certificateActivateResponse of client.admin.organization.projec
 
 **post** `/organization/projects/{project_id}/certificates/deactivate`
 
-Deactivate certificates at the project level. You can atomically and
-idempotently deactivate up to 10 certificates at a time.
+Deactivate certificates for project
 
 ### Parameters
 

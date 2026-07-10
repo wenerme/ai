@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/service_accounts`
 
-Returns a list of service accounts in the project.
+List project service accounts
 
 ### Parameters
 
@@ -82,9 +82,9 @@ for await (const projectServiceAccount of client.admin.organization.projects.ser
       "role": "owner"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```

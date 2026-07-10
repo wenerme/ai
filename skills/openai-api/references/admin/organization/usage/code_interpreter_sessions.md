@@ -2,7 +2,7 @@
 
 **get** `/organization/usage/code_interpreter_sessions`
 
-Get code interpreter sessions usage details for the organization.
+Code interpreter sessions
 
 ### Query Parameters
 

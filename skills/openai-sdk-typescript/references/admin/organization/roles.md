@@ -6,7 +6,7 @@
 
 **get** `/organization/roles`
 
-Lists the roles configured for the organization.
+List organization roles
 
 ### Parameters
 
@@ -108,7 +108,7 @@ for await (const role of client.admin.organization.roles.list()) {
 
 **post** `/organization/roles`
 
-Creates a custom role for the organization.
+Create organization role
 
 ### Parameters
 
@@ -201,7 +201,7 @@ console.log(role.id);
 
 **get** `/organization/roles/{role_id}`
 
-Retrieves an organization role.
+Retrieve organization role
 
 ### Parameters
 
@@ -279,7 +279,7 @@ console.log(role.id);
 
 **post** `/organization/roles/{role_id}`
 
-Updates an existing organization role.
+Update organization role
 
 ### Parameters
 
@@ -371,7 +371,7 @@ console.log(role.id);
 
 **delete** `/organization/roles/{role_id}`
 
-Deletes a custom role from the organization.
+Delete organization role
 
 ### Parameters
 

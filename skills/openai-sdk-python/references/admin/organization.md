@@ -8,7 +8,7 @@
 
 **get** `/organization/audit_logs`
 
-List user actions and configuration changes within this organization.
+List audit logs
 
 ### Parameters
 
@@ -2779,7 +2779,7 @@ print(page.id)
 
 **get** `/organization/admin_api_keys`
 
-List organization API keys
+List all organization and project API keys.
 
 ### Parameters
 
@@ -2911,7 +2911,7 @@ print(page.id)
 
 **post** `/organization/admin_api_keys`
 
-Create an organization admin API key
+Create admin API key
 
 ### Parameters
 
@@ -2975,7 +2975,7 @@ print(admin_api_key)
 
 **get** `/organization/admin_api_keys/{key_id}`
 
-Retrieve a single organization API key
+Retrieve admin API key
 
 ### Parameters
 
@@ -3088,7 +3088,7 @@ print(admin_api_key.id)
 
 **delete** `/organization/admin_api_keys/{key_id}`
 
-Delete an organization admin API key
+Delete admin API key
 
 ### Parameters
 
@@ -3227,7 +3227,7 @@ print(admin_api_key.id)
 
 **get** `/organization/usage/audio_speeches`
 
-Get audio speeches usage details for the organization.
+Audio speeches
 
 ### Parameters
 
@@ -3724,7 +3724,7 @@ print(response.data)
 
 **get** `/organization/usage/audio_transcriptions`
 
-Get audio transcriptions usage details for the organization.
+Audio transcriptions
 
 ### Parameters
 
@@ -4221,7 +4221,7 @@ print(response.data)
 
 **get** `/organization/usage/code_interpreter_sessions`
 
-Get code interpreter sessions usage details for the organization.
+Code interpreter sessions
 
 ### Parameters
 
@@ -4700,7 +4700,7 @@ print(response.data)
 
 **get** `/organization/usage/completions`
 
-Get completions usage details for the organization.
+Completions
 
 ### Parameters
 
@@ -5205,7 +5205,7 @@ print(response.data)
 
 **get** `/organization/usage/embeddings`
 
-Get embeddings usage details for the organization.
+Embeddings
 
 ### Parameters
 
@@ -5702,7 +5702,7 @@ print(response.data)
 
 **get** `/organization/usage/images`
 
-Get images usage details for the organization.
+Images
 
 ### Parameters
 
@@ -6227,7 +6227,7 @@ print(response.data)
 
 **get** `/organization/usage/moderations`
 
-Get moderations usage details for the organization.
+Moderations
 
 ### Parameters
 
@@ -6724,7 +6724,7 @@ print(response.data)
 
 **get** `/organization/usage/vector_stores`
 
-Get vector stores usage details for the organization.
+Vector stores
 
 ### Parameters
 
@@ -7203,7 +7203,7 @@ print(response.data)
 
 **get** `/organization/usage/file_search_calls`
 
-Get file search calls usage details for the organization.
+File search calls
 
 ### Parameters
 
@@ -7700,7 +7700,7 @@ print(response.data)
 
 **get** `/organization/usage/web_search_calls`
 
-Get web search calls usage details for the organization.
+Web search calls
 
 ### Parameters
 
@@ -8209,7 +8209,7 @@ print(response.data)
 
 **get** `/organization/costs`
 
-Get costs details for the organization.
+Costs
 
 ### Parameters
 
@@ -12872,7 +12872,7 @@ print(response.data)
 
 **get** `/organization/invites`
 
-Returns a list of invites in the organization.
+List invites
 
 ### Parameters
 
@@ -12999,7 +12999,7 @@ print(page.id)
 
 **post** `/organization/invites`
 
-Create an invite for a user to the organization. The invite must be accepted by the user before they have access to the organization.
+Create invite
 
 ### Parameters
 
@@ -13140,7 +13140,7 @@ print(invite.id)
 
 **get** `/organization/invites/{invite_id}`
 
-Retrieves an invite.
+Retrieve invite
 
 ### Parameters
 
@@ -13254,7 +13254,7 @@ print(invite.id)
 
 **delete** `/organization/invites/{invite_id}`
 
-Delete an invite. If the invite has already been accepted, it cannot be deleted.
+Delete invite
 
 ### Parameters
 
@@ -13389,7 +13389,7 @@ print(invite.id)
 
 **get** `/organization/users`
 
-Lists all of the users in the organization.
+List users
 
 ### Parameters
 
@@ -13576,7 +13576,7 @@ print(page.id)
 
 **get** `/organization/users/{user_id}`
 
-Retrieves a user by their identifier.
+Retrieve user
 
 ### Parameters
 
@@ -13746,7 +13746,7 @@ print(organization_user.id)
 
 **post** `/organization/users/{user_id}`
 
-Modifies a user's role in the organization.
+Modify user
 
 ### Parameters
 
@@ -13932,7 +13932,7 @@ print(organization_user.id)
 
 **delete** `/organization/users/{user_id}`
 
-Deletes a user from the organization.
+Delete user
 
 ### Parameters
 
@@ -14099,7 +14099,7 @@ print(user.id)
 
 **get** `/organization/users/{user_id}/roles`
 
-Lists the organization roles assigned to a user within the organization.
+List user organization role assignments
 
 ### Parameters
 
@@ -14238,7 +14238,7 @@ print(page.id)
 
 **post** `/organization/users/{user_id}/roles`
 
-Assigns an organization role to a user within the organization.
+Assign organization role to user
 
 ### Parameters
 
@@ -14471,7 +14471,7 @@ print(role.object)
 
 **get** `/organization/users/{user_id}/roles/{role_id}`
 
-Retrieves an organization role assigned to a user.
+Retrieve user organization role
 
 ### Parameters
 
@@ -14589,7 +14589,7 @@ print(role.id)
 
 **delete** `/organization/users/{user_id}/roles/{role_id}`
 
-Unassigns an organization role from a user within the organization.
+Unassign organization role from user
 
 ### Parameters
 
@@ -14922,7 +14922,7 @@ print(role.deleted)
 
 **get** `/organization/groups`
 
-Lists all groups in the organization.
+List groups
 
 ### Parameters
 
@@ -15011,7 +15011,7 @@ print(page.id)
 
 **post** `/organization/groups`
 
-Creates a new group in the organization.
+Create group
 
 ### Parameters
 
@@ -15082,7 +15082,7 @@ print(group.id)
 
 **get** `/organization/groups/{group_id}`
 
-Retrieves a group.
+Retrieve group
 
 ### Parameters
 
@@ -15151,7 +15151,7 @@ print(group.id)
 
 **post** `/organization/groups/{group_id}`
 
-Updates a group's information.
+Update group
 
 ### Parameters
 
@@ -15216,7 +15216,7 @@ print(group.id)
 
 **delete** `/organization/groups/{group_id}`
 
-Deletes a group from the organization.
+Delete group
 
 ### Parameters
 
@@ -15349,7 +15349,7 @@ print(group.id)
 
 **get** `/organization/groups/{group_id}/users`
 
-Lists the users assigned to a group.
+List group users
 
 ### Parameters
 
@@ -15428,7 +15428,7 @@ print(page.id)
 
 **post** `/organization/groups/{group_id}/users`
 
-Adds a user to a group.
+Add group user
 
 ### Parameters
 
@@ -15490,7 +15490,7 @@ print(user.group_id)
 
 **get** `/organization/groups/{group_id}/users/{user_id}`
 
-Retrieves a user in a group.
+Retrieve group user
 
 ### Parameters
 
@@ -15567,7 +15567,7 @@ print(user.id)
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
 
-Removes a user from a group.
+Remove group user
 
 ### Parameters
 
@@ -15714,7 +15714,7 @@ print(user.deleted)
 
 **get** `/organization/groups/{group_id}/roles`
 
-Lists the organization roles assigned to a group within the organization.
+List group organization role assignments
 
 ### Parameters
 
@@ -15853,7 +15853,7 @@ print(page.id)
 
 **post** `/organization/groups/{group_id}/roles`
 
-Assigns an organization role to a group within the organization.
+Assign organization role to group
 
 ### Parameters
 
@@ -15983,7 +15983,7 @@ print(role.group)
 
 **get** `/organization/groups/{group_id}/roles/{role_id}`
 
-Retrieves an organization role assigned to a group.
+Retrieve group organization role
 
 ### Parameters
 
@@ -16101,7 +16101,7 @@ print(role.id)
 
 **delete** `/organization/groups/{group_id}/roles/{role_id}`
 
-Unassigns an organization role from a group within the organization.
+Unassign organization role from group
 
 ### Parameters
 
@@ -16360,7 +16360,7 @@ print(role.deleted)
 
 **get** `/organization/roles`
 
-Lists the roles configured for the organization.
+List organization roles
 
 ### Parameters
 
@@ -16459,7 +16459,7 @@ print(page.id)
 
 **post** `/organization/roles`
 
-Creates a custom role for the organization.
+Create organization role
 
 ### Parameters
 
@@ -16549,7 +16549,7 @@ print(role.id)
 
 **get** `/organization/roles/{role_id}`
 
-Retrieves an organization role.
+Retrieve organization role
 
 ### Parameters
 
@@ -16628,7 +16628,7 @@ print(role.id)
 
 **post** `/organization/roles/{role_id}`
 
-Updates an existing organization role.
+Update organization role
 
 ### Parameters
 
@@ -16719,7 +16719,7 @@ print(role.id)
 
 **delete** `/organization/roles/{role_id}`
 
-Deletes a custom role from the organization.
+Delete organization role
 
 ### Parameters
 
@@ -16836,7 +16836,7 @@ print(role.id)
 
 **get** `/organization/data_retention`
 
-Retrieves organization data retention controls.
+Retrieve organization data retention
 
 ### Returns
 
@@ -16890,7 +16890,7 @@ print(organization_data_retention.object)
 
 **post** `/organization/data_retention`
 
-Updates organization data retention controls.
+Update organization data retention
 
 ### Parameters
 
@@ -16988,7 +16988,7 @@ print(organization_data_retention.object)
 
 **get** `/organization/spend_alerts`
 
-Lists organization spend alerts.
+List organization spend alerts
 
 ### Parameters
 
@@ -17109,7 +17109,7 @@ print(page.id)
 
 **post** `/organization/spend_alerts`
 
-Creates an organization spend alert.
+Create organization spend alert
 
 ### Parameters
 
@@ -17243,7 +17243,7 @@ print(organization_spend_alert.id)
 
 **get** `/organization/spend_alerts/{alert_id}`
 
-Retrieves an organization spend alert.
+Retrieve organization spend alert
 
 ### Parameters
 
@@ -17339,7 +17339,7 @@ print(organization_spend_alert.id)
 
 **post** `/organization/spend_alerts/{alert_id}`
 
-Updates an organization spend alert.
+Update organization spend alert
 
 ### Parameters
 
@@ -17476,7 +17476,7 @@ print(organization_spend_alert.id)
 
 **delete** `/organization/spend_alerts/{alert_id}`
 
-Deletes an organization spend alert.
+Delete organization spend alert
 
 ### Parameters
 
@@ -17607,7 +17607,7 @@ print(organization_spend_alert_deleted.id)
 
 **get** `/organization/certificates`
 
-List uploaded certificates for this organization.
+List organization certificates
 
 ### Parameters
 
@@ -17709,9 +17709,7 @@ print(page.id)
 
 **post** `/organization/certificates`
 
-Upload a certificate to the organization. This does **not** automatically activate the certificate.
-
-Organizations can upload up to 50 certificates.
+Upload certificate
 
 ### Parameters
 
@@ -17811,9 +17809,7 @@ print(certificate.id)
 
 **get** `/organization/certificates/{certificate_id}`
 
-Get a certificate that has been uploaded to the organization.
-
-You can get a certificate regardless of whether it is active or not.
+Get certificate
 
 ### Parameters
 
@@ -17913,7 +17909,7 @@ print(certificate.id)
 
 **post** `/organization/certificates/{certificate_id}`
 
-Modify a certificate. Note that only the name can be modified.
+Modify certificate
 
 ### Parameters
 
@@ -18011,9 +18007,7 @@ print(certificate.id)
 
 **delete** `/organization/certificates/{certificate_id}`
 
-Delete a certificate from the organization.
-
-The certificate must be inactive for the organization and all projects.
+Delete certificate
 
 ### Parameters
 
@@ -18063,9 +18057,7 @@ print(certificate.id)
 
 **post** `/organization/certificates/activate`
 
-Activate certificates at the organization level.
-
-You can atomically and idempotently activate up to 10 certificates at a time.
+Activate certificates for organization
 
 ### Parameters
 
@@ -18152,9 +18144,7 @@ print(page.id)
 
 **post** `/organization/certificates/deactivate`
 
-Deactivate certificates at the organization level.
-
-You can atomically and idempotently deactivate up to 10 certificates at a time.
+Deactivate certificates for organization
 
 ### Parameters
 
@@ -18423,7 +18413,7 @@ print(page.id)
 
 **get** `/organization/projects`
 
-Returns a list of projects.
+List projects
 
 ### Parameters
 
@@ -18517,7 +18507,7 @@ print(page.id)
 
 **post** `/organization/projects`
 
-Create a new project in the organization. Projects can be created and archived, but cannot be deleted.
+Create project
 
 ### Parameters
 
@@ -18604,7 +18594,7 @@ print(project.id)
 
 **get** `/organization/projects/{project_id}`
 
-Retrieves a project.
+Retrieve project
 
 ### Parameters
 
@@ -18681,7 +18671,7 @@ print(project.id)
 
 **post** `/organization/projects/{project_id}`
 
-Modifies a project in the organization.
+Modify project
 
 ### Parameters
 
@@ -18770,7 +18760,7 @@ print(project.id)
 
 **post** `/organization/projects/{project_id}/archive`
 
-Archives a project in the organization. Archived projects cannot be used or updated.
+Archive project
 
 ### Parameters
 
@@ -18887,7 +18877,7 @@ print(project.id)
 
 **get** `/organization/projects/{project_id}/users`
 
-Returns a list of users in the project.
+List project users
 
 ### Parameters
 
@@ -18976,7 +18966,7 @@ print(page.id)
 
 **post** `/organization/projects/{project_id}/users`
 
-Adds a user to the project. Users must already be members of the organization to be added to a project.
+Create project user
 
 ### Parameters
 
@@ -19061,7 +19051,7 @@ print(project_user.id)
 
 **get** `/organization/projects/{project_id}/users/{user_id}`
 
-Retrieves a user in the project.
+Retrieve project user
 
 ### Parameters
 
@@ -19136,7 +19126,7 @@ print(project_user.id)
 
 **post** `/organization/projects/{project_id}/users/{user_id}`
 
-Modifies a user's role in the project.
+Modify project user
 
 ### Parameters
 
@@ -19215,10 +19205,7 @@ print(project_user.id)
 
 **delete** `/organization/projects/{project_id}/users/{user_id}`
 
-Deletes a user from the project.
-
-Returns confirmation of project user deletion, or an error if the project is
-archived (archived projects have no users).
+Delete project user
 
 ### Parameters
 
@@ -19318,7 +19305,7 @@ print(user.id)
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 
-Lists the project roles assigned to a user within a project.
+List project user role assignments
 
 ### Parameters
 
@@ -19460,7 +19447,7 @@ print(page.id)
 
 **post** `/projects/{project_id}/users/{user_id}/roles`
 
-Assigns a project role to a user within a project.
+Assign project role to user
 
 ### Parameters
 
@@ -19696,7 +19683,7 @@ print(role.object)
 
 **get** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Retrieves a project role assigned to a user.
+Retrieve project user role
 
 ### Parameters
 
@@ -19817,7 +19804,7 @@ print(role.id)
 
 **delete** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Unassigns a project role from a user within a project.
+Unassign project role from user
 
 ### Parameters
 
@@ -20153,7 +20140,7 @@ print(role.deleted)
 
 **get** `/organization/projects/{project_id}/service_accounts`
 
-Returns a list of service accounts in the project.
+List project service accounts
 
 ### Parameters
 
@@ -20241,7 +20228,7 @@ print(page.id)
 
 **post** `/organization/projects/{project_id}/service_accounts`
 
-Creates a new service account in the project. This also returns an unredacted API key for the service account.
+Create project service account
 
 ### Parameters
 
@@ -20328,7 +20315,7 @@ print(service_account.id)
 
 **get** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Retrieves a service account in the project.
+Retrieve project service account
 
 ### Parameters
 
@@ -20402,7 +20389,7 @@ print(project_service_account.id)
 
 **post** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Updates a service account in the project.
+Update project service account
 
 ### Parameters
 
@@ -20488,10 +20475,7 @@ print(project_service_account.id)
 
 **delete** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Deletes a service account from the project.
-
-Returns confirmation of service account deletion, or an error if the project
-is archived (archived projects have no service accounts).
+Delete project service account
 
 ### Parameters
 
@@ -20627,7 +20611,7 @@ print(service_account.id)
 
 **get** `/organization/projects/{project_id}/api_keys`
 
-Returns a list of API keys in the project.
+List project API keys
 
 ### Parameters
 
@@ -20786,7 +20770,7 @@ print(page.id)
 
 **get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Retrieves an API key in the project.
+Retrieve project API key
 
 ### Parameters
 
@@ -20931,10 +20915,7 @@ print(project_api_key.id)
 
 **delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Deletes an API key from the project.
-
-Returns confirmation of the key deletion, or an error if the key belonged to
-a service account.
+Delete project API key
 
 ### Parameters
 
@@ -21088,7 +21069,7 @@ print(api_key.id)
 
 **get** `/organization/projects/{project_id}/rate_limits`
 
-Returns the rate limits per model for a project.
+List project rate limits
 
 ### Parameters
 
@@ -21196,7 +21177,7 @@ print(page.id)
 
 **post** `/organization/projects/{project_id}/rate_limits/{rate_limit_id}`
 
-Updates a project rate limit.
+Modify project rate limit
 
 ### Parameters
 
@@ -21358,7 +21339,7 @@ print(project_rate_limit.id)
 
 **get** `/organization/projects/{project_id}/model_permissions`
 
-Returns model permissions for a project.
+Retrieve project model permissions
 
 ### Parameters
 
@@ -21421,7 +21402,7 @@ print(project_model_permissions.model_ids)
 
 **post** `/organization/projects/{project_id}/model_permissions`
 
-Updates model permissions for a project.
+Modify project model permissions
 
 ### Parameters
 
@@ -21498,7 +21479,7 @@ print(project_model_permissions.model_ids)
 
 **delete** `/organization/projects/{project_id}/model_permissions`
 
-Deletes model permissions for a project.
+Delete project model permissions
 
 ### Parameters
 
@@ -21594,7 +21575,7 @@ print(project_model_permissions_deleted.deleted)
 
 **get** `/organization/projects/{project_id}/hosted_tool_permissions`
 
-Returns hosted tool permissions for a project.
+Retrieve project hosted tool permissions
 
 ### Parameters
 
@@ -21689,7 +21670,7 @@ print(project_hosted_tool_permissions.code_interpreter)
 
 **post** `/organization/projects/{project_id}/hosted_tool_permissions`
 
-Updates hosted tool permissions for a project.
+Modify project hosted tool permissions
 
 ### Parameters
 
@@ -21874,7 +21855,7 @@ print(project_hosted_tool_permissions.code_interpreter)
 
 **get** `/organization/projects/{project_id}/groups`
 
-Lists the groups that have access to a project.
+List project groups
 
 ### Parameters
 
@@ -21974,7 +21955,7 @@ print(page.group_id)
 
 **post** `/organization/projects/{project_id}/groups`
 
-Grants a group access to a project.
+Add project group
 
 ### Parameters
 
@@ -22060,7 +22041,7 @@ print(project_group.group_id)
 
 **get** `/organization/projects/{project_id}/groups/{group_id}`
 
-Retrieves a project's group.
+Retrieve project group
 
 ### Parameters
 
@@ -22147,7 +22128,7 @@ print(project_group.group_id)
 
 **delete** `/organization/projects/{project_id}/groups/{group_id}`
 
-Revokes a group's access to a project.
+Remove project group
 
 ### Parameters
 
@@ -22258,7 +22239,7 @@ print(group.deleted)
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 
-Lists the project roles assigned to a group within a project.
+List project group role assignments
 
 ### Parameters
 
@@ -22400,7 +22381,7 @@ print(page.id)
 
 **post** `/projects/{project_id}/groups/{group_id}/roles`
 
-Assigns a project role to a group within a project.
+Assign project role to group
 
 ### Parameters
 
@@ -22533,7 +22514,7 @@ print(role.group)
 
 **get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Retrieves a project role assigned to a group.
+Retrieve project group role
 
 ### Parameters
 
@@ -22654,7 +22635,7 @@ print(role.id)
 
 **delete** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Unassigns a project role from a group within a project.
+Unassign project role from group
 
 ### Parameters
 
@@ -22916,7 +22897,7 @@ print(role.deleted)
 
 **get** `/projects/{project_id}/roles`
 
-Lists the roles configured for a project.
+List project roles
 
 ### Parameters
 
@@ -23019,7 +23000,7 @@ print(page.id)
 
 **post** `/projects/{project_id}/roles`
 
-Creates a custom role for a project.
+Create project role
 
 ### Parameters
 
@@ -23112,7 +23093,7 @@ print(role.id)
 
 **get** `/projects/{project_id}/roles/{role_id}`
 
-Retrieves a project role.
+Retrieve project role
 
 ### Parameters
 
@@ -23194,7 +23175,7 @@ print(role.id)
 
 **post** `/projects/{project_id}/roles/{role_id}`
 
-Updates an existing project role.
+Update project role
 
 ### Parameters
 
@@ -23288,7 +23269,7 @@ print(role.id)
 
 **delete** `/projects/{project_id}/roles/{role_id}`
 
-Deletes a custom role from a project.
+Delete project role
 
 ### Parameters
 
@@ -23372,7 +23353,7 @@ print(role.id)
 
 **get** `/organization/projects/{project_id}/data_retention`
 
-Retrieves project data retention controls.
+Retrieve project data retention
 
 ### Parameters
 
@@ -23436,7 +23417,7 @@ print(project_data_retention.object)
 
 **post** `/organization/projects/{project_id}/data_retention`
 
-Updates project data retention controls.
+Update project data retention
 
 ### Parameters
 
@@ -23549,7 +23530,7 @@ print(project_data_retention.object)
 
 **get** `/organization/projects/{project_id}/spend_alerts`
 
-Lists project spend alerts.
+List project spend alerts
 
 ### Parameters
 
@@ -23674,7 +23655,7 @@ print(page.id)
 
 **post** `/organization/projects/{project_id}/spend_alerts`
 
-Creates a project spend alert.
+Create project spend alert
 
 ### Parameters
 
@@ -23811,7 +23792,7 @@ print(project_spend_alert.id)
 
 **get** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Retrieves a project spend alert.
+Retrieve project spend alert
 
 ### Parameters
 
@@ -23910,7 +23891,7 @@ print(project_spend_alert.id)
 
 **post** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Updates a project spend alert.
+Update project spend alert
 
 ### Parameters
 
@@ -24050,7 +24031,7 @@ print(project_spend_alert.id)
 
 **delete** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Deletes a project spend alert.
+Delete project spend alert
 
 ### Parameters
 
@@ -24184,7 +24165,7 @@ print(project_spend_alert_deleted.id)
 
 **get** `/organization/projects/{project_id}/certificates`
 
-List certificates for this project.
+List project certificates
 
 ### Parameters
 
@@ -24290,9 +24271,7 @@ print(page.id)
 
 **post** `/organization/projects/{project_id}/certificates/activate`
 
-Activate certificates at the project level.
-
-You can atomically and idempotently activate up to 10 certificates at a time.
+Activate certificates for project
 
 ### Parameters
 
@@ -24382,8 +24361,7 @@ print(page.id)
 
 **post** `/organization/projects/{project_id}/certificates/deactivate`
 
-Deactivate certificates at the project level. You can atomically and
-idempotently deactivate up to 10 certificates at a time.
+Deactivate certificates for project
 
 ### Parameters
 

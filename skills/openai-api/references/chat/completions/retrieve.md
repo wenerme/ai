@@ -2,8 +2,7 @@
 
 **get** `/chat/completions/{completion_id}`
 
-Get a stored chat completion. Only Chat Completions that have been created
-with the `store` parameter set to `true` will be returned.
+Get chat completion
 
 ### Path Parameters
 
@@ -122,7 +121,7 @@ with the `store` parameter set to `true` will be returned.
       - `annotations: optional array of object { type, url_citation }`
 
         Annotations for the message, when applicable, as when using the
-        [web search tool](/docs/guides/tools-web-search?api-mode=chat).
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat).
 
         - `type: "url_citation"`
 
@@ -153,7 +152,7 @@ with the `store` parameter set to `true` will be returned.
       - `audio: optional ChatCompletionAudio`
 
         If the audio output modality is requested, this object contains data
-        about the audio response from the model. [Learn more](/docs/guides/audio).
+        about the audio response from the model. [Learn more](https://platform.openai.com/docs/guides/audio).
 
         - `id: string`
 
@@ -407,7 +406,7 @@ with the `store` parameter set to `true` will be returned.
 
     - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
-    - If set to '[flex](/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
+    - If set to '[flex](https://platform.openai.com/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
     - When not set, the default behavior is 'auto'.
 
     When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -469,13 +468,17 @@ with the `store` parameter set to `true` will be returned.
         completion tokens for purposes of billing, output, and context window
         limits.
 
-    - `prompt_tokens_details: optional object { audio_tokens, cached_tokens }`
+    - `prompt_tokens_details: optional object { audio_tokens, cache_write_tokens, cached_tokens }`
 
       Breakdown of tokens used in the prompt.
 
       - `audio_tokens: optional number`
 
         Audio input tokens present in the prompt.
+
+      - `cache_write_tokens: optional number`
+
+        The unadjusted number of prompt tokens written to cache.
 
       - `cached_tokens: optional number`
 
@@ -636,6 +639,7 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
     },
     "prompt_tokens_details": {
       "audio_tokens": 0,
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     }
   }

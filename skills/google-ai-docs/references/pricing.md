@@ -308,7 +308,7 @@ queries to Google Search. You will be charged for each individual search query
 performed. Retrieved context (text or images) provided by Grounding with Google
 Search is not charged as input tokens.
 
-## Gemini 3.1 Flash Lite Image 🍌
+## Gemini 3.1 Flash Lite Image (Nano Banana 2 Lite) 🍌
 
 *`gemini-3.1-flash-lite-image`*
 

@@ -6,7 +6,7 @@
 
 **get** `/organization/data_retention`
 
-Retrieves organization data retention controls.
+Retrieve organization data retention
 
 ### Returns
 
@@ -60,7 +60,7 @@ print(organization_data_retention.object)
 
 **post** `/organization/data_retention`
 
-Updates organization data retention controls.
+Update organization data retention
 
 ### Parameters
 

@@ -4,7 +4,7 @@
 
 **get** `/evals/{eval_id}`
 
-Get an evaluation by ID.
+Get an eval
 
 ### Parameters
 
@@ -155,6 +155,16 @@ Get an evaluation by ID.
               The type of the input item. Always `input_text`.
 
               - `"input_text"`
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
           - `class InputContentOutputText: …`
 

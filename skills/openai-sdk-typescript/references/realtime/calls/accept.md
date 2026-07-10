@@ -4,8 +4,7 @@
 
 **post** `/realtime/calls/{call_id}/accept`
 
-Accept an incoming SIP call and configure the realtime session that will
-handle it.
+Accept call
 
 ### Parameters
 
@@ -311,19 +310,23 @@ handle it.
 
       - `"inf"`
 
-  - `model?: (string & {}) | "gpt-realtime" | "gpt-realtime-1.5" | "gpt-realtime-2" | 14 more`
+  - `model?: (string & {}) | "gpt-realtime" | "gpt-realtime-1.5" | "gpt-realtime-2" | 16 more`
 
     The Realtime model used for this session.
 
     - `(string & {})`
 
-    - `"gpt-realtime" | "gpt-realtime-1.5" | "gpt-realtime-2" | 14 more`
+    - `"gpt-realtime" | "gpt-realtime-1.5" | "gpt-realtime-2" | 16 more`
 
       - `"gpt-realtime"`
 
       - `"gpt-realtime-1.5"`
 
       - `"gpt-realtime-2"`
+
+      - `"gpt-realtime-2.1"`
+
+      - `"gpt-realtime-2.1-mini"`
 
       - `"gpt-realtime-2025-08-28"`
 
@@ -399,6 +402,16 @@ handle it.
 
           - `"input_text"`
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `ResponseInputImage`
 
         An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -429,6 +442,16 @@ handle it.
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `ResponseInputFile`
 
         A file input to the model.
@@ -439,9 +462,11 @@ handle it.
 
           - `"input_file"`
 
-        - `detail?: "low" | "high"`
+        - `detail?: "auto" | "low" | "high"`
 
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+          The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+          - `"auto"`
 
           - `"low"`
 
@@ -462,6 +487,16 @@ handle it.
         - `filename?: string`
 
           The name of the file to be sent to the model.
+
+        - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
     - `version?: string | null`
 
@@ -580,6 +615,14 @@ handle it.
         The type of the MCP tool. Always `mcp`.
 
         - `"mcp"`
+
+      - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
 
       - `allowed_tools?: Array<string> | McpToolFilter | null`
 

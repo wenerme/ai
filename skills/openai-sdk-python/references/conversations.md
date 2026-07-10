@@ -6,7 +6,7 @@
 
 **post** `/conversations`
 
-Create a conversation.
+Create a conversation
 
 ### Parameters
 
@@ -47,6 +47,16 @@ Create a conversation.
 
             - `"input_text"`
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ResponseInputImage: …`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -77,6 +87,16 @@ Create a conversation.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ResponseInputFile: …`
 
           A file input to the model.
@@ -87,9 +107,11 @@ Create a conversation.
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
+          - `detail: Optional[Literal["auto", "low", "high"]]`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -110,6 +132,16 @@ Create a conversation.
           - `filename: Optional[str]`
 
             The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
     - `role: Literal["user", "assistant", "system", "developer"]`
 
@@ -1070,6 +1102,26 @@ Create a conversation.
 
       The unique ID of the function tool call.
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `namespace: Optional[str]`
 
       The namespace of the function to run.
@@ -1117,6 +1169,16 @@ Create a conversation.
 
             - `"input_text"`
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ResponseInputImageContent: …`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -1147,6 +1209,16 @@ Create a conversation.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ResponseInputFileContent: …`
 
           A file input to the model.
@@ -1157,9 +1229,11 @@ Create a conversation.
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
+          - `detail: Optional[Literal["auto", "low", "high"]]`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -1181,6 +1255,16 @@ Create a conversation.
 
             The name of the file to be sent to the model.
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
     - `type: Literal["function_call_output"]`
 
       The type of the function tool call output. Always `function_call_output`.
@@ -1190,6 +1274,30 @@ Create a conversation.
     - `id: Optional[str]`
 
       The unique ID of the function tool call output. Populated when this item is returned via API.
+
+    - `caller: Optional[FunctionCallOutputCaller]`
+
+      The execution context that produced this tool call.
+
+      - `class FunctionCallOutputCallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class FunctionCallOutputCallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -1259,13 +1367,21 @@ Create a conversation.
 
         - `strict: Optional[bool]`
 
-          Whether to enforce strict parameter validation. Default `true`.
+          Whether strict parameter validation is enforced for this function tool.
 
         - `type: Literal["function"]`
 
           The type of the function tool. Always `function`.
 
           - `"function"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `defer_loading: Optional[bool]`
 
@@ -1274,6 +1390,10 @@ Create a conversation.
         - `description: Optional[str]`
 
           A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `output_schema: Optional[Dict[str, object]]`
+
+          A JSON schema object describing the JSON value encoded in string outputs for this function.
 
       - `class FileSearchTool: …`
 
@@ -1330,7 +1450,7 @@ Create a conversation.
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[Union[str, float]]]`
+            - `value: Union[str, float, bool, List[object]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1340,11 +1460,7 @@ Create a conversation.
 
               - `bool`
 
-              - `List[Union[str, float]]`
-
-                - `str`
-
-                - `float`
+              - `List[object]`
 
           - `class CompoundFilter: …`
 
@@ -1516,6 +1632,14 @@ Create a conversation.
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools: Optional[McpAllowedTools]`
 
@@ -1735,6 +1859,22 @@ Create a conversation.
 
           - `"code_interpreter"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
+      - `class ProgrammaticToolCalling: …`
+
+        - `type: Literal["programmatic_tool_calling"]`
+
+          The type of the tool. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `class ImageGeneration: …`
 
         A tool that generates images using the GPT image models.
@@ -1898,6 +2038,14 @@ Create a conversation.
 
           - `"shell"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `environment: Optional[Environment]`
 
           - `class ContainerAuto: …`
@@ -2038,6 +2186,14 @@ Create a conversation.
 
           - `"custom"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading: Optional[bool]`
 
           Whether this tool should be deferred and discovered via tool search.
@@ -2106,15 +2262,29 @@ Create a conversation.
 
               - `"function"`
 
+            - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading: Optional[bool]`
 
               Whether this function should be deferred and discovered via tool search.
 
             - `description: Optional[str]`
 
+            - `output_schema: Optional[Dict[str, object]]`
+
+              A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
             - `parameters: Optional[object]`
 
             - `strict: Optional[bool]`
+
+              Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
           - `class CustomTool: …`
 
@@ -2216,6 +2386,14 @@ Create a conversation.
 
           - `"apply_patch"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
     - `type: Literal["tool_search_output"]`
 
       The item type. Always `tool_search_output`.
@@ -2289,6 +2467,8 @@ Create a conversation.
       - `class CodeInterpreter: …`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `class ProgrammaticToolCalling: …`
 
       - `class ImageGeneration: …`
 
@@ -2630,6 +2810,30 @@ Create a conversation.
 
       The unique ID of the shell tool call. Populated when this item is returned via API.
 
+    - `caller: Optional[ShellCallCaller]`
+
+      The execution context that produced this tool call.
+
+      - `class ShellCallCallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class ShellCallCallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
     - `environment: Optional[ShellCallEnvironment]`
 
       The environment to execute the shell commands in.
@@ -2705,6 +2909,30 @@ Create a conversation.
     - `id: Optional[str]`
 
       The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+    - `caller: Optional[ShellCallOutputCaller]`
+
+      The execution context that produced this tool call.
+
+      - `class ShellCallOutputCallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class ShellCallOutputCallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `max_output_length: Optional[int]`
 
@@ -2800,6 +3028,30 @@ Create a conversation.
 
       The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+    - `caller: Optional[ApplyPatchCallCaller]`
+
+      The execution context that produced this tool call.
+
+      - `class ApplyPatchCallCallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class ApplyPatchCallCallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
   - `class ApplyPatchCallOutput: …`
 
     The streamed output emitted by an apply patch tool call.
@@ -2825,6 +3077,30 @@ Create a conversation.
     - `id: Optional[str]`
 
       The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+    - `caller: Optional[ApplyPatchCallOutputCaller]`
+
+      The execution context that produced this tool call.
+
+      - `class ApplyPatchCallOutputCallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class ApplyPatchCallOutputCallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `output: Optional[str]`
 
@@ -3020,6 +3296,30 @@ Create a conversation.
 
       The unique ID of the custom tool call output in the OpenAI platform.
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
   - `class ResponseCustomToolCall: …`
 
     A call to a custom tool created by the model.
@@ -3045,6 +3345,26 @@ Create a conversation.
     - `id: Optional[str]`
 
       The unique ID of the custom tool call in the OpenAI platform.
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
 
     - `namespace: Optional[str]`
 
@@ -3073,6 +3393,58 @@ Create a conversation.
       The type of item to reference. Always `item_reference`.
 
       - `"item_reference"`
+
+  - `class Program: …`
+
+    - `id: str`
+
+      The unique ID of this program item.
+
+    - `call_id: str`
+
+      The stable call ID of the program item.
+
+    - `code: str`
+
+      The JavaScript source executed by programmatic tool calling.
+
+    - `fingerprint: str`
+
+      Opaque program replay fingerprint that must be round-tripped.
+
+    - `type: Literal["program"]`
+
+      The item type. Always `program`.
+
+      - `"program"`
+
+  - `class ProgramOutput: …`
+
+    - `id: str`
+
+      The unique ID of this program output item.
+
+    - `call_id: str`
+
+      The call ID of the program item.
+
+    - `result: str`
+
+      The result produced by the program item.
+
+    - `status: Literal["completed", "incomplete"]`
+
+      The terminal status of the program output.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `type: Literal["program_output"]`
+
+      The item type. Always `program_output`.
+
+      - `"program_output"`
 
 - `metadata: Optional[Metadata]`
 
@@ -3162,7 +3534,7 @@ print(conversation)
 
 **get** `/conversations/{conversation_id}`
 
-Get a conversation
+Retrieve a conversation
 
 ### Parameters
 
@@ -3341,7 +3713,7 @@ print(updated)
 
 **delete** `/conversations/{conversation_id}`
 
-Delete a conversation. Items in the conversation will not be deleted.
+Delete a conversation
 
 ### Parameters
 
@@ -3438,6 +3810,16 @@ print(deleted)
 
     - `"computer_screenshot"`
 
+  - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: Literal["explicit"]`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
+
 ### Conversation
 
 - `class Conversation: …`
@@ -3512,6 +3894,16 @@ print(deleted)
         The type of the input item. Always `input_text`.
 
         - `"input_text"`
+
+      - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: Literal["explicit"]`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
     - `class ResponseOutputText: …`
 
@@ -3725,6 +4117,16 @@ print(deleted)
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+      - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: Literal["explicit"]`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
     - `class ComputerScreenshotContent: …`
 
       A screenshot of a computer.
@@ -3755,6 +4157,16 @@ print(deleted)
 
         - `"computer_screenshot"`
 
+      - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: Literal["explicit"]`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
+
     - `class ResponseInputFile: …`
 
       A file input to the model.
@@ -3765,9 +4177,11 @@ print(deleted)
 
         - `"input_file"`
 
-      - `detail: Optional[Literal["low", "high"]]`
+      - `detail: Optional[Literal["auto", "low", "high"]]`
 
-        The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+        The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+        - `"auto"`
 
         - `"low"`
 
@@ -3788,6 +4202,16 @@ print(deleted)
       - `filename: Optional[str]`
 
         The name of the file to be sent to the model.
+
+      - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: Literal["explicit"]`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
   - `role: Literal["unknown", "user", "assistant", 5 more]`
 
@@ -3869,7 +4293,7 @@ print(deleted)
 
 **post** `/conversations/{conversation_id}/items`
 
-Create items in a conversation with the given ID.
+Create items
 
 ### Parameters
 
@@ -3912,6 +4336,16 @@ Create items in a conversation with the given ID.
 
             - `"input_text"`
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ResponseInputImage: …`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -3942,6 +4376,16 @@ Create items in a conversation with the given ID.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ResponseInputFile: …`
 
           A file input to the model.
@@ -3952,9 +4396,11 @@ Create items in a conversation with the given ID.
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
+          - `detail: Optional[Literal["auto", "low", "high"]]`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -3975,6 +4421,16 @@ Create items in a conversation with the given ID.
           - `filename: Optional[str]`
 
             The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
     - `role: Literal["user", "assistant", "system", "developer"]`
 
@@ -4935,6 +5391,26 @@ Create items in a conversation with the given ID.
 
       The unique ID of the function tool call.
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `namespace: Optional[str]`
 
       The namespace of the function to run.
@@ -4982,6 +5458,16 @@ Create items in a conversation with the given ID.
 
             - `"input_text"`
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ResponseInputImageContent: …`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
@@ -5012,6 +5498,16 @@ Create items in a conversation with the given ID.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ResponseInputFileContent: …`
 
           A file input to the model.
@@ -5022,9 +5518,11 @@ Create items in a conversation with the given ID.
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
+          - `detail: Optional[Literal["auto", "low", "high"]]`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -5046,6 +5544,16 @@ Create items in a conversation with the given ID.
 
             The name of the file to be sent to the model.
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
     - `type: Literal["function_call_output"]`
 
       The type of the function tool call output. Always `function_call_output`.
@@ -5055,6 +5563,30 @@ Create items in a conversation with the given ID.
     - `id: Optional[str]`
 
       The unique ID of the function tool call output. Populated when this item is returned via API.
+
+    - `caller: Optional[FunctionCallOutputCaller]`
+
+      The execution context that produced this tool call.
+
+      - `class FunctionCallOutputCallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class FunctionCallOutputCallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -5124,13 +5656,21 @@ Create items in a conversation with the given ID.
 
         - `strict: Optional[bool]`
 
-          Whether to enforce strict parameter validation. Default `true`.
+          Whether strict parameter validation is enforced for this function tool.
 
         - `type: Literal["function"]`
 
           The type of the function tool. Always `function`.
 
           - `"function"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `defer_loading: Optional[bool]`
 
@@ -5139,6 +5679,10 @@ Create items in a conversation with the given ID.
         - `description: Optional[str]`
 
           A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `output_schema: Optional[Dict[str, object]]`
+
+          A JSON schema object describing the JSON value encoded in string outputs for this function.
 
       - `class FileSearchTool: …`
 
@@ -5195,7 +5739,7 @@ Create items in a conversation with the given ID.
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[Union[str, float]]]`
+            - `value: Union[str, float, bool, List[object]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5205,11 +5749,7 @@ Create items in a conversation with the given ID.
 
               - `bool`
 
-              - `List[Union[str, float]]`
-
-                - `str`
-
-                - `float`
+              - `List[object]`
 
           - `class CompoundFilter: …`
 
@@ -5381,6 +5921,14 @@ Create items in a conversation with the given ID.
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools: Optional[McpAllowedTools]`
 
@@ -5600,6 +6148,22 @@ Create items in a conversation with the given ID.
 
           - `"code_interpreter"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
+      - `class ProgrammaticToolCalling: …`
+
+        - `type: Literal["programmatic_tool_calling"]`
+
+          The type of the tool. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `class ImageGeneration: …`
 
         A tool that generates images using the GPT image models.
@@ -5763,6 +6327,14 @@ Create items in a conversation with the given ID.
 
           - `"shell"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `environment: Optional[Environment]`
 
           - `class ContainerAuto: …`
@@ -5903,6 +6475,14 @@ Create items in a conversation with the given ID.
 
           - `"custom"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading: Optional[bool]`
 
           Whether this tool should be deferred and discovered via tool search.
@@ -5971,15 +6551,29 @@ Create items in a conversation with the given ID.
 
               - `"function"`
 
+            - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading: Optional[bool]`
 
               Whether this function should be deferred and discovered via tool search.
 
             - `description: Optional[str]`
 
+            - `output_schema: Optional[Dict[str, object]]`
+
+              A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
             - `parameters: Optional[object]`
 
             - `strict: Optional[bool]`
+
+              Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
           - `class CustomTool: …`
 
@@ -6081,6 +6675,14 @@ Create items in a conversation with the given ID.
 
           - `"apply_patch"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
     - `type: Literal["tool_search_output"]`
 
       The item type. Always `tool_search_output`.
@@ -6154,6 +6756,8 @@ Create items in a conversation with the given ID.
       - `class CodeInterpreter: …`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `class ProgrammaticToolCalling: …`
 
       - `class ImageGeneration: …`
 
@@ -6495,6 +7099,30 @@ Create items in a conversation with the given ID.
 
       The unique ID of the shell tool call. Populated when this item is returned via API.
 
+    - `caller: Optional[ShellCallCaller]`
+
+      The execution context that produced this tool call.
+
+      - `class ShellCallCallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class ShellCallCallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
     - `environment: Optional[ShellCallEnvironment]`
 
       The environment to execute the shell commands in.
@@ -6570,6 +7198,30 @@ Create items in a conversation with the given ID.
     - `id: Optional[str]`
 
       The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+    - `caller: Optional[ShellCallOutputCaller]`
+
+      The execution context that produced this tool call.
+
+      - `class ShellCallOutputCallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class ShellCallOutputCallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `max_output_length: Optional[int]`
 
@@ -6665,6 +7317,30 @@ Create items in a conversation with the given ID.
 
       The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
+    - `caller: Optional[ApplyPatchCallCaller]`
+
+      The execution context that produced this tool call.
+
+      - `class ApplyPatchCallCallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class ApplyPatchCallCallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
   - `class ApplyPatchCallOutput: …`
 
     The streamed output emitted by an apply patch tool call.
@@ -6690,6 +7366,30 @@ Create items in a conversation with the given ID.
     - `id: Optional[str]`
 
       The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+    - `caller: Optional[ApplyPatchCallOutputCaller]`
+
+      The execution context that produced this tool call.
+
+      - `class ApplyPatchCallOutputCallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class ApplyPatchCallOutputCallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `output: Optional[str]`
 
@@ -6885,6 +7585,30 @@ Create items in a conversation with the given ID.
 
       The unique ID of the custom tool call output in the OpenAI platform.
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
   - `class ResponseCustomToolCall: …`
 
     A call to a custom tool created by the model.
@@ -6910,6 +7634,26 @@ Create items in a conversation with the given ID.
     - `id: Optional[str]`
 
       The unique ID of the custom tool call in the OpenAI platform.
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
 
     - `namespace: Optional[str]`
 
@@ -6938,6 +7682,58 @@ Create items in a conversation with the given ID.
       The type of item to reference. Always `item_reference`.
 
       - `"item_reference"`
+
+  - `class Program: …`
+
+    - `id: str`
+
+      The unique ID of this program item.
+
+    - `call_id: str`
+
+      The stable call ID of the program item.
+
+    - `code: str`
+
+      The JavaScript source executed by programmatic tool calling.
+
+    - `fingerprint: str`
+
+      Opaque program replay fingerprint that must be round-tripped.
+
+    - `type: Literal["program"]`
+
+      The item type. Always `program`.
+
+      - `"program"`
+
+  - `class ProgramOutput: …`
+
+    - `id: str`
+
+      The unique ID of this program output item.
+
+    - `call_id: str`
+
+      The call ID of the program item.
+
+    - `result: str`
+
+      The result produced by the program item.
+
+    - `status: Literal["completed", "incomplete"]`
+
+      The terminal status of the program output.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `type: Literal["program_output"]`
+
+      The item type. Always `program_output`.
+
+      - `"program_output"`
 
 - `include: Optional[List[ResponseIncludable]]`
 
@@ -6995,6 +7791,16 @@ Create items in a conversation with the given ID.
             The type of the input item. Always `input_text`.
 
             - `"input_text"`
+
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
         - `class ResponseOutputText: …`
 
@@ -7208,6 +8014,16 @@ Create items in a conversation with the given ID.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ComputerScreenshotContent: …`
 
           A screenshot of a computer.
@@ -7238,6 +8054,16 @@ Create items in a conversation with the given ID.
 
             - `"computer_screenshot"`
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ResponseInputFile: …`
 
           A file input to the model.
@@ -7248,9 +8074,11 @@ Create items in a conversation with the given ID.
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
+          - `detail: Optional[Literal["auto", "low", "high"]]`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -7271,6 +8099,16 @@ Create items in a conversation with the given ID.
           - `filename: Optional[str]`
 
             The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
       - `role: Literal["unknown", "user", "assistant", 5 more]`
 
@@ -7391,6 +8229,30 @@ Create items in a conversation with the given ID.
         The type of the function tool call output. Always `function_call_output`.
 
         - `"function_call_output"`
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `created_by: Optional[str]`
 
@@ -8184,13 +9046,21 @@ Create items in a conversation with the given ID.
 
           - `strict: Optional[bool]`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: Literal["function"]`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: Optional[bool]`
 
@@ -8199,6 +9069,10 @@ Create items in a conversation with the given ID.
           - `description: Optional[str]`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: Optional[Dict[str, object]]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `class FileSearchTool: …`
 
@@ -8255,7 +9129,7 @@ Create items in a conversation with the given ID.
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[Union[str, float]]]`
+              - `value: Union[str, float, bool, List[object]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -8265,11 +9139,7 @@ Create items in a conversation with the given ID.
 
                 - `bool`
 
-                - `List[Union[str, float]]`
-
-                  - `str`
-
-                  - `float`
+                - `List[object]`
 
             - `class CompoundFilter: …`
 
@@ -8441,6 +9311,14 @@ Create items in a conversation with the given ID.
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: Optional[McpAllowedTools]`
 
@@ -8660,6 +9538,22 @@ Create items in a conversation with the given ID.
 
             - `"code_interpreter"`
 
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `class ProgrammaticToolCalling: …`
+
+          - `type: Literal["programmatic_tool_calling"]`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `class ImageGeneration: …`
 
           A tool that generates images using the GPT image models.
@@ -8823,6 +9717,14 @@ Create items in a conversation with the given ID.
 
             - `"shell"`
 
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `environment: Optional[Environment]`
 
             - `class ContainerAuto: …`
@@ -8963,6 +9865,14 @@ Create items in a conversation with the given ID.
 
             - `"custom"`
 
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `defer_loading: Optional[bool]`
 
             Whether this tool should be deferred and discovered via tool search.
@@ -9031,15 +9941,29 @@ Create items in a conversation with the given ID.
 
                 - `"function"`
 
+              - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: Optional[bool]`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: Optional[str]`
 
+              - `output_schema: Optional[Dict[str, object]]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: Optional[object]`
 
               - `strict: Optional[bool]`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
             - `class CustomTool: …`
 
@@ -9141,6 +10065,14 @@ Create items in a conversation with the given ID.
 
             - `"apply_patch"`
 
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
       - `type: Literal["tool_search_output"]`
 
         The type of the item. Always `tool_search_output`.
@@ -9210,6 +10142,8 @@ Create items in a conversation with the given ID.
         - `class CodeInterpreter: …`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ProgrammaticToolCalling: …`
 
         - `class ImageGeneration: …`
 
@@ -9309,6 +10243,58 @@ Create items in a conversation with the given ID.
         - `"completed"`
 
         - `"incomplete"`
+
+    - `class Program: …`
+
+      - `id: str`
+
+        The unique ID of the program item.
+
+      - `call_id: str`
+
+        The stable call ID of the program item.
+
+      - `code: str`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: str`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: Literal["program"]`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `class ProgramOutput: …`
+
+      - `id: str`
+
+        The unique ID of the program output item.
+
+      - `call_id: str`
+
+        The call ID of the program item.
+
+      - `result: str`
+
+        The result produced by the program item.
+
+      - `status: Literal["completed", "incomplete"]`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Literal["program_output"]`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
 
     - `class ResponseCompactionItem: …`
 
@@ -9555,6 +10541,26 @@ Create items in a conversation with the given ID.
 
         - `"shell_call"`
 
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
+
       - `created_by: Optional[str]`
 
         The ID of the entity that created this tool call.
@@ -9634,6 +10640,26 @@ Create items in a conversation with the given ID.
         The type of the shell call output. Always `shell_call_output`.
 
         - `"shell_call_output"`
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
 
       - `created_by: Optional[str]`
 
@@ -9719,6 +10745,26 @@ Create items in a conversation with the given ID.
 
         - `"apply_patch_call"`
 
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
+
       - `created_by: Optional[str]`
 
         The ID of the entity that created this tool call.
@@ -9748,6 +10794,26 @@ Create items in a conversation with the given ID.
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
 
       - `created_by: Optional[str]`
 
@@ -9930,6 +10996,26 @@ Create items in a conversation with the given ID.
 
         The unique ID of the custom tool call in the OpenAI platform.
 
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
+
       - `namespace: Optional[str]`
 
         The namespace of the custom tool being called.
@@ -9976,6 +11062,30 @@ Create items in a conversation with the given ID.
       - `id: Optional[str]`
 
         The unique ID of the custom tool call output in the OpenAI platform.
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
   - `first_id: str`
 
@@ -10025,7 +11135,10 @@ print(conversation_item_list.first_id)
       "content": [
         {
           "text": "text",
-          "type": "input_text"
+          "type": "input_text",
+          "prompt_cache_breakpoint": {
+            "mode": "explicit"
+          }
         }
       ],
       "role": "unknown",
@@ -10102,7 +11215,7 @@ print(items.data)
 
 **get** `/conversations/{conversation_id}/items`
 
-List all items for a conversation with the given ID.
+List items
 
 ### Parameters
 
@@ -10188,6 +11301,16 @@ List all items for a conversation with the given ID.
 
           - `"input_text"`
 
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `class ResponseOutputText: …`
 
         A text output from the model.
@@ -10400,6 +11523,16 @@ List all items for a conversation with the given ID.
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `class ComputerScreenshotContent: …`
 
         A screenshot of a computer.
@@ -10430,6 +11563,16 @@ List all items for a conversation with the given ID.
 
           - `"computer_screenshot"`
 
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `class ResponseInputFile: …`
 
         A file input to the model.
@@ -10440,9 +11583,11 @@ List all items for a conversation with the given ID.
 
           - `"input_file"`
 
-        - `detail: Optional[Literal["low", "high"]]`
+        - `detail: Optional[Literal["auto", "low", "high"]]`
 
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+          The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+          - `"auto"`
 
           - `"low"`
 
@@ -10463,6 +11608,16 @@ List all items for a conversation with the given ID.
         - `filename: Optional[str]`
 
           The name of the file to be sent to the model.
+
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
     - `role: Literal["unknown", "user", "assistant", 5 more]`
 
@@ -10583,6 +11738,30 @@ List all items for a conversation with the given ID.
       The type of the function tool call output. Always `function_call_output`.
 
       - `"function_call_output"`
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `created_by: Optional[str]`
 
@@ -11376,13 +12555,21 @@ List all items for a conversation with the given ID.
 
         - `strict: Optional[bool]`
 
-          Whether to enforce strict parameter validation. Default `true`.
+          Whether strict parameter validation is enforced for this function tool.
 
         - `type: Literal["function"]`
 
           The type of the function tool. Always `function`.
 
           - `"function"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `defer_loading: Optional[bool]`
 
@@ -11391,6 +12578,10 @@ List all items for a conversation with the given ID.
         - `description: Optional[str]`
 
           A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `output_schema: Optional[Dict[str, object]]`
+
+          A JSON schema object describing the JSON value encoded in string outputs for this function.
 
       - `class FileSearchTool: …`
 
@@ -11447,7 +12638,7 @@ List all items for a conversation with the given ID.
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[Union[str, float]]]`
+            - `value: Union[str, float, bool, List[object]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -11457,11 +12648,7 @@ List all items for a conversation with the given ID.
 
               - `bool`
 
-              - `List[Union[str, float]]`
-
-                - `str`
-
-                - `float`
+              - `List[object]`
 
           - `class CompoundFilter: …`
 
@@ -11633,6 +12820,14 @@ List all items for a conversation with the given ID.
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools: Optional[McpAllowedTools]`
 
@@ -11852,6 +13047,22 @@ List all items for a conversation with the given ID.
 
           - `"code_interpreter"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
+      - `class ProgrammaticToolCalling: …`
+
+        - `type: Literal["programmatic_tool_calling"]`
+
+          The type of the tool. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `class ImageGeneration: …`
 
         A tool that generates images using the GPT image models.
@@ -12015,6 +13226,14 @@ List all items for a conversation with the given ID.
 
           - `"shell"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `environment: Optional[Environment]`
 
           - `class ContainerAuto: …`
@@ -12155,6 +13374,14 @@ List all items for a conversation with the given ID.
 
           - `"custom"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading: Optional[bool]`
 
           Whether this tool should be deferred and discovered via tool search.
@@ -12223,15 +13450,29 @@ List all items for a conversation with the given ID.
 
               - `"function"`
 
+            - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading: Optional[bool]`
 
               Whether this function should be deferred and discovered via tool search.
 
             - `description: Optional[str]`
 
+            - `output_schema: Optional[Dict[str, object]]`
+
+              A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
             - `parameters: Optional[object]`
 
             - `strict: Optional[bool]`
+
+              Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
           - `class CustomTool: …`
 
@@ -12333,6 +13574,14 @@ List all items for a conversation with the given ID.
 
           - `"apply_patch"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
     - `type: Literal["tool_search_output"]`
 
       The type of the item. Always `tool_search_output`.
@@ -12402,6 +13651,8 @@ List all items for a conversation with the given ID.
       - `class CodeInterpreter: …`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `class ProgrammaticToolCalling: …`
 
       - `class ImageGeneration: …`
 
@@ -12501,6 +13752,58 @@ List all items for a conversation with the given ID.
       - `"completed"`
 
       - `"incomplete"`
+
+  - `class Program: …`
+
+    - `id: str`
+
+      The unique ID of the program item.
+
+    - `call_id: str`
+
+      The stable call ID of the program item.
+
+    - `code: str`
+
+      The JavaScript source executed by programmatic tool calling.
+
+    - `fingerprint: str`
+
+      Opaque program replay fingerprint that must be round-tripped.
+
+    - `type: Literal["program"]`
+
+      The type of the item. Always `program`.
+
+      - `"program"`
+
+  - `class ProgramOutput: …`
+
+    - `id: str`
+
+      The unique ID of the program output item.
+
+    - `call_id: str`
+
+      The call ID of the program item.
+
+    - `result: str`
+
+      The result produced by the program item.
+
+    - `status: Literal["completed", "incomplete"]`
+
+      The terminal status of the program output item.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `type: Literal["program_output"]`
+
+      The type of the item. Always `program_output`.
+
+      - `"program_output"`
 
   - `class ResponseCompactionItem: …`
 
@@ -12747,6 +14050,26 @@ List all items for a conversation with the given ID.
 
       - `"shell_call"`
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `created_by: Optional[str]`
 
       The ID of the entity that created this tool call.
@@ -12826,6 +14149,26 @@ List all items for a conversation with the given ID.
       The type of the shell call output. Always `shell_call_output`.
 
       - `"shell_call_output"`
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
 
     - `created_by: Optional[str]`
 
@@ -12911,6 +14254,26 @@ List all items for a conversation with the given ID.
 
       - `"apply_patch_call"`
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `created_by: Optional[str]`
 
       The ID of the entity that created this tool call.
@@ -12940,6 +14303,26 @@ List all items for a conversation with the given ID.
       The type of the item. Always `apply_patch_call_output`.
 
       - `"apply_patch_call_output"`
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
 
     - `created_by: Optional[str]`
 
@@ -13122,6 +14505,26 @@ List all items for a conversation with the given ID.
 
       The unique ID of the custom tool call in the OpenAI platform.
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `namespace: Optional[str]`
 
       The namespace of the custom tool being called.
@@ -13169,6 +14572,30 @@ List all items for a conversation with the given ID.
 
       The unique ID of the custom tool call output in the OpenAI platform.
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
 ### Example
 
 ```python
@@ -13195,7 +14622,10 @@ print(page)
       "content": [
         {
           "text": "text",
-          "type": "input_text"
+          "type": "input_text",
+          "prompt_cache_breakpoint": {
+            "mode": "explicit"
+          }
         }
       ],
       "role": "unknown",
@@ -13249,7 +14679,7 @@ print(items.data)
 
 **get** `/conversations/{conversation_id}/items/{item_id}`
 
-Get a single item from a conversation with the given IDs.
+Retrieve an item
 
 ### Parameters
 
@@ -13310,6 +14740,16 @@ Get a single item from a conversation with the given IDs.
 
           - `"input_text"`
 
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `class ResponseOutputText: …`
 
         A text output from the model.
@@ -13522,6 +14962,16 @@ Get a single item from a conversation with the given IDs.
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `class ComputerScreenshotContent: …`
 
         A screenshot of a computer.
@@ -13552,6 +15002,16 @@ Get a single item from a conversation with the given IDs.
 
           - `"computer_screenshot"`
 
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `class ResponseInputFile: …`
 
         A file input to the model.
@@ -13562,9 +15022,11 @@ Get a single item from a conversation with the given IDs.
 
           - `"input_file"`
 
-        - `detail: Optional[Literal["low", "high"]]`
+        - `detail: Optional[Literal["auto", "low", "high"]]`
 
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+          The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+          - `"auto"`
 
           - `"low"`
 
@@ -13585,6 +15047,16 @@ Get a single item from a conversation with the given IDs.
         - `filename: Optional[str]`
 
           The name of the file to be sent to the model.
+
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
     - `role: Literal["unknown", "user", "assistant", 5 more]`
 
@@ -13705,6 +15177,30 @@ Get a single item from a conversation with the given IDs.
       The type of the function tool call output. Always `function_call_output`.
 
       - `"function_call_output"`
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `created_by: Optional[str]`
 
@@ -14498,13 +15994,21 @@ Get a single item from a conversation with the given IDs.
 
         - `strict: Optional[bool]`
 
-          Whether to enforce strict parameter validation. Default `true`.
+          Whether strict parameter validation is enforced for this function tool.
 
         - `type: Literal["function"]`
 
           The type of the function tool. Always `function`.
 
           - `"function"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `defer_loading: Optional[bool]`
 
@@ -14513,6 +16017,10 @@ Get a single item from a conversation with the given IDs.
         - `description: Optional[str]`
 
           A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `output_schema: Optional[Dict[str, object]]`
+
+          A JSON schema object describing the JSON value encoded in string outputs for this function.
 
       - `class FileSearchTool: …`
 
@@ -14569,7 +16077,7 @@ Get a single item from a conversation with the given IDs.
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[Union[str, float]]]`
+            - `value: Union[str, float, bool, List[object]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -14579,11 +16087,7 @@ Get a single item from a conversation with the given IDs.
 
               - `bool`
 
-              - `List[Union[str, float]]`
-
-                - `str`
-
-                - `float`
+              - `List[object]`
 
           - `class CompoundFilter: …`
 
@@ -14755,6 +16259,14 @@ Get a single item from a conversation with the given IDs.
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools: Optional[McpAllowedTools]`
 
@@ -14974,6 +16486,22 @@ Get a single item from a conversation with the given IDs.
 
           - `"code_interpreter"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
+      - `class ProgrammaticToolCalling: …`
+
+        - `type: Literal["programmatic_tool_calling"]`
+
+          The type of the tool. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `class ImageGeneration: …`
 
         A tool that generates images using the GPT image models.
@@ -15137,6 +16665,14 @@ Get a single item from a conversation with the given IDs.
 
           - `"shell"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `environment: Optional[Environment]`
 
           - `class ContainerAuto: …`
@@ -15277,6 +16813,14 @@ Get a single item from a conversation with the given IDs.
 
           - `"custom"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading: Optional[bool]`
 
           Whether this tool should be deferred and discovered via tool search.
@@ -15345,15 +16889,29 @@ Get a single item from a conversation with the given IDs.
 
               - `"function"`
 
+            - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading: Optional[bool]`
 
               Whether this function should be deferred and discovered via tool search.
 
             - `description: Optional[str]`
 
+            - `output_schema: Optional[Dict[str, object]]`
+
+              A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
             - `parameters: Optional[object]`
 
             - `strict: Optional[bool]`
+
+              Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
           - `class CustomTool: …`
 
@@ -15455,6 +17013,14 @@ Get a single item from a conversation with the given IDs.
 
           - `"apply_patch"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
     - `type: Literal["tool_search_output"]`
 
       The type of the item. Always `tool_search_output`.
@@ -15524,6 +17090,8 @@ Get a single item from a conversation with the given IDs.
       - `class CodeInterpreter: …`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `class ProgrammaticToolCalling: …`
 
       - `class ImageGeneration: …`
 
@@ -15623,6 +17191,58 @@ Get a single item from a conversation with the given IDs.
       - `"completed"`
 
       - `"incomplete"`
+
+  - `class Program: …`
+
+    - `id: str`
+
+      The unique ID of the program item.
+
+    - `call_id: str`
+
+      The stable call ID of the program item.
+
+    - `code: str`
+
+      The JavaScript source executed by programmatic tool calling.
+
+    - `fingerprint: str`
+
+      Opaque program replay fingerprint that must be round-tripped.
+
+    - `type: Literal["program"]`
+
+      The type of the item. Always `program`.
+
+      - `"program"`
+
+  - `class ProgramOutput: …`
+
+    - `id: str`
+
+      The unique ID of the program output item.
+
+    - `call_id: str`
+
+      The call ID of the program item.
+
+    - `result: str`
+
+      The result produced by the program item.
+
+    - `status: Literal["completed", "incomplete"]`
+
+      The terminal status of the program output item.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `type: Literal["program_output"]`
+
+      The type of the item. Always `program_output`.
+
+      - `"program_output"`
 
   - `class ResponseCompactionItem: …`
 
@@ -15869,6 +17489,26 @@ Get a single item from a conversation with the given IDs.
 
       - `"shell_call"`
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `created_by: Optional[str]`
 
       The ID of the entity that created this tool call.
@@ -15948,6 +17588,26 @@ Get a single item from a conversation with the given IDs.
       The type of the shell call output. Always `shell_call_output`.
 
       - `"shell_call_output"`
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
 
     - `created_by: Optional[str]`
 
@@ -16033,6 +17693,26 @@ Get a single item from a conversation with the given IDs.
 
       - `"apply_patch_call"`
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `created_by: Optional[str]`
 
       The ID of the entity that created this tool call.
@@ -16062,6 +17742,26 @@ Get a single item from a conversation with the given IDs.
       The type of the item. Always `apply_patch_call_output`.
 
       - `"apply_patch_call_output"`
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
 
     - `created_by: Optional[str]`
 
@@ -16244,6 +17944,26 @@ Get a single item from a conversation with the given IDs.
 
       The unique ID of the custom tool call in the OpenAI platform.
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `namespace: Optional[str]`
 
       The namespace of the custom tool being called.
@@ -16291,6 +18011,30 @@ Get a single item from a conversation with the given IDs.
 
       The unique ID of the custom tool call output in the OpenAI platform.
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
 ### Example
 
 ```python
@@ -16315,7 +18059,10 @@ print(conversation_item)
   "content": [
     {
       "text": "text",
-      "type": "input_text"
+      "type": "input_text",
+      "prompt_cache_breakpoint": {
+        "mode": "explicit"
+      }
     }
   ],
   "role": "unknown",
@@ -16355,7 +18102,7 @@ print(item)
 
 **delete** `/conversations/{conversation_id}/items/{item_id}`
 
-Delete an item from a conversation with the given IDs.
+Delete an item
 
 ### Parameters
 
@@ -16468,6 +18215,16 @@ print(conversation)
 
           - `"input_text"`
 
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `class ResponseOutputText: …`
 
         A text output from the model.
@@ -16680,6 +18437,16 @@ print(conversation)
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `class ComputerScreenshotContent: …`
 
         A screenshot of a computer.
@@ -16710,6 +18477,16 @@ print(conversation)
 
           - `"computer_screenshot"`
 
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
       - `class ResponseInputFile: …`
 
         A file input to the model.
@@ -16720,9 +18497,11 @@ print(conversation)
 
           - `"input_file"`
 
-        - `detail: Optional[Literal["low", "high"]]`
+        - `detail: Optional[Literal["auto", "low", "high"]]`
 
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+          The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+          - `"auto"`
 
           - `"low"`
 
@@ -16743,6 +18522,16 @@ print(conversation)
         - `filename: Optional[str]`
 
           The name of the file to be sent to the model.
+
+        - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: Literal["explicit"]`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
     - `role: Literal["unknown", "user", "assistant", 5 more]`
 
@@ -16863,6 +18652,30 @@ print(conversation)
       The type of the function tool call output. Always `function_call_output`.
 
       - `"function_call_output"`
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
 
     - `created_by: Optional[str]`
 
@@ -17656,13 +19469,21 @@ print(conversation)
 
         - `strict: Optional[bool]`
 
-          Whether to enforce strict parameter validation. Default `true`.
+          Whether strict parameter validation is enforced for this function tool.
 
         - `type: Literal["function"]`
 
           The type of the function tool. Always `function`.
 
           - `"function"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `defer_loading: Optional[bool]`
 
@@ -17671,6 +19492,10 @@ print(conversation)
         - `description: Optional[str]`
 
           A description of the function. Used by the model to determine whether or not to call the function.
+
+        - `output_schema: Optional[Dict[str, object]]`
+
+          A JSON schema object describing the JSON value encoded in string outputs for this function.
 
       - `class FileSearchTool: …`
 
@@ -17727,7 +19552,7 @@ print(conversation)
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[Union[str, float]]]`
+            - `value: Union[str, float, bool, List[object]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -17737,11 +19562,7 @@ print(conversation)
 
               - `bool`
 
-              - `List[Union[str, float]]`
-
-                - `str`
-
-                - `float`
+              - `List[object]`
 
           - `class CompoundFilter: …`
 
@@ -17913,6 +19734,14 @@ print(conversation)
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools: Optional[McpAllowedTools]`
 
@@ -18132,6 +19961,22 @@ print(conversation)
 
           - `"code_interpreter"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
+      - `class ProgrammaticToolCalling: …`
+
+        - `type: Literal["programmatic_tool_calling"]`
+
+          The type of the tool. Always `programmatic_tool_calling`.
+
+          - `"programmatic_tool_calling"`
+
       - `class ImageGeneration: …`
 
         A tool that generates images using the GPT image models.
@@ -18295,6 +20140,14 @@ print(conversation)
 
           - `"shell"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `environment: Optional[Environment]`
 
           - `class ContainerAuto: …`
@@ -18435,6 +20288,14 @@ print(conversation)
 
           - `"custom"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
         - `defer_loading: Optional[bool]`
 
           Whether this tool should be deferred and discovered via tool search.
@@ -18503,15 +20364,29 @@ print(conversation)
 
               - `"function"`
 
+            - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+              The tool invocation context(s).
+
+              - `"direct"`
+
+              - `"programmatic"`
+
             - `defer_loading: Optional[bool]`
 
               Whether this function should be deferred and discovered via tool search.
 
             - `description: Optional[str]`
 
+            - `output_schema: Optional[Dict[str, object]]`
+
+              A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
             - `parameters: Optional[object]`
 
             - `strict: Optional[bool]`
+
+              Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
           - `class CustomTool: …`
 
@@ -18613,6 +20488,14 @@ print(conversation)
 
           - `"apply_patch"`
 
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
+
     - `type: Literal["tool_search_output"]`
 
       The type of the item. Always `tool_search_output`.
@@ -18682,6 +20565,8 @@ print(conversation)
       - `class CodeInterpreter: …`
 
         A tool that runs Python code to help generate a response to a prompt.
+
+      - `class ProgrammaticToolCalling: …`
 
       - `class ImageGeneration: …`
 
@@ -18781,6 +20666,58 @@ print(conversation)
       - `"completed"`
 
       - `"incomplete"`
+
+  - `class Program: …`
+
+    - `id: str`
+
+      The unique ID of the program item.
+
+    - `call_id: str`
+
+      The stable call ID of the program item.
+
+    - `code: str`
+
+      The JavaScript source executed by programmatic tool calling.
+
+    - `fingerprint: str`
+
+      Opaque program replay fingerprint that must be round-tripped.
+
+    - `type: Literal["program"]`
+
+      The type of the item. Always `program`.
+
+      - `"program"`
+
+  - `class ProgramOutput: …`
+
+    - `id: str`
+
+      The unique ID of the program output item.
+
+    - `call_id: str`
+
+      The call ID of the program item.
+
+    - `result: str`
+
+      The result produced by the program item.
+
+    - `status: Literal["completed", "incomplete"]`
+
+      The terminal status of the program output item.
+
+      - `"completed"`
+
+      - `"incomplete"`
+
+    - `type: Literal["program_output"]`
+
+      The type of the item. Always `program_output`.
+
+      - `"program_output"`
 
   - `class ResponseCompactionItem: …`
 
@@ -19027,6 +20964,26 @@ print(conversation)
 
       - `"shell_call"`
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `created_by: Optional[str]`
 
       The ID of the entity that created this tool call.
@@ -19106,6 +21063,26 @@ print(conversation)
       The type of the shell call output. Always `shell_call_output`.
 
       - `"shell_call_output"`
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
 
     - `created_by: Optional[str]`
 
@@ -19191,6 +21168,26 @@ print(conversation)
 
       - `"apply_patch_call"`
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `created_by: Optional[str]`
 
       The ID of the entity that created this tool call.
@@ -19220,6 +21217,26 @@ print(conversation)
       The type of the item. Always `apply_patch_call_output`.
 
       - `"apply_patch_call_output"`
+
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
 
     - `created_by: Optional[str]`
 
@@ -19402,6 +21419,26 @@ print(conversation)
 
       The unique ID of the custom tool call in the OpenAI platform.
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          - `"program"`
+
     - `namespace: Optional[str]`
 
       The namespace of the custom tool being called.
@@ -19449,6 +21486,30 @@ print(conversation)
 
       The unique ID of the custom tool call output in the OpenAI platform.
 
+    - `caller: Optional[Caller]`
+
+      The execution context that produced this tool call.
+
+      - `class CallerDirect: …`
+
+        - `type: Literal["direct"]`
+
+          The caller type. Always `direct`.
+
+          - `"direct"`
+
+      - `class CallerProgram: …`
+
+        - `caller_id: str`
+
+          The call ID of the program item that produced this tool call.
+
+        - `type: Literal["program"]`
+
+          The caller type. Always `program`.
+
+          - `"program"`
+
 ### Conversation Item List
 
 - `class ConversationItemList: …`
@@ -19484,6 +21545,16 @@ print(conversation)
             The type of the input item. Always `input_text`.
 
             - `"input_text"`
+
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
         - `class ResponseOutputText: …`
 
@@ -19697,6 +21768,16 @@ print(conversation)
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ComputerScreenshotContent: …`
 
           A screenshot of a computer.
@@ -19727,6 +21808,16 @@ print(conversation)
 
             - `"computer_screenshot"`
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ResponseInputFile: …`
 
           A file input to the model.
@@ -19737,9 +21828,11 @@ print(conversation)
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
+          - `detail: Optional[Literal["auto", "low", "high"]]`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -19760,6 +21853,16 @@ print(conversation)
           - `filename: Optional[str]`
 
             The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
       - `role: Literal["unknown", "user", "assistant", 5 more]`
 
@@ -19880,6 +21983,30 @@ print(conversation)
         The type of the function tool call output. Always `function_call_output`.
 
         - `"function_call_output"`
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `created_by: Optional[str]`
 
@@ -20673,13 +22800,21 @@ print(conversation)
 
           - `strict: Optional[bool]`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: Literal["function"]`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: Optional[bool]`
 
@@ -20688,6 +22823,10 @@ print(conversation)
           - `description: Optional[str]`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: Optional[Dict[str, object]]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `class FileSearchTool: …`
 
@@ -20744,7 +22883,7 @@ print(conversation)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[Union[str, float]]]`
+              - `value: Union[str, float, bool, List[object]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -20754,11 +22893,7 @@ print(conversation)
 
                 - `bool`
 
-                - `List[Union[str, float]]`
-
-                  - `str`
-
-                  - `float`
+                - `List[object]`
 
             - `class CompoundFilter: …`
 
@@ -20930,6 +23065,14 @@ print(conversation)
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: Optional[McpAllowedTools]`
 
@@ -21149,6 +23292,22 @@ print(conversation)
 
             - `"code_interpreter"`
 
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `class ProgrammaticToolCalling: …`
+
+          - `type: Literal["programmatic_tool_calling"]`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `class ImageGeneration: …`
 
           A tool that generates images using the GPT image models.
@@ -21312,6 +23471,14 @@ print(conversation)
 
             - `"shell"`
 
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `environment: Optional[Environment]`
 
             - `class ContainerAuto: …`
@@ -21452,6 +23619,14 @@ print(conversation)
 
             - `"custom"`
 
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `defer_loading: Optional[bool]`
 
             Whether this tool should be deferred and discovered via tool search.
@@ -21520,15 +23695,29 @@ print(conversation)
 
                 - `"function"`
 
+              - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: Optional[bool]`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: Optional[str]`
 
+              - `output_schema: Optional[Dict[str, object]]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: Optional[object]`
 
               - `strict: Optional[bool]`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
             - `class CustomTool: …`
 
@@ -21630,6 +23819,14 @@ print(conversation)
 
             - `"apply_patch"`
 
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
       - `type: Literal["tool_search_output"]`
 
         The type of the item. Always `tool_search_output`.
@@ -21699,6 +23896,8 @@ print(conversation)
         - `class CodeInterpreter: …`
 
           A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ProgrammaticToolCalling: …`
 
         - `class ImageGeneration: …`
 
@@ -21798,6 +23997,58 @@ print(conversation)
         - `"completed"`
 
         - `"incomplete"`
+
+    - `class Program: …`
+
+      - `id: str`
+
+        The unique ID of the program item.
+
+      - `call_id: str`
+
+        The stable call ID of the program item.
+
+      - `code: str`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: str`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: Literal["program"]`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `class ProgramOutput: …`
+
+      - `id: str`
+
+        The unique ID of the program output item.
+
+      - `call_id: str`
+
+        The call ID of the program item.
+
+      - `result: str`
+
+        The result produced by the program item.
+
+      - `status: Literal["completed", "incomplete"]`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Literal["program_output"]`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
 
     - `class ResponseCompactionItem: …`
 
@@ -22044,6 +24295,26 @@ print(conversation)
 
         - `"shell_call"`
 
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
+
       - `created_by: Optional[str]`
 
         The ID of the entity that created this tool call.
@@ -22123,6 +24394,26 @@ print(conversation)
         The type of the shell call output. Always `shell_call_output`.
 
         - `"shell_call_output"`
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
 
       - `created_by: Optional[str]`
 
@@ -22208,6 +24499,26 @@ print(conversation)
 
         - `"apply_patch_call"`
 
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
+
       - `created_by: Optional[str]`
 
         The ID of the entity that created this tool call.
@@ -22237,6 +24548,26 @@ print(conversation)
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
 
       - `created_by: Optional[str]`
 
@@ -22419,6 +24750,26 @@ print(conversation)
 
         The unique ID of the custom tool call in the OpenAI platform.
 
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
+
       - `namespace: Optional[str]`
 
         The namespace of the custom tool being called.
@@ -22465,6 +24816,30 @@ print(conversation)
       - `id: Optional[str]`
 
         The unique ID of the custom tool call output in the OpenAI platform.
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
   - `first_id: str`
 

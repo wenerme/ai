@@ -4,7 +4,7 @@
 
 **post** `/audio/translations`
 
-Translates audio into English.
+Create translation
 
 ### Returns
 

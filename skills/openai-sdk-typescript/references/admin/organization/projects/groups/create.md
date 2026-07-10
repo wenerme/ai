@@ -4,7 +4,7 @@
 
 **post** `/organization/projects/{project_id}/groups`
 
-Grants a group access to a project.
+Add project group
 
 ### Parameters
 

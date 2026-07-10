@@ -4,9 +4,7 @@
 
 **post** `/chat/completions/{completion_id}`
 
-Modify a stored chat completion. Only Chat Completions that have been
-created with the `store` parameter set to `true` can be modified. Currently,
-the only supported modification is to update the `metadata` field.
+Update chat completion
 
 ### Parameters
 
@@ -491,6 +489,10 @@ the only supported modification is to update the `metadata` field.
 
         Audio input tokens present in the prompt.
 
+      - `cache_write_tokens?: number`
+
+        The unadjusted number of prompt tokens written to cache.
+
       - `cached_tokens?: number`
 
         Cached tokens present in the prompt.
@@ -659,6 +661,7 @@ console.log(chatCompletion.id);
     },
     "prompt_tokens_details": {
       "audio_tokens": 0,
+      "cache_write_tokens": 0,
       "cached_tokens": 0
     }
   }

@@ -90,7 +90,7 @@ Default action:
 - replace the model string with `gpt-5.5`
 - preserve the current reasoning effort for the first pass
 - make only the smallest prompt edits needed for the observed workflow risk
-- read the [GPT-5.5 prompting guide](https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5) to choose the smallest prompt changes that recover or improve behavior
+- read the [GPT-5.5 prompting best practices](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.5#prompting-best-practices) to choose the smallest prompt changes that recover or improve behavior
 - avoid broad prompt cleanup unrelated to the upgrade
 - for research workflows, add citation rules, retrieval budgets, missing-evidence behavior, and validation guidance from the prompting guide
 - for dependency-aware or tool-heavy workflows, add prerequisite checks, missing-context handling, explicit tool budgets, stop conditions, and validation guidance

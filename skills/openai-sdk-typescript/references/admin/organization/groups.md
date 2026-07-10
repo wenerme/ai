@@ -6,7 +6,7 @@
 
 **get** `/organization/groups`
 
-Lists all groups in the organization.
+List groups
 
 ### Parameters
 
@@ -98,7 +98,7 @@ for await (const group of client.admin.organization.groups.list()) {
 
 **post** `/organization/groups`
 
-Creates a new group in the organization.
+Create group
 
 ### Parameters
 
@@ -170,7 +170,7 @@ console.log(group.id);
 
 **get** `/organization/groups/{group_id}`
 
-Retrieves a group.
+Retrieve group
 
 ### Parameters
 
@@ -238,7 +238,7 @@ console.log(group.id);
 
 **post** `/organization/groups/{group_id}`
 
-Updates a group's information.
+Update group
 
 ### Parameters
 
@@ -303,7 +303,7 @@ console.log(group.id);
 
 **delete** `/organization/groups/{group_id}`
 
-Deletes a group from the organization.
+Delete group
 
 ### Parameters
 
@@ -435,7 +435,7 @@ console.log(group.id);
 
 **get** `/organization/groups/{group_id}/users`
 
-Lists the users assigned to a group.
+List group users
 
 ### Parameters
 
@@ -515,7 +515,7 @@ for await (const organizationGroupUser of client.admin.organization.groups.users
 
 **post** `/organization/groups/{group_id}/users`
 
-Adds a user to a group.
+Add group user
 
 ### Parameters
 
@@ -579,7 +579,7 @@ console.log(user.group_id);
 
 **get** `/organization/groups/{group_id}/users/{user_id}`
 
-Retrieves a user in a group.
+Retrieve group user
 
 ### Parameters
 
@@ -660,7 +660,7 @@ console.log(user.id);
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
 
-Removes a user from a group.
+Remove group user
 
 ### Parameters
 
@@ -811,7 +811,7 @@ console.log(user.deleted);
 
 **get** `/organization/groups/{group_id}/roles`
 
-Lists the organization roles assigned to a group within the organization.
+List group organization role assignments
 
 ### Parameters
 
@@ -951,7 +951,7 @@ for await (const roleListResponse of client.admin.organization.groups.roles.list
 
 **post** `/organization/groups/{group_id}/roles`
 
-Assigns an organization role to a group within the organization.
+Assign organization role to group
 
 ### Parameters
 
@@ -1083,7 +1083,7 @@ console.log(role.group);
 
 **get** `/organization/groups/{group_id}/roles/{role_id}`
 
-Retrieves an organization role assigned to a group.
+Retrieve group organization role
 
 ### Parameters
 
@@ -1205,7 +1205,7 @@ console.log(role.id);
 
 **delete** `/organization/groups/{group_id}/roles/{role_id}`
 
-Unassigns an organization role from a group within the organization.
+Unassign organization role from group
 
 ### Parameters
 

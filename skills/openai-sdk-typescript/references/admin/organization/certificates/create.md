@@ -4,9 +4,7 @@
 
 **post** `/organization/certificates`
 
-Upload a certificate to the organization. This does **not** automatically activate the certificate.
-
-Organizations can upload up to 50 certificates.
+Upload certificate
 
 ### Parameters
 

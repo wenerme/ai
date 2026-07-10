@@ -2,7 +2,7 @@
 
 **get** `/organization/usage/file_search_calls`
 
-Get file search calls usage details for the organization.
+File search calls
 
 ### Query Parameters
 

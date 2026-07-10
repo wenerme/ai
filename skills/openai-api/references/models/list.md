@@ -2,7 +2,7 @@
 
 **get** `/models`
 
-Lists the currently available models, and provides basic information about each one such as the owner and availability.
+List models
 
 ### Returns
 

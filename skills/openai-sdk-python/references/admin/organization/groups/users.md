@@ -6,7 +6,7 @@
 
 **get** `/organization/groups/{group_id}/users`
 
-Lists the users assigned to a group.
+List group users
 
 ### Parameters
 
@@ -85,7 +85,7 @@ print(page.id)
 
 **post** `/organization/groups/{group_id}/users`
 
-Adds a user to a group.
+Add group user
 
 ### Parameters
 
@@ -147,7 +147,7 @@ print(user.group_id)
 
 **get** `/organization/groups/{group_id}/users/{user_id}`
 
-Retrieves a user in a group.
+Retrieve group user
 
 ### Parameters
 
@@ -224,7 +224,7 @@ print(user.id)
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
 
-Removes a user from a group.
+Remove group user
 
 ### Parameters
 

@@ -2,7 +2,7 @@
 
 **post** `/images/variations`
 
-Creates a variation of a given image. This endpoint only supports `dall-e-2`.
+Create image variation
 
 ### Returns
 

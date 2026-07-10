@@ -14,6 +14,40 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/index.xml)
 
+## 2026-07-08
+
+**RealtimeKit React Native Core 2.0.0**
+
+**Compatibility:** Works best with RealtimeKit React Native UI Kit 2.0.0 or later.
+
+This is a major breaking release. Review all breaking changes below before upgrading.
+
+**Breaking changes**
+
+* Upgraded to `@cloudflare/realtimekit` v2.0.0.
+All [breaking changes from Web Core v2.0.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/#2026-06-18-realtimekit-web-core-200) apply, including the complete redesign of the plugin API and removal of all deprecated APIs.
+* Requires React Native 0.84 or above and React 19 or above.
+* Requires Expo 56 or above (for Expo users).
+* Requires iOS 15.1 or above.
+* Requires @cloudflare/react-native-webrtc v137.0.1 or above.
+* Removed `RealtimeKitCore` import in iOS Screenshare setup and added a Podfile installer script to automatically add references to the Screenshare related files. Refer documentation for [iOS Screenshare setup](https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/#screen-share-setup-ios).
+* `initClient` return type changed from `Promise<RealtimeKitClient>` to `Promise<RealtimeKitClient | undefined>`. Code that assumes `initClient` always returns a defined value must add a null check.
+
+**Features**
+
+* `Connected Meetings` support: the `useRealtimeKitClient` hook now automatically listens to `connectedMeetings.meetingChanged` and hot-swaps the active client when switching between connected or breakout meetings.
+* `Background support` for Android (enabled by default):
+  * New exported type `KeepAliveServiceConfig` to configure the Android meeting foreground service notification (title, body text, enable/disable).
+  * New `useRealtimeKitClient({ keepAliveService })` option to customize or disable the Android foreground notification.
+  * New `useRealtimeKitClient({ resetOnLeave })` option to reset client state on room leave.
+
+**Fixes**
+
+* Fixed an issue where the microphone did not work after being toggled if audio permission had not been granted before joining the meeting.
+* Fixed an issue where the in-call notification on Android persisted after the meeting ended.
+* Fixed an issue where screen sharing failed on the first attempt on Android 14 and above.
+* Fixed an issue where stopping screen sharing did not properly clean up event listeners, which could cause screen sharing to malfunction in subsequent sessions.
+
 ## 2026-06-18
 
 **RealtimeKit React Native Core 1.1.0**

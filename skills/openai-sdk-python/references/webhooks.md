@@ -544,6 +544,56 @@ client.webhooks.unwrap()
 
     - `"event"`
 
+### Safety Identifier Blocked Webhook Event
+
+- `class SafetyIdentifierBlockedWebhookEvent: …`
+
+  Sent when a request associated with a safety identifier has been blocked.
+
+  - `id: str`
+
+    The unique ID of the event.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) of when the request was blocked.
+
+  - `data: Data`
+
+    Event data payload.
+
+    - `safety_category: str`
+
+      The safety category that triggered the block, such as `bio` or `cyber`.
+
+    - `safety_identifier: str`
+
+      The stable safety identifier associated with the blocked request.
+
+    - `model: Optional[str]`
+
+      The model used for the blocked request, if available.
+
+    - `project_id: Optional[str]`
+
+      The project associated with the blocked request, if available.
+
+    - `request_id: Optional[str]`
+
+      The OpenAI request ID for the blocked request, if available.
+
+  - `type: Literal["safety_identifier.blocked"]`
+
+    The type of the event. Always `safety_identifier.blocked`.
+
+    - `"safety_identifier.blocked"`
+
+  - `object: Optional[Literal["event"]]`
+
+    The object of the event. Always `event`.
+
+    - `"event"`
+
 ### Unwrap Webhook Event
 
 - `UnwrapWebhookEvent`
@@ -1035,6 +1085,54 @@ client.webhooks.unwrap()
       The type of the event. Always `response.incomplete`.
 
       - `"response.incomplete"`
+
+    - `object: Optional[Literal["event"]]`
+
+      The object of the event. Always `event`.
+
+      - `"event"`
+
+  - `class SafetyIdentifierBlockedWebhookEvent: …`
+
+    Sent when a request associated with a safety identifier has been blocked.
+
+    - `id: str`
+
+      The unique ID of the event.
+
+    - `created_at: int`
+
+      The Unix timestamp (in seconds) of when the request was blocked.
+
+    - `data: Data`
+
+      Event data payload.
+
+      - `safety_category: str`
+
+        The safety category that triggered the block, such as `bio` or `cyber`.
+
+      - `safety_identifier: str`
+
+        The stable safety identifier associated with the blocked request.
+
+      - `model: Optional[str]`
+
+        The model used for the blocked request, if available.
+
+      - `project_id: Optional[str]`
+
+        The project associated with the blocked request, if available.
+
+      - `request_id: Optional[str]`
+
+        The OpenAI request ID for the blocked request, if available.
+
+    - `type: Literal["safety_identifier.blocked"]`
+
+      The type of the event. Always `safety_identifier.blocked`.
+
+      - `"safety_identifier.blocked"`
 
     - `object: Optional[Literal["event"]]`
 

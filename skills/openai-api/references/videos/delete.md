@@ -2,7 +2,7 @@
 
 **delete** `/videos/{video_id}`
 
-Permanently delete a completed or failed video and its stored assets.
+Delete video
 
 ### Path Parameters
 

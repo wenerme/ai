@@ -2,19 +2,7 @@
 
 **post** `/realtime/client_secrets`
 
-Create a Realtime client secret with an associated session configuration.
-
-Client secrets are short-lived tokens that can be passed to a client app,
-such as a web frontend or mobile client, which grants access to the Realtime API without
-leaking your main API key. You can configure a custom TTL for each client secret.
-
-You can also attach session configuration options to the client secret, which will be
-applied to any sessions created using that client secret, but these can also be overridden
-by the client connection.
-
-[Learn more about authentication with client secrets over WebRTC](/docs/guides/realtime-webrtc).
-
-Returns the created client secret and the effective session object. The client secret is a string that looks like `ek_1234`.
+Create client secret
 
 ### Body Parameters
 
@@ -60,7 +48,7 @@ Returns the created client secret and the effective session object. The client s
 
           The format of the input audio.
 
-          - `PCMAudioFormat object { rate, type }`
+          - `AudioPCM object { rate, type }`
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -76,7 +64,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcm"`
 
-          - `PCMUAudioFormat object { type }`
+          - `AudioPCMU object { type }`
 
             The G.711 μ-law format.
 
@@ -86,7 +74,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcmu"`
 
-          - `PCMAAudioFormat object { type }`
+          - `AudioPCMA object { type }`
 
             The G.711 A-law format.
 
@@ -112,7 +100,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `transcription: optional AudioTranscription`
 
-          Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+          Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
           - `delay: optional "minimal" or "low" or "medium" or 2 more`
 
@@ -162,7 +150,7 @@ Returns the created client secret and the effective session object. The client s
 
             An optional text to guide the model's style or continue a previous audio
             segment.
-            For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
+            For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
             For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
             Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -344,13 +332,13 @@ Returns the created client secret and the effective session object. The client s
 
         - `"inf"`
 
-    - `model: optional string or "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2" or 14 more`
+    - `model: optional string or "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2" or 16 more`
 
       The Realtime model used for this session.
 
       - `string`
 
-      - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2" or 14 more`
+      - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2" or 16 more`
 
         The Realtime model used for this session.
 
@@ -359,6 +347,10 @@ Returns the created client secret and the effective session object. The client s
         - `"gpt-realtime-1.5"`
 
         - `"gpt-realtime-2"`
+
+        - `"gpt-realtime-2.1"`
+
+        - `"gpt-realtime-2.1-mini"`
 
         - `"gpt-realtime-2025-08-28"`
 
@@ -406,7 +398,7 @@ Returns the created client secret and the effective session object. The client s
     - `prompt: optional ResponsePrompt`
 
       Reference to a prompt template and its variables.
-      [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
+      [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
 
       - `id: string`
 
@@ -420,7 +412,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `string`
 
-        - `ResponseInputText object { text, type }`
+        - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
           A text input to the model.
 
@@ -434,9 +426,19 @@ Returns the created client secret and the effective session object. The client s
 
             - `"input_text"`
 
-        - `ResponseInputImage object { detail, type, file_id, image_url }`
+          - `prompt_cache_breakpoint: optional object { mode }`
 
-          An image input to the model. Learn about [image inputs](/docs/guides/vision).
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
           - `detail: "low" or "high" or "auto" or "original"`
 
@@ -464,7 +466,17 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile object { type, detail, file_data, 3 more }`
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
           A file input to the model.
 
@@ -474,9 +486,11 @@ Returns the created client secret and the effective session object. The client s
 
             - `"input_file"`
 
-          - `detail: optional "low" or "high"`
+          - `detail: optional "auto" or "low" or "high"`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -497,6 +511,16 @@ Returns the created client secret and the effective session object. The client s
           - `filename: optional string`
 
             The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
       - `version: optional string`
 
@@ -601,10 +625,10 @@ Returns the created client secret and the effective session object. The client s
 
           - `"function"`
 
-      - `McpTool object { server_label, type, allowed_tools, 8 more }`
+      - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
-        (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+        (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
         - `server_label: string`
 
@@ -615,6 +639,14 @@ Returns the created client secret and the effective session object. The client s
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers: optional array of "direct" or "programmatic"`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -648,7 +680,7 @@ Returns the created client secret and the effective session object. The client s
 
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-          about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+          about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
           Currently supported `connector_id` values are:
 
@@ -791,7 +823,7 @@ Returns the created client secret and the effective session object. The client s
 
       Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-      - `"auto" or "disabled"`
+      - `RealtimeTruncationStrategy = "auto" or "disabled"`
 
         The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -799,7 +831,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `"disabled"`
 
-      - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
+      - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
 
         Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -853,7 +885,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `transcription: optional AudioTranscription`
 
-          Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+          Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
         - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
 
@@ -999,7 +1031,7 @@ Returns the created client secret and the effective session object. The client s
 
           The format of the input audio.
 
-          - `PCMAudioFormat object { rate, type }`
+          - `AudioPCM object { rate, type }`
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -1015,7 +1047,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcm"`
 
-          - `PCMUAudioFormat object { type }`
+          - `AudioPCMU object { type }`
 
             The G.711 μ-law format.
 
@@ -1025,7 +1057,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcmu"`
 
-          - `PCMAAudioFormat object { type }`
+          - `AudioPCMA object { type }`
 
             The G.711 A-law format.
 
@@ -1049,23 +1081,39 @@ Returns the created client secret and the effective session object. The client s
 
             - `"far_field"`
 
-        - `transcription: optional object { language, model, prompt }`
+        - `transcription: optional AudioTranscription`
 
-          Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+          - `delay: optional "minimal" or "low" or "medium" or 2 more`
+
+            Controls how long the model waits before emitting transcription text.
+            Higher values can improve transcription accuracy at the cost of latency.
+            Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
+
+            - `"minimal"`
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"xhigh"`
 
           - `language: optional string`
 
-            The language of the input audio.
+            The language of the input audio. Supplying the input language in
+            [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
+            will improve accuracy and latency.
 
           - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-            The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
             - `string`
 
             - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-              The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
               - `"whisper-1"`
 
@@ -1081,7 +1129,11 @@ Returns the created client secret and the effective session object. The client s
 
           - `prompt: optional string`
 
-            The prompt configured for input audio transcription, when present.
+            An optional text to guide the model's style or continue a previous audio
+            segment.
+            For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+            For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
+            Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
         - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
 
@@ -1262,13 +1314,13 @@ Returns the created client secret and the effective session object. The client s
 
         - `"inf"`
 
-    - `model: optional string or "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2" or 14 more`
+    - `model: optional string or "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2" or 16 more`
 
       The Realtime model used for this session.
 
       - `string`
 
-      - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2" or 14 more`
+      - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2" or 16 more`
 
         The Realtime model used for this session.
 
@@ -1277,6 +1329,10 @@ Returns the created client secret and the effective session object. The client s
         - `"gpt-realtime-1.5"`
 
         - `"gpt-realtime-2"`
+
+        - `"gpt-realtime-2.1"`
+
+        - `"gpt-realtime-2.1-mini"`
 
         - `"gpt-realtime-2025-08-28"`
 
@@ -1319,7 +1375,7 @@ Returns the created client secret and the effective session object. The client s
     - `prompt: optional ResponsePrompt`
 
       Reference to a prompt template and its variables.
-      [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
+      [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
 
       - `id: string`
 
@@ -1333,7 +1389,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `string`
 
-        - `ResponseInputText object { text, type }`
+        - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
           A text input to the model.
 
@@ -1347,9 +1403,19 @@ Returns the created client secret and the effective session object. The client s
 
             - `"input_text"`
 
-        - `ResponseInputImage object { detail, type, file_id, image_url }`
+          - `prompt_cache_breakpoint: optional object { mode }`
 
-          An image input to the model. Learn about [image inputs](/docs/guides/vision).
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
           - `detail: "low" or "high" or "auto" or "original"`
 
@@ -1377,7 +1443,17 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile object { type, detail, file_data, 3 more }`
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
           A file input to the model.
 
@@ -1387,9 +1463,11 @@ Returns the created client secret and the effective session object. The client s
 
             - `"input_file"`
 
-          - `detail: optional "low" or "high"`
+          - `detail: optional "auto" or "low" or "high"`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -1410,6 +1488,16 @@ Returns the created client secret and the effective session object. The client s
           - `filename: optional string`
 
             The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
       - `version: optional string`
 
@@ -1488,7 +1576,7 @@ Returns the created client secret and the effective session object. The client s
 
           The name of the tool to call on the server.
 
-    - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 8 more }`
+    - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_callers, 9 more }`
 
       Tools available to the model.
 
@@ -1514,10 +1602,10 @@ Returns the created client secret and the effective session object. The client s
 
           - `"function"`
 
-      - `McpTool object { server_label, type, allowed_tools, 8 more }`
+      - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
-        (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+        (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
         - `server_label: string`
 
@@ -1528,6 +1616,14 @@ Returns the created client secret and the effective session object. The client s
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers: optional array of "direct" or "programmatic"`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -1561,7 +1657,7 @@ Returns the created client secret and the effective session object. The client s
 
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-          about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+          about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
           Currently supported `connector_id` values are:
 
@@ -1704,7 +1800,7 @@ Returns the created client secret and the effective session object. The client s
 
       Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-      - `"auto" or "disabled"`
+      - `RealtimeTruncationStrategy = "auto" or "disabled"`
 
         The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -1712,7 +1808,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `"disabled"`
 
-      - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
+      - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
 
         Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -1770,39 +1866,7 @@ Returns the created client secret and the effective session object. The client s
 
             Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-        - `transcription: optional object { language, model, prompt }`
-
-          Configuration of the transcription model.
-
-          - `language: optional string`
-
-            The language of the input audio.
-
-          - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
-
-            The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
-
-            - `string`
-
-            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
-
-              The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
-
-              - `"whisper-1"`
-
-              - `"gpt-4o-mini-transcribe"`
-
-              - `"gpt-4o-mini-transcribe-2025-12-15"`
-
-              - `"gpt-4o-transcribe"`
-
-              - `"gpt-4o-transcribe-diarize"`
-
-              - `"gpt-realtime-whisper"`
-
-          - `prompt: optional string`
-
-            The prompt configured for input audio transcription, when present.
+        - `transcription: optional AudioTranscription`
 
         - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
 
@@ -1875,6 +1939,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
           "type": "near_field"
         },
         "transcription": {
+          "delay": "minimal",
           "language": "language",
           "model": "whisper-1",
           "prompt": "prompt"

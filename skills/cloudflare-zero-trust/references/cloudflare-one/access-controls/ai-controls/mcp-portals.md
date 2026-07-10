@@ -32,14 +32,16 @@ MCP server portals provide the following capabilities:
 
 ## How it works
 
-When a user connects an MCP client to a portal, the following flow occurs:
+The following diagram shows how requests flow through an MCP server portal.
 
-1. The MCP client sends a request to the portal URL (`https://<subdomain>.<domain>/mcp`).
-2. Cloudflare Access authenticates the user via a browser-based OAuth 2.0 flow (or [service token](#connect-with-a-service-token) headers).
-3. The portal establishes an MCP session and returns the list of available tools from all enabled upstream servers.
-4. When the user calls a tool, the portal identifies the target upstream MCP server based on the [tool namespace](#tool-namespacing), attaches the appropriate credentials (user OAuth token or admin credential), and proxies the request.
-5. If [Gateway routing](#route-portal-traffic-through-gateway) is turned on, the outbound request passes through Cloudflare Gateway for HTTP logging and DLP inspection before reaching the upstream server.
-6. The upstream server's response is returned to the MCP client.
+![Request flow diagram showing how an MCP client connects through Cloudflare Access and the MCP server portal to reach upstream MCP servers, with an optional Gateway path for DLP inspection.](https://developers.cloudflare.com/_astro/mcp-portal-request-flow.CybWTaQp_Z1vEGof.svg)
+1. An MCP client connects to the portal URL and receives a `401` response with OAuth discovery metadata.
+2. The user authenticates through Cloudflare Access via their identity provider or uses [service token](#connect-with-a-service-token) headers.
+3. Access validates the user's identity, and the portal establishes an MCP session and returns the tools available from enabled upstream servers.
+4. When the user calls a tool, the portal identifies the target server from the [tool namespace](#tool-namespacing), attaches the appropriate credentials, and proxies the request. If [Gateway routing](#route-portal-traffic-through-gateway) is turned on, the request passes through Cloudflare Gateway for HTTP logging and DLP inspection.
+5. The upstream server processes the request and returns a response through the same path.
+
+Background synchronization of tools and prompts runs approximately every two hours using admin credentials. This sync connects directly to upstream servers and does not route through Gateway.
 
 ### Transport
 
@@ -301,8 +303,8 @@ Custom descriptions follow the same precedence. Set a description by including t
 
 #### Set aliases in the dashboard
 
-* [ Portal-level alias ](#tab-panel-7409)
-* [ Server-level alias ](#tab-panel-7410)
+* [ Portal-level alias ](#tab-panel-7515)
+* [ Server-level alias ](#tab-panel-7516)
 
 To set an alias that applies to a specific portal:
 
@@ -614,8 +616,8 @@ For more information on building with Code Mode, refer to the [Code Mode SDK ref
 
 To turn off Code Mode for a portal:
 
-* [ Dashboard ](#tab-panel-7411)
-* [ API ](#tab-panel-7412)
+* [ Dashboard ](#tab-panel-7517)
+* [ API ](#tab-panel-7518)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
@@ -1073,6 +1075,6 @@ The portal homepage displays your Access organization name and branding. If the 
 2. Update your team name. The change will take effect the next time a user visits the portal homepage.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/","name":"AI controls"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/mcp-portals/","name":"MCP server portals"}}]}
 ```

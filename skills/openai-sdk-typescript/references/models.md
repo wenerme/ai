@@ -6,7 +6,7 @@
 
 **get** `/models`
 
-Lists the currently available models, and provides basic information about each one such as the owner and availability.
+List models
 
 ### Returns
 
@@ -114,7 +114,7 @@ main();
 
 **get** `/models/{model}`
 
-Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
+Retrieve model
 
 ### Parameters
 
@@ -202,7 +202,7 @@ main();
 
 **delete** `/models/{model}`
 
-Delete a fine-tuned model. You must have the Owner role in your organization to delete a model.
+Delete a fine-tuned model
 
 ### Parameters
 

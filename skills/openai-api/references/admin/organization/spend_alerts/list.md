@@ -2,7 +2,7 @@
 
 **get** `/organization/spend_alerts`
 
-Lists organization spend alerts.
+List organization spend alerts
 
 ### Query Parameters
 

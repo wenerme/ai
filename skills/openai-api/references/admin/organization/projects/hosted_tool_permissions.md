@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/hosted_tool_permissions`
 
-Returns hosted tool permissions for a project.
+Retrieve project hosted tool permissions
 
 ### Path Parameters
 
@@ -119,7 +119,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/hosted_tool_permis
 
 **post** `/organization/projects/{project_id}/hosted_tool_permissions`
 
-Updates hosted tool permissions for a project.
+Modify project hosted tool permissions
 
 ### Path Parameters
 

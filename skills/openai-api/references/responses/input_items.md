@@ -4,7 +4,7 @@
 
 **get** `/responses/{response_id}/input_items`
 
-Returns a list of input items for a given response.
+List input items
 
 ### Path Parameters
 
@@ -59,7 +59,7 @@ Returns a list of input items for a given response.
 
   A list of Response items.
 
-  - `data: array of ResponseInputMessageItem or ResponseOutputMessage or object { id, queries, status, 2 more }  or 24 more`
+  - `data: array of ResponseInputMessageItem or ResponseOutputMessage or object { id, queries, status, 2 more }  or 26 more`
 
     A list of items used to generate this response.
 
@@ -74,7 +74,7 @@ Returns a list of input items for a given response.
         A list of one or many input items to the model, containing different content
         types.
 
-        - `ResponseInputText object { text, type }`
+        - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
           A text input to the model.
 
@@ -88,9 +88,19 @@ Returns a list of input items for a given response.
 
             - `"input_text"`
 
-        - `ResponseInputImage object { detail, type, file_id, image_url }`
+          - `prompt_cache_breakpoint: optional object { mode }`
 
-          An image input to the model. Learn about [image inputs](/docs/guides/vision).
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
           - `detail: "low" or "high" or "auto" or "original"`
 
@@ -118,7 +128,17 @@ Returns a list of input items for a given response.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile object { type, detail, file_data, 3 more }`
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
           A file input to the model.
 
@@ -128,9 +148,11 @@ Returns a list of input items for a given response.
 
             - `"input_file"`
 
-          - `detail: optional "low" or "high"`
+          - `detail: optional "auto" or "low" or "high"`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -151,6 +173,16 @@ Returns a list of input items for a given response.
           - `filename: optional string`
 
             The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
       - `role: "user" or "system" or "developer"`
 
@@ -191,7 +223,7 @@ Returns a list of input items for a given response.
 
         The content of the output message.
 
-        - `ResponseOutputText object { annotations, logprobs, text, type }`
+        - `ResponseOutputText object { annotations, text, type, logprobs }`
 
           A text output from the model.
 
@@ -295,7 +327,17 @@ Returns a list of input items for a given response.
 
                 - `"file_path"`
 
-          - `logprobs: array of object { token, bytes, logprob, top_logprobs }`
+          - `text: string`
+
+            The text output from the model.
+
+          - `type: "output_text"`
+
+            The type of the output text. Always `output_text`.
+
+            - `"output_text"`
+
+          - `logprobs: optional array of object { token, bytes, logprob, top_logprobs }`
 
             - `token: string`
 
@@ -310,16 +352,6 @@ Returns a list of input items for a given response.
               - `bytes: array of number`
 
               - `logprob: number`
-
-          - `text: string`
-
-            The text output from the model.
-
-          - `type: "output_text"`
-
-            The type of the output text. Always `output_text`.
-
-            - `"output_text"`
 
         - `ResponseOutputRefusal object { refusal, type }`
 
@@ -371,7 +403,7 @@ Returns a list of input items for a given response.
     - `FileSearchCall object { id, queries, status, 2 more }`
 
       The results of a file search tool call. See the
-      [file search guide](/docs/guides/tools-file-search) for more information.
+      [file search guide](https://platform.openai.com/docs/guides/tools-file-search) for more information.
 
       - `id: string`
 
@@ -439,7 +471,7 @@ Returns a list of input items for a given response.
     - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
       A tool call to a computer use tool. See the
-      [computer use guide](/docs/guides/tools-computer-use) for more information.
+      [computer use guide](https://platform.openai.com/docs/guides/tools-computer-use) for more information.
 
       - `id: string`
 
@@ -482,7 +514,7 @@ Returns a list of input items for a given response.
 
         - `"computer_call"`
 
-      - `action: optional ComputerAction`
+      - `action: optional object { button, type, x, 2 more }  or object { keys, type, x, y }  or object { path, type, keys }  or 6 more`
 
         A click action.
 
@@ -686,37 +718,192 @@ Returns a list of input items for a given response.
 
           A click action.
 
+          - `button: "left" or "right" or "wheel" or 2 more`
+
+            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
+
+            - `"left"`
+
+            - `"right"`
+
+            - `"wheel"`
+
+            - `"back"`
+
+            - `"forward"`
+
+          - `type: "click"`
+
+            Specifies the event type. For a click action, this property is always `click`.
+
+            - `"click"`
+
+          - `x: number`
+
+            The x-coordinate where the click occurred.
+
+          - `y: number`
+
+            The y-coordinate where the click occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
         - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
+
+          - `type: "double_click"`
+
+            Specifies the event type. For a double click action, this property is always set to `double_click`.
+
+            - `"double_click"`
+
+          - `x: number`
+
+            The x-coordinate where the double click occurred.
+
+          - `y: number`
+
+            The y-coordinate where the double click occurred.
 
         - `Drag object { path, type, keys }`
 
           A drag action.
 
+          - `path: array of object { x, y }`
+
+            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
+
+            ```
+            [
+              { x: 100, y: 200 },
+              { x: 200, y: 300 }
+            ]
+            ```
+
+            - `x: number`
+
+              The x-coordinate.
+
+            - `y: number`
+
+              The y-coordinate.
+
+          - `type: "drag"`
+
+            Specifies the event type. For a drag action, this property is always set to `drag`.
+
+            - `"drag"`
+
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
+
+          - `keys: array of string`
+
+            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
+
+          - `type: "keypress"`
+
+            Specifies the event type. For a keypress action, this property is always set to `keypress`.
+
+            - `"keypress"`
 
         - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
+          - `type: "move"`
+
+            Specifies the event type. For a move action, this property is always set to `move`.
+
+            - `"move"`
+
+          - `x: number`
+
+            The x-coordinate to move to.
+
+          - `y: number`
+
+            The y-coordinate to move to.
+
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot object { type }`
 
           A screenshot action.
+
+          - `type: "screenshot"`
+
+            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
+
+            - `"screenshot"`
 
         - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
+          - `scroll_x: number`
+
+            The horizontal scroll distance.
+
+          - `scroll_y: number`
+
+            The vertical scroll distance.
+
+          - `type: "scroll"`
+
+            Specifies the event type. For a scroll action, this property is always set to `scroll`.
+
+            - `"scroll"`
+
+          - `x: number`
+
+            The x-coordinate where the scroll occurred.
+
+          - `y: number`
+
+            The y-coordinate where the scroll occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
+
         - `Type object { text, type }`
 
           An action to type in text.
 
+          - `text: string`
+
+            The text to type.
+
+          - `type: "type"`
+
+            Specifies the event type. For a type action, this property is always set to `type`.
+
+            - `"type"`
+
         - `Wait object { type }`
 
           A wait action.
+
+          - `type: "wait"`
+
+            Specifies the event type. For a wait action, this property is always set to `wait`.
+
+            - `"wait"`
 
     - `ComputerCallOutput object { id, call_id, output, 4 more }`
 
@@ -790,7 +977,7 @@ Returns a list of input items for a given response.
     - `WebSearchCall object { id, action, status, type }`
 
       The results of a web search tool call. See the
-      [web search guide](/docs/guides/tools-web-search) for more information.
+      [web search guide](https://platform.openai.com/docs/guides/tools-web-search) for more information.
 
       - `id: string`
 
@@ -883,7 +1070,7 @@ Returns a list of input items for a given response.
 
         - `"web_search_call"`
 
-    - `FunctionCall object { id, arguments, call_id, 5 more }`
+    - `FunctionCall object { id, arguments, call_id, 6 more }`
 
       - `id: string`
 
@@ -918,6 +1105,26 @@ Returns a list of input items for a given response.
 
         - `"function_call"`
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by: optional string`
 
         The identifier of the actor that created the item.
@@ -926,7 +1133,7 @@ Returns a list of input items for a given response.
 
         The namespace of the function to run.
 
-    - `FunctionCallOutput object { id, call_id, output, 3 more }`
+    - `FunctionCallOutput object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -949,15 +1156,15 @@ Returns a list of input items for a given response.
 
           Text, image, or file output of the function call.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
-          - `ResponseInputImage object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `ResponseInputFile object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
             A file input to the model.
 
@@ -977,6 +1184,30 @@ Returns a list of input items for a given response.
         The type of the function tool call output. Always `function_call_output`.
 
         - `"function_call_output"`
+
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `created_by: optional string`
 
@@ -1052,11 +1283,11 @@ Returns a list of input items for a given response.
 
         - `"incomplete"`
 
-      - `tools: array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+      - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
         The loaded tool definitions returned by tool search.
 
-        - `Function object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 5 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -1070,13 +1301,21 @@ Returns a list of input items for a given response.
 
           - `strict: boolean`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -1085,6 +1324,10 @@ Returns a list of input items for a given response.
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: optional map[unknown]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -1256,7 +1499,7 @@ Returns a list of input items for a given response.
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -1313,10 +1556,10 @@ Returns a list of input items for a given response.
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 8 more }`
+        - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -1327,6 +1570,14 @@ Returns a list of input items for a given response.
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -1360,7 +1611,7 @@ Returns a list of input items for a given response.
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -1460,7 +1711,7 @@ Returns a list of input items for a given response.
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `CodeInterpreter object { container, type }`
+        - `CodeInterpreter object { container, type, allowed_callers }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -1546,6 +1797,22 @@ Returns a list of input items for a given response.
 
             - `"code_interpreter"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling object { type }`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
@@ -1568,8 +1835,19 @@ Returns a list of input items for a given response.
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -1598,13 +1876,13 @@ Returns a list of input items for a given response.
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -1612,7 +1890,13 @@ Returns a list of input items for a given response.
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -1682,7 +1966,7 @@ Returns a list of input items for a given response.
 
             - `"local_shell"`
 
-        - `Shell object { type, environment }`
+        - `Shell object { type, allowed_callers, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -1691,6 +1975,14 @@ Returns a list of input items for a given response.
             The type of the shell tool. Always `shell`.
 
             - `"shell"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
@@ -1818,9 +2110,9 @@ Returns a list of input items for a given response.
 
                 - `"container_reference"`
 
-        - `Custom object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -1831,6 +2123,14 @@ Returns a list of input items for a given response.
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -1888,11 +2188,11 @@ Returns a list of input items for a given response.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, allowed_callers, 5 more }`
 
               - `name: string`
 
@@ -1900,19 +2200,33 @@ Returns a list of input items for a given response.
 
                 - `"function"`
 
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: optional boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: optional string`
 
+              - `output_schema: optional map[unknown]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: optional unknown`
 
               - `strict: optional boolean`
 
-            - `Custom object { name, type, defer_loading, 2 more }`
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            - `Custom object { name, type, allowed_callers, 3 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -1923,6 +2237,14 @@ Returns a list of input items for a given response.
                 The type of the custom tool. Always `custom`.
 
                 - `"custom"`
+
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading: optional boolean`
 
@@ -2022,7 +2344,7 @@ Returns a list of input items for a given response.
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch object { type }`
+        - `ApplyPatch object { type, allowed_callers }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -2031,6 +2353,14 @@ Returns a list of input items for a given response.
             The type of the tool. Always `apply_patch`.
 
             - `"apply_patch"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
       - `type: "tool_search_output"`
 
@@ -2068,11 +2398,11 @@ Returns a list of input items for a given response.
 
         - `"tool"`
 
-      - `tools: array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+      - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
         The additional tool definitions made available at this item.
 
-        - `Function object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 5 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -2086,13 +2416,21 @@ Returns a list of input items for a given response.
 
           - `strict: boolean`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -2101,6 +2439,10 @@ Returns a list of input items for a given response.
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: optional map[unknown]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -2205,7 +2547,7 @@ Returns a list of input items for a given response.
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -2262,10 +2604,10 @@ Returns a list of input items for a given response.
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 8 more }`
+        - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -2276,6 +2618,14 @@ Returns a list of input items for a given response.
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -2309,7 +2659,7 @@ Returns a list of input items for a given response.
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -2409,7 +2759,7 @@ Returns a list of input items for a given response.
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `CodeInterpreter object { container, type }`
+        - `CodeInterpreter object { container, type, allowed_callers }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -2463,6 +2813,22 @@ Returns a list of input items for a given response.
 
             - `"code_interpreter"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling object { type }`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
@@ -2485,8 +2851,19 @@ Returns a list of input items for a given response.
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -2515,13 +2892,13 @@ Returns a list of input items for a given response.
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -2529,7 +2906,13 @@ Returns a list of input items for a given response.
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -2599,7 +2982,7 @@ Returns a list of input items for a given response.
 
             - `"local_shell"`
 
-        - `Shell object { type, environment }`
+        - `Shell object { type, allowed_callers, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -2609,6 +2992,14 @@ Returns a list of input items for a given response.
 
             - `"shell"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
             - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
@@ -2617,9 +3008,9 @@ Returns a list of input items for a given response.
 
             - `ContainerReference object { container_id, type }`
 
-        - `Custom object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -2630,6 +3021,14 @@ Returns a list of input items for a given response.
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -2655,11 +3054,11 @@ Returns a list of input items for a given response.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, allowed_callers, 5 more }`
 
               - `name: string`
 
@@ -2667,19 +3066,33 @@ Returns a list of input items for a given response.
 
                 - `"function"`
 
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: optional boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: optional string`
 
+              - `output_schema: optional map[unknown]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: optional unknown`
 
               - `strict: optional boolean`
 
-            - `Custom object { name, type, defer_loading, 2 more }`
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            - `Custom object { name, type, allowed_callers, 3 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -2690,6 +3103,14 @@ Returns a list of input items for a given response.
                 The type of the custom tool. Always `custom`.
 
                 - `"custom"`
+
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading: optional boolean`
 
@@ -2789,7 +3210,7 @@ Returns a list of input items for a given response.
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch object { type }`
+        - `ApplyPatch object { type, allowed_callers }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -2798,6 +3219,14 @@ Returns a list of input items for a given response.
             The type of the tool. Always `apply_patch`.
 
             - `"apply_patch"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
       - `type: "additional_tools"`
 
@@ -2810,13 +3239,13 @@ Returns a list of input items for a given response.
       A description of the chain of thought used by a reasoning model while generating
       a response. Be sure to include these items in your `input` to the Responses API
       for subsequent turns of a conversation if you are manually
-      [managing context](/docs/guides/conversation-state).
+      [managing context](https://platform.openai.com/docs/guides/conversation-state).
 
       - `id: string`
 
         The unique identifier of the reasoning content.
 
-      - `summary: array of SummaryTextContent`
+      - `summary: array of object { text, type }`
 
         Reasoning summary content.
 
@@ -2866,9 +3295,61 @@ Returns a list of input items for a given response.
 
         - `"incomplete"`
 
+    - `Program object { id, call_id, code, 2 more }`
+
+      - `id: string`
+
+        The unique ID of the program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput object { id, call_id, result, 2 more }`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" or "incomplete"`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
+
     - `Compaction object { id, encrypted_content, type, created_by }`
 
-      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
+      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
 
       - `id: string`
 
@@ -3073,7 +3554,7 @@ Returns a list of input items for a given response.
 
         - `"incomplete"`
 
-    - `ShellCall object { id, action, call_id, 4 more }`
+    - `ShellCall object { id, action, call_id, 5 more }`
 
       A tool call that executes one or more shell commands in a managed environment.
 
@@ -3141,11 +3622,31 @@ Returns a list of input items for a given response.
 
         - `"shell_call"`
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by: optional string`
 
         The ID of the entity that created this tool call.
 
-    - `ShellCallOutput object { id, call_id, max_output_length, 4 more }`
+    - `ShellCallOutput object { id, call_id, max_output_length, 5 more }`
 
       The output of a shell tool call that was emitted.
 
@@ -3221,11 +3722,31 @@ Returns a list of input items for a given response.
 
         - `"shell_call_output"`
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by: optional string`
 
         The identifier of the actor that created the item.
 
-    - `ApplyPatchCall object { id, call_id, operation, 3 more }`
+    - `ApplyPatchCall object { id, call_id, operation, 4 more }`
 
       A tool call that applies file diffs by creating, deleting, or updating files.
 
@@ -3305,11 +3826,31 @@ Returns a list of input items for a given response.
 
         - `"apply_patch_call"`
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by: optional string`
 
         The ID of the entity that created this tool call.
 
-    - `ApplyPatchCallOutput object { id, call_id, status, 3 more }`
+    - `ApplyPatchCallOutput object { id, call_id, status, 4 more }`
 
       The output emitted by an apply patch tool call.
 
@@ -3334,6 +3875,26 @@ Returns a list of input items for a given response.
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by: optional string`
 
@@ -3490,7 +4051,7 @@ Returns a list of input items for a given response.
 
         - `"failed"`
 
-    - `CustomToolCall object { id, call_id, input, 5 more }`
+    - `CustomToolCall object { id, call_id, input, 6 more }`
 
       - `id: string`
 
@@ -3525,6 +4086,26 @@ Returns a list of input items for a given response.
 
         - `"custom_tool_call"`
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by: optional string`
 
         The identifier of the actor that created the item.
@@ -3533,7 +4114,7 @@ Returns a list of input items for a given response.
 
         The namespace of the custom tool being called.
 
-    - `CustomToolCallOutput object { id, call_id, output, 3 more }`
+    - `CustomToolCallOutput object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -3556,15 +4137,15 @@ Returns a list of input items for a given response.
 
           Text, image, or file output of the custom tool call.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
-          - `ResponseInputImage object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `ResponseInputFile object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
             A file input to the model.
 
@@ -3584,6 +4165,30 @@ Returns a list of input items for a given response.
         The type of the custom tool call output. Always `custom_tool_call_output`.
 
         - `"custom_tool_call_output"`
+
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `created_by: optional string`
 
@@ -3624,7 +4229,10 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
       "content": [
         {
           "text": "text",
-          "type": "input_text"
+          "type": "input_text",
+          "prompt_cache_breakpoint": {
+            "mode": "explicit"
+          }
         }
       ],
       "role": "user",
@@ -3679,7 +4287,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
   A list of Response items.
 
-  - `data: array of ResponseInputMessageItem or ResponseOutputMessage or object { id, queries, status, 2 more }  or 24 more`
+  - `data: array of ResponseInputMessageItem or ResponseOutputMessage or object { id, queries, status, 2 more }  or 26 more`
 
     A list of items used to generate this response.
 
@@ -3694,7 +4302,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         A list of one or many input items to the model, containing different content
         types.
 
-        - `ResponseInputText object { text, type }`
+        - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
           A text input to the model.
 
@@ -3708,9 +4316,19 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"input_text"`
 
-        - `ResponseInputImage object { detail, type, file_id, image_url }`
+          - `prompt_cache_breakpoint: optional object { mode }`
 
-          An image input to the model. Learn about [image inputs](/docs/guides/vision).
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
           - `detail: "low" or "high" or "auto" or "original"`
 
@@ -3738,7 +4356,17 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile object { type, detail, file_data, 3 more }`
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
           A file input to the model.
 
@@ -3748,9 +4376,11 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"input_file"`
 
-          - `detail: optional "low" or "high"`
+          - `detail: optional "auto" or "low" or "high"`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -3771,6 +4401,16 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
           - `filename: optional string`
 
             The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
       - `role: "user" or "system" or "developer"`
 
@@ -3811,7 +4451,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         The content of the output message.
 
-        - `ResponseOutputText object { annotations, logprobs, text, type }`
+        - `ResponseOutputText object { annotations, text, type, logprobs }`
 
           A text output from the model.
 
@@ -3915,7 +4555,17 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
                 - `"file_path"`
 
-          - `logprobs: array of object { token, bytes, logprob, top_logprobs }`
+          - `text: string`
+
+            The text output from the model.
+
+          - `type: "output_text"`
+
+            The type of the output text. Always `output_text`.
+
+            - `"output_text"`
+
+          - `logprobs: optional array of object { token, bytes, logprob, top_logprobs }`
 
             - `token: string`
 
@@ -3930,16 +4580,6 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
               - `bytes: array of number`
 
               - `logprob: number`
-
-          - `text: string`
-
-            The text output from the model.
-
-          - `type: "output_text"`
-
-            The type of the output text. Always `output_text`.
-
-            - `"output_text"`
 
         - `ResponseOutputRefusal object { refusal, type }`
 
@@ -3991,7 +4631,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
     - `FileSearchCall object { id, queries, status, 2 more }`
 
       The results of a file search tool call. See the
-      [file search guide](/docs/guides/tools-file-search) for more information.
+      [file search guide](https://platform.openai.com/docs/guides/tools-file-search) for more information.
 
       - `id: string`
 
@@ -4059,7 +4699,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
     - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
       A tool call to a computer use tool. See the
-      [computer use guide](/docs/guides/tools-computer-use) for more information.
+      [computer use guide](https://platform.openai.com/docs/guides/tools-computer-use) for more information.
 
       - `id: string`
 
@@ -4102,7 +4742,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"computer_call"`
 
-      - `action: optional ComputerAction`
+      - `action: optional object { button, type, x, 2 more }  or object { keys, type, x, y }  or object { path, type, keys }  or 6 more`
 
         A click action.
 
@@ -4306,37 +4946,192 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           A click action.
 
+          - `button: "left" or "right" or "wheel" or 2 more`
+
+            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
+
+            - `"left"`
+
+            - `"right"`
+
+            - `"wheel"`
+
+            - `"back"`
+
+            - `"forward"`
+
+          - `type: "click"`
+
+            Specifies the event type. For a click action, this property is always `click`.
+
+            - `"click"`
+
+          - `x: number`
+
+            The x-coordinate where the click occurred.
+
+          - `y: number`
+
+            The y-coordinate where the click occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
         - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
+
+          - `type: "double_click"`
+
+            Specifies the event type. For a double click action, this property is always set to `double_click`.
+
+            - `"double_click"`
+
+          - `x: number`
+
+            The x-coordinate where the double click occurred.
+
+          - `y: number`
+
+            The y-coordinate where the double click occurred.
 
         - `Drag object { path, type, keys }`
 
           A drag action.
 
+          - `path: array of object { x, y }`
+
+            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
+
+            ```
+            [
+              { x: 100, y: 200 },
+              { x: 200, y: 300 }
+            ]
+            ```
+
+            - `x: number`
+
+              The x-coordinate.
+
+            - `y: number`
+
+              The y-coordinate.
+
+          - `type: "drag"`
+
+            Specifies the event type. For a drag action, this property is always set to `drag`.
+
+            - `"drag"`
+
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
         - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
+
+          - `keys: array of string`
+
+            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
+
+          - `type: "keypress"`
+
+            Specifies the event type. For a keypress action, this property is always set to `keypress`.
+
+            - `"keypress"`
 
         - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
+          - `type: "move"`
+
+            Specifies the event type. For a move action, this property is always set to `move`.
+
+            - `"move"`
+
+          - `x: number`
+
+            The x-coordinate to move to.
+
+          - `y: number`
+
+            The y-coordinate to move to.
+
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
         - `Screenshot object { type }`
 
           A screenshot action.
+
+          - `type: "screenshot"`
+
+            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
+
+            - `"screenshot"`
 
         - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
+          - `scroll_x: number`
+
+            The horizontal scroll distance.
+
+          - `scroll_y: number`
+
+            The vertical scroll distance.
+
+          - `type: "scroll"`
+
+            Specifies the event type. For a scroll action, this property is always set to `scroll`.
+
+            - `"scroll"`
+
+          - `x: number`
+
+            The x-coordinate where the scroll occurred.
+
+          - `y: number`
+
+            The y-coordinate where the scroll occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
+
         - `Type object { text, type }`
 
           An action to type in text.
 
+          - `text: string`
+
+            The text to type.
+
+          - `type: "type"`
+
+            Specifies the event type. For a type action, this property is always set to `type`.
+
+            - `"type"`
+
         - `Wait object { type }`
 
           A wait action.
+
+          - `type: "wait"`
+
+            Specifies the event type. For a wait action, this property is always set to `wait`.
+
+            - `"wait"`
 
     - `ComputerCallOutput object { id, call_id, output, 4 more }`
 
@@ -4410,7 +5205,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
     - `WebSearchCall object { id, action, status, type }`
 
       The results of a web search tool call. See the
-      [web search guide](/docs/guides/tools-web-search) for more information.
+      [web search guide](https://platform.openai.com/docs/guides/tools-web-search) for more information.
 
       - `id: string`
 
@@ -4503,7 +5298,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"web_search_call"`
 
-    - `FunctionCall object { id, arguments, call_id, 5 more }`
+    - `FunctionCall object { id, arguments, call_id, 6 more }`
 
       - `id: string`
 
@@ -4538,6 +5333,26 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"function_call"`
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by: optional string`
 
         The identifier of the actor that created the item.
@@ -4546,7 +5361,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         The namespace of the function to run.
 
-    - `FunctionCallOutput object { id, call_id, output, 3 more }`
+    - `FunctionCallOutput object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -4569,15 +5384,15 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           Text, image, or file output of the function call.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
-          - `ResponseInputImage object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `ResponseInputFile object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
             A file input to the model.
 
@@ -4597,6 +5412,30 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         The type of the function tool call output. Always `function_call_output`.
 
         - `"function_call_output"`
+
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `created_by: optional string`
 
@@ -4672,11 +5511,11 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"incomplete"`
 
-      - `tools: array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+      - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
         The loaded tool definitions returned by tool search.
 
-        - `Function object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 5 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -4690,13 +5529,21 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           - `strict: boolean`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -4705,6 +5552,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: optional map[unknown]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -4876,7 +5727,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -4933,10 +5784,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 8 more }`
+        - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -4947,6 +5798,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -4980,7 +5839,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -5080,7 +5939,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `CodeInterpreter object { container, type }`
+        - `CodeInterpreter object { container, type, allowed_callers }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -5166,6 +6025,22 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"code_interpreter"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling object { type }`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
@@ -5188,8 +6063,19 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -5218,13 +6104,13 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -5232,7 +6118,13 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -5302,7 +6194,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"local_shell"`
 
-        - `Shell object { type, environment }`
+        - `Shell object { type, allowed_callers, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -5311,6 +6203,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             The type of the shell tool. Always `shell`.
 
             - `"shell"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
@@ -5438,9 +6338,9 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
                 - `"container_reference"`
 
-        - `Custom object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -5451,6 +6351,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -5508,11 +6416,11 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, allowed_callers, 5 more }`
 
               - `name: string`
 
@@ -5520,19 +6428,33 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
                 - `"function"`
 
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: optional boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: optional string`
 
+              - `output_schema: optional map[unknown]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: optional unknown`
 
               - `strict: optional boolean`
 
-            - `Custom object { name, type, defer_loading, 2 more }`
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            - `Custom object { name, type, allowed_callers, 3 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -5543,6 +6465,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
                 The type of the custom tool. Always `custom`.
 
                 - `"custom"`
+
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading: optional boolean`
 
@@ -5642,7 +6572,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch object { type }`
+        - `ApplyPatch object { type, allowed_callers }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -5651,6 +6581,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             The type of the tool. Always `apply_patch`.
 
             - `"apply_patch"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
       - `type: "tool_search_output"`
 
@@ -5688,11 +6626,11 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"tool"`
 
-      - `tools: array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+      - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
         The additional tool definitions made available at this item.
 
-        - `Function object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 5 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -5706,13 +6644,21 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           - `strict: boolean`
 
-            Whether to enforce strict parameter validation. Default `true`.
+            Whether strict parameter validation is enforced for this function tool.
 
           - `type: "function"`
 
             The type of the function tool. Always `function`.
 
             - `"function"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -5721,6 +6667,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
           - `description: optional string`
 
             A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: optional map[unknown]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
 
         - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
@@ -5825,7 +6775,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -5882,10 +6832,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 8 more }`
+        - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -5896,6 +6846,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: optional array of string or object { read_only, tool_names }`
 
@@ -5929,7 +6887,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -6029,7 +6987,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `CodeInterpreter object { container, type }`
+        - `CodeInterpreter object { container, type, allowed_callers }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -6083,6 +7041,22 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"code_interpreter"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling object { type }`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
         - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
@@ -6105,8 +7079,19 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -6135,13 +7120,13 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -6149,7 +7134,13 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -6219,7 +7210,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"local_shell"`
 
-        - `Shell object { type, environment }`
+        - `Shell object { type, allowed_callers, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -6229,6 +7220,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"shell"`
 
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
             - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
@@ -6237,9 +7236,9 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `ContainerReference object { container_id, type }`
 
-        - `Custom object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -6250,6 +7249,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             The type of the custom tool. Always `custom`.
 
             - `"custom"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `defer_loading: optional boolean`
 
@@ -6275,11 +7282,11 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, allowed_callers, 5 more }`
 
               - `name: string`
 
@@ -6287,19 +7294,33 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
                 - `"function"`
 
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
               - `defer_loading: optional boolean`
 
                 Whether this function should be deferred and discovered via tool search.
 
               - `description: optional string`
 
+              - `output_schema: optional map[unknown]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
               - `parameters: optional unknown`
 
               - `strict: optional boolean`
 
-            - `Custom object { name, type, defer_loading, 2 more }`
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+            - `Custom object { name, type, allowed_callers, 3 more }`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -6310,6 +7331,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
                 The type of the custom tool. Always `custom`.
 
                 - `"custom"`
+
+              - `allowed_callers: optional array of "direct" or "programmatic"`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
 
               - `defer_loading: optional boolean`
 
@@ -6409,7 +7438,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch object { type }`
+        - `ApplyPatch object { type, allowed_callers }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -6418,6 +7447,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             The type of the tool. Always `apply_patch`.
 
             - `"apply_patch"`
+
+          - `allowed_callers: optional array of "direct" or "programmatic"`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
       - `type: "additional_tools"`
 
@@ -6430,13 +7467,13 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
       A description of the chain of thought used by a reasoning model while generating
       a response. Be sure to include these items in your `input` to the Responses API
       for subsequent turns of a conversation if you are manually
-      [managing context](/docs/guides/conversation-state).
+      [managing context](https://platform.openai.com/docs/guides/conversation-state).
 
       - `id: string`
 
         The unique identifier of the reasoning content.
 
-      - `summary: array of SummaryTextContent`
+      - `summary: array of object { text, type }`
 
         Reasoning summary content.
 
@@ -6486,9 +7523,61 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"incomplete"`
 
+    - `Program object { id, call_id, code, 2 more }`
+
+      - `id: string`
+
+        The unique ID of the program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput object { id, call_id, result, 2 more }`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" or "incomplete"`
+
+        The terminal status of the program output item.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The type of the item. Always `program_output`.
+
+        - `"program_output"`
+
     - `Compaction object { id, encrypted_content, type, created_by }`
 
-      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
+      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
 
       - `id: string`
 
@@ -6693,7 +7782,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"incomplete"`
 
-    - `ShellCall object { id, action, call_id, 4 more }`
+    - `ShellCall object { id, action, call_id, 5 more }`
 
       A tool call that executes one or more shell commands in a managed environment.
 
@@ -6761,11 +7850,31 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"shell_call"`
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by: optional string`
 
         The ID of the entity that created this tool call.
 
-    - `ShellCallOutput object { id, call_id, max_output_length, 4 more }`
+    - `ShellCallOutput object { id, call_id, max_output_length, 5 more }`
 
       The output of a shell tool call that was emitted.
 
@@ -6841,11 +7950,31 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"shell_call_output"`
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by: optional string`
 
         The identifier of the actor that created the item.
 
-    - `ApplyPatchCall object { id, call_id, operation, 3 more }`
+    - `ApplyPatchCall object { id, call_id, operation, 4 more }`
 
       A tool call that applies file diffs by creating, deleting, or updating files.
 
@@ -6925,11 +8054,31 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"apply_patch_call"`
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by: optional string`
 
         The ID of the entity that created this tool call.
 
-    - `ApplyPatchCallOutput object { id, call_id, status, 3 more }`
+    - `ApplyPatchCallOutput object { id, call_id, status, 4 more }`
 
       The output emitted by an apply patch tool call.
 
@@ -6954,6 +8103,26 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         The type of the item. Always `apply_patch_call_output`.
 
         - `"apply_patch_call_output"`
+
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
 
       - `created_by: optional string`
 
@@ -7110,7 +8279,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"failed"`
 
-    - `CustomToolCall object { id, call_id, input, 5 more }`
+    - `CustomToolCall object { id, call_id, input, 6 more }`
 
       - `id: string`
 
@@ -7145,6 +8314,26 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"custom_tool_call"`
 
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
       - `created_by: optional string`
 
         The identifier of the actor that created the item.
@@ -7153,7 +8342,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         The namespace of the custom tool being called.
 
-    - `CustomToolCallOutput object { id, call_id, output, 3 more }`
+    - `CustomToolCallOutput object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -7176,15 +8365,15 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           Text, image, or file output of the custom tool call.
 
-          - `ResponseInputText object { text, type }`
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
 
             A text input to the model.
 
-          - `ResponseInputImage object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `ResponseInputFile object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
             A file input to the model.
 
@@ -7204,6 +8393,30 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         The type of the custom tool call output. Always `custom_tool_call_output`.
 
         - `"custom_tool_call_output"`
+
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
 
       - `created_by: optional string`
 

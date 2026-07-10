@@ -4,19 +4,7 @@
 
 **post** `/realtime/client_secrets`
 
-Create a Realtime client secret with an associated session configuration.
-
-Client secrets are short-lived tokens that can be passed to a client app,
-such as a web frontend or mobile client, which grants access to the Realtime API without
-leaking your main API key. You can configure a custom TTL for each client secret.
-
-You can also attach session configuration options to the client secret, which will be
-applied to any sessions created using that client secret, but these can also be overridden
-by the client connection.
-
-[Learn more about authentication with client secrets over WebRTC](https://platform.openai.com/docs/guides/realtime-webrtc).
-
-Returns the created client secret and the effective session object. The client secret is a string that looks like `ek_1234`.
+Create client secret
 
 ### Parameters
 
@@ -346,13 +334,13 @@ Returns the created client secret and the effective session object. The client s
 
         - `"inf"`
 
-    - `model: Optional[Union[str, Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 14 more], null]]`
+    - `model: Optional[Union[str, Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 16 more], null]]`
 
       The Realtime model used for this session.
 
       - `str`
 
-      - `Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 14 more]`
+      - `Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 16 more]`
 
         The Realtime model used for this session.
 
@@ -361,6 +349,10 @@ Returns the created client secret and the effective session object. The client s
         - `"gpt-realtime-1.5"`
 
         - `"gpt-realtime-2"`
+
+        - `"gpt-realtime-2.1"`
+
+        - `"gpt-realtime-2.1-mini"`
 
         - `"gpt-realtime-2025-08-28"`
 
@@ -436,6 +428,16 @@ Returns the created client secret and the effective session object. The client s
 
             - `"input_text"`
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ResponseInputImage: …`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -466,6 +468,16 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
         - `class ResponseInputFile: …`
 
           A file input to the model.
@@ -476,9 +488,11 @@ Returns the created client secret and the effective session object. The client s
 
             - `"input_file"`
 
-          - `detail: Optional[Literal["low", "high"]]`
+          - `detail: Optional[Literal["auto", "low", "high"]]`
 
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
 
             - `"low"`
 
@@ -499,6 +513,16 @@ Returns the created client secret and the effective session object. The client s
           - `filename: Optional[str]`
 
             The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: Literal["explicit"]`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
 
       - `version: Optional[str]`
 
@@ -608,6 +632,14 @@ Returns the created client secret and the effective session object. The client s
           The type of the MCP tool. Always `mcp`.
 
           - `"mcp"`
+
+        - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+          The tool invocation context(s).
+
+          - `"direct"`
+
+          - `"programmatic"`
 
         - `allowed_tools: Optional[McpAllowedTools]`
 
@@ -1279,13 +1311,13 @@ Returns the created client secret and the effective session object. The client s
 
           - `"inf"`
 
-      - `model: Optional[Union[str, Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 14 more], null]]`
+      - `model: Optional[Union[str, Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 16 more], null]]`
 
         The Realtime model used for this session.
 
         - `str`
 
-        - `Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 14 more]`
+        - `Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 16 more]`
 
           The Realtime model used for this session.
 
@@ -1294,6 +1326,10 @@ Returns the created client secret and the effective session object. The client s
           - `"gpt-realtime-1.5"`
 
           - `"gpt-realtime-2"`
+
+          - `"gpt-realtime-2.1"`
+
+          - `"gpt-realtime-2.1-mini"`
 
           - `"gpt-realtime-2025-08-28"`
 
@@ -1364,6 +1400,16 @@ Returns the created client secret and the effective session object. The client s
 
               - `"input_text"`
 
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `class ResponseInputImage: …`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
@@ -1394,6 +1440,16 @@ Returns the created client secret and the effective session object. The client s
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
           - `class ResponseInputFile: …`
 
             A file input to the model.
@@ -1404,9 +1460,11 @@ Returns the created client secret and the effective session object. The client s
 
               - `"input_file"`
 
-            - `detail: Optional[Literal["low", "high"]]`
+            - `detail: Optional[Literal["auto", "low", "high"]]`
 
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
 
               - `"low"`
 
@@ -1427,6 +1485,16 @@ Returns the created client secret and the effective session object. The client s
             - `filename: Optional[str]`
 
               The name of the file to be sent to the model.
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
 
         - `version: Optional[str]`
 
@@ -1536,6 +1604,14 @@ Returns the created client secret and the effective session object. The client s
             The type of the MCP tool. Always `mcp`.
 
             - `"mcp"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
 
           - `allowed_tools: Optional[ToolMcpToolAllowedTools]`
 

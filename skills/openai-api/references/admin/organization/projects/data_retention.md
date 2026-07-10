@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/data_retention`
 
-Retrieves project data retention controls.
+Retrieve project data retention
 
 ### Path Parameters
 
@@ -75,7 +75,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/data_retention \
 
 **post** `/organization/projects/{project_id}/data_retention`
 
-Updates project data retention controls.
+Update project data retention
 
 ### Path Parameters
 

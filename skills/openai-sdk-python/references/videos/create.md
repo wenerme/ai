@@ -4,7 +4,7 @@
 
 **post** `/videos`
 
-Create a new video generation job from a prompt and optional reference assets.
+Create video
 
 ### Parameters
 

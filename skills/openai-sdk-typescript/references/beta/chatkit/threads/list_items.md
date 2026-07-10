@@ -4,7 +4,7 @@
 
 **get** `/chatkit/threads/{thread_id}/items`
 
-List items that belong to a ChatKit thread.
+List ChatKit thread items
 
 ### Parameters
 

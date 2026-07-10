@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/users`
 
-Returns a list of users in the project.
+List project users
 
 ### Parameters
 

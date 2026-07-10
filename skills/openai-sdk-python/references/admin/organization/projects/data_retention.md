@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/data_retention`
 
-Retrieves project data retention controls.
+Retrieve project data retention
 
 ### Parameters
 
@@ -70,7 +70,7 @@ print(project_data_retention.object)
 
 **post** `/organization/projects/{project_id}/data_retention`
 
-Updates project data retention controls.
+Update project data retention
 
 ### Parameters
 

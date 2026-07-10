@@ -4,7 +4,7 @@
 
 **get** `/organization/admin_api_keys`
 
-List organization API keys
+List all organization and project API keys.
 
 ### Parameters
 

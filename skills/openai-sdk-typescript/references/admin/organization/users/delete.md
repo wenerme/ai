@@ -4,7 +4,7 @@
 
 **delete** `/organization/users/{user_id}`
 
-Deletes a user from the organization.
+Delete user
 
 ### Parameters
 

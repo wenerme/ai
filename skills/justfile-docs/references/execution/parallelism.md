@@ -20,7 +20,7 @@ baz:
 ```
 
 The number of simultaneously running recipes may be limited with the `--jobs`
-option<sup>master</sup>. The `num_jobs()` function returns the number of jobs,
+option<sup>1.56.0</sup>. The `num_jobs()` function returns the number of jobs,
 falling back to the empty list if `--jobs` was not passed.
 
 GNU `parallel` may be used to run recipe lines concurrently:

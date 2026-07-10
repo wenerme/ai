@@ -1,91 +1,80 @@
 ---
-title: "Catchpoint data source for Grafana | Grafana Enterprise Plugins documentation"
-description: "Catchpoint Grafana data source Note This plugin is in a public preview. Refer Grafana Labs release life cycle documentation for further details. If you notice any issues or having feature request, create a support ticket with your Grafana Enterprise support channel."
+title: "Catchpoint data source | Grafana Enterprise Plugins documentation"
+description: "Query and visualize Catchpoint Tests, RUM, and SLO data in Grafana with the Catchpoint data source plugin."
 ---
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-# Catchpoint Grafana data source
+# Catchpoint data source
+
+The Catchpoint data source plugin lets you query and visualize Catchpoint `Tests`, `RUM`, and `SLO` data in Grafana. Use it to bring synthetic monitoring, real user monitoring, and service level objective data into your dashboards alongside the rest of your observability data.
 
 > Note
 >
-> This plugin is in a public preview. Refer [Grafana Labs release life cycle documentation](/docs/release-life-cycle/) for further details. If you notice any issues or having feature request, create a support ticket with your Grafana Enterprise support channel.
+> The Catchpoint data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
-The Catchpoint data source plugin allows you to query and visualize `Tests`, `RUM` and `SLO` data from within Grafana.
+> Note
+>
+> This plugin is in public preview. Refer to the [Grafana Labs release life cycle documentation](/docs/release-life-cycle/) for more details. If you notice an issue or have a feature request, create a support ticket through your Grafana Enterprise support channel.
+
+## Supported features
+
+The Catchpoint data source supports the following Grafana features:
+
+Expand table
+
+| Feature            | Supported |
+|--------------------|-----------|
+| Metrics            | Yes       |
+| Logs               | No        |
+| Traces             | No        |
+| Alerting           | Yes       |
+| Annotations        | Yes       |
+| Template variables | Yes       |
 
 ## Requirements
 
 This plugin has the following requirements:
 
-- A Catchpoint account
-- Any free or paid [Grafana Cloud](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
+- A Catchpoint account with a REST API v2 key.
+- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
+- Grafana version 11.6.7 or later.
 
 ## Install the plugin
 
-To install the data source, refer to [Installation](/grafana/plugins/grafana-catchpoint-datasource/?tab=installation).
+To install the data source, refer to [Install the Catchpoint data source](/docs/plugins/grafana-catchpoint-datasource/latest/install/).
 
-## Configure the data source in Grafana
+## Get started
 
-[Add a data source](/docs/grafana/latest/datasources/add-a-data-source/) by filling in the following fields:
+The following pages help you get started with the Catchpoint data source:
 
-### Basic fields
+- [Install the Catchpoint data source](/docs/plugins/grafana-catchpoint-datasource/latest/install/)
+- [Configure the Catchpoint data source](/docs/plugins/grafana-catchpoint-datasource/latest/configure/)
+- [Catchpoint query editor](/docs/plugins/grafana-catchpoint-datasource/latest/query-editor/)
+- [Template variables](/docs/plugins/grafana-catchpoint-datasource/latest/template-variables/)
+- [Annotations](/docs/plugins/grafana-catchpoint-datasource/latest/annotations/)
+- [Alerting](/docs/plugins/grafana-catchpoint-datasource/latest/alerting/)
+- [Troubleshooting](/docs/plugins/grafana-catchpoint-datasource/latest/troubleshooting/)
 
-Expand table
+## Additional features
 
-| Field | Description                                        |
-|-------|----------------------------------------------------|
-| Name  | A name for this particular Catchpoint data source. |
+After you configure the data source, you can:
 
-### Authentication fields
+- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [alert rules](/docs/plugins/grafana-catchpoint-datasource/latest/alerting/) on Catchpoint queries.
+- Add [annotations](/docs/plugins/grafana-catchpoint-datasource/latest/annotations/) to mark events on your panels.
 
-This plugin supports Bear token based authentication. Log into Catchpoint portal, then go to Settings &gt; API and find Rest API V2 Key under the REST API section.
+## Plugin updates
 
-Expand table
+Always ensure that your plugin version is up-to-date so you have access to all current features and improvements. Navigate to **Plugins and data** &gt; **Plugins** to check for updates. Grafana recommends upgrading to the latest Grafana version, and this applies to plugins as well.
 
-| Field  | Description                           |
-|--------|---------------------------------------|
-| bearer | Enter your Catchpoint REST API v2 key |
+> Note
+>
+> Plugins are automatically updated in Grafana Cloud.
 
-### Configure the data source with provisioning
+## Related resources
 
-It is possible to configure data sources using configuration files with Grafana’s provisioning system. To read about how it works, including all the settings that you can set for this data source, refer to [Provisioning Grafana data sources](/docs/grafana/latest/administration/provisioning/#data-sources)
-
-Here are some provisioning examples for this data source using access key authentication:
-
-YAML [Copy code to clipboard] Copy
-
-```yaml
-apiVersion: 1
-datasources:
-  - name: Catchpoint
-    type: grafana-catchpoint-datasource
-    jsonData:
-      authMethod: bearer
-    secureJsonData:
-      catchpoint.token: <token>
-```
-
-## Query the data source
-
-The query editor allows you to write queries - `Tests`, `RUM`, and `SLO`. Select the action type and enter required parameters and optional parameters where applicable.
-
-## Known limitations
-
-Due to limitations of the Catchpoint API at the moment it’s not possible to filter by specific dimension values when using Tests Query. When selecting dimension the data for all dimension values will be returned.
-
-### Explore view
-
-The Explore view allows you to run queries and visualize the results as logs or charts for metrics. For more information about Explore, refer to [Explore](/docs/grafana/latest/features/explore/).
-
-### Templates and variables
-
-To add a new Catchpoint query variable, refer to [Add a query variable](/docs/grafana/latest/variables/variable-types/add-query-variable/). Use your Catchpoint data source as your data source and fill out the `query` field with your query.
-
-After creating a variable, you can use it in your Catchpoint queries using [Variable syntax](/docs/grafana/latest/variables/syntax/). For more information about variables, refer to [Templates and variables](/docs/grafana/latest/variables/).
-
-## Learn more
-
-- Add [Annotations](/docs/grafana/latest/dashboards/annotations/).
-- Configure and use [Templates and variables](/docs/grafana/latest/variables/).
-- Add [Transformations](/docs/grafana/latest/panels/transformations/).
-- Set up alerting; refer to [Alerts overview](/docs/grafana/latest/alerting/).
+- [Catchpoint documentation](https://docs.catchpoint.com/)
+- [Catchpoint website](https://www.catchpoint.com/)
+- [Grafana community forum](https://community.grafana.com/)

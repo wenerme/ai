@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/rate_limits`
 
-Returns the rate limits per model for a project.
+List project rate limits
 
 ### Path Parameters
 
@@ -140,7 +140,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/rate_limits?after=
 
 **post** `/organization/projects/{project_id}/rate_limits/{rate_limit_id}`
 
-Updates a project rate limit.
+Modify project rate limit
 
 ### Path Parameters
 

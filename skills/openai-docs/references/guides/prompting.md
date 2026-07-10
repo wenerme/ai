@@ -8,13 +8,13 @@ Prompting is both an art and a science. OpenAI has some strategies and API desig
 
 ## Prompting tools and techniques
 
-- **[Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching)**: Reduce latency by up to 80% and cost by up to 75%
+- **[Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching)**: Reuse stable prompt prefixes to reduce latency and input token costs on cache hits
 - **[Prompt engineering](https://developers.openai.com/api/docs/guides/prompt-engineering)**: Learn strategies, techniques, and tools to construct prompts
 
 ## Refine your prompt
 
 - Put overall tone or role guidance in the system message; keep task-specific details and examples in user messages.
-- Combine few-shot examples into a concise YAML-style or bulleted block so they’re easy to scan and update.
+- Combine few-shot examples into a concise YAML-style or bulleted block so your team can scan and update them.
 - Mirror your project structure with clear folder names so teammates can locate prompts quickly.
 - Run your prompt tests and evaluation cases every time you publish; catching issues early is cheaper than fixing them in production.
 

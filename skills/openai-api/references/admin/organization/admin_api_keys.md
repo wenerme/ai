@@ -4,7 +4,7 @@
 
 **get** `/organization/admin_api_keys`
 
-List organization API keys
+List all organization and project API keys.
 
 ### Query Parameters
 
@@ -173,7 +173,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys?after=key_abc&limit=2
 
 **post** `/organization/admin_api_keys`
 
-Create an organization admin API key
+Create admin API key
 
 ### Body Parameters
 
@@ -263,7 +263,7 @@ curl -X POST https://api.openai.com/v1/organization/admin_api_keys \
 
 **get** `/organization/admin_api_keys/{key_id}`
 
-Retrieve a single organization API key
+Retrieve admin API key
 
 ### Path Parameters
 
@@ -395,7 +395,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys/key_abc \
 
 **delete** `/organization/admin_api_keys/{key_id}`
 
-Delete an organization admin API key
+Delete admin API key
 
 ### Path Parameters
 

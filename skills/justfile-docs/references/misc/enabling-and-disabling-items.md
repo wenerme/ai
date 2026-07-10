@@ -7,7 +7,7 @@ attributes will only be enabled when one or more of those conditional
 attributes is active.
 
 The conditional attributes originally applied only to recipes, but may now be
-applied to all top-level items<sup>master</sup>.
+applied to all top-level items<sup>1.56.0</sup>.
 
 This can be used to write `justfile`s that behave differently depending on
 which operating system they run on. The `run` recipe in this `justfile` will

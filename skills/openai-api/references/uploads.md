@@ -4,25 +4,7 @@
 
 **post** `/uploads`
 
-Creates an intermediate [Upload](/docs/api-reference/uploads/object) object
-that you can add [Parts](/docs/api-reference/uploads/part-object) to.
-Currently, an Upload can accept at most 8 GB in total and expires after an
-hour after you create it.
-
-Once you complete the Upload, we will create a
-[File](/docs/api-reference/files/object) object that contains all the parts
-you uploaded. This File is usable in the rest of our platform as a regular
-File object.
-
-For certain `purpose` values, the correct `mime_type` must be specified.
-Please refer to documentation for the
-[supported MIME types for your use case](/docs/assistants/tools/file-search#supported-files).
-
-For guidance on the proper filename extensions for each purpose, please
-follow the documentation on [creating a
-File](/docs/api-reference/files/create).
-
-Returns the Upload object with status `pending`.
+Create upload
 
 ### Body Parameters
 
@@ -41,12 +23,12 @@ Returns the Upload object with status `pending`.
   This must fall within the supported MIME types for your file purpose. See
   the supported MIME types for assistants and vision.
 
-- `purpose: "assistants" or "batch" or "fine-tune" or "vision"`
+- `purpose: FilePurpose`
 
   The intended purpose of the uploaded file.
 
   See the [documentation on File
-  purposes](/docs/api-reference/files/create#files-create-purpose).
+  purposes](https://platform.openai.com/docs/api-reference/files/create#files-create-purpose).
 
   - `"assistants"`
 
@@ -55,6 +37,10 @@ Returns the Upload object with status `pending`.
   - `"fine-tune"`
 
   - `"vision"`
+
+  - `"user_data"`
+
+  - `"evals"`
 
 - `expires_after: optional object { anchor, seconds }`
 
@@ -96,9 +82,15 @@ Returns the Upload object with status `pending`.
 
     The name of the file to be uploaded.
 
+  - `object: "upload"`
+
+    The object type, which is always "upload".
+
+    - `"upload"`
+
   - `purpose: string`
 
-    The intended purpose of the file. [Please refer here](/docs/api-reference/files/object#files/object-purpose) for acceptable values.
+    The intended purpose of the file. [Please refer here](https://platform.openai.com/docs/api-reference/files/object#files/object-purpose) for acceptable values.
 
   - `status: "pending" or "completed" or "cancelled" or "expired"`
 
@@ -176,12 +168,6 @@ Returns the Upload object with status `pending`.
 
       Deprecated. For details on why a fine-tuning training file failed validation, see the `error` field on `fine_tuning.job`.
 
-  - `object: optional "upload"`
-
-    The object type, which is always "upload".
-
-    - `"upload"`
-
 ### Example
 
 ```http
@@ -205,6 +191,7 @@ curl https://api.openai.com/v1/uploads \
   "created_at": 0,
   "expires_at": 0,
   "filename": "filename",
+  "object": "upload",
   "purpose": "purpose",
   "status": "pending",
   "file": {
@@ -217,8 +204,7 @@ curl https://api.openai.com/v1/uploads \
     "status": "uploaded",
     "expires_at": 0,
     "status_details": "status_details"
-  },
-  "object": "upload"
+  }
 }
 ```
 
@@ -258,14 +244,7 @@ curl https://api.openai.com/v1/uploads \
 
 **post** `/uploads/{upload_id}/complete`
 
-Completes the [Upload](/docs/api-reference/uploads/object).
-
-Within the returned Upload object, there is a nested [File](/docs/api-reference/files/object) object that is ready to use in the rest of the platform.
-
-You can specify the order of the Parts by passing in an ordered list of the Part IDs.
-
-The number of bytes uploaded upon completion must match the number of bytes initially specified when creating the Upload object. No Parts may be added after an Upload is completed.
-Returns the Upload object with status `completed`, including an additional `file` property containing the created usable File object.
+Complete upload
 
 ### Path Parameters
 
@@ -307,9 +286,15 @@ Returns the Upload object with status `completed`, including an additional `file
 
     The name of the file to be uploaded.
 
+  - `object: "upload"`
+
+    The object type, which is always "upload".
+
+    - `"upload"`
+
   - `purpose: string`
 
-    The intended purpose of the file. [Please refer here](/docs/api-reference/files/object#files/object-purpose) for acceptable values.
+    The intended purpose of the file. [Please refer here](https://platform.openai.com/docs/api-reference/files/object#files/object-purpose) for acceptable values.
 
   - `status: "pending" or "completed" or "cancelled" or "expired"`
 
@@ -387,12 +372,6 @@ Returns the Upload object with status `completed`, including an additional `file
 
       Deprecated. For details on why a fine-tuning training file failed validation, see the `error` field on `fine_tuning.job`.
 
-  - `object: optional "upload"`
-
-    The object type, which is always "upload".
-
-    - `"upload"`
-
 ### Example
 
 ```http
@@ -415,6 +394,7 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/complete \
   "created_at": 0,
   "expires_at": 0,
   "filename": "filename",
+  "object": "upload",
   "purpose": "purpose",
   "status": "pending",
   "file": {
@@ -427,8 +407,7 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/complete \
     "status": "uploaded",
     "expires_at": 0,
     "status_details": "status_details"
-  },
-  "object": "upload"
+  }
 }
 ```
 
@@ -469,9 +448,7 @@ curl https://api.openai.com/v1/uploads/upload_abc123/complete
 
 **post** `/uploads/{upload_id}/cancel`
 
-Cancels the Upload. No Parts may be added after an Upload is cancelled.
-
-Returns the Upload object with status `cancelled`.
+Cancel upload
 
 ### Path Parameters
 
@@ -503,9 +480,15 @@ Returns the Upload object with status `cancelled`.
 
     The name of the file to be uploaded.
 
+  - `object: "upload"`
+
+    The object type, which is always "upload".
+
+    - `"upload"`
+
   - `purpose: string`
 
-    The intended purpose of the file. [Please refer here](/docs/api-reference/files/object#files/object-purpose) for acceptable values.
+    The intended purpose of the file. [Please refer here](https://platform.openai.com/docs/api-reference/files/object#files/object-purpose) for acceptable values.
 
   - `status: "pending" or "completed" or "cancelled" or "expired"`
 
@@ -583,12 +566,6 @@ Returns the Upload object with status `cancelled`.
 
       Deprecated. For details on why a fine-tuning training file failed validation, see the `error` field on `fine_tuning.job`.
 
-  - `object: optional "upload"`
-
-    The object type, which is always "upload".
-
-    - `"upload"`
-
 ### Example
 
 ```http
@@ -606,6 +583,7 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/cancel \
   "created_at": 0,
   "expires_at": 0,
   "filename": "filename",
+  "object": "upload",
   "purpose": "purpose",
   "status": "pending",
   "file": {
@@ -618,8 +596,7 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/cancel \
     "status": "uploaded",
     "expires_at": 0,
     "status_details": "status_details"
-  },
-  "object": "upload"
+  }
 }
 ```
 
@@ -672,9 +649,15 @@ curl https://api.openai.com/v1/uploads/upload_abc123/cancel
 
     The name of the file to be uploaded.
 
+  - `object: "upload"`
+
+    The object type, which is always "upload".
+
+    - `"upload"`
+
   - `purpose: string`
 
-    The intended purpose of the file. [Please refer here](/docs/api-reference/files/object#files/object-purpose) for acceptable values.
+    The intended purpose of the file. [Please refer here](https://platform.openai.com/docs/api-reference/files/object#files/object-purpose) for acceptable values.
 
   - `status: "pending" or "completed" or "cancelled" or "expired"`
 
@@ -752,23 +735,13 @@ curl https://api.openai.com/v1/uploads/upload_abc123/cancel
 
       Deprecated. For details on why a fine-tuning training file failed validation, see the `error` field on `fine_tuning.job`.
 
-  - `object: optional "upload"`
-
-    The object type, which is always "upload".
-
-    - `"upload"`
-
 # Parts
 
 ## Add upload part
 
 **post** `/uploads/{upload_id}/parts`
 
-Adds a [Part](/docs/api-reference/uploads/part-object) to an [Upload](/docs/api-reference/uploads/object) object. A Part represents a chunk of bytes from the file you are trying to upload.
-
-Each Part can be at most 64 MB, and you can add Parts until you hit the Upload maximum of 8 GB.
-
-It is possible to add multiple Parts in parallel. You can decide the intended order of the Parts when you [complete the Upload](/docs/api-reference/uploads/complete).
+Add upload part
 
 ### Path Parameters
 

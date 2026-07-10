@@ -4,7 +4,7 @@
 
 **post** `/organization/projects/{project_id}`
 
-Modifies a project in the organization.
+Modify project
 
 ### Parameters
 

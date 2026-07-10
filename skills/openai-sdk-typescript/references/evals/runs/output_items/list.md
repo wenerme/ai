@@ -4,7 +4,7 @@
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items`
 
-Get a list of output items for an evaluation run.
+Get eval run output items
 
 ### Parameters
 

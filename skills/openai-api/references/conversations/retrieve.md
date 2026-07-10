@@ -2,7 +2,7 @@
 
 **get** `/conversations/{conversation_id}`
 
-Get a conversation
+Retrieve a conversation
 
 ### Path Parameters
 

@@ -4,7 +4,7 @@
 
 **get** `/organization/usage/completions`
 
-Get completions usage details for the organization.
+Completions
 
 ### Parameters
 

@@ -46,9 +46,9 @@ You need:
 [Platform tunnel permissions](https://developers.openai.com/api/docs/guides/rbac) and ChatGPT developer-mode access are separate:
 
 - Creating or editing a tunnel requires Tunnels **Read** + **Manage**.
-- Running `tunnel-client` or selecting the tunnel in connector settings requires Tunnels **Read** + **Use**.
+- Running `tunnel-client` or selecting the tunnel while creating an app requires Tunnels **Read** + **Use**.
 - Tunnel permissions apply to a Platform organization. A Platform organization owner or RBAC administrator grants the tunnel role.
-- ChatGPT developer mode is a separate workspace permission. For Enterprise/Edu, a workspace admin grants **Permissions & Roles** > **Connected Data** > **Developer mode / Create custom MCP connectors**; the user then enables it in **Settings** > **Apps** > **Advanced Settings**. See the [developer-mode Help Center article](https://help.openai.com/en/articles/12584461-developer-mode-apps-and-full-mcp-connectors-in-chatgpt-beta) for plan-specific policy.
+- ChatGPT developer mode is a separate workspace permission. For Enterprise/Edu, a workspace admin grants developer-mode access; the user then enables it in **Settings → Security and login**. See the [developer-mode Help Center article](https://help.openai.com/en/articles/12584461-developer-mode-apps-and-full-mcp-connectors-in-chatgpt-beta) for plan-specific policy.
 
 Ask the target ChatGPT workspace admin for developer-mode access, and ask the target Platform organization owner/RBAC admin for tunnel permissions.
 
@@ -57,7 +57,7 @@ Ask the target ChatGPT workspace admin for developer-mode access, and ask the ta
 A tunnel can be associated with one or more Platform organizations or ChatGPT workspaces. Use these associations to define every OpenAI context that should be allowed to find or use the tunnel.
 
 - Include the Platform organization that owns or manages the tunnel.
-- Include the ChatGPT workspace that should list the tunnel in connector settings.
+- Include the ChatGPT workspace that should list the tunnel when creating apps.
 - Include another Platform organization when Codex, the Responses API, or another supported product will call the private MCP server from that organization.
 - Use the same `tunnel_id` for `tunnel-client`; adding organizations or workspaces does not create a second tunnel or change the private MCP server endpoint.
 
@@ -96,7 +96,7 @@ tunnel-client run --profile local-stdio
 
 For an HTTP MCP server, use `--mcp-server-url https://mcp.internal.example.com/mcp` instead of `--mcp-command`.
 
-Keep `tunnel-client run ...` healthy while you create or test the connector. Connector discovery and MCP tool calls depend on the running client.
+Keep `tunnel-client run ...` healthy while you create or test the app. App discovery and MCP tool calls depend on the running client.
 
 <figure className="not-prose my-8">
   <figcaption className="mt-3 text-sm text-gray-600 dark:text-gray-400">
@@ -116,9 +116,9 @@ Run `tunnel-client` in the same trust boundary that can already reach the privat
 
 ## Connect from ChatGPT
 
-Open [ChatGPT connector settings](https://chatgpt.com/#settings/Connectors), create a custom connector, and choose **Tunnel** under **Connection**. Select an available tunnel when ChatGPT lists it, or paste a valid `tunnel_id` if you already have one.
+Open **Settings → Plugins** or [chatgpt.com/plugins](https://chatgpt.com/plugins), select the plus button to create a developer-mode app, and choose **Tunnel** under **Connection**. Select an available tunnel when ChatGPT lists it, or paste a valid `tunnel_id` if you already have one.
 
-If the tunnel does not appear in ChatGPT, verify that the tunnel is associated with the target ChatGPT workspace, not only with a Platform organization, and that the connector operator has Tunnels **Read** + **Use**.
+If the tunnel does not appear in ChatGPT, verify that the tunnel is associated with the target ChatGPT workspace, not only with a Platform organization, and that the app creator has Tunnels **Read** + **Use**.
 
 ## Security and networking
 
@@ -170,14 +170,14 @@ Use this when you need to reach a small set of private REST endpoints without ex
 ## Where to configure it
 
 - Manage OpenAI-hosted MCP tunnel endpoints in [Platform tunnel settings](https://platform.openai.com/settings/organization/tunnels).
-- Use a tunnel when creating a connector from [ChatGPT connector settings](https://chatgpt.com/#settings/Connectors).
+- Use a tunnel when creating a developer-mode app from **Settings → Plugins** or [chatgpt.com/plugins](https://chatgpt.com/plugins).
 - For Codex or API flows, use the tunnel-backed MCP target exposed by the supported product surface.
 
 ## Next steps
 
 - Create or manage the tunnel in [Platform tunnel settings](https://platform.openai.com/settings/organization/tunnels).
 - Validate your `tunnel-client` profile with `tunnel-client doctor --profile <profile> --explain`.
-- Connect the tunnel from [ChatGPT connector settings](https://chatgpt.com/#settings/Connectors) or the supported OpenAI surface you are using.
+- Connect the tunnel from **Settings → Plugins**, [chatgpt.com/plugins](https://chatgpt.com/plugins), or the supported OpenAI surface you are using.
 
 <div class="not-prose my-8 grid gap-4 lg:grid-cols-2">
   <figure>
@@ -194,15 +194,16 @@ Use this when you need to reach a small set of private REST endpoints without ex
     </figcaption>
   </figure>
   <figure>
-    <a href="https://chatgpt.com/#settings/Connectors">
+    <a href="https://chatgpt.com/plugins">
       <img src="https://developers.openai.com/images/platform/guides/secure-mcp-tunnels/chatgpt-connectors-tunnel.png"
-        alt="Sanitized ChatGPT connector settings screenshot with Tunnel selected."
+        alt="Sanitized ChatGPT app creation screenshot with Tunnel selected."
         loading="lazy"
         class="w-full rounded-md border border-gray-200 dark:border-gray-800"
       />
     </a>
     <figcaption class="mt-3 text-sm text-gray-600 dark:text-gray-400">
-      Select Tunnel when connecting a ChatGPT connector to a private MCP server.
+      Select Tunnel when connecting a ChatGPT developer-mode app to a private
+      MCP server.
     </figcaption>
   </figure>
 </div>
