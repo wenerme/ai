@@ -84,6 +84,13 @@ If your organization cannot allow access to the public npm registry, you can use
 [custom Docker image](../../../user/duo_agent_platform/flows/execution.md#change-the-default-docker-image)
 with the required dependencies already installed.
 
+> [!note]
+> The runner's connection to the GitLab Duo Agent Platform Service is routed through the
+> GitLab instance. Runners do not connect directly to `duo-workflow-svc.runway.gitlab.net`.
+> The firewall requirement for `duo-workflow-svc.runway.gitlab.net` on port `443` applies to the
+> GitLab instance, not the runner. Your runner network configuration must allow outbound HTTPS
+> traffic to the GitLab instance.
+
 ## Share usage data with GitLab
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/587976) in GitLab 18.9.1.

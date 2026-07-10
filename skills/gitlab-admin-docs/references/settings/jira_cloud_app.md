@@ -254,6 +254,14 @@ For step-by-step instructions, manual `forge` commands, troubleshooting, and the
 [Self-managed install guide](https://gitlab.com/gitlab-org/gitlab-jira-forge/-/blob/main/docs/self-managed-install.md)
 in the `gitlab-jira-forge` repository.
 
+After the app is registered, set its Forge app ID in GitLab so that inbound Forge tokens are verified:
+
+1. Copy the `APP_ID` value (an `ari:cloud:ecosystem::app/<uuid>` ARI) from `.env.self-managed`.
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **General**.
+1. Expand **GitLab for Jira App**.
+1. In **Forge app ID**, paste the ARI, then select **Save changes**.
+
 After the app is installed, [configure the GitLab for Jira Cloud app](../../integration/jira/connect-app.md#configure-the-gitlab-for-jira-cloud-app)
 in Jira to link your GitLab namespaces.
 

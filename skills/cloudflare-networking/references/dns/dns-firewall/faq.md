@@ -26,7 +26,7 @@ As long as there is enough allocated memory, Cloudflare does not clear items fro
 
 ## Does the DNS Firewall cache SERVFAIL?
 
-Yes. `SERVFAIL` is treated like any other negative answer for caching purposes. The default TTL is 30 seconds. You can use the [API](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/) to set a different `negative_cache_ttl`.
+Yes. `SERVFAIL` is treated like any other negative answer for caching purposes. The default TTL is 30 seconds. You can set a different negative cache TTL on your cluster in the Cloudflare dashboard, or via the [API](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/) (`negative_cache_ttl` parameter).
 
 ## Does DNS Firewall support EDNS Client Subnet (ECS)?
 
@@ -43,11 +43,11 @@ Note
 
 EDNS limits the effectiveness of the DNS cache.
 
-Some resolvers might not be sending any EDNS data. When you set the `ecs_fallback` parameter to `true` via the [API](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/), DNS Firewall will forward the IP subnet of the resolver instead only if there is no EDNS data present in incoming the DNS query.
+Some resolvers might not be sending any EDNS data. When you enable ECS fallback on your cluster in the Cloudflare dashboard — or set the `ecs_fallback` parameter to `true` via the [API](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/) — DNS Firewall will forward the IP subnet of the resolver instead, only if there is no EDNS data present in the incoming DNS query.
 
 ## Does DNS Firewall cache negative answers?
 
-Yes. The default TTL is 30 seconds. You can set `negative_cache_ttl` via the [API](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/). This will affect the TTL of responses with status `REFUSED`, `NXDOMAIN`, or `SERVFAIL`.
+Yes. The default TTL is 30 seconds. You can configure the negative cache TTL on your cluster in the Cloudflare dashboard, or via the [API](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/) (`negative_cache_ttl` parameter). This will affect the TTL of responses with status `REFUSED`, `NXDOMAIN`, or `SERVFAIL`.
 
 ## How can I set PTR records for nameserver hostnames?
 
@@ -57,6 +57,6 @@ To set up PTR records for the DNS Firewall cluster IPs that point to your namese
 * [Update DNS Firewall Cluster Reverse DNS](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/subresources/reverse%5Fdns/methods/edit/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dns-firewall/faq/#page","headline":"FAQs — DNS Firewall · Cloudflare DNS docs","description":"Find answers to common questions about Cloudflare's DNS Firewall, including cache behavior, EDNS support, and setting PTR records.","url":"https://developers.cloudflare.com/dns/dns-firewall/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dns-firewall/faq/#page","headline":"FAQs — DNS Firewall · Cloudflare DNS docs","description":"Find answers to common questions about Cloudflare's DNS Firewall, including cache behavior, EDNS support, and setting PTR records.","url":"https://developers.cloudflare.com/dns/dns-firewall/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/dns-firewall/","name":"DNS Firewall"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/dns-firewall/faq/","name":"DNS Firewall FAQ"}}]}
 ```

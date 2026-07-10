@@ -5238,7 +5238,7 @@ relative to `refs/heads/branch1` and the pipeline source is a merge request even
 
 ##### `rules:changes:regexp`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236982) in GitLab 19.2 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_rules_regexp`. Disabled by default. When disabled, a job with `regexp:` always runs.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236982) in GitLab 19.2.
 
 Use `rules:changes:regexp` to match changed file paths using a Ruby regular expression
 instead of glob patterns.
@@ -5427,7 +5427,7 @@ the project `my-group/my-project` on the commit tagged with `v1.0.0`.
 
 ##### `rules:exists:regexp`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236982) in GitLab 19.2 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_rules_regexp`. Disabled by default. When disabled, a job with `regexp:` always runs.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236982) in GitLab 19.2.
 
 Use `rules:exists:regexp` to match file paths in the repository using a Ruby regular expression
 instead of glob patterns.

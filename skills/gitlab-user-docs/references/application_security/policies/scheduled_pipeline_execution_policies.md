@@ -205,6 +205,62 @@ For example, `2025-06-26T16:27:00+00:00` represents June 26, 2025, at 4:27 PM UT
 
 To remove a snooze before its expiration time, remove the `snooze` section from the policy configuration or set a date in the past for the `until` value.
 
+## Control access to CI/CD variables
+
+By default, scheduled pipeline execution policy jobs cannot access project or group CI/CD variables.
+This secure default prevents policies from unintentionally exposing sensitive project configuration.
+
+To allow policy jobs to access project and group CI/CD variables, add the `variables_override` option to your policy configuration:
+
+```yaml
+pipeline_execution_schedule_policy:
+- name: Scheduled Security Scan
+  description: 'Run security scans with access to project variables'
+  enabled: true
+  content:
+    include:
+    - project: your-group/your-project
+      file: security-scan.yml
+  variables_override:
+    allowed: true
+  schedules:
+  - type: daily
+    start_time: '02:00'
+    time_window:
+      value: 3600
+      distribution: random
+```
+
+### `variables_override` configuration options
+
+| Parameter | Description |
+|-----------|-------------|
+| `allowed` | Required. When `true`, policy jobs can access project and group CI/CD variables. When `false`, blocks access to these variables. |
+| `exceptions` | Optional. An array of variable names that are excepted from the enforcement. When `allowed: true`, variables in this list are blocked. When `allowed: false`, variables in this list are allowed. |
+| `dotenv` | Optional. Controls whether dotenv artifact variables follow the policy rules. Set to `allow_override` to let dotenv variables bypass the policy rules. Default behavior respects the policy rules. |
+
+### `variables_override` examples
+
+Block all project variables except specific ones:
+
+```yaml
+variables_override:
+  allowed: false
+  exceptions:
+    - DEPLOY_TOKEN
+    - API_KEY
+```
+
+Allow all project variables except sensitive ones:
+
+```yaml
+variables_override:
+  allowed: true
+  exceptions:
+    - SECRET_KEY
+    - PRIVATE_TOKEN
+```
+
 ## Schedule pipelines for specific branches
 
 By default, schedules run on the default branch only. Scheduled pipeline execution policies support branch filtering, which allows you to schedule pipelines for additional branches. Use the `branches` property to perform regular scans or checks on other important branches in your project.

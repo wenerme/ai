@@ -7,9 +7,7 @@ packages:
 
 # VercelSandbox
 
-Executes commands inside [Vercel Sandbox](https://vercel.com/docs/vercel-sandbox) which is an ephemeral [Firecracker](https://firecracker-microvm.github.io/) MicroVM running Amazon Linux 2023. Provides a persistent in-session filesystem, `sudo` access, exposed ports, and background processes.
-
-> **info**: For interface details, see the [WorkspaceSandbox interface](/reference/workspace/sandbox).
+Executes commands inside [Vercel Sandbox](https://vercel.com/docs/vercel-sandbox) which is an ephemeral [Firecracker](https://firecracker-microvm.github.io/) MicroVM running Amazon Linux 2023. Provides a persistent in-session filesystem, `sudo` access, exposed ports, and background processes. For interface details, see the [WorkspaceSandbox interface](/reference/workspace/sandbox).
 
 > **note**: This is distinct from [`VercelServerlessSandbox`](/reference/workspace/vercel-serverless), which runs commands as stateless Vercel serverless **Functions**. `VercelSandbox` runs a full Linux MicroVM with a persistent filesystem and long-running processes.
 
@@ -174,7 +172,7 @@ Both callbacks are optional and can be used independently.
     name: 'ports',
     type: 'number[]',
     description:
-      'Ports to expose from the sandbox (up to 4). Public HTTPS domains are available via getInfo().metadata.domains.',
+      'Ports to expose from the sandbox (up to 15). Public HTTPS domains are available via getInfo().metadata.domains.',
     isOptional: true,
   },
   {
@@ -281,9 +279,9 @@ See the [`SandboxProcessManager` reference](/reference/workspace/process-manager
 
 ## Limits
 
-- Up to 8 vCPUs, with 2048 MB of memory per vCPU.
-- Up to 4 exposed ports.
+- Up to 32 vCPUs, with 2048 MB of memory per vCPU.
+- Up to 15 exposed ports.
 - The filesystem is ephemeral — persisted only within the session and lost when the sandbox stops.
-- Maximum runtime is plan-dependent (45 minutes on Hobby, up to 5 hours on Pro/Enterprise), with a default of 5 minutes.
+- Maximum runtime is plan-dependent (45 minutes on Hobby, up to 24 hours on Pro and Enterprise), with a default of 5 minutes.
 
 See the [Vercel Sandbox documentation](https://vercel.com/docs/vercel-sandbox) for current limits and pricing.

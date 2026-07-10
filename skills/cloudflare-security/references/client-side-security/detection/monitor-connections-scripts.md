@@ -27,8 +27,8 @@ To review the resources detected by Cloudflare:
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7045)
-  * [ Old dashboard ](#tab-panel-7046)
+  * [  New dashboard ](#tab-panel-7399)
+  * [ Old dashboard ](#tab-panel-7400)
 
   1. In the Cloudflare dashboard, go to the **Web assets** page.
   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -51,10 +51,14 @@ Available filters
 
 The All Reported Connections and All Reported Scripts dashboards show all the detected resources including infrequent or inactive ones, reported in the last 30 days. After 30 days without any report, Cloudflare will delete information about a previously reported resource, and it will no longer appear in any of the dashboards.
 
+Note
+
+Scripts blocked by a [content security rule](https://developers.cloudflare.com/client-side-security/rules/) continue to appear in your monitored scripts list for as long as the browser keeps loading them. A blocked script is only removed after it has not been detected for 30 consecutive days.
+
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7047)
-  * [ Old dashboard ](#tab-panel-7048)
+  * [  New dashboard ](#tab-panel-7401)
+  * [ Old dashboard ](#tab-panel-7402)
 
   1. In the Cloudflare dashboard, go to the **Web assets** page.
   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -76,8 +80,8 @@ Only available to customers on Business and Enterprise plans.
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7049)
-  * [ Old dashboard ](#tab-panel-7050)
+  * [  New dashboard ](#tab-panel-7403)
+  * [ Old dashboard ](#tab-panel-7404)
 
   1. In the Cloudflare dashboard, go to the **Web assets** page.
   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -131,8 +135,8 @@ To export script, connection, or cookie information in CSV format:
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7051)
-  * [ Old dashboard ](#tab-panel-7052)
+  * [  New dashboard ](#tab-panel-7405)
+  * [ Old dashboard ](#tab-panel-7406)
 
   1. In the Cloudflare dashboard, go to the **Web assets** page.
   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -145,6 +149,6 @@ To export script, connection, or cookie information in CSV format:
 4. Select **Download CSV**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#page","headline":"Monitor resources and cookies · Client-side security docs","description":"View and filter scripts, connections, and cookies detected on your domain.","url":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#page","headline":"Monitor resources and cookies · Client-side security docs","description":"View and filter scripts, connections, and cookies detected on your domain.","url":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/detection/","name":"Detection"}},{"@type":"ListItem","position":4,"item":{"@id":"/client-side-security/detection/monitor-connections-scripts/","name":"Monitor resources and cookies"}}]}
 ```

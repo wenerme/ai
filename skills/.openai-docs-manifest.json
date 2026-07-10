@@ -546,10 +546,10 @@
   "openai-docs/guides/latest-model.md": {
     "url": "https://developers.openai.com/api/docs/guides/latest-model.md",
     "skill": "openai-docs",
-    "etag": "W/\"790f6da5f04a4590895fd7f0c18f2308\"",
-    "lastModified": "Fri, 10 Jul 2026 02:32:59 GMT",
-    "size": 18558,
-    "updatedAt": "2026-07-10T04:10:12.060Z"
+    "etag": "W/\"56f7b04b86556df4eab5a00e90279afc\"",
+    "lastModified": "Fri, 10 Jul 2026 10:41:23 GMT",
+    "size": 18442,
+    "updatedAt": "2026-07-10T12:41:13.604Z"
   },
   "openai-docs/guides/migrate-to-responses.md": {
     "url": "https://developers.openai.com/api/docs/guides/migrate-to-responses.md",
@@ -658,18 +658,18 @@
   "openai-docs/guides/prompt-guidance-gpt-5p6.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6.md",
     "skill": "openai-docs",
-    "etag": "W/\"043a0c834198851e181d5b6ae32669b4\"",
-    "lastModified": "Thu, 09 Jul 2026 23:48:20 GMT",
-    "size": 15255,
-    "updatedAt": "2026-07-10T04:10:16.174Z"
+    "etag": "W/\"9af093dc6d74909432abf7a1efc896b6\"",
+    "lastModified": "Fri, 10 Jul 2026 10:44:39 GMT",
+    "size": 17092,
+    "updatedAt": "2026-07-10T12:41:17.174Z"
   },
   "openai-docs/guides/prompt-guidance.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-guidance.md",
     "skill": "openai-docs",
-    "etag": "W/\"790f6da5f04a4590895fd7f0c18f2308\"",
-    "lastModified": "Fri, 10 Jul 2026 02:32:59 GMT",
-    "size": 18558,
-    "updatedAt": "2026-07-10T04:10:16.622Z"
+    "etag": "W/\"56f7b04b86556df4eab5a00e90279afc\"",
+    "lastModified": "Fri, 10 Jul 2026 10:41:23 GMT",
+    "size": 18442,
+    "updatedAt": "2026-07-10T12:41:17.578Z"
   },
   "openai-docs/guides/prompt-optimizer.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-optimizer.md",

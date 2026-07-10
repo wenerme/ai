@@ -44,6 +44,13 @@ To install the GitLab for Slack app from the project or group settings:
       [enable support for multiple workspaces](../../../administration/settings/slack_app.md#enable-support-for-multiple-workspaces) for the dropdown list to appear.
    1. Select **Allow**.
 
+When you install the app at the group level, the integration is also enabled for all subgroups and
+projects in the group that don't already have the integration configured. Subgroups and projects
+that already have the integration configured are not affected, but can choose to use the inherited
+settings at any time. For more information, see [group-level integration management](_index.md#manage-group-default-settings-for-a-project-integration).
+Each project gets a project-specific alias based on its project path, which you can use in
+[slash commands](#slash-commands).
+
 ### From the Slack App Directory
 
 - Tier: Free, Premium, Ultimate

@@ -42,6 +42,12 @@ This happens when the pipeline is associated with a merge request, for example:
 When a session starts and completes, the flow posts system notes to the merge request
 with a link to the session. This flow is available in the GitLab UI only.
 
+This flow is the recommended path if you use the GitLab Duo Agent Platform and want to
+fix a failed pipeline automatically.
+It's a separate experience from
+[Root Cause Analysis](../../../gitlab_duo_chat/examples.md#troubleshoot-failed-cicd-jobs-with-root-cause-analysis),
+a GitLab Duo Chat feature to troubleshoot single-job failures.
+
 ## Prerequisites
 
 - Meet the [prerequisites for the GitLab Duo Agent Platform](../../_index.md#prerequisites).
@@ -49,19 +55,32 @@ with a link to the session. This flow is available in the GitLab UI only.
 - Have the Developer, Maintainer, or Owner role for the project.
 - Have an existing failed pipeline.
 - [Configure push rules to allow a service account](../../troubleshooting.md#configure-push-rules-to-allow-a-service-account).
-- [Configure your own runners](../execution.md#configure-runners) or turn on [GitLab hosted runners](../../../../ci/runners/hosted_runners/_index.md) for your project.
+- [Configure your own runners](../execution.md#configure-runners-to-execute-flows) or turn on [GitLab hosted runners](../../../../ci/runners/hosted_runners/_index.md) for your project.
 
 ## Fix the pipeline in a merge request
+
+- Using a flow in a GitLab Duo Agentic Chat conversation [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20484) in GitLab 19.2 [with a feature flag](../../../../administration/feature_flags/_index.md) named `agentic_foundational_flow_tool`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 To fix the CI/CD pipeline in a merge request:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Code** > **Merge requests** and open your merge request.
-1. To fix the pipeline, you can either:
-   - Select the **Overview** tab and under the failing pipeline, select **Fix pipeline with Duo**.
-   - Select the **Pipelines** tab and in the rightmost column, select **Fix pipeline with Duo** ().
+1. Use one of these methods to fix the pipeline:
+   - Select the **Overview** tab and, under the failing pipeline, select
+     **Fix pipeline with Duo**.
+   - Select the **Pipelines** tab and, in the rightmost column, select
+     **Fix pipeline with Duo** ().
+   - In the GitLab Duo sidebar, open a new or existing Agentic Chat conversation.
+     Ask Agentic Chat to fix the pipeline.
+1. To monitor progress, in the left sidebar, select **AI** > **Sessions**.
 
-1. To monitor progress, select **AI** > **Sessions**.
+   If you are in Agentic Chat, you can also do the following:
+   - See the progress in the Chat conversation.
+   - Select **View Agent Session** in the conversation.
 
 When the session is complete, the flow adds code suggestions to the merge request,
 or a comment describes possible next steps.

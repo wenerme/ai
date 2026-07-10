@@ -83,6 +83,9 @@ The repository must contain:
     using the component. Other files in these directories are not released with the component,
     but can be used for things like tests or building container images.
 
+Component filenames and subdirectory names can contain letters, numbers, underscores (`_`), hyphens (`-`), and periods (`.`).
+For example, `templates/secret-detection.enterprise.yml` and `templates/secret-detection.enterprise/template.yml` are valid component filenames.
+
 > [!note]
 > Optionally, each component can also have its own `README.md` file that provides more detailed information, and can be linked from the top-level `README.md` file. This helps to provide a better overview of your component project and how to use it.
 

@@ -15791,7 +15791,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_ee836c0c3c1a"
+              "$ref": "#/components/schemas/RequestBody_33eef8f37f0e"
   "/api/v4/user/applications":
     post:
       operationId: postApiV4UserApplications
@@ -16971,7 +16971,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_549da98e2090"
+              "$ref": "#/components/schemas/RequestBody_67e3765e00d7"
   "/api/v4/service_accounts":
     post:
       operationId: postApiV4ServiceAccounts
@@ -31499,7 +31499,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_cddb6354bbc1"
+              "$ref": "#/components/schemas/RequestBody_3b7de9f4db35"
   "/api/v4/projects/user/{user_id}":
     post:
       operationId: postApiV4ProjectsUserUserId
@@ -31533,7 +31533,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_55f54cba61d3"
+              "$ref": "#/components/schemas/RequestBody_2861e6bcd64d"
   "/api/v4/projects/{id}/share_locations":
     get:
       operationId: getApiV4ProjectsIdShareLocations
@@ -31656,7 +31656,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_5338037b0cb1"
+              "$ref": "#/components/schemas/RequestBody_c759bc073ec5"
     delete:
       operationId: deleteApiV4ProjectsId
       summary: Delete a project
@@ -34123,7 +34123,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_1b0c9208f451"
+              "$ref": "#/components/schemas/RequestBody_62cfdeef4f25"
   "/api/v4/projects/{id}/import":
     get:
       operationId: getApiV4ProjectsIdImport
@@ -34230,7 +34230,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_aa630e7f1cf9"
+              "$ref": "#/components/schemas/RequestBody_4e27310e47b5"
   "/api/v4/projects/import-relation/authorize":
     post:
       operationId: postApiV4ProjectsImportRelationAuthorize
@@ -34343,7 +34343,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_b34259a2c6c7"
+              "$ref": "#/components/schemas/RequestBody_22adef8ecfea"
   "/api/v4/projects/{id}/hooks/{hook_id}/url_variables/{key}":
     put:
       operationId: putApiV4ProjectsIdHooksHookIdUrlVariablesKey
@@ -75671,6 +75671,24 @@ components:
           type: string
         approval_status:
           type: string
+    APIEntitiesPersonalAccessTokenGranularScope:
+      type: object
+      properties:
+        access:
+          type: string
+          example: personal_projects
+        permissions:
+          type: array
+          example:
+          - read_job
+        project_id:
+          type: integer
+          format: int64
+          example: 3
+        group_id:
+          type: integer
+          format: int64
+          example: 5
     APIEntitiesPersonalAccessTokenWithToken:
       type: object
       properties:
@@ -75711,6 +75729,10 @@ components:
           example: '2020-08-31T15:53:00.073Z'
         token:
           type: string
+        granular_scopes:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesPersonalAccessTokenGranularScope"
     APIEntitiesSshKeyWithUserId:
       type: object
       properties:
@@ -81336,6 +81358,10 @@ components:
           - 127.0.0.3
           items:
             type: string
+        granular_scopes:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesPersonalAccessTokenGranularScope"
         impersonation:
           type: string
     APIEntitiesImpersonationTokenWithToken:
@@ -81387,6 +81413,10 @@ components:
           - 127.0.0.3
           items:
             type: string
+        granular_scopes:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesPersonalAccessTokenGranularScope"
         impersonation:
           type: string
         token:
@@ -82118,6 +82148,8 @@ components:
         jira_connect_proxy_url:
           type: string
         jira_connect_additional_audience_url:
+          type: string
+        jira_forge_app_id:
           type: string
         math_rendering_limits_enabled:
           type: string
@@ -84114,6 +84146,10 @@ components:
           - 127.0.0.3
           items:
             type: string
+        granular_scopes:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesPersonalAccessTokenGranularScope"
         access_level:
           type: integer
           example: 40
@@ -84174,6 +84210,10 @@ components:
           - 127.0.0.3
           items:
             type: string
+        granular_scopes:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesPersonalAccessTokenGranularScope"
         access_level:
           type: integer
           example: 40
@@ -86342,6 +86382,10 @@ components:
           - 127.0.0.3
           items:
             type: string
+        granular_scopes:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesPersonalAccessTokenGranularScope"
     APIEntitiesPagesDomainCertificateExpiration:
       type: object
       properties:
@@ -95633,6 +95677,74 @@ components:
           nullable: true
       required:
       - avatar
+    RequestBody_33eef8f37f0e:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the access token
+          example: My token
+          nullable: true
+        description:
+          type: string
+          description: The description of the access token
+          example: A token used for k8s
+          nullable: true
+        expires_at:
+          type: string
+          format: date
+          description: Expiration date of the access token in ISO format (YYYY-MM-DD).
+            If undefined, the date is set to the maximum allowable lifetime limit.
+          example: '2021-01-31'
+          nullable: true
+        granular_scopes:
+          type: array
+          description: List of granular scopes to assign to the token
+          items:
+            type: object
+            properties:
+              access:
+                type: string
+                enum:
+                - personal_projects
+                - all_memberships
+                - selected_memberships
+                - user
+                - instance
+                description: Access to configure for the granular scope.
+                minLength: 1
+              permissions:
+                type: array
+                items:
+                  type: string
+                description: List of permissions for the granular scope
+                nullable: true
+              project_ids:
+                type: array
+                items:
+                  type: integer
+                description: IDs of projects to associate with the granular scope,
+                  when access is `selected_memberships`
+                nullable: true
+              group_ids:
+                type: array
+                items:
+                  type: integer
+                description: IDs of groups to associate with the granular scope, when
+                  access is `selected_memberships`
+                nullable: true
+            required:
+            - access
+            - permissions
+          nullable: true
+        scopes:
+          type: array
+          items:
+            type: string
+          description: The array of scopes of the personal access token
+          nullable: true
+      required:
+      - name
     RequestBody_39542344a153:
       type: object
       properties:
@@ -95675,7 +95787,7 @@ components:
           description: Scopes available to the application. Separate multiple scopes
             with a space.
           nullable: true
-    RequestBody_549da98e2090:
+    RequestBody_67e3765e00d7:
       type: object
       properties:
         admin_mode:
@@ -96458,6 +96570,11 @@ components:
           type: string
           description: URL of the GitLab instance used as a proxy for the GitLab for
             Jira Cloud app.
+          nullable: true
+        jira_forge_app_id:
+          type: string
+          description: Atlassian Forge app ID (ARI) of the GitLab for Jira Cloud app,
+            used to verify inbound Forge Invocation Tokens.
           nullable: true
         bulk_import_concurrent_pipeline_batch_limit:
           type: integer
@@ -100213,7 +100330,7 @@ components:
           nullable: true
       required:
       - name
-    RequestBody_cddb6354bbc1:
+    RequestBody_3b7de9f4db35:
       type: object
       properties:
         name:
@@ -100719,8 +100836,7 @@ components:
           nullable: true
         duo_dependency_bump_breaking_changes_enabled:
           type: boolean
-          description: Enable GitLab Duo AI-powered resolution of breaking changes
-            from dependency bumps for this project
+          description: Turn on Agentic Breaking Change Resolution for this project
           nullable: true
         duo_sast_vr_workflow_enabled:
           type: boolean
@@ -100776,7 +100892,7 @@ components:
           type: integer
           description: Project ID of template from which to create project
           nullable: true
-    RequestBody_55f54cba61d3:
+    RequestBody_2861e6bcd64d:
       type: object
       properties:
         name:
@@ -101282,8 +101398,7 @@ components:
           nullable: true
         duo_dependency_bump_breaking_changes_enabled:
           type: boolean
-          description: Enable GitLab Duo AI-powered resolution of breaking changes
-            from dependency bumps for this project
+          description: Turn on Agentic Breaking Change Resolution for this project
           nullable: true
         duo_sast_vr_workflow_enabled:
           type: boolean
@@ -101341,7 +101456,7 @@ components:
           nullable: true
       required:
       - name
-    RequestBody_5338037b0cb1:
+    RequestBody_c759bc073ec5:
       type: object
       properties:
         name:
@@ -101847,8 +101962,7 @@ components:
           nullable: true
         duo_dependency_bump_breaking_changes_enabled:
           type: boolean
-          description: Enable GitLab Duo AI-powered resolution of breaking changes
-            from dependency bumps for this project
+          description: Enable Agentic Breaking Change Resolution for this project
           nullable: true
         duo_sast_vr_workflow_enabled:
           type: boolean
@@ -102357,7 +102471,7 @@ components:
           nullable: true
       required:
       - target_group_id
-    RequestBody_1b0c9208f451:
+    RequestBody_62cfdeef4f25:
       type: object
       properties:
         path:
@@ -102896,8 +103010,7 @@ components:
               nullable: true
             duo_dependency_bump_breaking_changes_enabled:
               type: boolean
-              description: Enable GitLab Duo AI-powered resolution of breaking changes
-                from dependency bumps for this project
+              description: Turn on Agentic Breaking Change Resolution for this project
               nullable: true
             duo_sast_vr_workflow_enabled:
               type: boolean
@@ -102980,7 +103093,7 @@ components:
           nullable: true
       required:
       - import_url
-    RequestBody_aa630e7f1cf9:
+    RequestBody_4e27310e47b5:
       type: object
       properties:
         url:
@@ -103518,8 +103631,7 @@ components:
               nullable: true
             duo_dependency_bump_breaking_changes_enabled:
               type: boolean
-              description: Enable GitLab Duo AI-powered resolution of breaking changes
-                from dependency bumps for this project
+              description: Turn on Agentic Breaking Change Resolution for this project
               nullable: true
             duo_sast_vr_workflow_enabled:
               type: boolean
@@ -103606,7 +103718,7 @@ components:
       - path
       - file
       - relation
-    RequestBody_b34259a2c6c7:
+    RequestBody_22adef8ecfea:
       type: object
       properties:
         region:
@@ -104160,8 +104272,7 @@ components:
               nullable: true
             duo_dependency_bump_breaking_changes_enabled:
               type: boolean
-              description: Enable GitLab Duo AI-powered resolution of breaking changes
-                from dependency bumps for this project
+              description: Turn on Agentic Breaking Change Resolution for this project
               nullable: true
             duo_sast_vr_workflow_enabled:
               type: boolean

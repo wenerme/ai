@@ -25,7 +25,7 @@ You can use the Developer Flow to:
 - Turn on **Allow foundational flows** and **Developer** [for the top-level group](_index.md#turn-foundational-flows-on-or-off).
 - Have the Developer, Maintainer, or Owner role for the project.
 - [Configure push rules to allow a service account](../../troubleshooting.md#configure-push-rules-to-allow-a-service-account).
-- [Configure your own runners](../execution.md#configure-runners) or turn on [GitLab hosted runners](../../../../ci/runners/hosted_runners/_index.md) for your project.
+- [Configure your own runners](../execution.md#configure-runners-to-execute-flows) or turn on [GitLab hosted runners](../../../../ci/runners/hosted_runners/_index.md) for your project.
 
 ## Set up your project
 
@@ -81,15 +81,42 @@ To create a merge request from an issue:
      1. In the right sidebar, in the **Assignees** section, select **Edit**.
      1. Type `duo developer` and select it from the search results.
    - Below the issue header, select **Implement work item**.
-1. Optional. To monitor the flow's progress, in the left sidebar, select **AI** > **Sessions**.
-1. When the session completes, review the merge request from the link in the **Activity** section of the issue.
+1. To monitor progress, in the left sidebar, select **AI** > **Sessions**.
+1. When the session completes, review the merge request from the link in
+   the **Activity** section of the issue.
+
+### Use the flow in Agentic Chat
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20484) in GitLab 19.2 [with a feature flag](../../../../administration/feature_flags/_index.md) named `agentic_foundational_flow_tool`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+You can use the Developer Flow in a GitLab Duo Agentic Chat conversation to
+complete different tasks, such as:
+
+- Accomplish a coding goal. You do not need an issue associated with
+  this goal.
+- Resolve an issue by opening a merge request.
+
+To use the flow in an Agentic Chat conversation:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. In the GitLab Duo sidebar, open a new or existing Agentic Chat conversation.
+1. Ask Agentic Chat to use the Developer Flow to accomplish a task.
+
+   The flow progress is displayed in the Chat conversation. For more information,
+   you can do the following:
+   - Select **View Agent Session** in the conversation.
+   - In the left sidebar, select **AI** > **Sessions**.
 
 ## Best practices
 
 ### Provide clear context
 
 The Developer Flow only knows what you tell it or what is available
-in the context of the issue, merge request, or discussion thread.
+in the context of the issue, merge request, Chat conversation, or discussion thread.
 The same practices that help a human collaborator apply here:
 
 - Write a clear problem description with links to relevant files or discussions.
@@ -183,3 +210,15 @@ before making any changes:
 rate limiting like we added to the `POST /api/users` endpoint.
 Post your findings here.
 ```
+
+### Use the Developer Flow in Agentic Chat
+
+You can use the Developer Flow in an Agentic Chat conversation to
+complete different tasks:
+
+- To accomplish a coding goal, you can enter the following:
+  - `Use the developer flow to resolve this code review feedback.`
+  - `Use the developer flow to update this dependency.`
+- To resolve an issue by opening a merge request, you can enter the following:
+  - `Resolve this issue.`
+  - `Open a merge request to resolve this issue.`
