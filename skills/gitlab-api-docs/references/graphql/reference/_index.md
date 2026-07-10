@@ -518,6 +518,22 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="query-aifeaturesettings-selfhostedmodelid"></a>`selfHostedModelId` | [`AiSelfHostedModelID`](#aiselfhostedmodelid) | Global ID of the self-hosted model. |
 
+### `Query.aiFlowsMetadata`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+Metadata describing Duo Agent Platform flow capabilities available to the caller.
+
+Returns [`AiFlowsMetadata`](#aiflowsmetadata).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="query-aiflowsmetadata-namespaceid"></a>`namespaceId` | [`NamespaceID`](#namespaceid) | Global ID of the group or personal namespace to compute flow capabilities for. When omitted, only namespace-independent capabilities are returned. |
+| <a id="query-aiflowsmetadata-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project to compute flow capabilities for. Takes precedence over `namespaceId` when both are given. |
+
 ### `Query.aiFoundationalChatAgent`
 
 - Introduced in GitLab 19.0.
@@ -31052,6 +31068,17 @@ Fields:
 | <a id="aifeaturesetting-validgitlabmodels"></a>`validGitlabModels` | [`AiModelSelectionOfferedModelConnection!`](#aimodelselectionofferedmodelconnection) | Valid GitLab managed models for the feature. (see [Connections](#connections)) |
 | <a id="aifeaturesetting-validmodels"></a>`validModels` | [`AiSelfHostedModelConnection!`](#aiselfhostedmodelconnection) | Compatible self-hosted models for the feature. (see [Connections](#connections)) |
 
+### `AiFlowCapability`
+
+A capability the instance advertises for Duo Agent Platform flows.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aiflowcapability-metadata"></a>`metadata` | [`JSON`](#json) | Arbitrary JSON-encoded metadata associated with the capability. |
+| <a id="aiflowcapability-name"></a>`name` | [`String!`](#string) | Name of the capability. |
+
 ### `AiFlowTriggerType`
 
 Represents an AI flow trigger.
@@ -31072,6 +31099,16 @@ Fields:
 | <a id="aiflowtriggertype-project"></a>`project` | [`Project!`](#project) | Project of the flow trigger. |
 | <a id="aiflowtriggertype-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the flow trigger was last updated. |
 | <a id="aiflowtriggertype-user"></a>`user` | [`UserCore`](#usercore) | Service account of the flow trigger. |
+
+### `AiFlowsMetadata`
+
+Metadata describing Duo Agent Platform flow capabilities available to the caller.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aiflowsmetadata-capabilities"></a>`capabilities` | [`[AiFlowCapability!]!`](#aiflowcapability) | List of capabilities the instance advertises for Duo Agent Platform flows. |
 
 ### `AiFoundationalChatAgent`
 
@@ -31410,6 +31447,7 @@ Fields:
 | <a id="aiusermetrics-duochatinteractionscount"></a>`duoChatInteractionsCount`  | [`Int`](#int) | Deprecated in GitLab 18.7. Use `chat.requestDuoChatResponseEventCount` instead. |
 | <a id="aiusermetrics-duoworkflow"></a>`duoWorkflow` | [`duoWorkflowUserMetrics`](#duoworkflowusermetrics) | Duo Workflow metrics for the user. |
 | <a id="aiusermetrics-fixpipeline"></a>`fixPipeline` | [`fixPipelineUserMetrics`](#fixpipelineusermetrics) | Fix Pipeline metrics for the user. |
+| <a id="aiusermetrics-generatemergecommitmessage"></a>`generateMergeCommitMessage` | [`generateMergeCommitMessageUserMetrics`](#generatemergecommitmessageusermetrics) | Generate Merge Commit Message metrics for the user. |
 | <a id="aiusermetrics-lastduoactivityon"></a>`lastDuoActivityOn` | [`Date`](#date) | Date of the last Duo activity across all features for the user. |
 | <a id="aiusermetrics-mcp"></a>`mcp` | [`mcpUserMetrics`](#mcpusermetrics) | Mcp metrics for the user. |
 | <a id="aiusermetrics-summarizenewmergerequest"></a>`summarizeNewMergeRequest` | [`summarizeNewMergeRequestUserMetrics`](#summarizenewmergerequestusermetrics) | Summarize New Merge Request metrics for the user. |
@@ -34994,6 +35032,7 @@ Fields:
 | <a id="commit-fulltitlehtml"></a>`fullTitleHtml` | [`String`](#string) | HTML rendering of `full_title`. |
 | <a id="commit-hasagentsession"></a>`hasAgentSession` | [`Boolean!`](#boolean) | Indicates the commit was authored during a GitLab Duo Agent Platform flow. |
 | <a id="commit-id"></a>`id` | [`ID!`](#id) | ID (global ID) of the commit. |
+| <a id="commit-latestpipeline"></a>`latestPipeline` | [`Pipeline`](#pipeline) | Latest pipeline that determines the commit CI status. Excludes dangling pipelines, such as security policy scans, that do not affect the commit CI status. |
 | <a id="commit-message"></a>`message` | [`String`](#string) | Raw commit message. |
 | <a id="commit-name"></a>`name` | [`String`](#string) | Name or title of the object. |
 | <a id="commit-parentsha"></a>`parentSha` | [`String`](#string) | SHA ID of the first parent. |
@@ -43604,6 +43643,20 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="groupsecretsmanager-group"></a>`group` | [`Group!`](#group) | Group the secrets manager belongs to. |
 | <a id="groupsecretsmanager-status"></a>`status` | [`GroupSecretsManagerStatus`](#groupsecretsmanagerstatus) | Status of the group secrets manager. |
+| <a id="groupsecretsmanager-userpermissions"></a>`userPermissions` | [`GroupSecretsManagerPermissions!`](#groupsecretsmanagerpermissions) | Permissions for the current user on the resource. |
+
+### `GroupSecretsManagerPermissions`
+
+Permissions the current user has on a group secrets manager.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="groupsecretsmanagerpermissions-createsecrets"></a>`createSecrets` | [`Boolean!`](#boolean) | Indicates the user can create secrets in this group secrets manager. |
+| <a id="groupsecretsmanagerpermissions-deletesecrets"></a>`deleteSecrets` | [`Boolean!`](#boolean) | Indicates the user can delete secrets in this group secrets manager. |
+| <a id="groupsecretsmanagerpermissions-readmetadata"></a>`readMetadata` | [`Boolean!`](#boolean) | Indicates the user can read secret metadata in this group secrets manager. |
+| <a id="groupsecretsmanagerpermissions-updatesecrets"></a>`updateSecrets` | [`Boolean!`](#boolean) | Indicates the user can update secrets in this group secrets manager. |
 
 ### `GroupSecretsPermission`
 
@@ -45075,6 +45128,7 @@ Fields:
 | <a id="mergeaccesslevel-accesslevel"></a>`accessLevel` | [`Int!`](#int) | GitLab::Access level. |
 | <a id="mergeaccesslevel-accessleveldescription"></a>`accessLevelDescription` | [`String!`](#string) | Human readable representation for the access level. |
 | <a id="mergeaccesslevel-group"></a>`group` | [`AccessLevelGroup`](#accesslevelgroup) | Group associated with the access level. |
+| <a id="mergeaccesslevel-memberrole"></a>`memberRole`  | [`MemberRole`](#memberrole) | Introduced in GitLab 19.2. Status: Experiment. Custom role associated with the access level. |
 | <a id="mergeaccesslevel-user"></a>`user` | [`AccessLevelUser`](#accessleveluser) | User associated with the access level. |
 
 ### `MergeRequest`
@@ -53706,6 +53760,20 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="projectsecretsmanager-project"></a>`project` | [`Project!`](#project) | Project the secrets manager belong to. |
 | <a id="projectsecretsmanager-status"></a>`status` | [`ProjectSecretsManagerStatus`](#projectsecretsmanagerstatus) | Status of the project secrets manager. |
+| <a id="projectsecretsmanager-userpermissions"></a>`userPermissions` | [`ProjectSecretsManagerPermissions!`](#projectsecretsmanagerpermissions) | Permissions for the current user on the resource. |
+
+### `ProjectSecretsManagerPermissions`
+
+Permissions the current user has on a project secrets manager.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="projectsecretsmanagerpermissions-createsecrets"></a>`createSecrets` | [`Boolean!`](#boolean) | Indicates the user can create secrets in this project secrets manager. |
+| <a id="projectsecretsmanagerpermissions-deletesecrets"></a>`deleteSecrets` | [`Boolean!`](#boolean) | Indicates the user can delete secrets in this project secrets manager. |
+| <a id="projectsecretsmanagerpermissions-readmetadata"></a>`readMetadata` | [`Boolean!`](#boolean) | Indicates the user can read secret metadata in this project secrets manager. |
+| <a id="projectsecretsmanagerpermissions-updatesecrets"></a>`updateSecrets` | [`Boolean!`](#boolean) | Indicates the user can update secrets in this project secrets manager. |
 
 ### `ProjectSecretsPermission`
 
@@ -54119,6 +54187,7 @@ Fields:
 | <a id="pushaccesslevel-accessleveldescription"></a>`accessLevelDescription` | [`String!`](#string) | Human readable representation for the access level. |
 | <a id="pushaccesslevel-deploykey"></a>`deployKey` | [`AccessLevelDeployKey`](#accessleveldeploykey) | Deploy key assigned to the access level. |
 | <a id="pushaccesslevel-group"></a>`group` | [`AccessLevelGroup`](#accesslevelgroup) | Group associated with the access level. |
+| <a id="pushaccesslevel-memberrole"></a>`memberRole`  | [`MemberRole`](#memberrole) | Introduced in GitLab 19.2. Status: Experiment. Custom role associated with the access level. |
 | <a id="pushaccesslevel-user"></a>`user` | [`AccessLevelUser`](#accessleveluser) | User associated with the access level. |
 
 ### `PushEventCommit`
@@ -56520,6 +56589,7 @@ Fields:
 | <a id="unprotectaccesslevel-accesslevel"></a>`accessLevel` | [`Int!`](#int) | GitLab::Access level. |
 | <a id="unprotectaccesslevel-accessleveldescription"></a>`accessLevelDescription` | [`String!`](#string) | Human readable representation for the access level. |
 | <a id="unprotectaccesslevel-group"></a>`group` | [`AccessLevelGroup`](#accesslevelgroup) | Group associated with the access level. |
+| <a id="unprotectaccesslevel-memberrole"></a>`memberRole`  | [`MemberRole`](#memberrole) | Introduced in GitLab 19.2. Status: Experiment. Custom role associated with the access level. |
 | <a id="unprotectaccesslevel-user"></a>`user` | [`AccessLevelUser`](#accessleveluser) | User associated with the access level. |
 
 ### `UploadRegistry`
@@ -60158,6 +60228,18 @@ Fields:
 | <a id="fixpipelineusermetrics-lastduoactivityon"></a>`lastDuoActivityOn` | [`Date`](#date) | Date of the last Fix Pipeline activity for the user. |
 | <a id="fixpipelineusermetrics-totaleventcount"></a>`totalEventCount` | [`Int`](#int) | Total count of all Fix Pipeline events for the user. |
 
+### `generateMergeCommitMessageUserMetrics`
+
+Generate Merge Commit Message user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="generatemergecommitmessageusermetrics-generatemergecommitmessageeventcount"></a>`generateMergeCommitMessageEventCount` | [`Int`](#int) | Total count of `generate_merge_commit_message` event. |
+| <a id="generatemergecommitmessageusermetrics-lastduoactivityon"></a>`lastDuoActivityOn` | [`Date`](#date) | Date of the last Generate Merge Commit Message activity for the user. |
+| <a id="generatemergecommitmessageusermetrics-totaleventcount"></a>`totalEventCount` | [`Int`](#int) | Total count of all Generate Merge Commit Message events for the user. |
+
 ### `mcpMetrics`
 
 Model Context Protocol metrics. Requires ClickHouse. Premium and Ultimate only.
@@ -60659,6 +60741,7 @@ Type of AI usage event.
 | <a id="aiusageeventtype-finish_mcp_tool_call"></a>`FINISH_MCP_TOOL_CALL` | MCP tool call was finished. |
 | <a id="aiusageeventtype-fix_pipeline_suggestion_applied"></a>`FIX_PIPELINE_SUGGESTION_APPLIED` | Fix pipeline suggestion was applied. |
 | <a id="aiusageeventtype-fix_pipeline_suggestion_posted"></a>`FIX_PIPELINE_SUGGESTION_POSTED` | Fix pipeline suggestion was posted. |
+| <a id="aiusageeventtype-generate_merge_commit_message"></a>`GENERATE_MERGE_COMMIT_MESSAGE` | Merge commit message was generated for a merge request. |
 | <a id="aiusageeventtype-post_comment_duo_code_review_on_diff"></a>`POST_COMMENT_DUO_CODE_REVIEW_ON_DIFF` | Duo Code Review posted a diff comment. |
 | <a id="aiusageeventtype-publish_duo_code_review_comments"></a>`PUBLISH_DUO_CODE_REVIEW_COMMENTS` | Duo Code Review comments were published. |
 | <a id="aiusageeventtype-react_thumbs_down_on_duo_code_review_comment"></a>`REACT_THUMBS_DOWN_ON_DUO_CODE_REVIEW_COMMENT` | User gave thumbs-down reaction to Duo Code Review comment. |
@@ -60735,6 +60818,10 @@ Values for sorting AI user metrics.
 | <a id="aiusermetricssort-fix_pipeline_suggestion_posted_desc"></a>`FIX_PIPELINE_SUGGESTION_POSTED_DESC` | Fix Pipeline Suggestion Posted event count in descending order. |
 | <a id="aiusermetricssort-fix_pipeline_total_count_asc"></a>`FIX_PIPELINE_TOTAL_COUNT_ASC` | Fix Pipeline total event count in ascending order. |
 | <a id="aiusermetricssort-fix_pipeline_total_count_desc"></a>`FIX_PIPELINE_TOTAL_COUNT_DESC` | Fix Pipeline total event count in descending order. |
+| <a id="aiusermetricssort-generate_merge_commit_message_asc"></a>`GENERATE_MERGE_COMMIT_MESSAGE_ASC` | Generate Merge Commit Message event count in ascending order. |
+| <a id="aiusermetricssort-generate_merge_commit_message_desc"></a>`GENERATE_MERGE_COMMIT_MESSAGE_DESC` | Generate Merge Commit Message event count in descending order. |
+| <a id="aiusermetricssort-generate_merge_commit_message_total_count_asc"></a>`GENERATE_MERGE_COMMIT_MESSAGE_TOTAL_COUNT_ASC` | Generate Merge Commit Message total event count in ascending order. |
+| <a id="aiusermetricssort-generate_merge_commit_message_total_count_desc"></a>`GENERATE_MERGE_COMMIT_MESSAGE_TOTAL_COUNT_DESC` | Generate Merge Commit Message total event count in descending order. |
 | <a id="aiusermetricssort-mcp_total_count_asc"></a>`MCP_TOTAL_COUNT_ASC` | Mcp total event count in ascending order. |
 | <a id="aiusermetricssort-mcp_total_count_desc"></a>`MCP_TOTAL_COUNT_DESC` | Mcp total event count in descending order. |
 | <a id="aiusermetricssort-post_comment_duo_code_review_on_diff_asc"></a>`POST_COMMENT_DUO_CODE_REVIEW_ON_DIFF_ASC` | Post Comment Duo Code Review On Diff event count in ascending order. |
@@ -70588,6 +70675,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mergeaccesslevelinput-accesslevel"></a>`accessLevel` | [`Int`](#int) | Access level allowed to perform action. |
 | <a id="mergeaccesslevelinput-groupid"></a>`groupId` | [`GroupID`](#groupid) | Group associated with the access level. |
+| <a id="mergeaccesslevelinput-memberroleid"></a>`memberRoleId`  | [`MemberRoleID`](#memberroleid) | Introduced in GitLab 19.2. Status: Experiment. Custom member role associated with the access level. |
 | <a id="mergeaccesslevelinput-userid"></a>`userId` | [`UserID`](#userid) | User associated with the access level. |
 
 ### `MergeRequestsResolverNegatedParams`
@@ -70849,6 +70937,7 @@ Arguments:
 | <a id="pushaccesslevelinput-accesslevel"></a>`accessLevel` | [`Int`](#int) | Access level allowed to perform action. |
 | <a id="pushaccesslevelinput-deploykeyid"></a>`deployKeyId` | [`DeployKeyID`](#deploykeyid) | Deploy key assigned to the access level. |
 | <a id="pushaccesslevelinput-groupid"></a>`groupId` | [`GroupID`](#groupid) | Group associated with the access level. |
+| <a id="pushaccesslevelinput-memberroleid"></a>`memberRoleId`  | [`MemberRoleID`](#memberroleid) | Introduced in GitLab 19.2. Status: Experiment. Custom member role associated with the access level. |
 | <a id="pushaccesslevelinput-userid"></a>`userId` | [`UserID`](#userid) | User associated with the access level. |
 
 ### `ReleaseAssetLinkInput`

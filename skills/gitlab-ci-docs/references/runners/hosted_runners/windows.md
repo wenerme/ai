@@ -34,13 +34,30 @@ You can execute your job in one of the following Windows versions:
 |--------------|--------|
 | Windows 2022 | `GA`   |
 
-You can find a full list of available pre-installed software in
-the [pre-installed software documentation](https://gitlab.com/gitlab-org/ci-cd/shared-runners/images/gcp/windows-containers/-/blob/main/cookbooks/preinstalled-software/attributes/default.rb).
+The following files list the available pre-installed software:
+
+- [Chocolatey](https://gitlab.com/gitlab-org/ci-cd/shared-runners/images/gcp/windows-containers/-/blob/main/cookbooks/chocolatey/recipes/default.rb), which you can use to perform additional installs.
+- [Git, Git LFS, and GitLab Runner](https://gitlab.com/gitlab-org/ci-cd/shared-runners/images/gcp/windows-containers/-/tree/main/cookbooks/gitlab-runner-dependencies/recipes)
+- Pre-installed development tools:
+  - [Docker](https://gitlab.com/gitlab-org/ci-cd/shared-runners/images/gcp/windows-containers/-/blob/main/cookbooks/preinstalled-software/recipes/docker.rb)
+  - [.NET Core SDK 3.1, Ruby, Go, Nodejs, OpenJDK, Python3](https://gitlab.com/gitlab-org/ci-cd/shared-runners/images/gcp/windows-containers/-/blob/main/cookbooks/preinstalled-software/recipes/languages.rb)
+  - [7-Zip, wget, curl, jq, Docker Compose, NuGet CLI, cmake, GitLab CLI (glab)](https://gitlab.com/gitlab-org/ci-cd/shared-runners/images/gcp/windows-containers/-/blob/main/cookbooks/preinstalled-software/recipes/utils.rb)
+  - [Visual C Runtimes](https://gitlab.com/gitlab-org/ci-cd/shared-runners/images/gcp/windows-containers/-/blob/main/cookbooks/preinstalled-software/recipes/vcpkg.rb). See linked file for version.
+  - [Visual Studio Build Tools](https://gitlab.com/gitlab-org/ci-cd/shared-runners/images/gcp/windows-containers/-/blob/main/cookbooks/preinstalled-software/recipes/visual-studio-build-tools.rb). See linked file for version.
 
 ## Supported shell
 
 Hosted runners on Windows have PowerShell configured as the shell.
 The `script` section of your `.gitlab-ci.yml` file therefore requires PowerShell commands.
+
+## Elevated permissions
+
+Hosted runners on Windows for GitLab.com run CI/CD jobs as an elevated admin
+process. This process lets you install additional software or configure the OS
+before job execution.
+This permission level is acceptable because the runner creates a new VM for each individual
+job and discards it after the job completes. This process is essentially the same
+as how container jobs work for security and disposal.
 
 ## Example `.gitlab-ci.yml` file
 

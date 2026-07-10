@@ -6,6 +6,7 @@ Browse and filter a unified record of GitLab Duo agent activity for compliance a
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20237) in GitLab 19.1 as a [beta](../../policy/development_stages_support.md) with a [feature flag](../../administration/feature_flags/_index.md) named `agent_artifacts_page`. Disabled by default.
+- Enabled by default in GitLab 19.2.
 
 > [!warning]
 > This feature is in [beta](../../policy/development_stages_support.md).

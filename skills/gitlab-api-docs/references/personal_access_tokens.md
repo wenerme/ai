@@ -8,6 +8,7 @@ Use this API to interact with [personal access tokens](../user/profile/personal_
 ## List all personal access tokens
 
 - `created_after`, `created_before`, `last_used_after`, `last_used_before`, `revoked`, `search` and `state` filters were [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/362248) in GitLab 15.5.
+- `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/589500) in GitLab 19.2.
 
 Lists all personal access tokens accessible by the authenticated user. For administrators, returns
 all personal access tokens in the instance. For non-administrators, returns all
@@ -66,7 +67,15 @@ Example response:
         "last_used_at": "2021-10-06T17:58:37.550Z",
         "last_used_ips": ["192.0.2.10"],
         "active": true,
-        "expires_at": null
+        "expires_at": null,
+        "granular_scopes": [
+            {
+                "access": "selected_memberships",
+                "permissions": ["read_job"],
+                "project_id": 6,
+                "group_id": null
+            }
+        ]
     }
 ]
 ```
@@ -74,7 +83,11 @@ Example response:
 > [!note]
 > The `last_used_ips` attribute lists up to five unique IP addresses that have authenticated with
 > this token. When the limit is reached, the oldest IP address is removed. The list updates once
-> per minute per token.
+> per minute per token. The `granular_scopes` attribute is present only for tokens created with
+> granular scopes instead of the standard `scopes` attribute. Each scope has a `project_id` when
+> `access` is `selected_memberships` and the scope targets a project, and a `group_id` when it
+> targets a group. Both are `null` for scopes with `access` of `user`, `instance`,
+> `all_memberships`, or `personal_projects`.
 
 If successful, returns a list of tokens.
 
@@ -86,9 +99,11 @@ Other possible response:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/362239) in GitLab 15.1.
 - `404` HTTP status code [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/93650) in GitLab 15.3.
+- `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/589500) in GitLab 19.2.
 
 Retrieves details for a specified personal access token. Administrators can retrieve details on any token.
-Non-administrators can only retrieve details on their own tokens.
+Non-administrators can only retrieve details on their own tokens. The response has the same attributes
+as in [List all personal access tokens](#list-all-personal-access-tokens), including `granular_scopes`.
 
 ```plaintext
 GET /personal_access_tokens/:id
@@ -140,6 +155,7 @@ You can create personal access tokens with the user tokens API. For more informa
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/403042) in GitLab 16.0
 - `expires_at` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/issues/416795) in GitLab 16.6.
+- `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/589500) in GitLab 19.2.
 
 Rotates a specified personal access token. This revokes the previous token and creates a new token
 that expires after one week. Administrators can revoke tokens for any user. Non-administrators can
@@ -177,6 +193,10 @@ Example response:
     "token": "s3cr3t"
 }
 ```
+
+> [!note]
+> Rotating a token with granular scopes returns those scopes in a `granular_scopes` attribute
+> on the new token, as described in [List all personal access tokens](#list-all-personal-access-tokens).
 
 If successful, returns `200: OK`.
 

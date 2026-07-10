@@ -30,7 +30,7 @@ in a discussion, or when you assign them as a reviewer.
 - **Work item created** trigger event type [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599985) in GitLab 19.1.
 - **Merge request ready** trigger event type [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/598421) in GitLab 19.1. Feature flag `merge_request_ready_flow_trigger` removed.
 - **Work item status changed** trigger event type [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599983) in GitLab 19.2.
-- **Merge request ready** and **Merge request code conflict** event types [consolidated](https://gitlab.com/gitlab-org/gitlab/-/work_items/602777) into the **Merge request** event type as the **Ready** and **Merge conflict** actions in GitLab 19.2.
+- **Merge request ready** and **Merge request code conflict** event types [consolidated](https://gitlab.com/gitlab-org/gitlab/-/work_items/602777) into the **Merge request** event type as the **Marked ready** and **Merge conflict** actions in GitLab 19.2.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -69,7 +69,7 @@ The trigger now appears in **AI** > **Triggers**.
 | Assign          | When the service account user is assigned to an issue or merge request.               | None |
 | Assign reviewer | When the service account user is assigned as a reviewer to a merge request.           | None |
 | Pipeline events | When a pipeline changes state.                                                        | From the **Trigger when** dropdown list, select one or more of the following:- **Running**- **Passed**- **Failed**- **Canceled** |
-| Merge request   | When a selected merge request action occurs.                                          | From the **Trigger when** dropdown list, select one of the following:- **Approved**: When a merge request has all required approvals- **Ready**: When a draft merge request is marked as ready for review- **Merge conflict**: When a merge request can no longer be merged due to a code conflict |
+| Merge request   | When a selected merge request action occurs.                                          | From the **Trigger when** dropdown list, select one of the following:- **Approved**: When a merge request has all required approvals- **Marked ready**: When a draft merge request is marked as ready for review- **Merge conflict**: When a merge request can no longer be merged due to a code conflict |
 | Work item       | When a selected work item action occurs.                                              | From the **Trigger when** dropdown list, select one of the following:- **Created**: When a work item is created- **Status changed**: When a work item's status changes |
 
 ## Edit a trigger

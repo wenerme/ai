@@ -91,6 +91,20 @@ To use Chat in the GitLab UI:
 If you reload the webpage you are on, or go to another webpage, Chat remembers your
 most recent conversation, and that conversation is still active in the Chat drawer.
 
+#### Foundational flows
+
+- Triggering foundational flows in a GitLab Duo Agentic Chat conversation [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20484) in GitLab 19.2 [with a feature flag](../../administration/feature_flags/_index.md) named `agentic_foundational_flow_tool`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+Where appropriate, the following foundational flows can be triggered from an Agentic Chat conversation to answer a question or accomplish a goal.
+
+- [Developer Flow](../duo_agent_platform/flows/foundational_flows/developer.md#use-the-flow-in-agentic-chat)
+- [Code Review Flow](../duo_agent_platform/flows/foundational_flows/code_review.md#use-the-flow)
+- [Fix CI/CD Pipeline Flow](../duo_agent_platform/flows/foundational_flows/fix_pipeline.md#fix-the-pipeline-in-a-merge-request)
+
 ### Use GitLab Duo Chat in VS Code
 
 Prerequisites:

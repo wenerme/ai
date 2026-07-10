@@ -40,11 +40,17 @@ This flow is available in the GitLab UI only.
 - Turn on **Allow foundational flows** and **Code Review** [for the top-level group](_index.md#turn-foundational-flows-on-or-off).
 - Have the Developer, Maintainer, or Owner role for the project.
 - If you belong to multiple GitLab Duo namespaces, [set a default GitLab Duo namespace](../../../profile/preferences.md#set-a-default-gitlab-duo-namespace).
-- [Configure your own runners](../execution.md#configure-runners) with the `gitlab--duo` tag and
+- [Configure your own runners](../execution.md#configure-runners-to-execute-flows) with the `gitlab--duo` tag and
   an executor that supports Docker images, or turn on [GitLab hosted runners](../../../../ci/runners/hosted_runners/_index.md)
   for your project. Code Review Flow runs as a CI/CD job and requires a runner to execute.
 
 ## Use the flow
+
+- Using a flow in a GitLab Duo Agentic Chat conversation [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20484) in GitLab 19.2 [with a feature flag](../../../../administration/feature_flags/_index.md) named `agentic_foundational_flow_tool`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 To use the Code Review Flow on a merge request:
 
@@ -53,9 +59,13 @@ To use the Code Review Flow on a merge request:
    - Assign `@GitLabDuo` as a reviewer.
    - In a comment box, enter the quick action `/assign_reviewer @GitLabDuo`.
    - In a comment box, mention `@GitLabDuo` and ask for a review.
+   - In the GitLab Duo sidebar, open a new or existing Agentic Chat conversation.
+     Ask Agentic Chat to review the merge request.
+1. To monitor progress, in the left sidebar, select **AI** > **Sessions**.
 
-After you request a review, Code Review Flow starts a [session](../../sessions/_index.md) that you
-can monitor until the review is complete.
+   If you are in Agentic Chat, you can also do the following:
+   - See the progress in the Chat conversation.
+   - Select **View Agent Session** in the conversation.
 
 ## Interact with GitLab Duo in reviews
 
@@ -261,6 +271,8 @@ The template project must contain a `.gitlab/duo/mr-review-automated-rules.yaml`
 
 GitLab Duo combines the exclusion rules from the group template project with the rules defined
 in the individual project.
+If the same category is defined at both levels, the project's rules take
+precedence.
 When a group and its subgroups each set a template project, GitLab Duo combines the rules from
 every level.
 

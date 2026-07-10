@@ -37,13 +37,16 @@ in the Agent Platform.
 | GPT-5                       | Yes             | No                                 | Yes      |
 | GPT-5.1                     | Yes             | No                                 | Yes      |
 | GPT-5.2                     | Yes             | Yes                                | Yes      |
-| GPT-5.5 <sup>1</sup>        | Yes             | No                                 | Yes      |
 | GPT-5 Codex                 | Yes             | No                                 | Yes      |
 | GPT-5.2 Codex               | Yes             | No                                 | Yes      |
 | GPT-5.3 Codex               | Yes             | Yes                                | Yes      |
 | GPT-5 Mini                  | Yes             | No                                 | Yes      |
 | GPT-5.4 Mini                | Yes             | No                                 | Yes      |
 | GPT-5.4 Nano                | Yes             | No                                 | Yes      |
+| GPT-5.5 <sup>1</sup>        | Yes             | No                                 | Yes      |
+| GPT-5.6 Sol <sup>1</sup>    | Yes             | No                                 | Yes      |
+| GPT-5.6 Terra <sup>1</sup>  | Yes             | No                                 | Yes      |
+| GPT-5.6 Luna <sup>1</sup>   | Yes             | No                                 | Yes      |
 
 **Footnotes**:
 

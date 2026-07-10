@@ -24,8 +24,8 @@ Prior to setting up DNS Firewall, you need:
 
 ### Create a DNS Firewall cluster
 
-* [ Dashboard ](#tab-panel-8143)
-* [ API ](#tab-panel-8144)
+* [ Dashboard ](#tab-panel-8538)
+* [ API ](#tab-panel-8539)
 
 1. In the Cloudflare dashboard, go to the **DNS Firewall Clusters** page.
 [ Go to **Clusters** ](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)
@@ -36,8 +36,9 @@ Prior to setting up DNS Firewall, you need:
   * **Minimum Cache TTL**: Recommended setting of **30 seconds**.
   * **Maximum Cache TTL**: Recommended setting of **4 hours**. Larger values increase the cache hit ratio, but also increase the time required for DNS changes to propagate.
   * **ANY queries**: Recommended setting is **Off** because these are often used as part of DDoS attacks. Also refer to this [blog post ↗](https://blog.cloudflare.com/rfc8482-saying-goodbye-to-any/).
-4. Click **Continue**.
-5. On the following screen, save the values for **Your new DNS Firewall IP Addresses**.
+4. Optionally, configure any of the [additional options](#additional-options) available on the same form.
+5. Select **Continue**.
+6. On the following screen, save the values for **Your new DNS Firewall IP Addresses**.
 
 Note:
 
@@ -65,11 +66,16 @@ Configure security policy in your DNS servers and Firewall to allow only [Cloudf
 
 ## Additional options
 
-When you use the API, you can also specify other parameters, such as rate limit (in queries per second per data center). You can find the parameters descriptions and examples in the [API documentation](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/create/).
+Beyond the required fields, you can configure the following settings on your DNS Firewall cluster — in the Cloudflare dashboard when you create or edit a cluster, or via the API:
 
-To configure rate limiting and other options for already existing clusters, use the [Update DNS Firewall Cluster](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/) endpoint.
+* **Rate limit** (queries per second per data center).
+* **Negative cache TTL** for `REFUSED`, `NXDOMAIN`, and `SERVFAIL` responses.
+* **EDNS Client Subnet (ECS) fallback** — forward the resolver's IP subnet when the incoming query does not include ECS data. Refer to the [FAQ](https://developers.cloudflare.com/dns/dns-firewall/faq/#does-dns-firewall-support-edns-client-subnet-ecs) for details.
+* **Attack mitigation** for [random prefix attacks](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/).
+
+For the full parameter reference, refer to the [Create](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/create/) and [Update](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/) DNS Firewall Cluster API endpoints.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dns-firewall/setup/#page","headline":"Set up DNS Firewall · Cloudflare DNS docs","description":"Set up DNS Firewall to protect upstream nameservers from DDoS attacks and reduce load by caching DNS responses.","url":"https://developers.cloudflare.com/dns/dns-firewall/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dns-firewall/setup/#page","headline":"Set up DNS Firewall · Cloudflare DNS docs","description":"Set up DNS Firewall to protect upstream nameservers from DDoS attacks and reduce load by caching DNS responses.","url":"https://developers.cloudflare.com/dns/dns-firewall/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/dns-firewall/","name":"DNS Firewall"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/dns-firewall/setup/","name":"Setup"}}]}
 ```

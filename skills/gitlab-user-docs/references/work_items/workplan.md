@@ -142,9 +142,12 @@ Prerequisites:
 
 - GitLab Duo Agent Platform remote flows turned on.
 
-To implement a workplan with GitLab Duo:
+To implement a workplan with GitLab Duo, use one of the following methods:
 
 - On the work item, in the **Workplan** widget, select **Implement**.
+- Open the workplan, then implement it from the panel:
+  1. On the work item, in the **Workplan** widget, select **View**.
+  1. In the panel, select **Implement**.
 
 ## Related topics
 

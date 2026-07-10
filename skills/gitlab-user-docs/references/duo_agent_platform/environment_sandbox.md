@@ -34,7 +34,7 @@ image configurations, see
 To use the execution environment sandbox, you need:
 
 - GitLab Duo Agent Platform enabled in your project.
-- Privileged runner mode enabled. It is [required for sandboxing to function](flows/execution.md#configure-runners).
+- Privileged runner mode enabled. It is [required for sandboxing to function](flows/execution.md#configure-runners-to-execute-flows).
 - A compatible Docker image: this could be the [default GitLab Docker](https://gitlab.com/gitlab-org/duo-workflow/default-docker-image/container_registry) image on version `v0.0.6` or above, or a [custom image with Anthropic Sandbox Runtime (SRT) installed](#install-anthropic-sandbox-runtime-srt-on-a-custom-image).
 
 ## How it works
