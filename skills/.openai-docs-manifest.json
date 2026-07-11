@@ -559,6 +559,14 @@
     "size": 28595,
     "updatedAt": "2026-06-11T11:40:04.958Z"
   },
+  "openai-docs/guides/model-guidance.md": {
+    "url": "https://developers.openai.com/api/docs/guides/model-guidance.md",
+    "skill": "openai-docs",
+    "etag": "W/\"4e3801324419f1aefe9df2e81cf16cd0\"",
+    "lastModified": "Sat, 11 Jul 2026 06:08:19 GMT",
+    "size": 18444,
+    "updatedAt": "2026-07-11T11:25:30.399Z"
+  },
   "openai-docs/guides/model-optimization.md": {
     "url": "https://developers.openai.com/api/docs/guides/model-optimization.md",
     "skill": "openai-docs",
@@ -818,10 +826,10 @@
   "openai-docs/guides/reasoning.md": {
     "url": "https://developers.openai.com/api/docs/guides/reasoning.md",
     "skill": "openai-docs",
-    "etag": "W/\"51321d5bb914b048a6e523378b00dde9\"",
-    "lastModified": "Thu, 09 Jul 2026 23:56:55 GMT",
-    "size": 27730,
-    "updatedAt": "2026-07-10T04:10:21.403Z"
+    "etag": "W/\"e23c011955fa03ccece6ef2f514825be\"",
+    "lastModified": "Sat, 11 Jul 2026 06:08:51 GMT",
+    "size": 27779,
+    "updatedAt": "2026-07-11T11:25:39.005Z"
   },
   "openai-docs/guides/red-teaming.md": {
     "url": "https://developers.openai.com/api/docs/guides/red-teaming.md",

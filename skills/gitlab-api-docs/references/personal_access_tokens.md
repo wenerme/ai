@@ -219,7 +219,7 @@ Other possible responses:
 Instead of rotating a specific personal access token, you can also rotate the same personal access
 token you used to authenticate the request. To self-rotate a personal access token, you must:
 
-- Rotate a personal access token with the [`api` or `self_rotate` scope](../user/profile/personal_access_tokens.md#personal-access-token-scopes).
+- Rotate a personal access token with the [`api` or `self_rotate` scope](../security/tokens/access_token_scopes.md).
 - Use the `self` keyword in the request URL.
 
 ```shell

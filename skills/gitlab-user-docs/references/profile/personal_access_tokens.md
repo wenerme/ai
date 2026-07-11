@@ -53,7 +53,7 @@ To create a personal access token:
    - If you do not enter a date, the expiry date is set to 365 days from today.
    - By default, the expiry date cannot be more than 365 days from today. On GitLab 17.6 and later,
      administrators can [modify the maximum lifetime of access tokens](../../administration/settings/account_and_limit_settings.md#limit-the-lifetime-of-access-tokens).
-1. Select one or more [personal access token scopes](#personal-access-token-scopes).
+1. Select one or more [personal access token scopes](../../security/tokens/access_token_scopes.md).
 1. Select **Generate token**.
 
 A personal access token is displayed. Save the personal access token somewhere safe. After you leave
@@ -75,45 +75,6 @@ https://gitlab.example.com/-/user_settings/personal_access_tokens?name=Example+A
 > [!note]
 > Personal access tokens must be treated carefully. For guidance on managing personal access tokens,
 see [token security considerations](../../security/tokens/_index.md#security-considerations).
-
-### Personal access token scopes
-
-- Personal access tokens no longer being able to access container or package registries [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/387721) in GitLab 16.0.
-- `k8s_proxy` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/422408) in GitLab 16.4 [with a feature flag](../../administration/feature_flags/_index.md) named `k8s_proxy_pat`. Enabled by default.
-- Feature flag `k8s_proxy_pat` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/131518) in GitLab 16.5.
-- `read_service_ping` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/42692#note_1222832412) in GitLab 17.1.
-- `manage_runner` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460721) in GitLab 17.1.
-- `self_rotate` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/178111) in GitLab 17.9. Enabled by default.
-
-Scopes define the actions available when you authenticate with a personal access token. The following scopes are available:
-
-> [!note]
-> [Fine-grained personal access tokens](../../auth/tokens/fine_grained_access_tokens.md) use different scopes.
-
-| Scope                    | Description |
-| ------------------------ | ----------- |
-| `api`                    | Grants complete read and write access to the API, including all groups and projects, the [container registry](../packages/container_registry/_index.md), the [dependency proxy](../packages/dependency_proxy/_index.md), and the [package registry](../packages/package_registry/_index.md). Also grants complete read and write access to the registry and repository using Git-over-HTTP. |
-| `read_api`               | Grants read access to the API, including all groups and projects, the container registry, and the package registry. |
-| `read_registry`          | Grants read access (pull) to [container registry](../packages/container_registry/_index.md) images if a project is private and authorization is required. Available only when the container registry is enabled. |
-| `write_registry`         | Grants write access (push) to [container registry](../packages/container_registry/_index.md) images if a project is private and authorization is required. Available only when the container registry is enabled. |
-| `read_virtual_registry`  | Grants read access (pull) to container images through the [dependency proxy](../packages/dependency_proxy/_index.md) if a project is private and authorization is required. Available only when the dependency proxy is enabled. |
-| `write_virtual_registry` | Grants read and write access (pull, push, and delete) to container images through the [dependency proxy](../packages/dependency_proxy/_index.md) if a project is private and authorization is required. Available only when the dependency proxy is enabled. |
-| `read_repository`        | Grants read access (pull) to repositories on private projects using Git-over-HTTP or the [repository files API](../../api/repository_files.md). |
-| `write_repository`       | Grants read and write access (pull and push) to repositories on private projects using Git-over-HTTP. Does not support API authentication. |
-| `create_runner`          | Grants permission to create runners. |
-| `manage_runner`          | Grants permission to manage runners. |
-| `admin_mode`             | Grants permission to perform API actions when [Admin Mode](../../administration/settings/sign_in_restrictions.md#admin-mode) is enabled. Available only to administrators on GitLab Self-Managed instances. |
-| `ai_features`            | Grants permission to perform API actions for GitLab Duo, the Code Suggestions API, and the GitLab Duo Chat API. Designed to work with the GitLab Duo Plugin for JetBrains. For all other extensions, see the individual extension documentation. Does not work for GitLab Self-Managed versions 16.5, 16.6, and 16.7. On GitLab Self-Managed and GitLab Dedicated, this scope is only available when GitLab Duo is enabled. |
-| `k8s_proxy`              | Grants permission to perform Kubernetes API calls using the agent for Kubernetes. |
-| `self_rotate`            | Grants permission to rotate this token using the [personal access token API](../../api/personal_access_tokens.md#rotate-a-personal-access-token). Does not allow rotation of other tokens. |
-| `read_service_ping`      | Grants access to download the Service Ping payloads through the API when authenticated as an administrator. |
-| `sudo`                   | Grants permission to perform API actions as any user in the system, when authenticated as an administrator. |
-| `read_user`              | Grants read-only access to the authenticated user's profile through the `/user` API endpoint, which includes username, public email, and full name. Also grants access to read-only API endpoints under [`/users`](../../api/users.md). |
-
-> [!warning]
-> If you have enabled [external authorization](../../administration/settings/external_authorization.md),
-> personal access tokens cannot access container or package registries. To restore access,
-> turn off external authorization.
 
 ## Authenticate with an access token
 

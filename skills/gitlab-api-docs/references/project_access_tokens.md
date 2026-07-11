@@ -177,8 +177,8 @@ token family are revoked. For more information, see [Automatic reuse detection](
 
 Prerequisites:
 
-- To rotate another project access token, you must have a personal access token with the [`api` scope](../user/profile/personal_access_tokens.md#personal-access-token-scopes).
-- To [self-rotate](#self-rotate) a project access token, the token must have the [`api` or `self_rotate` scope](../user/profile/personal_access_tokens.md#personal-access-token-scopes).
+- To rotate another project access token, you must have a personal access token with the [`api` scope](../security/tokens/access_token_scopes.md).
+- To [self-rotate](#self-rotate) a project access token, the token must have the [`api` or `self_rotate` scope](../security/tokens/access_token_scopes.md).
 
 ```plaintext
 POST /projects/:id/access_tokens/:token_id/rotate
@@ -235,7 +235,7 @@ Other possible responses:
 
 Instead of rotating a specific project access token, you can rotate the same project access token you used to authenticate the request. To self-rotate a project access token, you must:
 
-- Rotate a project access token with the [`api` or `self_rotate` scope](../user/profile/personal_access_tokens.md#personal-access-token-scopes).
+- Rotate a project access token with the [`api` or `self_rotate` scope](../security/tokens/access_token_scopes.md).
 - Use the `self` keyword in the request URL.
 
 Example request:

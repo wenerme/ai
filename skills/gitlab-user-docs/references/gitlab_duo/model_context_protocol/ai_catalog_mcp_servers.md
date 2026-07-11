@@ -38,6 +38,8 @@ at both the group and project level.
   [turned on GitLab Duo experiment and beta features](../turn_on_off.md#on-gitlabcom-2).
 - On GitLab Self-Managed, your instance has
   [GitLab Duo experiment and beta features turned on](../turn_on_off.md#on-gitlab-self-managed-2).
+- On GitLab Self-Managed and GitLab Dedicated, an administrator has enabled the `mcp_client`
+  [feature flag](../../../administration/feature_flags/_index.md).
 - The MCP server must be a:
   - Vetted or partner MCP server. Arbitrary URLs are not allowed.
   - Remote MCP server.
@@ -223,3 +225,45 @@ source and adds them to your prompt.
 ## Related topics
 
 - [GitLab MCP server](mcp_server.md)
+
+## Troubleshooting
+
+When working with MCP servers in the AI Catalog, you might encounter the following issues.
+
+### MCP server issues due to outbound request restrictions
+
+- Offering: GitLab Self-Managed, GitLab Dedicated
+
+GitLab validates an MCP server's URL the same way it validates other outbound requests, such
+as webhooks and integrations. If your GitLab Self-Managed instance restricts [outbound requests](../../../security/webhooks.md),
+attempts to add, edit, or connect to an MCP server might fail, even when the URL itself is valid.
+
+How you resolve this issue depends on where the MCP service is hosted.
+
+For more troubleshooting information, see
+[filtering outbound requests](../../../security/webhooks.md#troubleshooting).
+
+#### Public MCP server
+
+A public MCP server can be a vetted or partner server, or your own server reachable
+over the internet.
+
+If your instance [blocks all outbound requests except those in an allowlist](../../../security/webhooks.md#filter-requests),
+ask your instance administrator to add the MCP server's domain or IP address to the
+[outbound request allowlist](../../../security/webhooks.md#allow-outbound-requests-to-certain-ip-addresses-and-domains).
+
+If your instance does not do this, no further action is required.
+
+#### Internal or local MCP server
+
+An internal or local MCP server can be a server running on `localhost`, or on a private or internal network.
+
+By default, GitLab blocks requests to local and private network addresses to protect against server-side request forgery.
+
+To allow the request, ask your instance administrator to do either of the following:
+
+- [Allow requests to the local network from webhooks and integrations](../../../security/webhooks.md#allow-requests-to-the-local-network-from-webhooks-and-integrations).
+  This allows requests to all local and private network addresses, not just your MCP server.
+- Add only the MCP server's domain or IP address (and port, if needed) to the outbound request
+  allowlist. This option is more restrictive, because it does not open access to the entire
+  local network.

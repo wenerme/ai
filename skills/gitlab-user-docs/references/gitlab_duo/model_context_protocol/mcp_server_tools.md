@@ -433,3 +433,21 @@ Example:
 ```plaintext
 How are authorizations managed in this project?
 ```
+
+## `attach_scan_profile`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240685) in GitLab 19.2.
+
+Attaches the given security scan profile to the specified projects, or to all projects under the specified groups.
+
+| Parameter                  | Type             | Required | Description |
+|----------------------------|------------------|----------|-------------|
+| `security_scan_profile_id` | string           | Yes      | Global ID of the security scan profile (for example, `gid://gitlab/Security::ScanProfile/1`). |
+| `project_ids`              | array of strings | No       | Array of global IDs of projects (for example, `[gid://gitlab/Project/1]`). This is required unless `group_ids` is provided. |
+| `group_ids`                | array of strings | No       | Array of global IDs of groups (for example, `[gid://gitlab/Group/1]`). This is required unless `project_ids` is provided. |
+
+Example:
+
+```plaintext
+Attach `gid://gitlab/Security::ScanProfile/1` to all projects under `gid://gitlab/Group/1`.
+```

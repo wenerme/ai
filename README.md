@@ -1250,7 +1250,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 112 skills, 31166 files, 367 MiB total
+> 112 skills, 31167 files, 367 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1298,7 +1298,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [ghostty-docs](./skills/ghostty-docs/SKILL.md) | 103 | 554 KiB |
 | [gitea-docs](./skills/gitea-docs/SKILL.md) | 96 | 662 KiB |
 | [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 372 | 4.6 MiB |
-| [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 244 | 13 MiB |
+| [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 244 | 14 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 172 | 1.9 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 896 | 8.0 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
@@ -1327,7 +1327,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [model-reference](./skills/model-reference/SKILL.md) | 17 | 64 KiB |
 | [nats-docs](./skills/nats-docs/SKILL.md) | 6 | 42 KiB |
 | [openai-api](./skills/openai-api/SKILL.md) | 519 | 34 MiB |
-| [openai-docs](./skills/openai-docs/SKILL.md) | 162 | 2.4 MiB |
+| [openai-docs](./skills/openai-docs/SKILL.md) | 163 | 2.4 MiB |
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 519 | 24 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 519 | 23 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 457 KiB |

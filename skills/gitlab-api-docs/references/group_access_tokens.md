@@ -184,8 +184,8 @@ from the same token family are revoked. For more information, see [automatic reu
 
 Prerequisites:
 
-- To rotate another group access token, you must have a personal access token with the [`api` scope](../user/profile/personal_access_tokens.md#personal-access-token-scopes).
-- To [self-rotate](#self-rotate) a group access token, the token must have the [`api` or `self_rotate` scope](../user/profile/personal_access_tokens.md#personal-access-token-scopes).
+- To rotate another group access token, you must have a personal access token with the [`api` scope](../security/tokens/access_token_scopes.md).
+- To [self-rotate](#self-rotate) a group access token, the token must have the [`api` or `self_rotate` scope](../security/tokens/access_token_scopes.md).
 
 ```plaintext
 POST /groups/:id/access_tokens/:token_id/rotate
@@ -242,7 +242,7 @@ Other possible responses:
 
 Instead of rotating a specific group access token, you can rotate the same group access token you used to authenticate the request. To self-rotate a group access token, you must:
 
-- Rotate a group access token with the [`api` or `self_rotate` scope](../user/profile/personal_access_tokens.md#personal-access-token-scopes).
+- Rotate a group access token with the [`api` or `self_rotate` scope](../security/tokens/access_token_scopes.md).
 - Use the `self` keyword in the request URL.
 
 Example request:
