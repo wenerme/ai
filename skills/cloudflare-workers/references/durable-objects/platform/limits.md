@@ -50,7 +50,7 @@ Note
 Durable Objects are available both on Workers Free and Workers Paid plans.
 
 * **Workers Free plan**: Only Durable Objects with [SQLite storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#create-migration) are available.
-* **Workers Paid plan**: Durable Objects with either SQLite storage backend or [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#create-durable-object-class-with-key-value-storage) are available.
+* **Workers Paid plan**: Durable Objects with the SQLite storage backend are available. The [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#create-durable-object-class-with-key-value-storage) is only available to accounts that already have a key-value backed namespace.
 
 If you wish to downgrade from a Workers Paid plan to a Workers Free plan, you must first ensure that you have deleted all Durable Object namespaces with the key-value storage backend.
 
@@ -98,8 +98,8 @@ Durable Objects are Worker scripts, and have the same [per invocation CPU limits
 
 By default, the maximum CPU time per Durable Objects invocation (HTTP request, WebSocket message, or Alarm) is set to 30 seconds, but can be increased for all Durable Objects associated with a Durable Object definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8752)
-* [  wrangler.toml ](#tab-panel-8753)
+* [  wrangler.jsonc ](#tab-panel-8940)
+* [  wrangler.toml ](#tab-panel-8941)
 
 **JSONC**
 

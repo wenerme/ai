@@ -193,7 +193,7 @@ You should see a single text response printed to the console. The SDK returns
 token usage in camelCase fields such as `promptTokens` and
 `completionTokens`. The
 `completion.choices` array follows the same shape as the
-[Chat Completions response](/api/api/api-reference/chat/create-a-chat-completions/create-a-chat-completion).
+[Chat Completions response](/api/api-reference/chat/create-a-chat-completion).
 
 ## 3. Stream the response
 
@@ -305,7 +305,7 @@ model: 'openrouter/free',
 ```
 
 Browse all available models at [openrouter.ai/models](https://openrouter.ai/models)
-or query the [Models API](/api/api-reference/models-and-endpoints/list-all-models)
+or query the [Models API](/api/api-reference/models/list-all-models-and-their-properties)
 programmatically.
 
 ## Check your work

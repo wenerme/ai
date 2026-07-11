@@ -47,7 +47,7 @@ Use these OpenRouter docs as source-of-truth references when you need exact fiel
 - Video generation request API: https://openrouter.ai/docs/api/api-reference/video-generation/submit-a-video-generation-request
 - Video generation overview: https://openrouter.ai/docs/guides/overview/multimodal/video-generation
 - OpenRouter video skill: https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video
-- TypeScript SDK video generation reference, if I am using the SDK: https://openrouter.ai/docs/client-sdks/typescript/api-reference/videogeneration
+- TypeScript SDK video generation reference, if I am using the SDK: https://openrouter.ai/docs/client-sdks/typescript/sdks/videogeneration/README
 
 Start by asking me for a brief description of what I want to make with video generation.
 
@@ -80,7 +80,7 @@ Use the API reference pages as the source of truth for exact fields:
 
 * [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
 * [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
-* [TypeScript SDK video generation reference](/client-sdks/typescript/api-reference/videogeneration)
+* [TypeScript SDK video generation reference](/client-sdks/typescript/sdks/videogeneration/README)
 
 <Warning>
   Submitting `POST /api/v1/videos` starts a real video generation job and may
@@ -130,7 +130,7 @@ Each model includes the values you need for routing decisions. Use the
 reference](/api/api-reference/video-generation/list-all-video-generation-models) as the
 source of truth for the endpoint response and model metadata fields. If your app
 uses the TypeScript SDK, see the generated [`listVideosModels` SDK
-reference](/client-sdks/typescript/api-reference/videogeneration#listvideosmodels)
+reference](/client-sdks/typescript/sdks/videogeneration/README#listvideosmodels)
 for the SDK method shape.
 
 ## Step 2: Filter by the job you want to run

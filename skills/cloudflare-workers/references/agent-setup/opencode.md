@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Cloudflare platform access

@@ -116,7 +116,7 @@ Slugs follow `<task>-<tier>`: `task` is what you're optimizing the panel for,
 and `tier` is the quality/cost/speed tradeoff (`high` = strongest models, `budget` =
 cheaper panel with the same frontier judge, `fast` = a latency-homogeneous panel
 where every model has similar TTFT so no single model gates the fan-out). These
-mirror the presets shown in the [Fusion lab](/labs/fusion) UI.
+mirror the presets shown in the [Fusion lab](https://openrouter.ai/labs/fusion) UI.
 
 | Preset           | For                                                                                  |
 | ---------------- | ------------------------------------------------------------------------------------ |

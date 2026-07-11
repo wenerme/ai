@@ -238,8 +238,8 @@ One pipeline writes to five tables. To add a new event type later, add one sink 
 
 Add the stream binding, a Durable Object to hold the WebSocket connection, and a [cron trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) to keep the consumer alive. Replace `<STREAM_ID>` with the stream ID from step 4.
 
-* [  wrangler.jsonc ](#tab-panel-9862)
-* [  wrangler.toml ](#tab-panel-9863)
+* [  wrangler.jsonc ](#tab-panel-10056)
+* [  wrangler.toml ](#tab-panel-10057)
 
 **JSONC**
 
@@ -249,7 +249,7 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
   "name": "bluesky-pipeline",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-11",
   "pipelines": [
     {
       "binding": "BSKY_STREAM",
@@ -286,7 +286,7 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
 name = "bluesky-pipeline"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-11"
 
 
 [[pipelines]]
@@ -314,8 +314,8 @@ A [Durable Object](https://developers.cloudflare.com/durable-objects/) is the ri
 
 Replace the contents of `src/index.ts` with the following:
 
-* [  JavaScript ](#tab-panel-9864)
-* [  TypeScript ](#tab-panel-9865)
+* [  JavaScript ](#tab-panel-10058)
+* [  TypeScript ](#tab-panel-10059)
 
 **src/index.js**
 

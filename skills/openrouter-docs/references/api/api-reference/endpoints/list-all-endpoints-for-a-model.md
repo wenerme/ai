@@ -765,6 +765,7 @@ components:
       type: object
     ProviderName:
       enum:
+        - Meta
         - AkashML
         - AI21
         - AionLabs
@@ -791,6 +792,7 @@ components:
         - Crusoe
         - Darkbloom
         - Decart
+        - Deepgram
         - DeepInfra
         - DeepSeek
         - DekaLLM

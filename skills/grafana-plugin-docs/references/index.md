@@ -19,7 +19,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [Amazon Redshift data source](/docs/plugins/grafana-redshift-datasource/latest/ "Amazon Redshift data source")
 - [Amazon Timestream data source](/docs/plugins/grafana-timestream-datasource/latest/ "Amazon Timestream data source")
 - [AppDynamics data source](/docs/plugins/dlopes7-appdynamics-datasource/latest/ "AppDynamics data source")
-- [Atlassian Statuspage data source for Grafana](/docs/plugins/grafana-atlassianstatuspage-datasource/latest/ "Atlassian Statuspage data source for Grafana")
+- [Atlassian Statuspage data source](/docs/plugins/grafana-atlassianstatuspage-datasource/latest/ "Atlassian Statuspage data source")
 - [AWS Application Signals data source](/docs/plugins/grafana-x-ray-datasource/latest/ "AWS Application Signals data source")
 - [Azure Cosmos DB data source](/docs/plugins/grafana-azurecosmosdb-datasource/latest/ "Azure Cosmos DB data source")
 - [Azure DevOps data source](/docs/plugins/grafana-azuredevops-datasource/latest/ "Azure DevOps data source")

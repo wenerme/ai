@@ -39,10 +39,10 @@ https://openrouter.ai/docs/cookbook/building-agents/advisor-server-tool
 Use these source-of-truth docs for current fields and response shapes:
 - Advisor server tool: https://openrouter.ai/docs/guides/features/server-tools/advisor
 - Agent SDK callModel overview: https://openrouter.ai/docs/sdks/typescript/call-model/overview
-- Chat Completions request API: https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request
-- Responses request API, if this app uses Responses: https://openrouter.ai/docs/api/api-reference/responses/create-responses
-- TypeScript SDK Chat reference, if this app uses @openrouter/sdk: https://openrouter.ai/docs/client-sdks/typescript/api-reference/chat
-- TypeScript SDK Responses reference, if this app uses @openrouter/sdk beta responses: https://openrouter.ai/docs/client-sdks/typescript/api-reference/responses
+- Chat Completions request API: https://openrouter.ai/docs/api/api-reference/chat/create-a-chat-completion
+- Responses request API, if this app uses Responses: https://openrouter.ai/docs/api/api-reference/responses/create-a-response
+- TypeScript SDK Chat reference, if this app uses @openrouter/sdk: https://openrouter.ai/docs/client-sdks/typescript/sdks/chat/README
+- TypeScript SDK Responses reference, if this app uses @openrouter/sdk beta responses: https://openrouter.ai/docs/client-sdks/typescript/sdks/responses/README
 
 Add this token-saving pattern to the app's existing review or planning path:
 - Keep the existing cheap or default executor model for routine work.
@@ -80,9 +80,9 @@ Use these references for exact schemas:
 
 * [Advisor server tool](/guides/features/server-tools/advisor)
 * [Agent SDK `callModel` overview](/sdks/typescript/call-model/overview)
-* [Create a chat completion](/api/api-reference/chat/send-chat-completion-request)
-* [Create a response](/api/api-reference/responses/create-responses)
-* [TypeScript SDK Chat reference](/client-sdks/typescript/api-reference/chat)
+* [Create a chat completion](/api/api-reference/chat/create-a-chat-completion)
+* [Create a response](/api/api-reference/responses/create-a-response)
+* [TypeScript SDK Chat reference](/client-sdks/typescript/sdks/chat/README)
 
 ## What you're building
 

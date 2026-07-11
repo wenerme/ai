@@ -282,7 +282,7 @@ When using streaming mode (`stream: true`), errors are handled differently depen
 Errors that occur before any tokens are sent follow the standard error format above, with appropriate HTTP status codes. At this stage the HTTP response hasn't been committed yet, so OpenRouter can:
 
 * Return a proper HTTP error status (4xx/5xx)
-* Silently retry with a different provider endpoint if [fallback routing](/guides/features/provider-routing) is enabled
+* Silently retry with a different provider endpoint if [fallback routing](/guides/routing/provider-selection) is enabled
 * Apply rate-limit or auth checks before any work begins
 
 You'll see pre-stream errors for issues like invalid API keys, malformed requests, or when every available provider endpoint is exhausted before streaming starts.

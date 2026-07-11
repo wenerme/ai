@@ -823,6 +823,10 @@ components:
           additionalProperties:
             nullable: true
           type: object
+        deepgram:
+          additionalProperties:
+            nullable: true
+          type: object
         deepinfra:
           additionalProperties:
             nullable: true

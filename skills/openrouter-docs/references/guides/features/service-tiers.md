@@ -198,7 +198,7 @@ Requests that don't use either of these are never routed to a non-default servic
 
 ### Tier Endpoints in the API
 
-Tier endpoints are listed in the [model endpoints API](/docs/api/api-reference/list-endpoints) alongside standard endpoints. Each appears as its own entry with a tier-suffixed `tag` (e.g. `openai/priority`) and pricing with the tier multiplier already applied — the same pricing used for billing. Their presence in the listing doesn't change routing: they remain opt-in as described above.
+Tier endpoints are listed in the [model endpoints API](/api/api-reference/endpoints/list-all-endpoints-for-a-model) alongside standard endpoints. Each appears as its own entry with a tier-suffixed `tag` (e.g. `openai/priority`) and pricing with the tier multiplier already applied — the same pricing used for billing. Their presence in the listing doesn't change routing: they remain opt-in as described above.
 
 ### Supported Providers
 

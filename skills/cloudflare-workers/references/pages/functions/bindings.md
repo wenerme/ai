@@ -38,8 +38,8 @@ To configure a KV namespace binding via the Cloudflare dashboard:
 
 Below is an example of how to use KV in your Function. In the following example, your KV namespace binding is called `TODO_LIST` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9813)
-* [  TypeScript ](#tab-panel-9814)
+* [  JavaScript ](#tab-panel-10007)
+* [  TypeScript ](#tab-panel-10008)
 
 **JavaScript**
 
@@ -101,8 +101,8 @@ To configure a Durable Object binding via the Cloudflare dashboard:
 
 Below is an example of how to use Durable Objects in your Function. In the following example, your DO binding is called `DURABLE_OBJECT` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9815)
-* [  TypeScript ](#tab-panel-9816)
+* [  JavaScript ](#tab-panel-10009)
+* [  TypeScript ](#tab-panel-10010)
 
 **JavaScript**
 
@@ -170,8 +170,8 @@ To configure a R2 bucket binding via the Cloudflare dashboard:
 
 Below is an example of how to use R2 buckets in your Function. In the following example, your R2 bucket binding is called `BUCKET` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9817)
-* [  TypeScript ](#tab-panel-9818)
+* [  JavaScript ](#tab-panel-10011)
+* [  TypeScript ](#tab-panel-10012)
 
 **JavaScript**
 
@@ -243,8 +243,8 @@ To configure a D1 database binding via the Cloudflare dashboard:
 
 Below is an example of how to use D1 in your Function. In the following example, your D1 database binding is `NORTHWIND_DB` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9819)
-* [  TypeScript ](#tab-panel-9820)
+* [  JavaScript ](#tab-panel-10013)
+* [  TypeScript ](#tab-panel-10014)
 
 **JavaScript**
 
@@ -325,8 +325,8 @@ To configure a Vectorize index binding via the Cloudflare dashboard:
 
 To use Vectorize index in your Pages Function, you can access your Vectorize index binding in your Pages Function code. In the following example, your Vectorize index binding is called `VECTORIZE_INDEX` and you can access the binding in your Pages Function code on `context.env`.
 
-* [  JavaScript ](#tab-panel-9821)
-* [  TypeScript ](#tab-panel-9822)
+* [  JavaScript ](#tab-panel-10015)
+* [  TypeScript ](#tab-panel-10016)
 
 **JavaScript**
 
@@ -470,8 +470,8 @@ To configure a Workers AI binding via the Cloudflare dashboard:
 
 To use Workers AI in your Pages Function, you can access your Workers AI binding in your Pages Function code. In the following example, your Workers AI binding is called `AI` and you can access the binding in your Pages Function code on `context.env`.
 
-* [  JavaScript ](#tab-panel-9823)
-* [  TypeScript ](#tab-panel-9824)
+* [  JavaScript ](#tab-panel-10017)
+* [  TypeScript ](#tab-panel-10018)
 
 **JavaScript**
 
@@ -551,8 +551,8 @@ To configure a Service binding via the Cloudflare dashboard:
 
 Below is an example of how to use Service bindings in your Function. In the following example, your Service binding is called `SERVICE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9825)
-* [  TypeScript ](#tab-panel-9826)
+* [  JavaScript ](#tab-panel-10019)
+* [  TypeScript ](#tab-panel-10020)
 
 **JavaScript**
 
@@ -616,8 +616,8 @@ To configure a queue producer binding via the Cloudflare dashboard:
 
 Below is an example of how to use a queue producer binding in your Function. In this example, the binding is named `MY_QUEUE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9827)
-* [  TypeScript ](#tab-panel-9828)
+* [  JavaScript ](#tab-panel-10021)
+* [  TypeScript ](#tab-panel-10022)
 
 **JavaScript**
 
@@ -664,8 +664,8 @@ Note
 
 PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) depend on Node.js APIs. Pages Functions with Hyperdrive bindings must be [deployed with Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs).
 
-* [  wrangler.jsonc ](#tab-panel-9835)
-* [  wrangler.toml ](#tab-panel-9836)
+* [  wrangler.jsonc ](#tab-panel-10029)
+* [  wrangler.toml ](#tab-panel-10030)
 
 **JSONC**
 
@@ -675,7 +675,7 @@ PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) 
     "nodejs_compat"
   ],
   // Set this to today's date
-  "compatibility_date": "2026-07-01"
+  "compatibility_date": "2026-07-11"
 }
 ```
 
@@ -684,7 +684,7 @@ PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-11"
 ```
 
 [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) is a service for connecting to your existing databases from Cloudflare Workers and Pages Functions.
@@ -703,8 +703,8 @@ To configure a Hyperdrive binding via the Cloudflare dashboard:
 
 Below is an example of how to use Hyperdrive in your Function. In the following example, your Hyperdrive config is named `HYPERDRIVE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9829)
-* [  TypeScript ](#tab-panel-9830)
+* [  JavaScript ](#tab-panel-10023)
+* [  TypeScript ](#tab-panel-10024)
 
 **JavaScript**
 
@@ -784,8 +784,8 @@ To configure an Analytics Engine binding via the Cloudflare dashboard:
 
 Below is an example of how to use an Analytics Engine binding in your Function. In the following example, the binding is called `ANALYTICS_ENGINE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9831)
-* [  TypeScript ](#tab-panel-9832)
+* [  JavaScript ](#tab-panel-10025)
+* [  TypeScript ](#tab-panel-10026)
 
 **JavaScript**
 
@@ -848,8 +848,8 @@ To configure an environment variable via the Cloudflare dashboard:
 
 Below is an example of how to use environment variables in your Function. The environment variable in this example is `ENVIRONMENT` and you can access the environment variable on `context.env`:
 
-* [  JavaScript ](#tab-panel-9833)
-* [  TypeScript ](#tab-panel-9834)
+* [  JavaScript ](#tab-panel-10027)
+* [  TypeScript ](#tab-panel-10028)
 
 **JavaScript**
 

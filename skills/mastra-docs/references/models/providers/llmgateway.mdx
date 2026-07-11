@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 181 models available."
+description: "Use LLM Gateway models with Mastra. 182 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 181 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 182 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1550,6 +1550,18 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.1,
     "outputCost": 0.3
+  },
+  {
+    "model": "llmgateway/muse-spark-1.1",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 32000,
+    "inputCost": 1.25,
+    "outputCost": 4.25
   },
   {
     "model": "llmgateway/nemotron-3-ultra-550b",

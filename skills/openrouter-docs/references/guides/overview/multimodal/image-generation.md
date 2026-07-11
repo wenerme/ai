@@ -106,7 +106,7 @@ An absent key means the parameter is unsupported by that endpoint.
 
 ### Via the Models API
 
-You can also discover image models through the general [Models API](/api/reference/models/get-models):
+You can also discover image models through the general [Models API](/api/api-reference/models/list-all-models-and-their-properties):
 
 ```bash lines theme={null}
 curl "https://openrouter.ai/api/v1/models?output_modalities=image"

@@ -18,7 +18,7 @@ When migrating from GPT-5.5 or GPT-5.4, start with your current GPT-5.5 or GPT-5
 ## What is new
 
 - **Programmatic Tool Calling:** GPT-5.6 can write JavaScript to call eligible tools, pass results between calls, and process intermediate outputs in a hosted runtime. Use [Programmatic Tool Calling](https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling) for bounded, tool-heavy workflows that do not require fresh model judgment between each step. Programmatic Tool Calling is ZDR-compatible with no additional container costs.
-- **Multi-agent [beta]:** [Multi-agent](https://developers.openai.com/api/docs/guides/tools-multi-agent) lets a GPT-5.6 instance coordinate multiple subagents in parallel and synthesize their results. Similar to ultra mode in Codex, this can reduce wall-clock time and improve performance for complex tasks that divide cleanly into independent workstreams. Multi-agent is available as a beta feature in the Responses API as we iterate on developer feedback.
+- **Multi-agent [beta]:** [Multi-agent](https://developers.openai.com/api/docs/guides/responses-multi-agent) lets a GPT-5.6 instance coordinate multiple subagents in parallel and synthesize their results. Similar to ultra mode in Codex, this can reduce wall-clock time and improve performance for complex tasks that divide cleanly into independent workstreams. Multi-agent is available as a beta feature in the Responses API as we iterate on developer feedback.
 - **Explicit prompt caching:** GPT-5.6 lets you mark exactly which reusable prompt prefixes OpenAI caches. You can still use automatic caching in implicit mode. OpenAI bills cache writes at 1.25× the uncached input rate, while cache reads remain discounted. Learn how to [configure prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching).
 - **Persisted reasoning:** GPT-5.6 can reuse available reasoning items across turns to improve multi-turn quality and cache efficiency. Use `reasoning.context` to select the behavior. Learn how to [preserve reasoning across calls](https://developers.openai.com/api/docs/guides/reasoning#preserve-reasoning-across-calls).
 - **Max reasoning effort:** GPT-5.6 supports `max` reasoning effort for demanding tasks that need more exploration and verification. If you currently use `xhigh`, compare both settings on representative workloads.
@@ -215,7 +215,7 @@ Use direct tool calls for [semantic judgment, approval, or final validation].
 </tool_orchestration>
 ```
 
-#### Evaluate the final answer
+#### Assess the final answer
 
 The `program_output` item and final assistant `message` are separate outputs; make sure to test both. In theory, a program can return the correct records while the message omits a required field, citation, or caveat.
 

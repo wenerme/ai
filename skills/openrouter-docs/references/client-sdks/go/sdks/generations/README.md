@@ -14,6 +14,7 @@ Generation history endpoints
 
 * [GetGeneration](#getgeneration) - Get request & usage metadata for a generation
 * [ListGenerationContent](#listgenerationcontent) - Get stored prompt and completion content for a generation
+* [SubmitFeedback](#submitfeedback) - Submit feedback for a generation
 
 ## GetGeneration
 
@@ -132,3 +133,64 @@ func main() {
 | sdkerrors.EdgeNetworkTimeoutResponseError | 524         | application/json |
 | sdkerrors.ProviderOverloadedResponseError | 529         | application/json |
 | sdkerrors.APIError                        | 4XX, 5XX    | \*/\*            |
+
+## SubmitFeedback
+
+Submit structured feedback on a generation the authenticated user made. [Management key](/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```go theme={null}
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Generations.SubmitFeedback(ctx, components.SubmitGenerationFeedbackRequest{
+        Category: components.CategoryIncorrectResponse,
+        Comment: openrouter.Pointer("The model repeated the same paragraph three times."),
+        GenerationID: "gen-3bhGkxlo4XFrqiabUM7NDtwDzWwG",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                                                                      | Required             | Description                                |
+| --------- | --------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------ |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                                                     | :heavy\_check\_mark: | The context to use for the request.        |
+| `request` | [components.SubmitGenerationFeedbackRequest](../../models/components/submitgenerationfeedbackrequest.mdx) | :heavy\_check\_mark: | The request object to use for the request. |
+| `opts`    | \[][operations.Option](../../models/operations/option.mdx)                                                | :heavy\_minus\_sign: | The options for this request.              |
+
+### Response
+
+**[\*components.SubmitGenerationFeedbackResponse](../../models/components/submitgenerationfeedbackresponse.mdx), error**
+
+### Errors
+
+| Error Type                             | Status Code | Content Type     |
+| -------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError      | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError    | 401         | application/json |
+| sdkerrors.NotFoundResponseError        | 404         | application/json |
+| sdkerrors.TooManyRequestsResponseError | 429         | application/json |
+| sdkerrors.InternalServerResponseError  | 500         | application/json |
+| sdkerrors.APIError                     | 4XX, 5XX    | \*/\*            |

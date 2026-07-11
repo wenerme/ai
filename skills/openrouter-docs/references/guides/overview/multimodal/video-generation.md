@@ -67,7 +67,7 @@ You can find video generation models in several ways:
 Use the dedicated video models endpoint to list all available video generation models along with their supported parameters:
 
 ```bash lines theme={null}
-curl "https://openrouter.ai/api/v1/videos/docs/guides/overview/models"
+curl "https://openrouter.ai/api/v1/videos/models"
 ```
 
 The response returns a `data` array where each model includes:
@@ -112,7 +112,7 @@ You can also use the `output_modalities` query parameter on the [Models API](/ap
 
 ```bash lines theme={null}
 # List only video generation models
-curl "https://openrouter.ai/api/v1/docs/guides/overview/models?output_modalities=video"
+curl "https://openrouter.ai/api/v1/models?output_modalities=video"
 ```
 
 ### On the Models Page

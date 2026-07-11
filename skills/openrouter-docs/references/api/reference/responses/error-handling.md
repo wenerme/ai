@@ -45,7 +45,7 @@ The API uses the following error codes:
 | `image_content_policy_violation` | Input or output flagged by a content filter                                                | 400                    |
 | `server_error`                   | Internal server error, authentication failure, provider overloaded/unavailable, or timeout | 500+                   |
 
-These codes are a reduced mapping of the [internal typed error codes](/api/reference/errors#typed-error-codes). Multiple internal error types collapse into each Responses API code — for example, `context_length_exceeded` and `invalid_request` both surface as `invalid_prompt` here.
+These codes are a reduced mapping of the [internal typed error codes](/api/reference/errors-and-debugging#typed-error-codes). Multiple internal error types collapse into each Responses API code — for example, `context_length_exceeded` and `invalid_request` both surface as `invalid_prompt` here.
 
 ### Canonical `error_type` Field
 
@@ -60,4 +60,4 @@ Because the native `error.code` vocabulary is lossy (many distinct errors collap
 }
 ```
 
-The `error_type` value matches one of the [typed error codes](/api/reference/errors#typed-error-codes) and is stable across all OpenRouter API formats. Use it to programmatically distinguish error categories when the native `code` is ambiguous.
+The `error_type` value matches one of the [typed error codes](/api/reference/errors-and-debugging#typed-error-codes) and is stable across all OpenRouter API formats. Use it to programmatically distinguish error categories when the native `code` is ambiguous.

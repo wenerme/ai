@@ -667,6 +667,14 @@ And the following unique queues:
 - `SUCCESSFUL_TOKENS_CACHE_SIZE`: **20**: Cache successful token hashes. API tokens are stored in the DB as pbkdf2 hashes however, this means that there is a potentially significant hashing load when there are multiple API operations. This cache will store the successfully hashed tokens in a LRU cache as a balance between performance and security.
 - `DISABLE_QUERY_AUTH_TOKEN`: **false**: Reject API tokens sent in URL query string (Accept Header-based API tokens only). This setting will default to `true` in Gitea 1.23 and be deprecated in Gitea 1.24.
 - `TWO_FACTOR_AUTH`: **_empty_**: set to enforced to enforce two factor authentication. Only available in Gitea 1.24 and later.
+- `ALLOWED_HOST_LIST`: **external**: Webhook and oauth2 clients can only call allowed hosts for security reasons. Comma separated list.
+  - Built-in networks:
+    - `loopback`: 127.0.0.0/8 for IPv4 and ::1/128 for IPv6, localhost is included.
+    - `private`: RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) and RFC 4193 (FC00::/7). Also called LAN/Intranet.
+    - `external`: A valid non-private unicast IP, you can access all hosts on public internet.
+    - `*`: All hosts are allowed.
+  - CIDR list: `1.2.3.0/8` for IPv4 and `2001:db8::/32` for IPv6
+  - Wildcard hosts: `*.mydomain.com`, `192.168.100.*`
 
 ## Camo (`camo`)
 
@@ -814,14 +822,6 @@ Define allowed algorithms and their minimum key length (use -1 to disable a type
 
 - `QUEUE_LENGTH`: **1000**: Hook task queue length. Use caution when editing this value.
 - `DELIVER_TIMEOUT`: **5**: Delivery timeout (sec) for shooting webhooks.
-- `ALLOWED_HOST_LIST`: **external**: Webhook can only call allowed hosts for security reasons. Comma separated list.
-  - Built-in networks:
-    - `loopback`: 127.0.0.0/8 for IPv4 and ::1/128 for IPv6, localhost is included.
-    - `private`: RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) and RFC 4193 (FC00::/7). Also called LAN/Intranet.
-    - `external`: A valid non-private unicast IP, you can access all hosts on public internet.
-    - `*`: All hosts are allowed.
-  - CIDR list: `1.2.3.0/8` for IPv4 and `2001:db8::/32` for IPv6
-  - Wildcard hosts: `*.mydomain.com`, `192.168.100.*`
 - `SKIP_TLS_VERIFY`: **false**: Allow insecure certification.
 - `PAGING_NUM`: **10**: Number of webhook history events that are shown in one page.
 - `PROXY_URL`: **_empty_**: Proxy server URL, support http://, https//, socks://, blank will follow environment http_proxy/https_proxy. If not given, will use global proxy setting.

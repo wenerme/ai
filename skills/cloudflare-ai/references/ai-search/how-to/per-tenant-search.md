@@ -86,8 +86,8 @@ AI Search limits the number of [instances per account](https://developers.cloudf
 
 Add the namespace binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6983)
-* [  wrangler.toml ](#tab-panel-6984)
+* [  wrangler.jsonc ](#tab-panel-7099)
+* [  wrangler.toml ](#tab-panel-7100)
 
 **JSONC**
 
@@ -121,8 +121,8 @@ Each tenant's instance holds documents that you upload directly to it, with no e
 
 Update `src/index.ts`. This Worker identifies the tenant from a request header, then creates, populates, searches, and deletes that tenant's instance.
 
-* [  JavaScript ](#tab-panel-6989)
-* [  TypeScript ](#tab-panel-6990)
+* [  JavaScript ](#tab-panel-7105)
+* [  TypeScript ](#tab-panel-7106)
 
 **src/index.js**
 
@@ -257,6 +257,33 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
+Start a local development server:
+
+```sh
+npx wrangler dev
+```
+
+Then onboard a tenant, upload a document to their instance, search it, and offboard. The `x-tenant-id` header scopes every request to that tenant's instance:
+
+```sh
+# Create an isolated instance for tenant "acme"
+curl -X POST http://localhost:8787/onboard -H "x-tenant-id: acme"
+
+
+# Upload a document to acme's instance
+curl -X POST http://localhost:8787/upload -H "x-tenant-id: acme" -F "file=@./handbook.pdf"
+
+
+# Search acme's instance
+curl "http://localhost:8787/search?q=vacation+policy" -H "x-tenant-id: acme"
+
+
+# Delete acme's instance and all of its data
+curl -X DELETE http://localhost:8787/offboard -H "x-tenant-id: acme"
+```
+
+AI Search indexes uploads asynchronously, so wait a moment after uploading before you search.
+
 ### R2
 
 If your tenants' data already lives in [R2](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/), back each tenant's instance with R2 instead of uploading documents to built-in storage. Change the `/onboard` route from the [built-in storage](#built-in-storage) example to create an R2-backed instance. How you configure it depends on how the data is organized.
@@ -303,6 +330,8 @@ const instance = await env.TENANTS.create({
 
 With either layout, AI Search indexes each tenant's objects on the next [sync](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/). Add documents by writing them to R2 rather than uploading through the Worker, and keep the search and offboard routes from the built-in storage example: each instance only ever returns its own tenant's results, and deleting an instance removes its search index while leaving the R2 objects untouched.
 
+To try it, run `npx wrangler dev` and use the same `onboard`, `search`, and `offboard` requests as [built-in storage](#built-in-storage). Skip the upload step, since AI Search indexes each tenant's objects directly from R2.
+
 ## Option 2: Shared instance with metadata filtering on retrieval
 
 Use a single AI Search instance and organize content by tenant using folder paths. This approach works with both [R2 buckets](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) and [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/). Apply [metadata filters](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) at query time so each tenant only retrieves their own documents.
@@ -311,8 +340,8 @@ This option searches an existing instance, so create one named `shared-instance`
 
 Add the instance binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6985)
-* [  wrangler.toml ](#tab-panel-6986)
+* [  wrangler.jsonc ](#tab-panel-7101)
+* [  wrangler.toml ](#tab-panel-7102)
 
 **JSONC**
 
@@ -351,8 +380,8 @@ Organize your content by tenant using unique folder paths:
 
 Update `src/index.ts` to filter by the tenant's folder at query time:
 
-* [  JavaScript ](#tab-panel-6987)
-* [  TypeScript ](#tab-panel-6988)
+* [  JavaScript ](#tab-panel-7103)
+* [  TypeScript ](#tab-panel-7104)
 
 **src/index.js**
 
@@ -423,13 +452,20 @@ export default {
 
 This example uses a ["starts with" filter](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/#starts-with-filter-for-folders) to match all files under the tenant's folder, including subfolders.
 
-## Run and deploy
-
-Once you have added one of the options above, start a local development server:
+Start a local development server:
 
 ```sh
 npx wrangler dev
 ```
+
+Send a request as each tenant. The Worker scopes the search to that tenant's folder, so the results never overlap:
+
+```sh
+curl http://localhost:8787/ -H "x-tenant-id: customer-a"
+curl http://localhost:8787/ -H "x-tenant-id: customer-b"
+```
+
+## Deploy
 
 Log in with your Cloudflare account, then deploy your Worker to make it accessible on the Internet:
 
@@ -445,6 +481,6 @@ npx wrangler deploy
 [ Filtering ](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) Filter search results by metadata attributes at query time.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/#page","headline":"Multitenancy · Cloudflare AI Search docs","description":"Keep each tenant's data isolated in AI Search using a separate instance per tenant or a shared instance with metadata filtering.","url":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/#page","headline":"Multitenancy · Cloudflare AI Search docs","description":"Keep each tenant's data isolated in AI Search using a separate instance per tenant or a shared instance with metadata filtering.","url":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/per-tenant-search/","name":"Multitenancy"}}]}
 ```

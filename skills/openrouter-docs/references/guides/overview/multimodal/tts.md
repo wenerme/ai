@@ -58,7 +58,7 @@ Use the `output_modalities` query parameter on the [Models API](/api/api-referen
 
 ```bash lines theme={null}
 # List only TTS models
-curl "https://openrouter.ai/api/v1/docs/guides/overview/docs/guides/overview/models?output_modalities=speech"
+curl "https://openrouter.ai/api/v1/models?output_modalities=speech"
 ```
 
 ### On the Models Page
