@@ -30,9 +30,9 @@ Go to [Deploy with Cloudflare Pages](#deploy-with-cloudflare-pages) if you alrea
 
 Install the Hugo CLI, using the specific instructions for your operating system.
 
-* [ macos ](#tab-panel-9806)
-* [ windows ](#tab-panel-9807)
-* [ linux ](#tab-panel-9808)
+* [ macos ](#tab-panel-10000)
+* [ windows ](#tab-panel-10001)
+* [ linux ](#tab-panel-10002)
 
 If you use the package manager [Homebrew ↗](https://brew.sh), run the `brew install` command in your terminal to install Hugo:
 

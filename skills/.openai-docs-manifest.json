@@ -546,10 +546,10 @@
   "openai-docs/guides/latest-model.md": {
     "url": "https://developers.openai.com/api/docs/guides/latest-model.md",
     "skill": "openai-docs",
-    "etag": "W/\"56f7b04b86556df4eab5a00e90279afc\"",
-    "lastModified": "Fri, 10 Jul 2026 10:41:23 GMT",
-    "size": 18442,
-    "updatedAt": "2026-07-10T12:41:13.604Z"
+    "etag": "W/\"4e3801324419f1aefe9df2e81cf16cd0\"",
+    "lastModified": "Fri, 10 Jul 2026 22:21:47 GMT",
+    "size": 18444,
+    "updatedAt": "2026-07-11T03:36:53.770Z"
   },
   "openai-docs/guides/migrate-to-responses.md": {
     "url": "https://developers.openai.com/api/docs/guides/migrate-to-responses.md",
@@ -666,10 +666,10 @@
   "openai-docs/guides/prompt-guidance.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-guidance.md",
     "skill": "openai-docs",
-    "etag": "W/\"56f7b04b86556df4eab5a00e90279afc\"",
-    "lastModified": "Fri, 10 Jul 2026 10:41:23 GMT",
-    "size": 18442,
-    "updatedAt": "2026-07-10T12:41:17.578Z"
+    "etag": "W/\"4e3801324419f1aefe9df2e81cf16cd0\"",
+    "lastModified": "Fri, 10 Jul 2026 22:21:47 GMT",
+    "size": 18444,
+    "updatedAt": "2026-07-11T03:36:57.520Z"
   },
   "openai-docs/guides/prompt-optimizer.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-optimizer.md",
@@ -839,6 +839,14 @@
     "size": 57000,
     "updatedAt": "2026-06-13T00:44:06.619Z"
   },
+  "openai-docs/guides/responses-multi-agent.md": {
+    "url": "https://developers.openai.com/api/docs/guides/responses-multi-agent.md",
+    "skill": "openai-docs",
+    "etag": "W/\"329fbe041b1a4621034b1f795d6e751c\"",
+    "lastModified": "Fri, 10 Jul 2026 22:27:10 GMT",
+    "size": 34363,
+    "updatedAt": "2026-07-11T03:37:02.449Z"
+  },
   "openai-docs/guides/retrieval.md": {
     "url": "https://developers.openai.com/api/docs/guides/retrieval.md",
     "skill": "openai-docs",
@@ -1006,14 +1014,6 @@
     "lastModified": "Sat, 13 Jun 2026 00:37:26 GMT",
     "size": 6070,
     "updatedAt": "2026-06-13T00:44:11.803Z"
-  },
-  "openai-docs/guides/tools-multi-agent.md": {
-    "url": "https://developers.openai.com/api/docs/guides/tools-multi-agent.md",
-    "skill": "openai-docs",
-    "etag": "W/\"1e0be76f625a45b7756033bc33d98d29\"",
-    "lastModified": "Fri, 10 Jul 2026 00:38:35 GMT",
-    "size": 33943,
-    "updatedAt": "2026-07-10T04:10:27.265Z"
   },
   "openai-docs/guides/tools-programmatic-tool-calling.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling.md",

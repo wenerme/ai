@@ -37,7 +37,7 @@ Use the API reference pages as the source of truth for exact fields:
 
 * [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
 * [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
-* [TypeScript SDK video generation reference](/client-sdks/typescript/api-reference/videogeneration)
+* [TypeScript SDK video generation reference](/client-sdks/typescript/sdks/videogeneration/README)
 
 Use `input_references` for visual guidance. Use `frame_images` only when you need exact frame control.
 

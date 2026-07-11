@@ -546,6 +546,7 @@ components:
         - crusoe
         - darkbloom
         - decart
+        - deepgram
         - deepinfra
         - deepseek
         - dekallm
@@ -569,6 +570,7 @@ components:
         - liquid
         - mancer
         - mara
+        - meta
         - minimax
         - mistral
         - modelrun

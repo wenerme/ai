@@ -82,8 +82,8 @@ npm install
 
 To operate your Workers function alongside your Pages application, deploy it to the same custom domain as your Pages application. To do this, update the Wrangler file in your project with your account and zone details:
 
-* [  wrangler.jsonc ](#tab-panel-9856)
-* [  wrangler.toml ](#tab-panel-9857)
+* [  wrangler.jsonc ](#tab-panel-10050)
+* [  wrangler.toml ](#tab-panel-10051)
 
 **JSONC**
 

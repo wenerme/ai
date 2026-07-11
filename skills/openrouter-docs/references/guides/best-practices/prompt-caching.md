@@ -45,7 +45,7 @@ To maximize cache hit rates, OpenRouter uses **provider sticky routing** to rout
 * Subsequent requests for the same model are routed to the same provider, keeping your cache warm.
 * Sticky routing only activates when the provider's cache read pricing is cheaper than regular prompt pricing, ensuring you always benefit from cost savings.
 * If the sticky provider becomes unavailable, OpenRouter automatically falls back to the next-best provider.
-* Sticky routing is not used when you specify a manual [provider order](/api-reference/provider-preferences) via `provider.order` — in that case, your explicit ordering takes priority.
+* Sticky routing is not used when you specify a manual [provider order](/guides/routing/provider-selection) via `provider.order` — in that case, your explicit ordering takes priority.
 
 **Sticky routing granularity:**
 
@@ -138,7 +138,7 @@ Caching price changes:
 * **Cache writes**: charged at 1.25x the price of the original input pricing
 * **Cache reads**: charged at the model's discounted cache read rate, same as automatic caching
 
-OpenAI supports explicit prompt caching through the [Responses API](/api/api-reference/responses-api). Explicit caching gives you direct control over cache boundaries instead of relying on OpenAI's automatic breakpoint placement. Cached prefixes have a minimum 30-minute TTL.
+OpenAI supports explicit prompt caching through the [Responses API](/api/api-reference/responses/create-a-response). Explicit caching gives you direct control over cache boundaries instead of relying on OpenAI's automatic breakpoint placement. Cached prefixes have a minimum 30-minute TTL.
 
 <Info>
   OpenAI explicit prompt caching is only supported by OpenAI GPT-5.6 and newer, and only through the Responses API.
@@ -279,7 +279,7 @@ There are two ways to enable prompt caching with Anthropic:
 </Note>
 
 <Note>
-  **Responses API support:** The [Responses API](/api/api-reference/responses/create-a-response) only supports **automatic caching** via top-level `cache_control`. Explicit per-block cache breakpoints inside `input` items are **not** exposed through the Responses API — use the [Chat Completions](/api-reference/chat/create-a-chat-completion) or [Anthropic Messages](/api/api-reference/anthropic-messages/create-a-message) API if you need fine-grained breakpoints.
+  **Responses API support:** The [Responses API](/api/api-reference/responses/create-a-response) only supports **automatic caching** via top-level `cache_control`. Explicit per-block cache breakpoints inside `input` items are **not** exposed through the Responses API — use the [Chat Completions](/api/api-reference/chat/create-a-chat-completion) or [Anthropic Messages](/api/api-reference/anthropic-messages/create-a-message) API if you need fine-grained breakpoints.
 </Note>
 
 By default, the cache expires after 5 minutes, but you can extend this to 1 hour by specifying `"ttl": "1h"` in the `cache_control` object.

@@ -186,8 +186,8 @@
   },
   "grafana-atlassianstatuspage-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-atlassianstatuspage-datasource/latest.md",
-    "size": 4925,
-    "updatedAt": "2026-06-25T05:41:36.732Z"
+    "size": 12100,
+    "updatedAt": "2026-07-11T04:03:40.648Z"
   },
   "grafana-aurora-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-aurora-datasource/latest.md",
@@ -1921,8 +1921,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 8931,
-    "updatedAt": "2026-07-10T04:36:51.322Z"
+    "size": 8907,
+    "updatedAt": "2026-07-11T04:04:34.884Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

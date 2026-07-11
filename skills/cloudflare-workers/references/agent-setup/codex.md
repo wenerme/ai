@@ -26,8 +26,8 @@ TerminalStandaloneCloudExtensionOpen Source
 
 ## Quick start
 
-* [ Terminal ](#tab-panel-5401)
-* [ Standalone ](#tab-panel-5402)
+* [ Terminal ](#tab-panel-5471)
+* [ Standalone ](#tab-panel-5472)
 
 1. **Install Codex**
 Install the Codex CLI. macOS and Linux are fully supported; use WSL2 on Windows. For Homebrew or other install methods, see the [Codex CLI setup guide ↗](https://developers.openai.com/codex/cli/).
@@ -47,7 +47,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 1. **Download Codex**

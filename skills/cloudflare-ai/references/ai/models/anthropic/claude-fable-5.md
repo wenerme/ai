@@ -20,10 +20,6 @@ Text Generation • Anthropic
 
 Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.
 
-Warning
-
-**NOTE:**  Anthropic is limiting access to Claude Fable 5 due to a directive from the US Government. During that time, the model will return errors. [ More info  ↗ ](https://www.anthropic.com/news/fable-mythos-access)
-
 | Model Info                                                                 |                                                                                                                            |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                           |

@@ -184,7 +184,7 @@ When opted in, successful responses include an `openrouter_metadata` object alon
 | `attempts`  | `Attempt[]`         | Optional. Per-attempt provider/model/status when the router retried against fallbacks.                                    |
 | `pipeline`  | `PipelineStage[]`   | Optional. Plugins that materially altered the request or response (compression, guardrails, healing, server tools, etc.). |
 
-The full schema is documented under [`OpenRouterMetadata`](/agent-sdk/call-model/api-reference) in the OpenAPI spec, including SDK type definitions for [TypeScript](/client-sdks/typescript/overview.mdx) and other generated clients.
+The full schema is documented under [`OpenRouterMetadata`](/agent-sdk/call-model/api-reference) in the OpenAPI spec, including SDK type definitions for [TypeScript](/client-sdks/typescript/overview) and other generated clients.
 
 ## Pipeline Stages
 

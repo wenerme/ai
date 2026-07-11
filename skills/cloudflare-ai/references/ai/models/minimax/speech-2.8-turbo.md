@@ -29,8 +29,8 @@ MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice c
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-970)
-* [ cURL ](#tab-panel-971)
+* [ TypeScript ](#tab-panel-988)
+* [ cURL ](#tab-panel-989)
 
 **TypeScript**
 
@@ -66,8 +66,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-966)
-* [ Raw response ](#tab-panel-967)
+* [ Output ](#tab-panel-984)
+* [ Raw response ](#tab-panel-985)
 
 ```json
 {
@@ -85,8 +85,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Narration**  — Speed up narration for quick playback
 
-* [ TypeScript ](#tab-panel-974)
-* [ cURL ](#tab-panel-975)
+* [ TypeScript ](#tab-panel-992)
+* [ cURL ](#tab-panel-993)
 
 **TypeScript**
 
@@ -122,8 +122,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-968)
-* [ Raw response ](#tab-panel-969)
+* [ Output ](#tab-panel-986)
+* [ Raw response ](#tab-panel-987)
 
 ```json
 {
@@ -139,8 +139,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Calm Tone**  — Calm and steady speech for meditation or relaxation
 
-* [ TypeScript ](#tab-panel-978)
-* [ cURL ](#tab-panel-979)
+* [ TypeScript ](#tab-panel-996)
+* [ cURL ](#tab-panel-997)
 
 **TypeScript**
 
@@ -178,8 +178,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-972)
-* [ Raw response ](#tab-panel-973)
+* [ Output ](#tab-panel-990)
+* [ Raw response ](#tab-panel-991)
 
 ```json
 {
@@ -195,8 +195,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Adjusted Pitch**  — Lower the pitch for a deeper voice
 
-* [ TypeScript ](#tab-panel-980)
-* [ cURL ](#tab-panel-981)
+* [ TypeScript ](#tab-panel-998)
+* [ cURL ](#tab-panel-999)
 
 **TypeScript**
 
@@ -232,8 +232,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-976)
-* [ Raw response ](#tab-panel-977)
+* [ Output ](#tab-panel-994)
+* [ Raw response ](#tab-panel-995)
 
 ```json
 {
@@ -249,8 +249,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-982)
-* [ Output ](#tab-panel-983)
+* [ Input ](#tab-panel-1000)
+* [ Output ](#tab-panel-1001)
 
 text
 

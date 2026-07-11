@@ -6,7 +6,7 @@
 
 > Automatically categorize every LLM generation in your workspace
 
-Custom classifiers let you define a structured taxonomy and use a model of your choosing (OpenRouter will recommend fast, inexpensive models during classifier setup) to tag and classify your prompts. The classifier model runs asynchronously after each request completes (zero added latency), tagging generations with dimensions like department, task type, complexity, or anything you can think of. The tags show up in your [activity logs](/logs) so you can understand how AI is being used across your organization, and will soon appear in roll-up reporting in the activity explorer.
+Custom classifiers let you define a structured taxonomy and use a model of your choosing (OpenRouter will recommend fast, inexpensive models during classifier setup) to tag and classify your prompts. The classifier model runs asynchronously after each request completes (zero added latency), tagging generations with dimensions like department, task type, complexity, or anything you can think of. The tags show up in your [activity logs](https://openrouter.ai/logs) so you can understand how AI is being used across your organization, and will soon appear in roll-up reporting in the activity explorer.
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ Custom classifiers let you define a structured taxonomy and use a model of your 
 4. Optionally, pick a sampling rate (e.g. you may not want to classify 100% of the requests in the workspace)
 5. Save and activate the classifier
 
-Generations in that workspace will now be classified by the selected model. Open any generation in your [logs](/logs) to see its classification tags.
+Generations in that workspace will now be classified by the selected model. Open any generation in your [logs](https://openrouter.ai/logs) to see its classification tags.
 
 <Note>
   Only workspace admins can create and manage classifiers. Each workspace has its own independent classifier.
@@ -84,7 +84,7 @@ Classification tags appear in two places:
 * **Log rows** — Classified generations show a tag icon. Hover for a tooltip summary.
 * **Generation detail panel** — Open any classified generation to see a **Classifications** section with the full dimension-to-value breakdown.
 
-Filter and analyze your classified generations in the [Activity](/activity) and [Logs](/logs) views.
+Filter and analyze your classified generations in the [Activity](https://openrouter.ai/activity) and [Logs](https://openrouter.ai/logs) views.
 
 ## Workspace Scoping
 

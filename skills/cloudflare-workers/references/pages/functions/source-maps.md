@@ -26,8 +26,8 @@ Support for uploading source maps for Pages is available now in open beta. Minim
 
 To enable source maps, provide the `--upload-source-maps` flag to [wrangler pages deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) or add the following to your Pages application's [Wrangler configuration file](https://developers.cloudflare.com/pages/functions/wrangler-configuration/) if you are using the Pages build environment:
 
-* [  wrangler.jsonc ](#tab-panel-9837)
-* [  wrangler.toml ](#tab-panel-9838)
+* [  wrangler.jsonc ](#tab-panel-10031)
+* [  wrangler.toml ](#tab-panel-10032)
 
 **JSONC**
 

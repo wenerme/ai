@@ -40,9 +40,9 @@ Use these source-of-truth docs for current fields, response shapes, and SDK meth
 - Subagent server tool reference: https://openrouter.ai/docs/guides/features/server-tools/subagent
 - Server tools overview: https://openrouter.ai/docs/guides/features/server-tools
 - Agent SDK callModel overview: https://openrouter.ai/docs/sdks/typescript/call-model/overview
-- Chat Completions API: https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request
-- Responses API: https://openrouter.ai/docs/api/api-reference/responses/create-responses
-- TypeScript SDK Chat reference: https://openrouter.ai/docs/client-sdks/typescript/api-reference/chat
+- Chat Completions API: https://openrouter.ai/docs/api/api-reference/chat/create-a-chat-completion
+- Responses API: https://openrouter.ai/docs/api/api-reference/responses/create-a-response
+- TypeScript SDK Chat reference: https://openrouter.ai/docs/client-sdks/typescript/sdks/chat/README
 - Model pricing and capabilities: https://openrouter.ai/models
 
 For TypeScript apps using @openrouter/sdk, prefer the SDK's client.chat.send() method over raw fetch (same request shape, but typed). For Agent SDK apps using callModel, the subagent tool entry goes in the tools array the same way. For Python or other languages, use the Chat Completions endpoint directly.
@@ -88,9 +88,9 @@ Use these references for exact schemas:
 
 * [Subagent server tool](/guides/features/server-tools/subagent)
 * [Agent SDK `callModel` overview](/sdks/typescript/call-model/overview)
-* [Create a chat completion](/api/api-reference/chat/send-chat-completion-request)
-* [Create a response](/api/api-reference/responses/create-responses)
-* [TypeScript SDK Chat reference](/client-sdks/typescript/api-reference/chat)
+* [Create a chat completion](/api/api-reference/chat/create-a-chat-completion)
+* [Create a response](/api/api-reference/responses/create-a-response)
+* [TypeScript SDK Chat reference](/client-sdks/typescript/sdks/chat/README)
 
 ## What you're building
 
@@ -262,7 +262,7 @@ Wire the request body into your app's existing request path. Here's the shape of
   ```
 </CodeGroup>
 
-The response follows the standard [Chat Completions format](/api/api-reference/chat/send-chat-completion-request). Server tools resolve server-side: the orchestrator's subagent calls happen inside OpenRouter's agentic loop, so the client response contains only the final integrated answer in `message.content`. The `usage` object reflects the combined token spend per [Server tools: Usage Tracking](/guides/features/server-tools#usage-tracking).
+The response follows the standard [Chat Completions format](/api/api-reference/chat/create-a-chat-completion). Server tools resolve server-side: the orchestrator's subagent calls happen inside OpenRouter's agentic loop, so the client response contains only the final integrated answer in `message.content`. The `usage` object reflects the combined token spend per [Server tools: Usage Tracking](/guides/features/server-tools#usage-tracking).
 
 The orchestrator decides whether and when to delegate. Each delegation passes two arguments:
 

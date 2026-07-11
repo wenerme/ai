@@ -36,7 +36,7 @@ Use the API reference pages as the source of truth for exact fields:
 
 * [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
 * [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
-* [TypeScript SDK video generation reference](/client-sdks/typescript/api-reference/videogeneration)
+* [TypeScript SDK video generation reference](/client-sdks/typescript/sdks/videogeneration/README)
 
 <Warning>
   Submitting `POST /api/v1/videos` starts a real video generation job and may

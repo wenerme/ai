@@ -4,7 +4,7 @@
 
 # Limits
 
-> Rate Limits
+> Credit Limits and Rate Limits
 
 export const Variant = {
   Free: 'free'
@@ -96,6 +96,92 @@ export const FREE_MODEL_CREDITS_THRESHOLD = 10;
 
 export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
+export const StatusCode = ({code}) => {
+  const [popupPosition, setPopupPosition] = useState(null);
+  const openPopup = event => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const width = 288;
+    const margin = 8;
+    const left = Math.min(Math.max(rect.left + rect.width / 2 - width / 2, margin), window.innerWidth - width - margin);
+    setPopupPosition({
+      left,
+      top: rect.bottom + margin,
+      width
+    });
+  };
+  const closePopup = () => setPopupPosition(null);
+  const STATUS_CODE_INFO = {
+    200: {
+      name: 'OK',
+      description: 'The request succeeded. For streaming responses, errors occurring after this status is sent arrive as SSE events instead.'
+    },
+    400: {
+      name: 'Bad Request',
+      description: 'The request is invalid or missing required parameters, or was blocked by CORS.'
+    },
+    401: {
+      name: 'Unauthorized',
+      description: 'Invalid credentials — the API key is missing, invalid, disabled, or the OAuth session expired.'
+    },
+    402: {
+      name: 'Payment Required',
+      description: 'Your account or API key has insufficient credits. Add credits to bring your balance above zero, or check per-key credit limits.'
+    },
+    403: {
+      name: 'Forbidden',
+      description: 'Insufficient permissions, a guardrail block, or the input was flagged by moderation.'
+    },
+    404: {
+      name: 'Not Found',
+      description: 'The requested resource does not exist.'
+    },
+    408: {
+      name: 'Request Timeout',
+      description: 'The request timed out before completing.'
+    },
+    429: {
+      name: 'Too Many Requests',
+      description: 'You are being rate limited — either by an OpenRouter platform limit (free-model caps, DDoS protection) or by the upstream provider. Retry with exponential backoff and honor the Retry-After header when present.'
+    },
+    500: {
+      name: 'Internal Server Error',
+      description: 'Something went wrong on the server while handling the request.'
+    },
+    502: {
+      name: 'Bad Gateway',
+      description: 'The chosen model is down or the provider returned an invalid response.'
+    },
+    503: {
+      name: 'Service Unavailable',
+      description: 'No available model provider meets your routing requirements. Consider relaxing provider preferences or adding fallback models.'
+    }
+  };
+  const info = STATUS_CODE_INFO[code];
+  if (!info) {
+    return <code>{code}</code>;
+  }
+  return <span className="relative inline-block" onMouseEnter={openPopup} onMouseLeave={closePopup} onFocus={openPopup} onBlur={closePopup}>
+      <code tabIndex={0} aria-label={`HTTP ${code} ${info.name}: ${info.description}`} className="cursor-help underline decoration-dotted underline-offset-4">
+        {code}
+      </code>
+      {popupPosition && <span role="tooltip" className="fixed z-50 block rounded-lg border border-gray-950/10 bg-white p-3 text-left shadow-lg dark:border-white/10 dark:bg-gray-900" style={{
+    left: popupPosition.left,
+    top: popupPosition.top,
+    width: popupPosition.width
+  }}>
+          <span className="mb-1 flex items-baseline gap-2">
+            <code className="text-sm font-semibold">{code}</code>
+            <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+              {info.name}
+            </span>
+          </span>
+          <span className="block text-xs font-normal leading-relaxed text-gray-600 dark:text-gray-400">
+            {info.description}
+          </span>
+        </span>}
+    </span>;
+};
+
 export const Template = ({children, data}) => {
   const replace = s => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in data) ? data[k] : `{{${k}}}`);
   const leafText = node => typeof node === 'string' ? node : node?.$$typeof && typeof node.props?.children === 'string' ? node.props.children : null;
@@ -141,7 +227,14 @@ export const Template = ({children, data}) => {
   issues.
 </Tip>
 
-## Rate Limits and Credits Remaining
+OpenRouter enforces two kinds of limits:
+
+| Limit type                      | What it governs                                                              | Error on exceeding                                      | Where to check                                |
+| ------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------- |
+| [Credit limits](#credit-limits) | How much you can spend (account balance and per-key credit caps)             | <StatusCode code={HTTPStatus.S402_Payment_Required} />  | `GET /api/v1/key` → `limit_remaining`         |
+| [Rate limits](#rate-limits)     | How many requests you can make (free-model request caps and DDoS protection) | <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> | `X-RateLimit-*` headers on the error response |
+
+## Checking Your Limits
 
 To check the rate limit or credits left on an API key, make a GET request to `https://openrouter.ai/api/v1/key`.
 
@@ -213,14 +306,78 @@ type Key = {
 };
 ```
 
-There are a few rate limits that apply to certain types of requests, regardless of account status:
+## Credit Limits
 
-1. Free usage limits: If you're using a free model variant (with an ID ending in <code>{sep}{Variant.Free}</code>), you can make up to {FREE_MODEL_RATE_LIMIT_RPM} requests per minute. The following per-day limits apply:
+Credit limits govern how much you can spend. They come from two places:
 
-* If you have purchased less than {FREE_MODEL_CREDITS_THRESHOLD} credits, you're limited to {FREE_MODEL_NO_CREDITS_RPD} <code>{sep}{Variant.Free}</code> model requests per day.
+1. **Account balance** — your available credits across the account. If your account has a negative credit balance, you may see <StatusCode code={HTTPStatus.S402_Payment_Required} /> errors, including for free models. Adding credits to put your balance above zero allows you to use those models again.
+2. **Per-key credit limits** — an optional spending cap configured on an individual API key. The `limit`, `limit_reset`, and `limit_remaining` fields in the `GET /api/v1/key` response above describe this cap and how much of it remains.
 
-* If you purchase at least {FREE_MODEL_CREDITS_THRESHOLD} credits, your daily limit is increased to {FREE_MODEL_HAS_CREDITS_RPD} <code>{sep}{Variant.Free}</code> model requests per day.
+### Handling 402 errors
+
+To resolve <StatusCode code={HTTPStatus.S402_Payment_Required} /> errors:
+
+* **Add credits** to bring your account balance above zero.
+* **Check per-key limits.** If `limit_remaining` on the key is exhausted, raise the key's credit limit or wait for it to reset (see `limit_reset`).
+* **Monitor proactively.** Call `GET /api/v1/key` as shown above to track `limit_remaining` and usage before requests start failing.
+
+## Rate Limits
+
+Rate limits govern how many requests you can make. There are a few rate limits that apply to certain types of requests, regardless of account status:
+
+1. **Free usage limits**: If you're using a free model variant (with an ID ending in <code>{sep}{Variant.Free}</code>), the following limits apply:
+
+| Credits purchased (all time)             | Requests per minute         | Requests per day             |
+| ---------------------------------------- | --------------------------- | ---------------------------- |
+| Less than {FREE_MODEL_CREDITS_THRESHOLD} | {FREE_MODEL_RATE_LIMIT_RPM} | {FREE_MODEL_NO_CREDITS_RPD}  |
+| At least {FREE_MODEL_CREDITS_THRESHOLD}  | {FREE_MODEL_RATE_LIMIT_RPM} | {FREE_MODEL_HAS_CREDITS_RPD} |
 
 2. **DDoS protection**: Cloudflare's DDoS protection will block requests that dramatically exceed reasonable usage.
 
-If your account has a negative credit balance, you may see <code>{HTTPStatus.S402_Payment_Required}</code> errors, including for free models. Adding credits to put your balance above zero allows you to use those models again.
+### Handling 429 errors
+
+Requests rejected with <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> fail with a standard [error response](/api/reference/errors-and-debugging):
+
+```json lines theme={null}
+{
+  "error": {
+    "code": 429,
+    "message": "Rate limit exceeded",
+    "metadata": {
+      "error_type": "rate_limit_exceeded"
+    }
+  }
+}
+```
+
+A <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> error can come from two places:
+
+1. **OpenRouter** — you hit one of the platform limits above (free-model requests per minute or per day, or DDoS protection).
+2. **The upstream provider** — the provider serving your request is rate limiting or at capacity. In this case `error.metadata.provider_code` carries the provider's original error code when available, and [fallback routing](/guides/routing/provider-selection) retries other providers for the same model automatically before the error reaches you. You can also specify [fallback models](/guides/routing/model-fallbacks) to try a different model when all providers for the first are exhausted.
+
+<Note>
+  Successful inference responses do not include `X-RateLimit-*` headers. When
+  OpenRouter itself returns a <StatusCode code={HTTPStatus.S429_Too_Many_Requests} />
+  error for a platform limit, the error response
+  carries `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Reset`
+  headers describing the limit that was hit. When every attempted provider
+  returned a retry hint, the error response also carries a `Retry-After`
+  header. To monitor your remaining quota before hitting a limit, call
+  `GET /api/v1/key` as shown above.
+</Note>
+
+To resolve <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> errors:
+
+* **Retry with exponential backoff.** Rate limits are transient; wait and retry rather than immediately re-sending. Honor the `Retry-After` header when present.
+* **On free variants**, purchase at least {FREE_MODEL_CREDITS_THRESHOLD} credits to raise your daily limit, or switch to the paid variant of the model, which has no platform-level request cap.
+* **For provider-side limits**, add [fallback models](/guides/routing/model-fallbacks) or relax [provider routing preferences](/guides/routing/provider-selection) so more providers are eligible to serve the request.
+
+#### Mid-stream rate limits
+
+If a rate limit is hit after streaming has started, the error arrives as an SSE event with `finish_reason: "error"` instead of an HTTP <StatusCode code={HTTPStatus.S429_Too_Many_Requests} />, since the <StatusCode code={HTTPStatus.S200_OK} /> status was already sent:
+
+```text lines theme={null}
+data: {"id":"cmpl-abc123","object":"chat.completion.chunk","created":1234567890,"model":"openai/gpt-4o","provider":"openai","error":{"code":429,"message":"Rate limit exceeded"},"choices":[{"index":0,"delta":{"content":""},"finish_reason":"error"}]}
+```
+
+See [Handling Errors During Streaming](/api/reference/streaming#handling-errors-during-streaming) for details and code examples.

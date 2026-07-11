@@ -1091,8 +1091,10 @@ components:
               - $ref: '#/components/schemas/CustomToolCallItem'
               - $ref: '#/components/schemas/CustomToolCallOutputItem'
               - $ref: '#/components/schemas/CompactionItem'
+              - $ref: '#/components/schemas/ContextCompactionItem'
               - $ref: '#/components/schemas/ItemReferenceItem'
               - $ref: '#/components/schemas/AdditionalToolsItem'
+              - $ref: '#/components/schemas/AgentMessageItem'
           type: array
       description: Input for a response request - can be a string or array of items
       example:
@@ -4976,6 +4978,8 @@ components:
         output: patch applied successfully
         type: custom_tool_call_output
     CompactionItem:
+      additionalProperties:
+        nullable: true
       description: A context compaction marker with encrypted summary
       example:
         encrypted_content: enc_abc123...
@@ -4993,6 +4997,27 @@ components:
       required:
         - type
         - encrypted_content
+      type: object
+    ContextCompactionItem:
+      additionalProperties:
+        nullable: true
+      description: A context compaction marker with an optional encrypted summary
+      example:
+        encrypted_content: enc_abc123...
+        type: context_compaction
+      properties:
+        encrypted_content:
+          nullable: true
+          type: string
+        id:
+          nullable: true
+          type: string
+        type:
+          enum:
+            - context_compaction
+          type: string
+      required:
+        - type
       type: object
     ItemReferenceItem:
       description: A reference to a previous response item by ID
@@ -5105,6 +5130,72 @@ components:
         - type
         - role
         - tools
+      type: object
+    AgentMessageItem:
+      additionalProperties:
+        nullable: true
+      description: A message routed between agents in a multi-agent session
+      example:
+        author: /root/worker
+        content:
+          - text: Task complete.
+            type: input_text
+        recipient: /root
+        type: agent_message
+      properties:
+        agent:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          properties:
+            agent_name:
+              type: string
+          required:
+            - agent_name
+          type: object
+        author:
+          type: string
+        content:
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/InputText'
+              - allOf:
+                  - $ref: '#/components/schemas/InputImage'
+                  - properties: {}
+                    type: object
+                description: Image input content item
+                example:
+                  detail: auto
+                  image_url: https://example.com/image.jpg
+                  type: input_image
+              - additionalProperties:
+                  nullable: true
+                properties:
+                  encrypted_content:
+                    type: string
+                  type:
+                    enum:
+                      - encrypted_content
+                    type: string
+                required:
+                  - type
+                  - encrypted_content
+                type: object
+          type: array
+        id:
+          nullable: true
+          type: string
+        recipient:
+          type: string
+        type:
+          enum:
+            - agent_message
+          type: string
+      required:
+        - type
+        - author
+        - recipient
+        - content
       type: object
     ContextCompressionEngine:
       description: The compression engine to use. Defaults to "middle-out".
@@ -5225,6 +5316,7 @@ components:
       type: object
     ProviderName:
       enum:
+        - Meta
         - AkashML
         - AI21
         - AionLabs
@@ -5251,6 +5343,7 @@ components:
         - Crusoe
         - Darkbloom
         - Decart
+        - Deepgram
         - DeepInfra
         - DeepSeek
         - DekaLLM
