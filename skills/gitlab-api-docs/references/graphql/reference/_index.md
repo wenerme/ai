@@ -25158,6 +25158,30 @@ Fields:
 | <a id="mergerequestworkitemrelationedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="mergerequestworkitemrelationedge-node"></a>`node` | [`MergeRequestWorkItemRelation`](#mergerequestworkitemrelation) | The item at the end of the edge. |
 
+#### `MergeRequestsAggregationResponseConnection`
+
+The connection type for [`MergeRequestsAggregationResponse`](#mergerequestsaggregationresponse).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsaggregationresponseconnection-count"></a>`count` | [`Int!`](#int) | Total number of aggregated rows. |
+| <a id="mergerequestsaggregationresponseconnection-edges"></a>`edges` | [`[MergeRequestsAggregationResponseEdge]`](#mergerequestsaggregationresponseedge) | A list of edges. |
+| <a id="mergerequestsaggregationresponseconnection-nodes"></a>`nodes` | [`[MergeRequestsAggregationResponse]`](#mergerequestsaggregationresponse) | A list of nodes. |
+| <a id="mergerequestsaggregationresponseconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `MergeRequestsAggregationResponseEdge`
+
+The edge type for [`MergeRequestsAggregationResponse`](#mergerequestsaggregationresponse).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsaggregationresponseedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="mergerequestsaggregationresponseedge-node"></a>`node` | [`MergeRequestsAggregationResponse`](#mergerequestsaggregationresponse) | The item at the end of the edge. |
+
 #### `MergeTrainCarConnection`
 
 The connection type for [`MergeTrainCar`](#mergetraincar).
@@ -31803,6 +31827,26 @@ Arguments:
 | <a id="analytics-finishedpipelines-startedatfrom"></a>`startedAtFrom` | [`Time`](#time) | Filter by pipeline start timestamp. Start of the range. |
 | <a id="analytics-finishedpipelines-startedatto"></a>`startedAtTo` | [`Time`](#time) | Filter by pipeline start timestamp. End of the range. |
 | <a id="analytics-finishedpipelines-status"></a>`status` | [`[String!]`](#string) | Filter by one or many pipeline statuses. |
+
+##### `Analytics.mergeRequests`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+Aggregation engine for merge request analytics.
+
+Returns [`MergeRequestsAggregationScope`](#mergerequestsaggregationscope).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="analytics-mergerequests-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by merge request creation timestamp. Start of the range. |
+| <a id="analytics-mergerequests-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by merge request creation timestamp. End of the range. |
+| <a id="analytics-mergerequests-metricmergedatfrom"></a>`metricMergedAtFrom` | [`Time`](#time) | Filter by merge timestamp. Start of the range. |
+| <a id="analytics-mergerequests-metricmergedatto"></a>`metricMergedAtTo` | [`Time`](#time) | Filter by merge timestamp. End of the range. |
+| <a id="analytics-mergerequests-stateid"></a>`stateId` | [`[String!]`](#string) | Filter by one or many states (opened, closed, merged, locked). |
+| <a id="analytics-mergerequests-targetbranch"></a>`targetBranch` | [`[String!]`](#string) | Filter by one or many target branches. |
 
 ##### `Analytics.pipelines`
 
@@ -47421,6 +47465,91 @@ Fields:
 | <a id="mergerequestworkitemrelation-id"></a>`id` | [`MergeRequestsClosingIssuesID!`](#mergerequestsclosingissuesid) | Global ID of the merge request to work item relation. |
 | <a id="mergerequestworkitemrelation-linktype"></a>`linkType` | [`MergeRequestWorkItemLinkType!`](#mergerequestworkitemlinktype) | Type of relationship between the merge request and the work item. |
 | <a id="mergerequestworkitemrelation-workitem"></a>`workItem` | [`WorkItem`](#workitem) | Related work item. |
+
+### `MergeRequestsAggregationResponse`
+
+Response for `MergeRequests` aggregation engine.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsaggregationresponse-dimensions"></a>`dimensions` | [`MergeRequestsAggregationResponseDimensions`](#mergerequestsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
+| <a id="mergerequestsaggregationresponse-throughputcount"></a>`throughputCount` | [`Int`](#int) | Number of merged merge requests. |
+| <a id="mergerequestsaggregationresponse-totalcount"></a>`totalCount` | [`Int`](#int) | Total number of merge requests. |
+
+#### Fields with arguments
+
+##### `MergeRequestsAggregationResponse.timeToMergeQuantile`
+
+Time to merge quantile in milliseconds.
+
+Returns [`Float`](#float).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsaggregationresponse-timetomergequantile-quantile"></a>`quantile` | [`Float`](#float) | Quantile level between 0.0 and 1.0 (e.g. 0.5 for median). |
+
+### `MergeRequestsAggregationResponseDimensions`
+
+Response dimensions for `MergeRequests` aggregation engine.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsaggregationresponsedimensions-stateid"></a>`stateId` | [`String`](#string) | Merge request state. |
+| <a id="mergerequestsaggregationresponsedimensions-targetbranch"></a>`targetBranch` | [`String`](#string) | Target branch of the merge request. |
+
+#### Fields with arguments
+
+##### `MergeRequestsAggregationResponseDimensions.createdAt`
+
+Merge request creation time.
+
+Returns [`Time`](#time).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Time bucket granularity: daily, weekly, or monthly. |
+
+##### `MergeRequestsAggregationResponseDimensions.metricMergedAt`
+
+Merge request merge time.
+
+Returns [`Time`](#time).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsaggregationresponsedimensions-metricmergedat-granularity"></a>`granularity` | [`String`](#string) | Time bucket granularity: daily, weekly, or monthly. |
+
+### `MergeRequestsAggregationScope`
+
+Aggregation scope for `MergeRequests`. Apply ordering and pagination on the aggregation.
+
+#### Fields with arguments
+
+##### `MergeRequestsAggregationScope.aggregated`
+
+Aggregated data.
+
+Returns [`MergeRequestsAggregationResponseConnection`](#mergerequestsaggregationresponseconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsaggregationscope-aggregated-orderby"></a>`orderBy` | [`[AggregationOrder!]`](#aggregationorder) | Sorting order list for the aggregated data. |
 
 ### `MergeTrain`
 
@@ -70361,7 +70490,8 @@ Arguments:
 | <a id="customdashboardpanelinput-queryoverrides"></a>`queryOverrides` | [`CustomDashboardQueryOverridesInput`](#customdashboardqueryoverridesinput) | Query overrides applied to the visualization. |
 | <a id="customdashboardpanelinput-title"></a>`title` | [`String!`](#string) | Display title of the panel. |
 | <a id="customdashboardpanelinput-tooltip"></a>`tooltip` | [`CustomDashboardTooltipInput`](#customdashboardtooltipinput) | Tooltip for the panel. |
-| <a id="customdashboardpanelinput-visualization"></a>`visualization` | [`String!`](#string) | ID of the visualization to render. |
+| <a id="customdashboardpanelinput-visualization"></a>`visualization` | [`String`](#string) | ID of an existing visualization to render. |
+| <a id="customdashboardpanelinput-visualizationconfig"></a>`visualizationConfig` | [`JSON`](#json) | Inline visualization config object to render. |
 
 ### `CustomDashboardPanelOptionsInput`
 

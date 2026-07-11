@@ -8,6 +8,7 @@
 - `allow_all_unix_sockets` network policy setting [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/590871) in GitLab 18.11.
 - Instance-level and group-level network access controls [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/229531) in GitLab 18.11 [with feature flags](../../administration/feature_flags/_index.md) named `dap_instance_network_access_controls` and `dap_group_network_access_controls`. Disabled by default.
 - Feature flags `dap_instance_network_access_controls` and `dap_group_network_access_controls` [enabled](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235670) in GitLab 19.0.
+- Feature flag `dap_group_network_access_controls` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243118) in 19.2.
 
 The execution environment sandbox provides application-level network and filesystem isolation
 that helps protect GitLab Duo Agent Platform remote flows from unauthorized network access
@@ -200,11 +201,6 @@ the host. This is disabled by default.
 ### Configure network access controls for your instance or group
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/229531) in GitLab 18.11 [with feature flags](../../administration/feature_flags/_index.md) named `dap_instance_network_access_controls` and `dap_group_network_access_controls`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-> This feature is available for testing, but not ready for production use.
 
 In addition to [project-level `agent-config.yml` settings](#configure-a-network-policy),
 administrators and top-level group owners can manage network access controls through the GitLab UI.

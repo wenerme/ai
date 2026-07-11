@@ -46,12 +46,12 @@ CI/CD job tokens can access the following REST API endpoints:
 
 | Permission | API endpoint | Permission name | Scope |
 | ---------- | ------------ | --------------- | ----- |
-| Get a badge of a project. | `GET /projects/:id/badges/:badge_id` | `READ_BADGES` | Read |
-| List project badges. | `GET /projects/:id/badges` | `READ_BADGES` | Read |
-| Add a badge to a project. | `POST /projects/:id/badges` | `ADMIN_BADGES` | Read and write |
-| Preview a badge from a project. | `GET /projects/:id/badges/render` | `ADMIN_BADGES` | Read and write |
-| Remove a badge from the project. | `DELETE /projects/:id/badges/:badge_id` | `ADMIN_BADGES` | Read and write |
-| Update a badge of a project. | `PUT /projects/:id/badges/:badge_id` | `ADMIN_BADGES` | Read and write |
+| List all badges for a project | `GET /projects/:id/badges` | `READ_BADGES` | Read |
+| Retrieve a badge for a project | `GET /projects/:id/badges/:badge_id` | `READ_BADGES` | Read |
+| Create a badge for a project | `POST /projects/:id/badges` | `ADMIN_BADGES` | Read and write |
+| Delete a badge from a project | `DELETE /projects/:id/badges/:badge_id` | `ADMIN_BADGES` | Read and write |
+| Retrieve a badge preview for a project | `GET /projects/:id/badges/render` | `ADMIN_BADGES` | Read and write |
+| Update a badge for a project | `PUT /projects/:id/badges/:badge_id` | `ADMIN_BADGES` | Read and write |
 
 ### Deployments endpoints
 

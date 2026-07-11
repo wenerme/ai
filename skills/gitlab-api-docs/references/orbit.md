@@ -238,6 +238,116 @@ Example response:
 }
 ```
 
+## Execute a named query
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/244436) in GitLab 19.2.
+
+Executes a server-defined named query. Prefer this endpoint over
+[create a query](#create-a-query) for programmatic consumers: the query
+structure lives on the server, so it cannot drift from the DSL grammar or
+ontology.
+
+```plaintext
+POST /api/v4/orbit/query/:name
+```
+
+Supported attributes:
+
+| Attribute         | Type   | Required | Description                                                |
+|-------------------|--------|----------|--------------------------------------------------------------|
+| `name`            | string | Yes      | The named query identifier, for example `recent_merges`.     |
+| `parameters`      | object | No       | Values for the placeholders the named query declares.        |
+| `response_format` | string | No       | One of `raw` or `llm`. Default is `raw`.                     |
+
+The request body must use `Content-Type: application/json`. Form encoding
+stringifies nested parameter values, which the per-query parameter schemas
+reject.
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) with the same response
+attributes as [create a query](#create-a-query).
+
+Example request:
+
+```shell
+curl --request POST \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --header "Content-Type: application/json" \
+  --data '{"parameters": {}}' \
+  --url "https://gitlab.example.com/api/v4/orbit/query/my_neighbors"
+```
+
+## List query templates
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/244701) in GitLab 19.2.
+
+Lists the server-defined named queries with their query DSL rendered for the
+authenticated user.
+
+For programmatic consumers, prefer [executing named queries directly](#execute-a-named-query)
+with parameters. Use the templates and their rendered `raw_query` from this
+endpoint only where displaying the query DSL text is the goal, such as
+populating a query editor or explorer with the text of a preset.
+
+The rendered query DSL is not the same for every user:
+
+- Identity values, like the ID of the authenticated user, are resolved
+  server-side from the request credentials. The same request returns different
+  `raw_query` values for different users. Do not cache or share templates
+  across users.
+- Placeholders for caller-supplied values, like the selected nodes in
+  `expand_neighbors`, are filled with server-declared example values. Replace
+  them with real values before you execute the query.
+
+```plaintext
+GET /api/v4/orbit/query/templates
+```
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and an array of
+template objects with the following attributes:
+
+| Attribute     | Type   | Description                                             |
+|---------------|--------|----------------------------------------------------------|
+| `name`        | string | The name of the named query.                             |
+| `description` | string | The description of the named query.                      |
+| `raw_query`   | object | The query DSL rendered for the authenticated user.       |
+
+Example request:
+
+```shell
+curl --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/orbit/query/templates"
+```
+
+Example response, where `43` is the ID of the authenticated user:
+
+```json
+[
+  {
+    "name": "my_neighbors",
+    "description": "Immediate graph neighborhood of the current user.",
+    "raw_query": {
+      "query_type": "neighbors",
+      "node": {"id": "me", "entity": "User", "node_ids": [43]},
+      "neighbors": {"node": "me", "direction": "both"},
+      "limit": 100
+    }
+  },
+  {
+    "name": "recent_merges",
+    "description": "Recently merged merge requests and the users who merged them.",
+    "raw_query": {
+      "query_type": "traversal",
+      "nodes": [
+        {"id": "u", "entity": "User", "columns": ["id", "username"]},
+        {"id": "mr", "entity": "MergeRequest", "filters": {"state": "merged"}, "columns": ["id", "title", "merged_at"]}
+      ],
+      "relationships": [{"type": "MERGED", "from": "u", "to": "mr"}],
+      "limit": 100
+    }
+  }
+]
+```
+
 ## Retrieve the schema
 
 Retrieves the Orbit schema.

@@ -507,7 +507,7 @@ permissions, ask your instance administrator or top-level group Owner for help.
    > no personal access tokens can be associated with that account.
    > This behavior is meant to keep service accounts secure.
 
-1. [Create a personal access token for the service account](../../profile/service_accounts.md#create-a-personal-access-token-for-a-service-account) with the following [scopes](../../profile/personal_access_tokens.md#personal-access-token-scopes):
+1. [Create a personal access token for the service account](../../profile/service_accounts.md#create-a-personal-access-token-for-a-service-account) with the following [scopes](../../../security/tokens/access_token_scopes.md):
    - `write_repository`
    - `api`
    - `ai_features`

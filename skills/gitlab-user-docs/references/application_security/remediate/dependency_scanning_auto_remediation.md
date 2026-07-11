@@ -36,8 +36,6 @@ For the generally available roadmap, see [epic 19244](https://gitlab.com/groups/
 
 Prerequisites:
 
-- You must have at least one active Maintainer for the project. If no active Maintainer exists,
-  GitLab closes the merge request automatically. Owners are not considered for this check.
 - The `dependency_management_auto_remediation`
   [feature flag](../../../administration/feature_flags/_index.md) must be enabled for the project.
   This flag is enabled by default in GitLab 19.2.
@@ -71,7 +69,7 @@ eligible vulnerability:
 1. GitLab determines the nearest non-breaking upgrade path.
 1. A service account opens a merge request that updates the relevant manifest file.
 1. GitLab assigns an active Maintainer of the project as a reviewer. If no active Maintainer
-   exists, GitLab closes the merge request instead.
+   exists, the merge request stays open without a reviewer.
 1. The merge request goes through your project's standard approval workflow.
 
 During beta, GitLab processes three vulnerabilities at a time, starting

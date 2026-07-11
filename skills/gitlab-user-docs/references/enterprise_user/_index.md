@@ -135,8 +135,8 @@ You can also [use the API](../../api/group_enterprise_users.md) to interact with
 Prerequisites:
 
 - The top-level group must [add and verify a group domain](#add-group-domains).
+- The user's primary email must match the verified domain.
 - The user account must meet at least one of the following conditions:
-  - The user account primary email must be from the verified domain.
   - The user account was created on or after February 1, 2021.
   - The user account has a SAML or SCIM identity tied to the organization's group.
   - The user account has a `provisioned_by_group_id` attribute that matches the group ID.

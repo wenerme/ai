@@ -632,6 +632,10 @@ paths:
           description: Forbidden
         '413':
           description: File too large
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -664,6 +668,8 @@ paths:
           description: Forbidden
         '413':
           description: File too large
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -738,6 +744,8 @@ paths:
           description: Forbidden
         '410':
           description: Sbom Scan failed
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -802,6 +810,8 @@ paths:
           description: Bad request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -917,6 +927,8 @@ paths:
           description: Not found
         '429':
           description: Too many requests
+        '400':
+          description: Bad Request
       requestBody:
         required: false
         content:
@@ -939,6 +951,8 @@ paths:
           description: 403 Code Suggestions Disabled
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -961,6 +975,8 @@ paths:
           description: Not found
         '429':
           description: Too many requests
+        '400':
+          description: Bad Request
   "/api/v4/projects/{id}/(-/)search/semantic":
     get:
       operationId: getApiV4ProjectsIdDashSearchSemantic
@@ -1007,6 +1023,8 @@ paths:
           description: Unprocessable entity - project has no embeddings
         '429':
           description: Too many requests
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -1073,6 +1091,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       x-gitlab-lifecycle: experiment
   "/api/v4/ai/duo_workflows/workflows/{id}/audit_events":
     post:
@@ -1202,6 +1222,8 @@ paths:
           description: Forbidden
         '422':
           description: Unprocessable Entity
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -1468,6 +1490,8 @@ paths:
           description: Not found
         '429':
           description: Too many requests
+        '400':
+          description: Bad Request
       requestBody:
         required: false
         content:
@@ -1490,6 +1514,8 @@ paths:
           description: Not found
         '429':
           description: Too many requests
+        '400':
+          description: Bad Request
       parameters:
       - name: workflow_definition
         required: false
@@ -1515,6 +1541,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: workflow_id
         required: false
@@ -1545,6 +1573,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: workflow_id
         required: true
@@ -2044,6 +2074,8 @@ paths:
           description: 404 Group Not Found
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -2099,6 +2131,8 @@ paths:
           description: 404 Group Not Found
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -2131,6 +2165,8 @@ paths:
           description: 404 ProtectedBranch Not Found
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -2164,6 +2200,8 @@ paths:
           description: 404 ProtectedBranch Not Found
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -2198,6 +2236,8 @@ paths:
           description: 404 ProtectedBranch Not Found
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -2747,6 +2787,8 @@ paths:
           description: Not found
         '422':
           description: Multiple links found, provider parameter required
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -2787,6 +2829,8 @@ paths:
           description: Not found
         '422':
           description: Multiple links found, provider parameter required
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -2973,6 +3017,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesResourceWeightEvent"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -3012,6 +3058,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProtectedEnvironment"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -3059,6 +3107,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -3091,6 +3141,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProtectedEnvironment"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -3124,6 +3176,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -3191,6 +3245,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProtectedEnvironment"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -3238,6 +3294,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -3270,6 +3328,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProtectedEnvironment"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -3304,6 +3364,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -3682,6 +3744,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -3743,6 +3807,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -4832,6 +4898,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -4913,6 +4981,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -4979,6 +5049,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -5133,6 +5205,8 @@ paths:
           description: No Content
         '400':
           description: Bad Request
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -5325,6 +5399,8 @@ paths:
           description: No Content
         '400':
           description: Bad Request
+        '404':
+          description: Not Found
       parameters:
       - name: expires_at
         required: false
@@ -5360,6 +5436,8 @@ paths:
           description: No Content
         '400':
           description: Bad Request
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -5474,6 +5552,8 @@ paths:
           description: No Content
         '400':
           description: Bad Request
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -5709,6 +5789,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequestApprovalSetting"
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -5735,6 +5819,8 @@ paths:
           description: Validation error
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -5766,6 +5852,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequestApprovalSetting"
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -5790,6 +5880,8 @@ paths:
           description: Validation error
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -5898,6 +5990,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesGroupHook"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -5969,6 +6063,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesGroupHook"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -6279,6 +6375,8 @@ paths:
           description: Not found
         '429':
           description: Too many requests
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -6587,6 +6685,8 @@ paths:
           description: Bad Request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -6715,6 +6815,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -6785,6 +6887,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -6862,6 +6966,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -6941,6 +7047,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesGroupPushRule"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -7103,6 +7211,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProjectPushRule"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -7190,6 +7300,8 @@ paths:
           description: No Content
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -7215,6 +7327,8 @@ paths:
           description: Mirroring for the project is on pause
         '422':
           description: The pull request event is not processable
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -7247,6 +7361,8 @@ paths:
         '400':
           description: 'Url is blocked: Only allowed schemes are http, https, ssh,
             git'
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -7278,6 +7394,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesPullMirror"
         '400':
           description: The project is not mirrored
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -7360,6 +7478,8 @@ paths:
           description: Forbidden
         '401':
           description: Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -7378,6 +7498,8 @@ paths:
           description: Resource deleted
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -7405,6 +7527,8 @@ paths:
           description: Forbidden
         '401':
           description: Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -8200,6 +8324,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
       parameters:
       - name: name
         required: true
@@ -8228,6 +8354,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
       parameters:
       - name: experiment_name
         required: true
@@ -8316,6 +8444,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -8396,6 +8528,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -8434,6 +8570,8 @@ paths:
           description: Conflict
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -8477,6 +8615,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -8520,6 +8660,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -8567,6 +8709,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -8603,6 +8747,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -8657,6 +8803,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -8700,6 +8848,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -8929,6 +9079,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9155,6 +9307,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9187,6 +9341,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9289,6 +9445,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9322,6 +9480,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9357,6 +9517,8 @@ paths:
           description: Not found
         '409':
           description: Conflict
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9399,6 +9561,8 @@ paths:
           description: Not found
         '409':
           description: Conflict
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9438,6 +9602,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9477,6 +9643,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9585,6 +9753,8 @@ paths:
           description: No matching issue found
         '409':
           description: Issue already assigned
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9633,6 +9803,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9684,6 +9856,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9744,6 +9918,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -9796,6 +9972,8 @@ paths:
           description: Bad request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -9863,6 +10041,8 @@ paths:
           description: Bad request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -10859,6 +11039,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: runner_controller_id
         required: true
@@ -10937,6 +11119,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: runner_controller_id
         required: true
@@ -11028,6 +11212,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -11059,6 +11245,8 @@ paths:
           description: Not found
         '409':
           description: Conflict
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -11079,6 +11267,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -11111,6 +11301,8 @@ paths:
           description: Conflict
         '422':
           description: Unprocessable Entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -11137,6 +11329,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -11166,6 +11360,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiRunnerController"
         '403':
           description: Forbidden
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -11228,6 +11424,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -11286,6 +11484,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -11778,6 +11978,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: migration_id
         required: true
@@ -11806,6 +12008,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: project_id
         required: true
@@ -11887,6 +12091,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: node_id
         required: true
@@ -11913,6 +12119,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: node_id
         required: true
@@ -11946,6 +12154,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: node_id
         required: true
@@ -11995,6 +12205,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -12020,6 +12232,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       requestBody:
         required: false
         content:
@@ -12047,6 +12261,8 @@ paths:
           description: 404 Not found
         '422':
           description: 422 Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -12115,6 +12331,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -13435,6 +13653,8 @@ paths:
                 "$ref": "#/components/schemas/APIVsCodeSettingsEntitiesVsCodeManifest"
         '401':
           description: 401 Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: settings_context_hash
         required: true
@@ -13459,6 +13679,8 @@ paths:
           description: 400 bad request
         '401':
           description: 401 Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: resource_name
         required: true
@@ -13503,6 +13725,8 @@ paths:
           description: 400 bad request
         '401':
           description: 401 Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: resource_name
         required: true
@@ -13536,6 +13760,8 @@ paths:
           description: Bad request
         '401':
           description: 401 Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: resource_name
         required: true
@@ -13568,6 +13794,8 @@ paths:
           description: OK
         '401':
           description: 401 Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: settings_context_hash
         required: true
@@ -13576,7 +13804,8 @@ paths:
   "/api/v4/users/{id}/custom_attributes":
     get:
       operationId: getApiV4UsersIdCustomAttributes
-      summary: Get all custom attributes on a user
+      summary: List all custom attributes for a user
+      description: Lists all custom attributes for a specified user.
       tags:
       - Custom attributes
       responses:
@@ -13598,7 +13827,8 @@ paths:
   "/api/v4/users/{id}/custom_attributes/{key}":
     get:
       operationId: getApiV4UsersIdCustomAttributesKey
-      summary: Get a custom attribute on a user
+      summary: Retrieve a custom attribute for a user
+      description: Retrieves a specified custom attribute for a user.
       tags:
       - Custom attributes
       responses:
@@ -13627,7 +13857,10 @@ paths:
         in: path
     put:
       operationId: putApiV4UsersIdCustomAttributesKey
-      summary: Set a custom attribute on a user
+      summary: Creates or updates a custom attribute for a user
+      description: Creates or updates a custom attribute for a specified user. If
+        the attribute already exists, it is updated, otherwise a new attribute is
+        created.
       tags:
       - Custom attributes
       responses:
@@ -13662,7 +13895,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_07d422dca893"
     delete:
       operationId: deleteApiV4UsersIdCustomAttributesKey
-      summary: Delete a custom attribute on a user
+      summary: Delete a custom attribute for a user
+      description: Deletes a specified custom attribute for a user.
       tags:
       - Custom attributes
       responses:
@@ -15086,7 +15320,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_23654ddd71d7"
+              "$ref": "#/components/schemas/RequestBody_41cdb7ee1f4b"
   "/api/v4/users/{user_id}/impersonation_tokens/{impersonation_token_id}":
     get:
       operationId: getApiV4UsersUserIdImpersonationTokensImpersonationTokenId
@@ -16169,8 +16403,8 @@ paths:
   "/api/v4/templates/licenses":
     get:
       operationId: getApiV4TemplatesLicenses
-      summary: Get all license templates
-      description: This feature was introduced in GitLab 8.7.
+      summary: List all license templates
+      description: Lists all available license templates.
       tags:
       - Templates
       responses:
@@ -16211,8 +16445,9 @@ paths:
   "/api/v4/templates/licenses/{name}":
     get:
       operationId: getApiV4TemplatesLicensesName
-      summary: Get a single license template
-      description: This feature was introduced in GitLab 8.7.
+      summary: Retrieve a license template
+      description: Retrieves a specified license template. You can pass parameters
+        to replace the license placeholder.
       tags:
       - Templates
       responses:
@@ -16250,8 +16485,8 @@ paths:
   "/api/v4/templates/gitignores":
     get:
       operationId: getApiV4TemplatesGitignores
-      summary: Get all .gitignore templates
-      description: This feature was introduced in GitLab 8.8.
+      summary: List all .gitignore templates
+      description: Lists all .gitignore templates.
       tags:
       - Templates
       responses:
@@ -16285,8 +16520,8 @@ paths:
   "/api/v4/templates/gitignores/{name}":
     get:
       operationId: getApiV4TemplatesGitignoresName
-      summary: Get a single .gitignore template
-      description: This feature was introduced in GitLab 8.8.
+      summary: Retrieve a .gitignore template
+      description: Retrieves a specified .gitignore template.
       tags:
       - Templates
       responses:
@@ -16310,8 +16545,8 @@ paths:
   "/api/v4/templates/gitlab_ci_ymls":
     get:
       operationId: getApiV4TemplatesGitlabCiYmls
-      summary: Get all GitLab CI/CD YAML templates
-      description: This feature was introduced in GitLab 8.9.
+      summary: List all GitLab CI/CD YAML templates
+      description: Lists all GitLab CI/CD YAML templates.
       tags:
       - Templates
       responses:
@@ -16345,8 +16580,8 @@ paths:
   "/api/v4/templates/gitlab_ci_ymls/{name}":
     get:
       operationId: getApiV4TemplatesGitlabCiYmlsName
-      summary: Get a single GitLab CI/CD YAML template
-      description: This feature was introduced in GitLab 8.9.
+      summary: Retrieve a GitLab CI/CD YAML template
+      description: Retrieves a specified GitLab CI/CD YAML template.
       tags:
       - Templates
       responses:
@@ -16370,8 +16605,8 @@ paths:
   "/api/v4/templates/dockerfiles":
     get:
       operationId: getApiV4TemplatesDockerfiles
-      summary: Get all Dockerfile templates
-      description: This feature was introduced in GitLab 8.15.
+      summary: List all Dockerfile templates
+      description: Lists all Dockerfile templates.
       tags:
       - Templates
       responses:
@@ -16405,8 +16640,8 @@ paths:
   "/api/v4/templates/dockerfiles/{name}":
     get:
       operationId: getApiV4TemplatesDockerfilesName
-      summary: Get a single Dockerfile template
-      description: This feature was introduced in GitLab 8.15.
+      summary: Retrieve a Dockerfile template
+      description: Retrieves a specified Dockerfile template.
       tags:
       - Templates
       responses:
@@ -16966,6 +17201,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '400':
+          description: Bad Request
       requestBody:
         required: false
         content:
@@ -16975,7 +17212,8 @@ paths:
   "/api/v4/service_accounts":
     post:
       operationId: postApiV4ServiceAccounts
-      summary: Create a service account user. Available only for instance admins.
+      summary: Create an instance service account
+      description: Creates an instance service account.
       tags:
       - Service accounts
       responses:
@@ -16999,8 +17237,9 @@ paths:
               "$ref": "#/components/schemas/RequestBody_4d6a710f0d2d"
     get:
       operationId: getApiV4ServiceAccounts
-      summary: Get list of service account users. Available only for instance admins
-      description: Get list of service account users
+      summary: List all instance service accounts
+      description: Lists all instance service accounts. Use the `page` and `per_page`
+        pagination parameters to filter the results.
       tags:
       - Service accounts
       responses:
@@ -17060,8 +17299,8 @@ paths:
   "/api/v4/service_accounts/{user_id}":
     patch:
       operationId: patchApiV4ServiceAccountsUserId
-      summary: Update a service account user. Available only for instance admins.
-      description: Update a service account user
+      summary: Update an instance service account
+      description: Updates a specified instance service account.
       tags:
       - Service accounts
       responses:
@@ -17618,7 +17857,7 @@ paths:
     post:
       operationId: postApiV4ProjectsIdServiceAccounts
       summary: Create a project service account
-      description: Creates a service account in the specified project
+      description: Creates a service account in a specified project.
       tags:
       - Service accounts
       responses:
@@ -17654,7 +17893,8 @@ paths:
     get:
       operationId: getApiV4ProjectsIdServiceAccounts
       summary: List all project service accounts
-      description: Lists all service accounts for a specified project
+      description: Lists all service accounts in a specified project. Use the `page`
+        and `per_page` pagination parameters to filter the results.
       tags:
       - Service accounts
       responses:
@@ -17725,9 +17965,8 @@ paths:
     delete:
       operationId: deleteApiV4ProjectsIdServiceAccountsUserId
       summary: Delete a project service account
-      description: |-
-        Deletes a service account from a specified project.
-                    Available only for project Owners or Maintainers, and administrators.
+      description: Deletes a specified project service account. Available only for
+        project Owners, Maintainers, and administrators.
       tags:
       - Service accounts
       responses:
@@ -17953,10 +18192,9 @@ paths:
         in: path
     post:
       operationId: postApiV4ProjectsIdServiceAccountsUserIdPersonalAccessTokens
-      summary: Create a personal access token for a project service account.
-      description: |-
-        Creates a personal access token for a specified project service account.
-                      Available only for project Owners or Maintainers.
+      summary: Create a personal access token for a project service account
+      description: Creates a personal access token for a specified project service
+        account. Available only for project Owners, Maintainers, and administrators.
       tags:
       - Access tokens
       - Service accounts
@@ -18036,7 +18274,8 @@ paths:
       operationId: postApiV4ProjectsIdServiceAccountsUserIdPersonalAccessTokensTokenIdRotate
       summary: Rotate a personal access token for a project service account
       description: Rotates a specified personal access token for a project service
-        account.
+        account. This revokes the existing token and creates a token with the same
+        name, description, and scopes.
       tags:
       - Access tokens
       - Service accounts
@@ -18727,6 +18966,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesNotificationSetting"
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -18751,6 +18994,8 @@ paths:
           description: Bad request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -18780,6 +19025,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesNotificationSetting"
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -18804,6 +19053,8 @@ paths:
           description: Bad request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -20465,7 +20716,7 @@ paths:
     post:
       operationId: postApiV4GroupsIdServiceAccounts
       summary: Create a group service account
-      description: Creates a service account in the specified group
+      description: Creates a service account in a specified group.
       tags:
       - Service accounts
       responses:
@@ -20501,7 +20752,8 @@ paths:
     get:
       operationId: getApiV4GroupsIdServiceAccounts
       summary: List all group service accounts
-      description: Lists all service accounts for a specified group
+      description: Lists all service accounts in a specified group. Use the `page`
+        and `per_page` pagination parameters to filter the results.
       tags:
       - Service accounts
       responses:
@@ -20571,9 +20823,9 @@ paths:
   "/api/v4/groups/{id}/service_accounts/{user_id}":
     delete:
       operationId: deleteApiV4GroupsIdServiceAccountsUserId
-      summary: Delete a group service account.
-      description: Deletes a service account from a specified group. Available only
-        for group owners and admins.
+      summary: Delete a group service account
+      description: Deletes a specified group service account. Available only for group
+        Owners and administrators.
       tags:
       - Service accounts
       responses:
@@ -20799,10 +21051,10 @@ paths:
         in: path
     post:
       operationId: postApiV4GroupsIdServiceAccountsUserIdPersonalAccessTokens
-      summary: Create a personal access token for a group service account.
-      description: |-
-        Creates a personal access token for a specified group service account.
-                      Requires the group Owner role. This feature was introduced in GitLab 16.1.
+      summary: Create a personal access token for a group service account
+      description: Creates a personal access token for a specified group service account.
+        Available only for group Owners and administrators. This feature was introduced
+        in GitLab 16.1.
       tags:
       - Access tokens
       - Service accounts
@@ -20879,8 +21131,10 @@ paths:
   "/api/v4/groups/{id}/service_accounts/{user_id}/personal_access_tokens/{token_id}/rotate":
     post:
       operationId: postApiV4GroupsIdServiceAccountsUserIdPersonalAccessTokensTokenIdRotate
-      summary: Rotate personal access token for group service account
+      summary: Rotate a personal access token for a group service account
       description: Rotates a specified personal access token for a group service account.
+        This revokes the existing token and creates a token with the same name, description,
+        and scopes.
       tags:
       - Access tokens
       - Service accounts
@@ -24539,6 +24793,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesWikiPageBasic"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: with_content
         required: false
@@ -24606,6 +24862,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesWikiPage"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: slug
         required: true
@@ -24720,6 +24978,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesWikiAttachment"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -24751,6 +25011,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesWikiPageBasic"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: with_content
         required: false
@@ -24820,6 +25082,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesWikiPage"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: slug
         required: true
@@ -24937,6 +25201,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesWikiAttachment"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -25058,6 +25324,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -25077,6 +25345,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -25119,6 +25389,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: include_paths
         required: false
@@ -25475,6 +25747,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -25509,6 +25783,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -25551,6 +25827,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -25693,6 +25971,8 @@ paths:
           description: Not found
         '422':
           description: Validation failure
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -25733,6 +26013,10 @@ paths:
           description: Validation failure
         '413':
           description: Request Entity Too Large
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -25769,6 +26053,8 @@ paths:
           description: Not found
         '422':
           description: Validation failure
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -25835,6 +26121,8 @@ paths:
           description: Conflict
         '422':
           description: Validation failure
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -25873,6 +26161,8 @@ paths:
           description: Conflict
         '422':
           description: Validation failure
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -25913,6 +26203,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -25961,6 +26253,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesTerraformModuleVersions"
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: module_namespace
         required: true
@@ -25994,6 +26290,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: module_namespace
         required: true
@@ -26031,6 +26329,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: module_namespace
         required: true
@@ -26071,6 +26371,8 @@ paths:
           description: Unprocessable entity
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -26185,6 +26487,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -26246,6 +26550,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesTagSignature"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -26455,6 +26761,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesHook"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: hook_id
         required: true
@@ -26530,6 +26838,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesHook"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: hook_id
         required: true
@@ -26554,6 +26864,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesSupplyChainAttestation"
         '404':
           description: Artifact SHA-256 not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -26581,6 +26893,8 @@ paths:
           description: OK
         '404':
           description: Artifact SHA-256 not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -26727,6 +27041,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesSnippet"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: created_after
         required: false
@@ -26803,6 +27119,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesPersonalSnippet"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: created_after
         required: false
@@ -26854,6 +27172,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesSnippet"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: created_after
         required: false
@@ -26912,6 +27232,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesPersonalSnippet"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -26987,6 +27309,8 @@ paths:
           description: OK
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -27005,6 +27329,8 @@ paths:
           description: OK
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: file_path
         required: true
@@ -27039,6 +27365,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesUserAgentDetail"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -27515,6 +27843,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -27546,6 +27876,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -27575,6 +27907,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -27600,6 +27936,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -27633,6 +27971,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -27696,6 +28036,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -27774,6 +28116,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesResourceMilestoneEvent"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -27866,6 +28210,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesResourceMilestoneEvent"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -27911,6 +28257,8 @@ paths:
           description: Forbidden
         '405':
           description: Method not allowed
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -27946,6 +28294,8 @@ paths:
           description: Forbidden
         '405':
           description: Method not allowed
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -29045,6 +29395,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -29122,6 +29474,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -29249,6 +29603,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -29282,6 +29638,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -29332,6 +29690,8 @@ paths:
           description: Bad request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -29371,6 +29731,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -29409,6 +29771,8 @@ paths:
           description: Bad request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -29453,6 +29817,8 @@ paths:
           description: Bad request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -29695,6 +30061,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -29817,6 +30185,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: tag_name
         required: true
@@ -29849,6 +30219,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -29874,6 +30246,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -29934,6 +30308,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -29961,6 +30337,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -30008,6 +30386,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -30041,6 +30421,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -30072,6 +30454,8 @@ paths:
           description: Not found
         '412':
           description: Precondition Failed
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -30106,6 +30490,8 @@ paths:
           description: 404 Project Not Found
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -30164,6 +30550,8 @@ paths:
           description: 404 Project Not Found
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -30198,6 +30586,8 @@ paths:
           description: 404 Project Not Found
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -30272,6 +30662,8 @@ paths:
           description: 404 Project Not Found
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -30307,6 +30699,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
         '404':
           description: 404 User Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: user_id
         required: true
@@ -30629,6 +31023,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
         '404':
           description: 404 User Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: user_id
         required: true
@@ -30712,6 +31108,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
         '404':
           description: 404 User Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: user_id
         required: true
@@ -31006,7 +31404,8 @@ paths:
   "/api/v4/projects/{id}/custom_attributes":
     get:
       operationId: getApiV4ProjectsIdCustomAttributes
-      summary: Get all custom attributes on a project
+      summary: List all custom attributes for a project
+      description: Lists all custom attributes for a specified project.
       tags:
       - Custom attributes
       responses:
@@ -31031,7 +31430,8 @@ paths:
   "/api/v4/projects/{id}/custom_attributes/{key}":
     get:
       operationId: getApiV4ProjectsIdCustomAttributesKey
-      summary: Get a custom attribute on a project
+      summary: Retrieve a custom attribute for a project
+      description: Retrieves a specified custom attribute for a project.
       tags:
       - Custom attributes
       responses:
@@ -31063,7 +31463,10 @@ paths:
         example: 1
     put:
       operationId: putApiV4ProjectsIdCustomAttributesKey
-      summary: Set a custom attribute on a project
+      summary: Creates or updates a custom attribute for a project
+      description: Creates or updates a custom attribute for a specified project.
+        If the attribute already exists, it is updated, otherwise a new attribute
+        is created.
       tags:
       - Custom attributes
       responses:
@@ -31101,7 +31504,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_07d422dca893"
     delete:
       operationId: deleteApiV4ProjectsIdCustomAttributesKey
-      summary: Delete a custom attribute on a project
+      summary: Delete a custom attribute for a project
+      description: Deletes a specified custom attribute for a project.
       tags:
       - Custom attributes
       responses:
@@ -31642,6 +32046,8 @@ paths:
           description: Bad request
         '403':
           description: Unauthenticated
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -31670,6 +32076,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -31699,6 +32107,8 @@ paths:
           description: Not found
         '409':
           description: Conflict
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -31729,6 +32139,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32067,6 +32479,10 @@ paths:
           description: OK
         '403':
           description: Unauthenticated
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32093,6 +32509,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProject"
         '403':
           description: Unauthenticated
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32119,6 +32539,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProject"
         '403':
           description: Unauthenticated
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32146,6 +32570,10 @@ paths:
           description: Not modified
         '403':
           description: Unauthenticated
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32173,6 +32601,10 @@ paths:
           description: Not modified
         '403':
           description: Unauthenticated
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32200,6 +32632,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32248,6 +32682,8 @@ paths:
           description: OK
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32277,6 +32713,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32377,6 +32815,8 @@ paths:
           description: Project Not Found
         '422':
           description: Import failed
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32410,6 +32850,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32474,6 +32916,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32661,6 +33105,10 @@ paths:
           description: Unauthenticated
         '409':
           description: Conflict
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32690,6 +33138,10 @@ paths:
           description: Unauthorized
         '403':
           description: Unauthenticated
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32750,6 +33202,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesPublicGroupDetails"
         '403':
           description: Unauthenticated
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32803,6 +33259,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProjectRepositoryStorage"
         '403':
           description: Unauthenticated
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32927,6 +33387,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -32987,6 +33449,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -33064,6 +33528,8 @@ paths:
           description: 404 Project Not Found
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -33088,6 +33554,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProjectSnippet"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -33163,6 +33631,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProjectSnippet"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -33259,6 +33729,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProjectSnippet"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -33289,6 +33761,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProjectSnippet"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -33331,6 +33805,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesUserAgentDetail"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -33358,6 +33834,10 @@ paths:
           description: OK
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: wiki
         required: false
@@ -33395,6 +33875,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -33540,6 +34022,8 @@ paths:
           description: Forbidden
         '404':
           description: Project Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -33669,6 +34153,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -33697,6 +34183,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -33734,6 +34222,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -33862,6 +34352,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -33949,6 +34441,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -34593,6 +35087,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProjectHook"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -34663,6 +35159,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProjectHook"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -34825,6 +35323,8 @@ paths:
           description: Not found
         '429':
           description: Too many requests
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -34868,6 +35368,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -34932,6 +35434,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -35050,6 +35554,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -35222,6 +35728,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -35357,6 +35865,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -35551,6 +36061,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -35589,6 +36101,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -35738,6 +36252,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -35883,6 +36399,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -35939,6 +36457,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -35975,6 +36495,8 @@ paths:
           description: Not Found
         '405':
           description: Method Not Allowed
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -36169,6 +36691,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCluster"
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -36214,6 +36740,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -36287,6 +36815,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -36440,6 +36970,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: min_access_level
         required: false
@@ -36492,6 +37024,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesPersonalAccessTokenWithLastUsedIps"
         '401':
           description: Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: user_id
         required: false
@@ -36645,6 +37179,8 @@ paths:
           description: No Content
         '400':
           description: Bad Request
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -36955,6 +37491,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -36979,6 +37517,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37009,6 +37549,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37107,6 +37649,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37144,6 +37688,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37233,7 +37779,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_15be2094db2f"
+              "$ref": "#/components/schemas/RequestBody_be62f6c2b50e"
     get:
       operationId: getApiV4OfflineExports
       summary: List all offline transfer exports
@@ -37338,7 +37884,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_df14f9cb9dcb"
+              "$ref": "#/components/schemas/RequestBody_fc578ac29f9b"
   "/api/v4/projects/{id}/packages/nuget/index":
     get:
       operationId: getApiV4ProjectsIdPackagesNugetIndex
@@ -37355,6 +37901,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesNugetServiceIndex"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37376,6 +37924,8 @@ paths:
           description: OK
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37460,6 +38010,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37552,6 +38104,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37611,6 +38165,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37636,6 +38192,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37725,6 +38283,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesNugetServiceIndex"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37746,6 +38306,8 @@ paths:
           description: OK
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37798,6 +38360,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37859,6 +38423,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37886,6 +38452,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -37953,6 +38521,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
   "/api/v4/packages/npm/-/npm/v1/security/audits/quick":
     post:
       operationId: postApiV4PackagesNpmDashNpmV1SecurityAuditsQuick
@@ -37971,6 +38541,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
   "/api/v4/groups/{id}/-/packages/npm/-/npm/v1/security/advisories/bulk":
     post:
       operationId: postApiV4GroupsIdDashPackagesNpmDashNpmV1SecurityAdvisoriesBulk
@@ -37989,6 +38561,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -38016,6 +38590,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -38073,6 +38649,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -38134,6 +38712,8 @@ paths:
           description: Forbidden
         '422':
           description: Unprocessable entity
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -38159,6 +38739,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -38195,6 +38777,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesNamespace"
         '401':
           description: Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: search
         required: false
@@ -38268,6 +38852,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesNamespaceExistence"
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -38504,10 +39092,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequestApprovals"
+        '304':
+          description: Not modified
         '404':
           description: Not found
         '401':
           description: Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -38545,10 +39137,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequestApprovals"
+        '304':
+          description: Not modified
         '404':
           description: Not found
         '401':
           description: Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -38581,6 +39177,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -38687,6 +39285,8 @@ paths:
           description: Unauthorized
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: author_id
         required: false
@@ -39180,6 +39780,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -39663,8 +40265,8 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/time_estimate":
     post:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidTimeEstimate
-      summary: Set a time estimate for a merge_request
-      description: Sets an estimated time of work for this merge_request.
+      summary: Set the estimated time for a merge request
+      description: Sets an estimated time of work for a specified merge request.
       tags:
       - Merge requests
       responses:
@@ -39704,8 +40306,9 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/reset_time_estimate":
     post:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidResetTimeEstimate
-      summary: Reset the time estimate for a project merge_request
-      description: Resets the estimated time for this merge_request to 0 seconds.
+      summary: Reset the estimated time for a merge request
+      description: Resets the estimated time for a specified merge request to `0`
+        seconds.
       tags:
       - Merge requests
       responses:
@@ -39719,6 +40322,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -39737,8 +40342,8 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/add_spent_time":
     post:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidAddSpentTime
-      summary: Add spent time for a merge_request
-      description: Adds spent time for this merge_request.
+      summary: Add spent time for a merge request
+      description: Adds spent time for a specified merge request.
       tags:
       - Merge requests
       responses:
@@ -39752,6 +40357,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -39776,8 +40383,9 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/reset_spent_time":
     post:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidResetSpentTime
-      summary: Reset spent time for a merge_request
-      description: Resets the total spent time for this merge_request to 0 seconds.
+      summary: Reset spent time for a merge request
+      description: Resets the total spent time for a specified merge request to `0`
+        seconds.
       tags:
       - Merge requests
       responses:
@@ -39791,6 +40399,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -39809,8 +40419,10 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/time_stats":
     get:
       operationId: getApiV4ProjectsIdMergeRequestsMergeRequestIidTimeStats
-      summary: Get time tracking stats
-      description: Get time tracking stats
+      summary: Retrieve time tracking stats for a merge request
+      description: Retrieves time tracking stats for a specified merge request, including
+        time estimate and time spent in seconds and human-readable format (for example,
+        `1h 30m`).
       tags:
       - Merge requests
       responses:
@@ -39824,6 +40436,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -39859,6 +40473,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -40398,6 +41014,8 @@ paths:
           description: Not found
         '412':
           description: Precondition failed
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -40428,6 +41046,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequest"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -40523,6 +41143,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesUserBasic"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -40554,6 +41176,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequestReviewer"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -40585,6 +41209,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCommit"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -40634,6 +41260,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCommit"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -40746,6 +41374,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequestChanges"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -40786,6 +41416,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -40840,6 +41472,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -40871,6 +41505,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiPipelineBasic"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -40991,6 +41627,8 @@ paths:
           description: OK
         '400':
           description: Bad request
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -41029,6 +41667,8 @@ paths:
           description: Method not allowed
         '406':
           description: Not acceptable
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -41061,6 +41701,8 @@ paths:
           description: Not found
         '409':
           description: Conflict
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -41100,6 +41742,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -41147,6 +41791,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -42268,6 +42914,8 @@ paths:
           description: OK
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -42294,6 +42942,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProjectUpload"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -42328,6 +42978,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -42371,6 +43023,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: upload_id
         required: true
@@ -42435,6 +43089,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: secret
         required: true
@@ -42507,6 +43163,8 @@ paths:
           description: OK
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -42568,6 +43226,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -42610,6 +43270,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: upload_id
         required: true
@@ -42672,6 +43334,8 @@ paths:
           description: Unauthenticated
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: secret
         required: true
@@ -42770,6 +43434,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiLintResult"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: sha
         required: false
@@ -44498,8 +45164,8 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/time_estimate":
     post:
       operationId: postApiV4ProjectsIdIssuesIssueIidTimeEstimate
-      summary: Set a time estimate for a issue
-      description: Sets an estimated time of work for this issue.
+      summary: Set the estimated time for an issue
+      description: Sets an estimated time of work for a specified issue.
       tags:
       - Issues
       responses:
@@ -44539,8 +45205,8 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/reset_time_estimate":
     post:
       operationId: postApiV4ProjectsIdIssuesIssueIidResetTimeEstimate
-      summary: Reset the time estimate for a project issue
-      description: Resets the estimated time for this issue to 0 seconds.
+      summary: Reset the estimated time for an issue
+      description: Resets the estimated time for a specified issue to `0` seconds.
       tags:
       - Issues
       responses:
@@ -44554,6 +45220,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -44572,8 +45240,8 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time":
     post:
       operationId: postApiV4ProjectsIdIssuesIssueIidAddSpentTime
-      summary: Add spent time for a issue
-      description: Adds spent time for this issue.
+      summary: Add spent time for an issue
+      description: Adds spent time for a specified issue.
       tags:
       - Issues
       responses:
@@ -44587,6 +45255,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -44611,8 +45281,8 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/reset_spent_time":
     post:
       operationId: postApiV4ProjectsIdIssuesIssueIidResetSpentTime
-      summary: Reset spent time for a issue
-      description: Resets the total spent time for this issue to 0 seconds.
+      summary: Reset spent time for an issue
+      description: Resets the total spent time for a specified issue to `0` seconds.
       tags:
       - Issues
       responses:
@@ -44626,6 +45296,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -44644,8 +45316,10 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/time_stats":
     get:
       operationId: getApiV4ProjectsIdIssuesIssueIidTimeStats
-      summary: Get time tracking stats
-      description: Get time tracking stats
+      summary: Retrieve time tracking stats for an issue
+      description: Retrieves time tracking stats for a specified issue, including
+        time estimate and time spent in seconds and human-readable format (for example,
+        `1h 30m`).
       tags:
       - Issues
       responses:
@@ -44659,6 +45333,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -46068,6 +46744,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -46102,6 +46780,8 @@ paths:
           description: Bad Request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -46142,6 +46822,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -46183,6 +46865,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -46344,6 +47028,8 @@ paths:
           description: Not found
         '409':
           description: Could not delete invitation
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -46494,6 +47180,8 @@ paths:
           description: Not found
         '409':
           description: Could not delete invitation
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -46531,6 +47219,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -46576,6 +47266,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -46605,6 +47297,8 @@ paths:
           description: Forbidden
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       requestBody:
         required: false
         content:
@@ -46633,6 +47327,8 @@ paths:
           description: Unauthorized
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       x-gitlab-lifecycle: experiment
   "/api/v4/integrations/jira_connect/subscriptions":
     post:
@@ -46701,6 +47397,8 @@ paths:
           description: Failed to process event
         '401':
           description: Unauthorized
+        '400':
+          description: Bad Request
       requestBody:
         required: false
         content:
@@ -48860,6 +49558,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -51028,6 +51728,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -53140,6 +53842,8 @@ paths:
           description: Created
         '401':
           description: Unauthorized
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -53225,6 +53929,8 @@ paths:
           description: Unprocessable Entity
         '429':
           description: Too Many Requests
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -53310,6 +54016,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -53343,6 +54053,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -53383,6 +54095,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -53416,6 +54130,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -53530,6 +54246,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '400':
           description: 400 Bad Request
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -53562,6 +54280,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '404':
           description: Group Variable Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -53632,6 +54352,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '404':
           description: Group Variable Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -53739,6 +54461,8 @@ paths:
           description: Unauthorized
         '404':
           description: Group Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -53941,6 +54665,8 @@ paths:
           description: Too many requests
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -53966,6 +54692,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -53997,6 +54725,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -54047,6 +54777,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -54117,6 +54849,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -54252,6 +54986,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -54446,6 +55182,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -54481,6 +55219,8 @@ paths:
           description: Unauthorized
         '404':
           description: Group Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -54525,6 +55265,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCluster"
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -54568,6 +55312,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -54637,6 +55383,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -54729,6 +55477,8 @@ paths:
           description: 401 Unauthorized
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: replicable_name
         required: true
@@ -54760,6 +55510,8 @@ paths:
           description: 401 Unauthorized
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: gl_repository
         required: true
@@ -54803,6 +55555,8 @@ paths:
           description: OK
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -54822,6 +55576,8 @@ paths:
           description: OK
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -54841,6 +55597,8 @@ paths:
           description: OK
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -54860,6 +55618,8 @@ paths:
           description: OK
         '401':
           description: 401 Unauthorized
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -54879,6 +55639,8 @@ paths:
           description: 404 GeoNode Not Found
         '500':
           description: 500 Internal Server Error
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -54903,6 +55665,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -54948,6 +55712,8 @@ paths:
           description: Bad request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -54982,6 +55748,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -55015,6 +55783,8 @@ paths:
           description: Bad request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -55052,6 +55822,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesFreezePeriod"
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -55487,6 +56261,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
       parameters:
       - name: name
         required: true
@@ -55533,6 +56309,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -55619,6 +56397,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -55693,6 +56473,8 @@ paths:
           description: Not found
         '409':
           description: Conflict
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -55729,6 +56511,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -55785,6 +56569,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -55818,6 +56604,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -55854,6 +56642,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -55894,6 +56684,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -55927,6 +56719,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesEvent"
         '401':
           description: Unauthorized
+        '400':
+          description: Bad Request
       parameters:
       - name: scope
         required: false
@@ -56023,6 +56817,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesEvent"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -56309,6 +57105,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -56461,6 +57259,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -56494,6 +57294,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -56630,6 +57432,8 @@ paths:
           description: Bad request
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -56664,6 +57468,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -56694,6 +57500,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -56731,6 +57539,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -56767,6 +57577,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -56809,6 +57621,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -56842,6 +57656,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -56876,6 +57692,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -57082,6 +57900,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -57156,6 +57976,8 @@ paths:
         '400':
           description: '"Cannot destroy running deployment" or "Deployment currently
             deployed to environment"'
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -57190,6 +58012,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -57694,6 +58518,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -57740,6 +58566,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -57828,6 +58656,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -57857,6 +58687,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -57893,6 +58725,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -57982,6 +58816,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -58011,6 +58847,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -58045,6 +58883,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -58115,6 +58955,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -58198,6 +59040,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -58271,6 +59115,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -58306,6 +59152,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -58336,6 +59184,10 @@ paths:
           description: Accepted
         '401':
           description: Unauthorized
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -58362,6 +59214,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -58431,6 +59285,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -58579,6 +59435,10 @@ paths:
           description: 401 Unauthorized
         '403':
           description: 403 Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: database_name
         required: true
@@ -58623,6 +59483,8 @@ paths:
           description: Unauthorized
         '404':
           description: Repository Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -58666,6 +59528,8 @@ paths:
           description: Success
         '401':
           description: Invalid Token
+        '400':
+          description: Bad Request
   "/api/v4/projects/{id}/packages/conan/v2/users/authenticate":
     get:
       operationId: getApiV4ProjectsIdPackagesConanV2UsersAuthenticate
@@ -58681,6 +59545,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -58704,6 +59570,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -59965,6 +60833,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -59988,6 +60858,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -60104,6 +60976,8 @@ paths:
           description: OK
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -60913,6 +61787,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -61998,6 +62874,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: package_name
         required: true
@@ -62250,6 +63128,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -62274,6 +63154,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -62344,6 +63226,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -62695,6 +63579,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCommitDetail"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -62734,6 +63620,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesDiff"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -62790,6 +63678,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCommitNote"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -62880,6 +63770,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCommitSequence"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -62998,6 +63890,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesBasicRef"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -63059,6 +63953,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -63118,6 +64014,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCommitSignature"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -63147,6 +64045,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -63331,6 +64233,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -63679,6 +64583,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesDiscoveredClusters"
         '403':
           description: Forbidden
+        '400':
+          description: Bad Request
       parameters:
       - name: group_id
         required: true
@@ -63751,6 +64657,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '400':
           description: 400 Bad Request
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -63784,6 +64692,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '404':
           description: Variable Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -63830,6 +64740,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '404':
           description: Variable Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -63868,6 +64780,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '404':
           description: Variable Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -63967,6 +64881,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -64052,6 +64968,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -64129,6 +65047,8 @@ paths:
           description: Not found
         '412':
           description: Precondition Failed
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -64166,6 +65086,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -64262,6 +65184,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -64341,6 +65265,8 @@ paths:
           description: Not found
         '412':
           description: Precondition Failed
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -64378,6 +65304,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -64557,6 +65485,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -64639,6 +65569,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -64733,6 +65665,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -64776,6 +65710,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65033,6 +65971,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65070,6 +66010,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65096,6 +66038,10 @@ paths:
           description: Pipeline was deleted
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65131,6 +66077,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65220,6 +66168,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       deprecated: true
       parameters:
       - name: id
@@ -65303,6 +66253,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65386,6 +66338,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65421,6 +66375,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65456,6 +66412,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65536,6 +66494,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65571,6 +66531,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65648,6 +66610,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiSecureFile"
         '400':
           description: 400 Bad Request
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -65681,6 +66645,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiSecureFile"
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65709,6 +66675,8 @@ paths:
           description: Resource deleted
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65738,6 +66706,8 @@ paths:
           description: OK
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -65905,6 +66875,8 @@ paths:
           description: Resource deleted
         '403':
           description: Forbidden
+        '400':
+          description: Bad Request
       parameters:
       - name: token
         required: true
@@ -66049,6 +67021,8 @@ paths:
           description: No access granted
         '404':
           description: Runner not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -66120,6 +67094,8 @@ paths:
           description: Runner not found
         '412':
           description: Precondition Failed
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -66143,6 +67119,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiRunnerManager"
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -66172,6 +67152,8 @@ paths:
           description: No access granted
         '404':
           description: Runner not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -66220,6 +67202,8 @@ paths:
           description: No access granted
         '404':
           description: Runner not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -66321,6 +67305,8 @@ paths:
           description: Runner not found
         '422':
           description: Unprocessable Entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -66348,6 +67334,8 @@ paths:
           description: Scope contains invalid value
         '403':
           description: No access granted
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -66550,6 +67538,8 @@ paths:
           description: Scope contains invalid value
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -66648,6 +67638,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiResetTokenResult"
         '403':
           description: Forbidden
+        '400':
+          description: Bad Request
   "/api/v4/projects/{id}/runners/reset_registration_token":
     post:
       operationId: postApiV4ProjectsIdRunnersResetRegistrationToken
@@ -66669,6 +67661,8 @@ paths:
           description: Forbidden
         '404':
           description: Project Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -66697,6 +67691,8 @@ paths:
           description: Forbidden
         '404':
           description: Group Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -66752,6 +67748,8 @@ paths:
           description: Forbidden
         '422':
           description: Runner is orphaned
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -66777,6 +67775,8 @@ paths:
           description: Forbidden
         '422':
           description: Unprocessable Entity
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -66825,6 +67825,8 @@ paths:
           description: Runner is orphaned
         '429':
           description: Too Many Requests
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -66850,6 +67852,8 @@ paths:
           description: Conflict
         '429':
           description: Too Many Requests
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -66880,6 +67884,8 @@ paths:
           description: Range not satisfiable
         '429':
           description: Too Many Requests
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -66910,6 +67916,10 @@ paths:
           description: File too large
         '429':
           description: Too Many Requests
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -66942,6 +67952,8 @@ paths:
           description: File too large
         '429':
           description: Too Many Requests
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -66973,6 +67985,8 @@ paths:
           description: Artifact not found
         '429':
           description: Too Many Requests
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -67013,6 +68027,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -67059,6 +68075,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -67136,6 +68154,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -67170,6 +68190,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -67225,6 +68247,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -67292,6 +68316,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: job_id
         required: true
@@ -67329,6 +68355,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -67384,6 +68412,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: job_id
         required: true
@@ -67427,6 +68457,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: job_id
         required: true
@@ -67473,6 +68505,8 @@ paths:
           description: Not found
         '409':
           description: Conflict
+        '400':
+          description: Bad Request
       parameters:
       - name: job_id
         required: true
@@ -67579,7 +68613,8 @@ paths:
   "/api/v4/groups/{id}/custom_attributes":
     get:
       operationId: getApiV4GroupsIdCustomAttributes
-      summary: Get all custom attributes on a group
+      summary: List all custom attributes for a group
+      description: Lists all custom attributes for a specified group.
       tags:
       - Custom attributes
       responses:
@@ -67603,7 +68638,8 @@ paths:
   "/api/v4/groups/{id}/custom_attributes/{key}":
     get:
       operationId: getApiV4GroupsIdCustomAttributesKey
-      summary: Get a custom attribute on a group
+      summary: Retrieve a custom attribute for a group
+      description: Retrieves a specified custom attribute for a group.
       tags:
       - Custom attributes
       responses:
@@ -67634,7 +68670,10 @@ paths:
         in: path
     put:
       operationId: putApiV4GroupsIdCustomAttributesKey
-      summary: Set a custom attribute on a group
+      summary: Creates or updates a custom attribute for a group
+      description: Creates or updates a custom attribute for a specified group. If
+        the attribute already exists, it is updated, otherwise a new attribute is
+        created.
       tags:
       - Custom attributes
       responses:
@@ -67671,7 +68710,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_07d422dca893"
     delete:
       operationId: deleteApiV4GroupsIdCustomAttributesKey
-      summary: Delete a custom attribute on a group
+      summary: Delete a custom attribute for a group
+      description: Deletes a specified custom attribute for a group.
       tags:
       - Custom attributes
       responses:
@@ -68011,6 +69051,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesGroup"
         '403':
           description: Unauthenticated
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -68035,6 +69079,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesGroup"
         '403':
           description: Unauthenticated
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -69552,6 +70600,8 @@ paths:
           description: Forbidden
         '404':
           description: 404 Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -69633,6 +70683,8 @@ paths:
           description: Forbidden
         '422':
           description: Unprocessable entity
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -69663,6 +70715,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -69718,6 +70772,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -69756,6 +70812,10 @@ paths:
           description: Forbidden
         '409':
           description: Conflict
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -69792,6 +70852,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -69872,6 +70934,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -69903,6 +70967,10 @@ paths:
           description: Forbidden
         '409':
           description: Conflict
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -69935,6 +71003,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -70000,6 +71070,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -70065,6 +71137,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -70130,6 +71204,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: import_id
         required: true
@@ -70157,6 +71233,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: import_id
         required: true
@@ -70216,6 +71294,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: import_id
         required: true
@@ -70250,6 +71330,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: import_id
         required: true
@@ -70286,6 +71368,8 @@ paths:
           description: Not found
         '503':
           description: Service unavailable
+        '400':
+          description: Bad Request
       parameters:
       - name: import_id
         required: true
@@ -70312,6 +71396,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesBranch"
         '404':
           description: 404 Project Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -70386,6 +71472,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesBranch"
         '400':
           description: Branch already exists
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -70412,6 +71500,8 @@ paths:
           description: No Content
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -70442,6 +71532,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesBranch"
         '404':
           description: Project Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -70468,6 +71560,8 @@ paths:
           description: No Content
         '404':
           description: Branch Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -70498,6 +71592,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesBranch"
         '404':
           description: 404 Branch Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -70534,6 +71630,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesBranch"
         '404':
           description: 404 Branch Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -70562,6 +71660,8 @@ paths:
           description: 202 Accepted
         '404':
           description: 404 Project Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -70574,8 +71674,8 @@ paths:
   "/api/v4/groups/{id}/badges":
     get:
       operationId: getApiV4GroupsIdBadges
-      summary: List group badges.
-      description: This feature was introduced in GitLab 10.6.
+      summary: List all badges for a group
+      description: Lists all badges for a specified group.
       tags:
       - Badges
       responses:
@@ -70624,8 +71724,8 @@ paths:
         in: query
     post:
       operationId: postApiV4GroupsIdBadges
-      summary: Add a badge to a group.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Create a badge for a group
+      description: Creates a badge for a specified group.
       tags:
       - Badges
       responses:
@@ -70656,8 +71756,9 @@ paths:
   "/api/v4/groups/{id}/badges/render":
     get:
       operationId: getApiV4GroupsIdBadgesRender
-      summary: Preview a badge from a group.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Retrieve a badge preview for a group
+      description: Previews the final `link_url` and `image_url` for a specified group
+        after resolving the placeholder interpolation.
       tags:
       - Badges
       responses:
@@ -70696,8 +71797,8 @@ paths:
   "/api/v4/groups/{id}/badges/{badge_id}":
     get:
       operationId: getApiV4GroupsIdBadgesBadgeId
-      summary: Get a badge of a group.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Retrieve a badge for a group
+      description: Retrieves a specified badge for a group.
       tags:
       - Badges
       responses:
@@ -70727,8 +71828,8 @@ paths:
         in: path
     put:
       operationId: putApiV4GroupsIdBadgesBadgeId
-      summary: Update a badge of a group.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Update a badge for a group
+      description: Updates a specified badge for a group.
       tags:
       - Badges
       responses:
@@ -70764,8 +71865,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_4294eea0e484"
     delete:
       operationId: deleteApiV4GroupsIdBadgesBadgeId
-      summary: Remove a badge from the group.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Delete a badge from a group
+      description: Deletes a specified badge from a group.
       tags:
       - Badges
       responses:
@@ -70792,8 +71893,8 @@ paths:
   "/api/v4/projects/{id}/badges":
     get:
       operationId: getApiV4ProjectsIdBadges
-      summary: List project badges.
-      description: This feature was introduced in GitLab 10.6.
+      summary: List all badges for a project
+      description: Lists all badges for a specified project, including group badges.
       tags:
       - Badges
       responses:
@@ -70842,8 +71943,8 @@ paths:
         in: query
     post:
       operationId: postApiV4ProjectsIdBadges
-      summary: Add a badge to a project.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Create a badge for a project
+      description: Creates a badge for a specified project.
       tags:
       - Badges
       responses:
@@ -70874,8 +71975,9 @@ paths:
   "/api/v4/projects/{id}/badges/render":
     get:
       operationId: getApiV4ProjectsIdBadgesRender
-      summary: Preview a badge from a project.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Retrieve a badge preview for a project
+      description: Previews the final `link_url` and `image_url` for a specified project
+        after resolving the placeholder interpolation.
       tags:
       - Badges
       responses:
@@ -70914,8 +72016,8 @@ paths:
   "/api/v4/projects/{id}/badges/{badge_id}":
     get:
       operationId: getApiV4ProjectsIdBadgesBadgeId
-      summary: Get a badge of a project.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Retrieve a badge for a project
+      description: Retrieves a specified badge for a project.
       tags:
       - Badges
       responses:
@@ -70945,8 +72047,8 @@ paths:
         in: path
     put:
       operationId: putApiV4ProjectsIdBadgesBadgeId
-      summary: Update a badge of a project.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Update a badge for a project
+      description: Updates a specified badge for a project.
       tags:
       - Badges
       responses:
@@ -70982,8 +72084,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_4294eea0e484"
     delete:
       operationId: deleteApiV4ProjectsIdBadgesBadgeId
-      summary: Remove a badge from the project.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Delete a badge from a project
+      description: Deletes a specified badge from a project.
       tags:
       - Badges
       responses:
@@ -71010,9 +72112,9 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/award_emoji":
     get:
       operationId: getApiV4ProjectsIdIssuesIssueIidAwardEmoji
-      summary: List an awardable's emoji reactions for projects
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for an issue
+      description: Lists all emoji reactions for a specified issue. This endpoint
+        can be accessed without authentication if the issue is publicly accessible.
       tags:
       - Award emoji
       responses:
@@ -71024,6 +72126,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -71060,9 +72164,8 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdIssuesIssueIidAwardEmoji
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to an issue
+      description: Adds an emoji reaction to an issue.
       tags:
       - Award emoji
       responses:
@@ -71101,9 +72204,9 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/award_emoji/{award_id}":
     get:
       operationId: getApiV4ProjectsIdIssuesIssueIidAwardEmojiAwardId
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from an issue
+      description: Retrieves a specified emoji reaction from an issue. This endpoint
+        can be accessed without authentication if the issue is publicly accessible.
       tags:
       - Award emoji
       responses:
@@ -71115,6 +72218,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -71139,9 +72244,9 @@ paths:
         in: path
     delete:
       operationId: deleteApiV4ProjectsIdIssuesIssueIidAwardEmojiAwardId
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from an issue
+      description: Deletes a specified emoji reaction from an issue. Only an administrator
+        or the user who added the reaction can delete it.
       tags:
       - Award emoji
       responses:
@@ -71151,6 +72256,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -71176,9 +72283,10 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji":
     get:
       operationId: getApiV4ProjectsIdIssuesIssueIidNotesNoteIdAwardEmoji
-      summary: List an awardable's emoji reactions for projects
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for an issue comment
+      description: Lists all emoji reactions for a specified comment on an issue.
+        This endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       tags:
       - Award emoji
       responses:
@@ -71190,6 +72298,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -71230,9 +72340,8 @@ paths:
         in: path
     post:
       operationId: postApiV4ProjectsIdIssuesIssueIidNotesNoteIdAwardEmoji
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to an issue comment
+      description: Adds an emoji reaction to a comment on an issue.
       tags:
       - Award emoji
       responses:
@@ -71275,9 +72384,10 @@ paths:
   "/api/v4/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji/{award_id}":
     get:
       operationId: getApiV4ProjectsIdIssuesIssueIidNotesNoteIdAwardEmojiAwardId
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from an issue comment
+      description: Retrieves a specified emoji reaction from a comment on an issue.
+        This endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       tags:
       - Award emoji
       responses:
@@ -71289,6 +72399,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -71317,9 +72429,9 @@ paths:
         in: path
     delete:
       operationId: deleteApiV4ProjectsIdIssuesIssueIidNotesNoteIdAwardEmojiAwardId
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from an issue comment
+      description: Deletes a specified emoji reaction from a comment on an issue.
+        Only an administrator or the user who added the reaction can delete it.
       tags:
       - Award emoji
       responses:
@@ -71329,6 +72441,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -71358,9 +72472,9 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/award_emoji":
     get:
       operationId: getApiV4ProjectsIdMergeRequestsMergeRequestIidAwardEmoji
-      summary: List an awardable's emoji reactions for projects
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for a merge request
+      description: Lists all emoji reactions for a specified merge request. This endpoint
+        can be accessed without authentication if the merge request is publicly accessible.
       tags:
       - Award emoji
       responses:
@@ -71372,6 +72486,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -71408,9 +72524,8 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidAwardEmoji
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to a merge request
+      description: Adds an emoji reaction to a merge request.
       tags:
       - Award emoji
       responses:
@@ -71449,9 +72564,10 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/award_emoji/{award_id}":
     get:
       operationId: getApiV4ProjectsIdMergeRequestsMergeRequestIidAwardEmojiAwardId
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from a merge request
+      description: Retrieves a specified emoji reaction from a merge request. This
+        endpoint can be accessed without authentication if the merge request is publicly
+        accessible.
       tags:
       - Award emoji
       responses:
@@ -71463,6 +72579,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -71487,9 +72605,9 @@ paths:
         in: path
     delete:
       operationId: deleteApiV4ProjectsIdMergeRequestsMergeRequestIidAwardEmojiAwardId
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from a merge request
+      description: Deletes a specified emoji reaction from a merge request. Only an
+        administrator or the user who added the reaction can delete it.
       tags:
       - Award emoji
       responses:
@@ -71499,6 +72617,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -71524,9 +72644,10 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}/award_emoji":
     get:
       operationId: getApiV4ProjectsIdMergeRequestsMergeRequestIidNotesNoteIdAwardEmoji
-      summary: List an awardable's emoji reactions for projects
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for a merge request comment
+      description: Lists all emoji reactions for a specified comment on a merge request.
+        This endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       tags:
       - Award emoji
       responses:
@@ -71538,6 +72659,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -71578,9 +72701,8 @@ paths:
         in: path
     post:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidNotesNoteIdAwardEmoji
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to a merge request comment
+      description: Adds an emoji reaction to a comment on a merge request.
       tags:
       - Award emoji
       responses:
@@ -71623,9 +72745,10 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}/award_emoji/{award_id}":
     get:
       operationId: getApiV4ProjectsIdMergeRequestsMergeRequestIidNotesNoteIdAwardEmojiAwardId
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from a merge request comment
+      description: Retrieves a specified emoji reaction from a comment on a merge
+        request. This endpoint can be accessed without authentication if the comment
+        is publicly accessible.
       tags:
       - Award emoji
       responses:
@@ -71637,6 +72760,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -71665,9 +72790,9 @@ paths:
         in: path
     delete:
       operationId: deleteApiV4ProjectsIdMergeRequestsMergeRequestIidNotesNoteIdAwardEmojiAwardId
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from a merge request comment
+      description: Deletes a specified emoji reaction from a comment on a merge request.
+        Only an administrator or the user who added the reaction can delete it.
       tags:
       - Award emoji
       responses:
@@ -71677,6 +72802,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -71706,9 +72833,9 @@ paths:
   "/api/v4/projects/{id}/snippets/{snippet_id}/award_emoji":
     get:
       operationId: getApiV4ProjectsIdSnippetsSnippetIdAwardEmoji
-      summary: List an awardable's emoji reactions for projects
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for a snippet
+      description: Lists all emoji reactions for a specified snippet. This endpoint
+        can be accessed without authentication if the snippet is publicly accessible.
       tags:
       - Award emoji
       responses:
@@ -71720,6 +72847,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -71756,9 +72885,8 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdSnippetsSnippetIdAwardEmoji
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to a snippet
+      description: Adds an emoji reaction to a snippet.
       tags:
       - Award emoji
       responses:
@@ -71797,9 +72925,9 @@ paths:
   "/api/v4/projects/{id}/snippets/{snippet_id}/award_emoji/{award_id}":
     get:
       operationId: getApiV4ProjectsIdSnippetsSnippetIdAwardEmojiAwardId
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from a snippet
+      description: Retrieves a specified emoji reaction from a snippet. This endpoint
+        can be accessed without authentication if the snippet is publicly accessible.
       tags:
       - Award emoji
       responses:
@@ -71811,6 +72939,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -71835,9 +72965,9 @@ paths:
         in: path
     delete:
       operationId: deleteApiV4ProjectsIdSnippetsSnippetIdAwardEmojiAwardId
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from a snippet
+      description: Deletes a specified emoji reaction from a snippet. Only an administrator
+        or the user who added the reaction can delete it.
       tags:
       - Award emoji
       responses:
@@ -71847,6 +72977,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -71872,9 +73004,10 @@ paths:
   "/api/v4/projects/{id}/snippets/{snippet_id}/notes/{note_id}/award_emoji":
     get:
       operationId: getApiV4ProjectsIdSnippetsSnippetIdNotesNoteIdAwardEmoji
-      summary: List an awardable's emoji reactions for projects
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for a snippet comment
+      description: Lists all emoji reactions for a specified comment on a snippet.
+        This endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       tags:
       - Award emoji
       responses:
@@ -71886,6 +73019,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -71926,9 +73061,8 @@ paths:
         in: path
     post:
       operationId: postApiV4ProjectsIdSnippetsSnippetIdNotesNoteIdAwardEmoji
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to a snippet comment
+      description: Adds an emoji reaction to a comment on a snippet.
       tags:
       - Award emoji
       responses:
@@ -71971,9 +73105,10 @@ paths:
   "/api/v4/projects/{id}/snippets/{snippet_id}/notes/{note_id}/award_emoji/{award_id}":
     get:
       operationId: getApiV4ProjectsIdSnippetsSnippetIdNotesNoteIdAwardEmojiAwardId
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from a snippet comment
+      description: Retrieves a specified emoji reaction from a comment on a snippet.
+        This endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       tags:
       - Award emoji
       responses:
@@ -71985,6 +73120,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -72013,9 +73150,9 @@ paths:
         in: path
     delete:
       operationId: deleteApiV4ProjectsIdSnippetsSnippetIdNotesNoteIdAwardEmojiAwardId
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from a snippet comment
+      description: Deletes a specified emoji reaction from a comment on a snippet.
+        Only an administrator or the user who added the reaction can delete it.
       tags:
       - Award emoji
       responses:
@@ -72025,6 +73162,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -72054,9 +73193,9 @@ paths:
   "/api/v4/groups/{id}/epics/{epic_iid}/award_emoji":
     get:
       operationId: getApiV4GroupsIdEpicsEpicIidAwardEmoji
-      summary: List an awardable's emoji reactions for groups
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for an epic
+      description: Lists all emoji reactions for a specified epic. This endpoint can
+        be accessed without authentication if the epic is publicly accessible.
       tags:
       - Award emoji
       responses:
@@ -72068,6 +73207,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -72104,9 +73245,8 @@ paths:
         example: 20
     post:
       operationId: postApiV4GroupsIdEpicsEpicIidAwardEmoji
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to an epic
+      description: Adds an emoji reaction to an epic.
       tags:
       - Award emoji
       responses:
@@ -72145,9 +73285,9 @@ paths:
   "/api/v4/groups/{id}/epics/{epic_iid}/award_emoji/{award_id}":
     get:
       operationId: getApiV4GroupsIdEpicsEpicIidAwardEmojiAwardId
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from an epic
+      description: Retrieves a specified emoji reaction from an epic. This endpoint
+        can be accessed without authentication if the epic is publicly accessible.
       tags:
       - Award emoji
       responses:
@@ -72159,6 +73299,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -72183,9 +73325,9 @@ paths:
         example: 1
     delete:
       operationId: deleteApiV4GroupsIdEpicsEpicIidAwardEmojiAwardId
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from an epic
+      description: Deletes a specified emoji reaction from an epic. Only an administrator
+        or the user who added the reaction can delete it.
       tags:
       - Award emoji
       responses:
@@ -72195,6 +73337,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -72220,9 +73364,10 @@ paths:
   "/api/v4/groups/{id}/epics/{epic_iid}/notes/{note_id}/award_emoji":
     get:
       operationId: getApiV4GroupsIdEpicsEpicIidNotesNoteIdAwardEmoji
-      summary: List an awardable's emoji reactions for groups
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for an epic comment
+      description: Lists all emoji reactions for a specified comment on an epic. This
+        endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       tags:
       - Award emoji
       responses:
@@ -72234,6 +73379,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: page
         required: false
@@ -72274,9 +73421,8 @@ paths:
         in: path
     post:
       operationId: postApiV4GroupsIdEpicsEpicIidNotesNoteIdAwardEmoji
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to an epic comment
+      description: Adds an emoji reaction to a comment on an epic.
       tags:
       - Award emoji
       responses:
@@ -72319,9 +73465,10 @@ paths:
   "/api/v4/groups/{id}/epics/{epic_iid}/notes/{note_id}/award_emoji/{award_id}":
     get:
       operationId: getApiV4GroupsIdEpicsEpicIidNotesNoteIdAwardEmojiAwardId
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from an epic comment
+      description: Retrieves a specified emoji reaction from a comment on an epic.
+        This endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       tags:
       - Award emoji
       responses:
@@ -72333,6 +73480,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesAwardEmoji"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -72361,9 +73510,9 @@ paths:
         in: path
     delete:
       operationId: deleteApiV4GroupsIdEpicsEpicIidNotesNoteIdAwardEmojiAwardId
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from an epic comment
+      description: Deletes a specified emoji reaction from a comment on an epic. Only
+        an administrator or the user who added the reaction can delete it.
       tags:
       - Award emoji
       responses:
@@ -72373,6 +73522,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: award_id
         required: true
@@ -72488,6 +73639,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -72515,6 +73668,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -72574,6 +73729,10 @@ paths:
           description: OK
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -72607,6 +73766,10 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesMetricImage"
         '403':
           description: Forbidden
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -72645,6 +73808,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesMetricImage"
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -72680,6 +73845,10 @@ paths:
           description: Forbidden
         '422':
           description: Unprocessable entity
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -72727,6 +73896,10 @@ paths:
           description: Forbidden
         '422':
           description: Unprocessable entity
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -72769,6 +73942,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '400':
+          description: Bad Request
       parameters:
       - name: plan_name
         required: false
@@ -72829,6 +74004,8 @@ paths:
           description: 401 Unauthorized
         '403':
           description: 403 Forbidden
+        '400':
+          description: Bad Request
       parameters:
       - name: database
         required: false
@@ -72864,6 +74041,8 @@ paths:
           description: 404 Not found
         '422':
           description: You can mark only pending migrations
+        '400':
+          description: Bad Request
       parameters:
       - name: timestamp
         required: true
@@ -72911,6 +74090,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: cluster_id
         required: true
@@ -72968,6 +74149,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: cluster_id
         required: true
@@ -73020,6 +74203,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: database_name
         required: true
@@ -73111,6 +74296,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '404':
           description: Instance Variable Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: key
         required: true
@@ -73133,6 +74320,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '404':
           description: Instance Variable Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: key
         required: true
@@ -73161,6 +74350,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '404':
           description: Instance Variable Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: key
         required: true
@@ -73321,6 +74512,8 @@ paths:
           description: 401 Unauthorized
         '403':
           description: 403 Forbidden
+        '400':
+          description: Bad Request
       parameters:
       - name: database
         required: false
@@ -73363,6 +74556,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -73406,6 +74601,8 @@ paths:
           description: 404 Not found
         '422':
           description: You can stop only `queued`, `active` or `paused` operations.
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -73441,6 +74638,8 @@ paths:
           description: 404 Not found
         '422':
           description: You can restart only `stopped` operations.
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -73473,6 +74672,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: 404 Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: database
         required: false
@@ -73511,6 +74712,8 @@ paths:
           description: 401 Unauthorized
         '403':
           description: 403 Forbidden
+        '400':
+          description: Bad Request
       parameters:
       - name: database
         required: false
@@ -73554,6 +74757,8 @@ paths:
           description: 404 Not found
         '422':
           description: You can resume only `paused` batched background migrations.
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -73588,6 +74793,8 @@ paths:
           description: 404 Not found
         '422':
           description: You can pause only `active` batched background migrations.
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -73604,8 +74811,9 @@ paths:
   "/api/v4/groups/{id}/access_requests":
     get:
       operationId: getApiV4GroupsIdAccessRequests
-      summary: Gets a list of access requests for a group.
-      description: This feature was introduced in GitLab 8.11.
+      summary: List all access requests for a group
+      description: Lists all access requests for a specified group that are viewable
+        by the authenticated user.
       tags:
       - Access requests
       responses:
@@ -73647,8 +74855,8 @@ paths:
         example: 20
     post:
       operationId: postApiV4GroupsIdAccessRequests
-      summary: Requests access for the authenticated user to a group.
-      description: This feature was introduced in GitLab 8.11.
+      summary: Request access to a group
+      description: Requests access to a specified group for the authenticated user.
       tags:
       - Access requests
       responses:
@@ -73680,8 +74888,7 @@ paths:
     put:
       operationId: putApiV4GroupsIdAccessRequestsUserIdApprove
       summary: Approve an access request
-      description: Approves an access request for a specified user in a specified
-        group or project.
+      description: Approves an access request for a specified user in a group.
       tags:
       - Access requests
       responses:
@@ -73725,8 +74932,8 @@ paths:
   "/api/v4/groups/{id}/access_requests/{user_id}":
     delete:
       operationId: deleteApiV4GroupsIdAccessRequestsUserId
-      summary: Denies an access request for the given user.
-      description: This feature was introduced in GitLab 8.11.
+      summary: Deny an access request
+      description: Denies an access request for a specified user in a group.
       tags:
       - Access requests
       responses:
@@ -73753,8 +74960,9 @@ paths:
   "/api/v4/projects/{id}/access_requests":
     get:
       operationId: getApiV4ProjectsIdAccessRequests
-      summary: Gets a list of access requests for a project.
-      description: This feature was introduced in GitLab 8.11.
+      summary: List all access requests for a project
+      description: Lists all access requests for a specified project that are viewable
+        by the authenticated user.
       tags:
       - Access requests
       responses:
@@ -73796,8 +75004,8 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdAccessRequests
-      summary: Requests access for the authenticated user to a project.
-      description: This feature was introduced in GitLab 8.11.
+      summary: Request access to a project
+      description: Requests access to a specified project for the authenticated user.
       tags:
       - Access requests
       responses:
@@ -73829,8 +75037,7 @@ paths:
     put:
       operationId: putApiV4ProjectsIdAccessRequestsUserIdApprove
       summary: Approve an access request
-      description: Approves an access request for a specified user in a specified
-        group or project.
+      description: Approves an access request for a specified user in a project.
       tags:
       - Access requests
       responses:
@@ -73874,8 +75081,8 @@ paths:
   "/api/v4/projects/{id}/access_requests/{user_id}":
     delete:
       operationId: deleteApiV4ProjectsIdAccessRequestsUserId
-      summary: Denies an access request for the given user.
-      description: This feature was introduced in GitLab 8.11.
+      summary: Deny an access request
+      description: Denies an access request for a specified user in a project.
       tags:
       - Access requests
       responses:
@@ -73934,6 +75141,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       requestBody:
         required: true
         content:
@@ -89880,17 +91089,17 @@ components:
           type: boolean
           example: true
         minimum_access_level_execute:
-          type: integer
-          example: 30
+          type: string
+          example: developer
         minimum_access_level_execute_async:
-          type: integer
-          example: 30
+          type: string
+          example: developer
         minimum_access_level_manage:
-          type: integer
-          example: 40
+          type: string
+          example: maintainer
         minimum_access_level_enable_on_projects:
-          type: integer
-          example: 40
+          type: string
+          example: maintainer
     APIEntitiesGroupDetail:
       type: object
       properties:
@@ -95506,7 +96715,7 @@ components:
           nullable: true
       required:
       - email
-    RequestBody_23654ddd71d7:
+    RequestBody_41cdb7ee1f4b:
       type: object
       properties:
         name:
@@ -95528,6 +96737,46 @@ components:
           items:
             type: string
           description: The array of scopes of the impersonation token
+          nullable: true
+        granular_scopes:
+          type: array
+          description: List of granular scopes to assign to the token
+          items:
+            type: object
+            properties:
+              access:
+                type: string
+                enum:
+                - personal_projects
+                - all_memberships
+                - selected_memberships
+                - user
+                - instance
+                description: Access to configure for the granular scope.
+                minLength: 1
+              permissions:
+                type: array
+                items:
+                  type: string
+                description: List of permissions for the granular scope
+                nullable: true
+              project_ids:
+                type: array
+                items:
+                  type: integer
+                description: IDs of projects to associate with the granular scope,
+                  when access is `selected_memberships`
+                nullable: true
+              group_ids:
+                type: array
+                items:
+                  type: integer
+                description: IDs of groups to associate with the granular scope, when
+                  access is `selected_memberships`
+                nullable: true
+            required:
+            - access
+            - permissions
           nullable: true
       required:
       - name
@@ -105103,7 +106352,7 @@ components:
       required:
       - name
       - path
-    RequestBody_15be2094db2f:
+    RequestBody_be62f6c2b50e:
       type: object
       properties:
         bucket:
@@ -105165,6 +106414,23 @@ components:
           - aws_secret_access_key
           - region
           - endpoint
+          nullable: true
+        gcs_configuration:
+          type: object
+          description: Google Cloud Storage configuration using a service account
+            JSON key
+          properties:
+            google_project:
+              type: string
+              description: Google Cloud project ID
+              nullable: true
+            google_json_key_string:
+              type: string
+              description: Google Cloud service account JSON key contents
+              nullable: true
+          required:
+          - google_project
+          - google_json_key_string
           nullable: true
         gcs_hmac_configuration:
           type: object
@@ -105210,7 +106476,7 @@ components:
       required:
       - bucket
       - entities
-    RequestBody_df14f9cb9dcb:
+    RequestBody_fc578ac29f9b:
       type: object
       properties:
         bucket:
@@ -105272,6 +106538,23 @@ components:
           - aws_secret_access_key
           - region
           - endpoint
+          nullable: true
+        gcs_configuration:
+          type: object
+          description: Google Cloud Storage configuration using a service account
+            JSON key
+          properties:
+            google_project:
+              type: string
+              description: Google Cloud project ID
+              nullable: true
+            google_json_key_string:
+              type: string
+              description: Google Cloud service account JSON key contents
+              nullable: true
+          required:
+          - google_project
+          - google_json_key_string
           nullable: true
         gcs_hmac_configuration:
           type: object

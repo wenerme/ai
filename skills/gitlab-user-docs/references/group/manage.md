@@ -487,11 +487,7 @@ To approve members that are pending because they've exceeded the user cap:
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230790) in GitLab 19.0 [with a feature flag](../../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-> This feature is available for testing, but not ready for production use.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/593623) in GitLab 19.2. Feature flag `use_built_in_project_templates_enabled` removed.
 
 [Built-in project templates](../project/_index.md#create-a-project-from-a-built-in-template)
 populate new projects with starter files.

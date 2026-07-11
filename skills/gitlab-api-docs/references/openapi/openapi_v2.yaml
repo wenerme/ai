@@ -322,8 +322,9 @@ tags:
 paths:
   "/api/v4/groups/{id}/access_requests":
     get:
-      summary: Gets a list of access requests for a group.
-      description: This feature was introduced in GitLab 8.11.
+      summary: List all access requests for a group
+      description: Lists all access requests for a specified group that are viewable
+        by the authenticated user.
       produces:
       - application/json
       parameters:
@@ -351,15 +352,15 @@ paths:
         example: 20
       responses:
         '200':
-          description: Gets a list of access requests for a group.
+          description: List all access requests for a group
           schema:
             "$ref": "#/definitions/API_Entities_AccessRequester"
       tags:
       - access_requests
       operationId: getApiV4GroupsIdAccessRequests
     post:
-      summary: Requests access for the authenticated user to a group.
-      description: This feature was introduced in GitLab 8.11.
+      summary: Request access to a group
+      description: Requests access to a specified group for the authenticated user.
       produces:
       - application/json
       consumes:
@@ -373,7 +374,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Requests access for the authenticated user to a group.
+          description: Request access to a group
           schema:
             "$ref": "#/definitions/API_Entities_AccessRequester"
       tags:
@@ -382,8 +383,7 @@ paths:
   "/api/v4/groups/{id}/access_requests/{user_id}/approve":
     put:
       summary: Approve an access request
-      description: Approves an access request for a specified user in a specified
-        group or project.
+      description: Approves an access request for a specified user in a group.
       produces:
       - application/json
       consumes:
@@ -416,8 +416,8 @@ paths:
       operationId: putApiV4GroupsIdAccessRequestsUserIdApprove
   "/api/v4/groups/{id}/access_requests/{user_id}":
     delete:
-      summary: Denies an access request for the given user.
-      description: This feature was introduced in GitLab 8.11.
+      summary: Deny an access request
+      description: Denies an access request for a specified user in a group.
       produces:
       - application/json
       parameters:
@@ -441,9 +441,9 @@ paths:
       operationId: deleteApiV4GroupsIdAccessRequestsUserId
   "/api/v4/groups/{id}/epics/{epic_iid}/award_emoji":
     get:
-      summary: List an awardable's emoji reactions for groups
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for an epic
+      description: Lists all emoji reactions for a specified epic. This endpoint can
+        be accessed without authentication if the epic is publicly accessible.
       produces:
       - application/json
       parameters:
@@ -477,7 +477,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: List an awardable's emoji reactions for groups
+          description: List all emoji reactions for an epic
           schema:
             type: array
             items:
@@ -488,9 +488,8 @@ paths:
       - award_emoji
       operationId: getApiV4GroupsIdEpicsEpicIidAwardEmoji
     post:
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to an epic
+      description: Adds an emoji reaction to an epic.
       produces:
       - application/json
       consumes:
@@ -513,7 +512,7 @@ paths:
           "$ref": "#/definitions/postApiV4GroupsIdEpicsEpicIidAwardEmoji"
       responses:
         '201':
-          description: Add a new emoji reaction
+          description: Add an emoji reaction to an epic
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '400':
@@ -525,9 +524,9 @@ paths:
       operationId: postApiV4GroupsIdEpicsEpicIidAwardEmoji
   "/api/v4/groups/{id}/epics/{epic_iid}/award_emoji/{award_id}":
     get:
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from an epic
+      description: Retrieves a specified emoji reaction from an epic. This endpoint
+        can be accessed without authentication if the epic is publicly accessible.
       produces:
       - application/json
       parameters:
@@ -549,7 +548,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single emoji reaction
+          description: Retrieve an emoji reaction from an epic
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '404':
@@ -558,9 +557,9 @@ paths:
       - award_emoji
       operationId: getApiV4GroupsIdEpicsEpicIidAwardEmojiAwardId
     delete:
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from an epic
+      description: Deletes a specified emoji reaction from an epic. Only an administrator
+        or the user who added the reaction can delete it.
       produces:
       - application/json
       parameters:
@@ -582,7 +581,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete an emoji reaction
+          description: Delete an emoji reaction from an epic
         '401':
           description: Unauthorized
         '404':
@@ -592,9 +591,10 @@ paths:
       operationId: deleteApiV4GroupsIdEpicsEpicIidAwardEmojiAwardId
   "/api/v4/groups/{id}/epics/{epic_iid}/notes/{note_id}/award_emoji":
     get:
-      summary: List an awardable's emoji reactions for groups
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for an epic comment
+      description: Lists all emoji reactions for a specified comment on an epic. This
+        endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       produces:
       - application/json
       parameters:
@@ -631,7 +631,7 @@ paths:
         required: true
       responses:
         '200':
-          description: List an awardable's emoji reactions for groups
+          description: List all emoji reactions for an epic comment
           schema:
             type: array
             items:
@@ -642,9 +642,8 @@ paths:
       - award_emoji
       operationId: getApiV4GroupsIdEpicsEpicIidNotesNoteIdAwardEmoji
     post:
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to an epic comment
+      description: Adds an emoji reaction to a comment on an epic.
       produces:
       - application/json
       consumes:
@@ -672,7 +671,7 @@ paths:
           "$ref": "#/definitions/postApiV4GroupsIdEpicsEpicIidNotesNoteIdAwardEmoji"
       responses:
         '201':
-          description: Add a new emoji reaction
+          description: Add an emoji reaction to an epic comment
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '400':
@@ -684,9 +683,10 @@ paths:
       operationId: postApiV4GroupsIdEpicsEpicIidNotesNoteIdAwardEmoji
   "/api/v4/groups/{id}/epics/{epic_iid}/notes/{note_id}/award_emoji/{award_id}":
     get:
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from an epic comment
+      description: Retrieves a specified emoji reaction from a comment on an epic.
+        This endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       produces:
       - application/json
       parameters:
@@ -713,7 +713,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single emoji reaction
+          description: Retrieve an emoji reaction from an epic comment
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '404':
@@ -722,9 +722,9 @@ paths:
       - award_emoji
       operationId: getApiV4GroupsIdEpicsEpicIidNotesNoteIdAwardEmojiAwardId
     delete:
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from an epic comment
+      description: Deletes a specified emoji reaction from a comment on an epic. Only
+        an administrator or the user who added the reaction can delete it.
       produces:
       - application/json
       parameters:
@@ -751,7 +751,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete an emoji reaction
+          description: Delete an emoji reaction from an epic comment
         '401':
           description: Unauthorized
         '404':
@@ -761,8 +761,8 @@ paths:
       operationId: deleteApiV4GroupsIdEpicsEpicIidNotesNoteIdAwardEmojiAwardId
   "/api/v4/groups/{id}/badges":
     get:
-      summary: List group badges.
-      description: This feature was introduced in GitLab 10.6.
+      summary: List all badges for a group
+      description: Lists all badges for a specified group.
       produces:
       - application/json
       parameters:
@@ -795,7 +795,7 @@ paths:
         required: false
       responses:
         '200':
-          description: List group badges.
+          description: List all badges for a group
           schema:
             type: array
             items:
@@ -804,8 +804,8 @@ paths:
       - badges
       operationId: getApiV4GroupsIdBadges
     post:
-      summary: Add a badge to a group.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Create a badge for a group
+      description: Creates a badge for a specified group.
       produces:
       - application/json
       consumes:
@@ -824,7 +824,7 @@ paths:
           "$ref": "#/definitions/postApiV4GroupsIdBadges"
       responses:
         '201':
-          description: Add a badge to a group.
+          description: Create a badge for a group
           schema:
             "$ref": "#/definitions/API_Entities_Badge"
       tags:
@@ -832,8 +832,9 @@ paths:
       operationId: postApiV4GroupsIdBadges
   "/api/v4/groups/{id}/badges/render":
     get:
-      summary: Preview a badge from a group.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Retrieve a badge preview for a group
+      description: Previews the final `link_url` and `image_url` for a specified group
+        after resolving the placeholder interpolation.
       produces:
       - application/json
       parameters:
@@ -855,7 +856,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Preview a badge from a group.
+          description: Retrieve a badge preview for a group
           schema:
             "$ref": "#/definitions/API_Entities_BasicBadgeDetails"
       tags:
@@ -863,8 +864,8 @@ paths:
       operationId: getApiV4GroupsIdBadgesRender
   "/api/v4/groups/{id}/badges/{badge_id}":
     get:
-      summary: Get a badge of a group.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Retrieve a badge for a group
+      description: Retrieves a specified badge for a group.
       produces:
       - application/json
       parameters:
@@ -882,15 +883,15 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a badge of a group.
+          description: Retrieve a badge for a group
           schema:
             "$ref": "#/definitions/API_Entities_Badge"
       tags:
       - badges
       operationId: getApiV4GroupsIdBadgesBadgeId
     put:
-      summary: Update a badge of a group.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Update a badge for a group
+      description: Updates a specified badge for a group.
       produces:
       - application/json
       consumes:
@@ -914,15 +915,15 @@ paths:
           "$ref": "#/definitions/putApiV4GroupsIdBadgesBadgeId"
       responses:
         '200':
-          description: Update a badge of a group.
+          description: Update a badge for a group
           schema:
             "$ref": "#/definitions/API_Entities_Badge"
       tags:
       - badges
       operationId: putApiV4GroupsIdBadgesBadgeId
     delete:
-      summary: Remove a badge from the group.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Delete a badge from a group
+      description: Deletes a specified badge from a group.
       produces:
       - application/json
       parameters:
@@ -946,7 +947,8 @@ paths:
       operationId: deleteApiV4GroupsIdBadgesBadgeId
   "/api/v4/groups/{id}/custom_attributes":
     get:
-      description: Get all custom attributes on a group
+      summary: List all custom attributes for a group
+      description: Lists all custom attributes for a specified group.
       produces:
       - application/json
       parameters:
@@ -957,7 +959,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get all custom attributes on a group
+          description: List all custom attributes for a group
           schema:
             "$ref": "#/definitions/API_Entities_CustomAttribute"
       tags:
@@ -965,7 +967,8 @@ paths:
       operationId: getApiV4GroupsIdCustomAttributes
   "/api/v4/groups/{id}/custom_attributes/{key}":
     get:
-      description: Get a custom attribute on a group
+      summary: Retrieve a custom attribute for a group
+      description: Retrieves a specified custom attribute for a group.
       produces:
       - application/json
       parameters:
@@ -981,14 +984,17 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a custom attribute on a group
+          description: Retrieve a custom attribute for a group
           schema:
             "$ref": "#/definitions/API_Entities_CustomAttribute"
       tags:
       - custom_attributes
       operationId: getApiV4GroupsIdCustomAttributesKey
     put:
-      description: Set a custom attribute on a group
+      summary: Creates or updates a custom attribute for a group
+      description: Creates or updates a custom attribute for a specified group. If
+        the attribute already exists, it is updated, otherwise a new attribute is
+        created.
       produces:
       - application/json
       consumes:
@@ -1011,14 +1017,15 @@ paths:
           "$ref": "#/definitions/putApiV4GroupsIdCustomAttributesKey"
       responses:
         '200':
-          description: Set a custom attribute on a group
+          description: Creates or updates a custom attribute for a group
           schema:
             "$ref": "#/definitions/API_Entities_CustomAttribute"
       tags:
       - custom_attributes
       operationId: putApiV4GroupsIdCustomAttributesKey
     delete:
-      description: Delete a custom attribute on a group
+      summary: Delete a custom attribute for a group
+      description: Deletes a specified custom attribute for a group.
       produces:
       - application/json
       parameters:
@@ -1034,7 +1041,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete a custom attribute on a group
+          description: Delete a custom attribute for a group
       tags:
       - custom_attributes
       operationId: deleteApiV4GroupsIdCustomAttributesKey
@@ -9469,8 +9476,9 @@ paths:
       operationId: postApiV4GroupsIdWikisAttachments
   "/api/v4/projects/{id}/access_requests":
     get:
-      summary: Gets a list of access requests for a project.
-      description: This feature was introduced in GitLab 8.11.
+      summary: List all access requests for a project
+      description: Lists all access requests for a specified project that are viewable
+        by the authenticated user.
       produces:
       - application/json
       parameters:
@@ -9498,15 +9506,15 @@ paths:
         example: 20
       responses:
         '200':
-          description: Gets a list of access requests for a project.
+          description: List all access requests for a project
           schema:
             "$ref": "#/definitions/API_Entities_AccessRequester"
       tags:
       - access_requests
       operationId: getApiV4ProjectsIdAccessRequests
     post:
-      summary: Requests access for the authenticated user to a project.
-      description: This feature was introduced in GitLab 8.11.
+      summary: Request access to a project
+      description: Requests access to a specified project for the authenticated user.
       produces:
       - application/json
       consumes:
@@ -9520,7 +9528,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Requests access for the authenticated user to a project.
+          description: Request access to a project
           schema:
             "$ref": "#/definitions/API_Entities_AccessRequester"
       tags:
@@ -9529,8 +9537,7 @@ paths:
   "/api/v4/projects/{id}/access_requests/{user_id}/approve":
     put:
       summary: Approve an access request
-      description: Approves an access request for a specified user in a specified
-        group or project.
+      description: Approves an access request for a specified user in a project.
       produces:
       - application/json
       consumes:
@@ -9563,8 +9570,8 @@ paths:
       operationId: putApiV4ProjectsIdAccessRequestsUserIdApprove
   "/api/v4/projects/{id}/access_requests/{user_id}":
     delete:
-      summary: Denies an access request for the given user.
-      description: This feature was introduced in GitLab 8.11.
+      summary: Deny an access request
+      description: Denies an access request for a specified user in a project.
       produces:
       - application/json
       parameters:
@@ -9788,9 +9795,9 @@ paths:
       operationId: deleteApiV4ProjectsIdAlertManagementAlertsAlertIidMetricImagesMetricImageId
   "/api/v4/projects/{id}/issues/{issue_iid}/award_emoji":
     get:
-      summary: List an awardable's emoji reactions for projects
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for an issue
+      description: Lists all emoji reactions for a specified issue. This endpoint
+        can be accessed without authentication if the issue is publicly accessible.
       produces:
       - application/json
       parameters:
@@ -9824,7 +9831,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: List an awardable's emoji reactions for projects
+          description: List all emoji reactions for an issue
           schema:
             type: array
             items:
@@ -9835,9 +9842,8 @@ paths:
       - award_emoji
       operationId: getApiV4ProjectsIdIssuesIssueIidAwardEmoji
     post:
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to an issue
+      description: Adds an emoji reaction to an issue.
       produces:
       - application/json
       consumes:
@@ -9860,7 +9866,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdIssuesIssueIidAwardEmoji"
       responses:
         '201':
-          description: Add a new emoji reaction
+          description: Add an emoji reaction to an issue
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '400':
@@ -9872,9 +9878,9 @@ paths:
       operationId: postApiV4ProjectsIdIssuesIssueIidAwardEmoji
   "/api/v4/projects/{id}/issues/{issue_iid}/award_emoji/{award_id}":
     get:
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from an issue
+      description: Retrieves a specified emoji reaction from an issue. This endpoint
+        can be accessed without authentication if the issue is publicly accessible.
       produces:
       - application/json
       parameters:
@@ -9896,7 +9902,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single emoji reaction
+          description: Retrieve an emoji reaction from an issue
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '404':
@@ -9905,9 +9911,9 @@ paths:
       - award_emoji
       operationId: getApiV4ProjectsIdIssuesIssueIidAwardEmojiAwardId
     delete:
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from an issue
+      description: Deletes a specified emoji reaction from an issue. Only an administrator
+        or the user who added the reaction can delete it.
       produces:
       - application/json
       parameters:
@@ -9929,7 +9935,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete an emoji reaction
+          description: Delete an emoji reaction from an issue
         '401':
           description: Unauthorized
         '404':
@@ -9939,9 +9945,10 @@ paths:
       operationId: deleteApiV4ProjectsIdIssuesIssueIidAwardEmojiAwardId
   "/api/v4/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji":
     get:
-      summary: List an awardable's emoji reactions for projects
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for an issue comment
+      description: Lists all emoji reactions for a specified comment on an issue.
+        This endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       produces:
       - application/json
       parameters:
@@ -9978,7 +9985,7 @@ paths:
         required: true
       responses:
         '200':
-          description: List an awardable's emoji reactions for projects
+          description: List all emoji reactions for an issue comment
           schema:
             type: array
             items:
@@ -9989,9 +9996,8 @@ paths:
       - award_emoji
       operationId: getApiV4ProjectsIdIssuesIssueIidNotesNoteIdAwardEmoji
     post:
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to an issue comment
+      description: Adds an emoji reaction to a comment on an issue.
       produces:
       - application/json
       consumes:
@@ -10019,7 +10025,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdIssuesIssueIidNotesNoteIdAwardEmoji"
       responses:
         '201':
-          description: Add a new emoji reaction
+          description: Add an emoji reaction to an issue comment
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '400':
@@ -10031,9 +10037,10 @@ paths:
       operationId: postApiV4ProjectsIdIssuesIssueIidNotesNoteIdAwardEmoji
   "/api/v4/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji/{award_id}":
     get:
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from an issue comment
+      description: Retrieves a specified emoji reaction from a comment on an issue.
+        This endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       produces:
       - application/json
       parameters:
@@ -10060,7 +10067,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single emoji reaction
+          description: Retrieve an emoji reaction from an issue comment
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '404':
@@ -10069,9 +10076,9 @@ paths:
       - award_emoji
       operationId: getApiV4ProjectsIdIssuesIssueIidNotesNoteIdAwardEmojiAwardId
     delete:
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from an issue comment
+      description: Deletes a specified emoji reaction from a comment on an issue.
+        Only an administrator or the user who added the reaction can delete it.
       produces:
       - application/json
       parameters:
@@ -10098,7 +10105,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete an emoji reaction
+          description: Delete an emoji reaction from an issue comment
         '401':
           description: Unauthorized
         '404':
@@ -10108,9 +10115,9 @@ paths:
       operationId: deleteApiV4ProjectsIdIssuesIssueIidNotesNoteIdAwardEmojiAwardId
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/award_emoji":
     get:
-      summary: List an awardable's emoji reactions for projects
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for a merge request
+      description: Lists all emoji reactions for a specified merge request. This endpoint
+        can be accessed without authentication if the merge request is publicly accessible.
       produces:
       - application/json
       parameters:
@@ -10144,7 +10151,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: List an awardable's emoji reactions for projects
+          description: List all emoji reactions for a merge request
           schema:
             type: array
             items:
@@ -10155,9 +10162,8 @@ paths:
       - award_emoji
       operationId: getApiV4ProjectsIdMergeRequestsMergeRequestIidAwardEmoji
     post:
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to a merge request
+      description: Adds an emoji reaction to a merge request.
       produces:
       - application/json
       consumes:
@@ -10180,7 +10186,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdMergeRequestsMergeRequestIidAwardEmoji"
       responses:
         '201':
-          description: Add a new emoji reaction
+          description: Add an emoji reaction to a merge request
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '400':
@@ -10192,9 +10198,10 @@ paths:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidAwardEmoji
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/award_emoji/{award_id}":
     get:
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from a merge request
+      description: Retrieves a specified emoji reaction from a merge request. This
+        endpoint can be accessed without authentication if the merge request is publicly
+        accessible.
       produces:
       - application/json
       parameters:
@@ -10216,7 +10223,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single emoji reaction
+          description: Retrieve an emoji reaction from a merge request
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '404':
@@ -10225,9 +10232,9 @@ paths:
       - award_emoji
       operationId: getApiV4ProjectsIdMergeRequestsMergeRequestIidAwardEmojiAwardId
     delete:
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from a merge request
+      description: Deletes a specified emoji reaction from a merge request. Only an
+        administrator or the user who added the reaction can delete it.
       produces:
       - application/json
       parameters:
@@ -10249,7 +10256,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete an emoji reaction
+          description: Delete an emoji reaction from a merge request
         '401':
           description: Unauthorized
         '404':
@@ -10259,9 +10266,10 @@ paths:
       operationId: deleteApiV4ProjectsIdMergeRequestsMergeRequestIidAwardEmojiAwardId
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}/award_emoji":
     get:
-      summary: List an awardable's emoji reactions for projects
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for a merge request comment
+      description: Lists all emoji reactions for a specified comment on a merge request.
+        This endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       produces:
       - application/json
       parameters:
@@ -10298,7 +10306,7 @@ paths:
         required: true
       responses:
         '200':
-          description: List an awardable's emoji reactions for projects
+          description: List all emoji reactions for a merge request comment
           schema:
             type: array
             items:
@@ -10309,9 +10317,8 @@ paths:
       - award_emoji
       operationId: getApiV4ProjectsIdMergeRequestsMergeRequestIidNotesNoteIdAwardEmoji
     post:
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to a merge request comment
+      description: Adds an emoji reaction to a comment on a merge request.
       produces:
       - application/json
       consumes:
@@ -10339,7 +10346,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdMergeRequestsMergeRequestIidNotesNoteIdAwardEmoji"
       responses:
         '201':
-          description: Add a new emoji reaction
+          description: Add an emoji reaction to a merge request comment
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '400':
@@ -10351,9 +10358,10 @@ paths:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidNotesNoteIdAwardEmoji
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}/award_emoji/{award_id}":
     get:
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from a merge request comment
+      description: Retrieves a specified emoji reaction from a comment on a merge
+        request. This endpoint can be accessed without authentication if the comment
+        is publicly accessible.
       produces:
       - application/json
       parameters:
@@ -10380,7 +10388,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single emoji reaction
+          description: Retrieve an emoji reaction from a merge request comment
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '404':
@@ -10389,9 +10397,9 @@ paths:
       - award_emoji
       operationId: getApiV4ProjectsIdMergeRequestsMergeRequestIidNotesNoteIdAwardEmojiAwardId
     delete:
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from a merge request comment
+      description: Deletes a specified emoji reaction from a comment on a merge request.
+        Only an administrator or the user who added the reaction can delete it.
       produces:
       - application/json
       parameters:
@@ -10418,7 +10426,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete an emoji reaction
+          description: Delete an emoji reaction from a merge request comment
         '401':
           description: Unauthorized
         '404':
@@ -10428,9 +10436,9 @@ paths:
       operationId: deleteApiV4ProjectsIdMergeRequestsMergeRequestIidNotesNoteIdAwardEmojiAwardId
   "/api/v4/projects/{id}/snippets/{snippet_id}/award_emoji":
     get:
-      summary: List an awardable's emoji reactions for projects
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for a snippet
+      description: Lists all emoji reactions for a specified snippet. This endpoint
+        can be accessed without authentication if the snippet is publicly accessible.
       produces:
       - application/json
       parameters:
@@ -10464,7 +10472,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: List an awardable's emoji reactions for projects
+          description: List all emoji reactions for a snippet
           schema:
             type: array
             items:
@@ -10475,9 +10483,8 @@ paths:
       - award_emoji
       operationId: getApiV4ProjectsIdSnippetsSnippetIdAwardEmoji
     post:
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to a snippet
+      description: Adds an emoji reaction to a snippet.
       produces:
       - application/json
       consumes:
@@ -10500,7 +10507,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdSnippetsSnippetIdAwardEmoji"
       responses:
         '201':
-          description: Add a new emoji reaction
+          description: Add an emoji reaction to a snippet
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '400':
@@ -10512,9 +10519,9 @@ paths:
       operationId: postApiV4ProjectsIdSnippetsSnippetIdAwardEmoji
   "/api/v4/projects/{id}/snippets/{snippet_id}/award_emoji/{award_id}":
     get:
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from a snippet
+      description: Retrieves a specified emoji reaction from a snippet. This endpoint
+        can be accessed without authentication if the snippet is publicly accessible.
       produces:
       - application/json
       parameters:
@@ -10536,7 +10543,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single emoji reaction
+          description: Retrieve an emoji reaction from a snippet
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '404':
@@ -10545,9 +10552,9 @@ paths:
       - award_emoji
       operationId: getApiV4ProjectsIdSnippetsSnippetIdAwardEmojiAwardId
     delete:
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from a snippet
+      description: Deletes a specified emoji reaction from a snippet. Only an administrator
+        or the user who added the reaction can delete it.
       produces:
       - application/json
       parameters:
@@ -10569,7 +10576,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete an emoji reaction
+          description: Delete an emoji reaction from a snippet
         '401':
           description: Unauthorized
         '404':
@@ -10579,9 +10586,10 @@ paths:
       operationId: deleteApiV4ProjectsIdSnippetsSnippetIdAwardEmojiAwardId
   "/api/v4/projects/{id}/snippets/{snippet_id}/notes/{note_id}/award_emoji":
     get:
-      summary: List an awardable's emoji reactions for projects
-      description: Get a list of all emoji reactions for a specified awardable. This
-        feature was introduced in 8.9
+      summary: List all emoji reactions for a snippet comment
+      description: Lists all emoji reactions for a specified comment on a snippet.
+        This endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       produces:
       - application/json
       parameters:
@@ -10618,7 +10626,7 @@ paths:
         required: true
       responses:
         '200':
-          description: List an awardable's emoji reactions for projects
+          description: List all emoji reactions for a snippet comment
           schema:
             type: array
             items:
@@ -10629,9 +10637,8 @@ paths:
       - award_emoji
       operationId: getApiV4ProjectsIdSnippetsSnippetIdNotesNoteIdAwardEmoji
     post:
-      summary: Add a new emoji reaction
-      description: Add an emoji reaction on the specified awardable. This feature
-        was introduced in 8.9
+      summary: Add an emoji reaction to a snippet comment
+      description: Adds an emoji reaction to a comment on a snippet.
       produces:
       - application/json
       consumes:
@@ -10659,7 +10666,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdSnippetsSnippetIdNotesNoteIdAwardEmoji"
       responses:
         '201':
-          description: Add a new emoji reaction
+          description: Add an emoji reaction to a snippet comment
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '400':
@@ -10671,9 +10678,10 @@ paths:
       operationId: postApiV4ProjectsIdSnippetsSnippetIdNotesNoteIdAwardEmoji
   "/api/v4/projects/{id}/snippets/{snippet_id}/notes/{note_id}/award_emoji/{award_id}":
     get:
-      summary: Get a single emoji reaction
-      description: Get a single emoji reaction from an issue, snippet, or merge request.
-        This feature was introduced in 8.9
+      summary: Retrieve an emoji reaction from a snippet comment
+      description: Retrieves a specified emoji reaction from a comment on a snippet.
+        This endpoint can be accessed without authentication if the comment is publicly
+        accessible.
       produces:
       - application/json
       parameters:
@@ -10700,7 +10708,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single emoji reaction
+          description: Retrieve an emoji reaction from a snippet comment
           schema:
             "$ref": "#/definitions/API_Entities_AwardEmoji"
         '404':
@@ -10709,9 +10717,9 @@ paths:
       - award_emoji
       operationId: getApiV4ProjectsIdSnippetsSnippetIdNotesNoteIdAwardEmojiAwardId
     delete:
-      summary: Delete an emoji reaction
-      description: Only an administrator or the author of the reaction can delete
-        an emoji reaction. This feature was introduced in 8.9
+      summary: Delete an emoji reaction from a snippet comment
+      description: Deletes a specified emoji reaction from a comment on a snippet.
+        Only an administrator or the user who added the reaction can delete it.
       produces:
       - application/json
       parameters:
@@ -10738,7 +10746,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete an emoji reaction
+          description: Delete an emoji reaction from a snippet comment
         '401':
           description: Unauthorized
         '404':
@@ -10748,8 +10756,8 @@ paths:
       operationId: deleteApiV4ProjectsIdSnippetsSnippetIdNotesNoteIdAwardEmojiAwardId
   "/api/v4/projects/{id}/badges":
     get:
-      summary: List project badges.
-      description: This feature was introduced in GitLab 10.6.
+      summary: List all badges for a project
+      description: Lists all badges for a specified project, including group badges.
       produces:
       - application/json
       parameters:
@@ -10782,7 +10790,7 @@ paths:
         required: false
       responses:
         '200':
-          description: List project badges.
+          description: List all badges for a project
           schema:
             type: array
             items:
@@ -10791,8 +10799,8 @@ paths:
       - badges
       operationId: getApiV4ProjectsIdBadges
     post:
-      summary: Add a badge to a project.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Create a badge for a project
+      description: Creates a badge for a specified project.
       produces:
       - application/json
       consumes:
@@ -10811,7 +10819,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdBadges"
       responses:
         '201':
-          description: Add a badge to a project.
+          description: Create a badge for a project
           schema:
             "$ref": "#/definitions/API_Entities_Badge"
       tags:
@@ -10819,8 +10827,9 @@ paths:
       operationId: postApiV4ProjectsIdBadges
   "/api/v4/projects/{id}/badges/render":
     get:
-      summary: Preview a badge from a project.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Retrieve a badge preview for a project
+      description: Previews the final `link_url` and `image_url` for a specified project
+        after resolving the placeholder interpolation.
       produces:
       - application/json
       parameters:
@@ -10842,7 +10851,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Preview a badge from a project.
+          description: Retrieve a badge preview for a project
           schema:
             "$ref": "#/definitions/API_Entities_BasicBadgeDetails"
       tags:
@@ -10850,8 +10859,8 @@ paths:
       operationId: getApiV4ProjectsIdBadgesRender
   "/api/v4/projects/{id}/badges/{badge_id}":
     get:
-      summary: Get a badge of a project.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Retrieve a badge for a project
+      description: Retrieves a specified badge for a project.
       produces:
       - application/json
       parameters:
@@ -10869,15 +10878,15 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a badge of a project.
+          description: Retrieve a badge for a project
           schema:
             "$ref": "#/definitions/API_Entities_Badge"
       tags:
       - badges
       operationId: getApiV4ProjectsIdBadgesBadgeId
     put:
-      summary: Update a badge of a project.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Update a badge for a project
+      description: Updates a specified badge for a project.
       produces:
       - application/json
       consumes:
@@ -10901,15 +10910,15 @@ paths:
           "$ref": "#/definitions/putApiV4ProjectsIdBadgesBadgeId"
       responses:
         '200':
-          description: Update a badge of a project.
+          description: Update a badge for a project
           schema:
             "$ref": "#/definitions/API_Entities_Badge"
       tags:
       - badges
       operationId: putApiV4ProjectsIdBadgesBadgeId
     delete:
-      summary: Remove a badge from the project.
-      description: This feature was introduced in GitLab 10.6.
+      summary: Delete a badge from a project
+      description: Deletes a specified badge from a project.
       produces:
       - application/json
       parameters:
@@ -25424,8 +25433,8 @@ paths:
       operationId: deleteApiV4ProjectsIdIssuesIssueIidLinksIssueLinkId
   "/api/v4/projects/{id}/issues/{issue_iid}/time_estimate":
     post:
-      summary: Set a time estimate for a issue
-      description: Sets an estimated time of work for this issue.
+      summary: Set the estimated time for an issue
+      description: Sets an estimated time of work for a specified issue.
       produces:
       - application/json
       consumes:
@@ -25449,7 +25458,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdIssuesIssueIidTimeEstimate"
       responses:
         '201':
-          description: Set a time estimate for a issue
+          description: Set the estimated time for an issue
           schema:
             "$ref": "#/definitions/API_Entities_IssuableTimeStats"
         '401':
@@ -25463,8 +25472,8 @@ paths:
       operationId: postApiV4ProjectsIdIssuesIssueIidTimeEstimate
   "/api/v4/projects/{id}/issues/{issue_iid}/reset_time_estimate":
     post:
-      summary: Reset the time estimate for a project issue
-      description: Resets the estimated time for this issue to 0 seconds.
+      summary: Reset the estimated time for an issue
+      description: Resets the estimated time for a specified issue to `0` seconds.
       produces:
       - application/json
       consumes:
@@ -25483,7 +25492,7 @@ paths:
         required: true
       responses:
         '201':
-          description: Reset the time estimate for a project issue
+          description: Reset the estimated time for an issue
           schema:
             "$ref": "#/definitions/API_Entities_IssuableTimeStats"
         '401':
@@ -25495,8 +25504,8 @@ paths:
       operationId: postApiV4ProjectsIdIssuesIssueIidResetTimeEstimate
   "/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time":
     post:
-      summary: Add spent time for a issue
-      description: Adds spent time for this issue.
+      summary: Add spent time for an issue
+      description: Adds spent time for a specified issue.
       produces:
       - application/json
       consumes:
@@ -25520,7 +25529,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdIssuesIssueIidAddSpentTime"
       responses:
         '201':
-          description: Add spent time for a issue
+          description: Add spent time for an issue
           schema:
             "$ref": "#/definitions/API_Entities_IssuableTimeStats"
         '401':
@@ -25532,8 +25541,8 @@ paths:
       operationId: postApiV4ProjectsIdIssuesIssueIidAddSpentTime
   "/api/v4/projects/{id}/issues/{issue_iid}/reset_spent_time":
     post:
-      summary: Reset spent time for a issue
-      description: Resets the total spent time for this issue to 0 seconds.
+      summary: Reset spent time for an issue
+      description: Resets the total spent time for a specified issue to `0` seconds.
       produces:
       - application/json
       consumes:
@@ -25552,7 +25561,7 @@ paths:
         required: true
       responses:
         '201':
-          description: Reset spent time for a issue
+          description: Reset spent time for an issue
           schema:
             "$ref": "#/definitions/API_Entities_IssuableTimeStats"
         '401':
@@ -25564,8 +25573,10 @@ paths:
       operationId: postApiV4ProjectsIdIssuesIssueIidResetSpentTime
   "/api/v4/projects/{id}/issues/{issue_iid}/time_stats":
     get:
-      summary: Get time tracking stats
-      description: Get time tracking stats
+      summary: Retrieve time tracking stats for an issue
+      description: Retrieves time tracking stats for a specified issue, including
+        time estimate and time spent in seconds and human-readable format (for example,
+        `1h 30m`).
       produces:
       - application/json
       parameters:
@@ -25582,7 +25593,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get time tracking stats
+          description: Retrieve time tracking stats for an issue
           schema:
             "$ref": "#/definitions/API_Entities_IssuableTimeStats"
         '401':
@@ -27424,8 +27435,8 @@ paths:
       operationId: postApiV4ProjectsIdCreateCiConfig
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/time_estimate":
     post:
-      summary: Set a time estimate for a merge_request
-      description: Sets an estimated time of work for this merge_request.
+      summary: Set the estimated time for a merge request
+      description: Sets an estimated time of work for a specified merge request.
       produces:
       - application/json
       consumes:
@@ -27449,7 +27460,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdMergeRequestsMergeRequestIidTimeEstimate"
       responses:
         '201':
-          description: Set a time estimate for a merge_request
+          description: Set the estimated time for a merge request
           schema:
             "$ref": "#/definitions/API_Entities_IssuableTimeStats"
         '401':
@@ -27463,8 +27474,9 @@ paths:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidTimeEstimate
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/reset_time_estimate":
     post:
-      summary: Reset the time estimate for a project merge_request
-      description: Resets the estimated time for this merge_request to 0 seconds.
+      summary: Reset the estimated time for a merge request
+      description: Resets the estimated time for a specified merge request to `0`
+        seconds.
       produces:
       - application/json
       consumes:
@@ -27483,7 +27495,7 @@ paths:
         required: true
       responses:
         '201':
-          description: Reset the time estimate for a project merge_request
+          description: Reset the estimated time for a merge request
           schema:
             "$ref": "#/definitions/API_Entities_IssuableTimeStats"
         '401':
@@ -27495,8 +27507,8 @@ paths:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidResetTimeEstimate
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/add_spent_time":
     post:
-      summary: Add spent time for a merge_request
-      description: Adds spent time for this merge_request.
+      summary: Add spent time for a merge request
+      description: Adds spent time for a specified merge request.
       produces:
       - application/json
       consumes:
@@ -27520,7 +27532,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdMergeRequestsMergeRequestIidAddSpentTime"
       responses:
         '201':
-          description: Add spent time for a merge_request
+          description: Add spent time for a merge request
           schema:
             "$ref": "#/definitions/API_Entities_IssuableTimeStats"
         '401':
@@ -27532,8 +27544,9 @@ paths:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidAddSpentTime
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/reset_spent_time":
     post:
-      summary: Reset spent time for a merge_request
-      description: Resets the total spent time for this merge_request to 0 seconds.
+      summary: Reset spent time for a merge request
+      description: Resets the total spent time for a specified merge request to `0`
+        seconds.
       produces:
       - application/json
       consumes:
@@ -27552,7 +27565,7 @@ paths:
         required: true
       responses:
         '201':
-          description: Reset spent time for a merge_request
+          description: Reset spent time for a merge request
           schema:
             "$ref": "#/definitions/API_Entities_IssuableTimeStats"
         '401':
@@ -27564,8 +27577,10 @@ paths:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidResetSpentTime
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/time_stats":
     get:
-      summary: Get time tracking stats
-      description: Get time tracking stats
+      summary: Retrieve time tracking stats for a merge request
+      description: Retrieves time tracking stats for a specified merge request, including
+        time estimate and time spent in seconds and human-readable format (for example,
+        `1h 30m`).
       produces:
       - application/json
       parameters:
@@ -27582,7 +27597,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get time tracking stats
+          description: Retrieve time tracking stats for a merge request
           schema:
             "$ref": "#/definitions/API_Entities_IssuableTimeStats"
         '401':
@@ -28855,6 +28870,8 @@ paths:
           description: Approve merge request
           schema:
             "$ref": "#/definitions/API_Entities_MergeRequestApprovals"
+        '304':
+          description: Not modified
         '404':
           description: Not found
         '401':
@@ -28887,6 +28904,8 @@ paths:
           description: Unapprove a merge request
           schema:
             "$ref": "#/definitions/API_Entities_MergeRequestApprovals"
+        '304':
+          description: Not modified
         '404':
           description: Not found
         '401':
@@ -35663,7 +35682,8 @@ paths:
       operationId: getApiV4ProjectsIdTemplatesTypeName
   "/api/v4/projects/{id}/custom_attributes":
     get:
-      description: Get all custom attributes on a project
+      summary: List all custom attributes for a project
+      description: Lists all custom attributes for a specified project.
       produces:
       - application/json
       parameters:
@@ -35674,7 +35694,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get all custom attributes on a project
+          description: List all custom attributes for a project
           schema:
             "$ref": "#/definitions/API_Entities_CustomAttribute"
       tags:
@@ -35682,7 +35702,8 @@ paths:
       operationId: getApiV4ProjectsIdCustomAttributes
   "/api/v4/projects/{id}/custom_attributes/{key}":
     get:
-      description: Get a custom attribute on a project
+      summary: Retrieve a custom attribute for a project
+      description: Retrieves a specified custom attribute for a project.
       produces:
       - application/json
       parameters:
@@ -35698,14 +35719,17 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a custom attribute on a project
+          description: Retrieve a custom attribute for a project
           schema:
             "$ref": "#/definitions/API_Entities_CustomAttribute"
       tags:
       - custom_attributes
       operationId: getApiV4ProjectsIdCustomAttributesKey
     put:
-      description: Set a custom attribute on a project
+      summary: Creates or updates a custom attribute for a project
+      description: Creates or updates a custom attribute for a specified project.
+        If the attribute already exists, it is updated, otherwise a new attribute
+        is created.
       produces:
       - application/json
       consumes:
@@ -35728,14 +35752,15 @@ paths:
           "$ref": "#/definitions/putApiV4ProjectsIdCustomAttributesKey"
       responses:
         '200':
-          description: Set a custom attribute on a project
+          description: Creates or updates a custom attribute for a project
           schema:
             "$ref": "#/definitions/API_Entities_CustomAttribute"
       tags:
       - custom_attributes
       operationId: putApiV4ProjectsIdCustomAttributesKey
     delete:
-      description: Delete a custom attribute on a project
+      summary: Delete a custom attribute for a project
+      description: Deletes a specified custom attribute for a project.
       produces:
       - application/json
       parameters:
@@ -35751,7 +35776,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete a custom attribute on a project
+          description: Delete a custom attribute for a project
       tags:
       - custom_attributes
       operationId: deleteApiV4ProjectsIdCustomAttributesKey
@@ -49864,7 +49889,7 @@ definitions:
         description: Name of the emoji without colons.
     required:
     - name
-    description: Add a new emoji reaction
+    description: Add an emoji reaction to an epic
   postApiV4GroupsIdEpicsEpicIidNotesNoteIdAwardEmoji:
     type: object
     properties:
@@ -49873,7 +49898,7 @@ definitions:
         description: Name of the emoji without colons.
     required:
     - name
-    description: Add a new emoji reaction
+    description: Add an emoji reaction to an epic comment
   API_Entities_Badge:
     type: object
     properties:
@@ -49948,7 +49973,7 @@ definitions:
     required:
     - link_url
     - image_url
-    description: Add a badge to a group.
+    description: Create a badge for a group
   putApiV4GroupsIdBadgesBadgeId:
     type: object
     properties:
@@ -49961,7 +49986,7 @@ definitions:
       name:
         type: string
         description: Name for the badge
-    description: Update a badge of a group.
+    description: Update a badge for a group
   putApiV4GroupsIdCustomAttributesKey:
     type: object
     properties:
@@ -49970,7 +49995,7 @@ definitions:
         description: The value of the custom attribute
     required:
     - value
-    description: Set a custom attribute on a group
+    description: Creates or updates a custom attribute for a group
   API_Entities_Group:
     type: object
     properties:
@@ -52116,21 +52141,17 @@ definitions:
         type: boolean
         example: true
       minimum_access_level_execute:
-        type: integer
-        format: int32
-        example: 30
+        type: string
+        example: developer
       minimum_access_level_execute_async:
-        type: integer
-        format: int32
-        example: 30
+        type: string
+        example: developer
       minimum_access_level_manage:
-        type: integer
-        format: int32
-        example: 40
+        type: string
+        example: maintainer
       minimum_access_level_enable_on_projects:
-        type: integer
-        format: int32
-        example: 40
+        type: string
+        example: maintainer
     required:
     - duo_agent_platform_enabled
     - duo_workflow_mcp_enabled
@@ -52138,6 +52159,9 @@ definitions:
     - ai_catalog_restricted_to_group_hierarchy
     - ai_usage_data_collection_enabled
     - prompt_injection_protection_level
+    - include_recommended_allowed
+    - allow_all_unix_sockets
+    - allow_project_extension
   postApiV4GroupsIdTransfer:
     type: object
     properties:
@@ -57282,7 +57306,7 @@ definitions:
         description: Name of the emoji without colons.
     required:
     - name
-    description: Add a new emoji reaction
+    description: Add an emoji reaction to an issue
   postApiV4ProjectsIdIssuesIssueIidNotesNoteIdAwardEmoji:
     type: object
     properties:
@@ -57291,7 +57315,7 @@ definitions:
         description: Name of the emoji without colons.
     required:
     - name
-    description: Add a new emoji reaction
+    description: Add an emoji reaction to an issue comment
   postApiV4ProjectsIdMergeRequestsMergeRequestIidAwardEmoji:
     type: object
     properties:
@@ -57300,7 +57324,7 @@ definitions:
         description: Name of the emoji without colons.
     required:
     - name
-    description: Add a new emoji reaction
+    description: Add an emoji reaction to a merge request
   postApiV4ProjectsIdMergeRequestsMergeRequestIidNotesNoteIdAwardEmoji:
     type: object
     properties:
@@ -57309,7 +57333,7 @@ definitions:
         description: Name of the emoji without colons.
     required:
     - name
-    description: Add a new emoji reaction
+    description: Add an emoji reaction to a merge request comment
   postApiV4ProjectsIdSnippetsSnippetIdAwardEmoji:
     type: object
     properties:
@@ -57318,7 +57342,7 @@ definitions:
         description: Name of the emoji without colons.
     required:
     - name
-    description: Add a new emoji reaction
+    description: Add an emoji reaction to a snippet
   postApiV4ProjectsIdSnippetsSnippetIdNotesNoteIdAwardEmoji:
     type: object
     properties:
@@ -57327,7 +57351,7 @@ definitions:
         description: Name of the emoji without colons.
     required:
     - name
-    description: Add a new emoji reaction
+    description: Add an emoji reaction to a snippet comment
   postApiV4ProjectsIdBadges:
     type: object
     properties:
@@ -57343,7 +57367,7 @@ definitions:
     required:
     - link_url
     - image_url
-    description: Add a badge to a project.
+    description: Create a badge for a project
   putApiV4ProjectsIdBadgesBadgeId:
     type: object
     properties:
@@ -57356,7 +57380,7 @@ definitions:
       name:
         type: string
         description: Name for the badge
-    description: Update a badge of a project.
+    description: Update a badge for a project
   API_Entities_Branch:
     type: object
     properties:
@@ -65641,7 +65665,7 @@ definitions:
         example: 3h30m
     required:
     - duration
-    description: Set a time estimate for a issue
+    description: Set the estimated time for an issue
   postApiV4ProjectsIdIssuesIssueIidAddSpentTime:
     type: object
     properties:
@@ -65650,7 +65674,7 @@ definitions:
         description: The duration in human format.
     required:
     - duration
-    description: Add spent time for a issue
+    description: Add spent time for an issue
   postApiV4ProjectsIdIssues:
     type: object
     properties:
@@ -66446,7 +66470,7 @@ definitions:
         example: 3h30m
     required:
     - duration
-    description: Set a time estimate for a merge_request
+    description: Set the estimated time for a merge request
   postApiV4ProjectsIdMergeRequestsMergeRequestIidAddSpentTime:
     type: object
     properties:
@@ -66455,7 +66479,7 @@ definitions:
         description: The duration in human format.
     required:
     - duration
-    description: Add spent time for a merge_request
+    description: Add spent time for a merge request
   postApiV4ProjectsIdMergeRequests:
     type: object
     properties:
@@ -69343,7 +69367,7 @@ definitions:
         description: The value of the custom attribute
     required:
     - value
-    description: Set a custom attribute on a project
+    description: Creates or updates a custom attribute for a project
   postApiV4Projects:
     type: object
     properties:
@@ -78295,6 +78319,20 @@ definitions:
         - aws_secret_access_key
         - region
         - endpoint
+      gcs_configuration:
+        type: object
+        description: Google Cloud Storage configuration using a service account JSON
+          key
+        properties:
+          google_project:
+            type: string
+            description: Google Cloud project ID
+          google_json_key_string:
+            type: string
+            description: Google Cloud service account JSON key contents
+        required:
+        - google_project
+        - google_json_key_string
       gcs_hmac_configuration:
         type: object
         description: Google Cloud Storage configuration using S3-interoperability
@@ -78385,6 +78423,20 @@ definitions:
         - aws_secret_access_key
         - region
         - endpoint
+      gcs_configuration:
+        type: object
+        description: Google Cloud Storage configuration using a service account JSON
+          key
+        properties:
+          google_project:
+            type: string
+            description: Google Cloud project ID
+          google_json_key_string:
+            type: string
+            description: Google Cloud service account JSON key contents
+        required:
+        - google_project
+        - google_json_key_string
       gcs_hmac_configuration:
         type: object
         description: Google Cloud Storage configuration using S3-interoperability
