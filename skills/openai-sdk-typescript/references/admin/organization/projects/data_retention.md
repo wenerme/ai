@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/data_retention`
 
-Retrieve project data retention
+Retrieves project data retention controls.
 
 ### Parameters
 
@@ -71,7 +71,7 @@ console.log(projectDataRetention.object);
 
 **post** `/organization/projects/{project_id}/data_retention`
 
-Update project data retention
+Updates project data retention controls.
 
 ### Parameters
 

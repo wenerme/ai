@@ -4,7 +4,7 @@
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/cancel`
 
-Cancel fine-tuning
+Immediately cancel a fine-tune job.
 
 ### Parameters
 

@@ -4,7 +4,7 @@
 
 **get** `/organization/invites`
 
-List invites
+Returns a list of invites in the organization.
 
 ### Query Parameters
 
@@ -169,7 +169,7 @@ curl https://api.openai.com/v1/organization/invites?after=invite-abc&limit=20 \
 
 **post** `/organization/invites`
 
-Create invite
+Create an invite for a user to the organization. The invite must be accepted by the user before they have access to the organization.
 
 ### Body Parameters
 
@@ -351,7 +351,7 @@ curl -X POST https://api.openai.com/v1/organization/invites \
 
 **get** `/organization/invites/{invite_id}`
 
-Retrieve invite
+Retrieves an invite.
 
 ### Path Parameters
 
@@ -478,7 +478,7 @@ curl https://api.openai.com/v1/organization/invites/invite-abc \
 
 **delete** `/organization/invites/{invite_id}`
 
-Delete invite
+Delete an invite. If the invite has already been accepted, it cannot be deleted.
 
 ### Path Parameters
 

@@ -2,7 +2,7 @@
 
 **get** `/vector_stores`
 
-List vector stores
+Returns a list of vector stores.
 
 ### Query Parameters
 

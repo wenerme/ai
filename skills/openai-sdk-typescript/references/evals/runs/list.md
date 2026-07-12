@@ -4,7 +4,7 @@
 
 **get** `/evals/{eval_id}/runs`
 
-Get eval runs
+Get a list of runs for an evaluation.
 
 ### Parameters
 
@@ -1080,7 +1080,7 @@ Get eval runs
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1090,7 +1090,11 @@ Get eval runs
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 

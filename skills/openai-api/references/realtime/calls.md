@@ -4,7 +4,8 @@
 
 **post** `/realtime/calls/{call_id}/accept`
 
-Accept call
+Accept an incoming SIP call and configure the realtime session that will
+handle it.
 
 ### Path Parameters
 
@@ -28,7 +29,7 @@ Accept call
 
       The format of the input audio.
 
-      - `AudioPCM object { rate, type }`
+      - `PCMAudioFormat object { rate, type }`
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -44,7 +45,7 @@ Accept call
 
           - `"audio/pcm"`
 
-      - `AudioPCMU object { type }`
+      - `PCMUAudioFormat object { type }`
 
         The G.711 μ-law format.
 
@@ -54,7 +55,7 @@ Accept call
 
           - `"audio/pcmu"`
 
-      - `AudioPCMA object { type }`
+      - `PCMAAudioFormat object { type }`
 
         The G.711 A-law format.
 
@@ -80,7 +81,7 @@ Accept call
 
     - `transcription: optional AudioTranscription`
 
-      Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+      Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
       - `delay: optional "minimal" or "low" or "medium" or 2 more`
 
@@ -130,7 +131,7 @@ Accept call
 
         An optional text to guide the model's style or continue a previous audio
         segment.
-        For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+        For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
         For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
         Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -378,7 +379,7 @@ Accept call
 - `prompt: optional ResponsePrompt`
 
   Reference to a prompt template and its variables.
-  [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+  [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
   - `id: string`
 
@@ -418,7 +419,7 @@ Accept call
 
     - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-      An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+      An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
       - `detail: "low" or "high" or "auto" or "original"`
 
@@ -605,10 +606,10 @@ Accept call
 
       - `"function"`
 
-  - `Mcp object { server_label, type, allowed_callers, 9 more }`
+  - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
     Give the model access to additional tools via remote Model Context Protocol
-    (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+    (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
     - `server_label: string`
 
@@ -660,7 +661,7 @@ Accept call
 
       Identifier for service connectors, like those available in ChatGPT. One of
       `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-      about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+      about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
       Currently supported `connector_id` values are:
 
@@ -803,7 +804,7 @@ Accept call
 
   Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-  - `RealtimeTruncationStrategy = "auto" or "disabled"`
+  - `"auto" or "disabled"`
 
     The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -811,7 +812,7 @@ Accept call
 
     - `"disabled"`
 
-  - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+  - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
     Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -861,7 +862,8 @@ curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/accept \
 
 **post** `/realtime/calls/{call_id}/hangup`
 
-Hang up call
+End an active Realtime API call, whether it was initiated over SIP or
+WebRTC.
 
 ### Path Parameters
 
@@ -886,7 +888,7 @@ curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup \
 
 **post** `/realtime/calls/{call_id}/refer`
 
-Refer call
+Transfer an active SIP call to a new destination using the SIP REFER verb.
 
 ### Path Parameters
 
@@ -923,7 +925,7 @@ curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/refer \
 
 **post** `/realtime/calls/{call_id}/reject`
 
-Reject call
+Decline an incoming SIP call by returning a SIP status code to the caller.
 
 ### Path Parameters
 

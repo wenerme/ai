@@ -4,7 +4,7 @@
 
 **post** `/videos/{video_id}/remix`
 
-Remix video
+Create a remix of a completed video using a refreshed prompt.
 
 ### Parameters
 

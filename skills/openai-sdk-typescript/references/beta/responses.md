@@ -26,7 +26,13 @@ await client.beta.responses.connect();
 
 **post** `/responses?beta=true`
 
-Create a model response
+Creates a model response. Provide [text](https://platform.openai.com/docs/guides/text) or
+[image](https://platform.openai.com/docs/guides/images) inputs to generate [text](https://platform.openai.com/docs/guides/text)
+or [JSON](https://platform.openai.com/docs/guides/structured-outputs) outputs. Have the model call
+your own [custom code](https://platform.openai.com/docs/guides/function-calling) or use built-in
+[tools](https://platform.openai.com/docs/guides/tools) like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+or [file search](https://platform.openai.com/docs/guides/tools-file-search) to use your own data
+as input for the model's response.
 
 ### Parameters
 
@@ -256,13 +262,15 @@ Create a model response
 
             - `"developer"`
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type?: "message"`
 
@@ -503,13 +511,15 @@ Create a model response
 
               The canonical name of the agent that produced this item.
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `BetaResponseFileSearchToolCall`
 
@@ -1681,7 +1691,7 @@ Create a model response
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1691,7 +1701,11 @@ Create a model response
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `CompoundFilter`
 
@@ -1738,7 +1752,7 @@ Create a model response
 
                         - `"nin"`
 
-                      - `value: string | number | boolean | Array<unknown>`
+                      - `value: string | number | boolean | Array<string | number>`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1748,7 +1762,11 @@ Create a model response
 
                         - `boolean`
 
-                        - `Array<unknown>`
+                        - `Array<string | number>`
+
+                          - `string`
+
+                          - `number`
 
                     - `unknown`
 
@@ -5019,13 +5037,15 @@ Create a model response
 
           - `"developer"`
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type?: "message"`
 
@@ -5266,13 +5286,15 @@ Create a model response
 
             The canonical name of the agent that produced this item.
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `BetaResponseFileSearchToolCall`
 
@@ -6444,7 +6466,7 @@ Create a model response
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -6454,7 +6476,11 @@ Create a model response
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -6501,7 +6527,7 @@ Create a model response
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<unknown>`
+                    - `value: string | number | boolean | Array<string | number>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -6511,7 +6537,11 @@ Create a model response
 
                       - `boolean`
 
-                      - `Array<unknown>`
+                      - `Array<string | number>`
+
+                        - `string`
+
+                        - `number`
 
                   - `unknown`
 
@@ -12151,7 +12181,7 @@ console.log(response);
 
 **get** `/responses/{response_id}?beta=true`
 
-Get a model response
+Retrieves a model response with the given ID.
 
 ### Parameters
 
@@ -12460,13 +12490,15 @@ Get a model response
 
           - `"developer"`
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type?: "message"`
 
@@ -12707,13 +12739,15 @@ Get a model response
 
             The canonical name of the agent that produced this item.
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `BetaResponseFileSearchToolCall`
 
@@ -13885,7 +13919,7 @@ Get a model response
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -13895,7 +13929,11 @@ Get a model response
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -13942,7 +13980,7 @@ Get a model response
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<unknown>`
+                    - `value: string | number | boolean | Array<string | number>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -13952,7 +13990,11 @@ Get a model response
 
                       - `boolean`
 
-                      - `Array<unknown>`
+                      - `Array<string | number>`
+
+                        - `string`
+
+                        - `number`
 
                   - `unknown`
 
@@ -18885,7 +18927,7 @@ console.log(response);
 
 **delete** `/responses/{response_id}?beta=true`
 
-Delete a model response
+Deletes a model response with the given ID.
 
 ### Parameters
 
@@ -18937,7 +18979,9 @@ console.log(response);
 
 **post** `/responses/{response_id}/cancel?beta=true`
 
-Cancel a response
+Cancels a model response with the given ID. Only responses created with
+the `background` parameter set to `true` can be cancelled.
+[Learn more](https://platform.openai.com/docs/guides/background).
 
 ### Parameters
 
@@ -19180,13 +19224,15 @@ Cancel a response
 
           - `"developer"`
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type?: "message"`
 
@@ -19427,13 +19473,15 @@ Cancel a response
 
             The canonical name of the agent that produced this item.
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `BetaResponseFileSearchToolCall`
 
@@ -20605,7 +20653,7 @@ Cancel a response
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -20615,7 +20663,11 @@ Cancel a response
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -20662,7 +20714,7 @@ Cancel a response
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<unknown>`
+                    - `value: string | number | boolean | Array<string | number>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -20672,7 +20724,11 @@ Cancel a response
 
                       - `boolean`
 
-                      - `Array<unknown>`
+                      - `Array<string | number>`
+
+                        - `string`
+
+                        - `number`
 
                   - `unknown`
 
@@ -25596,7 +25652,9 @@ console.log(response);
 
 **post** `/responses/compact?beta=true`
 
-Compact a response
+Compact a conversation. Returns a compacted response object.
+
+Learn when and how to compact long-running conversations in the [conversation state guide](https://platform.openai.com/docs/guides/conversation-state#managing-the-context-window). For ZDR-compatible compaction details, see [Compaction (advanced)](https://platform.openai.com/docs/guides/conversation-state#compaction-advanced).
 
 ### Parameters
 
@@ -25951,13 +26009,15 @@ Compact a response
 
           - `"developer"`
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type?: "message"`
 
@@ -26198,13 +26258,15 @@ Compact a response
 
             The canonical name of the agent that produced this item.
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `BetaResponseFileSearchToolCall`
 
@@ -27376,7 +27438,7 @@ Compact a response
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -27386,7 +27448,11 @@ Compact a response
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -27433,7 +27499,7 @@ Compact a response
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<unknown>`
+                    - `value: string | number | boolean | Array<string | number>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -27443,7 +27509,11 @@ Compact a response
 
                       - `boolean`
 
-                      - `Array<unknown>`
+                      - `Array<string | number>`
+
+                        - `string`
+
+                        - `number`
 
                   - `unknown`
 
@@ -29843,13 +29913,15 @@ Compact a response
 
           The canonical name of the agent that produced this item.
 
-      - `phase?: "commentary" | null`
+      - `phase?: "commentary" | "final_answer" | null`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `BetaResponseFileSearchToolCall`
 
@@ -31212,7 +31284,7 @@ Compact a response
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -31222,7 +31294,11 @@ Compact a response
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `CompoundFilter`
 
@@ -31269,7 +31345,7 @@ Compact a response
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -31279,7 +31355,11 @@ Compact a response
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `unknown`
 
@@ -33629,13 +33709,15 @@ console.log(compactedResponse);
 
           The canonical name of the agent that produced this item.
 
-      - `phase?: "commentary" | null`
+      - `phase?: "commentary" | "final_answer" | null`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `BetaResponseFileSearchToolCall`
 
@@ -34998,7 +35080,7 @@ console.log(compactedResponse);
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -35008,7 +35090,11 @@ console.log(compactedResponse);
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `CompoundFilter`
 
@@ -35055,7 +35141,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -35065,7 +35151,11 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `unknown`
 
@@ -37873,13 +37963,15 @@ console.log(compactedResponse);
 
     - `"developer"`
 
-  - `phase?: "commentary" | null`
+  - `phase?: "commentary" | "final_answer" | null`
 
     Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
     For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
     phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
     - `"commentary"`
+
+    - `"final_answer"`
 
   - `type?: "message"`
 
@@ -37944,7 +38036,7 @@ console.log(compactedResponse);
 
         - `"nin"`
 
-      - `value: string | number | boolean | Array<unknown>`
+      - `value: string | number | boolean | Array<string | number>`
 
         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -37954,7 +38046,11 @@ console.log(compactedResponse);
 
         - `boolean`
 
-        - `Array<unknown>`
+        - `Array<string | number>`
+
+          - `string`
+
+          - `number`
 
     - `CompoundFilter`
 
@@ -38001,7 +38097,7 @@ console.log(compactedResponse);
 
             - `"nin"`
 
-          - `value: string | number | boolean | Array<unknown>`
+          - `value: string | number | boolean | Array<string | number>`
 
             The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -38011,7 +38107,11 @@ console.log(compactedResponse);
 
             - `boolean`
 
-            - `Array<unknown>`
+            - `Array<string | number>`
+
+              - `string`
+
+              - `number`
 
         - `unknown`
 
@@ -38730,13 +38830,15 @@ console.log(compactedResponse);
 
           - `"developer"`
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type?: "message"`
 
@@ -38977,13 +39079,15 @@ console.log(compactedResponse);
 
             The canonical name of the agent that produced this item.
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `BetaResponseFileSearchToolCall`
 
@@ -40155,7 +40259,7 @@ console.log(compactedResponse);
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -40165,7 +40269,11 @@ console.log(compactedResponse);
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -40212,7 +40320,7 @@ console.log(compactedResponse);
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<unknown>`
+                    - `value: string | number | boolean | Array<string | number>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -40222,7 +40330,11 @@ console.log(compactedResponse);
 
                       - `boolean`
 
-                      - `Array<unknown>`
+                      - `Array<string | number>`
+
+                        - `string`
+
+                        - `number`
 
                   - `unknown`
 
@@ -45712,13 +45824,15 @@ console.log(compactedResponse);
 
             - `"developer"`
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type?: "message"`
 
@@ -45959,13 +46073,15 @@ console.log(compactedResponse);
 
               The canonical name of the agent that produced this item.
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `BetaResponseFileSearchToolCall`
 
@@ -47137,7 +47253,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -47147,7 +47263,11 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `CompoundFilter`
 
@@ -47194,7 +47314,7 @@ console.log(compactedResponse);
 
                         - `"nin"`
 
-                      - `value: string | number | boolean | Array<unknown>`
+                      - `value: string | number | boolean | Array<string | number>`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -47204,7 +47324,11 @@ console.log(compactedResponse);
 
                         - `boolean`
 
-                        - `Array<unknown>`
+                        - `Array<string | number>`
+
+                          - `string`
+
+                          - `number`
 
                     - `unknown`
 
@@ -53209,13 +53333,15 @@ console.log(compactedResponse);
 
             - `"developer"`
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type?: "message"`
 
@@ -53456,13 +53582,15 @@ console.log(compactedResponse);
 
               The canonical name of the agent that produced this item.
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `BetaResponseFileSearchToolCall`
 
@@ -54634,7 +54762,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -54644,7 +54772,11 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `CompoundFilter`
 
@@ -54691,7 +54823,7 @@ console.log(compactedResponse);
 
                         - `"nin"`
 
-                      - `value: string | number | boolean | Array<unknown>`
+                      - `value: string | number | boolean | Array<string | number>`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -54701,7 +54833,11 @@ console.log(compactedResponse);
 
                         - `boolean`
 
-                        - `Array<unknown>`
+                        - `Array<string | number>`
+
+                          - `string`
+
+                          - `number`
 
                     - `unknown`
 
@@ -60061,13 +60197,15 @@ console.log(compactedResponse);
 
             - `"developer"`
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type?: "message"`
 
@@ -60308,13 +60446,15 @@ console.log(compactedResponse);
 
               The canonical name of the agent that produced this item.
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `BetaResponseFileSearchToolCall`
 
@@ -61486,7 +61626,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -61496,7 +61636,11 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `CompoundFilter`
 
@@ -61543,7 +61687,7 @@ console.log(compactedResponse);
 
                         - `"nin"`
 
-                      - `value: string | number | boolean | Array<unknown>`
+                      - `value: string | number | boolean | Array<string | number>`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -61553,7 +61697,11 @@ console.log(compactedResponse);
 
                         - `boolean`
 
-                        - `Array<unknown>`
+                        - `Array<string | number>`
+
+                          - `string`
+
+                          - `number`
 
                     - `unknown`
 
@@ -67841,13 +67989,15 @@ console.log(compactedResponse);
 
             - `"developer"`
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type?: "message"`
 
@@ -68088,13 +68238,15 @@ console.log(compactedResponse);
 
               The canonical name of the agent that produced this item.
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `BetaResponseFileSearchToolCall`
 
@@ -69266,7 +69418,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -69276,7 +69428,11 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `CompoundFilter`
 
@@ -69323,7 +69479,7 @@ console.log(compactedResponse);
 
                         - `"nin"`
 
-                      - `value: string | number | boolean | Array<unknown>`
+                      - `value: string | number | boolean | Array<string | number>`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -69333,7 +69489,11 @@ console.log(compactedResponse);
 
                         - `boolean`
 
-                        - `Array<unknown>`
+                        - `Array<string | number>`
+
+                          - `string`
+
+                          - `number`
 
                     - `unknown`
 
@@ -74283,13 +74443,15 @@ console.log(compactedResponse);
 
             - `"developer"`
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type?: "message"`
 
@@ -74530,13 +74692,15 @@ console.log(compactedResponse);
 
               The canonical name of the agent that produced this item.
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `BetaResponseFileSearchToolCall`
 
@@ -75708,7 +75872,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -75718,7 +75882,11 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `CompoundFilter`
 
@@ -75765,7 +75933,7 @@ console.log(compactedResponse);
 
                         - `"nin"`
 
-                      - `value: string | number | boolean | Array<unknown>`
+                      - `value: string | number | boolean | Array<string | number>`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -75775,7 +75943,11 @@ console.log(compactedResponse);
 
                         - `boolean`
 
-                        - `Array<unknown>`
+                        - `Array<string | number>`
+
+                          - `string`
+
+                          - `number`
 
                     - `unknown`
 
@@ -80459,6 +80631,7663 @@ console.log(compactedResponse);
 
       The canonical name of the agent that produced this item.
 
+### Beta Response Inject Created Event
+
+- `BetaResponseInjectCreatedEvent`
+
+  Emitted when all injected input items were validated and committed to the
+  active response.
+
+  - `response_id: string`
+
+    The ID of the response that accepted the input.
+
+  - `sequence_number: number`
+
+    The sequence number for this event.
+
+  - `type: "response.inject.created"`
+
+    The event discriminator. Always `response.inject.created`.
+
+    - `"response.inject.created"`
+
+  - `stream_id?: string`
+
+    The multiplexed WebSocket stream that emitted the event. This field is
+    present only when WebSocket multiplexing is enabled separately.
+
+### Beta Response Inject Event
+
+- `BetaResponseInjectEvent`
+
+  Injects input items into an active response over a WebSocket connection.
+  The items are validated and committed atomically. Currently, the server
+  accepts client-owned tool outputs that resume a waiting agent.
+
+  - `input: Array<BetaResponseInputItem>`
+
+    Input items to inject into the active response.
+
+    - `BetaEasyInputMessage`
+
+      A message input to the model with a role indicating instruction following
+      hierarchy. Instructions given with the `developer` or `system` role take
+      precedence over instructions given with the `user` role. Messages with the
+      `assistant` role are presumed to have been generated by the model in previous
+      interactions.
+
+      - `content: string | BetaResponseInputMessageContentList`
+
+        Text, image, or audio input to the model, used to generate a response.
+        Can also contain previous assistant responses.
+
+        - `string`
+
+        - `BetaResponseInputMessageContentList = Array<BetaResponseInputContent>`
+
+          A list of one or many input items to the model, containing different content
+          types.
+
+          - `BetaResponseInputText`
+
+            A text input to the model.
+
+            - `text: string`
+
+              The text input to the model.
+
+            - `type: "input_text"`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `BetaResponseInputImage`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+            - `detail: "low" | "high" | "auto" | "original"`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `type: "input_image"`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `file_id?: string | null`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url?: string | null`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `BetaResponseInputFile`
+
+            A file input to the model.
+
+            - `type: "input_file"`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `detail?: "auto" | "low" | "high"`
+
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+              - `"high"`
+
+            - `file_data?: string`
+
+              The content of the file to be sent to the model.
+
+            - `file_id?: string | null`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url?: string`
+
+              The URL of the file to be sent to the model.
+
+            - `filename?: string`
+
+              The name of the file to be sent to the model.
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+      - `role: "user" | "assistant" | "system" | "developer"`
+
+        The role of the message input. One of `user`, `assistant`, `system`, or
+        `developer`.
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"developer"`
+
+      - `phase?: "commentary" | "final_answer" | null`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+        For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+        phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
+
+      - `type?: "message"`
+
+        The type of the message input. Always `message`.
+
+        - `"message"`
+
+    - `Message`
+
+      A message input to the model with a role indicating instruction following
+      hierarchy. Instructions given with the `developer` or `system` role take
+      precedence over instructions given with the `user` role.
+
+      - `content: BetaResponseInputMessageContentList`
+
+        A list of one or many input items to the model, containing different content
+        types.
+
+      - `role: "user" | "system" | "developer"`
+
+        The role of the message input. One of `user`, `system`, or `developer`.
+
+        - `"user"`
+
+        - `"system"`
+
+        - `"developer"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `status?: "in_progress" | "completed" | "incomplete"`
+
+        The status of item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type?: "message"`
+
+        The type of the message input. Always set to `message`.
+
+        - `"message"`
+
+    - `BetaResponseOutputMessage`
+
+      An output message from the model.
+
+      - `id: string`
+
+        The unique ID of the output message.
+
+      - `content: Array<BetaResponseOutputText | BetaResponseOutputRefusal>`
+
+        The content of the output message.
+
+        - `BetaResponseOutputText`
+
+          A text output from the model.
+
+          - `annotations: Array<FileCitation | URLCitation | ContainerFileCitation | FilePath>`
+
+            The annotations of the text output.
+
+            - `FileCitation`
+
+              A citation to a file.
+
+              - `file_id: string`
+
+                The ID of the file.
+
+              - `filename: string`
+
+                The filename of the file cited.
+
+              - `index: number`
+
+                The index of the file in the list of files.
+
+              - `type: "file_citation"`
+
+                The type of the file citation. Always `file_citation`.
+
+                - `"file_citation"`
+
+            - `URLCitation`
+
+              A citation for a web resource used to generate a model response.
+
+              - `end_index: number`
+
+                The index of the last character of the URL citation in the message.
+
+              - `start_index: number`
+
+                The index of the first character of the URL citation in the message.
+
+              - `title: string`
+
+                The title of the web resource.
+
+              - `type: "url_citation"`
+
+                The type of the URL citation. Always `url_citation`.
+
+                - `"url_citation"`
+
+              - `url: string`
+
+                The URL of the web resource.
+
+            - `ContainerFileCitation`
+
+              A citation for a container file used to generate a model response.
+
+              - `container_id: string`
+
+                The ID of the container file.
+
+              - `end_index: number`
+
+                The index of the last character of the container file citation in the message.
+
+              - `file_id: string`
+
+                The ID of the file.
+
+              - `filename: string`
+
+                The filename of the container file cited.
+
+              - `start_index: number`
+
+                The index of the first character of the container file citation in the message.
+
+              - `type: "container_file_citation"`
+
+                The type of the container file citation. Always `container_file_citation`.
+
+                - `"container_file_citation"`
+
+            - `FilePath`
+
+              A path to a file.
+
+              - `file_id: string`
+
+                The ID of the file.
+
+              - `index: number`
+
+                The index of the file in the list of files.
+
+              - `type: "file_path"`
+
+                The type of the file path. Always `file_path`.
+
+                - `"file_path"`
+
+          - `text: string`
+
+            The text output from the model.
+
+          - `type: "output_text"`
+
+            The type of the output text. Always `output_text`.
+
+            - `"output_text"`
+
+          - `logprobs?: Array<Logprob>`
+
+            - `token: string`
+
+            - `bytes: Array<number>`
+
+            - `logprob: number`
+
+            - `top_logprobs: Array<TopLogprob>`
+
+              - `token: string`
+
+              - `bytes: Array<number>`
+
+              - `logprob: number`
+
+        - `BetaResponseOutputRefusal`
+
+          A refusal from the model.
+
+          - `refusal: string`
+
+            The refusal explanation from the model.
+
+          - `type: "refusal"`
+
+            The type of the refusal. Always `refusal`.
+
+            - `"refusal"`
+
+      - `role: "assistant"`
+
+        The role of the output message. Always `assistant`.
+
+        - `"assistant"`
+
+      - `status: "in_progress" | "completed" | "incomplete"`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "message"`
+
+        The type of the output message. Always `message`.
+
+        - `"message"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `phase?: "commentary" | "final_answer" | null`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+        For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+        phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
+
+    - `BetaResponseFileSearchToolCall`
+
+      The results of a file search tool call. See the
+      [file search guide](https://platform.openai.com/docs/guides/tools-file-search) for more information.
+
+      - `id: string`
+
+        The unique ID of the file search tool call.
+
+      - `queries: Array<string>`
+
+        The queries used to search for files.
+
+      - `status: "in_progress" | "searching" | "completed" | 2 more`
+
+        The status of the file search tool call. One of `in_progress`,
+        `searching`, `incomplete` or `failed`,
+
+        - `"in_progress"`
+
+        - `"searching"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+      - `type: "file_search_call"`
+
+        The type of the file search tool call. Always `file_search_call`.
+
+        - `"file_search_call"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `results?: Array<Result> | null`
+
+        The results of the file search tool call.
+
+        - `attributes?: Record<string, string | number | boolean> | null`
+
+          Set of 16 key-value pairs that can be attached to an object. This can be
+          useful for storing additional information about the object in a structured
+          format, and querying for objects via API or the dashboard. Keys are strings
+          with a maximum length of 64 characters. Values are strings with a maximum
+          length of 512 characters, booleans, or numbers.
+
+          - `string`
+
+          - `number`
+
+          - `boolean`
+
+        - `file_id?: string`
+
+          The unique ID of the file.
+
+        - `filename?: string`
+
+          The name of the file.
+
+        - `score?: number`
+
+          The relevance score of the file - a value between 0 and 1.
+
+        - `text?: string`
+
+          The text that was retrieved from the file.
+
+    - `BetaResponseComputerToolCall`
+
+      A tool call to a computer use tool. See the
+      [computer use guide](https://platform.openai.com/docs/guides/tools-computer-use) for more information.
+
+      - `id: string`
+
+        The unique ID of the computer call.
+
+      - `call_id: string`
+
+        An identifier used when responding to the tool call with output.
+
+      - `pending_safety_checks: Array<PendingSafetyCheck>`
+
+        The pending safety checks for the computer call.
+
+        - `id: string`
+
+          The ID of the pending safety check.
+
+        - `code?: string | null`
+
+          The type of the pending safety check.
+
+        - `message?: string | null`
+
+          Details about the pending safety check.
+
+      - `status: "in_progress" | "completed" | "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "computer_call"`
+
+        The type of the computer call. Always `computer_call`.
+
+        - `"computer_call"`
+
+      - `action?: BetaComputerAction`
+
+        A click action.
+
+        - `Click`
+
+          A click action.
+
+          - `button: "left" | "right" | "wheel" | 2 more`
+
+            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
+
+            - `"left"`
+
+            - `"right"`
+
+            - `"wheel"`
+
+            - `"back"`
+
+            - `"forward"`
+
+          - `type: "click"`
+
+            Specifies the event type. For a click action, this property is always `click`.
+
+            - `"click"`
+
+          - `x: number`
+
+            The x-coordinate where the click occurred.
+
+          - `y: number`
+
+            The y-coordinate where the click occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
+        - `DoubleClick`
+
+          A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
+
+          - `type: "double_click"`
+
+            Specifies the event type. For a double click action, this property is always set to `double_click`.
+
+            - `"double_click"`
+
+          - `x: number`
+
+            The x-coordinate where the double click occurred.
+
+          - `y: number`
+
+            The y-coordinate where the double click occurred.
+
+        - `Drag`
+
+          A drag action.
+
+          - `path: Array<Path>`
+
+            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
+
+            ```
+            [
+              { x: 100, y: 200 },
+              { x: 200, y: 300 }
+            ]
+            ```
+
+            - `x: number`
+
+              The x-coordinate.
+
+            - `y: number`
+
+              The y-coordinate.
+
+          - `type: "drag"`
+
+            Specifies the event type. For a drag action, this property is always set to `drag`.
+
+            - `"drag"`
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
+        - `Keypress`
+
+          A collection of keypresses the model would like to perform.
+
+          - `keys: Array<string>`
+
+            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
+
+          - `type: "keypress"`
+
+            Specifies the event type. For a keypress action, this property is always set to `keypress`.
+
+            - `"keypress"`
+
+        - `Move`
+
+          A mouse move action.
+
+          - `type: "move"`
+
+            Specifies the event type. For a move action, this property is always set to `move`.
+
+            - `"move"`
+
+          - `x: number`
+
+            The x-coordinate to move to.
+
+          - `y: number`
+
+            The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
+
+        - `Screenshot`
+
+          A screenshot action.
+
+          - `type: "screenshot"`
+
+            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
+
+            - `"screenshot"`
+
+        - `Scroll`
+
+          A scroll action.
+
+          - `scroll_x: number`
+
+            The horizontal scroll distance.
+
+          - `scroll_y: number`
+
+            The vertical scroll distance.
+
+          - `type: "scroll"`
+
+            Specifies the event type. For a scroll action, this property is always set to `scroll`.
+
+            - `"scroll"`
+
+          - `x: number`
+
+            The x-coordinate where the scroll occurred.
+
+          - `y: number`
+
+            The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
+
+        - `Type`
+
+          An action to type in text.
+
+          - `text: string`
+
+            The text to type.
+
+          - `type: "type"`
+
+            Specifies the event type. For a type action, this property is always set to `type`.
+
+            - `"type"`
+
+        - `Wait`
+
+          A wait action.
+
+          - `type: "wait"`
+
+            Specifies the event type. For a wait action, this property is always set to `wait`.
+
+            - `"wait"`
+
+      - `actions?: BetaComputerActionList`
+
+        Flattened batched actions for `computer_use`. Each action includes an
+        `type` discriminator and action-specific fields.
+
+        - `Click`
+
+          A click action.
+
+        - `DoubleClick`
+
+          A double click action.
+
+        - `Drag`
+
+          A drag action.
+
+        - `Keypress`
+
+          A collection of keypresses the model would like to perform.
+
+        - `Move`
+
+          A mouse move action.
+
+        - `Screenshot`
+
+          A screenshot action.
+
+        - `Scroll`
+
+          A scroll action.
+
+        - `Type`
+
+          An action to type in text.
+
+        - `Wait`
+
+          A wait action.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `ComputerCallOutput`
+
+      The output of a computer tool call.
+
+      - `call_id: string`
+
+        The ID of the computer tool call that produced the output.
+
+      - `output: BetaResponseComputerToolCallOutputScreenshot`
+
+        A computer screenshot image used with the computer use tool.
+
+        - `type: "computer_screenshot"`
+
+          Specifies the event type. For a computer screenshot, this property is
+          always set to `computer_screenshot`.
+
+          - `"computer_screenshot"`
+
+        - `file_id?: string`
+
+          The identifier of an uploaded file that contains the screenshot.
+
+        - `image_url?: string`
+
+          The URL of the screenshot image.
+
+      - `type: "computer_call_output"`
+
+        The type of the computer tool call output. Always `computer_call_output`.
+
+        - `"computer_call_output"`
+
+      - `id?: string | null`
+
+        The ID of the computer tool call output.
+
+      - `acknowledged_safety_checks?: Array<AcknowledgedSafetyCheck> | null`
+
+        The safety checks reported by the API that have been acknowledged by the developer.
+
+        - `id: string`
+
+          The ID of the pending safety check.
+
+        - `code?: string | null`
+
+          The type of the pending safety check.
+
+        - `message?: string | null`
+
+          Details about the pending safety check.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the message input. One of `in_progress`, `completed`, or `incomplete`. Populated when input items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `BetaResponseFunctionWebSearch`
+
+      The results of a web search tool call. See the
+      [web search guide](https://platform.openai.com/docs/guides/tools-web-search) for more information.
+
+      - `id: string`
+
+        The unique ID of the web search tool call.
+
+      - `action: Search | OpenPage | FindInPage`
+
+        An object describing the specific action taken in this web search call.
+        Includes details on how the model used the web (search, open_page, find_in_page).
+
+        - `Search`
+
+          Action type "search" - Performs a web search query.
+
+          - `type: "search"`
+
+            The action type.
+
+            - `"search"`
+
+          - `queries?: Array<string>`
+
+            The search queries.
+
+          - `query?: string`
+
+            The search query.
+
+          - `sources?: Array<Source>`
+
+            The sources used in the search.
+
+            - `type: "url"`
+
+              The type of source. Always `url`.
+
+              - `"url"`
+
+            - `url: string`
+
+              The URL of the source.
+
+        - `OpenPage`
+
+          Action type "open_page" - Opens a specific URL from search results.
+
+          - `type: "open_page"`
+
+            The action type.
+
+            - `"open_page"`
+
+          - `url?: string | null`
+
+            The URL opened by the model.
+
+        - `FindInPage`
+
+          Action type "find_in_page": Searches for a pattern within a loaded page.
+
+          - `pattern: string`
+
+            The pattern or text to search for within the page.
+
+          - `type: "find_in_page"`
+
+            The action type.
+
+            - `"find_in_page"`
+
+          - `url: string`
+
+            The URL of the page searched for the pattern.
+
+      - `status: "in_progress" | "searching" | "completed" | "failed"`
+
+        The status of the web search tool call.
+
+        - `"in_progress"`
+
+        - `"searching"`
+
+        - `"completed"`
+
+        - `"failed"`
+
+      - `type: "web_search_call"`
+
+        The type of the web search tool call. Always `web_search_call`.
+
+        - `"web_search_call"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `BetaResponseFunctionToolCall`
+
+      A tool call to run a function. See the
+      [function calling guide](https://platform.openai.com/docs/guides/function-calling) for more information.
+
+      - `arguments: string`
+
+        A JSON string of the arguments to pass to the function.
+
+      - `call_id: string`
+
+        The unique ID of the function tool call generated by the model.
+
+      - `name: string`
+
+        The name of the function to run.
+
+      - `type: "function_call"`
+
+        The type of the function tool call. Always `function_call`.
+
+        - `"function_call"`
+
+      - `id?: string`
+
+        The unique ID of the function tool call.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
+      - `namespace?: string`
+
+        The namespace of the function to run.
+
+      - `status?: "in_progress" | "completed" | "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `FunctionCallOutput`
+
+      The output of a function tool call.
+
+      - `call_id: string`
+
+        The unique ID of the function tool call generated by the model.
+
+      - `output: string | BetaResponseFunctionCallOutputItemList`
+
+        Text, image, or file output of the function tool call.
+
+        - `string`
+
+        - `BetaResponseFunctionCallOutputItemList = Array<BetaResponseFunctionCallOutputItem>`
+
+          An array of content outputs (text, image, file) for the function tool call.
+
+          - `BetaResponseInputTextContent`
+
+            A text input to the model.
+
+            - `text: string`
+
+              The text input to the model.
+
+            - `type: "input_text"`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `BetaResponseInputImageContent`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
+
+            - `type: "input_image"`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `detail?: "low" | "high" | "auto" | "original" | null`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `file_id?: string | null`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url?: string | null`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `BetaResponseInputFileContent`
+
+            A file input to the model.
+
+            - `type: "input_file"`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `detail?: "auto" | "low" | "high"`
+
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+              - `"high"`
+
+            - `file_data?: string | null`
+
+              The base64-encoded data of the file to be sent to the model.
+
+            - `file_id?: string | null`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url?: string | null`
+
+              The URL of the file to be sent to the model.
+
+            - `filename?: string | null`
+
+              The name of the file to be sent to the model.
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+      - `type: "function_call_output"`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `id?: string | null`
+
+        The unique ID of the function tool call output. Populated when this item is returned via API.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the item. One of `in_progress`, `completed`, or `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `AgentMessage`
+
+      A message routed between agents.
+
+      - `author: string`
+
+        The sending agent identity.
+
+      - `content: Array<BetaResponseInputTextContent | BetaResponseInputImageContent | EncryptedContent>`
+
+        Plaintext, image, or encrypted content sent between agents.
+
+        - `BetaResponseInputTextContent`
+
+          A text input to the model.
+
+        - `BetaResponseInputImageContent`
+
+          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
+
+        - `EncryptedContent`
+
+          Opaque encrypted content that Responses API decrypts inside trusted model execution.
+
+          - `encrypted_content: string`
+
+            Opaque encrypted content.
+
+          - `type: "encrypted_content"`
+
+            The type of the input item. Always `encrypted_content`.
+
+            - `"encrypted_content"`
+
+      - `recipient: string`
+
+        The destination agent identity.
+
+      - `type: "agent_message"`
+
+        The item type. Always `agent_message`.
+
+        - `"agent_message"`
+
+      - `id?: string | null`
+
+        The unique ID of this agent message item.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `MultiAgentCall`
+
+      - `action: "spawn_agent" | "interrupt_agent" | "list_agents" | 3 more`
+
+        The multi-agent action that was executed.
+
+        - `"spawn_agent"`
+
+        - `"interrupt_agent"`
+
+        - `"list_agents"`
+
+        - `"send_message"`
+
+        - `"followup_task"`
+
+        - `"wait_agent"`
+
+      - `arguments: string`
+
+        The action arguments as a JSON string.
+
+      - `call_id: string`
+
+        The unique ID linking this call to its output.
+
+      - `type: "multi_agent_call"`
+
+        The item type. Always `multi_agent_call`.
+
+        - `"multi_agent_call"`
+
+      - `id?: string | null`
+
+        The unique ID of this multi-agent call.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `MultiAgentCallOutput`
+
+      - `action: "spawn_agent" | "interrupt_agent" | "list_agents" | 3 more`
+
+        The multi-agent action that produced this result.
+
+        - `"spawn_agent"`
+
+        - `"interrupt_agent"`
+
+        - `"list_agents"`
+
+        - `"send_message"`
+
+        - `"followup_task"`
+
+        - `"wait_agent"`
+
+      - `call_id: string`
+
+        The unique ID of the multi-agent call.
+
+      - `output: Array<Output>`
+
+        Text output returned by the multi-agent action.
+
+        - `text: string`
+
+          The text content.
+
+        - `type: "output_text"`
+
+          The content type. Always `output_text`.
+
+          - `"output_text"`
+
+        - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+
+          Citations associated with the text content.
+
+          - `Array<UnionMember0>`
+
+            - `file_id: string`
+
+              The ID of the file.
+
+            - `filename: string`
+
+              The filename of the file cited.
+
+            - `index: number`
+
+              The index of the file in the list of files.
+
+            - `type: "file_citation"`
+
+              The citation type. Always `file_citation`.
+
+              - `"file_citation"`
+
+          - `Array<UnionMember1>`
+
+            - `end_index: number`
+
+              The index of the last character of the citation in the message.
+
+            - `start_index: number`
+
+              The index of the first character of the citation in the message.
+
+            - `title: string`
+
+              The title of the cited resource.
+
+            - `type: "url_citation"`
+
+              The citation type. Always `url_citation`.
+
+              - `"url_citation"`
+
+            - `url: string`
+
+              The URL of the cited resource.
+
+          - `Array<UnionMember2>`
+
+            - `container_id: string`
+
+              The ID of the container.
+
+            - `end_index: number`
+
+              The index of the last character of the citation in the message.
+
+            - `file_id: string`
+
+              The ID of the container file.
+
+            - `filename: string`
+
+              The filename of the container file cited.
+
+            - `start_index: number`
+
+              The index of the first character of the citation in the message.
+
+            - `type: "container_file_citation"`
+
+              The citation type. Always `container_file_citation`.
+
+              - `"container_file_citation"`
+
+      - `type: "multi_agent_call_output"`
+
+        The item type. Always `multi_agent_call_output`.
+
+        - `"multi_agent_call_output"`
+
+      - `id?: string | null`
+
+        The unique ID of this multi-agent call output.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `ToolSearchCall`
+
+      - `arguments: unknown`
+
+        The arguments supplied to the tool search call.
+
+      - `type: "tool_search_call"`
+
+        The item type. Always `tool_search_call`.
+
+        - `"tool_search_call"`
+
+      - `id?: string | null`
+
+        The unique ID of this tool search call.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `call_id?: string | null`
+
+        The unique ID of the tool search call generated by the model.
+
+      - `execution?: "server" | "client"`
+
+        Whether tool search was executed by the server or by the client.
+
+        - `"server"`
+
+        - `"client"`
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the tool search call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `BetaResponseToolSearchOutputItemParam`
+
+      - `tools: Array<BetaTool>`
+
+        The loaded tool definitions returned by the tool search output.
+
+        - `BetaFunctionTool`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `name: string`
+
+            The name of the function to call.
+
+          - `parameters: Record<string, unknown> | null`
+
+            A JSON schema object describing the parameters of the function.
+
+          - `strict: boolean | null`
+
+            Whether strict parameter validation is enforced for this function tool.
+
+          - `type: "function"`
+
+            The type of the function tool. Always `function`.
+
+            - `"function"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `defer_loading?: boolean`
+
+            Whether this function is deferred and loaded via tool search.
+
+          - `description?: string | null`
+
+            A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema?: Record<string, unknown> | null`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
+
+        - `BetaFileSearchTool`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `type: "file_search"`
+
+            The type of the file search tool. Always `file_search`.
+
+            - `"file_search"`
+
+          - `vector_store_ids: Array<string>`
+
+            The IDs of the vector stores to search.
+
+          - `filters?: ComparisonFilter | CompoundFilter | null`
+
+            A filter to apply.
+
+            - `ComparisonFilter`
+
+              A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+              - `key: string`
+
+                The key to compare against the value.
+
+              - `type: "eq" | "ne" | "gt" | 5 more`
+
+                Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                - `eq`: equals
+                - `ne`: not equal
+                - `gt`: greater than
+                - `gte`: greater than or equal
+                - `lt`: less than
+                - `lte`: less than or equal
+                - `in`: in
+                - `nin`: not in
+
+                - `"eq"`
+
+                - `"ne"`
+
+                - `"gt"`
+
+                - `"gte"`
+
+                - `"lt"`
+
+                - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
+
+              - `value: string | number | boolean | Array<string | number>`
+
+                The value to compare against the attribute key; supports string, number, or boolean types.
+
+                - `string`
+
+                - `number`
+
+                - `boolean`
+
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
+
+            - `CompoundFilter`
+
+              Combine multiple filters using `and` or `or`.
+
+              - `filters: Array<ComparisonFilter | unknown>`
+
+                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                - `ComparisonFilter`
+
+                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                  - `key: string`
+
+                    The key to compare against the value.
+
+                  - `type: "eq" | "ne" | "gt" | 5 more`
+
+                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                    - `eq`: equals
+                    - `ne`: not equal
+                    - `gt`: greater than
+                    - `gte`: greater than or equal
+                    - `lt`: less than
+                    - `lte`: less than or equal
+                    - `in`: in
+                    - `nin`: not in
+
+                    - `"eq"`
+
+                    - `"ne"`
+
+                    - `"gt"`
+
+                    - `"gte"`
+
+                    - `"lt"`
+
+                    - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
+
+                  - `value: string | number | boolean | Array<string | number>`
+
+                    The value to compare against the attribute key; supports string, number, or boolean types.
+
+                    - `string`
+
+                    - `number`
+
+                    - `boolean`
+
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
+
+                - `unknown`
+
+              - `type: "and" | "or"`
+
+                Type of operation: `and` or `or`.
+
+                - `"and"`
+
+                - `"or"`
+
+          - `max_num_results?: number`
+
+            The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+          - `ranking_options?: RankingOptions`
+
+            Ranking options for search.
+
+            - `hybrid_search?: HybridSearch`
+
+              Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+              - `embedding_weight: number`
+
+                The weight of the embedding in the reciprocal ranking fusion.
+
+              - `text_weight: number`
+
+                The weight of the text in the reciprocal ranking fusion.
+
+            - `ranker?: "auto" | "default-2024-11-15"`
+
+              The ranker to use for the file search.
+
+              - `"auto"`
+
+              - `"default-2024-11-15"`
+
+            - `score_threshold?: number`
+
+              The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+        - `BetaComputerTool`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `type: "computer"`
+
+            The type of the computer tool. Always `computer`.
+
+            - `"computer"`
+
+        - `BetaComputerUsePreviewTool`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `display_height: number`
+
+            The height of the computer display.
+
+          - `display_width: number`
+
+            The width of the computer display.
+
+          - `environment: "windows" | "mac" | "linux" | 2 more`
+
+            The type of computer environment to control.
+
+            - `"windows"`
+
+            - `"mac"`
+
+            - `"linux"`
+
+            - `"ubuntu"`
+
+            - `"browser"`
+
+          - `type: "computer_use_preview"`
+
+            The type of the computer use tool. Always `computer_use_preview`.
+
+            - `"computer_use_preview"`
+
+        - `BetaWebSearchTool`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `type: "web_search" | "web_search_2025_08_26"`
+
+            The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+            - `"web_search"`
+
+            - `"web_search_2025_08_26"`
+
+          - `filters?: Filters | null`
+
+            Filters for the search.
+
+            - `allowed_domains?: Array<string> | null`
+
+              Allowed domains for the search. If not provided, all domains are allowed.
+              Subdomains of the provided domains are allowed as well.
+
+              Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+          - `search_context_size?: "low" | "medium" | "high"`
+
+            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `user_location?: UserLocation | null`
+
+            The approximate location of the user.
+
+            - `city?: string | null`
+
+              Free text input for the city of the user, e.g. `San Francisco`.
+
+            - `country?: string | null`
+
+              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+            - `region?: string | null`
+
+              Free text input for the region of the user, e.g. `California`.
+
+            - `timezone?: string | null`
+
+              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+            - `type?: "approximate"`
+
+              The type of location approximation. Always `approximate`.
+
+              - `"approximate"`
+
+        - `Mcp`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `server_label: string`
+
+            A label for this MCP server, used to identify it in tool calls.
+
+          - `type: "mcp"`
+
+            The type of the MCP tool. Always `mcp`.
+
+            - `"mcp"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `allowed_tools?: Array<string> | McpToolFilter | null`
+
+            List of allowed tool names or a filter object.
+
+            - `Array<string>`
+
+            - `McpToolFilter`
+
+              A filter object to specify which tools are allowed.
+
+              - `read_only?: boolean`
+
+                Indicates whether or not a tool modifies data or is read-only. If an
+                MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                it will match this filter.
+
+              - `tool_names?: Array<string>`
+
+                List of allowed tool names.
+
+          - `authorization?: string`
+
+            An OAuth access token that can be used with a remote MCP server, either
+            with a custom MCP server URL or a service connector. Your application
+            must handle the OAuth authorization flow and provide the token here.
+
+          - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
+
+            Identifier for service connectors, like those available in ChatGPT. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+
+            Currently supported `connector_id` values are:
+
+            - Dropbox: `connector_dropbox`
+            - Gmail: `connector_gmail`
+            - Google Calendar: `connector_googlecalendar`
+            - Google Drive: `connector_googledrive`
+            - Microsoft Teams: `connector_microsoftteams`
+            - Outlook Calendar: `connector_outlookcalendar`
+            - Outlook Email: `connector_outlookemail`
+            - SharePoint: `connector_sharepoint`
+
+            - `"connector_dropbox"`
+
+            - `"connector_gmail"`
+
+            - `"connector_googlecalendar"`
+
+            - `"connector_googledrive"`
+
+            - `"connector_microsoftteams"`
+
+            - `"connector_outlookcalendar"`
+
+            - `"connector_outlookemail"`
+
+            - `"connector_sharepoint"`
+
+          - `defer_loading?: boolean`
+
+            Whether this MCP tool is deferred and discovered via tool search.
+
+          - `headers?: Record<string, string> | null`
+
+            Optional HTTP headers to send to the MCP server. Use for authentication
+            or other purposes.
+
+          - `require_approval?: McpToolApprovalFilter | "always" | "never" | null`
+
+            Specify which of the MCP server's tools require approval.
+
+            - `McpToolApprovalFilter`
+
+              Specify which of the MCP server's tools require approval. Can be
+              `always`, `never`, or a filter object associated with tools
+              that require approval.
+
+              - `always?: Always`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only?: boolean`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names?: Array<string>`
+
+                  List of allowed tool names.
+
+              - `never?: Never`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only?: boolean`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names?: Array<string>`
+
+                  List of allowed tool names.
+
+            - `"always" | "never"`
+
+              - `"always"`
+
+              - `"never"`
+
+          - `server_description?: string`
+
+            Optional description of the MCP server, used to provide more context.
+
+          - `server_url?: string`
+
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id?: string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
+
+        - `CodeInterpreter`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+          - `container: string | CodeInterpreterToolAuto`
+
+            The code interpreter container. Can be a container ID or an object that
+            specifies uploaded file IDs to make available to your code, along with an
+            optional `memory_limit` setting.
+
+            - `string`
+
+            - `CodeInterpreterToolAuto`
+
+              Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+              - `type: "auto"`
+
+                Always `auto`.
+
+                - `"auto"`
+
+              - `file_ids?: Array<string>`
+
+                An optional list of uploaded files to make available to your code.
+
+              - `memory_limit?: "1g" | "4g" | "16g" | "64g" | null`
+
+                The memory limit for the code interpreter container.
+
+                - `"1g"`
+
+                - `"4g"`
+
+                - `"16g"`
+
+                - `"64g"`
+
+              - `network_policy?: BetaContainerNetworkPolicyDisabled | BetaContainerNetworkPolicyAllowlist`
+
+                Network access policy for the container.
+
+                - `BetaContainerNetworkPolicyDisabled`
+
+                  - `type: "disabled"`
+
+                    Disable outbound network access. Always `disabled`.
+
+                    - `"disabled"`
+
+                - `BetaContainerNetworkPolicyAllowlist`
+
+                  - `allowed_domains: Array<string>`
+
+                    A list of allowed domains when type is `allowlist`.
+
+                  - `type: "allowlist"`
+
+                    Allow outbound network access only to specified domains. Always `allowlist`.
+
+                    - `"allowlist"`
+
+                  - `domain_secrets?: Array<BetaContainerNetworkPolicyDomainSecret>`
+
+                    Optional domain-scoped secrets for allowlisted domains.
+
+                    - `domain: string`
+
+                      The domain associated with the secret.
+
+                    - `name: string`
+
+                      The name of the secret to inject for the domain.
+
+                    - `value: string`
+
+                      The secret value to inject for the domain.
+
+          - `type: "code_interpreter"`
+
+            The type of the code interpreter tool. Always `code_interpreter`.
+
+            - `"code_interpreter"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
+        - `ImageGeneration`
+
+          A tool that generates images using the GPT image models.
+
+          - `type: "image_generation"`
+
+            The type of the image generation tool. Always `image_generation`.
+
+            - `"image_generation"`
+
+          - `action?: "generate" | "edit" | "auto"`
+
+            Whether to generate a new image or edit an existing image. Default: `auto`.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
+          - `background?: "transparent" | "opaque" | "auto"`
+
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `input_fidelity?: "high" | "low" | null`
+
+            Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+            - `"high"`
+
+            - `"low"`
+
+          - `input_image_mask?: InputImageMask`
+
+            Optional mask for inpainting. Contains `image_url`
+            (string, optional) and `file_id` (string, optional).
+
+            - `file_id?: string`
+
+              File ID for the mask image.
+
+            - `image_url?: string`
+
+              Base64-encoded mask image.
+
+          - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
+
+            The image generation model to use. Default: `gpt-image-1`.
+
+            - `(string & {})`
+
+            - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
+
+              - `"gpt-image-1"`
+
+              - `"gpt-image-1-mini"`
+
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
+
+          - `moderation?: "auto" | "low"`
+
+            Moderation level for the generated image. Default: `auto`.
+
+            - `"auto"`
+
+            - `"low"`
+
+          - `output_compression?: number`
+
+            Compression level for the output image. Default: 100.
+
+          - `output_format?: "png" | "webp" | "jpeg"`
+
+            The output format of the generated image. One of `png`, `webp`, or
+            `jpeg`. Default: `png`.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
+
+          - `partial_images?: number`
+
+            Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+          - `quality?: "low" | "medium" | "high" | "auto"`
+
+            The quality of the generated image. One of `low`, `medium`, `high`,
+            or `auto`. Default: `auto`.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"auto"`
+
+          - `size?: (string & {}) | "1024x1024" | "1024x1536" | "1536x1024" | "auto"`
+
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+
+            - `(string & {})`
+
+            - `"1024x1024" | "1024x1536" | "1536x1024" | "auto"`
+
+              - `"1024x1024"`
+
+              - `"1024x1536"`
+
+              - `"1536x1024"`
+
+              - `"auto"`
+
+        - `LocalShell`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+          - `type: "local_shell"`
+
+            The type of the local shell tool. Always `local_shell`.
+
+            - `"local_shell"`
+
+        - `BetaFunctionShellTool`
+
+          A tool that allows the model to execute shell commands.
+
+          - `type: "shell"`
+
+            The type of the shell tool. Always `shell`.
+
+            - `"shell"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `environment?: BetaContainerAuto | BetaLocalEnvironment | BetaContainerReference | null`
+
+            - `BetaContainerAuto`
+
+              - `type: "container_auto"`
+
+                Automatically creates a container for this request
+
+                - `"container_auto"`
+
+              - `file_ids?: Array<string>`
+
+                An optional list of uploaded files to make available to your code.
+
+              - `memory_limit?: "1g" | "4g" | "16g" | "64g" | null`
+
+                The memory limit for the container.
+
+                - `"1g"`
+
+                - `"4g"`
+
+                - `"16g"`
+
+                - `"64g"`
+
+              - `network_policy?: BetaContainerNetworkPolicyDisabled | BetaContainerNetworkPolicyAllowlist`
+
+                Network access policy for the container.
+
+                - `BetaContainerNetworkPolicyDisabled`
+
+                - `BetaContainerNetworkPolicyAllowlist`
+
+              - `skills?: Array<BetaSkillReference | BetaInlineSkill>`
+
+                An optional list of skills referenced by id or inline data.
+
+                - `BetaSkillReference`
+
+                  - `skill_id: string`
+
+                    The ID of the referenced skill.
+
+                  - `type: "skill_reference"`
+
+                    References a skill created with the /v1/skills endpoint.
+
+                    - `"skill_reference"`
+
+                  - `version?: string`
+
+                    Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                - `BetaInlineSkill`
+
+                  - `description: string`
+
+                    The description of the skill.
+
+                  - `name: string`
+
+                    The name of the skill.
+
+                  - `source: BetaInlineSkillSource`
+
+                    Inline skill payload
+
+                    - `data: string`
+
+                      Base64-encoded skill zip bundle.
+
+                    - `media_type: "application/zip"`
+
+                      The media type of the inline skill payload. Must be `application/zip`.
+
+                      - `"application/zip"`
+
+                    - `type: "base64"`
+
+                      The type of the inline skill source. Must be `base64`.
+
+                      - `"base64"`
+
+                  - `type: "inline"`
+
+                    Defines an inline skill for this request.
+
+                    - `"inline"`
+
+            - `BetaLocalEnvironment`
+
+              - `type: "local"`
+
+                Use a local computer environment.
+
+                - `"local"`
+
+              - `skills?: Array<BetaLocalSkill>`
+
+                An optional list of skills.
+
+                - `description: string`
+
+                  The description of the skill.
+
+                - `name: string`
+
+                  The name of the skill.
+
+                - `path: string`
+
+                  The path to the directory containing the skill.
+
+            - `BetaContainerReference`
+
+              - `container_id: string`
+
+                The ID of the referenced container.
+
+              - `type: "container_reference"`
+
+                References a container created with the /v1/containers endpoint
+
+                - `"container_reference"`
+
+        - `BetaCustomTool`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `name: string`
+
+            The name of the custom tool, used to identify it in tool calls.
+
+          - `type: "custom"`
+
+            The type of the custom tool. Always `custom`.
+
+            - `"custom"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `defer_loading?: boolean`
+
+            Whether this tool should be deferred and discovered via tool search.
+
+          - `description?: string`
+
+            Optional description of the custom tool, used to provide more context.
+
+          - `format?: Text | Grammar`
+
+            The input format for the custom tool. Default is unconstrained text.
+
+            - `Text`
+
+              Unconstrained free-form text.
+
+              - `type: "text"`
+
+                Unconstrained text format. Always `text`.
+
+                - `"text"`
+
+            - `Grammar`
+
+              A grammar defined by the user.
+
+              - `definition: string`
+
+                The grammar definition.
+
+              - `syntax: "lark" | "regex"`
+
+                The syntax of the grammar definition. One of `lark` or `regex`.
+
+                - `"lark"`
+
+                - `"regex"`
+
+              - `type: "grammar"`
+
+                Grammar format. Always `grammar`.
+
+                - `"grammar"`
+
+        - `BetaNamespaceTool`
+
+          Groups function/custom tools under a shared namespace.
+
+          - `description: string`
+
+            A description of the namespace shown to the model.
+
+          - `name: string`
+
+            The namespace name used in tool calls (for example, `crm`).
+
+          - `tools: Array<Function | BetaCustomTool>`
+
+            The function/custom tools available inside this namespace.
+
+            - `Function`
+
+              - `name: string`
+
+              - `type: "function"`
+
+                - `"function"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
+              - `defer_loading?: boolean`
+
+                Whether this function should be deferred and discovered via tool search.
+
+              - `description?: string | null`
+
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
+              - `parameters?: unknown`
+
+              - `strict?: boolean | null`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
+
+            - `BetaCustomTool`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `type: "namespace"`
+
+            The type of the tool. Always `namespace`.
+
+            - `"namespace"`
+
+        - `BetaToolSearchTool`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+          - `type: "tool_search"`
+
+            The type of the tool. Always `tool_search`.
+
+            - `"tool_search"`
+
+          - `description?: string | null`
+
+            Description shown to the model for a client-executed tool search tool.
+
+          - `execution?: "server" | "client"`
+
+            Whether tool search is executed by the server or by the client.
+
+            - `"server"`
+
+            - `"client"`
+
+          - `parameters?: unknown`
+
+            Parameter schema for a client-executed tool search tool.
+
+        - `BetaWebSearchPreviewTool`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `type: "web_search_preview" | "web_search_preview_2025_03_11"`
+
+            The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+            - `"web_search_preview"`
+
+            - `"web_search_preview_2025_03_11"`
+
+          - `search_content_types?: Array<"text" | "image">`
+
+            - `"text"`
+
+            - `"image"`
+
+          - `search_context_size?: "low" | "medium" | "high"`
+
+            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `user_location?: UserLocation | null`
+
+            The user's location.
+
+            - `type: "approximate"`
+
+              The type of location approximation. Always `approximate`.
+
+              - `"approximate"`
+
+            - `city?: string | null`
+
+              Free text input for the city of the user, e.g. `San Francisco`.
+
+            - `country?: string | null`
+
+              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+            - `region?: string | null`
+
+              Free text input for the region of the user, e.g. `California`.
+
+            - `timezone?: string | null`
+
+              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+        - `BetaApplyPatchTool`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: "apply_patch"`
+
+            The type of the tool. Always `apply_patch`.
+
+            - `"apply_patch"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+      - `type: "tool_search_output"`
+
+        The item type. Always `tool_search_output`.
+
+        - `"tool_search_output"`
+
+      - `id?: string | null`
+
+        The unique ID of this tool search output.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `call_id?: string | null`
+
+        The unique ID of the tool search call generated by the model.
+
+      - `execution?: "server" | "client"`
+
+        Whether tool search was executed by the server or by the client.
+
+        - `"server"`
+
+        - `"client"`
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the tool search output.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `AdditionalTools`
+
+      - `role: "developer"`
+
+        The role that provided the additional tools. Only `developer` is supported.
+
+        - `"developer"`
+
+      - `tools: Array<BetaTool>`
+
+        A list of additional tools made available at this item.
+
+        - `BetaFunctionTool`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `BetaFileSearchTool`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `BetaComputerTool`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `BetaComputerUsePreviewTool`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `BetaWebSearchTool`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `Mcp`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `CodeInterpreter`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
+
+        - `ImageGeneration`
+
+          A tool that generates images using the GPT image models.
+
+        - `LocalShell`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `BetaFunctionShellTool`
+
+          A tool that allows the model to execute shell commands.
+
+        - `BetaCustomTool`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `BetaNamespaceTool`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `BetaToolSearchTool`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `BetaWebSearchPreviewTool`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `BetaApplyPatchTool`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: "additional_tools"`
+
+        The item type. Always `additional_tools`.
+
+        - `"additional_tools"`
+
+      - `id?: string | null`
+
+        The unique ID of this additional tools item.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `BetaResponseReasoningItem`
+
+      A description of the chain of thought used by a reasoning model while generating
+      a response. Be sure to include these items in your `input` to the Responses API
+      for subsequent turns of a conversation if you are manually
+      [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+      - `id: string`
+
+        The unique identifier of the reasoning content.
+
+      - `summary: Array<Summary>`
+
+        Reasoning summary content.
+
+        - `text: string`
+
+          A summary of the reasoning output from the model so far.
+
+        - `type: "summary_text"`
+
+          The type of the object. Always `summary_text`.
+
+          - `"summary_text"`
+
+      - `type: "reasoning"`
+
+        The type of the object. Always `reasoning`.
+
+        - `"reasoning"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `content?: Array<Content>`
+
+        Reasoning text content.
+
+        - `text: string`
+
+          The reasoning text from the model.
+
+        - `type: "reasoning_text"`
+
+          The type of the reasoning text. Always `reasoning_text`.
+
+          - `"reasoning_text"`
+
+      - `encrypted_content?: string | null`
+
+        The encrypted content of the reasoning item - populated when a response is
+        generated with `reasoning.encrypted_content` in the `include` parameter.
+
+      - `status?: "in_progress" | "completed" | "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `BetaResponseCompactionItemParam`
+
+      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+
+      - `encrypted_content: string`
+
+        The encrypted content of the compaction summary.
+
+      - `type: "compaction"`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `id?: string | null`
+
+        The ID of the compaction item.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `ImageGenerationCall`
+
+      An image generation request made by the model.
+
+      - `id: string`
+
+        The unique ID of the image generation call.
+
+      - `result: string | null`
+
+        The generated image encoded in base64.
+
+      - `status: "in_progress" | "completed" | "generating" | "failed"`
+
+        The status of the image generation call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"generating"`
+
+        - `"failed"`
+
+      - `type: "image_generation_call"`
+
+        The type of the image generation call. Always `image_generation_call`.
+
+        - `"image_generation_call"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `BetaResponseCodeInterpreterToolCall`
+
+      A tool call to run code.
+
+      - `id: string`
+
+        The unique ID of the code interpreter tool call.
+
+      - `code: string | null`
+
+        The code to run, or null if not available.
+
+      - `container_id: string`
+
+        The ID of the container used to run the code.
+
+      - `outputs: Array<Logs | Image> | null`
+
+        The outputs generated by the code interpreter, such as logs or images.
+        Can be null if no outputs are available.
+
+        - `Logs`
+
+          The logs output from the code interpreter.
+
+          - `logs: string`
+
+            The logs output from the code interpreter.
+
+          - `type: "logs"`
+
+            The type of the output. Always `logs`.
+
+            - `"logs"`
+
+        - `Image`
+
+          The image output from the code interpreter.
+
+          - `type: "image"`
+
+            The type of the output. Always `image`.
+
+            - `"image"`
+
+          - `url: string`
+
+            The URL of the image output from the code interpreter.
+
+      - `status: "in_progress" | "completed" | "incomplete" | 2 more`
+
+        The status of the code interpreter tool call. Valid values are `in_progress`, `completed`, `incomplete`, `interpreting`, and `failed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"interpreting"`
+
+        - `"failed"`
+
+      - `type: "code_interpreter_call"`
+
+        The type of the code interpreter tool call. Always `code_interpreter_call`.
+
+        - `"code_interpreter_call"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `LocalShellCall`
+
+      A tool call to run a command on the local shell.
+
+      - `id: string`
+
+        The unique ID of the local shell call.
+
+      - `action: Action`
+
+        Execute a shell command on the server.
+
+        - `command: Array<string>`
+
+          The command to run.
+
+        - `env: Record<string, string>`
+
+          Environment variables to set for the command.
+
+        - `type: "exec"`
+
+          The type of the local shell action. Always `exec`.
+
+          - `"exec"`
+
+        - `timeout_ms?: number | null`
+
+          Optional timeout in milliseconds for the command.
+
+        - `user?: string | null`
+
+          Optional user to run the command as.
+
+        - `working_directory?: string | null`
+
+          Optional working directory to run the command in.
+
+      - `call_id: string`
+
+        The unique ID of the local shell tool call generated by the model.
+
+      - `status: "in_progress" | "completed" | "incomplete"`
+
+        The status of the local shell call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "local_shell_call"`
+
+        The type of the local shell call. Always `local_shell_call`.
+
+        - `"local_shell_call"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `LocalShellCallOutput`
+
+      The output of a local shell tool call.
+
+      - `id: string`
+
+        The unique ID of the local shell tool call generated by the model.
+
+      - `output: string`
+
+        A JSON string of the output of the local shell tool call.
+
+      - `type: "local_shell_call_output"`
+
+        The type of the local shell tool call output. Always `local_shell_call_output`.
+
+        - `"local_shell_call_output"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the item. One of `in_progress`, `completed`, or `incomplete`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `ShellCall`
+
+      A tool representing a request to execute one or more shell commands.
+
+      - `action: Action`
+
+        The shell commands and limits that describe how to run the tool call.
+
+        - `commands: Array<string>`
+
+          Ordered shell commands for the execution environment to run.
+
+        - `max_output_length?: number | null`
+
+          Maximum number of UTF-8 characters to capture from combined stdout and stderr output.
+
+        - `timeout_ms?: number | null`
+
+          Maximum wall-clock time in milliseconds to allow the shell commands to run.
+
+      - `call_id: string`
+
+        The unique ID of the shell tool call generated by the model.
+
+      - `type: "shell_call"`
+
+        The type of the item. Always `shell_call`.
+
+        - `"shell_call"`
+
+      - `id?: string | null`
+
+        The unique ID of the shell tool call. Populated when this item is returned via API.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `environment?: BetaLocalEnvironment | BetaContainerReference | null`
+
+        The environment to execute the shell commands in.
+
+        - `BetaLocalEnvironment`
+
+        - `BetaContainerReference`
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the shell call. One of `in_progress`, `completed`, or `incomplete`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `ShellCallOutput`
+
+      The streamed output items emitted by a shell tool call.
+
+      - `call_id: string`
+
+        The unique ID of the shell tool call generated by the model.
+
+      - `output: Array<BetaResponseFunctionShellCallOutputContent>`
+
+        Captured chunks of stdout and stderr output, along with their associated outcomes.
+
+        - `outcome: Timeout | Exit`
+
+          The exit or timeout outcome associated with this shell call.
+
+          - `Timeout`
+
+            Indicates that the shell call exceeded its configured time limit.
+
+            - `type: "timeout"`
+
+              The outcome type. Always `timeout`.
+
+              - `"timeout"`
+
+          - `Exit`
+
+            Indicates that the shell commands finished and returned an exit code.
+
+            - `exit_code: number`
+
+              The exit code returned by the shell process.
+
+            - `type: "exit"`
+
+              The outcome type. Always `exit`.
+
+              - `"exit"`
+
+        - `stderr: string`
+
+          Captured stderr output for the shell call.
+
+        - `stdout: string`
+
+          Captured stdout output for the shell call.
+
+      - `type: "shell_call_output"`
+
+        The type of the item. Always `shell_call_output`.
+
+        - `"shell_call_output"`
+
+      - `id?: string | null`
+
+        The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `max_output_length?: number | null`
+
+        The maximum number of UTF-8 characters captured for this shell call's combined output.
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the shell call output.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `ApplyPatchCall`
+
+      A tool call representing a request to create, delete, or update files using diff patches.
+
+      - `call_id: string`
+
+        The unique ID of the apply patch tool call generated by the model.
+
+      - `operation: CreateFile | DeleteFile | UpdateFile`
+
+        The specific create, delete, or update instruction for the apply_patch tool call.
+
+        - `CreateFile`
+
+          Instruction for creating a new file via the apply_patch tool.
+
+          - `diff: string`
+
+            Unified diff content to apply when creating the file.
+
+          - `path: string`
+
+            Path of the file to create relative to the workspace root.
+
+          - `type: "create_file"`
+
+            The operation type. Always `create_file`.
+
+            - `"create_file"`
+
+        - `DeleteFile`
+
+          Instruction for deleting an existing file via the apply_patch tool.
+
+          - `path: string`
+
+            Path of the file to delete relative to the workspace root.
+
+          - `type: "delete_file"`
+
+            The operation type. Always `delete_file`.
+
+            - `"delete_file"`
+
+        - `UpdateFile`
+
+          Instruction for updating an existing file via the apply_patch tool.
+
+          - `diff: string`
+
+            Unified diff content to apply to the existing file.
+
+          - `path: string`
+
+            Path of the file to update relative to the workspace root.
+
+          - `type: "update_file"`
+
+            The operation type. Always `update_file`.
+
+            - `"update_file"`
+
+      - `status: "in_progress" | "completed"`
+
+        The status of the apply patch tool call. One of `in_progress` or `completed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+      - `type: "apply_patch_call"`
+
+        The type of the item. Always `apply_patch_call`.
+
+        - `"apply_patch_call"`
+
+      - `id?: string | null`
+
+        The unique ID of the apply patch tool call. Populated when this item is returned via API.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+    - `ApplyPatchCallOutput`
+
+      The streamed output emitted by an apply patch tool call.
+
+      - `call_id: string`
+
+        The unique ID of the apply patch tool call generated by the model.
+
+      - `status: "completed" | "failed"`
+
+        The status of the apply patch tool call output. One of `completed` or `failed`.
+
+        - `"completed"`
+
+        - `"failed"`
+
+      - `type: "apply_patch_call_output"`
+
+        The type of the item. Always `apply_patch_call_output`.
+
+        - `"apply_patch_call_output"`
+
+      - `id?: string | null`
+
+        The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `output?: string | null`
+
+        Optional human-readable log text from the apply patch tool (e.g., patch results or errors).
+
+    - `McpListTools`
+
+      A list of tools available on an MCP server.
+
+      - `id: string`
+
+        The unique ID of the list.
+
+      - `server_label: string`
+
+        The label of the MCP server.
+
+      - `tools: Array<Tool>`
+
+        The tools available on the server.
+
+        - `input_schema: unknown`
+
+          The JSON schema describing the tool's input.
+
+        - `name: string`
+
+          The name of the tool.
+
+        - `annotations?: unknown`
+
+          Additional annotations about the tool.
+
+        - `description?: string | null`
+
+          The description of the tool.
+
+      - `type: "mcp_list_tools"`
+
+        The type of the item. Always `mcp_list_tools`.
+
+        - `"mcp_list_tools"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `error?: string | null`
+
+        Error message if the server could not list tools.
+
+    - `McpApprovalRequest`
+
+      A request for human approval of a tool invocation.
+
+      - `id: string`
+
+        The unique ID of the approval request.
+
+      - `arguments: string`
+
+        A JSON string of arguments for the tool.
+
+      - `name: string`
+
+        The name of the tool to run.
+
+      - `server_label: string`
+
+        The label of the MCP server making the request.
+
+      - `type: "mcp_approval_request"`
+
+        The type of the item. Always `mcp_approval_request`.
+
+        - `"mcp_approval_request"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `McpApprovalResponse`
+
+      A response to an MCP approval request.
+
+      - `approval_request_id: string`
+
+        The ID of the approval request being answered.
+
+      - `approve: boolean`
+
+        Whether the request was approved.
+
+      - `type: "mcp_approval_response"`
+
+        The type of the item. Always `mcp_approval_response`.
+
+        - `"mcp_approval_response"`
+
+      - `id?: string | null`
+
+        The unique ID of the approval response
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `reason?: string | null`
+
+        Optional reason for the decision.
+
+    - `McpCall`
+
+      An invocation of a tool on an MCP server.
+
+      - `id: string`
+
+        The unique ID of the tool call.
+
+      - `arguments: string`
+
+        A JSON string of the arguments passed to the tool.
+
+      - `name: string`
+
+        The name of the tool that was run.
+
+      - `server_label: string`
+
+        The label of the MCP server running the tool.
+
+      - `type: "mcp_call"`
+
+        The type of the item. Always `mcp_call`.
+
+        - `"mcp_call"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `approval_request_id?: string | null`
+
+        Unique identifier for the MCP tool call approval request.
+        Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
+
+      - `error?: string | null`
+
+        The error from the tool call, if any.
+
+      - `output?: string | null`
+
+        The output from the tool call.
+
+      - `status?: "in_progress" | "completed" | "incomplete" | 2 more`
+
+        The status of the tool call. One of `in_progress`, `completed`, `incomplete`, `calling`, or `failed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"calling"`
+
+        - `"failed"`
+
+    - `BetaResponseCustomToolCallOutput`
+
+      The output of a custom tool call from your code, being sent back to the model.
+
+      - `call_id: string`
+
+        The call ID, used to map this custom tool call output to a custom tool call.
+
+      - `output: string | Array<BetaResponseInputText | BetaResponseInputImage | BetaResponseInputFile>`
+
+        The output from the custom tool call generated by your code.
+        Can be a string or an list of output content.
+
+        - `string`
+
+        - `Array<BetaResponseInputText | BetaResponseInputImage | BetaResponseInputFile>`
+
+          - `BetaResponseInputText`
+
+            A text input to the model.
+
+          - `BetaResponseInputImage`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+          - `BetaResponseInputFile`
+
+            A file input to the model.
+
+      - `type: "custom_tool_call_output"`
+
+        The type of the custom tool call output. Always `custom_tool_call_output`.
+
+        - `"custom_tool_call_output"`
+
+      - `id?: string`
+
+        The unique ID of the custom tool call output in the OpenAI platform.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+    - `BetaResponseCustomToolCall`
+
+      A call to a custom tool created by the model.
+
+      - `call_id: string`
+
+        An identifier used to map this custom tool call to a tool call output.
+
+      - `input: string`
+
+        The input for the custom tool call generated by the model.
+
+      - `name: string`
+
+        The name of the custom tool being called.
+
+      - `type: "custom_tool_call"`
+
+        The type of the custom tool call. Always `custom_tool_call`.
+
+        - `"custom_tool_call"`
+
+      - `id?: string`
+
+        The unique ID of the custom tool call in the OpenAI platform.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
+      - `namespace?: string`
+
+        The namespace of the custom tool being called.
+
+    - `CompactionTrigger`
+
+      Compacts the current context. Must be the final input item.
+
+      - `type: "compaction_trigger"`
+
+        The type of the item. Always `compaction_trigger`.
+
+        - `"compaction_trigger"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `ItemReference`
+
+      An internal identifier for an item to reference.
+
+      - `id: string`
+
+        The ID of the item to reference.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `type?: "item_reference" | null`
+
+        The type of item to reference. Always `item_reference`.
+
+        - `"item_reference"`
+
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of this program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The item type. Always `program`.
+
+        - `"program"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of this program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The item type. Always `program_output`.
+
+        - `"program_output"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+  - `response_id: string`
+
+    The ID of the active response that should receive the input.
+
+  - `type: "response.inject"`
+
+    The event discriminator. Always `response.inject`.
+
+    - `"response.inject"`
+
+### Beta Response Inject Failed Event
+
+- `BetaResponseInjectFailedEvent`
+
+  Emitted when injected input could not be committed to a response. The event
+  returns the uncommitted raw input so the client can retry it in another
+  response when appropriate.
+
+  - `error: Error`
+
+    Information about why the input was not committed.
+
+    - `code: "response_already_completed" | "response_not_found"`
+
+      A machine-readable error code.
+
+      - `"response_already_completed"`
+
+      - `"response_not_found"`
+
+    - `message: string`
+
+      A human-readable description of the error.
+
+  - `input: Array<BetaResponseInputItem>`
+
+    The raw input items that were not committed.
+
+    - `BetaEasyInputMessage`
+
+      A message input to the model with a role indicating instruction following
+      hierarchy. Instructions given with the `developer` or `system` role take
+      precedence over instructions given with the `user` role. Messages with the
+      `assistant` role are presumed to have been generated by the model in previous
+      interactions.
+
+      - `content: string | BetaResponseInputMessageContentList`
+
+        Text, image, or audio input to the model, used to generate a response.
+        Can also contain previous assistant responses.
+
+        - `string`
+
+        - `BetaResponseInputMessageContentList = Array<BetaResponseInputContent>`
+
+          A list of one or many input items to the model, containing different content
+          types.
+
+          - `BetaResponseInputText`
+
+            A text input to the model.
+
+            - `text: string`
+
+              The text input to the model.
+
+            - `type: "input_text"`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `BetaResponseInputImage`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+            - `detail: "low" | "high" | "auto" | "original"`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `type: "input_image"`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `file_id?: string | null`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url?: string | null`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `BetaResponseInputFile`
+
+            A file input to the model.
+
+            - `type: "input_file"`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `detail?: "auto" | "low" | "high"`
+
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+              - `"high"`
+
+            - `file_data?: string`
+
+              The content of the file to be sent to the model.
+
+            - `file_id?: string | null`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url?: string`
+
+              The URL of the file to be sent to the model.
+
+            - `filename?: string`
+
+              The name of the file to be sent to the model.
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+      - `role: "user" | "assistant" | "system" | "developer"`
+
+        The role of the message input. One of `user`, `assistant`, `system`, or
+        `developer`.
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"developer"`
+
+      - `phase?: "commentary" | "final_answer" | null`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+        For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+        phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
+
+      - `type?: "message"`
+
+        The type of the message input. Always `message`.
+
+        - `"message"`
+
+    - `Message`
+
+      A message input to the model with a role indicating instruction following
+      hierarchy. Instructions given with the `developer` or `system` role take
+      precedence over instructions given with the `user` role.
+
+      - `content: BetaResponseInputMessageContentList`
+
+        A list of one or many input items to the model, containing different content
+        types.
+
+      - `role: "user" | "system" | "developer"`
+
+        The role of the message input. One of `user`, `system`, or `developer`.
+
+        - `"user"`
+
+        - `"system"`
+
+        - `"developer"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `status?: "in_progress" | "completed" | "incomplete"`
+
+        The status of item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type?: "message"`
+
+        The type of the message input. Always set to `message`.
+
+        - `"message"`
+
+    - `BetaResponseOutputMessage`
+
+      An output message from the model.
+
+      - `id: string`
+
+        The unique ID of the output message.
+
+      - `content: Array<BetaResponseOutputText | BetaResponseOutputRefusal>`
+
+        The content of the output message.
+
+        - `BetaResponseOutputText`
+
+          A text output from the model.
+
+          - `annotations: Array<FileCitation | URLCitation | ContainerFileCitation | FilePath>`
+
+            The annotations of the text output.
+
+            - `FileCitation`
+
+              A citation to a file.
+
+              - `file_id: string`
+
+                The ID of the file.
+
+              - `filename: string`
+
+                The filename of the file cited.
+
+              - `index: number`
+
+                The index of the file in the list of files.
+
+              - `type: "file_citation"`
+
+                The type of the file citation. Always `file_citation`.
+
+                - `"file_citation"`
+
+            - `URLCitation`
+
+              A citation for a web resource used to generate a model response.
+
+              - `end_index: number`
+
+                The index of the last character of the URL citation in the message.
+
+              - `start_index: number`
+
+                The index of the first character of the URL citation in the message.
+
+              - `title: string`
+
+                The title of the web resource.
+
+              - `type: "url_citation"`
+
+                The type of the URL citation. Always `url_citation`.
+
+                - `"url_citation"`
+
+              - `url: string`
+
+                The URL of the web resource.
+
+            - `ContainerFileCitation`
+
+              A citation for a container file used to generate a model response.
+
+              - `container_id: string`
+
+                The ID of the container file.
+
+              - `end_index: number`
+
+                The index of the last character of the container file citation in the message.
+
+              - `file_id: string`
+
+                The ID of the file.
+
+              - `filename: string`
+
+                The filename of the container file cited.
+
+              - `start_index: number`
+
+                The index of the first character of the container file citation in the message.
+
+              - `type: "container_file_citation"`
+
+                The type of the container file citation. Always `container_file_citation`.
+
+                - `"container_file_citation"`
+
+            - `FilePath`
+
+              A path to a file.
+
+              - `file_id: string`
+
+                The ID of the file.
+
+              - `index: number`
+
+                The index of the file in the list of files.
+
+              - `type: "file_path"`
+
+                The type of the file path. Always `file_path`.
+
+                - `"file_path"`
+
+          - `text: string`
+
+            The text output from the model.
+
+          - `type: "output_text"`
+
+            The type of the output text. Always `output_text`.
+
+            - `"output_text"`
+
+          - `logprobs?: Array<Logprob>`
+
+            - `token: string`
+
+            - `bytes: Array<number>`
+
+            - `logprob: number`
+
+            - `top_logprobs: Array<TopLogprob>`
+
+              - `token: string`
+
+              - `bytes: Array<number>`
+
+              - `logprob: number`
+
+        - `BetaResponseOutputRefusal`
+
+          A refusal from the model.
+
+          - `refusal: string`
+
+            The refusal explanation from the model.
+
+          - `type: "refusal"`
+
+            The type of the refusal. Always `refusal`.
+
+            - `"refusal"`
+
+      - `role: "assistant"`
+
+        The role of the output message. Always `assistant`.
+
+        - `"assistant"`
+
+      - `status: "in_progress" | "completed" | "incomplete"`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "message"`
+
+        The type of the output message. Always `message`.
+
+        - `"message"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `phase?: "commentary" | "final_answer" | null`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+        For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+        phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
+
+    - `BetaResponseFileSearchToolCall`
+
+      The results of a file search tool call. See the
+      [file search guide](https://platform.openai.com/docs/guides/tools-file-search) for more information.
+
+      - `id: string`
+
+        The unique ID of the file search tool call.
+
+      - `queries: Array<string>`
+
+        The queries used to search for files.
+
+      - `status: "in_progress" | "searching" | "completed" | 2 more`
+
+        The status of the file search tool call. One of `in_progress`,
+        `searching`, `incomplete` or `failed`,
+
+        - `"in_progress"`
+
+        - `"searching"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+      - `type: "file_search_call"`
+
+        The type of the file search tool call. Always `file_search_call`.
+
+        - `"file_search_call"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `results?: Array<Result> | null`
+
+        The results of the file search tool call.
+
+        - `attributes?: Record<string, string | number | boolean> | null`
+
+          Set of 16 key-value pairs that can be attached to an object. This can be
+          useful for storing additional information about the object in a structured
+          format, and querying for objects via API or the dashboard. Keys are strings
+          with a maximum length of 64 characters. Values are strings with a maximum
+          length of 512 characters, booleans, or numbers.
+
+          - `string`
+
+          - `number`
+
+          - `boolean`
+
+        - `file_id?: string`
+
+          The unique ID of the file.
+
+        - `filename?: string`
+
+          The name of the file.
+
+        - `score?: number`
+
+          The relevance score of the file - a value between 0 and 1.
+
+        - `text?: string`
+
+          The text that was retrieved from the file.
+
+    - `BetaResponseComputerToolCall`
+
+      A tool call to a computer use tool. See the
+      [computer use guide](https://platform.openai.com/docs/guides/tools-computer-use) for more information.
+
+      - `id: string`
+
+        The unique ID of the computer call.
+
+      - `call_id: string`
+
+        An identifier used when responding to the tool call with output.
+
+      - `pending_safety_checks: Array<PendingSafetyCheck>`
+
+        The pending safety checks for the computer call.
+
+        - `id: string`
+
+          The ID of the pending safety check.
+
+        - `code?: string | null`
+
+          The type of the pending safety check.
+
+        - `message?: string | null`
+
+          Details about the pending safety check.
+
+      - `status: "in_progress" | "completed" | "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "computer_call"`
+
+        The type of the computer call. Always `computer_call`.
+
+        - `"computer_call"`
+
+      - `action?: BetaComputerAction`
+
+        A click action.
+
+        - `Click`
+
+          A click action.
+
+          - `button: "left" | "right" | "wheel" | 2 more`
+
+            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
+
+            - `"left"`
+
+            - `"right"`
+
+            - `"wheel"`
+
+            - `"back"`
+
+            - `"forward"`
+
+          - `type: "click"`
+
+            Specifies the event type. For a click action, this property is always `click`.
+
+            - `"click"`
+
+          - `x: number`
+
+            The x-coordinate where the click occurred.
+
+          - `y: number`
+
+            The y-coordinate where the click occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while clicking.
+
+        - `DoubleClick`
+
+          A double click action.
+
+          - `keys: Array<string> | null`
+
+            The keys being held while double-clicking.
+
+          - `type: "double_click"`
+
+            Specifies the event type. For a double click action, this property is always set to `double_click`.
+
+            - `"double_click"`
+
+          - `x: number`
+
+            The x-coordinate where the double click occurred.
+
+          - `y: number`
+
+            The y-coordinate where the double click occurred.
+
+        - `Drag`
+
+          A drag action.
+
+          - `path: Array<Path>`
+
+            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
+
+            ```
+            [
+              { x: 100, y: 200 },
+              { x: 200, y: 300 }
+            ]
+            ```
+
+            - `x: number`
+
+              The x-coordinate.
+
+            - `y: number`
+
+              The y-coordinate.
+
+          - `type: "drag"`
+
+            Specifies the event type. For a drag action, this property is always set to `drag`.
+
+            - `"drag"`
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while dragging the mouse.
+
+        - `Keypress`
+
+          A collection of keypresses the model would like to perform.
+
+          - `keys: Array<string>`
+
+            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
+
+          - `type: "keypress"`
+
+            Specifies the event type. For a keypress action, this property is always set to `keypress`.
+
+            - `"keypress"`
+
+        - `Move`
+
+          A mouse move action.
+
+          - `type: "move"`
+
+            Specifies the event type. For a move action, this property is always set to `move`.
+
+            - `"move"`
+
+          - `x: number`
+
+            The x-coordinate to move to.
+
+          - `y: number`
+
+            The y-coordinate to move to.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while moving the mouse.
+
+        - `Screenshot`
+
+          A screenshot action.
+
+          - `type: "screenshot"`
+
+            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
+
+            - `"screenshot"`
+
+        - `Scroll`
+
+          A scroll action.
+
+          - `scroll_x: number`
+
+            The horizontal scroll distance.
+
+          - `scroll_y: number`
+
+            The vertical scroll distance.
+
+          - `type: "scroll"`
+
+            Specifies the event type. For a scroll action, this property is always set to `scroll`.
+
+            - `"scroll"`
+
+          - `x: number`
+
+            The x-coordinate where the scroll occurred.
+
+          - `y: number`
+
+            The y-coordinate where the scroll occurred.
+
+          - `keys?: Array<string> | null`
+
+            The keys being held while scrolling.
+
+        - `Type`
+
+          An action to type in text.
+
+          - `text: string`
+
+            The text to type.
+
+          - `type: "type"`
+
+            Specifies the event type. For a type action, this property is always set to `type`.
+
+            - `"type"`
+
+        - `Wait`
+
+          A wait action.
+
+          - `type: "wait"`
+
+            Specifies the event type. For a wait action, this property is always set to `wait`.
+
+            - `"wait"`
+
+      - `actions?: BetaComputerActionList`
+
+        Flattened batched actions for `computer_use`. Each action includes an
+        `type` discriminator and action-specific fields.
+
+        - `Click`
+
+          A click action.
+
+        - `DoubleClick`
+
+          A double click action.
+
+        - `Drag`
+
+          A drag action.
+
+        - `Keypress`
+
+          A collection of keypresses the model would like to perform.
+
+        - `Move`
+
+          A mouse move action.
+
+        - `Screenshot`
+
+          A screenshot action.
+
+        - `Scroll`
+
+          A scroll action.
+
+        - `Type`
+
+          An action to type in text.
+
+        - `Wait`
+
+          A wait action.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `ComputerCallOutput`
+
+      The output of a computer tool call.
+
+      - `call_id: string`
+
+        The ID of the computer tool call that produced the output.
+
+      - `output: BetaResponseComputerToolCallOutputScreenshot`
+
+        A computer screenshot image used with the computer use tool.
+
+        - `type: "computer_screenshot"`
+
+          Specifies the event type. For a computer screenshot, this property is
+          always set to `computer_screenshot`.
+
+          - `"computer_screenshot"`
+
+        - `file_id?: string`
+
+          The identifier of an uploaded file that contains the screenshot.
+
+        - `image_url?: string`
+
+          The URL of the screenshot image.
+
+      - `type: "computer_call_output"`
+
+        The type of the computer tool call output. Always `computer_call_output`.
+
+        - `"computer_call_output"`
+
+      - `id?: string | null`
+
+        The ID of the computer tool call output.
+
+      - `acknowledged_safety_checks?: Array<AcknowledgedSafetyCheck> | null`
+
+        The safety checks reported by the API that have been acknowledged by the developer.
+
+        - `id: string`
+
+          The ID of the pending safety check.
+
+        - `code?: string | null`
+
+          The type of the pending safety check.
+
+        - `message?: string | null`
+
+          Details about the pending safety check.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the message input. One of `in_progress`, `completed`, or `incomplete`. Populated when input items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `BetaResponseFunctionWebSearch`
+
+      The results of a web search tool call. See the
+      [web search guide](https://platform.openai.com/docs/guides/tools-web-search) for more information.
+
+      - `id: string`
+
+        The unique ID of the web search tool call.
+
+      - `action: Search | OpenPage | FindInPage`
+
+        An object describing the specific action taken in this web search call.
+        Includes details on how the model used the web (search, open_page, find_in_page).
+
+        - `Search`
+
+          Action type "search" - Performs a web search query.
+
+          - `type: "search"`
+
+            The action type.
+
+            - `"search"`
+
+          - `queries?: Array<string>`
+
+            The search queries.
+
+          - `query?: string`
+
+            The search query.
+
+          - `sources?: Array<Source>`
+
+            The sources used in the search.
+
+            - `type: "url"`
+
+              The type of source. Always `url`.
+
+              - `"url"`
+
+            - `url: string`
+
+              The URL of the source.
+
+        - `OpenPage`
+
+          Action type "open_page" - Opens a specific URL from search results.
+
+          - `type: "open_page"`
+
+            The action type.
+
+            - `"open_page"`
+
+          - `url?: string | null`
+
+            The URL opened by the model.
+
+        - `FindInPage`
+
+          Action type "find_in_page": Searches for a pattern within a loaded page.
+
+          - `pattern: string`
+
+            The pattern or text to search for within the page.
+
+          - `type: "find_in_page"`
+
+            The action type.
+
+            - `"find_in_page"`
+
+          - `url: string`
+
+            The URL of the page searched for the pattern.
+
+      - `status: "in_progress" | "searching" | "completed" | "failed"`
+
+        The status of the web search tool call.
+
+        - `"in_progress"`
+
+        - `"searching"`
+
+        - `"completed"`
+
+        - `"failed"`
+
+      - `type: "web_search_call"`
+
+        The type of the web search tool call. Always `web_search_call`.
+
+        - `"web_search_call"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `BetaResponseFunctionToolCall`
+
+      A tool call to run a function. See the
+      [function calling guide](https://platform.openai.com/docs/guides/function-calling) for more information.
+
+      - `arguments: string`
+
+        A JSON string of the arguments to pass to the function.
+
+      - `call_id: string`
+
+        The unique ID of the function tool call generated by the model.
+
+      - `name: string`
+
+        The name of the function to run.
+
+      - `type: "function_call"`
+
+        The type of the function tool call. Always `function_call`.
+
+        - `"function_call"`
+
+      - `id?: string`
+
+        The unique ID of the function tool call.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
+      - `namespace?: string`
+
+        The namespace of the function to run.
+
+      - `status?: "in_progress" | "completed" | "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `FunctionCallOutput`
+
+      The output of a function tool call.
+
+      - `call_id: string`
+
+        The unique ID of the function tool call generated by the model.
+
+      - `output: string | BetaResponseFunctionCallOutputItemList`
+
+        Text, image, or file output of the function tool call.
+
+        - `string`
+
+        - `BetaResponseFunctionCallOutputItemList = Array<BetaResponseFunctionCallOutputItem>`
+
+          An array of content outputs (text, image, file) for the function tool call.
+
+          - `BetaResponseInputTextContent`
+
+            A text input to the model.
+
+            - `text: string`
+
+              The text input to the model.
+
+            - `type: "input_text"`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `BetaResponseInputImageContent`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
+
+            - `type: "input_image"`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `detail?: "low" | "high" | "auto" | "original" | null`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `file_id?: string | null`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url?: string | null`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `BetaResponseInputFileContent`
+
+            A file input to the model.
+
+            - `type: "input_file"`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `detail?: "auto" | "low" | "high"`
+
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+              - `"high"`
+
+            - `file_data?: string | null`
+
+              The base64-encoded data of the file to be sent to the model.
+
+            - `file_id?: string | null`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url?: string | null`
+
+              The URL of the file to be sent to the model.
+
+            - `filename?: string | null`
+
+              The name of the file to be sent to the model.
+
+            - `prompt_cache_breakpoint?: PromptCacheBreakpoint | null`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+      - `type: "function_call_output"`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `id?: string | null`
+
+        The unique ID of the function tool call output. Populated when this item is returned via API.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the item. One of `in_progress`, `completed`, or `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `AgentMessage`
+
+      A message routed between agents.
+
+      - `author: string`
+
+        The sending agent identity.
+
+      - `content: Array<BetaResponseInputTextContent | BetaResponseInputImageContent | EncryptedContent>`
+
+        Plaintext, image, or encrypted content sent between agents.
+
+        - `BetaResponseInputTextContent`
+
+          A text input to the model.
+
+        - `BetaResponseInputImageContent`
+
+          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
+
+        - `EncryptedContent`
+
+          Opaque encrypted content that Responses API decrypts inside trusted model execution.
+
+          - `encrypted_content: string`
+
+            Opaque encrypted content.
+
+          - `type: "encrypted_content"`
+
+            The type of the input item. Always `encrypted_content`.
+
+            - `"encrypted_content"`
+
+      - `recipient: string`
+
+        The destination agent identity.
+
+      - `type: "agent_message"`
+
+        The item type. Always `agent_message`.
+
+        - `"agent_message"`
+
+      - `id?: string | null`
+
+        The unique ID of this agent message item.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `MultiAgentCall`
+
+      - `action: "spawn_agent" | "interrupt_agent" | "list_agents" | 3 more`
+
+        The multi-agent action that was executed.
+
+        - `"spawn_agent"`
+
+        - `"interrupt_agent"`
+
+        - `"list_agents"`
+
+        - `"send_message"`
+
+        - `"followup_task"`
+
+        - `"wait_agent"`
+
+      - `arguments: string`
+
+        The action arguments as a JSON string.
+
+      - `call_id: string`
+
+        The unique ID linking this call to its output.
+
+      - `type: "multi_agent_call"`
+
+        The item type. Always `multi_agent_call`.
+
+        - `"multi_agent_call"`
+
+      - `id?: string | null`
+
+        The unique ID of this multi-agent call.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `MultiAgentCallOutput`
+
+      - `action: "spawn_agent" | "interrupt_agent" | "list_agents" | 3 more`
+
+        The multi-agent action that produced this result.
+
+        - `"spawn_agent"`
+
+        - `"interrupt_agent"`
+
+        - `"list_agents"`
+
+        - `"send_message"`
+
+        - `"followup_task"`
+
+        - `"wait_agent"`
+
+      - `call_id: string`
+
+        The unique ID of the multi-agent call.
+
+      - `output: Array<Output>`
+
+        Text output returned by the multi-agent action.
+
+        - `text: string`
+
+          The text content.
+
+        - `type: "output_text"`
+
+          The content type. Always `output_text`.
+
+          - `"output_text"`
+
+        - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+
+          Citations associated with the text content.
+
+          - `Array<UnionMember0>`
+
+            - `file_id: string`
+
+              The ID of the file.
+
+            - `filename: string`
+
+              The filename of the file cited.
+
+            - `index: number`
+
+              The index of the file in the list of files.
+
+            - `type: "file_citation"`
+
+              The citation type. Always `file_citation`.
+
+              - `"file_citation"`
+
+          - `Array<UnionMember1>`
+
+            - `end_index: number`
+
+              The index of the last character of the citation in the message.
+
+            - `start_index: number`
+
+              The index of the first character of the citation in the message.
+
+            - `title: string`
+
+              The title of the cited resource.
+
+            - `type: "url_citation"`
+
+              The citation type. Always `url_citation`.
+
+              - `"url_citation"`
+
+            - `url: string`
+
+              The URL of the cited resource.
+
+          - `Array<UnionMember2>`
+
+            - `container_id: string`
+
+              The ID of the container.
+
+            - `end_index: number`
+
+              The index of the last character of the citation in the message.
+
+            - `file_id: string`
+
+              The ID of the container file.
+
+            - `filename: string`
+
+              The filename of the container file cited.
+
+            - `start_index: number`
+
+              The index of the first character of the citation in the message.
+
+            - `type: "container_file_citation"`
+
+              The citation type. Always `container_file_citation`.
+
+              - `"container_file_citation"`
+
+      - `type: "multi_agent_call_output"`
+
+        The item type. Always `multi_agent_call_output`.
+
+        - `"multi_agent_call_output"`
+
+      - `id?: string | null`
+
+        The unique ID of this multi-agent call output.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `ToolSearchCall`
+
+      - `arguments: unknown`
+
+        The arguments supplied to the tool search call.
+
+      - `type: "tool_search_call"`
+
+        The item type. Always `tool_search_call`.
+
+        - `"tool_search_call"`
+
+      - `id?: string | null`
+
+        The unique ID of this tool search call.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `call_id?: string | null`
+
+        The unique ID of the tool search call generated by the model.
+
+      - `execution?: "server" | "client"`
+
+        Whether tool search was executed by the server or by the client.
+
+        - `"server"`
+
+        - `"client"`
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the tool search call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `BetaResponseToolSearchOutputItemParam`
+
+      - `tools: Array<BetaTool>`
+
+        The loaded tool definitions returned by the tool search output.
+
+        - `BetaFunctionTool`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `name: string`
+
+            The name of the function to call.
+
+          - `parameters: Record<string, unknown> | null`
+
+            A JSON schema object describing the parameters of the function.
+
+          - `strict: boolean | null`
+
+            Whether strict parameter validation is enforced for this function tool.
+
+          - `type: "function"`
+
+            The type of the function tool. Always `function`.
+
+            - `"function"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `defer_loading?: boolean`
+
+            Whether this function is deferred and loaded via tool search.
+
+          - `description?: string | null`
+
+            A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema?: Record<string, unknown> | null`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
+
+        - `BetaFileSearchTool`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `type: "file_search"`
+
+            The type of the file search tool. Always `file_search`.
+
+            - `"file_search"`
+
+          - `vector_store_ids: Array<string>`
+
+            The IDs of the vector stores to search.
+
+          - `filters?: ComparisonFilter | CompoundFilter | null`
+
+            A filter to apply.
+
+            - `ComparisonFilter`
+
+              A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+              - `key: string`
+
+                The key to compare against the value.
+
+              - `type: "eq" | "ne" | "gt" | 5 more`
+
+                Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                - `eq`: equals
+                - `ne`: not equal
+                - `gt`: greater than
+                - `gte`: greater than or equal
+                - `lt`: less than
+                - `lte`: less than or equal
+                - `in`: in
+                - `nin`: not in
+
+                - `"eq"`
+
+                - `"ne"`
+
+                - `"gt"`
+
+                - `"gte"`
+
+                - `"lt"`
+
+                - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
+
+              - `value: string | number | boolean | Array<string | number>`
+
+                The value to compare against the attribute key; supports string, number, or boolean types.
+
+                - `string`
+
+                - `number`
+
+                - `boolean`
+
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
+
+            - `CompoundFilter`
+
+              Combine multiple filters using `and` or `or`.
+
+              - `filters: Array<ComparisonFilter | unknown>`
+
+                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                - `ComparisonFilter`
+
+                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                  - `key: string`
+
+                    The key to compare against the value.
+
+                  - `type: "eq" | "ne" | "gt" | 5 more`
+
+                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                    - `eq`: equals
+                    - `ne`: not equal
+                    - `gt`: greater than
+                    - `gte`: greater than or equal
+                    - `lt`: less than
+                    - `lte`: less than or equal
+                    - `in`: in
+                    - `nin`: not in
+
+                    - `"eq"`
+
+                    - `"ne"`
+
+                    - `"gt"`
+
+                    - `"gte"`
+
+                    - `"lt"`
+
+                    - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
+
+                  - `value: string | number | boolean | Array<string | number>`
+
+                    The value to compare against the attribute key; supports string, number, or boolean types.
+
+                    - `string`
+
+                    - `number`
+
+                    - `boolean`
+
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
+
+                - `unknown`
+
+              - `type: "and" | "or"`
+
+                Type of operation: `and` or `or`.
+
+                - `"and"`
+
+                - `"or"`
+
+          - `max_num_results?: number`
+
+            The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+          - `ranking_options?: RankingOptions`
+
+            Ranking options for search.
+
+            - `hybrid_search?: HybridSearch`
+
+              Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+              - `embedding_weight: number`
+
+                The weight of the embedding in the reciprocal ranking fusion.
+
+              - `text_weight: number`
+
+                The weight of the text in the reciprocal ranking fusion.
+
+            - `ranker?: "auto" | "default-2024-11-15"`
+
+              The ranker to use for the file search.
+
+              - `"auto"`
+
+              - `"default-2024-11-15"`
+
+            - `score_threshold?: number`
+
+              The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+        - `BetaComputerTool`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `type: "computer"`
+
+            The type of the computer tool. Always `computer`.
+
+            - `"computer"`
+
+        - `BetaComputerUsePreviewTool`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `display_height: number`
+
+            The height of the computer display.
+
+          - `display_width: number`
+
+            The width of the computer display.
+
+          - `environment: "windows" | "mac" | "linux" | 2 more`
+
+            The type of computer environment to control.
+
+            - `"windows"`
+
+            - `"mac"`
+
+            - `"linux"`
+
+            - `"ubuntu"`
+
+            - `"browser"`
+
+          - `type: "computer_use_preview"`
+
+            The type of the computer use tool. Always `computer_use_preview`.
+
+            - `"computer_use_preview"`
+
+        - `BetaWebSearchTool`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `type: "web_search" | "web_search_2025_08_26"`
+
+            The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+            - `"web_search"`
+
+            - `"web_search_2025_08_26"`
+
+          - `filters?: Filters | null`
+
+            Filters for the search.
+
+            - `allowed_domains?: Array<string> | null`
+
+              Allowed domains for the search. If not provided, all domains are allowed.
+              Subdomains of the provided domains are allowed as well.
+
+              Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+          - `search_context_size?: "low" | "medium" | "high"`
+
+            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `user_location?: UserLocation | null`
+
+            The approximate location of the user.
+
+            - `city?: string | null`
+
+              Free text input for the city of the user, e.g. `San Francisco`.
+
+            - `country?: string | null`
+
+              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+            - `region?: string | null`
+
+              Free text input for the region of the user, e.g. `California`.
+
+            - `timezone?: string | null`
+
+              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+            - `type?: "approximate"`
+
+              The type of location approximation. Always `approximate`.
+
+              - `"approximate"`
+
+        - `Mcp`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `server_label: string`
+
+            A label for this MCP server, used to identify it in tool calls.
+
+          - `type: "mcp"`
+
+            The type of the MCP tool. Always `mcp`.
+
+            - `"mcp"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `allowed_tools?: Array<string> | McpToolFilter | null`
+
+            List of allowed tool names or a filter object.
+
+            - `Array<string>`
+
+            - `McpToolFilter`
+
+              A filter object to specify which tools are allowed.
+
+              - `read_only?: boolean`
+
+                Indicates whether or not a tool modifies data or is read-only. If an
+                MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                it will match this filter.
+
+              - `tool_names?: Array<string>`
+
+                List of allowed tool names.
+
+          - `authorization?: string`
+
+            An OAuth access token that can be used with a remote MCP server, either
+            with a custom MCP server URL or a service connector. Your application
+            must handle the OAuth authorization flow and provide the token here.
+
+          - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
+
+            Identifier for service connectors, like those available in ChatGPT. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+
+            Currently supported `connector_id` values are:
+
+            - Dropbox: `connector_dropbox`
+            - Gmail: `connector_gmail`
+            - Google Calendar: `connector_googlecalendar`
+            - Google Drive: `connector_googledrive`
+            - Microsoft Teams: `connector_microsoftteams`
+            - Outlook Calendar: `connector_outlookcalendar`
+            - Outlook Email: `connector_outlookemail`
+            - SharePoint: `connector_sharepoint`
+
+            - `"connector_dropbox"`
+
+            - `"connector_gmail"`
+
+            - `"connector_googlecalendar"`
+
+            - `"connector_googledrive"`
+
+            - `"connector_microsoftteams"`
+
+            - `"connector_outlookcalendar"`
+
+            - `"connector_outlookemail"`
+
+            - `"connector_sharepoint"`
+
+          - `defer_loading?: boolean`
+
+            Whether this MCP tool is deferred and discovered via tool search.
+
+          - `headers?: Record<string, string> | null`
+
+            Optional HTTP headers to send to the MCP server. Use for authentication
+            or other purposes.
+
+          - `require_approval?: McpToolApprovalFilter | "always" | "never" | null`
+
+            Specify which of the MCP server's tools require approval.
+
+            - `McpToolApprovalFilter`
+
+              Specify which of the MCP server's tools require approval. Can be
+              `always`, `never`, or a filter object associated with tools
+              that require approval.
+
+              - `always?: Always`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only?: boolean`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names?: Array<string>`
+
+                  List of allowed tool names.
+
+              - `never?: Never`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only?: boolean`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names?: Array<string>`
+
+                  List of allowed tool names.
+
+            - `"always" | "never"`
+
+              - `"always"`
+
+              - `"never"`
+
+          - `server_description?: string`
+
+            Optional description of the MCP server, used to provide more context.
+
+          - `server_url?: string`
+
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id?: string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
+
+        - `CodeInterpreter`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+          - `container: string | CodeInterpreterToolAuto`
+
+            The code interpreter container. Can be a container ID or an object that
+            specifies uploaded file IDs to make available to your code, along with an
+            optional `memory_limit` setting.
+
+            - `string`
+
+            - `CodeInterpreterToolAuto`
+
+              Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+              - `type: "auto"`
+
+                Always `auto`.
+
+                - `"auto"`
+
+              - `file_ids?: Array<string>`
+
+                An optional list of uploaded files to make available to your code.
+
+              - `memory_limit?: "1g" | "4g" | "16g" | "64g" | null`
+
+                The memory limit for the code interpreter container.
+
+                - `"1g"`
+
+                - `"4g"`
+
+                - `"16g"`
+
+                - `"64g"`
+
+              - `network_policy?: BetaContainerNetworkPolicyDisabled | BetaContainerNetworkPolicyAllowlist`
+
+                Network access policy for the container.
+
+                - `BetaContainerNetworkPolicyDisabled`
+
+                  - `type: "disabled"`
+
+                    Disable outbound network access. Always `disabled`.
+
+                    - `"disabled"`
+
+                - `BetaContainerNetworkPolicyAllowlist`
+
+                  - `allowed_domains: Array<string>`
+
+                    A list of allowed domains when type is `allowlist`.
+
+                  - `type: "allowlist"`
+
+                    Allow outbound network access only to specified domains. Always `allowlist`.
+
+                    - `"allowlist"`
+
+                  - `domain_secrets?: Array<BetaContainerNetworkPolicyDomainSecret>`
+
+                    Optional domain-scoped secrets for allowlisted domains.
+
+                    - `domain: string`
+
+                      The domain associated with the secret.
+
+                    - `name: string`
+
+                      The name of the secret to inject for the domain.
+
+                    - `value: string`
+
+                      The secret value to inject for the domain.
+
+          - `type: "code_interpreter"`
+
+            The type of the code interpreter tool. Always `code_interpreter`.
+
+            - `"code_interpreter"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `ProgrammaticToolCalling`
+
+          - `type: "programmatic_tool_calling"`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
+        - `ImageGeneration`
+
+          A tool that generates images using the GPT image models.
+
+          - `type: "image_generation"`
+
+            The type of the image generation tool. Always `image_generation`.
+
+            - `"image_generation"`
+
+          - `action?: "generate" | "edit" | "auto"`
+
+            Whether to generate a new image or edit an existing image. Default: `auto`.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
+          - `background?: "transparent" | "opaque" | "auto"`
+
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `input_fidelity?: "high" | "low" | null`
+
+            Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+            - `"high"`
+
+            - `"low"`
+
+          - `input_image_mask?: InputImageMask`
+
+            Optional mask for inpainting. Contains `image_url`
+            (string, optional) and `file_id` (string, optional).
+
+            - `file_id?: string`
+
+              File ID for the mask image.
+
+            - `image_url?: string`
+
+              Base64-encoded mask image.
+
+          - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
+
+            The image generation model to use. Default: `gpt-image-1`.
+
+            - `(string & {})`
+
+            - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
+
+              - `"gpt-image-1"`
+
+              - `"gpt-image-1-mini"`
+
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
+
+          - `moderation?: "auto" | "low"`
+
+            Moderation level for the generated image. Default: `auto`.
+
+            - `"auto"`
+
+            - `"low"`
+
+          - `output_compression?: number`
+
+            Compression level for the output image. Default: 100.
+
+          - `output_format?: "png" | "webp" | "jpeg"`
+
+            The output format of the generated image. One of `png`, `webp`, or
+            `jpeg`. Default: `png`.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
+
+          - `partial_images?: number`
+
+            Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+          - `quality?: "low" | "medium" | "high" | "auto"`
+
+            The quality of the generated image. One of `low`, `medium`, `high`,
+            or `auto`. Default: `auto`.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"auto"`
+
+          - `size?: (string & {}) | "1024x1024" | "1024x1536" | "1536x1024" | "auto"`
+
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+
+            - `(string & {})`
+
+            - `"1024x1024" | "1024x1536" | "1536x1024" | "auto"`
+
+              - `"1024x1024"`
+
+              - `"1024x1536"`
+
+              - `"1536x1024"`
+
+              - `"auto"`
+
+        - `LocalShell`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+          - `type: "local_shell"`
+
+            The type of the local shell tool. Always `local_shell`.
+
+            - `"local_shell"`
+
+        - `BetaFunctionShellTool`
+
+          A tool that allows the model to execute shell commands.
+
+          - `type: "shell"`
+
+            The type of the shell tool. Always `shell`.
+
+            - `"shell"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `environment?: BetaContainerAuto | BetaLocalEnvironment | BetaContainerReference | null`
+
+            - `BetaContainerAuto`
+
+              - `type: "container_auto"`
+
+                Automatically creates a container for this request
+
+                - `"container_auto"`
+
+              - `file_ids?: Array<string>`
+
+                An optional list of uploaded files to make available to your code.
+
+              - `memory_limit?: "1g" | "4g" | "16g" | "64g" | null`
+
+                The memory limit for the container.
+
+                - `"1g"`
+
+                - `"4g"`
+
+                - `"16g"`
+
+                - `"64g"`
+
+              - `network_policy?: BetaContainerNetworkPolicyDisabled | BetaContainerNetworkPolicyAllowlist`
+
+                Network access policy for the container.
+
+                - `BetaContainerNetworkPolicyDisabled`
+
+                - `BetaContainerNetworkPolicyAllowlist`
+
+              - `skills?: Array<BetaSkillReference | BetaInlineSkill>`
+
+                An optional list of skills referenced by id or inline data.
+
+                - `BetaSkillReference`
+
+                  - `skill_id: string`
+
+                    The ID of the referenced skill.
+
+                  - `type: "skill_reference"`
+
+                    References a skill created with the /v1/skills endpoint.
+
+                    - `"skill_reference"`
+
+                  - `version?: string`
+
+                    Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                - `BetaInlineSkill`
+
+                  - `description: string`
+
+                    The description of the skill.
+
+                  - `name: string`
+
+                    The name of the skill.
+
+                  - `source: BetaInlineSkillSource`
+
+                    Inline skill payload
+
+                    - `data: string`
+
+                      Base64-encoded skill zip bundle.
+
+                    - `media_type: "application/zip"`
+
+                      The media type of the inline skill payload. Must be `application/zip`.
+
+                      - `"application/zip"`
+
+                    - `type: "base64"`
+
+                      The type of the inline skill source. Must be `base64`.
+
+                      - `"base64"`
+
+                  - `type: "inline"`
+
+                    Defines an inline skill for this request.
+
+                    - `"inline"`
+
+            - `BetaLocalEnvironment`
+
+              - `type: "local"`
+
+                Use a local computer environment.
+
+                - `"local"`
+
+              - `skills?: Array<BetaLocalSkill>`
+
+                An optional list of skills.
+
+                - `description: string`
+
+                  The description of the skill.
+
+                - `name: string`
+
+                  The name of the skill.
+
+                - `path: string`
+
+                  The path to the directory containing the skill.
+
+            - `BetaContainerReference`
+
+              - `container_id: string`
+
+                The ID of the referenced container.
+
+              - `type: "container_reference"`
+
+                References a container created with the /v1/containers endpoint
+
+                - `"container_reference"`
+
+        - `BetaCustomTool`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `name: string`
+
+            The name of the custom tool, used to identify it in tool calls.
+
+          - `type: "custom"`
+
+            The type of the custom tool. Always `custom`.
+
+            - `"custom"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `defer_loading?: boolean`
+
+            Whether this tool should be deferred and discovered via tool search.
+
+          - `description?: string`
+
+            Optional description of the custom tool, used to provide more context.
+
+          - `format?: Text | Grammar`
+
+            The input format for the custom tool. Default is unconstrained text.
+
+            - `Text`
+
+              Unconstrained free-form text.
+
+              - `type: "text"`
+
+                Unconstrained text format. Always `text`.
+
+                - `"text"`
+
+            - `Grammar`
+
+              A grammar defined by the user.
+
+              - `definition: string`
+
+                The grammar definition.
+
+              - `syntax: "lark" | "regex"`
+
+                The syntax of the grammar definition. One of `lark` or `regex`.
+
+                - `"lark"`
+
+                - `"regex"`
+
+              - `type: "grammar"`
+
+                Grammar format. Always `grammar`.
+
+                - `"grammar"`
+
+        - `BetaNamespaceTool`
+
+          Groups function/custom tools under a shared namespace.
+
+          - `description: string`
+
+            A description of the namespace shown to the model.
+
+          - `name: string`
+
+            The namespace name used in tool calls (for example, `crm`).
+
+          - `tools: Array<Function | BetaCustomTool>`
+
+            The function/custom tools available inside this namespace.
+
+            - `Function`
+
+              - `name: string`
+
+              - `type: "function"`
+
+                - `"function"`
+
+              - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
+              - `defer_loading?: boolean`
+
+                Whether this function should be deferred and discovered via tool search.
+
+              - `description?: string | null`
+
+              - `output_schema?: Record<string, unknown> | null`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
+              - `parameters?: unknown`
+
+              - `strict?: boolean | null`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
+
+            - `BetaCustomTool`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `type: "namespace"`
+
+            The type of the tool. Always `namespace`.
+
+            - `"namespace"`
+
+        - `BetaToolSearchTool`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+          - `type: "tool_search"`
+
+            The type of the tool. Always `tool_search`.
+
+            - `"tool_search"`
+
+          - `description?: string | null`
+
+            Description shown to the model for a client-executed tool search tool.
+
+          - `execution?: "server" | "client"`
+
+            Whether tool search is executed by the server or by the client.
+
+            - `"server"`
+
+            - `"client"`
+
+          - `parameters?: unknown`
+
+            Parameter schema for a client-executed tool search tool.
+
+        - `BetaWebSearchPreviewTool`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `type: "web_search_preview" | "web_search_preview_2025_03_11"`
+
+            The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+            - `"web_search_preview"`
+
+            - `"web_search_preview_2025_03_11"`
+
+          - `search_content_types?: Array<"text" | "image">`
+
+            - `"text"`
+
+            - `"image"`
+
+          - `search_context_size?: "low" | "medium" | "high"`
+
+            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `user_location?: UserLocation | null`
+
+            The user's location.
+
+            - `type: "approximate"`
+
+              The type of location approximation. Always `approximate`.
+
+              - `"approximate"`
+
+            - `city?: string | null`
+
+              Free text input for the city of the user, e.g. `San Francisco`.
+
+            - `country?: string | null`
+
+              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+            - `region?: string | null`
+
+              Free text input for the region of the user, e.g. `California`.
+
+            - `timezone?: string | null`
+
+              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+        - `BetaApplyPatchTool`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: "apply_patch"`
+
+            The type of the tool. Always `apply_patch`.
+
+            - `"apply_patch"`
+
+          - `allowed_callers?: Array<"direct" | "programmatic"> | null`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+      - `type: "tool_search_output"`
+
+        The item type. Always `tool_search_output`.
+
+        - `"tool_search_output"`
+
+      - `id?: string | null`
+
+        The unique ID of this tool search output.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `call_id?: string | null`
+
+        The unique ID of the tool search call generated by the model.
+
+      - `execution?: "server" | "client"`
+
+        Whether tool search was executed by the server or by the client.
+
+        - `"server"`
+
+        - `"client"`
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the tool search output.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `AdditionalTools`
+
+      - `role: "developer"`
+
+        The role that provided the additional tools. Only `developer` is supported.
+
+        - `"developer"`
+
+      - `tools: Array<BetaTool>`
+
+        A list of additional tools made available at this item.
+
+        - `BetaFunctionTool`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `BetaFileSearchTool`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `BetaComputerTool`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `BetaComputerUsePreviewTool`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `BetaWebSearchTool`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `Mcp`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `CodeInterpreter`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `ProgrammaticToolCalling`
+
+        - `ImageGeneration`
+
+          A tool that generates images using the GPT image models.
+
+        - `LocalShell`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `BetaFunctionShellTool`
+
+          A tool that allows the model to execute shell commands.
+
+        - `BetaCustomTool`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `BetaNamespaceTool`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `BetaToolSearchTool`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `BetaWebSearchPreviewTool`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `BetaApplyPatchTool`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: "additional_tools"`
+
+        The item type. Always `additional_tools`.
+
+        - `"additional_tools"`
+
+      - `id?: string | null`
+
+        The unique ID of this additional tools item.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `BetaResponseReasoningItem`
+
+      A description of the chain of thought used by a reasoning model while generating
+      a response. Be sure to include these items in your `input` to the Responses API
+      for subsequent turns of a conversation if you are manually
+      [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+      - `id: string`
+
+        The unique identifier of the reasoning content.
+
+      - `summary: Array<Summary>`
+
+        Reasoning summary content.
+
+        - `text: string`
+
+          A summary of the reasoning output from the model so far.
+
+        - `type: "summary_text"`
+
+          The type of the object. Always `summary_text`.
+
+          - `"summary_text"`
+
+      - `type: "reasoning"`
+
+        The type of the object. Always `reasoning`.
+
+        - `"reasoning"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `content?: Array<Content>`
+
+        Reasoning text content.
+
+        - `text: string`
+
+          The reasoning text from the model.
+
+        - `type: "reasoning_text"`
+
+          The type of the reasoning text. Always `reasoning_text`.
+
+          - `"reasoning_text"`
+
+      - `encrypted_content?: string | null`
+
+        The encrypted content of the reasoning item - populated when a response is
+        generated with `reasoning.encrypted_content` in the `include` parameter.
+
+      - `status?: "in_progress" | "completed" | "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `BetaResponseCompactionItemParam`
+
+      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+
+      - `encrypted_content: string`
+
+        The encrypted content of the compaction summary.
+
+      - `type: "compaction"`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `id?: string | null`
+
+        The ID of the compaction item.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `ImageGenerationCall`
+
+      An image generation request made by the model.
+
+      - `id: string`
+
+        The unique ID of the image generation call.
+
+      - `result: string | null`
+
+        The generated image encoded in base64.
+
+      - `status: "in_progress" | "completed" | "generating" | "failed"`
+
+        The status of the image generation call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"generating"`
+
+        - `"failed"`
+
+      - `type: "image_generation_call"`
+
+        The type of the image generation call. Always `image_generation_call`.
+
+        - `"image_generation_call"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `BetaResponseCodeInterpreterToolCall`
+
+      A tool call to run code.
+
+      - `id: string`
+
+        The unique ID of the code interpreter tool call.
+
+      - `code: string | null`
+
+        The code to run, or null if not available.
+
+      - `container_id: string`
+
+        The ID of the container used to run the code.
+
+      - `outputs: Array<Logs | Image> | null`
+
+        The outputs generated by the code interpreter, such as logs or images.
+        Can be null if no outputs are available.
+
+        - `Logs`
+
+          The logs output from the code interpreter.
+
+          - `logs: string`
+
+            The logs output from the code interpreter.
+
+          - `type: "logs"`
+
+            The type of the output. Always `logs`.
+
+            - `"logs"`
+
+        - `Image`
+
+          The image output from the code interpreter.
+
+          - `type: "image"`
+
+            The type of the output. Always `image`.
+
+            - `"image"`
+
+          - `url: string`
+
+            The URL of the image output from the code interpreter.
+
+      - `status: "in_progress" | "completed" | "incomplete" | 2 more`
+
+        The status of the code interpreter tool call. Valid values are `in_progress`, `completed`, `incomplete`, `interpreting`, and `failed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"interpreting"`
+
+        - `"failed"`
+
+      - `type: "code_interpreter_call"`
+
+        The type of the code interpreter tool call. Always `code_interpreter_call`.
+
+        - `"code_interpreter_call"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `LocalShellCall`
+
+      A tool call to run a command on the local shell.
+
+      - `id: string`
+
+        The unique ID of the local shell call.
+
+      - `action: Action`
+
+        Execute a shell command on the server.
+
+        - `command: Array<string>`
+
+          The command to run.
+
+        - `env: Record<string, string>`
+
+          Environment variables to set for the command.
+
+        - `type: "exec"`
+
+          The type of the local shell action. Always `exec`.
+
+          - `"exec"`
+
+        - `timeout_ms?: number | null`
+
+          Optional timeout in milliseconds for the command.
+
+        - `user?: string | null`
+
+          Optional user to run the command as.
+
+        - `working_directory?: string | null`
+
+          Optional working directory to run the command in.
+
+      - `call_id: string`
+
+        The unique ID of the local shell tool call generated by the model.
+
+      - `status: "in_progress" | "completed" | "incomplete"`
+
+        The status of the local shell call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "local_shell_call"`
+
+        The type of the local shell call. Always `local_shell_call`.
+
+        - `"local_shell_call"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `LocalShellCallOutput`
+
+      The output of a local shell tool call.
+
+      - `id: string`
+
+        The unique ID of the local shell tool call generated by the model.
+
+      - `output: string`
+
+        A JSON string of the output of the local shell tool call.
+
+      - `type: "local_shell_call_output"`
+
+        The type of the local shell tool call output. Always `local_shell_call_output`.
+
+        - `"local_shell_call_output"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the item. One of `in_progress`, `completed`, or `incomplete`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `ShellCall`
+
+      A tool representing a request to execute one or more shell commands.
+
+      - `action: Action`
+
+        The shell commands and limits that describe how to run the tool call.
+
+        - `commands: Array<string>`
+
+          Ordered shell commands for the execution environment to run.
+
+        - `max_output_length?: number | null`
+
+          Maximum number of UTF-8 characters to capture from combined stdout and stderr output.
+
+        - `timeout_ms?: number | null`
+
+          Maximum wall-clock time in milliseconds to allow the shell commands to run.
+
+      - `call_id: string`
+
+        The unique ID of the shell tool call generated by the model.
+
+      - `type: "shell_call"`
+
+        The type of the item. Always `shell_call`.
+
+        - `"shell_call"`
+
+      - `id?: string | null`
+
+        The unique ID of the shell tool call. Populated when this item is returned via API.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `environment?: BetaLocalEnvironment | BetaContainerReference | null`
+
+        The environment to execute the shell commands in.
+
+        - `BetaLocalEnvironment`
+
+        - `BetaContainerReference`
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the shell call. One of `in_progress`, `completed`, or `incomplete`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `ShellCallOutput`
+
+      The streamed output items emitted by a shell tool call.
+
+      - `call_id: string`
+
+        The unique ID of the shell tool call generated by the model.
+
+      - `output: Array<BetaResponseFunctionShellCallOutputContent>`
+
+        Captured chunks of stdout and stderr output, along with their associated outcomes.
+
+        - `outcome: Timeout | Exit`
+
+          The exit or timeout outcome associated with this shell call.
+
+          - `Timeout`
+
+            Indicates that the shell call exceeded its configured time limit.
+
+            - `type: "timeout"`
+
+              The outcome type. Always `timeout`.
+
+              - `"timeout"`
+
+          - `Exit`
+
+            Indicates that the shell commands finished and returned an exit code.
+
+            - `exit_code: number`
+
+              The exit code returned by the shell process.
+
+            - `type: "exit"`
+
+              The outcome type. Always `exit`.
+
+              - `"exit"`
+
+        - `stderr: string`
+
+          Captured stderr output for the shell call.
+
+        - `stdout: string`
+
+          Captured stdout output for the shell call.
+
+      - `type: "shell_call_output"`
+
+        The type of the item. Always `shell_call_output`.
+
+        - `"shell_call_output"`
+
+      - `id?: string | null`
+
+        The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `max_output_length?: number | null`
+
+        The maximum number of UTF-8 characters captured for this shell call's combined output.
+
+      - `status?: "in_progress" | "completed" | "incomplete" | null`
+
+        The status of the shell call output.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `ApplyPatchCall`
+
+      A tool call representing a request to create, delete, or update files using diff patches.
+
+      - `call_id: string`
+
+        The unique ID of the apply patch tool call generated by the model.
+
+      - `operation: CreateFile | DeleteFile | UpdateFile`
+
+        The specific create, delete, or update instruction for the apply_patch tool call.
+
+        - `CreateFile`
+
+          Instruction for creating a new file via the apply_patch tool.
+
+          - `diff: string`
+
+            Unified diff content to apply when creating the file.
+
+          - `path: string`
+
+            Path of the file to create relative to the workspace root.
+
+          - `type: "create_file"`
+
+            The operation type. Always `create_file`.
+
+            - `"create_file"`
+
+        - `DeleteFile`
+
+          Instruction for deleting an existing file via the apply_patch tool.
+
+          - `path: string`
+
+            Path of the file to delete relative to the workspace root.
+
+          - `type: "delete_file"`
+
+            The operation type. Always `delete_file`.
+
+            - `"delete_file"`
+
+        - `UpdateFile`
+
+          Instruction for updating an existing file via the apply_patch tool.
+
+          - `diff: string`
+
+            Unified diff content to apply to the existing file.
+
+          - `path: string`
+
+            Path of the file to update relative to the workspace root.
+
+          - `type: "update_file"`
+
+            The operation type. Always `update_file`.
+
+            - `"update_file"`
+
+      - `status: "in_progress" | "completed"`
+
+        The status of the apply patch tool call. One of `in_progress` or `completed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+      - `type: "apply_patch_call"`
+
+        The type of the item. Always `apply_patch_call`.
+
+        - `"apply_patch_call"`
+
+      - `id?: string | null`
+
+        The unique ID of the apply patch tool call. Populated when this item is returned via API.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+    - `ApplyPatchCallOutput`
+
+      The streamed output emitted by an apply patch tool call.
+
+      - `call_id: string`
+
+        The unique ID of the apply patch tool call generated by the model.
+
+      - `status: "completed" | "failed"`
+
+        The status of the apply patch tool call output. One of `completed` or `failed`.
+
+        - `"completed"`
+
+        - `"failed"`
+
+      - `type: "apply_patch_call_output"`
+
+        The type of the item. Always `apply_patch_call_output`.
+
+        - `"apply_patch_call_output"`
+
+      - `id?: string | null`
+
+        The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `output?: string | null`
+
+        Optional human-readable log text from the apply patch tool (e.g., patch results or errors).
+
+    - `McpListTools`
+
+      A list of tools available on an MCP server.
+
+      - `id: string`
+
+        The unique ID of the list.
+
+      - `server_label: string`
+
+        The label of the MCP server.
+
+      - `tools: Array<Tool>`
+
+        The tools available on the server.
+
+        - `input_schema: unknown`
+
+          The JSON schema describing the tool's input.
+
+        - `name: string`
+
+          The name of the tool.
+
+        - `annotations?: unknown`
+
+          Additional annotations about the tool.
+
+        - `description?: string | null`
+
+          The description of the tool.
+
+      - `type: "mcp_list_tools"`
+
+        The type of the item. Always `mcp_list_tools`.
+
+        - `"mcp_list_tools"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `error?: string | null`
+
+        Error message if the server could not list tools.
+
+    - `McpApprovalRequest`
+
+      A request for human approval of a tool invocation.
+
+      - `id: string`
+
+        The unique ID of the approval request.
+
+      - `arguments: string`
+
+        A JSON string of arguments for the tool.
+
+      - `name: string`
+
+        The name of the tool to run.
+
+      - `server_label: string`
+
+        The label of the MCP server making the request.
+
+      - `type: "mcp_approval_request"`
+
+        The type of the item. Always `mcp_approval_request`.
+
+        - `"mcp_approval_request"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `McpApprovalResponse`
+
+      A response to an MCP approval request.
+
+      - `approval_request_id: string`
+
+        The ID of the approval request being answered.
+
+      - `approve: boolean`
+
+        Whether the request was approved.
+
+      - `type: "mcp_approval_response"`
+
+        The type of the item. Always `mcp_approval_response`.
+
+        - `"mcp_approval_response"`
+
+      - `id?: string | null`
+
+        The unique ID of the approval response
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `reason?: string | null`
+
+        Optional reason for the decision.
+
+    - `McpCall`
+
+      An invocation of a tool on an MCP server.
+
+      - `id: string`
+
+        The unique ID of the tool call.
+
+      - `arguments: string`
+
+        A JSON string of the arguments passed to the tool.
+
+      - `name: string`
+
+        The name of the tool that was run.
+
+      - `server_label: string`
+
+        The label of the MCP server running the tool.
+
+      - `type: "mcp_call"`
+
+        The type of the item. Always `mcp_call`.
+
+        - `"mcp_call"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `approval_request_id?: string | null`
+
+        Unique identifier for the MCP tool call approval request.
+        Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
+
+      - `error?: string | null`
+
+        The error from the tool call, if any.
+
+      - `output?: string | null`
+
+        The output from the tool call.
+
+      - `status?: "in_progress" | "completed" | "incomplete" | 2 more`
+
+        The status of the tool call. One of `in_progress`, `completed`, `incomplete`, `calling`, or `failed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"calling"`
+
+        - `"failed"`
+
+    - `BetaResponseCustomToolCallOutput`
+
+      The output of a custom tool call from your code, being sent back to the model.
+
+      - `call_id: string`
+
+        The call ID, used to map this custom tool call output to a custom tool call.
+
+      - `output: string | Array<BetaResponseInputText | BetaResponseInputImage | BetaResponseInputFile>`
+
+        The output from the custom tool call generated by your code.
+        Can be a string or an list of output content.
+
+        - `string`
+
+        - `Array<BetaResponseInputText | BetaResponseInputImage | BetaResponseInputFile>`
+
+          - `BetaResponseInputText`
+
+            A text input to the model.
+
+          - `BetaResponseInputImage`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+          - `BetaResponseInputFile`
+
+            A file input to the model.
+
+      - `type: "custom_tool_call_output"`
+
+        The type of the custom tool call output. Always `custom_tool_call_output`.
+
+        - `"custom_tool_call_output"`
+
+      - `id?: string`
+
+        The unique ID of the custom tool call output in the OpenAI platform.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+    - `BetaResponseCustomToolCall`
+
+      A call to a custom tool created by the model.
+
+      - `call_id: string`
+
+        An identifier used to map this custom tool call to a tool call output.
+
+      - `input: string`
+
+        The input for the custom tool call generated by the model.
+
+      - `name: string`
+
+        The name of the custom tool being called.
+
+      - `type: "custom_tool_call"`
+
+        The type of the custom tool call. Always `custom_tool_call`.
+
+        - `"custom_tool_call"`
+
+      - `id?: string`
+
+        The unique ID of the custom tool call in the OpenAI platform.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller?: Direct | Program | null`
+
+        The execution context that produced this tool call.
+
+        - `Direct`
+
+          - `type: "direct"`
+
+            - `"direct"`
+
+        - `Program`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            - `"program"`
+
+      - `namespace?: string`
+
+        The namespace of the custom tool being called.
+
+    - `CompactionTrigger`
+
+      Compacts the current context. Must be the final input item.
+
+      - `type: "compaction_trigger"`
+
+        The type of the item. Always `compaction_trigger`.
+
+        - `"compaction_trigger"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `ItemReference`
+
+      An internal identifier for an item to reference.
+
+      - `id: string`
+
+        The ID of the item to reference.
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+      - `type?: "item_reference" | null`
+
+        The type of item to reference. Always `item_reference`.
+
+        - `"item_reference"`
+
+    - `Program`
+
+      - `id: string`
+
+        The unique ID of this program item.
+
+      - `call_id: string`
+
+        The stable call ID of the program item.
+
+      - `code: string`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: string`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The item type. Always `program`.
+
+        - `"program"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+    - `ProgramOutput`
+
+      - `id: string`
+
+        The unique ID of this program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" | "incomplete"`
+
+        The terminal status of the program output.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "program_output"`
+
+        The item type. Always `program_output`.
+
+        - `"program_output"`
+
+      - `agent?: Agent | null`
+
+        The agent that produced this item.
+
+        - `agent_name: string`
+
+          The canonical name of the agent that produced this item.
+
+  - `response_id: string`
+
+    The ID of the response that rejected the input.
+
+  - `sequence_number: number`
+
+    The sequence number for this event.
+
+  - `type: "response.inject.failed"`
+
+    The event discriminator. Always `response.inject.failed`.
+
+    - `"response.inject.failed"`
+
+  - `stream_id?: string`
+
+    The multiplexed WebSocket stream that emitted the event. This field is
+    present only when WebSocket multiplexing is enabled separately.
+
 ### Beta Response Input
 
 - `BetaResponseInput = Array<BetaResponseInputItem>`
@@ -80609,13 +88438,15 @@ console.log(compactedResponse);
 
       - `"developer"`
 
-    - `phase?: "commentary" | null`
+    - `phase?: "commentary" | "final_answer" | null`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
     - `type?: "message"`
 
@@ -80856,13 +88687,15 @@ console.log(compactedResponse);
 
         The canonical name of the agent that produced this item.
 
-    - `phase?: "commentary" | null`
+    - `phase?: "commentary" | "final_answer" | null`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
   - `BetaResponseFileSearchToolCall`
 
@@ -82034,7 +89867,7 @@ console.log(compactedResponse);
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<unknown>`
+            - `value: string | number | boolean | Array<string | number>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -82044,7 +89877,11 @@ console.log(compactedResponse);
 
               - `boolean`
 
-              - `Array<unknown>`
+              - `Array<string | number>`
+
+                - `string`
+
+                - `number`
 
           - `CompoundFilter`
 
@@ -82091,7 +89928,7 @@ console.log(compactedResponse);
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -82101,7 +89938,11 @@ console.log(compactedResponse);
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `unknown`
 
@@ -84711,13 +92552,15 @@ console.log(compactedResponse);
 
       - `"developer"`
 
-    - `phase?: "commentary" | null`
+    - `phase?: "commentary" | "final_answer" | null`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
     - `type?: "message"`
 
@@ -84958,13 +92801,15 @@ console.log(compactedResponse);
 
         The canonical name of the agent that produced this item.
 
-    - `phase?: "commentary" | null`
+    - `phase?: "commentary" | "final_answer" | null`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
   - `BetaResponseFileSearchToolCall`
 
@@ -86136,7 +93981,7 @@ console.log(compactedResponse);
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<unknown>`
+            - `value: string | number | boolean | Array<string | number>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -86146,7 +93991,11 @@ console.log(compactedResponse);
 
               - `boolean`
 
-              - `Array<unknown>`
+              - `Array<string | number>`
+
+                - `string`
+
+                - `number`
 
           - `CompoundFilter`
 
@@ -86193,7 +94042,7 @@ console.log(compactedResponse);
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -86203,7 +94052,11 @@ console.log(compactedResponse);
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `unknown`
 
@@ -89013,13 +96866,15 @@ console.log(compactedResponse);
 
         The canonical name of the agent that produced this item.
 
-    - `phase?: "commentary" | null`
+    - `phase?: "commentary" | "final_answer" | null`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
   - `BetaResponseFileSearchToolCall`
 
@@ -90101,7 +97956,7 @@ console.log(compactedResponse);
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<unknown>`
+            - `value: string | number | boolean | Array<string | number>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -90111,7 +97966,11 @@ console.log(compactedResponse);
 
               - `boolean`
 
-              - `Array<unknown>`
+              - `Array<string | number>`
+
+                - `string`
+
+                - `number`
 
           - `CompoundFilter`
 
@@ -90158,7 +98017,7 @@ console.log(compactedResponse);
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -90168,7 +98027,11 @@ console.log(compactedResponse);
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `unknown`
 
@@ -92684,13 +100547,15 @@ console.log(compactedResponse);
 
         The canonical name of the agent that produced this item.
 
-    - `phase?: "commentary" | null`
+    - `phase?: "commentary" | "final_answer" | null`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
   - `BetaResponseFileSearchToolCall`
 
@@ -94053,7 +101918,7 @@ console.log(compactedResponse);
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<unknown>`
+            - `value: string | number | boolean | Array<string | number>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -94063,7 +101928,11 @@ console.log(compactedResponse);
 
               - `boolean`
 
-              - `Array<unknown>`
+              - `Array<string | number>`
+
+                - `string`
+
+                - `number`
 
           - `CompoundFilter`
 
@@ -94110,7 +101979,7 @@ console.log(compactedResponse);
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -94120,7 +101989,11 @@ console.log(compactedResponse);
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `unknown`
 
@@ -96242,13 +104115,15 @@ console.log(compactedResponse);
 
           The canonical name of the agent that produced this item.
 
-      - `phase?: "commentary" | null`
+      - `phase?: "commentary" | "final_answer" | null`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `BetaResponseFileSearchToolCall`
 
@@ -97611,7 +105486,7 @@ console.log(compactedResponse);
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -97621,7 +105496,11 @@ console.log(compactedResponse);
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `CompoundFilter`
 
@@ -97668,7 +105547,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -97678,7 +105557,11 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `unknown`
 
@@ -99822,13 +107705,15 @@ console.log(compactedResponse);
 
           The canonical name of the agent that produced this item.
 
-      - `phase?: "commentary" | null`
+      - `phase?: "commentary" | "final_answer" | null`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `BetaResponseFileSearchToolCall`
 
@@ -101191,7 +109076,7 @@ console.log(compactedResponse);
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -101201,7 +109086,11 @@ console.log(compactedResponse);
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `CompoundFilter`
 
@@ -101248,7 +109137,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -101258,7 +109147,11 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `unknown`
 
@@ -103394,13 +111287,15 @@ console.log(compactedResponse);
 
       The canonical name of the agent that produced this item.
 
-  - `phase?: "commentary" | null`
+  - `phase?: "commentary" | "final_answer" | null`
 
     Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
     For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
     phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
     - `"commentary"`
+
+    - `"final_answer"`
 
 ### Beta Response Output Refusal
 
@@ -103962,13 +111857,15 @@ console.log(compactedResponse);
 
             - `"developer"`
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type?: "message"`
 
@@ -104209,13 +112106,15 @@ console.log(compactedResponse);
 
               The canonical name of the agent that produced this item.
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `BetaResponseFileSearchToolCall`
 
@@ -105387,7 +113286,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -105397,7 +113296,11 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `CompoundFilter`
 
@@ -105444,7 +113347,7 @@ console.log(compactedResponse);
 
                         - `"nin"`
 
-                      - `value: string | number | boolean | Array<unknown>`
+                      - `value: string | number | boolean | Array<string | number>`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -105454,7 +113357,11 @@ console.log(compactedResponse);
 
                         - `boolean`
 
-                        - `Array<unknown>`
+                        - `Array<string | number>`
+
+                          - `string`
+
+                          - `number`
 
                     - `unknown`
 
@@ -111068,13 +118975,15 @@ console.log(compactedResponse);
 
               - `"developer"`
 
-            - `phase?: "commentary" | null`
+            - `phase?: "commentary" | "final_answer" | null`
 
               Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
               For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
               phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
+
+              - `"final_answer"`
 
             - `type?: "message"`
 
@@ -111315,13 +119224,15 @@ console.log(compactedResponse);
 
                 The canonical name of the agent that produced this item.
 
-            - `phase?: "commentary" | null`
+            - `phase?: "commentary" | "final_answer" | null`
 
               Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
               For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
               phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
+
+              - `"final_answer"`
 
           - `BetaResponseFileSearchToolCall`
 
@@ -112493,7 +120404,7 @@ console.log(compactedResponse);
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<unknown>`
+                    - `value: string | number | boolean | Array<string | number>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -112503,7 +120414,11 @@ console.log(compactedResponse);
 
                       - `boolean`
 
-                      - `Array<unknown>`
+                      - `Array<string | number>`
+
+                        - `string`
+
+                        - `number`
 
                   - `CompoundFilter`
 
@@ -112550,7 +120465,7 @@ console.log(compactedResponse);
 
                           - `"nin"`
 
-                        - `value: string | number | boolean | Array<unknown>`
+                        - `value: string | number | boolean | Array<string | number>`
 
                           The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -112560,7 +120475,11 @@ console.log(compactedResponse);
 
                           - `boolean`
 
-                          - `Array<unknown>`
+                          - `Array<string | number>`
+
+                            - `string`
+
+                            - `number`
 
                       - `unknown`
 
@@ -119296,7 +127215,7 @@ console.log(compactedResponse);
 
             - `"nin"`
 
-          - `value: string | number | boolean | Array<unknown>`
+          - `value: string | number | boolean | Array<string | number>`
 
             The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -119306,7 +127225,11 @@ console.log(compactedResponse);
 
             - `boolean`
 
-            - `Array<unknown>`
+            - `Array<string | number>`
+
+              - `string`
+
+              - `number`
 
         - `CompoundFilter`
 
@@ -119353,7 +127276,7 @@ console.log(compactedResponse);
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -119363,7 +127286,11 @@ console.log(compactedResponse);
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `unknown`
 
@@ -120396,7 +128323,7 @@ console.log(compactedResponse);
 
             - `"nin"`
 
-          - `value: string | number | boolean | Array<unknown>`
+          - `value: string | number | boolean | Array<string | number>`
 
             The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -120406,7 +128333,11 @@ console.log(compactedResponse);
 
             - `boolean`
 
-            - `Array<unknown>`
+            - `Array<string | number>`
+
+              - `string`
+
+              - `number`
 
         - `CompoundFilter`
 
@@ -120453,7 +128384,7 @@ console.log(compactedResponse);
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -120463,7 +128394,11 @@ console.log(compactedResponse);
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `unknown`
 
@@ -121551,7 +129486,7 @@ console.log(compactedResponse);
 
 ### Beta Responses Client Event
 
-- `BetaResponsesClientEvent = ResponseCreate | ResponseInject`
+- `BetaResponsesClientEvent = ResponseCreate | BetaResponseInjectEvent`
 
   Client events accepted by the Responses WebSocket server.
 
@@ -121793,13 +129728,15 @@ console.log(compactedResponse);
 
             - `"developer"`
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type?: "message"`
 
@@ -122040,13 +129977,15 @@ console.log(compactedResponse);
 
               The canonical name of the agent that produced this item.
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `BetaResponseFileSearchToolCall`
 
@@ -123218,7 +131157,7 @@ console.log(compactedResponse);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -123228,7 +131167,11 @@ console.log(compactedResponse);
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `CompoundFilter`
 
@@ -123275,7 +131218,7 @@ console.log(compactedResponse);
 
                         - `"nin"`
 
-                      - `value: string | number | boolean | Array<unknown>`
+                      - `value: string | number | boolean | Array<string | number>`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -123285,7 +131228,11 @@ console.log(compactedResponse);
 
                         - `boolean`
 
-                        - `Array<unknown>`
+                        - `Array<string | number>`
+
+                          - `string`
+
+                          - `number`
 
                     - `unknown`
 
@@ -126299,7 +134246,7 @@ console.log(compactedResponse);
       A stable identifier for your end-users.
       Used to boost cache hit rates by better bucketing similar requests and  to help OpenAI detect and prevent abuse. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
 
-  - `ResponseInject`
+  - `BetaResponseInjectEvent`
 
     Injects input items into an active response over a WebSocket connection.
     The items are validated and committed atomically. Currently, the server
@@ -126951,13 +134898,15 @@ console.log(compactedResponse);
 
               - `"developer"`
 
-            - `phase?: "commentary" | null`
+            - `phase?: "commentary" | "final_answer" | null`
 
               Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
               For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
               phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
+
+              - `"final_answer"`
 
             - `type?: "message"`
 
@@ -127198,13 +135147,15 @@ console.log(compactedResponse);
 
                 The canonical name of the agent that produced this item.
 
-            - `phase?: "commentary" | null`
+            - `phase?: "commentary" | "final_answer" | null`
 
               Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
               For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
               phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
+
+              - `"final_answer"`
 
           - `BetaResponseFileSearchToolCall`
 
@@ -128376,7 +136327,7 @@ console.log(compactedResponse);
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<unknown>`
+                    - `value: string | number | boolean | Array<string | number>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -128386,7 +136337,11 @@ console.log(compactedResponse);
 
                       - `boolean`
 
-                      - `Array<unknown>`
+                      - `Array<string | number>`
+
+                        - `string`
+
+                        - `number`
 
                   - `CompoundFilter`
 
@@ -128433,7 +136388,7 @@ console.log(compactedResponse);
 
                           - `"nin"`
 
-                        - `value: string | number | boolean | Array<unknown>`
+                        - `value: string | number | boolean | Array<string | number>`
 
                           The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -128443,7 +136398,11 @@ console.log(compactedResponse);
 
                           - `boolean`
 
-                          - `Array<unknown>`
+                          - `Array<string | number>`
+
+                            - `string`
+
+                            - `number`
 
                       - `unknown`
 
@@ -134773,7 +142732,7 @@ console.log(compactedResponse);
 
         The canonical name of the agent that produced this item.
 
-  - `ResponseInjectCreated`
+  - `BetaResponseInjectCreatedEvent`
 
     Emitted when all injected input items were validated and committed to the
     active response.
@@ -134797,7 +142756,7 @@ console.log(compactedResponse);
       The multiplexed WebSocket stream that emitted the event. This field is
       present only when WebSocket multiplexing is enabled separately.
 
-  - `ResponseInjectFailed`
+  - `BetaResponseInjectFailedEvent`
 
     Emitted when injected input could not be committed to a response. The event
     returns the uncommitted raw input so the client can retry it in another
@@ -135102,7 +143061,7 @@ console.log(compactedResponse);
 
           - `"nin"`
 
-        - `value: string | number | boolean | Array<unknown>`
+        - `value: string | number | boolean | Array<string | number>`
 
           The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -135112,7 +143071,11 @@ console.log(compactedResponse);
 
           - `boolean`
 
-          - `Array<unknown>`
+          - `Array<string | number>`
+
+            - `string`
+
+            - `number`
 
       - `CompoundFilter`
 
@@ -135159,7 +143122,7 @@ console.log(compactedResponse);
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<unknown>`
+            - `value: string | number | boolean | Array<string | number>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -135169,7 +143132,11 @@ console.log(compactedResponse);
 
               - `boolean`
 
-              - `Array<unknown>`
+              - `Array<string | number>`
+
+                - `string`
+
+                - `number`
 
           - `unknown`
 
@@ -136405,7 +144372,7 @@ console.log(compactedResponse);
 
 **get** `/responses/{response_id}/input_items?beta=true`
 
-List input items
+Returns a list of input items for a given response.
 
 ### Parameters
 
@@ -136809,13 +144776,15 @@ List input items
 
         The canonical name of the agent that produced this item.
 
-    - `phase?: "commentary" | null`
+    - `phase?: "commentary" | "final_answer" | null`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
   - `BetaResponseFileSearchToolCall`
 
@@ -137897,7 +145866,7 @@ List input items
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<unknown>`
+            - `value: string | number | boolean | Array<string | number>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -137907,7 +145876,11 @@ List input items
 
               - `boolean`
 
-              - `Array<unknown>`
+              - `Array<string | number>`
+
+                - `string`
+
+                - `number`
 
           - `CompoundFilter`
 
@@ -137954,7 +145927,7 @@ List input items
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -137964,7 +145937,11 @@ List input items
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `unknown`
 
@@ -140426,13 +148403,15 @@ console.log(response.data);
 
           The canonical name of the agent that produced this item.
 
-      - `phase?: "commentary" | null`
+      - `phase?: "commentary" | "final_answer" | null`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `BetaResponseFileSearchToolCall`
 
@@ -141514,7 +149493,7 @@ console.log(response.data);
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -141524,7 +149503,11 @@ console.log(response.data);
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `CompoundFilter`
 
@@ -141571,7 +149554,7 @@ console.log(response.data);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -141581,7 +149564,11 @@ console.log(response.data);
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `unknown`
 
@@ -143634,7 +151621,9 @@ console.log(response.data);
 
 **post** `/responses/input_tokens?beta=true`
 
-Get input token counts
+Returns input token counts of the request.
+
+Returns an object with `object` set to `response.input_tokens` and an `input_tokens` count.
 
 ### Parameters
 
@@ -143806,13 +151795,15 @@ Get input token counts
 
           - `"developer"`
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type?: "message"`
 
@@ -144053,13 +152044,15 @@ Get input token counts
 
             The canonical name of the agent that produced this item.
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `BetaResponseFileSearchToolCall`
 
@@ -145231,7 +153224,7 @@ Get input token counts
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -145241,7 +153234,11 @@ Get input token counts
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -145288,7 +153285,7 @@ Get input token counts
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<unknown>`
+                    - `value: string | number | boolean | Array<string | number>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -145298,7 +153295,11 @@ Get input token counts
 
                       - `boolean`
 
-                      - `Array<unknown>`
+                      - `Array<string | number>`
+
+                        - `string`
+
+                        - `number`
 
                   - `unknown`
 

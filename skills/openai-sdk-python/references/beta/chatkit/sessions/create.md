@@ -4,7 +4,7 @@
 
 **post** `/chatkit/sessions`
 
-Create ChatKit session
+Create a ChatKit session.
 
 ### Parameters
 

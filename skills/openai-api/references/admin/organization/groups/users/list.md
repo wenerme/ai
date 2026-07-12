@@ -2,7 +2,7 @@
 
 **get** `/organization/groups/{group_id}/users`
 
-List group users
+Lists the users assigned to a group.
 
 ### Path Parameters
 

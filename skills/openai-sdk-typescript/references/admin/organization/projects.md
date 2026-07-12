@@ -6,7 +6,7 @@
 
 **get** `/organization/projects`
 
-List projects
+Returns a list of projects.
 
 ### Parameters
 
@@ -103,7 +103,7 @@ for await (const project of client.admin.organization.projects.list()) {
 
 **post** `/organization/projects`
 
-Create project
+Create a new project in the organization. Projects can be created and archived, but cannot be deleted.
 
 ### Parameters
 
@@ -191,7 +191,7 @@ console.log(project.id);
 
 **get** `/organization/projects/{project_id}`
 
-Retrieve project
+Retrieves a project.
 
 ### Parameters
 
@@ -267,7 +267,7 @@ console.log(project.id);
 
 **post** `/organization/projects/{project_id}`
 
-Modify project
+Modifies a project in the organization.
 
 ### Parameters
 
@@ -357,7 +357,7 @@ console.log(project.id);
 
 **post** `/organization/projects/{project_id}/archive`
 
-Archive project
+Archives a project in the organization. Archived projects cannot be used or updated.
 
 ### Parameters
 
@@ -473,7 +473,7 @@ console.log(project.id);
 
 **get** `/organization/projects/{project_id}/users`
 
-List project users
+Returns a list of users in the project.
 
 ### Parameters
 
@@ -563,7 +563,7 @@ for await (const projectUser of client.admin.organization.projects.users.list('p
 
 **post** `/organization/projects/{project_id}/users`
 
-Create project user
+Adds a user to the project. Users must already be members of the organization to be added to a project.
 
 ### Parameters
 
@@ -650,7 +650,7 @@ console.log(projectUser.id);
 
 **get** `/organization/projects/{project_id}/users/{user_id}`
 
-Retrieve project user
+Retrieves a user in the project.
 
 ### Parameters
 
@@ -729,7 +729,7 @@ console.log(projectUser.id);
 
 **post** `/organization/projects/{project_id}/users/{user_id}`
 
-Modify project user
+Modifies a user's role in the project.
 
 ### Parameters
 
@@ -812,7 +812,10 @@ console.log(projectUser.id);
 
 **delete** `/organization/projects/{project_id}/users/{user_id}`
 
-Delete project user
+Deletes a user from the project.
+
+Returns confirmation of project user deletion, or an error if the project is
+archived (archived projects have no users).
 
 ### Parameters
 
@@ -916,7 +919,7 @@ console.log(user.id);
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 
-List project user role assignments
+Lists the project roles assigned to a user within a project.
 
 ### Parameters
 
@@ -1063,7 +1066,7 @@ for await (const roleListResponse of client.admin.organization.projects.users.ro
 
 **post** `/projects/{project_id}/users/{user_id}/roles`
 
-Assign project role to user
+Assigns a project role to a user within a project.
 
 ### Parameters
 
@@ -1303,7 +1306,7 @@ console.log(role.object);
 
 **get** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Retrieve project user role
+Retrieves a project role assigned to a user.
 
 ### Parameters
 
@@ -1430,7 +1433,7 @@ console.log(role.id);
 
 **delete** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Unassign project role from user
+Unassigns a project role from a user within a project.
 
 ### Parameters
 
@@ -1772,7 +1775,7 @@ console.log(role.deleted);
 
 **get** `/organization/projects/{project_id}/service_accounts`
 
-List project service accounts
+Returns a list of service accounts in the project.
 
 ### Parameters
 
@@ -1863,7 +1866,7 @@ for await (const projectServiceAccount of client.admin.organization.projects.ser
 
 **post** `/organization/projects/{project_id}/service_accounts`
 
-Create project service account
+Creates a new service account in the project. This also returns an unredacted API key for the service account.
 
 ### Parameters
 
@@ -1953,7 +1956,7 @@ console.log(serviceAccount.id);
 
 **get** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Retrieve project service account
+Retrieves a service account in the project.
 
 ### Parameters
 
@@ -2032,7 +2035,7 @@ console.log(projectServiceAccount.id);
 
 **post** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Update project service account
+Updates a service account in the project.
 
 ### Parameters
 
@@ -2123,7 +2126,10 @@ console.log(projectServiceAccount.id);
 
 **delete** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Delete project service account
+Deletes a service account from the project.
+
+Returns confirmation of service account deletion, or an error if the project
+is archived (archived projects have no service accounts).
 
 ### Parameters
 
@@ -2264,7 +2270,7 @@ console.log(serviceAccount.id);
 
 **get** `/organization/projects/{project_id}/api_keys`
 
-List project API keys
+Returns a list of API keys in the project.
 
 ### Parameters
 
@@ -2424,7 +2430,7 @@ for await (const projectAPIKey of client.admin.organization.projects.apiKeys.lis
 
 **get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Retrieve project API key
+Retrieves an API key in the project.
 
 ### Parameters
 
@@ -2573,7 +2579,10 @@ console.log(projectAPIKey.id);
 
 **delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Delete project API key
+Deletes an API key from the project.
+
+Returns confirmation of the key deletion, or an error if the key belonged to
+a service account.
 
 ### Parameters
 
@@ -2731,7 +2740,7 @@ console.log(apiKey.id);
 
 **get** `/organization/projects/{project_id}/rate_limits`
 
-List project rate limits
+Returns the rate limits per model for a project.
 
 ### Parameters
 
@@ -2842,7 +2851,7 @@ for await (const projectRateLimit of client.admin.organization.projects.rateLimi
 
 **post** `/organization/projects/{project_id}/rate_limits/{rate_limit_id}`
 
-Modify project rate limit
+Updates a project rate limit.
 
 ### Parameters
 
@@ -3009,7 +3018,7 @@ console.log(projectRateLimit.id);
 
 **get** `/organization/projects/{project_id}/model_permissions`
 
-Retrieve project model permissions
+Returns model permissions for a project.
 
 ### Parameters
 
@@ -3073,7 +3082,7 @@ console.log(projectModelPermissions.model_ids);
 
 **post** `/organization/projects/{project_id}/model_permissions`
 
-Modify project model permissions
+Updates model permissions for a project.
 
 ### Parameters
 
@@ -3152,7 +3161,7 @@ console.log(projectModelPermissions.model_ids);
 
 **delete** `/organization/projects/{project_id}/model_permissions`
 
-Delete project model permissions
+Deletes model permissions for a project.
 
 ### Parameters
 
@@ -3248,7 +3257,7 @@ console.log(projectModelPermissionsDeleted.deleted);
 
 **get** `/organization/projects/{project_id}/hosted_tool_permissions`
 
-Retrieve project hosted tool permissions
+Returns hosted tool permissions for a project.
 
 ### Parameters
 
@@ -3343,7 +3352,7 @@ console.log(projectHostedToolPermissions.code_interpreter);
 
 **post** `/organization/projects/{project_id}/hosted_tool_permissions`
 
-Modify project hosted tool permissions
+Updates hosted tool permissions for a project.
 
 ### Parameters
 
@@ -3530,7 +3539,7 @@ console.log(projectHostedToolPermissions.code_interpreter);
 
 **get** `/organization/projects/{project_id}/groups`
 
-List project groups
+Lists the groups that have access to a project.
 
 ### Parameters
 
@@ -3631,7 +3640,7 @@ for await (const projectGroup of client.admin.organization.projects.groups.list(
 
 **post** `/organization/projects/{project_id}/groups`
 
-Add project group
+Grants a group access to a project.
 
 ### Parameters
 
@@ -3719,7 +3728,7 @@ console.log(projectGroup.group_id);
 
 **get** `/organization/projects/{project_id}/groups/{group_id}`
 
-Retrieve project group
+Retrieves a project's group.
 
 ### Parameters
 
@@ -3810,7 +3819,7 @@ console.log(projectGroup.group_id);
 
 **delete** `/organization/projects/{project_id}/groups/{group_id}`
 
-Remove project group
+Revokes a group's access to a project.
 
 ### Parameters
 
@@ -3925,7 +3934,7 @@ console.log(group.deleted);
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 
-List project group role assignments
+Lists the project roles assigned to a group within a project.
 
 ### Parameters
 
@@ -4072,7 +4081,7 @@ for await (const roleListResponse of client.admin.organization.projects.groups.r
 
 **post** `/projects/{project_id}/groups/{group_id}/roles`
 
-Assign project role to group
+Assigns a project role to a group within a project.
 
 ### Parameters
 
@@ -4209,7 +4218,7 @@ console.log(role.group);
 
 **get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Retrieve project group role
+Retrieves a project role assigned to a group.
 
 ### Parameters
 
@@ -4336,7 +4345,7 @@ console.log(role.id);
 
 **delete** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Unassign project role from group
+Unassigns a project role from a group within a project.
 
 ### Parameters
 
@@ -4604,7 +4613,7 @@ console.log(role.deleted);
 
 **get** `/projects/{project_id}/roles`
 
-List project roles
+Lists the roles configured for a project.
 
 ### Parameters
 
@@ -4708,7 +4717,7 @@ for await (const role of client.admin.organization.projects.roles.list('project_
 
 **post** `/projects/{project_id}/roles`
 
-Create project role
+Creates a custom role for a project.
 
 ### Parameters
 
@@ -4803,7 +4812,7 @@ console.log(role.id);
 
 **get** `/projects/{project_id}/roles/{role_id}`
 
-Retrieve project role
+Retrieves a project role.
 
 ### Parameters
 
@@ -4889,7 +4898,7 @@ console.log(role.id);
 
 **post** `/projects/{project_id}/roles/{role_id}`
 
-Update project role
+Updates an existing project role.
 
 ### Parameters
 
@@ -4987,7 +4996,7 @@ console.log(role.id);
 
 **delete** `/projects/{project_id}/roles/{role_id}`
 
-Delete project role
+Deletes a custom role from a project.
 
 ### Parameters
 
@@ -5075,7 +5084,7 @@ console.log(role.id);
 
 **get** `/organization/projects/{project_id}/data_retention`
 
-Retrieve project data retention
+Retrieves project data retention controls.
 
 ### Parameters
 
@@ -5140,7 +5149,7 @@ console.log(projectDataRetention.object);
 
 **post** `/organization/projects/{project_id}/data_retention`
 
-Update project data retention
+Updates project data retention controls.
 
 ### Parameters
 
@@ -5256,7 +5265,7 @@ console.log(projectDataRetention.object);
 
 **get** `/organization/projects/{project_id}/spend_alerts`
 
-List project spend alerts
+Lists project spend alerts.
 
 ### Parameters
 
@@ -5384,7 +5393,7 @@ for await (const projectSpendAlert of client.admin.organization.projects.spendAl
 
 **post** `/organization/projects/{project_id}/spend_alerts`
 
-Create project spend alert
+Creates a project spend alert.
 
 ### Parameters
 
@@ -5523,7 +5532,7 @@ console.log(projectSpendAlert.id);
 
 **get** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Retrieve project spend alert
+Retrieves a project spend alert.
 
 ### Parameters
 
@@ -5627,7 +5636,7 @@ console.log(projectSpendAlert.id);
 
 **post** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Update project spend alert
+Updates a project spend alert.
 
 ### Parameters
 
@@ -5768,7 +5777,7 @@ console.log(projectSpendAlert.id);
 
 **delete** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Delete project spend alert
+Deletes a project spend alert.
 
 ### Parameters
 
@@ -5907,7 +5916,7 @@ console.log(projectSpendAlertDeleted.id);
 
 **get** `/organization/projects/{project_id}/certificates`
 
-List project certificates
+List certificates for this project.
 
 ### Parameters
 
@@ -6016,7 +6025,9 @@ for await (const certificateListResponse of client.admin.organization.projects.c
 
 **post** `/organization/projects/{project_id}/certificates/activate`
 
-Activate certificates for project
+Activate certificates at the project level.
+
+You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Parameters
 
@@ -6109,7 +6120,8 @@ for await (const certificateActivateResponse of client.admin.organization.projec
 
 **post** `/organization/projects/{project_id}/certificates/deactivate`
 
-Deactivate certificates for project
+Deactivate certificates at the project level. You can atomically and
+idempotently deactivate up to 10 certificates at a time.
 
 ### Parameters
 

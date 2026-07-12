@@ -4,7 +4,9 @@
 
 **post** `/responses/{response_id}/cancel`
 
-Cancel a response
+Cancels a model response with the given ID. Only responses created with
+the `background` parameter set to `true` can be cancelled.
+[Learn more](https://platform.openai.com/docs/guides/background).
 
 ### Parameters
 
@@ -1538,7 +1540,7 @@ Cancel a response
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1548,7 +1550,11 @@ Cancel a response
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 

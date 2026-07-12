@@ -2,7 +2,25 @@
 
 **post** `/uploads`
 
-Create upload
+Creates an intermediate [Upload](/docs/api-reference/uploads/object) object
+that you can add [Parts](/docs/api-reference/uploads/part-object) to.
+Currently, an Upload can accept at most 8 GB in total and expires after an
+hour after you create it.
+
+Once you complete the Upload, we will create a
+[File](/docs/api-reference/files/object) object that contains all the parts
+you uploaded. This File is usable in the rest of our platform as a regular
+File object.
+
+For certain `purpose` values, the correct `mime_type` must be specified.
+Please refer to documentation for the
+[supported MIME types for your use case](/docs/assistants/tools/file-search#supported-files).
+
+For guidance on the proper filename extensions for each purpose, please
+follow the documentation on [creating a
+File](/docs/api-reference/files/create).
+
+Returns the Upload object with status `pending`.
 
 ### Body Parameters
 
@@ -21,12 +39,12 @@ Create upload
   This must fall within the supported MIME types for your file purpose. See
   the supported MIME types for assistants and vision.
 
-- `purpose: FilePurpose`
+- `purpose: "assistants" or "batch" or "fine-tune" or "vision"`
 
   The intended purpose of the uploaded file.
 
   See the [documentation on File
-  purposes](https://platform.openai.com/docs/api-reference/files/create#files-create-purpose).
+  purposes](/docs/api-reference/files/create#files-create-purpose).
 
   - `"assistants"`
 
@@ -35,10 +53,6 @@ Create upload
   - `"fine-tune"`
 
   - `"vision"`
-
-  - `"user_data"`
-
-  - `"evals"`
 
 - `expires_after: optional object { anchor, seconds }`
 
@@ -80,15 +94,9 @@ Create upload
 
     The name of the file to be uploaded.
 
-  - `object: "upload"`
-
-    The object type, which is always "upload".
-
-    - `"upload"`
-
   - `purpose: string`
 
-    The intended purpose of the file. [Please refer here](https://platform.openai.com/docs/api-reference/files/object#files/object-purpose) for acceptable values.
+    The intended purpose of the file. [Please refer here](/docs/api-reference/files/object#files/object-purpose) for acceptable values.
 
   - `status: "pending" or "completed" or "cancelled" or "expired"`
 
@@ -166,6 +174,12 @@ Create upload
 
       Deprecated. For details on why a fine-tuning training file failed validation, see the `error` field on `fine_tuning.job`.
 
+  - `object: optional "upload"`
+
+    The object type, which is always "upload".
+
+    - `"upload"`
+
 ### Example
 
 ```http
@@ -189,7 +203,6 @@ curl https://api.openai.com/v1/uploads \
   "created_at": 0,
   "expires_at": 0,
   "filename": "filename",
-  "object": "upload",
   "purpose": "purpose",
   "status": "pending",
   "file": {
@@ -202,7 +215,8 @@ curl https://api.openai.com/v1/uploads \
     "status": "uploaded",
     "expires_at": 0,
     "status_details": "status_details"
-  }
+  },
+  "object": "upload"
 }
 ```
 

@@ -4,7 +4,7 @@
 
 **post** `/evals/{eval_id}/runs`
 
-Create eval run
+Kicks off a new run for a given evaluation, specifying the data source, and what model configuration to use to test. The datasource will be validated against the schema specified in the config of the evaluation.
 
 ### Parameters
 
@@ -1053,7 +1053,7 @@ Create eval run
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1063,7 +1063,11 @@ Create eval run
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 
@@ -3071,7 +3075,7 @@ Create eval run
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -3081,7 +3085,11 @@ Create eval run
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 

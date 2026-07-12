@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/certificates`
 
-List project certificates
+List certificates for this project.
 
 ### Parameters
 
@@ -112,7 +112,9 @@ print(page.id)
 
 **post** `/organization/projects/{project_id}/certificates/activate`
 
-Activate certificates for project
+Activate certificates at the project level.
+
+You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Parameters
 
@@ -202,7 +204,8 @@ print(page.id)
 
 **post** `/organization/projects/{project_id}/certificates/deactivate`
 
-Deactivate certificates for project
+Deactivate certificates at the project level. You can atomically and
+idempotently deactivate up to 10 certificates at a time.
 
 ### Parameters
 

@@ -2,7 +2,7 @@
 
 **post** `/vector_stores/{vector_store_id}`
 
-Modify vector store
+Modifies a vector store.
 
 ### Path Parameters
 

@@ -4,7 +4,7 @@
 
 **get** `/threads/{thread_id}`
 
-Retrieve thread
+Retrieves a thread.
 
 ### Parameters
 

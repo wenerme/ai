@@ -4,7 +4,15 @@
 
 **post** `/realtime/transcription_sessions`
 
-Create transcription session
+Create an ephemeral API token for use in client-side applications with the
+Realtime API specifically for realtime transcriptions.
+Can be configured with the same session parameters as the `transcription_session.update` client event.
+
+It responds with a session object, plus a `client_secret` key which contains
+a usable ephemeral API token that can be used to authenticate browser clients
+for the Realtime API.
+
+Returns the created Realtime transcription session object, plus an ephemeral key.
 
 ### Body Parameters
 
@@ -93,7 +101,7 @@ Create transcription session
 
     An optional text to guide the model's style or continue a previous audio
     segment.
-    For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+    For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
     For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
     Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -146,39 +154,23 @@ Create transcription session
 
   The format of input audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
 
-- `input_audio_transcription: optional AudioTranscription`
+- `input_audio_transcription: optional object { language, model, prompt }`
 
-  - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-    Controls how long the model waits before emitting transcription text.
-    Higher values can improve transcription accuracy at the cost of latency.
-    Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-    - `"minimal"`
-
-    - `"low"`
-
-    - `"medium"`
-
-    - `"high"`
-
-    - `"xhigh"`
+  Configuration of the transcription model.
 
   - `language: optional string`
 
-    The language of the input audio. Supplying the input language in
-    [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-    will improve accuracy and latency.
+    The language of the input audio.
 
   - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-    The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+    The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
     - `string`
 
     - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-      The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+      The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
       - `"whisper-1"`
 
@@ -194,11 +186,7 @@ Create transcription session
 
   - `prompt: optional string`
 
-    An optional text to guide the model's style or continue a previous audio
-    segment.
-    For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-    For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-    Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+    The prompt configured for input audio transcription, when present.
 
 - `modalities: optional array of "text" or "audio"`
 
@@ -255,7 +243,6 @@ curl https://api.openai.com/v1/realtime/transcription_sessions \
   },
   "input_audio_format": "input_audio_format",
   "input_audio_transcription": {
-    "delay": "minimal",
     "language": "language",
     "model": "whisper-1",
     "prompt": "prompt"
@@ -336,39 +323,23 @@ curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
 
     The format of input audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
 
-  - `input_audio_transcription: optional AudioTranscription`
+  - `input_audio_transcription: optional object { language, model, prompt }`
 
-    - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-      Controls how long the model waits before emitting transcription text.
-      Higher values can improve transcription accuracy at the cost of latency.
-      Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-      - `"minimal"`
-
-      - `"low"`
-
-      - `"medium"`
-
-      - `"high"`
-
-      - `"xhigh"`
+    Configuration of the transcription model.
 
     - `language: optional string`
 
-      The language of the input audio. Supplying the input language in
-      [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-      will improve accuracy and latency.
+      The language of the input audio.
 
     - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-      The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+      The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
       - `string`
 
       - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-        The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+        The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
         - `"whisper-1"`
 
@@ -384,11 +355,7 @@ curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
 
     - `prompt: optional string`
 
-      An optional text to guide the model's style or continue a previous audio
-      segment.
-      For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-      For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-      Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+      The prompt configured for input audio transcription, when present.
 
   - `modalities: optional array of "text" or "audio"`
 

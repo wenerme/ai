@@ -6,7 +6,7 @@ Create a new skill.
 
 ### Body Parameters
 
-- `files: optional array of string or string`
+- `files: array of string or string`
 
   Skill files to upload (directory upload) or a single zip file.
 
@@ -56,8 +56,9 @@ Create a new skill.
 
 ```http
 curl https://api.openai.com/v1/skills \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -F files='["Example data"]'
 ```
 
 #### Response

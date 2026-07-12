@@ -4,7 +4,7 @@
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 
-List project user role assignments
+Lists the project roles assigned to a user within a project.
 
 ### Path Parameters
 
@@ -190,7 +190,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles \
 
 **post** `/projects/{project_id}/users/{user_id}/roles`
 
-Assign project role to user
+Assigns a project role to a user within a project.
 
 ### Path Parameters
 
@@ -455,7 +455,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/ro
 
 **get** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Retrieve project user role
+Retrieves a project role assigned to a user.
 
 ### Path Parameters
 
@@ -590,7 +590,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
 **delete** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
 
-Unassign project role from user
+Unassigns a project role from a user within a project.
 
 ### Path Parameters
 

@@ -2,7 +2,7 @@
 
 **post** `/organization/spend_alerts/{alert_id}`
 
-Update organization spend alert
+Updates an organization spend alert.
 
 ### Path Parameters
 

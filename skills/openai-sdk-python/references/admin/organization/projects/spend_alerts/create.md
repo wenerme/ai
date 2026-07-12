@@ -4,7 +4,7 @@
 
 **post** `/organization/projects/{project_id}/spend_alerts`
 
-Create project spend alert
+Creates a project spend alert.
 
 ### Parameters
 

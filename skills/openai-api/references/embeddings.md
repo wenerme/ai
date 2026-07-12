@@ -4,7 +4,7 @@
 
 **post** `/embeddings`
 
-Create embeddings
+Creates an embedding vector representing the input text.
 
 ### Body Parameters
 
@@ -16,21 +16,21 @@ Create embeddings
 
     The string that will be turned into an embedding.
 
-  - `ArrayOfStrings = array of string`
+  - `Array = array of string`
 
     The array of strings that will be turned into an embedding.
 
-  - `ArrayOfTokens = array of number`
+  - `Array = array of number`
 
     The array of integers that will be turned into an embedding.
 
-  - `ArrayOfTokenArrays = array of array of number`
+  - `Array = array of array of number`
 
     The array of arrays containing integers that will be turned into an embedding.
 
 - `model: string or EmbeddingModel`
 
-  ID of the model to use. You can use the [List models](https://platform.openai.com/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](https://platform.openai.com/docs/models) for descriptions of them.
+  ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
   - `string`
 
@@ -56,7 +56,7 @@ Create embeddings
 
 - `user: optional string`
 
-  A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#end-user-ids).
+  A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices#end-user-ids).
 
 ### Returns
 
@@ -68,7 +68,7 @@ Create embeddings
 
     - `embedding: array of number`
 
-      The embedding vector, which is a list of floats. The length of vector depends on the model as listed in the [embedding guide](https://platform.openai.com/docs/guides/embeddings).
+      The embedding vector, which is a list of floats. The length of vector depends on the model as listed in the [embedding guide](/docs/guides/embeddings).
 
     - `index: number`
 
@@ -188,7 +188,7 @@ curl https://api.openai.com/v1/embeddings \
 
     - `embedding: array of number`
 
-      The embedding vector, which is a list of floats. The length of vector depends on the model as listed in the [embedding guide](https://platform.openai.com/docs/guides/embeddings).
+      The embedding vector, which is a list of floats. The length of vector depends on the model as listed in the [embedding guide](/docs/guides/embeddings).
 
     - `index: number`
 
@@ -230,7 +230,7 @@ curl https://api.openai.com/v1/embeddings \
 
   - `embedding: array of number`
 
-    The embedding vector, which is a list of floats. The length of vector depends on the model as listed in the [embedding guide](https://platform.openai.com/docs/guides/embeddings).
+    The embedding vector, which is a list of floats. The length of vector depends on the model as listed in the [embedding guide](/docs/guides/embeddings).
 
   - `index: number`
 

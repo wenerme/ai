@@ -2,7 +2,7 @@
 
 **delete** `/organization/users/{user_id}/roles/{role_id}`
 
-Unassign organization role from user
+Unassigns an organization role from a user within the organization.
 
 ### Path Parameters
 

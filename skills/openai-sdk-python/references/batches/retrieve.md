@@ -4,7 +4,7 @@
 
 **get** `/batches/{batch_id}`
 
-Retrieve batch
+Retrieves a batch.
 
 ### Parameters
 
@@ -76,7 +76,23 @@ Retrieve batch
 
   - `errors: Optional[Errors]`
 
-    - `data: Optional[List[object]]`
+    - `data: Optional[List[BatchError]]`
+
+      - `code: Optional[str]`
+
+        An error code identifying the error type.
+
+      - `line: Optional[int]`
+
+        The line number of the input file where the error occurred, if applicable.
+
+      - `message: Optional[str]`
+
+        A human-readable message providing more details about the error.
+
+      - `param: Optional[str]`
+
+        The name of the parameter that caused the error, if applicable.
 
     - `object: Optional[str]`
 
@@ -122,7 +138,21 @@ Retrieve batch
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts: Optional[object]`
+  - `request_counts: Optional[BatchRequestCounts]`
+
+    The request counts for different statuses within the batch.
+
+    - `completed: int`
+
+      Number of requests that have been completed successfully.
+
+    - `failed: int`
+
+      Number of requests that have failed.
+
+    - `total: int`
+
+      Total number of requests in the batch.
 
   - `usage: Optional[BatchUsage]`
 
@@ -191,7 +221,12 @@ print(batch.id)
   "error_file_id": "error_file_id",
   "errors": {
     "data": [
-      {}
+      {
+        "code": "code",
+        "line": 0,
+        "message": "message",
+        "param": "param"
+      }
     ],
     "object": "object"
   },
@@ -205,7 +240,11 @@ print(batch.id)
   },
   "model": "model",
   "output_file_id": "output_file_id",
-  "request_counts": {},
+  "request_counts": {
+    "completed": 0,
+    "failed": 0,
+    "total": 0
+  },
   "usage": {
     "input_tokens": 0,
     "input_tokens_details": {

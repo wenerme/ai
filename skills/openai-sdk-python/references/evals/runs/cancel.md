@@ -4,7 +4,7 @@
 
 **post** `/evals/{eval_id}/runs/{run_id}`
 
-Cancel eval run
+Cancel an ongoing evaluation run.
 
 ### Parameters
 
@@ -1069,7 +1069,7 @@ Cancel eval run
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1079,7 +1079,11 @@ Cancel eval run
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 

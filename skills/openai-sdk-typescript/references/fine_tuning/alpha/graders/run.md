@@ -4,7 +4,7 @@
 
 **post** `/fine_tuning/alpha/graders/run`
 
-Run grader
+Run a grader.
 
 ### Parameters
 

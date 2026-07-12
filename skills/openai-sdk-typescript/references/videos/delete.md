@@ -4,7 +4,7 @@
 
 **delete** `/videos/{video_id}`
 
-Delete video
+Permanently delete a completed or failed video and its stored assets.
 
 ### Parameters
 

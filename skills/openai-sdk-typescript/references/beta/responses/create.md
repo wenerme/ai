@@ -4,7 +4,13 @@
 
 **post** `/responses?beta=true`
 
-Create a model response
+Creates a model response. Provide [text](https://platform.openai.com/docs/guides/text) or
+[image](https://platform.openai.com/docs/guides/images) inputs to generate [text](https://platform.openai.com/docs/guides/text)
+or [JSON](https://platform.openai.com/docs/guides/structured-outputs) outputs. Have the model call
+your own [custom code](https://platform.openai.com/docs/guides/function-calling) or use built-in
+[tools](https://platform.openai.com/docs/guides/tools) like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+or [file search](https://platform.openai.com/docs/guides/tools-file-search) to use your own data
+as input for the model's response.
 
 ### Parameters
 
@@ -234,13 +240,15 @@ Create a model response
 
             - `"developer"`
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type?: "message"`
 
@@ -481,13 +489,15 @@ Create a model response
 
               The canonical name of the agent that produced this item.
 
-          - `phase?: "commentary" | null`
+          - `phase?: "commentary" | "final_answer" | null`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `BetaResponseFileSearchToolCall`
 
@@ -1659,7 +1669,7 @@ Create a model response
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1669,7 +1679,11 @@ Create a model response
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `CompoundFilter`
 
@@ -1716,7 +1730,7 @@ Create a model response
 
                         - `"nin"`
 
-                      - `value: string | number | boolean | Array<unknown>`
+                      - `value: string | number | boolean | Array<string | number>`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1726,7 +1740,11 @@ Create a model response
 
                         - `boolean`
 
-                        - `Array<unknown>`
+                        - `Array<string | number>`
+
+                          - `string`
+
+                          - `number`
 
                     - `unknown`
 
@@ -4997,13 +5015,15 @@ Create a model response
 
           - `"developer"`
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type?: "message"`
 
@@ -5244,13 +5264,15 @@ Create a model response
 
             The canonical name of the agent that produced this item.
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `BetaResponseFileSearchToolCall`
 
@@ -6422,7 +6444,7 @@ Create a model response
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -6432,7 +6454,11 @@ Create a model response
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -6479,7 +6505,7 @@ Create a model response
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<unknown>`
+                    - `value: string | number | boolean | Array<string | number>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -6489,7 +6515,11 @@ Create a model response
 
                       - `boolean`
 
-                      - `Array<unknown>`
+                      - `Array<string | number>`
+
+                        - `string`
+
+                        - `number`
 
                   - `unknown`
 

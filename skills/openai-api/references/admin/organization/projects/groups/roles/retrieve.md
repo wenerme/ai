@@ -2,7 +2,7 @@
 
 **get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Retrieve project group role
+Retrieves a project role assigned to a group.
 
 ### Path Parameters
 

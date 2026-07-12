@@ -2,7 +2,7 @@
 
 **post** `/organization/users/{user_id}`
 
-Modify user
+Modifies a user's role in the organization.
 
 ### Path Parameters
 

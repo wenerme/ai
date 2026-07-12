@@ -2,7 +2,7 @@
 
 **post** `/organization/certificates/{certificate_id}`
 
-Modify certificate
+Modify a certificate. Note that only the name can be modified.
 
 ### Path Parameters
 

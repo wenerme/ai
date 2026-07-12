@@ -4,7 +4,7 @@
 
 **post** `/organization/invites`
 
-Create invite
+Create an invite for a user to the organization. The invite must be accepted by the user before they have access to the organization.
 
 ### Parameters
 

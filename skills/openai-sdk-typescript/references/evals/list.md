@@ -4,7 +4,7 @@
 
 **get** `/evals`
 
-List evals
+List evaluations for a project.
 
 ### Parameters
 

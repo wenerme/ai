@@ -2,7 +2,7 @@
 
 **post** `/organization/groups/{group_id}`
 
-Update group
+Updates a group's information.
 
 ### Path Parameters
 

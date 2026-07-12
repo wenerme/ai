@@ -4,7 +4,8 @@
 
 **post** `/realtime/calls`
 
-Create call
+Create a new Realtime API call over WebRTC and receive the SDP answer needed
+to complete the peer connection.
 
 ### Parameters
 

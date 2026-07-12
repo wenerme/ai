@@ -4,7 +4,8 @@
 
 **post** `/realtime/calls/{call_id}/accept`
 
-Accept call
+Accept an incoming SIP call and configure the realtime session that will
+handle it.
 
 ### Parameters
 

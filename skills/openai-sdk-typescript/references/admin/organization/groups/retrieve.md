@@ -4,7 +4,7 @@
 
 **get** `/organization/groups/{group_id}`
 
-Retrieve group
+Retrieves a group.
 
 ### Parameters
 

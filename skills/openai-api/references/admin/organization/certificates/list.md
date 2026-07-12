@@ -2,7 +2,7 @@
 
 **get** `/organization/certificates`
 
-List organization certificates
+List uploaded certificates for this organization.
 
 ### Query Parameters
 

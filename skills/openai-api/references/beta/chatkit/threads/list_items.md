@@ -2,7 +2,7 @@
 
 **get** `/chatkit/threads/{thread_id}/items`
 
-List ChatKit thread items
+List items that belong to a ChatKit thread.
 
 ### Path Parameters
 

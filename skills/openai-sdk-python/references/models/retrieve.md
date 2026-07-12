@@ -4,7 +4,7 @@
 
 **get** `/models/{model}`
 
-Retrieve model
+Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
 
 ### Parameters
 

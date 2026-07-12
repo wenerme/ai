@@ -4,7 +4,9 @@
 
 **post** `/completions`
 
-Create completion
+Creates a completion for the provided prompt and parameters.
+
+Returns a completion object, or a sequence of completion objects if the request is streamed.
 
 ### Parameters
 

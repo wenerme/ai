@@ -6,7 +6,7 @@
 
 **get** `/responses/{response_id}/input_items?beta=true`
 
-List input items
+Returns a list of input items for a given response.
 
 ### Parameters
 
@@ -410,13 +410,15 @@ List input items
 
         The canonical name of the agent that produced this item.
 
-    - `phase?: "commentary" | null`
+    - `phase?: "commentary" | "final_answer" | null`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
   - `BetaResponseFileSearchToolCall`
 
@@ -1498,7 +1500,7 @@ List input items
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<unknown>`
+            - `value: string | number | boolean | Array<string | number>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1508,7 +1510,11 @@ List input items
 
               - `boolean`
 
-              - `Array<unknown>`
+              - `Array<string | number>`
+
+                - `string`
+
+                - `number`
 
           - `CompoundFilter`
 
@@ -1555,7 +1561,7 @@ List input items
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1565,7 +1571,11 @@ List input items
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `unknown`
 
@@ -4027,13 +4037,15 @@ console.log(response.data);
 
           The canonical name of the agent that produced this item.
 
-      - `phase?: "commentary" | null`
+      - `phase?: "commentary" | "final_answer" | null`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `BetaResponseFileSearchToolCall`
 
@@ -5115,7 +5127,7 @@ console.log(response.data);
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5125,7 +5137,11 @@ console.log(response.data);
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `CompoundFilter`
 
@@ -5172,7 +5188,7 @@ console.log(response.data);
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5182,7 +5198,11 @@ console.log(response.data);
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `unknown`
 

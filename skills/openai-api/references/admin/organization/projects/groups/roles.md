@@ -4,7 +4,7 @@
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 
-List project group role assignments
+Lists the project roles assigned to a group within a project.
 
 ### Path Parameters
 
@@ -190,7 +190,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
 **post** `/projects/{project_id}/groups/{group_id}/roles`
 
-Assign project role to group
+Assigns a project role to a group within a project.
 
 ### Path Parameters
 
@@ -351,7 +351,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8A
 
 **get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Retrieve project group role
+Retrieves a project role assigned to a group.
 
 ### Path Parameters
 
@@ -486,7 +486,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
 **delete** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Unassign project role from group
+Unassigns a project role from a group within a project.
 
 ### Path Parameters
 

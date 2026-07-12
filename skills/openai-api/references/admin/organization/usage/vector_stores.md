@@ -2,7 +2,7 @@
 
 **get** `/organization/usage/vector_stores`
 
-Vector stores
+Get vector stores usage details for the organization.
 
 ### Query Parameters
 

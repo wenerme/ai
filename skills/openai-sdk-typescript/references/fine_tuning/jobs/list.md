@@ -4,7 +4,7 @@
 
 **get** `/fine_tuning/jobs`
 
-List fine-tuning jobs
+List your organization's fine-tuning jobs
 
 ### Parameters
 

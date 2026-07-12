@@ -2,7 +2,7 @@
 
 **get** `/organization/users`
 
-List users
+Lists all of the users in the organization.
 
 ### Query Parameters
 

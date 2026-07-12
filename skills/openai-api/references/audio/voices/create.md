@@ -2,7 +2,7 @@
 
 **post** `/audio/voices`
 
-Create voice
+Creates a custom voice.
 
 ### Returns
 

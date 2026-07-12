@@ -4,7 +4,7 @@
 
 **delete** `/projects/{project_id}/roles/{role_id}`
 
-Delete project role
+Deletes a custom role from a project.
 
 ### Parameters
 

@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Retrieve project service account
+Retrieves a service account in the project.
 
 ### Parameters
 

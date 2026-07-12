@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/service_accounts`
 
-List project service accounts
+Returns a list of service accounts in the project.
 
 ### Parameters
 
@@ -97,7 +97,7 @@ for await (const projectServiceAccount of client.admin.organization.projects.ser
 
 **post** `/organization/projects/{project_id}/service_accounts`
 
-Create project service account
+Creates a new service account in the project. This also returns an unredacted API key for the service account.
 
 ### Parameters
 
@@ -187,7 +187,7 @@ console.log(serviceAccount.id);
 
 **get** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Retrieve project service account
+Retrieves a service account in the project.
 
 ### Parameters
 
@@ -266,7 +266,7 @@ console.log(projectServiceAccount.id);
 
 **post** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Update project service account
+Updates a service account in the project.
 
 ### Parameters
 
@@ -357,7 +357,10 @@ console.log(projectServiceAccount.id);
 
 **delete** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Delete project service account
+Deletes a service account from the project.
+
+Returns confirmation of service account deletion, or an error if the project
+is archived (archived projects have no service accounts).
 
 ### Parameters
 

@@ -4,7 +4,7 @@
 
 **get** `/videos`
 
-List videos
+List recently generated videos for the current project.
 
 ### Parameters
 

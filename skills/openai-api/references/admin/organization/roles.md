@@ -4,7 +4,7 @@
 
 **get** `/organization/roles`
 
-List organization roles
+Lists the roles configured for the organization.
 
 ### Query Parameters
 
@@ -140,7 +140,7 @@ curl https://api.openai.com/v1/organization/roles?limit=20 \
 
 **post** `/organization/roles`
 
-Create organization role
+Creates a custom role for the organization.
 
 ### Body Parameters
 
@@ -259,7 +259,7 @@ curl -X POST https://api.openai.com/v1/organization/roles \
 
 **get** `/organization/roles/{role_id}`
 
-Retrieve organization role
+Retrieves an organization role.
 
 ### Path Parameters
 
@@ -353,7 +353,7 @@ curl https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
 
 **post** `/organization/roles/{role_id}`
 
-Update organization role
+Updates an existing organization role.
 
 ### Path Parameters
 
@@ -471,7 +471,7 @@ curl -X POST https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
 
 **delete** `/organization/roles/{role_id}`
 
-Delete organization role
+Deletes a custom role from the organization.
 
 ### Path Parameters
 

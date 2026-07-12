@@ -4,7 +4,7 @@
 
 **get** `/containers`
 
-List containers
+List Containers
 
 ### Query Parameters
 
@@ -196,7 +196,7 @@ curl https://api.openai.com/v1/containers \
 
 **post** `/containers`
 
-Create container
+Create Container
 
 ### Body Parameters
 
@@ -486,7 +486,7 @@ curl https://api.openai.com/v1/containers \
 
 **get** `/containers/{container_id}`
 
-Retrieve container
+Retrieve Container
 
 ### Path Parameters
 
@@ -622,7 +622,7 @@ curl https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2474fb6f4a0
 
 **delete** `/containers/{container_id}`
 
-Delete a container
+Delete Container
 
 ### Path Parameters
 
@@ -877,7 +877,7 @@ curl -X DELETE https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2
 
 **get** `/containers/{container_id}/files`
 
-List container files
+List Container files
 
 ### Path Parameters
 
@@ -923,11 +923,9 @@ List container files
 
     Unix timestamp (in seconds) when the file was created.
 
-  - `object: "container.file"`
+  - `object: string`
 
     The type of this object (`container.file`).
-
-    - `"container.file"`
 
   - `path: string`
 
@@ -972,7 +970,7 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID/files \
       "bytes": 0,
       "container_id": "container_id",
       "created_at": 0,
-      "object": "container.file",
+      "object": "object",
       "path": "path",
       "source": "source"
     }
@@ -1017,7 +1015,9 @@ curl https://api.openai.com/v1/containers/cntr_682e0e7318108198aa783fd921ff305e0
 
 **post** `/containers/{container_id}/files`
 
-Create container file
+Create a Container File
+
+You can send either a multipart/form-data request with the raw file content, or a JSON request with a file ID.
 
 ### Path Parameters
 
@@ -1051,11 +1051,9 @@ Create container file
 
   Unix timestamp (in seconds) when the file was created.
 
-- `object: "container.file"`
+- `object: string`
 
   The type of this object (`container.file`).
-
-  - `"container.file"`
 
 - `path: string`
 
@@ -1081,7 +1079,7 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID/files \
   "bytes": 0,
   "container_id": "container_id",
   "created_at": 0,
-  "object": "container.file",
+  "object": "object",
   "path": "path",
   "source": "source"
 }
@@ -1113,7 +1111,7 @@ curl https://api.openai.com/v1/containers/cntr_682e0e7318108198aa783fd921ff305e0
 
 **get** `/containers/{container_id}/files/{file_id}`
 
-Retrieve container file
+Retrieve Container File
 
 ### Path Parameters
 
@@ -1139,11 +1137,9 @@ Retrieve container file
 
   Unix timestamp (in seconds) when the file was created.
 
-- `object: "container.file"`
+- `object: string`
 
   The type of this object (`container.file`).
-
-  - `"container.file"`
 
 - `path: string`
 
@@ -1168,7 +1164,7 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID/files/$FILE_ID \
   "bytes": 0,
   "container_id": "container_id",
   "created_at": 0,
-  "object": "container.file",
+  "object": "object",
   "path": "path",
   "source": "source"
 }
@@ -1199,7 +1195,7 @@ curl https://api.openai.com/v1/containers/container_123/files/file_456 \
 
 **delete** `/containers/{container_id}/files/{file_id}`
 
-Delete a container file
+Delete Container File
 
 ### Path Parameters
 
@@ -1254,11 +1250,9 @@ curl -X DELETE https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2
 
     Unix timestamp (in seconds) when the file was created.
 
-  - `object: "container.file"`
+  - `object: string`
 
     The type of this object (`container.file`).
-
-    - `"container.file"`
 
   - `path: string`
 
@@ -1288,11 +1282,9 @@ curl -X DELETE https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2
 
     Unix timestamp (in seconds) when the file was created.
 
-  - `object: "container.file"`
+  - `object: string`
 
     The type of this object (`container.file`).
-
-    - `"container.file"`
 
   - `path: string`
 
@@ -1322,11 +1314,9 @@ curl -X DELETE https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2
 
     Unix timestamp (in seconds) when the file was created.
 
-  - `object: "container.file"`
+  - `object: string`
 
     The type of this object (`container.file`).
-
-    - `"container.file"`
 
   - `path: string`
 
@@ -1342,7 +1332,7 @@ curl -X DELETE https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2
 
 **get** `/containers/{container_id}/files/{file_id}/content`
 
-Retrieve container file content
+Retrieve Container File Content
 
 ### Path Parameters
 

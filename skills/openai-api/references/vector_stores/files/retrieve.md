@@ -2,7 +2,7 @@
 
 **get** `/vector_stores/{vector_store_id}/files/{file_id}`
 
-Retrieve vector store file
+Retrieves a vector store file.
 
 ### Path Parameters
 
@@ -66,7 +66,7 @@ Retrieve vector store file
 
   - `vector_store_id: string`
 
-    The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) that the [File](https://platform.openai.com/docs/api-reference/files) is attached to.
+    The ID of the [vector store](/docs/api-reference/vector-stores/object) that the [File](/docs/api-reference/files) is attached to.
 
   - `attributes: optional map[string or number or boolean]`
 
@@ -82,7 +82,7 @@ Retrieve vector store file
 
     - `boolean`
 
-  - `chunking_strategy: optional FileChunkingStrategy`
+  - `chunking_strategy: optional StaticFileChunkingStrategyObject or OtherFileChunkingStrategyObject`
 
     The strategy used to chunk the file.
 

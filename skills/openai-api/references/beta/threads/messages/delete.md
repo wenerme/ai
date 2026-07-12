@@ -2,7 +2,7 @@
 
 **delete** `/threads/{thread_id}/messages/{message_id}`
 
-Delete message
+Deletes a message.
 
 ### Path Parameters
 

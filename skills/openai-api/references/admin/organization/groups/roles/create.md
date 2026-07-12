@@ -2,7 +2,7 @@
 
 **post** `/organization/groups/{group_id}/roles`
 
-Assign organization role to group
+Assigns an organization role to a group within the organization.
 
 ### Path Parameters
 

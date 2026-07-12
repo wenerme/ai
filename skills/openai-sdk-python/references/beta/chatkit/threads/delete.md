@@ -4,7 +4,7 @@
 
 **delete** `/chatkit/threads/{thread_id}`
 
-Delete ChatKit thread
+Delete a ChatKit thread along with its items and stored attachments.
 
 ### Parameters
 

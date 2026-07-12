@@ -4,7 +4,7 @@
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/pause`
 
-Pause fine-tuning
+Pause a fine-tune job.
 
 ### Parameters
 

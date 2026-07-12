@@ -2,7 +2,7 @@
 
 **post** `/fine_tuning/alpha/graders/run`
 
-Run grader
+Run a grader.
 
 ### Body Parameters
 
@@ -485,14 +485,14 @@ Run grader
 - `model_sample: string`
 
   The model sample to be evaluated. This value will be used to populate
-  the `sample` namespace. See [the guide](https://platform.openai.com/docs/guides/graders) for more details.
+  the `sample` namespace. See [the guide](/docs/guides/graders) for more details.
   The `output_json` variable will be populated if the model sample is a
   valid JSON string.
 
 - `item: optional unknown`
 
   The dataset item provided to the grader. This will be used to populate
-  the `item` namespace. See [the guide](https://platform.openai.com/docs/guides/graders) for more details.
+  the `item` namespace. See [the guide](/docs/guides/graders) for more details.
 
 ### Returns
 

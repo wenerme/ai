@@ -4,7 +4,7 @@
 
 **get** `/organization/data_retention`
 
-Retrieve organization data retention
+Retrieves organization data retention controls.
 
 ### Returns
 
@@ -67,7 +67,7 @@ curl https://api.openai.com/v1/organization/data_retention \
 
 **post** `/organization/data_retention`
 
-Update organization data retention
+Updates organization data retention controls.
 
 ### Body Parameters
 

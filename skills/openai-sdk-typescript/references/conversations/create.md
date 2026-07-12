@@ -4,7 +4,7 @@
 
 **post** `/conversations`
 
-Create a conversation
+Create a conversation.
 
 ### Parameters
 
@@ -1439,7 +1439,7 @@ Create a conversation
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1449,7 +1449,11 @@ Create a conversation
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `CompoundFilter`
 

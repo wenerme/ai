@@ -4,7 +4,7 @@
 
 **get** `/conversations/{conversation_id}/items/{item_id}`
 
-Retrieve an item
+Get a single item from a conversation with the given IDs.
 
 ### Parameters
 
@@ -1402,7 +1402,7 @@ Retrieve an item
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1412,7 +1412,11 @@ Retrieve an item
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 

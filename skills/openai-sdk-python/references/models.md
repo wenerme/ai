@@ -6,7 +6,7 @@
 
 **get** `/models`
 
-List models
+Lists the currently available models, and provides basic information about each one such as the owner and availability.
 
 ### Returns
 
@@ -105,7 +105,7 @@ client.models.list()
 
 **get** `/models/{model}`
 
-Retrieve model
+Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
 
 ### Parameters
 
@@ -187,7 +187,7 @@ client.models.retrieve("VAR_chat_model_id")
 
 **delete** `/models/{model}`
 
-Delete a fine-tuned model
+Delete a fine-tuned model. You must have the Owner role in your organization to delete a model.
 
 ### Parameters
 

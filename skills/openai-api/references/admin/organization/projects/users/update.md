@@ -2,7 +2,7 @@
 
 **post** `/organization/projects/{project_id}/users/{user_id}`
 
-Modify project user
+Modifies a user's role in the project.
 
 ### Path Parameters
 

@@ -6,7 +6,7 @@
 
 **get** `/evals/{eval_id}/runs`
 
-Get eval runs
+Get a list of runs for an evaluation.
 
 ### Parameters
 
@@ -1082,7 +1082,7 @@ Get eval runs
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1092,7 +1092,11 @@ Get eval runs
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -2314,7 +2318,7 @@ console.log(runs);
 
 **post** `/evals/{eval_id}/runs`
 
-Create eval run
+Kicks off a new run for a given evaluation, specifying the data source, and what model configuration to use to test. The datasource will be validated against the schema specified in the config of the evaluation.
 
 ### Parameters
 
@@ -3346,7 +3350,7 @@ Create eval run
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -3356,7 +3360,11 @@ Create eval run
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -5333,7 +5341,7 @@ Create eval run
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5343,7 +5351,11 @@ Create eval run
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -6583,7 +6595,7 @@ console.log(run);
 
 **get** `/evals/{eval_id}/runs/{run_id}`
 
-Get an eval run
+Get an evaluation run by ID.
 
 ### Parameters
 
@@ -7633,7 +7645,7 @@ Get an eval run
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -7643,7 +7655,11 @@ Get an eval run
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -8926,7 +8942,7 @@ console.log(run);
 
 **post** `/evals/{eval_id}/runs/{run_id}`
 
-Cancel eval run
+Cancel an ongoing evaluation run.
 
 ### Parameters
 
@@ -9976,7 +9992,7 @@ Cancel eval run
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -9986,7 +10002,11 @@ Cancel eval run
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -11269,7 +11289,7 @@ console.log(canceledRun);
 
 **delete** `/evals/{eval_id}/runs/{run_id}`
 
-Delete eval run
+Delete an eval run.
 
 ### Parameters
 
@@ -12994,7 +13014,7 @@ console.log(deleted);
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -13004,7 +13024,11 @@ console.log(deleted);
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -15079,7 +15103,7 @@ console.log(deleted);
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -15089,7 +15113,11 @@ console.log(deleted);
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -17164,7 +17192,7 @@ console.log(deleted);
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -17174,7 +17202,11 @@ console.log(deleted);
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -19249,7 +19281,7 @@ console.log(deleted);
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -19259,7 +19291,11 @@ console.log(deleted);
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -20314,7 +20350,7 @@ console.log(deleted);
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items`
 
-Get eval run output items
+Get a list of output items for an evaluation run.
 
 ### Parameters
 
@@ -20676,7 +20712,7 @@ console.log(outputItems);
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items/{output_item_id}`
 
-Get an output item of an eval run
+Get an evaluation run output item by ID.
 
 ### Parameters
 

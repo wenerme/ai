@@ -6,7 +6,7 @@
 
 **get** `/organization/invites`
 
-List invites
+Returns a list of invites in the organization.
 
 ### Parameters
 
@@ -133,7 +133,7 @@ print(page.id)
 
 **post** `/organization/invites`
 
-Create invite
+Create an invite for a user to the organization. The invite must be accepted by the user before they have access to the organization.
 
 ### Parameters
 
@@ -274,7 +274,7 @@ print(invite.id)
 
 **get** `/organization/invites/{invite_id}`
 
-Retrieve invite
+Retrieves an invite.
 
 ### Parameters
 
@@ -388,7 +388,7 @@ print(invite.id)
 
 **delete** `/organization/invites/{invite_id}`
 
-Delete invite
+Delete an invite. If the invite has already been accepted, it cannot be deleted.
 
 ### Parameters
 

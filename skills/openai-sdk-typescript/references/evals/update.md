@@ -4,7 +4,7 @@
 
 **post** `/evals/{eval_id}`
 
-Update an eval
+Update certain properties of an evaluation.
 
 ### Parameters
 

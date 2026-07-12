@@ -6,7 +6,7 @@
 
 **post** `/threads`
 
-Create thread
+Create a thread.
 
 ### Parameters
 
@@ -30,7 +30,7 @@ Create thread
 
         References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
-        - `image_file: ImageFileParam`
+        - `image_file: ImageFile`
 
           - `file_id: str`
 
@@ -56,7 +56,7 @@ Create thread
 
         References an image URL in the content of a message.
 
-        - `image_url: ImageURLParam`
+        - `image_url: ImageURL`
 
           - `url: str`
 
@@ -361,7 +361,7 @@ print(message_thread)
 
 **post** `/threads/runs`
 
-Create thread and run
+Create a thread and run it in one request.
 
 ### Parameters
 
@@ -676,7 +676,7 @@ Create thread and run
 
           References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
-          - `image_file: ImageFileParam`
+          - `image_file: ImageFile`
 
             - `file_id: str`
 
@@ -702,7 +702,7 @@ Create thread and run
 
           References an image URL in the content of a message.
 
-          - `image_url: ImageURLParam`
+          - `image_url: ImageURL`
 
             - `url: str`
 
@@ -916,9 +916,75 @@ Create thread and run
 
       The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
-- `tools: Optional[Iterable[object]]`
+- `tools: Optional[Iterable[AssistantToolParam]]`
 
   Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
+
+  - `class CodeInterpreterTool: …`
+
+  - `class FileSearchTool: …`
+
+    - `type: Literal["file_search"]`
+
+      The type of tool being defined: `file_search`
+
+      - `"file_search"`
+
+    - `file_search: Optional[FileSearch]`
+
+      Overrides for the file search tool.
+
+      - `max_num_results: Optional[int]`
+
+        The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+        Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+      - `ranking_options: Optional[FileSearchRankingOptions]`
+
+        The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+        See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `score_threshold: float`
+
+          The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+        - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+          The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+          - `"auto"`
+
+          - `"default_2024_08_21"`
+
+  - `class FunctionTool: …`
+
+    - `function: FunctionDefinition`
+
+      - `name: str`
+
+        The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+      - `description: Optional[str]`
+
+        A description of what the function does, used by the model to choose when and how to call the function.
+
+      - `parameters: Optional[FunctionParameters]`
+
+        The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+        Omitting `parameters` defines a function with an empty parameter list.
+
+      - `strict: Optional[bool]`
+
+        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+    - `type: Literal["function"]`
+
+      The type of tool being defined: `function`
+
+      - `"function"`
 
 - `top_p: Optional[float]`
 
@@ -1162,7 +1228,27 @@ Create thread and run
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -1206,9 +1292,81 @@ Create thread and run
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -1309,11 +1467,13 @@ for thread in client.beta.threads.create_and_run(
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": {},
+  "status": "queued",
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {}
+    {
+      "type": "code_interpreter"
+    }
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -1549,7 +1709,7 @@ data: [DONE]
 
 **get** `/threads/{thread_id}`
 
-Retrieve thread
+Retrieves a thread.
 
 ### Parameters
 
@@ -1672,7 +1832,7 @@ print(my_thread)
 
 **post** `/threads/{thread_id}`
 
-Modify thread
+Modifies a thread.
 
 ### Parameters
 
@@ -1825,7 +1985,7 @@ print(my_updated_thread)
 
 **delete** `/threads/{thread_id}`
 
-Delete thread
+Delete a thread.
 
 ### Parameters
 
@@ -2104,7 +2264,7 @@ print(response)
 
 **get** `/threads/{thread_id}/runs`
 
-List runs
+Returns a list of runs belonging to a thread.
 
 ### Parameters
 
@@ -2350,7 +2510,27 @@ List runs
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -2394,9 +2574,81 @@ List runs
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -2500,11 +2752,13 @@ print(page.id)
       },
       "response_format": "auto",
       "started_at": 0,
-      "status": {},
+      "status": "queued",
       "thread_id": "thread_id",
       "tool_choice": "none",
       "tools": [
-        {}
+        {
+          "type": "code_interpreter"
+        }
       ],
       "truncation_strategy": {
         "type": "auto",
@@ -2652,7 +2906,7 @@ print(runs)
 
 **post** `/threads/{thread_id}/runs`
 
-Create run
+Create a run.
 
 ### Parameters
 
@@ -2694,7 +2948,7 @@ Create run
 
         References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
-        - `image_file: ImageFileParam`
+        - `image_file: ImageFile`
 
           - `file_id: str`
 
@@ -2720,7 +2974,7 @@ Create run
 
         References an image URL in the content of a message.
 
-        - `image_url: ImageURLParam`
+        - `image_url: ImageURL`
 
           - `url: str`
 
@@ -3148,9 +3402,75 @@ Create run
 
         The name of the function to call.
 
-- `tools: Optional[Iterable[object]]`
+- `tools: Optional[Iterable[AssistantToolParam]]`
 
   Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
+
+  - `class CodeInterpreterTool: …`
+
+  - `class FileSearchTool: …`
+
+    - `type: Literal["file_search"]`
+
+      The type of tool being defined: `file_search`
+
+      - `"file_search"`
+
+    - `file_search: Optional[FileSearch]`
+
+      Overrides for the file search tool.
+
+      - `max_num_results: Optional[int]`
+
+        The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+        Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+      - `ranking_options: Optional[FileSearchRankingOptions]`
+
+        The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+        See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `score_threshold: float`
+
+          The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+        - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+          The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+          - `"auto"`
+
+          - `"default_2024_08_21"`
+
+  - `class FunctionTool: …`
+
+    - `function: FunctionDefinition`
+
+      - `name: str`
+
+        The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+      - `description: Optional[str]`
+
+        A description of what the function does, used by the model to choose when and how to call the function.
+
+      - `parameters: Optional[FunctionParameters]`
+
+        The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+        Omitting `parameters` defines a function with an empty parameter list.
+
+      - `strict: Optional[bool]`
+
+        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+    - `type: Literal["function"]`
+
+      The type of tool being defined: `function`
+
+      - `"function"`
 
 - `top_p: Optional[float]`
 
@@ -3394,7 +3714,27 @@ Create run
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -3438,9 +3778,81 @@ Create run
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -3542,11 +3954,13 @@ for run in client.beta.threads.runs.create(
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": {},
+  "status": "queued",
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {}
+    {
+      "type": "code_interpreter"
+    }
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -3772,7 +4186,7 @@ data: [DONE]
 
 **get** `/threads/{thread_id}/runs/{run_id}`
 
-Retrieve run
+Retrieves a run.
 
 ### Parameters
 
@@ -4000,7 +4414,27 @@ Retrieve run
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -4044,9 +4478,81 @@ Retrieve run
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -4148,11 +4654,13 @@ print(run.id)
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": {},
+  "status": "queued",
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {}
+    {
+      "type": "code_interpreter"
+    }
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -4232,7 +4740,7 @@ print(run)
 
 **post** `/threads/{thread_id}/runs/{run_id}`
 
-Modify run
+Modifies a run.
 
 ### Parameters
 
@@ -4469,7 +4977,27 @@ Modify run
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -4513,9 +5041,81 @@ Modify run
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -4617,11 +5217,13 @@ print(run.id)
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": {},
+  "status": "queued",
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {}
+    {
+      "type": "code_interpreter"
+    }
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -4712,7 +5314,7 @@ print(run)
 
 **post** `/threads/{thread_id}/runs/{run_id}/submit_tool_outputs`
 
-Submit tool outputs to run
+When a run has the `status: "requires_action"` and `required_action.type` is `submit_tool_outputs`, this endpoint can be used to submit the outputs from the tool calls once they're all completed. All outputs must be submitted in a single request.
 
 ### Parameters
 
@@ -4958,7 +5560,27 @@ Submit tool outputs to run
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -5002,9 +5624,81 @@ Submit tool outputs to run
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -5107,11 +5801,13 @@ for run in client.beta.threads.runs.submit_tool_outputs(
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": {},
+  "status": "queued",
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {}
+    {
+      "type": "code_interpreter"
+    }
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -5286,7 +5982,7 @@ data: [DONE]
 
 **post** `/threads/{thread_id}/runs/{run_id}/cancel`
 
-Cancel a run
+Cancels a run that is `in_progress`.
 
 ### Parameters
 
@@ -5514,7 +6210,27 @@ Cancel a run
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -5558,9 +6274,81 @@ Cancel a run
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -5662,11 +6450,13 @@ print(run.id)
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": {},
+  "status": "queued",
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {}
+    {
+      "type": "code_interpreter"
+    }
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -5984,7 +6774,27 @@ print(run)
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -6028,9 +6838,81 @@ print(run)
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -6074,7 +6956,27 @@ print(run)
 
 ### Run Status
 
-- `object`
+- `Literal["queued", "in_progress", "requires_action", 6 more]`
+
+  The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+  - `"queued"`
+
+  - `"in_progress"`
+
+  - `"requires_action"`
+
+  - `"cancelling"`
+
+  - `"cancelled"`
+
+  - `"failed"`
+
+  - `"completed"`
+
+  - `"incomplete"`
+
+  - `"expired"`
 
 # Steps
 
@@ -6084,7 +6986,7 @@ print(run)
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps`
 
-List run steps
+Returns a list of run steps belonging to a run.
 
 ### Parameters
 
@@ -6227,9 +7129,153 @@ List run steps
 
       Details of the tool call.
 
-      - `tool_calls: List[object]`
+      - `tool_calls: List[ToolCall]`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+        - `class CodeInterpreterToolCall: …`
+
+          Details of the Code Interpreter tool call the run step was involved in.
+
+          - `id: str`
+
+            The ID of the tool call.
+
+          - `code_interpreter: CodeInterpreter`
+
+            The Code Interpreter tool call definition.
+
+            - `input: str`
+
+              The input to the Code Interpreter tool call.
+
+            - `outputs: List[CodeInterpreterOutput]`
+
+              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+              - `class CodeInterpreterOutputLogs: …`
+
+                Text output from the Code Interpreter tool call as part of a run step.
+
+                - `logs: str`
+
+                  The text output from the Code Interpreter tool call.
+
+                - `type: Literal["logs"]`
+
+                  Always `logs`.
+
+                  - `"logs"`
+
+              - `class CodeInterpreterOutputImage: …`
+
+                - `image: CodeInterpreterOutputImageImage`
+
+                  - `file_id: str`
+
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+                - `type: Literal["image"]`
+
+                  Always `image`.
+
+                  - `"image"`
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+            - `"code_interpreter"`
+
+        - `class FileSearchToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `file_search: FileSearch`
+
+            For now, this is always going to be an empty object.
+
+            - `ranking_options: Optional[FileSearchRankingOptions]`
+
+              The ranking options for the file search.
+
+              - `ranker: Literal["auto", "default_2024_08_21"]`
+
+                The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+                - `"auto"`
+
+                - `"default_2024_08_21"`
+
+              - `score_threshold: float`
+
+                The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+            - `results: Optional[List[FileSearchResult]]`
+
+              The results of the file search.
+
+              - `file_id: str`
+
+                The ID of the file that result was found in.
+
+              - `file_name: str`
+
+                The name of the file that result was found in.
+
+              - `score: float`
+
+                The score of the result. All values must be a floating point number between 0 and 1.
+
+              - `content: Optional[List[FileSearchResultContent]]`
+
+                The content of the result that was found. The content is only included if requested via the include query parameter.
+
+                - `text: Optional[str]`
+
+                  The text content of the file.
+
+                - `type: Optional[Literal["text"]]`
+
+                  The type of the content.
+
+                  - `"text"`
+
+          - `type: Literal["file_search"]`
+
+            The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+            - `"file_search"`
+
+        - `class FunctionToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `function: Function`
+
+            The definition of the function that was called.
+
+            - `arguments: str`
+
+              The arguments passed to the function.
+
+            - `name: str`
+
+              The name of the function.
+
+            - `output: Optional[str]`
+
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+          - `type: Literal["function"]`
+
+            The type of tool call. This is always going to be `function` for this type of tool call.
+
+            - `"function"`
 
       - `type: Literal["tool_calls"]`
 
@@ -6386,7 +7432,7 @@ print(run_steps)
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps/{step_id}`
 
-Retrieve run step
+Retrieves a run step.
 
 ### Parameters
 
@@ -6511,9 +7557,153 @@ Retrieve run step
 
       Details of the tool call.
 
-      - `tool_calls: List[object]`
+      - `tool_calls: List[ToolCall]`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+        - `class CodeInterpreterToolCall: …`
+
+          Details of the Code Interpreter tool call the run step was involved in.
+
+          - `id: str`
+
+            The ID of the tool call.
+
+          - `code_interpreter: CodeInterpreter`
+
+            The Code Interpreter tool call definition.
+
+            - `input: str`
+
+              The input to the Code Interpreter tool call.
+
+            - `outputs: List[CodeInterpreterOutput]`
+
+              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+              - `class CodeInterpreterOutputLogs: …`
+
+                Text output from the Code Interpreter tool call as part of a run step.
+
+                - `logs: str`
+
+                  The text output from the Code Interpreter tool call.
+
+                - `type: Literal["logs"]`
+
+                  Always `logs`.
+
+                  - `"logs"`
+
+              - `class CodeInterpreterOutputImage: …`
+
+                - `image: CodeInterpreterOutputImageImage`
+
+                  - `file_id: str`
+
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+                - `type: Literal["image"]`
+
+                  Always `image`.
+
+                  - `"image"`
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+            - `"code_interpreter"`
+
+        - `class FileSearchToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `file_search: FileSearch`
+
+            For now, this is always going to be an empty object.
+
+            - `ranking_options: Optional[FileSearchRankingOptions]`
+
+              The ranking options for the file search.
+
+              - `ranker: Literal["auto", "default_2024_08_21"]`
+
+                The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+                - `"auto"`
+
+                - `"default_2024_08_21"`
+
+              - `score_threshold: float`
+
+                The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+            - `results: Optional[List[FileSearchResult]]`
+
+              The results of the file search.
+
+              - `file_id: str`
+
+                The ID of the file that result was found in.
+
+              - `file_name: str`
+
+                The name of the file that result was found in.
+
+              - `score: float`
+
+                The score of the result. All values must be a floating point number between 0 and 1.
+
+              - `content: Optional[List[FileSearchResultContent]]`
+
+                The content of the result that was found. The content is only included if requested via the include query parameter.
+
+                - `text: Optional[str]`
+
+                  The text content of the file.
+
+                - `type: Optional[Literal["text"]]`
+
+                  The type of the content.
+
+                  - `"text"`
+
+          - `type: Literal["file_search"]`
+
+            The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+            - `"file_search"`
+
+        - `class FunctionToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `function: Function`
+
+            The definition of the function that was called.
+
+            - `arguments: str`
+
+              The arguments passed to the function.
+
+            - `name: str`
+
+              The name of the function.
+
+            - `output: Optional[str]`
+
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+          - `type: Literal["function"]`
+
+            The type of tool call. This is always going to be `function` for this type of tool call.
+
+            - `"function"`
 
       - `type: Literal["tool_calls"]`
 
@@ -7090,9 +8280,153 @@ print(run_step)
 
       Details of the tool call.
 
-      - `tool_calls: List[object]`
+      - `tool_calls: List[ToolCall]`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+        - `class CodeInterpreterToolCall: …`
+
+          Details of the Code Interpreter tool call the run step was involved in.
+
+          - `id: str`
+
+            The ID of the tool call.
+
+          - `code_interpreter: CodeInterpreter`
+
+            The Code Interpreter tool call definition.
+
+            - `input: str`
+
+              The input to the Code Interpreter tool call.
+
+            - `outputs: List[CodeInterpreterOutput]`
+
+              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+              - `class CodeInterpreterOutputLogs: …`
+
+                Text output from the Code Interpreter tool call as part of a run step.
+
+                - `logs: str`
+
+                  The text output from the Code Interpreter tool call.
+
+                - `type: Literal["logs"]`
+
+                  Always `logs`.
+
+                  - `"logs"`
+
+              - `class CodeInterpreterOutputImage: …`
+
+                - `image: CodeInterpreterOutputImageImage`
+
+                  - `file_id: str`
+
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+                - `type: Literal["image"]`
+
+                  Always `image`.
+
+                  - `"image"`
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+            - `"code_interpreter"`
+
+        - `class FileSearchToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `file_search: FileSearch`
+
+            For now, this is always going to be an empty object.
+
+            - `ranking_options: Optional[FileSearchRankingOptions]`
+
+              The ranking options for the file search.
+
+              - `ranker: Literal["auto", "default_2024_08_21"]`
+
+                The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+                - `"auto"`
+
+                - `"default_2024_08_21"`
+
+              - `score_threshold: float`
+
+                The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+            - `results: Optional[List[FileSearchResult]]`
+
+              The results of the file search.
+
+              - `file_id: str`
+
+                The ID of the file that result was found in.
+
+              - `file_name: str`
+
+                The name of the file that result was found in.
+
+              - `score: float`
+
+                The score of the result. All values must be a floating point number between 0 and 1.
+
+              - `content: Optional[List[FileSearchResultContent]]`
+
+                The content of the result that was found. The content is only included if requested via the include query parameter.
+
+                - `text: Optional[str]`
+
+                  The text content of the file.
+
+                - `type: Optional[Literal["text"]]`
+
+                  The type of the content.
+
+                  - `"text"`
+
+          - `type: Literal["file_search"]`
+
+            The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+            - `"file_search"`
+
+        - `class FunctionToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `function: Function`
+
+            The definition of the function that was called.
+
+            - `arguments: str`
+
+              The arguments passed to the function.
+
+            - `name: str`
+
+              The name of the function.
+
+            - `output: Optional[str]`
+
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+          - `type: Literal["function"]`
+
+            The type of tool call. This is always going to be `function` for this type of tool call.
+
+            - `"function"`
 
       - `type: Literal["tool_calls"]`
 
@@ -7130,7 +8464,161 @@ print(run_step)
 
 ### Run Step Delta
 
-- `object`
+- `class RunStepDelta: …`
+
+  The delta containing the fields that have changed on the run step.
+
+  - `step_details: Optional[StepDetails]`
+
+    The details of the run step.
+
+    - `class RunStepDeltaMessageDelta: …`
+
+      Details of the message creation by the run step.
+
+      - `type: Literal["message_creation"]`
+
+        Always `message_creation`.
+
+        - `"message_creation"`
+
+      - `message_creation: Optional[MessageCreation]`
+
+        - `message_id: Optional[str]`
+
+          The ID of the message that was created by this run step.
+
+    - `class ToolCallDeltaObject: …`
+
+      Details of the tool call.
+
+      - `type: Literal["tool_calls"]`
+
+        Always `tool_calls`.
+
+        - `"tool_calls"`
+
+      - `tool_calls: Optional[List[ToolCallDelta]]`
+
+        An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+        - `class CodeInterpreterToolCallDelta: …`
+
+          Details of the Code Interpreter tool call the run step was involved in.
+
+          - `index: int`
+
+            The index of the tool call in the tool calls array.
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+            - `"code_interpreter"`
+
+          - `id: Optional[str]`
+
+            The ID of the tool call.
+
+          - `code_interpreter: Optional[CodeInterpreter]`
+
+            The Code Interpreter tool call definition.
+
+            - `input: Optional[str]`
+
+              The input to the Code Interpreter tool call.
+
+            - `outputs: Optional[List[CodeInterpreterOutput]]`
+
+              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+              - `class CodeInterpreterLogs: …`
+
+                Text output from the Code Interpreter tool call as part of a run step.
+
+                - `index: int`
+
+                  The index of the output in the outputs array.
+
+                - `type: Literal["logs"]`
+
+                  Always `logs`.
+
+                  - `"logs"`
+
+                - `logs: Optional[str]`
+
+                  The text output from the Code Interpreter tool call.
+
+              - `class CodeInterpreterOutputImage: …`
+
+                - `index: int`
+
+                  The index of the output in the outputs array.
+
+                - `type: Literal["image"]`
+
+                  Always `image`.
+
+                  - `"image"`
+
+                - `image: Optional[Image]`
+
+                  - `file_id: Optional[str]`
+
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+        - `class FileSearchToolCallDelta: …`
+
+          - `file_search: object`
+
+            For now, this is always going to be an empty object.
+
+          - `index: int`
+
+            The index of the tool call in the tool calls array.
+
+          - `type: Literal["file_search"]`
+
+            The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+            - `"file_search"`
+
+          - `id: Optional[str]`
+
+            The ID of the tool call object.
+
+        - `class FunctionToolCallDelta: …`
+
+          - `index: int`
+
+            The index of the tool call in the tool calls array.
+
+          - `type: Literal["function"]`
+
+            The type of tool call. This is always going to be `function` for this type of tool call.
+
+            - `"function"`
+
+          - `id: Optional[str]`
+
+            The ID of the tool call object.
+
+          - `function: Optional[Function]`
+
+            The definition of the function that was called.
+
+            - `arguments: Optional[str]`
+
+              The arguments passed to the function.
+
+            - `name: Optional[str]`
+
+              The name of the function.
+
+            - `output: Optional[str]`
+
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
 ### Run Step Delta Event
 
@@ -7142,7 +8630,161 @@ print(run_step)
 
     The identifier of the run step, which can be referenced in API endpoints.
 
-  - `delta: object`
+  - `delta: RunStepDelta`
+
+    The delta containing the fields that have changed on the run step.
+
+    - `step_details: Optional[StepDetails]`
+
+      The details of the run step.
+
+      - `class RunStepDeltaMessageDelta: …`
+
+        Details of the message creation by the run step.
+
+        - `type: Literal["message_creation"]`
+
+          Always `message_creation`.
+
+          - `"message_creation"`
+
+        - `message_creation: Optional[MessageCreation]`
+
+          - `message_id: Optional[str]`
+
+            The ID of the message that was created by this run step.
+
+      - `class ToolCallDeltaObject: …`
+
+        Details of the tool call.
+
+        - `type: Literal["tool_calls"]`
+
+          Always `tool_calls`.
+
+          - `"tool_calls"`
+
+        - `tool_calls: Optional[List[ToolCallDelta]]`
+
+          An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+          - `class CodeInterpreterToolCallDelta: …`
+
+            Details of the Code Interpreter tool call the run step was involved in.
+
+            - `index: int`
+
+              The index of the tool call in the tool calls array.
+
+            - `type: Literal["code_interpreter"]`
+
+              The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+              - `"code_interpreter"`
+
+            - `id: Optional[str]`
+
+              The ID of the tool call.
+
+            - `code_interpreter: Optional[CodeInterpreter]`
+
+              The Code Interpreter tool call definition.
+
+              - `input: Optional[str]`
+
+                The input to the Code Interpreter tool call.
+
+              - `outputs: Optional[List[CodeInterpreterOutput]]`
+
+                The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+                - `class CodeInterpreterLogs: …`
+
+                  Text output from the Code Interpreter tool call as part of a run step.
+
+                  - `index: int`
+
+                    The index of the output in the outputs array.
+
+                  - `type: Literal["logs"]`
+
+                    Always `logs`.
+
+                    - `"logs"`
+
+                  - `logs: Optional[str]`
+
+                    The text output from the Code Interpreter tool call.
+
+                - `class CodeInterpreterOutputImage: …`
+
+                  - `index: int`
+
+                    The index of the output in the outputs array.
+
+                  - `type: Literal["image"]`
+
+                    Always `image`.
+
+                    - `"image"`
+
+                  - `image: Optional[Image]`
+
+                    - `file_id: Optional[str]`
+
+                      The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+          - `class FileSearchToolCallDelta: …`
+
+            - `file_search: object`
+
+              For now, this is always going to be an empty object.
+
+            - `index: int`
+
+              The index of the tool call in the tool calls array.
+
+            - `type: Literal["file_search"]`
+
+              The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+              - `"file_search"`
+
+            - `id: Optional[str]`
+
+              The ID of the tool call object.
+
+          - `class FunctionToolCallDelta: …`
+
+            - `index: int`
+
+              The index of the tool call in the tool calls array.
+
+            - `type: Literal["function"]`
+
+              The type of tool call. This is always going to be `function` for this type of tool call.
+
+              - `"function"`
+
+            - `id: Optional[str]`
+
+              The ID of the tool call object.
+
+            - `function: Optional[Function]`
+
+              The definition of the function that was called.
+
+              - `arguments: Optional[str]`
+
+                The arguments passed to the function.
+
+              - `name: Optional[str]`
+
+                The name of the function.
+
+              - `output: Optional[str]`
+
+                The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
   - `object: Literal["thread.run.step.delta"]`
 
@@ -7176,11 +8818,277 @@ print(run_step)
 
 ### Tool Call
 
-- `object`
+- `ToolCall`
+
+  Details of the Code Interpreter tool call the run step was involved in.
+
+  - `class CodeInterpreterToolCall: …`
+
+    Details of the Code Interpreter tool call the run step was involved in.
+
+    - `id: str`
+
+      The ID of the tool call.
+
+    - `code_interpreter: CodeInterpreter`
+
+      The Code Interpreter tool call definition.
+
+      - `input: str`
+
+        The input to the Code Interpreter tool call.
+
+      - `outputs: List[CodeInterpreterOutput]`
+
+        The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+        - `class CodeInterpreterOutputLogs: …`
+
+          Text output from the Code Interpreter tool call as part of a run step.
+
+          - `logs: str`
+
+            The text output from the Code Interpreter tool call.
+
+          - `type: Literal["logs"]`
+
+            Always `logs`.
+
+            - `"logs"`
+
+        - `class CodeInterpreterOutputImage: …`
+
+          - `image: CodeInterpreterOutputImageImage`
+
+            - `file_id: str`
+
+              The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+          - `type: Literal["image"]`
+
+            Always `image`.
+
+            - `"image"`
+
+    - `type: Literal["code_interpreter"]`
+
+      The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+      - `"code_interpreter"`
+
+  - `class FileSearchToolCall: …`
+
+    - `id: str`
+
+      The ID of the tool call object.
+
+    - `file_search: FileSearch`
+
+      For now, this is always going to be an empty object.
+
+      - `ranking_options: Optional[FileSearchRankingOptions]`
+
+        The ranking options for the file search.
+
+        - `ranker: Literal["auto", "default_2024_08_21"]`
+
+          The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+          - `"auto"`
+
+          - `"default_2024_08_21"`
+
+        - `score_threshold: float`
+
+          The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+      - `results: Optional[List[FileSearchResult]]`
+
+        The results of the file search.
+
+        - `file_id: str`
+
+          The ID of the file that result was found in.
+
+        - `file_name: str`
+
+          The name of the file that result was found in.
+
+        - `score: float`
+
+          The score of the result. All values must be a floating point number between 0 and 1.
+
+        - `content: Optional[List[FileSearchResultContent]]`
+
+          The content of the result that was found. The content is only included if requested via the include query parameter.
+
+          - `text: Optional[str]`
+
+            The text content of the file.
+
+          - `type: Optional[Literal["text"]]`
+
+            The type of the content.
+
+            - `"text"`
+
+    - `type: Literal["file_search"]`
+
+      The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+      - `"file_search"`
+
+  - `class FunctionToolCall: …`
+
+    - `id: str`
+
+      The ID of the tool call object.
+
+    - `function: Function`
+
+      The definition of the function that was called.
+
+      - `arguments: str`
+
+        The arguments passed to the function.
+
+      - `name: str`
+
+        The name of the function.
+
+      - `output: Optional[str]`
+
+        The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+    - `type: Literal["function"]`
+
+      The type of tool call. This is always going to be `function` for this type of tool call.
+
+      - `"function"`
 
 ### Tool Call Delta
 
-- `object`
+- `ToolCallDelta`
+
+  Details of the Code Interpreter tool call the run step was involved in.
+
+  - `class CodeInterpreterToolCallDelta: …`
+
+    Details of the Code Interpreter tool call the run step was involved in.
+
+    - `index: int`
+
+      The index of the tool call in the tool calls array.
+
+    - `type: Literal["code_interpreter"]`
+
+      The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+      - `"code_interpreter"`
+
+    - `id: Optional[str]`
+
+      The ID of the tool call.
+
+    - `code_interpreter: Optional[CodeInterpreter]`
+
+      The Code Interpreter tool call definition.
+
+      - `input: Optional[str]`
+
+        The input to the Code Interpreter tool call.
+
+      - `outputs: Optional[List[CodeInterpreterOutput]]`
+
+        The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+        - `class CodeInterpreterLogs: …`
+
+          Text output from the Code Interpreter tool call as part of a run step.
+
+          - `index: int`
+
+            The index of the output in the outputs array.
+
+          - `type: Literal["logs"]`
+
+            Always `logs`.
+
+            - `"logs"`
+
+          - `logs: Optional[str]`
+
+            The text output from the Code Interpreter tool call.
+
+        - `class CodeInterpreterOutputImage: …`
+
+          - `index: int`
+
+            The index of the output in the outputs array.
+
+          - `type: Literal["image"]`
+
+            Always `image`.
+
+            - `"image"`
+
+          - `image: Optional[Image]`
+
+            - `file_id: Optional[str]`
+
+              The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+  - `class FileSearchToolCallDelta: …`
+
+    - `file_search: object`
+
+      For now, this is always going to be an empty object.
+
+    - `index: int`
+
+      The index of the tool call in the tool calls array.
+
+    - `type: Literal["file_search"]`
+
+      The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+      - `"file_search"`
+
+    - `id: Optional[str]`
+
+      The ID of the tool call object.
+
+  - `class FunctionToolCallDelta: …`
+
+    - `index: int`
+
+      The index of the tool call in the tool calls array.
+
+    - `type: Literal["function"]`
+
+      The type of tool call. This is always going to be `function` for this type of tool call.
+
+      - `"function"`
+
+    - `id: Optional[str]`
+
+      The ID of the tool call object.
+
+    - `function: Optional[Function]`
+
+      The definition of the function that was called.
+
+      - `arguments: Optional[str]`
+
+        The arguments passed to the function.
+
+      - `name: Optional[str]`
+
+        The name of the function.
+
+      - `output: Optional[str]`
+
+        The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
 ### Tool Call Delta Object
 
@@ -7194,9 +9102,127 @@ print(run_step)
 
     - `"tool_calls"`
 
-  - `tool_calls: Optional[List[object]]`
+  - `tool_calls: Optional[List[ToolCallDelta]]`
 
     An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+    - `class CodeInterpreterToolCallDelta: …`
+
+      Details of the Code Interpreter tool call the run step was involved in.
+
+      - `index: int`
+
+        The index of the tool call in the tool calls array.
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+        - `"code_interpreter"`
+
+      - `id: Optional[str]`
+
+        The ID of the tool call.
+
+      - `code_interpreter: Optional[CodeInterpreter]`
+
+        The Code Interpreter tool call definition.
+
+        - `input: Optional[str]`
+
+          The input to the Code Interpreter tool call.
+
+        - `outputs: Optional[List[CodeInterpreterOutput]]`
+
+          The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+          - `class CodeInterpreterLogs: …`
+
+            Text output from the Code Interpreter tool call as part of a run step.
+
+            - `index: int`
+
+              The index of the output in the outputs array.
+
+            - `type: Literal["logs"]`
+
+              Always `logs`.
+
+              - `"logs"`
+
+            - `logs: Optional[str]`
+
+              The text output from the Code Interpreter tool call.
+
+          - `class CodeInterpreterOutputImage: …`
+
+            - `index: int`
+
+              The index of the output in the outputs array.
+
+            - `type: Literal["image"]`
+
+              Always `image`.
+
+              - `"image"`
+
+            - `image: Optional[Image]`
+
+              - `file_id: Optional[str]`
+
+                The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+    - `class FileSearchToolCallDelta: …`
+
+      - `file_search: object`
+
+        For now, this is always going to be an empty object.
+
+      - `index: int`
+
+        The index of the tool call in the tool calls array.
+
+      - `type: Literal["file_search"]`
+
+        The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+        - `"file_search"`
+
+      - `id: Optional[str]`
+
+        The ID of the tool call object.
+
+    - `class FunctionToolCallDelta: …`
+
+      - `index: int`
+
+        The index of the tool call in the tool calls array.
+
+      - `type: Literal["function"]`
+
+        The type of tool call. This is always going to be `function` for this type of tool call.
+
+        - `"function"`
+
+      - `id: Optional[str]`
+
+        The ID of the tool call object.
+
+      - `function: Optional[Function]`
+
+        The definition of the function that was called.
+
+        - `arguments: Optional[str]`
+
+          The arguments passed to the function.
+
+        - `name: Optional[str]`
+
+          The name of the function.
+
+        - `output: Optional[str]`
+
+          The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
 ### Tool Calls Step Details
 
@@ -7204,9 +9230,153 @@ print(run_step)
 
   Details of the tool call.
 
-  - `tool_calls: List[object]`
+  - `tool_calls: List[ToolCall]`
 
     An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+    - `class CodeInterpreterToolCall: …`
+
+      Details of the Code Interpreter tool call the run step was involved in.
+
+      - `id: str`
+
+        The ID of the tool call.
+
+      - `code_interpreter: CodeInterpreter`
+
+        The Code Interpreter tool call definition.
+
+        - `input: str`
+
+          The input to the Code Interpreter tool call.
+
+        - `outputs: List[CodeInterpreterOutput]`
+
+          The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+          - `class CodeInterpreterOutputLogs: …`
+
+            Text output from the Code Interpreter tool call as part of a run step.
+
+            - `logs: str`
+
+              The text output from the Code Interpreter tool call.
+
+            - `type: Literal["logs"]`
+
+              Always `logs`.
+
+              - `"logs"`
+
+          - `class CodeInterpreterOutputImage: …`
+
+            - `image: CodeInterpreterOutputImageImage`
+
+              - `file_id: str`
+
+                The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+            - `type: Literal["image"]`
+
+              Always `image`.
+
+              - `"image"`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+        - `"code_interpreter"`
+
+    - `class FileSearchToolCall: …`
+
+      - `id: str`
+
+        The ID of the tool call object.
+
+      - `file_search: FileSearch`
+
+        For now, this is always going to be an empty object.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search.
+
+          - `ranker: Literal["auto", "default_2024_08_21"]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+        - `results: Optional[List[FileSearchResult]]`
+
+          The results of the file search.
+
+          - `file_id: str`
+
+            The ID of the file that result was found in.
+
+          - `file_name: str`
+
+            The name of the file that result was found in.
+
+          - `score: float`
+
+            The score of the result. All values must be a floating point number between 0 and 1.
+
+          - `content: Optional[List[FileSearchResultContent]]`
+
+            The content of the result that was found. The content is only included if requested via the include query parameter.
+
+            - `text: Optional[str]`
+
+              The text content of the file.
+
+            - `type: Optional[Literal["text"]]`
+
+              The type of the content.
+
+              - `"text"`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+        - `"file_search"`
+
+    - `class FunctionToolCall: …`
+
+      - `id: str`
+
+        The ID of the tool call object.
+
+      - `function: Function`
+
+        The definition of the function that was called.
+
+        - `arguments: str`
+
+          The arguments passed to the function.
+
+        - `name: str`
+
+          The name of the function.
+
+        - `output: Optional[str]`
+
+          The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+      - `type: Literal["function"]`
+
+        The type of tool call. This is always going to be `function` for this type of tool call.
+
+        - `"function"`
 
   - `type: Literal["tool_calls"]`
 
@@ -7222,7 +9392,7 @@ print(run_step)
 
 **get** `/threads/{thread_id}/messages`
 
-List messages
+Returns a list of messages for a given thread.
 
 ### Parameters
 
@@ -7298,9 +9468,139 @@ List messages
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: List[object]`
+  - `content: List[MessageContent]`
 
     The content of the message in array of text and/or images.
+
+    - `class ImageFileContentBlock: …`
+
+      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+
+      - `image_file: ImageFile`
+
+        - `file_id: str`
+
+          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+
+        - `detail: Optional[Literal["auto", "low", "high"]]`
+
+          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+
+          - `"auto"`
+
+          - `"low"`
+
+          - `"high"`
+
+      - `type: Literal["image_file"]`
+
+        Always `image_file`.
+
+        - `"image_file"`
+
+    - `class ImageURLContentBlock: …`
+
+      References an image URL in the content of a message.
+
+      - `image_url: ImageURL`
+
+        - `url: str`
+
+          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
+
+        - `detail: Optional[Literal["auto", "low", "high"]]`
+
+          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
+
+          - `"auto"`
+
+          - `"low"`
+
+          - `"high"`
+
+      - `type: Literal["image_url"]`
+
+        The type of the content part.
+
+        - `"image_url"`
+
+    - `class TextContentBlock: …`
+
+      The text content that is part of a message.
+
+      - `text: Text`
+
+        - `annotations: List[Annotation]`
+
+          - `class FileCitationAnnotation: …`
+
+            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+            - `end_index: int`
+
+            - `file_citation: FileCitation`
+
+              - `file_id: str`
+
+                The ID of the specific File the citation is from.
+
+            - `start_index: int`
+
+            - `text: str`
+
+              The text in the message content that needs to be replaced.
+
+            - `type: Literal["file_citation"]`
+
+              Always `file_citation`.
+
+              - `"file_citation"`
+
+          - `class FilePathAnnotation: …`
+
+            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+            - `end_index: int`
+
+            - `file_path: FilePath`
+
+              - `file_id: str`
+
+                The ID of the file that was generated.
+
+            - `start_index: int`
+
+            - `text: str`
+
+              The text in the message content that needs to be replaced.
+
+            - `type: Literal["file_path"]`
+
+              Always `file_path`.
+
+              - `"file_path"`
+
+        - `value: str`
+
+          The data that makes up the text.
+
+      - `type: Literal["text"]`
+
+        Always `text`.
+
+        - `"text"`
+
+    - `class RefusalContentBlock: …`
+
+      The refusal content generated by the assistant.
+
+      - `refusal: str`
+
+      - `type: Literal["refusal"]`
+
+        Always `refusal`.
+
+        - `"refusal"`
 
   - `created_at: int`
 
@@ -7405,7 +9705,13 @@ print(page.id)
       ],
       "completed_at": 0,
       "content": [
-        {}
+        {
+          "image_file": {
+            "file_id": "file_id",
+            "detail": "auto"
+          },
+          "type": "image_file"
+        }
       ],
       "created_at": 0,
       "incomplete_at": 0,
@@ -7498,7 +9804,7 @@ print(thread_messages.data)
 
 **post** `/threads/{thread_id}/messages`
 
-Create message
+Create a message.
 
 ### Parameters
 
@@ -7520,7 +9826,7 @@ Create message
 
       References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
-      - `image_file: ImageFileParam`
+      - `image_file: ImageFile`
 
         - `file_id: str`
 
@@ -7546,7 +9852,7 @@ Create message
 
       References an image URL in the content of a message.
 
-      - `image_url: ImageURLParam`
+      - `image_url: ImageURL`
 
         - `url: str`
 
@@ -7676,9 +9982,139 @@ Create message
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: List[object]`
+  - `content: List[MessageContent]`
 
     The content of the message in array of text and/or images.
+
+    - `class ImageFileContentBlock: …`
+
+      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+
+      - `image_file: ImageFile`
+
+        - `file_id: str`
+
+          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+
+        - `detail: Optional[Literal["auto", "low", "high"]]`
+
+          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+
+          - `"auto"`
+
+          - `"low"`
+
+          - `"high"`
+
+      - `type: Literal["image_file"]`
+
+        Always `image_file`.
+
+        - `"image_file"`
+
+    - `class ImageURLContentBlock: …`
+
+      References an image URL in the content of a message.
+
+      - `image_url: ImageURL`
+
+        - `url: str`
+
+          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
+
+        - `detail: Optional[Literal["auto", "low", "high"]]`
+
+          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
+
+          - `"auto"`
+
+          - `"low"`
+
+          - `"high"`
+
+      - `type: Literal["image_url"]`
+
+        The type of the content part.
+
+        - `"image_url"`
+
+    - `class TextContentBlock: …`
+
+      The text content that is part of a message.
+
+      - `text: Text`
+
+        - `annotations: List[Annotation]`
+
+          - `class FileCitationAnnotation: …`
+
+            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+            - `end_index: int`
+
+            - `file_citation: FileCitation`
+
+              - `file_id: str`
+
+                The ID of the specific File the citation is from.
+
+            - `start_index: int`
+
+            - `text: str`
+
+              The text in the message content that needs to be replaced.
+
+            - `type: Literal["file_citation"]`
+
+              Always `file_citation`.
+
+              - `"file_citation"`
+
+          - `class FilePathAnnotation: …`
+
+            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+            - `end_index: int`
+
+            - `file_path: FilePath`
+
+              - `file_id: str`
+
+                The ID of the file that was generated.
+
+            - `start_index: int`
+
+            - `text: str`
+
+              The text in the message content that needs to be replaced.
+
+            - `type: Literal["file_path"]`
+
+              Always `file_path`.
+
+              - `"file_path"`
+
+        - `value: str`
+
+          The data that makes up the text.
+
+      - `type: Literal["text"]`
+
+        Always `text`.
+
+        - `"text"`
+
+    - `class RefusalContentBlock: …`
+
+      The refusal content generated by the assistant.
+
+      - `refusal: str`
+
+      - `type: Literal["refusal"]`
+
+        Always `refusal`.
+
+        - `"refusal"`
 
   - `created_at: int`
 
@@ -7782,7 +10218,13 @@ print(message.id)
   ],
   "completed_at": 0,
   "content": [
-    {}
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
   ],
   "created_at": 0,
   "incomplete_at": 0,
@@ -7845,7 +10287,7 @@ print(thread_message)
 
 **post** `/threads/{thread_id}/messages/{message_id}`
 
-Modify message
+Modifies a message.
 
 ### Parameters
 
@@ -7908,9 +10350,139 @@ Modify message
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: List[object]`
+  - `content: List[MessageContent]`
 
     The content of the message in array of text and/or images.
+
+    - `class ImageFileContentBlock: …`
+
+      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+
+      - `image_file: ImageFile`
+
+        - `file_id: str`
+
+          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+
+        - `detail: Optional[Literal["auto", "low", "high"]]`
+
+          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+
+          - `"auto"`
+
+          - `"low"`
+
+          - `"high"`
+
+      - `type: Literal["image_file"]`
+
+        Always `image_file`.
+
+        - `"image_file"`
+
+    - `class ImageURLContentBlock: …`
+
+      References an image URL in the content of a message.
+
+      - `image_url: ImageURL`
+
+        - `url: str`
+
+          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
+
+        - `detail: Optional[Literal["auto", "low", "high"]]`
+
+          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
+
+          - `"auto"`
+
+          - `"low"`
+
+          - `"high"`
+
+      - `type: Literal["image_url"]`
+
+        The type of the content part.
+
+        - `"image_url"`
+
+    - `class TextContentBlock: …`
+
+      The text content that is part of a message.
+
+      - `text: Text`
+
+        - `annotations: List[Annotation]`
+
+          - `class FileCitationAnnotation: …`
+
+            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+            - `end_index: int`
+
+            - `file_citation: FileCitation`
+
+              - `file_id: str`
+
+                The ID of the specific File the citation is from.
+
+            - `start_index: int`
+
+            - `text: str`
+
+              The text in the message content that needs to be replaced.
+
+            - `type: Literal["file_citation"]`
+
+              Always `file_citation`.
+
+              - `"file_citation"`
+
+          - `class FilePathAnnotation: …`
+
+            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+            - `end_index: int`
+
+            - `file_path: FilePath`
+
+              - `file_id: str`
+
+                The ID of the file that was generated.
+
+            - `start_index: int`
+
+            - `text: str`
+
+              The text in the message content that needs to be replaced.
+
+            - `type: Literal["file_path"]`
+
+              Always `file_path`.
+
+              - `"file_path"`
+
+        - `value: str`
+
+          The data that makes up the text.
+
+      - `type: Literal["text"]`
+
+        Always `text`.
+
+        - `"text"`
+
+    - `class RefusalContentBlock: …`
+
+      The refusal content generated by the assistant.
+
+      - `refusal: str`
+
+      - `type: Literal["refusal"]`
+
+        Always `refusal`.
+
+        - `"refusal"`
 
   - `created_at: int`
 
@@ -8013,7 +10585,13 @@ print(message.id)
   ],
   "completed_at": 0,
   "content": [
-    {}
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
   ],
   "created_at": 0,
   "incomplete_at": 0,
@@ -8082,7 +10660,7 @@ print(message)
 
 **get** `/threads/{thread_id}/messages/{message_id}`
 
-Retrieve message
+Retrieve a message.
 
 ### Parameters
 
@@ -8136,9 +10714,139 @@ Retrieve message
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: List[object]`
+  - `content: List[MessageContent]`
 
     The content of the message in array of text and/or images.
+
+    - `class ImageFileContentBlock: …`
+
+      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+
+      - `image_file: ImageFile`
+
+        - `file_id: str`
+
+          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+
+        - `detail: Optional[Literal["auto", "low", "high"]]`
+
+          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+
+          - `"auto"`
+
+          - `"low"`
+
+          - `"high"`
+
+      - `type: Literal["image_file"]`
+
+        Always `image_file`.
+
+        - `"image_file"`
+
+    - `class ImageURLContentBlock: …`
+
+      References an image URL in the content of a message.
+
+      - `image_url: ImageURL`
+
+        - `url: str`
+
+          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
+
+        - `detail: Optional[Literal["auto", "low", "high"]]`
+
+          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
+
+          - `"auto"`
+
+          - `"low"`
+
+          - `"high"`
+
+      - `type: Literal["image_url"]`
+
+        The type of the content part.
+
+        - `"image_url"`
+
+    - `class TextContentBlock: …`
+
+      The text content that is part of a message.
+
+      - `text: Text`
+
+        - `annotations: List[Annotation]`
+
+          - `class FileCitationAnnotation: …`
+
+            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+            - `end_index: int`
+
+            - `file_citation: FileCitation`
+
+              - `file_id: str`
+
+                The ID of the specific File the citation is from.
+
+            - `start_index: int`
+
+            - `text: str`
+
+              The text in the message content that needs to be replaced.
+
+            - `type: Literal["file_citation"]`
+
+              Always `file_citation`.
+
+              - `"file_citation"`
+
+          - `class FilePathAnnotation: …`
+
+            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+            - `end_index: int`
+
+            - `file_path: FilePath`
+
+              - `file_id: str`
+
+                The ID of the file that was generated.
+
+            - `start_index: int`
+
+            - `text: str`
+
+              The text in the message content that needs to be replaced.
+
+            - `type: Literal["file_path"]`
+
+              Always `file_path`.
+
+              - `"file_path"`
+
+        - `value: str`
+
+          The data that makes up the text.
+
+      - `type: Literal["text"]`
+
+        Always `text`.
+
+        - `"text"`
+
+    - `class RefusalContentBlock: …`
+
+      The refusal content generated by the assistant.
+
+      - `refusal: str`
+
+      - `type: Literal["refusal"]`
+
+        Always `refusal`.
+
+        - `"refusal"`
 
   - `created_at: int`
 
@@ -8241,7 +10949,13 @@ print(message.id)
   ],
   "completed_at": 0,
   "content": [
-    {}
+    {
+      "image_file": {
+        "file_id": "file_id",
+        "detail": "auto"
+      },
+      "type": "image_file"
+    }
   ],
   "created_at": 0,
   "incomplete_at": 0,
@@ -8303,7 +11017,7 @@ print(message)
 
 **delete** `/threads/{thread_id}/messages/{message_id}`
 
-Delete message
+Deletes a message.
 
 ### Parameters
 
@@ -8376,11 +11090,123 @@ print(deleted_message)
 
 ### Annotation
 
-- `object`
+- `Annotation`
+
+  A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+  - `class FileCitationAnnotation: …`
+
+    A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+    - `end_index: int`
+
+    - `file_citation: FileCitation`
+
+      - `file_id: str`
+
+        The ID of the specific File the citation is from.
+
+    - `start_index: int`
+
+    - `text: str`
+
+      The text in the message content that needs to be replaced.
+
+    - `type: Literal["file_citation"]`
+
+      Always `file_citation`.
+
+      - `"file_citation"`
+
+  - `class FilePathAnnotation: …`
+
+    A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+    - `end_index: int`
+
+    - `file_path: FilePath`
+
+      - `file_id: str`
+
+        The ID of the file that was generated.
+
+    - `start_index: int`
+
+    - `text: str`
+
+      The text in the message content that needs to be replaced.
+
+    - `type: Literal["file_path"]`
+
+      Always `file_path`.
+
+      - `"file_path"`
 
 ### Annotation Delta
 
-- `object`
+- `AnnotationDelta`
+
+  A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+  - `class FileCitationDeltaAnnotation: …`
+
+    A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+    - `index: int`
+
+      The index of the annotation in the text content part.
+
+    - `type: Literal["file_citation"]`
+
+      Always `file_citation`.
+
+      - `"file_citation"`
+
+    - `end_index: Optional[int]`
+
+    - `file_citation: Optional[FileCitation]`
+
+      - `file_id: Optional[str]`
+
+        The ID of the specific File the citation is from.
+
+      - `quote: Optional[str]`
+
+        The specific quote in the file.
+
+    - `start_index: Optional[int]`
+
+    - `text: Optional[str]`
+
+      The text in the message content that needs to be replaced.
+
+  - `class FilePathDeltaAnnotation: …`
+
+    A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+    - `index: int`
+
+      The index of the annotation in the text content part.
+
+    - `type: Literal["file_path"]`
+
+      Always `file_path`.
+
+      - `"file_path"`
+
+    - `end_index: Optional[int]`
+
+    - `file_path: Optional[FilePath]`
+
+      - `file_id: Optional[str]`
+
+        The ID of the file that was generated.
+
+    - `start_index: Optional[int]`
+
+    - `text: Optional[str]`
+
+      The text in the message content that needs to be replaced.
 
 ### File Citation Annotation
 
@@ -8522,7 +11348,7 @@ print(deleted_message)
 
   References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
-  - `image_file: ImageFileParam`
+  - `image_file: ImageFile`
 
     - `file_id: str`
 
@@ -8618,7 +11444,7 @@ print(deleted_message)
 
   References an image URL in the content of a message.
 
-  - `image_url: ImageURLParam`
+  - `image_url: ImageURL`
 
     - `url: str`
 
@@ -8736,9 +11562,139 @@ print(deleted_message)
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: List[object]`
+  - `content: List[MessageContent]`
 
     The content of the message in array of text and/or images.
+
+    - `class ImageFileContentBlock: …`
+
+      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+
+      - `image_file: ImageFile`
+
+        - `file_id: str`
+
+          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+
+        - `detail: Optional[Literal["auto", "low", "high"]]`
+
+          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+
+          - `"auto"`
+
+          - `"low"`
+
+          - `"high"`
+
+      - `type: Literal["image_file"]`
+
+        Always `image_file`.
+
+        - `"image_file"`
+
+    - `class ImageURLContentBlock: …`
+
+      References an image URL in the content of a message.
+
+      - `image_url: ImageURL`
+
+        - `url: str`
+
+          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
+
+        - `detail: Optional[Literal["auto", "low", "high"]]`
+
+          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
+
+          - `"auto"`
+
+          - `"low"`
+
+          - `"high"`
+
+      - `type: Literal["image_url"]`
+
+        The type of the content part.
+
+        - `"image_url"`
+
+    - `class TextContentBlock: …`
+
+      The text content that is part of a message.
+
+      - `text: Text`
+
+        - `annotations: List[Annotation]`
+
+          - `class FileCitationAnnotation: …`
+
+            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+            - `end_index: int`
+
+            - `file_citation: FileCitation`
+
+              - `file_id: str`
+
+                The ID of the specific File the citation is from.
+
+            - `start_index: int`
+
+            - `text: str`
+
+              The text in the message content that needs to be replaced.
+
+            - `type: Literal["file_citation"]`
+
+              Always `file_citation`.
+
+              - `"file_citation"`
+
+          - `class FilePathAnnotation: …`
+
+            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+            - `end_index: int`
+
+            - `file_path: FilePath`
+
+              - `file_id: str`
+
+                The ID of the file that was generated.
+
+            - `start_index: int`
+
+            - `text: str`
+
+              The text in the message content that needs to be replaced.
+
+            - `type: Literal["file_path"]`
+
+              Always `file_path`.
+
+              - `"file_path"`
+
+        - `value: str`
+
+          The data that makes up the text.
+
+      - `type: Literal["text"]`
+
+        Always `text`.
+
+        - `"text"`
+
+    - `class RefusalContentBlock: …`
+
+      The refusal content generated by the assistant.
+
+      - `refusal: str`
+
+      - `type: Literal["refusal"]`
+
+        Always `refusal`.
+
+        - `"refusal"`
 
   - `created_at: int`
 
@@ -8809,15 +11765,7 @@ print(deleted_message)
 
 ### Message Content
 
-- `object`
-
-### Message Content Delta
-
-- `object`
-
-### Message Content Part Param
-
-- `MessageContentPartParam`
+- `MessageContent`
 
   References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
@@ -8825,7 +11773,7 @@ print(deleted_message)
 
     References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
-    - `image_file: ImageFileParam`
+    - `image_file: ImageFile`
 
       - `file_id: str`
 
@@ -8851,7 +11799,307 @@ print(deleted_message)
 
     References an image URL in the content of a message.
 
-    - `image_url: ImageURLParam`
+    - `image_url: ImageURL`
+
+      - `url: str`
+
+        The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
+
+      - `detail: Optional[Literal["auto", "low", "high"]]`
+
+        Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
+
+        - `"auto"`
+
+        - `"low"`
+
+        - `"high"`
+
+    - `type: Literal["image_url"]`
+
+      The type of the content part.
+
+      - `"image_url"`
+
+  - `class TextContentBlock: …`
+
+    The text content that is part of a message.
+
+    - `text: Text`
+
+      - `annotations: List[Annotation]`
+
+        - `class FileCitationAnnotation: …`
+
+          A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+          - `end_index: int`
+
+          - `file_citation: FileCitation`
+
+            - `file_id: str`
+
+              The ID of the specific File the citation is from.
+
+          - `start_index: int`
+
+          - `text: str`
+
+            The text in the message content that needs to be replaced.
+
+          - `type: Literal["file_citation"]`
+
+            Always `file_citation`.
+
+            - `"file_citation"`
+
+        - `class FilePathAnnotation: …`
+
+          A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+          - `end_index: int`
+
+          - `file_path: FilePath`
+
+            - `file_id: str`
+
+              The ID of the file that was generated.
+
+          - `start_index: int`
+
+          - `text: str`
+
+            The text in the message content that needs to be replaced.
+
+          - `type: Literal["file_path"]`
+
+            Always `file_path`.
+
+            - `"file_path"`
+
+      - `value: str`
+
+        The data that makes up the text.
+
+    - `type: Literal["text"]`
+
+      Always `text`.
+
+      - `"text"`
+
+  - `class RefusalContentBlock: …`
+
+    The refusal content generated by the assistant.
+
+    - `refusal: str`
+
+    - `type: Literal["refusal"]`
+
+      Always `refusal`.
+
+      - `"refusal"`
+
+### Message Content Delta
+
+- `MessageContentDelta`
+
+  References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+
+  - `class ImageFileDeltaBlock: …`
+
+    References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+
+    - `index: int`
+
+      The index of the content part in the message.
+
+    - `type: Literal["image_file"]`
+
+      Always `image_file`.
+
+      - `"image_file"`
+
+    - `image_file: Optional[ImageFileDelta]`
+
+      - `detail: Optional[Literal["auto", "low", "high"]]`
+
+        Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+
+        - `"auto"`
+
+        - `"low"`
+
+        - `"high"`
+
+      - `file_id: Optional[str]`
+
+        The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+
+  - `class TextDeltaBlock: …`
+
+    The text content that is part of a message.
+
+    - `index: int`
+
+      The index of the content part in the message.
+
+    - `type: Literal["text"]`
+
+      Always `text`.
+
+      - `"text"`
+
+    - `text: Optional[TextDelta]`
+
+      - `annotations: Optional[List[AnnotationDelta]]`
+
+        - `class FileCitationDeltaAnnotation: …`
+
+          A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+          - `index: int`
+
+            The index of the annotation in the text content part.
+
+          - `type: Literal["file_citation"]`
+
+            Always `file_citation`.
+
+            - `"file_citation"`
+
+          - `end_index: Optional[int]`
+
+          - `file_citation: Optional[FileCitation]`
+
+            - `file_id: Optional[str]`
+
+              The ID of the specific File the citation is from.
+
+            - `quote: Optional[str]`
+
+              The specific quote in the file.
+
+          - `start_index: Optional[int]`
+
+          - `text: Optional[str]`
+
+            The text in the message content that needs to be replaced.
+
+        - `class FilePathDeltaAnnotation: …`
+
+          A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+          - `index: int`
+
+            The index of the annotation in the text content part.
+
+          - `type: Literal["file_path"]`
+
+            Always `file_path`.
+
+            - `"file_path"`
+
+          - `end_index: Optional[int]`
+
+          - `file_path: Optional[FilePath]`
+
+            - `file_id: Optional[str]`
+
+              The ID of the file that was generated.
+
+          - `start_index: Optional[int]`
+
+          - `text: Optional[str]`
+
+            The text in the message content that needs to be replaced.
+
+      - `value: Optional[str]`
+
+        The data that makes up the text.
+
+  - `class RefusalDeltaBlock: …`
+
+    The refusal content that is part of a message.
+
+    - `index: int`
+
+      The index of the refusal part in the message.
+
+    - `type: Literal["refusal"]`
+
+      Always `refusal`.
+
+      - `"refusal"`
+
+    - `refusal: Optional[str]`
+
+  - `class ImageURLDeltaBlock: …`
+
+    References an image URL in the content of a message.
+
+    - `index: int`
+
+      The index of the content part in the message.
+
+    - `type: Literal["image_url"]`
+
+      Always `image_url`.
+
+      - `"image_url"`
+
+    - `image_url: Optional[ImageURLDelta]`
+
+      - `detail: Optional[Literal["auto", "low", "high"]]`
+
+        Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+
+        - `"auto"`
+
+        - `"low"`
+
+        - `"high"`
+
+      - `url: Optional[str]`
+
+        The URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
+
+### Message Content Part Param
+
+- `MessageContentPartParam`
+
+  References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+
+  - `class ImageFileContentBlock: …`
+
+    References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+
+    - `image_file: ImageFile`
+
+      - `file_id: str`
+
+        The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+
+      - `detail: Optional[Literal["auto", "low", "high"]]`
+
+        Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+
+        - `"auto"`
+
+        - `"low"`
+
+        - `"high"`
+
+    - `type: Literal["image_file"]`
+
+      Always `image_file`.
+
+      - `"image_file"`
+
+  - `class ImageURLContentBlock: …`
+
+    References an image URL in the content of a message.
+
+    - `image_url: ImageURL`
 
       - `url: str`
 
@@ -8905,9 +12153,167 @@ print(deleted_message)
 
   The delta containing the fields that have changed on the Message.
 
-  - `content: Optional[List[object]]`
+  - `content: Optional[List[MessageContentDelta]]`
 
     The content of the message in array of text and/or images.
+
+    - `class ImageFileDeltaBlock: …`
+
+      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+
+      - `index: int`
+
+        The index of the content part in the message.
+
+      - `type: Literal["image_file"]`
+
+        Always `image_file`.
+
+        - `"image_file"`
+
+      - `image_file: Optional[ImageFileDelta]`
+
+        - `detail: Optional[Literal["auto", "low", "high"]]`
+
+          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+
+          - `"auto"`
+
+          - `"low"`
+
+          - `"high"`
+
+        - `file_id: Optional[str]`
+
+          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+
+    - `class TextDeltaBlock: …`
+
+      The text content that is part of a message.
+
+      - `index: int`
+
+        The index of the content part in the message.
+
+      - `type: Literal["text"]`
+
+        Always `text`.
+
+        - `"text"`
+
+      - `text: Optional[TextDelta]`
+
+        - `annotations: Optional[List[AnnotationDelta]]`
+
+          - `class FileCitationDeltaAnnotation: …`
+
+            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+            - `index: int`
+
+              The index of the annotation in the text content part.
+
+            - `type: Literal["file_citation"]`
+
+              Always `file_citation`.
+
+              - `"file_citation"`
+
+            - `end_index: Optional[int]`
+
+            - `file_citation: Optional[FileCitation]`
+
+              - `file_id: Optional[str]`
+
+                The ID of the specific File the citation is from.
+
+              - `quote: Optional[str]`
+
+                The specific quote in the file.
+
+            - `start_index: Optional[int]`
+
+            - `text: Optional[str]`
+
+              The text in the message content that needs to be replaced.
+
+          - `class FilePathDeltaAnnotation: …`
+
+            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+            - `index: int`
+
+              The index of the annotation in the text content part.
+
+            - `type: Literal["file_path"]`
+
+              Always `file_path`.
+
+              - `"file_path"`
+
+            - `end_index: Optional[int]`
+
+            - `file_path: Optional[FilePath]`
+
+              - `file_id: Optional[str]`
+
+                The ID of the file that was generated.
+
+            - `start_index: Optional[int]`
+
+            - `text: Optional[str]`
+
+              The text in the message content that needs to be replaced.
+
+        - `value: Optional[str]`
+
+          The data that makes up the text.
+
+    - `class RefusalDeltaBlock: …`
+
+      The refusal content that is part of a message.
+
+      - `index: int`
+
+        The index of the refusal part in the message.
+
+      - `type: Literal["refusal"]`
+
+        Always `refusal`.
+
+        - `"refusal"`
+
+      - `refusal: Optional[str]`
+
+    - `class ImageURLDeltaBlock: …`
+
+      References an image URL in the content of a message.
+
+      - `index: int`
+
+        The index of the content part in the message.
+
+      - `type: Literal["image_url"]`
+
+        Always `image_url`.
+
+        - `"image_url"`
+
+      - `image_url: Optional[ImageURLDelta]`
+
+        - `detail: Optional[Literal["auto", "low", "high"]]`
+
+          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+
+          - `"auto"`
+
+          - `"low"`
+
+          - `"high"`
+
+        - `url: Optional[str]`
+
+          The URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
 
   - `role: Optional[Literal["user", "assistant"]]`
 
@@ -8931,9 +12337,167 @@ print(deleted_message)
 
     The delta containing the fields that have changed on the Message.
 
-    - `content: Optional[List[object]]`
+    - `content: Optional[List[MessageContentDelta]]`
 
       The content of the message in array of text and/or images.
+
+      - `class ImageFileDeltaBlock: …`
+
+        References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+
+        - `index: int`
+
+          The index of the content part in the message.
+
+        - `type: Literal["image_file"]`
+
+          Always `image_file`.
+
+          - `"image_file"`
+
+        - `image_file: Optional[ImageFileDelta]`
+
+          - `detail: Optional[Literal["auto", "low", "high"]]`
+
+            Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+
+            - `"auto"`
+
+            - `"low"`
+
+            - `"high"`
+
+          - `file_id: Optional[str]`
+
+            The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+
+      - `class TextDeltaBlock: …`
+
+        The text content that is part of a message.
+
+        - `index: int`
+
+          The index of the content part in the message.
+
+        - `type: Literal["text"]`
+
+          Always `text`.
+
+          - `"text"`
+
+        - `text: Optional[TextDelta]`
+
+          - `annotations: Optional[List[AnnotationDelta]]`
+
+            - `class FileCitationDeltaAnnotation: …`
+
+              A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+              - `index: int`
+
+                The index of the annotation in the text content part.
+
+              - `type: Literal["file_citation"]`
+
+                Always `file_citation`.
+
+                - `"file_citation"`
+
+              - `end_index: Optional[int]`
+
+              - `file_citation: Optional[FileCitation]`
+
+                - `file_id: Optional[str]`
+
+                  The ID of the specific File the citation is from.
+
+                - `quote: Optional[str]`
+
+                  The specific quote in the file.
+
+              - `start_index: Optional[int]`
+
+              - `text: Optional[str]`
+
+                The text in the message content that needs to be replaced.
+
+            - `class FilePathDeltaAnnotation: …`
+
+              A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+              - `index: int`
+
+                The index of the annotation in the text content part.
+
+              - `type: Literal["file_path"]`
+
+                Always `file_path`.
+
+                - `"file_path"`
+
+              - `end_index: Optional[int]`
+
+              - `file_path: Optional[FilePath]`
+
+                - `file_id: Optional[str]`
+
+                  The ID of the file that was generated.
+
+              - `start_index: Optional[int]`
+
+              - `text: Optional[str]`
+
+                The text in the message content that needs to be replaced.
+
+          - `value: Optional[str]`
+
+            The data that makes up the text.
+
+      - `class RefusalDeltaBlock: …`
+
+        The refusal content that is part of a message.
+
+        - `index: int`
+
+          The index of the refusal part in the message.
+
+        - `type: Literal["refusal"]`
+
+          Always `refusal`.
+
+          - `"refusal"`
+
+        - `refusal: Optional[str]`
+
+      - `class ImageURLDeltaBlock: …`
+
+        References an image URL in the content of a message.
+
+        - `index: int`
+
+          The index of the content part in the message.
+
+        - `type: Literal["image_url"]`
+
+          Always `image_url`.
+
+          - `"image_url"`
+
+        - `image_url: Optional[ImageURLDelta]`
+
+          - `detail: Optional[Literal["auto", "low", "high"]]`
+
+            Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+
+            - `"auto"`
+
+            - `"low"`
+
+            - `"high"`
+
+          - `url: Optional[str]`
+
+            The URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
 
     - `role: Optional[Literal["user", "assistant"]]`
 
@@ -8985,7 +12549,55 @@ print(deleted_message)
 
 - `class Text: …`
 
-  - `annotations: List[object]`
+  - `annotations: List[Annotation]`
+
+    - `class FileCitationAnnotation: …`
+
+      A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+      - `end_index: int`
+
+      - `file_citation: FileCitation`
+
+        - `file_id: str`
+
+          The ID of the specific File the citation is from.
+
+      - `start_index: int`
+
+      - `text: str`
+
+        The text in the message content that needs to be replaced.
+
+      - `type: Literal["file_citation"]`
+
+        Always `file_citation`.
+
+        - `"file_citation"`
+
+    - `class FilePathAnnotation: …`
+
+      A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+      - `end_index: int`
+
+      - `file_path: FilePath`
+
+        - `file_id: str`
+
+          The ID of the file that was generated.
+
+      - `start_index: int`
+
+      - `text: str`
+
+        The text in the message content that needs to be replaced.
+
+      - `type: Literal["file_path"]`
+
+        Always `file_path`.
+
+        - `"file_path"`
 
   - `value: str`
 
@@ -8999,7 +12611,55 @@ print(deleted_message)
 
   - `text: Text`
 
-    - `annotations: List[object]`
+    - `annotations: List[Annotation]`
+
+      - `class FileCitationAnnotation: …`
+
+        A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+        - `end_index: int`
+
+        - `file_citation: FileCitation`
+
+          - `file_id: str`
+
+            The ID of the specific File the citation is from.
+
+        - `start_index: int`
+
+        - `text: str`
+
+          The text in the message content that needs to be replaced.
+
+        - `type: Literal["file_citation"]`
+
+          Always `file_citation`.
+
+          - `"file_citation"`
+
+      - `class FilePathAnnotation: …`
+
+        A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+        - `end_index: int`
+
+        - `file_path: FilePath`
+
+          - `file_id: str`
+
+            The ID of the file that was generated.
+
+        - `start_index: int`
+
+        - `text: str`
+
+          The text in the message content that needs to be replaced.
+
+        - `type: Literal["file_path"]`
+
+          Always `file_path`.
+
+          - `"file_path"`
 
     - `value: str`
 
@@ -9031,7 +12691,67 @@ print(deleted_message)
 
 - `class TextDelta: …`
 
-  - `annotations: Optional[List[object]]`
+  - `annotations: Optional[List[AnnotationDelta]]`
+
+    - `class FileCitationDeltaAnnotation: …`
+
+      A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+      - `index: int`
+
+        The index of the annotation in the text content part.
+
+      - `type: Literal["file_citation"]`
+
+        Always `file_citation`.
+
+        - `"file_citation"`
+
+      - `end_index: Optional[int]`
+
+      - `file_citation: Optional[FileCitation]`
+
+        - `file_id: Optional[str]`
+
+          The ID of the specific File the citation is from.
+
+        - `quote: Optional[str]`
+
+          The specific quote in the file.
+
+      - `start_index: Optional[int]`
+
+      - `text: Optional[str]`
+
+        The text in the message content that needs to be replaced.
+
+    - `class FilePathDeltaAnnotation: …`
+
+      A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+      - `index: int`
+
+        The index of the annotation in the text content part.
+
+      - `type: Literal["file_path"]`
+
+        Always `file_path`.
+
+        - `"file_path"`
+
+      - `end_index: Optional[int]`
+
+      - `file_path: Optional[FilePath]`
+
+        - `file_id: Optional[str]`
+
+          The ID of the file that was generated.
+
+      - `start_index: Optional[int]`
+
+      - `text: Optional[str]`
+
+        The text in the message content that needs to be replaced.
 
   - `value: Optional[str]`
 
@@ -9055,7 +12775,67 @@ print(deleted_message)
 
   - `text: Optional[TextDelta]`
 
-    - `annotations: Optional[List[object]]`
+    - `annotations: Optional[List[AnnotationDelta]]`
+
+      - `class FileCitationDeltaAnnotation: …`
+
+        A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
+
+        - `index: int`
+
+          The index of the annotation in the text content part.
+
+        - `type: Literal["file_citation"]`
+
+          Always `file_citation`.
+
+          - `"file_citation"`
+
+        - `end_index: Optional[int]`
+
+        - `file_citation: Optional[FileCitation]`
+
+          - `file_id: Optional[str]`
+
+            The ID of the specific File the citation is from.
+
+          - `quote: Optional[str]`
+
+            The specific quote in the file.
+
+        - `start_index: Optional[int]`
+
+        - `text: Optional[str]`
+
+          The text in the message content that needs to be replaced.
+
+      - `class FilePathDeltaAnnotation: …`
+
+        A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
+
+        - `index: int`
+
+          The index of the annotation in the text content part.
+
+        - `type: Literal["file_path"]`
+
+          Always `file_path`.
+
+          - `"file_path"`
+
+        - `end_index: Optional[int]`
+
+        - `file_path: Optional[FilePath]`
+
+          - `file_id: Optional[str]`
+
+            The ID of the file that was generated.
+
+        - `start_index: Optional[int]`
+
+        - `text: Optional[str]`
+
+          The text in the message content that needs to be replaced.
 
     - `value: Optional[str]`
 

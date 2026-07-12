@@ -4,7 +4,7 @@
 
 **get** `/organization/certificates`
 
-List organization certificates
+List uploaded certificates for this organization.
 
 ### Query Parameters
 
@@ -136,7 +136,9 @@ curl https://api.openai.com/v1/organization/certificates \
 
 **post** `/organization/certificates`
 
-Upload certificate
+Upload a certificate to the organization. This does **not** automatically activate the certificate.
+
+Organizations can upload up to 50 certificates.
 
 ### Body Parameters
 
@@ -257,7 +259,9 @@ curl -X POST https://api.openai.com/v1/organization/certificates \
 
 **get** `/organization/certificates/{certificate_id}`
 
-Get certificate
+Get a certificate that has been uploaded to the organization.
+
+You can get a certificate regardless of whether it is active or not.
 
 ### Path Parameters
 
@@ -372,7 +376,7 @@ curl "https://api.openai.com/v1/organization/certificates/cert_abc?include[]=con
 
 **post** `/organization/certificates/{certificate_id}`
 
-Modify certificate
+Modify a certificate. Note that only the name can be modified.
 
 ### Path Parameters
 
@@ -490,7 +494,9 @@ curl -X POST https://api.openai.com/v1/organization/certificates/cert_abc \
 
 **delete** `/organization/certificates/{certificate_id}`
 
-Delete certificate
+Delete a certificate from the organization.
+
+The certificate must be inactive for the organization and all projects.
 
 ### Path Parameters
 
@@ -545,7 +551,9 @@ curl -X DELETE https://api.openai.com/v1/organization/certificates/cert_abc \
 
 **post** `/organization/certificates/activate`
 
-Activate certificates for organization
+Activate certificates at the organization level.
+
+You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Body Parameters
 
@@ -674,7 +682,9 @@ curl https://api.openai.com/v1/organization/certificates/activate \
 
 **post** `/organization/certificates/deactivate`
 
-Deactivate certificates for organization
+Deactivate certificates at the organization level.
+
+You can atomically and idempotently deactivate up to 10 certificates at a time.
 
 ### Body Parameters
 

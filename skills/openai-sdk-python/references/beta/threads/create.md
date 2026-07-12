@@ -4,7 +4,7 @@
 
 **post** `/threads`
 
-Create thread
+Create a thread.
 
 ### Parameters
 
@@ -28,7 +28,7 @@ Create thread
 
         References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
-        - `image_file: ImageFileParam`
+        - `image_file: ImageFile`
 
           - `file_id: str`
 
@@ -54,7 +54,7 @@ Create thread
 
         References an image URL in the content of a message.
 
-        - `image_url: ImageURLParam`
+        - `image_url: ImageURL`
 
           - `url: str`
 

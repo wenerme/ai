@@ -6,7 +6,7 @@
 
 **post** `/fine_tuning/alpha/graders/run`
 
-Run grader
+Run a grader.
 
 ### Parameters
 
@@ -710,7 +710,7 @@ print(result)
 
 **post** `/fine_tuning/alpha/graders/validate`
 
-Validate grader
+Validate a grader.
 
 ### Parameters
 

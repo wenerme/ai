@@ -2,7 +2,7 @@
 
 **post** `/organization/projects/{project_id}/rate_limits/{rate_limit_id}`
 
-Modify project rate limit
+Updates a project rate limit.
 
 ### Path Parameters
 

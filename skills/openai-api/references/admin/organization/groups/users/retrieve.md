@@ -2,7 +2,7 @@
 
 **get** `/organization/groups/{group_id}/users/{user_id}`
 
-Retrieve group user
+Retrieves a user in a group.
 
 ### Path Parameters
 

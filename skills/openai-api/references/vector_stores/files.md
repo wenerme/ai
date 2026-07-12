@@ -4,7 +4,7 @@
 
 **get** `/vector_stores/{vector_store_id}/files`
 
-List vector store files
+Returns a list of vector store files.
 
 ### Path Parameters
 
@@ -98,7 +98,7 @@ List vector store files
 
   - `vector_store_id: string`
 
-    The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) that the [File](https://platform.openai.com/docs/api-reference/files) is attached to.
+    The ID of the [vector store](/docs/api-reference/vector-stores/object) that the [File](/docs/api-reference/files) is attached to.
 
   - `attributes: optional map[string or number or boolean]`
 
@@ -114,7 +114,7 @@ List vector store files
 
     - `boolean`
 
-  - `chunking_strategy: optional FileChunkingStrategy`
+  - `chunking_strategy: optional StaticFileChunkingStrategyObject or OtherFileChunkingStrategyObject`
 
     The strategy used to chunk the file.
 
@@ -237,7 +237,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files \
 
 **post** `/vector_stores/{vector_store_id}/files`
 
-Create vector store file
+Create a vector store file by attaching a [File](/docs/api-reference/files) to a [vector store](/docs/api-reference/vector-stores/object).
 
 ### Path Parameters
 
@@ -247,7 +247,7 @@ Create vector store file
 
 - `file_id: string`
 
-  A [File](https://platform.openai.com/docs/api-reference/files) ID that the vector store should use. Useful for tools like `file_search` that can access files. For multi-file ingestion, we recommend [`file_batches`](https://platform.openai.com/docs/api-reference/vector-stores-file-batches/createBatch) to minimize per-vector-store write requests.
+  A [File](/docs/api-reference/files) ID that the vector store should use. Useful for tools like `file_search` that can access files. For multi-file ingestion, we recommend [`file_batches`](/docs/api-reference/vector-stores-file-batches/createBatch) to minimize per-vector-store write requests.
 
 - `attributes: optional map[string or number or boolean]`
 
@@ -265,7 +265,7 @@ Create vector store file
 
 - `chunking_strategy: optional FileChunkingStrategyParam`
 
-  The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
+  The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
   - `AutoFileChunkingStrategyParam object { type }`
 
@@ -355,7 +355,7 @@ Create vector store file
 
   - `vector_store_id: string`
 
-    The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) that the [File](https://platform.openai.com/docs/api-reference/files) is attached to.
+    The ID of the [vector store](/docs/api-reference/vector-stores/object) that the [File](/docs/api-reference/files) is attached to.
 
   - `attributes: optional map[string or number or boolean]`
 
@@ -371,7 +371,7 @@ Create vector store file
 
     - `boolean`
 
-  - `chunking_strategy: optional FileChunkingStrategy`
+  - `chunking_strategy: optional StaticFileChunkingStrategyObject or OtherFileChunkingStrategyObject`
 
     The strategy used to chunk the file.
 
@@ -474,7 +474,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files \
 
 **post** `/vector_stores/{vector_store_id}/files/{file_id}`
 
-Update vector store file attributes
+Update attributes on a vector store file.
 
 ### Path Parameters
 
@@ -554,7 +554,7 @@ Update vector store file attributes
 
   - `vector_store_id: string`
 
-    The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) that the [File](https://platform.openai.com/docs/api-reference/files) is attached to.
+    The ID of the [vector store](/docs/api-reference/vector-stores/object) that the [File](/docs/api-reference/files) is attached to.
 
   - `attributes: optional map[string or number or boolean]`
 
@@ -570,7 +570,7 @@ Update vector store file attributes
 
     - `boolean`
 
-  - `chunking_strategy: optional FileChunkingStrategy`
+  - `chunking_strategy: optional StaticFileChunkingStrategyObject or OtherFileChunkingStrategyObject`
 
     The strategy used to chunk the file.
 
@@ -674,7 +674,7 @@ curl https://api.openai.com/v1/vector_stores/{vector_store_id}/files/{file_id} \
 
 **get** `/vector_stores/{vector_store_id}/files/{file_id}`
 
-Retrieve vector store file
+Retrieves a vector store file.
 
 ### Path Parameters
 
@@ -738,7 +738,7 @@ Retrieve vector store file
 
   - `vector_store_id: string`
 
-    The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) that the [File](https://platform.openai.com/docs/api-reference/files) is attached to.
+    The ID of the [vector store](/docs/api-reference/vector-stores/object) that the [File](/docs/api-reference/files) is attached to.
 
   - `attributes: optional map[string or number or boolean]`
 
@@ -754,7 +754,7 @@ Retrieve vector store file
 
     - `boolean`
 
-  - `chunking_strategy: optional FileChunkingStrategy`
+  - `chunking_strategy: optional StaticFileChunkingStrategyObject or OtherFileChunkingStrategyObject`
 
     The strategy used to chunk the file.
 
@@ -849,7 +849,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123 \
 
 **delete** `/vector_stores/{vector_store_id}/files/{file_id}`
 
-Delete vector store file
+Delete a vector store file. This will remove the file from the vector store but the file itself will not be deleted. To delete the file, use the [delete file](/docs/api-reference/files/delete) endpoint.
 
 ### Path Parameters
 
@@ -912,7 +912,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123 \
 
 **get** `/vector_stores/{vector_store_id}/files/{file_id}/content`
 
-Retrieve vector store file content
+Retrieve the parsed contents of a vector store file.
 
 ### Path Parameters
 
@@ -1052,7 +1052,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
 
   - `vector_store_id: string`
 
-    The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) that the [File](https://platform.openai.com/docs/api-reference/files) is attached to.
+    The ID of the [vector store](/docs/api-reference/vector-stores/object) that the [File](/docs/api-reference/files) is attached to.
 
   - `attributes: optional map[string or number or boolean]`
 
@@ -1068,7 +1068,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
 
     - `boolean`
 
-  - `chunking_strategy: optional FileChunkingStrategy`
+  - `chunking_strategy: optional StaticFileChunkingStrategyObject or OtherFileChunkingStrategyObject`
 
     The strategy used to chunk the file.
 

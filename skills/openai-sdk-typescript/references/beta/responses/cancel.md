@@ -4,7 +4,9 @@
 
 **post** `/responses/{response_id}/cancel?beta=true`
 
-Cancel a response
+Cancels a model response with the given ID. Only responses created with
+the `background` parameter set to `true` can be cancelled.
+[Learn more](https://platform.openai.com/docs/guides/background).
 
 ### Parameters
 
@@ -247,13 +249,15 @@ Cancel a response
 
           - `"developer"`
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type?: "message"`
 
@@ -494,13 +498,15 @@ Cancel a response
 
             The canonical name of the agent that produced this item.
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `BetaResponseFileSearchToolCall`
 
@@ -1672,7 +1678,7 @@ Cancel a response
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1682,7 +1688,11 @@ Cancel a response
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -1729,7 +1739,7 @@ Cancel a response
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<unknown>`
+                    - `value: string | number | boolean | Array<string | number>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1739,7 +1749,11 @@ Cancel a response
 
                       - `boolean`
 
-                      - `Array<unknown>`
+                      - `Array<string | number>`
+
+                        - `string`
+
+                        - `number`
 
                   - `unknown`
 

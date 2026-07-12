@@ -6,7 +6,7 @@
 
 **post** `/videos`
 
-Create video
+Create a new video generation job from a prompt and optional reference assets.
 
 ### Parameters
 
@@ -729,7 +729,7 @@ console.log(response.id);
 
 **get** `/videos`
 
-List videos
+List recently generated videos for the current project.
 
 ### Parameters
 
@@ -940,7 +940,7 @@ for await (const video of openai.videos.list()) {
 
 **get** `/videos/{video_id}`
 
-Retrieve video
+Fetch the latest metadata for a generated video.
 
 ### Parameters
 
@@ -1109,7 +1109,7 @@ console.log(video.id);
 
 **delete** `/videos/{video_id}`
 
-Delete video
+Permanently delete a completed or failed video and its stored assets.
 
 ### Parameters
 
@@ -1177,7 +1177,7 @@ console.log(video.id);
 
 **post** `/videos/{video_id}/remix`
 
-Remix video
+Create a remix of a completed video using a refreshed prompt.
 
 ### Parameters
 
@@ -1368,7 +1368,9 @@ console.log(video.id);
 
 **get** `/videos/{video_id}/content`
 
-Retrieve video content
+Download the generated video bytes or a derived preview asset.
+
+Streams the rendered video content for the specified video job.
 
 ### Parameters
 

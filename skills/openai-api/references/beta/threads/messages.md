@@ -4,7 +4,7 @@
 
 **get** `/threads/{thread_id}/messages`
 
-List messages
+Returns a list of messages for a given thread.
 
 ### Path Parameters
 
@@ -46,7 +46,7 @@ List messages
 
   - `assistant_id: string`
 
-    If applicable, the ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) that authored this message.
+    If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
 
   - `attachments: array of object { file_id, tools }`
 
@@ -68,7 +68,7 @@ List messages
 
           - `"code_interpreter"`
 
-      - `AssistantToolsFileSearchTypeOnly object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -80,19 +80,19 @@ List messages
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: array of MessageContent`
+  - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
 
     The content of the message in array of text and/or images.
 
     - `ImageFileContentBlock object { image_file, type }`
 
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+      References an image [File](/docs/api-reference/files) in the content of a message.
 
       - `image_file: ImageFile`
 
         - `file_id: string`
 
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
         - `detail: optional "auto" or "low" or "high"`
 
@@ -142,7 +142,7 @@ List messages
 
       - `text: Text`
 
-        - `annotations: array of Annotation`
+        - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
           - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
@@ -265,7 +265,7 @@ List messages
 
   - `run_id: string`
 
-    The ID of the [run](https://platform.openai.com/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
+    The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
 
   - `status: "in_progress" or "incomplete" or "completed"`
 
@@ -279,7 +279,7 @@ List messages
 
   - `thread_id: string`
 
-    The [thread](https://platform.openai.com/docs/api-reference/threads) ID that this message belongs to.
+    The [thread](/docs/api-reference/threads) ID that this message belongs to.
 
 - `first_id: string`
 
@@ -413,7 +413,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/messages \
 
 **post** `/threads/{thread_id}/messages`
 
-Create message
+Create a message.
 
 ### Path Parameters
 
@@ -421,7 +421,7 @@ Create message
 
 ### Body Parameters
 
-- `content: string or array of MessageContentPartParam`
+- `content: string or array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlockParam`
 
   The text contents of the message.
 
@@ -429,19 +429,19 @@ Create message
 
     The text contents of the message.
 
-  - `ArrayOfContentParts = array of MessageContentPartParam`
+  - `ArrayOfContentParts = array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlockParam`
 
-    An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](https://platform.openai.com/docs/models).
+    An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](/docs/models).
 
     - `ImageFileContentBlock object { image_file, type }`
 
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+      References an image [File](/docs/api-reference/files) in the content of a message.
 
       - `image_file: ImageFile`
 
         - `file_id: string`
 
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
         - `detail: optional "auto" or "low" or "high"`
 
@@ -530,7 +530,7 @@ Create message
 
         - `"code_interpreter"`
 
-    - `FileSearch object { type }`
+    - `FileSearchTool object { type }`
 
       - `type: "file_search"`
 
@@ -551,7 +551,7 @@ Create message
 
 - `Message object { id, assistant_id, attachments, 11 more }`
 
-  Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
+  Represents a message within a [thread](/docs/api-reference/threads).
 
   - `id: string`
 
@@ -559,7 +559,7 @@ Create message
 
   - `assistant_id: string`
 
-    If applicable, the ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) that authored this message.
+    If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
 
   - `attachments: array of object { file_id, tools }`
 
@@ -581,7 +581,7 @@ Create message
 
           - `"code_interpreter"`
 
-      - `AssistantToolsFileSearchTypeOnly object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -593,19 +593,19 @@ Create message
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: array of MessageContent`
+  - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
 
     The content of the message in array of text and/or images.
 
     - `ImageFileContentBlock object { image_file, type }`
 
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+      References an image [File](/docs/api-reference/files) in the content of a message.
 
       - `image_file: ImageFile`
 
         - `file_id: string`
 
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
         - `detail: optional "auto" or "low" or "high"`
 
@@ -655,7 +655,7 @@ Create message
 
       - `text: Text`
 
-        - `annotations: array of Annotation`
+        - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
           - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
@@ -778,7 +778,7 @@ Create message
 
   - `run_id: string`
 
-    The ID of the [run](https://platform.openai.com/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
+    The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
 
   - `status: "in_progress" or "incomplete" or "completed"`
 
@@ -792,7 +792,7 @@ Create message
 
   - `thread_id: string`
 
-    The [thread](https://platform.openai.com/docs/api-reference/threads) ID that this message belongs to.
+    The [thread](/docs/api-reference/threads) ID that this message belongs to.
 
 ### Example
 
@@ -891,7 +891,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/messages \
 
 **post** `/threads/{thread_id}/messages/{message_id}`
 
-Modify message
+Modifies a message.
 
 ### Path Parameters
 
@@ -914,7 +914,7 @@ Modify message
 
 - `Message object { id, assistant_id, attachments, 11 more }`
 
-  Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
+  Represents a message within a [thread](/docs/api-reference/threads).
 
   - `id: string`
 
@@ -922,7 +922,7 @@ Modify message
 
   - `assistant_id: string`
 
-    If applicable, the ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) that authored this message.
+    If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
 
   - `attachments: array of object { file_id, tools }`
 
@@ -944,7 +944,7 @@ Modify message
 
           - `"code_interpreter"`
 
-      - `AssistantToolsFileSearchTypeOnly object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -956,19 +956,19 @@ Modify message
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: array of MessageContent`
+  - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
 
     The content of the message in array of text and/or images.
 
     - `ImageFileContentBlock object { image_file, type }`
 
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+      References an image [File](/docs/api-reference/files) in the content of a message.
 
       - `image_file: ImageFile`
 
         - `file_id: string`
 
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
         - `detail: optional "auto" or "low" or "high"`
 
@@ -1018,7 +1018,7 @@ Modify message
 
       - `text: Text`
 
-        - `annotations: array of Annotation`
+        - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
           - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
@@ -1141,7 +1141,7 @@ Modify message
 
   - `run_id: string`
 
-    The ID of the [run](https://platform.openai.com/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
+    The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
 
   - `status: "in_progress" or "incomplete" or "completed"`
 
@@ -1155,7 +1155,7 @@ Modify message
 
   - `thread_id: string`
 
-    The [thread](https://platform.openai.com/docs/api-reference/threads) ID that this message belongs to.
+    The [thread](/docs/api-reference/threads) ID that this message belongs to.
 
 ### Example
 
@@ -1256,7 +1256,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc123 \
 
 **get** `/threads/{thread_id}/messages/{message_id}`
 
-Retrieve message
+Retrieve a message.
 
 ### Path Parameters
 
@@ -1268,7 +1268,7 @@ Retrieve message
 
 - `Message object { id, assistant_id, attachments, 11 more }`
 
-  Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
+  Represents a message within a [thread](/docs/api-reference/threads).
 
   - `id: string`
 
@@ -1276,7 +1276,7 @@ Retrieve message
 
   - `assistant_id: string`
 
-    If applicable, the ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) that authored this message.
+    If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
 
   - `attachments: array of object { file_id, tools }`
 
@@ -1298,7 +1298,7 @@ Retrieve message
 
           - `"code_interpreter"`
 
-      - `AssistantToolsFileSearchTypeOnly object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -1310,19 +1310,19 @@ Retrieve message
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: array of MessageContent`
+  - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
 
     The content of the message in array of text and/or images.
 
     - `ImageFileContentBlock object { image_file, type }`
 
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+      References an image [File](/docs/api-reference/files) in the content of a message.
 
       - `image_file: ImageFile`
 
         - `file_id: string`
 
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
         - `detail: optional "auto" or "low" or "high"`
 
@@ -1372,7 +1372,7 @@ Retrieve message
 
       - `text: Text`
 
-        - `annotations: array of Annotation`
+        - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
           - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
@@ -1495,7 +1495,7 @@ Retrieve message
 
   - `run_id: string`
 
-    The ID of the [run](https://platform.openai.com/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
+    The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
 
   - `status: "in_progress" or "incomplete" or "completed"`
 
@@ -1509,7 +1509,7 @@ Retrieve message
 
   - `thread_id: string`
 
-    The [thread](https://platform.openai.com/docs/api-reference/threads) ID that this message belongs to.
+    The [thread](/docs/api-reference/threads) ID that this message belongs to.
 
 ### Example
 
@@ -1599,7 +1599,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc123 \
 
 **delete** `/threads/{thread_id}/messages/{message_id}`
 
-Delete message
+Deletes a message.
 
 ### Path Parameters
 
@@ -1658,126 +1658,6 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 ```
 
 ## Domain Types
-
-### Annotation
-
-- `Annotation = FileCitationAnnotation or FilePathAnnotation`
-
-  A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-  - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
-
-    A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-    - `end_index: number`
-
-    - `file_citation: object { file_id }`
-
-      - `file_id: string`
-
-        The ID of the specific File the citation is from.
-
-    - `start_index: number`
-
-    - `text: string`
-
-      The text in the message content that needs to be replaced.
-
-    - `type: "file_citation"`
-
-      Always `file_citation`.
-
-      - `"file_citation"`
-
-  - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
-
-    A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-    - `end_index: number`
-
-    - `file_path: object { file_id }`
-
-      - `file_id: string`
-
-        The ID of the file that was generated.
-
-    - `start_index: number`
-
-    - `text: string`
-
-      The text in the message content that needs to be replaced.
-
-    - `type: "file_path"`
-
-      Always `file_path`.
-
-      - `"file_path"`
-
-### Annotation Delta
-
-- `AnnotationDelta = FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
-
-  A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-  - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
-
-    A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-    - `index: number`
-
-      The index of the annotation in the text content part.
-
-    - `type: "file_citation"`
-
-      Always `file_citation`.
-
-      - `"file_citation"`
-
-    - `end_index: optional number`
-
-    - `file_citation: optional object { file_id, quote }`
-
-      - `file_id: optional string`
-
-        The ID of the specific File the citation is from.
-
-      - `quote: optional string`
-
-        The specific quote in the file.
-
-    - `start_index: optional number`
-
-    - `text: optional string`
-
-      The text in the message content that needs to be replaced.
-
-  - `FilePathDeltaAnnotation object { index, type, end_index, 3 more }`
-
-    A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-    - `index: number`
-
-      The index of the annotation in the text content part.
-
-    - `type: "file_path"`
-
-      Always `file_path`.
-
-      - `"file_path"`
-
-    - `end_index: optional number`
-
-    - `file_path: optional object { file_id }`
-
-      - `file_id: optional string`
-
-        The ID of the file that was generated.
-
-    - `start_index: optional number`
-
-    - `text: optional string`
-
-      The text in the message content that needs to be replaced.
 
 ### File Citation Annotation
 
@@ -1901,7 +1781,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
   - `file_id: string`
 
-    The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+    The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
   - `detail: optional "auto" or "low" or "high"`
 
@@ -1917,13 +1797,13 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 - `ImageFileContentBlock object { image_file, type }`
 
-  References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+  References an image [File](/docs/api-reference/files) in the content of a message.
 
   - `image_file: ImageFile`
 
     - `file_id: string`
 
-      The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+      The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
     - `detail: optional "auto" or "low" or "high"`
 
@@ -1957,13 +1837,13 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
   - `file_id: optional string`
 
-    The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+    The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
 ### Image File Delta Block
 
 - `ImageFileDeltaBlock object { index, type, image_file }`
 
-  References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+  References an image [File](/docs/api-reference/files) in the content of a message.
 
   - `index: number`
 
@@ -1989,7 +1869,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
     - `file_id: optional string`
 
-      The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+      The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
 ### Image URL
 
@@ -2091,7 +1971,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 - `Message object { id, assistant_id, attachments, 11 more }`
 
-  Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
+  Represents a message within a [thread](/docs/api-reference/threads).
 
   - `id: string`
 
@@ -2099,7 +1979,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
   - `assistant_id: string`
 
-    If applicable, the ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) that authored this message.
+    If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
 
   - `attachments: array of object { file_id, tools }`
 
@@ -2121,7 +2001,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
           - `"code_interpreter"`
 
-      - `AssistantToolsFileSearchTypeOnly object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -2133,19 +2013,19 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: array of MessageContent`
+  - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
 
     The content of the message in array of text and/or images.
 
     - `ImageFileContentBlock object { image_file, type }`
 
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+      References an image [File](/docs/api-reference/files) in the content of a message.
 
       - `image_file: ImageFile`
 
         - `file_id: string`
 
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
         - `detail: optional "auto" or "low" or "high"`
 
@@ -2195,7 +2075,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
       - `text: Text`
 
-        - `annotations: array of Annotation`
+        - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
           - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
@@ -2318,7 +2198,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
   - `run_id: string`
 
-    The ID of the [run](https://platform.openai.com/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
+    The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
 
   - `status: "in_progress" or "incomplete" or "completed"`
 
@@ -2332,379 +2212,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
   - `thread_id: string`
 
-    The [thread](https://platform.openai.com/docs/api-reference/threads) ID that this message belongs to.
-
-### Message Content
-
-- `MessageContent = ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
-
-  References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-  - `ImageFileContentBlock object { image_file, type }`
-
-    References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-    - `image_file: ImageFile`
-
-      - `file_id: string`
-
-        The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-      - `detail: optional "auto" or "low" or "high"`
-
-        Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-        - `"auto"`
-
-        - `"low"`
-
-        - `"high"`
-
-    - `type: "image_file"`
-
-      Always `image_file`.
-
-      - `"image_file"`
-
-  - `ImageURLContentBlock object { image_url, type }`
-
-    References an image URL in the content of a message.
-
-    - `image_url: ImageURL`
-
-      - `url: string`
-
-        The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-      - `detail: optional "auto" or "low" or "high"`
-
-        Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-        - `"auto"`
-
-        - `"low"`
-
-        - `"high"`
-
-    - `type: "image_url"`
-
-      The type of the content part.
-
-      - `"image_url"`
-
-  - `TextContentBlock object { text, type }`
-
-    The text content that is part of a message.
-
-    - `text: Text`
-
-      - `annotations: array of Annotation`
-
-        - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
-
-          A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-          - `end_index: number`
-
-          - `file_citation: object { file_id }`
-
-            - `file_id: string`
-
-              The ID of the specific File the citation is from.
-
-          - `start_index: number`
-
-          - `text: string`
-
-            The text in the message content that needs to be replaced.
-
-          - `type: "file_citation"`
-
-            Always `file_citation`.
-
-            - `"file_citation"`
-
-        - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
-
-          A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-          - `end_index: number`
-
-          - `file_path: object { file_id }`
-
-            - `file_id: string`
-
-              The ID of the file that was generated.
-
-          - `start_index: number`
-
-          - `text: string`
-
-            The text in the message content that needs to be replaced.
-
-          - `type: "file_path"`
-
-            Always `file_path`.
-
-            - `"file_path"`
-
-      - `value: string`
-
-        The data that makes up the text.
-
-    - `type: "text"`
-
-      Always `text`.
-
-      - `"text"`
-
-  - `RefusalContentBlock object { refusal, type }`
-
-    The refusal content generated by the assistant.
-
-    - `refusal: string`
-
-    - `type: "refusal"`
-
-      Always `refusal`.
-
-      - `"refusal"`
-
-### Message Content Delta
-
-- `MessageContentDelta = ImageFileDeltaBlock or TextDeltaBlock or RefusalDeltaBlock or ImageURLDeltaBlock`
-
-  References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-  - `ImageFileDeltaBlock object { index, type, image_file }`
-
-    References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-    - `index: number`
-
-      The index of the content part in the message.
-
-    - `type: "image_file"`
-
-      Always `image_file`.
-
-      - `"image_file"`
-
-    - `image_file: optional ImageFileDelta`
-
-      - `detail: optional "auto" or "low" or "high"`
-
-        Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-        - `"auto"`
-
-        - `"low"`
-
-        - `"high"`
-
-      - `file_id: optional string`
-
-        The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-  - `TextDeltaBlock object { index, type, text }`
-
-    The text content that is part of a message.
-
-    - `index: number`
-
-      The index of the content part in the message.
-
-    - `type: "text"`
-
-      Always `text`.
-
-      - `"text"`
-
-    - `text: optional TextDelta`
-
-      - `annotations: optional array of AnnotationDelta`
-
-        - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
-
-          A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-          - `index: number`
-
-            The index of the annotation in the text content part.
-
-          - `type: "file_citation"`
-
-            Always `file_citation`.
-
-            - `"file_citation"`
-
-          - `end_index: optional number`
-
-          - `file_citation: optional object { file_id, quote }`
-
-            - `file_id: optional string`
-
-              The ID of the specific File the citation is from.
-
-            - `quote: optional string`
-
-              The specific quote in the file.
-
-          - `start_index: optional number`
-
-          - `text: optional string`
-
-            The text in the message content that needs to be replaced.
-
-        - `FilePathDeltaAnnotation object { index, type, end_index, 3 more }`
-
-          A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-          - `index: number`
-
-            The index of the annotation in the text content part.
-
-          - `type: "file_path"`
-
-            Always `file_path`.
-
-            - `"file_path"`
-
-          - `end_index: optional number`
-
-          - `file_path: optional object { file_id }`
-
-            - `file_id: optional string`
-
-              The ID of the file that was generated.
-
-          - `start_index: optional number`
-
-          - `text: optional string`
-
-            The text in the message content that needs to be replaced.
-
-      - `value: optional string`
-
-        The data that makes up the text.
-
-  - `RefusalDeltaBlock object { index, type, refusal }`
-
-    The refusal content that is part of a message.
-
-    - `index: number`
-
-      The index of the refusal part in the message.
-
-    - `type: "refusal"`
-
-      Always `refusal`.
-
-      - `"refusal"`
-
-    - `refusal: optional string`
-
-  - `ImageURLDeltaBlock object { index, type, image_url }`
-
-    References an image URL in the content of a message.
-
-    - `index: number`
-
-      The index of the content part in the message.
-
-    - `type: "image_url"`
-
-      Always `image_url`.
-
-      - `"image_url"`
-
-    - `image_url: optional ImageURLDelta`
-
-      - `detail: optional "auto" or "low" or "high"`
-
-        Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-        - `"auto"`
-
-        - `"low"`
-
-        - `"high"`
-
-      - `url: optional string`
-
-        The URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-### Message Content Part Param
-
-- `MessageContentPartParam = ImageFileContentBlock or ImageURLContentBlock or TextContentBlockParam`
-
-  References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-  - `ImageFileContentBlock object { image_file, type }`
-
-    References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
-
-    - `image_file: ImageFile`
-
-      - `file_id: string`
-
-        The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-      - `detail: optional "auto" or "low" or "high"`
-
-        Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-        - `"auto"`
-
-        - `"low"`
-
-        - `"high"`
-
-    - `type: "image_file"`
-
-      Always `image_file`.
-
-      - `"image_file"`
-
-  - `ImageURLContentBlock object { image_url, type }`
-
-    References an image URL in the content of a message.
-
-    - `image_url: ImageURL`
-
-      - `url: string`
-
-        The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-      - `detail: optional "auto" or "low" or "high"`
-
-        Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-        - `"auto"`
-
-        - `"low"`
-
-        - `"high"`
-
-    - `type: "image_url"`
-
-      The type of the content part.
-
-      - `"image_url"`
-
-  - `TextContentBlockParam object { text, type }`
-
-    The text content that is part of a message.
-
-    - `text: string`
-
-      Text content to be sent to the model
-
-    - `type: "text"`
-
-      Always `text`.
-
-      - `"text"`
+    The [thread](/docs/api-reference/threads) ID that this message belongs to.
 
 ### Message Deleted
 
@@ -2724,13 +2232,13 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
   The delta containing the fields that have changed on the Message.
 
-  - `content: optional array of MessageContentDelta`
+  - `content: optional array of ImageFileDeltaBlock or TextDeltaBlock or RefusalDeltaBlock or ImageURLDeltaBlock`
 
     The content of the message in array of text and/or images.
 
     - `ImageFileDeltaBlock object { index, type, image_file }`
 
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+      References an image [File](/docs/api-reference/files) in the content of a message.
 
       - `index: number`
 
@@ -2756,7 +2264,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
         - `file_id: optional string`
 
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
     - `TextDeltaBlock object { index, type, text }`
 
@@ -2774,7 +2282,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
       - `text: optional TextDelta`
 
-        - `annotations: optional array of AnnotationDelta`
+        - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
 
           - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
 
@@ -2908,13 +2416,13 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
     The delta containing the fields that have changed on the Message.
 
-    - `content: optional array of MessageContentDelta`
+    - `content: optional array of ImageFileDeltaBlock or TextDeltaBlock or RefusalDeltaBlock or ImageURLDeltaBlock`
 
       The content of the message in array of text and/or images.
 
       - `ImageFileDeltaBlock object { index, type, image_file }`
 
-        References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+        References an image [File](/docs/api-reference/files) in the content of a message.
 
         - `index: number`
 
@@ -2940,7 +2448,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
           - `file_id: optional string`
 
-            The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+            The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
       - `TextDeltaBlock object { index, type, text }`
 
@@ -2958,7 +2466,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
         - `text: optional TextDelta`
 
-          - `annotations: optional array of AnnotationDelta`
+          - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
 
             - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
 
@@ -3120,7 +2628,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 - `Text object { annotations, value }`
 
-  - `annotations: array of Annotation`
+  - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
     - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
@@ -3182,7 +2690,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
   - `text: Text`
 
-    - `annotations: array of Annotation`
+    - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
       - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
@@ -3262,7 +2770,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 - `TextDelta object { annotations, value }`
 
-  - `annotations: optional array of AnnotationDelta`
+  - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
 
     - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
 
@@ -3346,7 +2854,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
   - `text: optional TextDelta`
 
-    - `annotations: optional array of AnnotationDelta`
+    - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
 
       - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
 

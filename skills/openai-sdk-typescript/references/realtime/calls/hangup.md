@@ -4,7 +4,8 @@
 
 **post** `/realtime/calls/{call_id}/hangup`
 
-Hang up call
+End an active Realtime API call, whether it was initiated over SIP or
+WebRTC.
 
 ### Parameters
 

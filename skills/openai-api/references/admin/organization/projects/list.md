@@ -2,7 +2,7 @@
 
 **get** `/organization/projects`
 
-List projects
+Returns a list of projects.
 
 ### Query Parameters
 

@@ -6,7 +6,7 @@
 
 **get** `/responses/{response_id}/input_items?beta=true`
 
-List input items
+Returns a list of input items for a given response.
 
 ### Parameters
 
@@ -406,13 +406,15 @@ List input items
 
         The canonical name of the agent that produced this item.
 
-    - `phase: Optional[Literal["commentary"]]`
+    - `phase: Optional[Literal["commentary", "final_answer"]]`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
   - `class BetaResponseFileSearchToolCall: …`
 
@@ -1498,7 +1500,7 @@ List input items
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1508,7 +1510,11 @@ List input items
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class FiltersCompoundFilter: …`
 
@@ -1555,7 +1561,7 @@ List input items
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1565,7 +1571,11 @@ List input items
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `object`
 
@@ -4040,13 +4050,15 @@ print(response.data)
 
           The canonical name of the agent that produced this item.
 
-      - `phase: Optional[Literal["commentary"]]`
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `class BetaResponseFileSearchToolCall: …`
 
@@ -5132,7 +5144,7 @@ print(response.data)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5142,7 +5154,11 @@ print(response.data)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class FiltersCompoundFilter: …`
 
@@ -5189,7 +5205,7 @@ print(response.data)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5199,7 +5215,11 @@ print(response.data)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `object`
 

@@ -4,7 +4,7 @@
 
 **get** `/responses/{response_id}/input_items`
 
-List input items
+Returns a list of input items for a given response.
 
 ### Parameters
 
@@ -1337,7 +1337,7 @@ List input items
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<unknown>`
+            - `value: string | number | boolean | Array<string | number>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1347,7 +1347,11 @@ List input items
 
               - `boolean`
 
-              - `Array<unknown>`
+              - `Array<string | number>`
+
+                - `string`
+
+                - `number`
 
           - `CompoundFilter`
 

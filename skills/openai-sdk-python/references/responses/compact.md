@@ -4,7 +4,9 @@
 
 **post** `/responses/compact`
 
-Compact a response
+Compact a conversation. Returns a compacted response object.
+
+Learn when and how to compact long-running conversations in the [conversation state guide](https://platform.openai.com/docs/guides/conversation-state#managing-the-context-window). For ZDR-compatible compaction details, see [Compaction (advanced)](https://platform.openai.com/docs/guides/conversation-state#compaction-advanced).
 
 ### Parameters
 
@@ -1656,7 +1658,7 @@ Compact a response
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1666,7 +1668,11 @@ Compact a response
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 
@@ -5108,7 +5114,7 @@ Compact a response
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5118,7 +5124,11 @@ Compact a response
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 

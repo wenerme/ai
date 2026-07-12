@@ -2,7 +2,7 @@
 
 **post** `/batches`
 
-Create batch
+Creates and executes a batch from an uploaded file of requests
 
 ### Body Parameters
 
@@ -36,9 +36,9 @@ Create batch
 
   The ID of an uploaded file that contains requests for the new batch.
 
-  See [upload file](https://platform.openai.com/docs/api-reference/files/create) for how to upload a file.
+  See [upload file](/docs/api-reference/files/create) for how to upload a file.
 
-  Your input file must be formatted as a [JSONL file](https://platform.openai.com/docs/api-reference/batch/request-input), and must be uploaded with the purpose `batch`. The file can contain up to 50,000 requests, and can be up to 200 MB in size.
+  Your input file must be formatted as a [JSONL file](/docs/api-reference/batch/request-input), and must be uploaded with the purpose `batch`. The file can contain up to 50,000 requests, and can be up to 200 MB in size.
 
 - `metadata: optional Metadata`
 
@@ -129,7 +129,7 @@ Create batch
 
   - `errors: optional object { data, object }`
 
-    - `data: optional array of BatchError`
+    - `data: optional array of object { code, line, message, param }`
 
       - `code: optional string`
 
@@ -185,13 +185,13 @@ Create batch
     Model ID used to process the batch, like `gpt-5-2025-08-07`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model
-    guide](https://platform.openai.com/docs/models) to browse and compare available models.
+    guide](/docs/models) to browse and compare available models.
 
   - `output_file_id: optional string`
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts: optional BatchRequestCounts`
+  - `request_counts: optional object { completed, failed, total }`
 
     The request counts for different statuses within the batch.
 
@@ -224,7 +224,7 @@ Create batch
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache. [More on
-        prompt caching](https://platform.openai.com/docs/guides/prompt-caching).
+        prompt caching](/docs/guides/prompt-caching).
 
     - `output_tokens: number`
 

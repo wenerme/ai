@@ -4,7 +4,7 @@
 
 **delete** `/evals/{eval_id}`
 
-Delete an eval
+Delete an evaluation.
 
 ### Parameters
 

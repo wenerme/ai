@@ -4,7 +4,8 @@
 
 **delete** `/chat/completions/{completion_id}`
 
-Delete chat completion
+Delete a stored chat completion. Only Chat Completions that have been
+created with the `store` parameter set to `true` can be deleted.
 
 ### Parameters
 

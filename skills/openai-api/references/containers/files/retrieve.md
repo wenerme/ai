@@ -2,7 +2,7 @@
 
 **get** `/containers/{container_id}/files/{file_id}`
 
-Retrieve container file
+Retrieve Container File
 
 ### Path Parameters
 
@@ -28,11 +28,9 @@ Retrieve container file
 
   Unix timestamp (in seconds) when the file was created.
 
-- `object: "container.file"`
+- `object: string`
 
   The type of this object (`container.file`).
-
-  - `"container.file"`
 
 - `path: string`
 
@@ -57,7 +55,7 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID/files/$FILE_ID \
   "bytes": 0,
   "container_id": "container_id",
   "created_at": 0,
-  "object": "container.file",
+  "object": "object",
   "path": "path",
   "source": "source"
 }

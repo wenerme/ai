@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/groups`
 
-List project groups
+Lists the groups that have access to a project.
 
 ### Parameters
 
@@ -106,7 +106,7 @@ print(page.group_id)
 
 **post** `/organization/projects/{project_id}/groups`
 
-Add project group
+Grants a group access to a project.
 
 ### Parameters
 
@@ -192,7 +192,7 @@ print(project_group.group_id)
 
 **get** `/organization/projects/{project_id}/groups/{group_id}`
 
-Retrieve project group
+Retrieves a project's group.
 
 ### Parameters
 
@@ -279,7 +279,7 @@ print(project_group.group_id)
 
 **delete** `/organization/projects/{project_id}/groups/{group_id}`
 
-Remove project group
+Revokes a group's access to a project.
 
 ### Parameters
 
@@ -390,7 +390,7 @@ print(group.deleted)
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 
-List project group role assignments
+Lists the project roles assigned to a group within a project.
 
 ### Parameters
 
@@ -532,7 +532,7 @@ print(page.id)
 
 **post** `/projects/{project_id}/groups/{group_id}/roles`
 
-Assign project role to group
+Assigns a project role to a group within a project.
 
 ### Parameters
 
@@ -665,7 +665,7 @@ print(role.group)
 
 **get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Retrieve project group role
+Retrieves a project role assigned to a group.
 
 ### Parameters
 
@@ -786,7 +786,7 @@ print(role.id)
 
 **delete** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Unassign project role from group
+Unassigns a project role from a group within a project.
 
 ### Parameters
 

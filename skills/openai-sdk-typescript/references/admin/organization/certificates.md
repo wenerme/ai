@@ -6,7 +6,7 @@
 
 **get** `/organization/certificates`
 
-List organization certificates
+List uploaded certificates for this organization.
 
 ### Parameters
 
@@ -111,7 +111,9 @@ for await (const certificateListResponse of client.admin.organization.certificat
 
 **post** `/organization/certificates`
 
-Upload certificate
+Upload a certificate to the organization. This does **not** automatically activate the certificate.
+
+Organizations can upload up to 50 certificates.
 
 ### Parameters
 
@@ -214,7 +216,9 @@ console.log(certificate.id);
 
 **get** `/organization/certificates/{certificate_id}`
 
-Get certificate
+Get a certificate that has been uploaded to the organization.
+
+You can get a certificate regardless of whether it is active or not.
 
 ### Parameters
 
@@ -315,7 +319,7 @@ console.log(certificate.id);
 
 **post** `/organization/certificates/{certificate_id}`
 
-Modify certificate
+Modify a certificate. Note that only the name can be modified.
 
 ### Parameters
 
@@ -414,7 +418,9 @@ console.log(certificate.id);
 
 **delete** `/organization/certificates/{certificate_id}`
 
-Delete certificate
+Delete a certificate from the organization.
+
+The certificate must be inactive for the organization and all projects.
 
 ### Parameters
 
@@ -463,7 +469,9 @@ console.log(certificate.id);
 
 **post** `/organization/certificates/activate`
 
-Activate certificates for organization
+Activate certificates at the organization level.
+
+You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Parameters
 
@@ -553,7 +561,9 @@ for await (const certificateActivateResponse of client.admin.organization.certif
 
 **post** `/organization/certificates/deactivate`
 
-Deactivate certificates for organization
+Deactivate certificates at the organization level.
+
+You can atomically and idempotently deactivate up to 10 certificates at a time.
 
 ### Parameters
 

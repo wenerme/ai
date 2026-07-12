@@ -4,7 +4,63 @@
 
 **post** `/videos`
 
-Create video
+Create a new video generation job from a prompt and optional reference assets.
+
+### Body Parameters
+
+- `prompt: string`
+
+  Text prompt that describes the video to generate.
+
+- `input_reference: optional ImageInputReferenceParam`
+
+  Optional reference object that guides generation. Provide exactly one of `image_url` or `file_id`.
+
+  - `file_id: optional string`
+
+  - `image_url: optional string`
+
+    A fully qualified URL or base64-encoded data URL.
+
+- `model: optional VideoModel`
+
+  The video generation model to use (allowed values: sora-2, sora-2-pro). Defaults to `sora-2`.
+
+  - `string`
+
+  - `"sora-2" or "sora-2-pro" or "sora-2-2025-10-06" or 2 more`
+
+    - `"sora-2"`
+
+    - `"sora-2-pro"`
+
+    - `"sora-2-2025-10-06"`
+
+    - `"sora-2-pro-2025-10-06"`
+
+    - `"sora-2-2025-12-08"`
+
+- `seconds: optional VideoSeconds`
+
+  Clip duration in seconds (allowed values: 4, 8, 12). Defaults to 4 seconds.
+
+  - `"4"`
+
+  - `"8"`
+
+  - `"12"`
+
+- `size: optional VideoSize`
+
+  Output resolution formatted as width x height (allowed values: 720x1280, 1280x720, 1024x1792, 1792x1024). Defaults to 720x1280.
+
+  - `"720x1280"`
+
+  - `"1280x720"`
+
+  - `"1024x1792"`
+
+  - `"1792x1024"`
 
 ### Returns
 
@@ -76,19 +132,9 @@ Create video
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string or VideoSeconds`
+  - `seconds: string`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
-
-    - `string`
-
-    - `VideoSeconds = "4" or "8" or "12"`
-
-      - `"4"`
-
-      - `"8"`
-
-      - `"12"`
 
   - `size: VideoSize`
 
@@ -118,9 +164,11 @@ Create video
 
 ```http
 curl https://api.openai.com/v1/videos \
-    -H 'Content-Type: multipart/form-data' \
+    -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F prompt=x
+    -d '{
+          "prompt": "x"
+        }'
 ```
 
 #### Response
@@ -140,7 +188,7 @@ curl https://api.openai.com/v1/videos \
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "4",
+  "seconds": "seconds",
   "size": "720x1280",
   "status": "queued"
 }
@@ -177,6 +225,20 @@ curl https://api.openai.com/v1/videos \
 
 Create a new video generation job by editing a source video or existing generated video.
 
+### Body Parameters
+
+- `prompt: string`
+
+  Text prompt that describes how to edit the source video.
+
+- `video: object { id }`
+
+  Reference to the completed video to edit.
+
+  - `id: string`
+
+    The identifier of the completed video.
+
 ### Returns
 
 - `Video object { id, completed_at, created_at, 10 more }`
@@ -247,19 +309,9 @@ Create a new video generation job by editing a source video or existing generate
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string or VideoSeconds`
+  - `seconds: string`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
-
-    - `string`
-
-    - `VideoSeconds = "4" or "8" or "12"`
-
-      - `"4"`
-
-      - `"8"`
-
-      - `"12"`
 
   - `size: VideoSize`
 
@@ -289,10 +341,14 @@ Create a new video generation job by editing a source video or existing generate
 
 ```http
 curl https://api.openai.com/v1/videos/edits \
-    -H 'Content-Type: multipart/form-data' \
+    -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F prompt=x \
-    -F video='Example data'
+    -d '{
+          "prompt": "x",
+          "video": {
+            "id": "video_123"
+          }
+        }'
 ```
 
 #### Response
@@ -312,7 +368,7 @@ curl https://api.openai.com/v1/videos/edits \
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "4",
+  "seconds": "seconds",
   "size": "720x1280",
   "status": "queued"
 }
@@ -323,6 +379,30 @@ curl https://api.openai.com/v1/videos/edits \
 **post** `/videos/extensions`
 
 Create an extension of a completed video.
+
+### Body Parameters
+
+- `prompt: string`
+
+  Updated text prompt that directs the extension generation.
+
+- `seconds: VideoSeconds`
+
+  Length of the newly generated extension segment in seconds (allowed values: 4, 8, 12, 16, 20).
+
+  - `"4"`
+
+  - `"8"`
+
+  - `"12"`
+
+- `video: object { id }`
+
+  Reference to the completed video to extend.
+
+  - `id: string`
+
+    The identifier of the completed video.
 
 ### Returns
 
@@ -394,19 +474,9 @@ Create an extension of a completed video.
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string or VideoSeconds`
+  - `seconds: string`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
-
-    - `string`
-
-    - `VideoSeconds = "4" or "8" or "12"`
-
-      - `"4"`
-
-      - `"8"`
-
-      - `"12"`
 
   - `size: VideoSize`
 
@@ -436,11 +506,15 @@ Create an extension of a completed video.
 
 ```http
 curl https://api.openai.com/v1/videos/extensions \
-    -H 'Content-Type: multipart/form-data' \
+    -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F prompt=x \
-    -F seconds=4 \
-    -F video='Example data'
+    -d '{
+          "prompt": "x",
+          "seconds": "4",
+          "video": {
+            "id": "video_123"
+          }
+        }'
 ```
 
 #### Response
@@ -460,7 +534,7 @@ curl https://api.openai.com/v1/videos/extensions \
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "4",
+  "seconds": "seconds",
   "size": "720x1280",
   "status": "queued"
 }
@@ -551,7 +625,7 @@ curl https://api.openai.com/v1/videos/characters/$CHARACTER_ID \
 
 **get** `/videos`
 
-List videos
+List recently generated videos for the current project.
 
 ### Query Parameters
 
@@ -641,19 +715,9 @@ List videos
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string or VideoSeconds`
+  - `seconds: string`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
-
-    - `string`
-
-    - `VideoSeconds = "4" or "8" or "12"`
-
-      - `"4"`
-
-      - `"8"`
-
-      - `"12"`
 
   - `size: VideoSize`
 
@@ -723,7 +787,7 @@ curl https://api.openai.com/v1/videos \
       "progress": 0,
       "prompt": "prompt",
       "remixed_from_video_id": "remixed_from_video_id",
-      "seconds": "4",
+      "seconds": "seconds",
       "size": "720x1280",
       "status": "queued"
     }
@@ -762,7 +826,7 @@ curl https://api.openai.com/v1/videos \
 
 **get** `/videos/{video_id}`
 
-Retrieve video
+Fetch the latest metadata for a generated video.
 
 ### Path Parameters
 
@@ -838,19 +902,9 @@ Retrieve video
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string or VideoSeconds`
+  - `seconds: string`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
-
-    - `string`
-
-    - `VideoSeconds = "4" or "8" or "12"`
-
-      - `"4"`
-
-      - `"8"`
-
-      - `"12"`
 
   - `size: VideoSize`
 
@@ -900,7 +954,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "4",
+  "seconds": "seconds",
   "size": "720x1280",
   "status": "queued"
 }
@@ -910,7 +964,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
 
 **delete** `/videos/{video_id}`
 
-Delete video
+Permanently delete a completed or failed video and its stored assets.
 
 ### Path Parameters
 
@@ -954,7 +1008,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
 
 **post** `/videos/{video_id}/remix`
 
-Remix video
+Create a remix of a completed video using a refreshed prompt.
 
 ### Path Parameters
 
@@ -1036,19 +1090,9 @@ Remix video
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string or VideoSeconds`
+  - `seconds: string`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
-
-    - `string`
-
-    - `VideoSeconds = "4" or "8" or "12"`
-
-      - `"4"`
-
-      - `"8"`
-
-      - `"12"`
 
   - `size: VideoSize`
 
@@ -1102,7 +1146,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/remix \
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "4",
+  "seconds": "seconds",
   "size": "720x1280",
   "status": "queued"
 }
@@ -1139,7 +1183,9 @@ curl -X POST https://api.openai.com/v1/videos/video_123/remix \
 
 **get** `/videos/{video_id}/content`
 
-Retrieve video content
+Download the generated video bytes or a derived preview asset.
+
+Streams the rendered video content for the specified video job.
 
 ### Path Parameters
 
@@ -1246,19 +1292,9 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/content \
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string or VideoSeconds`
+  - `seconds: string`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
-
-    - `string`
-
-    - `VideoSeconds = "4" or "8" or "12"`
-
-      - `"4"`
-
-      - `"8"`
-
-      - `"12"`
 
   - `size: VideoSize`
 

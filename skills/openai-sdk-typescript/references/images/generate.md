@@ -4,7 +4,7 @@
 
 **post** `/images/generations`
 
-Create image
+Creates an image given a prompt. [Learn more](https://platform.openai.com/docs/guides/images).
 
 ### Parameters
 

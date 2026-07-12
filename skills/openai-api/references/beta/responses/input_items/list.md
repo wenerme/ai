@@ -2,7 +2,7 @@
 
 **get** `/responses/{response_id}/input_items?beta=true`
 
-List input items
+Returns a list of input items for a given response.
 
 ### Path Parameters
 
@@ -104,7 +104,7 @@ List input items
 
         - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
 
-          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+          An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
           - `detail: "low" or "high" or "auto" or "original"`
 
@@ -235,7 +235,7 @@ List input items
 
         The content of the output message.
 
-        - `BetaResponseOutputText object { annotations, text, type, logprobs }`
+        - `BetaResponseOutputText object { annotations, logprobs, text, type }`
 
           A text output from the model.
 
@@ -339,17 +339,7 @@ List input items
 
                 - `"file_path"`
 
-          - `text: string`
-
-            The text output from the model.
-
-          - `type: "output_text"`
-
-            The type of the output text. Always `output_text`.
-
-            - `"output_text"`
-
-          - `logprobs: optional array of object { token, bytes, logprob, top_logprobs }`
+          - `logprobs: array of object { token, bytes, logprob, top_logprobs }`
 
             - `token: string`
 
@@ -364,6 +354,16 @@ List input items
               - `bytes: array of number`
 
               - `logprob: number`
+
+          - `text: string`
+
+            The text output from the model.
+
+          - `type: "output_text"`
+
+            The type of the output text. Always `output_text`.
+
+            - `"output_text"`
 
         - `BetaResponseOutputRefusal object { refusal, type }`
 
@@ -423,7 +423,7 @@ List input items
     - `FileSearchCall object { id, queries, status, 3 more }`
 
       The results of a file search tool call. See the
-      [file search guide](https://platform.openai.com/docs/guides/tools-file-search) for more information.
+      [file search guide](/docs/guides/tools-file-search) for more information.
 
       - `id: string`
 
@@ -499,7 +499,7 @@ List input items
     - `ComputerCall object { id, call_id, pending_safety_checks, 5 more }`
 
       A tool call to a computer use tool. See the
-      [computer use guide](https://platform.openai.com/docs/guides/tools-computer-use) for more information.
+      [computer use guide](/docs/guides/tools-computer-use) for more information.
 
       - `id: string`
 
@@ -866,7 +866,7 @@ List input items
     - `WebSearchCall object { id, action, status, 2 more }`
 
       The results of a web search tool call. See the
-      [web search guide](https://platform.openai.com/docs/guides/tools-web-search) for more information.
+      [web search guide](/docs/guides/tools-web-search) for more information.
 
       - `id: string`
 
@@ -1067,7 +1067,7 @@ List input items
 
           - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
           - `BetaResponseInputFile object { type, detail, file_data, 4 more }`
 
@@ -1144,7 +1144,7 @@ List input items
 
           A text input to the model.
 
-        - `BetaResponseOutputText object { annotations, text, type, logprobs }`
+        - `BetaResponseOutputText object { annotations, logprobs, text, type }`
 
           A text output from the model.
 
@@ -1192,7 +1192,7 @@ List input items
 
         - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
 
-          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+          An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
         - `ComputerScreenshot object { detail, file_id, image_url, 2 more }`
 
@@ -1348,6 +1348,8 @@ List input items
 
           The annotations of the text output.
 
+        - `logprobs: array of object { token, bytes, logprob, top_logprobs }`
+
         - `text: string`
 
           The text output from the model.
@@ -1355,8 +1357,6 @@ List input items
         - `type: "output_text"`
 
           The type of the output text. Always `output_text`.
-
-        - `logprobs: optional array of object { token, bytes, logprob, top_logprobs }`
 
       - `type: "multi_agent_call_output"`
 
@@ -1715,7 +1715,7 @@ List input items
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          [web search tool](/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -1775,7 +1775,7 @@ List input items
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -1827,7 +1827,7 @@ List input items
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -2051,19 +2051,8 @@ List input items
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Allows to set transparency for the background of the generated image(s).
-            This parameter is only supported for GPT image models that support
-            transparent backgrounds. Must be one of `transparent`, `opaque`, or
-            `auto` (default value). When `auto` is used, the model will
-            automatically determine the best background for the image.
-
-            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-            transparent backgrounds. Requests with `background` set to
-            `transparent` will return an error for these models; use `opaque` or
-            `auto` instead.
-
-            If `transparent`, the output format needs to support transparency,
-            so it should be set to either `png` (default value) or `webp`.
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
 
             - `"transparent"`
 
@@ -2092,13 +2081,13 @@ List input items
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -2106,13 +2095,7 @@ List input items
 
               - `"gpt-image-1-mini"`
 
-              - `"gpt-image-2"`
-
-              - `"gpt-image-2-2026-04-21"`
-
               - `"gpt-image-1.5"`
-
-              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -2328,7 +2311,7 @@ List input items
 
         - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -2442,7 +2425,7 @@ List input items
 
             - `Custom object { name, type, allowed_callers, 3 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -2919,7 +2902,7 @@ List input items
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          [web search tool](/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -2979,7 +2962,7 @@ List input items
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -3031,7 +3014,7 @@ List input items
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -3223,19 +3206,8 @@ List input items
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Allows to set transparency for the background of the generated image(s).
-            This parameter is only supported for GPT image models that support
-            transparent backgrounds. Must be one of `transparent`, `opaque`, or
-            `auto` (default value). When `auto` is used, the model will
-            automatically determine the best background for the image.
-
-            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-            transparent backgrounds. Requests with `background` set to
-            `transparent` will return an error for these models; use `opaque` or
-            `auto` instead.
-
-            If `transparent`, the output format needs to support transparency,
-            so it should be set to either `png` (default value) or `webp`.
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
 
             - `"transparent"`
 
@@ -3264,13 +3236,13 @@ List input items
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -3278,13 +3250,7 @@ List input items
 
               - `"gpt-image-1-mini"`
 
-              - `"gpt-image-2"`
-
-              - `"gpt-image-2-2026-04-21"`
-
               - `"gpt-image-1.5"`
-
-              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -3382,7 +3348,7 @@ List input items
 
         - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -3496,7 +3462,7 @@ List input items
 
             - `Custom object { name, type, allowed_callers, 3 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -3683,7 +3649,7 @@ List input items
       A description of the chain of thought used by a reasoning model while generating
       a response. Be sure to include these items in your `input` to the Responses API
       for subsequent turns of a conversation if you are manually
-      [managing context](https://platform.openai.com/docs/guides/conversation-state).
+      [managing context](/docs/guides/conversation-state).
 
       - `id: string`
 
@@ -3817,7 +3783,7 @@ List input items
 
     - `Compaction object { id, encrypted_content, type, 2 more }`
 
-      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
       - `id: string`
 
@@ -4723,7 +4689,7 @@ List input items
 
           - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
           - `BetaResponseInputFile object { type, detail, file_data, 4 more }`
 
@@ -4804,7 +4770,6 @@ List input items
 
 ```http
 curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
-    -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 

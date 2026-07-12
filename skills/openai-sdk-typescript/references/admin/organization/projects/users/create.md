@@ -4,7 +4,7 @@
 
 **post** `/organization/projects/{project_id}/users`
 
-Create project user
+Adds a user to the project. Users must already be members of the organization to be added to a project.
 
 ### Parameters
 

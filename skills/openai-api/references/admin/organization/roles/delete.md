@@ -2,7 +2,7 @@
 
 **delete** `/organization/roles/{role_id}`
 
-Delete organization role
+Deletes a custom role from the organization.
 
 ### Path Parameters
 

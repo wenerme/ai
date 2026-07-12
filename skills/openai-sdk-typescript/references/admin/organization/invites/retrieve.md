@@ -4,7 +4,7 @@
 
 **get** `/organization/invites/{invite_id}`
 
-Retrieve invite
+Retrieves an invite.
 
 ### Parameters
 

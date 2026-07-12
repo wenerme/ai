@@ -2,7 +2,7 @@
 
 **post** `/organization/projects/{project_id}/data_retention`
 
-Update project data retention
+Updates project data retention controls.
 
 ### Path Parameters
 

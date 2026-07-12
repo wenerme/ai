@@ -4,7 +4,7 @@
 
 **get** `/assistants`
 
-List assistants
+Returns a list of assistants.
 
 ### Query Parameters
 
@@ -59,7 +59,7 @@ List assistants
 
   - `model: string`
 
-    ID of the model to use. You can use the [List models](https://platform.openai.com/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](https://platform.openai.com/docs/models) for descriptions of them.
+    ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
   - `name: string`
 
@@ -71,7 +71,7 @@ List assistants
 
     - `"assistant"`
 
-  - `tools: array of AssistantTool`
+  - `tools: array of CodeInterpreterTool or FileSearchTool or FunctionTool`
 
     A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
 
@@ -99,13 +99,13 @@ List assistants
 
           The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
 
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
         - `ranking_options: optional object { score_threshold, ranker }`
 
           The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
 
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+          See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
           - `score_threshold: number`
 
@@ -133,13 +133,13 @@ List assistants
 
         - `parameters: optional FunctionParameters`
 
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
           Omitting `parameters` defines a function with an empty parameter list.
 
         - `strict: optional boolean`
 
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
       - `type: "function"`
 
@@ -149,9 +149,9 @@ List assistants
 
   - `response_format: optional AssistantResponseFormatOption`
 
-    Specifies the format that the model must output. Compatible with [GPT-4o](https://platform.openai.com/docs/models#gpt-4o), [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
+    Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
-    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](/docs/guides/structured-outputs).
 
     Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is valid JSON.
 
@@ -189,7 +189,7 @@ List assistants
     - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
-      Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+      Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
       - `json_schema: object { name, description, schema, strict }`
 
@@ -216,7 +216,7 @@ List assistants
           If set to true, the model will always follow the exact schema defined
           in the `schema` field. Only a subset of JSON Schema is supported when
           `strict` is `true`. To learn more, read the [Structured Outputs
-          guide](https://platform.openai.com/docs/guides/structured-outputs).
+          guide](/docs/guides/structured-outputs).
 
       - `type: "json_schema"`
 
@@ -236,13 +236,13 @@ List assistants
 
       - `file_ids: optional array of string`
 
-        A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter`` tool. There can be a maximum of 20 files associated with the tool.
+        A list of [file](/docs/api-reference/files) IDs made available to the `code_interpreter`` tool. There can be a maximum of 20 files associated with the tool.
 
     - `file_search: optional object { vector_store_ids }`
 
       - `vector_store_ids: optional array of string`
 
-        The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
+        The ID of the [vector store](/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
   - `top_p: optional number`
 
@@ -382,55 +382,19 @@ curl "https://api.openai.com/v1/assistants?order=desc&limit=20" \
 
 **post** `/assistants`
 
-Create assistant
+Create an assistant with a model and instructions.
 
 ### Body Parameters
 
-- `model: string or ChatModel`
+- `model: string or "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 39 more`
 
-  ID of the model to use. You can use the [List models](https://platform.openai.com/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](https://platform.openai.com/docs/models) for descriptions of them.
+  ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
   - `string`
 
-  - `ChatModel = "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 78 more`
+  - `AssistantSupportedModels = "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 39 more`
 
-    - `"gpt-5.6-sol"`
-
-    - `"gpt-5.6-terra"`
-
-    - `"gpt-5.6-luna"`
-
-    - `"gpt-5.4"`
-
-    - `"gpt-5.4-mini"`
-
-    - `"gpt-5.4-nano"`
-
-    - `"gpt-5.4-mini-2026-03-17"`
-
-    - `"gpt-5.4-nano-2026-03-17"`
-
-    - `"gpt-5.3-chat-latest"`
-
-    - `"gpt-5.2"`
-
-    - `"gpt-5.2-2025-12-11"`
-
-    - `"gpt-5.2-chat-latest"`
-
-    - `"gpt-5.2-pro"`
-
-    - `"gpt-5.2-pro-2025-12-11"`
-
-    - `"gpt-5.1"`
-
-    - `"gpt-5.1-2025-11-13"`
-
-    - `"gpt-5.1-codex"`
-
-    - `"gpt-5.1-mini"`
-
-    - `"gpt-5.1-chat-latest"`
+    ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
     - `"gpt-5"`
 
@@ -444,8 +408,6 @@ Create assistant
 
     - `"gpt-5-nano-2025-08-07"`
 
-    - `"gpt-5-chat-latest"`
-
     - `"gpt-4.1"`
 
     - `"gpt-4.1-mini"`
@@ -458,14 +420,6 @@ Create assistant
 
     - `"gpt-4.1-nano-2025-04-14"`
 
-    - `"o4-mini"`
-
-    - `"o4-mini-2025-04-16"`
-
-    - `"o3"`
-
-    - `"o3-2025-04-16"`
-
     - `"o3-mini"`
 
     - `"o3-mini-2025-01-31"`
@@ -473,14 +427,6 @@ Create assistant
     - `"o1"`
 
     - `"o1-2024-12-17"`
-
-    - `"o1-preview"`
-
-    - `"o1-preview-2024-09-12"`
-
-    - `"o1-mini"`
-
-    - `"o1-mini-2024-09-12"`
 
     - `"gpt-4o"`
 
@@ -490,33 +436,13 @@ Create assistant
 
     - `"gpt-4o-2024-05-13"`
 
-    - `"gpt-4o-audio-preview"`
-
-    - `"gpt-4o-audio-preview-2024-10-01"`
-
-    - `"gpt-4o-audio-preview-2024-12-17"`
-
-    - `"gpt-4o-audio-preview-2025-06-03"`
-
-    - `"gpt-4o-mini-audio-preview"`
-
-    - `"gpt-4o-mini-audio-preview-2024-12-17"`
-
-    - `"gpt-4o-search-preview"`
-
-    - `"gpt-4o-mini-search-preview"`
-
-    - `"gpt-4o-search-preview-2025-03-11"`
-
-    - `"gpt-4o-mini-search-preview-2025-03-11"`
-
-    - `"chatgpt-4o-latest"`
-
-    - `"codex-mini-latest"`
-
     - `"gpt-4o-mini"`
 
     - `"gpt-4o-mini-2024-07-18"`
+
+    - `"gpt-4.5-preview"`
+
+    - `"gpt-4.5-preview-2025-02-27"`
 
     - `"gpt-4-turbo"`
 
@@ -545,8 +471,6 @@ Create assistant
     - `"gpt-3.5-turbo"`
 
     - `"gpt-3.5-turbo-16k"`
-
-    - `"gpt-3.5-turbo-0301"`
 
     - `"gpt-3.5-turbo-0613"`
 
@@ -603,9 +527,9 @@ Create assistant
 
 - `response_format: optional AssistantResponseFormatOption`
 
-  Specifies the format that the model must output. Compatible with [GPT-4o](https://platform.openai.com/docs/models#gpt-4o), [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
+  Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
-  Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+  Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](/docs/guides/structured-outputs).
 
   Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is valid JSON.
 
@@ -643,7 +567,7 @@ Create assistant
   - `ResponseFormatJSONSchema object { json_schema, type }`
 
     JSON Schema response format. Used to generate structured JSON responses.
-    Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+    Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
     - `json_schema: object { name, description, schema, strict }`
 
@@ -670,7 +594,7 @@ Create assistant
         If set to true, the model will always follow the exact schema defined
         in the `schema` field. Only a subset of JSON Schema is supported when
         `strict` is `true`. To learn more, read the [Structured Outputs
-        guide](https://platform.openai.com/docs/guides/structured-outputs).
+        guide](/docs/guides/structured-outputs).
 
     - `type: "json_schema"`
 
@@ -690,23 +614,23 @@ Create assistant
 
     - `file_ids: optional array of string`
 
-      A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
+      A list of [file](/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
 
   - `file_search: optional object { vector_store_ids, vector_stores }`
 
     - `vector_store_ids: optional array of string`
 
-      The [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
+      The [vector store](/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
     - `vector_stores: optional array of object { chunking_strategy, file_ids, metadata }`
 
-      A helper to create a [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) with file_ids and attach it to this assistant. There can be a maximum of 1 vector store attached to the assistant.
+      A helper to create a [vector store](/docs/api-reference/vector-stores/object) with file_ids and attach it to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
       - `chunking_strategy: optional object { type }  or object { static, type }`
 
         The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-        - `Auto object { type }`
+        - `AutoChunkingStrategy object { type }`
 
           The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -716,7 +640,7 @@ Create assistant
 
             - `"auto"`
 
-        - `Static object { static, type }`
+        - `StaticChunkingStrategy object { static, type }`
 
           - `static: object { chunk_overlap_tokens, max_chunk_size_tokens }`
 
@@ -738,7 +662,7 @@ Create assistant
 
       - `file_ids: optional array of string`
 
-        A list of [file](https://platform.openai.com/docs/api-reference/files) IDs to add to the vector store. For vector stores created before Nov 2025, there can be a maximum of 10,000 files in a vector store. For vector stores created starting in Nov 2025, the limit is 100,000,000 files.
+        A list of [file](/docs/api-reference/files) IDs to add to the vector store. For vector stores created before Nov 2025, there can be a maximum of 10,000 files in a vector store. For vector stores created starting in Nov 2025, the limit is 100,000,000 files.
 
       - `metadata: optional Metadata`
 
@@ -749,7 +673,7 @@ Create assistant
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
 
-- `tools: optional array of AssistantTool`
+- `tools: optional array of CodeInterpreterTool or FileSearchTool or FunctionTool`
 
   A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
 
@@ -777,13 +701,13 @@ Create assistant
 
         The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
 
-        Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+        Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
       - `ranking_options: optional object { score_threshold, ranker }`
 
         The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
 
-        See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+        See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
         - `score_threshold: number`
 
@@ -811,13 +735,13 @@ Create assistant
 
       - `parameters: optional FunctionParameters`
 
-        The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+        The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
         Omitting `parameters` defines a function with an empty parameter list.
 
       - `strict: optional boolean`
 
-        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
     - `type: "function"`
 
@@ -864,7 +788,7 @@ Create assistant
 
   - `model: string`
 
-    ID of the model to use. You can use the [List models](https://platform.openai.com/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](https://platform.openai.com/docs/models) for descriptions of them.
+    ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
   - `name: string`
 
@@ -876,7 +800,7 @@ Create assistant
 
     - `"assistant"`
 
-  - `tools: array of AssistantTool`
+  - `tools: array of CodeInterpreterTool or FileSearchTool or FunctionTool`
 
     A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
 
@@ -904,13 +828,13 @@ Create assistant
 
           The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
 
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
         - `ranking_options: optional object { score_threshold, ranker }`
 
           The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
 
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+          See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
           - `score_threshold: number`
 
@@ -938,13 +862,13 @@ Create assistant
 
         - `parameters: optional FunctionParameters`
 
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
           Omitting `parameters` defines a function with an empty parameter list.
 
         - `strict: optional boolean`
 
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
       - `type: "function"`
 
@@ -954,9 +878,9 @@ Create assistant
 
   - `response_format: optional AssistantResponseFormatOption`
 
-    Specifies the format that the model must output. Compatible with [GPT-4o](https://platform.openai.com/docs/models#gpt-4o), [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
+    Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
-    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](/docs/guides/structured-outputs).
 
     Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is valid JSON.
 
@@ -994,7 +918,7 @@ Create assistant
     - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
-      Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+      Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
       - `json_schema: object { name, description, schema, strict }`
 
@@ -1021,7 +945,7 @@ Create assistant
           If set to true, the model will always follow the exact schema defined
           in the `schema` field. Only a subset of JSON Schema is supported when
           `strict` is `true`. To learn more, read the [Structured Outputs
-          guide](https://platform.openai.com/docs/guides/structured-outputs).
+          guide](/docs/guides/structured-outputs).
 
       - `type: "json_schema"`
 
@@ -1041,13 +965,13 @@ Create assistant
 
       - `file_ids: optional array of string`
 
-        A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter`` tool. There can be a maximum of 20 files associated with the tool.
+        A list of [file](/docs/api-reference/files) IDs made available to the `code_interpreter`` tool. There can be a maximum of 20 files associated with the tool.
 
     - `file_search: optional object { vector_store_ids }`
 
       - `vector_store_ids: optional array of string`
 
-        The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
+        The ID of the [vector store](/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
   - `top_p: optional number`
 
@@ -1191,7 +1115,7 @@ curl https://api.openai.com/v1/assistants \
 
 **get** `/assistants/{assistant_id}`
 
-Retrieve assistant
+Retrieves an assistant.
 
 ### Path Parameters
 
@@ -1230,7 +1154,7 @@ Retrieve assistant
 
   - `model: string`
 
-    ID of the model to use. You can use the [List models](https://platform.openai.com/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](https://platform.openai.com/docs/models) for descriptions of them.
+    ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
   - `name: string`
 
@@ -1242,7 +1166,7 @@ Retrieve assistant
 
     - `"assistant"`
 
-  - `tools: array of AssistantTool`
+  - `tools: array of CodeInterpreterTool or FileSearchTool or FunctionTool`
 
     A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
 
@@ -1270,13 +1194,13 @@ Retrieve assistant
 
           The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
 
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
         - `ranking_options: optional object { score_threshold, ranker }`
 
           The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
 
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+          See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
           - `score_threshold: number`
 
@@ -1304,13 +1228,13 @@ Retrieve assistant
 
         - `parameters: optional FunctionParameters`
 
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
           Omitting `parameters` defines a function with an empty parameter list.
 
         - `strict: optional boolean`
 
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
       - `type: "function"`
 
@@ -1320,9 +1244,9 @@ Retrieve assistant
 
   - `response_format: optional AssistantResponseFormatOption`
 
-    Specifies the format that the model must output. Compatible with [GPT-4o](https://platform.openai.com/docs/models#gpt-4o), [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
+    Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
-    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](/docs/guides/structured-outputs).
 
     Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is valid JSON.
 
@@ -1360,7 +1284,7 @@ Retrieve assistant
     - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
-      Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+      Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
       - `json_schema: object { name, description, schema, strict }`
 
@@ -1387,7 +1311,7 @@ Retrieve assistant
           If set to true, the model will always follow the exact schema defined
           in the `schema` field. Only a subset of JSON Schema is supported when
           `strict` is `true`. To learn more, read the [Structured Outputs
-          guide](https://platform.openai.com/docs/guides/structured-outputs).
+          guide](/docs/guides/structured-outputs).
 
       - `type: "json_schema"`
 
@@ -1407,13 +1331,13 @@ Retrieve assistant
 
       - `file_ids: optional array of string`
 
-        A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter`` tool. There can be a maximum of 20 files associated with the tool.
+        A list of [file](/docs/api-reference/files) IDs made available to the `code_interpreter`` tool. There can be a maximum of 20 files associated with the tool.
 
     - `file_search: optional object { vector_store_ids }`
 
       - `vector_store_ids: optional array of string`
 
-        The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
+        The ID of the [vector store](/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
   - `top_p: optional number`
 
@@ -1502,7 +1426,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
 **post** `/assistants/{assistant_id}`
 
-Modify assistant
+Modifies an assistant.
 
 ### Path Parameters
 
@@ -1529,13 +1453,13 @@ Modify assistant
 
 - `model: optional string or "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 39 more`
 
-  ID of the model to use. You can use the [List models](https://platform.openai.com/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](https://platform.openai.com/docs/models) for descriptions of them.
+  ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
   - `string`
 
   - `AssistantSupportedModels = "gpt-5" or "gpt-5-mini" or "gpt-5-nano" or 39 more`
 
-    ID of the model to use. You can use the [List models](https://platform.openai.com/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](https://platform.openai.com/docs/models) for descriptions of them.
+    ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
     - `"gpt-5"`
 
@@ -1651,9 +1575,9 @@ Modify assistant
 
 - `response_format: optional AssistantResponseFormatOption`
 
-  Specifies the format that the model must output. Compatible with [GPT-4o](https://platform.openai.com/docs/models#gpt-4o), [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
+  Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
-  Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+  Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](/docs/guides/structured-outputs).
 
   Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is valid JSON.
 
@@ -1691,7 +1615,7 @@ Modify assistant
   - `ResponseFormatJSONSchema object { json_schema, type }`
 
     JSON Schema response format. Used to generate structured JSON responses.
-    Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+    Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
     - `json_schema: object { name, description, schema, strict }`
 
@@ -1718,7 +1642,7 @@ Modify assistant
         If set to true, the model will always follow the exact schema defined
         in the `schema` field. Only a subset of JSON Schema is supported when
         `strict` is `true`. To learn more, read the [Structured Outputs
-        guide](https://platform.openai.com/docs/guides/structured-outputs).
+        guide](/docs/guides/structured-outputs).
 
     - `type: "json_schema"`
 
@@ -1738,15 +1662,15 @@ Modify assistant
 
     - `file_ids: optional array of string`
 
-      Overrides the list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
+      Overrides the list of [file](/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
 
   - `file_search: optional object { vector_store_ids }`
 
     - `vector_store_ids: optional array of string`
 
-      Overrides the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
+      Overrides the [vector store](/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
-- `tools: optional array of AssistantTool`
+- `tools: optional array of CodeInterpreterTool or FileSearchTool or FunctionTool`
 
   A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
 
@@ -1774,13 +1698,13 @@ Modify assistant
 
         The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
 
-        Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+        Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
       - `ranking_options: optional object { score_threshold, ranker }`
 
         The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
 
-        See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+        See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
         - `score_threshold: number`
 
@@ -1808,13 +1732,13 @@ Modify assistant
 
       - `parameters: optional FunctionParameters`
 
-        The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+        The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
         Omitting `parameters` defines a function with an empty parameter list.
 
       - `strict: optional boolean`
 
-        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
     - `type: "function"`
 
@@ -1861,7 +1785,7 @@ Modify assistant
 
   - `model: string`
 
-    ID of the model to use. You can use the [List models](https://platform.openai.com/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](https://platform.openai.com/docs/models) for descriptions of them.
+    ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
   - `name: string`
 
@@ -1873,7 +1797,7 @@ Modify assistant
 
     - `"assistant"`
 
-  - `tools: array of AssistantTool`
+  - `tools: array of CodeInterpreterTool or FileSearchTool or FunctionTool`
 
     A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
 
@@ -1901,13 +1825,13 @@ Modify assistant
 
           The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
 
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
         - `ranking_options: optional object { score_threshold, ranker }`
 
           The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
 
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+          See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
           - `score_threshold: number`
 
@@ -1935,13 +1859,13 @@ Modify assistant
 
         - `parameters: optional FunctionParameters`
 
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
           Omitting `parameters` defines a function with an empty parameter list.
 
         - `strict: optional boolean`
 
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
       - `type: "function"`
 
@@ -1951,9 +1875,9 @@ Modify assistant
 
   - `response_format: optional AssistantResponseFormatOption`
 
-    Specifies the format that the model must output. Compatible with [GPT-4o](https://platform.openai.com/docs/models#gpt-4o), [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
+    Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
-    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](/docs/guides/structured-outputs).
 
     Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is valid JSON.
 
@@ -1991,7 +1915,7 @@ Modify assistant
     - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
-      Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+      Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
       - `json_schema: object { name, description, schema, strict }`
 
@@ -2018,7 +1942,7 @@ Modify assistant
           If set to true, the model will always follow the exact schema defined
           in the `schema` field. Only a subset of JSON Schema is supported when
           `strict` is `true`. To learn more, read the [Structured Outputs
-          guide](https://platform.openai.com/docs/guides/structured-outputs).
+          guide](/docs/guides/structured-outputs).
 
       - `type: "json_schema"`
 
@@ -2038,13 +1962,13 @@ Modify assistant
 
       - `file_ids: optional array of string`
 
-        A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter`` tool. There can be a maximum of 20 files associated with the tool.
+        A list of [file](/docs/api-reference/files) IDs made available to the `code_interpreter`` tool. There can be a maximum of 20 files associated with the tool.
 
     - `file_search: optional object { vector_store_ids }`
 
       - `vector_store_ids: optional array of string`
 
-        The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
+        The ID of the [vector store](/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
   - `top_p: optional number`
 
@@ -2148,7 +2072,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
 **delete** `/assistants/{assistant_id}`
 
-Delete assistant
+Delete an assistant.
 
 ### Path Parameters
 
@@ -2240,7 +2164,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
   - `model: string`
 
-    ID of the model to use. You can use the [List models](https://platform.openai.com/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](https://platform.openai.com/docs/models) for descriptions of them.
+    ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
   - `name: string`
 
@@ -2252,7 +2176,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
     - `"assistant"`
 
-  - `tools: array of AssistantTool`
+  - `tools: array of CodeInterpreterTool or FileSearchTool or FunctionTool`
 
     A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
 
@@ -2280,13 +2204,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
           The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
 
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
         - `ranking_options: optional object { score_threshold, ranker }`
 
           The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
 
-          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+          See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
           - `score_threshold: number`
 
@@ -2314,13 +2238,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
         - `parameters: optional FunctionParameters`
 
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
           Omitting `parameters` defines a function with an empty parameter list.
 
         - `strict: optional boolean`
 
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
       - `type: "function"`
 
@@ -2330,9 +2254,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
   - `response_format: optional AssistantResponseFormatOption`
 
-    Specifies the format that the model must output. Compatible with [GPT-4o](https://platform.openai.com/docs/models#gpt-4o), [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
+    Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
-    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](/docs/guides/structured-outputs).
 
     Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is valid JSON.
 
@@ -2370,7 +2294,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
     - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
-      Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+      Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
       - `json_schema: object { name, description, schema, strict }`
 
@@ -2397,7 +2321,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
           If set to true, the model will always follow the exact schema defined
           in the `schema` field. Only a subset of JSON Schema is supported when
           `strict` is `true`. To learn more, read the [Structured Outputs
-          guide](https://platform.openai.com/docs/guides/structured-outputs).
+          guide](/docs/guides/structured-outputs).
 
       - `type: "json_schema"`
 
@@ -2417,13 +2341,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `file_ids: optional array of string`
 
-        A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter`` tool. There can be a maximum of 20 files associated with the tool.
+        A list of [file](/docs/api-reference/files) IDs made available to the `code_interpreter`` tool. There can be a maximum of 20 files associated with the tool.
 
     - `file_search: optional object { vector_store_ids }`
 
       - `vector_store_ids: optional array of string`
 
-        The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
+        The ID of the [vector store](/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
   - `top_p: optional number`
 
@@ -2445,7 +2369,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
 ### Assistant Stream Event
 
-- `AssistantStreamEvent = object { data, event, enabled }  or object { data, event }  or object { data, event }  or 21 more`
+- `AssistantStreamEvent = object { data, event, enabled }  or object { data, event }  or object { data, event }  or 22 more`
 
   Represents an event emitted when streaming a Run.
 
@@ -2464,16 +2388,16 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
   `thread.message.completed` event.
 
   We may add additional events over time, so we recommend handling unknown events gracefully
-  in your code. See the [Assistants API quickstart](https://platform.openai.com/docs/assistants/overview) to learn how to
+  in your code. See the [Assistants API quickstart](/docs/assistants/overview) to learn how to
   integrate the Assistants API with streaming.
 
-  - `ThreadCreated object { data, event, enabled }`
+  - `object { data, event, enabled }`
 
-    Occurs when a new [thread](https://platform.openai.com/docs/api-reference/threads/object) is created.
+    Occurs when a new [thread](/docs/api-reference/threads/object) is created.
 
     - `data: Thread`
 
-      Represents a thread that contains [messages](https://platform.openai.com/docs/api-reference/messages).
+      Represents a thread that contains [messages](/docs/api-reference/messages).
 
       - `id: string`
 
@@ -2506,13 +2430,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
           - `file_ids: optional array of string`
 
-            A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
+            A list of [file](/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
 
         - `file_search: optional object { vector_store_ids }`
 
           - `vector_store_ids: optional array of string`
 
-            The [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
+            The [vector store](/docs/api-reference/vector-stores/object) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
 
     - `event: "thread.created"`
 
@@ -2522,13 +2446,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       Whether to enable input audio transcription.
 
-  - `ThreadRunCreated object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a new [run](https://platform.openai.com/docs/api-reference/runs/object) is created.
+    Occurs when a new [run](/docs/api-reference/runs/object) is created.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
       - `id: string`
 
@@ -2536,7 +2460,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `assistant_id: string`
 
-        The ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for execution of this run.
+        The ID of the [assistant](/docs/api-reference/assistants) used for execution of this run.
 
       - `cancelled_at: number`
 
@@ -2572,7 +2496,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `instructions: string`
 
-        The instructions that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+        The instructions that the [assistant](/docs/api-reference/assistants) used for this run.
 
       - `last_error: object { code, message }`
 
@@ -2611,7 +2535,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `model: string`
 
-        The model that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+        The model that the [assistant](/docs/api-reference/assistants) used for this run.
 
       - `object: "thread.run"`
 
@@ -2621,7 +2545,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `parallel_tool_calls: boolean`
 
-        Whether to enable [parallel function calling](https://platform.openai.com/docs/guides/function-calling#configuring-parallel-function-calling) during tool use.
+        Whether to enable [parallel function calling](/docs/guides/function-calling#configuring-parallel-function-calling) during tool use.
 
       - `required_action: object { submit_tool_outputs, type }`
 
@@ -2637,7 +2561,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
             - `id: string`
 
-              The ID of the tool call. This ID must be referenced when you submit the tool outputs in using the [Submit tool outputs to run](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) endpoint.
+              The ID of the tool call. This ID must be referenced when you submit the tool outputs in using the [Submit tool outputs to run](/docs/api-reference/runs/submitToolOutputs) endpoint.
 
             - `function: object { arguments, name }`
 
@@ -2665,9 +2589,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `response_format: AssistantResponseFormatOption`
 
-        Specifies the format that the model must output. Compatible with [GPT-4o](https://platform.openai.com/docs/models#gpt-4o), [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
+        Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
-        Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+        Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](/docs/guides/structured-outputs).
 
         Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is valid JSON.
 
@@ -2705,7 +2629,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
         - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
-          Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+          Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
           - `json_schema: object { name, description, schema, strict }`
 
@@ -2732,7 +2656,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](https://platform.openai.com/docs/guides/structured-outputs).
+              guide](/docs/guides/structured-outputs).
 
           - `type: "json_schema"`
 
@@ -2744,7 +2668,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
         The Unix timestamp (in seconds) for when the run was started.
 
-      - `status: RunStatus`
+      - `status: "queued" or "in_progress" or "requires_action" or 6 more`
 
         The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
 
@@ -2768,7 +2692,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `thread_id: string`
 
-        The ID of the [thread](https://platform.openai.com/docs/api-reference/threads) that was executed on as a part of this run.
+        The ID of the [thread](/docs/api-reference/threads) that was executed on as a part of this run.
 
       - `tool_choice: AssistantToolChoiceOption`
 
@@ -2778,7 +2702,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `Auto = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -2808,9 +2732,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
               The name of the function to call.
 
-      - `tools: array of AssistantTool`
+      - `tools: array of CodeInterpreterTool or FileSearchTool or FunctionTool`
 
-        The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+        The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
         - `CodeInterpreterTool object { type }`
 
@@ -2836,13 +2760,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
               The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
 
-              Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+              Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
             - `ranking_options: optional object { score_threshold, ranker }`
 
               The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
 
-              See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+              See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
               - `score_threshold: number`
 
@@ -2870,13 +2794,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
             - `parameters: optional FunctionParameters`
 
-              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
               Omitting `parameters` defines a function with an empty parameter list.
 
             - `strict: optional boolean`
 
-              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
           - `type: "function"`
 
@@ -2928,117 +2852,117 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.created"`
 
-  - `ThreadRunQueued object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) moves to a `queued` status.
+    Occurs when a [run](/docs/api-reference/runs/object) moves to a `queued` status.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.queued"`
 
       - `"thread.run.queued"`
 
-  - `ThreadRunInProgress object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) moves to an `in_progress` status.
+    Occurs when a [run](/docs/api-reference/runs/object) moves to an `in_progress` status.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.in_progress"`
 
       - `"thread.run.in_progress"`
 
-  - `ThreadRunRequiresAction object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) moves to a `requires_action` status.
+    Occurs when a [run](/docs/api-reference/runs/object) moves to a `requires_action` status.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.requires_action"`
 
       - `"thread.run.requires_action"`
 
-  - `ThreadRunCompleted object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) is completed.
+    Occurs when a [run](/docs/api-reference/runs/object) is completed.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.completed"`
 
       - `"thread.run.completed"`
 
-  - `ThreadRunIncomplete object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) ends with status `incomplete`.
+    Occurs when a [run](/docs/api-reference/runs/object) ends with status `incomplete`.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.incomplete"`
 
       - `"thread.run.incomplete"`
 
-  - `ThreadRunFailed object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) fails.
+    Occurs when a [run](/docs/api-reference/runs/object) fails.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.failed"`
 
       - `"thread.run.failed"`
 
-  - `ThreadRunCancelling object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) moves to a `cancelling` status.
+    Occurs when a [run](/docs/api-reference/runs/object) moves to a `cancelling` status.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.cancelling"`
 
       - `"thread.run.cancelling"`
 
-  - `ThreadRunCancelled object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) is cancelled.
+    Occurs when a [run](/docs/api-reference/runs/object) is cancelled.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.cancelled"`
 
       - `"thread.run.cancelled"`
 
-  - `ThreadRunExpired object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) expires.
+    Occurs when a [run](/docs/api-reference/runs/object) expires.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.expired"`
 
       - `"thread.run.expired"`
 
-  - `ThreadRunStepCreated object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) is created.
+    Occurs when a [run step](/docs/api-reference/run-steps/step-object) is created.
 
     - `data: RunStep`
 
@@ -3050,7 +2974,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `assistant_id: string`
 
-        The ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) associated with the run step.
+        The ID of the [assistant](/docs/api-reference/assistants) associated with the run step.
 
       - `cancelled_at: number`
 
@@ -3105,7 +3029,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `run_id: string`
 
-        The ID of the [run](https://platform.openai.com/docs/api-reference/runs) that this run step is a part of.
+        The ID of the [run](/docs/api-reference/runs) that this run step is a part of.
 
       - `status: "in_progress" or "cancelled" or "failed" or 2 more`
 
@@ -3145,7 +3069,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
           Details of the tool call.
 
-          - `tool_calls: array of ToolCall`
+          - `tool_calls: array of CodeInterpreterToolCall or FileSearchToolCall or FunctionToolCall`
 
             An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
@@ -3169,7 +3093,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
                   The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-                  - `Logs object { logs, type }`
+                  - `CodeInterpreterLogOutput object { logs, type }`
 
                     Text output from the Code Interpreter tool call as part of a run step.
 
@@ -3183,13 +3107,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
                       - `"logs"`
 
-                  - `Image object { image, type }`
+                  - `CodeInterpreterImageOutput object { image, type }`
 
                     - `image: object { file_id }`
 
                       - `file_id: string`
 
-                        The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+                        The [file](/docs/api-reference/files) ID of the image.
 
                     - `type: "image"`
 
@@ -3285,7 +3209,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
                 - `output: string`
 
-                  The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+                  The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
 
               - `type: "function"`
 
@@ -3301,7 +3225,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `thread_id: string`
 
-        The ID of the [thread](https://platform.openai.com/docs/api-reference/threads) that was run.
+        The ID of the [thread](/docs/api-reference/threads) that was run.
 
       - `type: "message_creation" or "tool_calls"`
 
@@ -3331,9 +3255,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.created"`
 
-  - `ThreadRunStepInProgress object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) moves to an `in_progress` state.
+    Occurs when a [run step](/docs/api-reference/run-steps/step-object) moves to an `in_progress` state.
 
     - `data: RunStep`
 
@@ -3343,9 +3267,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.in_progress"`
 
-  - `ThreadRunStepDelta object { data, event }`
+  - `object { data, event }`
 
-    Occurs when parts of a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) are being streamed.
+    Occurs when parts of a [run step](/docs/api-reference/run-steps/step-object) are being streamed.
 
     - `data: RunStepDeltaEvent`
 
@@ -3355,7 +3279,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
         The identifier of the run step, which can be referenced in API endpoints.
 
-      - `delta: RunStepDelta`
+      - `delta: object { step_details }`
 
         The delta containing the fields that have changed on the run step.
 
@@ -3389,7 +3313,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
               - `"tool_calls"`
 
-            - `tool_calls: optional array of ToolCallDelta`
+            - `tool_calls: optional array of CodeInterpreterToolCallDelta or FileSearchToolCallDelta or FunctionToolCallDelta`
 
               An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
@@ -3457,7 +3381,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
                         - `file_id: optional string`
 
-                          The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+                          The [file](/docs/api-reference/files) ID of the image.
 
               - `FileSearchToolCallDelta object { file_search, index, type, id }`
 
@@ -3509,7 +3433,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
                   - `output: optional string`
 
-                    The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+                    The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
 
       - `object: "thread.run.step.delta"`
 
@@ -3521,9 +3445,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.delta"`
 
-  - `ThreadRunStepCompleted object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) is completed.
+    Occurs when a [run step](/docs/api-reference/run-steps/step-object) is completed.
 
     - `data: RunStep`
 
@@ -3533,9 +3457,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.completed"`
 
-  - `ThreadRunStepFailed object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) fails.
+    Occurs when a [run step](/docs/api-reference/run-steps/step-object) fails.
 
     - `data: RunStep`
 
@@ -3545,9 +3469,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.failed"`
 
-  - `ThreadRunStepCancelled object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) is cancelled.
+    Occurs when a [run step](/docs/api-reference/run-steps/step-object) is cancelled.
 
     - `data: RunStep`
 
@@ -3557,9 +3481,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.cancelled"`
 
-  - `ThreadRunStepExpired object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) expires.
+    Occurs when a [run step](/docs/api-reference/run-steps/step-object) expires.
 
     - `data: RunStep`
 
@@ -3569,13 +3493,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.expired"`
 
-  - `ThreadMessageCreated object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [message](https://platform.openai.com/docs/api-reference/messages/object) is created.
+    Occurs when a [message](/docs/api-reference/messages/object) is created.
 
     - `data: Message`
 
-      Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents a message within a [thread](/docs/api-reference/threads).
 
       - `id: string`
 
@@ -3583,7 +3507,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `assistant_id: string`
 
-        If applicable, the ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) that authored this message.
+        If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
 
       - `attachments: array of object { file_id, tools }`
 
@@ -3599,7 +3523,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
           - `CodeInterpreterTool object { type }`
 
-          - `AssistantToolsFileSearchTypeOnly object { type }`
+          - `FileSearchTool object { type }`
 
             - `type: "file_search"`
 
@@ -3611,19 +3535,19 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
         The Unix timestamp (in seconds) for when the message was completed.
 
-      - `content: array of MessageContent`
+      - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
 
         The content of the message in array of text and/or images.
 
         - `ImageFileContentBlock object { image_file, type }`
 
-          References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+          References an image [File](/docs/api-reference/files) in the content of a message.
 
           - `image_file: ImageFile`
 
             - `file_id: string`
 
-              The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+              The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
             - `detail: optional "auto" or "low" or "high"`
 
@@ -3673,7 +3597,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
           - `text: Text`
 
-            - `annotations: array of Annotation`
+            - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
               - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
@@ -3796,7 +3720,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `run_id: string`
 
-        The ID of the [run](https://platform.openai.com/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
+        The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
 
       - `status: "in_progress" or "incomplete" or "completed"`
 
@@ -3810,27 +3734,27 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `thread_id: string`
 
-        The [thread](https://platform.openai.com/docs/api-reference/threads) ID that this message belongs to.
+        The [thread](/docs/api-reference/threads) ID that this message belongs to.
 
     - `event: "thread.message.created"`
 
       - `"thread.message.created"`
 
-  - `ThreadMessageInProgress object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [message](https://platform.openai.com/docs/api-reference/messages/object) moves to an `in_progress` state.
+    Occurs when a [message](/docs/api-reference/messages/object) moves to an `in_progress` state.
 
     - `data: Message`
 
-      Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents a message within a [thread](/docs/api-reference/threads).
 
     - `event: "thread.message.in_progress"`
 
       - `"thread.message.in_progress"`
 
-  - `ThreadMessageDelta object { data, event }`
+  - `object { data, event }`
 
-    Occurs when parts of a [Message](https://platform.openai.com/docs/api-reference/messages/object) are being streamed.
+    Occurs when parts of a [Message](/docs/api-reference/messages/object) are being streamed.
 
     - `data: MessageDeltaEvent`
 
@@ -3844,13 +3768,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
         The delta containing the fields that have changed on the Message.
 
-        - `content: optional array of MessageContentDelta`
+        - `content: optional array of ImageFileDeltaBlock or TextDeltaBlock or RefusalDeltaBlock or ImageURLDeltaBlock`
 
           The content of the message in array of text and/or images.
 
           - `ImageFileDeltaBlock object { index, type, image_file }`
 
-            References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+            References an image [File](/docs/api-reference/files) in the content of a message.
 
             - `index: number`
 
@@ -3876,7 +3800,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
               - `file_id: optional string`
 
-                The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+                The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
           - `TextDeltaBlock object { index, type, text }`
 
@@ -3894,7 +3818,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
             - `text: optional TextDelta`
 
-              - `annotations: optional array of AnnotationDelta`
+              - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
 
                 - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
 
@@ -4024,25 +3948,25 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.message.delta"`
 
-  - `ThreadMessageCompleted object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [message](https://platform.openai.com/docs/api-reference/messages/object) is completed.
+    Occurs when a [message](/docs/api-reference/messages/object) is completed.
 
     - `data: Message`
 
-      Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents a message within a [thread](/docs/api-reference/threads).
 
     - `event: "thread.message.completed"`
 
       - `"thread.message.completed"`
 
-  - `ThreadMessageIncomplete object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [message](https://platform.openai.com/docs/api-reference/messages/object) ends before it is completed.
+    Occurs when a [message](/docs/api-reference/messages/object) ends before it is completed.
 
     - `data: Message`
 
-      Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents a message within a [thread](/docs/api-reference/threads).
 
     - `event: "thread.message.incomplete"`
 
@@ -4050,7 +3974,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
   - `ErrorEvent object { data, event }`
 
-    Occurs when an [error](https://platform.openai.com/docs/guides/error-codes#api-errors) occurs. This can happen due to an internal server error or a timeout.
+    Occurs when an [error](/docs/guides/error-codes#api-errors) occurs. This can happen due to an internal server error or a timeout.
 
     - `data: ErrorObject`
 
@@ -4066,81 +3990,17 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"error"`
 
-### Assistant Tool
+  - `DoneEvent object { data, event }`
 
-- `AssistantTool = CodeInterpreterTool or FileSearchTool or FunctionTool`
+    Occurs when a stream ends.
 
-  - `CodeInterpreterTool object { type }`
+    - `data: "[DONE]"`
 
-    - `type: "code_interpreter"`
+      - `"[DONE]"`
 
-      The type of tool being defined: `code_interpreter`
+    - `event: "done"`
 
-      - `"code_interpreter"`
-
-  - `FileSearchTool object { type, file_search }`
-
-    - `type: "file_search"`
-
-      The type of tool being defined: `file_search`
-
-      - `"file_search"`
-
-    - `file_search: optional object { max_num_results, ranking_options }`
-
-      Overrides for the file search tool.
-
-      - `max_num_results: optional number`
-
-        The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-        Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-      - `ranking_options: optional object { score_threshold, ranker }`
-
-        The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-        See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-        - `score_threshold: number`
-
-          The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-        - `ranker: optional "auto" or "default_2024_08_21"`
-
-          The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-          - `"auto"`
-
-          - `"default_2024_08_21"`
-
-  - `FunctionTool object { function, type }`
-
-    - `function: FunctionDefinition`
-
-      - `name: string`
-
-        The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-      - `description: optional string`
-
-        A description of what the function does, used by the model to choose when and how to call the function.
-
-      - `parameters: optional FunctionParameters`
-
-        The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-        Omitting `parameters` defines a function with an empty parameter list.
-
-      - `strict: optional boolean`
-
-        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
-
-    - `type: "function"`
-
-      The type of tool being defined: `function`
-
-      - `"function"`
+      - `"done"`
 
 ### Code Interpreter Tool
 
@@ -4170,13 +4030,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
 
-      Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+      Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
     - `ranking_options: optional object { score_threshold, ranker }`
 
       The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
 
-      See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+      See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
       - `score_threshold: number`
 
@@ -4206,13 +4066,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
     - `parameters: optional FunctionParameters`
 
-      The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+      The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
       Omitting `parameters` defines a function with an empty parameter list.
 
     - `strict: optional boolean`
 
-      Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+      Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
   - `type: "function"`
 
@@ -4224,15 +4084,15 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
 - `MessageStreamEvent = object { data, event }  or object { data, event }  or object { data, event }  or 2 more`
 
-  Occurs when a [message](https://platform.openai.com/docs/api-reference/messages/object) is created.
+  Occurs when a [message](/docs/api-reference/messages/object) is created.
 
-  - `ThreadMessageCreated object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [message](https://platform.openai.com/docs/api-reference/messages/object) is created.
+    Occurs when a [message](/docs/api-reference/messages/object) is created.
 
     - `data: Message`
 
-      Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents a message within a [thread](/docs/api-reference/threads).
 
       - `id: string`
 
@@ -4240,7 +4100,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `assistant_id: string`
 
-        If applicable, the ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) that authored this message.
+        If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
 
       - `attachments: array of object { file_id, tools }`
 
@@ -4262,7 +4122,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
               - `"code_interpreter"`
 
-          - `AssistantToolsFileSearchTypeOnly object { type }`
+          - `FileSearchTool object { type }`
 
             - `type: "file_search"`
 
@@ -4274,19 +4134,19 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
         The Unix timestamp (in seconds) for when the message was completed.
 
-      - `content: array of MessageContent`
+      - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
 
         The content of the message in array of text and/or images.
 
         - `ImageFileContentBlock object { image_file, type }`
 
-          References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+          References an image [File](/docs/api-reference/files) in the content of a message.
 
           - `image_file: ImageFile`
 
             - `file_id: string`
 
-              The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+              The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
             - `detail: optional "auto" or "low" or "high"`
 
@@ -4336,7 +4196,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
           - `text: Text`
 
-            - `annotations: array of Annotation`
+            - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
               - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
@@ -4459,7 +4319,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `run_id: string`
 
-        The ID of the [run](https://platform.openai.com/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
+        The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
 
       - `status: "in_progress" or "incomplete" or "completed"`
 
@@ -4473,27 +4333,27 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `thread_id: string`
 
-        The [thread](https://platform.openai.com/docs/api-reference/threads) ID that this message belongs to.
+        The [thread](/docs/api-reference/threads) ID that this message belongs to.
 
     - `event: "thread.message.created"`
 
       - `"thread.message.created"`
 
-  - `ThreadMessageInProgress object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [message](https://platform.openai.com/docs/api-reference/messages/object) moves to an `in_progress` state.
+    Occurs when a [message](/docs/api-reference/messages/object) moves to an `in_progress` state.
 
     - `data: Message`
 
-      Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents a message within a [thread](/docs/api-reference/threads).
 
     - `event: "thread.message.in_progress"`
 
       - `"thread.message.in_progress"`
 
-  - `ThreadMessageDelta object { data, event }`
+  - `object { data, event }`
 
-    Occurs when parts of a [Message](https://platform.openai.com/docs/api-reference/messages/object) are being streamed.
+    Occurs when parts of a [Message](/docs/api-reference/messages/object) are being streamed.
 
     - `data: MessageDeltaEvent`
 
@@ -4507,13 +4367,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
         The delta containing the fields that have changed on the Message.
 
-        - `content: optional array of MessageContentDelta`
+        - `content: optional array of ImageFileDeltaBlock or TextDeltaBlock or RefusalDeltaBlock or ImageURLDeltaBlock`
 
           The content of the message in array of text and/or images.
 
           - `ImageFileDeltaBlock object { index, type, image_file }`
 
-            References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+            References an image [File](/docs/api-reference/files) in the content of a message.
 
             - `index: number`
 
@@ -4539,7 +4399,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
               - `file_id: optional string`
 
-                The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+                The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
           - `TextDeltaBlock object { index, type, text }`
 
@@ -4557,7 +4417,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
             - `text: optional TextDelta`
 
-              - `annotations: optional array of AnnotationDelta`
+              - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
 
                 - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
 
@@ -4687,25 +4547,25 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.message.delta"`
 
-  - `ThreadMessageCompleted object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [message](https://platform.openai.com/docs/api-reference/messages/object) is completed.
+    Occurs when a [message](/docs/api-reference/messages/object) is completed.
 
     - `data: Message`
 
-      Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents a message within a [thread](/docs/api-reference/threads).
 
     - `event: "thread.message.completed"`
 
       - `"thread.message.completed"`
 
-  - `ThreadMessageIncomplete object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [message](https://platform.openai.com/docs/api-reference/messages/object) ends before it is completed.
+    Occurs when a [message](/docs/api-reference/messages/object) ends before it is completed.
 
     - `data: Message`
 
-      Represents a message within a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents a message within a [thread](/docs/api-reference/threads).
 
     - `event: "thread.message.incomplete"`
 
@@ -4715,11 +4575,11 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
 - `RunStepStreamEvent = object { data, event }  or object { data, event }  or object { data, event }  or 4 more`
 
-  Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) is created.
+  Occurs when a [run step](/docs/api-reference/run-steps/step-object) is created.
 
-  - `ThreadRunStepCreated object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) is created.
+    Occurs when a [run step](/docs/api-reference/run-steps/step-object) is created.
 
     - `data: RunStep`
 
@@ -4731,7 +4591,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `assistant_id: string`
 
-        The ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) associated with the run step.
+        The ID of the [assistant](/docs/api-reference/assistants) associated with the run step.
 
       - `cancelled_at: number`
 
@@ -4786,7 +4646,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `run_id: string`
 
-        The ID of the [run](https://platform.openai.com/docs/api-reference/runs) that this run step is a part of.
+        The ID of the [run](/docs/api-reference/runs) that this run step is a part of.
 
       - `status: "in_progress" or "cancelled" or "failed" or 2 more`
 
@@ -4826,7 +4686,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
           Details of the tool call.
 
-          - `tool_calls: array of ToolCall`
+          - `tool_calls: array of CodeInterpreterToolCall or FileSearchToolCall or FunctionToolCall`
 
             An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
@@ -4850,7 +4710,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
                   The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-                  - `Logs object { logs, type }`
+                  - `CodeInterpreterLogOutput object { logs, type }`
 
                     Text output from the Code Interpreter tool call as part of a run step.
 
@@ -4864,13 +4724,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
                       - `"logs"`
 
-                  - `Image object { image, type }`
+                  - `CodeInterpreterImageOutput object { image, type }`
 
                     - `image: object { file_id }`
 
                       - `file_id: string`
 
-                        The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+                        The [file](/docs/api-reference/files) ID of the image.
 
                     - `type: "image"`
 
@@ -4966,7 +4826,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
                 - `output: string`
 
-                  The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+                  The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
 
               - `type: "function"`
 
@@ -4982,7 +4842,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `thread_id: string`
 
-        The ID of the [thread](https://platform.openai.com/docs/api-reference/threads) that was run.
+        The ID of the [thread](/docs/api-reference/threads) that was run.
 
       - `type: "message_creation" or "tool_calls"`
 
@@ -5012,9 +4872,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.created"`
 
-  - `ThreadRunStepInProgress object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) moves to an `in_progress` state.
+    Occurs when a [run step](/docs/api-reference/run-steps/step-object) moves to an `in_progress` state.
 
     - `data: RunStep`
 
@@ -5024,9 +4884,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.in_progress"`
 
-  - `ThreadRunStepDelta object { data, event }`
+  - `object { data, event }`
 
-    Occurs when parts of a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) are being streamed.
+    Occurs when parts of a [run step](/docs/api-reference/run-steps/step-object) are being streamed.
 
     - `data: RunStepDeltaEvent`
 
@@ -5036,7 +4896,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
         The identifier of the run step, which can be referenced in API endpoints.
 
-      - `delta: RunStepDelta`
+      - `delta: object { step_details }`
 
         The delta containing the fields that have changed on the run step.
 
@@ -5070,7 +4930,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
               - `"tool_calls"`
 
-            - `tool_calls: optional array of ToolCallDelta`
+            - `tool_calls: optional array of CodeInterpreterToolCallDelta or FileSearchToolCallDelta or FunctionToolCallDelta`
 
               An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
@@ -5138,7 +4998,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
                         - `file_id: optional string`
 
-                          The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+                          The [file](/docs/api-reference/files) ID of the image.
 
               - `FileSearchToolCallDelta object { file_search, index, type, id }`
 
@@ -5190,7 +5050,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
                   - `output: optional string`
 
-                    The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+                    The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
 
       - `object: "thread.run.step.delta"`
 
@@ -5202,9 +5062,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.delta"`
 
-  - `ThreadRunStepCompleted object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) is completed.
+    Occurs when a [run step](/docs/api-reference/run-steps/step-object) is completed.
 
     - `data: RunStep`
 
@@ -5214,9 +5074,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.completed"`
 
-  - `ThreadRunStepFailed object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) fails.
+    Occurs when a [run step](/docs/api-reference/run-steps/step-object) fails.
 
     - `data: RunStep`
 
@@ -5226,9 +5086,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.failed"`
 
-  - `ThreadRunStepCancelled object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) is cancelled.
+    Occurs when a [run step](/docs/api-reference/run-steps/step-object) is cancelled.
 
     - `data: RunStep`
 
@@ -5238,9 +5098,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.step.cancelled"`
 
-  - `ThreadRunStepExpired object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run step](https://platform.openai.com/docs/api-reference/run-steps/step-object) expires.
+    Occurs when a [run step](/docs/api-reference/run-steps/step-object) expires.
 
     - `data: RunStep`
 
@@ -5254,15 +5114,15 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
 - `RunStreamEvent = object { data, event }  or object { data, event }  or object { data, event }  or 7 more`
 
-  Occurs when a new [run](https://platform.openai.com/docs/api-reference/runs/object) is created.
+  Occurs when a new [run](/docs/api-reference/runs/object) is created.
 
-  - `ThreadRunCreated object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a new [run](https://platform.openai.com/docs/api-reference/runs/object) is created.
+    Occurs when a new [run](/docs/api-reference/runs/object) is created.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
       - `id: string`
 
@@ -5270,7 +5130,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `assistant_id: string`
 
-        The ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for execution of this run.
+        The ID of the [assistant](/docs/api-reference/assistants) used for execution of this run.
 
       - `cancelled_at: number`
 
@@ -5306,7 +5166,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `instructions: string`
 
-        The instructions that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+        The instructions that the [assistant](/docs/api-reference/assistants) used for this run.
 
       - `last_error: object { code, message }`
 
@@ -5345,7 +5205,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `model: string`
 
-        The model that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+        The model that the [assistant](/docs/api-reference/assistants) used for this run.
 
       - `object: "thread.run"`
 
@@ -5355,7 +5215,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `parallel_tool_calls: boolean`
 
-        Whether to enable [parallel function calling](https://platform.openai.com/docs/guides/function-calling#configuring-parallel-function-calling) during tool use.
+        Whether to enable [parallel function calling](/docs/guides/function-calling#configuring-parallel-function-calling) during tool use.
 
       - `required_action: object { submit_tool_outputs, type }`
 
@@ -5371,7 +5231,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
             - `id: string`
 
-              The ID of the tool call. This ID must be referenced when you submit the tool outputs in using the [Submit tool outputs to run](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) endpoint.
+              The ID of the tool call. This ID must be referenced when you submit the tool outputs in using the [Submit tool outputs to run](/docs/api-reference/runs/submitToolOutputs) endpoint.
 
             - `function: object { arguments, name }`
 
@@ -5399,9 +5259,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `response_format: AssistantResponseFormatOption`
 
-        Specifies the format that the model must output. Compatible with [GPT-4o](https://platform.openai.com/docs/models#gpt-4o), [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
+        Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
-        Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+        Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](/docs/guides/structured-outputs).
 
         Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is valid JSON.
 
@@ -5439,7 +5299,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
         - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
-          Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+          Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
           - `json_schema: object { name, description, schema, strict }`
 
@@ -5466,7 +5326,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](https://platform.openai.com/docs/guides/structured-outputs).
+              guide](/docs/guides/structured-outputs).
 
           - `type: "json_schema"`
 
@@ -5478,7 +5338,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
         The Unix timestamp (in seconds) for when the run was started.
 
-      - `status: RunStatus`
+      - `status: "queued" or "in_progress" or "requires_action" or 6 more`
 
         The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
 
@@ -5502,7 +5362,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `thread_id: string`
 
-        The ID of the [thread](https://platform.openai.com/docs/api-reference/threads) that was executed on as a part of this run.
+        The ID of the [thread](/docs/api-reference/threads) that was executed on as a part of this run.
 
       - `tool_choice: AssistantToolChoiceOption`
 
@@ -5512,7 +5372,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
         `required` means the model must call one or more tools before responding to the user.
         Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
 
-        - `Auto = "none" or "auto" or "required"`
+        - `"none" or "auto" or "required"`
 
           `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
 
@@ -5542,9 +5402,9 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
               The name of the function to call.
 
-      - `tools: array of AssistantTool`
+      - `tools: array of CodeInterpreterTool or FileSearchTool or FunctionTool`
 
-        The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+        The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
         - `CodeInterpreterTool object { type }`
 
@@ -5570,13 +5430,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
               The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
 
-              Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+              Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
             - `ranking_options: optional object { score_threshold, ranker }`
 
               The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
 
-              See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+              See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
               - `score_threshold: number`
 
@@ -5604,13 +5464,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
             - `parameters: optional FunctionParameters`
 
-              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
               Omitting `parameters` defines a function with an empty parameter list.
 
             - `strict: optional boolean`
 
-              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
           - `type: "function"`
 
@@ -5662,109 +5522,109 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
       - `"thread.run.created"`
 
-  - `ThreadRunQueued object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) moves to a `queued` status.
+    Occurs when a [run](/docs/api-reference/runs/object) moves to a `queued` status.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.queued"`
 
       - `"thread.run.queued"`
 
-  - `ThreadRunInProgress object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) moves to an `in_progress` status.
+    Occurs when a [run](/docs/api-reference/runs/object) moves to an `in_progress` status.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.in_progress"`
 
       - `"thread.run.in_progress"`
 
-  - `ThreadRunRequiresAction object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) moves to a `requires_action` status.
+    Occurs when a [run](/docs/api-reference/runs/object) moves to a `requires_action` status.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.requires_action"`
 
       - `"thread.run.requires_action"`
 
-  - `ThreadRunCompleted object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) is completed.
+    Occurs when a [run](/docs/api-reference/runs/object) is completed.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.completed"`
 
       - `"thread.run.completed"`
 
-  - `ThreadRunIncomplete object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) ends with status `incomplete`.
+    Occurs when a [run](/docs/api-reference/runs/object) ends with status `incomplete`.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.incomplete"`
 
       - `"thread.run.incomplete"`
 
-  - `ThreadRunFailed object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) fails.
+    Occurs when a [run](/docs/api-reference/runs/object) fails.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.failed"`
 
       - `"thread.run.failed"`
 
-  - `ThreadRunCancelling object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) moves to a `cancelling` status.
+    Occurs when a [run](/docs/api-reference/runs/object) moves to a `cancelling` status.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.cancelling"`
 
       - `"thread.run.cancelling"`
 
-  - `ThreadRunCancelled object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) is cancelled.
+    Occurs when a [run](/docs/api-reference/runs/object) is cancelled.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.cancelled"`
 
       - `"thread.run.cancelled"`
 
-  - `ThreadRunExpired object { data, event }`
+  - `object { data, event }`
 
-    Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object) expires.
+    Occurs when a [run](/docs/api-reference/runs/object) expires.
 
     - `data: Run`
 
-      Represents an execution run on a [thread](https://platform.openai.com/docs/api-reference/threads).
+      Represents an execution run on a [thread](/docs/api-reference/threads).
 
     - `event: "thread.run.expired"`
 
@@ -5774,11 +5634,11 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
 - `ThreadStreamEvent object { data, event, enabled }`
 
-  Occurs when a new [thread](https://platform.openai.com/docs/api-reference/threads/object) is created.
+  Occurs when a new [thread](/docs/api-reference/threads/object) is created.
 
   - `data: Thread`
 
-    Represents a thread that contains [messages](https://platform.openai.com/docs/api-reference/messages).
+    Represents a thread that contains [messages](/docs/api-reference/messages).
 
     - `id: string`
 
@@ -5811,13 +5671,13 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
         - `file_ids: optional array of string`
 
-          A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
+          A list of [file](/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
 
       - `file_search: optional object { vector_store_ids }`
 
         - `vector_store_ids: optional array of string`
 
-          The [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
+          The [vector store](/docs/api-reference/vector-stores/object) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
 
   - `event: "thread.created"`
 

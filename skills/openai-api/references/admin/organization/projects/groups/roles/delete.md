@@ -2,7 +2,7 @@
 
 **delete** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Unassign project role from group
+Unassigns a project role from a group within a project.
 
 ### Path Parameters
 

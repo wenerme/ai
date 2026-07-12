@@ -2,7 +2,7 @@
 
 **delete** `/organization/groups/{group_id}/roles/{role_id}`
 
-Unassign organization role from group
+Unassigns an organization role from a group within the organization.
 
 ### Path Parameters
 

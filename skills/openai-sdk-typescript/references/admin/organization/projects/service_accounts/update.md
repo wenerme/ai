@@ -4,7 +4,7 @@
 
 **post** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
 
-Update project service account
+Updates a service account in the project.
 
 ### Parameters
 

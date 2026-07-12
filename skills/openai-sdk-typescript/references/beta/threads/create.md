@@ -4,7 +4,7 @@
 
 **post** `/threads`
 
-Create thread
+Create a thread.
 
 ### Parameters
 

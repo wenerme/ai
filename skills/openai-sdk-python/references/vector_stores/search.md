@@ -4,7 +4,7 @@
 
 **post** `/vector_stores/{vector_store_id}/search`
 
-Search vector store
+Search a vector store for relevant chunks based on a query and file attributes filter.
 
 ### Parameters
 
@@ -59,7 +59,7 @@ Search vector store
 
       - `"nin"`
 
-    - `value: Union[str, float, bool, List[object]]`
+    - `value: Union[str, float, bool, List[Union[str, float]]]`
 
       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -69,7 +69,11 @@ Search vector store
 
       - `bool`
 
-      - `List[object]`
+      - `List[Union[str, float]]`
+
+        - `str`
+
+        - `float`
 
   - `class CompoundFilter: …`
 

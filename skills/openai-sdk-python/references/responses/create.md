@@ -4,7 +4,13 @@
 
 **post** `/responses`
 
-Create a model response
+Creates a model response. Provide [text](https://platform.openai.com/docs/guides/text) or
+[image](https://platform.openai.com/docs/guides/images) inputs to generate [text](https://platform.openai.com/docs/guides/text)
+or [JSON](https://platform.openai.com/docs/guides/structured-outputs) outputs. Have the model call
+your own [custom code](https://platform.openai.com/docs/guides/function-calling) or use built-in
+[tools](https://platform.openai.com/docs/guides/tools) like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+or [file search](https://platform.openai.com/docs/guides/tools-file-search) to use your own data
+as input for the model's response.
 
 ### Parameters
 
@@ -1525,7 +1531,7 @@ Create a model response
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1535,7 +1541,11 @@ Create a model response
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 
@@ -5915,7 +5925,7 @@ Create a model response
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5925,7 +5935,11 @@ Create a model response
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 

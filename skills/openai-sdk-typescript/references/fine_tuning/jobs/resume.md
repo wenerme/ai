@@ -4,7 +4,7 @@
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/resume`
 
-Resume fine-tuning
+Resume a fine-tune job.
 
 ### Parameters
 

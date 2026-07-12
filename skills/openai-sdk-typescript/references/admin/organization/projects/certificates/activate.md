@@ -4,7 +4,9 @@
 
 **post** `/organization/projects/{project_id}/certificates/activate`
 
-Activate certificates for project
+Activate certificates at the project level.
+
+You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Parameters
 

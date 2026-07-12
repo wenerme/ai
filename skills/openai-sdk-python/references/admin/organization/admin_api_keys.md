@@ -6,7 +6,7 @@
 
 **get** `/organization/admin_api_keys`
 
-List all organization and project API keys.
+List organization API keys
 
 ### Parameters
 
@@ -138,7 +138,7 @@ print(page.id)
 
 **post** `/organization/admin_api_keys`
 
-Create admin API key
+Create an organization admin API key
 
 ### Parameters
 
@@ -202,7 +202,7 @@ print(admin_api_key)
 
 **get** `/organization/admin_api_keys/{key_id}`
 
-Retrieve admin API key
+Retrieve a single organization API key
 
 ### Parameters
 
@@ -315,7 +315,7 @@ print(admin_api_key.id)
 
 **delete** `/organization/admin_api_keys/{key_id}`
 
-Delete admin API key
+Delete an organization admin API key
 
 ### Parameters
 

@@ -2,7 +2,9 @@
 
 **get** `/chat/completions/{completion_id}/messages`
 
-Get chat messages
+Get the messages in a stored chat completion. Only Chat Completions that
+have been created with the `store` parameter set to `true` will be
+returned.
 
 ### Path Parameters
 
@@ -43,7 +45,7 @@ Get chat messages
 
     - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-      Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
+      Learn about [text inputs](/docs/guides/text-generation).
 
       - `text: string`
 
@@ -67,7 +69,7 @@ Get chat messages
 
     - `ChatCompletionContentPartImage object { image_url, type, prompt_cache_breakpoint }`
 
-      Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+      Learn about [image inputs](/docs/guides/vision).
 
       - `image_url: object { url, detail }`
 
@@ -77,7 +79,7 @@ Get chat messages
 
         - `detail: optional "auto" or "low" or "high"`
 
-          Specifies the detail level of the image. Learn more in the [Vision guide](https://platform.openai.com/docs/guides/vision#low-or-high-fidelity-image-understanding).
+          Specifies the detail level of the image. Learn more in the [Vision guide](/docs/guides/vision#low-or-high-fidelity-image-understanding).
 
           - `"auto"`
 

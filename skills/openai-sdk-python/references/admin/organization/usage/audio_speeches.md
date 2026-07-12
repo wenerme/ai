@@ -4,7 +4,7 @@
 
 **get** `/organization/usage/audio_speeches`
 
-Audio speeches
+Get audio speeches usage details for the organization.
 
 ### Parameters
 

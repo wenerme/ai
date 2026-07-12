@@ -6,7 +6,9 @@
 
 **get** `/chat/completions/{completion_id}/messages`
 
-Get chat messages
+Get the messages in a stored chat completion. Only Chat Completions that
+have been created with the `store` parameter set to `true` will be
+returned.
 
 ### Parameters
 

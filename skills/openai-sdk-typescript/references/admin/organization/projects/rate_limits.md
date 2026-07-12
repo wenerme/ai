@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/rate_limits`
 
-List project rate limits
+Returns the rate limits per model for a project.
 
 ### Parameters
 
@@ -117,7 +117,7 @@ for await (const projectRateLimit of client.admin.organization.projects.rateLimi
 
 **post** `/organization/projects/{project_id}/rate_limits/{rate_limit_id}`
 
-Modify project rate limit
+Updates a project rate limit.
 
 ### Parameters
 

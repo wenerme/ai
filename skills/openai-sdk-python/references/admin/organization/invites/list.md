@@ -4,7 +4,7 @@
 
 **get** `/organization/invites`
 
-List invites
+Returns a list of invites in the organization.
 
 ### Parameters
 

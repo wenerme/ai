@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/api_keys`
 
-List project API keys
+Returns a list of API keys in the project.
 
 ### Parameters
 
@@ -165,7 +165,7 @@ print(page.id)
 
 **get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Retrieve project API key
+Retrieves an API key in the project.
 
 ### Parameters
 
@@ -310,7 +310,10 @@ print(project_api_key.id)
 
 **delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Delete project API key
+Deletes an API key from the project.
+
+Returns confirmation of the key deletion, or an error if the key belonged to
+a service account.
 
 ### Parameters
 

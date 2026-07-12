@@ -42,7 +42,9 @@
 
 **post** `/chatkit/sessions/{session_id}/cancel`
 
-Cancel chat session
+Cancel an active ChatKit session and return its most recent metadata.
+
+Cancelling prevents new requests from using the issued client secret.
 
 ### Parameters
 
@@ -262,7 +264,7 @@ print(chat_session.id)
 
 **post** `/chatkit/sessions`
 
-Create ChatKit session
+Create a ChatKit session.
 
 ### Parameters
 
@@ -584,7 +586,7 @@ print(chat_session.id)
 
 **get** `/chatkit/threads/{thread_id}/items`
 
-List ChatKit thread items
+List items that belong to a ChatKit thread.
 
 ### Parameters
 
@@ -1096,7 +1098,7 @@ print(page)
 
 **get** `/chatkit/threads/{thread_id}`
 
-Retrieve ChatKit thread
+Retrieve a ChatKit thread by its identifier.
 
 ### Parameters
 
@@ -1258,7 +1260,7 @@ print(chatkit_thread.id)
 
 **delete** `/chatkit/threads/{thread_id}`
 
-Delete ChatKit thread
+Delete a ChatKit thread along with its items and stored attachments.
 
 ### Parameters
 
@@ -1327,7 +1329,7 @@ print(thread.id)
 
 **get** `/chatkit/threads`
 
-List ChatKit threads
+List ChatKit threads with optional pagination and user filters.
 
 ### Parameters
 

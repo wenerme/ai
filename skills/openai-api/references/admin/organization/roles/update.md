@@ -2,7 +2,7 @@
 
 **post** `/organization/roles/{role_id}`
 
-Update organization role
+Updates an existing organization role.
 
 ### Path Parameters
 

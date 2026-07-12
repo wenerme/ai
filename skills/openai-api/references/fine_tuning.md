@@ -818,21 +818,25 @@
 
 **post** `/fine_tuning/jobs`
 
-Create fine-tuning job
+Creates a fine-tuning job which begins the process of creating a new model from a given dataset.
+
+Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
+
+[Learn more about fine-tuning](/docs/guides/model-optimization)
 
 ### Body Parameters
 
 - `model: string or "babbage-002" or "davinci-002" or "gpt-3.5-turbo" or "gpt-4o-mini"`
 
   The name of the model to fine-tune. You can select one of the
-  [supported models](https://platform.openai.com/docs/guides/fine-tuning#which-models-can-be-fine-tuned).
+  [supported models](/docs/guides/fine-tuning#which-models-can-be-fine-tuned).
 
   - `string`
 
-  - `Preset = "babbage-002" or "davinci-002" or "gpt-3.5-turbo" or "gpt-4o-mini"`
+  - `"babbage-002" or "davinci-002" or "gpt-3.5-turbo" or "gpt-4o-mini"`
 
     The name of the model to fine-tune. You can select one of the
-    [supported models](https://platform.openai.com/docs/guides/fine-tuning#which-models-can-be-fine-tuned).
+    [supported models](/docs/guides/fine-tuning#which-models-can-be-fine-tuned).
 
     - `"babbage-002"`
 
@@ -846,13 +850,13 @@ Create fine-tuning job
 
   The ID of an uploaded file that contains training data.
 
-  See [upload file](https://platform.openai.com/docs/api-reference/files/create) for how to upload a file.
+  See [upload file](/docs/api-reference/files/create) for how to upload a file.
 
   Your dataset must be formatted as a JSONL file. Additionally, you must upload your file with the purpose `fine-tune`.
 
-  The contents of the file should differ depending on if the model uses the [chat](https://platform.openai.com/docs/api-reference/fine-tuning/chat-input), [completions](https://platform.openai.com/docs/api-reference/fine-tuning/completions-input) format, or if the fine-tuning method uses the [preference](https://platform.openai.com/docs/api-reference/fine-tuning/preference-input) format.
+  The contents of the file should differ depending on if the model uses the [chat](/docs/api-reference/fine-tuning/chat-input), [completions](/docs/api-reference/fine-tuning/completions-input) format, or if the fine-tuning method uses the [preference](/docs/api-reference/fine-tuning/preference-input) format.
 
-  See the [fine-tuning guide](https://platform.openai.com/docs/guides/model-optimization) for more details.
+  See the [fine-tuning guide](/docs/guides/model-optimization) for more details.
 
 - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }`
 
@@ -864,7 +868,7 @@ Create fine-tuning job
     Number of examples in each batch. A larger batch size means that model parameters
     are updated less frequently, but with lower variance.
 
-    - `Auto = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
@@ -875,7 +879,7 @@ Create fine-tuning job
     Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
     overfitting.
 
-    - `Auto = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
@@ -886,7 +890,7 @@ Create fine-tuning job
     The number of epochs to train the model for. An epoch refers to one full cycle
     through the training dataset.
 
-    - `Auto = "auto"`
+    - `"auto"`
 
       - `"auto"`
 
@@ -1613,7 +1617,7 @@ Create fine-tuning job
 
   Your dataset must be formatted as a JSONL file. You must upload your file with the purpose `fine-tune`.
 
-  See the [fine-tuning guide](https://platform.openai.com/docs/guides/model-optimization) for more details.
+  See the [fine-tuning guide](/docs/guides/model-optimization) for more details.
 
 ### Returns
 
@@ -1673,7 +1677,7 @@ Create fine-tuning job
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -1684,7 +1688,7 @@ Create fine-tuning job
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -1706,7 +1710,7 @@ Create fine-tuning job
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -1734,11 +1738,11 @@ Create fine-tuning job
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -2897,7 +2901,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
 
 **get** `/fine_tuning/jobs`
 
-List fine-tuning jobs
+List your organization's fine-tuning jobs
 
 ### Query Parameters
 
@@ -2969,7 +2973,7 @@ List fine-tuning jobs
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -2980,7 +2984,7 @@ List fine-tuning jobs
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -3002,7 +3006,7 @@ List fine-tuning jobs
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -3030,11 +3034,11 @@ List fine-tuning jobs
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -3881,7 +3885,9 @@ curl https://api.openai.com/v1/fine_tuning/jobs?limit=2&metadata[key]=value \
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}`
 
-Retrieve fine-tuning job
+Get info about a fine-tuning job.
+
+[Learn more about fine-tuning](/docs/guides/model-optimization)
 
 ### Path Parameters
 
@@ -3945,7 +3951,7 @@ Retrieve fine-tuning job
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -3956,7 +3962,7 @@ Retrieve fine-tuning job
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -3978,7 +3984,7 @@ Retrieve fine-tuning job
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -4006,11 +4012,11 @@ Retrieve fine-tuning job
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -4857,7 +4863,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}/events`
 
-List fine-tuning events
+Get status updates for a fine-tuning job.
 
 ### Path Parameters
 
@@ -4990,7 +4996,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/events \
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/cancel`
 
-Cancel fine-tuning
+Immediately cancel a fine-tune job.
 
 ### Path Parameters
 
@@ -5054,7 +5060,7 @@ Cancel fine-tuning
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -5065,7 +5071,7 @@ Cancel fine-tuning
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -5087,7 +5093,7 @@ Cancel fine-tuning
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -5115,11 +5121,11 @@ Cancel fine-tuning
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -5945,7 +5951,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/cancel \
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/pause`
 
-Pause fine-tuning
+Pause a fine-tune job.
 
 ### Path Parameters
 
@@ -6009,7 +6015,7 @@ Pause fine-tuning
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -6020,7 +6026,7 @@ Pause fine-tuning
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -6042,7 +6048,7 @@ Pause fine-tuning
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -6070,11 +6076,11 @@ Pause fine-tuning
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -6900,7 +6906,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/pause \
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/resume`
 
-Resume fine-tuning
+Resume a fine-tune job.
 
 ### Path Parameters
 
@@ -6964,7 +6970,7 @@ Resume fine-tuning
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -6975,7 +6981,7 @@ Resume fine-tuning
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -6997,7 +7003,7 @@ Resume fine-tuning
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -7025,11 +7031,11 @@ Resume fine-tuning
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -7911,7 +7917,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -7922,7 +7928,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -7944,7 +7950,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -7972,11 +7978,11 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 
@@ -8793,7 +8799,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}/checkpoints`
 
-List fine-tuning checkpoints
+List checkpoints for a fine-tuning job.
 
 ### Path Parameters
 
@@ -9008,7 +9014,9 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/checkpoints \
 
 **get** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-List checkpoint permissions
+**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+
+Organization owners can use this endpoint to view all permissions for a fine-tuned model checkpoint.
 
 ### Path Parameters
 
@@ -9130,7 +9138,9 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
 
 **get** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-List checkpoint permissions
+**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+
+Organization owners can use this endpoint to view all permissions for a fine-tuned model checkpoint.
 
 ### Path Parameters
 
@@ -9252,7 +9262,9 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
 
 **post** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-Create checkpoint permissions
+**NOTE:** Calling this endpoint requires an [admin API key](../admin-api-keys).
+
+This enables organization owners to share fine-tuned models with other projects in their organization.
 
 ### Path Parameters
 
@@ -9359,7 +9371,9 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
 
 **delete** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions/{permission_id}`
 
-Delete checkpoint permission
+**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+
+Organization owners can use this endpoint to delete a permission for a fine-tuned model checkpoint.
 
 ### Path Parameters
 
@@ -9528,7 +9542,7 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
 
 **post** `/fine_tuning/alpha/graders/run`
 
-Run grader
+Run a grader.
 
 ### Body Parameters
 
@@ -10011,14 +10025,14 @@ Run grader
 - `model_sample: string`
 
   The model sample to be evaluated. This value will be used to populate
-  the `sample` namespace. See [the guide](https://platform.openai.com/docs/guides/graders) for more details.
+  the `sample` namespace. See [the guide](/docs/guides/graders) for more details.
   The `output_json` variable will be populated if the model sample is a
   valid JSON string.
 
 - `item: optional unknown`
 
   The dataset item provided to the grader. This will be used to populate
-  the `item` namespace. See [the guide](https://platform.openai.com/docs/guides/graders) for more details.
+  the `item` namespace. See [the guide](/docs/guides/graders) for more details.
 
 ### Returns
 
@@ -10297,7 +10311,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
 
 **post** `/fine_tuning/alpha/graders/validate`
 
-Validate grader
+Validate a grader.
 
 ### Body Parameters
 

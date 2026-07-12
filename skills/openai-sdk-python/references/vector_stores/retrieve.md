@@ -4,7 +4,7 @@
 
 **get** `/vector_stores/{vector_store_id}`
 
-Retrieve vector store
+Retrieves a vector store.
 
 ### Parameters
 

@@ -4,7 +4,7 @@
 
 **get** `/files`
 
-List files
+Returns a list of files.
 
 ### Parameters
 

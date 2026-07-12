@@ -4,7 +4,7 @@
 
 **delete** `/organization/invites/{invite_id}`
 
-Delete invite
+Delete an invite. If the invite has already been accepted, it cannot be deleted.
 
 ### Parameters
 

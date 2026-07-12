@@ -6,7 +6,9 @@
 
 **post** `/responses/input_tokens`
 
-Get input token counts
+Returns input token counts of the request.
+
+Returns an object with `object` set to `response.input_tokens` and an `input_tokens` count.
 
 ### Parameters
 
@@ -1475,7 +1477,7 @@ Get input token counts
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1485,7 +1487,11 @@ Get input token counts
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 

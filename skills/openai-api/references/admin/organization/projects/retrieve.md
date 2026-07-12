@@ -2,7 +2,7 @@
 
 **get** `/organization/projects/{project_id}`
 
-Retrieve project
+Retrieves a project.
 
 ### Path Parameters
 

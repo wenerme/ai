@@ -2,7 +2,7 @@
 
 **get** `/files`
 
-List files
+Returns a list of files.
 
 ### Query Parameters
 

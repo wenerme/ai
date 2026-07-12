@@ -2,7 +2,7 @@
 
 **post** `/audio/voice_consents`
 
-Create voice consent
+Upload a voice consent recording.
 
 ### Returns
 

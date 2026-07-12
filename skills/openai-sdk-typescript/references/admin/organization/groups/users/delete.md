@@ -4,7 +4,7 @@
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
 
-Remove group user
+Removes a user from a group.
 
 ### Parameters
 

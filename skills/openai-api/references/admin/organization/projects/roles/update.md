@@ -2,7 +2,7 @@
 
 **post** `/projects/{project_id}/roles/{role_id}`
 
-Update project role
+Updates an existing project role.
 
 ### Path Parameters
 

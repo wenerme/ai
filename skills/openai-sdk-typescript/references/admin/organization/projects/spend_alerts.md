@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/spend_alerts`
 
-List project spend alerts
+Lists project spend alerts.
 
 ### Parameters
 
@@ -134,7 +134,7 @@ for await (const projectSpendAlert of client.admin.organization.projects.spendAl
 
 **post** `/organization/projects/{project_id}/spend_alerts`
 
-Create project spend alert
+Creates a project spend alert.
 
 ### Parameters
 
@@ -273,7 +273,7 @@ console.log(projectSpendAlert.id);
 
 **get** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Retrieve project spend alert
+Retrieves a project spend alert.
 
 ### Parameters
 
@@ -377,7 +377,7 @@ console.log(projectSpendAlert.id);
 
 **post** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Update project spend alert
+Updates a project spend alert.
 
 ### Parameters
 
@@ -518,7 +518,7 @@ console.log(projectSpendAlert.id);
 
 **delete** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Delete project spend alert
+Deletes a project spend alert.
 
 ### Parameters
 

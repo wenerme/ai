@@ -6,7 +6,9 @@
 
 **post** `/responses/input_tokens`
 
-Get input token counts
+Returns input token counts of the request.
+
+Returns an object with `object` set to `response.input_tokens` and an `input_tokens` count.
 
 ### Parameters
 
@@ -1460,7 +1462,7 @@ Get input token counts
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1470,7 +1472,11 @@ Get input token counts
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 

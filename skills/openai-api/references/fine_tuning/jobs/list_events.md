@@ -2,7 +2,7 @@
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}/events`
 
-List fine-tuning events
+Get status updates for a fine-tuning job.
 
 ### Path Parameters
 

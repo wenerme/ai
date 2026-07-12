@@ -2,7 +2,9 @@
 
 **post** `/chat/completions/{completion_id}`
 
-Update chat completion
+Modify a stored chat completion. Only Chat Completions that have been
+created with the `store` parameter set to `true` can be modified. Currently,
+the only supported modification is to update the `metadata` field.
 
 ### Path Parameters
 
@@ -132,7 +134,7 @@ Update chat completion
       - `annotations: optional array of object { type, url_citation }`
 
         Annotations for the message, when applicable, as when using the
-        [web search tool](https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat).
+        [web search tool](/docs/guides/tools-web-search?api-mode=chat).
 
         - `type: "url_citation"`
 
@@ -163,7 +165,7 @@ Update chat completion
       - `audio: optional ChatCompletionAudio`
 
         If the audio output modality is requested, this object contains data
-        about the audio response from the model. [Learn more](https://platform.openai.com/docs/guides/audio).
+        about the audio response from the model. [Learn more](/docs/guides/audio).
 
         - `id: string`
 
@@ -417,7 +419,7 @@ Update chat completion
 
     - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
-    - If set to '[flex](https://platform.openai.com/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
+    - If set to '[flex](/docs/guides/flex-processing)' or '[priority](https://openai.com/api-priority-processing/)', then the request will be processed with the corresponding service tier.
     - When not set, the default behavior is 'auto'.
 
     When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.

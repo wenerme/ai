@@ -4,7 +4,7 @@
 
 **delete** `/assistants/{assistant_id}`
 
-Delete assistant
+Delete an assistant.
 
 ### Parameters
 

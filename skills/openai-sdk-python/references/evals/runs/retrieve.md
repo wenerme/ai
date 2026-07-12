@@ -4,7 +4,7 @@
 
 **get** `/evals/{eval_id}/runs/{run_id}`
 
-Get an eval run
+Get an evaluation run by ID.
 
 ### Parameters
 
@@ -1069,7 +1069,7 @@ Get an eval run
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1079,7 +1079,11 @@ Get an eval run
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 

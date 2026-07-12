@@ -6,7 +6,7 @@
 
 **post** `/batches`
 
-Create batch
+Creates and executes a batch from an uploaded file of requests
 
 ### Parameters
 
@@ -135,7 +135,23 @@ Create batch
 
   - `errors?: Errors`
 
-    - `data?: Array<unknown>`
+    - `data?: Array<BatchError>`
+
+      - `code?: string`
+
+        An error code identifying the error type.
+
+      - `line?: number | null`
+
+        The line number of the input file where the error occurred, if applicable.
+
+      - `message?: string`
+
+        A human-readable message providing more details about the error.
+
+      - `param?: string | null`
+
+        The name of the parameter that caused the error, if applicable.
 
     - `object?: string`
 
@@ -181,7 +197,21 @@ Create batch
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts?: unknown`
+  - `request_counts?: BatchRequestCounts`
+
+    The request counts for different statuses within the batch.
+
+    - `completed: number`
+
+      Number of requests that have been completed successfully.
+
+    - `failed: number`
+
+      Number of requests that have failed.
+
+    - `total: number`
+
+      Total number of requests in the batch.
 
   - `usage?: BatchUsage`
 
@@ -253,7 +283,12 @@ console.log(batch.id);
   "error_file_id": "error_file_id",
   "errors": {
     "data": [
-      {}
+      {
+        "code": "code",
+        "line": 0,
+        "message": "message",
+        "param": "param"
+      }
     ],
     "object": "object"
   },
@@ -267,7 +302,11 @@ console.log(batch.id);
   },
   "model": "model",
   "output_file_id": "output_file_id",
-  "request_counts": {},
+  "request_counts": {
+    "completed": 0,
+    "failed": 0,
+    "total": 0
+  },
   "usage": {
     "input_tokens": 0,
     "input_tokens_details": {
@@ -342,7 +381,7 @@ main();
 
 **get** `/batches/{batch_id}`
 
-Retrieve batch
+Retrieves a batch.
 
 ### Parameters
 
@@ -414,7 +453,23 @@ Retrieve batch
 
   - `errors?: Errors`
 
-    - `data?: Array<unknown>`
+    - `data?: Array<BatchError>`
+
+      - `code?: string`
+
+        An error code identifying the error type.
+
+      - `line?: number | null`
+
+        The line number of the input file where the error occurred, if applicable.
+
+      - `message?: string`
+
+        A human-readable message providing more details about the error.
+
+      - `param?: string | null`
+
+        The name of the parameter that caused the error, if applicable.
 
     - `object?: string`
 
@@ -460,7 +515,21 @@ Retrieve batch
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts?: unknown`
+  - `request_counts?: BatchRequestCounts`
+
+    The request counts for different statuses within the batch.
+
+    - `completed: number`
+
+      Number of requests that have been completed successfully.
+
+    - `failed: number`
+
+      Number of requests that have failed.
+
+    - `total: number`
+
+      Total number of requests in the batch.
 
   - `usage?: BatchUsage`
 
@@ -528,7 +597,12 @@ console.log(batch.id);
   "error_file_id": "error_file_id",
   "errors": {
     "data": [
-      {}
+      {
+        "code": "code",
+        "line": 0,
+        "message": "message",
+        "param": "param"
+      }
     ],
     "object": "object"
   },
@@ -542,7 +616,11 @@ console.log(batch.id);
   },
   "model": "model",
   "output_file_id": "output_file_id",
-  "request_counts": {},
+  "request_counts": {
+    "completed": 0,
+    "failed": 0,
+    "total": 0
+  },
   "usage": {
     "input_tokens": 0,
     "input_tokens_details": {
@@ -613,7 +691,7 @@ main();
 
 **post** `/batches/{batch_id}/cancel`
 
-Cancel batch
+Cancels an in-progress batch. The batch will be in status `cancelling` for up to 10 minutes, before changing to `cancelled`, where it will have partial results (if any) available in the output file.
 
 ### Parameters
 
@@ -685,7 +763,23 @@ Cancel batch
 
   - `errors?: Errors`
 
-    - `data?: Array<unknown>`
+    - `data?: Array<BatchError>`
+
+      - `code?: string`
+
+        An error code identifying the error type.
+
+      - `line?: number | null`
+
+        The line number of the input file where the error occurred, if applicable.
+
+      - `message?: string`
+
+        A human-readable message providing more details about the error.
+
+      - `param?: string | null`
+
+        The name of the parameter that caused the error, if applicable.
 
     - `object?: string`
 
@@ -731,7 +825,21 @@ Cancel batch
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts?: unknown`
+  - `request_counts?: BatchRequestCounts`
+
+    The request counts for different statuses within the batch.
+
+    - `completed: number`
+
+      Number of requests that have been completed successfully.
+
+    - `failed: number`
+
+      Number of requests that have failed.
+
+    - `total: number`
+
+      Total number of requests in the batch.
 
   - `usage?: BatchUsage`
 
@@ -799,7 +907,12 @@ console.log(batch.id);
   "error_file_id": "error_file_id",
   "errors": {
     "data": [
-      {}
+      {
+        "code": "code",
+        "line": 0,
+        "message": "message",
+        "param": "param"
+      }
     ],
     "object": "object"
   },
@@ -813,7 +926,11 @@ console.log(batch.id);
   },
   "model": "model",
   "output_file_id": "output_file_id",
-  "request_counts": {},
+  "request_counts": {
+    "completed": 0,
+    "failed": 0,
+    "total": 0
+  },
   "usage": {
     "input_tokens": 0,
     "input_tokens_details": {
@@ -884,7 +1001,7 @@ main();
 
 **get** `/batches`
 
-List batches
+List your organization's batches.
 
 ### Parameters
 
@@ -964,7 +1081,23 @@ List batches
 
   - `errors?: Errors`
 
-    - `data?: Array<unknown>`
+    - `data?: Array<BatchError>`
+
+      - `code?: string`
+
+        An error code identifying the error type.
+
+      - `line?: number | null`
+
+        The line number of the input file where the error occurred, if applicable.
+
+      - `message?: string`
+
+        A human-readable message providing more details about the error.
+
+      - `param?: string | null`
+
+        The name of the parameter that caused the error, if applicable.
 
     - `object?: string`
 
@@ -1010,7 +1143,21 @@ List batches
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts?: unknown`
+  - `request_counts?: BatchRequestCounts`
+
+    The request counts for different statuses within the batch.
+
+    - `completed: number`
+
+      Number of requests that have been completed successfully.
+
+    - `failed: number`
+
+      Number of requests that have failed.
+
+    - `total: number`
+
+      Total number of requests in the batch.
 
   - `usage?: BatchUsage`
 
@@ -1081,7 +1228,12 @@ for await (const batch of client.batches.list()) {
       "error_file_id": "error_file_id",
       "errors": {
         "data": [
-          {}
+          {
+            "code": "code",
+            "line": 0,
+            "message": "message",
+            "param": "param"
+          }
         ],
         "object": "object"
       },
@@ -1095,7 +1247,11 @@ for await (const batch of client.batches.list()) {
       },
       "model": "model",
       "output_file_id": "output_file_id",
-      "request_counts": {},
+      "request_counts": {
+        "completed": 0,
+        "failed": 0,
+        "total": 0
+      },
       "usage": {
         "input_tokens": 0,
         "input_tokens_details": {
@@ -1245,7 +1401,23 @@ main();
 
   - `errors?: Errors`
 
-    - `data?: Array<unknown>`
+    - `data?: Array<BatchError>`
+
+      - `code?: string`
+
+        An error code identifying the error type.
+
+      - `line?: number | null`
+
+        The line number of the input file where the error occurred, if applicable.
+
+      - `message?: string`
+
+        A human-readable message providing more details about the error.
+
+      - `param?: string | null`
+
+        The name of the parameter that caused the error, if applicable.
 
     - `object?: string`
 
@@ -1291,7 +1463,21 @@ main();
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts?: unknown`
+  - `request_counts?: BatchRequestCounts`
+
+    The request counts for different statuses within the batch.
+
+    - `completed: number`
+
+      Number of requests that have been completed successfully.
+
+    - `failed: number`
+
+      Number of requests that have failed.
+
+    - `total: number`
+
+      Total number of requests in the batch.
 
   - `usage?: BatchUsage`
 
@@ -1330,11 +1516,41 @@ main();
 
 ### Batch Error
 
-- `BatchError = unknown`
+- `BatchError`
+
+  - `code?: string`
+
+    An error code identifying the error type.
+
+  - `line?: number | null`
+
+    The line number of the input file where the error occurred, if applicable.
+
+  - `message?: string`
+
+    A human-readable message providing more details about the error.
+
+  - `param?: string | null`
+
+    The name of the parameter that caused the error, if applicable.
 
 ### Batch Request Counts
 
-- `BatchRequestCounts = unknown`
+- `BatchRequestCounts`
+
+  The request counts for different statuses within the batch.
+
+  - `completed: number`
+
+    Number of requests that have been completed successfully.
+
+  - `failed: number`
+
+    Number of requests that have failed.
+
+  - `total: number`
+
+    Total number of requests in the batch.
 
 ### Batch Usage
 

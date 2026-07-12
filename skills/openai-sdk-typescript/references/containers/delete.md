@@ -4,7 +4,7 @@
 
 **delete** `/containers/{container_id}`
 
-Delete a container
+Delete Container
 
 ### Parameters
 

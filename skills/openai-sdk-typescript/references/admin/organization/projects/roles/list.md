@@ -4,7 +4,7 @@
 
 **get** `/projects/{project_id}/roles`
 
-List project roles
+Lists the roles configured for a project.
 
 ### Parameters
 

@@ -6,7 +6,7 @@
 
 **get** `/organization/groups/{group_id}/roles`
 
-List group organization role assignments
+Lists the organization roles assigned to a group within the organization.
 
 ### Parameters
 
@@ -145,7 +145,7 @@ print(page.id)
 
 **post** `/organization/groups/{group_id}/roles`
 
-Assign organization role to group
+Assigns an organization role to a group within the organization.
 
 ### Parameters
 
@@ -275,7 +275,7 @@ print(role.group)
 
 **get** `/organization/groups/{group_id}/roles/{role_id}`
 
-Retrieve group organization role
+Retrieves an organization role assigned to a group.
 
 ### Parameters
 
@@ -393,7 +393,7 @@ print(role.id)
 
 **delete** `/organization/groups/{group_id}/roles/{role_id}`
 
-Unassign organization role from group
+Unassigns an organization role from a group within the organization.
 
 ### Parameters
 

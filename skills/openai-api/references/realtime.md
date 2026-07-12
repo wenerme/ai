@@ -54,7 +54,7 @@
 
     An optional text to guide the model's style or continue a previous audio
     segment.
-    For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+    For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
     For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
     Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -72,11 +72,9 @@
 
       The unique ID of the conversation.
 
-    - `object: optional "realtime.conversation"`
+    - `object: optional string`
 
       The object type, must be `realtime.conversation`.
-
-      - `"realtime.conversation"`
 
   - `event_id: string`
 
@@ -2418,7 +2416,7 @@
 
     Usage statistics for the transcription, this is billed according to the ASR model's pricing rather than the realtime model's pricing.
 
-    - `TranscriptTextUsageTokens object { input_tokens, output_tokens, total_tokens, 2 more }`
+    - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
 
       Usage statistics for models billed by token usage.
 
@@ -2452,7 +2450,7 @@
 
           Number of text tokens billed for this request.
 
-    - `TranscriptTextUsageDuration object { seconds, type }`
+    - `DurationUsage object { seconds, type }`
 
       Usage statistics for models billed by audio input duration.
 
@@ -2767,13 +2765,13 @@
 
       The transcript of the audio, used for `input_audio` content type.
 
-    - `type: optional "input_text" or "input_audio" or "item_reference" or "text"`
+    - `type: optional "input_audio" or "input_text" or "item_reference" or "text"`
 
       The content type (`input_text`, `input_audio`, `item_reference`, `text`).
 
-      - `"input_text"`
-
       - `"input_audio"`
+
+      - `"input_text"`
 
       - `"item_reference"`
 
@@ -2816,7 +2814,7 @@
 
     - `"in_progress"`
 
-  - `type: optional "message" or "function_call" or "function_call_output" or "item_reference"`
+  - `type: optional "message" or "function_call" or "function_call_output"`
 
     The type of the item (`message`, `function_call`, `function_call_output`, `item_reference`).
 
@@ -2825,8 +2823,6 @@
     - `"function_call"`
 
     - `"function_call_output"`
-
-    - `"item_reference"`
 
 ### Input Audio Buffer Append Event
 
@@ -3164,7 +3160,7 @@
   stop generating audio and emit a `output_audio_buffer.cleared` event. This
   event should be preceded by a `response.cancel` client event to stop the
   generation of the current response.
-  [Learn more](https://platform.openai.com/docs/guides/realtime-conversations#client-and-server-events-for-audio-in-webrtc).
+  [Learn more](/docs/guides/realtime-conversations#client-and-server-events-for-audio-in-webrtc).
 
   - `type: "output_audio_buffer.clear"`
 
@@ -3231,7 +3227,7 @@
 
       The format of the input audio.
 
-      - `AudioPCM object { rate, type }`
+      - `PCMAudioFormat object { rate, type }`
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -3247,7 +3243,7 @@
 
           - `"audio/pcm"`
 
-      - `AudioPCMU object { type }`
+      - `PCMUAudioFormat object { type }`
 
         The G.711 μ-law format.
 
@@ -3257,7 +3253,7 @@
 
           - `"audio/pcmu"`
 
-      - `AudioPCMA object { type }`
+      - `PCMAAudioFormat object { type }`
 
         The G.711 A-law format.
 
@@ -3283,7 +3279,7 @@
 
     - `transcription: optional AudioTranscription`
 
-      Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+      Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
       - `delay: optional "minimal" or "low" or "medium" or 2 more`
 
@@ -3333,7 +3329,7 @@
 
         An optional text to guide the model's style or continue a previous audio
         segment.
-        For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+        For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
         For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
         Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -3496,7 +3492,7 @@
 
     The format of the input audio.
 
-    - `AudioPCM object { rate, type }`
+    - `PCMAudioFormat object { rate, type }`
 
       The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -3512,7 +3508,7 @@
 
         - `"audio/pcm"`
 
-    - `AudioPCMU object { type }`
+    - `PCMUAudioFormat object { type }`
 
       The G.711 μ-law format.
 
@@ -3522,7 +3518,7 @@
 
         - `"audio/pcmu"`
 
-    - `AudioPCMA object { type }`
+    - `PCMAAudioFormat object { type }`
 
       The G.711 A-law format.
 
@@ -3548,7 +3544,7 @@
 
   - `transcription: optional AudioTranscription`
 
-    Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+    Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
     - `delay: optional "minimal" or "low" or "medium" or 2 more`
 
@@ -3598,7 +3594,7 @@
 
       An optional text to guide the model's style or continue a previous audio
       segment.
-      For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+      For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
       For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
       Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -3706,7 +3702,7 @@
 
     The format of the output audio.
 
-    - `AudioPCM object { rate, type }`
+    - `PCMAudioFormat object { rate, type }`
 
       The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -3722,7 +3718,7 @@
 
         - `"audio/pcm"`
 
-    - `AudioPCMU object { type }`
+    - `PCMUAudioFormat object { type }`
 
       The G.711 μ-law format.
 
@@ -3732,7 +3728,7 @@
 
         - `"audio/pcmu"`
 
-    - `AudioPCMA object { type }`
+    - `PCMAAudioFormat object { type }`
 
       The G.711 A-law format.
 
@@ -3797,7 +3793,7 @@
 
   The PCM audio format. Only a 24kHz sample rate is supported.
 
-  - `AudioPCM object { rate, type }`
+  - `PCMAudioFormat object { rate, type }`
 
     The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -3813,7 +3809,7 @@
 
       - `"audio/pcm"`
 
-  - `AudioPCMU object { type }`
+  - `PCMUAudioFormat object { type }`
 
     The G.711 μ-law format.
 
@@ -3823,7 +3819,7 @@
 
       - `"audio/pcmu"`
 
-  - `AudioPCMA object { type }`
+  - `PCMAAudioFormat object { type }`
 
     The G.711 A-law format.
 
@@ -4524,7 +4520,7 @@
     stop generating audio and emit a `output_audio_buffer.cleared` event. This
     event should be preceded by a `response.cancel` client event to stop the
     generation of the current response.
-    [Learn more](https://platform.openai.com/docs/guides/realtime-conversations#client-and-server-events-for-audio-in-webrtc).
+    [Learn more](/docs/guides/realtime-conversations#client-and-server-events-for-audio-in-webrtc).
 
     - `type: "output_audio_buffer.clear"`
 
@@ -4627,7 +4623,7 @@
 
             The format of the output audio.
 
-            - `AudioPCM object { rate, type }`
+            - `PCMAudioFormat object { rate, type }`
 
               The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -4643,7 +4639,7 @@
 
                 - `"audio/pcm"`
 
-            - `AudioPCMU object { type }`
+            - `PCMUAudioFormat object { type }`
 
               The G.711 μ-law format.
 
@@ -4653,7 +4649,7 @@
 
                 - `"audio/pcmu"`
 
-            - `AudioPCMA object { type }`
+            - `PCMAAudioFormat object { type }`
 
               The G.711 A-law format.
 
@@ -4815,7 +4811,7 @@
       - `prompt: optional ResponsePrompt`
 
         Reference to a prompt template and its variables.
-        [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+        [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
         - `id: string`
 
@@ -4855,7 +4851,7 @@
 
           - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
             - `detail: "low" or "high" or "auto" or "original"`
 
@@ -5016,7 +5012,7 @@
 
             The name of the tool to call on the server.
 
-      - `tools: optional array of RealtimeFunctionTool or RealtimeResponseCreateMcpTool`
+      - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_callers, 9 more }`
 
         Tools available to the model.
 
@@ -5042,10 +5038,10 @@
 
             - `"function"`
 
-        - `RealtimeResponseCreateMcpTool object { server_label, type, allowed_callers, 9 more }`
+        - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -5097,7 +5093,7 @@
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -5250,7 +5246,7 @@
 
             - `transcription: optional AudioTranscription`
 
-              Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+              Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
               - `delay: optional "minimal" or "low" or "medium" or 2 more`
 
@@ -5300,7 +5296,7 @@
 
                 An optional text to guide the model's style or continue a previous audio
                 segment.
-                For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+                For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
                 For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
                 Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -5548,7 +5544,7 @@
         - `prompt: optional ResponsePrompt`
 
           Reference to a prompt template and its variables.
-          [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+          [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
         - `reasoning: optional RealtimeReasoning`
 
@@ -5584,10 +5580,10 @@
 
           - `RealtimeFunctionTool object { description, name, parameters, type }`
 
-          - `Mcp object { server_label, type, allowed_callers, 9 more }`
+          - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
-            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
             - `server_label: string`
 
@@ -5639,7 +5635,7 @@
 
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -5782,7 +5778,7 @@
 
           Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-          - `RealtimeTruncationStrategy = "auto" or "disabled"`
+          - `"auto" or "disabled"`
 
             The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -5790,7 +5786,7 @@
 
             - `"disabled"`
 
-          - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+          - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
             Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -5844,7 +5840,7 @@
 
             - `transcription: optional AudioTranscription`
 
-              Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+              Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
             - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
 
@@ -6584,7 +6580,7 @@
 
         The format of the output audio.
 
-        - `AudioPCM object { rate, type }`
+        - `PCMAudioFormat object { rate, type }`
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -6600,7 +6596,7 @@
 
             - `"audio/pcm"`
 
-        - `AudioPCMU object { type }`
+        - `PCMUAudioFormat object { type }`
 
           The G.711 μ-law format.
 
@@ -6610,7 +6606,7 @@
 
             - `"audio/pcmu"`
 
-        - `AudioPCMA object { type }`
+        - `PCMAAudioFormat object { type }`
 
           The G.711 A-law format.
 
@@ -7173,7 +7169,7 @@
 
       - `"content_filter"`
 
-    - `type: optional "completed" or "cancelled" or "incomplete" or "failed"`
+    - `type: optional "completed" or "cancelled" or "failed" or "incomplete"`
 
       The type of error that caused the response to fail, corresponding
       with the `status` field (`completed`, `cancelled`, `incomplete`,
@@ -7183,9 +7179,9 @@
 
       - `"cancelled"`
 
-      - `"incomplete"`
-
       - `"failed"`
+
+      - `"incomplete"`
 
   - `usage: optional RealtimeResponseUsage`
 
@@ -7269,7 +7265,7 @@
 
       The format of the output audio.
 
-      - `AudioPCM object { rate, type }`
+      - `PCMAudioFormat object { rate, type }`
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -7285,7 +7281,7 @@
 
           - `"audio/pcm"`
 
-      - `AudioPCMU object { type }`
+      - `PCMUAudioFormat object { type }`
 
         The G.711 μ-law format.
 
@@ -7295,7 +7291,7 @@
 
           - `"audio/pcmu"`
 
-      - `AudioPCMA object { type }`
+      - `PCMAAudioFormat object { type }`
 
         The G.711 A-law format.
 
@@ -7346,163 +7342,6 @@
 
           The custom voice ID, e.g. `voice_1234`.
 
-### Realtime Response Create Mcp Tool
-
-- `RealtimeResponseCreateMcpTool object { server_label, type, allowed_callers, 9 more }`
-
-  Give the model access to additional tools via remote Model Context Protocol
-  (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
-
-  - `server_label: string`
-
-    A label for this MCP server, used to identify it in tool calls.
-
-  - `type: "mcp"`
-
-    The type of the MCP tool. Always `mcp`.
-
-    - `"mcp"`
-
-  - `allowed_callers: optional array of "direct" or "programmatic"`
-
-    The tool invocation context(s).
-
-    - `"direct"`
-
-    - `"programmatic"`
-
-  - `allowed_tools: optional array of string or object { read_only, tool_names }`
-
-    List of allowed tool names or a filter object.
-
-    - `McpAllowedTools = array of string`
-
-      A string array of allowed tool names
-
-    - `McpToolFilter object { read_only, tool_names }`
-
-      A filter object to specify which tools are allowed.
-
-      - `read_only: optional boolean`
-
-        Indicates whether or not a tool modifies data or is read-only. If an
-        MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-        it will match this filter.
-
-      - `tool_names: optional array of string`
-
-        List of allowed tool names.
-
-  - `authorization: optional string`
-
-    An OAuth access token that can be used with a remote MCP server, either
-    with a custom MCP server URL or a service connector. Your application
-    must handle the OAuth authorization flow and provide the token here.
-
-  - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
-
-    Identifier for service connectors, like those available in ChatGPT. One of
-    `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-    about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
-
-    Currently supported `connector_id` values are:
-
-    - Dropbox: `connector_dropbox`
-    - Gmail: `connector_gmail`
-    - Google Calendar: `connector_googlecalendar`
-    - Google Drive: `connector_googledrive`
-    - Microsoft Teams: `connector_microsoftteams`
-    - Outlook Calendar: `connector_outlookcalendar`
-    - Outlook Email: `connector_outlookemail`
-    - SharePoint: `connector_sharepoint`
-
-    - `"connector_dropbox"`
-
-    - `"connector_gmail"`
-
-    - `"connector_googlecalendar"`
-
-    - `"connector_googledrive"`
-
-    - `"connector_microsoftteams"`
-
-    - `"connector_outlookcalendar"`
-
-    - `"connector_outlookemail"`
-
-    - `"connector_sharepoint"`
-
-  - `defer_loading: optional boolean`
-
-    Whether this MCP tool is deferred and discovered via tool search.
-
-  - `headers: optional map[string]`
-
-    Optional HTTP headers to send to the MCP server. Use for authentication
-    or other purposes.
-
-  - `require_approval: optional object { always, never }  or "always" or "never"`
-
-    Specify which of the MCP server's tools require approval.
-
-    - `McpToolApprovalFilter object { always, never }`
-
-      Specify which of the MCP server's tools require approval. Can be
-      `always`, `never`, or a filter object associated with tools
-      that require approval.
-
-      - `always: optional object { read_only, tool_names }`
-
-        A filter object to specify which tools are allowed.
-
-        - `read_only: optional boolean`
-
-          Indicates whether or not a tool modifies data or is read-only. If an
-          MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-          it will match this filter.
-
-        - `tool_names: optional array of string`
-
-          List of allowed tool names.
-
-      - `never: optional object { read_only, tool_names }`
-
-        A filter object to specify which tools are allowed.
-
-        - `read_only: optional boolean`
-
-          Indicates whether or not a tool modifies data or is read-only. If an
-          MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-          it will match this filter.
-
-        - `tool_names: optional array of string`
-
-          List of allowed tool names.
-
-    - `McpToolApprovalSetting = "always" or "never"`
-
-      Specify a single approval policy for all tools. One of `always` or
-      `never`. When set to `always`, all tools will require approval. When
-      set to `never`, all tools will not require approval.
-
-      - `"always"`
-
-      - `"never"`
-
-  - `server_description: optional string`
-
-    Optional description of the MCP server, used to provide more context.
-
-  - `server_url: optional string`
-
-    The URL for the MCP server. One of `server_url`, `connector_id`, or
-    `tunnel_id` must be provided.
-
-  - `tunnel_id: optional string`
-
-    The Secure MCP Tunnel ID to use instead of a direct server URL. One of
-    `server_url`, `connector_id`, or `tunnel_id` must be provided.
-
 ### Realtime Response Create Params
 
 - `RealtimeResponseCreateParams object { audio, conversation, input, 9 more }`
@@ -7519,7 +7358,7 @@
 
         The format of the output audio.
 
-        - `AudioPCM object { rate, type }`
+        - `PCMAudioFormat object { rate, type }`
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -7535,7 +7374,7 @@
 
             - `"audio/pcm"`
 
-        - `AudioPCMU object { type }`
+        - `PCMUAudioFormat object { type }`
 
           The G.711 μ-law format.
 
@@ -7545,7 +7384,7 @@
 
             - `"audio/pcmu"`
 
-        - `AudioPCMA object { type }`
+        - `PCMAAudioFormat object { type }`
 
           The G.711 A-law format.
 
@@ -8093,7 +7932,7 @@
   - `prompt: optional ResponsePrompt`
 
     Reference to a prompt template and its variables.
-    [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+    [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
     - `id: string`
 
@@ -8133,7 +7972,7 @@
 
       - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-        An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+        An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
         - `detail: "low" or "high" or "auto" or "original"`
 
@@ -8294,7 +8133,7 @@
 
         The name of the tool to call on the server.
 
-  - `tools: optional array of RealtimeFunctionTool or RealtimeResponseCreateMcpTool`
+  - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_callers, 9 more }`
 
     Tools available to the model.
 
@@ -8320,10 +8159,10 @@
 
         - `"function"`
 
-    - `RealtimeResponseCreateMcpTool object { server_label, type, allowed_callers, 9 more }`
+    - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
       Give the model access to additional tools via remote Model Context Protocol
-      (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+      (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
       - `server_label: string`
 
@@ -8375,7 +8214,7 @@
 
         Identifier for service connectors, like those available in ChatGPT. One of
         `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-        about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+        about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
         Currently supported `connector_id` values are:
 
@@ -8506,7 +8345,7 @@
 
     - `"content_filter"`
 
-  - `type: optional "completed" or "cancelled" or "incomplete" or "failed"`
+  - `type: optional "completed" or "cancelled" or "failed" or "incomplete"`
 
     The type of error that caused the response to fail, corresponding
     with the `status` field (`completed`, `cancelled`, `incomplete`,
@@ -8516,9 +8355,9 @@
 
     - `"cancelled"`
 
-    - `"incomplete"`
-
     - `"failed"`
+
+    - `"incomplete"`
 
 ### Realtime Response Usage
 
@@ -8662,11 +8501,9 @@
 
         The unique ID of the conversation.
 
-      - `object: optional "realtime.conversation"`
+      - `object: optional string`
 
         The object type, must be `realtime.conversation`.
-
-        - `"realtime.conversation"`
 
     - `event_id: string`
 
@@ -9193,7 +9030,7 @@
 
       Usage statistics for the transcription, this is billed according to the ASR model's pricing rather than the realtime model's pricing.
 
-      - `TranscriptTextUsageTokens object { input_tokens, output_tokens, total_tokens, 2 more }`
+      - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
 
         Usage statistics for models billed by token usage.
 
@@ -9227,7 +9064,7 @@
 
             Number of text tokens billed for this request.
 
-      - `TranscriptTextUsageDuration object { seconds, type }`
+      - `DurationUsage object { seconds, type }`
 
         Usage statistics for models billed by audio input duration.
 
@@ -9768,13 +9605,13 @@
 
         The transcript of the audio (if type is "audio").
 
-      - `type: optional "text" or "audio"`
+      - `type: optional "audio" or "text"`
 
         The content type ("text", "audio").
 
-        - `"text"`
-
         - `"audio"`
+
+        - `"text"`
 
     - `response_id: string`
 
@@ -9823,13 +9660,13 @@
 
         The transcript of the audio (if type is "audio").
 
-      - `type: optional "text" or "audio"`
+      - `type: optional "audio" or "text"`
 
         The content type ("text", "audio").
 
-        - `"text"`
-
         - `"audio"`
+
+        - `"text"`
 
     - `response_id: string`
 
@@ -9868,7 +9705,7 @@
 
             The format of the output audio.
 
-            - `AudioPCM object { rate, type }`
+            - `PCMAudioFormat object { rate, type }`
 
               The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -9884,7 +9721,7 @@
 
                 - `"audio/pcm"`
 
-            - `AudioPCMU object { type }`
+            - `PCMUAudioFormat object { type }`
 
               The G.711 μ-law format.
 
@@ -9894,7 +9731,7 @@
 
                 - `"audio/pcmu"`
 
-            - `AudioPCMA object { type }`
+            - `PCMAAudioFormat object { type }`
 
               The G.711 A-law format.
 
@@ -10071,7 +9908,7 @@
 
           - `"content_filter"`
 
-        - `type: optional "completed" or "cancelled" or "incomplete" or "failed"`
+        - `type: optional "completed" or "cancelled" or "failed" or "incomplete"`
 
           The type of error that caused the response to fail, corresponding
           with the `status` field (`completed`, `cancelled`, `incomplete`,
@@ -10081,9 +9918,9 @@
 
           - `"cancelled"`
 
-          - `"incomplete"`
-
           - `"failed"`
+
+          - `"incomplete"`
 
       - `usage: optional RealtimeResponseUsage`
 
@@ -10392,13 +10229,23 @@
 
       The unique ID of the server event.
 
-    - `session: RealtimeSessionCreateRequest or RealtimeTranscriptionSessionCreateRequest`
+    - `session: RealtimeSessionCreateResponse or RealtimeTranscriptionSessionCreateResponse`
 
       The session configuration.
 
-      - `RealtimeSessionCreateRequest object { type, audio, include, 11 more }`
+      - `RealtimeSessionCreateResponse object { id, object, type, 13 more }`
 
-        Realtime session object configuration.
+        A Realtime session configuration object.
+
+        - `id: string`
+
+          Unique identifier for the session that looks like `sess_1234567890abcdef`.
+
+        - `object: "realtime.session"`
+
+          The object type. Always `realtime.session`.
+
+          - `"realtime.session"`
 
         - `type: "realtime"`
 
@@ -10406,11 +10253,11 @@
 
           - `"realtime"`
 
-        - `audio: optional RealtimeAudioConfig`
+        - `audio: optional object { input, output }`
 
           Configuration for input and output audio.
 
-          - `input: optional RealtimeAudioConfigInput`
+          - `input: optional object { format, noise_reduction, transcription, turn_detection }`
 
             - `format: optional RealtimeAudioFormats`
 
@@ -10430,41 +10277,23 @@
 
                 - `"far_field"`
 
-            - `transcription: optional AudioTranscription`
+            - `transcription: optional object { language, model, prompt }`
 
-              Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
-
-              - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-                Controls how long the model waits before emitting transcription text.
-                Higher values can improve transcription accuracy at the cost of latency.
-                Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-                - `"minimal"`
-
-                - `"low"`
-
-                - `"medium"`
-
-                - `"high"`
-
-                - `"xhigh"`
+              Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
               - `language: optional string`
 
-                The language of the input audio. Supplying the input language in
-                [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-                will improve accuracy and latency.
+                The language of the input audio.
 
               - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-                The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+                The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
                 - `string`
 
                 - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-                  The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+                  The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
                   - `"whisper-1"`
 
@@ -10480,13 +10309,9 @@
 
               - `prompt: optional string`
 
-                An optional text to guide the model's style or continue a previous audio
-                segment.
-                For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-                For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-                Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+                The prompt configured for input audio transcription, when present.
 
-            - `turn_detection: optional RealtimeAudioInputTurnDetection`
+            - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
 
               Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -10582,7 +10407,7 @@
                   Whether or not to automatically interrupt any ongoing response with output to the default
                   conversation (i.e. `conversation` of `auto`) when a VAD start event occurs.
 
-          - `output: optional RealtimeAudioConfigOutput`
+          - `output: optional object { format, speed, voice }`
 
             - `format: optional RealtimeAudioFormats`
 
@@ -10596,18 +10421,23 @@
               This parameter is a post-processing adjustment to the audio after it is generated, it's
               also possible to prompt the model to speak faster or slower.
 
-            - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or object { id }`
+            - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
-              The voice the model uses to respond. Supported built-in voices are
-              `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
-              `marin`, and `cedar`. You may also provide a custom voice object with
-              an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
-              during the session once the model has responded with audio at least once.
-              We recommend `marin` and `cedar` for best quality.
+              The voice the model uses to respond. Voice cannot be changed during the
+              session once the model has responded with audio at least once. Current
+              voice options are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`,
+              `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
+              best quality.
 
               - `string`
 
               - `"alloy" or "ash" or "ballad" or 7 more`
+
+                The voice the model uses to respond. Voice cannot be changed during the
+                session once the model has responded with audio at least once. Current
+                voice options are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`,
+                `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
+                best quality.
 
                 - `"alloy"`
 
@@ -10629,13 +10459,9 @@
 
                 - `"cedar"`
 
-              - `ID object { id }`
+        - `expires_at: optional number`
 
-                Custom voice reference.
-
-                - `id: string`
-
-                  The custom voice ID, e.g. `voice_1234`.
+          Expiration timestamp for the session, in seconds since epoch.
 
         - `include: optional array of "item.input_audio_transcription.logprobs"`
 
@@ -10722,15 +10548,10 @@
 
           - `"audio"`
 
-        - `parallel_tool_calls: optional boolean`
-
-          Whether the model may call multiple tools in parallel. Only supported by
-          reasoning Realtime models such as `gpt-realtime-2`.
-
         - `prompt: optional ResponsePrompt`
 
           Reference to a prompt template and its variables.
-          [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+          [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
           - `id: string`
 
@@ -10770,7 +10591,7 @@
 
             - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-              An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+              An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
               - `detail: "low" or "high" or "auto" or "original"`
 
@@ -10877,7 +10698,7 @@
 
             - `"xhigh"`
 
-        - `tool_choice: optional RealtimeToolChoiceConfig`
+        - `tool_choice: optional ToolChoiceOptions or ToolChoiceFunction or ToolChoiceMcp`
 
           How the model chooses tools. Provide one of the string modes or force a specific
           function/MCP tool.
@@ -10931,7 +10752,7 @@
 
               The name of the tool to call on the server.
 
-        - `tools: optional RealtimeToolsConfig`
+        - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_callers, 9 more }`
 
           Tools available to the model.
 
@@ -10957,10 +10778,10 @@
 
               - `"function"`
 
-          - `Mcp object { server_label, type, allowed_callers, 9 more }`
+          - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
-            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
             - `server_label: string`
 
@@ -11012,7 +10833,7 @@
 
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -11112,7 +10933,7 @@
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `tracing: optional RealtimeTracingConfig`
+        - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
 
           Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
           tracing is enabled for a session, the configuration cannot be modified.
@@ -11155,7 +10976,7 @@
 
           Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-          - `RealtimeTruncationStrategy = "auto" or "disabled"`
+          - `"auto" or "disabled"`
 
             The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -11163,7 +10984,7 @@
 
             - `"disabled"`
 
-          - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+          - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
             Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -11185,21 +11006,29 @@
 
                 Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
 
-      - `RealtimeTranscriptionSessionCreateRequest object { type, audio, include }`
+      - `RealtimeTranscriptionSessionCreateResponse object { id, object, type, 3 more }`
 
-        Realtime transcription session object configuration.
+        A Realtime transcription session configuration object.
+
+        - `id: string`
+
+          Unique identifier for the session that looks like `sess_1234567890abcdef`.
+
+        - `object: string`
+
+          The object type. Always `realtime.transcription_session`.
 
         - `type: "transcription"`
 
-          The type of session to create. Always `transcription` for transcription sessions.
+          The type of session. Always `transcription` for transcription sessions.
 
           - `"transcription"`
 
-        - `audio: optional RealtimeTranscriptionSessionAudio`
+        - `audio: optional object { input }`
 
-          Configuration for input and output audio.
+          Configuration for input audio for the session.
 
-          - `input: optional RealtimeTranscriptionSessionAudioInput`
+          - `input: optional object { format, noise_reduction, transcription, turn_detection }`
 
             - `format: optional RealtimeAudioFormats`
 
@@ -11207,119 +11036,82 @@
 
             - `noise_reduction: optional object { type }`
 
-              Configuration for input audio noise reduction. This can be set to `null` to turn off.
-              Noise reduction filters audio added to the input audio buffer before it is sent to VAD and the model.
-              Filtering the audio can improve VAD and turn detection accuracy (reducing false positives) and model performance by improving perception of the input audio.
+              Configuration for input audio noise reduction.
 
               - `type: optional NoiseReductionType`
 
                 Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-            - `transcription: optional AudioTranscription`
+            - `transcription: optional object { language, model, prompt }`
 
-              Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+              Configuration of the transcription model.
 
-            - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
+              - `language: optional string`
 
-              Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
+                The language of the input audio.
 
-              Server VAD means that the model will detect the start and end of speech based on audio volume and respond at the end of user speech.
+              - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-              Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
+                The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
-              For `gpt-realtime-whisper` transcription sessions, turn detection must be
-              set to `null`; VAD is not supported.
+                - `string`
 
-              - `ServerVad object { type, create_response, idle_timeout_ms, 4 more }`
+                - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-                Server-side voice activity detection (VAD) which flips on when user speech is detected and off after a period of silence.
+                  The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
-                - `type: "server_vad"`
+                  - `"whisper-1"`
 
-                  Type of turn detection, `server_vad` to turn on simple Server VAD.
+                  - `"gpt-4o-mini-transcribe"`
 
-                  - `"server_vad"`
+                  - `"gpt-4o-mini-transcribe-2025-12-15"`
 
-                - `create_response: optional boolean`
+                  - `"gpt-4o-transcribe"`
 
-                  Whether or not to automatically generate a response when a VAD stop event occurs. If `interrupt_response` is set to `false` this may fail to create a response if the model is already responding.
+                  - `"gpt-4o-transcribe-diarize"`
 
-                  If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
+                  - `"gpt-realtime-whisper"`
 
-                - `idle_timeout_ms: optional number`
+              - `prompt: optional string`
 
-                  Optional timeout after which a model response will be triggered automatically. This is
-                  useful for situations in which a long pause from the user is unexpected, such as a phone
-                  call. The model will effectively prompt the user to continue the conversation based
-                  on the current context.
+                The prompt configured for input audio transcription, when present.
 
-                  The timeout value will be applied after the last model response's audio has finished playing,
-                  i.e. it's set to the `response.done` time plus audio playback duration.
+            - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
 
-                  An `input_audio_buffer.timeout_triggered` event (plus events
-                  associated with the Response) will be emitted when the timeout is reached.
-                  Idle timeout is currently only supported for `server_vad` mode.
+              Configuration for turn detection. Can be set to `null` to turn off. Server
+              VAD means that the model will detect the start and end of speech based on
+              audio volume and respond at the end of user speech. For `gpt-realtime-whisper`, this must be `null`; VAD is not supported.
 
-                - `interrupt_response: optional boolean`
+              - `prefix_padding_ms: optional number`
 
-                  Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
-                  conversation (i.e. `conversation` of `auto`) when a VAD start event occurs. If `true` then the response will be cancelled, otherwise it will continue until complete.
+                Amount of audio to include before the VAD detected speech (in
+                milliseconds). Defaults to 300ms.
 
-                  If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
+              - `silence_duration_ms: optional number`
 
-                - `prefix_padding_ms: optional number`
+                Duration of silence to detect speech stop (in milliseconds). Defaults
+                to 500ms. With shorter values the model will respond more quickly,
+                but may jump in on short pauses from the user.
 
-                  Used only for `server_vad` mode. Amount of audio to include before the VAD detected speech (in
-                  milliseconds). Defaults to 300ms.
+              - `threshold: optional number`
 
-                - `silence_duration_ms: optional number`
+                Activation threshold for VAD (0.0 to 1.0), this defaults to 0.5. A
+                higher threshold will require louder audio to activate the model, and
+                thus might perform better in noisy environments.
 
-                  Used only for `server_vad` mode. Duration of silence to detect speech stop (in milliseconds). Defaults
-                  to 500ms. With shorter values the model will respond more quickly,
-                  but may jump in on short pauses from the user.
+              - `type: optional string`
 
-                - `threshold: optional number`
+                Type of turn detection, only `server_vad` is currently supported.
 
-                  Used only for `server_vad` mode. Activation threshold for VAD (0.0 to 1.0), this defaults to 0.5. A
-                  higher threshold will require louder audio to activate the model, and
-                  thus might perform better in noisy environments.
+        - `expires_at: optional number`
 
-              - `SemanticVad object { type, create_response, eagerness, interrupt_response }`
-
-                Server-side semantic turn detection which uses a model to determine when the user has finished speaking.
-
-                - `type: "semantic_vad"`
-
-                  Type of turn detection, `semantic_vad` to turn on Semantic VAD.
-
-                  - `"semantic_vad"`
-
-                - `create_response: optional boolean`
-
-                  Whether or not to automatically generate a response when a VAD stop event occurs.
-
-                - `eagerness: optional "low" or "medium" or "high" or "auto"`
-
-                  Used only for `semantic_vad` mode. The eagerness of the model to respond. `low` will wait longer for the user to continue speaking, `high` will respond more quickly. `auto` is the default and is equivalent to `medium`. `low`, `medium`, and `high` have max timeouts of 8s, 4s, and 2s respectively.
-
-                  - `"low"`
-
-                  - `"medium"`
-
-                  - `"high"`
-
-                  - `"auto"`
-
-                - `interrupt_response: optional boolean`
-
-                  Whether or not to automatically interrupt any ongoing response with output to the default
-                  conversation (i.e. `conversation` of `auto`) when a VAD start event occurs.
+          Expiration timestamp for the session, in seconds since epoch.
 
         - `include: optional array of "item.input_audio_transcription.logprobs"`
 
           Additional fields to include in server outputs.
 
-          `item.input_audio_transcription.logprobs`: Include logprobs for input audio transcription.
+          - `item.input_audio_transcription.logprobs`: Include logprobs for input audio transcription.
 
           - `"item.input_audio_transcription.logprobs"`
 
@@ -11338,17 +11130,17 @@
 
       The unique ID of the server event.
 
-    - `session: RealtimeSessionCreateRequest or RealtimeTranscriptionSessionCreateRequest`
+    - `session: RealtimeSessionCreateResponse or RealtimeTranscriptionSessionCreateResponse`
 
       The session configuration.
 
-      - `RealtimeSessionCreateRequest object { type, audio, include, 11 more }`
+      - `RealtimeSessionCreateResponse object { id, object, type, 13 more }`
 
-        Realtime session object configuration.
+        A Realtime session configuration object.
 
-      - `RealtimeTranscriptionSessionCreateRequest object { type, audio, include }`
+      - `RealtimeTranscriptionSessionCreateResponse object { id, object, type, 3 more }`
 
-        Realtime transcription session object configuration.
+        A Realtime transcription session configuration object.
 
     - `type: "session.updated"`
 
@@ -11361,7 +11153,7 @@
     **WebRTC/SIP Only:** Emitted when the server begins streaming audio to the client. This event is
     emitted after an audio content part has been added (`response.content_part.added`)
     to the response.
-    [Learn more](https://platform.openai.com/docs/guides/realtime-conversations#client-and-server-events-for-audio-in-webrtc).
+    [Learn more](/docs/guides/realtime-conversations#client-and-server-events-for-audio-in-webrtc).
 
     - `event_id: string`
 
@@ -11382,7 +11174,7 @@
     **WebRTC/SIP Only:** Emitted when the output audio buffer has been completely drained on the server,
     and no more audio is forthcoming. This event is emitted after the full response
     data has been sent to the client (`response.done`).
-    [Learn more](https://platform.openai.com/docs/guides/realtime-conversations#client-and-server-events-for-audio-in-webrtc).
+    [Learn more](/docs/guides/realtime-conversations#client-and-server-events-for-audio-in-webrtc).
 
     - `event_id: string`
 
@@ -11404,7 +11196,7 @@
     mode when the user has interrupted (`input_audio_buffer.speech_started`),
     or when the client has emitted the `output_audio_buffer.clear` event to manually
     cut off the current audio response.
-    [Learn more](https://platform.openai.com/docs/guides/realtime-conversations#client-and-server-events-for-audio-in-webrtc).
+    [Learn more](/docs/guides/realtime-conversations#client-and-server-events-for-audio-in-webrtc).
 
     - `event_id: string`
 
@@ -11786,41 +11578,23 @@
 
       - `"far_field"`
 
-  - `input_audio_transcription: optional AudioTranscription`
+  - `input_audio_transcription: optional object { language, model, prompt }`
 
     Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
-    - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-      Controls how long the model waits before emitting transcription text.
-      Higher values can improve transcription accuracy at the cost of latency.
-      Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-      - `"minimal"`
-
-      - `"low"`
-
-      - `"medium"`
-
-      - `"high"`
-
-      - `"xhigh"`
-
     - `language: optional string`
 
-      The language of the input audio. Supplying the input language in
-      [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-      will improve accuracy and latency.
+      The language of the input audio.
 
     - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-      The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+      The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
       - `string`
 
       - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-        The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+        The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
         - `"whisper-1"`
 
@@ -11836,11 +11610,7 @@
 
     - `prompt: optional string`
 
-      An optional text to guide the model's style or continue a previous audio
-      segment.
-      For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-      For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-      Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+      The prompt configured for input audio transcription, when present.
 
   - `instructions: optional string`
 
@@ -11941,7 +11711,7 @@
   - `prompt: optional ResponsePrompt`
 
     Reference to a prompt template and its variables.
-    [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+    [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
     - `id: string`
 
@@ -11981,7 +11751,7 @@
 
       - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-        An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+        An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
         - `detail: "low" or "high" or "auto" or "original"`
 
@@ -12295,7 +12065,7 @@
 
         The format of the input audio.
 
-        - `AudioPCM object { rate, type }`
+        - `PCMAudioFormat object { rate, type }`
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -12311,7 +12081,7 @@
 
             - `"audio/pcm"`
 
-        - `AudioPCMU object { type }`
+        - `PCMUAudioFormat object { type }`
 
           The G.711 μ-law format.
 
@@ -12321,7 +12091,7 @@
 
             - `"audio/pcmu"`
 
-        - `AudioPCMA object { type }`
+        - `PCMAAudioFormat object { type }`
 
           The G.711 A-law format.
 
@@ -12347,7 +12117,7 @@
 
       - `transcription: optional AudioTranscription`
 
-        Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+        Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
         - `delay: optional "minimal" or "low" or "medium" or 2 more`
 
@@ -12397,7 +12167,7 @@
 
           An optional text to guide the model's style or continue a previous audio
           segment.
-          For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+          For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
           For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
           Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -12645,7 +12415,7 @@
   - `prompt: optional ResponsePrompt`
 
     Reference to a prompt template and its variables.
-    [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+    [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
     - `id: string`
 
@@ -12685,7 +12455,7 @@
 
       - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-        An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+        An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
         - `detail: "low" or "high" or "auto" or "original"`
 
@@ -12872,10 +12642,10 @@
 
         - `"function"`
 
-    - `Mcp object { server_label, type, allowed_callers, 9 more }`
+    - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
       Give the model access to additional tools via remote Model Context Protocol
-      (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+      (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
       - `server_label: string`
 
@@ -12927,7 +12697,7 @@
 
         Identifier for service connectors, like those available in ChatGPT. One of
         `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-        about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+        about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
         Currently supported `connector_id` values are:
 
@@ -13070,7 +12840,7 @@
 
     Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-    - `RealtimeTruncationStrategy = "auto" or "disabled"`
+    - `"auto" or "disabled"`
 
       The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -13078,7 +12848,7 @@
 
       - `"disabled"`
 
-    - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+    - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
       Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -13184,10 +12954,10 @@
 
       - `"function"`
 
-  - `Mcp object { server_label, type, allowed_callers, 9 more }`
+  - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
     Give the model access to additional tools via remote Model Context Protocol
-    (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+    (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
     - `server_label: string`
 
@@ -13239,7 +13009,7 @@
 
       Identifier for service connectors, like those available in ChatGPT. One of
       `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-      about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+      about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
       Currently supported `connector_id` values are:
 
@@ -13344,7 +13114,7 @@
 - `RealtimeToolsConfigUnion = RealtimeFunctionTool or object { server_label, type, allowed_callers, 9 more }`
 
   Give the model access to additional tools via remote Model Context Protocol
-  (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+  (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
   - `RealtimeFunctionTool object { description, name, parameters, type }`
 
@@ -13368,10 +13138,10 @@
 
       - `"function"`
 
-  - `Mcp object { server_label, type, allowed_callers, 9 more }`
+  - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
     Give the model access to additional tools via remote Model Context Protocol
-    (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+    (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
     - `server_label: string`
 
@@ -13423,7 +13193,7 @@
 
       Identifier for service connectors, like those available in ChatGPT. One of
       `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-      about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+      about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
       Currently supported `connector_id` values are:
 
@@ -13570,7 +13340,7 @@
 
       The PCM audio format. Only a 24kHz sample rate is supported.
 
-      - `AudioPCM object { rate, type }`
+      - `PCMAudioFormat object { rate, type }`
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -13586,7 +13356,7 @@
 
           - `"audio/pcm"`
 
-      - `AudioPCMU object { type }`
+      - `PCMUAudioFormat object { type }`
 
         The G.711 μ-law format.
 
@@ -13596,7 +13366,7 @@
 
           - `"audio/pcmu"`
 
-      - `AudioPCMA object { type }`
+      - `PCMAAudioFormat object { type }`
 
         The G.711 A-law format.
 
@@ -13622,7 +13392,7 @@
 
     - `transcription: optional AudioTranscription`
 
-      Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+      Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
       - `delay: optional "minimal" or "low" or "medium" or 2 more`
 
@@ -13672,7 +13442,7 @@
 
         An optional text to guide the model's style or continue a previous audio
         segment.
-        For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+        For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
         For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
         Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -13780,7 +13550,7 @@
 
     The PCM audio format. Only a 24kHz sample rate is supported.
 
-    - `AudioPCM object { rate, type }`
+    - `PCMAudioFormat object { rate, type }`
 
       The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -13796,7 +13566,7 @@
 
         - `"audio/pcm"`
 
-    - `AudioPCMU object { type }`
+    - `PCMUAudioFormat object { type }`
 
       The G.711 μ-law format.
 
@@ -13806,7 +13576,7 @@
 
         - `"audio/pcmu"`
 
-    - `AudioPCMA object { type }`
+    - `PCMAAudioFormat object { type }`
 
       The G.711 A-law format.
 
@@ -13832,7 +13602,7 @@
 
   - `transcription: optional AudioTranscription`
 
-    Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+    Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
     - `delay: optional "minimal" or "low" or "medium" or 2 more`
 
@@ -13882,7 +13652,7 @@
 
       An optional text to guide the model's style or continue a previous audio
       segment.
-      For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+      For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
       For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
       Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -14102,7 +13872,7 @@
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
-        - `AudioPCM object { rate, type }`
+        - `PCMAudioFormat object { rate, type }`
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -14118,7 +13888,7 @@
 
             - `"audio/pcm"`
 
-        - `AudioPCMU object { type }`
+        - `PCMUAudioFormat object { type }`
 
           The G.711 μ-law format.
 
@@ -14128,7 +13898,7 @@
 
             - `"audio/pcmu"`
 
-        - `AudioPCMA object { type }`
+        - `PCMAAudioFormat object { type }`
 
           The G.711 A-law format.
 
@@ -14154,7 +13924,7 @@
 
       - `transcription: optional AudioTranscription`
 
-        Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+        Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
         - `delay: optional "minimal" or "low" or "medium" or 2 more`
 
@@ -14204,7 +13974,7 @@
 
           An optional text to guide the model's style or continue a previous audio
           segment.
-          For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+          For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
           For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
           Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -15330,7 +15100,7 @@
 
 ### Realtime Truncation
 
-- `RealtimeTruncation = "auto" or "disabled" or RealtimeTruncationRetentionRatio`
+- `RealtimeTruncation = "auto" or "disabled" or object { retention_ratio, type, token_limits }`
 
   When the number of tokens in a conversation exceeds the model's input token limit, the conversation be truncated, meaning messages (starting from the oldest) will not be included in the model's context. A 32k context model with 4,096 max output tokens can only include 28,224 tokens in the context before truncation occurs.
 
@@ -15340,7 +15110,7 @@
 
   Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-  - `RealtimeTruncationStrategy = "auto" or "disabled"`
+  - `"auto" or "disabled"`
 
     The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -15348,7 +15118,7 @@
 
     - `"disabled"`
 
-  - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+  - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
     Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -15369,30 +15139,6 @@
       - `post_instructions: optional number`
 
         Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
-
-### Realtime Truncation Retention Ratio
-
-- `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
-
-  Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
-
-  - `retention_ratio: number`
-
-    Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
-
-  - `type: "retention_ratio"`
-
-    Use retention ratio truncation.
-
-    - `"retention_ratio"`
-
-  - `token_limits: optional object { post_instructions }`
-
-    Optional custom token limits for this truncation strategy. If not provided, the model's default token limits will be used.
-
-    - `post_instructions: optional number`
-
-      Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
 
 ### Response Audio Delta Event
 
@@ -15601,13 +15347,13 @@
 
       The transcript of the audio (if type is "audio").
 
-    - `type: optional "text" or "audio"`
+    - `type: optional "audio" or "text"`
 
       The content type ("text", "audio").
 
-      - `"text"`
-
       - `"audio"`
+
+      - `"text"`
 
   - `response_id: string`
 
@@ -15658,13 +15404,13 @@
 
       The transcript of the audio (if type is "audio").
 
-    - `type: optional "text" or "audio"`
+    - `type: optional "audio" or "text"`
 
       The content type ("text", "audio").
 
-      - `"text"`
-
       - `"audio"`
+
+      - `"text"`
 
   - `response_id: string`
 
@@ -15730,7 +15476,7 @@
 
           The format of the output audio.
 
-          - `AudioPCM object { rate, type }`
+          - `PCMAudioFormat object { rate, type }`
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -15746,7 +15492,7 @@
 
               - `"audio/pcm"`
 
-          - `AudioPCMU object { type }`
+          - `PCMUAudioFormat object { type }`
 
             The G.711 μ-law format.
 
@@ -15756,7 +15502,7 @@
 
               - `"audio/pcmu"`
 
-          - `AudioPCMA object { type }`
+          - `PCMAAudioFormat object { type }`
 
             The G.711 A-law format.
 
@@ -16304,7 +16050,7 @@
     - `prompt: optional ResponsePrompt`
 
       Reference to a prompt template and its variables.
-      [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+      [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
       - `id: string`
 
@@ -16344,7 +16090,7 @@
 
         - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+          An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
           - `detail: "low" or "high" or "auto" or "original"`
 
@@ -16505,7 +16251,7 @@
 
           The name of the tool to call on the server.
 
-    - `tools: optional array of RealtimeFunctionTool or RealtimeResponseCreateMcpTool`
+    - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_callers, 9 more }`
 
       Tools available to the model.
 
@@ -16531,10 +16277,10 @@
 
           - `"function"`
 
-      - `RealtimeResponseCreateMcpTool object { server_label, type, allowed_callers, 9 more }`
+      - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
-        (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+        (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
         - `server_label: string`
 
@@ -16586,7 +16332,7 @@
 
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-          about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+          about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
           Currently supported `connector_id` values are:
 
@@ -16715,7 +16461,7 @@
 
           The format of the output audio.
 
-          - `AudioPCM object { rate, type }`
+          - `PCMAudioFormat object { rate, type }`
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -16731,7 +16477,7 @@
 
               - `"audio/pcm"`
 
-          - `AudioPCMU object { type }`
+          - `PCMUAudioFormat object { type }`
 
             The G.711 μ-law format.
 
@@ -16741,7 +16487,7 @@
 
               - `"audio/pcmu"`
 
-          - `AudioPCMA object { type }`
+          - `PCMAAudioFormat object { type }`
 
             The G.711 A-law format.
 
@@ -17304,7 +17050,7 @@
 
         - `"content_filter"`
 
-      - `type: optional "completed" or "cancelled" or "incomplete" or "failed"`
+      - `type: optional "completed" or "cancelled" or "failed" or "incomplete"`
 
         The type of error that caused the response to fail, corresponding
         with the `status` field (`completed`, `cancelled`, `incomplete`,
@@ -17314,9 +17060,9 @@
 
         - `"cancelled"`
 
-        - `"incomplete"`
-
         - `"failed"`
+
+        - `"incomplete"`
 
     - `usage: optional RealtimeResponseUsage`
 
@@ -17430,7 +17176,7 @@
 
           The format of the output audio.
 
-          - `AudioPCM object { rate, type }`
+          - `PCMAudioFormat object { rate, type }`
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -17446,7 +17192,7 @@
 
               - `"audio/pcm"`
 
-          - `AudioPCMU object { type }`
+          - `PCMUAudioFormat object { type }`
 
             The G.711 μ-law format.
 
@@ -17456,7 +17202,7 @@
 
               - `"audio/pcmu"`
 
-          - `AudioPCMA object { type }`
+          - `PCMAAudioFormat object { type }`
 
             The G.711 A-law format.
 
@@ -18019,7 +17765,7 @@
 
         - `"content_filter"`
 
-      - `type: optional "completed" or "cancelled" or "incomplete" or "failed"`
+      - `type: optional "completed" or "cancelled" or "failed" or "incomplete"`
 
         The type of error that caused the response to fail, corresponding
         with the `status` field (`completed`, `cancelled`, `incomplete`,
@@ -18029,9 +17775,9 @@
 
         - `"cancelled"`
 
-        - `"incomplete"`
-
         - `"failed"`
+
+        - `"incomplete"`
 
     - `usage: optional RealtimeResponseUsage`
 
@@ -19312,13 +19058,23 @@
 
     The unique ID of the server event.
 
-  - `session: RealtimeSessionCreateRequest or RealtimeTranscriptionSessionCreateRequest`
+  - `session: RealtimeSessionCreateResponse or RealtimeTranscriptionSessionCreateResponse`
 
     The session configuration.
 
-    - `RealtimeSessionCreateRequest object { type, audio, include, 11 more }`
+    - `RealtimeSessionCreateResponse object { id, object, type, 13 more }`
 
-      Realtime session object configuration.
+      A Realtime session configuration object.
+
+      - `id: string`
+
+        Unique identifier for the session that looks like `sess_1234567890abcdef`.
+
+      - `object: "realtime.session"`
+
+        The object type. Always `realtime.session`.
+
+        - `"realtime.session"`
 
       - `type: "realtime"`
 
@@ -19326,17 +19082,17 @@
 
         - `"realtime"`
 
-      - `audio: optional RealtimeAudioConfig`
+      - `audio: optional object { input, output }`
 
         Configuration for input and output audio.
 
-        - `input: optional RealtimeAudioConfigInput`
+        - `input: optional object { format, noise_reduction, transcription, turn_detection }`
 
           - `format: optional RealtimeAudioFormats`
 
             The format of the input audio.
 
-            - `AudioPCM object { rate, type }`
+            - `PCMAudioFormat object { rate, type }`
 
               The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -19352,7 +19108,7 @@
 
                 - `"audio/pcm"`
 
-            - `AudioPCMU object { type }`
+            - `PCMUAudioFormat object { type }`
 
               The G.711 μ-law format.
 
@@ -19362,7 +19118,7 @@
 
                 - `"audio/pcmu"`
 
-            - `AudioPCMA object { type }`
+            - `PCMAAudioFormat object { type }`
 
               The G.711 A-law format.
 
@@ -19386,41 +19142,23 @@
 
               - `"far_field"`
 
-          - `transcription: optional AudioTranscription`
+          - `transcription: optional object { language, model, prompt }`
 
-            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
-
-            - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-              Controls how long the model waits before emitting transcription text.
-              Higher values can improve transcription accuracy at the cost of latency.
-              Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-              - `"minimal"`
-
-              - `"low"`
-
-              - `"medium"`
-
-              - `"high"`
-
-              - `"xhigh"`
+            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
             - `language: optional string`
 
-              The language of the input audio. Supplying the input language in
-              [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-              will improve accuracy and latency.
+              The language of the input audio.
 
             - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+              The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
               - `string`
 
               - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-                The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+                The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
                 - `"whisper-1"`
 
@@ -19436,13 +19174,9 @@
 
             - `prompt: optional string`
 
-              An optional text to guide the model's style or continue a previous audio
-              segment.
-              For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-              For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-              Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+              The prompt configured for input audio transcription, when present.
 
-          - `turn_detection: optional RealtimeAudioInputTurnDetection`
+          - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
 
             Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -19538,7 +19272,7 @@
                 Whether or not to automatically interrupt any ongoing response with output to the default
                 conversation (i.e. `conversation` of `auto`) when a VAD start event occurs.
 
-        - `output: optional RealtimeAudioConfigOutput`
+        - `output: optional object { format, speed, voice }`
 
           - `format: optional RealtimeAudioFormats`
 
@@ -19552,18 +19286,23 @@
             This parameter is a post-processing adjustment to the audio after it is generated, it's
             also possible to prompt the model to speak faster or slower.
 
-          - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or object { id }`
+          - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
-            The voice the model uses to respond. Supported built-in voices are
-            `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
-            `marin`, and `cedar`. You may also provide a custom voice object with
-            an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
-            during the session once the model has responded with audio at least once.
-            We recommend `marin` and `cedar` for best quality.
+            The voice the model uses to respond. Voice cannot be changed during the
+            session once the model has responded with audio at least once. Current
+            voice options are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`,
+            `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
+            best quality.
 
             - `string`
 
             - `"alloy" or "ash" or "ballad" or 7 more`
+
+              The voice the model uses to respond. Voice cannot be changed during the
+              session once the model has responded with audio at least once. Current
+              voice options are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`,
+              `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
+              best quality.
 
               - `"alloy"`
 
@@ -19585,13 +19324,9 @@
 
               - `"cedar"`
 
-            - `ID object { id }`
+      - `expires_at: optional number`
 
-              Custom voice reference.
-
-              - `id: string`
-
-                The custom voice ID, e.g. `voice_1234`.
+        Expiration timestamp for the session, in seconds since epoch.
 
       - `include: optional array of "item.input_audio_transcription.logprobs"`
 
@@ -19678,15 +19413,10 @@
 
         - `"audio"`
 
-      - `parallel_tool_calls: optional boolean`
-
-        Whether the model may call multiple tools in parallel. Only supported by
-        reasoning Realtime models such as `gpt-realtime-2`.
-
       - `prompt: optional ResponsePrompt`
 
         Reference to a prompt template and its variables.
-        [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+        [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
         - `id: string`
 
@@ -19726,7 +19456,7 @@
 
           - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
             - `detail: "low" or "high" or "auto" or "original"`
 
@@ -19833,7 +19563,7 @@
 
           - `"xhigh"`
 
-      - `tool_choice: optional RealtimeToolChoiceConfig`
+      - `tool_choice: optional ToolChoiceOptions or ToolChoiceFunction or ToolChoiceMcp`
 
         How the model chooses tools. Provide one of the string modes or force a specific
         function/MCP tool.
@@ -19887,7 +19617,7 @@
 
             The name of the tool to call on the server.
 
-      - `tools: optional RealtimeToolsConfig`
+      - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_callers, 9 more }`
 
         Tools available to the model.
 
@@ -19913,10 +19643,10 @@
 
             - `"function"`
 
-        - `Mcp object { server_label, type, allowed_callers, 9 more }`
+        - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -19968,7 +19698,7 @@
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -20068,7 +19798,7 @@
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-      - `tracing: optional RealtimeTracingConfig`
+      - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
 
         Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
         tracing is enabled for a session, the configuration cannot be modified.
@@ -20111,7 +19841,7 @@
 
         Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-        - `RealtimeTruncationStrategy = "auto" or "disabled"`
+        - `"auto" or "disabled"`
 
           The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -20119,7 +19849,7 @@
 
           - `"disabled"`
 
-        - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+        - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
           Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -20141,21 +19871,29 @@
 
               Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
 
-    - `RealtimeTranscriptionSessionCreateRequest object { type, audio, include }`
+    - `RealtimeTranscriptionSessionCreateResponse object { id, object, type, 3 more }`
 
-      Realtime transcription session object configuration.
+      A Realtime transcription session configuration object.
+
+      - `id: string`
+
+        Unique identifier for the session that looks like `sess_1234567890abcdef`.
+
+      - `object: string`
+
+        The object type. Always `realtime.transcription_session`.
 
       - `type: "transcription"`
 
-        The type of session to create. Always `transcription` for transcription sessions.
+        The type of session. Always `transcription` for transcription sessions.
 
         - `"transcription"`
 
-      - `audio: optional RealtimeTranscriptionSessionAudio`
+      - `audio: optional object { input }`
 
-        Configuration for input and output audio.
+        Configuration for input audio for the session.
 
-        - `input: optional RealtimeTranscriptionSessionAudioInput`
+        - `input: optional object { format, noise_reduction, transcription, turn_detection }`
 
           - `format: optional RealtimeAudioFormats`
 
@@ -20163,119 +19901,82 @@
 
           - `noise_reduction: optional object { type }`
 
-            Configuration for input audio noise reduction. This can be set to `null` to turn off.
-            Noise reduction filters audio added to the input audio buffer before it is sent to VAD and the model.
-            Filtering the audio can improve VAD and turn detection accuracy (reducing false positives) and model performance by improving perception of the input audio.
+            Configuration for input audio noise reduction.
 
             - `type: optional NoiseReductionType`
 
               Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-          - `transcription: optional AudioTranscription`
+          - `transcription: optional object { language, model, prompt }`
 
-            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+            Configuration of the transcription model.
 
-          - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
+            - `language: optional string`
 
-            Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
+              The language of the input audio.
 
-            Server VAD means that the model will detect the start and end of speech based on audio volume and respond at the end of user speech.
+            - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-            Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
+              The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
-            For `gpt-realtime-whisper` transcription sessions, turn detection must be
-            set to `null`; VAD is not supported.
+              - `string`
 
-            - `ServerVad object { type, create_response, idle_timeout_ms, 4 more }`
+              - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-              Server-side voice activity detection (VAD) which flips on when user speech is detected and off after a period of silence.
+                The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
-              - `type: "server_vad"`
+                - `"whisper-1"`
 
-                Type of turn detection, `server_vad` to turn on simple Server VAD.
+                - `"gpt-4o-mini-transcribe"`
 
-                - `"server_vad"`
+                - `"gpt-4o-mini-transcribe-2025-12-15"`
 
-              - `create_response: optional boolean`
+                - `"gpt-4o-transcribe"`
 
-                Whether or not to automatically generate a response when a VAD stop event occurs. If `interrupt_response` is set to `false` this may fail to create a response if the model is already responding.
+                - `"gpt-4o-transcribe-diarize"`
 
-                If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
+                - `"gpt-realtime-whisper"`
 
-              - `idle_timeout_ms: optional number`
+            - `prompt: optional string`
 
-                Optional timeout after which a model response will be triggered automatically. This is
-                useful for situations in which a long pause from the user is unexpected, such as a phone
-                call. The model will effectively prompt the user to continue the conversation based
-                on the current context.
+              The prompt configured for input audio transcription, when present.
 
-                The timeout value will be applied after the last model response's audio has finished playing,
-                i.e. it's set to the `response.done` time plus audio playback duration.
+          - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
 
-                An `input_audio_buffer.timeout_triggered` event (plus events
-                associated with the Response) will be emitted when the timeout is reached.
-                Idle timeout is currently only supported for `server_vad` mode.
+            Configuration for turn detection. Can be set to `null` to turn off. Server
+            VAD means that the model will detect the start and end of speech based on
+            audio volume and respond at the end of user speech. For `gpt-realtime-whisper`, this must be `null`; VAD is not supported.
 
-              - `interrupt_response: optional boolean`
+            - `prefix_padding_ms: optional number`
 
-                Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
-                conversation (i.e. `conversation` of `auto`) when a VAD start event occurs. If `true` then the response will be cancelled, otherwise it will continue until complete.
+              Amount of audio to include before the VAD detected speech (in
+              milliseconds). Defaults to 300ms.
 
-                If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
+            - `silence_duration_ms: optional number`
 
-              - `prefix_padding_ms: optional number`
+              Duration of silence to detect speech stop (in milliseconds). Defaults
+              to 500ms. With shorter values the model will respond more quickly,
+              but may jump in on short pauses from the user.
 
-                Used only for `server_vad` mode. Amount of audio to include before the VAD detected speech (in
-                milliseconds). Defaults to 300ms.
+            - `threshold: optional number`
 
-              - `silence_duration_ms: optional number`
+              Activation threshold for VAD (0.0 to 1.0), this defaults to 0.5. A
+              higher threshold will require louder audio to activate the model, and
+              thus might perform better in noisy environments.
 
-                Used only for `server_vad` mode. Duration of silence to detect speech stop (in milliseconds). Defaults
-                to 500ms. With shorter values the model will respond more quickly,
-                but may jump in on short pauses from the user.
+            - `type: optional string`
 
-              - `threshold: optional number`
+              Type of turn detection, only `server_vad` is currently supported.
 
-                Used only for `server_vad` mode. Activation threshold for VAD (0.0 to 1.0), this defaults to 0.5. A
-                higher threshold will require louder audio to activate the model, and
-                thus might perform better in noisy environments.
+      - `expires_at: optional number`
 
-            - `SemanticVad object { type, create_response, eagerness, interrupt_response }`
-
-              Server-side semantic turn detection which uses a model to determine when the user has finished speaking.
-
-              - `type: "semantic_vad"`
-
-                Type of turn detection, `semantic_vad` to turn on Semantic VAD.
-
-                - `"semantic_vad"`
-
-              - `create_response: optional boolean`
-
-                Whether or not to automatically generate a response when a VAD stop event occurs.
-
-              - `eagerness: optional "low" or "medium" or "high" or "auto"`
-
-                Used only for `semantic_vad` mode. The eagerness of the model to respond. `low` will wait longer for the user to continue speaking, `high` will respond more quickly. `auto` is the default and is equivalent to `medium`. `low`, `medium`, and `high` have max timeouts of 8s, 4s, and 2s respectively.
-
-                - `"low"`
-
-                - `"medium"`
-
-                - `"high"`
-
-                - `"auto"`
-
-              - `interrupt_response: optional boolean`
-
-                Whether or not to automatically interrupt any ongoing response with output to the default
-                conversation (i.e. `conversation` of `auto`) when a VAD start event occurs.
+        Expiration timestamp for the session, in seconds since epoch.
 
       - `include: optional array of "item.input_audio_transcription.logprobs"`
 
         Additional fields to include in server outputs.
 
-        `item.input_audio_transcription.logprobs`: Include logprobs for input audio transcription.
+        - `item.input_audio_transcription.logprobs`: Include logprobs for input audio transcription.
 
         - `"item.input_audio_transcription.logprobs"`
 
@@ -20324,7 +20025,7 @@
 
             The format of the input audio.
 
-            - `AudioPCM object { rate, type }`
+            - `PCMAudioFormat object { rate, type }`
 
               The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -20340,7 +20041,7 @@
 
                 - `"audio/pcm"`
 
-            - `AudioPCMU object { type }`
+            - `PCMUAudioFormat object { type }`
 
               The G.711 μ-law format.
 
@@ -20350,7 +20051,7 @@
 
                 - `"audio/pcmu"`
 
-            - `AudioPCMA object { type }`
+            - `PCMAAudioFormat object { type }`
 
               The G.711 A-law format.
 
@@ -20376,7 +20077,7 @@
 
           - `transcription: optional AudioTranscription`
 
-            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
             - `delay: optional "minimal" or "low" or "medium" or 2 more`
 
@@ -20426,7 +20127,7 @@
 
               An optional text to guide the model's style or continue a previous audio
               segment.
-              For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+              For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
               For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
               Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -20674,7 +20375,7 @@
       - `prompt: optional ResponsePrompt`
 
         Reference to a prompt template and its variables.
-        [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+        [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
         - `id: string`
 
@@ -20714,7 +20415,7 @@
 
           - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
             - `detail: "low" or "high" or "auto" or "original"`
 
@@ -20901,10 +20602,10 @@
 
             - `"function"`
 
-        - `Mcp object { server_label, type, allowed_callers, 9 more }`
+        - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -20956,7 +20657,7 @@
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -21099,7 +20800,7 @@
 
         Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-        - `RealtimeTruncationStrategy = "auto" or "disabled"`
+        - `"auto" or "disabled"`
 
           The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -21107,7 +20808,7 @@
 
           - `"disabled"`
 
-        - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+        - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
           Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -21161,7 +20862,7 @@
 
           - `transcription: optional AudioTranscription`
 
-            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
           - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
 
@@ -21288,13 +20989,23 @@
 
     The unique ID of the server event.
 
-  - `session: RealtimeSessionCreateRequest or RealtimeTranscriptionSessionCreateRequest`
+  - `session: RealtimeSessionCreateResponse or RealtimeTranscriptionSessionCreateResponse`
 
     The session configuration.
 
-    - `RealtimeSessionCreateRequest object { type, audio, include, 11 more }`
+    - `RealtimeSessionCreateResponse object { id, object, type, 13 more }`
 
-      Realtime session object configuration.
+      A Realtime session configuration object.
+
+      - `id: string`
+
+        Unique identifier for the session that looks like `sess_1234567890abcdef`.
+
+      - `object: "realtime.session"`
+
+        The object type. Always `realtime.session`.
+
+        - `"realtime.session"`
 
       - `type: "realtime"`
 
@@ -21302,17 +21013,17 @@
 
         - `"realtime"`
 
-      - `audio: optional RealtimeAudioConfig`
+      - `audio: optional object { input, output }`
 
         Configuration for input and output audio.
 
-        - `input: optional RealtimeAudioConfigInput`
+        - `input: optional object { format, noise_reduction, transcription, turn_detection }`
 
           - `format: optional RealtimeAudioFormats`
 
             The format of the input audio.
 
-            - `AudioPCM object { rate, type }`
+            - `PCMAudioFormat object { rate, type }`
 
               The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -21328,7 +21039,7 @@
 
                 - `"audio/pcm"`
 
-            - `AudioPCMU object { type }`
+            - `PCMUAudioFormat object { type }`
 
               The G.711 μ-law format.
 
@@ -21338,7 +21049,7 @@
 
                 - `"audio/pcmu"`
 
-            - `AudioPCMA object { type }`
+            - `PCMAAudioFormat object { type }`
 
               The G.711 A-law format.
 
@@ -21362,41 +21073,23 @@
 
               - `"far_field"`
 
-          - `transcription: optional AudioTranscription`
+          - `transcription: optional object { language, model, prompt }`
 
-            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
-
-            - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-              Controls how long the model waits before emitting transcription text.
-              Higher values can improve transcription accuracy at the cost of latency.
-              Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-              - `"minimal"`
-
-              - `"low"`
-
-              - `"medium"`
-
-              - `"high"`
-
-              - `"xhigh"`
+            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
             - `language: optional string`
 
-              The language of the input audio. Supplying the input language in
-              [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-              will improve accuracy and latency.
+              The language of the input audio.
 
             - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+              The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
               - `string`
 
               - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-                The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+                The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
                 - `"whisper-1"`
 
@@ -21412,13 +21105,9 @@
 
             - `prompt: optional string`
 
-              An optional text to guide the model's style or continue a previous audio
-              segment.
-              For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-              For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-              Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+              The prompt configured for input audio transcription, when present.
 
-          - `turn_detection: optional RealtimeAudioInputTurnDetection`
+          - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
 
             Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -21514,7 +21203,7 @@
                 Whether or not to automatically interrupt any ongoing response with output to the default
                 conversation (i.e. `conversation` of `auto`) when a VAD start event occurs.
 
-        - `output: optional RealtimeAudioConfigOutput`
+        - `output: optional object { format, speed, voice }`
 
           - `format: optional RealtimeAudioFormats`
 
@@ -21528,18 +21217,23 @@
             This parameter is a post-processing adjustment to the audio after it is generated, it's
             also possible to prompt the model to speak faster or slower.
 
-          - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or object { id }`
+          - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
-            The voice the model uses to respond. Supported built-in voices are
-            `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
-            `marin`, and `cedar`. You may also provide a custom voice object with
-            an `id`, for example `{ "id": "voice_1234" }`. Voice cannot be changed
-            during the session once the model has responded with audio at least once.
-            We recommend `marin` and `cedar` for best quality.
+            The voice the model uses to respond. Voice cannot be changed during the
+            session once the model has responded with audio at least once. Current
+            voice options are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`,
+            `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
+            best quality.
 
             - `string`
 
             - `"alloy" or "ash" or "ballad" or 7 more`
+
+              The voice the model uses to respond. Voice cannot be changed during the
+              session once the model has responded with audio at least once. Current
+              voice options are `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`,
+              `shimmer`, `verse`, `marin`, and `cedar`. We recommend `marin` and `cedar` for
+              best quality.
 
               - `"alloy"`
 
@@ -21561,13 +21255,9 @@
 
               - `"cedar"`
 
-            - `ID object { id }`
+      - `expires_at: optional number`
 
-              Custom voice reference.
-
-              - `id: string`
-
-                The custom voice ID, e.g. `voice_1234`.
+        Expiration timestamp for the session, in seconds since epoch.
 
       - `include: optional array of "item.input_audio_transcription.logprobs"`
 
@@ -21654,15 +21344,10 @@
 
         - `"audio"`
 
-      - `parallel_tool_calls: optional boolean`
-
-        Whether the model may call multiple tools in parallel. Only supported by
-        reasoning Realtime models such as `gpt-realtime-2`.
-
       - `prompt: optional ResponsePrompt`
 
         Reference to a prompt template and its variables.
-        [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+        [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
         - `id: string`
 
@@ -21702,7 +21387,7 @@
 
           - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
             - `detail: "low" or "high" or "auto" or "original"`
 
@@ -21809,7 +21494,7 @@
 
           - `"xhigh"`
 
-      - `tool_choice: optional RealtimeToolChoiceConfig`
+      - `tool_choice: optional ToolChoiceOptions or ToolChoiceFunction or ToolChoiceMcp`
 
         How the model chooses tools. Provide one of the string modes or force a specific
         function/MCP tool.
@@ -21863,7 +21548,7 @@
 
             The name of the tool to call on the server.
 
-      - `tools: optional RealtimeToolsConfig`
+      - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_callers, 9 more }`
 
         Tools available to the model.
 
@@ -21889,10 +21574,10 @@
 
             - `"function"`
 
-        - `Mcp object { server_label, type, allowed_callers, 9 more }`
+        - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -21944,7 +21629,7 @@
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -22044,7 +21729,7 @@
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-      - `tracing: optional RealtimeTracingConfig`
+      - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
 
         Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
         tracing is enabled for a session, the configuration cannot be modified.
@@ -22087,7 +21772,7 @@
 
         Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-        - `RealtimeTruncationStrategy = "auto" or "disabled"`
+        - `"auto" or "disabled"`
 
           The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -22095,7 +21780,7 @@
 
           - `"disabled"`
 
-        - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+        - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
           Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -22117,21 +21802,29 @@
 
               Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
 
-    - `RealtimeTranscriptionSessionCreateRequest object { type, audio, include }`
+    - `RealtimeTranscriptionSessionCreateResponse object { id, object, type, 3 more }`
 
-      Realtime transcription session object configuration.
+      A Realtime transcription session configuration object.
+
+      - `id: string`
+
+        Unique identifier for the session that looks like `sess_1234567890abcdef`.
+
+      - `object: string`
+
+        The object type. Always `realtime.transcription_session`.
 
       - `type: "transcription"`
 
-        The type of session to create. Always `transcription` for transcription sessions.
+        The type of session. Always `transcription` for transcription sessions.
 
         - `"transcription"`
 
-      - `audio: optional RealtimeTranscriptionSessionAudio`
+      - `audio: optional object { input }`
 
-        Configuration for input and output audio.
+        Configuration for input audio for the session.
 
-        - `input: optional RealtimeTranscriptionSessionAudioInput`
+        - `input: optional object { format, noise_reduction, transcription, turn_detection }`
 
           - `format: optional RealtimeAudioFormats`
 
@@ -22139,119 +21832,82 @@
 
           - `noise_reduction: optional object { type }`
 
-            Configuration for input audio noise reduction. This can be set to `null` to turn off.
-            Noise reduction filters audio added to the input audio buffer before it is sent to VAD and the model.
-            Filtering the audio can improve VAD and turn detection accuracy (reducing false positives) and model performance by improving perception of the input audio.
+            Configuration for input audio noise reduction.
 
             - `type: optional NoiseReductionType`
 
               Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-          - `transcription: optional AudioTranscription`
+          - `transcription: optional object { language, model, prompt }`
 
-            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+            Configuration of the transcription model.
 
-          - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
+            - `language: optional string`
 
-            Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
+              The language of the input audio.
 
-            Server VAD means that the model will detect the start and end of speech based on audio volume and respond at the end of user speech.
+            - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-            Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
+              The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
-            For `gpt-realtime-whisper` transcription sessions, turn detection must be
-            set to `null`; VAD is not supported.
+              - `string`
 
-            - `ServerVad object { type, create_response, idle_timeout_ms, 4 more }`
+              - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-              Server-side voice activity detection (VAD) which flips on when user speech is detected and off after a period of silence.
+                The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
-              - `type: "server_vad"`
+                - `"whisper-1"`
 
-                Type of turn detection, `server_vad` to turn on simple Server VAD.
+                - `"gpt-4o-mini-transcribe"`
 
-                - `"server_vad"`
+                - `"gpt-4o-mini-transcribe-2025-12-15"`
 
-              - `create_response: optional boolean`
+                - `"gpt-4o-transcribe"`
 
-                Whether or not to automatically generate a response when a VAD stop event occurs. If `interrupt_response` is set to `false` this may fail to create a response if the model is already responding.
+                - `"gpt-4o-transcribe-diarize"`
 
-                If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
+                - `"gpt-realtime-whisper"`
 
-              - `idle_timeout_ms: optional number`
+            - `prompt: optional string`
 
-                Optional timeout after which a model response will be triggered automatically. This is
-                useful for situations in which a long pause from the user is unexpected, such as a phone
-                call. The model will effectively prompt the user to continue the conversation based
-                on the current context.
+              The prompt configured for input audio transcription, when present.
 
-                The timeout value will be applied after the last model response's audio has finished playing,
-                i.e. it's set to the `response.done` time plus audio playback duration.
+          - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
 
-                An `input_audio_buffer.timeout_triggered` event (plus events
-                associated with the Response) will be emitted when the timeout is reached.
-                Idle timeout is currently only supported for `server_vad` mode.
+            Configuration for turn detection. Can be set to `null` to turn off. Server
+            VAD means that the model will detect the start and end of speech based on
+            audio volume and respond at the end of user speech. For `gpt-realtime-whisper`, this must be `null`; VAD is not supported.
 
-              - `interrupt_response: optional boolean`
+            - `prefix_padding_ms: optional number`
 
-                Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
-                conversation (i.e. `conversation` of `auto`) when a VAD start event occurs. If `true` then the response will be cancelled, otherwise it will continue until complete.
+              Amount of audio to include before the VAD detected speech (in
+              milliseconds). Defaults to 300ms.
 
-                If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
+            - `silence_duration_ms: optional number`
 
-              - `prefix_padding_ms: optional number`
+              Duration of silence to detect speech stop (in milliseconds). Defaults
+              to 500ms. With shorter values the model will respond more quickly,
+              but may jump in on short pauses from the user.
 
-                Used only for `server_vad` mode. Amount of audio to include before the VAD detected speech (in
-                milliseconds). Defaults to 300ms.
+            - `threshold: optional number`
 
-              - `silence_duration_ms: optional number`
+              Activation threshold for VAD (0.0 to 1.0), this defaults to 0.5. A
+              higher threshold will require louder audio to activate the model, and
+              thus might perform better in noisy environments.
 
-                Used only for `server_vad` mode. Duration of silence to detect speech stop (in milliseconds). Defaults
-                to 500ms. With shorter values the model will respond more quickly,
-                but may jump in on short pauses from the user.
+            - `type: optional string`
 
-              - `threshold: optional number`
+              Type of turn detection, only `server_vad` is currently supported.
 
-                Used only for `server_vad` mode. Activation threshold for VAD (0.0 to 1.0), this defaults to 0.5. A
-                higher threshold will require louder audio to activate the model, and
-                thus might perform better in noisy environments.
+      - `expires_at: optional number`
 
-            - `SemanticVad object { type, create_response, eagerness, interrupt_response }`
-
-              Server-side semantic turn detection which uses a model to determine when the user has finished speaking.
-
-              - `type: "semantic_vad"`
-
-                Type of turn detection, `semantic_vad` to turn on Semantic VAD.
-
-                - `"semantic_vad"`
-
-              - `create_response: optional boolean`
-
-                Whether or not to automatically generate a response when a VAD stop event occurs.
-
-              - `eagerness: optional "low" or "medium" or "high" or "auto"`
-
-                Used only for `semantic_vad` mode. The eagerness of the model to respond. `low` will wait longer for the user to continue speaking, `high` will respond more quickly. `auto` is the default and is equivalent to `medium`. `low`, `medium`, and `high` have max timeouts of 8s, 4s, and 2s respectively.
-
-                - `"low"`
-
-                - `"medium"`
-
-                - `"high"`
-
-                - `"auto"`
-
-              - `interrupt_response: optional boolean`
-
-                Whether or not to automatically interrupt any ongoing response with output to the default
-                conversation (i.e. `conversation` of `auto`) when a VAD start event occurs.
+        Expiration timestamp for the session, in seconds since epoch.
 
       - `include: optional array of "item.input_audio_transcription.logprobs"`
 
         Additional fields to include in server outputs.
 
-        `item.input_audio_transcription.logprobs`: Include logprobs for input audio transcription.
+        - `item.input_audio_transcription.logprobs`: Include logprobs for input audio transcription.
 
         - `"item.input_audio_transcription.logprobs"`
 
@@ -22356,7 +22012,7 @@
 
         An optional text to guide the model's style or continue a previous audio
         segment.
-        For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+        For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
         For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
         Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -22436,39 +22092,23 @@
 
       The format of input audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
 
-    - `input_audio_transcription: optional AudioTranscription`
+    - `input_audio_transcription: optional object { language, model, prompt }`
 
-      - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-        Controls how long the model waits before emitting transcription text.
-        Higher values can improve transcription accuracy at the cost of latency.
-        Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-        - `"minimal"`
-
-        - `"low"`
-
-        - `"medium"`
-
-        - `"high"`
-
-        - `"xhigh"`
+      Configuration of the transcription model.
 
       - `language: optional string`
 
-        The language of the input audio. Supplying the input language in
-        [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-        will improve accuracy and latency.
+        The language of the input audio.
 
       - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-        The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+        The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
         - `string`
 
         - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+          The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
           - `"whisper-1"`
 
@@ -22484,11 +22124,7 @@
 
       - `prompt: optional string`
 
-        An optional text to guide the model's style or continue a previous audio
-        segment.
-        For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-        For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-        Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+        The prompt configured for input audio transcription, when present.
 
     - `modalities: optional array of "text" or "audio"`
 
@@ -22538,7 +22174,19 @@
 
 **post** `/realtime/client_secrets`
 
-Create client secret
+Create a Realtime client secret with an associated session configuration.
+
+Client secrets are short-lived tokens that can be passed to a client app,
+such as a web frontend or mobile client, which grants access to the Realtime API without
+leaking your main API key. You can configure a custom TTL for each client secret.
+
+You can also attach session configuration options to the client secret, which will be
+applied to any sessions created using that client secret, but these can also be overridden
+by the client connection.
+
+[Learn more about authentication with client secrets over WebRTC](/docs/guides/realtime-webrtc).
+
+Returns the created client secret and the effective session object. The client secret is a string that looks like `ek_1234`.
 
 ### Body Parameters
 
@@ -22584,7 +22232,7 @@ Create client secret
 
           The format of the input audio.
 
-          - `AudioPCM object { rate, type }`
+          - `PCMAudioFormat object { rate, type }`
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -22600,7 +22248,7 @@ Create client secret
 
               - `"audio/pcm"`
 
-          - `AudioPCMU object { type }`
+          - `PCMUAudioFormat object { type }`
 
             The G.711 μ-law format.
 
@@ -22610,7 +22258,7 @@ Create client secret
 
               - `"audio/pcmu"`
 
-          - `AudioPCMA object { type }`
+          - `PCMAAudioFormat object { type }`
 
             The G.711 A-law format.
 
@@ -22636,7 +22284,7 @@ Create client secret
 
         - `transcription: optional AudioTranscription`
 
-          Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+          Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
           - `delay: optional "minimal" or "low" or "medium" or 2 more`
 
@@ -22686,7 +22334,7 @@ Create client secret
 
             An optional text to guide the model's style or continue a previous audio
             segment.
-            For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+            For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
             For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
             Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -22934,7 +22582,7 @@ Create client secret
     - `prompt: optional ResponsePrompt`
 
       Reference to a prompt template and its variables.
-      [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+      [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
       - `id: string`
 
@@ -22974,7 +22622,7 @@ Create client secret
 
         - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+          An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
           - `detail: "low" or "high" or "auto" or "original"`
 
@@ -23161,10 +22809,10 @@ Create client secret
 
           - `"function"`
 
-      - `Mcp object { server_label, type, allowed_callers, 9 more }`
+      - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
-        (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+        (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
         - `server_label: string`
 
@@ -23216,7 +22864,7 @@ Create client secret
 
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-          about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+          about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
           Currently supported `connector_id` values are:
 
@@ -23359,7 +23007,7 @@ Create client secret
 
       Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-      - `RealtimeTruncationStrategy = "auto" or "disabled"`
+      - `"auto" or "disabled"`
 
         The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -23367,7 +23015,7 @@ Create client secret
 
         - `"disabled"`
 
-      - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+      - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
         Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -23421,7 +23069,7 @@ Create client secret
 
         - `transcription: optional AudioTranscription`
 
-          Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+          Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
         - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
 
@@ -23567,7 +23215,7 @@ Create client secret
 
           The format of the input audio.
 
-          - `AudioPCM object { rate, type }`
+          - `PCMAudioFormat object { rate, type }`
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -23583,7 +23231,7 @@ Create client secret
 
               - `"audio/pcm"`
 
-          - `AudioPCMU object { type }`
+          - `PCMUAudioFormat object { type }`
 
             The G.711 μ-law format.
 
@@ -23593,7 +23241,7 @@ Create client secret
 
               - `"audio/pcmu"`
 
-          - `AudioPCMA object { type }`
+          - `PCMAAudioFormat object { type }`
 
             The G.711 A-law format.
 
@@ -23617,39 +23265,23 @@ Create client secret
 
             - `"far_field"`
 
-        - `transcription: optional AudioTranscription`
+        - `transcription: optional object { language, model, prompt }`
 
-          - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-            Controls how long the model waits before emitting transcription text.
-            Higher values can improve transcription accuracy at the cost of latency.
-            Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-            - `"minimal"`
-
-            - `"low"`
-
-            - `"medium"`
-
-            - `"high"`
-
-            - `"xhigh"`
+          Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
           - `language: optional string`
 
-            The language of the input audio. Supplying the input language in
-            [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-            will improve accuracy and latency.
+            The language of the input audio.
 
           - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+            The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
             - `string`
 
             - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+              The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
               - `"whisper-1"`
 
@@ -23665,11 +23297,7 @@ Create client secret
 
           - `prompt: optional string`
 
-            An optional text to guide the model's style or continue a previous audio
-            segment.
-            For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-            For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-            Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+            The prompt configured for input audio transcription, when present.
 
         - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
 
@@ -23911,7 +23539,7 @@ Create client secret
     - `prompt: optional ResponsePrompt`
 
       Reference to a prompt template and its variables.
-      [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+      [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
       - `id: string`
 
@@ -23951,7 +23579,7 @@ Create client secret
 
         - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+          An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
           - `detail: "low" or "high" or "auto" or "original"`
 
@@ -24141,7 +23769,7 @@ Create client secret
       - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
-        (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+        (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
         - `server_label: string`
 
@@ -24193,7 +23821,7 @@ Create client secret
 
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-          about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+          about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
           Currently supported `connector_id` values are:
 
@@ -24336,7 +23964,7 @@ Create client secret
 
       Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-      - `RealtimeTruncationStrategy = "auto" or "disabled"`
+      - `"auto" or "disabled"`
 
         The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -24344,7 +23972,7 @@ Create client secret
 
         - `"disabled"`
 
-      - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+      - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
         Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -24402,7 +24030,39 @@ Create client secret
 
             Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-        - `transcription: optional AudioTranscription`
+        - `transcription: optional object { language, model, prompt }`
+
+          Configuration of the transcription model.
+
+          - `language: optional string`
+
+            The language of the input audio.
+
+          - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
+
+            The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+
+            - `string`
+
+            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
+
+              The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+
+              - `"whisper-1"`
+
+              - `"gpt-4o-mini-transcribe"`
+
+              - `"gpt-4o-mini-transcribe-2025-12-15"`
+
+              - `"gpt-4o-transcribe"`
+
+              - `"gpt-4o-transcribe-diarize"`
+
+              - `"gpt-realtime-whisper"`
+
+          - `prompt: optional string`
+
+            The prompt configured for input audio transcription, when present.
 
         - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
 
@@ -24475,7 +24135,6 @@ curl https://api.openai.com/v1/realtime/client_secrets \
           "type": "near_field"
         },
         "transcription": {
-          "delay": "minimal",
           "language": "language",
           "model": "whisper-1",
           "prompt": "prompt"
@@ -24636,7 +24295,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         The format of the input audio.
 
-        - `AudioPCM object { rate, type }`
+        - `PCMAudioFormat object { rate, type }`
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -24652,7 +24311,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             - `"audio/pcm"`
 
-        - `AudioPCMU object { type }`
+        - `PCMUAudioFormat object { type }`
 
           The G.711 μ-law format.
 
@@ -24662,7 +24321,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             - `"audio/pcmu"`
 
-        - `AudioPCMA object { type }`
+        - `PCMAAudioFormat object { type }`
 
           The G.711 A-law format.
 
@@ -24686,39 +24345,23 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           - `"far_field"`
 
-      - `transcription: optional AudioTranscription`
+      - `transcription: optional object { language, model, prompt }`
 
-        - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-          Controls how long the model waits before emitting transcription text.
-          Higher values can improve transcription accuracy at the cost of latency.
-          Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-          - `"minimal"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-          - `"xhigh"`
+        Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
         - `language: optional string`
 
-          The language of the input audio. Supplying the input language in
-          [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-          will improve accuracy and latency.
+          The language of the input audio.
 
         - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+          The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
           - `string`
 
           - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+            The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
             - `"whisper-1"`
 
@@ -24734,11 +24377,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         - `prompt: optional string`
 
-          An optional text to guide the model's style or continue a previous audio
-          segment.
-          For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-          For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-          Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+          The prompt configured for input audio transcription, when present.
 
       - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
 
@@ -24980,7 +24619,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
   - `prompt: optional ResponsePrompt`
 
     Reference to a prompt template and its variables.
-    [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+    [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
     - `id: string`
 
@@ -25020,7 +24659,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
       - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-        An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+        An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
         - `detail: "low" or "high" or "auto" or "original"`
 
@@ -25210,7 +24849,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
     - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
       Give the model access to additional tools via remote Model Context Protocol
-      (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+      (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
       - `server_label: string`
 
@@ -25262,7 +24901,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         Identifier for service connectors, like those available in ChatGPT. One of
         `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-        about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+        about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
         Currently supported `connector_id` values are:
 
@@ -25405,7 +25044,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
     Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-    - `RealtimeTruncationStrategy = "auto" or "disabled"`
+    - `"auto" or "disabled"`
 
       The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -25413,7 +25052,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
       - `"disabled"`
 
-    - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+    - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
       Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -25465,7 +25104,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
-        - `AudioPCM object { rate, type }`
+        - `PCMAudioFormat object { rate, type }`
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -25481,7 +25120,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             - `"audio/pcm"`
 
-        - `AudioPCMU object { type }`
+        - `PCMUAudioFormat object { type }`
 
           The G.711 μ-law format.
 
@@ -25491,7 +25130,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             - `"audio/pcmu"`
 
-        - `AudioPCMA object { type }`
+        - `PCMAAudioFormat object { type }`
 
           The G.711 A-law format.
 
@@ -25513,39 +25152,23 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           - `"far_field"`
 
-      - `transcription: optional AudioTranscription`
+      - `transcription: optional object { language, model, prompt }`
 
-        - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-          Controls how long the model waits before emitting transcription text.
-          Higher values can improve transcription accuracy at the cost of latency.
-          Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-          - `"minimal"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-          - `"xhigh"`
+        Configuration of the transcription model.
 
         - `language: optional string`
 
-          The language of the input audio. Supplying the input language in
-          [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-          will improve accuracy and latency.
+          The language of the input audio.
 
         - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+          The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
           - `string`
 
           - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+            The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
             - `"whisper-1"`
 
@@ -25561,11 +25184,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         - `prompt: optional string`
 
-          An optional text to guide the model's style or continue a previous audio
-          segment.
-          For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-          For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-          Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+          The prompt configured for input audio transcription, when present.
 
       - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
 
@@ -25679,7 +25298,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             The format of the input audio.
 
-            - `AudioPCM object { rate, type }`
+            - `PCMAudioFormat object { rate, type }`
 
               The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -25695,7 +25314,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
                 - `"audio/pcm"`
 
-            - `AudioPCMU object { type }`
+            - `PCMUAudioFormat object { type }`
 
               The G.711 μ-law format.
 
@@ -25705,7 +25324,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
                 - `"audio/pcmu"`
 
-            - `AudioPCMA object { type }`
+            - `PCMAAudioFormat object { type }`
 
               The G.711 A-law format.
 
@@ -25729,39 +25348,23 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               - `"far_field"`
 
-          - `transcription: optional AudioTranscription`
+          - `transcription: optional object { language, model, prompt }`
 
-            - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-              Controls how long the model waits before emitting transcription text.
-              Higher values can improve transcription accuracy at the cost of latency.
-              Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-              - `"minimal"`
-
-              - `"low"`
-
-              - `"medium"`
-
-              - `"high"`
-
-              - `"xhigh"`
+            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
             - `language: optional string`
 
-              The language of the input audio. Supplying the input language in
-              [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-              will improve accuracy and latency.
+              The language of the input audio.
 
             - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+              The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
               - `string`
 
               - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-                The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+                The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
                 - `"whisper-1"`
 
@@ -25777,11 +25380,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             - `prompt: optional string`
 
-              An optional text to guide the model's style or continue a previous audio
-              segment.
-              For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-              For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-              Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+              The prompt configured for input audio transcription, when present.
 
           - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
 
@@ -26023,7 +25622,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
       - `prompt: optional ResponsePrompt`
 
         Reference to a prompt template and its variables.
-        [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+        [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
         - `id: string`
 
@@ -26063,7 +25662,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
             - `detail: "low" or "high" or "auto" or "original"`
 
@@ -26253,7 +25852,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
         - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -26305,7 +25904,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -26448,7 +26047,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-        - `RealtimeTruncationStrategy = "auto" or "disabled"`
+        - `"auto" or "disabled"`
 
           The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -26456,7 +26055,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           - `"disabled"`
 
-        - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+        - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
           Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -26514,7 +26113,39 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-          - `transcription: optional AudioTranscription`
+          - `transcription: optional object { language, model, prompt }`
+
+            Configuration of the transcription model.
+
+            - `language: optional string`
+
+              The language of the input audio.
+
+            - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
+
+              The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+
+              - `string`
+
+              - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
+
+                The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+
+                - `"whisper-1"`
+
+                - `"gpt-4o-mini-transcribe"`
+
+                - `"gpt-4o-mini-transcribe-2025-12-15"`
+
+                - `"gpt-4o-transcribe"`
+
+                - `"gpt-4o-transcribe-diarize"`
+
+                - `"gpt-realtime-whisper"`
+
+            - `prompt: optional string`
+
+              The prompt configured for input audio transcription, when present.
 
           - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
 
@@ -26565,7 +26196,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
 **post** `/realtime/calls/{call_id}/accept`
 
-Accept call
+Accept an incoming SIP call and configure the realtime session that will
+handle it.
 
 ### Path Parameters
 
@@ -26589,7 +26221,7 @@ Accept call
 
       The format of the input audio.
 
-      - `AudioPCM object { rate, type }`
+      - `PCMAudioFormat object { rate, type }`
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -26605,7 +26237,7 @@ Accept call
 
           - `"audio/pcm"`
 
-      - `AudioPCMU object { type }`
+      - `PCMUAudioFormat object { type }`
 
         The G.711 μ-law format.
 
@@ -26615,7 +26247,7 @@ Accept call
 
           - `"audio/pcmu"`
 
-      - `AudioPCMA object { type }`
+      - `PCMAAudioFormat object { type }`
 
         The G.711 A-law format.
 
@@ -26641,7 +26273,7 @@ Accept call
 
     - `transcription: optional AudioTranscription`
 
-      Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+      Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
       - `delay: optional "minimal" or "low" or "medium" or 2 more`
 
@@ -26691,7 +26323,7 @@ Accept call
 
         An optional text to guide the model's style or continue a previous audio
         segment.
-        For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+        For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
         For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
         Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -26939,7 +26571,7 @@ Accept call
 - `prompt: optional ResponsePrompt`
 
   Reference to a prompt template and its variables.
-  [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+  [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
   - `id: string`
 
@@ -26979,7 +26611,7 @@ Accept call
 
     - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-      An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+      An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
       - `detail: "low" or "high" or "auto" or "original"`
 
@@ -27166,10 +26798,10 @@ Accept call
 
       - `"function"`
 
-  - `Mcp object { server_label, type, allowed_callers, 9 more }`
+  - `McpTool object { server_label, type, allowed_callers, 9 more }`
 
     Give the model access to additional tools via remote Model Context Protocol
-    (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+    (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
     - `server_label: string`
 
@@ -27221,7 +26853,7 @@ Accept call
 
       Identifier for service connectors, like those available in ChatGPT. One of
       `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-      about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+      about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
       Currently supported `connector_id` values are:
 
@@ -27364,7 +26996,7 @@ Accept call
 
   Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-  - `RealtimeTruncationStrategy = "auto" or "disabled"`
+  - `"auto" or "disabled"`
 
     The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -27372,7 +27004,7 @@ Accept call
 
     - `"disabled"`
 
-  - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+  - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
     Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -27422,7 +27054,8 @@ curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/accept \
 
 **post** `/realtime/calls/{call_id}/hangup`
 
-Hang up call
+End an active Realtime API call, whether it was initiated over SIP or
+WebRTC.
 
 ### Path Parameters
 
@@ -27447,7 +27080,7 @@ curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup \
 
 **post** `/realtime/calls/{call_id}/refer`
 
-Refer call
+Transfer an active SIP call to a new destination using the SIP REFER verb.
 
 ### Path Parameters
 
@@ -27484,7 +27117,7 @@ curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/refer \
 
 **post** `/realtime/calls/{call_id}/reject`
 
-Reject call
+Decline an incoming SIP call by returning a SIP status code to the caller.
 
 ### Path Parameters
 
@@ -27522,7 +27155,15 @@ curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/reject \
 
 **post** `/realtime/translations/client_secrets`
 
-Create translation client secret
+Create a Realtime translation client secret with an associated translation session configuration.
+
+Client secrets are short-lived tokens that can be passed to a client app,
+such as a web frontend or mobile client, which grants access to the Realtime
+Translation API without leaking your main API key. You can configure a custom
+TTL for each client secret.
+
+Returns the created client secret and the effective translation session object.
+The client secret is a string that looks like `ek_1234`.
 
 ### Body Parameters
 
@@ -27759,7 +27400,15 @@ curl -X POST https://api.openai.com/v1/realtime/translations/client_secrets \
 
 **post** `/realtime/sessions`
 
-Create session
+Create an ephemeral API token for use in client-side applications with the
+Realtime API. Can be configured with the same session parameters as the
+`session.update` client event.
+
+It responds with a session object, plus a `client_secret` key which contains
+a usable ephemeral API token that can be used to authenticate browser clients
+for the Realtime API.
+
+Returns the created Realtime session object, plus an ephemeral key.
 
 ### Body Parameters
 
@@ -27828,7 +27477,7 @@ Create session
 - `prompt: optional ResponsePrompt`
 
   Reference to a prompt template and its variables.
-  [Learn more](https://platform.openai.com/docs/guides/text?api-mode=responses#reusable-prompts).
+  [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
 
   - `id: string`
 
@@ -27868,7 +27517,7 @@ Create session
 
     - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-      An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+      An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
       - `detail: "low" or "high" or "auto" or "original"`
 
@@ -28038,7 +27687,7 @@ Create session
 
   Truncation can be disabled entirely, which means the server will never truncate but would instead return an error if the conversation exceeds the model's input token limit.
 
-  - `RealtimeTruncationStrategy = "auto" or "disabled"`
+  - `"auto" or "disabled"`
 
     The truncation strategy to use for the session. `auto` is the default truncation strategy. `disabled` will disable truncation and emit errors when the conversation exceeds the input token limit.
 
@@ -28046,7 +27695,7 @@ Create session
 
     - `"disabled"`
 
-  - `RealtimeTruncationRetentionRatio object { retention_ratio, type, token_limits }`
+  - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
     Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -28151,7 +27800,7 @@ Create session
 
       The PCM audio format. Only a 24kHz sample rate is supported.
 
-      - `AudioPCM object { rate, type }`
+      - `PCMAudioFormat object { rate, type }`
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -28167,7 +27816,7 @@ Create session
 
           - `"audio/pcm"`
 
-      - `AudioPCMU object { type }`
+      - `PCMUAudioFormat object { type }`
 
         The G.711 μ-law format.
 
@@ -28177,7 +27826,7 @@ Create session
 
           - `"audio/pcmu"`
 
-      - `AudioPCMA object { type }`
+      - `PCMAAudioFormat object { type }`
 
         The G.711 A-law format.
 
@@ -28199,39 +27848,23 @@ Create session
 
         - `"far_field"`
 
-    - `transcription: optional AudioTranscription`
+    - `transcription: optional object { language, model, prompt }`
 
-      - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-        Controls how long the model waits before emitting transcription text.
-        Higher values can improve transcription accuracy at the cost of latency.
-        Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-        - `"minimal"`
-
-        - `"low"`
-
-        - `"medium"`
-
-        - `"high"`
-
-        - `"xhigh"`
+      Configuration for input audio transcription.
 
       - `language: optional string`
 
-        The language of the input audio. Supplying the input language in
-        [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-        will improve accuracy and latency.
+        The language of the input audio.
 
       - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-        The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+        The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
         - `string`
 
         - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+          The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
           - `"whisper-1"`
 
@@ -28247,11 +27880,7 @@ Create session
 
       - `prompt: optional string`
 
-        An optional text to guide the model's style or continue a previous audio
-        segment.
-        For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-        For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-        Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+        The prompt configured for input audio transcription, when present.
 
     - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
 
@@ -28476,7 +28105,6 @@ curl https://api.openai.com/v1/realtime/sessions \
         "type": "near_field"
       },
       "transcription": {
-        "delay": "minimal",
         "language": "language",
         "model": "whisper-1",
         "prompt": "prompt"
@@ -28591,7 +28219,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
-        - `AudioPCM object { rate, type }`
+        - `PCMAudioFormat object { rate, type }`
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -28607,7 +28235,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
             - `"audio/pcm"`
 
-        - `AudioPCMU object { type }`
+        - `PCMUAudioFormat object { type }`
 
           The G.711 μ-law format.
 
@@ -28617,7 +28245,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
             - `"audio/pcmu"`
 
-        - `AudioPCMA object { type }`
+        - `PCMAAudioFormat object { type }`
 
           The G.711 A-law format.
 
@@ -28639,39 +28267,23 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
           - `"far_field"`
 
-      - `transcription: optional AudioTranscription`
+      - `transcription: optional object { language, model, prompt }`
 
-        - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-          Controls how long the model waits before emitting transcription text.
-          Higher values can improve transcription accuracy at the cost of latency.
-          Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-          - `"minimal"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-          - `"xhigh"`
+        Configuration for input audio transcription.
 
         - `language: optional string`
 
-          The language of the input audio. Supplying the input language in
-          [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-          will improve accuracy and latency.
+          The language of the input audio.
 
         - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+          The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
           - `string`
 
           - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+            The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
             - `"whisper-1"`
 
@@ -28687,11 +28299,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
         - `prompt: optional string`
 
-          An optional text to guide the model's style or continue a previous audio
-          segment.
-          For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-          For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-          Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+          The prompt configured for input audio transcription, when present.
 
       - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
 
@@ -28893,7 +28501,15 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
 **post** `/realtime/transcription_sessions`
 
-Create transcription session
+Create an ephemeral API token for use in client-side applications with the
+Realtime API specifically for realtime transcriptions.
+Can be configured with the same session parameters as the `transcription_session.update` client event.
+
+It responds with a session object, plus a `client_secret` key which contains
+a usable ephemeral API token that can be used to authenticate browser clients
+for the Realtime API.
+
+Returns the created Realtime transcription session object, plus an ephemeral key.
 
 ### Body Parameters
 
@@ -28982,7 +28598,7 @@ Create transcription session
 
     An optional text to guide the model's style or continue a previous audio
     segment.
-    For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
+    For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
     For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
     Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
@@ -29035,39 +28651,23 @@ Create transcription session
 
   The format of input audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
 
-- `input_audio_transcription: optional AudioTranscription`
+- `input_audio_transcription: optional object { language, model, prompt }`
 
-  - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-    Controls how long the model waits before emitting transcription text.
-    Higher values can improve transcription accuracy at the cost of latency.
-    Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-    - `"minimal"`
-
-    - `"low"`
-
-    - `"medium"`
-
-    - `"high"`
-
-    - `"xhigh"`
+  Configuration of the transcription model.
 
   - `language: optional string`
 
-    The language of the input audio. Supplying the input language in
-    [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-    will improve accuracy and latency.
+    The language of the input audio.
 
   - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-    The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+    The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
     - `string`
 
     - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-      The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+      The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
       - `"whisper-1"`
 
@@ -29083,11 +28683,7 @@ Create transcription session
 
   - `prompt: optional string`
 
-    An optional text to guide the model's style or continue a previous audio
-    segment.
-    For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-    For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-    Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+    The prompt configured for input audio transcription, when present.
 
 - `modalities: optional array of "text" or "audio"`
 
@@ -29144,7 +28740,6 @@ curl https://api.openai.com/v1/realtime/transcription_sessions \
   },
   "input_audio_format": "input_audio_format",
   "input_audio_transcription": {
-    "delay": "minimal",
     "language": "language",
     "model": "whisper-1",
     "prompt": "prompt"
@@ -29225,39 +28820,23 @@ curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
 
     The format of input audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
 
-  - `input_audio_transcription: optional AudioTranscription`
+  - `input_audio_transcription: optional object { language, model, prompt }`
 
-    - `delay: optional "minimal" or "low" or "medium" or 2 more`
-
-      Controls how long the model waits before emitting transcription text.
-      Higher values can improve transcription accuracy at the cost of latency.
-      Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
-
-      - `"minimal"`
-
-      - `"low"`
-
-      - `"medium"`
-
-      - `"high"`
-
-      - `"xhigh"`
+    Configuration of the transcription model.
 
     - `language: optional string`
 
-      The language of the input audio. Supplying the input language in
-      [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-      will improve accuracy and latency.
+      The language of the input audio.
 
     - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-      The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+      The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
       - `string`
 
       - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-        The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+        The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
         - `"whisper-1"`
 
@@ -29273,11 +28852,7 @@ curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
 
     - `prompt: optional string`
 
-      An optional text to guide the model's style or continue a previous audio
-      segment.
-      For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-      For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
-      Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
+      The prompt configured for input audio transcription, when present.
 
   - `modalities: optional array of "text" or "audio"`
 

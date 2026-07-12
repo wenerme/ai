@@ -2,7 +2,7 @@
 
 **post** `/vector_stores/{vector_store_id}/files`
 
-Create vector store file
+Create a vector store file by attaching a [File](/docs/api-reference/files) to a [vector store](/docs/api-reference/vector-stores/object).
 
 ### Path Parameters
 
@@ -12,7 +12,7 @@ Create vector store file
 
 - `file_id: string`
 
-  A [File](https://platform.openai.com/docs/api-reference/files) ID that the vector store should use. Useful for tools like `file_search` that can access files. For multi-file ingestion, we recommend [`file_batches`](https://platform.openai.com/docs/api-reference/vector-stores-file-batches/createBatch) to minimize per-vector-store write requests.
+  A [File](/docs/api-reference/files) ID that the vector store should use. Useful for tools like `file_search` that can access files. For multi-file ingestion, we recommend [`file_batches`](/docs/api-reference/vector-stores-file-batches/createBatch) to minimize per-vector-store write requests.
 
 - `attributes: optional map[string or number or boolean]`
 
@@ -30,7 +30,7 @@ Create vector store file
 
 - `chunking_strategy: optional FileChunkingStrategyParam`
 
-  The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
+  The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
   - `AutoFileChunkingStrategyParam object { type }`
 
@@ -120,7 +120,7 @@ Create vector store file
 
   - `vector_store_id: string`
 
-    The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) that the [File](https://platform.openai.com/docs/api-reference/files) is attached to.
+    The ID of the [vector store](/docs/api-reference/vector-stores/object) that the [File](/docs/api-reference/files) is attached to.
 
   - `attributes: optional map[string or number or boolean]`
 
@@ -136,7 +136,7 @@ Create vector store file
 
     - `boolean`
 
-  - `chunking_strategy: optional FileChunkingStrategy`
+  - `chunking_strategy: optional StaticFileChunkingStrategyObject or OtherFileChunkingStrategyObject`
 
     The strategy used to chunk the file.
 

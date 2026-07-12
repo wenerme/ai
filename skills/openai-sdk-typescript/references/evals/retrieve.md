@@ -4,7 +4,7 @@
 
 **get** `/evals/{eval_id}`
 
-Get an eval
+Get an evaluation by ID.
 
 ### Parameters
 

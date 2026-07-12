@@ -6,7 +6,7 @@
 
 **get** `/threads/{thread_id}/runs`
 
-List runs
+Returns a list of runs belonging to a thread.
 
 ### Parameters
 
@@ -252,7 +252,27 @@ List runs
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -296,9 +316,81 @@ List runs
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -402,11 +494,13 @@ print(page.id)
       },
       "response_format": "auto",
       "started_at": 0,
-      "status": {},
+      "status": "queued",
       "thread_id": "thread_id",
       "tool_choice": "none",
       "tools": [
-        {}
+        {
+          "type": "code_interpreter"
+        }
       ],
       "truncation_strategy": {
         "type": "auto",
@@ -554,7 +648,7 @@ print(runs)
 
 **post** `/threads/{thread_id}/runs`
 
-Create run
+Create a run.
 
 ### Parameters
 
@@ -596,7 +690,7 @@ Create run
 
         References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
 
-        - `image_file: ImageFileParam`
+        - `image_file: ImageFile`
 
           - `file_id: str`
 
@@ -622,7 +716,7 @@ Create run
 
         References an image URL in the content of a message.
 
-        - `image_url: ImageURLParam`
+        - `image_url: ImageURL`
 
           - `url: str`
 
@@ -1050,9 +1144,75 @@ Create run
 
         The name of the function to call.
 
-- `tools: Optional[Iterable[object]]`
+- `tools: Optional[Iterable[AssistantToolParam]]`
 
   Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
+
+  - `class CodeInterpreterTool: …`
+
+  - `class FileSearchTool: …`
+
+    - `type: Literal["file_search"]`
+
+      The type of tool being defined: `file_search`
+
+      - `"file_search"`
+
+    - `file_search: Optional[FileSearch]`
+
+      Overrides for the file search tool.
+
+      - `max_num_results: Optional[int]`
+
+        The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+        Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+      - `ranking_options: Optional[FileSearchRankingOptions]`
+
+        The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+        See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `score_threshold: float`
+
+          The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+        - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+          The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+          - `"auto"`
+
+          - `"default_2024_08_21"`
+
+  - `class FunctionTool: …`
+
+    - `function: FunctionDefinition`
+
+      - `name: str`
+
+        The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+      - `description: Optional[str]`
+
+        A description of what the function does, used by the model to choose when and how to call the function.
+
+      - `parameters: Optional[FunctionParameters]`
+
+        The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+        Omitting `parameters` defines a function with an empty parameter list.
+
+      - `strict: Optional[bool]`
+
+        Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+    - `type: Literal["function"]`
+
+      The type of tool being defined: `function`
+
+      - `"function"`
 
 - `top_p: Optional[float]`
 
@@ -1296,7 +1456,27 @@ Create run
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -1340,9 +1520,81 @@ Create run
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -1444,11 +1696,13 @@ for run in client.beta.threads.runs.create(
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": {},
+  "status": "queued",
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {}
+    {
+      "type": "code_interpreter"
+    }
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -1674,7 +1928,7 @@ data: [DONE]
 
 **get** `/threads/{thread_id}/runs/{run_id}`
 
-Retrieve run
+Retrieves a run.
 
 ### Parameters
 
@@ -1902,7 +2156,27 @@ Retrieve run
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -1946,9 +2220,81 @@ Retrieve run
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -2050,11 +2396,13 @@ print(run.id)
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": {},
+  "status": "queued",
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {}
+    {
+      "type": "code_interpreter"
+    }
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -2134,7 +2482,7 @@ print(run)
 
 **post** `/threads/{thread_id}/runs/{run_id}`
 
-Modify run
+Modifies a run.
 
 ### Parameters
 
@@ -2371,7 +2719,27 @@ Modify run
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -2415,9 +2783,81 @@ Modify run
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -2519,11 +2959,13 @@ print(run.id)
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": {},
+  "status": "queued",
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {}
+    {
+      "type": "code_interpreter"
+    }
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -2614,7 +3056,7 @@ print(run)
 
 **post** `/threads/{thread_id}/runs/{run_id}/submit_tool_outputs`
 
-Submit tool outputs to run
+When a run has the `status: "requires_action"` and `required_action.type` is `submit_tool_outputs`, this endpoint can be used to submit the outputs from the tool calls once they're all completed. All outputs must be submitted in a single request.
 
 ### Parameters
 
@@ -2860,7 +3302,27 @@ Submit tool outputs to run
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -2904,9 +3366,81 @@ Submit tool outputs to run
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -3009,11 +3543,13 @@ for run in client.beta.threads.runs.submit_tool_outputs(
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": {},
+  "status": "queued",
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {}
+    {
+      "type": "code_interpreter"
+    }
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -3188,7 +3724,7 @@ data: [DONE]
 
 **post** `/threads/{thread_id}/runs/{run_id}/cancel`
 
-Cancel a run
+Cancels a run that is `in_progress`.
 
 ### Parameters
 
@@ -3416,7 +3952,27 @@ Cancel a run
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -3460,9 +4016,81 @@ Cancel a run
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -3564,11 +4192,13 @@ print(run.id)
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": {},
+  "status": "queued",
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {}
+    {
+      "type": "code_interpreter"
+    }
   ],
   "truncation_strategy": {
     "type": "auto",
@@ -3886,7 +4516,27 @@ print(run)
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -3930,9 +4580,81 @@ print(run)
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -3976,7 +4698,27 @@ print(run)
 
 ### Run Status
 
-- `object`
+- `Literal["queued", "in_progress", "requires_action", 6 more]`
+
+  The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+  - `"queued"`
+
+  - `"in_progress"`
+
+  - `"requires_action"`
+
+  - `"cancelling"`
+
+  - `"cancelled"`
+
+  - `"failed"`
+
+  - `"completed"`
+
+  - `"incomplete"`
+
+  - `"expired"`
 
 # Steps
 
@@ -3986,7 +4728,7 @@ print(run)
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps`
 
-List run steps
+Returns a list of run steps belonging to a run.
 
 ### Parameters
 
@@ -4129,9 +4871,153 @@ List run steps
 
       Details of the tool call.
 
-      - `tool_calls: List[object]`
+      - `tool_calls: List[ToolCall]`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+        - `class CodeInterpreterToolCall: …`
+
+          Details of the Code Interpreter tool call the run step was involved in.
+
+          - `id: str`
+
+            The ID of the tool call.
+
+          - `code_interpreter: CodeInterpreter`
+
+            The Code Interpreter tool call definition.
+
+            - `input: str`
+
+              The input to the Code Interpreter tool call.
+
+            - `outputs: List[CodeInterpreterOutput]`
+
+              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+              - `class CodeInterpreterOutputLogs: …`
+
+                Text output from the Code Interpreter tool call as part of a run step.
+
+                - `logs: str`
+
+                  The text output from the Code Interpreter tool call.
+
+                - `type: Literal["logs"]`
+
+                  Always `logs`.
+
+                  - `"logs"`
+
+              - `class CodeInterpreterOutputImage: …`
+
+                - `image: CodeInterpreterOutputImageImage`
+
+                  - `file_id: str`
+
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+                - `type: Literal["image"]`
+
+                  Always `image`.
+
+                  - `"image"`
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+            - `"code_interpreter"`
+
+        - `class FileSearchToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `file_search: FileSearch`
+
+            For now, this is always going to be an empty object.
+
+            - `ranking_options: Optional[FileSearchRankingOptions]`
+
+              The ranking options for the file search.
+
+              - `ranker: Literal["auto", "default_2024_08_21"]`
+
+                The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+                - `"auto"`
+
+                - `"default_2024_08_21"`
+
+              - `score_threshold: float`
+
+                The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+            - `results: Optional[List[FileSearchResult]]`
+
+              The results of the file search.
+
+              - `file_id: str`
+
+                The ID of the file that result was found in.
+
+              - `file_name: str`
+
+                The name of the file that result was found in.
+
+              - `score: float`
+
+                The score of the result. All values must be a floating point number between 0 and 1.
+
+              - `content: Optional[List[FileSearchResultContent]]`
+
+                The content of the result that was found. The content is only included if requested via the include query parameter.
+
+                - `text: Optional[str]`
+
+                  The text content of the file.
+
+                - `type: Optional[Literal["text"]]`
+
+                  The type of the content.
+
+                  - `"text"`
+
+          - `type: Literal["file_search"]`
+
+            The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+            - `"file_search"`
+
+        - `class FunctionToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `function: Function`
+
+            The definition of the function that was called.
+
+            - `arguments: str`
+
+              The arguments passed to the function.
+
+            - `name: str`
+
+              The name of the function.
+
+            - `output: Optional[str]`
+
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+          - `type: Literal["function"]`
+
+            The type of tool call. This is always going to be `function` for this type of tool call.
+
+            - `"function"`
 
       - `type: Literal["tool_calls"]`
 
@@ -4288,7 +5174,7 @@ print(run_steps)
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps/{step_id}`
 
-Retrieve run step
+Retrieves a run step.
 
 ### Parameters
 
@@ -4413,9 +5299,153 @@ Retrieve run step
 
       Details of the tool call.
 
-      - `tool_calls: List[object]`
+      - `tool_calls: List[ToolCall]`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+        - `class CodeInterpreterToolCall: …`
+
+          Details of the Code Interpreter tool call the run step was involved in.
+
+          - `id: str`
+
+            The ID of the tool call.
+
+          - `code_interpreter: CodeInterpreter`
+
+            The Code Interpreter tool call definition.
+
+            - `input: str`
+
+              The input to the Code Interpreter tool call.
+
+            - `outputs: List[CodeInterpreterOutput]`
+
+              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+              - `class CodeInterpreterOutputLogs: …`
+
+                Text output from the Code Interpreter tool call as part of a run step.
+
+                - `logs: str`
+
+                  The text output from the Code Interpreter tool call.
+
+                - `type: Literal["logs"]`
+
+                  Always `logs`.
+
+                  - `"logs"`
+
+              - `class CodeInterpreterOutputImage: …`
+
+                - `image: CodeInterpreterOutputImageImage`
+
+                  - `file_id: str`
+
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+                - `type: Literal["image"]`
+
+                  Always `image`.
+
+                  - `"image"`
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+            - `"code_interpreter"`
+
+        - `class FileSearchToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `file_search: FileSearch`
+
+            For now, this is always going to be an empty object.
+
+            - `ranking_options: Optional[FileSearchRankingOptions]`
+
+              The ranking options for the file search.
+
+              - `ranker: Literal["auto", "default_2024_08_21"]`
+
+                The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+                - `"auto"`
+
+                - `"default_2024_08_21"`
+
+              - `score_threshold: float`
+
+                The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+            - `results: Optional[List[FileSearchResult]]`
+
+              The results of the file search.
+
+              - `file_id: str`
+
+                The ID of the file that result was found in.
+
+              - `file_name: str`
+
+                The name of the file that result was found in.
+
+              - `score: float`
+
+                The score of the result. All values must be a floating point number between 0 and 1.
+
+              - `content: Optional[List[FileSearchResultContent]]`
+
+                The content of the result that was found. The content is only included if requested via the include query parameter.
+
+                - `text: Optional[str]`
+
+                  The text content of the file.
+
+                - `type: Optional[Literal["text"]]`
+
+                  The type of the content.
+
+                  - `"text"`
+
+          - `type: Literal["file_search"]`
+
+            The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+            - `"file_search"`
+
+        - `class FunctionToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `function: Function`
+
+            The definition of the function that was called.
+
+            - `arguments: str`
+
+              The arguments passed to the function.
+
+            - `name: str`
+
+              The name of the function.
+
+            - `output: Optional[str]`
+
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+          - `type: Literal["function"]`
+
+            The type of tool call. This is always going to be `function` for this type of tool call.
+
+            - `"function"`
 
       - `type: Literal["tool_calls"]`
 
@@ -4992,9 +6022,153 @@ print(run_step)
 
       Details of the tool call.
 
-      - `tool_calls: List[object]`
+      - `tool_calls: List[ToolCall]`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+        - `class CodeInterpreterToolCall: …`
+
+          Details of the Code Interpreter tool call the run step was involved in.
+
+          - `id: str`
+
+            The ID of the tool call.
+
+          - `code_interpreter: CodeInterpreter`
+
+            The Code Interpreter tool call definition.
+
+            - `input: str`
+
+              The input to the Code Interpreter tool call.
+
+            - `outputs: List[CodeInterpreterOutput]`
+
+              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+              - `class CodeInterpreterOutputLogs: …`
+
+                Text output from the Code Interpreter tool call as part of a run step.
+
+                - `logs: str`
+
+                  The text output from the Code Interpreter tool call.
+
+                - `type: Literal["logs"]`
+
+                  Always `logs`.
+
+                  - `"logs"`
+
+              - `class CodeInterpreterOutputImage: …`
+
+                - `image: CodeInterpreterOutputImageImage`
+
+                  - `file_id: str`
+
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+                - `type: Literal["image"]`
+
+                  Always `image`.
+
+                  - `"image"`
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+            - `"code_interpreter"`
+
+        - `class FileSearchToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `file_search: FileSearch`
+
+            For now, this is always going to be an empty object.
+
+            - `ranking_options: Optional[FileSearchRankingOptions]`
+
+              The ranking options for the file search.
+
+              - `ranker: Literal["auto", "default_2024_08_21"]`
+
+                The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+                - `"auto"`
+
+                - `"default_2024_08_21"`
+
+              - `score_threshold: float`
+
+                The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+            - `results: Optional[List[FileSearchResult]]`
+
+              The results of the file search.
+
+              - `file_id: str`
+
+                The ID of the file that result was found in.
+
+              - `file_name: str`
+
+                The name of the file that result was found in.
+
+              - `score: float`
+
+                The score of the result. All values must be a floating point number between 0 and 1.
+
+              - `content: Optional[List[FileSearchResultContent]]`
+
+                The content of the result that was found. The content is only included if requested via the include query parameter.
+
+                - `text: Optional[str]`
+
+                  The text content of the file.
+
+                - `type: Optional[Literal["text"]]`
+
+                  The type of the content.
+
+                  - `"text"`
+
+          - `type: Literal["file_search"]`
+
+            The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+            - `"file_search"`
+
+        - `class FunctionToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `function: Function`
+
+            The definition of the function that was called.
+
+            - `arguments: str`
+
+              The arguments passed to the function.
+
+            - `name: str`
+
+              The name of the function.
+
+            - `output: Optional[str]`
+
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+          - `type: Literal["function"]`
+
+            The type of tool call. This is always going to be `function` for this type of tool call.
+
+            - `"function"`
 
       - `type: Literal["tool_calls"]`
 
@@ -5032,7 +6206,161 @@ print(run_step)
 
 ### Run Step Delta
 
-- `object`
+- `class RunStepDelta: …`
+
+  The delta containing the fields that have changed on the run step.
+
+  - `step_details: Optional[StepDetails]`
+
+    The details of the run step.
+
+    - `class RunStepDeltaMessageDelta: …`
+
+      Details of the message creation by the run step.
+
+      - `type: Literal["message_creation"]`
+
+        Always `message_creation`.
+
+        - `"message_creation"`
+
+      - `message_creation: Optional[MessageCreation]`
+
+        - `message_id: Optional[str]`
+
+          The ID of the message that was created by this run step.
+
+    - `class ToolCallDeltaObject: …`
+
+      Details of the tool call.
+
+      - `type: Literal["tool_calls"]`
+
+        Always `tool_calls`.
+
+        - `"tool_calls"`
+
+      - `tool_calls: Optional[List[ToolCallDelta]]`
+
+        An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+        - `class CodeInterpreterToolCallDelta: …`
+
+          Details of the Code Interpreter tool call the run step was involved in.
+
+          - `index: int`
+
+            The index of the tool call in the tool calls array.
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+            - `"code_interpreter"`
+
+          - `id: Optional[str]`
+
+            The ID of the tool call.
+
+          - `code_interpreter: Optional[CodeInterpreter]`
+
+            The Code Interpreter tool call definition.
+
+            - `input: Optional[str]`
+
+              The input to the Code Interpreter tool call.
+
+            - `outputs: Optional[List[CodeInterpreterOutput]]`
+
+              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+              - `class CodeInterpreterLogs: …`
+
+                Text output from the Code Interpreter tool call as part of a run step.
+
+                - `index: int`
+
+                  The index of the output in the outputs array.
+
+                - `type: Literal["logs"]`
+
+                  Always `logs`.
+
+                  - `"logs"`
+
+                - `logs: Optional[str]`
+
+                  The text output from the Code Interpreter tool call.
+
+              - `class CodeInterpreterOutputImage: …`
+
+                - `index: int`
+
+                  The index of the output in the outputs array.
+
+                - `type: Literal["image"]`
+
+                  Always `image`.
+
+                  - `"image"`
+
+                - `image: Optional[Image]`
+
+                  - `file_id: Optional[str]`
+
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+        - `class FileSearchToolCallDelta: …`
+
+          - `file_search: object`
+
+            For now, this is always going to be an empty object.
+
+          - `index: int`
+
+            The index of the tool call in the tool calls array.
+
+          - `type: Literal["file_search"]`
+
+            The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+            - `"file_search"`
+
+          - `id: Optional[str]`
+
+            The ID of the tool call object.
+
+        - `class FunctionToolCallDelta: …`
+
+          - `index: int`
+
+            The index of the tool call in the tool calls array.
+
+          - `type: Literal["function"]`
+
+            The type of tool call. This is always going to be `function` for this type of tool call.
+
+            - `"function"`
+
+          - `id: Optional[str]`
+
+            The ID of the tool call object.
+
+          - `function: Optional[Function]`
+
+            The definition of the function that was called.
+
+            - `arguments: Optional[str]`
+
+              The arguments passed to the function.
+
+            - `name: Optional[str]`
+
+              The name of the function.
+
+            - `output: Optional[str]`
+
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
 ### Run Step Delta Event
 
@@ -5044,7 +6372,161 @@ print(run_step)
 
     The identifier of the run step, which can be referenced in API endpoints.
 
-  - `delta: object`
+  - `delta: RunStepDelta`
+
+    The delta containing the fields that have changed on the run step.
+
+    - `step_details: Optional[StepDetails]`
+
+      The details of the run step.
+
+      - `class RunStepDeltaMessageDelta: …`
+
+        Details of the message creation by the run step.
+
+        - `type: Literal["message_creation"]`
+
+          Always `message_creation`.
+
+          - `"message_creation"`
+
+        - `message_creation: Optional[MessageCreation]`
+
+          - `message_id: Optional[str]`
+
+            The ID of the message that was created by this run step.
+
+      - `class ToolCallDeltaObject: …`
+
+        Details of the tool call.
+
+        - `type: Literal["tool_calls"]`
+
+          Always `tool_calls`.
+
+          - `"tool_calls"`
+
+        - `tool_calls: Optional[List[ToolCallDelta]]`
+
+          An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+          - `class CodeInterpreterToolCallDelta: …`
+
+            Details of the Code Interpreter tool call the run step was involved in.
+
+            - `index: int`
+
+              The index of the tool call in the tool calls array.
+
+            - `type: Literal["code_interpreter"]`
+
+              The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+              - `"code_interpreter"`
+
+            - `id: Optional[str]`
+
+              The ID of the tool call.
+
+            - `code_interpreter: Optional[CodeInterpreter]`
+
+              The Code Interpreter tool call definition.
+
+              - `input: Optional[str]`
+
+                The input to the Code Interpreter tool call.
+
+              - `outputs: Optional[List[CodeInterpreterOutput]]`
+
+                The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+                - `class CodeInterpreterLogs: …`
+
+                  Text output from the Code Interpreter tool call as part of a run step.
+
+                  - `index: int`
+
+                    The index of the output in the outputs array.
+
+                  - `type: Literal["logs"]`
+
+                    Always `logs`.
+
+                    - `"logs"`
+
+                  - `logs: Optional[str]`
+
+                    The text output from the Code Interpreter tool call.
+
+                - `class CodeInterpreterOutputImage: …`
+
+                  - `index: int`
+
+                    The index of the output in the outputs array.
+
+                  - `type: Literal["image"]`
+
+                    Always `image`.
+
+                    - `"image"`
+
+                  - `image: Optional[Image]`
+
+                    - `file_id: Optional[str]`
+
+                      The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+          - `class FileSearchToolCallDelta: …`
+
+            - `file_search: object`
+
+              For now, this is always going to be an empty object.
+
+            - `index: int`
+
+              The index of the tool call in the tool calls array.
+
+            - `type: Literal["file_search"]`
+
+              The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+              - `"file_search"`
+
+            - `id: Optional[str]`
+
+              The ID of the tool call object.
+
+          - `class FunctionToolCallDelta: …`
+
+            - `index: int`
+
+              The index of the tool call in the tool calls array.
+
+            - `type: Literal["function"]`
+
+              The type of tool call. This is always going to be `function` for this type of tool call.
+
+              - `"function"`
+
+            - `id: Optional[str]`
+
+              The ID of the tool call object.
+
+            - `function: Optional[Function]`
+
+              The definition of the function that was called.
+
+              - `arguments: Optional[str]`
+
+                The arguments passed to the function.
+
+              - `name: Optional[str]`
+
+                The name of the function.
+
+              - `output: Optional[str]`
+
+                The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
   - `object: Literal["thread.run.step.delta"]`
 
@@ -5078,11 +6560,277 @@ print(run_step)
 
 ### Tool Call
 
-- `object`
+- `ToolCall`
+
+  Details of the Code Interpreter tool call the run step was involved in.
+
+  - `class CodeInterpreterToolCall: …`
+
+    Details of the Code Interpreter tool call the run step was involved in.
+
+    - `id: str`
+
+      The ID of the tool call.
+
+    - `code_interpreter: CodeInterpreter`
+
+      The Code Interpreter tool call definition.
+
+      - `input: str`
+
+        The input to the Code Interpreter tool call.
+
+      - `outputs: List[CodeInterpreterOutput]`
+
+        The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+        - `class CodeInterpreterOutputLogs: …`
+
+          Text output from the Code Interpreter tool call as part of a run step.
+
+          - `logs: str`
+
+            The text output from the Code Interpreter tool call.
+
+          - `type: Literal["logs"]`
+
+            Always `logs`.
+
+            - `"logs"`
+
+        - `class CodeInterpreterOutputImage: …`
+
+          - `image: CodeInterpreterOutputImageImage`
+
+            - `file_id: str`
+
+              The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+          - `type: Literal["image"]`
+
+            Always `image`.
+
+            - `"image"`
+
+    - `type: Literal["code_interpreter"]`
+
+      The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+      - `"code_interpreter"`
+
+  - `class FileSearchToolCall: …`
+
+    - `id: str`
+
+      The ID of the tool call object.
+
+    - `file_search: FileSearch`
+
+      For now, this is always going to be an empty object.
+
+      - `ranking_options: Optional[FileSearchRankingOptions]`
+
+        The ranking options for the file search.
+
+        - `ranker: Literal["auto", "default_2024_08_21"]`
+
+          The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+          - `"auto"`
+
+          - `"default_2024_08_21"`
+
+        - `score_threshold: float`
+
+          The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+      - `results: Optional[List[FileSearchResult]]`
+
+        The results of the file search.
+
+        - `file_id: str`
+
+          The ID of the file that result was found in.
+
+        - `file_name: str`
+
+          The name of the file that result was found in.
+
+        - `score: float`
+
+          The score of the result. All values must be a floating point number between 0 and 1.
+
+        - `content: Optional[List[FileSearchResultContent]]`
+
+          The content of the result that was found. The content is only included if requested via the include query parameter.
+
+          - `text: Optional[str]`
+
+            The text content of the file.
+
+          - `type: Optional[Literal["text"]]`
+
+            The type of the content.
+
+            - `"text"`
+
+    - `type: Literal["file_search"]`
+
+      The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+      - `"file_search"`
+
+  - `class FunctionToolCall: …`
+
+    - `id: str`
+
+      The ID of the tool call object.
+
+    - `function: Function`
+
+      The definition of the function that was called.
+
+      - `arguments: str`
+
+        The arguments passed to the function.
+
+      - `name: str`
+
+        The name of the function.
+
+      - `output: Optional[str]`
+
+        The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+    - `type: Literal["function"]`
+
+      The type of tool call. This is always going to be `function` for this type of tool call.
+
+      - `"function"`
 
 ### Tool Call Delta
 
-- `object`
+- `ToolCallDelta`
+
+  Details of the Code Interpreter tool call the run step was involved in.
+
+  - `class CodeInterpreterToolCallDelta: …`
+
+    Details of the Code Interpreter tool call the run step was involved in.
+
+    - `index: int`
+
+      The index of the tool call in the tool calls array.
+
+    - `type: Literal["code_interpreter"]`
+
+      The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+      - `"code_interpreter"`
+
+    - `id: Optional[str]`
+
+      The ID of the tool call.
+
+    - `code_interpreter: Optional[CodeInterpreter]`
+
+      The Code Interpreter tool call definition.
+
+      - `input: Optional[str]`
+
+        The input to the Code Interpreter tool call.
+
+      - `outputs: Optional[List[CodeInterpreterOutput]]`
+
+        The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+        - `class CodeInterpreterLogs: …`
+
+          Text output from the Code Interpreter tool call as part of a run step.
+
+          - `index: int`
+
+            The index of the output in the outputs array.
+
+          - `type: Literal["logs"]`
+
+            Always `logs`.
+
+            - `"logs"`
+
+          - `logs: Optional[str]`
+
+            The text output from the Code Interpreter tool call.
+
+        - `class CodeInterpreterOutputImage: …`
+
+          - `index: int`
+
+            The index of the output in the outputs array.
+
+          - `type: Literal["image"]`
+
+            Always `image`.
+
+            - `"image"`
+
+          - `image: Optional[Image]`
+
+            - `file_id: Optional[str]`
+
+              The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+  - `class FileSearchToolCallDelta: …`
+
+    - `file_search: object`
+
+      For now, this is always going to be an empty object.
+
+    - `index: int`
+
+      The index of the tool call in the tool calls array.
+
+    - `type: Literal["file_search"]`
+
+      The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+      - `"file_search"`
+
+    - `id: Optional[str]`
+
+      The ID of the tool call object.
+
+  - `class FunctionToolCallDelta: …`
+
+    - `index: int`
+
+      The index of the tool call in the tool calls array.
+
+    - `type: Literal["function"]`
+
+      The type of tool call. This is always going to be `function` for this type of tool call.
+
+      - `"function"`
+
+    - `id: Optional[str]`
+
+      The ID of the tool call object.
+
+    - `function: Optional[Function]`
+
+      The definition of the function that was called.
+
+      - `arguments: Optional[str]`
+
+        The arguments passed to the function.
+
+      - `name: Optional[str]`
+
+        The name of the function.
+
+      - `output: Optional[str]`
+
+        The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
 ### Tool Call Delta Object
 
@@ -5096,9 +6844,127 @@ print(run_step)
 
     - `"tool_calls"`
 
-  - `tool_calls: Optional[List[object]]`
+  - `tool_calls: Optional[List[ToolCallDelta]]`
 
     An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+    - `class CodeInterpreterToolCallDelta: …`
+
+      Details of the Code Interpreter tool call the run step was involved in.
+
+      - `index: int`
+
+        The index of the tool call in the tool calls array.
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+        - `"code_interpreter"`
+
+      - `id: Optional[str]`
+
+        The ID of the tool call.
+
+      - `code_interpreter: Optional[CodeInterpreter]`
+
+        The Code Interpreter tool call definition.
+
+        - `input: Optional[str]`
+
+          The input to the Code Interpreter tool call.
+
+        - `outputs: Optional[List[CodeInterpreterOutput]]`
+
+          The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+          - `class CodeInterpreterLogs: …`
+
+            Text output from the Code Interpreter tool call as part of a run step.
+
+            - `index: int`
+
+              The index of the output in the outputs array.
+
+            - `type: Literal["logs"]`
+
+              Always `logs`.
+
+              - `"logs"`
+
+            - `logs: Optional[str]`
+
+              The text output from the Code Interpreter tool call.
+
+          - `class CodeInterpreterOutputImage: …`
+
+            - `index: int`
+
+              The index of the output in the outputs array.
+
+            - `type: Literal["image"]`
+
+              Always `image`.
+
+              - `"image"`
+
+            - `image: Optional[Image]`
+
+              - `file_id: Optional[str]`
+
+                The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+    - `class FileSearchToolCallDelta: …`
+
+      - `file_search: object`
+
+        For now, this is always going to be an empty object.
+
+      - `index: int`
+
+        The index of the tool call in the tool calls array.
+
+      - `type: Literal["file_search"]`
+
+        The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+        - `"file_search"`
+
+      - `id: Optional[str]`
+
+        The ID of the tool call object.
+
+    - `class FunctionToolCallDelta: …`
+
+      - `index: int`
+
+        The index of the tool call in the tool calls array.
+
+      - `type: Literal["function"]`
+
+        The type of tool call. This is always going to be `function` for this type of tool call.
+
+        - `"function"`
+
+      - `id: Optional[str]`
+
+        The ID of the tool call object.
+
+      - `function: Optional[Function]`
+
+        The definition of the function that was called.
+
+        - `arguments: Optional[str]`
+
+          The arguments passed to the function.
+
+        - `name: Optional[str]`
+
+          The name of the function.
+
+        - `output: Optional[str]`
+
+          The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
 ### Tool Calls Step Details
 
@@ -5106,9 +6972,153 @@ print(run_step)
 
   Details of the tool call.
 
-  - `tool_calls: List[object]`
+  - `tool_calls: List[ToolCall]`
 
     An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+    - `class CodeInterpreterToolCall: …`
+
+      Details of the Code Interpreter tool call the run step was involved in.
+
+      - `id: str`
+
+        The ID of the tool call.
+
+      - `code_interpreter: CodeInterpreter`
+
+        The Code Interpreter tool call definition.
+
+        - `input: str`
+
+          The input to the Code Interpreter tool call.
+
+        - `outputs: List[CodeInterpreterOutput]`
+
+          The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+          - `class CodeInterpreterOutputLogs: …`
+
+            Text output from the Code Interpreter tool call as part of a run step.
+
+            - `logs: str`
+
+              The text output from the Code Interpreter tool call.
+
+            - `type: Literal["logs"]`
+
+              Always `logs`.
+
+              - `"logs"`
+
+          - `class CodeInterpreterOutputImage: …`
+
+            - `image: CodeInterpreterOutputImageImage`
+
+              - `file_id: str`
+
+                The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+            - `type: Literal["image"]`
+
+              Always `image`.
+
+              - `"image"`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+        - `"code_interpreter"`
+
+    - `class FileSearchToolCall: …`
+
+      - `id: str`
+
+        The ID of the tool call object.
+
+      - `file_search: FileSearch`
+
+        For now, this is always going to be an empty object.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search.
+
+          - `ranker: Literal["auto", "default_2024_08_21"]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+        - `results: Optional[List[FileSearchResult]]`
+
+          The results of the file search.
+
+          - `file_id: str`
+
+            The ID of the file that result was found in.
+
+          - `file_name: str`
+
+            The name of the file that result was found in.
+
+          - `score: float`
+
+            The score of the result. All values must be a floating point number between 0 and 1.
+
+          - `content: Optional[List[FileSearchResultContent]]`
+
+            The content of the result that was found. The content is only included if requested via the include query parameter.
+
+            - `text: Optional[str]`
+
+              The text content of the file.
+
+            - `type: Optional[Literal["text"]]`
+
+              The type of the content.
+
+              - `"text"`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+        - `"file_search"`
+
+    - `class FunctionToolCall: …`
+
+      - `id: str`
+
+        The ID of the tool call object.
+
+      - `function: Function`
+
+        The definition of the function that was called.
+
+        - `arguments: str`
+
+          The arguments passed to the function.
+
+        - `name: str`
+
+          The name of the function.
+
+        - `output: Optional[str]`
+
+          The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+      - `type: Literal["function"]`
+
+        The type of tool call. This is always going to be `function` for this type of tool call.
+
+        - `"function"`
 
   - `type: Literal["tool_calls"]`
 
