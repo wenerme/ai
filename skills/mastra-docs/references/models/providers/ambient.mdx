@@ -1,11 +1,11 @@
 ---
 title: "Ambient | Models"
-description: "Use Ambient models with Mastra. 3 models available."
+description: "Use Ambient models with Mastra. 4 models available."
 ---
 
 # [Ambient logo]Ambient
 
-Access 3 Ambient models through Mastra's model router. Authentication is handled automatically using the `AMBIENT_API_KEY` environment variable.
+Access 4 Ambient models through Mastra's model router. Authentication is handled automatically using the `AMBIENT_API_KEY` environment variable.
 
 Learn more in the [Ambient documentation](https://ambient.xyz).
 
@@ -60,8 +60,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": 0.75,
-    "outputCost": 3.5
+    "inputCost": 0.84,
+    "outputCost": 3.99
   },
   {
     "model": "ambient/zai-org/GLM-5.1-FP8",
@@ -74,6 +74,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "ambient/zai-org/GLM-5.2-FP8",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 202752,
+    "maxOutput": 202752,
+    "inputCost": 1.2,
+    "outputCost": 4.2
   }
 ]}
 />
@@ -106,7 +118,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "ambient/zai-org/GLM-5.1-FP8"
+      ? "ambient/zai-org/GLM-5.2-FP8"
       : "ambient/moonshotai/kimi-k2.6";
   }
 });
