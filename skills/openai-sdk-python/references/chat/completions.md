@@ -6,7 +6,24 @@
 
 **post** `/chat/completions`
 
-Create chat completion
+**Starting a new project?** We recommend trying [Responses](https://platform.openai.com/docs/api-reference/responses)
+to take advantage of the latest OpenAI platform features. Compare
+[Chat Completions with Responses](https://platform.openai.com/docs/guides/responses-vs-chat-completions?api-mode=responses).
+
+---
+
+Creates a model response for the given chat conversation. Learn more in the
+[text generation](https://platform.openai.com/docs/guides/text-generation), [vision](https://platform.openai.com/docs/guides/vision),
+and [audio](https://platform.openai.com/docs/guides/audio) guides.
+
+Parameter support can differ depending on the model used to generate the
+response, particularly for newer reasoning models. Parameters that are only
+supported for reasoning models are noted below. For the current state of
+unsupported parameters in reasoning models,
+[refer to the reasoning guide](https://platform.openai.com/docs/guides/reasoning).
+
+Returns a chat completion object, or a streamed sequence of chat completion
+chunk objects if the request is streamed.
 
 ### Parameters
 
@@ -2473,7 +2490,8 @@ print(completion.choices[0].logprobs)
 
 **get** `/chat/completions`
 
-List Chat Completions
+List stored Chat Completions. Only Chat Completions that have been stored
+with the `store` parameter set to `true` will be returned.
 
 ### Parameters
 
@@ -3222,7 +3240,8 @@ print(completions)
 
 **get** `/chat/completions/{completion_id}`
 
-Get chat completion
+Get a stored chat completion. Only Chat Completions that have been created
+with the `store` parameter set to `true` will be returned.
 
 ### Parameters
 
@@ -3934,7 +3953,9 @@ print(first_completion)
 
 **post** `/chat/completions/{completion_id}`
 
-Update chat completion
+Modify a stored chat completion. Only Chat Completions that have been
+created with the `store` parameter set to `true` can be modified. Currently,
+the only supported modification is to update the `metadata` field.
 
 ### Parameters
 
@@ -4660,7 +4681,8 @@ print(updated_completion)
 
 **delete** `/chat/completions/{completion_id}`
 
-Delete chat completion
+Delete a stored chat completion. Only Chat Completions that have been
+created with the `store` parameter set to `true` can be deleted.
 
 ### Parameters
 
@@ -7741,7 +7763,9 @@ print(delete_response)
 
 **get** `/chat/completions/{completion_id}/messages`
 
-Get chat messages
+Get the messages in a stored chat completion. Only Chat Completions that
+have been created with the `store` parameter set to `true` will be
+returned.
 
 ### Parameters
 

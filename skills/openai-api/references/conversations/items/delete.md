@@ -2,7 +2,7 @@
 
 **delete** `/conversations/{conversation_id}/items/{item_id}`
 
-Delete an item
+Delete an item from a conversation with the given IDs.
 
 ### Path Parameters
 

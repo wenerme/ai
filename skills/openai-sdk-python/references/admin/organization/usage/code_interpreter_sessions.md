@@ -4,7 +4,7 @@
 
 **get** `/organization/usage/code_interpreter_sessions`
 
-Code interpreter sessions
+Get code interpreter sessions usage details for the organization.
 
 ### Parameters
 

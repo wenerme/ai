@@ -4,7 +4,7 @@
 
 **post** `/organization/groups`
 
-Create group
+Creates a new group in the organization.
 
 ### Parameters
 

@@ -6,7 +6,9 @@
 
 **get** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-List checkpoint permissions
+**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+
+Organization owners can use this endpoint to view all permissions for a fine-tuned model checkpoint.
 
 ### Parameters
 
@@ -109,7 +111,9 @@ console.log(permission.first_id);
 
 **get** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-List checkpoint permissions
+**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+
+Organization owners can use this endpoint to view all permissions for a fine-tuned model checkpoint.
 
 ### Parameters
 
@@ -203,7 +207,9 @@ for await (const permissionListResponse of client.fineTuning.checkpoints.permiss
 
 **post** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-Create checkpoint permissions
+**NOTE:** Calling this endpoint requires an [admin API key](../admin-api-keys).
+
+This enables organization owners to share fine-tuned models with other projects in their organization.
 
 ### Parameters
 
@@ -282,7 +288,9 @@ for await (const permissionCreateResponse of client.fineTuning.checkpoints.permi
 
 **delete** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions/{permission_id}`
 
-Delete checkpoint permission
+**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+
+Organization owners can use this endpoint to delete a permission for a fine-tuned model checkpoint.
 
 ### Parameters
 

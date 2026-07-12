@@ -6,7 +6,7 @@
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items`
 
-Get eval run output items
+Get a list of output items for an evaluation run.
 
 ### Parameters
 
@@ -363,7 +363,7 @@ print(output_items)
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items/{output_item_id}`
 
-Get an output item of an eval run
+Get an evaluation run output item by ID.
 
 ### Parameters
 

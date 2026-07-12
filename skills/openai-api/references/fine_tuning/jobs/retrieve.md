@@ -2,7 +2,9 @@
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}`
 
-Retrieve fine-tuning job
+Get info about a fine-tuning job.
+
+[Learn more about fine-tuning](/docs/guides/model-optimization)
 
 ### Path Parameters
 
@@ -66,7 +68,7 @@ Retrieve fine-tuning job
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -77,7 +79,7 @@ Retrieve fine-tuning job
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
 
-      - `Auto = "auto"`
+      - `"auto"`
 
         - `"auto"`
 
@@ -99,7 +101,7 @@ Retrieve fine-tuning job
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `seed: number`
 
@@ -127,11 +129,11 @@ Retrieve fine-tuning job
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `validation_file: string`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](https://platform.openai.com/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
   - `estimated_finish: optional number`
 

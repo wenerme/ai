@@ -4,7 +4,7 @@
 
 **get** `/responses/{response_id}`
 
-Get a model response
+Retrieves a model response with the given ID.
 
 ### Parameters
 
@@ -1582,7 +1582,7 @@ Get a model response
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1592,7 +1592,11 @@ Get a model response
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 

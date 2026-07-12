@@ -2,7 +2,7 @@
 
 **delete** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Delete project spend alert
+Deletes a project spend alert.
 
 ### Path Parameters
 

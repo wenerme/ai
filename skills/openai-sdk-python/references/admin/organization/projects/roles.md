@@ -6,7 +6,7 @@
 
 **get** `/projects/{project_id}/roles`
 
-List project roles
+Lists the roles configured for a project.
 
 ### Parameters
 
@@ -109,7 +109,7 @@ print(page.id)
 
 **post** `/projects/{project_id}/roles`
 
-Create project role
+Creates a custom role for a project.
 
 ### Parameters
 
@@ -202,7 +202,7 @@ print(role.id)
 
 **get** `/projects/{project_id}/roles/{role_id}`
 
-Retrieve project role
+Retrieves a project role.
 
 ### Parameters
 
@@ -284,7 +284,7 @@ print(role.id)
 
 **post** `/projects/{project_id}/roles/{role_id}`
 
-Update project role
+Updates an existing project role.
 
 ### Parameters
 
@@ -378,7 +378,7 @@ print(role.id)
 
 **delete** `/projects/{project_id}/roles/{role_id}`
 
-Delete project role
+Deletes a custom role from a project.
 
 ### Parameters
 

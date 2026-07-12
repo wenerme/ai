@@ -2,7 +2,7 @@
 
 **delete** `/files/{file_id}`
 
-Delete file
+Delete a file and remove it from all vector stores.
 
 ### Path Parameters
 

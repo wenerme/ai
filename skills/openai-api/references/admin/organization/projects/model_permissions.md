@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/model_permissions`
 
-Retrieve project model permissions
+Returns model permissions for a project.
 
 ### Path Parameters
 
@@ -78,7 +78,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/model_permissions 
 
 **post** `/organization/projects/{project_id}/model_permissions`
 
-Modify project model permissions
+Updates model permissions for a project.
 
 ### Path Parameters
 
@@ -178,7 +178,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/model_perm
 
 **delete** `/organization/projects/{project_id}/model_permissions`
 
-Delete project model permissions
+Deletes model permissions for a project.
 
 ### Path Parameters
 

@@ -2,7 +2,7 @@
 
 **post** `/organization/projects/{project_id}`
 
-Modify project
+Modifies a project in the organization.
 
 ### Path Parameters
 

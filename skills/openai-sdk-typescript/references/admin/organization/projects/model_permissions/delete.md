@@ -4,7 +4,7 @@
 
 **delete** `/organization/projects/{project_id}/model_permissions`
 
-Delete project model permissions
+Deletes model permissions for a project.
 
 ### Parameters
 

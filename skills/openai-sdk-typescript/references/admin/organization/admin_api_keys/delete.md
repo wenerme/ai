@@ -4,7 +4,7 @@
 
 **delete** `/organization/admin_api_keys/{key_id}`
 
-Delete admin API key
+Delete an organization admin API key
 
 ### Parameters
 

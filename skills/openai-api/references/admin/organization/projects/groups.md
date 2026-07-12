@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/groups`
 
-List project groups
+Lists the groups that have access to a project.
 
 ### Path Parameters
 
@@ -136,7 +136,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc123/groups?limit=20
 
 **post** `/organization/projects/{project_id}/groups`
 
-Add project group
+Grants a group access to a project.
 
 ### Path Parameters
 
@@ -241,7 +241,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc123/groups 
 
 **get** `/organization/projects/{project_id}/groups/{group_id}`
 
-Retrieve project group
+Retrieves a project's group.
 
 ### Path Parameters
 
@@ -340,7 +340,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc123/groups/group_01
 
 **delete** `/organization/projects/{project_id}/groups/{group_id}`
 
-Remove project group
+Revokes a group's access to a project.
 
 ### Path Parameters
 
@@ -454,7 +454,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc123/group
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 
-List project group role assignments
+Lists the project roles assigned to a group within a project.
 
 ### Path Parameters
 
@@ -640,7 +640,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
 **post** `/projects/{project_id}/groups/{group_id}/roles`
 
-Assign project role to group
+Assigns a project role to a group within a project.
 
 ### Path Parameters
 
@@ -801,7 +801,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8A
 
 **get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Retrieve project group role
+Retrieves a project role assigned to a group.
 
 ### Path Parameters
 
@@ -936,7 +936,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
 **delete** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Unassign project role from group
+Unassigns a project role from a group within a project.
 
 ### Path Parameters
 

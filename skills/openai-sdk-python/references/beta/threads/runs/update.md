@@ -4,7 +4,7 @@
 
 **post** `/threads/{thread_id}/runs/{run_id}`
 
-Modify run
+Modifies a run.
 
 ### Parameters
 
@@ -241,7 +241,27 @@ Modify run
 
     The Unix timestamp (in seconds) for when the run was started.
 
-  - `status: object`
+  - `status: RunStatus`
+
+    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"requires_action"`
+
+    - `"cancelling"`
+
+    - `"cancelled"`
+
+    - `"failed"`
+
+    - `"completed"`
+
+    - `"incomplete"`
+
+    - `"expired"`
 
   - `thread_id: str`
 
@@ -285,9 +305,81 @@ Modify run
 
           The name of the function to call.
 
-  - `tools: List[object]`
+  - `tools: List[AssistantTool]`
 
     The list of tools that the [assistant](https://platform.openai.com/docs/api-reference/assistants) used for this run.
+
+    - `class CodeInterpreterTool: …`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool being defined: `code_interpreter`
+
+        - `"code_interpreter"`
+
+    - `class FileSearchTool: …`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool being defined: `file_search`
+
+        - `"file_search"`
+
+      - `file_search: Optional[FileSearch]`
+
+        Overrides for the file search tool.
+
+        - `max_num_results: Optional[int]`
+
+          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
+
+          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
+
+          See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+          - `ranker: Optional[Literal["auto", "default_2024_08_21"]]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+    - `class FunctionTool: …`
+
+      - `function: FunctionDefinition`
+
+        - `name: str`
+
+          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+        - `description: Optional[str]`
+
+          A description of what the function does, used by the model to choose when and how to call the function.
+
+        - `parameters: Optional[FunctionParameters]`
+
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+          Omitting `parameters` defines a function with an empty parameter list.
+
+        - `strict: Optional[bool]`
+
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+
+      - `type: Literal["function"]`
+
+        The type of tool being defined: `function`
+
+        - `"function"`
 
   - `truncation_strategy: Optional[TruncationStrategy]`
 
@@ -389,11 +481,13 @@ print(run.id)
   },
   "response_format": "auto",
   "started_at": 0,
-  "status": {},
+  "status": "queued",
   "thread_id": "thread_id",
   "tool_choice": "none",
   "tools": [
-    {}
+    {
+      "type": "code_interpreter"
+    }
   ],
   "truncation_strategy": {
     "type": "auto",

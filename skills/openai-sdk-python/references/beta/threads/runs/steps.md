@@ -6,7 +6,7 @@
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps`
 
-List run steps
+Returns a list of run steps belonging to a run.
 
 ### Parameters
 
@@ -149,9 +149,153 @@ List run steps
 
       Details of the tool call.
 
-      - `tool_calls: List[object]`
+      - `tool_calls: List[ToolCall]`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+        - `class CodeInterpreterToolCall: …`
+
+          Details of the Code Interpreter tool call the run step was involved in.
+
+          - `id: str`
+
+            The ID of the tool call.
+
+          - `code_interpreter: CodeInterpreter`
+
+            The Code Interpreter tool call definition.
+
+            - `input: str`
+
+              The input to the Code Interpreter tool call.
+
+            - `outputs: List[CodeInterpreterOutput]`
+
+              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+              - `class CodeInterpreterOutputLogs: …`
+
+                Text output from the Code Interpreter tool call as part of a run step.
+
+                - `logs: str`
+
+                  The text output from the Code Interpreter tool call.
+
+                - `type: Literal["logs"]`
+
+                  Always `logs`.
+
+                  - `"logs"`
+
+              - `class CodeInterpreterOutputImage: …`
+
+                - `image: CodeInterpreterOutputImageImage`
+
+                  - `file_id: str`
+
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+                - `type: Literal["image"]`
+
+                  Always `image`.
+
+                  - `"image"`
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+            - `"code_interpreter"`
+
+        - `class FileSearchToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `file_search: FileSearch`
+
+            For now, this is always going to be an empty object.
+
+            - `ranking_options: Optional[FileSearchRankingOptions]`
+
+              The ranking options for the file search.
+
+              - `ranker: Literal["auto", "default_2024_08_21"]`
+
+                The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+                - `"auto"`
+
+                - `"default_2024_08_21"`
+
+              - `score_threshold: float`
+
+                The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+            - `results: Optional[List[FileSearchResult]]`
+
+              The results of the file search.
+
+              - `file_id: str`
+
+                The ID of the file that result was found in.
+
+              - `file_name: str`
+
+                The name of the file that result was found in.
+
+              - `score: float`
+
+                The score of the result. All values must be a floating point number between 0 and 1.
+
+              - `content: Optional[List[FileSearchResultContent]]`
+
+                The content of the result that was found. The content is only included if requested via the include query parameter.
+
+                - `text: Optional[str]`
+
+                  The text content of the file.
+
+                - `type: Optional[Literal["text"]]`
+
+                  The type of the content.
+
+                  - `"text"`
+
+          - `type: Literal["file_search"]`
+
+            The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+            - `"file_search"`
+
+        - `class FunctionToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `function: Function`
+
+            The definition of the function that was called.
+
+            - `arguments: str`
+
+              The arguments passed to the function.
+
+            - `name: str`
+
+              The name of the function.
+
+            - `output: Optional[str]`
+
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+          - `type: Literal["function"]`
+
+            The type of tool call. This is always going to be `function` for this type of tool call.
+
+            - `"function"`
 
       - `type: Literal["tool_calls"]`
 
@@ -308,7 +452,7 @@ print(run_steps)
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps/{step_id}`
 
-Retrieve run step
+Retrieves a run step.
 
 ### Parameters
 
@@ -433,9 +577,153 @@ Retrieve run step
 
       Details of the tool call.
 
-      - `tool_calls: List[object]`
+      - `tool_calls: List[ToolCall]`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+        - `class CodeInterpreterToolCall: …`
+
+          Details of the Code Interpreter tool call the run step was involved in.
+
+          - `id: str`
+
+            The ID of the tool call.
+
+          - `code_interpreter: CodeInterpreter`
+
+            The Code Interpreter tool call definition.
+
+            - `input: str`
+
+              The input to the Code Interpreter tool call.
+
+            - `outputs: List[CodeInterpreterOutput]`
+
+              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+              - `class CodeInterpreterOutputLogs: …`
+
+                Text output from the Code Interpreter tool call as part of a run step.
+
+                - `logs: str`
+
+                  The text output from the Code Interpreter tool call.
+
+                - `type: Literal["logs"]`
+
+                  Always `logs`.
+
+                  - `"logs"`
+
+              - `class CodeInterpreterOutputImage: …`
+
+                - `image: CodeInterpreterOutputImageImage`
+
+                  - `file_id: str`
+
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+                - `type: Literal["image"]`
+
+                  Always `image`.
+
+                  - `"image"`
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+            - `"code_interpreter"`
+
+        - `class FileSearchToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `file_search: FileSearch`
+
+            For now, this is always going to be an empty object.
+
+            - `ranking_options: Optional[FileSearchRankingOptions]`
+
+              The ranking options for the file search.
+
+              - `ranker: Literal["auto", "default_2024_08_21"]`
+
+                The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+                - `"auto"`
+
+                - `"default_2024_08_21"`
+
+              - `score_threshold: float`
+
+                The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+            - `results: Optional[List[FileSearchResult]]`
+
+              The results of the file search.
+
+              - `file_id: str`
+
+                The ID of the file that result was found in.
+
+              - `file_name: str`
+
+                The name of the file that result was found in.
+
+              - `score: float`
+
+                The score of the result. All values must be a floating point number between 0 and 1.
+
+              - `content: Optional[List[FileSearchResultContent]]`
+
+                The content of the result that was found. The content is only included if requested via the include query parameter.
+
+                - `text: Optional[str]`
+
+                  The text content of the file.
+
+                - `type: Optional[Literal["text"]]`
+
+                  The type of the content.
+
+                  - `"text"`
+
+          - `type: Literal["file_search"]`
+
+            The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+            - `"file_search"`
+
+        - `class FunctionToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `function: Function`
+
+            The definition of the function that was called.
+
+            - `arguments: str`
+
+              The arguments passed to the function.
+
+            - `name: str`
+
+              The name of the function.
+
+            - `output: Optional[str]`
+
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+          - `type: Literal["function"]`
+
+            The type of tool call. This is always going to be `function` for this type of tool call.
+
+            - `"function"`
 
       - `type: Literal["tool_calls"]`
 
@@ -1012,9 +1300,153 @@ print(run_step)
 
       Details of the tool call.
 
-      - `tool_calls: List[object]`
+      - `tool_calls: List[ToolCall]`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+        - `class CodeInterpreterToolCall: …`
+
+          Details of the Code Interpreter tool call the run step was involved in.
+
+          - `id: str`
+
+            The ID of the tool call.
+
+          - `code_interpreter: CodeInterpreter`
+
+            The Code Interpreter tool call definition.
+
+            - `input: str`
+
+              The input to the Code Interpreter tool call.
+
+            - `outputs: List[CodeInterpreterOutput]`
+
+              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+              - `class CodeInterpreterOutputLogs: …`
+
+                Text output from the Code Interpreter tool call as part of a run step.
+
+                - `logs: str`
+
+                  The text output from the Code Interpreter tool call.
+
+                - `type: Literal["logs"]`
+
+                  Always `logs`.
+
+                  - `"logs"`
+
+              - `class CodeInterpreterOutputImage: …`
+
+                - `image: CodeInterpreterOutputImageImage`
+
+                  - `file_id: str`
+
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+                - `type: Literal["image"]`
+
+                  Always `image`.
+
+                  - `"image"`
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+            - `"code_interpreter"`
+
+        - `class FileSearchToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `file_search: FileSearch`
+
+            For now, this is always going to be an empty object.
+
+            - `ranking_options: Optional[FileSearchRankingOptions]`
+
+              The ranking options for the file search.
+
+              - `ranker: Literal["auto", "default_2024_08_21"]`
+
+                The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+                - `"auto"`
+
+                - `"default_2024_08_21"`
+
+              - `score_threshold: float`
+
+                The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+            - `results: Optional[List[FileSearchResult]]`
+
+              The results of the file search.
+
+              - `file_id: str`
+
+                The ID of the file that result was found in.
+
+              - `file_name: str`
+
+                The name of the file that result was found in.
+
+              - `score: float`
+
+                The score of the result. All values must be a floating point number between 0 and 1.
+
+              - `content: Optional[List[FileSearchResultContent]]`
+
+                The content of the result that was found. The content is only included if requested via the include query parameter.
+
+                - `text: Optional[str]`
+
+                  The text content of the file.
+
+                - `type: Optional[Literal["text"]]`
+
+                  The type of the content.
+
+                  - `"text"`
+
+          - `type: Literal["file_search"]`
+
+            The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+            - `"file_search"`
+
+        - `class FunctionToolCall: …`
+
+          - `id: str`
+
+            The ID of the tool call object.
+
+          - `function: Function`
+
+            The definition of the function that was called.
+
+            - `arguments: str`
+
+              The arguments passed to the function.
+
+            - `name: str`
+
+              The name of the function.
+
+            - `output: Optional[str]`
+
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+          - `type: Literal["function"]`
+
+            The type of tool call. This is always going to be `function` for this type of tool call.
+
+            - `"function"`
 
       - `type: Literal["tool_calls"]`
 
@@ -1052,7 +1484,161 @@ print(run_step)
 
 ### Run Step Delta
 
-- `object`
+- `class RunStepDelta: …`
+
+  The delta containing the fields that have changed on the run step.
+
+  - `step_details: Optional[StepDetails]`
+
+    The details of the run step.
+
+    - `class RunStepDeltaMessageDelta: …`
+
+      Details of the message creation by the run step.
+
+      - `type: Literal["message_creation"]`
+
+        Always `message_creation`.
+
+        - `"message_creation"`
+
+      - `message_creation: Optional[MessageCreation]`
+
+        - `message_id: Optional[str]`
+
+          The ID of the message that was created by this run step.
+
+    - `class ToolCallDeltaObject: …`
+
+      Details of the tool call.
+
+      - `type: Literal["tool_calls"]`
+
+        Always `tool_calls`.
+
+        - `"tool_calls"`
+
+      - `tool_calls: Optional[List[ToolCallDelta]]`
+
+        An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+        - `class CodeInterpreterToolCallDelta: …`
+
+          Details of the Code Interpreter tool call the run step was involved in.
+
+          - `index: int`
+
+            The index of the tool call in the tool calls array.
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+            - `"code_interpreter"`
+
+          - `id: Optional[str]`
+
+            The ID of the tool call.
+
+          - `code_interpreter: Optional[CodeInterpreter]`
+
+            The Code Interpreter tool call definition.
+
+            - `input: Optional[str]`
+
+              The input to the Code Interpreter tool call.
+
+            - `outputs: Optional[List[CodeInterpreterOutput]]`
+
+              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+              - `class CodeInterpreterLogs: …`
+
+                Text output from the Code Interpreter tool call as part of a run step.
+
+                - `index: int`
+
+                  The index of the output in the outputs array.
+
+                - `type: Literal["logs"]`
+
+                  Always `logs`.
+
+                  - `"logs"`
+
+                - `logs: Optional[str]`
+
+                  The text output from the Code Interpreter tool call.
+
+              - `class CodeInterpreterOutputImage: …`
+
+                - `index: int`
+
+                  The index of the output in the outputs array.
+
+                - `type: Literal["image"]`
+
+                  Always `image`.
+
+                  - `"image"`
+
+                - `image: Optional[Image]`
+
+                  - `file_id: Optional[str]`
+
+                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+        - `class FileSearchToolCallDelta: …`
+
+          - `file_search: object`
+
+            For now, this is always going to be an empty object.
+
+          - `index: int`
+
+            The index of the tool call in the tool calls array.
+
+          - `type: Literal["file_search"]`
+
+            The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+            - `"file_search"`
+
+          - `id: Optional[str]`
+
+            The ID of the tool call object.
+
+        - `class FunctionToolCallDelta: …`
+
+          - `index: int`
+
+            The index of the tool call in the tool calls array.
+
+          - `type: Literal["function"]`
+
+            The type of tool call. This is always going to be `function` for this type of tool call.
+
+            - `"function"`
+
+          - `id: Optional[str]`
+
+            The ID of the tool call object.
+
+          - `function: Optional[Function]`
+
+            The definition of the function that was called.
+
+            - `arguments: Optional[str]`
+
+              The arguments passed to the function.
+
+            - `name: Optional[str]`
+
+              The name of the function.
+
+            - `output: Optional[str]`
+
+              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
 ### Run Step Delta Event
 
@@ -1064,7 +1650,161 @@ print(run_step)
 
     The identifier of the run step, which can be referenced in API endpoints.
 
-  - `delta: object`
+  - `delta: RunStepDelta`
+
+    The delta containing the fields that have changed on the run step.
+
+    - `step_details: Optional[StepDetails]`
+
+      The details of the run step.
+
+      - `class RunStepDeltaMessageDelta: …`
+
+        Details of the message creation by the run step.
+
+        - `type: Literal["message_creation"]`
+
+          Always `message_creation`.
+
+          - `"message_creation"`
+
+        - `message_creation: Optional[MessageCreation]`
+
+          - `message_id: Optional[str]`
+
+            The ID of the message that was created by this run step.
+
+      - `class ToolCallDeltaObject: …`
+
+        Details of the tool call.
+
+        - `type: Literal["tool_calls"]`
+
+          Always `tool_calls`.
+
+          - `"tool_calls"`
+
+        - `tool_calls: Optional[List[ToolCallDelta]]`
+
+          An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+          - `class CodeInterpreterToolCallDelta: …`
+
+            Details of the Code Interpreter tool call the run step was involved in.
+
+            - `index: int`
+
+              The index of the tool call in the tool calls array.
+
+            - `type: Literal["code_interpreter"]`
+
+              The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+              - `"code_interpreter"`
+
+            - `id: Optional[str]`
+
+              The ID of the tool call.
+
+            - `code_interpreter: Optional[CodeInterpreter]`
+
+              The Code Interpreter tool call definition.
+
+              - `input: Optional[str]`
+
+                The input to the Code Interpreter tool call.
+
+              - `outputs: Optional[List[CodeInterpreterOutput]]`
+
+                The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+                - `class CodeInterpreterLogs: …`
+
+                  Text output from the Code Interpreter tool call as part of a run step.
+
+                  - `index: int`
+
+                    The index of the output in the outputs array.
+
+                  - `type: Literal["logs"]`
+
+                    Always `logs`.
+
+                    - `"logs"`
+
+                  - `logs: Optional[str]`
+
+                    The text output from the Code Interpreter tool call.
+
+                - `class CodeInterpreterOutputImage: …`
+
+                  - `index: int`
+
+                    The index of the output in the outputs array.
+
+                  - `type: Literal["image"]`
+
+                    Always `image`.
+
+                    - `"image"`
+
+                  - `image: Optional[Image]`
+
+                    - `file_id: Optional[str]`
+
+                      The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+          - `class FileSearchToolCallDelta: …`
+
+            - `file_search: object`
+
+              For now, this is always going to be an empty object.
+
+            - `index: int`
+
+              The index of the tool call in the tool calls array.
+
+            - `type: Literal["file_search"]`
+
+              The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+              - `"file_search"`
+
+            - `id: Optional[str]`
+
+              The ID of the tool call object.
+
+          - `class FunctionToolCallDelta: …`
+
+            - `index: int`
+
+              The index of the tool call in the tool calls array.
+
+            - `type: Literal["function"]`
+
+              The type of tool call. This is always going to be `function` for this type of tool call.
+
+              - `"function"`
+
+            - `id: Optional[str]`
+
+              The ID of the tool call object.
+
+            - `function: Optional[Function]`
+
+              The definition of the function that was called.
+
+              - `arguments: Optional[str]`
+
+                The arguments passed to the function.
+
+              - `name: Optional[str]`
+
+                The name of the function.
+
+              - `output: Optional[str]`
+
+                The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
   - `object: Literal["thread.run.step.delta"]`
 
@@ -1098,11 +1838,277 @@ print(run_step)
 
 ### Tool Call
 
-- `object`
+- `ToolCall`
+
+  Details of the Code Interpreter tool call the run step was involved in.
+
+  - `class CodeInterpreterToolCall: …`
+
+    Details of the Code Interpreter tool call the run step was involved in.
+
+    - `id: str`
+
+      The ID of the tool call.
+
+    - `code_interpreter: CodeInterpreter`
+
+      The Code Interpreter tool call definition.
+
+      - `input: str`
+
+        The input to the Code Interpreter tool call.
+
+      - `outputs: List[CodeInterpreterOutput]`
+
+        The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+        - `class CodeInterpreterOutputLogs: …`
+
+          Text output from the Code Interpreter tool call as part of a run step.
+
+          - `logs: str`
+
+            The text output from the Code Interpreter tool call.
+
+          - `type: Literal["logs"]`
+
+            Always `logs`.
+
+            - `"logs"`
+
+        - `class CodeInterpreterOutputImage: …`
+
+          - `image: CodeInterpreterOutputImageImage`
+
+            - `file_id: str`
+
+              The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+          - `type: Literal["image"]`
+
+            Always `image`.
+
+            - `"image"`
+
+    - `type: Literal["code_interpreter"]`
+
+      The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+      - `"code_interpreter"`
+
+  - `class FileSearchToolCall: …`
+
+    - `id: str`
+
+      The ID of the tool call object.
+
+    - `file_search: FileSearch`
+
+      For now, this is always going to be an empty object.
+
+      - `ranking_options: Optional[FileSearchRankingOptions]`
+
+        The ranking options for the file search.
+
+        - `ranker: Literal["auto", "default_2024_08_21"]`
+
+          The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+          - `"auto"`
+
+          - `"default_2024_08_21"`
+
+        - `score_threshold: float`
+
+          The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+      - `results: Optional[List[FileSearchResult]]`
+
+        The results of the file search.
+
+        - `file_id: str`
+
+          The ID of the file that result was found in.
+
+        - `file_name: str`
+
+          The name of the file that result was found in.
+
+        - `score: float`
+
+          The score of the result. All values must be a floating point number between 0 and 1.
+
+        - `content: Optional[List[FileSearchResultContent]]`
+
+          The content of the result that was found. The content is only included if requested via the include query parameter.
+
+          - `text: Optional[str]`
+
+            The text content of the file.
+
+          - `type: Optional[Literal["text"]]`
+
+            The type of the content.
+
+            - `"text"`
+
+    - `type: Literal["file_search"]`
+
+      The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+      - `"file_search"`
+
+  - `class FunctionToolCall: …`
+
+    - `id: str`
+
+      The ID of the tool call object.
+
+    - `function: Function`
+
+      The definition of the function that was called.
+
+      - `arguments: str`
+
+        The arguments passed to the function.
+
+      - `name: str`
+
+        The name of the function.
+
+      - `output: Optional[str]`
+
+        The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+    - `type: Literal["function"]`
+
+      The type of tool call. This is always going to be `function` for this type of tool call.
+
+      - `"function"`
 
 ### Tool Call Delta
 
-- `object`
+- `ToolCallDelta`
+
+  Details of the Code Interpreter tool call the run step was involved in.
+
+  - `class CodeInterpreterToolCallDelta: …`
+
+    Details of the Code Interpreter tool call the run step was involved in.
+
+    - `index: int`
+
+      The index of the tool call in the tool calls array.
+
+    - `type: Literal["code_interpreter"]`
+
+      The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+      - `"code_interpreter"`
+
+    - `id: Optional[str]`
+
+      The ID of the tool call.
+
+    - `code_interpreter: Optional[CodeInterpreter]`
+
+      The Code Interpreter tool call definition.
+
+      - `input: Optional[str]`
+
+        The input to the Code Interpreter tool call.
+
+      - `outputs: Optional[List[CodeInterpreterOutput]]`
+
+        The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+        - `class CodeInterpreterLogs: …`
+
+          Text output from the Code Interpreter tool call as part of a run step.
+
+          - `index: int`
+
+            The index of the output in the outputs array.
+
+          - `type: Literal["logs"]`
+
+            Always `logs`.
+
+            - `"logs"`
+
+          - `logs: Optional[str]`
+
+            The text output from the Code Interpreter tool call.
+
+        - `class CodeInterpreterOutputImage: …`
+
+          - `index: int`
+
+            The index of the output in the outputs array.
+
+          - `type: Literal["image"]`
+
+            Always `image`.
+
+            - `"image"`
+
+          - `image: Optional[Image]`
+
+            - `file_id: Optional[str]`
+
+              The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+  - `class FileSearchToolCallDelta: …`
+
+    - `file_search: object`
+
+      For now, this is always going to be an empty object.
+
+    - `index: int`
+
+      The index of the tool call in the tool calls array.
+
+    - `type: Literal["file_search"]`
+
+      The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+      - `"file_search"`
+
+    - `id: Optional[str]`
+
+      The ID of the tool call object.
+
+  - `class FunctionToolCallDelta: …`
+
+    - `index: int`
+
+      The index of the tool call in the tool calls array.
+
+    - `type: Literal["function"]`
+
+      The type of tool call. This is always going to be `function` for this type of tool call.
+
+      - `"function"`
+
+    - `id: Optional[str]`
+
+      The ID of the tool call object.
+
+    - `function: Optional[Function]`
+
+      The definition of the function that was called.
+
+      - `arguments: Optional[str]`
+
+        The arguments passed to the function.
+
+      - `name: Optional[str]`
+
+        The name of the function.
+
+      - `output: Optional[str]`
+
+        The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
 ### Tool Call Delta Object
 
@@ -1116,9 +2122,127 @@ print(run_step)
 
     - `"tool_calls"`
 
-  - `tool_calls: Optional[List[object]]`
+  - `tool_calls: Optional[List[ToolCallDelta]]`
 
     An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+    - `class CodeInterpreterToolCallDelta: …`
+
+      Details of the Code Interpreter tool call the run step was involved in.
+
+      - `index: int`
+
+        The index of the tool call in the tool calls array.
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+        - `"code_interpreter"`
+
+      - `id: Optional[str]`
+
+        The ID of the tool call.
+
+      - `code_interpreter: Optional[CodeInterpreter]`
+
+        The Code Interpreter tool call definition.
+
+        - `input: Optional[str]`
+
+          The input to the Code Interpreter tool call.
+
+        - `outputs: Optional[List[CodeInterpreterOutput]]`
+
+          The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+          - `class CodeInterpreterLogs: …`
+
+            Text output from the Code Interpreter tool call as part of a run step.
+
+            - `index: int`
+
+              The index of the output in the outputs array.
+
+            - `type: Literal["logs"]`
+
+              Always `logs`.
+
+              - `"logs"`
+
+            - `logs: Optional[str]`
+
+              The text output from the Code Interpreter tool call.
+
+          - `class CodeInterpreterOutputImage: …`
+
+            - `index: int`
+
+              The index of the output in the outputs array.
+
+            - `type: Literal["image"]`
+
+              Always `image`.
+
+              - `"image"`
+
+            - `image: Optional[Image]`
+
+              - `file_id: Optional[str]`
+
+                The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+    - `class FileSearchToolCallDelta: …`
+
+      - `file_search: object`
+
+        For now, this is always going to be an empty object.
+
+      - `index: int`
+
+        The index of the tool call in the tool calls array.
+
+      - `type: Literal["file_search"]`
+
+        The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+        - `"file_search"`
+
+      - `id: Optional[str]`
+
+        The ID of the tool call object.
+
+    - `class FunctionToolCallDelta: …`
+
+      - `index: int`
+
+        The index of the tool call in the tool calls array.
+
+      - `type: Literal["function"]`
+
+        The type of tool call. This is always going to be `function` for this type of tool call.
+
+        - `"function"`
+
+      - `id: Optional[str]`
+
+        The ID of the tool call object.
+
+      - `function: Optional[Function]`
+
+        The definition of the function that was called.
+
+        - `arguments: Optional[str]`
+
+          The arguments passed to the function.
+
+        - `name: Optional[str]`
+
+          The name of the function.
+
+        - `output: Optional[str]`
+
+          The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
 
 ### Tool Calls Step Details
 
@@ -1126,9 +2250,153 @@ print(run_step)
 
   Details of the tool call.
 
-  - `tool_calls: List[object]`
+  - `tool_calls: List[ToolCall]`
 
     An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
+
+    - `class CodeInterpreterToolCall: …`
+
+      Details of the Code Interpreter tool call the run step was involved in.
+
+      - `id: str`
+
+        The ID of the tool call.
+
+      - `code_interpreter: CodeInterpreter`
+
+        The Code Interpreter tool call definition.
+
+        - `input: str`
+
+          The input to the Code Interpreter tool call.
+
+        - `outputs: List[CodeInterpreterOutput]`
+
+          The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
+
+          - `class CodeInterpreterOutputLogs: …`
+
+            Text output from the Code Interpreter tool call as part of a run step.
+
+            - `logs: str`
+
+              The text output from the Code Interpreter tool call.
+
+            - `type: Literal["logs"]`
+
+              Always `logs`.
+
+              - `"logs"`
+
+          - `class CodeInterpreterOutputImage: …`
+
+            - `image: CodeInterpreterOutputImageImage`
+
+              - `file_id: str`
+
+                The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+
+            - `type: Literal["image"]`
+
+              Always `image`.
+
+              - `"image"`
+
+      - `type: Literal["code_interpreter"]`
+
+        The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
+
+        - `"code_interpreter"`
+
+    - `class FileSearchToolCall: …`
+
+      - `id: str`
+
+        The ID of the tool call object.
+
+      - `file_search: FileSearch`
+
+        For now, this is always going to be an empty object.
+
+        - `ranking_options: Optional[FileSearchRankingOptions]`
+
+          The ranking options for the file search.
+
+          - `ranker: Literal["auto", "default_2024_08_21"]`
+
+            The ranker to use for the file search. If not specified will use the `auto` ranker.
+
+            - `"auto"`
+
+            - `"default_2024_08_21"`
+
+          - `score_threshold: float`
+
+            The score threshold for the file search. All values must be a floating point number between 0 and 1.
+
+        - `results: Optional[List[FileSearchResult]]`
+
+          The results of the file search.
+
+          - `file_id: str`
+
+            The ID of the file that result was found in.
+
+          - `file_name: str`
+
+            The name of the file that result was found in.
+
+          - `score: float`
+
+            The score of the result. All values must be a floating point number between 0 and 1.
+
+          - `content: Optional[List[FileSearchResultContent]]`
+
+            The content of the result that was found. The content is only included if requested via the include query parameter.
+
+            - `text: Optional[str]`
+
+              The text content of the file.
+
+            - `type: Optional[Literal["text"]]`
+
+              The type of the content.
+
+              - `"text"`
+
+      - `type: Literal["file_search"]`
+
+        The type of tool call. This is always going to be `file_search` for this type of tool call.
+
+        - `"file_search"`
+
+    - `class FunctionToolCall: …`
+
+      - `id: str`
+
+        The ID of the tool call object.
+
+      - `function: Function`
+
+        The definition of the function that was called.
+
+        - `arguments: str`
+
+          The arguments passed to the function.
+
+        - `name: str`
+
+          The name of the function.
+
+        - `output: Optional[str]`
+
+          The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+
+      - `type: Literal["function"]`
+
+        The type of tool call. This is always going to be `function` for this type of tool call.
+
+        - `"function"`
 
   - `type: Literal["tool_calls"]`
 

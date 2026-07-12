@@ -4,7 +4,7 @@
 
 **get** `/evals/{eval_id}/runs`
 
-Get eval runs
+Get a list of runs for an evaluation.
 
 ### Path Parameters
 
@@ -68,7 +68,7 @@ Get eval runs
 
         Determines what populates the `item` namespace in the data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -84,7 +84,7 @@ Get eval runs
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -110,7 +110,7 @@ Get eval runs
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -126,7 +126,7 @@ Get eval runs
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -138,7 +138,7 @@ Get eval runs
 
             - `"file_id"`
 
-        - `StoredCompletions object { type, created_after, created_before, 3 more }`
+        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
           A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -183,7 +183,7 @@ Get eval runs
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `Template object { template, type }`
+        - `TemplateInputMessages object { template, type }`
 
           - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -237,7 +237,7 @@ Get eval runs
 
                   - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
                     - `detail: "low" or "high" or "auto" or "original"`
 
@@ -350,7 +350,7 @@ Get eval runs
 
                 - `"message"`
 
-            - `EvalItem object { content, role, type }`
+            - `EvalMessageObject object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -501,7 +501,7 @@ Get eval runs
 
             - `"template"`
 
-        - `ItemReference object { item_reference, type }`
+        - `ItemReferenceInputMessages object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -554,7 +554,7 @@ Get eval runs
           Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
           Structured Outputs which ensures the model will match your supplied JSON
           schema. Learn more in the [Structured Outputs
-          guide](https://platform.openai.com/docs/guides/structured-outputs).
+          guide](/docs/guides/structured-outputs).
 
           Setting to `{ "type": "json_object" }` enables the older JSON mode, which
           ensures the message the model generates is valid JSON. Using `json_schema`
@@ -573,7 +573,7 @@ Get eval runs
           - `ResponseFormatJSONSchema object { json_schema, type }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
             - `json_schema: object { name, description, schema, strict }`
 
@@ -600,7 +600,7 @@ Get eval runs
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](https://platform.openai.com/docs/guides/structured-outputs).
+                guide](/docs/guides/structured-outputs).
 
             - `type: "json_schema"`
 
@@ -645,13 +645,13 @@ Get eval runs
 
             - `parameters: optional FunctionParameters`
 
-              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
               Omitting `parameters` defines a function with an empty parameter list.
 
             - `strict: optional boolean`
 
-              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
           - `type: "function"`
 
@@ -663,7 +663,7 @@ Get eval runs
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-    - `Responses object { source, type, input_messages, 2 more }`
+    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
       A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -671,7 +671,7 @@ Get eval runs
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -687,7 +687,7 @@ Get eval runs
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -699,7 +699,7 @@ Get eval runs
 
             - `"file_id"`
 
-        - `Responses object { type, created_after, created_before, 8 more }`
+        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
           A EvalResponsesSource object describing a run data source configuration.
 
@@ -765,7 +765,7 @@ Get eval runs
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `Template object { template, type }`
+        - `InputMessagesTemplate object { template, type }`
 
           - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -781,7 +781,7 @@ Get eval runs
 
                 The role of the message (e.g. "system", "assistant", "user").
 
-            - `EvalItem object { content, role, type }`
+            - `EvalMessageObject object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -867,7 +867,7 @@ Get eval runs
 
             - `"template"`
 
-        - `ItemReference object { item_reference, type }`
+        - `InputMessagesItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -912,8 +912,8 @@ Get eval runs
           Configuration options for a text response from the model. Can be plain
           text or structured JSON data. Learn more:
 
-          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
-          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+          - [Text inputs and outputs](/docs/guides/text)
+          - [Structured Outputs](/docs/guides/structured-outputs)
 
           - `format: optional ResponseFormatTextConfig`
 
@@ -921,7 +921,7 @@ Get eval runs
 
             Configuring `{ "type": "json_schema" }` enables Structured Outputs,
             which ensures the model will match your supplied JSON schema. Learn more in the
-            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+            [Structured Outputs guide](/docs/guides/structured-outputs).
 
             The default format is `{ "type": "text" }` with no additional options.
 
@@ -938,7 +938,7 @@ Get eval runs
             - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
               JSON Schema response format. Used to generate structured JSON responses.
-              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
               - `name: string`
 
@@ -967,7 +967,7 @@ Get eval runs
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](https://platform.openai.com/docs/guides/structured-outputs).
+                guide](/docs/guides/structured-outputs).
 
             - `ResponseFormatJSONObject object { type }`
 
@@ -984,12 +984,12 @@ Get eval runs
           The two categories of tools you can provide the model are:
 
           - **Built-in tools**: Tools that are provided by OpenAI that extend the
-            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
-            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
-            [built-in tools](https://platform.openai.com/docs/guides/tools).
+            model's capabilities, like [web search](/docs/guides/tools-web-search)
+            or [file search](/docs/guides/tools-file-search). Learn more about
+            [built-in tools](/docs/guides/tools).
           - **Function calls (custom tools)**: Functions that are defined by you,
             enabling the model to call your own code. Learn more about
-            [function calling](https://platform.openai.com/docs/guides/function-calling).
+            [function calling](/docs/guides/function-calling).
 
           - `Function object { name, parameters, strict, 5 more }`
 
@@ -1203,7 +1203,7 @@ Get eval runs
           - `WebSearch object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
-            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+            [web search tool](/docs/guides/tools-web-search).
 
             - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -1263,7 +1263,7 @@ Get eval runs
           - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
-            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
             - `server_label: string`
 
@@ -1315,7 +1315,7 @@ Get eval runs
 
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -1539,19 +1539,8 @@ Get eval runs
 
             - `background: optional "transparent" or "opaque" or "auto"`
 
-              Allows to set transparency for the background of the generated image(s).
-              This parameter is only supported for GPT image models that support
-              transparent backgrounds. Must be one of `transparent`, `opaque`, or
-              `auto` (default value). When `auto` is used, the model will
-              automatically determine the best background for the image.
-
-              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-              transparent backgrounds. Requests with `background` set to
-              `transparent` will return an error for these models; use `opaque` or
-              `auto` instead.
-
-              If `transparent`, the output format needs to support transparency,
-              so it should be set to either `png` (default value) or `webp`.
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
 
               - `"transparent"`
 
@@ -1580,13 +1569,13 @@ Get eval runs
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -1594,13 +1583,7 @@ Get eval runs
 
                 - `"gpt-image-1-mini"`
 
-                - `"gpt-image-2"`
-
-                - `"gpt-image-2-2026-04-21"`
-
                 - `"gpt-image-1.5"`
-
-                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low"`
 
@@ -1816,7 +1799,7 @@ Get eval runs
 
           - `Custom object { name, type, allowed_callers, 3 more }`
 
-            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
             - `name: string`
 
@@ -1930,7 +1913,7 @@ Get eval runs
 
               - `Custom object { name, type, allowed_callers, 3 more }`
 
-                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
                 - `name: string`
 
@@ -2371,7 +2354,7 @@ curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/run
 
 **post** `/evals/{eval_id}/runs`
 
-Create eval run
+Kicks off a new run for a given evaluation, specifying the data source, and what model configuration to use to test. The datasource will be validated against the schema specified in the config of the evaluation.
 
 ### Path Parameters
 
@@ -2391,7 +2374,7 @@ Create eval run
 
       Determines what populates the `item` namespace in the data source.
 
-      - `FileContent object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -2407,7 +2390,7 @@ Create eval run
 
           - `"file_content"`
 
-      - `FileID object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -2433,7 +2416,7 @@ Create eval run
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `FileContent object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -2449,7 +2432,7 @@ Create eval run
 
           - `"file_content"`
 
-      - `FileID object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -2461,7 +2444,7 @@ Create eval run
 
           - `"file_id"`
 
-      - `StoredCompletions object { type, created_after, created_before, 3 more }`
+      - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -2506,7 +2489,7 @@ Create eval run
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `Template object { template, type }`
+      - `TemplateInputMessages object { template, type }`
 
         - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -2560,7 +2543,7 @@ Create eval run
 
                 - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-                  An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+                  An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
                   - `detail: "low" or "high" or "auto" or "original"`
 
@@ -2673,7 +2656,7 @@ Create eval run
 
               - `"message"`
 
-          - `EvalItem object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -2824,7 +2807,7 @@ Create eval run
 
           - `"template"`
 
-      - `ItemReference object { item_reference, type }`
+      - `ItemReferenceInputMessages object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -2877,7 +2860,7 @@ Create eval run
         Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
         Structured Outputs which ensures the model will match your supplied JSON
         schema. Learn more in the [Structured Outputs
-        guide](https://platform.openai.com/docs/guides/structured-outputs).
+        guide](/docs/guides/structured-outputs).
 
         Setting to `{ "type": "json_object" }` enables the older JSON mode, which
         ensures the message the model generates is valid JSON. Using `json_schema`
@@ -2896,7 +2879,7 @@ Create eval run
         - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
-          Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+          Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
           - `json_schema: object { name, description, schema, strict }`
 
@@ -2923,7 +2906,7 @@ Create eval run
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](https://platform.openai.com/docs/guides/structured-outputs).
+              guide](/docs/guides/structured-outputs).
 
           - `type: "json_schema"`
 
@@ -2968,13 +2951,13 @@ Create eval run
 
           - `parameters: optional FunctionParameters`
 
-            The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+            The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
             Omitting `parameters` defines a function with an empty parameter list.
 
           - `strict: optional boolean`
 
-            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
         - `type: "function"`
 
@@ -2986,7 +2969,7 @@ Create eval run
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-  - `CreateEvalResponsesRunDataSource object { source, type, input_messages, 2 more }`
+  - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
     A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -2994,7 +2977,7 @@ Create eval run
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `FileContent object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -3010,7 +2993,7 @@ Create eval run
 
           - `"file_content"`
 
-      - `FileID object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -3022,7 +3005,7 @@ Create eval run
 
           - `"file_id"`
 
-      - `Responses object { type, created_after, created_before, 8 more }`
+      - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
         A EvalResponsesSource object describing a run data source configuration.
 
@@ -3088,7 +3071,7 @@ Create eval run
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `Template object { template, type }`
+      - `InputMessagesTemplate object { template, type }`
 
         - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -3104,7 +3087,7 @@ Create eval run
 
               The role of the message (e.g. "system", "assistant", "user").
 
-          - `EvalItem object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -3190,7 +3173,7 @@ Create eval run
 
           - `"template"`
 
-      - `ItemReference object { item_reference, type }`
+      - `InputMessagesItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -3235,8 +3218,8 @@ Create eval run
         Configuration options for a text response from the model. Can be plain
         text or structured JSON data. Learn more:
 
-        - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
-        - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+        - [Text inputs and outputs](/docs/guides/text)
+        - [Structured Outputs](/docs/guides/structured-outputs)
 
         - `format: optional ResponseFormatTextConfig`
 
@@ -3244,7 +3227,7 @@ Create eval run
 
           Configuring `{ "type": "json_schema" }` enables Structured Outputs,
           which ensures the model will match your supplied JSON schema. Learn more in the
-          [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+          [Structured Outputs guide](/docs/guides/structured-outputs).
 
           The default format is `{ "type": "text" }` with no additional options.
 
@@ -3261,7 +3244,7 @@ Create eval run
           - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
             - `name: string`
 
@@ -3290,7 +3273,7 @@ Create eval run
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](https://platform.openai.com/docs/guides/structured-outputs).
+              guide](/docs/guides/structured-outputs).
 
           - `ResponseFormatJSONObject object { type }`
 
@@ -3307,12 +3290,12 @@ Create eval run
         The two categories of tools you can provide the model are:
 
         - **Built-in tools**: Tools that are provided by OpenAI that extend the
-          model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
-          or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
-          [built-in tools](https://platform.openai.com/docs/guides/tools).
+          model's capabilities, like [web search](/docs/guides/tools-web-search)
+          or [file search](/docs/guides/tools-file-search). Learn more about
+          [built-in tools](/docs/guides/tools).
         - **Function calls (custom tools)**: Functions that are defined by you,
           enabling the model to call your own code. Learn more about
-          [function calling](https://platform.openai.com/docs/guides/function-calling).
+          [function calling](/docs/guides/function-calling).
 
         - `Function object { name, parameters, strict, 5 more }`
 
@@ -3526,7 +3509,7 @@ Create eval run
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          [web search tool](/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -3586,7 +3569,7 @@ Create eval run
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -3638,7 +3621,7 @@ Create eval run
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -3862,19 +3845,8 @@ Create eval run
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Allows to set transparency for the background of the generated image(s).
-            This parameter is only supported for GPT image models that support
-            transparent backgrounds. Must be one of `transparent`, `opaque`, or
-            `auto` (default value). When `auto` is used, the model will
-            automatically determine the best background for the image.
-
-            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-            transparent backgrounds. Requests with `background` set to
-            `transparent` will return an error for these models; use `opaque` or
-            `auto` instead.
-
-            If `transparent`, the output format needs to support transparency,
-            so it should be set to either `png` (default value) or `webp`.
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
 
             - `"transparent"`
 
@@ -3903,13 +3875,13 @@ Create eval run
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -3917,13 +3889,7 @@ Create eval run
 
               - `"gpt-image-1-mini"`
 
-              - `"gpt-image-2"`
-
-              - `"gpt-image-2-2026-04-21"`
-
               - `"gpt-image-1.5"`
-
-              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -4139,7 +4105,7 @@ Create eval run
 
         - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -4253,7 +4219,7 @@ Create eval run
 
             - `Custom object { name, type, allowed_callers, 3 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -4428,7 +4394,7 @@ Create eval run
 
       Determines what populates the `item` namespace in the data source.
 
-      - `FileContent object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -4444,7 +4410,7 @@ Create eval run
 
           - `"file_content"`
 
-      - `FileID object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -4470,7 +4436,7 @@ Create eval run
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `FileContent object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -4486,7 +4452,7 @@ Create eval run
 
           - `"file_content"`
 
-      - `FileID object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -4498,7 +4464,7 @@ Create eval run
 
           - `"file_id"`
 
-      - `StoredCompletions object { type, created_after, created_before, 3 more }`
+      - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -4543,7 +4509,7 @@ Create eval run
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `Template object { template, type }`
+      - `TemplateInputMessages object { template, type }`
 
         - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -4597,7 +4563,7 @@ Create eval run
 
                 - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-                  An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+                  An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
                   - `detail: "low" or "high" or "auto" or "original"`
 
@@ -4710,7 +4676,7 @@ Create eval run
 
               - `"message"`
 
-          - `EvalItem object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -4861,7 +4827,7 @@ Create eval run
 
           - `"template"`
 
-      - `ItemReference object { item_reference, type }`
+      - `ItemReferenceInputMessages object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -4914,7 +4880,7 @@ Create eval run
         Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
         Structured Outputs which ensures the model will match your supplied JSON
         schema. Learn more in the [Structured Outputs
-        guide](https://platform.openai.com/docs/guides/structured-outputs).
+        guide](/docs/guides/structured-outputs).
 
         Setting to `{ "type": "json_object" }` enables the older JSON mode, which
         ensures the message the model generates is valid JSON. Using `json_schema`
@@ -4933,7 +4899,7 @@ Create eval run
         - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
-          Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+          Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
           - `json_schema: object { name, description, schema, strict }`
 
@@ -4960,7 +4926,7 @@ Create eval run
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](https://platform.openai.com/docs/guides/structured-outputs).
+              guide](/docs/guides/structured-outputs).
 
           - `type: "json_schema"`
 
@@ -5005,13 +4971,13 @@ Create eval run
 
           - `parameters: optional FunctionParameters`
 
-            The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+            The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
             Omitting `parameters` defines a function with an empty parameter list.
 
           - `strict: optional boolean`
 
-            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
         - `type: "function"`
 
@@ -5023,7 +4989,7 @@ Create eval run
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-  - `Responses object { source, type, input_messages, 2 more }`
+  - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
     A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -5031,7 +4997,7 @@ Create eval run
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `FileContent object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -5047,7 +5013,7 @@ Create eval run
 
           - `"file_content"`
 
-      - `FileID object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -5059,7 +5025,7 @@ Create eval run
 
           - `"file_id"`
 
-      - `Responses object { type, created_after, created_before, 8 more }`
+      - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
         A EvalResponsesSource object describing a run data source configuration.
 
@@ -5125,7 +5091,7 @@ Create eval run
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `Template object { template, type }`
+      - `InputMessagesTemplate object { template, type }`
 
         - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -5141,7 +5107,7 @@ Create eval run
 
               The role of the message (e.g. "system", "assistant", "user").
 
-          - `EvalItem object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -5227,7 +5193,7 @@ Create eval run
 
           - `"template"`
 
-      - `ItemReference object { item_reference, type }`
+      - `InputMessagesItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -5272,8 +5238,8 @@ Create eval run
         Configuration options for a text response from the model. Can be plain
         text or structured JSON data. Learn more:
 
-        - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
-        - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+        - [Text inputs and outputs](/docs/guides/text)
+        - [Structured Outputs](/docs/guides/structured-outputs)
 
         - `format: optional ResponseFormatTextConfig`
 
@@ -5281,7 +5247,7 @@ Create eval run
 
           Configuring `{ "type": "json_schema" }` enables Structured Outputs,
           which ensures the model will match your supplied JSON schema. Learn more in the
-          [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+          [Structured Outputs guide](/docs/guides/structured-outputs).
 
           The default format is `{ "type": "text" }` with no additional options.
 
@@ -5298,7 +5264,7 @@ Create eval run
           - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
             - `name: string`
 
@@ -5327,7 +5293,7 @@ Create eval run
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](https://platform.openai.com/docs/guides/structured-outputs).
+              guide](/docs/guides/structured-outputs).
 
           - `ResponseFormatJSONObject object { type }`
 
@@ -5344,12 +5310,12 @@ Create eval run
         The two categories of tools you can provide the model are:
 
         - **Built-in tools**: Tools that are provided by OpenAI that extend the
-          model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
-          or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
-          [built-in tools](https://platform.openai.com/docs/guides/tools).
+          model's capabilities, like [web search](/docs/guides/tools-web-search)
+          or [file search](/docs/guides/tools-file-search). Learn more about
+          [built-in tools](/docs/guides/tools).
         - **Function calls (custom tools)**: Functions that are defined by you,
           enabling the model to call your own code. Learn more about
-          [function calling](https://platform.openai.com/docs/guides/function-calling).
+          [function calling](/docs/guides/function-calling).
 
         - `Function object { name, parameters, strict, 5 more }`
 
@@ -5563,7 +5529,7 @@ Create eval run
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          [web search tool](/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -5623,7 +5589,7 @@ Create eval run
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -5675,7 +5641,7 @@ Create eval run
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -5899,19 +5865,8 @@ Create eval run
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Allows to set transparency for the background of the generated image(s).
-            This parameter is only supported for GPT image models that support
-            transparent backgrounds. Must be one of `transparent`, `opaque`, or
-            `auto` (default value). When `auto` is used, the model will
-            automatically determine the best background for the image.
-
-            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-            transparent backgrounds. Requests with `background` set to
-            `transparent` will return an error for these models; use `opaque` or
-            `auto` instead.
-
-            If `transparent`, the output format needs to support transparency,
-            so it should be set to either `png` (default value) or `webp`.
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
 
             - `"transparent"`
 
@@ -5940,13 +5895,13 @@ Create eval run
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -5954,13 +5909,7 @@ Create eval run
 
               - `"gpt-image-1-mini"`
 
-              - `"gpt-image-2"`
-
-              - `"gpt-image-2-2026-04-21"`
-
               - `"gpt-image-1.5"`
-
-              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -6176,7 +6125,7 @@ Create eval run
 
         - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -6290,7 +6239,7 @@ Create eval run
 
             - `Custom object { name, type, allowed_callers, 3 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -6706,7 +6655,7 @@ curl https://api.openai.com/v1/evals/eval_67e579652b548190aaa83ada4b125f47/runs 
 
 **get** `/evals/{eval_id}/runs/{run_id}`
 
-Get an eval run
+Get an evaluation run by ID.
 
 ### Path Parameters
 
@@ -6736,7 +6685,7 @@ Get an eval run
 
       Determines what populates the `item` namespace in the data source.
 
-      - `FileContent object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -6752,7 +6701,7 @@ Get an eval run
 
           - `"file_content"`
 
-      - `FileID object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -6778,7 +6727,7 @@ Get an eval run
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `FileContent object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -6794,7 +6743,7 @@ Get an eval run
 
           - `"file_content"`
 
-      - `FileID object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -6806,7 +6755,7 @@ Get an eval run
 
           - `"file_id"`
 
-      - `StoredCompletions object { type, created_after, created_before, 3 more }`
+      - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -6851,7 +6800,7 @@ Get an eval run
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `Template object { template, type }`
+      - `TemplateInputMessages object { template, type }`
 
         - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -6905,7 +6854,7 @@ Get an eval run
 
                 - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-                  An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+                  An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
                   - `detail: "low" or "high" or "auto" or "original"`
 
@@ -7018,7 +6967,7 @@ Get an eval run
 
               - `"message"`
 
-          - `EvalItem object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -7169,7 +7118,7 @@ Get an eval run
 
           - `"template"`
 
-      - `ItemReference object { item_reference, type }`
+      - `ItemReferenceInputMessages object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -7222,7 +7171,7 @@ Get an eval run
         Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
         Structured Outputs which ensures the model will match your supplied JSON
         schema. Learn more in the [Structured Outputs
-        guide](https://platform.openai.com/docs/guides/structured-outputs).
+        guide](/docs/guides/structured-outputs).
 
         Setting to `{ "type": "json_object" }` enables the older JSON mode, which
         ensures the message the model generates is valid JSON. Using `json_schema`
@@ -7241,7 +7190,7 @@ Get an eval run
         - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
-          Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+          Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
           - `json_schema: object { name, description, schema, strict }`
 
@@ -7268,7 +7217,7 @@ Get an eval run
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](https://platform.openai.com/docs/guides/structured-outputs).
+              guide](/docs/guides/structured-outputs).
 
           - `type: "json_schema"`
 
@@ -7313,13 +7262,13 @@ Get an eval run
 
           - `parameters: optional FunctionParameters`
 
-            The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+            The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
             Omitting `parameters` defines a function with an empty parameter list.
 
           - `strict: optional boolean`
 
-            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
         - `type: "function"`
 
@@ -7331,7 +7280,7 @@ Get an eval run
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-  - `Responses object { source, type, input_messages, 2 more }`
+  - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
     A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -7339,7 +7288,7 @@ Get an eval run
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `FileContent object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -7355,7 +7304,7 @@ Get an eval run
 
           - `"file_content"`
 
-      - `FileID object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -7367,7 +7316,7 @@ Get an eval run
 
           - `"file_id"`
 
-      - `Responses object { type, created_after, created_before, 8 more }`
+      - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
         A EvalResponsesSource object describing a run data source configuration.
 
@@ -7433,7 +7382,7 @@ Get an eval run
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `Template object { template, type }`
+      - `InputMessagesTemplate object { template, type }`
 
         - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -7449,7 +7398,7 @@ Get an eval run
 
               The role of the message (e.g. "system", "assistant", "user").
 
-          - `EvalItem object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -7535,7 +7484,7 @@ Get an eval run
 
           - `"template"`
 
-      - `ItemReference object { item_reference, type }`
+      - `InputMessagesItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -7580,8 +7529,8 @@ Get an eval run
         Configuration options for a text response from the model. Can be plain
         text or structured JSON data. Learn more:
 
-        - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
-        - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+        - [Text inputs and outputs](/docs/guides/text)
+        - [Structured Outputs](/docs/guides/structured-outputs)
 
         - `format: optional ResponseFormatTextConfig`
 
@@ -7589,7 +7538,7 @@ Get an eval run
 
           Configuring `{ "type": "json_schema" }` enables Structured Outputs,
           which ensures the model will match your supplied JSON schema. Learn more in the
-          [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+          [Structured Outputs guide](/docs/guides/structured-outputs).
 
           The default format is `{ "type": "text" }` with no additional options.
 
@@ -7606,7 +7555,7 @@ Get an eval run
           - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
             - `name: string`
 
@@ -7635,7 +7584,7 @@ Get an eval run
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](https://platform.openai.com/docs/guides/structured-outputs).
+              guide](/docs/guides/structured-outputs).
 
           - `ResponseFormatJSONObject object { type }`
 
@@ -7652,12 +7601,12 @@ Get an eval run
         The two categories of tools you can provide the model are:
 
         - **Built-in tools**: Tools that are provided by OpenAI that extend the
-          model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
-          or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
-          [built-in tools](https://platform.openai.com/docs/guides/tools).
+          model's capabilities, like [web search](/docs/guides/tools-web-search)
+          or [file search](/docs/guides/tools-file-search). Learn more about
+          [built-in tools](/docs/guides/tools).
         - **Function calls (custom tools)**: Functions that are defined by you,
           enabling the model to call your own code. Learn more about
-          [function calling](https://platform.openai.com/docs/guides/function-calling).
+          [function calling](/docs/guides/function-calling).
 
         - `Function object { name, parameters, strict, 5 more }`
 
@@ -7871,7 +7820,7 @@ Get an eval run
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          [web search tool](/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -7931,7 +7880,7 @@ Get an eval run
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -7983,7 +7932,7 @@ Get an eval run
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -8207,19 +8156,8 @@ Get an eval run
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Allows to set transparency for the background of the generated image(s).
-            This parameter is only supported for GPT image models that support
-            transparent backgrounds. Must be one of `transparent`, `opaque`, or
-            `auto` (default value). When `auto` is used, the model will
-            automatically determine the best background for the image.
-
-            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-            transparent backgrounds. Requests with `background` set to
-            `transparent` will return an error for these models; use `opaque` or
-            `auto` instead.
-
-            If `transparent`, the output format needs to support transparency,
-            so it should be set to either `png` (default value) or `webp`.
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
 
             - `"transparent"`
 
@@ -8248,13 +8186,13 @@ Get an eval run
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -8262,13 +8200,7 @@ Get an eval run
 
               - `"gpt-image-1-mini"`
 
-              - `"gpt-image-2"`
-
-              - `"gpt-image-2-2026-04-21"`
-
               - `"gpt-image-1.5"`
-
-              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -8484,7 +8416,7 @@ Get an eval run
 
         - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -8598,7 +8530,7 @@ Get an eval run
 
             - `Custom object { name, type, allowed_callers, 3 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -9080,7 +9012,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
 **post** `/evals/{eval_id}/runs/{run_id}`
 
-Cancel eval run
+Cancel an ongoing evaluation run.
 
 ### Path Parameters
 
@@ -9110,7 +9042,7 @@ Cancel eval run
 
       Determines what populates the `item` namespace in the data source.
 
-      - `FileContent object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -9126,7 +9058,7 @@ Cancel eval run
 
           - `"file_content"`
 
-      - `FileID object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -9152,7 +9084,7 @@ Cancel eval run
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `FileContent object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -9168,7 +9100,7 @@ Cancel eval run
 
           - `"file_content"`
 
-      - `FileID object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -9180,7 +9112,7 @@ Cancel eval run
 
           - `"file_id"`
 
-      - `StoredCompletions object { type, created_after, created_before, 3 more }`
+      - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -9225,7 +9157,7 @@ Cancel eval run
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `Template object { template, type }`
+      - `TemplateInputMessages object { template, type }`
 
         - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -9279,7 +9211,7 @@ Cancel eval run
 
                 - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-                  An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+                  An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
                   - `detail: "low" or "high" or "auto" or "original"`
 
@@ -9392,7 +9324,7 @@ Cancel eval run
 
               - `"message"`
 
-          - `EvalItem object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -9543,7 +9475,7 @@ Cancel eval run
 
           - `"template"`
 
-      - `ItemReference object { item_reference, type }`
+      - `ItemReferenceInputMessages object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -9596,7 +9528,7 @@ Cancel eval run
         Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
         Structured Outputs which ensures the model will match your supplied JSON
         schema. Learn more in the [Structured Outputs
-        guide](https://platform.openai.com/docs/guides/structured-outputs).
+        guide](/docs/guides/structured-outputs).
 
         Setting to `{ "type": "json_object" }` enables the older JSON mode, which
         ensures the message the model generates is valid JSON. Using `json_schema`
@@ -9615,7 +9547,7 @@ Cancel eval run
         - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
-          Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+          Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
           - `json_schema: object { name, description, schema, strict }`
 
@@ -9642,7 +9574,7 @@ Cancel eval run
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](https://platform.openai.com/docs/guides/structured-outputs).
+              guide](/docs/guides/structured-outputs).
 
           - `type: "json_schema"`
 
@@ -9687,13 +9619,13 @@ Cancel eval run
 
           - `parameters: optional FunctionParameters`
 
-            The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+            The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
             Omitting `parameters` defines a function with an empty parameter list.
 
           - `strict: optional boolean`
 
-            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+            Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
         - `type: "function"`
 
@@ -9705,7 +9637,7 @@ Cancel eval run
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-  - `Responses object { source, type, input_messages, 2 more }`
+  - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
     A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -9713,7 +9645,7 @@ Cancel eval run
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `FileContent object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -9729,7 +9661,7 @@ Cancel eval run
 
           - `"file_content"`
 
-      - `FileID object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -9741,7 +9673,7 @@ Cancel eval run
 
           - `"file_id"`
 
-      - `Responses object { type, created_after, created_before, 8 more }`
+      - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
         A EvalResponsesSource object describing a run data source configuration.
 
@@ -9807,7 +9739,7 @@ Cancel eval run
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `Template object { template, type }`
+      - `InputMessagesTemplate object { template, type }`
 
         - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -9823,7 +9755,7 @@ Cancel eval run
 
               The role of the message (e.g. "system", "assistant", "user").
 
-          - `EvalItem object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -9909,7 +9841,7 @@ Cancel eval run
 
           - `"template"`
 
-      - `ItemReference object { item_reference, type }`
+      - `InputMessagesItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -9954,8 +9886,8 @@ Cancel eval run
         Configuration options for a text response from the model. Can be plain
         text or structured JSON data. Learn more:
 
-        - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
-        - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+        - [Text inputs and outputs](/docs/guides/text)
+        - [Structured Outputs](/docs/guides/structured-outputs)
 
         - `format: optional ResponseFormatTextConfig`
 
@@ -9963,7 +9895,7 @@ Cancel eval run
 
           Configuring `{ "type": "json_schema" }` enables Structured Outputs,
           which ensures the model will match your supplied JSON schema. Learn more in the
-          [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+          [Structured Outputs guide](/docs/guides/structured-outputs).
 
           The default format is `{ "type": "text" }` with no additional options.
 
@@ -9980,7 +9912,7 @@ Cancel eval run
           - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
             - `name: string`
 
@@ -10009,7 +9941,7 @@ Cancel eval run
               If set to true, the model will always follow the exact schema defined
               in the `schema` field. Only a subset of JSON Schema is supported when
               `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](https://platform.openai.com/docs/guides/structured-outputs).
+              guide](/docs/guides/structured-outputs).
 
           - `ResponseFormatJSONObject object { type }`
 
@@ -10026,12 +9958,12 @@ Cancel eval run
         The two categories of tools you can provide the model are:
 
         - **Built-in tools**: Tools that are provided by OpenAI that extend the
-          model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
-          or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
-          [built-in tools](https://platform.openai.com/docs/guides/tools).
+          model's capabilities, like [web search](/docs/guides/tools-web-search)
+          or [file search](/docs/guides/tools-file-search). Learn more about
+          [built-in tools](/docs/guides/tools).
         - **Function calls (custom tools)**: Functions that are defined by you,
           enabling the model to call your own code. Learn more about
-          [function calling](https://platform.openai.com/docs/guides/function-calling).
+          [function calling](/docs/guides/function-calling).
 
         - `Function object { name, parameters, strict, 5 more }`
 
@@ -10245,7 +10177,7 @@ Cancel eval run
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          [web search tool](/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -10305,7 +10237,7 @@ Cancel eval run
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -10357,7 +10289,7 @@ Cancel eval run
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -10581,19 +10513,8 @@ Cancel eval run
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Allows to set transparency for the background of the generated image(s).
-            This parameter is only supported for GPT image models that support
-            transparent backgrounds. Must be one of `transparent`, `opaque`, or
-            `auto` (default value). When `auto` is used, the model will
-            automatically determine the best background for the image.
-
-            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-            transparent backgrounds. Requests with `background` set to
-            `transparent` will return an error for these models; use `opaque` or
-            `auto` instead.
-
-            If `transparent`, the output format needs to support transparency,
-            so it should be set to either `png` (default value) or `webp`.
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
 
             - `"transparent"`
 
@@ -10622,13 +10543,13 @@ Cancel eval run
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -10636,13 +10557,7 @@ Cancel eval run
 
               - `"gpt-image-1-mini"`
 
-              - `"gpt-image-2"`
-
-              - `"gpt-image-2-2026-04-21"`
-
               - `"gpt-image-1.5"`
-
-              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -10858,7 +10773,7 @@ Cancel eval run
 
         - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -10972,7 +10887,7 @@ Cancel eval run
 
             - `Custom object { name, type, allowed_callers, 3 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -11456,7 +11371,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
 **delete** `/evals/{eval_id}/runs/{run_id}`
 
-Delete eval run
+Delete an eval run.
 
 ### Path Parameters
 
@@ -11521,7 +11436,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
     Determines what populates the `item` namespace in this run's data source.
 
-    - `FileContent object { content, type }`
+    - `EvalJSONLFileContentSource object { content, type }`
 
       - `content: array of object { item, sample }`
 
@@ -11537,7 +11452,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `"file_content"`
 
-    - `FileID object { id, type }`
+    - `EvalJSONLFileIDSource object { id, type }`
 
       - `id: string`
 
@@ -11549,7 +11464,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `"file_id"`
 
-    - `StoredCompletions object { type, created_after, created_before, 3 more }`
+    - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
       A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -11594,7 +11509,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
     Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-    - `Template object { template, type }`
+    - `TemplateInputMessages object { template, type }`
 
       - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -11648,7 +11563,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-                An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+                An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
                 - `detail: "low" or "high" or "auto" or "original"`
 
@@ -11761,7 +11676,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"message"`
 
-        - `EvalItem object { content, role, type }`
+        - `EvalMessageObject object { content, role, type }`
 
           A message input to the model with a role indicating instruction following
           hierarchy. Instructions given with the `developer` or `system` role take
@@ -11912,7 +11827,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `"template"`
 
-    - `ItemReference object { item_reference, type }`
+    - `ItemReferenceInputMessages object { item_reference, type }`
 
       - `item_reference: string`
 
@@ -11965,7 +11880,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
       Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
       Structured Outputs which ensures the model will match your supplied JSON
       schema. Learn more in the [Structured Outputs
-      guide](https://platform.openai.com/docs/guides/structured-outputs).
+      guide](/docs/guides/structured-outputs).
 
       Setting to `{ "type": "json_object" }` enables the older JSON mode, which
       ensures the message the model generates is valid JSON. Using `json_schema`
@@ -11984,7 +11899,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
       - `ResponseFormatJSONSchema object { json_schema, type }`
 
         JSON Schema response format. Used to generate structured JSON responses.
-        Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+        Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
         - `json_schema: object { name, description, schema, strict }`
 
@@ -12011,7 +11926,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             If set to true, the model will always follow the exact schema defined
             in the `schema` field. Only a subset of JSON Schema is supported when
             `strict` is `true`. To learn more, read the [Structured Outputs
-            guide](https://platform.openai.com/docs/guides/structured-outputs).
+            guide](/docs/guides/structured-outputs).
 
         - `type: "json_schema"`
 
@@ -12056,13 +11971,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `parameters: optional FunctionParameters`
 
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+          The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
           Omitting `parameters` defines a function with an empty parameter list.
 
         - `strict: optional boolean`
 
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
       - `type: "function"`
 
@@ -12084,7 +11999,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
     Determines what populates the `item` namespace in the data source.
 
-    - `FileContent object { content, type }`
+    - `EvalJSONLFileContentSource object { content, type }`
 
       - `content: array of object { item, sample }`
 
@@ -12100,7 +12015,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `"file_content"`
 
-    - `FileID object { id, type }`
+    - `EvalJSONLFileIDSource object { id, type }`
 
       - `id: string`
 
@@ -12158,7 +12073,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in the data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -12174,7 +12089,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -12200,7 +12115,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -12216,7 +12131,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -12228,7 +12143,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `StoredCompletions object { type, created_after, created_before, 3 more }`
+        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
           A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -12273,7 +12188,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `Template object { template, type }`
+        - `TemplateInputMessages object { template, type }`
 
           - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -12327,7 +12242,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
                     - `detail: "low" or "high" or "auto" or "original"`
 
@@ -12440,7 +12355,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"message"`
 
-            - `EvalItem object { content, role, type }`
+            - `EvalMessageObject object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -12591,7 +12506,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `ItemReference object { item_reference, type }`
+        - `ItemReferenceInputMessages object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -12644,7 +12559,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
           Structured Outputs which ensures the model will match your supplied JSON
           schema. Learn more in the [Structured Outputs
-          guide](https://platform.openai.com/docs/guides/structured-outputs).
+          guide](/docs/guides/structured-outputs).
 
           Setting to `{ "type": "json_object" }` enables the older JSON mode, which
           ensures the message the model generates is valid JSON. Using `json_schema`
@@ -12663,7 +12578,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `ResponseFormatJSONSchema object { json_schema, type }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
             - `json_schema: object { name, description, schema, strict }`
 
@@ -12690,7 +12605,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](https://platform.openai.com/docs/guides/structured-outputs).
+                guide](/docs/guides/structured-outputs).
 
             - `type: "json_schema"`
 
@@ -12735,13 +12650,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `parameters: optional FunctionParameters`
 
-              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
               Omitting `parameters` defines a function with an empty parameter list.
 
             - `strict: optional boolean`
 
-              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
           - `type: "function"`
 
@@ -12753,7 +12668,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-    - `Responses object { source, type, input_messages, 2 more }`
+    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
       A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -12761,7 +12676,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -12777,7 +12692,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -12789,7 +12704,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `Responses object { type, created_after, created_before, 8 more }`
+        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
           A EvalResponsesSource object describing a run data source configuration.
 
@@ -12855,7 +12770,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `Template object { template, type }`
+        - `InputMessagesTemplate object { template, type }`
 
           - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -12871,7 +12786,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The role of the message (e.g. "system", "assistant", "user").
 
-            - `EvalItem object { content, role, type }`
+            - `EvalMessageObject object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -12957,7 +12872,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `ItemReference object { item_reference, type }`
+        - `InputMessagesItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -13002,8 +12917,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Configuration options for a text response from the model. Can be plain
           text or structured JSON data. Learn more:
 
-          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
-          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+          - [Text inputs and outputs](/docs/guides/text)
+          - [Structured Outputs](/docs/guides/structured-outputs)
 
           - `format: optional ResponseFormatTextConfig`
 
@@ -13011,7 +12926,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             Configuring `{ "type": "json_schema" }` enables Structured Outputs,
             which ensures the model will match your supplied JSON schema. Learn more in the
-            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+            [Structured Outputs guide](/docs/guides/structured-outputs).
 
             The default format is `{ "type": "text" }` with no additional options.
 
@@ -13028,7 +12943,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
               JSON Schema response format. Used to generate structured JSON responses.
-              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
               - `name: string`
 
@@ -13057,7 +12972,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](https://platform.openai.com/docs/guides/structured-outputs).
+                guide](/docs/guides/structured-outputs).
 
             - `ResponseFormatJSONObject object { type }`
 
@@ -13074,12 +12989,12 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           The two categories of tools you can provide the model are:
 
           - **Built-in tools**: Tools that are provided by OpenAI that extend the
-            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
-            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
-            [built-in tools](https://platform.openai.com/docs/guides/tools).
+            model's capabilities, like [web search](/docs/guides/tools-web-search)
+            or [file search](/docs/guides/tools-file-search). Learn more about
+            [built-in tools](/docs/guides/tools).
           - **Function calls (custom tools)**: Functions that are defined by you,
             enabling the model to call your own code. Learn more about
-            [function calling](https://platform.openai.com/docs/guides/function-calling).
+            [function calling](/docs/guides/function-calling).
 
           - `Function object { name, parameters, strict, 5 more }`
 
@@ -13293,7 +13208,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `WebSearch object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
-            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+            [web search tool](/docs/guides/tools-web-search).
 
             - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -13353,7 +13268,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
-            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
             - `server_label: string`
 
@@ -13405,7 +13320,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -13629,19 +13544,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `background: optional "transparent" or "opaque" or "auto"`
 
-              Allows to set transparency for the background of the generated image(s).
-              This parameter is only supported for GPT image models that support
-              transparent backgrounds. Must be one of `transparent`, `opaque`, or
-              `auto` (default value). When `auto` is used, the model will
-              automatically determine the best background for the image.
-
-              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-              transparent backgrounds. Requests with `background` set to
-              `transparent` will return an error for these models; use `opaque` or
-              `auto` instead.
-
-              If `transparent`, the output format needs to support transparency,
-              so it should be set to either `png` (default value) or `webp`.
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
 
               - `"transparent"`
 
@@ -13670,13 +13574,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -13684,13 +13588,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"gpt-image-1-mini"`
 
-                - `"gpt-image-2"`
-
-                - `"gpt-image-2-2026-04-21"`
-
                 - `"gpt-image-1.5"`
-
-                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low"`
 
@@ -13906,7 +13804,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `Custom object { name, type, allowed_callers, 3 more }`
 
-            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
             - `name: string`
 
@@ -14020,7 +13918,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `Custom object { name, type, allowed_callers, 3 more }`
 
-                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
                 - `name: string`
 
@@ -14297,7 +14195,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in the data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -14313,7 +14211,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -14339,7 +14237,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -14355,7 +14253,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -14367,7 +14265,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `StoredCompletions object { type, created_after, created_before, 3 more }`
+        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
           A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -14412,7 +14310,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `Template object { template, type }`
+        - `TemplateInputMessages object { template, type }`
 
           - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -14466,7 +14364,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
                     - `detail: "low" or "high" or "auto" or "original"`
 
@@ -14579,7 +14477,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"message"`
 
-            - `EvalItem object { content, role, type }`
+            - `EvalMessageObject object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -14730,7 +14628,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `ItemReference object { item_reference, type }`
+        - `ItemReferenceInputMessages object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -14783,7 +14681,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
           Structured Outputs which ensures the model will match your supplied JSON
           schema. Learn more in the [Structured Outputs
-          guide](https://platform.openai.com/docs/guides/structured-outputs).
+          guide](/docs/guides/structured-outputs).
 
           Setting to `{ "type": "json_object" }` enables the older JSON mode, which
           ensures the message the model generates is valid JSON. Using `json_schema`
@@ -14802,7 +14700,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `ResponseFormatJSONSchema object { json_schema, type }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
             - `json_schema: object { name, description, schema, strict }`
 
@@ -14829,7 +14727,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](https://platform.openai.com/docs/guides/structured-outputs).
+                guide](/docs/guides/structured-outputs).
 
             - `type: "json_schema"`
 
@@ -14874,13 +14772,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `parameters: optional FunctionParameters`
 
-              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
               Omitting `parameters` defines a function with an empty parameter list.
 
             - `strict: optional boolean`
 
-              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
           - `type: "function"`
 
@@ -14892,7 +14790,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-    - `Responses object { source, type, input_messages, 2 more }`
+    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
       A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -14900,7 +14798,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -14916,7 +14814,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -14928,7 +14826,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `Responses object { type, created_after, created_before, 8 more }`
+        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
           A EvalResponsesSource object describing a run data source configuration.
 
@@ -14994,7 +14892,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `Template object { template, type }`
+        - `InputMessagesTemplate object { template, type }`
 
           - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -15010,7 +14908,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The role of the message (e.g. "system", "assistant", "user").
 
-            - `EvalItem object { content, role, type }`
+            - `EvalMessageObject object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -15096,7 +14994,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `ItemReference object { item_reference, type }`
+        - `InputMessagesItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -15141,8 +15039,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Configuration options for a text response from the model. Can be plain
           text or structured JSON data. Learn more:
 
-          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
-          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+          - [Text inputs and outputs](/docs/guides/text)
+          - [Structured Outputs](/docs/guides/structured-outputs)
 
           - `format: optional ResponseFormatTextConfig`
 
@@ -15150,7 +15048,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             Configuring `{ "type": "json_schema" }` enables Structured Outputs,
             which ensures the model will match your supplied JSON schema. Learn more in the
-            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+            [Structured Outputs guide](/docs/guides/structured-outputs).
 
             The default format is `{ "type": "text" }` with no additional options.
 
@@ -15167,7 +15065,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
               JSON Schema response format. Used to generate structured JSON responses.
-              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
               - `name: string`
 
@@ -15196,7 +15094,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](https://platform.openai.com/docs/guides/structured-outputs).
+                guide](/docs/guides/structured-outputs).
 
             - `ResponseFormatJSONObject object { type }`
 
@@ -15213,12 +15111,12 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           The two categories of tools you can provide the model are:
 
           - **Built-in tools**: Tools that are provided by OpenAI that extend the
-            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
-            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
-            [built-in tools](https://platform.openai.com/docs/guides/tools).
+            model's capabilities, like [web search](/docs/guides/tools-web-search)
+            or [file search](/docs/guides/tools-file-search). Learn more about
+            [built-in tools](/docs/guides/tools).
           - **Function calls (custom tools)**: Functions that are defined by you,
             enabling the model to call your own code. Learn more about
-            [function calling](https://platform.openai.com/docs/guides/function-calling).
+            [function calling](/docs/guides/function-calling).
 
           - `Function object { name, parameters, strict, 5 more }`
 
@@ -15432,7 +15330,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `WebSearch object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
-            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+            [web search tool](/docs/guides/tools-web-search).
 
             - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -15492,7 +15390,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
-            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
             - `server_label: string`
 
@@ -15544,7 +15442,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -15768,19 +15666,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `background: optional "transparent" or "opaque" or "auto"`
 
-              Allows to set transparency for the background of the generated image(s).
-              This parameter is only supported for GPT image models that support
-              transparent backgrounds. Must be one of `transparent`, `opaque`, or
-              `auto` (default value). When `auto` is used, the model will
-              automatically determine the best background for the image.
-
-              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-              transparent backgrounds. Requests with `background` set to
-              `transparent` will return an error for these models; use `opaque` or
-              `auto` instead.
-
-              If `transparent`, the output format needs to support transparency,
-              so it should be set to either `png` (default value) or `webp`.
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
 
               - `"transparent"`
 
@@ -15809,13 +15696,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -15823,13 +15710,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"gpt-image-1-mini"`
 
-                - `"gpt-image-2"`
-
-                - `"gpt-image-2-2026-04-21"`
-
                 - `"gpt-image-1.5"`
-
-                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low"`
 
@@ -16045,7 +15926,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `Custom object { name, type, allowed_callers, 3 more }`
 
-            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
             - `name: string`
 
@@ -16159,7 +16040,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `Custom object { name, type, allowed_callers, 3 more }`
 
-                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
                 - `name: string`
 
@@ -16436,7 +16317,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in the data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -16452,7 +16333,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -16478,7 +16359,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -16494,7 +16375,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -16506,7 +16387,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `StoredCompletions object { type, created_after, created_before, 3 more }`
+        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
           A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -16551,7 +16432,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `Template object { template, type }`
+        - `TemplateInputMessages object { template, type }`
 
           - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -16605,7 +16486,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
                     - `detail: "low" or "high" or "auto" or "original"`
 
@@ -16718,7 +16599,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"message"`
 
-            - `EvalItem object { content, role, type }`
+            - `EvalMessageObject object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -16869,7 +16750,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `ItemReference object { item_reference, type }`
+        - `ItemReferenceInputMessages object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -16922,7 +16803,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
           Structured Outputs which ensures the model will match your supplied JSON
           schema. Learn more in the [Structured Outputs
-          guide](https://platform.openai.com/docs/guides/structured-outputs).
+          guide](/docs/guides/structured-outputs).
 
           Setting to `{ "type": "json_object" }` enables the older JSON mode, which
           ensures the message the model generates is valid JSON. Using `json_schema`
@@ -16941,7 +16822,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `ResponseFormatJSONSchema object { json_schema, type }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
             - `json_schema: object { name, description, schema, strict }`
 
@@ -16968,7 +16849,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](https://platform.openai.com/docs/guides/structured-outputs).
+                guide](/docs/guides/structured-outputs).
 
             - `type: "json_schema"`
 
@@ -17013,13 +16894,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `parameters: optional FunctionParameters`
 
-              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
               Omitting `parameters` defines a function with an empty parameter list.
 
             - `strict: optional boolean`
 
-              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
           - `type: "function"`
 
@@ -17031,7 +16912,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-    - `Responses object { source, type, input_messages, 2 more }`
+    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
       A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -17039,7 +16920,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -17055,7 +16936,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -17067,7 +16948,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `Responses object { type, created_after, created_before, 8 more }`
+        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
           A EvalResponsesSource object describing a run data source configuration.
 
@@ -17133,7 +17014,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `Template object { template, type }`
+        - `InputMessagesTemplate object { template, type }`
 
           - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -17149,7 +17030,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The role of the message (e.g. "system", "assistant", "user").
 
-            - `EvalItem object { content, role, type }`
+            - `EvalMessageObject object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -17235,7 +17116,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `ItemReference object { item_reference, type }`
+        - `InputMessagesItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -17280,8 +17161,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Configuration options for a text response from the model. Can be plain
           text or structured JSON data. Learn more:
 
-          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
-          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+          - [Text inputs and outputs](/docs/guides/text)
+          - [Structured Outputs](/docs/guides/structured-outputs)
 
           - `format: optional ResponseFormatTextConfig`
 
@@ -17289,7 +17170,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             Configuring `{ "type": "json_schema" }` enables Structured Outputs,
             which ensures the model will match your supplied JSON schema. Learn more in the
-            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+            [Structured Outputs guide](/docs/guides/structured-outputs).
 
             The default format is `{ "type": "text" }` with no additional options.
 
@@ -17306,7 +17187,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
               JSON Schema response format. Used to generate structured JSON responses.
-              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
               - `name: string`
 
@@ -17335,7 +17216,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](https://platform.openai.com/docs/guides/structured-outputs).
+                guide](/docs/guides/structured-outputs).
 
             - `ResponseFormatJSONObject object { type }`
 
@@ -17352,12 +17233,12 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           The two categories of tools you can provide the model are:
 
           - **Built-in tools**: Tools that are provided by OpenAI that extend the
-            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
-            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
-            [built-in tools](https://platform.openai.com/docs/guides/tools).
+            model's capabilities, like [web search](/docs/guides/tools-web-search)
+            or [file search](/docs/guides/tools-file-search). Learn more about
+            [built-in tools](/docs/guides/tools).
           - **Function calls (custom tools)**: Functions that are defined by you,
             enabling the model to call your own code. Learn more about
-            [function calling](https://platform.openai.com/docs/guides/function-calling).
+            [function calling](/docs/guides/function-calling).
 
           - `Function object { name, parameters, strict, 5 more }`
 
@@ -17571,7 +17452,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `WebSearch object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
-            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+            [web search tool](/docs/guides/tools-web-search).
 
             - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -17631,7 +17512,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
-            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
             - `server_label: string`
 
@@ -17683,7 +17564,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -17907,19 +17788,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `background: optional "transparent" or "opaque" or "auto"`
 
-              Allows to set transparency for the background of the generated image(s).
-              This parameter is only supported for GPT image models that support
-              transparent backgrounds. Must be one of `transparent`, `opaque`, or
-              `auto` (default value). When `auto` is used, the model will
-              automatically determine the best background for the image.
-
-              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-              transparent backgrounds. Requests with `background` set to
-              `transparent` will return an error for these models; use `opaque` or
-              `auto` instead.
-
-              If `transparent`, the output format needs to support transparency,
-              so it should be set to either `png` (default value) or `webp`.
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
 
               - `"transparent"`
 
@@ -17948,13 +17818,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -17962,13 +17832,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"gpt-image-1-mini"`
 
-                - `"gpt-image-2"`
-
-                - `"gpt-image-2-2026-04-21"`
-
                 - `"gpt-image-1.5"`
-
-                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low"`
 
@@ -18184,7 +18048,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `Custom object { name, type, allowed_callers, 3 more }`
 
-            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
             - `name: string`
 
@@ -18298,7 +18162,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `Custom object { name, type, allowed_callers, 3 more }`
 
-                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
                 - `name: string`
 
@@ -18575,7 +18439,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in the data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -18591,7 +18455,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -18617,7 +18481,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -18633,7 +18497,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -18645,7 +18509,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `StoredCompletions object { type, created_after, created_before, 3 more }`
+        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
           A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -18690,7 +18554,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `Template object { template, type }`
+        - `TemplateInputMessages object { template, type }`
 
           - `template: array of EasyInputMessage or object { content, role, type }`
 
@@ -18744,7 +18608,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-                    An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
                     - `detail: "low" or "high" or "auto" or "original"`
 
@@ -18857,7 +18721,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"message"`
 
-            - `EvalItem object { content, role, type }`
+            - `EvalMessageObject object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -19008,7 +18872,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `ItemReference object { item_reference, type }`
+        - `ItemReferenceInputMessages object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -19061,7 +18925,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
           Structured Outputs which ensures the model will match your supplied JSON
           schema. Learn more in the [Structured Outputs
-          guide](https://platform.openai.com/docs/guides/structured-outputs).
+          guide](/docs/guides/structured-outputs).
 
           Setting to `{ "type": "json_object" }` enables the older JSON mode, which
           ensures the message the model generates is valid JSON. Using `json_schema`
@@ -19080,7 +18944,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `ResponseFormatJSONSchema object { json_schema, type }`
 
             JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
             - `json_schema: object { name, description, schema, strict }`
 
@@ -19107,7 +18971,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](https://platform.openai.com/docs/guides/structured-outputs).
+                guide](/docs/guides/structured-outputs).
 
             - `type: "json_schema"`
 
@@ -19152,13 +19016,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `parameters: optional FunctionParameters`
 
-              The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
 
               Omitting `parameters` defines a function with an empty parameter list.
 
             - `strict: optional boolean`
 
-              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling).
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
           - `type: "function"`
 
@@ -19170,7 +19034,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-    - `Responses object { source, type, input_messages, 2 more }`
+    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
       A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -19178,7 +19042,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `FileContent object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -19194,7 +19058,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_content"`
 
-        - `FileID object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -19206,7 +19070,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"file_id"`
 
-        - `Responses object { type, created_after, created_before, 8 more }`
+        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
           A EvalResponsesSource object describing a run data source configuration.
 
@@ -19272,7 +19136,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `Template object { template, type }`
+        - `InputMessagesTemplate object { template, type }`
 
           - `template: array of object { content, role }  or object { content, role, type }`
 
@@ -19288,7 +19152,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The role of the message (e.g. "system", "assistant", "user").
 
-            - `EvalItem object { content, role, type }`
+            - `EvalMessageObject object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -19374,7 +19238,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"template"`
 
-        - `ItemReference object { item_reference, type }`
+        - `InputMessagesItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -19419,8 +19283,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           Configuration options for a text response from the model. Can be plain
           text or structured JSON data. Learn more:
 
-          - [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
-          - [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+          - [Text inputs and outputs](/docs/guides/text)
+          - [Structured Outputs](/docs/guides/structured-outputs)
 
           - `format: optional ResponseFormatTextConfig`
 
@@ -19428,7 +19292,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             Configuring `{ "type": "json_schema" }` enables Structured Outputs,
             which ensures the model will match your supplied JSON schema. Learn more in the
-            [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+            [Structured Outputs guide](/docs/guides/structured-outputs).
 
             The default format is `{ "type": "text" }` with no additional options.
 
@@ -19445,7 +19309,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
             - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
               JSON Schema response format. Used to generate structured JSON responses.
-              Learn more about [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
 
               - `name: string`
 
@@ -19474,7 +19338,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
                 If set to true, the model will always follow the exact schema defined
                 in the `schema` field. Only a subset of JSON Schema is supported when
                 `strict` is `true`. To learn more, read the [Structured Outputs
-                guide](https://platform.openai.com/docs/guides/structured-outputs).
+                guide](/docs/guides/structured-outputs).
 
             - `ResponseFormatJSONObject object { type }`
 
@@ -19491,12 +19355,12 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           The two categories of tools you can provide the model are:
 
           - **Built-in tools**: Tools that are provided by OpenAI that extend the
-            model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search)
-            or [file search](https://platform.openai.com/docs/guides/tools-file-search). Learn more about
-            [built-in tools](https://platform.openai.com/docs/guides/tools).
+            model's capabilities, like [web search](/docs/guides/tools-web-search)
+            or [file search](/docs/guides/tools-file-search). Learn more about
+            [built-in tools](/docs/guides/tools).
           - **Function calls (custom tools)**: Functions that are defined by you,
             enabling the model to call your own code. Learn more about
-            [function calling](https://platform.openai.com/docs/guides/function-calling).
+            [function calling](/docs/guides/function-calling).
 
           - `Function object { name, parameters, strict, 5 more }`
 
@@ -19710,7 +19574,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `WebSearch object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
-            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+            [web search tool](/docs/guides/tools-web-search).
 
             - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -19770,7 +19634,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
           - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
-            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
             - `server_label: string`
 
@@ -19822,7 +19686,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -20046,19 +19910,8 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `background: optional "transparent" or "opaque" or "auto"`
 
-              Allows to set transparency for the background of the generated image(s).
-              This parameter is only supported for GPT image models that support
-              transparent backgrounds. Must be one of `transparent`, `opaque`, or
-              `auto` (default value). When `auto` is used, the model will
-              automatically determine the best background for the image.
-
-              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-              transparent backgrounds. Requests with `background` set to
-              `transparent` will return an error for these models; use `opaque` or
-              `auto` instead.
-
-              If `transparent`, the output format needs to support transparency,
-              so it should be set to either `png` (default value) or `webp`.
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
 
               - `"transparent"`
 
@@ -20087,13 +19940,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -20101,13 +19954,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"gpt-image-1-mini"`
 
-                - `"gpt-image-2"`
-
-                - `"gpt-image-2-2026-04-21"`
-
                 - `"gpt-image-1.5"`
-
-                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low"`
 
@@ -20323,7 +20170,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `Custom object { name, type, allowed_callers, 3 more }`
 
-            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
             - `name: string`
 
@@ -20437,7 +20284,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               - `Custom object { name, type, allowed_callers, 3 more }`
 
-                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
                 - `name: string`
 
@@ -20704,7 +20551,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items`
 
-Get eval run output items
+Get a list of output items for an evaluation run.
 
 ### Path Parameters
 
@@ -21064,7 +20911,7 @@ curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/run
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items/{output_item_id}`
 
-Get an output item of an eval run
+Get an evaluation run output item by ID.
 
 ### Path Parameters
 

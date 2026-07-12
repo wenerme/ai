@@ -6,7 +6,7 @@
 
 **post** `/embeddings`
 
-Create embeddings
+Creates an embedding vector representing the input text.
 
 ### Parameters
 

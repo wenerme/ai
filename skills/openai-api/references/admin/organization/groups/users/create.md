@@ -2,7 +2,7 @@
 
 **post** `/organization/groups/{group_id}/users`
 
-Add group user
+Adds a user to a group.
 
 ### Path Parameters
 

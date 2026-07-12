@@ -2,7 +2,7 @@
 
 **get** `/audio/voice_consents`
 
-List voice consents
+Returns a list of voice consent recordings.
 
 ### Query Parameters
 

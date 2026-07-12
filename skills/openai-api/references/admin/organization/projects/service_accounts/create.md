@@ -2,7 +2,7 @@
 
 **post** `/organization/projects/{project_id}/service_accounts`
 
-Create project service account
+Creates a new service account in the project. This also returns an unredacted API key for the service account.
 
 ### Path Parameters
 

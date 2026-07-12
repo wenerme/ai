@@ -26,7 +26,13 @@ client.beta.responses.connect()
 
 **post** `/responses?beta=true`
 
-Create a model response
+Creates a model response. Provide [text](https://platform.openai.com/docs/guides/text) or
+[image](https://platform.openai.com/docs/guides/images) inputs to generate [text](https://platform.openai.com/docs/guides/text)
+or [JSON](https://platform.openai.com/docs/guides/structured-outputs) outputs. Have the model call
+your own [custom code](https://platform.openai.com/docs/guides/function-calling) or use built-in
+[tools](https://platform.openai.com/docs/guides/tools) like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+or [file search](https://platform.openai.com/docs/guides/tools-file-search) to use your own data
+as input for the model's response.
 
 ### Parameters
 
@@ -253,13 +259,15 @@ Create a model response
 
         - `"developer"`
 
-      - `phase: Optional[Literal["commentary"]]`
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
       - `type: Optional[Literal["message"]]`
 
@@ -512,13 +520,15 @@ Create a model response
 
           The canonical name of the agent that produced this item.
 
-      - `phase: Optional[Literal["commentary"]]`
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `class BetaResponseFileSearchToolCall: …`
 
@@ -1690,7 +1700,7 @@ Create a model response
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1700,7 +1710,11 @@ Create a model response
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class FiltersCompoundFilter: …`
 
@@ -1747,7 +1761,7 @@ Create a model response
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1757,7 +1771,11 @@ Create a model response
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `object`
 
@@ -5027,13 +5045,15 @@ Create a model response
 
           - `"developer"`
 
-        - `phase: Optional[Literal["commentary"]]`
+        - `phase: Optional[Literal["commentary", "final_answer"]]`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type: Optional[Literal["message"]]`
 
@@ -5286,13 +5306,15 @@ Create a model response
 
             The canonical name of the agent that produced this item.
 
-        - `phase: Optional[Literal["commentary"]]`
+        - `phase: Optional[Literal["commentary", "final_answer"]]`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `class BetaResponseFileSearchToolCall: …`
 
@@ -6464,7 +6486,7 @@ Create a model response
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -6474,7 +6496,11 @@ Create a model response
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class FiltersCompoundFilter: …`
 
@@ -6521,7 +6547,7 @@ Create a model response
 
                       - `"nin"`
 
-                    - `value: Union[str, float, bool, List[object]]`
+                    - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -6531,7 +6557,11 @@ Create a model response
 
                       - `bool`
 
-                      - `List[object]`
+                      - `List[Union[str, float]]`
+
+                        - `str`
+
+                        - `float`
 
                   - `object`
 
@@ -12188,7 +12218,7 @@ print(response)
 
 **get** `/responses/{response_id}?beta=true`
 
-Get a model response
+Retrieves a model response with the given ID.
 
 ### Parameters
 
@@ -12476,13 +12506,15 @@ Get a model response
 
           - `"developer"`
 
-        - `phase: Optional[Literal["commentary"]]`
+        - `phase: Optional[Literal["commentary", "final_answer"]]`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type: Optional[Literal["message"]]`
 
@@ -12735,13 +12767,15 @@ Get a model response
 
             The canonical name of the agent that produced this item.
 
-        - `phase: Optional[Literal["commentary"]]`
+        - `phase: Optional[Literal["commentary", "final_answer"]]`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `class BetaResponseFileSearchToolCall: …`
 
@@ -13913,7 +13947,7 @@ Get a model response
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -13923,7 +13957,11 @@ Get a model response
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class FiltersCompoundFilter: …`
 
@@ -13970,7 +14008,7 @@ Get a model response
 
                       - `"nin"`
 
-                    - `value: Union[str, float, bool, List[object]]`
+                    - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -13980,7 +14018,11 @@ Get a model response
 
                       - `bool`
 
-                      - `List[object]`
+                      - `List[Union[str, float]]`
+
+                        - `str`
+
+                        - `float`
 
                   - `object`
 
@@ -18934,7 +18976,7 @@ print(response)
 
 **delete** `/responses/{response_id}?beta=true`
 
-Delete a model response
+Deletes a model response with the given ID.
 
 ### Parameters
 
@@ -18984,7 +19026,9 @@ print(response)
 
 **post** `/responses/{response_id}/cancel?beta=true`
 
-Cancel a response
+Cancels a model response with the given ID. Only responses created with
+the `background` parameter set to `true` can be cancelled.
+[Learn more](https://platform.openai.com/docs/guides/background).
 
 ### Parameters
 
@@ -19228,13 +19272,15 @@ Cancel a response
 
           - `"developer"`
 
-        - `phase: Optional[Literal["commentary"]]`
+        - `phase: Optional[Literal["commentary", "final_answer"]]`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type: Optional[Literal["message"]]`
 
@@ -19487,13 +19533,15 @@ Cancel a response
 
             The canonical name of the agent that produced this item.
 
-        - `phase: Optional[Literal["commentary"]]`
+        - `phase: Optional[Literal["commentary", "final_answer"]]`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `class BetaResponseFileSearchToolCall: …`
 
@@ -20665,7 +20713,7 @@ Cancel a response
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -20675,7 +20723,11 @@ Cancel a response
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class FiltersCompoundFilter: …`
 
@@ -20722,7 +20774,7 @@ Cancel a response
 
                       - `"nin"`
 
-                    - `value: Union[str, float, bool, List[object]]`
+                    - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -20732,7 +20784,11 @@ Cancel a response
 
                       - `bool`
 
-                      - `List[object]`
+                      - `List[Union[str, float]]`
+
+                        - `str`
+
+                        - `float`
 
                   - `object`
 
@@ -25677,7 +25733,9 @@ print(response)
 
 **post** `/responses/compact?beta=true`
 
-Compact a response
+Compact a conversation. Returns a compacted response object.
+
+Learn when and how to compact long-running conversations in the [conversation state guide](https://platform.openai.com/docs/guides/conversation-state#managing-the-context-window). For ZDR-compatible compaction details, see [Compaction (advanced)](https://platform.openai.com/docs/guides/conversation-state#compaction-advanced).
 
 ### Parameters
 
@@ -26035,13 +26093,15 @@ Compact a response
 
         - `"developer"`
 
-      - `phase: Optional[Literal["commentary"]]`
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
       - `type: Optional[Literal["message"]]`
 
@@ -26294,13 +26354,15 @@ Compact a response
 
           The canonical name of the agent that produced this item.
 
-      - `phase: Optional[Literal["commentary"]]`
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `class BetaResponseFileSearchToolCall: …`
 
@@ -27472,7 +27534,7 @@ Compact a response
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -27482,7 +27544,11 @@ Compact a response
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class FiltersCompoundFilter: …`
 
@@ -27529,7 +27595,7 @@ Compact a response
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -27539,7 +27605,11 @@ Compact a response
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `object`
 
@@ -29953,13 +30023,15 @@ Compact a response
 
           The canonical name of the agent that produced this item.
 
-      - `phase: Optional[Literal["commentary"]]`
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `class BetaResponseFileSearchToolCall: …`
 
@@ -31326,7 +31398,7 @@ Compact a response
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -31336,7 +31408,11 @@ Compact a response
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class FiltersCompoundFilter: …`
 
@@ -31383,7 +31459,7 @@ Compact a response
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -31393,7 +31469,11 @@ Compact a response
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `object`
 
@@ -33754,13 +33834,15 @@ print(compacted_response)
 
           The canonical name of the agent that produced this item.
 
-      - `phase: Optional[Literal["commentary"]]`
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `class BetaResponseFileSearchToolCall: …`
 
@@ -35127,7 +35209,7 @@ print(compacted_response)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -35137,7 +35219,11 @@ print(compacted_response)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class FiltersCompoundFilter: …`
 
@@ -35184,7 +35270,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -35194,7 +35280,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `object`
 
@@ -38013,13 +38103,15 @@ print(compacted_response)
 
     - `"developer"`
 
-  - `phase: Optional[Literal["commentary"]]`
+  - `phase: Optional[Literal["commentary", "final_answer"]]`
 
     Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
     For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
     phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
     - `"commentary"`
+
+    - `"final_answer"`
 
   - `type: Optional[Literal["message"]]`
 
@@ -38084,7 +38176,7 @@ print(compacted_response)
 
         - `"nin"`
 
-      - `value: Union[str, float, bool, List[object]]`
+      - `value: Union[str, float, bool, List[Union[str, float]]]`
 
         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -38094,7 +38186,11 @@ print(compacted_response)
 
         - `bool`
 
-        - `List[object]`
+        - `List[Union[str, float]]`
+
+          - `str`
+
+          - `float`
 
     - `class FiltersCompoundFilter: …`
 
@@ -38141,7 +38237,7 @@ print(compacted_response)
 
             - `"nin"`
 
-          - `value: Union[str, float, bool, List[object]]`
+          - `value: Union[str, float, bool, List[Union[str, float]]]`
 
             The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -38151,7 +38247,11 @@ print(compacted_response)
 
             - `bool`
 
-            - `List[object]`
+            - `List[Union[str, float]]`
+
+              - `str`
+
+              - `float`
 
         - `object`
 
@@ -38875,13 +38975,15 @@ print(compacted_response)
 
           - `"developer"`
 
-        - `phase: Optional[Literal["commentary"]]`
+        - `phase: Optional[Literal["commentary", "final_answer"]]`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type: Optional[Literal["message"]]`
 
@@ -39134,13 +39236,15 @@ print(compacted_response)
 
             The canonical name of the agent that produced this item.
 
-        - `phase: Optional[Literal["commentary"]]`
+        - `phase: Optional[Literal["commentary", "final_answer"]]`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `class BetaResponseFileSearchToolCall: …`
 
@@ -40312,7 +40416,7 @@ print(compacted_response)
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -40322,7 +40426,11 @@ print(compacted_response)
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class FiltersCompoundFilter: …`
 
@@ -40369,7 +40477,7 @@ print(compacted_response)
 
                       - `"nin"`
 
-                    - `value: Union[str, float, bool, List[object]]`
+                    - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -40379,7 +40487,11 @@ print(compacted_response)
 
                       - `bool`
 
-                      - `List[object]`
+                      - `List[Union[str, float]]`
+
+                        - `str`
+
+                        - `float`
 
                   - `object`
 
@@ -45894,13 +46006,15 @@ print(compacted_response)
 
             - `"developer"`
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type: Optional[Literal["message"]]`
 
@@ -46153,13 +46267,15 @@ print(compacted_response)
 
               The canonical name of the agent that produced this item.
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `class BetaResponseFileSearchToolCall: …`
 
@@ -47331,7 +47447,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -47341,7 +47457,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class FiltersCompoundFilter: …`
 
@@ -47388,7 +47508,7 @@ print(compacted_response)
 
                         - `"nin"`
 
-                      - `value: Union[str, float, bool, List[object]]`
+                      - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -47398,7 +47518,11 @@ print(compacted_response)
 
                         - `bool`
 
-                        - `List[object]`
+                        - `List[Union[str, float]]`
+
+                          - `str`
+
+                          - `float`
 
                     - `object`
 
@@ -53428,13 +53552,15 @@ print(compacted_response)
 
             - `"developer"`
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type: Optional[Literal["message"]]`
 
@@ -53687,13 +53813,15 @@ print(compacted_response)
 
               The canonical name of the agent that produced this item.
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `class BetaResponseFileSearchToolCall: …`
 
@@ -54865,7 +54993,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -54875,7 +55003,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class FiltersCompoundFilter: …`
 
@@ -54922,7 +55054,7 @@ print(compacted_response)
 
                         - `"nin"`
 
-                      - `value: Union[str, float, bool, List[object]]`
+                      - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -54932,7 +55064,11 @@ print(compacted_response)
 
                         - `bool`
 
-                        - `List[object]`
+                        - `List[Union[str, float]]`
+
+                          - `str`
+
+                          - `float`
 
                     - `object`
 
@@ -60321,13 +60457,15 @@ print(compacted_response)
 
             - `"developer"`
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type: Optional[Literal["message"]]`
 
@@ -60580,13 +60718,15 @@ print(compacted_response)
 
               The canonical name of the agent that produced this item.
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `class BetaResponseFileSearchToolCall: …`
 
@@ -61758,7 +61898,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -61768,7 +61908,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class FiltersCompoundFilter: …`
 
@@ -61815,7 +61959,7 @@ print(compacted_response)
 
                         - `"nin"`
 
-                      - `value: Union[str, float, bool, List[object]]`
+                      - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -61825,7 +61969,11 @@ print(compacted_response)
 
                         - `bool`
 
-                        - `List[object]`
+                        - `List[Union[str, float]]`
+
+                          - `str`
+
+                          - `float`
 
                     - `object`
 
@@ -68142,13 +68290,15 @@ print(compacted_response)
 
             - `"developer"`
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type: Optional[Literal["message"]]`
 
@@ -68401,13 +68551,15 @@ print(compacted_response)
 
               The canonical name of the agent that produced this item.
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `class BetaResponseFileSearchToolCall: …`
 
@@ -69579,7 +69731,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -69589,7 +69741,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class FiltersCompoundFilter: …`
 
@@ -69636,7 +69792,7 @@ print(compacted_response)
 
                         - `"nin"`
 
-                      - `value: Union[str, float, bool, List[object]]`
+                      - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -69646,7 +69802,11 @@ print(compacted_response)
 
                         - `bool`
 
-                        - `List[object]`
+                        - `List[Union[str, float]]`
+
+                          - `str`
+
+                          - `float`
 
                     - `object`
 
@@ -74621,13 +74781,15 @@ print(compacted_response)
 
             - `"developer"`
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type: Optional[Literal["message"]]`
 
@@ -74880,13 +75042,15 @@ print(compacted_response)
 
               The canonical name of the agent that produced this item.
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `class BetaResponseFileSearchToolCall: …`
 
@@ -76058,7 +76222,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -76068,7 +76232,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class FiltersCompoundFilter: …`
 
@@ -76115,7 +76283,7 @@ print(compacted_response)
 
                         - `"nin"`
 
-                      - `value: Union[str, float, bool, List[object]]`
+                      - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -76125,7 +76293,11 @@ print(compacted_response)
 
                         - `bool`
 
-                        - `List[object]`
+                        - `List[Union[str, float]]`
+
+                          - `str`
+
+                          - `float`
 
                     - `object`
 
@@ -80829,6 +81001,7717 @@ print(compacted_response)
 
       The canonical name of the agent that produced this item.
 
+### Beta Response Inject Created Event
+
+- `class BetaResponseInjectCreatedEvent: …`
+
+  Emitted when all injected input items were validated and committed to the
+  active response.
+
+  - `response_id: str`
+
+    The ID of the response that accepted the input.
+
+  - `sequence_number: int`
+
+    The sequence number for this event.
+
+  - `type: Literal["response.inject.created"]`
+
+    The event discriminator. Always `response.inject.created`.
+
+    - `"response.inject.created"`
+
+  - `stream_id: Optional[str]`
+
+    The multiplexed WebSocket stream that emitted the event. This field is
+    present only when WebSocket multiplexing is enabled separately.
+
+### Beta Response Inject Event
+
+- `class BetaResponseInjectEvent: …`
+
+  Injects input items into an active response over a WebSocket connection.
+  The items are validated and committed atomically. Currently, the server
+  accepts client-owned tool outputs that resume a waiting agent.
+
+  - `input: List[BetaResponseInputItem]`
+
+    Input items to inject into the active response.
+
+    - `class BetaEasyInputMessage: …`
+
+      A message input to the model with a role indicating instruction following
+      hierarchy. Instructions given with the `developer` or `system` role take
+      precedence over instructions given with the `user` role. Messages with the
+      `assistant` role are presumed to have been generated by the model in previous
+      interactions.
+
+      - `content: Union[str, BetaResponseInputMessageContentList]`
+
+        Text, image, or audio input to the model, used to generate a response.
+        Can also contain previous assistant responses.
+
+        - `str`
+
+          A text input to the model.
+
+        - `List[BetaResponseInputContent]`
+
+          - `class BetaResponseInputText: …`
+
+            A text input to the model.
+
+            - `text: str`
+
+              The text input to the model.
+
+            - `type: Literal["input_text"]`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `class BetaResponseInputImage: …`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+            - `detail: Literal["low", "high", "auto", "original"]`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `type: Literal["input_image"]`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `file_id: Optional[str]`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url: Optional[str]`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `class BetaResponseInputFile: …`
+
+            A file input to the model.
+
+            - `type: Literal["input_file"]`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `detail: Optional[Literal["auto", "low", "high"]]`
+
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+              - `"high"`
+
+            - `file_data: Optional[str]`
+
+              The content of the file to be sent to the model.
+
+            - `file_id: Optional[str]`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url: Optional[str]`
+
+              The URL of the file to be sent to the model.
+
+            - `filename: Optional[str]`
+
+              The name of the file to be sent to the model.
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+      - `role: Literal["user", "assistant", "system", "developer"]`
+
+        The role of the message input. One of `user`, `assistant`, `system`, or
+        `developer`.
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"developer"`
+
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+        For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+        phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
+
+      - `type: Optional[Literal["message"]]`
+
+        The type of the message input. Always `message`.
+
+        - `"message"`
+
+    - `class Message: …`
+
+      A message input to the model with a role indicating instruction following
+      hierarchy. Instructions given with the `developer` or `system` role take
+      precedence over instructions given with the `user` role.
+
+      - `content: BetaResponseInputMessageContentList`
+
+        A list of one or many input items to the model, containing different content
+        types.
+
+        - `class BetaResponseInputText: …`
+
+          A text input to the model.
+
+        - `class BetaResponseInputImage: …`
+
+          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+        - `class BetaResponseInputFile: …`
+
+          A file input to the model.
+
+      - `role: Literal["user", "system", "developer"]`
+
+        The role of the message input. One of `user`, `system`, or `developer`.
+
+        - `"user"`
+
+        - `"system"`
+
+        - `"developer"`
+
+      - `agent: Optional[MessageAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Optional[Literal["message"]]`
+
+        The type of the message input. Always set to `message`.
+
+        - `"message"`
+
+    - `class BetaResponseOutputMessage: …`
+
+      An output message from the model.
+
+      - `id: str`
+
+        The unique ID of the output message.
+
+      - `content: List[Content]`
+
+        The content of the output message.
+
+        - `class BetaResponseOutputText: …`
+
+          A text output from the model.
+
+          - `annotations: List[Annotation]`
+
+            The annotations of the text output.
+
+            - `class AnnotationFileCitation: …`
+
+              A citation to a file.
+
+              - `file_id: str`
+
+                The ID of the file.
+
+              - `filename: str`
+
+                The filename of the file cited.
+
+              - `index: int`
+
+                The index of the file in the list of files.
+
+              - `type: Literal["file_citation"]`
+
+                The type of the file citation. Always `file_citation`.
+
+                - `"file_citation"`
+
+            - `class AnnotationURLCitation: …`
+
+              A citation for a web resource used to generate a model response.
+
+              - `end_index: int`
+
+                The index of the last character of the URL citation in the message.
+
+              - `start_index: int`
+
+                The index of the first character of the URL citation in the message.
+
+              - `title: str`
+
+                The title of the web resource.
+
+              - `type: Literal["url_citation"]`
+
+                The type of the URL citation. Always `url_citation`.
+
+                - `"url_citation"`
+
+              - `url: str`
+
+                The URL of the web resource.
+
+            - `class AnnotationContainerFileCitation: …`
+
+              A citation for a container file used to generate a model response.
+
+              - `container_id: str`
+
+                The ID of the container file.
+
+              - `end_index: int`
+
+                The index of the last character of the container file citation in the message.
+
+              - `file_id: str`
+
+                The ID of the file.
+
+              - `filename: str`
+
+                The filename of the container file cited.
+
+              - `start_index: int`
+
+                The index of the first character of the container file citation in the message.
+
+              - `type: Literal["container_file_citation"]`
+
+                The type of the container file citation. Always `container_file_citation`.
+
+                - `"container_file_citation"`
+
+            - `class AnnotationFilePath: …`
+
+              A path to a file.
+
+              - `file_id: str`
+
+                The ID of the file.
+
+              - `index: int`
+
+                The index of the file in the list of files.
+
+              - `type: Literal["file_path"]`
+
+                The type of the file path. Always `file_path`.
+
+                - `"file_path"`
+
+          - `text: str`
+
+            The text output from the model.
+
+          - `type: Literal["output_text"]`
+
+            The type of the output text. Always `output_text`.
+
+            - `"output_text"`
+
+          - `logprobs: Optional[List[Logprob]]`
+
+            - `token: str`
+
+            - `bytes: List[int]`
+
+            - `logprob: float`
+
+            - `top_logprobs: List[LogprobTopLogprob]`
+
+              - `token: str`
+
+              - `bytes: List[int]`
+
+              - `logprob: float`
+
+        - `class BetaResponseOutputRefusal: …`
+
+          A refusal from the model.
+
+          - `refusal: str`
+
+            The refusal explanation from the model.
+
+          - `type: Literal["refusal"]`
+
+            The type of the refusal. Always `refusal`.
+
+            - `"refusal"`
+
+      - `role: Literal["assistant"]`
+
+        The role of the output message. Always `assistant`.
+
+        - `"assistant"`
+
+      - `status: Literal["in_progress", "completed", "incomplete"]`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Literal["message"]`
+
+        The type of the output message. Always `message`.
+
+        - `"message"`
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+        For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+        phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
+
+    - `class BetaResponseFileSearchToolCall: …`
+
+      The results of a file search tool call. See the
+      [file search guide](https://platform.openai.com/docs/guides/tools-file-search) for more information.
+
+      - `id: str`
+
+        The unique ID of the file search tool call.
+
+      - `queries: List[str]`
+
+        The queries used to search for files.
+
+      - `status: Literal["in_progress", "searching", "completed", 2 more]`
+
+        The status of the file search tool call. One of `in_progress`,
+        `searching`, `incomplete` or `failed`,
+
+        - `"in_progress"`
+
+        - `"searching"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+      - `type: Literal["file_search_call"]`
+
+        The type of the file search tool call. Always `file_search_call`.
+
+        - `"file_search_call"`
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `results: Optional[List[Result]]`
+
+        The results of the file search tool call.
+
+        - `attributes: Optional[Dict[str, Union[str, float, bool]]]`
+
+          Set of 16 key-value pairs that can be attached to an object. This can be
+          useful for storing additional information about the object in a structured
+          format, and querying for objects via API or the dashboard. Keys are strings
+          with a maximum length of 64 characters. Values are strings with a maximum
+          length of 512 characters, booleans, or numbers.
+
+          - `str`
+
+          - `float`
+
+          - `bool`
+
+        - `file_id: Optional[str]`
+
+          The unique ID of the file.
+
+        - `filename: Optional[str]`
+
+          The name of the file.
+
+        - `score: Optional[float]`
+
+          The relevance score of the file - a value between 0 and 1.
+
+        - `text: Optional[str]`
+
+          The text that was retrieved from the file.
+
+    - `class BetaResponseComputerToolCall: …`
+
+      A tool call to a computer use tool. See the
+      [computer use guide](https://platform.openai.com/docs/guides/tools-computer-use) for more information.
+
+      - `id: str`
+
+        The unique ID of the computer call.
+
+      - `call_id: str`
+
+        An identifier used when responding to the tool call with output.
+
+      - `pending_safety_checks: List[PendingSafetyCheck]`
+
+        The pending safety checks for the computer call.
+
+        - `id: str`
+
+          The ID of the pending safety check.
+
+        - `code: Optional[str]`
+
+          The type of the pending safety check.
+
+        - `message: Optional[str]`
+
+          Details about the pending safety check.
+
+      - `status: Literal["in_progress", "completed", "incomplete"]`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Literal["computer_call"]`
+
+        The type of the computer call. Always `computer_call`.
+
+        - `"computer_call"`
+
+      - `action: Optional[BetaComputerAction]`
+
+        A click action.
+
+        - `class Click: …`
+
+          A click action.
+
+          - `button: Literal["left", "right", "wheel", 2 more]`
+
+            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
+
+            - `"left"`
+
+            - `"right"`
+
+            - `"wheel"`
+
+            - `"back"`
+
+            - `"forward"`
+
+          - `type: Literal["click"]`
+
+            Specifies the event type. For a click action, this property is always `click`.
+
+            - `"click"`
+
+          - `x: int`
+
+            The x-coordinate where the click occurred.
+
+          - `y: int`
+
+            The y-coordinate where the click occurred.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while clicking.
+
+        - `class DoubleClick: …`
+
+          A double click action.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while double-clicking.
+
+          - `type: Literal["double_click"]`
+
+            Specifies the event type. For a double click action, this property is always set to `double_click`.
+
+            - `"double_click"`
+
+          - `x: int`
+
+            The x-coordinate where the double click occurred.
+
+          - `y: int`
+
+            The y-coordinate where the double click occurred.
+
+        - `class Drag: …`
+
+          A drag action.
+
+          - `path: List[DragPath]`
+
+            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
+
+            ```
+            [
+              { x: 100, y: 200 },
+              { x: 200, y: 300 }
+            ]
+            ```
+
+            - `x: int`
+
+              The x-coordinate.
+
+            - `y: int`
+
+              The y-coordinate.
+
+          - `type: Literal["drag"]`
+
+            Specifies the event type. For a drag action, this property is always set to `drag`.
+
+            - `"drag"`
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while dragging the mouse.
+
+        - `class Keypress: …`
+
+          A collection of keypresses the model would like to perform.
+
+          - `keys: List[str]`
+
+            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
+
+          - `type: Literal["keypress"]`
+
+            Specifies the event type. For a keypress action, this property is always set to `keypress`.
+
+            - `"keypress"`
+
+        - `class Move: …`
+
+          A mouse move action.
+
+          - `type: Literal["move"]`
+
+            Specifies the event type. For a move action, this property is always set to `move`.
+
+            - `"move"`
+
+          - `x: int`
+
+            The x-coordinate to move to.
+
+          - `y: int`
+
+            The y-coordinate to move to.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while moving the mouse.
+
+        - `class Screenshot: …`
+
+          A screenshot action.
+
+          - `type: Literal["screenshot"]`
+
+            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
+
+            - `"screenshot"`
+
+        - `class Scroll: …`
+
+          A scroll action.
+
+          - `scroll_x: int`
+
+            The horizontal scroll distance.
+
+          - `scroll_y: int`
+
+            The vertical scroll distance.
+
+          - `type: Literal["scroll"]`
+
+            Specifies the event type. For a scroll action, this property is always set to `scroll`.
+
+            - `"scroll"`
+
+          - `x: int`
+
+            The x-coordinate where the scroll occurred.
+
+          - `y: int`
+
+            The y-coordinate where the scroll occurred.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while scrolling.
+
+        - `class Type: …`
+
+          An action to type in text.
+
+          - `text: str`
+
+            The text to type.
+
+          - `type: Literal["type"]`
+
+            Specifies the event type. For a type action, this property is always set to `type`.
+
+            - `"type"`
+
+        - `class Wait: …`
+
+          A wait action.
+
+          - `type: Literal["wait"]`
+
+            Specifies the event type. For a wait action, this property is always set to `wait`.
+
+            - `"wait"`
+
+      - `actions: Optional[BetaComputerActionList]`
+
+        Flattened batched actions for `computer_use`. Each action includes an
+        `type` discriminator and action-specific fields.
+
+        - `class Click: …`
+
+          A click action.
+
+        - `class DoubleClick: …`
+
+          A double click action.
+
+        - `class Drag: …`
+
+          A drag action.
+
+        - `class Keypress: …`
+
+          A collection of keypresses the model would like to perform.
+
+        - `class Move: …`
+
+          A mouse move action.
+
+        - `class Screenshot: …`
+
+          A screenshot action.
+
+        - `class Scroll: …`
+
+          A scroll action.
+
+        - `class Type: …`
+
+          An action to type in text.
+
+        - `class Wait: …`
+
+          A wait action.
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class ComputerCallOutput: …`
+
+      The output of a computer tool call.
+
+      - `call_id: str`
+
+        The ID of the computer tool call that produced the output.
+
+      - `output: BetaResponseComputerToolCallOutputScreenshot`
+
+        A computer screenshot image used with the computer use tool.
+
+        - `type: Literal["computer_screenshot"]`
+
+          Specifies the event type. For a computer screenshot, this property is
+          always set to `computer_screenshot`.
+
+          - `"computer_screenshot"`
+
+        - `file_id: Optional[str]`
+
+          The identifier of an uploaded file that contains the screenshot.
+
+        - `image_url: Optional[str]`
+
+          The URL of the screenshot image.
+
+      - `type: Literal["computer_call_output"]`
+
+        The type of the computer tool call output. Always `computer_call_output`.
+
+        - `"computer_call_output"`
+
+      - `id: Optional[str]`
+
+        The ID of the computer tool call output.
+
+      - `acknowledged_safety_checks: Optional[List[ComputerCallOutputAcknowledgedSafetyCheck]]`
+
+        The safety checks reported by the API that have been acknowledged by the developer.
+
+        - `id: str`
+
+          The ID of the pending safety check.
+
+        - `code: Optional[str]`
+
+          The type of the pending safety check.
+
+        - `message: Optional[str]`
+
+          Details about the pending safety check.
+
+      - `agent: Optional[ComputerCallOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the message input. One of `in_progress`, `completed`, or `incomplete`. Populated when input items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class BetaResponseFunctionWebSearch: …`
+
+      The results of a web search tool call. See the
+      [web search guide](https://platform.openai.com/docs/guides/tools-web-search) for more information.
+
+      - `id: str`
+
+        The unique ID of the web search tool call.
+
+      - `action: Action`
+
+        An object describing the specific action taken in this web search call.
+        Includes details on how the model used the web (search, open_page, find_in_page).
+
+        - `class ActionSearch: …`
+
+          Action type "search" - Performs a web search query.
+
+          - `type: Literal["search"]`
+
+            The action type.
+
+            - `"search"`
+
+          - `queries: Optional[List[str]]`
+
+            The search queries.
+
+          - `query: Optional[str]`
+
+            The search query.
+
+          - `sources: Optional[List[ActionSearchSource]]`
+
+            The sources used in the search.
+
+            - `type: Literal["url"]`
+
+              The type of source. Always `url`.
+
+              - `"url"`
+
+            - `url: str`
+
+              The URL of the source.
+
+        - `class ActionOpenPage: …`
+
+          Action type "open_page" - Opens a specific URL from search results.
+
+          - `type: Literal["open_page"]`
+
+            The action type.
+
+            - `"open_page"`
+
+          - `url: Optional[str]`
+
+            The URL opened by the model.
+
+        - `class ActionFindInPage: …`
+
+          Action type "find_in_page": Searches for a pattern within a loaded page.
+
+          - `pattern: str`
+
+            The pattern or text to search for within the page.
+
+          - `type: Literal["find_in_page"]`
+
+            The action type.
+
+            - `"find_in_page"`
+
+          - `url: str`
+
+            The URL of the page searched for the pattern.
+
+      - `status: Literal["in_progress", "searching", "completed", "failed"]`
+
+        The status of the web search tool call.
+
+        - `"in_progress"`
+
+        - `"searching"`
+
+        - `"completed"`
+
+        - `"failed"`
+
+      - `type: Literal["web_search_call"]`
+
+        The type of the web search tool call. Always `web_search_call`.
+
+        - `"web_search_call"`
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class BetaResponseFunctionToolCall: …`
+
+      A tool call to run a function. See the
+      [function calling guide](https://platform.openai.com/docs/guides/function-calling) for more information.
+
+      - `arguments: str`
+
+        A JSON string of the arguments to pass to the function.
+
+      - `call_id: str`
+
+        The unique ID of the function tool call generated by the model.
+
+      - `name: str`
+
+        The name of the function to run.
+
+      - `type: Literal["function_call"]`
+
+        The type of the function tool call. Always `function_call`.
+
+        - `"function_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the function tool call.
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
+
+      - `namespace: Optional[str]`
+
+        The namespace of the function to run.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class FunctionCallOutput: …`
+
+      The output of a function tool call.
+
+      - `call_id: str`
+
+        The unique ID of the function tool call generated by the model.
+
+      - `output: Union[str, BetaResponseFunctionCallOutputItemList]`
+
+        Text, image, or file output of the function tool call.
+
+        - `str`
+
+          A JSON string of the output of the function tool call.
+
+        - `List[BetaResponseFunctionCallOutputItem]`
+
+          - `class BetaResponseInputTextContent: …`
+
+            A text input to the model.
+
+            - `text: str`
+
+              The text input to the model.
+
+            - `type: Literal["input_text"]`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `class BetaResponseInputImageContent: …`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
+
+            - `type: Literal["input_image"]`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `detail: Optional[Literal["low", "high", "auto", "original"]]`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `file_id: Optional[str]`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url: Optional[str]`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `class BetaResponseInputFileContent: …`
+
+            A file input to the model.
+
+            - `type: Literal["input_file"]`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `detail: Optional[Literal["auto", "low", "high"]]`
+
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+              - `"high"`
+
+            - `file_data: Optional[str]`
+
+              The base64-encoded data of the file to be sent to the model.
+
+            - `file_id: Optional[str]`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url: Optional[str]`
+
+              The URL of the file to be sent to the model.
+
+            - `filename: Optional[str]`
+
+              The name of the file to be sent to the model.
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+      - `type: Literal["function_call_output"]`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the function tool call output. Populated when this item is returned via API.
+
+      - `agent: Optional[FunctionCallOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[FunctionCallOutputCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class FunctionCallOutputCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class FunctionCallOutputCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the item. One of `in_progress`, `completed`, or `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class AgentMessage: …`
+
+      A message routed between agents.
+
+      - `author: str`
+
+        The sending agent identity.
+
+      - `content: List[AgentMessageContent]`
+
+        Plaintext, image, or encrypted content sent between agents.
+
+        - `class BetaResponseInputTextContent: …`
+
+          A text input to the model.
+
+        - `class BetaResponseInputImageContent: …`
+
+          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
+
+        - `class AgentMessageContentEncryptedContent: …`
+
+          Opaque encrypted content that Responses API decrypts inside trusted model execution.
+
+          - `encrypted_content: str`
+
+            Opaque encrypted content.
+
+          - `type: Literal["encrypted_content"]`
+
+            The type of the input item. Always `encrypted_content`.
+
+            - `"encrypted_content"`
+
+      - `recipient: str`
+
+        The destination agent identity.
+
+      - `type: Literal["agent_message"]`
+
+        The item type. Always `agent_message`.
+
+        - `"agent_message"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this agent message item.
+
+      - `agent: Optional[AgentMessageAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class MultiAgentCall: …`
+
+      - `action: Literal["spawn_agent", "interrupt_agent", "list_agents", 3 more]`
+
+        The multi-agent action that was executed.
+
+        - `"spawn_agent"`
+
+        - `"interrupt_agent"`
+
+        - `"list_agents"`
+
+        - `"send_message"`
+
+        - `"followup_task"`
+
+        - `"wait_agent"`
+
+      - `arguments: str`
+
+        The action arguments as a JSON string.
+
+      - `call_id: str`
+
+        The unique ID linking this call to its output.
+
+      - `type: Literal["multi_agent_call"]`
+
+        The item type. Always `multi_agent_call`.
+
+        - `"multi_agent_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this multi-agent call.
+
+      - `agent: Optional[MultiAgentCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class MultiAgentCallOutput: …`
+
+      - `action: Literal["spawn_agent", "interrupt_agent", "list_agents", 3 more]`
+
+        The multi-agent action that produced this result.
+
+        - `"spawn_agent"`
+
+        - `"interrupt_agent"`
+
+        - `"list_agents"`
+
+        - `"send_message"`
+
+        - `"followup_task"`
+
+        - `"wait_agent"`
+
+      - `call_id: str`
+
+        The unique ID of the multi-agent call.
+
+      - `output: List[MultiAgentCallOutputOutput]`
+
+        Text output returned by the multi-agent action.
+
+        - `text: str`
+
+          The text content.
+
+        - `type: Literal["output_text"]`
+
+          The content type. Always `output_text`.
+
+          - `"output_text"`
+
+        - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+
+          Citations associated with the text content.
+
+          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+
+            - `file_id: str`
+
+              The ID of the file.
+
+            - `filename: str`
+
+              The filename of the file cited.
+
+            - `index: int`
+
+              The index of the file in the list of files.
+
+            - `type: Literal["file_citation"]`
+
+              The citation type. Always `file_citation`.
+
+              - `"file_citation"`
+
+          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+
+            - `end_index: int`
+
+              The index of the last character of the citation in the message.
+
+            - `start_index: int`
+
+              The index of the first character of the citation in the message.
+
+            - `title: str`
+
+              The title of the cited resource.
+
+            - `type: Literal["url_citation"]`
+
+              The citation type. Always `url_citation`.
+
+              - `"url_citation"`
+
+            - `url: str`
+
+              The URL of the cited resource.
+
+          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+
+            - `container_id: str`
+
+              The ID of the container.
+
+            - `end_index: int`
+
+              The index of the last character of the citation in the message.
+
+            - `file_id: str`
+
+              The ID of the container file.
+
+            - `filename: str`
+
+              The filename of the container file cited.
+
+            - `start_index: int`
+
+              The index of the first character of the citation in the message.
+
+            - `type: Literal["container_file_citation"]`
+
+              The citation type. Always `container_file_citation`.
+
+              - `"container_file_citation"`
+
+      - `type: Literal["multi_agent_call_output"]`
+
+        The item type. Always `multi_agent_call_output`.
+
+        - `"multi_agent_call_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this multi-agent call output.
+
+      - `agent: Optional[MultiAgentCallOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class ToolSearchCall: …`
+
+      - `arguments: object`
+
+        The arguments supplied to the tool search call.
+
+      - `type: Literal["tool_search_call"]`
+
+        The item type. Always `tool_search_call`.
+
+        - `"tool_search_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this tool search call.
+
+      - `agent: Optional[ToolSearchCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `call_id: Optional[str]`
+
+        The unique ID of the tool search call generated by the model.
+
+      - `execution: Optional[Literal["server", "client"]]`
+
+        Whether tool search was executed by the server or by the client.
+
+        - `"server"`
+
+        - `"client"`
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the tool search call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class BetaResponseToolSearchOutputItemParam: …`
+
+      - `tools: List[BetaTool]`
+
+        The loaded tool definitions returned by the tool search output.
+
+        - `class BetaFunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `name: str`
+
+            The name of the function to call.
+
+          - `parameters: Optional[Dict[str, object]]`
+
+            A JSON schema object describing the parameters of the function.
+
+          - `strict: Optional[bool]`
+
+            Whether strict parameter validation is enforced for this function tool.
+
+          - `type: Literal["function"]`
+
+            The type of the function tool. Always `function`.
+
+            - `"function"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this function is deferred and loaded via tool search.
+
+          - `description: Optional[str]`
+
+            A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: Optional[Dict[str, object]]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
+
+        - `class BetaFileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `type: Literal["file_search"]`
+
+            The type of the file search tool. Always `file_search`.
+
+            - `"file_search"`
+
+          - `vector_store_ids: List[str]`
+
+            The IDs of the vector stores to search.
+
+          - `filters: Optional[Filters]`
+
+            A filter to apply.
+
+            - `class FiltersComparisonFilter: …`
+
+              A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+              - `key: str`
+
+                The key to compare against the value.
+
+              - `type: Literal["eq", "ne", "gt", 5 more]`
+
+                Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                - `eq`: equals
+                - `ne`: not equal
+                - `gt`: greater than
+                - `gte`: greater than or equal
+                - `lt`: less than
+                - `lte`: less than or equal
+                - `in`: in
+                - `nin`: not in
+
+                - `"eq"`
+
+                - `"ne"`
+
+                - `"gt"`
+
+                - `"gte"`
+
+                - `"lt"`
+
+                - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
+
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                The value to compare against the attribute key; supports string, number, or boolean types.
+
+                - `str`
+
+                - `float`
+
+                - `bool`
+
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
+
+            - `class FiltersCompoundFilter: …`
+
+              Combine multiple filters using `and` or `or`.
+
+              - `filters: List[FiltersCompoundFilterFilter]`
+
+                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                - `class FiltersCompoundFilterFilterComparisonFilter: …`
+
+                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                  - `key: str`
+
+                    The key to compare against the value.
+
+                  - `type: Literal["eq", "ne", "gt", 5 more]`
+
+                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                    - `eq`: equals
+                    - `ne`: not equal
+                    - `gt`: greater than
+                    - `gte`: greater than or equal
+                    - `lt`: less than
+                    - `lte`: less than or equal
+                    - `in`: in
+                    - `nin`: not in
+
+                    - `"eq"`
+
+                    - `"ne"`
+
+                    - `"gt"`
+
+                    - `"gte"`
+
+                    - `"lt"`
+
+                    - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
+
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                    The value to compare against the attribute key; supports string, number, or boolean types.
+
+                    - `str`
+
+                    - `float`
+
+                    - `bool`
+
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
+
+                - `object`
+
+              - `type: Literal["and", "or"]`
+
+                Type of operation: `and` or `or`.
+
+                - `"and"`
+
+                - `"or"`
+
+          - `max_num_results: Optional[int]`
+
+            The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+          - `ranking_options: Optional[RankingOptions]`
+
+            Ranking options for search.
+
+            - `hybrid_search: Optional[RankingOptionsHybridSearch]`
+
+              Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+              - `embedding_weight: float`
+
+                The weight of the embedding in the reciprocal ranking fusion.
+
+              - `text_weight: float`
+
+                The weight of the text in the reciprocal ranking fusion.
+
+            - `ranker: Optional[Literal["auto", "default-2024-11-15"]]`
+
+              The ranker to use for the file search.
+
+              - `"auto"`
+
+              - `"default-2024-11-15"`
+
+            - `score_threshold: Optional[float]`
+
+              The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+        - `class BetaComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `type: Literal["computer"]`
+
+            The type of the computer tool. Always `computer`.
+
+            - `"computer"`
+
+        - `class BetaComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `display_height: int`
+
+            The height of the computer display.
+
+          - `display_width: int`
+
+            The width of the computer display.
+
+          - `environment: Literal["windows", "mac", "linux", 2 more]`
+
+            The type of computer environment to control.
+
+            - `"windows"`
+
+            - `"mac"`
+
+            - `"linux"`
+
+            - `"ubuntu"`
+
+            - `"browser"`
+
+          - `type: Literal["computer_use_preview"]`
+
+            The type of the computer use tool. Always `computer_use_preview`.
+
+            - `"computer_use_preview"`
+
+        - `class BetaWebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `type: Literal["web_search", "web_search_2025_08_26"]`
+
+            The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+            - `"web_search"`
+
+            - `"web_search_2025_08_26"`
+
+          - `filters: Optional[Filters]`
+
+            Filters for the search.
+
+            - `allowed_domains: Optional[List[str]]`
+
+              Allowed domains for the search. If not provided, all domains are allowed.
+              Subdomains of the provided domains are allowed as well.
+
+              Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+          - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `user_location: Optional[UserLocation]`
+
+            The approximate location of the user.
+
+            - `city: Optional[str]`
+
+              Free text input for the city of the user, e.g. `San Francisco`.
+
+            - `country: Optional[str]`
+
+              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+            - `region: Optional[str]`
+
+              Free text input for the region of the user, e.g. `California`.
+
+            - `timezone: Optional[str]`
+
+              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+            - `type: Optional[Literal["approximate"]]`
+
+              The type of location approximation. Always `approximate`.
+
+              - `"approximate"`
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `server_label: str`
+
+            A label for this MCP server, used to identify it in tool calls.
+
+          - `type: Literal["mcp"]`
+
+            The type of the MCP tool. Always `mcp`.
+
+            - `"mcp"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `allowed_tools: Optional[McpAllowedTools]`
+
+            List of allowed tool names or a filter object.
+
+            - `List[str]`
+
+              A string array of allowed tool names
+
+            - `class McpAllowedToolsMcpToolFilter: …`
+
+              A filter object to specify which tools are allowed.
+
+              - `read_only: Optional[bool]`
+
+                Indicates whether or not a tool modifies data or is read-only. If an
+                MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                it will match this filter.
+
+              - `tool_names: Optional[List[str]]`
+
+                List of allowed tool names.
+
+          - `authorization: Optional[str]`
+
+            An OAuth access token that can be used with a remote MCP server, either
+            with a custom MCP server URL or a service connector. Your application
+            must handle the OAuth authorization flow and provide the token here.
+
+          - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
+
+            Identifier for service connectors, like those available in ChatGPT. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+
+            Currently supported `connector_id` values are:
+
+            - Dropbox: `connector_dropbox`
+            - Gmail: `connector_gmail`
+            - Google Calendar: `connector_googlecalendar`
+            - Google Drive: `connector_googledrive`
+            - Microsoft Teams: `connector_microsoftteams`
+            - Outlook Calendar: `connector_outlookcalendar`
+            - Outlook Email: `connector_outlookemail`
+            - SharePoint: `connector_sharepoint`
+
+            - `"connector_dropbox"`
+
+            - `"connector_gmail"`
+
+            - `"connector_googlecalendar"`
+
+            - `"connector_googledrive"`
+
+            - `"connector_microsoftteams"`
+
+            - `"connector_outlookcalendar"`
+
+            - `"connector_outlookemail"`
+
+            - `"connector_sharepoint"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this MCP tool is deferred and discovered via tool search.
+
+          - `headers: Optional[Dict[str, str]]`
+
+            Optional HTTP headers to send to the MCP server. Use for authentication
+            or other purposes.
+
+          - `require_approval: Optional[McpRequireApproval]`
+
+            Specify which of the MCP server's tools require approval.
+
+            - `class McpRequireApprovalMcpToolApprovalFilter: …`
+
+              Specify which of the MCP server's tools require approval. Can be
+              `always`, `never`, or a filter object associated with tools
+              that require approval.
+
+              - `always: Optional[McpRequireApprovalMcpToolApprovalFilterAlways]`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: Optional[bool]`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: Optional[List[str]]`
+
+                  List of allowed tool names.
+
+              - `never: Optional[McpRequireApprovalMcpToolApprovalFilterNever]`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: Optional[bool]`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: Optional[List[str]]`
+
+                  List of allowed tool names.
+
+            - `Literal["always", "never"]`
+
+              Specify a single approval policy for all tools. One of `always` or
+              `never`. When set to `always`, all tools will require approval. When
+              set to `never`, all tools will not require approval.
+
+              - `"always"`
+
+              - `"never"`
+
+          - `server_description: Optional[str]`
+
+            Optional description of the MCP server, used to provide more context.
+
+          - `server_url: Optional[str]`
+
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id: Optional[str]`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+          - `container: CodeInterpreterContainer`
+
+            The code interpreter container. Can be a container ID or an object that
+            specifies uploaded file IDs to make available to your code, along with an
+            optional `memory_limit` setting.
+
+            - `str`
+
+              The container ID.
+
+            - `class CodeInterpreterContainerCodeInterpreterToolAuto: …`
+
+              Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+              - `type: Literal["auto"]`
+
+                Always `auto`.
+
+                - `"auto"`
+
+              - `file_ids: Optional[List[str]]`
+
+                An optional list of uploaded files to make available to your code.
+
+              - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                The memory limit for the code interpreter container.
+
+                - `"1g"`
+
+                - `"4g"`
+
+                - `"16g"`
+
+                - `"64g"`
+
+              - `network_policy: Optional[CodeInterpreterContainerCodeInterpreterToolAutoNetworkPolicy]`
+
+                Network access policy for the container.
+
+                - `class BetaContainerNetworkPolicyDisabled: …`
+
+                  - `type: Literal["disabled"]`
+
+                    Disable outbound network access. Always `disabled`.
+
+                    - `"disabled"`
+
+                - `class BetaContainerNetworkPolicyAllowlist: …`
+
+                  - `allowed_domains: List[str]`
+
+                    A list of allowed domains when type is `allowlist`.
+
+                  - `type: Literal["allowlist"]`
+
+                    Allow outbound network access only to specified domains. Always `allowlist`.
+
+                    - `"allowlist"`
+
+                  - `domain_secrets: Optional[List[BetaContainerNetworkPolicyDomainSecret]]`
+
+                    Optional domain-scoped secrets for allowlisted domains.
+
+                    - `domain: str`
+
+                      The domain associated with the secret.
+
+                    - `name: str`
+
+                      The name of the secret to inject for the domain.
+
+                    - `value: str`
+
+                      The secret value to inject for the domain.
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of the code interpreter tool. Always `code_interpreter`.
+
+            - `"code_interpreter"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `class ProgrammaticToolCalling: …`
+
+          - `type: Literal["programmatic_tool_calling"]`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+          - `type: Literal["image_generation"]`
+
+            The type of the image generation tool. Always `image_generation`.
+
+            - `"image_generation"`
+
+          - `action: Optional[Literal["generate", "edit", "auto"]]`
+
+            Whether to generate a new image or edit an existing image. Default: `auto`.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
+          - `background: Optional[Literal["transparent", "opaque", "auto"]]`
+
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `input_fidelity: Optional[Literal["high", "low"]]`
+
+            Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+            - `"high"`
+
+            - `"low"`
+
+          - `input_image_mask: Optional[ImageGenerationInputImageMask]`
+
+            Optional mask for inpainting. Contains `image_url`
+            (string, optional) and `file_id` (string, optional).
+
+            - `file_id: Optional[str]`
+
+              File ID for the mask image.
+
+            - `image_url: Optional[str]`
+
+              Base64-encoded mask image.
+
+          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
+
+            The image generation model to use. Default: `gpt-image-1`.
+
+            - `str`
+
+            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
+
+              The image generation model to use. Default: `gpt-image-1`.
+
+              - `"gpt-image-1"`
+
+              - `"gpt-image-1-mini"`
+
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
+
+          - `moderation: Optional[Literal["auto", "low"]]`
+
+            Moderation level for the generated image. Default: `auto`.
+
+            - `"auto"`
+
+            - `"low"`
+
+          - `output_compression: Optional[int]`
+
+            Compression level for the output image. Default: 100.
+
+          - `output_format: Optional[Literal["png", "webp", "jpeg"]]`
+
+            The output format of the generated image. One of `png`, `webp`, or
+            `jpeg`. Default: `png`.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
+
+          - `partial_images: Optional[int]`
+
+            Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+          - `quality: Optional[Literal["low", "medium", "high", "auto"]]`
+
+            The quality of the generated image. One of `low`, `medium`, `high`,
+            or `auto`. Default: `auto`.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"auto"`
+
+          - `size: Optional[Union[str, Literal["1024x1024", "1024x1536", "1536x1024", "auto"], null]]`
+
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+
+            - `str`
+
+            - `Literal["1024x1024", "1024x1536", "1536x1024", "auto"]`
+
+              The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+
+              - `"1024x1024"`
+
+              - `"1024x1536"`
+
+              - `"1536x1024"`
+
+              - `"auto"`
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+          - `type: Literal["local_shell"]`
+
+            The type of the local shell tool. Always `local_shell`.
+
+            - `"local_shell"`
+
+        - `class BetaFunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+          - `type: Literal["shell"]`
+
+            The type of the shell tool. Always `shell`.
+
+            - `"shell"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `environment: Optional[Environment]`
+
+            - `class BetaContainerAuto: …`
+
+              - `type: Literal["container_auto"]`
+
+                Automatically creates a container for this request
+
+                - `"container_auto"`
+
+              - `file_ids: Optional[List[str]]`
+
+                An optional list of uploaded files to make available to your code.
+
+              - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                The memory limit for the container.
+
+                - `"1g"`
+
+                - `"4g"`
+
+                - `"16g"`
+
+                - `"64g"`
+
+              - `network_policy: Optional[NetworkPolicy]`
+
+                Network access policy for the container.
+
+                - `class BetaContainerNetworkPolicyDisabled: …`
+
+                - `class BetaContainerNetworkPolicyAllowlist: …`
+
+              - `skills: Optional[List[Skill]]`
+
+                An optional list of skills referenced by id or inline data.
+
+                - `class BetaSkillReference: …`
+
+                  - `skill_id: str`
+
+                    The ID of the referenced skill.
+
+                  - `type: Literal["skill_reference"]`
+
+                    References a skill created with the /v1/skills endpoint.
+
+                    - `"skill_reference"`
+
+                  - `version: Optional[str]`
+
+                    Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                - `class BetaInlineSkill: …`
+
+                  - `description: str`
+
+                    The description of the skill.
+
+                  - `name: str`
+
+                    The name of the skill.
+
+                  - `source: BetaInlineSkillSource`
+
+                    Inline skill payload
+
+                    - `data: str`
+
+                      Base64-encoded skill zip bundle.
+
+                    - `media_type: Literal["application/zip"]`
+
+                      The media type of the inline skill payload. Must be `application/zip`.
+
+                      - `"application/zip"`
+
+                    - `type: Literal["base64"]`
+
+                      The type of the inline skill source. Must be `base64`.
+
+                      - `"base64"`
+
+                  - `type: Literal["inline"]`
+
+                    Defines an inline skill for this request.
+
+                    - `"inline"`
+
+            - `class BetaLocalEnvironment: …`
+
+              - `type: Literal["local"]`
+
+                Use a local computer environment.
+
+                - `"local"`
+
+              - `skills: Optional[List[BetaLocalSkill]]`
+
+                An optional list of skills.
+
+                - `description: str`
+
+                  The description of the skill.
+
+                - `name: str`
+
+                  The name of the skill.
+
+                - `path: str`
+
+                  The path to the directory containing the skill.
+
+            - `class BetaContainerReference: …`
+
+              - `container_id: str`
+
+                The ID of the referenced container.
+
+              - `type: Literal["container_reference"]`
+
+                References a container created with the /v1/containers endpoint
+
+                - `"container_reference"`
+
+        - `class BetaCustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `name: str`
+
+            The name of the custom tool, used to identify it in tool calls.
+
+          - `type: Literal["custom"]`
+
+            The type of the custom tool. Always `custom`.
+
+            - `"custom"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this tool should be deferred and discovered via tool search.
+
+          - `description: Optional[str]`
+
+            Optional description of the custom tool, used to provide more context.
+
+          - `format: Optional[Format]`
+
+            The input format for the custom tool. Default is unconstrained text.
+
+            - `class FormatText: …`
+
+              Unconstrained free-form text.
+
+              - `type: Literal["text"]`
+
+                Unconstrained text format. Always `text`.
+
+                - `"text"`
+
+            - `class FormatGrammar: …`
+
+              A grammar defined by the user.
+
+              - `definition: str`
+
+                The grammar definition.
+
+              - `syntax: Literal["lark", "regex"]`
+
+                The syntax of the grammar definition. One of `lark` or `regex`.
+
+                - `"lark"`
+
+                - `"regex"`
+
+              - `type: Literal["grammar"]`
+
+                Grammar format. Always `grammar`.
+
+                - `"grammar"`
+
+        - `class BetaNamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+          - `description: str`
+
+            A description of the namespace shown to the model.
+
+          - `name: str`
+
+            The namespace name used in tool calls (for example, `crm`).
+
+          - `tools: List[Tool]`
+
+            The function/custom tools available inside this namespace.
+
+            - `class ToolFunction: …`
+
+              - `name: str`
+
+              - `type: Literal["function"]`
+
+                - `"function"`
+
+              - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
+              - `defer_loading: Optional[bool]`
+
+                Whether this function should be deferred and discovered via tool search.
+
+              - `description: Optional[str]`
+
+              - `output_schema: Optional[Dict[str, object]]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
+              - `parameters: Optional[object]`
+
+              - `strict: Optional[bool]`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
+
+            - `class BetaCustomTool: …`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `type: Literal["namespace"]`
+
+            The type of the tool. Always `namespace`.
+
+            - `"namespace"`
+
+        - `class BetaToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+          - `type: Literal["tool_search"]`
+
+            The type of the tool. Always `tool_search`.
+
+            - `"tool_search"`
+
+          - `description: Optional[str]`
+
+            Description shown to the model for a client-executed tool search tool.
+
+          - `execution: Optional[Literal["server", "client"]]`
+
+            Whether tool search is executed by the server or by the client.
+
+            - `"server"`
+
+            - `"client"`
+
+          - `parameters: Optional[object]`
+
+            Parameter schema for a client-executed tool search tool.
+
+        - `class BetaWebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `type: Literal["web_search_preview", "web_search_preview_2025_03_11"]`
+
+            The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+            - `"web_search_preview"`
+
+            - `"web_search_preview_2025_03_11"`
+
+          - `search_content_types: Optional[List[Literal["text", "image"]]]`
+
+            - `"text"`
+
+            - `"image"`
+
+          - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `user_location: Optional[UserLocation]`
+
+            The user's location.
+
+            - `type: Literal["approximate"]`
+
+              The type of location approximation. Always `approximate`.
+
+              - `"approximate"`
+
+            - `city: Optional[str]`
+
+              Free text input for the city of the user, e.g. `San Francisco`.
+
+            - `country: Optional[str]`
+
+              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+            - `region: Optional[str]`
+
+              Free text input for the region of the user, e.g. `California`.
+
+            - `timezone: Optional[str]`
+
+              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+        - `class BetaApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: Literal["apply_patch"]`
+
+            The type of the tool. Always `apply_patch`.
+
+            - `"apply_patch"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+      - `type: Literal["tool_search_output"]`
+
+        The item type. Always `tool_search_output`.
+
+        - `"tool_search_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this tool search output.
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `call_id: Optional[str]`
+
+        The unique ID of the tool search call generated by the model.
+
+      - `execution: Optional[Literal["server", "client"]]`
+
+        Whether tool search was executed by the server or by the client.
+
+        - `"server"`
+
+        - `"client"`
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the tool search output.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class AdditionalTools: …`
+
+      - `role: Literal["developer"]`
+
+        The role that provided the additional tools. Only `developer` is supported.
+
+        - `"developer"`
+
+      - `tools: List[BetaTool]`
+
+        A list of additional tools made available at this item.
+
+        - `class BetaFunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class BetaFileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class BetaComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class BetaComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class BetaWebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ProgrammaticToolCalling: …`
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class BetaFunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class BetaCustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class BetaNamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class BetaToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class BetaWebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class BetaApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The item type. Always `additional_tools`.
+
+        - `"additional_tools"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this additional tools item.
+
+      - `agent: Optional[AdditionalToolsAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class BetaResponseReasoningItem: …`
+
+      A description of the chain of thought used by a reasoning model while generating
+      a response. Be sure to include these items in your `input` to the Responses API
+      for subsequent turns of a conversation if you are manually
+      [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+      - `id: str`
+
+        The unique identifier of the reasoning content.
+
+      - `summary: List[Summary]`
+
+        Reasoning summary content.
+
+        - `text: str`
+
+          A summary of the reasoning output from the model so far.
+
+        - `type: Literal["summary_text"]`
+
+          The type of the object. Always `summary_text`.
+
+          - `"summary_text"`
+
+      - `type: Literal["reasoning"]`
+
+        The type of the object. Always `reasoning`.
+
+        - `"reasoning"`
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `content: Optional[List[Content]]`
+
+        Reasoning text content.
+
+        - `text: str`
+
+          The reasoning text from the model.
+
+        - `type: Literal["reasoning_text"]`
+
+          The type of the reasoning text. Always `reasoning_text`.
+
+          - `"reasoning_text"`
+
+      - `encrypted_content: Optional[str]`
+
+        The encrypted content of the reasoning item - populated when a response is
+        generated with `reasoning.encrypted_content` in the `include` parameter.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class BetaResponseCompactionItemParam: …`
+
+      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+
+      - `encrypted_content: str`
+
+        The encrypted content of the compaction summary.
+
+      - `type: Literal["compaction"]`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `id: Optional[str]`
+
+        The ID of the compaction item.
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class ImageGenerationCall: …`
+
+      An image generation request made by the model.
+
+      - `id: str`
+
+        The unique ID of the image generation call.
+
+      - `result: Optional[str]`
+
+        The generated image encoded in base64.
+
+      - `status: Literal["in_progress", "completed", "generating", "failed"]`
+
+        The status of the image generation call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"generating"`
+
+        - `"failed"`
+
+      - `type: Literal["image_generation_call"]`
+
+        The type of the image generation call. Always `image_generation_call`.
+
+        - `"image_generation_call"`
+
+      - `agent: Optional[ImageGenerationCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class BetaResponseCodeInterpreterToolCall: …`
+
+      A tool call to run code.
+
+      - `id: str`
+
+        The unique ID of the code interpreter tool call.
+
+      - `code: Optional[str]`
+
+        The code to run, or null if not available.
+
+      - `container_id: str`
+
+        The ID of the container used to run the code.
+
+      - `outputs: Optional[List[Output]]`
+
+        The outputs generated by the code interpreter, such as logs or images.
+        Can be null if no outputs are available.
+
+        - `class OutputLogs: …`
+
+          The logs output from the code interpreter.
+
+          - `logs: str`
+
+            The logs output from the code interpreter.
+
+          - `type: Literal["logs"]`
+
+            The type of the output. Always `logs`.
+
+            - `"logs"`
+
+        - `class OutputImage: …`
+
+          The image output from the code interpreter.
+
+          - `type: Literal["image"]`
+
+            The type of the output. Always `image`.
+
+            - `"image"`
+
+          - `url: str`
+
+            The URL of the image output from the code interpreter.
+
+      - `status: Literal["in_progress", "completed", "incomplete", 2 more]`
+
+        The status of the code interpreter tool call. Valid values are `in_progress`, `completed`, `incomplete`, `interpreting`, and `failed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"interpreting"`
+
+        - `"failed"`
+
+      - `type: Literal["code_interpreter_call"]`
+
+        The type of the code interpreter tool call. Always `code_interpreter_call`.
+
+        - `"code_interpreter_call"`
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class LocalShellCall: …`
+
+      A tool call to run a command on the local shell.
+
+      - `id: str`
+
+        The unique ID of the local shell call.
+
+      - `action: LocalShellCallAction`
+
+        Execute a shell command on the server.
+
+        - `command: List[str]`
+
+          The command to run.
+
+        - `env: Dict[str, str]`
+
+          Environment variables to set for the command.
+
+        - `type: Literal["exec"]`
+
+          The type of the local shell action. Always `exec`.
+
+          - `"exec"`
+
+        - `timeout_ms: Optional[int]`
+
+          Optional timeout in milliseconds for the command.
+
+        - `user: Optional[str]`
+
+          Optional user to run the command as.
+
+        - `working_directory: Optional[str]`
+
+          Optional working directory to run the command in.
+
+      - `call_id: str`
+
+        The unique ID of the local shell tool call generated by the model.
+
+      - `status: Literal["in_progress", "completed", "incomplete"]`
+
+        The status of the local shell call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Literal["local_shell_call"]`
+
+        The type of the local shell call. Always `local_shell_call`.
+
+        - `"local_shell_call"`
+
+      - `agent: Optional[LocalShellCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class LocalShellCallOutput: …`
+
+      The output of a local shell tool call.
+
+      - `id: str`
+
+        The unique ID of the local shell tool call generated by the model.
+
+      - `output: str`
+
+        A JSON string of the output of the local shell tool call.
+
+      - `type: Literal["local_shell_call_output"]`
+
+        The type of the local shell tool call output. Always `local_shell_call_output`.
+
+        - `"local_shell_call_output"`
+
+      - `agent: Optional[LocalShellCallOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the item. One of `in_progress`, `completed`, or `incomplete`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class ShellCall: …`
+
+      A tool representing a request to execute one or more shell commands.
+
+      - `action: ShellCallAction`
+
+        The shell commands and limits that describe how to run the tool call.
+
+        - `commands: List[str]`
+
+          Ordered shell commands for the execution environment to run.
+
+        - `max_output_length: Optional[int]`
+
+          Maximum number of UTF-8 characters to capture from combined stdout and stderr output.
+
+        - `timeout_ms: Optional[int]`
+
+          Maximum wall-clock time in milliseconds to allow the shell commands to run.
+
+      - `call_id: str`
+
+        The unique ID of the shell tool call generated by the model.
+
+      - `type: Literal["shell_call"]`
+
+        The type of the item. Always `shell_call`.
+
+        - `"shell_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the shell tool call. Populated when this item is returned via API.
+
+      - `agent: Optional[ShellCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[ShellCallCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class ShellCallCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class ShellCallCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `environment: Optional[ShellCallEnvironment]`
+
+        The environment to execute the shell commands in.
+
+        - `class BetaLocalEnvironment: …`
+
+        - `class BetaContainerReference: …`
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the shell call. One of `in_progress`, `completed`, or `incomplete`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class ShellCallOutput: …`
+
+      The streamed output items emitted by a shell tool call.
+
+      - `call_id: str`
+
+        The unique ID of the shell tool call generated by the model.
+
+      - `output: List[BetaResponseFunctionShellCallOutputContent]`
+
+        Captured chunks of stdout and stderr output, along with their associated outcomes.
+
+        - `outcome: Outcome`
+
+          The exit or timeout outcome associated with this shell call.
+
+          - `class OutcomeTimeout: …`
+
+            Indicates that the shell call exceeded its configured time limit.
+
+            - `type: Literal["timeout"]`
+
+              The outcome type. Always `timeout`.
+
+              - `"timeout"`
+
+          - `class OutcomeExit: …`
+
+            Indicates that the shell commands finished and returned an exit code.
+
+            - `exit_code: int`
+
+              The exit code returned by the shell process.
+
+            - `type: Literal["exit"]`
+
+              The outcome type. Always `exit`.
+
+              - `"exit"`
+
+        - `stderr: str`
+
+          Captured stderr output for the shell call.
+
+        - `stdout: str`
+
+          Captured stdout output for the shell call.
+
+      - `type: Literal["shell_call_output"]`
+
+        The type of the item. Always `shell_call_output`.
+
+        - `"shell_call_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+      - `agent: Optional[ShellCallOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[ShellCallOutputCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class ShellCallOutputCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class ShellCallOutputCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `max_output_length: Optional[int]`
+
+        The maximum number of UTF-8 characters captured for this shell call's combined output.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the shell call output.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class ApplyPatchCall: …`
+
+      A tool call representing a request to create, delete, or update files using diff patches.
+
+      - `call_id: str`
+
+        The unique ID of the apply patch tool call generated by the model.
+
+      - `operation: ApplyPatchCallOperation`
+
+        The specific create, delete, or update instruction for the apply_patch tool call.
+
+        - `class ApplyPatchCallOperationCreateFile: …`
+
+          Instruction for creating a new file via the apply_patch tool.
+
+          - `diff: str`
+
+            Unified diff content to apply when creating the file.
+
+          - `path: str`
+
+            Path of the file to create relative to the workspace root.
+
+          - `type: Literal["create_file"]`
+
+            The operation type. Always `create_file`.
+
+            - `"create_file"`
+
+        - `class ApplyPatchCallOperationDeleteFile: …`
+
+          Instruction for deleting an existing file via the apply_patch tool.
+
+          - `path: str`
+
+            Path of the file to delete relative to the workspace root.
+
+          - `type: Literal["delete_file"]`
+
+            The operation type. Always `delete_file`.
+
+            - `"delete_file"`
+
+        - `class ApplyPatchCallOperationUpdateFile: …`
+
+          Instruction for updating an existing file via the apply_patch tool.
+
+          - `diff: str`
+
+            Unified diff content to apply to the existing file.
+
+          - `path: str`
+
+            Path of the file to update relative to the workspace root.
+
+          - `type: Literal["update_file"]`
+
+            The operation type. Always `update_file`.
+
+            - `"update_file"`
+
+      - `status: Literal["in_progress", "completed"]`
+
+        The status of the apply patch tool call. One of `in_progress` or `completed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+      - `type: Literal["apply_patch_call"]`
+
+        The type of the item. Always `apply_patch_call`.
+
+        - `"apply_patch_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the apply patch tool call. Populated when this item is returned via API.
+
+      - `agent: Optional[ApplyPatchCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[ApplyPatchCallCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class ApplyPatchCallCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class ApplyPatchCallCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+    - `class ApplyPatchCallOutput: …`
+
+      The streamed output emitted by an apply patch tool call.
+
+      - `call_id: str`
+
+        The unique ID of the apply patch tool call generated by the model.
+
+      - `status: Literal["completed", "failed"]`
+
+        The status of the apply patch tool call output. One of `completed` or `failed`.
+
+        - `"completed"`
+
+        - `"failed"`
+
+      - `type: Literal["apply_patch_call_output"]`
+
+        The type of the item. Always `apply_patch_call_output`.
+
+        - `"apply_patch_call_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+      - `agent: Optional[ApplyPatchCallOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[ApplyPatchCallOutputCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class ApplyPatchCallOutputCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class ApplyPatchCallOutputCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `output: Optional[str]`
+
+        Optional human-readable log text from the apply patch tool (e.g., patch results or errors).
+
+    - `class McpListTools: …`
+
+      A list of tools available on an MCP server.
+
+      - `id: str`
+
+        The unique ID of the list.
+
+      - `server_label: str`
+
+        The label of the MCP server.
+
+      - `tools: List[McpListToolsTool]`
+
+        The tools available on the server.
+
+        - `input_schema: object`
+
+          The JSON schema describing the tool's input.
+
+        - `name: str`
+
+          The name of the tool.
+
+        - `annotations: Optional[object]`
+
+          Additional annotations about the tool.
+
+        - `description: Optional[str]`
+
+          The description of the tool.
+
+      - `type: Literal["mcp_list_tools"]`
+
+        The type of the item. Always `mcp_list_tools`.
+
+        - `"mcp_list_tools"`
+
+      - `agent: Optional[McpListToolsAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `error: Optional[str]`
+
+        Error message if the server could not list tools.
+
+    - `class McpApprovalRequest: …`
+
+      A request for human approval of a tool invocation.
+
+      - `id: str`
+
+        The unique ID of the approval request.
+
+      - `arguments: str`
+
+        A JSON string of arguments for the tool.
+
+      - `name: str`
+
+        The name of the tool to run.
+
+      - `server_label: str`
+
+        The label of the MCP server making the request.
+
+      - `type: Literal["mcp_approval_request"]`
+
+        The type of the item. Always `mcp_approval_request`.
+
+        - `"mcp_approval_request"`
+
+      - `agent: Optional[McpApprovalRequestAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class McpApprovalResponse: …`
+
+      A response to an MCP approval request.
+
+      - `approval_request_id: str`
+
+        The ID of the approval request being answered.
+
+      - `approve: bool`
+
+        Whether the request was approved.
+
+      - `type: Literal["mcp_approval_response"]`
+
+        The type of the item. Always `mcp_approval_response`.
+
+        - `"mcp_approval_response"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the approval response
+
+      - `agent: Optional[McpApprovalResponseAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `reason: Optional[str]`
+
+        Optional reason for the decision.
+
+    - `class McpCall: …`
+
+      An invocation of a tool on an MCP server.
+
+      - `id: str`
+
+        The unique ID of the tool call.
+
+      - `arguments: str`
+
+        A JSON string of the arguments passed to the tool.
+
+      - `name: str`
+
+        The name of the tool that was run.
+
+      - `server_label: str`
+
+        The label of the MCP server running the tool.
+
+      - `type: Literal["mcp_call"]`
+
+        The type of the item. Always `mcp_call`.
+
+        - `"mcp_call"`
+
+      - `agent: Optional[McpCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `approval_request_id: Optional[str]`
+
+        Unique identifier for the MCP tool call approval request.
+        Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
+
+      - `error: Optional[str]`
+
+        The error from the tool call, if any.
+
+      - `output: Optional[str]`
+
+        The output from the tool call.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete", 2 more]]`
+
+        The status of the tool call. One of `in_progress`, `completed`, `incomplete`, `calling`, or `failed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"calling"`
+
+        - `"failed"`
+
+    - `class BetaResponseCustomToolCallOutput: …`
+
+      The output of a custom tool call from your code, being sent back to the model.
+
+      - `call_id: str`
+
+        The call ID, used to map this custom tool call output to a custom tool call.
+
+      - `output: Union[str, List[OutputOutputContentList]]`
+
+        The output from the custom tool call generated by your code.
+        Can be a string or an list of output content.
+
+        - `str`
+
+          A string of the output of the custom tool call.
+
+        - `List[OutputOutputContentList]`
+
+          Text, image, or file output of the custom tool call.
+
+          - `class BetaResponseInputText: …`
+
+            A text input to the model.
+
+          - `class BetaResponseInputImage: …`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+          - `class BetaResponseInputFile: …`
+
+            A file input to the model.
+
+      - `type: Literal["custom_tool_call_output"]`
+
+        The type of the custom tool call output. Always `custom_tool_call_output`.
+
+        - `"custom_tool_call_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the custom tool call output in the OpenAI platform.
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+    - `class BetaResponseCustomToolCall: …`
+
+      A call to a custom tool created by the model.
+
+      - `call_id: str`
+
+        An identifier used to map this custom tool call to a tool call output.
+
+      - `input: str`
+
+        The input for the custom tool call generated by the model.
+
+      - `name: str`
+
+        The name of the custom tool being called.
+
+      - `type: Literal["custom_tool_call"]`
+
+        The type of the custom tool call. Always `custom_tool_call`.
+
+        - `"custom_tool_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the custom tool call in the OpenAI platform.
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
+
+      - `namespace: Optional[str]`
+
+        The namespace of the custom tool being called.
+
+    - `class CompactionTrigger: …`
+
+      Compacts the current context. Must be the final input item.
+
+      - `type: Literal["compaction_trigger"]`
+
+        The type of the item. Always `compaction_trigger`.
+
+        - `"compaction_trigger"`
+
+      - `agent: Optional[CompactionTriggerAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class ItemReference: …`
+
+      An internal identifier for an item to reference.
+
+      - `id: str`
+
+        The ID of the item to reference.
+
+      - `agent: Optional[ItemReferenceAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `type: Optional[Literal["item_reference"]]`
+
+        The type of item to reference. Always `item_reference`.
+
+        - `"item_reference"`
+
+    - `class Program: …`
+
+      - `id: str`
+
+        The unique ID of this program item.
+
+      - `call_id: str`
+
+        The stable call ID of the program item.
+
+      - `code: str`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: str`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: Literal["program"]`
+
+        The item type. Always `program`.
+
+        - `"program"`
+
+      - `agent: Optional[ProgramAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class ProgramOutput: …`
+
+      - `id: str`
+
+        The unique ID of this program output item.
+
+      - `call_id: str`
+
+        The call ID of the program item.
+
+      - `result: str`
+
+        The result produced by the program item.
+
+      - `status: Literal["completed", "incomplete"]`
+
+        The terminal status of the program output.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Literal["program_output"]`
+
+        The item type. Always `program_output`.
+
+        - `"program_output"`
+
+      - `agent: Optional[ProgramOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+  - `response_id: str`
+
+    The ID of the active response that should receive the input.
+
+  - `type: Literal["response.inject"]`
+
+    The event discriminator. Always `response.inject`.
+
+    - `"response.inject"`
+
+### Beta Response Inject Failed Event
+
+- `class BetaResponseInjectFailedEvent: …`
+
+  Emitted when injected input could not be committed to a response. The event
+  returns the uncommitted raw input so the client can retry it in another
+  response when appropriate.
+
+  - `error: Error`
+
+    Information about why the input was not committed.
+
+    - `code: Literal["response_already_completed", "response_not_found"]`
+
+      A machine-readable error code.
+
+      - `"response_already_completed"`
+
+      - `"response_not_found"`
+
+    - `message: str`
+
+      A human-readable description of the error.
+
+  - `input: List[BetaResponseInputItem]`
+
+    The raw input items that were not committed.
+
+    - `class BetaEasyInputMessage: …`
+
+      A message input to the model with a role indicating instruction following
+      hierarchy. Instructions given with the `developer` or `system` role take
+      precedence over instructions given with the `user` role. Messages with the
+      `assistant` role are presumed to have been generated by the model in previous
+      interactions.
+
+      - `content: Union[str, BetaResponseInputMessageContentList]`
+
+        Text, image, or audio input to the model, used to generate a response.
+        Can also contain previous assistant responses.
+
+        - `str`
+
+          A text input to the model.
+
+        - `List[BetaResponseInputContent]`
+
+          - `class BetaResponseInputText: …`
+
+            A text input to the model.
+
+            - `text: str`
+
+              The text input to the model.
+
+            - `type: Literal["input_text"]`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `class BetaResponseInputImage: …`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+            - `detail: Literal["low", "high", "auto", "original"]`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `type: Literal["input_image"]`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `file_id: Optional[str]`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url: Optional[str]`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `class BetaResponseInputFile: …`
+
+            A file input to the model.
+
+            - `type: Literal["input_file"]`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `detail: Optional[Literal["auto", "low", "high"]]`
+
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+              - `"high"`
+
+            - `file_data: Optional[str]`
+
+              The content of the file to be sent to the model.
+
+            - `file_id: Optional[str]`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url: Optional[str]`
+
+              The URL of the file to be sent to the model.
+
+            - `filename: Optional[str]`
+
+              The name of the file to be sent to the model.
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+      - `role: Literal["user", "assistant", "system", "developer"]`
+
+        The role of the message input. One of `user`, `assistant`, `system`, or
+        `developer`.
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"developer"`
+
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+        For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+        phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
+
+      - `type: Optional[Literal["message"]]`
+
+        The type of the message input. Always `message`.
+
+        - `"message"`
+
+    - `class Message: …`
+
+      A message input to the model with a role indicating instruction following
+      hierarchy. Instructions given with the `developer` or `system` role take
+      precedence over instructions given with the `user` role.
+
+      - `content: BetaResponseInputMessageContentList`
+
+        A list of one or many input items to the model, containing different content
+        types.
+
+        - `class BetaResponseInputText: …`
+
+          A text input to the model.
+
+        - `class BetaResponseInputImage: …`
+
+          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+        - `class BetaResponseInputFile: …`
+
+          A file input to the model.
+
+      - `role: Literal["user", "system", "developer"]`
+
+        The role of the message input. One of `user`, `system`, or `developer`.
+
+        - `"user"`
+
+        - `"system"`
+
+        - `"developer"`
+
+      - `agent: Optional[MessageAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Optional[Literal["message"]]`
+
+        The type of the message input. Always set to `message`.
+
+        - `"message"`
+
+    - `class BetaResponseOutputMessage: …`
+
+      An output message from the model.
+
+      - `id: str`
+
+        The unique ID of the output message.
+
+      - `content: List[Content]`
+
+        The content of the output message.
+
+        - `class BetaResponseOutputText: …`
+
+          A text output from the model.
+
+          - `annotations: List[Annotation]`
+
+            The annotations of the text output.
+
+            - `class AnnotationFileCitation: …`
+
+              A citation to a file.
+
+              - `file_id: str`
+
+                The ID of the file.
+
+              - `filename: str`
+
+                The filename of the file cited.
+
+              - `index: int`
+
+                The index of the file in the list of files.
+
+              - `type: Literal["file_citation"]`
+
+                The type of the file citation. Always `file_citation`.
+
+                - `"file_citation"`
+
+            - `class AnnotationURLCitation: …`
+
+              A citation for a web resource used to generate a model response.
+
+              - `end_index: int`
+
+                The index of the last character of the URL citation in the message.
+
+              - `start_index: int`
+
+                The index of the first character of the URL citation in the message.
+
+              - `title: str`
+
+                The title of the web resource.
+
+              - `type: Literal["url_citation"]`
+
+                The type of the URL citation. Always `url_citation`.
+
+                - `"url_citation"`
+
+              - `url: str`
+
+                The URL of the web resource.
+
+            - `class AnnotationContainerFileCitation: …`
+
+              A citation for a container file used to generate a model response.
+
+              - `container_id: str`
+
+                The ID of the container file.
+
+              - `end_index: int`
+
+                The index of the last character of the container file citation in the message.
+
+              - `file_id: str`
+
+                The ID of the file.
+
+              - `filename: str`
+
+                The filename of the container file cited.
+
+              - `start_index: int`
+
+                The index of the first character of the container file citation in the message.
+
+              - `type: Literal["container_file_citation"]`
+
+                The type of the container file citation. Always `container_file_citation`.
+
+                - `"container_file_citation"`
+
+            - `class AnnotationFilePath: …`
+
+              A path to a file.
+
+              - `file_id: str`
+
+                The ID of the file.
+
+              - `index: int`
+
+                The index of the file in the list of files.
+
+              - `type: Literal["file_path"]`
+
+                The type of the file path. Always `file_path`.
+
+                - `"file_path"`
+
+          - `text: str`
+
+            The text output from the model.
+
+          - `type: Literal["output_text"]`
+
+            The type of the output text. Always `output_text`.
+
+            - `"output_text"`
+
+          - `logprobs: Optional[List[Logprob]]`
+
+            - `token: str`
+
+            - `bytes: List[int]`
+
+            - `logprob: float`
+
+            - `top_logprobs: List[LogprobTopLogprob]`
+
+              - `token: str`
+
+              - `bytes: List[int]`
+
+              - `logprob: float`
+
+        - `class BetaResponseOutputRefusal: …`
+
+          A refusal from the model.
+
+          - `refusal: str`
+
+            The refusal explanation from the model.
+
+          - `type: Literal["refusal"]`
+
+            The type of the refusal. Always `refusal`.
+
+            - `"refusal"`
+
+      - `role: Literal["assistant"]`
+
+        The role of the output message. Always `assistant`.
+
+        - `"assistant"`
+
+      - `status: Literal["in_progress", "completed", "incomplete"]`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Literal["message"]`
+
+        The type of the output message. Always `message`.
+
+        - `"message"`
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
+
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+        For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+        phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+        - `"commentary"`
+
+        - `"final_answer"`
+
+    - `class BetaResponseFileSearchToolCall: …`
+
+      The results of a file search tool call. See the
+      [file search guide](https://platform.openai.com/docs/guides/tools-file-search) for more information.
+
+      - `id: str`
+
+        The unique ID of the file search tool call.
+
+      - `queries: List[str]`
+
+        The queries used to search for files.
+
+      - `status: Literal["in_progress", "searching", "completed", 2 more]`
+
+        The status of the file search tool call. One of `in_progress`,
+        `searching`, `incomplete` or `failed`,
+
+        - `"in_progress"`
+
+        - `"searching"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+      - `type: Literal["file_search_call"]`
+
+        The type of the file search tool call. Always `file_search_call`.
+
+        - `"file_search_call"`
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `results: Optional[List[Result]]`
+
+        The results of the file search tool call.
+
+        - `attributes: Optional[Dict[str, Union[str, float, bool]]]`
+
+          Set of 16 key-value pairs that can be attached to an object. This can be
+          useful for storing additional information about the object in a structured
+          format, and querying for objects via API or the dashboard. Keys are strings
+          with a maximum length of 64 characters. Values are strings with a maximum
+          length of 512 characters, booleans, or numbers.
+
+          - `str`
+
+          - `float`
+
+          - `bool`
+
+        - `file_id: Optional[str]`
+
+          The unique ID of the file.
+
+        - `filename: Optional[str]`
+
+          The name of the file.
+
+        - `score: Optional[float]`
+
+          The relevance score of the file - a value between 0 and 1.
+
+        - `text: Optional[str]`
+
+          The text that was retrieved from the file.
+
+    - `class BetaResponseComputerToolCall: …`
+
+      A tool call to a computer use tool. See the
+      [computer use guide](https://platform.openai.com/docs/guides/tools-computer-use) for more information.
+
+      - `id: str`
+
+        The unique ID of the computer call.
+
+      - `call_id: str`
+
+        An identifier used when responding to the tool call with output.
+
+      - `pending_safety_checks: List[PendingSafetyCheck]`
+
+        The pending safety checks for the computer call.
+
+        - `id: str`
+
+          The ID of the pending safety check.
+
+        - `code: Optional[str]`
+
+          The type of the pending safety check.
+
+        - `message: Optional[str]`
+
+          Details about the pending safety check.
+
+      - `status: Literal["in_progress", "completed", "incomplete"]`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Literal["computer_call"]`
+
+        The type of the computer call. Always `computer_call`.
+
+        - `"computer_call"`
+
+      - `action: Optional[BetaComputerAction]`
+
+        A click action.
+
+        - `class Click: …`
+
+          A click action.
+
+          - `button: Literal["left", "right", "wheel", 2 more]`
+
+            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
+
+            - `"left"`
+
+            - `"right"`
+
+            - `"wheel"`
+
+            - `"back"`
+
+            - `"forward"`
+
+          - `type: Literal["click"]`
+
+            Specifies the event type. For a click action, this property is always `click`.
+
+            - `"click"`
+
+          - `x: int`
+
+            The x-coordinate where the click occurred.
+
+          - `y: int`
+
+            The y-coordinate where the click occurred.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while clicking.
+
+        - `class DoubleClick: …`
+
+          A double click action.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while double-clicking.
+
+          - `type: Literal["double_click"]`
+
+            Specifies the event type. For a double click action, this property is always set to `double_click`.
+
+            - `"double_click"`
+
+          - `x: int`
+
+            The x-coordinate where the double click occurred.
+
+          - `y: int`
+
+            The y-coordinate where the double click occurred.
+
+        - `class Drag: …`
+
+          A drag action.
+
+          - `path: List[DragPath]`
+
+            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
+
+            ```
+            [
+              { x: 100, y: 200 },
+              { x: 200, y: 300 }
+            ]
+            ```
+
+            - `x: int`
+
+              The x-coordinate.
+
+            - `y: int`
+
+              The y-coordinate.
+
+          - `type: Literal["drag"]`
+
+            Specifies the event type. For a drag action, this property is always set to `drag`.
+
+            - `"drag"`
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while dragging the mouse.
+
+        - `class Keypress: …`
+
+          A collection of keypresses the model would like to perform.
+
+          - `keys: List[str]`
+
+            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
+
+          - `type: Literal["keypress"]`
+
+            Specifies the event type. For a keypress action, this property is always set to `keypress`.
+
+            - `"keypress"`
+
+        - `class Move: …`
+
+          A mouse move action.
+
+          - `type: Literal["move"]`
+
+            Specifies the event type. For a move action, this property is always set to `move`.
+
+            - `"move"`
+
+          - `x: int`
+
+            The x-coordinate to move to.
+
+          - `y: int`
+
+            The y-coordinate to move to.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while moving the mouse.
+
+        - `class Screenshot: …`
+
+          A screenshot action.
+
+          - `type: Literal["screenshot"]`
+
+            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
+
+            - `"screenshot"`
+
+        - `class Scroll: …`
+
+          A scroll action.
+
+          - `scroll_x: int`
+
+            The horizontal scroll distance.
+
+          - `scroll_y: int`
+
+            The vertical scroll distance.
+
+          - `type: Literal["scroll"]`
+
+            Specifies the event type. For a scroll action, this property is always set to `scroll`.
+
+            - `"scroll"`
+
+          - `x: int`
+
+            The x-coordinate where the scroll occurred.
+
+          - `y: int`
+
+            The y-coordinate where the scroll occurred.
+
+          - `keys: Optional[List[str]]`
+
+            The keys being held while scrolling.
+
+        - `class Type: …`
+
+          An action to type in text.
+
+          - `text: str`
+
+            The text to type.
+
+          - `type: Literal["type"]`
+
+            Specifies the event type. For a type action, this property is always set to `type`.
+
+            - `"type"`
+
+        - `class Wait: …`
+
+          A wait action.
+
+          - `type: Literal["wait"]`
+
+            Specifies the event type. For a wait action, this property is always set to `wait`.
+
+            - `"wait"`
+
+      - `actions: Optional[BetaComputerActionList]`
+
+        Flattened batched actions for `computer_use`. Each action includes an
+        `type` discriminator and action-specific fields.
+
+        - `class Click: …`
+
+          A click action.
+
+        - `class DoubleClick: …`
+
+          A double click action.
+
+        - `class Drag: …`
+
+          A drag action.
+
+        - `class Keypress: …`
+
+          A collection of keypresses the model would like to perform.
+
+        - `class Move: …`
+
+          A mouse move action.
+
+        - `class Screenshot: …`
+
+          A screenshot action.
+
+        - `class Scroll: …`
+
+          A scroll action.
+
+        - `class Type: …`
+
+          An action to type in text.
+
+        - `class Wait: …`
+
+          A wait action.
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class ComputerCallOutput: …`
+
+      The output of a computer tool call.
+
+      - `call_id: str`
+
+        The ID of the computer tool call that produced the output.
+
+      - `output: BetaResponseComputerToolCallOutputScreenshot`
+
+        A computer screenshot image used with the computer use tool.
+
+        - `type: Literal["computer_screenshot"]`
+
+          Specifies the event type. For a computer screenshot, this property is
+          always set to `computer_screenshot`.
+
+          - `"computer_screenshot"`
+
+        - `file_id: Optional[str]`
+
+          The identifier of an uploaded file that contains the screenshot.
+
+        - `image_url: Optional[str]`
+
+          The URL of the screenshot image.
+
+      - `type: Literal["computer_call_output"]`
+
+        The type of the computer tool call output. Always `computer_call_output`.
+
+        - `"computer_call_output"`
+
+      - `id: Optional[str]`
+
+        The ID of the computer tool call output.
+
+      - `acknowledged_safety_checks: Optional[List[ComputerCallOutputAcknowledgedSafetyCheck]]`
+
+        The safety checks reported by the API that have been acknowledged by the developer.
+
+        - `id: str`
+
+          The ID of the pending safety check.
+
+        - `code: Optional[str]`
+
+          The type of the pending safety check.
+
+        - `message: Optional[str]`
+
+          Details about the pending safety check.
+
+      - `agent: Optional[ComputerCallOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the message input. One of `in_progress`, `completed`, or `incomplete`. Populated when input items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class BetaResponseFunctionWebSearch: …`
+
+      The results of a web search tool call. See the
+      [web search guide](https://platform.openai.com/docs/guides/tools-web-search) for more information.
+
+      - `id: str`
+
+        The unique ID of the web search tool call.
+
+      - `action: Action`
+
+        An object describing the specific action taken in this web search call.
+        Includes details on how the model used the web (search, open_page, find_in_page).
+
+        - `class ActionSearch: …`
+
+          Action type "search" - Performs a web search query.
+
+          - `type: Literal["search"]`
+
+            The action type.
+
+            - `"search"`
+
+          - `queries: Optional[List[str]]`
+
+            The search queries.
+
+          - `query: Optional[str]`
+
+            The search query.
+
+          - `sources: Optional[List[ActionSearchSource]]`
+
+            The sources used in the search.
+
+            - `type: Literal["url"]`
+
+              The type of source. Always `url`.
+
+              - `"url"`
+
+            - `url: str`
+
+              The URL of the source.
+
+        - `class ActionOpenPage: …`
+
+          Action type "open_page" - Opens a specific URL from search results.
+
+          - `type: Literal["open_page"]`
+
+            The action type.
+
+            - `"open_page"`
+
+          - `url: Optional[str]`
+
+            The URL opened by the model.
+
+        - `class ActionFindInPage: …`
+
+          Action type "find_in_page": Searches for a pattern within a loaded page.
+
+          - `pattern: str`
+
+            The pattern or text to search for within the page.
+
+          - `type: Literal["find_in_page"]`
+
+            The action type.
+
+            - `"find_in_page"`
+
+          - `url: str`
+
+            The URL of the page searched for the pattern.
+
+      - `status: Literal["in_progress", "searching", "completed", "failed"]`
+
+        The status of the web search tool call.
+
+        - `"in_progress"`
+
+        - `"searching"`
+
+        - `"completed"`
+
+        - `"failed"`
+
+      - `type: Literal["web_search_call"]`
+
+        The type of the web search tool call. Always `web_search_call`.
+
+        - `"web_search_call"`
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class BetaResponseFunctionToolCall: …`
+
+      A tool call to run a function. See the
+      [function calling guide](https://platform.openai.com/docs/guides/function-calling) for more information.
+
+      - `arguments: str`
+
+        A JSON string of the arguments to pass to the function.
+
+      - `call_id: str`
+
+        The unique ID of the function tool call generated by the model.
+
+      - `name: str`
+
+        The name of the function to run.
+
+      - `type: Literal["function_call"]`
+
+        The type of the function tool call. Always `function_call`.
+
+        - `"function_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the function tool call.
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
+
+      - `namespace: Optional[str]`
+
+        The namespace of the function to run.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class FunctionCallOutput: …`
+
+      The output of a function tool call.
+
+      - `call_id: str`
+
+        The unique ID of the function tool call generated by the model.
+
+      - `output: Union[str, BetaResponseFunctionCallOutputItemList]`
+
+        Text, image, or file output of the function tool call.
+
+        - `str`
+
+          A JSON string of the output of the function tool call.
+
+        - `List[BetaResponseFunctionCallOutputItem]`
+
+          - `class BetaResponseInputTextContent: …`
+
+            A text input to the model.
+
+            - `text: str`
+
+              The text input to the model.
+
+            - `type: Literal["input_text"]`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `class BetaResponseInputImageContent: …`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
+
+            - `type: Literal["input_image"]`
+
+              The type of the input item. Always `input_image`.
+
+              - `"input_image"`
+
+            - `detail: Optional[Literal["low", "high", "auto", "original"]]`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `file_id: Optional[str]`
+
+              The ID of the file to be sent to the model.
+
+            - `image_url: Optional[str]`
+
+              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `class BetaResponseInputFileContent: …`
+
+            A file input to the model.
+
+            - `type: Literal["input_file"]`
+
+              The type of the input item. Always `input_file`.
+
+              - `"input_file"`
+
+            - `detail: Optional[Literal["auto", "low", "high"]]`
+
+              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+              - `"high"`
+
+            - `file_data: Optional[str]`
+
+              The base64-encoded data of the file to be sent to the model.
+
+            - `file_id: Optional[str]`
+
+              The ID of the file to be sent to the model.
+
+            - `file_url: Optional[str]`
+
+              The URL of the file to be sent to the model.
+
+            - `filename: Optional[str]`
+
+              The name of the file to be sent to the model.
+
+            - `prompt_cache_breakpoint: Optional[PromptCacheBreakpoint]`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: Literal["explicit"]`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+      - `type: Literal["function_call_output"]`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the function tool call output. Populated when this item is returned via API.
+
+      - `agent: Optional[FunctionCallOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[FunctionCallOutputCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class FunctionCallOutputCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class FunctionCallOutputCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the item. One of `in_progress`, `completed`, or `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class AgentMessage: …`
+
+      A message routed between agents.
+
+      - `author: str`
+
+        The sending agent identity.
+
+      - `content: List[AgentMessageContent]`
+
+        Plaintext, image, or encrypted content sent between agents.
+
+        - `class BetaResponseInputTextContent: …`
+
+          A text input to the model.
+
+        - `class BetaResponseInputImageContent: …`
+
+          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
+
+        - `class AgentMessageContentEncryptedContent: …`
+
+          Opaque encrypted content that Responses API decrypts inside trusted model execution.
+
+          - `encrypted_content: str`
+
+            Opaque encrypted content.
+
+          - `type: Literal["encrypted_content"]`
+
+            The type of the input item. Always `encrypted_content`.
+
+            - `"encrypted_content"`
+
+      - `recipient: str`
+
+        The destination agent identity.
+
+      - `type: Literal["agent_message"]`
+
+        The item type. Always `agent_message`.
+
+        - `"agent_message"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this agent message item.
+
+      - `agent: Optional[AgentMessageAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class MultiAgentCall: …`
+
+      - `action: Literal["spawn_agent", "interrupt_agent", "list_agents", 3 more]`
+
+        The multi-agent action that was executed.
+
+        - `"spawn_agent"`
+
+        - `"interrupt_agent"`
+
+        - `"list_agents"`
+
+        - `"send_message"`
+
+        - `"followup_task"`
+
+        - `"wait_agent"`
+
+      - `arguments: str`
+
+        The action arguments as a JSON string.
+
+      - `call_id: str`
+
+        The unique ID linking this call to its output.
+
+      - `type: Literal["multi_agent_call"]`
+
+        The item type. Always `multi_agent_call`.
+
+        - `"multi_agent_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this multi-agent call.
+
+      - `agent: Optional[MultiAgentCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class MultiAgentCallOutput: …`
+
+      - `action: Literal["spawn_agent", "interrupt_agent", "list_agents", 3 more]`
+
+        The multi-agent action that produced this result.
+
+        - `"spawn_agent"`
+
+        - `"interrupt_agent"`
+
+        - `"list_agents"`
+
+        - `"send_message"`
+
+        - `"followup_task"`
+
+        - `"wait_agent"`
+
+      - `call_id: str`
+
+        The unique ID of the multi-agent call.
+
+      - `output: List[MultiAgentCallOutputOutput]`
+
+        Text output returned by the multi-agent action.
+
+        - `text: str`
+
+          The text content.
+
+        - `type: Literal["output_text"]`
+
+          The content type. Always `output_text`.
+
+          - `"output_text"`
+
+        - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+
+          Citations associated with the text content.
+
+          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+
+            - `file_id: str`
+
+              The ID of the file.
+
+            - `filename: str`
+
+              The filename of the file cited.
+
+            - `index: int`
+
+              The index of the file in the list of files.
+
+            - `type: Literal["file_citation"]`
+
+              The citation type. Always `file_citation`.
+
+              - `"file_citation"`
+
+          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+
+            - `end_index: int`
+
+              The index of the last character of the citation in the message.
+
+            - `start_index: int`
+
+              The index of the first character of the citation in the message.
+
+            - `title: str`
+
+              The title of the cited resource.
+
+            - `type: Literal["url_citation"]`
+
+              The citation type. Always `url_citation`.
+
+              - `"url_citation"`
+
+            - `url: str`
+
+              The URL of the cited resource.
+
+          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+
+            - `container_id: str`
+
+              The ID of the container.
+
+            - `end_index: int`
+
+              The index of the last character of the citation in the message.
+
+            - `file_id: str`
+
+              The ID of the container file.
+
+            - `filename: str`
+
+              The filename of the container file cited.
+
+            - `start_index: int`
+
+              The index of the first character of the citation in the message.
+
+            - `type: Literal["container_file_citation"]`
+
+              The citation type. Always `container_file_citation`.
+
+              - `"container_file_citation"`
+
+      - `type: Literal["multi_agent_call_output"]`
+
+        The item type. Always `multi_agent_call_output`.
+
+        - `"multi_agent_call_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this multi-agent call output.
+
+      - `agent: Optional[MultiAgentCallOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class ToolSearchCall: …`
+
+      - `arguments: object`
+
+        The arguments supplied to the tool search call.
+
+      - `type: Literal["tool_search_call"]`
+
+        The item type. Always `tool_search_call`.
+
+        - `"tool_search_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this tool search call.
+
+      - `agent: Optional[ToolSearchCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `call_id: Optional[str]`
+
+        The unique ID of the tool search call generated by the model.
+
+      - `execution: Optional[Literal["server", "client"]]`
+
+        Whether tool search was executed by the server or by the client.
+
+        - `"server"`
+
+        - `"client"`
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the tool search call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class BetaResponseToolSearchOutputItemParam: …`
+
+      - `tools: List[BetaTool]`
+
+        The loaded tool definitions returned by the tool search output.
+
+        - `class BetaFunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `name: str`
+
+            The name of the function to call.
+
+          - `parameters: Optional[Dict[str, object]]`
+
+            A JSON schema object describing the parameters of the function.
+
+          - `strict: Optional[bool]`
+
+            Whether strict parameter validation is enforced for this function tool.
+
+          - `type: Literal["function"]`
+
+            The type of the function tool. Always `function`.
+
+            - `"function"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this function is deferred and loaded via tool search.
+
+          - `description: Optional[str]`
+
+            A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `output_schema: Optional[Dict[str, object]]`
+
+            A JSON schema object describing the JSON value encoded in string outputs for this function.
+
+        - `class BetaFileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `type: Literal["file_search"]`
+
+            The type of the file search tool. Always `file_search`.
+
+            - `"file_search"`
+
+          - `vector_store_ids: List[str]`
+
+            The IDs of the vector stores to search.
+
+          - `filters: Optional[Filters]`
+
+            A filter to apply.
+
+            - `class FiltersComparisonFilter: …`
+
+              A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+              - `key: str`
+
+                The key to compare against the value.
+
+              - `type: Literal["eq", "ne", "gt", 5 more]`
+
+                Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                - `eq`: equals
+                - `ne`: not equal
+                - `gt`: greater than
+                - `gte`: greater than or equal
+                - `lt`: less than
+                - `lte`: less than or equal
+                - `in`: in
+                - `nin`: not in
+
+                - `"eq"`
+
+                - `"ne"`
+
+                - `"gt"`
+
+                - `"gte"`
+
+                - `"lt"`
+
+                - `"lte"`
+
+                - `"in"`
+
+                - `"nin"`
+
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                The value to compare against the attribute key; supports string, number, or boolean types.
+
+                - `str`
+
+                - `float`
+
+                - `bool`
+
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
+
+            - `class FiltersCompoundFilter: …`
+
+              Combine multiple filters using `and` or `or`.
+
+              - `filters: List[FiltersCompoundFilterFilter]`
+
+                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                - `class FiltersCompoundFilterFilterComparisonFilter: …`
+
+                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                  - `key: str`
+
+                    The key to compare against the value.
+
+                  - `type: Literal["eq", "ne", "gt", 5 more]`
+
+                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                    - `eq`: equals
+                    - `ne`: not equal
+                    - `gt`: greater than
+                    - `gte`: greater than or equal
+                    - `lt`: less than
+                    - `lte`: less than or equal
+                    - `in`: in
+                    - `nin`: not in
+
+                    - `"eq"`
+
+                    - `"ne"`
+
+                    - `"gt"`
+
+                    - `"gte"`
+
+                    - `"lt"`
+
+                    - `"lte"`
+
+                    - `"in"`
+
+                    - `"nin"`
+
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
+
+                    The value to compare against the attribute key; supports string, number, or boolean types.
+
+                    - `str`
+
+                    - `float`
+
+                    - `bool`
+
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
+
+                - `object`
+
+              - `type: Literal["and", "or"]`
+
+                Type of operation: `and` or `or`.
+
+                - `"and"`
+
+                - `"or"`
+
+          - `max_num_results: Optional[int]`
+
+            The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+          - `ranking_options: Optional[RankingOptions]`
+
+            Ranking options for search.
+
+            - `hybrid_search: Optional[RankingOptionsHybridSearch]`
+
+              Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+              - `embedding_weight: float`
+
+                The weight of the embedding in the reciprocal ranking fusion.
+
+              - `text_weight: float`
+
+                The weight of the text in the reciprocal ranking fusion.
+
+            - `ranker: Optional[Literal["auto", "default-2024-11-15"]]`
+
+              The ranker to use for the file search.
+
+              - `"auto"`
+
+              - `"default-2024-11-15"`
+
+            - `score_threshold: Optional[float]`
+
+              The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+        - `class BetaComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `type: Literal["computer"]`
+
+            The type of the computer tool. Always `computer`.
+
+            - `"computer"`
+
+        - `class BetaComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `display_height: int`
+
+            The height of the computer display.
+
+          - `display_width: int`
+
+            The width of the computer display.
+
+          - `environment: Literal["windows", "mac", "linux", 2 more]`
+
+            The type of computer environment to control.
+
+            - `"windows"`
+
+            - `"mac"`
+
+            - `"linux"`
+
+            - `"ubuntu"`
+
+            - `"browser"`
+
+          - `type: Literal["computer_use_preview"]`
+
+            The type of the computer use tool. Always `computer_use_preview`.
+
+            - `"computer_use_preview"`
+
+        - `class BetaWebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `type: Literal["web_search", "web_search_2025_08_26"]`
+
+            The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+            - `"web_search"`
+
+            - `"web_search_2025_08_26"`
+
+          - `filters: Optional[Filters]`
+
+            Filters for the search.
+
+            - `allowed_domains: Optional[List[str]]`
+
+              Allowed domains for the search. If not provided, all domains are allowed.
+              Subdomains of the provided domains are allowed as well.
+
+              Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+          - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `user_location: Optional[UserLocation]`
+
+            The approximate location of the user.
+
+            - `city: Optional[str]`
+
+              Free text input for the city of the user, e.g. `San Francisco`.
+
+            - `country: Optional[str]`
+
+              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+            - `region: Optional[str]`
+
+              Free text input for the region of the user, e.g. `California`.
+
+            - `timezone: Optional[str]`
+
+              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+            - `type: Optional[Literal["approximate"]]`
+
+              The type of location approximation. Always `approximate`.
+
+              - `"approximate"`
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `server_label: str`
+
+            A label for this MCP server, used to identify it in tool calls.
+
+          - `type: Literal["mcp"]`
+
+            The type of the MCP tool. Always `mcp`.
+
+            - `"mcp"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `allowed_tools: Optional[McpAllowedTools]`
+
+            List of allowed tool names or a filter object.
+
+            - `List[str]`
+
+              A string array of allowed tool names
+
+            - `class McpAllowedToolsMcpToolFilter: …`
+
+              A filter object to specify which tools are allowed.
+
+              - `read_only: Optional[bool]`
+
+                Indicates whether or not a tool modifies data or is read-only. If an
+                MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                it will match this filter.
+
+              - `tool_names: Optional[List[str]]`
+
+                List of allowed tool names.
+
+          - `authorization: Optional[str]`
+
+            An OAuth access token that can be used with a remote MCP server, either
+            with a custom MCP server URL or a service connector. Your application
+            must handle the OAuth authorization flow and provide the token here.
+
+          - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
+
+            Identifier for service connectors, like those available in ChatGPT. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+
+            Currently supported `connector_id` values are:
+
+            - Dropbox: `connector_dropbox`
+            - Gmail: `connector_gmail`
+            - Google Calendar: `connector_googlecalendar`
+            - Google Drive: `connector_googledrive`
+            - Microsoft Teams: `connector_microsoftteams`
+            - Outlook Calendar: `connector_outlookcalendar`
+            - Outlook Email: `connector_outlookemail`
+            - SharePoint: `connector_sharepoint`
+
+            - `"connector_dropbox"`
+
+            - `"connector_gmail"`
+
+            - `"connector_googlecalendar"`
+
+            - `"connector_googledrive"`
+
+            - `"connector_microsoftteams"`
+
+            - `"connector_outlookcalendar"`
+
+            - `"connector_outlookemail"`
+
+            - `"connector_sharepoint"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this MCP tool is deferred and discovered via tool search.
+
+          - `headers: Optional[Dict[str, str]]`
+
+            Optional HTTP headers to send to the MCP server. Use for authentication
+            or other purposes.
+
+          - `require_approval: Optional[McpRequireApproval]`
+
+            Specify which of the MCP server's tools require approval.
+
+            - `class McpRequireApprovalMcpToolApprovalFilter: …`
+
+              Specify which of the MCP server's tools require approval. Can be
+              `always`, `never`, or a filter object associated with tools
+              that require approval.
+
+              - `always: Optional[McpRequireApprovalMcpToolApprovalFilterAlways]`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: Optional[bool]`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: Optional[List[str]]`
+
+                  List of allowed tool names.
+
+              - `never: Optional[McpRequireApprovalMcpToolApprovalFilterNever]`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: Optional[bool]`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: Optional[List[str]]`
+
+                  List of allowed tool names.
+
+            - `Literal["always", "never"]`
+
+              Specify a single approval policy for all tools. One of `always` or
+              `never`. When set to `always`, all tools will require approval. When
+              set to `never`, all tools will not require approval.
+
+              - `"always"`
+
+              - `"never"`
+
+          - `server_description: Optional[str]`
+
+            Optional description of the MCP server, used to provide more context.
+
+          - `server_url: Optional[str]`
+
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id: Optional[str]`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+          - `container: CodeInterpreterContainer`
+
+            The code interpreter container. Can be a container ID or an object that
+            specifies uploaded file IDs to make available to your code, along with an
+            optional `memory_limit` setting.
+
+            - `str`
+
+              The container ID.
+
+            - `class CodeInterpreterContainerCodeInterpreterToolAuto: …`
+
+              Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+              - `type: Literal["auto"]`
+
+                Always `auto`.
+
+                - `"auto"`
+
+              - `file_ids: Optional[List[str]]`
+
+                An optional list of uploaded files to make available to your code.
+
+              - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                The memory limit for the code interpreter container.
+
+                - `"1g"`
+
+                - `"4g"`
+
+                - `"16g"`
+
+                - `"64g"`
+
+              - `network_policy: Optional[CodeInterpreterContainerCodeInterpreterToolAutoNetworkPolicy]`
+
+                Network access policy for the container.
+
+                - `class BetaContainerNetworkPolicyDisabled: …`
+
+                  - `type: Literal["disabled"]`
+
+                    Disable outbound network access. Always `disabled`.
+
+                    - `"disabled"`
+
+                - `class BetaContainerNetworkPolicyAllowlist: …`
+
+                  - `allowed_domains: List[str]`
+
+                    A list of allowed domains when type is `allowlist`.
+
+                  - `type: Literal["allowlist"]`
+
+                    Allow outbound network access only to specified domains. Always `allowlist`.
+
+                    - `"allowlist"`
+
+                  - `domain_secrets: Optional[List[BetaContainerNetworkPolicyDomainSecret]]`
+
+                    Optional domain-scoped secrets for allowlisted domains.
+
+                    - `domain: str`
+
+                      The domain associated with the secret.
+
+                    - `name: str`
+
+                      The name of the secret to inject for the domain.
+
+                    - `value: str`
+
+                      The secret value to inject for the domain.
+
+          - `type: Literal["code_interpreter"]`
+
+            The type of the code interpreter tool. Always `code_interpreter`.
+
+            - `"code_interpreter"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+        - `class ProgrammaticToolCalling: …`
+
+          - `type: Literal["programmatic_tool_calling"]`
+
+            The type of the tool. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+          - `type: Literal["image_generation"]`
+
+            The type of the image generation tool. Always `image_generation`.
+
+            - `"image_generation"`
+
+          - `action: Optional[Literal["generate", "edit", "auto"]]`
+
+            Whether to generate a new image or edit an existing image. Default: `auto`.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
+          - `background: Optional[Literal["transparent", "opaque", "auto"]]`
+
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `input_fidelity: Optional[Literal["high", "low"]]`
+
+            Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+            - `"high"`
+
+            - `"low"`
+
+          - `input_image_mask: Optional[ImageGenerationInputImageMask]`
+
+            Optional mask for inpainting. Contains `image_url`
+            (string, optional) and `file_id` (string, optional).
+
+            - `file_id: Optional[str]`
+
+              File ID for the mask image.
+
+            - `image_url: Optional[str]`
+
+              Base64-encoded mask image.
+
+          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
+
+            The image generation model to use. Default: `gpt-image-1`.
+
+            - `str`
+
+            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
+
+              The image generation model to use. Default: `gpt-image-1`.
+
+              - `"gpt-image-1"`
+
+              - `"gpt-image-1-mini"`
+
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
+
+          - `moderation: Optional[Literal["auto", "low"]]`
+
+            Moderation level for the generated image. Default: `auto`.
+
+            - `"auto"`
+
+            - `"low"`
+
+          - `output_compression: Optional[int]`
+
+            Compression level for the output image. Default: 100.
+
+          - `output_format: Optional[Literal["png", "webp", "jpeg"]]`
+
+            The output format of the generated image. One of `png`, `webp`, or
+            `jpeg`. Default: `png`.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
+
+          - `partial_images: Optional[int]`
+
+            Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+          - `quality: Optional[Literal["low", "medium", "high", "auto"]]`
+
+            The quality of the generated image. One of `low`, `medium`, `high`,
+            or `auto`. Default: `auto`.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"auto"`
+
+          - `size: Optional[Union[str, Literal["1024x1024", "1024x1536", "1536x1024", "auto"], null]]`
+
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+
+            - `str`
+
+            - `Literal["1024x1024", "1024x1536", "1536x1024", "auto"]`
+
+              The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+
+              - `"1024x1024"`
+
+              - `"1024x1536"`
+
+              - `"1536x1024"`
+
+              - `"auto"`
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+          - `type: Literal["local_shell"]`
+
+            The type of the local shell tool. Always `local_shell`.
+
+            - `"local_shell"`
+
+        - `class BetaFunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+          - `type: Literal["shell"]`
+
+            The type of the shell tool. Always `shell`.
+
+            - `"shell"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `environment: Optional[Environment]`
+
+            - `class BetaContainerAuto: …`
+
+              - `type: Literal["container_auto"]`
+
+                Automatically creates a container for this request
+
+                - `"container_auto"`
+
+              - `file_ids: Optional[List[str]]`
+
+                An optional list of uploaded files to make available to your code.
+
+              - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+                The memory limit for the container.
+
+                - `"1g"`
+
+                - `"4g"`
+
+                - `"16g"`
+
+                - `"64g"`
+
+              - `network_policy: Optional[NetworkPolicy]`
+
+                Network access policy for the container.
+
+                - `class BetaContainerNetworkPolicyDisabled: …`
+
+                - `class BetaContainerNetworkPolicyAllowlist: …`
+
+              - `skills: Optional[List[Skill]]`
+
+                An optional list of skills referenced by id or inline data.
+
+                - `class BetaSkillReference: …`
+
+                  - `skill_id: str`
+
+                    The ID of the referenced skill.
+
+                  - `type: Literal["skill_reference"]`
+
+                    References a skill created with the /v1/skills endpoint.
+
+                    - `"skill_reference"`
+
+                  - `version: Optional[str]`
+
+                    Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                - `class BetaInlineSkill: …`
+
+                  - `description: str`
+
+                    The description of the skill.
+
+                  - `name: str`
+
+                    The name of the skill.
+
+                  - `source: BetaInlineSkillSource`
+
+                    Inline skill payload
+
+                    - `data: str`
+
+                      Base64-encoded skill zip bundle.
+
+                    - `media_type: Literal["application/zip"]`
+
+                      The media type of the inline skill payload. Must be `application/zip`.
+
+                      - `"application/zip"`
+
+                    - `type: Literal["base64"]`
+
+                      The type of the inline skill source. Must be `base64`.
+
+                      - `"base64"`
+
+                  - `type: Literal["inline"]`
+
+                    Defines an inline skill for this request.
+
+                    - `"inline"`
+
+            - `class BetaLocalEnvironment: …`
+
+              - `type: Literal["local"]`
+
+                Use a local computer environment.
+
+                - `"local"`
+
+              - `skills: Optional[List[BetaLocalSkill]]`
+
+                An optional list of skills.
+
+                - `description: str`
+
+                  The description of the skill.
+
+                - `name: str`
+
+                  The name of the skill.
+
+                - `path: str`
+
+                  The path to the directory containing the skill.
+
+            - `class BetaContainerReference: …`
+
+              - `container_id: str`
+
+                The ID of the referenced container.
+
+              - `type: Literal["container_reference"]`
+
+                References a container created with the /v1/containers endpoint
+
+                - `"container_reference"`
+
+        - `class BetaCustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `name: str`
+
+            The name of the custom tool, used to identify it in tool calls.
+
+          - `type: Literal["custom"]`
+
+            The type of the custom tool. Always `custom`.
+
+            - `"custom"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+          - `defer_loading: Optional[bool]`
+
+            Whether this tool should be deferred and discovered via tool search.
+
+          - `description: Optional[str]`
+
+            Optional description of the custom tool, used to provide more context.
+
+          - `format: Optional[Format]`
+
+            The input format for the custom tool. Default is unconstrained text.
+
+            - `class FormatText: …`
+
+              Unconstrained free-form text.
+
+              - `type: Literal["text"]`
+
+                Unconstrained text format. Always `text`.
+
+                - `"text"`
+
+            - `class FormatGrammar: …`
+
+              A grammar defined by the user.
+
+              - `definition: str`
+
+                The grammar definition.
+
+              - `syntax: Literal["lark", "regex"]`
+
+                The syntax of the grammar definition. One of `lark` or `regex`.
+
+                - `"lark"`
+
+                - `"regex"`
+
+              - `type: Literal["grammar"]`
+
+                Grammar format. Always `grammar`.
+
+                - `"grammar"`
+
+        - `class BetaNamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+          - `description: str`
+
+            A description of the namespace shown to the model.
+
+          - `name: str`
+
+            The namespace name used in tool calls (for example, `crm`).
+
+          - `tools: List[Tool]`
+
+            The function/custom tools available inside this namespace.
+
+            - `class ToolFunction: …`
+
+              - `name: str`
+
+              - `type: Literal["function"]`
+
+                - `"function"`
+
+              - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+                The tool invocation context(s).
+
+                - `"direct"`
+
+                - `"programmatic"`
+
+              - `defer_loading: Optional[bool]`
+
+                Whether this function should be deferred and discovered via tool search.
+
+              - `description: Optional[str]`
+
+              - `output_schema: Optional[Dict[str, object]]`
+
+                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
+              - `parameters: Optional[object]`
+
+              - `strict: Optional[bool]`
+
+                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
+
+            - `class BetaCustomTool: …`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `type: Literal["namespace"]`
+
+            The type of the tool. Always `namespace`.
+
+            - `"namespace"`
+
+        - `class BetaToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+          - `type: Literal["tool_search"]`
+
+            The type of the tool. Always `tool_search`.
+
+            - `"tool_search"`
+
+          - `description: Optional[str]`
+
+            Description shown to the model for a client-executed tool search tool.
+
+          - `execution: Optional[Literal["server", "client"]]`
+
+            Whether tool search is executed by the server or by the client.
+
+            - `"server"`
+
+            - `"client"`
+
+          - `parameters: Optional[object]`
+
+            Parameter schema for a client-executed tool search tool.
+
+        - `class BetaWebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `type: Literal["web_search_preview", "web_search_preview_2025_03_11"]`
+
+            The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+            - `"web_search_preview"`
+
+            - `"web_search_preview_2025_03_11"`
+
+          - `search_content_types: Optional[List[Literal["text", "image"]]]`
+
+            - `"text"`
+
+            - `"image"`
+
+          - `search_context_size: Optional[Literal["low", "medium", "high"]]`
+
+            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `user_location: Optional[UserLocation]`
+
+            The user's location.
+
+            - `type: Literal["approximate"]`
+
+              The type of location approximation. Always `approximate`.
+
+              - `"approximate"`
+
+            - `city: Optional[str]`
+
+              Free text input for the city of the user, e.g. `San Francisco`.
+
+            - `country: Optional[str]`
+
+              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+            - `region: Optional[str]`
+
+              Free text input for the region of the user, e.g. `California`.
+
+            - `timezone: Optional[str]`
+
+              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+        - `class BetaApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: Literal["apply_patch"]`
+
+            The type of the tool. Always `apply_patch`.
+
+            - `"apply_patch"`
+
+          - `allowed_callers: Optional[List[Literal["direct", "programmatic"]]]`
+
+            The tool invocation context(s).
+
+            - `"direct"`
+
+            - `"programmatic"`
+
+      - `type: Literal["tool_search_output"]`
+
+        The item type. Always `tool_search_output`.
+
+        - `"tool_search_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this tool search output.
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `call_id: Optional[str]`
+
+        The unique ID of the tool search call generated by the model.
+
+      - `execution: Optional[Literal["server", "client"]]`
+
+        Whether tool search was executed by the server or by the client.
+
+        - `"server"`
+
+        - `"client"`
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the tool search output.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class AdditionalTools: …`
+
+      - `role: Literal["developer"]`
+
+        The role that provided the additional tools. Only `developer` is supported.
+
+        - `"developer"`
+
+      - `tools: List[BetaTool]`
+
+        A list of additional tools made available at this item.
+
+        - `class BetaFunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class BetaFileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class BetaComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class BetaComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class BetaWebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ProgrammaticToolCalling: …`
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class BetaFunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class BetaCustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class BetaNamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class BetaToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class BetaWebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class BetaApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The item type. Always `additional_tools`.
+
+        - `"additional_tools"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this additional tools item.
+
+      - `agent: Optional[AdditionalToolsAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class BetaResponseReasoningItem: …`
+
+      A description of the chain of thought used by a reasoning model while generating
+      a response. Be sure to include these items in your `input` to the Responses API
+      for subsequent turns of a conversation if you are manually
+      [managing context](https://platform.openai.com/docs/guides/conversation-state).
+
+      - `id: str`
+
+        The unique identifier of the reasoning content.
+
+      - `summary: List[Summary]`
+
+        Reasoning summary content.
+
+        - `text: str`
+
+          A summary of the reasoning output from the model so far.
+
+        - `type: Literal["summary_text"]`
+
+          The type of the object. Always `summary_text`.
+
+          - `"summary_text"`
+
+      - `type: Literal["reasoning"]`
+
+        The type of the object. Always `reasoning`.
+
+        - `"reasoning"`
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `content: Optional[List[Content]]`
+
+        Reasoning text content.
+
+        - `text: str`
+
+          The reasoning text from the model.
+
+        - `type: Literal["reasoning_text"]`
+
+          The type of the reasoning text. Always `reasoning_text`.
+
+          - `"reasoning_text"`
+
+      - `encrypted_content: Optional[str]`
+
+        The encrypted content of the reasoning item - populated when a response is
+        generated with `reasoning.encrypted_content` in the `include` parameter.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class BetaResponseCompactionItemParam: …`
+
+      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+
+      - `encrypted_content: str`
+
+        The encrypted content of the compaction summary.
+
+      - `type: Literal["compaction"]`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `id: Optional[str]`
+
+        The ID of the compaction item.
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class ImageGenerationCall: …`
+
+      An image generation request made by the model.
+
+      - `id: str`
+
+        The unique ID of the image generation call.
+
+      - `result: Optional[str]`
+
+        The generated image encoded in base64.
+
+      - `status: Literal["in_progress", "completed", "generating", "failed"]`
+
+        The status of the image generation call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"generating"`
+
+        - `"failed"`
+
+      - `type: Literal["image_generation_call"]`
+
+        The type of the image generation call. Always `image_generation_call`.
+
+        - `"image_generation_call"`
+
+      - `agent: Optional[ImageGenerationCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class BetaResponseCodeInterpreterToolCall: …`
+
+      A tool call to run code.
+
+      - `id: str`
+
+        The unique ID of the code interpreter tool call.
+
+      - `code: Optional[str]`
+
+        The code to run, or null if not available.
+
+      - `container_id: str`
+
+        The ID of the container used to run the code.
+
+      - `outputs: Optional[List[Output]]`
+
+        The outputs generated by the code interpreter, such as logs or images.
+        Can be null if no outputs are available.
+
+        - `class OutputLogs: …`
+
+          The logs output from the code interpreter.
+
+          - `logs: str`
+
+            The logs output from the code interpreter.
+
+          - `type: Literal["logs"]`
+
+            The type of the output. Always `logs`.
+
+            - `"logs"`
+
+        - `class OutputImage: …`
+
+          The image output from the code interpreter.
+
+          - `type: Literal["image"]`
+
+            The type of the output. Always `image`.
+
+            - `"image"`
+
+          - `url: str`
+
+            The URL of the image output from the code interpreter.
+
+      - `status: Literal["in_progress", "completed", "incomplete", 2 more]`
+
+        The status of the code interpreter tool call. Valid values are `in_progress`, `completed`, `incomplete`, `interpreting`, and `failed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"interpreting"`
+
+        - `"failed"`
+
+      - `type: Literal["code_interpreter_call"]`
+
+        The type of the code interpreter tool call. Always `code_interpreter_call`.
+
+        - `"code_interpreter_call"`
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class LocalShellCall: …`
+
+      A tool call to run a command on the local shell.
+
+      - `id: str`
+
+        The unique ID of the local shell call.
+
+      - `action: LocalShellCallAction`
+
+        Execute a shell command on the server.
+
+        - `command: List[str]`
+
+          The command to run.
+
+        - `env: Dict[str, str]`
+
+          Environment variables to set for the command.
+
+        - `type: Literal["exec"]`
+
+          The type of the local shell action. Always `exec`.
+
+          - `"exec"`
+
+        - `timeout_ms: Optional[int]`
+
+          Optional timeout in milliseconds for the command.
+
+        - `user: Optional[str]`
+
+          Optional user to run the command as.
+
+        - `working_directory: Optional[str]`
+
+          Optional working directory to run the command in.
+
+      - `call_id: str`
+
+        The unique ID of the local shell tool call generated by the model.
+
+      - `status: Literal["in_progress", "completed", "incomplete"]`
+
+        The status of the local shell call.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Literal["local_shell_call"]`
+
+        The type of the local shell call. Always `local_shell_call`.
+
+        - `"local_shell_call"`
+
+      - `agent: Optional[LocalShellCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class LocalShellCallOutput: …`
+
+      The output of a local shell tool call.
+
+      - `id: str`
+
+        The unique ID of the local shell tool call generated by the model.
+
+      - `output: str`
+
+        A JSON string of the output of the local shell tool call.
+
+      - `type: Literal["local_shell_call_output"]`
+
+        The type of the local shell tool call output. Always `local_shell_call_output`.
+
+        - `"local_shell_call_output"`
+
+      - `agent: Optional[LocalShellCallOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the item. One of `in_progress`, `completed`, or `incomplete`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class ShellCall: …`
+
+      A tool representing a request to execute one or more shell commands.
+
+      - `action: ShellCallAction`
+
+        The shell commands and limits that describe how to run the tool call.
+
+        - `commands: List[str]`
+
+          Ordered shell commands for the execution environment to run.
+
+        - `max_output_length: Optional[int]`
+
+          Maximum number of UTF-8 characters to capture from combined stdout and stderr output.
+
+        - `timeout_ms: Optional[int]`
+
+          Maximum wall-clock time in milliseconds to allow the shell commands to run.
+
+      - `call_id: str`
+
+        The unique ID of the shell tool call generated by the model.
+
+      - `type: Literal["shell_call"]`
+
+        The type of the item. Always `shell_call`.
+
+        - `"shell_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the shell tool call. Populated when this item is returned via API.
+
+      - `agent: Optional[ShellCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[ShellCallCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class ShellCallCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class ShellCallCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `environment: Optional[ShellCallEnvironment]`
+
+        The environment to execute the shell commands in.
+
+        - `class BetaLocalEnvironment: …`
+
+        - `class BetaContainerReference: …`
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the shell call. One of `in_progress`, `completed`, or `incomplete`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class ShellCallOutput: …`
+
+      The streamed output items emitted by a shell tool call.
+
+      - `call_id: str`
+
+        The unique ID of the shell tool call generated by the model.
+
+      - `output: List[BetaResponseFunctionShellCallOutputContent]`
+
+        Captured chunks of stdout and stderr output, along with their associated outcomes.
+
+        - `outcome: Outcome`
+
+          The exit or timeout outcome associated with this shell call.
+
+          - `class OutcomeTimeout: …`
+
+            Indicates that the shell call exceeded its configured time limit.
+
+            - `type: Literal["timeout"]`
+
+              The outcome type. Always `timeout`.
+
+              - `"timeout"`
+
+          - `class OutcomeExit: …`
+
+            Indicates that the shell commands finished and returned an exit code.
+
+            - `exit_code: int`
+
+              The exit code returned by the shell process.
+
+            - `type: Literal["exit"]`
+
+              The outcome type. Always `exit`.
+
+              - `"exit"`
+
+        - `stderr: str`
+
+          Captured stderr output for the shell call.
+
+        - `stdout: str`
+
+          Captured stdout output for the shell call.
+
+      - `type: Literal["shell_call_output"]`
+
+        The type of the item. Always `shell_call_output`.
+
+        - `"shell_call_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the shell tool call output. Populated when this item is returned via API.
+
+      - `agent: Optional[ShellCallOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[ShellCallOutputCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class ShellCallOutputCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class ShellCallOutputCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `max_output_length: Optional[int]`
+
+        The maximum number of UTF-8 characters captured for this shell call's combined output.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
+
+        The status of the shell call output.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `class ApplyPatchCall: …`
+
+      A tool call representing a request to create, delete, or update files using diff patches.
+
+      - `call_id: str`
+
+        The unique ID of the apply patch tool call generated by the model.
+
+      - `operation: ApplyPatchCallOperation`
+
+        The specific create, delete, or update instruction for the apply_patch tool call.
+
+        - `class ApplyPatchCallOperationCreateFile: …`
+
+          Instruction for creating a new file via the apply_patch tool.
+
+          - `diff: str`
+
+            Unified diff content to apply when creating the file.
+
+          - `path: str`
+
+            Path of the file to create relative to the workspace root.
+
+          - `type: Literal["create_file"]`
+
+            The operation type. Always `create_file`.
+
+            - `"create_file"`
+
+        - `class ApplyPatchCallOperationDeleteFile: …`
+
+          Instruction for deleting an existing file via the apply_patch tool.
+
+          - `path: str`
+
+            Path of the file to delete relative to the workspace root.
+
+          - `type: Literal["delete_file"]`
+
+            The operation type. Always `delete_file`.
+
+            - `"delete_file"`
+
+        - `class ApplyPatchCallOperationUpdateFile: …`
+
+          Instruction for updating an existing file via the apply_patch tool.
+
+          - `diff: str`
+
+            Unified diff content to apply to the existing file.
+
+          - `path: str`
+
+            Path of the file to update relative to the workspace root.
+
+          - `type: Literal["update_file"]`
+
+            The operation type. Always `update_file`.
+
+            - `"update_file"`
+
+      - `status: Literal["in_progress", "completed"]`
+
+        The status of the apply patch tool call. One of `in_progress` or `completed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+      - `type: Literal["apply_patch_call"]`
+
+        The type of the item. Always `apply_patch_call`.
+
+        - `"apply_patch_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the apply patch tool call. Populated when this item is returned via API.
+
+      - `agent: Optional[ApplyPatchCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[ApplyPatchCallCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class ApplyPatchCallCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class ApplyPatchCallCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+    - `class ApplyPatchCallOutput: …`
+
+      The streamed output emitted by an apply patch tool call.
+
+      - `call_id: str`
+
+        The unique ID of the apply patch tool call generated by the model.
+
+      - `status: Literal["completed", "failed"]`
+
+        The status of the apply patch tool call output. One of `completed` or `failed`.
+
+        - `"completed"`
+
+        - `"failed"`
+
+      - `type: Literal["apply_patch_call_output"]`
+
+        The type of the item. Always `apply_patch_call_output`.
+
+        - `"apply_patch_call_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the apply patch tool call output. Populated when this item is returned via API.
+
+      - `agent: Optional[ApplyPatchCallOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[ApplyPatchCallOutputCaller]`
+
+        The execution context that produced this tool call.
+
+        - `class ApplyPatchCallOutputCallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class ApplyPatchCallOutputCallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `output: Optional[str]`
+
+        Optional human-readable log text from the apply patch tool (e.g., patch results or errors).
+
+    - `class McpListTools: …`
+
+      A list of tools available on an MCP server.
+
+      - `id: str`
+
+        The unique ID of the list.
+
+      - `server_label: str`
+
+        The label of the MCP server.
+
+      - `tools: List[McpListToolsTool]`
+
+        The tools available on the server.
+
+        - `input_schema: object`
+
+          The JSON schema describing the tool's input.
+
+        - `name: str`
+
+          The name of the tool.
+
+        - `annotations: Optional[object]`
+
+          Additional annotations about the tool.
+
+        - `description: Optional[str]`
+
+          The description of the tool.
+
+      - `type: Literal["mcp_list_tools"]`
+
+        The type of the item. Always `mcp_list_tools`.
+
+        - `"mcp_list_tools"`
+
+      - `agent: Optional[McpListToolsAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `error: Optional[str]`
+
+        Error message if the server could not list tools.
+
+    - `class McpApprovalRequest: …`
+
+      A request for human approval of a tool invocation.
+
+      - `id: str`
+
+        The unique ID of the approval request.
+
+      - `arguments: str`
+
+        A JSON string of arguments for the tool.
+
+      - `name: str`
+
+        The name of the tool to run.
+
+      - `server_label: str`
+
+        The label of the MCP server making the request.
+
+      - `type: Literal["mcp_approval_request"]`
+
+        The type of the item. Always `mcp_approval_request`.
+
+        - `"mcp_approval_request"`
+
+      - `agent: Optional[McpApprovalRequestAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class McpApprovalResponse: …`
+
+      A response to an MCP approval request.
+
+      - `approval_request_id: str`
+
+        The ID of the approval request being answered.
+
+      - `approve: bool`
+
+        Whether the request was approved.
+
+      - `type: Literal["mcp_approval_response"]`
+
+        The type of the item. Always `mcp_approval_response`.
+
+        - `"mcp_approval_response"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the approval response
+
+      - `agent: Optional[McpApprovalResponseAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `reason: Optional[str]`
+
+        Optional reason for the decision.
+
+    - `class McpCall: …`
+
+      An invocation of a tool on an MCP server.
+
+      - `id: str`
+
+        The unique ID of the tool call.
+
+      - `arguments: str`
+
+        A JSON string of the arguments passed to the tool.
+
+      - `name: str`
+
+        The name of the tool that was run.
+
+      - `server_label: str`
+
+        The label of the MCP server running the tool.
+
+      - `type: Literal["mcp_call"]`
+
+        The type of the item. Always `mcp_call`.
+
+        - `"mcp_call"`
+
+      - `agent: Optional[McpCallAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `approval_request_id: Optional[str]`
+
+        Unique identifier for the MCP tool call approval request.
+        Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
+
+      - `error: Optional[str]`
+
+        The error from the tool call, if any.
+
+      - `output: Optional[str]`
+
+        The output from the tool call.
+
+      - `status: Optional[Literal["in_progress", "completed", "incomplete", 2 more]]`
+
+        The status of the tool call. One of `in_progress`, `completed`, `incomplete`, `calling`, or `failed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"calling"`
+
+        - `"failed"`
+
+    - `class BetaResponseCustomToolCallOutput: …`
+
+      The output of a custom tool call from your code, being sent back to the model.
+
+      - `call_id: str`
+
+        The call ID, used to map this custom tool call output to a custom tool call.
+
+      - `output: Union[str, List[OutputOutputContentList]]`
+
+        The output from the custom tool call generated by your code.
+        Can be a string or an list of output content.
+
+        - `str`
+
+          A string of the output of the custom tool call.
+
+        - `List[OutputOutputContentList]`
+
+          Text, image, or file output of the custom tool call.
+
+          - `class BetaResponseInputText: …`
+
+            A text input to the model.
+
+          - `class BetaResponseInputImage: …`
+
+            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+
+          - `class BetaResponseInputFile: …`
+
+            A file input to the model.
+
+      - `type: Literal["custom_tool_call_output"]`
+
+        The type of the custom tool call output. Always `custom_tool_call_output`.
+
+        - `"custom_tool_call_output"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the custom tool call output in the OpenAI platform.
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+    - `class BetaResponseCustomToolCall: …`
+
+      A call to a custom tool created by the model.
+
+      - `call_id: str`
+
+        An identifier used to map this custom tool call to a tool call output.
+
+      - `input: str`
+
+        The input for the custom tool call generated by the model.
+
+      - `name: str`
+
+        The name of the custom tool being called.
+
+      - `type: Literal["custom_tool_call"]`
+
+        The type of the custom tool call. Always `custom_tool_call`.
+
+        - `"custom_tool_call"`
+
+      - `id: Optional[str]`
+
+        The unique ID of the custom tool call in the OpenAI platform.
+
+      - `agent: Optional[Agent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `caller: Optional[Caller]`
+
+        The execution context that produced this tool call.
+
+        - `class CallerDirect: …`
+
+          - `type: Literal["direct"]`
+
+            - `"direct"`
+
+        - `class CallerProgram: …`
+
+          - `caller_id: str`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: Literal["program"]`
+
+            - `"program"`
+
+      - `namespace: Optional[str]`
+
+        The namespace of the custom tool being called.
+
+    - `class CompactionTrigger: …`
+
+      Compacts the current context. Must be the final input item.
+
+      - `type: Literal["compaction_trigger"]`
+
+        The type of the item. Always `compaction_trigger`.
+
+        - `"compaction_trigger"`
+
+      - `agent: Optional[CompactionTriggerAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class ItemReference: …`
+
+      An internal identifier for an item to reference.
+
+      - `id: str`
+
+        The ID of the item to reference.
+
+      - `agent: Optional[ItemReferenceAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+      - `type: Optional[Literal["item_reference"]]`
+
+        The type of item to reference. Always `item_reference`.
+
+        - `"item_reference"`
+
+    - `class Program: …`
+
+      - `id: str`
+
+        The unique ID of this program item.
+
+      - `call_id: str`
+
+        The stable call ID of the program item.
+
+      - `code: str`
+
+        The JavaScript source executed by programmatic tool calling.
+
+      - `fingerprint: str`
+
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: Literal["program"]`
+
+        The item type. Always `program`.
+
+        - `"program"`
+
+      - `agent: Optional[ProgramAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+    - `class ProgramOutput: …`
+
+      - `id: str`
+
+        The unique ID of this program output item.
+
+      - `call_id: str`
+
+        The call ID of the program item.
+
+      - `result: str`
+
+        The result produced by the program item.
+
+      - `status: Literal["completed", "incomplete"]`
+
+        The terminal status of the program output.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: Literal["program_output"]`
+
+        The item type. Always `program_output`.
+
+        - `"program_output"`
+
+      - `agent: Optional[ProgramOutputAgent]`
+
+        The agent that produced this item.
+
+        - `agent_name: str`
+
+          The canonical name of the agent that produced this item.
+
+  - `response_id: str`
+
+    The ID of the response that rejected the input.
+
+  - `sequence_number: int`
+
+    The sequence number for this event.
+
+  - `type: Literal["response.inject.failed"]`
+
+    The event discriminator. Always `response.inject.failed`.
+
+    - `"response.inject.failed"`
+
+  - `stream_id: Optional[str]`
+
+    The multiplexed WebSocket stream that emitted the event. This field is
+    present only when WebSocket multiplexing is enabled separately.
+
 ### Beta Response Input
 
 - `List[BetaResponseInputItem]`
@@ -80978,13 +88861,15 @@ print(compacted_response)
 
       - `"developer"`
 
-    - `phase: Optional[Literal["commentary"]]`
+    - `phase: Optional[Literal["commentary", "final_answer"]]`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
     - `type: Optional[Literal["message"]]`
 
@@ -81237,13 +89122,15 @@ print(compacted_response)
 
         The canonical name of the agent that produced this item.
 
-    - `phase: Optional[Literal["commentary"]]`
+    - `phase: Optional[Literal["commentary", "final_answer"]]`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
   - `class BetaResponseFileSearchToolCall: …`
 
@@ -82415,7 +90302,7 @@ print(compacted_response)
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -82425,7 +90312,11 @@ print(compacted_response)
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class FiltersCompoundFilter: …`
 
@@ -82472,7 +90363,7 @@ print(compacted_response)
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -82482,7 +90373,11 @@ print(compacted_response)
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `object`
 
@@ -85107,13 +93002,15 @@ print(compacted_response)
 
       - `"developer"`
 
-    - `phase: Optional[Literal["commentary"]]`
+    - `phase: Optional[Literal["commentary", "final_answer"]]`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
     - `type: Optional[Literal["message"]]`
 
@@ -85366,13 +93263,15 @@ print(compacted_response)
 
         The canonical name of the agent that produced this item.
 
-    - `phase: Optional[Literal["commentary"]]`
+    - `phase: Optional[Literal["commentary", "final_answer"]]`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
   - `class BetaResponseFileSearchToolCall: …`
 
@@ -86544,7 +94443,7 @@ print(compacted_response)
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -86554,7 +94453,11 @@ print(compacted_response)
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class FiltersCompoundFilter: …`
 
@@ -86601,7 +94504,7 @@ print(compacted_response)
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -86611,7 +94514,11 @@ print(compacted_response)
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `object`
 
@@ -89437,13 +97344,15 @@ print(compacted_response)
 
         The canonical name of the agent that produced this item.
 
-    - `phase: Optional[Literal["commentary"]]`
+    - `phase: Optional[Literal["commentary", "final_answer"]]`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
   - `class BetaResponseFileSearchToolCall: …`
 
@@ -90529,7 +98438,7 @@ print(compacted_response)
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -90539,7 +98448,11 @@ print(compacted_response)
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class FiltersCompoundFilter: …`
 
@@ -90586,7 +98499,7 @@ print(compacted_response)
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -90596,7 +98509,11 @@ print(compacted_response)
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `object`
 
@@ -93124,13 +101041,15 @@ print(compacted_response)
 
         The canonical name of the agent that produced this item.
 
-    - `phase: Optional[Literal["commentary"]]`
+    - `phase: Optional[Literal["commentary", "final_answer"]]`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
   - `class BetaResponseFileSearchToolCall: …`
 
@@ -94497,7 +102416,7 @@ print(compacted_response)
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -94507,7 +102426,11 @@ print(compacted_response)
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class FiltersCompoundFilter: …`
 
@@ -94554,7 +102477,7 @@ print(compacted_response)
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -94564,7 +102487,11 @@ print(compacted_response)
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `object`
 
@@ -96698,13 +104625,15 @@ print(compacted_response)
 
           The canonical name of the agent that produced this item.
 
-      - `phase: Optional[Literal["commentary"]]`
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `class BetaResponseFileSearchToolCall: …`
 
@@ -98071,7 +106000,7 @@ print(compacted_response)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -98081,7 +106010,11 @@ print(compacted_response)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class FiltersCompoundFilter: …`
 
@@ -98128,7 +106061,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -98138,7 +106071,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `object`
 
@@ -100294,13 +108231,15 @@ print(compacted_response)
 
           The canonical name of the agent that produced this item.
 
-      - `phase: Optional[Literal["commentary"]]`
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `class BetaResponseFileSearchToolCall: …`
 
@@ -101667,7 +109606,7 @@ print(compacted_response)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -101677,7 +109616,11 @@ print(compacted_response)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class FiltersCompoundFilter: …`
 
@@ -101724,7 +109667,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -101734,7 +109677,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `object`
 
@@ -103882,13 +111829,15 @@ print(compacted_response)
 
       The canonical name of the agent that produced this item.
 
-  - `phase: Optional[Literal["commentary"]]`
+  - `phase: Optional[Literal["commentary", "final_answer"]]`
 
     Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
     For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
     phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
     - `"commentary"`
+
+    - `"final_answer"`
 
 ### Beta Response Output Refusal
 
@@ -104455,13 +112404,15 @@ print(compacted_response)
 
             - `"developer"`
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type: Optional[Literal["message"]]`
 
@@ -104714,13 +112665,15 @@ print(compacted_response)
 
               The canonical name of the agent that produced this item.
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `class BetaResponseFileSearchToolCall: …`
 
@@ -105892,7 +113845,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -105902,7 +113855,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class FiltersCompoundFilter: …`
 
@@ -105949,7 +113906,7 @@ print(compacted_response)
 
                         - `"nin"`
 
-                      - `value: Union[str, float, bool, List[object]]`
+                      - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -105959,7 +113916,11 @@ print(compacted_response)
 
                         - `bool`
 
-                        - `List[object]`
+                        - `List[Union[str, float]]`
+
+                          - `str`
+
+                          - `float`
 
                     - `object`
 
@@ -111598,13 +119559,15 @@ print(compacted_response)
 
               - `"developer"`
 
-            - `phase: Optional[Literal["commentary"]]`
+            - `phase: Optional[Literal["commentary", "final_answer"]]`
 
               Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
               For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
               phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
+
+              - `"final_answer"`
 
             - `type: Optional[Literal["message"]]`
 
@@ -111857,13 +119820,15 @@ print(compacted_response)
 
                 The canonical name of the agent that produced this item.
 
-            - `phase: Optional[Literal["commentary"]]`
+            - `phase: Optional[Literal["commentary", "final_answer"]]`
 
               Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
               For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
               phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
+
+              - `"final_answer"`
 
           - `class BetaResponseFileSearchToolCall: …`
 
@@ -113035,7 +121000,7 @@ print(compacted_response)
 
                       - `"nin"`
 
-                    - `value: Union[str, float, bool, List[object]]`
+                    - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -113045,7 +121010,11 @@ print(compacted_response)
 
                       - `bool`
 
-                      - `List[object]`
+                      - `List[Union[str, float]]`
+
+                        - `str`
+
+                        - `float`
 
                   - `class FiltersCompoundFilter: …`
 
@@ -113092,7 +121061,7 @@ print(compacted_response)
 
                           - `"nin"`
 
-                        - `value: Union[str, float, bool, List[object]]`
+                        - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                           The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -113102,7 +121071,11 @@ print(compacted_response)
 
                           - `bool`
 
-                          - `List[object]`
+                          - `List[Union[str, float]]`
+
+                            - `str`
+
+                            - `float`
 
                       - `object`
 
@@ -119858,7 +127831,7 @@ print(compacted_response)
 
             - `"nin"`
 
-          - `value: Union[str, float, bool, List[object]]`
+          - `value: Union[str, float, bool, List[Union[str, float]]]`
 
             The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -119868,7 +127841,11 @@ print(compacted_response)
 
             - `bool`
 
-            - `List[object]`
+            - `List[Union[str, float]]`
+
+              - `str`
+
+              - `float`
 
         - `class FiltersCompoundFilter: …`
 
@@ -119915,7 +127892,7 @@ print(compacted_response)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -119925,7 +127902,11 @@ print(compacted_response)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `object`
 
@@ -120970,7 +128951,7 @@ print(compacted_response)
 
             - `"nin"`
 
-          - `value: Union[str, float, bool, List[object]]`
+          - `value: Union[str, float, bool, List[Union[str, float]]]`
 
             The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -120980,7 +128961,11 @@ print(compacted_response)
 
             - `bool`
 
-            - `List[object]`
+            - `List[Union[str, float]]`
+
+              - `str`
+
+              - `float`
 
         - `class FiltersCompoundFilter: …`
 
@@ -121027,7 +129012,7 @@ print(compacted_response)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -121037,7 +129022,11 @@ print(compacted_response)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `object`
 
@@ -122380,13 +130369,15 @@ print(compacted_response)
 
             - `"developer"`
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
           - `type: Optional[Literal["message"]]`
 
@@ -122639,13 +130630,15 @@ print(compacted_response)
 
               The canonical name of the agent that produced this item.
 
-          - `phase: Optional[Literal["commentary"]]`
+          - `phase: Optional[Literal["commentary", "final_answer"]]`
 
             Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
             For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
             phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
             - `"commentary"`
+
+            - `"final_answer"`
 
         - `class BetaResponseFileSearchToolCall: …`
 
@@ -123817,7 +131810,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -123827,7 +131820,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class FiltersCompoundFilter: …`
 
@@ -123874,7 +131871,7 @@ print(compacted_response)
 
                         - `"nin"`
 
-                      - `value: Union[str, float, bool, List[object]]`
+                      - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -123884,7 +131881,11 @@ print(compacted_response)
 
                         - `bool`
 
-                        - `List[object]`
+                        - `List[Union[str, float]]`
+
+                          - `str`
+
+                          - `float`
 
                     - `object`
 
@@ -126914,7 +134915,7 @@ print(compacted_response)
       A stable identifier for your end-users.
       Used to boost cache hit rates by better bucketing similar requests and  to help OpenAI detect and prevent abuse. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
 
-  - `class ResponseInject: …`
+  - `class BetaResponseInjectEvent: …`
 
     Injects input items into an active response over a WebSocket connection.
     The items are validated and committed atomically. Currently, the server
@@ -127571,13 +135572,15 @@ print(compacted_response)
 
               - `"developer"`
 
-            - `phase: Optional[Literal["commentary"]]`
+            - `phase: Optional[Literal["commentary", "final_answer"]]`
 
               Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
               For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
               phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
+
+              - `"final_answer"`
 
             - `type: Optional[Literal["message"]]`
 
@@ -127830,13 +135833,15 @@ print(compacted_response)
 
                 The canonical name of the agent that produced this item.
 
-            - `phase: Optional[Literal["commentary"]]`
+            - `phase: Optional[Literal["commentary", "final_answer"]]`
 
               Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
               For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
               phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
               - `"commentary"`
+
+              - `"final_answer"`
 
           - `class BetaResponseFileSearchToolCall: …`
 
@@ -129008,7 +137013,7 @@ print(compacted_response)
 
                       - `"nin"`
 
-                    - `value: Union[str, float, bool, List[object]]`
+                    - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -129018,7 +137023,11 @@ print(compacted_response)
 
                       - `bool`
 
-                      - `List[object]`
+                      - `List[Union[str, float]]`
+
+                        - `str`
+
+                        - `float`
 
                   - `class FiltersCompoundFilter: …`
 
@@ -129065,7 +137074,7 @@ print(compacted_response)
 
                           - `"nin"`
 
-                        - `value: Union[str, float, bool, List[object]]`
+                        - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                           The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -129075,7 +137084,11 @@ print(compacted_response)
 
                           - `bool`
 
-                          - `List[object]`
+                          - `List[Union[str, float]]`
+
+                            - `str`
+
+                            - `float`
 
                       - `object`
 
@@ -135425,7 +143438,7 @@ print(compacted_response)
 
         The canonical name of the agent that produced this item.
 
-  - `class ResponseInjectCreated: …`
+  - `class BetaResponseInjectCreatedEvent: …`
 
     Emitted when all injected input items were validated and committed to the
     active response.
@@ -135449,13 +143462,13 @@ print(compacted_response)
       The multiplexed WebSocket stream that emitted the event. This field is
       present only when WebSocket multiplexing is enabled separately.
 
-  - `class ResponseInjectFailed: …`
+  - `class BetaResponseInjectFailedEvent: …`
 
     Emitted when injected input could not be committed to a response. The event
     returns the uncommitted raw input so the client can retry it in another
     response when appropriate.
 
-    - `error: ResponseInjectFailedError`
+    - `error: Error`
 
       Information about why the input was not committed.
 
@@ -135754,7 +143767,7 @@ print(compacted_response)
 
           - `"nin"`
 
-        - `value: Union[str, float, bool, List[object]]`
+        - `value: Union[str, float, bool, List[Union[str, float]]]`
 
           The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -135764,7 +143777,11 @@ print(compacted_response)
 
           - `bool`
 
-          - `List[object]`
+          - `List[Union[str, float]]`
+
+            - `str`
+
+            - `float`
 
       - `class FiltersCompoundFilter: …`
 
@@ -135811,7 +143828,7 @@ print(compacted_response)
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -135821,7 +143838,11 @@ print(compacted_response)
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `object`
 
@@ -137069,7 +145090,7 @@ print(compacted_response)
 
 **get** `/responses/{response_id}/input_items?beta=true`
 
-List input items
+Returns a list of input items for a given response.
 
 ### Parameters
 
@@ -137469,13 +145490,15 @@ List input items
 
         The canonical name of the agent that produced this item.
 
-    - `phase: Optional[Literal["commentary"]]`
+    - `phase: Optional[Literal["commentary", "final_answer"]]`
 
       Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
       For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
       phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
       - `"commentary"`
+
+      - `"final_answer"`
 
   - `class BetaResponseFileSearchToolCall: …`
 
@@ -138561,7 +146584,7 @@ List input items
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -138571,7 +146594,11 @@ List input items
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class FiltersCompoundFilter: …`
 
@@ -138618,7 +146645,7 @@ List input items
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -138628,7 +146655,11 @@ List input items
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `object`
 
@@ -141103,13 +149134,15 @@ print(response.data)
 
           The canonical name of the agent that produced this item.
 
-      - `phase: Optional[Literal["commentary"]]`
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `class BetaResponseFileSearchToolCall: …`
 
@@ -142195,7 +150228,7 @@ print(response.data)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -142205,7 +150238,11 @@ print(response.data)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class FiltersCompoundFilter: …`
 
@@ -142252,7 +150289,7 @@ print(response.data)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -142262,7 +150299,11 @@ print(response.data)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `object`
 
@@ -144327,7 +152368,9 @@ print(response.data)
 
 **post** `/responses/input_tokens?beta=true`
 
-Get input token counts
+Returns input token counts of the request.
+
+Returns an object with `object` set to `response.input_tokens` and an `input_tokens` count.
 
 ### Parameters
 
@@ -144502,13 +152545,15 @@ Get input token counts
 
         - `"developer"`
 
-      - `phase: Optional[Literal["commentary"]]`
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
       - `type: Optional[Literal["message"]]`
 
@@ -144761,13 +152806,15 @@ Get input token counts
 
           The canonical name of the agent that produced this item.
 
-      - `phase: Optional[Literal["commentary"]]`
+      - `phase: Optional[Literal["commentary", "final_answer"]]`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
         phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
+
+        - `"final_answer"`
 
     - `class BetaResponseFileSearchToolCall: …`
 
@@ -145939,7 +153986,7 @@ Get input token counts
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -145949,7 +153996,11 @@ Get input token counts
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class FiltersCompoundFilter: …`
 
@@ -145996,7 +154047,7 @@ Get input token counts
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -146006,7 +154057,11 @@ Get input token counts
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `object`
 

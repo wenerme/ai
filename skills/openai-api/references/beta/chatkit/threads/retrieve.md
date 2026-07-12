@@ -2,7 +2,7 @@
 
 **get** `/chatkit/threads/{thread_id}`
 
-Retrieve ChatKit thread
+Retrieve a ChatKit thread by its identifier.
 
 ### Path Parameters
 

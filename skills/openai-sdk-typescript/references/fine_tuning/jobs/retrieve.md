@@ -4,7 +4,9 @@
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}`
 
-Retrieve fine-tuning job
+Get info about a fine-tuning job.
+
+[Learn more about fine-tuning](https://platform.openai.com/docs/guides/model-optimization)
 
 ### Parameters
 

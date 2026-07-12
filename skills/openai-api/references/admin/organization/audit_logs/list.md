@@ -2,7 +2,7 @@
 
 **get** `/organization/audit_logs`
 
-List audit logs
+List user actions and configuration changes within this organization.
 
 ### Query Parameters
 
@@ -44,7 +44,7 @@ List audit logs
 
 - `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 56 more`
 
-  Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](https://platform.openai.com/docs/api-reference/audit-logs/object).
+  Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/docs/api-reference/audit-logs/object).
 
   - `"api_key.created"`
 

@@ -6,7 +6,10 @@
 
 **post** `/audio/transcriptions`
 
-Create transcription
+Transcribes audio into the input language.
+
+Returns a transcription object in `json`, `diarized_json`, or `verbose_json`
+format, or a stream of transcript events.
 
 ### Parameters
 
@@ -32,7 +35,40 @@ Create transcription
 
     - `"gpt-4o-transcribe-diarize"`
 
-- `chunking_strategy: Optional[object]`
+- `chunking_strategy: Optional[ChunkingStrategy]`
+
+  Controls how the audio is cut into chunks. When set to `"auto"`, the server first normalizes loudness and then uses voice activity detection (VAD) to choose boundaries. `server_vad` object can be provided to tweak VAD detection parameters manually. If unset, the audio is transcribed as a single block. Required when using `gpt-4o-transcribe-diarize` for inputs longer than 30 seconds.
+
+  - `Literal["auto"]`
+
+    Automatically set chunking parameters based on the audio. Must be set to `"auto"`.
+
+    - `"auto"`
+
+  - `class ChunkingStrategyVadConfig: …`
+
+    - `type: Literal["server_vad"]`
+
+      Must be set to `server_vad` to enable manual chunking using server side VAD.
+
+      - `"server_vad"`
+
+    - `prefix_padding_ms: Optional[int]`
+
+      Amount of audio to include before the VAD detected speech (in
+      milliseconds).
+
+    - `silence_duration_ms: Optional[int]`
+
+      Duration of silence to detect speech stop (in milliseconds).
+      With shorter values the model will respond more quickly,
+      but may jump in on short pauses from the user.
+
+    - `threshold: Optional[float]`
+
+      Sensitivity threshold (0.0 to 1.0) for voice activity detection. A
+      higher threshold will require louder audio to activate the model, and
+      thus might perform better in noisy environments.
 
 - `include: Optional[List[TranscriptionInclude]]`
 

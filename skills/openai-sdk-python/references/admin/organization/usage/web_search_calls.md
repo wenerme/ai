@@ -4,7 +4,7 @@
 
 **get** `/organization/usage/web_search_calls`
 
-Web search calls
+Get web search calls usage details for the organization.
 
 ### Parameters
 

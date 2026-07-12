@@ -4,7 +4,7 @@
 
 **get** `/organization/roles/{role_id}`
 
-Retrieve organization role
+Retrieves an organization role.
 
 ### Parameters
 

@@ -4,7 +4,9 @@
 
 **get** `/videos/{video_id}/content`
 
-Retrieve video content
+Download the generated video bytes or a derived preview asset.
+
+Streams the rendered video content for the specified video job.
 
 ### Parameters
 

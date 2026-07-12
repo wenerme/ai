@@ -2,7 +2,7 @@
 
 **post** `/vector_stores/{vector_store_id}/search`
 
-Search vector store
+Search a vector store for relevant chunks based on a query and file attributes filter.
 
 ### Path Parameters
 

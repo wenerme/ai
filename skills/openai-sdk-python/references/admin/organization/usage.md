@@ -6,7 +6,7 @@
 
 **get** `/organization/usage/audio_speeches`
 
-Audio speeches
+Get audio speeches usage details for the organization.
 
 ### Parameters
 
@@ -503,7 +503,7 @@ print(response.data)
 
 **get** `/organization/usage/audio_transcriptions`
 
-Audio transcriptions
+Get audio transcriptions usage details for the organization.
 
 ### Parameters
 
@@ -1000,7 +1000,7 @@ print(response.data)
 
 **get** `/organization/usage/code_interpreter_sessions`
 
-Code interpreter sessions
+Get code interpreter sessions usage details for the organization.
 
 ### Parameters
 
@@ -1479,7 +1479,7 @@ print(response.data)
 
 **get** `/organization/usage/completions`
 
-Completions
+Get completions usage details for the organization.
 
 ### Parameters
 
@@ -1984,7 +1984,7 @@ print(response.data)
 
 **get** `/organization/usage/embeddings`
 
-Embeddings
+Get embeddings usage details for the organization.
 
 ### Parameters
 
@@ -2481,7 +2481,7 @@ print(response.data)
 
 **get** `/organization/usage/images`
 
-Images
+Get images usage details for the organization.
 
 ### Parameters
 
@@ -3006,7 +3006,7 @@ print(response.data)
 
 **get** `/organization/usage/moderations`
 
-Moderations
+Get moderations usage details for the organization.
 
 ### Parameters
 
@@ -3503,7 +3503,7 @@ print(response.data)
 
 **get** `/organization/usage/vector_stores`
 
-Vector stores
+Get vector stores usage details for the organization.
 
 ### Parameters
 
@@ -3982,7 +3982,7 @@ print(response.data)
 
 **get** `/organization/usage/file_search_calls`
 
-File search calls
+Get file search calls usage details for the organization.
 
 ### Parameters
 
@@ -4479,7 +4479,7 @@ print(response.data)
 
 **get** `/organization/usage/web_search_calls`
 
-Web search calls
+Get web search calls usage details for the organization.
 
 ### Parameters
 
@@ -4988,7 +4988,7 @@ print(response.data)
 
 **get** `/organization/costs`
 
-Costs
+Get costs details for the organization.
 
 ### Parameters
 

@@ -4,7 +4,7 @@
 
 **post** `/vector_stores/{vector_store_id}/file_batches`
 
-Create vector store file batch
+Create a vector store file batch.
 
 ### Parameters
 
@@ -24,7 +24,41 @@ Create vector store file batch
 
   - `bool`
 
-- `chunking_strategy: Optional[object]`
+- `chunking_strategy: Optional[FileChunkingStrategyParam]`
+
+  The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
+
+  - `class AutoFileChunkingStrategyParam: …`
+
+    The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
+
+    - `type: Literal["auto"]`
+
+      Always `auto`.
+
+      - `"auto"`
+
+  - `class StaticFileChunkingStrategyObjectParam: …`
+
+    Customize your own chunking strategy by setting chunk size and chunk overlap.
+
+    - `static: StaticFileChunkingStrategy`
+
+      - `chunk_overlap_tokens: int`
+
+        The number of tokens that overlap between chunks. The default value is `400`.
+
+        Note that the overlap must not exceed half of `max_chunk_size_tokens`.
+
+      - `max_chunk_size_tokens: int`
+
+        The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+    - `type: Literal["static"]`
+
+      Always `static`.
+
+      - `"static"`
 
 - `file_ids: Optional[Sequence[str]]`
 
@@ -52,7 +86,9 @@ Create vector store file batch
 
     - `bool`
 
-  - `chunking_strategy: Optional[object]`
+  - `chunking_strategy: Optional[FileChunkingStrategyParam]`
+
+    The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
 
 ### Returns
 

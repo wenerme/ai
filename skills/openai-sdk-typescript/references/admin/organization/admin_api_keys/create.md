@@ -4,7 +4,7 @@
 
 **post** `/organization/admin_api_keys`
 
-Create admin API key
+Create an organization admin API key
 
 ### Parameters
 

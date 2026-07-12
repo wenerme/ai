@@ -6,7 +6,7 @@
 
 **post** `/conversations/{conversation_id}/items`
 
-Create items
+Create items in a conversation with the given ID.
 
 ### Parameters
 
@@ -1443,7 +1443,7 @@ Create items
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1453,7 +1453,11 @@ Create items
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `CompoundFilter`
 
@@ -4813,7 +4817,7 @@ Create items
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -4823,7 +4827,11 @@ Create items
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `CompoundFilter`
 
@@ -6887,7 +6895,7 @@ console.log(items.data);
 
 **get** `/conversations/{conversation_id}/items`
 
-List items
+List all items for a conversation with the given ID.
 
 ### Parameters
 
@@ -8308,7 +8316,7 @@ List items
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<unknown>`
+            - `value: string | number | boolean | Array<string | number>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -8318,7 +8326,11 @@ List items
 
               - `boolean`
 
-              - `Array<unknown>`
+              - `Array<string | number>`
+
+                - `string`
+
+                - `number`
 
           - `CompoundFilter`
 
@@ -10332,7 +10344,7 @@ console.log(items.data);
 
 **get** `/conversations/{conversation_id}/items/{item_id}`
 
-Retrieve an item
+Get a single item from a conversation with the given IDs.
 
 ### Parameters
 
@@ -11730,7 +11742,7 @@ Retrieve an item
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<unknown>`
+            - `value: string | number | boolean | Array<string | number>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -11740,7 +11752,11 @@ Retrieve an item
 
               - `boolean`
 
-              - `Array<unknown>`
+              - `Array<string | number>`
+
+                - `string`
+
+                - `number`
 
           - `CompoundFilter`
 
@@ -13742,7 +13758,7 @@ console.log(item);
 
 **delete** `/conversations/{conversation_id}/items/{item_id}`
 
-Delete an item
+Delete an item from a conversation with the given IDs.
 
 ### Parameters
 
@@ -15195,7 +15211,7 @@ console.log(conversation);
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<unknown>`
+            - `value: string | number | boolean | Array<string | number>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -15205,7 +15221,11 @@ console.log(conversation);
 
               - `boolean`
 
-              - `Array<unknown>`
+              - `Array<string | number>`
+
+                - `string`
+
+                - `number`
 
           - `CompoundFilter`
 
@@ -18506,7 +18526,7 @@ console.log(conversation);
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -18516,7 +18536,11 @@ console.log(conversation);
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `CompoundFilter`
 

@@ -2,7 +2,7 @@
 
 **get** `/evals`
 
-List evals
+List evaluations for a project.
 
 ### Query Parameters
 
@@ -68,7 +68,7 @@ List evals
 
         - `"custom"`
 
-    - `Logs object { schema, type, metadata }`
+    - `LogsDataSourceConfig object { schema, type, metadata }`
 
       A LogsDataSourceConfig which specifies the metadata property of your logs query.
       This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -362,7 +362,7 @@ List evals
 
         - `"string_check"`
 
-    - `EvalGraderTextSimilarity = TextSimilarityGrader`
+    - `TextSimilarityGrader = TextSimilarityGrader`
 
       A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -370,7 +370,7 @@ List evals
 
         The threshold for the score.
 
-    - `EvalGraderPython = PythonGrader`
+    - `PythonGrader = PythonGrader`
 
       A PythonGrader object that runs a python script on the input.
 
@@ -378,7 +378,7 @@ List evals
 
         The threshold for the score.
 
-    - `EvalGraderScoreModel = ScoreModelGrader`
+    - `ScoreModelGrader = ScoreModelGrader`
 
       A ScoreModelGrader object that uses a model to assign a score to the input.
 

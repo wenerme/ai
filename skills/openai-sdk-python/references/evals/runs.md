@@ -6,7 +6,7 @@
 
 **get** `/evals/{eval_id}/runs`
 
-Get eval runs
+Get a list of runs for an evaluation.
 
 ### Parameters
 
@@ -1099,7 +1099,7 @@ Get eval runs
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1109,7 +1109,11 @@ Get eval runs
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -2343,7 +2347,7 @@ print(runs)
 
 **post** `/evals/{eval_id}/runs`
 
-Create eval run
+Kicks off a new run for a given evaluation, specifying the data source, and what model configuration to use to test. The datasource will be validated against the schema specified in the config of the evaluation.
 
 ### Parameters
 
@@ -3392,7 +3396,7 @@ Create eval run
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -3402,7 +3406,11 @@ Create eval run
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 
@@ -5410,7 +5418,7 @@ Create eval run
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5420,7 +5428,11 @@ Create eval run
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -6676,7 +6688,7 @@ print(run)
 
 **get** `/evals/{eval_id}/runs/{run_id}`
 
-Get an eval run
+Get an evaluation run by ID.
 
 ### Parameters
 
@@ -7741,7 +7753,7 @@ Get an eval run
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -7751,7 +7763,11 @@ Get an eval run
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -9047,7 +9063,7 @@ print(run)
 
 **post** `/evals/{eval_id}/runs/{run_id}`
 
-Cancel eval run
+Cancel an ongoing evaluation run.
 
 ### Parameters
 
@@ -10112,7 +10128,7 @@ Cancel eval run
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -10122,7 +10138,11 @@ Cancel eval run
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -11418,7 +11438,7 @@ print(canceled_run)
 
 **delete** `/evals/{eval_id}/runs/{run_id}`
 
-Delete eval run
+Delete an eval run.
 
 ### Parameters
 
@@ -13159,7 +13179,7 @@ print(deleted)
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -13169,7 +13189,11 @@ print(deleted)
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -15275,7 +15299,7 @@ print(deleted)
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -15285,7 +15309,11 @@ print(deleted)
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -17391,7 +17419,7 @@ print(deleted)
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -17401,7 +17429,11 @@ print(deleted)
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -19507,7 +19539,7 @@ print(deleted)
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -19517,7 +19549,11 @@ print(deleted)
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -20584,7 +20620,7 @@ print(deleted)
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items`
 
-Get eval run output items
+Get a list of output items for an evaluation run.
 
 ### Parameters
 
@@ -20941,7 +20977,7 @@ print(output_items)
 
 **get** `/evals/{eval_id}/runs/{run_id}/output_items/{output_item_id}`
 
-Get an output item of an eval run
+Get an evaluation run output item by ID.
 
 ### Parameters
 

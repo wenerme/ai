@@ -6,7 +6,8 @@
 
 **post** `/realtime/calls/{call_id}/accept`
 
-Accept call
+Accept an incoming SIP call and configure the realtime session that will
+handle it.
 
 ### Parameters
 
@@ -839,7 +840,8 @@ await client.realtime.calls.accept('call_id', { type: 'realtime' });
 
 **post** `/realtime/calls/{call_id}/hangup`
 
-Hang up call
+End an active Realtime API call, whether it was initiated over SIP or
+WebRTC.
 
 ### Parameters
 
@@ -863,7 +865,7 @@ await client.realtime.calls.hangup('call_id');
 
 **post** `/realtime/calls/{call_id}/refer`
 
-Refer call
+Transfer an active SIP call to a new destination using the SIP REFER verb.
 
 ### Parameters
 
@@ -894,7 +896,7 @@ await client.realtime.calls.refer('call_id', { target_uri: 'tel:+14155550123' })
 
 **post** `/realtime/calls/{call_id}/reject`
 
-Reject call
+Decline an incoming SIP call by returning a SIP status code to the caller.
 
 ### Parameters
 

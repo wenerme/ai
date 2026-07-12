@@ -4,7 +4,8 @@
 
 **post** `/moderations`
 
-Create moderation
+Classifies if text and/or image inputs are potentially harmful. Learn
+more in the [moderation guide](https://platform.openai.com/docs/guides/moderation).
 
 ### Parameters
 
@@ -20,6 +21,38 @@ Create moderation
     - `Array<string>`
 
     - `Array<ModerationMultiModalInput>`
+
+      - `ModerationImageURLInput`
+
+        An object describing an image to classify.
+
+        - `image_url: ImageURL`
+
+          Contains either an image URL or a data URL for a base64 encoded image.
+
+          - `url: string`
+
+            Either a URL of the image or the base64 encoded image data.
+
+        - `type: "image_url"`
+
+          Always `image_url`.
+
+          - `"image_url"`
+
+      - `ModerationTextInput`
+
+        An object describing text to classify.
+
+        - `text: string`
+
+          A string of text to classify.
+
+        - `type: "text"`
+
+          Always `text`.
+
+          - `"text"`
 
   - `model?: (string & {}) | ModerationModel`
 

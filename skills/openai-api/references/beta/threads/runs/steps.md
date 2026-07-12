@@ -4,7 +4,7 @@
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps`
 
-List run steps
+Returns a list of run steps belonging to a run.
 
 ### Path Parameters
 
@@ -26,7 +26,7 @@ List run steps
 
   A list of additional fields to include in the response. Currently the only supported value is `step_details.tool_calls[*].file_search.results[*].content` to fetch the file search result content.
 
-  See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+  See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
   - `"step_details.tool_calls[*].file_search.results[*].content"`
 
@@ -52,7 +52,7 @@ List run steps
 
   - `assistant_id: string`
 
-    The ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) associated with the run step.
+    The ID of the [assistant](/docs/api-reference/assistants) associated with the run step.
 
   - `cancelled_at: number`
 
@@ -107,7 +107,7 @@ List run steps
 
   - `run_id: string`
 
-    The ID of the [run](https://platform.openai.com/docs/api-reference/runs) that this run step is a part of.
+    The ID of the [run](/docs/api-reference/runs) that this run step is a part of.
 
   - `status: "in_progress" or "cancelled" or "failed" or 2 more`
 
@@ -147,7 +147,7 @@ List run steps
 
       Details of the tool call.
 
-      - `tool_calls: array of ToolCall`
+      - `tool_calls: array of CodeInterpreterToolCall or FileSearchToolCall or FunctionToolCall`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
@@ -171,7 +171,7 @@ List run steps
 
               The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-              - `Logs object { logs, type }`
+              - `CodeInterpreterLogOutput object { logs, type }`
 
                 Text output from the Code Interpreter tool call as part of a run step.
 
@@ -185,13 +185,13 @@ List run steps
 
                   - `"logs"`
 
-              - `Image object { image, type }`
+              - `CodeInterpreterImageOutput object { image, type }`
 
                 - `image: object { file_id }`
 
                   - `file_id: string`
 
-                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+                    The [file](/docs/api-reference/files) ID of the image.
 
                 - `type: "image"`
 
@@ -287,7 +287,7 @@ List run steps
 
             - `output: string`
 
-              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+              The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
 
           - `type: "function"`
 
@@ -303,7 +303,7 @@ List run steps
 
   - `thread_id: string`
 
-    The ID of the [thread](https://platform.openai.com/docs/api-reference/threads) that was run.
+    The ID of the [thread](/docs/api-reference/threads) that was run.
 
   - `type: "message_creation" or "tool_calls"`
 
@@ -442,7 +442,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps \
 
 **get** `/threads/{thread_id}/runs/{run_id}/steps/{step_id}`
 
-Retrieve run step
+Retrieves a run step.
 
 ### Path Parameters
 
@@ -458,7 +458,7 @@ Retrieve run step
 
   A list of additional fields to include in the response. Currently the only supported value is `step_details.tool_calls[*].file_search.results[*].content` to fetch the file search result content.
 
-  See the [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
+  See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
 
   - `"step_details.tool_calls[*].file_search.results[*].content"`
 
@@ -474,7 +474,7 @@ Retrieve run step
 
   - `assistant_id: string`
 
-    The ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) associated with the run step.
+    The ID of the [assistant](/docs/api-reference/assistants) associated with the run step.
 
   - `cancelled_at: number`
 
@@ -529,7 +529,7 @@ Retrieve run step
 
   - `run_id: string`
 
-    The ID of the [run](https://platform.openai.com/docs/api-reference/runs) that this run step is a part of.
+    The ID of the [run](/docs/api-reference/runs) that this run step is a part of.
 
   - `status: "in_progress" or "cancelled" or "failed" or 2 more`
 
@@ -569,7 +569,7 @@ Retrieve run step
 
       Details of the tool call.
 
-      - `tool_calls: array of ToolCall`
+      - `tool_calls: array of CodeInterpreterToolCall or FileSearchToolCall or FunctionToolCall`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
@@ -593,7 +593,7 @@ Retrieve run step
 
               The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-              - `Logs object { logs, type }`
+              - `CodeInterpreterLogOutput object { logs, type }`
 
                 Text output from the Code Interpreter tool call as part of a run step.
 
@@ -607,13 +607,13 @@ Retrieve run step
 
                   - `"logs"`
 
-              - `Image object { image, type }`
+              - `CodeInterpreterImageOutput object { image, type }`
 
                 - `image: object { file_id }`
 
                   - `file_id: string`
 
-                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+                    The [file](/docs/api-reference/files) ID of the image.
 
                 - `type: "image"`
 
@@ -709,7 +709,7 @@ Retrieve run step
 
             - `output: string`
 
-              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+              The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
 
           - `type: "function"`
 
@@ -725,7 +725,7 @@ Retrieve run step
 
   - `thread_id: string`
 
-    The ID of the [thread](https://platform.openai.com/docs/api-reference/threads) that was run.
+    The ID of the [thread](/docs/api-reference/threads) that was run.
 
   - `type: "message_creation" or "tool_calls"`
 
@@ -876,7 +876,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
     - `file_id: optional string`
 
-      The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+      The [file](/docs/api-reference/files) ID of the image.
 
 ### Code Interpreter Tool Call
 
@@ -900,7 +900,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
       The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-      - `Logs object { logs, type }`
+      - `CodeInterpreterLogOutput object { logs, type }`
 
         Text output from the Code Interpreter tool call as part of a run step.
 
@@ -914,13 +914,13 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
           - `"logs"`
 
-      - `Image object { image, type }`
+      - `CodeInterpreterImageOutput object { image, type }`
 
         - `image: object { file_id }`
 
           - `file_id: string`
 
-            The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+            The [file](/docs/api-reference/files) ID of the image.
 
         - `type: "image"`
 
@@ -1000,7 +1000,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
           - `file_id: optional string`
 
-            The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+            The [file](/docs/api-reference/files) ID of the image.
 
 ### File Search Tool Call
 
@@ -1110,7 +1110,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
     - `output: string`
 
-      The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+      The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
 
   - `type: "function"`
 
@@ -1150,7 +1150,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
     - `output: optional string`
 
-      The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+      The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
 
 ### Message Creation Step Details
 
@@ -1182,7 +1182,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
   - `assistant_id: string`
 
-    The ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) associated with the run step.
+    The ID of the [assistant](/docs/api-reference/assistants) associated with the run step.
 
   - `cancelled_at: number`
 
@@ -1237,7 +1237,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
   - `run_id: string`
 
-    The ID of the [run](https://platform.openai.com/docs/api-reference/runs) that this run step is a part of.
+    The ID of the [run](/docs/api-reference/runs) that this run step is a part of.
 
   - `status: "in_progress" or "cancelled" or "failed" or 2 more`
 
@@ -1277,7 +1277,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
       Details of the tool call.
 
-      - `tool_calls: array of ToolCall`
+      - `tool_calls: array of CodeInterpreterToolCall or FileSearchToolCall or FunctionToolCall`
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
@@ -1301,7 +1301,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
               The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-              - `Logs object { logs, type }`
+              - `CodeInterpreterLogOutput object { logs, type }`
 
                 Text output from the Code Interpreter tool call as part of a run step.
 
@@ -1315,13 +1315,13 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
                   - `"logs"`
 
-              - `Image object { image, type }`
+              - `CodeInterpreterImageOutput object { image, type }`
 
                 - `image: object { file_id }`
 
                   - `file_id: string`
 
-                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+                    The [file](/docs/api-reference/files) ID of the image.
 
                 - `type: "image"`
 
@@ -1417,7 +1417,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
             - `output: string`
 
-              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+              The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
 
           - `type: "function"`
 
@@ -1433,7 +1433,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
   - `thread_id: string`
 
-    The ID of the [thread](https://platform.openai.com/docs/api-reference/threads) that was run.
+    The ID of the [thread](/docs/api-reference/threads) that was run.
 
   - `type: "message_creation" or "tool_calls"`
 
@@ -1459,164 +1459,6 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
       Total number of tokens used (prompt + completion).
 
-### Run Step Delta
-
-- `RunStepDelta object { step_details }`
-
-  The delta containing the fields that have changed on the run step.
-
-  - `step_details: optional RunStepDeltaMessageDelta or ToolCallDeltaObject`
-
-    The details of the run step.
-
-    - `RunStepDeltaMessageDelta object { type, message_creation }`
-
-      Details of the message creation by the run step.
-
-      - `type: "message_creation"`
-
-        Always `message_creation`.
-
-        - `"message_creation"`
-
-      - `message_creation: optional object { message_id }`
-
-        - `message_id: optional string`
-
-          The ID of the message that was created by this run step.
-
-    - `ToolCallDeltaObject object { type, tool_calls }`
-
-      Details of the tool call.
-
-      - `type: "tool_calls"`
-
-        Always `tool_calls`.
-
-        - `"tool_calls"`
-
-      - `tool_calls: optional array of ToolCallDelta`
-
-        An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
-
-        - `CodeInterpreterToolCallDelta object { index, type, id, code_interpreter }`
-
-          Details of the Code Interpreter tool call the run step was involved in.
-
-          - `index: number`
-
-            The index of the tool call in the tool calls array.
-
-          - `type: "code_interpreter"`
-
-            The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-            - `"code_interpreter"`
-
-          - `id: optional string`
-
-            The ID of the tool call.
-
-          - `code_interpreter: optional object { input, outputs }`
-
-            The Code Interpreter tool call definition.
-
-            - `input: optional string`
-
-              The input to the Code Interpreter tool call.
-
-            - `outputs: optional array of CodeInterpreterLogs or CodeInterpreterOutputImage`
-
-              The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-              - `CodeInterpreterLogs object { index, type, logs }`
-
-                Text output from the Code Interpreter tool call as part of a run step.
-
-                - `index: number`
-
-                  The index of the output in the outputs array.
-
-                - `type: "logs"`
-
-                  Always `logs`.
-
-                  - `"logs"`
-
-                - `logs: optional string`
-
-                  The text output from the Code Interpreter tool call.
-
-              - `CodeInterpreterOutputImage object { index, type, image }`
-
-                - `index: number`
-
-                  The index of the output in the outputs array.
-
-                - `type: "image"`
-
-                  Always `image`.
-
-                  - `"image"`
-
-                - `image: optional object { file_id }`
-
-                  - `file_id: optional string`
-
-                    The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-        - `FileSearchToolCallDelta object { file_search, index, type, id }`
-
-          - `file_search: unknown`
-
-            For now, this is always going to be an empty object.
-
-          - `index: number`
-
-            The index of the tool call in the tool calls array.
-
-          - `type: "file_search"`
-
-            The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-            - `"file_search"`
-
-          - `id: optional string`
-
-            The ID of the tool call object.
-
-        - `FunctionToolCallDelta object { index, type, id, function }`
-
-          - `index: number`
-
-            The index of the tool call in the tool calls array.
-
-          - `type: "function"`
-
-            The type of tool call. This is always going to be `function` for this type of tool call.
-
-            - `"function"`
-
-          - `id: optional string`
-
-            The ID of the tool call object.
-
-          - `function: optional object { arguments, name, output }`
-
-            The definition of the function that was called.
-
-            - `arguments: optional string`
-
-              The arguments passed to the function.
-
-            - `name: optional string`
-
-              The name of the function.
-
-            - `output: optional string`
-
-              The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
-
 ### Run Step Delta Event
 
 - `RunStepDeltaEvent object { id, delta, object }`
@@ -1627,7 +1469,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
     The identifier of the run step, which can be referenced in API endpoints.
 
-  - `delta: RunStepDelta`
+  - `delta: object { step_details }`
 
     The delta containing the fields that have changed on the run step.
 
@@ -1661,7 +1503,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
           - `"tool_calls"`
 
-        - `tool_calls: optional array of ToolCallDelta`
+        - `tool_calls: optional array of CodeInterpreterToolCallDelta or FileSearchToolCallDelta or FunctionToolCallDelta`
 
           An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
@@ -1729,7 +1571,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
                     - `file_id: optional string`
 
-                      The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+                      The [file](/docs/api-reference/files) ID of the image.
 
           - `FileSearchToolCallDelta object { file_search, index, type, id }`
 
@@ -1781,7 +1623,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
               - `output: optional string`
 
-                The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+                The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
 
   - `object: "thread.run.step.delta"`
 
@@ -1813,280 +1655,6 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
   - `"step_details.tool_calls[*].file_search.results[*].content"`
 
-### Tool Call
-
-- `ToolCall = CodeInterpreterToolCall or FileSearchToolCall or FunctionToolCall`
-
-  Details of the Code Interpreter tool call the run step was involved in.
-
-  - `CodeInterpreterToolCall object { id, code_interpreter, type }`
-
-    Details of the Code Interpreter tool call the run step was involved in.
-
-    - `id: string`
-
-      The ID of the tool call.
-
-    - `code_interpreter: object { input, outputs }`
-
-      The Code Interpreter tool call definition.
-
-      - `input: string`
-
-        The input to the Code Interpreter tool call.
-
-      - `outputs: array of object { logs, type }  or object { image, type }`
-
-        The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-        - `Logs object { logs, type }`
-
-          Text output from the Code Interpreter tool call as part of a run step.
-
-          - `logs: string`
-
-            The text output from the Code Interpreter tool call.
-
-          - `type: "logs"`
-
-            Always `logs`.
-
-            - `"logs"`
-
-        - `Image object { image, type }`
-
-          - `image: object { file_id }`
-
-            - `file_id: string`
-
-              The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-          - `type: "image"`
-
-            Always `image`.
-
-            - `"image"`
-
-    - `type: "code_interpreter"`
-
-      The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-      - `"code_interpreter"`
-
-  - `FileSearchToolCall object { id, file_search, type }`
-
-    - `id: string`
-
-      The ID of the tool call object.
-
-    - `file_search: object { ranking_options, results }`
-
-      For now, this is always going to be an empty object.
-
-      - `ranking_options: optional object { ranker, score_threshold }`
-
-        The ranking options for the file search.
-
-        - `ranker: "auto" or "default_2024_08_21"`
-
-          The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-          - `"auto"`
-
-          - `"default_2024_08_21"`
-
-        - `score_threshold: number`
-
-          The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-      - `results: optional array of object { file_id, file_name, score, content }`
-
-        The results of the file search.
-
-        - `file_id: string`
-
-          The ID of the file that result was found in.
-
-        - `file_name: string`
-
-          The name of the file that result was found in.
-
-        - `score: number`
-
-          The score of the result. All values must be a floating point number between 0 and 1.
-
-        - `content: optional array of object { text, type }`
-
-          The content of the result that was found. The content is only included if requested via the include query parameter.
-
-          - `text: optional string`
-
-            The text content of the file.
-
-          - `type: optional "text"`
-
-            The type of the content.
-
-            - `"text"`
-
-    - `type: "file_search"`
-
-      The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-      - `"file_search"`
-
-  - `FunctionToolCall object { id, function, type }`
-
-    - `id: string`
-
-      The ID of the tool call object.
-
-    - `function: object { arguments, name, output }`
-
-      The definition of the function that was called.
-
-      - `arguments: string`
-
-        The arguments passed to the function.
-
-      - `name: string`
-
-        The name of the function.
-
-      - `output: string`
-
-        The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
-
-    - `type: "function"`
-
-      The type of tool call. This is always going to be `function` for this type of tool call.
-
-      - `"function"`
-
-### Tool Call Delta
-
-- `ToolCallDelta = CodeInterpreterToolCallDelta or FileSearchToolCallDelta or FunctionToolCallDelta`
-
-  Details of the Code Interpreter tool call the run step was involved in.
-
-  - `CodeInterpreterToolCallDelta object { index, type, id, code_interpreter }`
-
-    Details of the Code Interpreter tool call the run step was involved in.
-
-    - `index: number`
-
-      The index of the tool call in the tool calls array.
-
-    - `type: "code_interpreter"`
-
-      The type of tool call. This is always going to be `code_interpreter` for this type of tool call.
-
-      - `"code_interpreter"`
-
-    - `id: optional string`
-
-      The ID of the tool call.
-
-    - `code_interpreter: optional object { input, outputs }`
-
-      The Code Interpreter tool call definition.
-
-      - `input: optional string`
-
-        The input to the Code Interpreter tool call.
-
-      - `outputs: optional array of CodeInterpreterLogs or CodeInterpreterOutputImage`
-
-        The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
-
-        - `CodeInterpreterLogs object { index, type, logs }`
-
-          Text output from the Code Interpreter tool call as part of a run step.
-
-          - `index: number`
-
-            The index of the output in the outputs array.
-
-          - `type: "logs"`
-
-            Always `logs`.
-
-            - `"logs"`
-
-          - `logs: optional string`
-
-            The text output from the Code Interpreter tool call.
-
-        - `CodeInterpreterOutputImage object { index, type, image }`
-
-          - `index: number`
-
-            The index of the output in the outputs array.
-
-          - `type: "image"`
-
-            Always `image`.
-
-            - `"image"`
-
-          - `image: optional object { file_id }`
-
-            - `file_id: optional string`
-
-              The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
-
-  - `FileSearchToolCallDelta object { file_search, index, type, id }`
-
-    - `file_search: unknown`
-
-      For now, this is always going to be an empty object.
-
-    - `index: number`
-
-      The index of the tool call in the tool calls array.
-
-    - `type: "file_search"`
-
-      The type of tool call. This is always going to be `file_search` for this type of tool call.
-
-      - `"file_search"`
-
-    - `id: optional string`
-
-      The ID of the tool call object.
-
-  - `FunctionToolCallDelta object { index, type, id, function }`
-
-    - `index: number`
-
-      The index of the tool call in the tool calls array.
-
-    - `type: "function"`
-
-      The type of tool call. This is always going to be `function` for this type of tool call.
-
-      - `"function"`
-
-    - `id: optional string`
-
-      The ID of the tool call object.
-
-    - `function: optional object { arguments, name, output }`
-
-      The definition of the function that was called.
-
-      - `arguments: optional string`
-
-        The arguments passed to the function.
-
-      - `name: optional string`
-
-        The name of the function.
-
-      - `output: optional string`
-
-        The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
-
 ### Tool Call Delta Object
 
 - `ToolCallDeltaObject object { type, tool_calls }`
@@ -2099,7 +1667,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
     - `"tool_calls"`
 
-  - `tool_calls: optional array of ToolCallDelta`
+  - `tool_calls: optional array of CodeInterpreterToolCallDelta or FileSearchToolCallDelta or FunctionToolCallDelta`
 
     An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
@@ -2167,7 +1735,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
               - `file_id: optional string`
 
-                The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+                The [file](/docs/api-reference/files) ID of the image.
 
     - `FileSearchToolCallDelta object { file_search, index, type, id }`
 
@@ -2219,7 +1787,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
         - `output: optional string`
 
-          The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+          The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
 
 ### Tool Calls Step Details
 
@@ -2227,7 +1795,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
   Details of the tool call.
 
-  - `tool_calls: array of ToolCall`
+  - `tool_calls: array of CodeInterpreterToolCall or FileSearchToolCall or FunctionToolCall`
 
     An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
@@ -2251,7 +1819,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
           The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-          - `Logs object { logs, type }`
+          - `CodeInterpreterLogOutput object { logs, type }`
 
             Text output from the Code Interpreter tool call as part of a run step.
 
@@ -2265,13 +1833,13 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
               - `"logs"`
 
-          - `Image object { image, type }`
+          - `CodeInterpreterImageOutput object { image, type }`
 
             - `image: object { file_id }`
 
               - `file_id: string`
 
-                The [file](https://platform.openai.com/docs/api-reference/files) ID of the image.
+                The [file](/docs/api-reference/files) ID of the image.
 
             - `type: "image"`
 
@@ -2367,7 +1935,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
         - `output: string`
 
-          The output of the function. This will be `null` if the outputs have not been [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs) yet.
+          The output of the function. This will be `null` if the outputs have not been [submitted](/docs/api-reference/runs/submitToolOutputs) yet.
 
       - `type: "function"`
 

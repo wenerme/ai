@@ -834,7 +834,11 @@
 
 **post** `/fine_tuning/jobs`
 
-Create fine-tuning job
+Creates a fine-tuning job which begins the process of creating a new model from a given dataset.
+
+Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
+
+[Learn more about fine-tuning](https://platform.openai.com/docs/guides/model-optimization)
 
 ### Parameters
 
@@ -2888,7 +2892,7 @@ client.fine_tuning.jobs.create(
 
 **get** `/fine_tuning/jobs`
 
-List fine-tuning jobs
+List your organization's fine-tuning jobs
 
 ### Parameters
 
@@ -3893,7 +3897,9 @@ client.fine_tuning.jobs.list()
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}`
 
-Retrieve fine-tuning job
+Get info about a fine-tuning job.
+
+[Learn more about fine-tuning](https://platform.openai.com/docs/guides/model-optimization)
 
 ### Parameters
 
@@ -4895,7 +4901,7 @@ client.fine_tuning.jobs.retrieve("ftjob-abc123")
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}/events`
 
-List fine-tuning events
+Get status updates for a fine-tuning job.
 
 ### Parameters
 
@@ -5038,7 +5044,7 @@ client.fine_tuning.jobs.list_events(
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/cancel`
 
-Cancel fine-tuning
+Immediately cancel a fine-tune job.
 
 ### Parameters
 
@@ -6018,7 +6024,7 @@ client.fine_tuning.jobs.cancel("ftjob-abc123")
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/pause`
 
-Pause fine-tuning
+Pause a fine-tune job.
 
 ### Parameters
 
@@ -6998,7 +7004,7 @@ client.fine_tuning.jobs.pause("ftjob-abc123")
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/resume`
 
-Resume fine-tuning
+Resume a fine-tune job.
 
 ### Parameters
 
@@ -8930,7 +8936,7 @@ client.fine_tuning.jobs.resume("ftjob-abc123")
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}/checkpoints`
 
-List fine-tuning checkpoints
+List checkpoints for a fine-tuning job.
 
 ### Parameters
 
@@ -9102,7 +9108,9 @@ print(page.id)
 
 **get** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-List checkpoint permissions
+**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+
+Organization owners can use this endpoint to view all permissions for a fine-tuned model checkpoint.
 
 ### Parameters
 
@@ -9202,7 +9210,9 @@ print(permission.first_id)
 
 **get** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-List checkpoint permissions
+**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+
+Organization owners can use this endpoint to view all permissions for a fine-tuned model checkpoint.
 
 ### Parameters
 
@@ -9293,7 +9303,9 @@ print(page.id)
 
 **post** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-Create checkpoint permissions
+**NOTE:** Calling this endpoint requires an [admin API key](../admin-api-keys).
+
+This enables organization owners to share fine-tuned models with other projects in their organization.
 
 ### Parameters
 
@@ -9369,7 +9381,9 @@ print(page.id)
 
 **delete** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions/{permission_id}`
 
-Delete checkpoint permission
+**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+
+Organization owners can use this endpoint to delete a permission for a fine-tuned model checkpoint.
 
 ### Parameters
 
@@ -9533,7 +9547,7 @@ print(permission.id)
 
 **post** `/fine_tuning/alpha/graders/run`
 
-Run grader
+Run a grader.
 
 ### Parameters
 
@@ -10237,7 +10251,7 @@ print(result)
 
 **post** `/fine_tuning/alpha/graders/validate`
 
-Validate grader
+Validate a grader.
 
 ### Parameters
 

@@ -2,7 +2,7 @@
 
 **get** `/responses/{response_id}/input_items`
 
-List input items
+Returns a list of input items for a given response.
 
 ### Path Parameters
 
@@ -98,7 +98,7 @@ List input items
 
         - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+          An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
           - `detail: "low" or "high" or "auto" or "original"`
 
@@ -221,7 +221,7 @@ List input items
 
         The content of the output message.
 
-        - `ResponseOutputText object { annotations, text, type, logprobs }`
+        - `ResponseOutputText object { annotations, logprobs, text, type }`
 
           A text output from the model.
 
@@ -325,17 +325,7 @@ List input items
 
                 - `"file_path"`
 
-          - `text: string`
-
-            The text output from the model.
-
-          - `type: "output_text"`
-
-            The type of the output text. Always `output_text`.
-
-            - `"output_text"`
-
-          - `logprobs: optional array of object { token, bytes, logprob, top_logprobs }`
+          - `logprobs: array of object { token, bytes, logprob, top_logprobs }`
 
             - `token: string`
 
@@ -350,6 +340,16 @@ List input items
               - `bytes: array of number`
 
               - `logprob: number`
+
+          - `text: string`
+
+            The text output from the model.
+
+          - `type: "output_text"`
+
+            The type of the output text. Always `output_text`.
+
+            - `"output_text"`
 
         - `ResponseOutputRefusal object { refusal, type }`
 
@@ -401,7 +401,7 @@ List input items
     - `FileSearchCall object { id, queries, status, 2 more }`
 
       The results of a file search tool call. See the
-      [file search guide](https://platform.openai.com/docs/guides/tools-file-search) for more information.
+      [file search guide](/docs/guides/tools-file-search) for more information.
 
       - `id: string`
 
@@ -469,7 +469,7 @@ List input items
     - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
       A tool call to a computer use tool. See the
-      [computer use guide](https://platform.openai.com/docs/guides/tools-computer-use) for more information.
+      [computer use guide](/docs/guides/tools-computer-use) for more information.
 
       - `id: string`
 
@@ -512,7 +512,7 @@ List input items
 
         - `"computer_call"`
 
-      - `action: optional object { button, type, x, 2 more }  or object { keys, type, x, y }  or object { path, type, keys }  or 6 more`
+      - `action: optional ComputerAction`
 
         A click action.
 
@@ -716,192 +716,37 @@ List input items
 
           A click action.
 
-          - `button: "left" or "right" or "wheel" or 2 more`
-
-            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-            - `"left"`
-
-            - `"right"`
-
-            - `"wheel"`
-
-            - `"back"`
-
-            - `"forward"`
-
-          - `type: "click"`
-
-            Specifies the event type. For a click action, this property is always `click`.
-
-            - `"click"`
-
-          - `x: number`
-
-            The x-coordinate where the click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the click occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while clicking.
-
         - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
-
-          - `keys: array of string`
-
-            The keys being held while double-clicking.
-
-          - `type: "double_click"`
-
-            Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-            - `"double_click"`
-
-          - `x: number`
-
-            The x-coordinate where the double click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the double click occurred.
 
         - `Drag object { path, type, keys }`
 
           A drag action.
 
-          - `path: array of object { x, y }`
-
-            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-            ```
-            [
-              { x: 100, y: 200 },
-              { x: 200, y: 300 }
-            ]
-            ```
-
-            - `x: number`
-
-              The x-coordinate.
-
-            - `y: number`
-
-              The y-coordinate.
-
-          - `type: "drag"`
-
-            Specifies the event type. For a drag action, this property is always set to `drag`.
-
-            - `"drag"`
-
-          - `keys: optional array of string`
-
-            The keys being held while dragging the mouse.
-
         - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
-
-          - `keys: array of string`
-
-            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-          - `type: "keypress"`
-
-            Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-            - `"keypress"`
 
         - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
-          - `type: "move"`
-
-            Specifies the event type. For a move action, this property is always set to `move`.
-
-            - `"move"`
-
-          - `x: number`
-
-            The x-coordinate to move to.
-
-          - `y: number`
-
-            The y-coordinate to move to.
-
-          - `keys: optional array of string`
-
-            The keys being held while moving the mouse.
-
         - `Screenshot object { type }`
 
           A screenshot action.
-
-          - `type: "screenshot"`
-
-            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-            - `"screenshot"`
 
         - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
-          - `scroll_x: number`
-
-            The horizontal scroll distance.
-
-          - `scroll_y: number`
-
-            The vertical scroll distance.
-
-          - `type: "scroll"`
-
-            Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-            - `"scroll"`
-
-          - `x: number`
-
-            The x-coordinate where the scroll occurred.
-
-          - `y: number`
-
-            The y-coordinate where the scroll occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while scrolling.
-
         - `Type object { text, type }`
 
           An action to type in text.
 
-          - `text: string`
-
-            The text to type.
-
-          - `type: "type"`
-
-            Specifies the event type. For a type action, this property is always set to `type`.
-
-            - `"type"`
-
         - `Wait object { type }`
 
           A wait action.
-
-          - `type: "wait"`
-
-            Specifies the event type. For a wait action, this property is always set to `wait`.
-
-            - `"wait"`
 
     - `ComputerCallOutput object { id, call_id, output, 4 more }`
 
@@ -975,7 +820,7 @@ List input items
     - `WebSearchCall object { id, action, status, type }`
 
       The results of a web search tool call. See the
-      [web search guide](https://platform.openai.com/docs/guides/tools-web-search) for more information.
+      [web search guide](/docs/guides/tools-web-search) for more information.
 
       - `id: string`
 
@@ -1160,7 +1005,7 @@ List input items
 
           - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
           - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
@@ -1497,7 +1342,7 @@ List input items
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          [web search tool](/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -1557,7 +1402,7 @@ List input items
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -1609,7 +1454,7 @@ List input items
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -1833,19 +1678,8 @@ List input items
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Allows to set transparency for the background of the generated image(s).
-            This parameter is only supported for GPT image models that support
-            transparent backgrounds. Must be one of `transparent`, `opaque`, or
-            `auto` (default value). When `auto` is used, the model will
-            automatically determine the best background for the image.
-
-            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-            transparent backgrounds. Requests with `background` set to
-            `transparent` will return an error for these models; use `opaque` or
-            `auto` instead.
-
-            If `transparent`, the output format needs to support transparency,
-            so it should be set to either `png` (default value) or `webp`.
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
 
             - `"transparent"`
 
@@ -1874,13 +1708,13 @@ List input items
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -1888,13 +1722,7 @@ List input items
 
               - `"gpt-image-1-mini"`
 
-              - `"gpt-image-2"`
-
-              - `"gpt-image-2-2026-04-21"`
-
               - `"gpt-image-1.5"`
-
-              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -2110,7 +1938,7 @@ List input items
 
         - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -2224,7 +2052,7 @@ List input items
 
             - `Custom object { name, type, allowed_callers, 3 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -2545,7 +2373,7 @@ List input items
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          [web search tool](/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -2605,7 +2433,7 @@ List input items
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -2657,7 +2485,7 @@ List input items
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -2849,19 +2677,8 @@ List input items
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Allows to set transparency for the background of the generated image(s).
-            This parameter is only supported for GPT image models that support
-            transparent backgrounds. Must be one of `transparent`, `opaque`, or
-            `auto` (default value). When `auto` is used, the model will
-            automatically determine the best background for the image.
-
-            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-            transparent backgrounds. Requests with `background` set to
-            `transparent` will return an error for these models; use `opaque` or
-            `auto` instead.
-
-            If `transparent`, the output format needs to support transparency,
-            so it should be set to either `png` (default value) or `webp`.
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
 
             - `"transparent"`
 
@@ -2890,13 +2707,13 @@ List input items
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -2904,13 +2721,7 @@ List input items
 
               - `"gpt-image-1-mini"`
 
-              - `"gpt-image-2"`
-
-              - `"gpt-image-2-2026-04-21"`
-
               - `"gpt-image-1.5"`
-
-              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -3008,7 +2819,7 @@ List input items
 
         - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -3090,7 +2901,7 @@ List input items
 
             - `Custom object { name, type, allowed_callers, 3 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -3237,13 +3048,13 @@ List input items
       A description of the chain of thought used by a reasoning model while generating
       a response. Be sure to include these items in your `input` to the Responses API
       for subsequent turns of a conversation if you are manually
-      [managing context](https://platform.openai.com/docs/guides/conversation-state).
+      [managing context](/docs/guides/conversation-state).
 
       - `id: string`
 
         The unique identifier of the reasoning content.
 
-      - `summary: array of object { text, type }`
+      - `summary: array of SummaryTextContent`
 
         Reasoning summary content.
 
@@ -3347,7 +3158,7 @@ List input items
 
     - `Compaction object { id, encrypted_content, type, created_by }`
 
-      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
       - `id: string`
 
@@ -4141,7 +3952,7 @@ List input items
 
           - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
           - `ResponseInputFile object { type, detail, file_data, 4 more }`
 

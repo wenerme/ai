@@ -4,7 +4,9 @@
 
 **delete** `/organization/certificates/{certificate_id}`
 
-Delete certificate
+Delete a certificate from the organization.
+
+The certificate must be inactive for the organization and all projects.
 
 ### Parameters
 

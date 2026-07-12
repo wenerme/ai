@@ -4,7 +4,15 @@
 
 **post** `/realtime/translations/client_secrets`
 
-Create translation client secret
+Create a Realtime translation client secret with an associated translation session configuration.
+
+Client secrets are short-lived tokens that can be passed to a client app,
+such as a web frontend or mobile client, which grants access to the Realtime
+Translation API without leaking your main API key. You can configure a custom
+TTL for each client secret.
+
+Returns the created client secret and the effective translation session object.
+The client secret is a string that looks like `ek_1234`.
 
 ### Body Parameters
 

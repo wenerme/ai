@@ -4,7 +4,7 @@
 
 **get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Retrieve project API key
+Retrieves an API key in the project.
 
 ### Parameters
 

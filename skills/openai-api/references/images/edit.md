@@ -2,7 +2,143 @@
 
 **post** `/images/edits`
 
-Create image edit
+Creates an edited or extended image given one or more source images and a prompt. This endpoint supports GPT Image models (`gpt-image-1.5`, `gpt-image-1`, `gpt-image-1-mini`, and `chatgpt-image-latest`) and `dall-e-2`.
+
+### Body Parameters
+
+- `images: array of object { file_id, image_url }`
+
+  Input image references to edit.
+  For GPT image models, you can provide up to 16 images.
+
+  - `file_id: optional string`
+
+    The File API ID of an uploaded image to use as input.
+
+  - `image_url: optional string`
+
+    A fully qualified URL or base64-encoded data URL.
+
+- `prompt: string`
+
+  A text description of the desired image edit.
+
+- `background: optional "transparent" or "opaque" or "auto"`
+
+  Background behavior for generated image output.
+
+  - `"transparent"`
+
+  - `"opaque"`
+
+  - `"auto"`
+
+- `input_fidelity: optional "high" or "low"`
+
+  Controls fidelity to the original input image(s).
+
+  - `"high"`
+
+  - `"low"`
+
+- `mask: optional object { file_id, image_url }`
+
+  Reference an input image by either URL or uploaded file ID.
+  Provide exactly one of `image_url` or `file_id`.
+
+  - `file_id: optional string`
+
+    The File API ID of an uploaded image to use as input.
+
+  - `image_url: optional string`
+
+    A fully qualified URL or base64-encoded data URL.
+
+- `model: optional string or "gpt-image-1.5" or "gpt-image-1" or "gpt-image-1-mini" or "chatgpt-image-latest"`
+
+  The model to use for image editing.
+
+  - `string`
+
+  - `"gpt-image-1.5" or "gpt-image-1" or "gpt-image-1-mini" or "chatgpt-image-latest"`
+
+    The model to use for image editing.
+
+    - `"gpt-image-1.5"`
+
+    - `"gpt-image-1"`
+
+    - `"gpt-image-1-mini"`
+
+    - `"chatgpt-image-latest"`
+
+- `moderation: optional "low" or "auto"`
+
+  Moderation level for GPT image models.
+
+  - `"low"`
+
+  - `"auto"`
+
+- `n: optional number`
+
+  The number of edited images to generate.
+
+- `output_compression: optional number`
+
+  Compression level for `jpeg` or `webp` output.
+
+- `output_format: optional "png" or "jpeg" or "webp"`
+
+  Output image format. Supported for GPT image models.
+
+  - `"png"`
+
+  - `"jpeg"`
+
+  - `"webp"`
+
+- `partial_images: optional number`
+
+  The number of partial images to generate. This parameter is used for
+  streaming responses that return partial images. Value must be between 0 and 3.
+  When set to 0, the response will be a single image sent in one streaming event.
+
+  Note that the final image may be sent before the full number of partial images
+  are generated if the full image is generated more quickly.
+
+- `quality: optional "low" or "medium" or "high" or "auto"`
+
+  Output quality for GPT image models.
+
+  - `"low"`
+
+  - `"medium"`
+
+  - `"high"`
+
+  - `"auto"`
+
+- `size: optional "auto" or "1024x1024" or "1536x1024" or "1024x1536"`
+
+  Requested output image size.
+
+  - `"auto"`
+
+  - `"1024x1024"`
+
+  - `"1536x1024"`
+
+  - `"1024x1536"`
+
+- `stream: optional boolean`
+
+  Stream partial image results as events.
+
+- `user: optional string`
+
+  A unique identifier representing your end-user, which can help OpenAI
+  monitor and detect abuse.
 
 ### Returns
 
@@ -112,18 +248,26 @@ Create image edit
 
 ```http
 curl https://api.openai.com/v1/images/edits \
-    -H 'Content-Type: multipart/form-data' \
+    -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F image='Example data' \
-    -F prompt='A cute baby sea otter wearing a beret' \
-    -F background=transparent \
-    -F n=1 \
-    -F output_compression=100 \
-    -F output_format=png \
-    -F partial_images=1 \
-    -F quality=high \
-    -F response_format=url \
-    -F user=user-1234
+    -d '{
+          "images": [
+            {
+              "image_url": "https://example.com/source-image.png"
+            }
+          ],
+          "prompt": "Add a watercolor effect to this image",
+          "background": "transparent",
+          "model": "gpt-image-1.5",
+          "moderation": "auto",
+          "n": 1,
+          "output_compression": 100,
+          "output_format": "png",
+          "partial_images": 1,
+          "quality": "high",
+          "size": "1024x1024",
+          "user": "user-1234"
+        }'
 ```
 
 #### Response

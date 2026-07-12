@@ -4,7 +4,7 @@
 
 **post** `/organization/users/{user_id}/roles`
 
-Assign organization role to user
+Assigns an organization role to a user within the organization.
 
 ### Parameters
 

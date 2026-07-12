@@ -4,7 +4,7 @@
 
 **post** `/evals/{eval_id}/runs/{run_id}`
 
-Cancel eval run
+Cancel an ongoing evaluation run.
 
 ### Parameters
 
@@ -1054,7 +1054,7 @@ Cancel eval run
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1064,7 +1064,11 @@ Cancel eval run
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 

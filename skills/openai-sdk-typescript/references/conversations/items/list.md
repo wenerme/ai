@@ -4,7 +4,7 @@
 
 **get** `/conversations/{conversation_id}/items`
 
-List items
+List all items for a conversation with the given ID.
 
 ### Parameters
 
@@ -1425,7 +1425,7 @@ List items
 
               - `"nin"`
 
-            - `value: string | number | boolean | Array<unknown>`
+            - `value: string | number | boolean | Array<string | number>`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1435,7 +1435,11 @@ List items
 
               - `boolean`
 
-              - `Array<unknown>`
+              - `Array<string | number>`
+
+                - `string`
+
+                - `number`
 
           - `CompoundFilter`
 

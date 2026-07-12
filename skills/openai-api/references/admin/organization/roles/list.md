@@ -2,7 +2,7 @@
 
 **get** `/organization/roles`
 
-List organization roles
+Lists the roles configured for the organization.
 
 ### Query Parameters
 

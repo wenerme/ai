@@ -6,7 +6,9 @@
 
 **post** `/responses/input_tokens?beta=true`
 
-Get input token counts
+Returns input token counts of the request.
+
+Returns an object with `object` set to `response.input_tokens` and an `input_tokens` count.
 
 ### Parameters
 
@@ -178,13 +180,15 @@ Get input token counts
 
           - `"developer"`
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type?: "message"`
 
@@ -425,13 +429,15 @@ Get input token counts
 
             The canonical name of the agent that produced this item.
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `BetaResponseFileSearchToolCall`
 
@@ -1603,7 +1609,7 @@ Get input token counts
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1613,7 +1619,11 @@ Get input token counts
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -1660,7 +1670,7 @@ Get input token counts
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<unknown>`
+                    - `value: string | number | boolean | Array<string | number>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1670,7 +1680,11 @@ Get input token counts
 
                       - `boolean`
 
-                      - `Array<unknown>`
+                      - `Array<string | number>`
+
+                        - `string`
+
+                        - `number`
 
                   - `unknown`
 

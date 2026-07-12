@@ -4,7 +4,7 @@
 
 **get** `/organization/usage/file_search_calls`
 
-File search calls
+Get file search calls usage details for the organization.
 
 ### Parameters
 

@@ -4,11 +4,12 @@
 
 **post** `/moderations`
 
-Create moderation
+Classifies if text and/or image inputs are potentially harmful. Learn
+more in the [moderation guide](/docs/guides/moderation).
 
 ### Body Parameters
 
-- `input: string or array of string or array of ModerationMultiModalInput`
+- `input: string or array of string or array of object { image_url, type }  or object { text, type }`
 
   Input (or inputs) to classify. Can be a single string, an array of strings, or
   an array of multi-modal input objects similar to other models.
@@ -21,11 +22,11 @@ Create moderation
 
     An array of strings to classify for moderation.
 
-  - `ModerationMultiModalArray = array of ModerationMultiModalInput`
+  - `array of object { image_url, type }  or object { text, type }`
 
     An array of multi-modal inputs to the moderation model.
 
-    - `ModerationImageURLInput object { image_url, type }`
+    - `object { image_url, type }`
 
       An object describing an image to classify.
 
@@ -43,7 +44,7 @@ Create moderation
 
         - `"image_url"`
 
-    - `ModerationTextInput object { text, type }`
+    - `object { text, type }`
 
       An object describing text to classify.
 
@@ -60,8 +61,8 @@ Create moderation
 - `model: optional string or ModerationModel`
 
   The content moderation model you would like to use. Learn more in
-  [the moderation guide](https://platform.openai.com/docs/guides/moderation), and learn about
-  available models [here](https://platform.openai.com/docs/models#moderation).
+  [the moderation guide](/docs/guides/moderation), and learn about
+  available models [here](/docs/models#moderation).
 
   - `string`
 
@@ -774,26 +775,6 @@ curl https://api.openai.com/v1/moderations \
 
     Whether any of the below categories are flagged.
 
-### Moderation Image URL Input
-
-- `ModerationImageURLInput object { image_url, type }`
-
-  An object describing an image to classify.
-
-  - `image_url: object { url }`
-
-    Contains either an image URL or a data URL for a base64 encoded image.
-
-    - `url: string`
-
-      Either a URL of the image or the base64 encoded image data.
-
-  - `type: "image_url"`
-
-    Always `image_url`.
-
-    - `"image_url"`
-
 ### Moderation Model
 
 - `ModerationModel = "omni-moderation-latest" or "omni-moderation-2024-09-26" or "text-moderation-latest" or "text-moderation-stable"`
@@ -805,60 +786,6 @@ curl https://api.openai.com/v1/moderations \
   - `"text-moderation-latest"`
 
   - `"text-moderation-stable"`
-
-### Moderation Multi Modal Input
-
-- `ModerationMultiModalInput = ModerationImageURLInput or ModerationTextInput`
-
-  An object describing an image to classify.
-
-  - `ModerationImageURLInput object { image_url, type }`
-
-    An object describing an image to classify.
-
-    - `image_url: object { url }`
-
-      Contains either an image URL or a data URL for a base64 encoded image.
-
-      - `url: string`
-
-        Either a URL of the image or the base64 encoded image data.
-
-    - `type: "image_url"`
-
-      Always `image_url`.
-
-      - `"image_url"`
-
-  - `ModerationTextInput object { text, type }`
-
-    An object describing text to classify.
-
-    - `text: string`
-
-      A string of text to classify.
-
-    - `type: "text"`
-
-      Always `text`.
-
-      - `"text"`
-
-### Moderation Text Input
-
-- `ModerationTextInput object { text, type }`
-
-  An object describing text to classify.
-
-  - `text: string`
-
-    A string of text to classify.
-
-  - `type: "text"`
-
-    Always `text`.
-
-    - `"text"`
 
 ### Moderation Create Response
 

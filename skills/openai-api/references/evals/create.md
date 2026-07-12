@@ -2,7 +2,9 @@
 
 **post** `/evals`
 
-Create eval
+Create the structure of an evaluation that can be used to test a model's performance.
+An evaluation is a set of testing criteria and the config for a data source, which dictates the schema of the data used in the evaluation. After creating an evaluation, you can run it on different models and model parameters. We support several types of graders and datasources.
+For more information, see the [Evals guide](/docs/guides/evals).
 
 ### Body Parameters
 
@@ -10,7 +12,7 @@ Create eval
 
   The configuration for the data source used for the evaluation runs. Dictates the schema of the data used in the evaluation.
 
-  - `Custom object { item_schema, type, include_sample_schema }`
+  - `CustomDataSourceConfig object { item_schema, type, include_sample_schema }`
 
     A CustomDataSourceConfig object that defines the schema for the data source used for the evaluation runs.
     This schema is used to define the shape of the data that will be:
@@ -32,7 +34,7 @@ Create eval
 
       Whether the eval should expect you to populate the sample namespace (ie, by generating responses off of your data source)
 
-  - `Logs object { type, metadata }`
+  - `LogsDataSourceConfig object { type, metadata }`
 
     A data source config which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -47,7 +49,7 @@ Create eval
 
       Metadata filters for the logs data source.
 
-  - `StoredCompletions object { type, metadata }`
+  - `StoredCompletionsDataSourceConfig object { type, metadata }`
 
     Deprecated in favor of LogsDataSourceConfig.
 
@@ -65,7 +67,7 @@ Create eval
 
   A list of graders for all eval runs in this group. Graders can reference variables in the data source using double curly braces notation, like `{{item.variable_name}}`. To reference the model's output, use the `sample` namespace (ie, `{{sample.output_text}}`).
 
-  - `LabelModel object { input, labels, model, 3 more }`
+  - `LabelModelGrader object { input, labels, model, 3 more }`
 
     A LabelModelGrader object which uses a model to assign labels to each item
     in the evaluation.
@@ -84,7 +86,7 @@ Create eval
 
           The role of the message (e.g. "system", "assistant", "user").
 
-      - `EvalItem object { content, role, type }`
+      - `EvalMessageObject object { content, role, type }`
 
         A message input to the model with a role indicating instruction following
         hierarchy. Instructions given with the `developer` or `system` role take
@@ -305,7 +307,7 @@ Create eval
 
       - `"string_check"`
 
-  - `TextSimilarity = TextSimilarityGrader`
+  - `TextSimilarityGrader = TextSimilarityGrader`
 
     A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -313,7 +315,7 @@ Create eval
 
       The threshold for the score.
 
-  - `Python = PythonGrader`
+  - `PythonGrader = PythonGrader`
 
     A PythonGrader object that runs a python script on the input.
 
@@ -321,7 +323,7 @@ Create eval
 
       The threshold for the score.
 
-  - `ScoreModel = ScoreModelGrader`
+  - `ScoreModelGrader = ScoreModelGrader`
 
     A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -375,7 +377,7 @@ Create eval
 
       - `"custom"`
 
-  - `Logs object { schema, type, metadata }`
+  - `LogsDataSourceConfig object { schema, type, metadata }`
 
     A LogsDataSourceConfig which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -669,7 +671,7 @@ Create eval
 
       - `"string_check"`
 
-  - `EvalGraderTextSimilarity = TextSimilarityGrader`
+  - `TextSimilarityGrader = TextSimilarityGrader`
 
     A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -677,7 +679,7 @@ Create eval
 
       The threshold for the score.
 
-  - `EvalGraderPython = PythonGrader`
+  - `PythonGrader = PythonGrader`
 
     A PythonGrader object that runs a python script on the input.
 
@@ -685,7 +687,7 @@ Create eval
 
       The threshold for the score.
 
-  - `EvalGraderScoreModel = ScoreModelGrader`
+  - `ScoreModelGrader = ScoreModelGrader`
 
     A ScoreModelGrader object that uses a model to assign a score to the input.
 

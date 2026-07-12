@@ -2,7 +2,9 @@
 
 **post** `/organization/certificates/deactivate`
 
-Deactivate certificates for organization
+Deactivate certificates at the organization level.
+
+You can atomically and idempotently deactivate up to 10 certificates at a time.
 
 ### Body Parameters
 

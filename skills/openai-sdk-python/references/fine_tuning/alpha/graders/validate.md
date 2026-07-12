@@ -4,7 +4,7 @@
 
 **post** `/fine_tuning/alpha/graders/validate`
 
-Validate grader
+Validate a grader.
 
 ### Parameters
 

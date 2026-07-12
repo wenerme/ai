@@ -2,7 +2,7 @@
 
 **get** `/vector_stores/{vector_store_id}/files/{file_id}/content`
 
-Retrieve vector store file content
+Retrieve the parsed contents of a vector store file.
 
 ### Path Parameters
 

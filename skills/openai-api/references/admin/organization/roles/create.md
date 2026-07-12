@@ -2,7 +2,7 @@
 
 **post** `/organization/roles`
 
-Create organization role
+Creates a custom role for the organization.
 
 ### Body Parameters
 

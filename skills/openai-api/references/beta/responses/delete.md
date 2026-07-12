@@ -2,7 +2,7 @@
 
 **delete** `/responses/{response_id}?beta=true`
 
-Delete a model response
+Deletes a model response with the given ID.
 
 ### Path Parameters
 
@@ -19,7 +19,6 @@ Delete a model response
 ```http
 curl https://api.openai.com/v1/responses/$RESPONSE_ID \
     -X DELETE \
-    -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 

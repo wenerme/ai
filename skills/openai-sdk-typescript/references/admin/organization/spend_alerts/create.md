@@ -4,7 +4,7 @@
 
 **post** `/organization/spend_alerts`
 
-Create organization spend alert
+Creates an organization spend alert.
 
 ### Parameters
 

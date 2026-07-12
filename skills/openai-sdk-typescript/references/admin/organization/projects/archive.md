@@ -4,7 +4,7 @@
 
 **post** `/organization/projects/{project_id}/archive`
 
-Archive project
+Archives a project in the organization. Archived projects cannot be used or updated.
 
 ### Parameters
 

@@ -4,7 +4,7 @@
 
 **get** `/organization/usage/embeddings`
 
-Embeddings
+Get embeddings usage details for the organization.
 
 ### Parameters
 

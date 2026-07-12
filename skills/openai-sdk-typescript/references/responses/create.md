@@ -4,7 +4,13 @@
 
 **post** `/responses`
 
-Create a model response
+Creates a model response. Provide [text](https://platform.openai.com/docs/guides/text) or
+[image](https://platform.openai.com/docs/guides/images) inputs to generate [text](https://platform.openai.com/docs/guides/text)
+or [JSON](https://platform.openai.com/docs/guides/structured-outputs) outputs. Have the model call
+your own [custom code](https://platform.openai.com/docs/guides/function-calling) or use built-in
+[tools](https://platform.openai.com/docs/guides/tools) like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+or [file search](https://platform.openai.com/docs/guides/tools-file-search) to use your own data
+as input for the model's response.
 
 ### Parameters
 
@@ -1516,7 +1522,7 @@ Create a model response
 
                     - `"nin"`
 
-                  - `value: string | number | boolean | Array<unknown>`
+                  - `value: string | number | boolean | Array<string | number>`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1526,7 +1532,11 @@ Create a model response
 
                     - `boolean`
 
-                    - `Array<unknown>`
+                    - `Array<string | number>`
+
+                      - `string`
+
+                      - `number`
 
                 - `CompoundFilter`
 
@@ -5898,7 +5908,7 @@ Create a model response
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5908,7 +5918,11 @@ Create a model response
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 

@@ -2,17 +2,19 @@
 
 **post** `/responses/compact`
 
-Compact a response
+Compact a conversation. Returns a compacted response object.
+
+Learn when and how to compact long-running conversations in the [conversation state guide](/docs/guides/conversation-state#managing-the-context-window). For ZDR-compatible compaction details, see [Compaction (advanced)](/docs/guides/conversation-state#compaction-advanced).
 
 ### Body Parameters
 
 - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
 
-  Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](https://platform.openai.com/docs/models) to browse and compare available models.
+  Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
 
   - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
 
-    Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](https://platform.openai.com/docs/models) to browse and compare available models.
+    Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
 
     - `"gpt-5.6-sol"`
 
@@ -266,7 +268,7 @@ Compact a response
 
           - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
             - `detail: "low" or "high" or "auto" or "original"`
 
@@ -429,7 +431,7 @@ Compact a response
 
         The content of the output message.
 
-        - `ResponseOutputText object { annotations, text, type, logprobs }`
+        - `ResponseOutputText object { annotations, logprobs, text, type }`
 
           A text output from the model.
 
@@ -533,17 +535,7 @@ Compact a response
 
                 - `"file_path"`
 
-          - `text: string`
-
-            The text output from the model.
-
-          - `type: "output_text"`
-
-            The type of the output text. Always `output_text`.
-
-            - `"output_text"`
-
-          - `logprobs: optional array of object { token, bytes, logprob, top_logprobs }`
+          - `logprobs: array of object { token, bytes, logprob, top_logprobs }`
 
             - `token: string`
 
@@ -558,6 +550,16 @@ Compact a response
               - `bytes: array of number`
 
               - `logprob: number`
+
+          - `text: string`
+
+            The text output from the model.
+
+          - `type: "output_text"`
+
+            The type of the output text. Always `output_text`.
+
+            - `"output_text"`
 
         - `ResponseOutputRefusal object { refusal, type }`
 
@@ -609,7 +611,7 @@ Compact a response
     - `FileSearchCall object { id, queries, status, 2 more }`
 
       The results of a file search tool call. See the
-      [file search guide](https://platform.openai.com/docs/guides/tools-file-search) for more information.
+      [file search guide](/docs/guides/tools-file-search) for more information.
 
       - `id: string`
 
@@ -677,7 +679,7 @@ Compact a response
     - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
       A tool call to a computer use tool. See the
-      [computer use guide](https://platform.openai.com/docs/guides/tools-computer-use) for more information.
+      [computer use guide](/docs/guides/tools-computer-use) for more information.
 
       - `id: string`
 
@@ -720,7 +722,7 @@ Compact a response
 
         - `"computer_call"`
 
-      - `action: optional object { button, type, x, 2 more }  or object { keys, type, x, y }  or object { path, type, keys }  or 6 more`
+      - `action: optional ComputerAction`
 
         A click action.
 
@@ -924,192 +926,37 @@ Compact a response
 
           A click action.
 
-          - `button: "left" or "right" or "wheel" or 2 more`
-
-            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-            - `"left"`
-
-            - `"right"`
-
-            - `"wheel"`
-
-            - `"back"`
-
-            - `"forward"`
-
-          - `type: "click"`
-
-            Specifies the event type. For a click action, this property is always `click`.
-
-            - `"click"`
-
-          - `x: number`
-
-            The x-coordinate where the click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the click occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while clicking.
-
         - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
-
-          - `keys: array of string`
-
-            The keys being held while double-clicking.
-
-          - `type: "double_click"`
-
-            Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-            - `"double_click"`
-
-          - `x: number`
-
-            The x-coordinate where the double click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the double click occurred.
 
         - `Drag object { path, type, keys }`
 
           A drag action.
 
-          - `path: array of object { x, y }`
-
-            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-            ```
-            [
-              { x: 100, y: 200 },
-              { x: 200, y: 300 }
-            ]
-            ```
-
-            - `x: number`
-
-              The x-coordinate.
-
-            - `y: number`
-
-              The y-coordinate.
-
-          - `type: "drag"`
-
-            Specifies the event type. For a drag action, this property is always set to `drag`.
-
-            - `"drag"`
-
-          - `keys: optional array of string`
-
-            The keys being held while dragging the mouse.
-
         - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
-
-          - `keys: array of string`
-
-            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-          - `type: "keypress"`
-
-            Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-            - `"keypress"`
 
         - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
-          - `type: "move"`
-
-            Specifies the event type. For a move action, this property is always set to `move`.
-
-            - `"move"`
-
-          - `x: number`
-
-            The x-coordinate to move to.
-
-          - `y: number`
-
-            The y-coordinate to move to.
-
-          - `keys: optional array of string`
-
-            The keys being held while moving the mouse.
-
         - `Screenshot object { type }`
 
           A screenshot action.
-
-          - `type: "screenshot"`
-
-            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-            - `"screenshot"`
 
         - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
-          - `scroll_x: number`
-
-            The horizontal scroll distance.
-
-          - `scroll_y: number`
-
-            The vertical scroll distance.
-
-          - `type: "scroll"`
-
-            Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-            - `"scroll"`
-
-          - `x: number`
-
-            The x-coordinate where the scroll occurred.
-
-          - `y: number`
-
-            The y-coordinate where the scroll occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while scrolling.
-
         - `Type object { text, type }`
 
           An action to type in text.
 
-          - `text: string`
-
-            The text to type.
-
-          - `type: "type"`
-
-            Specifies the event type. For a type action, this property is always set to `type`.
-
-            - `"type"`
-
         - `Wait object { type }`
 
           A wait action.
-
-          - `type: "wait"`
-
-            Specifies the event type. For a wait action, this property is always set to `wait`.
-
-            - `"wait"`
 
     - `ComputerCallOutput object { call_id, output, type, 3 more }`
 
@@ -1177,7 +1024,7 @@ Compact a response
     - `WebSearchCall object { id, action, status, type }`
 
       The results of a web search tool call. See the
-      [web search guide](https://platform.openai.com/docs/guides/tools-web-search) for more information.
+      [web search guide](/docs/guides/tools-web-search) for more information.
 
       - `id: string`
 
@@ -1273,7 +1120,7 @@ Compact a response
     - `FunctionCall object { arguments, call_id, name, 5 more }`
 
       A tool call to run a function. See the
-      [function calling guide](https://platform.openai.com/docs/guides/function-calling) for more information.
+      [function calling guide](/docs/guides/function-calling) for more information.
 
       - `arguments: string`
 
@@ -1340,7 +1187,7 @@ Compact a response
 
         The unique ID of the function tool call generated by the model.
 
-      - `output: string or ResponseFunctionCallOutputItemList`
+      - `output: string or array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
 
         Text, image, or file output of the function tool call.
 
@@ -1348,7 +1195,7 @@ Compact a response
 
           A JSON string of the output of the function tool call.
 
-        - `ResponseFunctionCallOutputItemList = array of ResponseFunctionCallOutputItem`
+        - `array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
 
           An array of content outputs (text, image, file) for the function tool call.
 
@@ -1378,7 +1225,7 @@ Compact a response
 
           - `ResponseInputImageContent object { type, detail, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision)
+            An image input to the model. Learn about [image inputs](/docs/guides/vision)
 
             - `type: "input_image"`
 
@@ -1762,7 +1609,7 @@ Compact a response
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          [web search tool](/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -1822,7 +1669,7 @@ Compact a response
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -1874,7 +1721,7 @@ Compact a response
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -2098,19 +1945,8 @@ Compact a response
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Allows to set transparency for the background of the generated image(s).
-            This parameter is only supported for GPT image models that support
-            transparent backgrounds. Must be one of `transparent`, `opaque`, or
-            `auto` (default value). When `auto` is used, the model will
-            automatically determine the best background for the image.
-
-            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-            transparent backgrounds. Requests with `background` set to
-            `transparent` will return an error for these models; use `opaque` or
-            `auto` instead.
-
-            If `transparent`, the output format needs to support transparency,
-            so it should be set to either `png` (default value) or `webp`.
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
 
             - `"transparent"`
 
@@ -2139,13 +1975,13 @@ Compact a response
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -2153,13 +1989,7 @@ Compact a response
 
               - `"gpt-image-1-mini"`
 
-              - `"gpt-image-2"`
-
-              - `"gpt-image-2-2026-04-21"`
-
               - `"gpt-image-1.5"`
-
-              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -2375,7 +2205,7 @@ Compact a response
 
         - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -2489,7 +2319,7 @@ Compact a response
 
             - `Custom object { name, type, allowed_callers, 3 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -2814,7 +2644,7 @@ Compact a response
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          [web search tool](/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -2874,7 +2704,7 @@ Compact a response
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -2926,7 +2756,7 @@ Compact a response
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -3118,19 +2948,8 @@ Compact a response
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Allows to set transparency for the background of the generated image(s).
-            This parameter is only supported for GPT image models that support
-            transparent backgrounds. Must be one of `transparent`, `opaque`, or
-            `auto` (default value). When `auto` is used, the model will
-            automatically determine the best background for the image.
-
-            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-            transparent backgrounds. Requests with `background` set to
-            `transparent` will return an error for these models; use `opaque` or
-            `auto` instead.
-
-            If `transparent`, the output format needs to support transparency,
-            so it should be set to either `png` (default value) or `webp`.
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
 
             - `"transparent"`
 
@@ -3159,13 +2978,13 @@ Compact a response
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -3173,13 +2992,7 @@ Compact a response
 
               - `"gpt-image-1-mini"`
 
-              - `"gpt-image-2"`
-
-              - `"gpt-image-2-2026-04-21"`
-
               - `"gpt-image-1.5"`
-
-              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -3277,7 +3090,7 @@ Compact a response
 
         - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -3359,7 +3172,7 @@ Compact a response
 
             - `Custom object { name, type, allowed_callers, 3 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -3510,13 +3323,13 @@ Compact a response
       A description of the chain of thought used by a reasoning model while generating
       a response. Be sure to include these items in your `input` to the Responses API
       for subsequent turns of a conversation if you are manually
-      [managing context](https://platform.openai.com/docs/guides/conversation-state).
+      [managing context](/docs/guides/conversation-state).
 
       - `id: string`
 
         The unique identifier of the reasoning content.
 
-      - `summary: array of object { text, type }`
+      - `summary: array of SummaryTextContent`
 
         Reasoning summary content.
 
@@ -3568,7 +3381,7 @@ Compact a response
 
     - `Compaction object { encrypted_content, type, id }`
 
-      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
       - `encrypted_content: string`
 
@@ -4273,7 +4086,7 @@ Compact a response
 
           - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
           - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
@@ -4446,7 +4259,7 @@ Compact a response
 
 - `previous_response_id: optional string`
 
-  The unique ID of the previous response to the model. Use this to create multi-turn conversations. Learn more about [conversation state](https://platform.openai.com/docs/guides/conversation-state). Cannot be used in conjunction with `conversation`.
+  The unique ID of the previous response to the model. Use this to create multi-turn conversations. Learn more about [conversation state](/docs/guides/conversation-state). Cannot be used in conjunction with `conversation`.
 
 - `prompt_cache_key: optional string`
 
@@ -4454,7 +4267,7 @@ Compact a response
 
 - `prompt_cache_options: optional object { mode, ttl }`
 
-  Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](https://platform.openai.com/docs/guides/prompt-caching) for current details.
+  Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](/docs/guides/prompt-caching) for current details.
 
   - `mode: optional "implicit" or "explicit"`
 
@@ -4508,23 +4321,47 @@ Compact a response
 
     - `"response.compaction"`
 
-  - `output: array of ResponseOutputItem`
+  - `output: array of Message or object { id, call_id, code, 2 more }  or object { id, call_id, result, 2 more }  or 25 more`
 
-    The compacted list of output items. This is a list of all user messages, followed by a single compaction item.
+    The compacted list of output items.
 
-    - `ResponseOutputMessage object { id, content, role, 3 more }`
+    - `Message object { id, content, role, 3 more }`
 
-      An output message from the model.
+      A message to or from the model.
 
       - `id: string`
 
-        The unique ID of the output message.
+        The unique ID of the message.
 
-      - `content: array of ResponseOutputText or ResponseOutputRefusal`
+      - `content: array of ResponseInputText or ResponseOutputText or TextContent or 6 more`
 
-        The content of the output message.
+        The content of the message
 
-        - `ResponseOutputText object { annotations, text, type, logprobs }`
+        - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
+
+          A text input to the model.
+
+          - `text: string`
+
+            The text input to the model.
+
+          - `type: "input_text"`
+
+            The type of the input item. Always `input_text`.
+
+            - `"input_text"`
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ResponseOutputText object { annotations, logprobs, text, type }`
 
           A text output from the model.
 
@@ -4628,17 +4465,7 @@ Compact a response
 
                 - `"file_path"`
 
-          - `text: string`
-
-            The text output from the model.
-
-          - `type: "output_text"`
-
-            The type of the output text. Always `output_text`.
-
-            - `"output_text"`
-
-          - `logprobs: optional array of object { token, bytes, logprob, top_logprobs }`
+          - `logprobs: array of object { token, bytes, logprob, top_logprobs }`
 
             - `token: string`
 
@@ -4654,6 +4481,54 @@ Compact a response
 
               - `logprob: number`
 
+          - `text: string`
+
+            The text output from the model.
+
+          - `type: "output_text"`
+
+            The type of the output text. Always `output_text`.
+
+            - `"output_text"`
+
+        - `TextContent object { text, type }`
+
+          A text content.
+
+          - `text: string`
+
+          - `type: "text"`
+
+            - `"text"`
+
+        - `SummaryTextContent object { text, type }`
+
+          A summary text from the model.
+
+          - `text: string`
+
+            A summary of the reasoning output from the model so far.
+
+          - `type: "summary_text"`
+
+            The type of the object. Always `summary_text`.
+
+            - `"summary_text"`
+
+        - `ReasoningText object { text, type }`
+
+          Reasoning text from the model.
+
+          - `text: string`
+
+            The reasoning text from the model.
+
+          - `type: "reasoning_text"`
+
+            The type of the reasoning text. Always `reasoning_text`.
+
+            - `"reasoning_text"`
+
         - `ResponseOutputRefusal object { refusal, type }`
 
           A refusal from the model.
@@ -4668,16 +4543,155 @@ Compact a response
 
             - `"refusal"`
 
-      - `role: "assistant"`
+        - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-        The role of the output message. Always `assistant`.
+          An image input to the model. Learn about [image inputs](/docs/guides/vision).
+
+          - `detail: "low" or "high" or "auto" or "original"`
+
+            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+            - `"low"`
+
+            - `"high"`
+
+            - `"auto"`
+
+            - `"original"`
+
+          - `type: "input_image"`
+
+            The type of the input item. Always `input_image`.
+
+            - `"input_image"`
+
+          - `file_id: optional string`
+
+            The ID of the file to be sent to the model.
+
+          - `image_url: optional string`
+
+            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ComputerScreenshotContent object { detail, file_id, image_url, 2 more }`
+
+          A screenshot of a computer.
+
+          - `detail: "low" or "high" or "auto" or "original"`
+
+            The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+            - `"low"`
+
+            - `"high"`
+
+            - `"auto"`
+
+            - `"original"`
+
+          - `file_id: string`
+
+            The identifier of an uploaded file that contains the screenshot.
+
+          - `image_url: string`
+
+            The URL of the screenshot image.
+
+          - `type: "computer_screenshot"`
+
+            Specifies the event type. For a computer screenshot, this property is always set to `computer_screenshot`.
+
+            - `"computer_screenshot"`
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+        - `ResponseInputFile object { type, detail, file_data, 4 more }`
+
+          A file input to the model.
+
+          - `type: "input_file"`
+
+            The type of the input item. Always `input_file`.
+
+            - `"input_file"`
+
+          - `detail: optional "auto" or "low" or "high"`
+
+            The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+            - `"auto"`
+
+            - `"low"`
+
+            - `"high"`
+
+          - `file_data: optional string`
+
+            The content of the file to be sent to the model.
+
+          - `file_id: optional string`
+
+            The ID of the file to be sent to the model.
+
+          - `file_url: optional string`
+
+            The URL of the file to be sent to the model.
+
+          - `filename: optional string`
+
+            The name of the file to be sent to the model.
+
+          - `prompt_cache_breakpoint: optional object { mode }`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+            - `mode: "explicit"`
+
+              The breakpoint mode. Always `explicit`.
+
+              - `"explicit"`
+
+      - `role: "unknown" or "user" or "assistant" or 5 more`
+
+        The role of the message. One of `unknown`, `user`, `assistant`, `system`, `critic`, `discriminator`, `developer`, or `tool`.
+
+        - `"unknown"`
+
+        - `"user"`
 
         - `"assistant"`
 
+        - `"system"`
+
+        - `"critic"`
+
+        - `"discriminator"`
+
+        - `"developer"`
+
+        - `"tool"`
+
       - `status: "in_progress" or "completed" or "incomplete"`
 
-        The status of the message input. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when input items are returned via API.
+        The status of item. One of `in_progress`, `completed`, or `incomplete`. Populated when items are returned via API.
 
         - `"in_progress"`
 
@@ -4687,92 +4701,74 @@ Compact a response
 
       - `type: "message"`
 
-        The type of the output message. Always `message`.
+        The type of the message. Always set to `message`.
 
         - `"message"`
 
       - `phase: optional "commentary" or "final_answer"`
 
-        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
-        For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
-        phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
         - `"commentary"`
 
         - `"final_answer"`
 
-    - `FileSearchCall object { id, queries, status, 2 more }`
-
-      The results of a file search tool call. See the
-      [file search guide](https://platform.openai.com/docs/guides/tools-file-search) for more information.
+    - `Program object { id, call_id, code, 2 more }`
 
       - `id: string`
 
-        The unique ID of the file search tool call.
+        The unique ID of the program item.
 
-      - `queries: array of string`
+      - `call_id: string`
 
-        The queries used to search for files.
+        The stable call ID of the program item.
 
-      - `status: "in_progress" or "searching" or "completed" or 2 more`
+      - `code: string`
 
-        The status of the file search tool call. One of `in_progress`,
-        `searching`, `incomplete` or `failed`,
+        The JavaScript source executed by programmatic tool calling.
 
-        - `"in_progress"`
+      - `fingerprint: string`
 
-        - `"searching"`
+        Opaque program replay fingerprint that must be round-tripped.
+
+      - `type: "program"`
+
+        The type of the item. Always `program`.
+
+        - `"program"`
+
+    - `ProgramOutput object { id, call_id, result, 2 more }`
+
+      - `id: string`
+
+        The unique ID of the program output item.
+
+      - `call_id: string`
+
+        The call ID of the program item.
+
+      - `result: string`
+
+        The result produced by the program item.
+
+      - `status: "completed" or "incomplete"`
+
+        The terminal status of the program output item.
 
         - `"completed"`
 
         - `"incomplete"`
 
-        - `"failed"`
+      - `type: "program_output"`
 
-      - `type: "file_search_call"`
+        The type of the item. Always `program_output`.
 
-        The type of the file search tool call. Always `file_search_call`.
-
-        - `"file_search_call"`
-
-      - `results: optional array of object { attributes, file_id, filename, 2 more }`
-
-        The results of the file search tool call.
-
-        - `attributes: optional map[string or number or boolean]`
-
-          Set of 16 key-value pairs that can be attached to an object. This can be
-          useful for storing additional information about the object in a structured
-          format, and querying for objects via API or the dashboard. Keys are strings
-          with a maximum length of 64 characters. Values are strings with a maximum
-          length of 512 characters, booleans, or numbers.
-
-          - `string`
-
-          - `number`
-
-          - `boolean`
-
-        - `file_id: optional string`
-
-          The unique ID of the file.
-
-        - `filename: optional string`
-
-          The name of the file.
-
-        - `score: optional number`
-
-          The relevance score of the file - a value between 0 and 1.
-
-        - `text: optional string`
-
-          The text that was retrieved from the file.
+        - `"program_output"`
 
     - `FunctionCall object { arguments, call_id, name, 5 more }`
 
       A tool call to run a function. See the
-      [function calling guide](https://platform.openai.com/docs/guides/function-calling) for more information.
+      [function calling guide](/docs/guides/function-calling) for more information.
 
       - `arguments: string`
 
@@ -4830,899 +4826,6 @@ Compact a response
         - `"completed"`
 
         - `"incomplete"`
-
-    - `FunctionCallOutput object { id, call_id, output, 4 more }`
-
-      - `id: string`
-
-        The unique ID of the function call tool output.
-
-      - `call_id: string`
-
-        The unique ID of the function tool call generated by the model.
-
-      - `output: string or array of ResponseInputText or ResponseInputImage or ResponseInputFile`
-
-        The output from the function call generated by your code.
-        Can be a string or an list of output content.
-
-        - `StringOutput = string`
-
-          A string of the output of the function call.
-
-        - `OutputContentList = array of ResponseInputText or ResponseInputImage or ResponseInputFile`
-
-          Text, image, or file output of the function call.
-
-          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-            A text input to the model.
-
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-            - `prompt_cache_breakpoint: optional object { mode }`
-
-              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-              - `mode: "explicit"`
-
-                The breakpoint mode. Always `explicit`.
-
-                - `"explicit"`
-
-          - `ResponseInputImage object { detail, type, file_id, 2 more }`
-
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
-
-            - `detail: "low" or "high" or "auto" or "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url: optional string`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-            - `prompt_cache_breakpoint: optional object { mode }`
-
-              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-              - `mode: "explicit"`
-
-                The breakpoint mode. Always `explicit`.
-
-                - `"explicit"`
-
-          - `ResponseInputFile object { type, detail, file_data, 4 more }`
-
-            A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail: optional "auto" or "low" or "high"`
-
-              The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
-
-              - `"auto"`
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data: optional string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url: optional string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename: optional string`
-
-              The name of the file to be sent to the model.
-
-            - `prompt_cache_breakpoint: optional object { mode }`
-
-              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-              - `mode: "explicit"`
-
-                The breakpoint mode. Always `explicit`.
-
-                - `"explicit"`
-
-      - `status: "in_progress" or "completed" or "incomplete"`
-
-        The status of the item. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
-
-      - `type: "function_call_output"`
-
-        The type of the function tool call output. Always `function_call_output`.
-
-        - `"function_call_output"`
-
-      - `caller: optional object { type }  or object { caller_id, type }`
-
-        The execution context that produced this tool call.
-
-        - `Direct object { type }`
-
-          - `type: "direct"`
-
-            The caller type. Always `direct`.
-
-            - `"direct"`
-
-        - `Program object { caller_id, type }`
-
-          - `caller_id: string`
-
-            The call ID of the program item that produced this tool call.
-
-          - `type: "program"`
-
-            The caller type. Always `program`.
-
-            - `"program"`
-
-      - `created_by: optional string`
-
-        The identifier of the actor that created the item.
-
-    - `WebSearchCall object { id, action, status, type }`
-
-      The results of a web search tool call. See the
-      [web search guide](https://platform.openai.com/docs/guides/tools-web-search) for more information.
-
-      - `id: string`
-
-        The unique ID of the web search tool call.
-
-      - `action: object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
-
-        An object describing the specific action taken in this web search call.
-        Includes details on how the model used the web (search, open_page, find_in_page).
-
-        - `Search object { type, queries, query, sources }`
-
-          Action type "search" - Performs a web search query.
-
-          - `type: "search"`
-
-            The action type.
-
-            - `"search"`
-
-          - `queries: optional array of string`
-
-            The search queries.
-
-          - `query: optional string`
-
-            The search query.
-
-          - `sources: optional array of object { type, url }`
-
-            The sources used in the search.
-
-            - `type: "url"`
-
-              The type of source. Always `url`.
-
-              - `"url"`
-
-            - `url: string`
-
-              The URL of the source.
-
-        - `OpenPage object { type, url }`
-
-          Action type "open_page" - Opens a specific URL from search results.
-
-          - `type: "open_page"`
-
-            The action type.
-
-            - `"open_page"`
-
-          - `url: optional string`
-
-            The URL opened by the model.
-
-        - `FindInPage object { pattern, type, url }`
-
-          Action type "find_in_page": Searches for a pattern within a loaded page.
-
-          - `pattern: string`
-
-            The pattern or text to search for within the page.
-
-          - `type: "find_in_page"`
-
-            The action type.
-
-            - `"find_in_page"`
-
-          - `url: string`
-
-            The URL of the page searched for the pattern.
-
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
-
-        The status of the web search tool call.
-
-        - `"in_progress"`
-
-        - `"searching"`
-
-        - `"completed"`
-
-        - `"failed"`
-
-      - `type: "web_search_call"`
-
-        The type of the web search tool call. Always `web_search_call`.
-
-        - `"web_search_call"`
-
-    - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
-
-      A tool call to a computer use tool. See the
-      [computer use guide](https://platform.openai.com/docs/guides/tools-computer-use) for more information.
-
-      - `id: string`
-
-        The unique ID of the computer call.
-
-      - `call_id: string`
-
-        An identifier used when responding to the tool call with output.
-
-      - `pending_safety_checks: array of object { id, code, message }`
-
-        The pending safety checks for the computer call.
-
-        - `id: string`
-
-          The ID of the pending safety check.
-
-        - `code: optional string`
-
-          The type of the pending safety check.
-
-        - `message: optional string`
-
-          Details about the pending safety check.
-
-      - `status: "in_progress" or "completed" or "incomplete"`
-
-        The status of the item. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
-
-      - `type: "computer_call"`
-
-        The type of the computer call. Always `computer_call`.
-
-        - `"computer_call"`
-
-      - `action: optional object { button, type, x, 2 more }  or object { keys, type, x, y }  or object { path, type, keys }  or 6 more`
-
-        A click action.
-
-        - `Click object { button, type, x, 2 more }`
-
-          A click action.
-
-          - `button: "left" or "right" or "wheel" or 2 more`
-
-            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-            - `"left"`
-
-            - `"right"`
-
-            - `"wheel"`
-
-            - `"back"`
-
-            - `"forward"`
-
-          - `type: "click"`
-
-            Specifies the event type. For a click action, this property is always `click`.
-
-            - `"click"`
-
-          - `x: number`
-
-            The x-coordinate where the click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the click occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while clicking.
-
-        - `DoubleClick object { keys, type, x, y }`
-
-          A double click action.
-
-          - `keys: array of string`
-
-            The keys being held while double-clicking.
-
-          - `type: "double_click"`
-
-            Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-            - `"double_click"`
-
-          - `x: number`
-
-            The x-coordinate where the double click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the double click occurred.
-
-        - `Drag object { path, type, keys }`
-
-          A drag action.
-
-          - `path: array of object { x, y }`
-
-            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-            ```
-            [
-              { x: 100, y: 200 },
-              { x: 200, y: 300 }
-            ]
-            ```
-
-            - `x: number`
-
-              The x-coordinate.
-
-            - `y: number`
-
-              The y-coordinate.
-
-          - `type: "drag"`
-
-            Specifies the event type. For a drag action, this property is always set to `drag`.
-
-            - `"drag"`
-
-          - `keys: optional array of string`
-
-            The keys being held while dragging the mouse.
-
-        - `Keypress object { keys, type }`
-
-          A collection of keypresses the model would like to perform.
-
-          - `keys: array of string`
-
-            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-          - `type: "keypress"`
-
-            Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-            - `"keypress"`
-
-        - `Move object { type, x, y, keys }`
-
-          A mouse move action.
-
-          - `type: "move"`
-
-            Specifies the event type. For a move action, this property is always set to `move`.
-
-            - `"move"`
-
-          - `x: number`
-
-            The x-coordinate to move to.
-
-          - `y: number`
-
-            The y-coordinate to move to.
-
-          - `keys: optional array of string`
-
-            The keys being held while moving the mouse.
-
-        - `Screenshot object { type }`
-
-          A screenshot action.
-
-          - `type: "screenshot"`
-
-            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-            - `"screenshot"`
-
-        - `Scroll object { scroll_x, scroll_y, type, 3 more }`
-
-          A scroll action.
-
-          - `scroll_x: number`
-
-            The horizontal scroll distance.
-
-          - `scroll_y: number`
-
-            The vertical scroll distance.
-
-          - `type: "scroll"`
-
-            Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-            - `"scroll"`
-
-          - `x: number`
-
-            The x-coordinate where the scroll occurred.
-
-          - `y: number`
-
-            The y-coordinate where the scroll occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while scrolling.
-
-        - `Type object { text, type }`
-
-          An action to type in text.
-
-          - `text: string`
-
-            The text to type.
-
-          - `type: "type"`
-
-            Specifies the event type. For a type action, this property is always set to `type`.
-
-            - `"type"`
-
-        - `Wait object { type }`
-
-          A wait action.
-
-          - `type: "wait"`
-
-            Specifies the event type. For a wait action, this property is always set to `wait`.
-
-            - `"wait"`
-
-      - `actions: optional ComputerActionList`
-
-        Flattened batched actions for `computer_use`. Each action includes an
-        `type` discriminator and action-specific fields.
-
-        - `Click object { button, type, x, 2 more }`
-
-          A click action.
-
-          - `button: "left" or "right" or "wheel" or 2 more`
-
-            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-            - `"left"`
-
-            - `"right"`
-
-            - `"wheel"`
-
-            - `"back"`
-
-            - `"forward"`
-
-          - `type: "click"`
-
-            Specifies the event type. For a click action, this property is always `click`.
-
-            - `"click"`
-
-          - `x: number`
-
-            The x-coordinate where the click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the click occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while clicking.
-
-        - `DoubleClick object { keys, type, x, y }`
-
-          A double click action.
-
-          - `keys: array of string`
-
-            The keys being held while double-clicking.
-
-          - `type: "double_click"`
-
-            Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-            - `"double_click"`
-
-          - `x: number`
-
-            The x-coordinate where the double click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the double click occurred.
-
-        - `Drag object { path, type, keys }`
-
-          A drag action.
-
-          - `path: array of object { x, y }`
-
-            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-            ```
-            [
-              { x: 100, y: 200 },
-              { x: 200, y: 300 }
-            ]
-            ```
-
-            - `x: number`
-
-              The x-coordinate.
-
-            - `y: number`
-
-              The y-coordinate.
-
-          - `type: "drag"`
-
-            Specifies the event type. For a drag action, this property is always set to `drag`.
-
-            - `"drag"`
-
-          - `keys: optional array of string`
-
-            The keys being held while dragging the mouse.
-
-        - `Keypress object { keys, type }`
-
-          A collection of keypresses the model would like to perform.
-
-          - `keys: array of string`
-
-            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-          - `type: "keypress"`
-
-            Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-            - `"keypress"`
-
-        - `Move object { type, x, y, keys }`
-
-          A mouse move action.
-
-          - `type: "move"`
-
-            Specifies the event type. For a move action, this property is always set to `move`.
-
-            - `"move"`
-
-          - `x: number`
-
-            The x-coordinate to move to.
-
-          - `y: number`
-
-            The y-coordinate to move to.
-
-          - `keys: optional array of string`
-
-            The keys being held while moving the mouse.
-
-        - `Screenshot object { type }`
-
-          A screenshot action.
-
-          - `type: "screenshot"`
-
-            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-            - `"screenshot"`
-
-        - `Scroll object { scroll_x, scroll_y, type, 3 more }`
-
-          A scroll action.
-
-          - `scroll_x: number`
-
-            The horizontal scroll distance.
-
-          - `scroll_y: number`
-
-            The vertical scroll distance.
-
-          - `type: "scroll"`
-
-            Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-            - `"scroll"`
-
-          - `x: number`
-
-            The x-coordinate where the scroll occurred.
-
-          - `y: number`
-
-            The y-coordinate where the scroll occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while scrolling.
-
-        - `Type object { text, type }`
-
-          An action to type in text.
-
-          - `text: string`
-
-            The text to type.
-
-          - `type: "type"`
-
-            Specifies the event type. For a type action, this property is always set to `type`.
-
-            - `"type"`
-
-        - `Wait object { type }`
-
-          A wait action.
-
-          - `type: "wait"`
-
-            Specifies the event type. For a wait action, this property is always set to `wait`.
-
-            - `"wait"`
-
-    - `ComputerCallOutput object { id, call_id, output, 4 more }`
-
-      - `id: string`
-
-        The unique ID of the computer call tool output.
-
-      - `call_id: string`
-
-        The ID of the computer tool call that produced the output.
-
-      - `output: ResponseComputerToolCallOutputScreenshot`
-
-        A computer screenshot image used with the computer use tool.
-
-        - `type: "computer_screenshot"`
-
-          Specifies the event type. For a computer screenshot, this property is
-          always set to `computer_screenshot`.
-
-          - `"computer_screenshot"`
-
-        - `file_id: optional string`
-
-          The identifier of an uploaded file that contains the screenshot.
-
-        - `image_url: optional string`
-
-          The URL of the screenshot image.
-
-      - `status: "completed" or "incomplete" or "failed" or "in_progress"`
-
-        The status of the message input. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when input items are returned via API.
-
-        - `"completed"`
-
-        - `"incomplete"`
-
-        - `"failed"`
-
-        - `"in_progress"`
-
-      - `type: "computer_call_output"`
-
-        The type of the computer tool call output. Always `computer_call_output`.
-
-        - `"computer_call_output"`
-
-      - `acknowledged_safety_checks: optional array of object { id, code, message }`
-
-        The safety checks reported by the API that have been acknowledged by the
-        developer.
-
-        - `id: string`
-
-          The ID of the pending safety check.
-
-        - `code: optional string`
-
-          The type of the pending safety check.
-
-        - `message: optional string`
-
-          Details about the pending safety check.
-
-      - `created_by: optional string`
-
-        The identifier of the actor that created the item.
-
-    - `Reasoning object { id, summary, type, 3 more }`
-
-      A description of the chain of thought used by a reasoning model while generating
-      a response. Be sure to include these items in your `input` to the Responses API
-      for subsequent turns of a conversation if you are manually
-      [managing context](https://platform.openai.com/docs/guides/conversation-state).
-
-      - `id: string`
-
-        The unique identifier of the reasoning content.
-
-      - `summary: array of object { text, type }`
-
-        Reasoning summary content.
-
-        - `text: string`
-
-          A summary of the reasoning output from the model so far.
-
-        - `type: "summary_text"`
-
-          The type of the object. Always `summary_text`.
-
-          - `"summary_text"`
-
-      - `type: "reasoning"`
-
-        The type of the object. Always `reasoning`.
-
-        - `"reasoning"`
-
-      - `content: optional array of object { text, type }`
-
-        Reasoning text content.
-
-        - `text: string`
-
-          The reasoning text from the model.
-
-        - `type: "reasoning_text"`
-
-          The type of the reasoning text. Always `reasoning_text`.
-
-          - `"reasoning_text"`
-
-      - `encrypted_content: optional string`
-
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
-
-      - `status: optional "in_progress" or "completed" or "incomplete"`
-
-        The status of the item. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
-
-    - `Program object { id, call_id, code, 2 more }`
-
-      - `id: string`
-
-        The unique ID of the program item.
-
-      - `call_id: string`
-
-        The stable call ID of the program item.
-
-      - `code: string`
-
-        The JavaScript source executed by programmatic tool calling.
-
-      - `fingerprint: string`
-
-        Opaque program replay fingerprint that must be round-tripped.
-
-      - `type: "program"`
-
-        The type of the item. Always `program`.
-
-        - `"program"`
-
-    - `ProgramOutput object { id, call_id, result, 2 more }`
-
-      - `id: string`
-
-        The unique ID of the program output item.
-
-      - `call_id: string`
-
-        The call ID of the program item.
-
-      - `result: string`
-
-        The result produced by the program item.
-
-      - `status: "completed" or "incomplete"`
-
-        The terminal status of the program output item.
-
-        - `"completed"`
-
-        - `"incomplete"`
-
-      - `type: "program_output"`
-
-        The type of the item. Always `program_output`.
-
-        - `"program_output"`
 
     - `ToolSearchCall object { id, arguments, call_id, 4 more }`
 
@@ -6010,7 +5113,7 @@ Compact a response
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          [web search tool](/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -6070,7 +5173,7 @@ Compact a response
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -6122,7 +5225,7 @@ Compact a response
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -6346,19 +5449,8 @@ Compact a response
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Allows to set transparency for the background of the generated image(s).
-            This parameter is only supported for GPT image models that support
-            transparent backgrounds. Must be one of `transparent`, `opaque`, or
-            `auto` (default value). When `auto` is used, the model will
-            automatically determine the best background for the image.
-
-            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-            transparent backgrounds. Requests with `background` set to
-            `transparent` will return an error for these models; use `opaque` or
-            `auto` instead.
-
-            If `transparent`, the output format needs to support transparency,
-            so it should be set to either `png` (default value) or `webp`.
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
 
             - `"transparent"`
 
@@ -6387,13 +5479,13 @@ Compact a response
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -6401,13 +5493,7 @@ Compact a response
 
               - `"gpt-image-1-mini"`
 
-              - `"gpt-image-2"`
-
-              - `"gpt-image-2-2026-04-21"`
-
               - `"gpt-image-1.5"`
-
-              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -6623,7 +5709,7 @@ Compact a response
 
         - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -6737,7 +5823,7 @@ Compact a response
 
             - `Custom object { name, type, allowed_callers, 3 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -7058,7 +6144,7 @@ Compact a response
         - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          [web search tool](/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -7118,7 +6204,7 @@ Compact a response
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
 
           - `server_label: string`
 
@@ -7170,7 +6256,7 @@ Compact a response
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -7362,19 +6448,8 @@ Compact a response
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Allows to set transparency for the background of the generated image(s).
-            This parameter is only supported for GPT image models that support
-            transparent backgrounds. Must be one of `transparent`, `opaque`, or
-            `auto` (default value). When `auto` is used, the model will
-            automatically determine the best background for the image.
-
-            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
-            transparent backgrounds. Requests with `background` set to
-            `transparent` will return an error for these models; use `opaque` or
-            `auto` instead.
-
-            If `transparent`, the output format needs to support transparency,
-            so it should be set to either `png` (default value) or `webp`.
+            Background type for the generated image. One of `transparent`,
+            `opaque`, or `auto`. Default: `auto`.
 
             - `"transparent"`
 
@@ -7403,13 +6478,13 @@ Compact a response
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 3 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -7417,13 +6492,7 @@ Compact a response
 
               - `"gpt-image-1-mini"`
 
-              - `"gpt-image-2"`
-
-              - `"gpt-image-2-2026-04-21"`
-
               - `"gpt-image-1.5"`
-
-              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -7521,7 +6590,7 @@ Compact a response
 
         - `Custom object { name, type, allowed_callers, 3 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -7603,7 +6672,7 @@ Compact a response
 
             - `Custom object { name, type, allowed_callers, 3 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -7745,27 +6814,248 @@ Compact a response
 
         - `"additional_tools"`
 
-    - `Compaction object { id, encrypted_content, type, created_by }`
+    - `FunctionCallOutput object { call_id, output, type, 3 more }`
 
-      A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
+      The output of a function tool call.
+
+      - `call_id: string`
+
+        The unique ID of the function tool call generated by the model.
+
+      - `output: string or array of ResponseInputText or ResponseInputImage or ResponseInputFile`
+
+        The output from the function call generated by your code.
+        Can be a string or an list of output content.
+
+        - `StringOutput = string`
+
+          A string of the output of the function call.
+
+        - `OutputContentList = array of ResponseInputText or ResponseInputImage or ResponseInputFile`
+
+          Text, image, or file output of the function call.
+
+          - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
+
+            A text input to the model.
+
+          - `ResponseInputImage object { detail, type, file_id, 2 more }`
+
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+
+          - `ResponseInputFile object { type, detail, file_data, 4 more }`
+
+            A file input to the model.
+
+      - `type: "function_call_output"`
+
+        The type of the function tool call output. Always `function_call_output`.
+
+        - `"function_call_output"`
+
+      - `id: optional string`
+
+        The unique ID of the function tool call output. Populated when this item
+        is returned via API.
+
+      - `caller: optional object { type }  or object { caller_id, type }`
+
+        The execution context that produced this tool call.
+
+        - `Direct object { type }`
+
+          - `type: "direct"`
+
+            The caller type. Always `direct`.
+
+            - `"direct"`
+
+        - `Program object { caller_id, type }`
+
+          - `caller_id: string`
+
+            The call ID of the program item that produced this tool call.
+
+          - `type: "program"`
+
+            The caller type. Always `program`.
+
+            - `"program"`
+
+      - `status: optional "in_progress" or "completed" or "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `FileSearchCall object { id, queries, status, 2 more }`
+
+      The results of a file search tool call. See the
+      [file search guide](/docs/guides/tools-file-search) for more information.
 
       - `id: string`
 
-        The unique ID of the compaction item.
+        The unique ID of the file search tool call.
 
-      - `encrypted_content: string`
+      - `queries: array of string`
 
-        The encrypted content that was produced by compaction.
+        The queries used to search for files.
 
-      - `type: "compaction"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
-        The type of the item. Always `compaction`.
+        The status of the file search tool call. One of `in_progress`,
+        `searching`, `incomplete` or `failed`,
 
-        - `"compaction"`
+        - `"in_progress"`
 
-      - `created_by: optional string`
+        - `"searching"`
 
-        The identifier of the actor that created the item.
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+      - `type: "file_search_call"`
+
+        The type of the file search tool call. Always `file_search_call`.
+
+        - `"file_search_call"`
+
+      - `results: optional array of object { attributes, file_id, filename, 2 more }`
+
+        The results of the file search tool call.
+
+        - `attributes: optional map[string or number or boolean]`
+
+          Set of 16 key-value pairs that can be attached to an object. This can be
+          useful for storing additional information about the object in a structured
+          format, and querying for objects via API or the dashboard. Keys are strings
+          with a maximum length of 64 characters. Values are strings with a maximum
+          length of 512 characters, booleans, or numbers.
+
+          - `string`
+
+          - `number`
+
+          - `boolean`
+
+        - `file_id: optional string`
+
+          The unique ID of the file.
+
+        - `filename: optional string`
+
+          The name of the file.
+
+        - `score: optional number`
+
+          The relevance score of the file - a value between 0 and 1.
+
+        - `text: optional string`
+
+          The text that was retrieved from the file.
+
+    - `WebSearchCall object { id, action, status, type }`
+
+      The results of a web search tool call. See the
+      [web search guide](/docs/guides/tools-web-search) for more information.
+
+      - `id: string`
+
+        The unique ID of the web search tool call.
+
+      - `action: object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+
+        An object describing the specific action taken in this web search call.
+        Includes details on how the model used the web (search, open_page, find_in_page).
+
+        - `Search object { type, queries, query, sources }`
+
+          Action type "search" - Performs a web search query.
+
+          - `type: "search"`
+
+            The action type.
+
+            - `"search"`
+
+          - `queries: optional array of string`
+
+            The search queries.
+
+          - `query: optional string`
+
+            The search query.
+
+          - `sources: optional array of object { type, url }`
+
+            The sources used in the search.
+
+            - `type: "url"`
+
+              The type of source. Always `url`.
+
+              - `"url"`
+
+            - `url: string`
+
+              The URL of the source.
+
+        - `OpenPage object { type, url }`
+
+          Action type "open_page" - Opens a specific URL from search results.
+
+          - `type: "open_page"`
+
+            The action type.
+
+            - `"open_page"`
+
+          - `url: optional string`
+
+            The URL opened by the model.
+
+        - `FindInPage object { pattern, type, url }`
+
+          Action type "find_in_page": Searches for a pattern within a loaded page.
+
+          - `pattern: string`
+
+            The pattern or text to search for within the page.
+
+          - `type: "find_in_page"`
+
+            The action type.
+
+            - `"find_in_page"`
+
+          - `url: string`
+
+            The URL of the page searched for the pattern.
+
+      - `status: "in_progress" or "searching" or "completed" or "failed"`
+
+        The status of the web search tool call.
+
+        - `"in_progress"`
+
+        - `"searching"`
+
+        - `"completed"`
+
+        - `"failed"`
+
+      - `type: "web_search_call"`
+
+        The type of the web search tool call. Always `web_search_call`.
+
+        - `"web_search_call"`
 
     - `ImageGenerationCall object { id, result, status, type }`
 
@@ -7796,6 +7086,438 @@ Compact a response
         The type of the image generation call. Always `image_generation_call`.
 
         - `"image_generation_call"`
+
+    - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
+
+      A tool call to a computer use tool. See the
+      [computer use guide](/docs/guides/tools-computer-use) for more information.
+
+      - `id: string`
+
+        The unique ID of the computer call.
+
+      - `call_id: string`
+
+        An identifier used when responding to the tool call with output.
+
+      - `pending_safety_checks: array of object { id, code, message }`
+
+        The pending safety checks for the computer call.
+
+        - `id: string`
+
+          The ID of the pending safety check.
+
+        - `code: optional string`
+
+          The type of the pending safety check.
+
+        - `message: optional string`
+
+          Details about the pending safety check.
+
+      - `status: "in_progress" or "completed" or "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+      - `type: "computer_call"`
+
+        The type of the computer call. Always `computer_call`.
+
+        - `"computer_call"`
+
+      - `action: optional ComputerAction`
+
+        A click action.
+
+        - `Click object { button, type, x, 2 more }`
+
+          A click action.
+
+          - `button: "left" or "right" or "wheel" or 2 more`
+
+            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
+
+            - `"left"`
+
+            - `"right"`
+
+            - `"wheel"`
+
+            - `"back"`
+
+            - `"forward"`
+
+          - `type: "click"`
+
+            Specifies the event type. For a click action, this property is always `click`.
+
+            - `"click"`
+
+          - `x: number`
+
+            The x-coordinate where the click occurred.
+
+          - `y: number`
+
+            The y-coordinate where the click occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while clicking.
+
+        - `DoubleClick object { keys, type, x, y }`
+
+          A double click action.
+
+          - `keys: array of string`
+
+            The keys being held while double-clicking.
+
+          - `type: "double_click"`
+
+            Specifies the event type. For a double click action, this property is always set to `double_click`.
+
+            - `"double_click"`
+
+          - `x: number`
+
+            The x-coordinate where the double click occurred.
+
+          - `y: number`
+
+            The y-coordinate where the double click occurred.
+
+        - `Drag object { path, type, keys }`
+
+          A drag action.
+
+          - `path: array of object { x, y }`
+
+            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
+
+            ```
+            [
+              { x: 100, y: 200 },
+              { x: 200, y: 300 }
+            ]
+            ```
+
+            - `x: number`
+
+              The x-coordinate.
+
+            - `y: number`
+
+              The y-coordinate.
+
+          - `type: "drag"`
+
+            Specifies the event type. For a drag action, this property is always set to `drag`.
+
+            - `"drag"`
+
+          - `keys: optional array of string`
+
+            The keys being held while dragging the mouse.
+
+        - `Keypress object { keys, type }`
+
+          A collection of keypresses the model would like to perform.
+
+          - `keys: array of string`
+
+            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
+
+          - `type: "keypress"`
+
+            Specifies the event type. For a keypress action, this property is always set to `keypress`.
+
+            - `"keypress"`
+
+        - `Move object { type, x, y, keys }`
+
+          A mouse move action.
+
+          - `type: "move"`
+
+            Specifies the event type. For a move action, this property is always set to `move`.
+
+            - `"move"`
+
+          - `x: number`
+
+            The x-coordinate to move to.
+
+          - `y: number`
+
+            The y-coordinate to move to.
+
+          - `keys: optional array of string`
+
+            The keys being held while moving the mouse.
+
+        - `Screenshot object { type }`
+
+          A screenshot action.
+
+          - `type: "screenshot"`
+
+            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
+
+            - `"screenshot"`
+
+        - `Scroll object { scroll_x, scroll_y, type, 3 more }`
+
+          A scroll action.
+
+          - `scroll_x: number`
+
+            The horizontal scroll distance.
+
+          - `scroll_y: number`
+
+            The vertical scroll distance.
+
+          - `type: "scroll"`
+
+            Specifies the event type. For a scroll action, this property is always set to `scroll`.
+
+            - `"scroll"`
+
+          - `x: number`
+
+            The x-coordinate where the scroll occurred.
+
+          - `y: number`
+
+            The y-coordinate where the scroll occurred.
+
+          - `keys: optional array of string`
+
+            The keys being held while scrolling.
+
+        - `Type object { text, type }`
+
+          An action to type in text.
+
+          - `text: string`
+
+            The text to type.
+
+          - `type: "type"`
+
+            Specifies the event type. For a type action, this property is always set to `type`.
+
+            - `"type"`
+
+        - `Wait object { type }`
+
+          A wait action.
+
+          - `type: "wait"`
+
+            Specifies the event type. For a wait action, this property is always set to `wait`.
+
+            - `"wait"`
+
+      - `actions: optional ComputerActionList`
+
+        Flattened batched actions for `computer_use`. Each action includes an
+        `type` discriminator and action-specific fields.
+
+        - `Click object { button, type, x, 2 more }`
+
+          A click action.
+
+        - `DoubleClick object { keys, type, x, y }`
+
+          A double click action.
+
+        - `Drag object { path, type, keys }`
+
+          A drag action.
+
+        - `Keypress object { keys, type }`
+
+          A collection of keypresses the model would like to perform.
+
+        - `Move object { type, x, y, keys }`
+
+          A mouse move action.
+
+        - `Screenshot object { type }`
+
+          A screenshot action.
+
+        - `Scroll object { scroll_x, scroll_y, type, 3 more }`
+
+          A scroll action.
+
+        - `Type object { text, type }`
+
+          An action to type in text.
+
+        - `Wait object { type }`
+
+          A wait action.
+
+    - `ComputerCallOutput object { id, call_id, output, 4 more }`
+
+      - `id: string`
+
+        The unique ID of the computer call tool output.
+
+      - `call_id: string`
+
+        The ID of the computer tool call that produced the output.
+
+      - `output: ResponseComputerToolCallOutputScreenshot`
+
+        A computer screenshot image used with the computer use tool.
+
+        - `type: "computer_screenshot"`
+
+          Specifies the event type. For a computer screenshot, this property is
+          always set to `computer_screenshot`.
+
+          - `"computer_screenshot"`
+
+        - `file_id: optional string`
+
+          The identifier of an uploaded file that contains the screenshot.
+
+        - `image_url: optional string`
+
+          The URL of the screenshot image.
+
+      - `status: "completed" or "incomplete" or "failed" or "in_progress"`
+
+        The status of the message input. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when input items are returned via API.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"failed"`
+
+        - `"in_progress"`
+
+      - `type: "computer_call_output"`
+
+        The type of the computer tool call output. Always `computer_call_output`.
+
+        - `"computer_call_output"`
+
+      - `acknowledged_safety_checks: optional array of object { id, code, message }`
+
+        The safety checks reported by the API that have been acknowledged by the
+        developer.
+
+        - `id: string`
+
+          The ID of the pending safety check.
+
+        - `code: optional string`
+
+          The type of the pending safety check.
+
+        - `message: optional string`
+
+          Details about the pending safety check.
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
+
+    - `Reasoning object { id, summary, type, 3 more }`
+
+      A description of the chain of thought used by a reasoning model while generating
+      a response. Be sure to include these items in your `input` to the Responses API
+      for subsequent turns of a conversation if you are manually
+      [managing context](/docs/guides/conversation-state).
+
+      - `id: string`
+
+        The unique identifier of the reasoning content.
+
+      - `summary: array of SummaryTextContent`
+
+        Reasoning summary content.
+
+        - `text: string`
+
+          A summary of the reasoning output from the model so far.
+
+        - `type: "summary_text"`
+
+          The type of the object. Always `summary_text`.
+
+      - `type: "reasoning"`
+
+        The type of the object. Always `reasoning`.
+
+        - `"reasoning"`
+
+      - `content: optional array of object { text, type }`
+
+        Reasoning text content.
+
+        - `text: string`
+
+          The reasoning text from the model.
+
+        - `type: "reasoning_text"`
+
+          The type of the reasoning text. Always `reasoning_text`.
+
+          - `"reasoning_text"`
+
+      - `encrypted_content: optional string`
+
+        The encrypted content of the reasoning item - populated when a response is
+        generated with `reasoning.encrypted_content` in the `include` parameter.
+
+      - `status: optional "in_progress" or "completed" or "incomplete"`
+
+        The status of the item. One of `in_progress`, `completed`, or
+        `incomplete`. Populated when items are returned via API.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `Compaction object { id, encrypted_content, type, created_by }`
+
+      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
+
+      - `id: string`
+
+        The unique ID of the compaction item.
+
+      - `encrypted_content: string`
+
+        The encrypted content that was produced by compaction.
+
+      - `type: "compaction"`
+
+        The type of the item. Always `compaction`.
+
+        - `"compaction"`
+
+      - `created_by: optional string`
+
+        The identifier of the actor that created the item.
 
     - `CodeInterpreterCall object { id, code, container_id, 3 more }`
 
@@ -8302,59 +8024,6 @@ Compact a response
 
         Optional textual output returned by the apply patch tool.
 
-    - `McpCall object { id, arguments, name, 6 more }`
-
-      An invocation of a tool on an MCP server.
-
-      - `id: string`
-
-        The unique ID of the tool call.
-
-      - `arguments: string`
-
-        A JSON string of the arguments passed to the tool.
-
-      - `name: string`
-
-        The name of the tool that was run.
-
-      - `server_label: string`
-
-        The label of the MCP server running the tool.
-
-      - `type: "mcp_call"`
-
-        The type of the item. Always `mcp_call`.
-
-        - `"mcp_call"`
-
-      - `approval_request_id: optional string`
-
-        Unique identifier for the MCP tool call approval request.
-        Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
-
-      - `error: optional string`
-
-        The error from the tool call, if any.
-
-      - `output: optional string`
-
-        The output from the tool call.
-
-      - `status: optional "in_progress" or "completed" or "incomplete" or 2 more`
-
-        The status of the tool call. One of `in_progress`, `completed`, `incomplete`, `calling`, or `failed`.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
-
-        - `"calling"`
-
-        - `"failed"`
-
     - `McpListTools object { id, server_label, tools, 2 more }`
 
       A list of tools available on an MCP server.
@@ -8449,6 +8118,59 @@ Compact a response
 
         Optional reason for the decision.
 
+    - `McpCall object { id, arguments, name, 6 more }`
+
+      An invocation of a tool on an MCP server.
+
+      - `id: string`
+
+        The unique ID of the tool call.
+
+      - `arguments: string`
+
+        A JSON string of the arguments passed to the tool.
+
+      - `name: string`
+
+        The name of the tool that was run.
+
+      - `server_label: string`
+
+        The label of the MCP server running the tool.
+
+      - `type: "mcp_call"`
+
+        The type of the item. Always `mcp_call`.
+
+        - `"mcp_call"`
+
+      - `approval_request_id: optional string`
+
+        Unique identifier for the MCP tool call approval request.
+        Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
+
+      - `error: optional string`
+
+        The error from the tool call, if any.
+
+      - `output: optional string`
+
+        The output from the tool call.
+
+      - `status: optional "in_progress" or "completed" or "incomplete" or 2 more`
+
+        The status of the tool call. One of `in_progress`, `completed`, `incomplete`, `calling`, or `failed`.
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+        - `"calling"`
+
+        - `"failed"`
+
     - `CustomToolCall object { call_id, input, name, 4 more }`
 
       A call to a custom tool created by the model.
@@ -8499,11 +8221,9 @@ Compact a response
 
         The namespace of the custom tool being called.
 
-    - `CustomToolCallOutput object { id, call_id, output, 4 more }`
+    - `CustomToolCallOutput object { call_id, output, type, 2 more }`
 
-      - `id: string`
-
-        The unique ID of the custom tool call output item.
+      The output of a custom tool call from your code, being sent back to the model.
 
       - `call_id: string`
 
@@ -8528,28 +8248,21 @@ Compact a response
 
           - `ResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
           - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
             A file input to the model.
-
-      - `status: "in_progress" or "completed" or "incomplete"`
-
-        The status of the item. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
 
       - `type: "custom_tool_call_output"`
 
         The type of the custom tool call output. Always `custom_tool_call_output`.
 
         - `"custom_tool_call_output"`
+
+      - `id: optional string`
+
+        The unique ID of the custom tool call output in the OpenAI platform.
 
       - `caller: optional object { type }  or object { caller_id, type }`
 
@@ -8575,10 +8288,6 @@ Compact a response
 
             - `"program"`
 
-      - `created_by: optional string`
-
-        The identifier of the actor that created the item.
-
   - `usage: ResponseUsage`
 
     Token accounting for the compaction pass, including cached, reasoning, and total tokens.
@@ -8598,7 +8307,7 @@ Compact a response
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache.
-        [More on prompt caching](https://platform.openai.com/docs/guides/prompt-caching).
+        [More on prompt caching](/docs/guides/prompt-caching).
 
     - `output_tokens: number`
 
@@ -8640,37 +8349,14 @@ curl https://api.openai.com/v1/responses/compact \
       "id": "id",
       "content": [
         {
-          "annotations": [
-            {
-              "file_id": "file_id",
-              "filename": "filename",
-              "index": 0,
-              "type": "file_citation"
-            }
-          ],
           "text": "text",
-          "type": "output_text",
-          "logprobs": [
-            {
-              "token": "token",
-              "bytes": [
-                0
-              ],
-              "logprob": 0,
-              "top_logprobs": [
-                {
-                  "token": "token",
-                  "bytes": [
-                    0
-                  ],
-                  "logprob": 0
-                }
-              ]
-            }
-          ]
+          "type": "input_text",
+          "prompt_cache_breakpoint": {
+            "mode": "explicit"
+          }
         }
       ],
-      "role": "assistant",
+      "role": "unknown",
       "status": "in_progress",
       "type": "message",
       "phase": "commentary"

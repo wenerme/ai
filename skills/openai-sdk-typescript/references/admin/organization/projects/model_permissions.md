@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/model_permissions`
 
-Retrieve project model permissions
+Returns model permissions for a project.
 
 ### Parameters
 
@@ -70,7 +70,7 @@ console.log(projectModelPermissions.model_ids);
 
 **post** `/organization/projects/{project_id}/model_permissions`
 
-Modify project model permissions
+Updates model permissions for a project.
 
 ### Parameters
 
@@ -149,7 +149,7 @@ console.log(projectModelPermissions.model_ids);
 
 **delete** `/organization/projects/{project_id}/model_permissions`
 
-Delete project model permissions
+Deletes model permissions for a project.
 
 ### Parameters
 

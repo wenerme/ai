@@ -6,7 +6,7 @@
 
 **get** `/responses/{response_id}/input_items`
 
-List input items
+Returns a list of input items for a given response.
 
 ### Parameters
 
@@ -1341,7 +1341,7 @@ List input items
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1351,7 +1351,11 @@ List input items
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 
@@ -4630,7 +4634,7 @@ print(response.data)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -4640,7 +4644,11 @@ print(response.data)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 

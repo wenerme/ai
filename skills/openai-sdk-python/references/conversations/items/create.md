@@ -4,7 +4,7 @@
 
 **post** `/conversations/{conversation_id}/items`
 
-Create items
+Create items in a conversation with the given ID.
 
 ### Parameters
 
@@ -1450,7 +1450,7 @@ Create items
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1460,7 +1460,11 @@ Create items
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 
@@ -4840,7 +4844,7 @@ Create items
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -4850,7 +4854,11 @@ Create items
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 

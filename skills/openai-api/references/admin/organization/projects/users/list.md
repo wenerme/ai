@@ -2,7 +2,7 @@
 
 **get** `/organization/projects/{project_id}/users`
 
-List project users
+Returns a list of users in the project.
 
 ### Path Parameters
 

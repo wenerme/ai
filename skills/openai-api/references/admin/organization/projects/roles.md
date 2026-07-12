@@ -4,7 +4,7 @@
 
 **get** `/projects/{project_id}/roles`
 
-List project roles
+Lists the roles configured for a project.
 
 ### Path Parameters
 
@@ -144,7 +144,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/roles?limit=20 \
 
 **post** `/projects/{project_id}/roles`
 
-Create project role
+Creates a custom role for a project.
 
 ### Path Parameters
 
@@ -267,7 +267,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/roles \
 
 **get** `/projects/{project_id}/roles/{role_id}`
 
-Retrieve project role
+Retrieves a project role.
 
 ### Path Parameters
 
@@ -363,7 +363,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8PROJ \
 
 **post** `/projects/{project_id}/roles/{role_id}`
 
-Update project role
+Updates an existing project role.
 
 ### Path Parameters
 
@@ -483,7 +483,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8PRO
 
 **delete** `/projects/{project_id}/roles/{role_id}`
 
-Delete project role
+Deletes a custom role from a project.
 
 ### Path Parameters
 

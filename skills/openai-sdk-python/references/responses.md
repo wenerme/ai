@@ -26,7 +26,13 @@ client.responses.connect()
 
 **post** `/responses`
 
-Create a model response
+Creates a model response. Provide [text](https://platform.openai.com/docs/guides/text) or
+[image](https://platform.openai.com/docs/guides/images) inputs to generate [text](https://platform.openai.com/docs/guides/text)
+or [JSON](https://platform.openai.com/docs/guides/structured-outputs) outputs. Have the model call
+your own [custom code](https://platform.openai.com/docs/guides/function-calling) or use built-in
+[tools](https://platform.openai.com/docs/guides/tools) like [web search](https://platform.openai.com/docs/guides/tools-web-search)
+or [file search](https://platform.openai.com/docs/guides/tools-file-search) to use your own data
+as input for the model's response.
 
 ### Parameters
 
@@ -1547,7 +1553,7 @@ Create a model response
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1557,7 +1563,11 @@ Create a model response
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 
@@ -5937,7 +5947,7 @@ Create a model response
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5947,7 +5957,11 @@ Create a model response
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -11036,7 +11050,7 @@ print(response)
 
 **get** `/responses/{response_id}`
 
-Get a model response
+Retrieves a model response with the given ID.
 
 ### Parameters
 
@@ -12614,7 +12628,7 @@ Get a model response
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -12624,7 +12638,11 @@ Get a model response
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -17010,7 +17028,7 @@ print(response)
 
 **delete** `/responses/{response_id}`
 
-Delete a model response
+Deletes a model response with the given ID.
 
 ### Parameters
 
@@ -17056,7 +17074,9 @@ print(response)
 
 **post** `/responses/{response_id}/cancel`
 
-Cancel a response
+Cancels a model response with the given ID. Only responses created with
+the `background` parameter set to `true` can be cancelled.
+[Learn more](https://platform.openai.com/docs/guides/background).
 
 ### Parameters
 
@@ -18590,7 +18610,7 @@ Cancel a response
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -18600,7 +18620,11 @@ Cancel a response
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -22977,7 +23001,9 @@ print(response)
 
 **post** `/responses/compact`
 
-Compact a response
+Compact a conversation. Returns a compacted response object.
+
+Learn when and how to compact long-running conversations in the [conversation state guide](https://platform.openai.com/docs/guides/conversation-state#managing-the-context-window). For ZDR-compatible compaction details, see [Compaction (advanced)](https://platform.openai.com/docs/guides/conversation-state#compaction-advanced).
 
 ### Parameters
 
@@ -24629,7 +24655,7 @@ Compact a response
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -24639,7 +24665,11 @@ Compact a response
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 
@@ -28081,7 +28111,7 @@ Compact a response
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -28091,7 +28121,11 @@ Compact a response
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 
@@ -31529,7 +31563,7 @@ print(compacted_response)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -31539,7 +31573,11 @@ print(compacted_response)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 
@@ -34315,7 +34353,7 @@ print(compacted_response)
 
         - `"nin"`
 
-      - `value: Union[str, float, bool, List[object]]`
+      - `value: Union[str, float, bool, List[Union[str, float]]]`
 
         The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -34325,7 +34363,11 @@ print(compacted_response)
 
         - `bool`
 
-        - `List[object]`
+        - `List[Union[str, float]]`
+
+          - `str`
+
+          - `float`
 
     - `class CompoundFilter: …`
 
@@ -36355,7 +36397,7 @@ print(compacted_response)
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -36365,7 +36407,11 @@ print(compacted_response)
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -42497,7 +42543,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -42507,7 +42553,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class CompoundFilter: …`
 
@@ -49381,7 +49431,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -49391,7 +49441,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class CompoundFilter: …`
 
@@ -55461,7 +55515,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -55471,7 +55525,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class CompoundFilter: …`
 
@@ -62389,7 +62447,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -62399,7 +62457,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class CompoundFilter: …`
 
@@ -68095,7 +68157,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -68105,7 +68167,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class CompoundFilter: …`
 
@@ -73679,7 +73745,7 @@ print(compacted_response)
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -73689,7 +73755,11 @@ print(compacted_response)
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 
@@ -77444,7 +77514,7 @@ print(compacted_response)
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -77454,7 +77524,11 @@ print(compacted_response)
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 
@@ -81047,7 +81121,7 @@ print(compacted_response)
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -81057,7 +81131,11 @@ print(compacted_response)
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 
@@ -84585,7 +84663,7 @@ print(compacted_response)
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -84595,7 +84673,11 @@ print(compacted_response)
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 
@@ -87809,7 +87891,7 @@ print(compacted_response)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -87819,7 +87901,11 @@ print(compacted_response)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 
@@ -91047,7 +91133,7 @@ print(compacted_response)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -91057,7 +91143,11 @@ print(compacted_response)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 
@@ -94934,7 +95024,7 @@ print(compacted_response)
 
                     - `"nin"`
 
-                  - `value: Union[str, float, bool, List[object]]`
+                  - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                     The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -94944,7 +95034,11 @@ print(compacted_response)
 
                     - `bool`
 
-                    - `List[object]`
+                    - `List[Union[str, float]]`
+
+                      - `str`
+
+                      - `float`
 
                 - `class CompoundFilter: …`
 
@@ -101160,7 +101254,7 @@ print(compacted_response)
 
                       - `"nin"`
 
-                    - `value: Union[str, float, bool, List[object]]`
+                    - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -101170,7 +101264,11 @@ print(compacted_response)
 
                       - `bool`
 
-                      - `List[object]`
+                      - `List[Union[str, float]]`
+
+                        - `str`
+
+                        - `float`
 
                   - `class CompoundFilter: …`
 
@@ -106979,7 +107077,7 @@ print(compacted_response)
 
             - `"nin"`
 
-          - `value: Union[str, float, bool, List[object]]`
+          - `value: Union[str, float, bool, List[Union[str, float]]]`
 
             The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -106989,7 +107087,11 @@ print(compacted_response)
 
             - `bool`
 
-            - `List[object]`
+            - `List[Union[str, float]]`
+
+              - `str`
+
+              - `float`
 
         - `class CompoundFilter: …`
 
@@ -108038,7 +108140,7 @@ print(compacted_response)
 
             - `"nin"`
 
-          - `value: Union[str, float, bool, List[object]]`
+          - `value: Union[str, float, bool, List[Union[str, float]]]`
 
             The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -108048,7 +108150,11 @@ print(compacted_response)
 
             - `bool`
 
-            - `List[object]`
+            - `List[Union[str, float]]`
+
+              - `str`
+
+              - `float`
 
         - `class CompoundFilter: …`
 
@@ -110653,7 +110759,7 @@ print(compacted_response)
 
                   - `"nin"`
 
-                - `value: Union[str, float, bool, List[object]]`
+                - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -110663,7 +110769,11 @@ print(compacted_response)
 
                   - `bool`
 
-                  - `List[object]`
+                  - `List[Union[str, float]]`
+
+                    - `str`
+
+                    - `float`
 
               - `class CompoundFilter: …`
 
@@ -115233,7 +115343,7 @@ print(compacted_response)
 
                       - `"nin"`
 
-                    - `value: Union[str, float, bool, List[object]]`
+                    - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -115243,7 +115353,11 @@ print(compacted_response)
 
                       - `bool`
 
-                      - `List[object]`
+                      - `List[Union[str, float]]`
+
+                        - `str`
+
+                        - `float`
 
                   - `class CompoundFilter: …`
 
@@ -120791,7 +120905,7 @@ print(compacted_response)
 
           - `"nin"`
 
-        - `value: Union[str, float, bool, List[object]]`
+        - `value: Union[str, float, bool, List[Union[str, float]]]`
 
           The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -120801,7 +120915,11 @@ print(compacted_response)
 
           - `bool`
 
-          - `List[object]`
+          - `List[Union[str, float]]`
+
+            - `str`
+
+            - `float`
 
       - `class CompoundFilter: …`
 
@@ -122061,7 +122179,7 @@ print(compacted_response)
 
 **get** `/responses/{response_id}/input_items`
 
-List input items
+Returns a list of input items for a given response.
 
 ### Parameters
 
@@ -123396,7 +123514,7 @@ List input items
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -123406,7 +123524,11 @@ List input items
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 
@@ -126685,7 +126807,7 @@ print(response.data)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -126695,7 +126817,11 @@ print(response.data)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 
@@ -128628,7 +128754,9 @@ print(response.data)
 
 **post** `/responses/input_tokens`
 
-Get input token counts
+Returns input token counts of the request.
+
+Returns an object with `object` set to `response.input_tokens` and an `input_tokens` count.
 
 ### Parameters
 
@@ -130097,7 +130225,7 @@ Get input token counts
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -130107,7 +130235,11 @@ Get input token counts
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 

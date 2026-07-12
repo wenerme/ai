@@ -6,7 +6,7 @@
 
 **get** `/organization/projects/{project_id}/spend_alerts`
 
-List project spend alerts
+Lists project spend alerts.
 
 ### Parameters
 
@@ -131,7 +131,7 @@ print(page.id)
 
 **post** `/organization/projects/{project_id}/spend_alerts`
 
-Create project spend alert
+Creates a project spend alert.
 
 ### Parameters
 
@@ -268,7 +268,7 @@ print(project_spend_alert.id)
 
 **get** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Retrieve project spend alert
+Retrieves a project spend alert.
 
 ### Parameters
 
@@ -367,7 +367,7 @@ print(project_spend_alert.id)
 
 **post** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Update project spend alert
+Updates a project spend alert.
 
 ### Parameters
 
@@ -507,7 +507,7 @@ print(project_spend_alert.id)
 
 **delete** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
 
-Delete project spend alert
+Deletes a project spend alert.
 
 ### Parameters
 

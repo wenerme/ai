@@ -6,7 +6,7 @@
 
 **get** `/organization/users`
 
-List users
+Lists all of the users in the organization.
 
 ### Parameters
 
@@ -193,7 +193,7 @@ print(page.id)
 
 **get** `/organization/users/{user_id}`
 
-Retrieve user
+Retrieves a user by their identifier.
 
 ### Parameters
 
@@ -363,7 +363,7 @@ print(organization_user.id)
 
 **post** `/organization/users/{user_id}`
 
-Modify user
+Modifies a user's role in the organization.
 
 ### Parameters
 
@@ -549,7 +549,7 @@ print(organization_user.id)
 
 **delete** `/organization/users/{user_id}`
 
-Delete user
+Deletes a user from the organization.
 
 ### Parameters
 
@@ -716,7 +716,7 @@ print(user.id)
 
 **get** `/organization/users/{user_id}/roles`
 
-List user organization role assignments
+Lists the organization roles assigned to a user within the organization.
 
 ### Parameters
 
@@ -855,7 +855,7 @@ print(page.id)
 
 **post** `/organization/users/{user_id}/roles`
 
-Assign organization role to user
+Assigns an organization role to a user within the organization.
 
 ### Parameters
 
@@ -1088,7 +1088,7 @@ print(role.object)
 
 **get** `/organization/users/{user_id}/roles/{role_id}`
 
-Retrieve user organization role
+Retrieves an organization role assigned to a user.
 
 ### Parameters
 
@@ -1206,7 +1206,7 @@ print(role.id)
 
 **delete** `/organization/users/{user_id}/roles/{role_id}`
 
-Unassign organization role from user
+Unassigns an organization role from a user within the organization.
 
 ### Parameters
 

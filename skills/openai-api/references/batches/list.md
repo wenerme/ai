@@ -2,7 +2,7 @@
 
 **get** `/batches`
 
-List batches
+List your organization's batches.
 
 ### Query Parameters
 
@@ -80,7 +80,7 @@ List batches
 
   - `errors: optional object { data, object }`
 
-    - `data: optional array of BatchError`
+    - `data: optional array of object { code, line, message, param }`
 
       - `code: optional string`
 
@@ -136,13 +136,13 @@ List batches
     Model ID used to process the batch, like `gpt-5-2025-08-07`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model
-    guide](https://platform.openai.com/docs/models) to browse and compare available models.
+    guide](/docs/models) to browse and compare available models.
 
   - `output_file_id: optional string`
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts: optional BatchRequestCounts`
+  - `request_counts: optional object { completed, failed, total }`
 
     The request counts for different statuses within the batch.
 
@@ -175,7 +175,7 @@ List batches
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache. [More on
-        prompt caching](https://platform.openai.com/docs/guides/prompt-caching).
+        prompt caching](/docs/guides/prompt-caching).
 
     - `output_tokens: number`
 

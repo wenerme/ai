@@ -2,7 +2,7 @@
 
 **get** `/organization/users/{user_id}/roles`
 
-List user organization role assignments
+Lists the organization roles assigned to a user within the organization.
 
 ### Path Parameters
 

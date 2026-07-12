@@ -4,7 +4,7 @@
 
 **get** `/conversations/{conversation_id}`
 
-Retrieve a conversation
+Get a conversation
 
 ### Parameters
 

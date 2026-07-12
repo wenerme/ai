@@ -4,7 +4,7 @@
 
 **post** `/conversations`
 
-Create a conversation
+Create a conversation.
 
 ### Parameters
 
@@ -1448,7 +1448,7 @@ Create a conversation
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1458,7 +1458,11 @@ Create a conversation
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 

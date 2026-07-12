@@ -2,7 +2,7 @@
 
 **post** `/videos/{video_id}/remix`
 
-Remix video
+Create a remix of a completed video using a refreshed prompt.
 
 ### Path Parameters
 
@@ -84,19 +84,9 @@ Remix video
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string or VideoSeconds`
+  - `seconds: string`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
-
-    - `string`
-
-    - `VideoSeconds = "4" or "8" or "12"`
-
-      - `"4"`
-
-      - `"8"`
-
-      - `"12"`
 
   - `size: VideoSize`
 
@@ -150,7 +140,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/remix \
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "4",
+  "seconds": "seconds",
   "size": "720x1280",
   "status": "queued"
 }

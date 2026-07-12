@@ -4,7 +4,7 @@
 
 **get** `/files/{file_id}/content`
 
-Retrieve file content
+Returns the contents of the specified file.
 
 ### Parameters
 

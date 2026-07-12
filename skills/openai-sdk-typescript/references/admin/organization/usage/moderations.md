@@ -4,7 +4,7 @@
 
 **get** `/organization/usage/moderations`
 
-Moderations
+Get moderations usage details for the organization.
 
 ### Parameters
 

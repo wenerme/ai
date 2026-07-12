@@ -2,7 +2,7 @@
 
 **get** `/organization/projects/{project_id}/certificates`
 
-List project certificates
+List certificates for this project.
 
 ### Path Parameters
 

@@ -4,7 +4,7 @@
 
 **post** `/threads/{thread_id}`
 
-Modify thread
+Modifies a thread.
 
 ### Parameters
 

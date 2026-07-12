@@ -2,7 +2,7 @@
 
 **post** `/vector_stores/{vector_store_id}/file_batches/{batch_id}/cancel`
 
-Cancel vector store file batch
+Cancel a vector store file batch. This attempts to cancel the processing of files in this batch as soon as possible.
 
 ### Path Parameters
 
@@ -66,7 +66,7 @@ Cancel vector store file batch
 
   - `vector_store_id: string`
 
-    The ID of the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) that the [File](https://platform.openai.com/docs/api-reference/files) is attached to.
+    The ID of the [vector store](/docs/api-reference/vector-stores/object) that the [File](/docs/api-reference/files) is attached to.
 
 ### Example
 

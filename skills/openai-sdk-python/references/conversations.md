@@ -6,7 +6,7 @@
 
 **post** `/conversations`
 
-Create a conversation
+Create a conversation.
 
 ### Parameters
 
@@ -1450,7 +1450,7 @@ Create a conversation
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1460,7 +1460,11 @@ Create a conversation
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 
@@ -3534,7 +3538,7 @@ print(conversation)
 
 **get** `/conversations/{conversation_id}`
 
-Retrieve a conversation
+Get a conversation
 
 ### Parameters
 
@@ -3713,7 +3717,7 @@ print(updated)
 
 **delete** `/conversations/{conversation_id}`
 
-Delete a conversation
+Delete a conversation. Items in the conversation will not be deleted.
 
 ### Parameters
 
@@ -4293,7 +4297,7 @@ print(deleted)
 
 **post** `/conversations/{conversation_id}/items`
 
-Create items
+Create items in a conversation with the given ID.
 
 ### Parameters
 
@@ -5739,7 +5743,7 @@ Create items
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -5749,7 +5753,11 @@ Create items
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 
@@ -9129,7 +9137,7 @@ Create items
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -9139,7 +9147,11 @@ Create items
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 
@@ -11215,7 +11227,7 @@ print(items.data)
 
 **get** `/conversations/{conversation_id}/items`
 
-List items
+List all items for a conversation with the given ID.
 
 ### Parameters
 
@@ -12638,7 +12650,7 @@ List items
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -12648,7 +12660,11 @@ List items
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 
@@ -14679,7 +14695,7 @@ print(items.data)
 
 **get** `/conversations/{conversation_id}/items/{item_id}`
 
-Retrieve an item
+Get a single item from a conversation with the given IDs.
 
 ### Parameters
 
@@ -16077,7 +16093,7 @@ Retrieve an item
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -16087,7 +16103,11 @@ Retrieve an item
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 
@@ -18102,7 +18122,7 @@ print(item)
 
 **delete** `/conversations/{conversation_id}/items/{item_id}`
 
-Delete an item
+Delete an item from a conversation with the given IDs.
 
 ### Parameters
 
@@ -19552,7 +19572,7 @@ print(conversation)
 
               - `"nin"`
 
-            - `value: Union[str, float, bool, List[object]]`
+            - `value: Union[str, float, bool, List[Union[str, float]]]`
 
               The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -19562,7 +19582,11 @@ print(conversation)
 
               - `bool`
 
-              - `List[object]`
+              - `List[Union[str, float]]`
+
+                - `str`
+
+                - `float`
 
           - `class CompoundFilter: …`
 
@@ -22883,7 +22907,7 @@ print(conversation)
 
                 - `"nin"`
 
-              - `value: Union[str, float, bool, List[object]]`
+              - `value: Union[str, float, bool, List[Union[str, float]]]`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -22893,7 +22917,11 @@ print(conversation)
 
                 - `bool`
 
-                - `List[object]`
+                - `List[Union[str, float]]`
+
+                  - `str`
+
+                  - `float`
 
             - `class CompoundFilter: …`
 

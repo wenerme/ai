@@ -4,7 +4,7 @@
 
 **post** `/conversations/{conversation_id}/items`
 
-Create items
+Create items in a conversation with the given ID.
 
 ### Parameters
 
@@ -1441,7 +1441,7 @@ Create items
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1451,7 +1451,11 @@ Create items
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `CompoundFilter`
 
@@ -4811,7 +4815,7 @@ Create items
 
                 - `"nin"`
 
-              - `value: string | number | boolean | Array<unknown>`
+              - `value: string | number | boolean | Array<string | number>`
 
                 The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -4821,7 +4825,11 @@ Create items
 
                 - `boolean`
 
-                - `Array<unknown>`
+                - `Array<string | number>`
+
+                  - `string`
+
+                  - `number`
 
             - `CompoundFilter`
 

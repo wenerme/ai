@@ -4,7 +4,7 @@
 
 **get** `/organization/groups`
 
-List groups
+Lists all groups in the organization.
 
 ### Query Parameters
 
@@ -125,7 +125,7 @@ curl https://api.openai.com/v1/organization/groups?limit=20&order=asc \
 
 **post** `/organization/groups`
 
-Create group
+Creates a new group in the organization.
 
 ### Body Parameters
 
@@ -213,7 +213,7 @@ curl -X POST https://api.openai.com/v1/organization/groups \
 
 **get** `/organization/groups/{group_id}`
 
-Retrieve group
+Retrieves a group.
 
 ### Path Parameters
 
@@ -292,7 +292,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
 
 **post** `/organization/groups/{group_id}`
 
-Update group
+Updates a group's information.
 
 ### Path Parameters
 
@@ -370,7 +370,7 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
 
 **delete** `/organization/groups/{group_id}`
 
-Delete group
+Deletes a group from the organization.
 
 ### Path Parameters
 
@@ -508,7 +508,7 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
 **get** `/organization/groups/{group_id}/users`
 
-List group users
+Lists the users assigned to a group.
 
 ### Path Parameters
 
@@ -617,7 +617,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?lim
 
 **post** `/organization/groups/{group_id}/users`
 
-Add group user
+Adds a user to a group.
 
 ### Path Parameters
 
@@ -691,7 +691,7 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/u
 
 **get** `/organization/groups/{group_id}/users/{user_id}`
 
-Retrieve group user
+Retrieves a user in a group.
 
 ### Path Parameters
 
@@ -774,7 +774,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/use
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
 
-Remove group user
+Removes a user from a group.
 
 ### Path Parameters
 
@@ -924,7 +924,7 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
 **get** `/organization/groups/{group_id}/roles`
 
-List group organization role assignments
+Lists the organization roles assigned to a group within the organization.
 
 ### Path Parameters
 
@@ -1108,7 +1108,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
 
 **post** `/organization/groups/{group_id}/roles`
 
-Assign organization role to group
+Assigns an organization role to a group within the organization.
 
 ### Path Parameters
 
@@ -1267,7 +1267,7 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/r
 
 **get** `/organization/groups/{group_id}/roles/{role_id}`
 
-Retrieve group organization role
+Retrieves an organization role assigned to a group.
 
 ### Path Parameters
 
@@ -1400,7 +1400,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 
 **delete** `/organization/groups/{group_id}/roles/{role_id}`
 
-Unassign organization role from group
+Unassigns an organization role from a group within the organization.
 
 ### Path Parameters
 

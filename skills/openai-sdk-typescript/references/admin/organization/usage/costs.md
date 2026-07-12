@@ -4,7 +4,7 @@
 
 **get** `/organization/costs`
 
-Costs
+Get costs details for the organization.
 
 ### Parameters
 

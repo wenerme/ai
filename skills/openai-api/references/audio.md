@@ -40,7 +40,10 @@
 
 **post** `/audio/transcriptions`
 
-Create transcription
+Transcribes audio into the input language.
+
+Returns a transcription object in `json`, `diarized_json`, or `verbose_json`
+format, or a stream of transcript events.
 
 ### Returns
 
@@ -72,7 +75,7 @@ Create transcription
 
     Token usage statistics for the request.
 
-    - `Tokens object { input_tokens, output_tokens, total_tokens, 2 more }`
+    - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
 
       Usage statistics for models billed by token usage.
 
@@ -106,7 +109,7 @@ Create transcription
 
           Number of text tokens billed for this request.
 
-    - `Duration object { seconds, type }`
+    - `DurationUsage object { seconds, type }`
 
       Usage statistics for models billed by audio input duration.
 
@@ -696,7 +699,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     Token usage statistics for the request.
 
-    - `Tokens object { input_tokens, output_tokens, total_tokens, 2 more }`
+    - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
 
       Usage statistics for models billed by token usage.
 
@@ -730,7 +733,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
           Number of text tokens billed for this request.
 
-    - `Duration object { seconds, type }`
+    - `DurationUsage object { seconds, type }`
 
       Usage statistics for models billed by audio input duration.
 
@@ -932,11 +935,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 - `TranscriptionStreamEvent = TranscriptionTextSegmentEvent or TranscriptionTextDeltaEvent or TranscriptionTextDoneEvent`
 
-  Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
+  Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
 
   - `TranscriptionTextSegmentEvent object { id, end, speaker, 3 more }`
 
-    Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
+    Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
 
     - `id: string`
 
@@ -966,7 +969,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
   - `TranscriptionTextDeltaEvent object { delta, type, logprobs, segment_id }`
 
-    Emitted when there is an additional text delta. This is also the first event emitted when the transcription starts. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
+    Emitted when there is an additional text delta. This is also the first event emitted when the transcription starts. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
 
     - `delta: string`
 
@@ -980,7 +983,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     - `logprobs: optional array of object { token, bytes, logprob }`
 
-      The log probabilities of the delta. Only included if you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
+      The log probabilities of the delta. Only included if you [create a transcription](/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
 
       - `token: optional string`
 
@@ -1000,7 +1003,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
   - `TranscriptionTextDoneEvent object { text, type, logprobs, usage }`
 
-    Emitted when the transcription is complete. Contains the complete transcription text. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
+    Emitted when the transcription is complete. Contains the complete transcription text. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
 
     - `text: string`
 
@@ -1014,7 +1017,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     - `logprobs: optional array of object { token, bytes, logprob }`
 
-      The log probabilities of the individual tokens in the transcription. Only included if you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
+      The log probabilities of the individual tokens in the transcription. Only included if you [create a transcription](/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
 
       - `token: optional string`
 
@@ -1066,7 +1069,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 - `TranscriptionTextDeltaEvent object { delta, type, logprobs, segment_id }`
 
-  Emitted when there is an additional text delta. This is also the first event emitted when the transcription starts. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
+  Emitted when there is an additional text delta. This is also the first event emitted when the transcription starts. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
 
   - `delta: string`
 
@@ -1080,7 +1083,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
   - `logprobs: optional array of object { token, bytes, logprob }`
 
-    The log probabilities of the delta. Only included if you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
+    The log probabilities of the delta. Only included if you [create a transcription](/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
 
     - `token: optional string`
 
@@ -1102,7 +1105,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 - `TranscriptionTextDoneEvent object { text, type, logprobs, usage }`
 
-  Emitted when the transcription is complete. Contains the complete transcription text. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
+  Emitted when the transcription is complete. Contains the complete transcription text. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
 
   - `text: string`
 
@@ -1116,7 +1119,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
   - `logprobs: optional array of object { token, bytes, logprob }`
 
-    The log probabilities of the individual tokens in the transcription. Only included if you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
+    The log probabilities of the individual tokens in the transcription. Only included if you [create a transcription](/docs/api-reference/audio/create-transcription) with the `include[]` parameter set to `logprobs`.
 
     - `token: optional string`
 
@@ -1168,7 +1171,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 - `TranscriptionTextSegmentEvent object { id, end, speaker, 3 more }`
 
-  Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](https://platform.openai.com/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
+  Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
 
   - `id: string`
 
@@ -1338,7 +1341,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Token usage statistics for the request.
 
-      - `Tokens object { input_tokens, output_tokens, total_tokens, 2 more }`
+      - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
 
         Usage statistics for models billed by token usage.
 
@@ -1372,7 +1375,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
             Number of text tokens billed for this request.
 
-      - `Duration object { seconds, type }`
+      - `DurationUsage object { seconds, type }`
 
         Usage statistics for models billed by audio input duration.
 
@@ -1582,7 +1585,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 **post** `/audio/translations`
 
-Create translation
+Translates audio into English.
 
 ### Returns
 
@@ -1824,7 +1827,9 @@ curl https://api.openai.com/v1/audio/translations \
 
 **post** `/audio/speech`
 
-Create speech
+Generates audio from the input text.
+
+Returns the audio file content, or a stream of audio events.
 
 ### Body Parameters
 
@@ -1834,7 +1839,7 @@ Create speech
 
 - `model: string or SpeechModel`
 
-  One of the available [TTS models](https://platform.openai.com/docs/models#tts): `tts-1`, `tts-1-hd`, `gpt-4o-mini-tts`, or `gpt-4o-mini-tts-2025-12-15`.
+  One of the available [TTS models](/docs/models#tts): `tts-1`, `tts-1-hd`, `gpt-4o-mini-tts`, or `gpt-4o-mini-tts-2025-12-15`.
 
   - `string`
 
@@ -1850,7 +1855,7 @@ Create speech
 
 - `voice: string or "alloy" or "ash" or "ballad" or 7 more or object { id }`
 
-  The voice to use when generating the audio. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `onyx`, `nova`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. You may also provide a custom voice object with an `id`, for example `{ "id": "voice_1234" }`. Previews of the voices are available in the [Text to speech guide](https://platform.openai.com/docs/guides/text-to-speech#voice-options).
+  The voice to use when generating the audio. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `onyx`, `nova`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. You may also provide a custom voice object with an `id`, for example `{ "id": "voice_1234" }`. Previews of the voices are available in the [Text to speech guide](/docs/guides/text-to-speech#voice-options).
 
   - `string`
 
@@ -1977,7 +1982,7 @@ curl https://api.openai.com/v1/audio/speech \
 
 **post** `/audio/voices`
 
-Create voice
+Creates a custom voice.
 
 ### Returns
 
@@ -2064,7 +2069,7 @@ curl https://api.openai.com/v1/audio/voices \
 
 **get** `/audio/voice_consents`
 
-List voice consents
+Returns a list of voice consent recordings.
 
 ### Query Parameters
 
@@ -2150,7 +2155,7 @@ curl https://api.openai.com/v1/audio/voice_consents?limit=20 \
 
 **post** `/audio/voice_consents`
 
-Create voice consent
+Upload a voice consent recording.
 
 ### Returns
 
@@ -2214,7 +2219,7 @@ curl https://api.openai.com/v1/audio/voice_consents \
 
 **get** `/audio/voice_consents/{consent_id}`
 
-Retrieve voice consent
+Retrieves a voice consent recording.
 
 ### Path Parameters
 
@@ -2274,7 +2279,7 @@ curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
 
 **post** `/audio/voice_consents/{consent_id}`
 
-Update voice consent
+Updates a voice consent recording (metadata only).
 
 ### Path Parameters
 
@@ -2349,7 +2354,7 @@ curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
 
 **delete** `/audio/voice_consents/{consent_id}`
 
-Delete voice consent
+Deletes a voice consent recording.
 
 ### Path Parameters
 

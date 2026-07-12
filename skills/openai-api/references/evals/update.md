@@ -2,7 +2,7 @@
 
 **post** `/evals/{eval_id}`
 
-Update an eval
+Update certain properties of an evaluation.
 
 ### Path Parameters
 
@@ -56,7 +56,7 @@ Update an eval
 
       - `"custom"`
 
-  - `Logs object { schema, type, metadata }`
+  - `LogsDataSourceConfig object { schema, type, metadata }`
 
     A LogsDataSourceConfig which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -350,7 +350,7 @@ Update an eval
 
       - `"string_check"`
 
-  - `EvalGraderTextSimilarity = TextSimilarityGrader`
+  - `TextSimilarityGrader = TextSimilarityGrader`
 
     A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -358,7 +358,7 @@ Update an eval
 
       The threshold for the score.
 
-  - `EvalGraderPython = PythonGrader`
+  - `PythonGrader = PythonGrader`
 
     A PythonGrader object that runs a python script on the input.
 
@@ -366,7 +366,7 @@ Update an eval
 
       The threshold for the score.
 
-  - `EvalGraderScoreModel = ScoreModelGrader`
+  - `ScoreModelGrader = ScoreModelGrader`
 
     A ScoreModelGrader object that uses a model to assign a score to the input.
 

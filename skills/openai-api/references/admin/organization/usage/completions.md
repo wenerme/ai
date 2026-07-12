@@ -2,7 +2,7 @@
 
 **get** `/organization/usage/completions`
 
-Completions
+Get completions usage details for the organization.
 
 ### Query Parameters
 

@@ -2,7 +2,7 @@
 
 **delete** `/organization/users/{user_id}`
 
-Delete user
+Deletes a user from the organization.
 
 ### Path Parameters
 

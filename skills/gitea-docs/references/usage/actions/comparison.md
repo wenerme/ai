@@ -34,7 +34,11 @@ It's ignored by Gitea Actions now.
 
 See [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idruns-on).
 
-Gitea Actions only supports `runs-on: xyz` or `runs-on: [xyz]` now.
+Gitea Actions supports:
+- Static strings: `runs-on: self-hosted`
+- Arrays of labels: `runs-on: [linux, self-hosted]`
+- String expressions: `runs-on: ${{ github.event_name == 'push' && 'ubuntu-latest' || 'self-hosted' }}`
+- Arrays containing expressions: `runs-on: [linux, "${{ github.event_name == 'push' && 'ubuntu-latest' || 'self-hosted' }}"]`
 
 ## Missing features
 
@@ -59,7 +63,7 @@ It's ignored by Gitea Actions now.
 
 ### Expressions
 
-For [expressions](https://docs.github.com/en/actions/learn-github-actions/expressions), only [`always()`](https://docs.github.com/en/actions/learn-github-actions/expressions#always) is supported.
+For [expressions](https://docs.github.com/en/actions/learn-github-actions/expressions), Gitea Actions supports standard GitHub functions (e.g. `success()`, `failure()`, `always()`, `cancelled()`, `format()`, `toJSON()`) and context variables (like `github`, `matrix`, `vars`, `env`).
 
 ## Missing UI features
 

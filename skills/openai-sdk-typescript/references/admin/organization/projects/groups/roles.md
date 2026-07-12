@@ -6,7 +6,7 @@
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 
-List project group role assignments
+Lists the project roles assigned to a group within a project.
 
 ### Parameters
 
@@ -153,7 +153,7 @@ for await (const roleListResponse of client.admin.organization.projects.groups.r
 
 **post** `/projects/{project_id}/groups/{group_id}/roles`
 
-Assign project role to group
+Assigns a project role to a group within a project.
 
 ### Parameters
 
@@ -290,7 +290,7 @@ console.log(role.group);
 
 **get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Retrieve project group role
+Retrieves a project role assigned to a group.
 
 ### Parameters
 
@@ -417,7 +417,7 @@ console.log(role.id);
 
 **delete** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
 
-Unassign project role from group
+Unassigns a project role from a group within a project.
 
 ### Parameters
 

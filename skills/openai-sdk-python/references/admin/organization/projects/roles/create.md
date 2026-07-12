@@ -4,7 +4,7 @@
 
 **post** `/projects/{project_id}/roles`
 
-Create project role
+Creates a custom role for a project.
 
 ### Parameters
 

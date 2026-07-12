@@ -4,7 +4,7 @@
 
 **get** `/responses/{response_id}?beta=true`
 
-Get a model response
+Retrieves a model response with the given ID.
 
 ### Parameters
 
@@ -313,13 +313,15 @@ Get a model response
 
           - `"developer"`
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
         - `type?: "message"`
 
@@ -560,13 +562,15 @@ Get a model response
 
             The canonical name of the agent that produced this item.
 
-        - `phase?: "commentary" | null`
+        - `phase?: "commentary" | "final_answer" | null`
 
           Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
           For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
           phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
 
           - `"commentary"`
+
+          - `"final_answer"`
 
       - `BetaResponseFileSearchToolCall`
 
@@ -1738,7 +1742,7 @@ Get a model response
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1748,7 +1752,11 @@ Get a model response
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 
@@ -1795,7 +1803,7 @@ Get a model response
 
                       - `"nin"`
 
-                    - `value: string | number | boolean | Array<unknown>`
+                    - `value: string | number | boolean | Array<string | number>`
 
                       The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1805,7 +1813,11 @@ Get a model response
 
                       - `boolean`
 
-                      - `Array<unknown>`
+                      - `Array<string | number>`
+
+                        - `string`
+
+                        - `number`
 
                   - `unknown`
 

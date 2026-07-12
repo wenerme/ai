@@ -2,7 +2,7 @@
 
 **get** `/videos`
 
-List videos
+List recently generated videos for the current project.
 
 ### Query Parameters
 
@@ -92,19 +92,9 @@ List videos
 
     Identifier of the source video if this video is a remix.
 
-  - `seconds: string or VideoSeconds`
+  - `seconds: string`
 
     Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
-
-    - `string`
-
-    - `VideoSeconds = "4" or "8" or "12"`
-
-      - `"4"`
-
-      - `"8"`
-
-      - `"12"`
 
   - `size: VideoSize`
 
@@ -174,7 +164,7 @@ curl https://api.openai.com/v1/videos \
       "progress": 0,
       "prompt": "prompt",
       "remixed_from_video_id": "remixed_from_video_id",
-      "seconds": "4",
+      "seconds": "seconds",
       "size": "720x1280",
       "status": "queued"
     }

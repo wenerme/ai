@@ -2,7 +2,7 @@
 
 **get** `/threads/{thread_id}/messages`
 
-List messages
+Returns a list of messages for a given thread.
 
 ### Path Parameters
 
@@ -44,7 +44,7 @@ List messages
 
   - `assistant_id: string`
 
-    If applicable, the ID of the [assistant](https://platform.openai.com/docs/api-reference/assistants) that authored this message.
+    If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
 
   - `attachments: array of object { file_id, tools }`
 
@@ -66,7 +66,7 @@ List messages
 
           - `"code_interpreter"`
 
-      - `AssistantToolsFileSearchTypeOnly object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -78,19 +78,19 @@ List messages
 
     The Unix timestamp (in seconds) for when the message was completed.
 
-  - `content: array of MessageContent`
+  - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
 
     The content of the message in array of text and/or images.
 
     - `ImageFileContentBlock object { image_file, type }`
 
-      References an image [File](https://platform.openai.com/docs/api-reference/files) in the content of a message.
+      References an image [File](/docs/api-reference/files) in the content of a message.
 
       - `image_file: ImageFile`
 
         - `file_id: string`
 
-          The [File](https://platform.openai.com/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
         - `detail: optional "auto" or "low" or "high"`
 
@@ -140,7 +140,7 @@ List messages
 
       - `text: Text`
 
-        - `annotations: array of Annotation`
+        - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
           - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
@@ -263,7 +263,7 @@ List messages
 
   - `run_id: string`
 
-    The ID of the [run](https://platform.openai.com/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
+    The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
 
   - `status: "in_progress" or "incomplete" or "completed"`
 
@@ -277,7 +277,7 @@ List messages
 
   - `thread_id: string`
 
-    The [thread](https://platform.openai.com/docs/api-reference/threads) ID that this message belongs to.
+    The [thread](/docs/api-reference/threads) ID that this message belongs to.
 
 - `first_id: string`
 

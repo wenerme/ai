@@ -4,7 +4,7 @@
 
 **get** `/organization/spend_alerts`
 
-List organization spend alerts
+Lists organization spend alerts.
 
 ### Query Parameters
 
@@ -167,7 +167,7 @@ curl https://api.openai.com/v1/organization/spend_alerts?limit=20&order=asc \
 
 **post** `/organization/spend_alerts`
 
-Create organization spend alert
+Creates an organization spend alert.
 
 ### Body Parameters
 
@@ -332,7 +332,7 @@ curl -X POST https://api.openai.com/v1/organization/spend_alerts \
 
 **get** `/organization/spend_alerts/{alert_id}`
 
-Retrieve organization spend alert
+Retrieves an organization spend alert.
 
 ### Path Parameters
 
@@ -443,7 +443,7 @@ curl https://api.openai.com/v1/organization/spend_alerts/alert_abc123 \
 
 **post** `/organization/spend_alerts/{alert_id}`
 
-Update organization spend alert
+Updates an organization spend alert.
 
 ### Path Parameters
 
@@ -612,7 +612,7 @@ curl -X POST https://api.openai.com/v1/organization/spend_alerts/alert_abc123 \
 
 **delete** `/organization/spend_alerts/{alert_id}`
 
-Delete organization spend alert
+Deletes an organization spend alert.
 
 ### Path Parameters
 

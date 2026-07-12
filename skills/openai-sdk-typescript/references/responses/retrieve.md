@@ -4,7 +4,7 @@
 
 **get** `/responses/{response_id}`
 
-Get a model response
+Retrieves a model response with the given ID.
 
 ### Parameters
 
@@ -1589,7 +1589,7 @@ Get a model response
 
                   - `"nin"`
 
-                - `value: string | number | boolean | Array<unknown>`
+                - `value: string | number | boolean | Array<string | number>`
 
                   The value to compare against the attribute key; supports string, number, or boolean types.
 
@@ -1599,7 +1599,11 @@ Get a model response
 
                   - `boolean`
 
-                  - `Array<unknown>`
+                  - `Array<string | number>`
+
+                    - `string`
+
+                    - `number`
 
               - `CompoundFilter`
 

@@ -2,7 +2,7 @@
 
 **delete** `/organization/groups/{group_id}`
 
-Delete group
+Deletes a group from the organization.
 
 ### Path Parameters
 
