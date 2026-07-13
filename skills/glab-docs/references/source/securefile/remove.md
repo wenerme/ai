@@ -17,7 +17,7 @@ By default, the file is removed from the current project. Use `--repo`
 to target another project.
 
 ```plaintext
-glab securefile remove <id> [flags]
+glab securefile remove [<id> | --id <id> | --name <name>] [flags]
 ```
 
 ## Aliases
@@ -32,22 +32,29 @@ delete
 ```console
 # Remove a secure file by ID
 glab securefile remove 1
+glab securefile remove --id 1
+
+# Remove a secure file by name
+glab securefile remove --name example.txt
 
 # Skip the confirmation prompt
 glab securefile remove 1 -y
+glab securefile remove --name example.txt -y
 
 # Use the 'rm' alias
 glab securefile rm 1
 
 # Use the 'delete' alias
-glab securefile delete 1
+glab securefile delete --name example.txt
 
 ```
 
 ## Options
 
 ```plaintext
-  -y, --yes   Skip the confirmation prompt.
+      --id int        ID of the secure file to remove.
+      --name string   Name of the secure file to remove.
+  -y, --yes           Skip the confirmation prompt.
 ```
 
 ## Options inherited from parent commands

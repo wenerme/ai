@@ -30,8 +30,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket and enable the data catalog
 
-* [ Wrangler CLI ](#tab-panel-10164)
-* [ Dashboard ](#tab-panel-10165)
+* [ Wrangler CLI ](#tab-panel-10358)
+* [ Dashboard ](#tab-panel-10359)
 
 1. If not already logged in, run:
 ```bash
@@ -64,7 +64,7 @@ Iceberg clients (including [PyIceberg ↗](https://py.iceberg.apache.org/)) must
 2. Select **Manage API tokens**.
 3. Select **Create API token**.
 4. Select the **R2 Token** text to edit your API token name.
-5. Under **Permissions**, choose the **Admin Read & Write** permission.
+5. Under **Permissions**, choose the **Admin Read & Write** permission. This guide creates and writes to tables, so it requires read and write access. For query-only clients, you can instead use an **Admin Read only** token. For details on choosing the right permission level, refer to [Authenticate your Iceberg engine](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/#authenticate-your-iceberg-engine).
 6. Select **Create API Token**.
 7. Note the **Token value**.
 
@@ -210,6 +210,6 @@ In the Python notebook above, you:
 [ Connect to Iceberg engines ](https://developers.cloudflare.com/r2/data-catalog/config-examples/) Find detailed setup instructions for Apache Spark and other common query engines.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/get-started/#page","headline":"Getting started · Cloudflare R2 docs","description":"Learn how to enable the R2 Data Catalog on your bucket, load sample data, and run your first query.","url":"https://developers.cloudflare.com/r2/data-catalog/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/get-started/#page","headline":"Getting started · Cloudflare R2 docs","description":"Learn how to enable the R2 Data Catalog on your bucket, load sample data, and run your first query.","url":"https://developers.cloudflare.com/r2/data-catalog/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/get-started/","name":"Getting started"}}]}
 ```

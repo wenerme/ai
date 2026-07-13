@@ -63,7 +63,7 @@ Jurisdictional buckets can only be accessed via the corresponding jurisdictional
 
 Considerations
 
-* Currently **Admin Read & Write** or **Admin Read only** permission is required to use [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/).
+* [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/) requires an **Admin Read & Write** or **Admin Read only** permission. Read-only catalog operations (such as listing namespaces, loading tables, and querying data) work with **Admin Read only**, while write operations (such as creating or dropping tables and committing transactions) require **Admin Read & Write**. For details, refer to [Authenticate your Iceberg engine](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/#authenticate-your-iceberg-engine).
 * The **Object Read & Write** and **Object Read only** permissions are only supported by the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/), not the [Cloudflare REST API](https://developers.cloudflare.com/api/resources/r2/).
 
 ## Create API tokens via API
@@ -149,6 +149,6 @@ Refer to [Authenticate against R2 API using auth tokens](https://developers.clou
 To issue short-lived, scoped credentials derived from an API token, use [temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/). R2 supports generating them via the Temporary Credentials API or locally by signing a JWT with the parent token's secret access key.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/tokens/#page","headline":"Authentication · Cloudflare R2 docs","description":"Generate and manage R2 API tokens for use with S3-compatible SDKs and APIs.","url":"https://developers.cloudflare.com/r2/api/tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/tokens/#page","headline":"Authentication · Cloudflare R2 docs","description":"Generate and manage R2 API tokens for use with S3-compatible SDKs and APIs.","url":"https://developers.cloudflare.com/r2/api/tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/tokens/","name":"Authentication"}}]}
 ```
