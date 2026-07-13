@@ -33292,6 +33292,7 @@ Fields:
 | <a id="cdapplication-deployments"></a>`deployments`  | [`CdDeploymentConnection`](#cddeploymentconnection) | Introduced in GitLab 19.2. Status: Experiment. Deployments actuated by the application, across its most recent rollouts and environments. |
 | <a id="cdapplication-description"></a>`description` | [`String`](#string) | Description of the application. |
 | <a id="cdapplication-environments"></a>`environments`  | [`CdEnvironmentConnection`](#cdenvironmentconnection) | Introduced in GitLab 19.2. Status: Experiment. Distinct environments the application has been rolled out to, based on the application's most recent rollouts. |
+| <a id="cdapplication-health"></a>`health`  | [`CdServiceHealth`](#cdservicehealth) | Introduced in GitLab 19.2. Status: Experiment. Worst health reported across the application's services, or null when no health has been reported. |
 | <a id="cdapplication-id"></a>`id` | [`CdApplicationID!`](#cdapplicationid) | Global ID of the application. |
 | <a id="cdapplication-lastdeployedat"></a>`lastDeployedAt`  | [`Time`](#time) | Introduced in GitLab 19.2. Status: Experiment. Timestamp of the application's most recently finished deployment, among its most recent rollouts. |
 | <a id="cdapplication-links"></a>`links`  | [`CdApplicationLinkConnection`](#cdapplicationlinkconnection) | Introduced in GitLab 19.2. Status: Experiment. Links belonging to the application. |

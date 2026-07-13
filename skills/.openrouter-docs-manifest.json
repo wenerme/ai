@@ -10423,9 +10423,9 @@
   },
   "api/api-reference/tts/create-speech.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/tts/create-speech.md",
-    "lastModified": "Sat, 11 Jul 2026 03:59:49 GMT",
-    "size": 31591,
-    "updatedAt": "2026-07-11T03:59:49.746Z"
+    "lastModified": "Mon, 13 Jul 2026 04:12:40 GMT",
+    "size": 31636,
+    "updatedAt": "2026-07-13T04:12:40.296Z"
   },
   "api/api-reference/video-generation/download-generated-video-content.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/video-generation/download-generated-video-content.md",
@@ -10597,9 +10597,9 @@
   },
   "app-attribution.md": {
     "url": "https://openrouter.ai/docs/app-attribution.md",
-    "lastModified": "Mon, 06 Jul 2026 14:28:54 GMT",
-    "size": 10368,
-    "updatedAt": "2026-07-06T14:28:55.008Z"
+    "lastModified": "Mon, 13 Jul 2026 04:12:53 GMT",
+    "size": 10445,
+    "updatedAt": "2026-07-13T04:12:53.235Z"
   },
   "client-sdks/agent-migration.md": {
     "url": "https://openrouter.ai/docs/client-sdks/agent-migration.md",
@@ -10765,9 +10765,9 @@
   },
   "client-sdks/go/sdks/tts/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/tts/README.md",
-    "lastModified": "Mon, 06 Jul 2026 14:29:13 GMT",
-    "size": 3007,
-    "updatedAt": "2026-07-06T14:29:13.577Z"
+    "lastModified": "Mon, 13 Jul 2026 04:13:06 GMT",
+    "size": 3022,
+    "updatedAt": "2026-07-13T04:13:06.364Z"
   },
   "client-sdks/go/sdks/videogeneration/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/videogeneration/README.md",
@@ -10939,9 +10939,9 @@
   },
   "client-sdks/python/sdks/tts/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/tts/README.md",
-    "lastModified": "Thu, 09 Jul 2026 04:38:28 GMT",
-    "size": 6157,
-    "updatedAt": "2026-07-09T04:38:28.995Z"
+    "lastModified": "Mon, 13 Jul 2026 04:13:19 GMT",
+    "size": 6232,
+    "updatedAt": "2026-07-13T04:13:19.922Z"
   },
   "client-sdks/python/sdks/videogeneration/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/videogeneration/README.md",
@@ -11203,9 +11203,9 @@
   },
   "client-sdks/typescript/sdks/tts/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/tts/README.md",
-    "lastModified": "Mon, 06 Jul 2026 14:29:55 GMT",
-    "size": 4917,
-    "updatedAt": "2026-07-06T14:29:55.810Z"
+    "lastModified": "Mon, 13 Jul 2026 04:13:41 GMT",
+    "size": 4947,
+    "updatedAt": "2026-07-13T04:13:41.540Z"
   },
   "client-sdks/typescript/sdks/videogeneration/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/videogeneration/README.md",
@@ -11503,9 +11503,9 @@
   },
   "guides/best-practices/prompt-caching.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/prompt-caching.md",
-    "lastModified": "Sat, 11 Jul 2026 04:01:21 GMT",
-    "size": 22240,
-    "updatedAt": "2026-07-11T04:01:21.620Z"
+    "lastModified": "Mon, 13 Jul 2026 04:14:04 GMT",
+    "size": 23215,
+    "updatedAt": "2026-07-13T04:14:04.182Z"
   },
   "guides/best-practices/reasoning-tokens.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens.md",

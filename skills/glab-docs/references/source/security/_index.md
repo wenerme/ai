@@ -5,11 +5,12 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Manage GitLab security features. (EXPERIMENTAL)
+Manage GitLab security scan profiles for a project. (EXPERIMENTAL)
 
 ## Synopsis
 
-Configure GitLab security features for a project.
+Use these commands to enable, disable, or inspect the security scans
+attached to a project.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.

@@ -424,6 +424,21 @@ Caching price changes:
 
 Prompt caching with DeepSeek is automated and does not require any additional configuration.
 
+## Z.AI
+
+Caching price changes:
+
+* **Cache writes**: no cost (Z.AI currently lists cached input storage as limited-time free)
+* **Cache reads**: charged at the discounted cached-input rate shown on each model page (typically about 0.2x the price of the original input pricing)
+
+[Click here to view Z.AI's cache pricing per model.](https://docs.z.ai/guides/overview/pricing)
+
+Prompt caching with Z.AI is automated and does not require any additional configuration. Cache reads are reported in the `cached_tokens` field of `prompt_tokens_details` in the usage response.
+
+[Click here to read more about Z.AI context caching.](https://docs.z.ai/guides/capabilities/cache)
+
+To improve cache hit rates, OpenRouter sends Z.AI a session affinity key with each request, derived from your account and, when provided, your [`session_id`](#using-session_id-for-sticky-sessions). Passing a `session_id` in multi-turn conversations keeps requests from the same session on the same cache.
+
 ## Google Gemini
 
 ### Implicit Caching

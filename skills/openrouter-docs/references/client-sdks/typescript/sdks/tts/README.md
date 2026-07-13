@@ -34,9 +34,9 @@ async function run() {
   const result = await openRouter.tts.createSpeech({
     speechRequest: {
       input: "Hello world",
-      model: "elevenlabs/eleven-turbo-v2",
+      model: "mistralai/voxtral-mini-tts-2603",
       speed: 1,
-      voice: "alloy",
+      voice: "en_paul_neutral",
     },
   });
 
@@ -67,9 +67,9 @@ async function run() {
   const res = await ttsCreateSpeech(openRouter, {
     speechRequest: {
       input: "Hello world",
-      model: "elevenlabs/eleven-turbo-v2",
+      model: "mistralai/voxtral-mini-tts-2603",
       speed: 1,
-      voice: "alloy",
+      voice: "en_paul_neutral",
     },
   });
   if (res.ok) {

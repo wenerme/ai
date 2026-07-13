@@ -76,6 +76,19 @@ As a GitLab Dedicated administrator, you can lock specific subgroups to
 Users with the Owner role in those subgroups cannot enable GitLab Duo,
 while other subgroups remain under owner control.
 
+The lock applies to the subgroup and all its descendant groups and projects.
+Users with the Owner role for the subgroup or its descendants cannot change this setting.
+Affected owners see a message that GitLab Duo is locked by a parent group.
+
+Only one lock can exist in any chain of ancestor and descendant groups.
+When you lock a subgroup:
+
+- If an ancestor group already has an lock, the lock is not applied.
+  You must [clear the lock](#clear-the-lock-for-a-subgroup) from the ancestor group first.
+- If one or more descendant subgroups already have admin locks, you are prompted to confirm.
+  When you confirm, the locks on those descendant subgroups are cleared,
+  and the lock is applied to the subgroup you selected.
+
 ### Lock a subgroup
 
 Prerequisites:
@@ -88,10 +101,6 @@ To lock GitLab Duo off for a subgroup:
 1. In the left sidebar, select **GitLab Duo**.
 1. In the **Namespace availability overrides** section, find the subgroup.
 1. In the row for the subgroup, under **GitLab Duo availability**, select **Always off**.
-
-The lock applies to the subgroup and all its descendant groups and projects.
-Users with the Owner role for the subgroup or its descendants cannot change this setting.
-Affected owners see a message that GitLab Duo is locked by a parent group.
 
 ### Clear the lock for a subgroup
 

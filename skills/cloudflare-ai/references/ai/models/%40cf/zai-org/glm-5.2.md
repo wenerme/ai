@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop)
 
-![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)
+![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)
 
 #  glm-5.2
 
@@ -35,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2280)
-* [  TypeScript ](#tab-panel-2281)
-* [  Python ](#tab-panel-2282)
-* [  curl ](#tab-panel-2283)
+* [  Worker (Streaming) ](#tab-panel-2328)
+* [  TypeScript ](#tab-panel-2329)
+* [  Python ](#tab-panel-2330)
+* [  curl ](#tab-panel-2331)
 
 **TypeScript**
 
@@ -138,8 +138,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-2284)
-* [ Output ](#tab-panel-2285)
+* [ Input ](#tab-panel-2332)
+* [ Output ](#tab-panel-2333)
 
 Input format
 
@@ -313,8 +313,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
-* [ Input ](#tab-panel-2286)
-* [ Output ](#tab-panel-2287)
+* [ Input ](#tab-panel-2334)
+* [ Output ](#tab-panel-2335)
 
 Input format
 
@@ -468,8 +468,8 @@ format
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-2288)
-* [ Output ](#tab-panel-2289)
+* [ Input ](#tab-panel-2336)
+* [ Output ](#tab-panel-2337)
 
 ▶requests\[\]
 
