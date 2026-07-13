@@ -57,12 +57,14 @@ Categories are organized into groups for the [marketplace](https://openrouter.ai
 * `creative-writing` — Creative writing tools
 * `video-gen` — Video generation apps
 * `image-gen` — Image generation apps
+* `audio-gen` — Audio generation apps
 
 **Productivity** — Writing and productivity tools:
 
 * `writing-assistant` — AI-powered writing tools
 * `general-chat` — General chat apps
 * `personal-agent` — Personal AI agents
+* `legal` — Legal tools and assistants
 
 **Entertainment** — Entertainment apps:
 

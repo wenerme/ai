@@ -1250,7 +1250,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 112 skills, 31171 files, 368 MiB total
+> 112 skills, 31177 files, 369 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1302,7 +1302,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 172 | 1.9 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 896 | 8.0 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
-| [glab-docs](./skills/glab-docs/SKILL.md) | 295 | 458 KiB |
+| [glab-docs](./skills/glab-docs/SKILL.md) | 295 | 459 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 697 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 90 | 2.0 MiB |
 | [grafana-docs](./skills/grafana-docs/SKILL.md) | 625 | 6.1 MiB |
@@ -1320,8 +1320,8 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 20 | 155 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 10 | 51 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 818 | 6.4 MiB |
-| [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 153 | 410 KiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 821 | 6.4 MiB |
+| [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 153 | 411 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |
 | [model-reference](./skills/model-reference/SKILL.md) | 17 | 64 KiB |
@@ -1331,8 +1331,8 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 519 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 519 | 24 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 457 KiB |
-| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 448 | 2.4 MiB |
-| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2338 | 13 MiB |
+| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 449 | 2.4 MiB |
+| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2338 | 14 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 76 | 313 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
@@ -1354,7 +1354,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [tmux-session-manager](./skills/tmux-session-manager/SKILL.md) | 1 | 1.7 KiB |
 | [transformers-docs](./skills/transformers-docs/SKILL.md) | 168 | 1.2 MiB |
 | [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 33 | 1.5 MiB |
-| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 489 | 4.2 MiB |
+| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 491 | 4.2 MiB |
 | [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 539 KiB |
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 219 | 1.3 MiB |
 | [vllm-docs](./skills/vllm-docs/SKILL.md) | 172 | 1.4 MiB |

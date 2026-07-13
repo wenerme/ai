@@ -5,7 +5,7 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Configure security scan profiles for a project.
+Configure security scan profiles for a project. (EXPERIMENTAL)
 
 ## Synopsis
 
@@ -14,6 +14,11 @@ Enable, disable, or inspect security scan profiles for a project.
 A profile bundles a set of security scans, such as SAST, secret
 detection, dependency scanning, or container scanning, or post-scan
 processing on given scans, like dependency scanning auto remediation.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
 
 ## Options inherited from parent commands
 
