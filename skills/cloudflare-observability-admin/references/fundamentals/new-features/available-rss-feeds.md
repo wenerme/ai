@@ -209,6 +209,8 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/queues.xml)
 * [R2](https://developers.cloudflare.com/r2/)
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/r2.xml)
+* [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/)
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/r2-data-catalog.xml)
 * [R2 SQL](https://developers.cloudflare.com/r2-sql/)
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/r2-sql.xml)
 * [Realtime](https://developers.cloudflare.com/realtime/)

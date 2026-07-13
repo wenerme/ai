@@ -26,7 +26,7 @@ By default, files are downloaded from the current project. Use
 `--repo` to target another project.
 
 ```plaintext
-glab securefile download [<id>] [flags]
+glab securefile download [<id> | --id <id> | --name <name>] [flags]
 ```
 
 ## Examples

@@ -1,25 +1,24 @@
 ---
-title: 'HyperDX'
-description: 'Provides HyperDX, the UI for ClickStack - a  production-grade observability platform built on ClickHouse and OpenTelemetry (OTel), unifying logs, traces, metrics, and sessions in a single high-performance scalable solution.'
+title: 'ClickStack'
+description: 'Provides the ClickStack UI - a  production-grade observability platform built on ClickHouse and OpenTelemetry (OTel), unifying logs, traces, metrics, and sessions in a single high-performance scalable solution.'
 doc_type: 'guide'
-keywords: ['hyperdx', 'observability', 'integration', 'cloud features', 'monitoring']
+keywords: ['hyperdx', 'observability', 'integration', 'cloud features', 'monitoring', 'clickstack']
 ---
 
-<PrivatePreviewBadge/>
+[**Managed ClickStack**](/use-cases/observability/clickstack) brings the open-source [ClickStack](/use-cases/observability/clickstack) observability platform to ClickHouse Cloud in a fully managed form. Built on ClickHouse and OpenTelemetry (OTel), it unifies logs, traces, metrics, and session data in a single high-performance solution. Designed for monitoring and debugging complex systems, Managed ClickStack enables developers and SREs to trace issues end-to-end without switching between tools or manually stitching together data using timestamps or correlation IDs.
 
-HyperDX is the user interface for [**ClickStack**](/use-cases/observability/clickstack) - a production-grade observability platform built on ClickHouse and OpenTelemetry (OTel), unifying logs, traces, metrics, and session data in a single high-performance solution. Designed for monitoring and debugging complex systems, ClickStack enables developers and SREs to trace issues end-to-end without switching between tools or manually stitching together data using timestamps or correlation IDs.
+As a managed offering, Managed ClickStack delivers the open-source project with the ClickStack UI integrated directly into the ClickHouse Cloud console, native role-based access control (RBAC), and additional capabilities such as AI notebooks and enterprise-grade alerting. There is no infrastructure to manage and no separate authentication to configure.
 
-HyperDX is a purpose-built frontend for exploring and visualizing observability data, supporting both Lucene-style and SQL queries, interactive dashboards, alerting, trace exploration, and more—all optimized for ClickHouse as the backend.
+The ClickStack UI (HyperDX) is a purpose-built frontend for exploring and visualizing observability data, supporting both Lucene-style and SQL queries, interactive dashboards, alerting, trace exploration, and more, all optimized for ClickHouse as the backend.
 
-HyperDX in ClickHouse Cloud allows you to enjoy a more turnkey ClickStack experience - no infrastructure to manage, no separate authentication to configure.
-HyperDX can be launched with a single click and connected to your data -  fully integrated into the ClickHouse Cloud authentication system for seamless, secure access to your observability insights.
+Managed ClickStack can be launched with a single click and connected to your data, fully integrated into the ClickHouse Cloud authentication system for seamless, secure access to your observability insights.
 
 ## Deployment {#main-concepts}
 
-HyperDX in ClickHouse Cloud is currently in private preview and must be enabled at the organization level. Once enabled, you will find HyperDX available in the main left navigation menu when selecting any service.
+You will find ClickStack available in the main left navigation menu when selecting any service.
 
-<Image img={hyperdx_cloud} alt="ClickHouse Cloud HyperDX" size="lg"/>
+<Image img={clickstack_cloud} alt="ClickHouse Cloud HyperDX" size="lg"/>
 
-To get started with HyperDX in ClickHouse Cloud, we recommend our dedicated [getting started guide](/use-cases/observability/clickstack/deployment/clickstack-clickhouse-cloud).
+To get started with ClickStack in ClickHouse Cloud, we recommend our dedicated [getting started guide](/use-cases/observability/clickstack/deployment/clickstack-clickhouse-cloud).
 
 For further details on ClickStack, see the [full documentation](/use-cases/observability/clickstack).
