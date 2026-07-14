@@ -160,8 +160,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-58)
-* [ Raw response ](#tab-panel-59)
+* [ Output ](#tab-panel-60)
+* [ Raw response ](#tab-panel-61)
 
 To read a JSON file in Python, you can use the built-in `json` module. Here's the basic approach:
 
@@ -319,8 +319,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-60)
-* [ Raw response ](#tab-panel-61)
+* [ Output ](#tab-panel-62)
+* [ Raw response ](#tab-panel-63)
 
 Great! The classic route from San Francisco to Los Angeles along the California coast—especially **Highway 1 (Pacific Coast Highway)**—is one of the most scenic drives in the world. While it takes longer than the inland I-5 freeway (about 8–10 hours without stops), it’s absolutely worth it for the views and experiences. Here are some top places to stop, roughly ordered from north to south:
 
@@ -452,8 +452,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-62)
-* [ Raw response ](#tab-panel-63)
+* [ Output ](#tab-panel-64)
+* [ Raw response ](#tab-panel-65)
 
 Rain slicked the cobblestones of Blackwater Lane, turning the gaslight into smears of gold on wet stone. Detective Aris Thorne hunched deeper into his trench coat, the damp wool smell a familiar companion to the city’s usual perfume of coal smoke and despair. Another dead end—literally and figuratively—in the case of the vanished heiress, Elara Vance. The alley reeked of stale beer and something sharper, metallic.
 
@@ -535,8 +535,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-64)
-* [ Raw response ](#tab-panel-65)
+* [ Output ](#tab-panel-68)
+* [ Raw response ](#tab-panel-69)
 
 **Recursion** is a programming technique where a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.
 
@@ -1977,14 +1977,99 @@ Each recursive call works on a **smaller version** of the original problem until
 ]
 ```
 
+**Web Search**  — Letting Qwen use DashScope's built-in web search via enable\_search
+
+* [ TypeScript ](#tab-panel-58)
+* [ cURL ](#tab-panel-59)
+
+**TypeScript**
+
+```ts
+const response = await env.AI.run(
+  'alibaba/qwen3-max',
+  {
+    enable_search: true,
+    max_tokens: 4096,
+    messages: [
+      {
+        content:
+          'What were the top news stories about Cloudflare this week? Summarise in three bullets.',
+        role: 'user',
+      },
+    ],
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/qwen3-max",
+  "enable_search": true,
+  "max_tokens": 4096,
+  "messages": [
+    {
+      "content": "What were the top news stories about Cloudflare this week? Summarise in three bullets.",
+      "role": "user"
+    }
+  ]
+}'
+```
+
+* [ Output ](#tab-panel-66)
+* [ Raw response ](#tab-panel-67)
+
+As of the week ending June 23, 2026, the top Cloudflare news stories include:
+
+- **Acquisition of VoidZero**: On June 4, 2026, Cloudflare announced it acquired VoidZero to accelerate development of the AI-native web, enhancing its platform for next-generation agentic applications.
+
+- **Secure Sandboxes for Claude Managed Agents**: On May 19, 2026, Cloudflare introduced secure, scalable sandboxes integrated with Anthropic’s Claude Managed Agents, strengthening runtime security for AI agents—a key update still resonating in early June coverage.
+
+- **Industry Recognition and Strategic Momentum**: Throughout June, Cloudflare continued to be highlighted as a Leader in Edge Development Platforms (per an independent research firm report on May 5, widely cited in June) and maintained media visibility through its ongoing “Agents Week 2026” initiatives, reinforcing its position at the forefront of agentic AI infrastructure.
+
+```json
+{
+  "id": "chatcmpl-5860fcba-c7bc-9e5e-afd8-d32376b5a423",
+  "object": "chat.completion",
+  "created": 1782161284,
+  "model": "qwen3-max",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "As of the week ending June 23, 2026, the top Cloudflare news stories include:\n\n- **Acquisition of VoidZero**: On June 4, 2026, Cloudflare announced it acquired VoidZero to accelerate development of the AI-native web, enhancing its platform for next-generation agentic applications.\n\n- **Secure Sandboxes for Claude Managed Agents**: On May 19, 2026, Cloudflare introduced secure, scalable sandboxes integrated with Anthropic’s Claude Managed Agents, strengthening runtime security for AI agents—a key update still resonating in early June coverage.\n\n- **Industry Recognition and Strategic Momentum**: Throughout June, Cloudflare continued to be highlighted as a Leader in Edge Development Platforms (per an independent research firm report on May 5, widely cited in June) and maintained media visibility through its ongoing “Agents Week 2026” initiatives, reinforcing its position at the forefront of agentic AI infrastructure."
+      },
+      "finish_reason": "stop",
+      "logprobs": null
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3589,
+    "completion_tokens": 196,
+    "total_tokens": 3785,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "system_fingerprint": null,
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
+```
+
 ## Parameters
 
 Schema variant
 
 Chat CompletionsResponses
 
-* [ Input ](#tab-panel-66)
-* [ Output ](#tab-panel-67)
+* [ Input ](#tab-panel-70)
+* [ Output ](#tab-panel-71)
 
 ▶messages\[\]
 

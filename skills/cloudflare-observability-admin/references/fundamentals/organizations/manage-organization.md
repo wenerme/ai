@@ -1,6 +1,6 @@
 ---
 title: Manage organizations
-description: Rename your Cloudflare Organization, edit customer identification data, and manage settings with Terraform.
+description: Manage your Cloudflare Organization — refer to the guide for your Organization type.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -12,25 +12,12 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Manage organizations
 
-## Rename your organization
+Organization management (rename, edit settings, Terraform) is covered within each Organization type guide:
 
-1. Go to **Organizations** \> **Manage Organization**.
-2. Next to **Organization name**, select **Rename**.
-3. Enter the new name.
-4. Select **Rename**.
-
-## Edit customer identification data
-
-1. Go to **Organizations** \> **Manage Organization**.
-2. Next to **Customer identification data**, select **Edit**.
-3. Update the information.
-4. Select **Save**.
-
-## Terraform
-
-You can manage Organizations using the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/organization).
+* **[Organizations for Enterprise](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#manage-your-organization)** — Rename, edit customer identification data, and manage with Terraform for Enterprise Organizations.
+* **[Organizations for MSSP and Distributors](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/#manage-your-organization)** — Rename, edit customer identification data, and manage with Terraform for MSSP/Distributor Organizations.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/manage-organization/#page","headline":"Manage organizations · Cloudflare Fundamentals docs","description":"Rename your Cloudflare Organization, edit customer identification data, and manage settings with Terraform.","url":"https://developers.cloudflare.com/fundamentals/organizations/manage-organization/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/organizations/manage-organization/#page","headline":"Manage organizations · Cloudflare Fundamentals docs","description":"Manage your Cloudflare Organization — refer to the guide for your Organization type.","url":"https://developers.cloudflare.com/fundamentals/organizations/manage-organization/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/organizations/","name":"Organizations"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/organizations/manage-organization/","name":"Manage organizations"}}]}
 ```

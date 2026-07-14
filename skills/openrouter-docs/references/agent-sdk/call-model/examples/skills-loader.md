@@ -12,9 +12,27 @@ This example shows how to build encapsulated, self-managing tools that inject do
 
 ## Prerequisites
 
-```bash lines theme={null}
-pnpm add @openrouter/sdk zod
-```
+<CodeGroup>
+  ```bash title="npm" lines theme={null}
+  npm install @openrouter/agent zod
+  ```
+
+  ```bash title="pnpm" lines theme={null}
+  pnpm add @openrouter/agent zod
+  ```
+
+  ```bash title="yarn" lines theme={null}
+  yarn add @openrouter/agent zod
+  ```
+
+  ```bash title="bun" lines theme={null}
+  bun add @openrouter/agent zod
+  ```
+
+  ```bash title="deno" lines theme={null}
+  deno add npm:@openrouter/agent npm:zod
+  ```
+</CodeGroup>
 
 Create a skills directory:
 

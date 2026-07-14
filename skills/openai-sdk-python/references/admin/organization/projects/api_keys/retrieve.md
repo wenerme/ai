@@ -94,6 +94,14 @@ Retrieves an API key in the project.
 
         The user's project role.
 
+  - `owner_project_access: Literal["active", "inactive"]`
+
+    Whether the API key's owner currently has effective access to the project.
+
+    - `"active"`
+
+    - `"inactive"`
+
   - `redacted_value: str`
 
     The redacted value of the API key
@@ -139,6 +147,7 @@ print(project_api_key.id)
       "role": "role"
     }
   },
+  "owner_project_access": "active",
   "redacted_value": "redacted_value"
 }
 ```

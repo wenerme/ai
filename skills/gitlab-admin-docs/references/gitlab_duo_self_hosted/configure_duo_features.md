@@ -69,7 +69,9 @@ To determine the timeout value:
 - Consider your infrastructure. Model performance depends on available GPU resources, network latency between the AI Gateway and model endpoint, and the model's processing capabilities.
 - Increase incrementally. If you experience timeouts, increase the value gradually (for example, by 30-60 seconds) and monitor the results.
 
-For more information on troubleshooting timeout errors, see [Error A1000](troubleshooting.md#error-a1000).
+For more information about troubleshooting timeout errors, see [`Error A1000`](troubleshooting.md#error-a1000).
+If responses are cut off without an error even with higher timeout values, see
+[responses are truncated without an error](troubleshooting.md#responses-are-truncated-without-an-error).
 
 ### Configure the chat model request timeout
 

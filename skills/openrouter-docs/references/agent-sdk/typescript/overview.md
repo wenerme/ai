@@ -86,9 +86,27 @@ for await (const chunk of stream) {
 
 ## Installation
 
-```bash lines theme={null}
-npm install @openrouter/sdk
-```
+<CodeGroup>
+  ```bash title="npm" lines theme={null}
+  npm install @openrouter/sdk
+  ```
+
+  ```bash title="pnpm" lines theme={null}
+  pnpm add @openrouter/sdk
+  ```
+
+  ```bash title="yarn" lines theme={null}
+  yarn add @openrouter/sdk
+  ```
+
+  ```bash title="bun" lines theme={null}
+  bun add @openrouter/sdk
+  ```
+
+  ```bash title="deno" lines theme={null}
+  deno add npm:@openrouter/sdk
+  ```
+</CodeGroup>
 
 Get your API key from [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys).
 

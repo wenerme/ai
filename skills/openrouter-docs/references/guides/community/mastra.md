@@ -50,9 +50,27 @@ You can also remove the `@ai-sdk/openai` package since we'll be using OpenRouter
 npm uninstall @ai-sdk/openai
 ```
 
-```bash lines theme={null}
-npm install @openrouter/ai-sdk-provider
-```
+<CodeGroup>
+  ```bash title="npm" lines theme={null}
+  npm install @openrouter/ai-sdk-provider
+  ```
+
+  ```bash title="pnpm" lines theme={null}
+  pnpm add @openrouter/ai-sdk-provider
+  ```
+
+  ```bash title="yarn" lines theme={null}
+  yarn add @openrouter/ai-sdk-provider
+  ```
+
+  ```bash title="bun" lines theme={null}
+  bun add @openrouter/ai-sdk-provider
+  ```
+
+  ```bash title="deno" lines theme={null}
+  deno add npm:@openrouter/ai-sdk-provider
+  ```
+</CodeGroup>
 
 ### Step 3: Configure your agent to use OpenRouter
 

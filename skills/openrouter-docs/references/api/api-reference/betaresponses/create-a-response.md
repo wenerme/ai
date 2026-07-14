@@ -566,7 +566,7 @@ components:
               - $ref: '#/components/schemas/FilesServerTool'
               - $ref: '#/components/schemas/FusionServerTool_OpenRouter'
               - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
-              - $ref: '#/components/schemas/ChatSearchModelsServerTool'
+              - $ref: '#/components/schemas/SearchModelsServerTool_OpenRouter'
               - $ref: '#/components/schemas/WebFetchServerTool'
               - $ref: '#/components/schemas/WebSearchServerTool_OpenRouter'
               - $ref: '#/components/schemas/ApplyPatchServerTool_OpenRouter'
@@ -2433,7 +2433,7 @@ components:
       required:
         - type
       type: object
-    ChatSearchModelsServerTool:
+    SearchModelsServerTool_OpenRouter:
       description: >-
         OpenRouter built-in server tool: searches and filters AI models
         available on OpenRouter
@@ -5107,7 +5107,7 @@ components:
               - $ref: '#/components/schemas/FilesServerTool'
               - $ref: '#/components/schemas/FusionServerTool_OpenRouter'
               - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
-              - $ref: '#/components/schemas/ChatSearchModelsServerTool'
+              - $ref: '#/components/schemas/SearchModelsServerTool_OpenRouter'
               - $ref: '#/components/schemas/WebFetchServerTool'
               - $ref: '#/components/schemas/WebSearchServerTool_OpenRouter'
               - $ref: '#/components/schemas/ApplyPatchServerTool_OpenRouter'

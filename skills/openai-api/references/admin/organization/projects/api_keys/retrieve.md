@@ -12,7 +12,7 @@ Retrieves an API key in the project.
 
 ### Returns
 
-- `ProjectAPIKey object { id, created_at, last_used_at, 4 more }`
+- `ProjectAPIKey object { id, created_at, last_used_at, 5 more }`
 
   Represents an individual API key in a project.
 
@@ -92,6 +92,14 @@ Retrieves an API key in the project.
 
         The user's project role.
 
+  - `owner_project_access: "active" or "inactive"`
+
+    Whether the API key's owner currently has effective access to the project.
+
+    - `"active"`
+
+    - `"inactive"`
+
   - `redacted_value: string`
 
     The redacted value of the API key
@@ -128,6 +136,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_K
       "role": "role"
     }
   },
+  "owner_project_access": "active",
   "redacted_value": "redacted_value"
 }
 ```
@@ -150,6 +159,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
     "created_at": 1711471533,
     "last_used_at": 1711471534,
     "id": "key_abc",
+    "owner_project_access": "active",
     "owner": {
         "type": "user",
         "user": {

@@ -95,10 +95,10 @@ CI/CD job tokens can access the following REST API endpoints:
 
 | Permission | API endpoint | Permission name | Scope |
 | ---------- | ------------ | --------------- | ----- |
-| Get a list of merge request notes | `GET /projects/:id/merge_requests/:noteable_id/notes` | `READ_MERGE_REQUESTS` | Read |
-| Get a single merge request note | `GET /projects/:id/merge_requests/:noteable_id/notes/:note_id` | `READ_MERGE_REQUESTS` | Read |
+| List all merge request notes | `GET /projects/:id/merge_requests/:noteable_id/notes` | `READ_MERGE_REQUESTS` | Read |
 | List all project merge requests | `GET /projects/:id/merge_requests` | `READ_MERGE_REQUESTS` | Read |
 | Retrieve a merge request | `GET /projects/:id/merge_requests/:merge_request_iid` | `READ_MERGE_REQUESTS` | Read |
+| Retrieve a merge request note | `GET /projects/:id/merge_requests/:noteable_id/notes/:note_id` | `READ_MERGE_REQUESTS` | Read |
 
 ### Packages endpoints
 

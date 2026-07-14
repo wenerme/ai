@@ -22,8 +22,8 @@ For more details about monitors, refer to [Monitors](https://developers.cloudfla
 
 ## Create a monitor
 
-* [ Dashboard ](#tab-panel-9740)
-* [ API ](#tab-panel-9741)
+* [ Dashboard ](#tab-panel-10064)
+* [ API ](#tab-panel-10065)
 
 **Set up the monitor**
 
@@ -191,8 +191,8 @@ Once your monitor is created, save its `id` property. Include this value in the 
 
 ## Edit a monitor
 
-* [ Dashboard ](#tab-panel-9736)
-* [ API ](#tab-panel-9737)
+* [ Dashboard ](#tab-panel-10060)
+* [ API ](#tab-panel-10061)
 
 To edit a monitor in the dashboard:
 
@@ -210,8 +210,8 @@ To update specific settings without having to resubmit the entire configuration,
 
 ## Delete a monitor
 
-* [ Dashboard ](#tab-panel-9738)
-* [ API ](#tab-panel-9739)
+* [ Dashboard ](#tab-panel-10062)
+* [ API ](#tab-panel-10063)
 
 To delete a monitor in the dashboard:
 

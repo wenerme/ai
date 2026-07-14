@@ -1271,8 +1271,8 @@
   },
   "grafana-pathfinder-app/upgrade-notes.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/upgrade-notes.md",
-    "size": 9430,
-    "updatedAt": "2026-06-25T05:42:58.050Z"
+    "size": 9281,
+    "updatedAt": "2026-07-14T03:57:50.440Z"
   },
   "grafana-pyroscope-app/access.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/access.md",

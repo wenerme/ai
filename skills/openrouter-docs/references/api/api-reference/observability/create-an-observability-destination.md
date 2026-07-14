@@ -230,7 +230,7 @@ components:
           example: true
           type: boolean
         filter_rules:
-          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfigNullable'
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
@@ -407,7 +407,7 @@ components:
       required:
         - error
       type: object
-    ObservabilityFilterRulesConfig:
+    ObservabilityFilterRulesConfigNullable:
       description: Optional structured filter rules controlling which events are forwarded.
       example: null
       nullable: true
@@ -417,59 +417,7 @@ components:
           type: boolean
         groups:
           items:
-            properties:
-              logic:
-                default: and
-                enum:
-                  - and
-                  - or
-                type: string
-              rules:
-                items:
-                  properties:
-                    field:
-                      enum:
-                        - model
-                        - provider
-                        - session_id
-                        - user_id
-                        - api_key_name
-                        - finish_reason
-                        - input
-                        - output
-                        - total_cost
-                        - total_tokens
-                        - prompt_tokens
-                        - completion_tokens
-                      type: string
-                    operator:
-                      enum:
-                        - equals
-                        - not_equals
-                        - contains
-                        - not_contains
-                        - regex
-                        - starts_with
-                        - ends_with
-                        - gt
-                        - lt
-                        - gte
-                        - lte
-                        - exists
-                        - not_exists
-                      type: string
-                    value:
-                      anyOf:
-                        - type: string
-                        - type: number
-                  required:
-                    - field
-                    - operator
-                  type: object
-                type: array
-            required:
-              - rules
-            type: object
+            $ref: '#/components/schemas/ObservabilityFilterRuleGroup'
           type: array
       required:
         - groups
@@ -640,6 +588,66 @@ components:
       required:
         - code
         - message
+      type: object
+    ObservabilityFilterRuleGroup:
+      example:
+        logic: and
+        rules:
+          - field: model
+            operator: equals
+            value: openai/gpt-4o
+      properties:
+        logic:
+          default: and
+          enum:
+            - and
+            - or
+          type: string
+        rules:
+          items:
+            properties:
+              field:
+                enum:
+                  - model
+                  - provider
+                  - session_id
+                  - user_id
+                  - api_key_name
+                  - finish_reason
+                  - input
+                  - output
+                  - total_cost
+                  - total_tokens
+                  - prompt_tokens
+                  - completion_tokens
+                type: string
+              operator:
+                enum:
+                  - equals
+                  - not_equals
+                  - contains
+                  - not_contains
+                  - regex
+                  - starts_with
+                  - ends_with
+                  - gt
+                  - lt
+                  - gte
+                  - lte
+                  - exists
+                  - not_exists
+                type: string
+              value:
+                anyOf:
+                  - type: string
+                  - type: number
+            required:
+              - field
+              - operator
+            type: object
+          type: array
+      required:
+        - rules
       type: object
     ObservabilityArizeDestination:
       example:
@@ -2520,6 +2528,21 @@ components:
         - updated_at
         - type
         - config
+      type: object
+    ObservabilityFilterRulesConfig:
+      description: Optional structured filter rules controlling which events are forwarded.
+      example: null
+      nullable: true
+      properties:
+        enabled:
+          default: true
+          type: boolean
+        groups:
+          items:
+            $ref: '#/components/schemas/ObservabilityFilterRuleGroup'
+          type: array
+      required:
+        - groups
       type: object
   securitySchemes:
     apiKey:

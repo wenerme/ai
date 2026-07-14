@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 When you build MCP Servers on Cloudflare, you extend the [McpAgent class ↗](https://github.com/cloudflare/agents/blob/main/packages/agents/src/mcp/index.ts#L32-L620), from the Agents SDK:
 
-* [  JavaScript ](#tab-panel-5953)
-* [  TypeScript ](#tab-panel-5954)
+* [  JavaScript ](#tab-panel-6195)
+* [  TypeScript ](#tab-panel-6196)
 
 **JavaScript**
 
@@ -96,8 +96,8 @@ You can use the APIs below in order to do so.
 
 The `McpAgent.serve()` static method creates a Worker handler that routes requests to your MCP server:
 
-* [  JavaScript ](#tab-panel-5955)
-* [  TypeScript ](#tab-panel-5956)
+* [  JavaScript ](#tab-panel-6197)
+* [  TypeScript ](#tab-panel-6198)
 
 **JavaScript**
 
@@ -153,8 +153,8 @@ This is the simplest way to deploy an MCP server — about 15 lines of code. The
 
 When using the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider), pass your MCP server to `apiHandlers`:
 
-* [  JavaScript ](#tab-panel-5947)
-* [  TypeScript ](#tab-panel-5948)
+* [  JavaScript ](#tab-panel-6189)
+* [  TypeScript ](#tab-panel-6190)
 
 **JavaScript**
 
@@ -190,8 +190,8 @@ export default new OAuthProvider({
 
 For GDPR and data residency compliance, specify a jurisdiction to ensure your MCP server instances run in specific regions:
 
-* [  JavaScript ](#tab-panel-5945)
-* [  TypeScript ](#tab-panel-5946)
+* [  JavaScript ](#tab-panel-6187)
+* [  TypeScript ](#tab-panel-6188)
 
 **JavaScript**
 
@@ -209,8 +209,8 @@ export default MyMCP.serve("/mcp", { jurisdiction: "eu" });
 
 With OAuth:
 
-* [  JavaScript ](#tab-panel-5951)
-* [  TypeScript ](#tab-panel-5952)
+* [  JavaScript ](#tab-panel-6193)
+* [  TypeScript ](#tab-panel-6194)
 
 **JavaScript**
 
@@ -257,8 +257,8 @@ Hibernation is enabled by default and requires no additional configuration.
 
 `DurableObjectEventStore` is exported from `agents/mcp` for stateful `WorkerTransport` callers that embed the transport inside an Agent or Durable Object:
 
-* [  JavaScript ](#tab-panel-5949)
-* [  TypeScript ](#tab-panel-5950)
+* [  JavaScript ](#tab-panel-6191)
+* [  TypeScript ](#tab-panel-6192)
 
 **JavaScript**
 
@@ -307,8 +307,8 @@ Currently, each client session is backed by an instance of the `McpAgent` class.
 
 For example, the following code implements an MCP server that remembers a counter value, and updates the counter when the `add` tool is called:
 
-* [  JavaScript ](#tab-panel-5959)
-* [  TypeScript ](#tab-panel-5960)
+* [  JavaScript ](#tab-panel-6205)
+* [  TypeScript ](#tab-panel-6206)
 
 **JavaScript**
 
@@ -423,285 +423,207 @@ export class MyMCP extends McpAgent<Env, State, {}> {
 }
 ```
 
-## Elicitation (human-in-the-loop)
+## Elicitation
 
-MCP servers can request additional user input during tool execution using **elicitation**. The MCP client (like Claude Desktop) renders a form based on your JSON Schema and returns the user's response.
+[MCP elicitation ↗](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation) lets a server request user input while handling another request, such as a tool call. The current stable MCP specification defines two modes:
 
-### When to use elicitation
+* **Form mode** collects structured, non-sensitive data through the client.
+* **URL mode** sends the user to an out-of-band interaction, such as third-party authorization or payment.
 
-* Request structured input that was not part of the original tool call
-* Confirm high-stakes operations before proceeding
-* Gather additional context or preferences mid-execution
+The client must advertise support for a mode before the server sends it.
 
-### `elicitInput(options, context)`
+### Form mode
 
-Request structured input from the user during tool execution.
+Call `this.server.server.elicitInput()` in a tool handler. Pass `extra.requestId` as `relatedRequestId` so the response returns on the stream for the originating tool call:
 
-**Parameters:**
-
-| Parameter                | Type        | Description                                  |
-| ------------------------ | ----------- | -------------------------------------------- |
-| options.message          | string      | Message explaining what input is needed      |
-| options.requestedSchema  | JSON Schema | Schema defining the expected input structure |
-| context.relatedRequestId | string      | The extra.requestId from the tool handler    |
-
-**Returns:** `Promise<{ action: "accept" | "decline", content?: object }>`
-
-* [  JavaScript ](#tab-panel-5961)
-* [  TypeScript ](#tab-panel-5962)
+* [  JavaScript ](#tab-panel-6201)
+* [  TypeScript ](#tab-panel-6202)
 
 **JavaScript**
 
 ```js
-import { McpAgent } from "agents/mcp";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { z } from "zod";
-
-
-export class CounterMCP extends McpAgent {
-  server = new McpServer({
-    name: "counter-server",
-    version: "1.0.0",
-  });
-
-
-  initialState = { counter: 0 };
-
-
-  async init() {
-    this.server.tool(
-      "increase-counter",
-      "Increase the counter by a user-specified amount",
-      { confirm: z.boolean().describe("Do you want to increase the counter?") },
-      async ({ confirm }, extra) => {
-        if (!confirm) {
-          return { content: [{ type: "text", text: "Cancelled." }] };
-        }
-
-
-        // Request additional input from the user
-        const userInput = await this.server.server.elicitInput(
-          {
-            message: "By how much do you want to increase the counter?",
-            requestedSchema: {
-              type: "object",
-              properties: {
-                amount: {
-                  type: "number",
-                  title: "Amount",
-                  description: "The amount to increase the counter by",
-                },
-              },
-              required: ["amount"],
-            },
-          },
-          { relatedRequestId: extra.requestId },
-        );
-
-
-        // Check if user accepted or cancelled
-        if (userInput.action !== "accept" || !userInput.content) {
-          return { content: [{ type: "text", text: "Cancelled." }] };
-        }
-
-
-        // Use the input
-        const amount = Number(userInput.content.amount);
-        this.setState({
-          ...this.state,
-          counter: this.state.counter + amount,
-        });
-
-
-        return {
-          content: [
-            {
-              type: "text",
-              text: `Counter increased by ${amount}, now at ${this.state.counter}`,
-            },
-          ],
-        };
+const result = await this.server.server.elicitInput(
+  {
+    mode: "form",
+    message: "By how much do you want to increase the counter?",
+    requestedSchema: {
+      type: "object",
+      properties: {
+        amount: {
+          type: "number",
+          title: "Amount",
+          minimum: 1,
+          maximum: 100,
+        },
       },
-    );
-  }
-}
-```
-
-**TypeScript**
-
-```ts
-import { McpAgent } from "agents/mcp";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { z } from "zod";
-
-
-type State = { counter: number };
-
-
-export class CounterMCP extends McpAgent<Env, State, {}> {
-  server = new McpServer({
-    name: "counter-server",
-    version: "1.0.0",
-  });
-
-
-  initialState: State = { counter: 0 };
-
-
-  async init() {
-    this.server.tool(
-      "increase-counter",
-      "Increase the counter by a user-specified amount",
-      { confirm: z.boolean().describe("Do you want to increase the counter?") },
-      async ({ confirm }, extra) => {
-        if (!confirm) {
-          return { content: [{ type: "text", text: "Cancelled." }] };
-        }
-
-
-        // Request additional input from the user
-        const userInput = await this.server.server.elicitInput(
-          {
-            message: "By how much do you want to increase the counter?",
-            requestedSchema: {
-              type: "object",
-              properties: {
-                amount: {
-                  type: "number",
-                  title: "Amount",
-                  description: "The amount to increase the counter by",
-                },
-              },
-              required: ["amount"],
-            },
-          },
-          { relatedRequestId: extra.requestId },
-        );
-
-
-        // Check if user accepted or cancelled
-        if (userInput.action !== "accept" || !userInput.content) {
-          return { content: [{ type: "text", text: "Cancelled." }] };
-        }
-
-
-        // Use the input
-        const amount = Number(userInput.content.amount);
-        this.setState({
-          ...this.state,
-          counter: this.state.counter + amount,
-        });
-
-
-        return {
-          content: [
-            {
-              type: "text",
-              text: `Counter increased by ${amount}, now at ${this.state.counter}`,
-            },
-          ],
-        };
-      },
-    );
-  }
-}
-```
-
-### JSON Schema for forms
-
-The `requestedSchema` defines the form structure shown to the user:
-
-**TypeScript**
-
-```ts
-const schema = {
-  type: "object",
-  properties: {
-    // Text input
-    name: {
-      type: "string",
-      title: "Name",
-      description: "Enter your name",
-    },
-    // Number input
-    amount: {
-      type: "number",
-      title: "Amount",
-      minimum: 1,
-      maximum: 100,
-    },
-    // Boolean (checkbox)
-    confirm: {
-      type: "boolean",
-      title: "I confirm this action",
-    },
-    // Enum (dropdown)
-    priority: {
-      type: "string",
-      enum: ["low", "medium", "high"],
-      title: "Priority",
+      required: ["amount"],
     },
   },
-  required: ["name", "amount"],
+  { relatedRequestId: extra.requestId },
+);
+
+
+if (result.action !== "accept" || !result.content) {
+  return { content: [{ type: "text", text: "Counter unchanged." }] };
+}
+
+
+const amount = Number(result.content.amount);
+```
+
+**TypeScript**
+
+```ts
+const result = await this.server.server.elicitInput(
+  {
+    mode: "form",
+    message: "By how much do you want to increase the counter?",
+    requestedSchema: {
+      type: "object",
+      properties: {
+        amount: {
+          type: "number",
+          title: "Amount",
+          minimum: 1,
+          maximum: 100,
+        },
+      },
+      required: ["amount"],
+    },
+  },
+  { relatedRequestId: extra.requestId },
+);
+
+
+if (result.action !== "accept" || !result.content) {
+  return { content: [{ type: "text", text: "Counter unchanged." }] };
+}
+
+
+const amount = Number(result.content.amount);
+```
+
+For backwards compatibility, form requests may omit `mode: "form"`. The schema supports flat objects with primitive fields. Do not use form mode to request passwords, API keys, access tokens, payment credentials, or other secrets.
+
+### URL mode
+
+Use URL mode for interactions that must happen outside the MCP client. The request includes a message, the URL, and a unique `elicitationId`:
+
+* [  JavaScript ](#tab-panel-6203)
+* [  TypeScript ](#tab-panel-6204)
+
+**JavaScript**
+
+```js
+const elicitationId = crypto.randomUUID();
+const result = await this.server.server.elicitInput(
+  {
+    mode: "url",
+    message: "Connect your account to continue.",
+    url: `https://example.com/connect?elicitationId=${elicitationId}`,
+    elicitationId,
+  },
+  { relatedRequestId: extra.requestId },
+);
+
+
+if (result.action !== "accept") {
+  return { content: [{ type: "text", text: "Connection cancelled." }] };
+}
+
+
+return {
+  content: [
+    {
+      type: "text",
+      text: "Connection page opened. Complete it in your browser.",
+    },
+  ],
 };
 ```
 
-### Handling responses
+**TypeScript**
 
-* [  JavaScript ](#tab-panel-5957)
-* [  TypeScript ](#tab-panel-5958)
-
-**JavaScript**
-
-```js
+```ts
+const elicitationId = crypto.randomUUID();
 const result = await this.server.server.elicitInput(
-  { message: "Confirm action", requestedSchema: schema },
+  {
+    mode: "url",
+    message: "Connect your account to continue.",
+    url: `https://example.com/connect?elicitationId=${elicitationId}`,
+    elicitationId,
+  },
   { relatedRequestId: extra.requestId },
 );
 
 
+if (result.action !== "accept") {
+  return { content: [{ type: "text", text: "Connection cancelled." }] };
+}
+
+
+return {
+  content: [
+    {
+      type: "text",
+      text: "Connection page opened. Complete it in your browser.",
+    },
+  ],
+};
+```
+
+For URL mode, `accept` means the user consented to open the URL. It does not mean the external interaction finished. The server may later send `notifications/elicitation/complete` with the same `elicitationId`.
+
+Do not put secrets, personal information, or a pre-authenticated protected-resource URL in `url`. Production servers should use HTTPS. Bind each request to the authenticated user, and verify that the same user completes the external flow.
+
+### Handle responses
+
+Both modes return one of three actions:
+
+| Action  | Meaning                                                           |
+| ------- | ----------------------------------------------------------------- |
+| accept  | The user submitted the form or consented to open the URL.         |
+| decline | The user explicitly rejected the request.                         |
+| cancel  | The user dismissed the request without making an explicit choice. |
+
+Accepted form responses include `content` that matches `requestedSchema`. URL responses omit `content`. Decline and cancel responses typically omit it.
+
+* [  JavaScript ](#tab-panel-6199)
+* [  TypeScript ](#tab-panel-6200)
+
+**JavaScript**
+
+```js
 switch (result.action) {
   case "accept":
-    // User submitted the form
-    const { name, amount } = result.content;
-    // Process the input...
+    // For form mode, validate and process result.content.
     break;
-
-
   case "decline":
-    // User cancelled
-    return { content: [{ type: "text", text: "Operation cancelled." }] };
+    return { content: [{ type: "text", text: "Request declined." }] };
+  case "cancel":
+    return { content: [{ type: "text", text: "Request dismissed." }] };
 }
 ```
 
 **TypeScript**
 
 ```ts
-const result = await this.server.server.elicitInput(
-  { message: "Confirm action", requestedSchema: schema },
-  { relatedRequestId: extra.requestId },
-);
-
-
 switch (result.action) {
   case "accept":
-    // User submitted the form
-    const { name, amount } = result.content as { name: string; amount: number };
-    // Process the input...
+    // For form mode, validate and process result.content.
     break;
-
-
   case "decline":
-    // User cancelled
-    return { content: [{ type: "text", text: "Operation cancelled." }] };
+    return { content: [{ type: "text", text: "Request declined." }] };
+  case "cancel":
+    return { content: [{ type: "text", text: "Request dismissed." }] };
 }
 ```
 
 MCP client support
 
-Elicitation requires MCP client support. Not all MCP clients implement the elicitation capability. Check the client documentation for compatibility.
+Not all MCP clients implement elicitation. Check the client before depending on it and provide a fallback when appropriate. Agents acting as MCP clients can handle both modes through [MCP client elicitation handlers](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#elicitation).
 
-For more human-in-the-loop patterns including workflow-based approval, refer to [Human-in-the-loop patterns](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/).
+For more human-in-the-loop patterns, refer to [Human-in-the-loop patterns](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/).
 
 ## Next steps
 
@@ -716,6 +638,6 @@ For more human-in-the-loop patterns including workflow-based approval, refer to 
 [ createMcpHandler ](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) Build stateless MCP servers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent · Cloudflare Agents docs","description":"Build stateful MCP servers on Cloudflare by extending the McpAgent class with persistent storage and agent capabilities.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent · Cloudflare Agents docs","description":"Build stateful MCP servers on Cloudflare by extending the McpAgent class with persistent storage and agent capabilities.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/apis/","name":"APIs"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/apis/agent-api/","name":"McpAgent"}}]}
 ```

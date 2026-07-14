@@ -13,7 +13,7 @@ Writing, reviewing, editing, and answering questions about code is one of the pr
 
 Codex works best with the latest models from the GPT-5 family, such as [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol). We offer a range of models specifically designed to work with coding agents like Codex, such as [`gpt-5.3-codex`](https://developers.openai.com/api/docs/models/gpt-5.3-codex), but we recommend using the latest general-purpose model for most code generation tasks.
 
-See the [Codex docs](https://developers.openai.com/codex) for setup guides, reference material, pricing, and more information.
+See the [ChatGPT docs](https://developers.openai.com/codex) for setup guides, reference material, pricing, and more information.
 
 ## Integrate with coding models
 
@@ -69,6 +69,6 @@ The demo applications below were one shot generations, i.e. generated from a sin
 
 ## Next steps
 
-- Visit the [Codex docs](https://developers.openai.com/codex) to learn what you can do with Codex, set up Codex in whichever interface you choose, or find more details.
+- Visit the [ChatGPT docs](https://developers.openai.com/codex) to learn what you can do with Codex, set up Codex in whichever interface you choose, or find more details.
 - Read <a href="/api/docs/guides/latest-model">Model guidance</a> for model selection, features, migration guidance, and prompting patterns that work well on coding and agentic tasks.
 - Compare [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol) and [`gpt-5.3-codex`](https://developers.openai.com/api/docs/models/gpt-5.3-codex) on the model pages.

@@ -31,8 +31,8 @@ GPT-5.5 pro uses OpenAI's Responses API with built-in tools, improved reasoning,
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1354)
-* [ cURL ](#tab-panel-1355)
+* [ TypeScript ](#tab-panel-1440)
+* [ cURL ](#tab-panel-1441)
 
 **TypeScript**
 
@@ -54,8 +54,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1364)
-* [ Raw response ](#tab-panel-1365)
+* [ Output ](#tab-panel-1452)
+* [ Raw response ](#tab-panel-1453)
 
 The **three laws of thermodynamics** are:
 
@@ -164,8 +164,8 @@ There is also a **Zeroth Law**, often stated separately: if two systems are each
 
 **With Instructions**  — Using instructions to set context
 
-* [ TypeScript ](#tab-panel-1356)
-* [ cURL ](#tab-panel-1357)
+* [ TypeScript ](#tab-panel-1442)
+* [ cURL ](#tab-panel-1443)
 
 **TypeScript**
 
@@ -191,8 +191,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1366)
-* [ Raw response ](#tab-panel-1367)
+* [ Output ](#tab-panel-1454)
+* [ Raw response ](#tab-panel-1455)
 
 Use Python’s built-in `json` module:
 
@@ -327,8 +327,8 @@ Use `json.load(file)` for reading from a file, and `json.loads(string)` for pars
 
 **Multi-turn Conversation**  — Continuing a conversation with message array
 
-* [ TypeScript ](#tab-panel-1362)
-* [ cURL ](#tab-panel-1363)
+* [ TypeScript ](#tab-panel-1448)
+* [ cURL ](#tab-panel-1449)
 
 **TypeScript**
 
@@ -378,8 +378,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1368)
-* [ Raw response ](#tab-panel-1369)
+* [ Output ](#tab-panel-1456)
+* [ Raw response ](#tab-panel-1457)
 
 - Monterey/Carmel is great for beaches, seafood, and a quick scenic stroll.
 - Big Sur offers dramatic ocean views, Bixby Bridge, and McWay Falls.
@@ -471,8 +471,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 **Temperature Control**  — Using temperature for creative responses
 
-* [ TypeScript ](#tab-panel-1358)
-* [ cURL ](#tab-panel-1359)
+* [ TypeScript ](#tab-panel-1444)
+* [ cURL ](#tab-panel-1445)
 
 **TypeScript**
 
@@ -495,8 +495,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1370)
-* [ Raw response ](#tab-panel-1371)
+* [ Output ](#tab-panel-1458)
+* [ Raw response ](#tab-panel-1459)
 
 Silent circuits dream
 Learning patterns in starlight
@@ -588,8 +588,8 @@ Dawn hums through the code
 
 **With Reasoning**  — Using reasoning effort for complex problems
 
-* [ TypeScript ](#tab-panel-1360)
-* [ cURL ](#tab-panel-1361)
+* [ TypeScript ](#tab-panel-1446)
+* [ cURL ](#tab-panel-1447)
 
 **TypeScript**
 
@@ -618,8 +618,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1372)
-* [ Raw response ](#tab-panel-1373)
+* [ Output ](#tab-panel-1460)
+* [ Raw response ](#tab-panel-1461)
 
 Assuming both trains leave at the same time:
 
@@ -739,10 +739,378 @@ More exactly, they meet after **6 hours, 25 minutes, and 43 seconds**.
 }
 ```
 
+**Web Search**  — Letting the model use OpenAI's built-in web search tool to answer with current information
+
+* [ TypeScript ](#tab-panel-1450)
+* [ cURL ](#tab-panel-1451)
+
+**TypeScript**
+
+```ts
+const response = await env.AI.run(
+  'openai/gpt-5.5-pro',
+  {
+    input: 'What were the top news stories about Cloudflare this week? Summarise in three bullets.',
+    max_output_tokens: 4096,
+    tools: [{ type: 'web_search_preview' }],
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/gpt-5.5-pro",
+  "input": "What were the top news stories about Cloudflare this week? Summarise in three bullets.",
+  "max_output_tokens": 4096,
+  "tools": [
+    {
+      "type": "web_search_preview"
+    }
+  ]
+}'
+```
+
+* [ Output ](#tab-panel-1462)
+* [ Raw response ](#tab-panel-1463)
+
+Assuming **“this week” = Jun 16–22, 2026**:
+
+- **Cloudflare service incident:** Cloudflare reported increased error rates/latency from 13:35 UTC today, affecting Analytics, CDN/Cache and Durable Objects; it later pointed to a fiber cut in Eastern North America and said traffic engineering had mitigated most congestion/packet loss. ([cloudflarestatus.com](https://www.cloudflarestatus.com/incidents/v3yl7jqmqj51))
+- **New anti-bot/privacy protocol:** Cloudflare announced work with Mozilla Firefox, Google Chrome, Microsoft Edge and Shopify on **Private Access Control Tokens (PACT)**, meant to verify legitimate humans/agents without CAPTCHAs or invasive tracking. ([cloudflare.com](https://www.cloudflare.com/press/press-releases/2026/cloudflare-collaborates-with-leading-browsers-to-develop-a-privacy-first-protocol-for-the-global-internet/))
+- **AI + SASE partner push:** Cloudflare launched a **Cloudflare One Design Partner** program and **Cloudflare One Stack**, giving select partners AI-powered workflows to help customers deploy and manage Zero Trust/SASE migrations. ([cloudflare.com](https://www.cloudflare.com/press/press-releases/2026/cloudflare-launches-design-partner-designation-to-accelerate-secure-ai-and-seamless-sase-adoption/))
+
+```json
+{
+  "id": "resp_0fe61a92ccd82def016a3999c63130819a802271120be10eb8",
+  "object": "response",
+  "created_at": 1782159814,
+  "model": "gpt-5.5-pro-2026-04-23",
+  "output": [
+    {
+      "id": "rs_0fe61a92ccd82def016a399a21cc1c819abf92ab7bc7693b91",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_0fe61a92ccd82def016a399a21d2bc819ab3ca33a96dbae75b",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "Cloudflare news this week June 2026",
+          "Cloudflare latest news June 2026",
+          "site:blog.cloudflare.com Cloudflare June 2026",
+          "Cloudflare stock news June 2026"
+        ],
+        "query": "Cloudflare news this week June 2026"
+      }
+    },
+    {
+      "id": "rs_0fe61a92ccd82def016a399a23240c819abcb66f4e6074d9bb",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_0fe61a92ccd82def016a399a233940819a886fe58c76af4475",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "Cloudflare June 22 2026 outage",
+          "Cloudflare outage June 22 2026",
+          "Cloudflare news June 22 2026",
+          "Cloudflare news June 18 2026"
+        ],
+        "query": "Cloudflare June 22 2026 outage"
+      }
+    },
+    {
+      "id": "rs_0fe61a92ccd82def016a399a26503c819aa08c657db048d931",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_0fe61a92ccd82def016a399a266c3c819a9c2ab66307ca1f26",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://www.cloudflarestatus.com/"
+      }
+    },
+    {
+      "id": "rs_0fe61a92ccd82def016a399a26f1cc819a9e03d45e77d279df",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_0fe61a92ccd82def016a399a2716f4819a9192da4315b2d3d4",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://www.cloudflarestatus.com/incidents/v3yl7jqmqj51"
+      }
+    },
+    {
+      "id": "rs_0fe61a92ccd82def016a399a27525c819a8a61f7405ee19d00",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_0fe61a92ccd82def016a399a276a7c819a99477a5b3d1eeaba",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://www.cloudflare.com/press/press-releases/"
+      }
+    },
+    {
+      "id": "rs_0fe61a92ccd82def016a399a27c9b4819aa415421854c8a235",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_0fe61a92ccd82def016a399a27e6f0819aad66447fbfd41467",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://www.cloudflare.com/press/press-releases/2026/cloudflare-launches-design-partner-designation-to-accelerate-secure-ai-and-seamless-sase-adoption/"
+      }
+    },
+    {
+      "id": "rs_0fe61a92ccd82def016a399a28247c819aa2f43a2401eed9a2",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_0fe61a92ccd82def016a399a2840a4819aa0ce23de6ec658cb",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "Cloudflare PACT privacy-first protocol browsers news June 22 2026",
+          "Cloudflare leading browsers PACT Mozilla Google Microsoft Shopify June 22 2026",
+          "Cloudflare One Stack agent-powered deployment news June 17 2026",
+          "Cloudflare Design Partner Cloudflare One Stack SASE adoption June 17 2026"
+        ],
+        "query": "Cloudflare PACT privacy-first protocol browsers news June 22 2026"
+      }
+    },
+    {
+      "id": "rs_0fe61a92ccd82def016a399a2ec420819a8391167e995a57d9",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_0fe61a92ccd82def016a399a2ef608819a9cbcc945e42d0791",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "Cloudflare June 2026 latest site:theregister.com",
+          "Cloudflare June 2026 latest site:bleepingcomputer.com OR site:thehackernews.com",
+          "Cloudflare June 2026 \"June 22\" \"error rates\"",
+          "Cloudflare June 2026 \"PACT\" \"Private Access Control Tokens\""
+        ],
+        "query": "Cloudflare June 2026 latest site:theregister.com"
+      }
+    },
+    {
+      "id": "rs_0fe61a92ccd82def016a399a340edc819a95e0c1e4b5614f10",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_0fe61a92ccd82def016a399a349134819ab8bc982a5aa737ad",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "Cloudflare",
+          "Cloudflare news",
+          "Cloudflare outage",
+          "Cloudflare PACT"
+        ],
+        "query": "Cloudflare"
+      }
+    },
+    {
+      "id": "rs_0fe61a92ccd82def016a399a3e086c819aab8c4070f38deb93",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_0fe61a92ccd82def016a399a3e3d44819aa420a1a6e9206955",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "site:blog.cloudflare.com/ 2026/06/17 Cloudflare",
+          "site:blog.cloudflare.com/ 2026/06/18 Cloudflare",
+          "site:blog.cloudflare.com/ 2026/06/19 Cloudflare",
+          "site:blog.cloudflare.com/ 2026/06/22 Cloudflare"
+        ],
+        "query": "site:blog.cloudflare.com/ 2026/06/17 Cloudflare"
+      }
+    },
+    {
+      "id": "rs_0fe61a92ccd82def016a399a416410819a99bdad035902ddd9",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_0fe61a92ccd82def016a399a41a87c819a918ac53a59f75243",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://blog.cloudflare.com/cloudflare-one-stack/"
+      }
+    },
+    {
+      "id": "rs_0fe61a92ccd82def016a399a42968c819a9016993c608908de",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "msg_0fe61a92ccd82def016a399a42a7f8819aa00992b84608e5ac",
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "output_text",
+          "annotations": [
+            {
+              "type": "url_citation",
+              "end_index": 414,
+              "start_index": 333,
+              "title": "Cloudflare Status - Increased Error Rates",
+              "url": "https://www.cloudflarestatus.com/incidents/v3yl7jqmqj51"
+            },
+            {
+              "type": "url_citation",
+              "end_index": 846,
+              "start_index": 667,
+              "title": "www.cloudflare.com",
+              "url": "https://www.cloudflare.com/press/press-releases/2026/cloudflare-collaborates-with-leading-browsers-to-develop-a-privacy-first-protocol-for-the-global-internet/"
+            },
+            {
+              "type": "url_citation",
+              "end_index": 1250,
+              "start_index": 1079,
+              "title": "www.cloudflare.com",
+              "url": "https://www.cloudflare.com/press/press-releases/2026/cloudflare-launches-design-partner-designation-to-accelerate-secure-ai-and-seamless-sase-adoption/"
+            }
+          ],
+          "logprobs": [],
+          "text": "Assuming **“this week” = Jun 16–22, 2026**:\n\n- **Cloudflare service incident:** Cloudflare reported increased error rates/latency from 13:35 UTC today, affecting Analytics, CDN/Cache and Durable Objects; it later pointed to a fiber cut in Eastern North America and said traffic engineering had mitigated most congestion/packet loss. ([cloudflarestatus.com](https://www.cloudflarestatus.com/incidents/v3yl7jqmqj51))\n- **New anti-bot/privacy protocol:** Cloudflare announced work with Mozilla Firefox, Google Chrome, Microsoft Edge and Shopify on **Private Access Control Tokens (PACT)**, meant to verify legitimate humans/agents without CAPTCHAs or invasive tracking. ([cloudflare.com](https://www.cloudflare.com/press/press-releases/2026/cloudflare-collaborates-with-leading-browsers-to-develop-a-privacy-first-protocol-for-the-global-internet/))\n- **AI + SASE partner push:** Cloudflare launched a **Cloudflare One Design Partner** program and **Cloudflare One Stack**, giving select partners AI-powered workflows to help customers deploy and manage Zero Trust/SASE migrations. ([cloudflare.com](https://www.cloudflare.com/press/press-releases/2026/cloudflare-launches-design-partner-designation-to-accelerate-secure-ai-and-seamless-sase-adoption/))"
+        }
+      ],
+      "phase": "final_answer",
+      "role": "assistant"
+    }
+  ],
+  "status": "completed",
+  "usage": {
+    "input_tokens": 83877,
+    "output_tokens": 2919,
+    "total_tokens": 86796,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens_details": {
+      "reasoning_tokens": 2689
+    }
+  },
+  "background": false,
+  "billing": {
+    "payer": "developer"
+  },
+  "completed_at": 1782159941,
+  "error": null,
+  "frequency_penalty": 0,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": 4096,
+  "max_tool_calls": null,
+  "moderation": null,
+  "parallel_tool_calls": true,
+  "presence_penalty": 0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+    "context": "current_turn",
+    "effort": "high",
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "store": false,
+  "temperature": 1,
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_content_types": [
+        "text"
+      ],
+      "search_context_size": "medium",
+      "user_location": {
+        "type": "approximate",
+        "city": null,
+        "country": "US",
+        "region": null,
+        "timezone": null
+      }
+    }
+  ],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "user": null,
+  "metadata": {},
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-1374)
-* [ Output ](#tab-panel-1375)
+* [ Input ](#tab-panel-1464)
+* [ Output ](#tab-panel-1465)
 
 ▶input
 

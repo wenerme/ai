@@ -31,8 +31,8 @@ GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1332)
-* [ cURL ](#tab-panel-1333)
+* [ TypeScript ](#tab-panel-1414)
+* [ cURL ](#tab-panel-1415)
 
 **TypeScript**
 
@@ -59,8 +59,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1342)
-* [ Raw response ](#tab-panel-1343)
+* [ Output ](#tab-panel-1426)
+* [ Raw response ](#tab-panel-1427)
 
 The **three laws of thermodynamics** are:
 
@@ -127,8 +127,8 @@ There is also a **Zeroth Law**, which says that if two systems are each in therm
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-1334)
-* [ cURL ](#tab-panel-1335)
+* [ TypeScript ](#tab-panel-1416)
+* [ cURL ](#tab-panel-1417)
 
 **TypeScript**
 
@@ -164,8 +164,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1344)
-* [ Raw response ](#tab-panel-1345)
+* [ Output ](#tab-panel-1428)
+* [ Raw response ](#tab-panel-1429)
 
 You can read a JSON file in Python using the built-in `json` module.
 
@@ -266,8 +266,8 @@ print(data["name"])
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-1338)
-* [ cURL ](#tab-panel-1339)
+* [ TypeScript ](#tab-panel-1420)
+* [ cURL ](#tab-panel-1421)
 
 **TypeScript**
 
@@ -317,8 +317,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1346)
-* [ Raw response ](#tab-panel-1347)
+* [ Output ](#tab-panel-1430)
+* [ Raw response ](#tab-panel-1431)
 
 Absolutely — the best stops depend on whether you take the **scenic coastal route** or the **faster inland route**.
 
@@ -405,8 +405,8 @@ Also, check current road conditions for **Highway 1 near Big Sur**, since closur
 
 **Creative Writing**  — Longer completion for creative output
 
-* [ TypeScript ](#tab-panel-1336)
-* [ cURL ](#tab-panel-1337)
+* [ TypeScript ](#tab-panel-1418)
+* [ cURL ](#tab-panel-1419)
 
 **TypeScript**
 
@@ -442,8 +442,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1348)
-* [ Raw response ](#tab-panel-1349)
+* [ Output ](#tab-panel-1432)
+* [ Raw response ](#tab-panel-1433)
 
 Detective Mara Venn found the clue inside the grandfather clock, though the clock had not worked in twenty years.
 
@@ -504,8 +504,8 @@ Inside the vial was a single human tooth, etched with three tiny words in gold:
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-1340)
-* [ cURL ](#tab-panel-1341)
+* [ TypeScript ](#tab-panel-1422)
+* [ cURL ](#tab-panel-1423)
 
 **TypeScript**
 
@@ -540,8 +540,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1350)
-* [ Raw response ](#tab-panel-1351)
+* [ Output ](#tab-panel-1436)
+* [ Raw response ](#tab-panel-1437)
 
 Recursion is when a function solves a problem by calling itself with a smaller or simpler version of the same problem.
 
@@ -4924,14 +4924,393 @@ So, recursion is like breaking a problem into smaller versions of itself until r
 ]
 ```
 
+**Web Search**  — Letting the model use OpenAI's built-in web search tool to answer with current information
+
+* [ TypeScript ](#tab-panel-1424)
+* [ cURL ](#tab-panel-1425)
+
+**TypeScript**
+
+```ts
+const response = await env.AI.run(
+  'openai/gpt-5.5',
+  {
+    input: 'What were the top news stories about Cloudflare this week? Summarise in three bullets.',
+    max_output_tokens: 4096,
+    tools: [{ type: 'web_search_preview' }],
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/gpt-5.5",
+  "input": "What were the top news stories about Cloudflare this week? Summarise in three bullets.",
+  "max_output_tokens": 4096,
+  "tools": [
+    {
+      "type": "web_search_preview"
+    }
+  ]
+}'
+```
+
+* [ Output ](#tab-panel-1434)
+* [ Raw response ](#tab-panel-1435)
+
+Treating “this week” as **June 15–22, 2026**:
+
+- **Cloudflare had a North America/Europe-impacting service incident on June 22.** Its status page said increased error rates and latency began at **13:35 UTC**, affecting **Analytics, CDN/Cache, and Durable Objects**; Cloudflare later pointed to a **fiber cut in Eastern North America** and said traffic-engineering work had mitigated most congestion/packet drops by the afternoon. ([cloudflarestatus.com](https://www.cloudflarestatus.com/incidents/v3yl7jqmqj51))
+
+- **Cloudflare pushed harder into AI-assisted Zero Trust/SASE deployments.** It launched the **Cloudflare One Stack**, a set of agent “skills” for configuring, migrating, and managing Zero Trust environments, alongside a new **Cloudflare One Design Partner** initiative aimed at partners helping customers move from legacy security architectures; early named partners included Arctiq, Consortium, CMT, Presidio, and The Missing Link. ([blog.cloudflare.com](https://blog.cloudflare.com/cloudflare-one-stack/))
+
+- **Cloudflare advanced its “AI agents can build and deploy” strategy.** It introduced **Temporary Cloudflare Accounts for AI agents**, letting agents use `wrangler deploy --temporary` to ship Workers without a prior account for a 60-minute claim window, and also opened more Agents SDK primitives to frameworks such as **Flue** for durable, production-grade agent workflows. ([blog.cloudflare.com](https://blog.cloudflare.com/temporary-accounts/))
+
+```json
+{
+  "id": "resp_04a2eb20ce6ad6f8016a3999229868819ba43a3002b7e5e301",
+  "object": "response",
+  "created_at": 1782159650,
+  "model": "gpt-5.5-2026-04-23",
+  "output": [
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a399923112c819bbabc8ec848f597e2",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_04a2eb20ce6ad6f8016a399923ced4819b94eb840567ee5fc1",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "Cloudflare news this week June 2026 Cloudflare",
+          "Cloudflare latest news June 2026",
+          "site:blog.cloudflare.com Cloudflare June 2026",
+          "Cloudflare stock news this week June 2026"
+        ],
+        "query": "Cloudflare news this week June 2026 Cloudflare"
+      }
+    },
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a3999282ad8819ba080a8ddfee09e0e",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_04a2eb20ce6ad6f8016a39992838d8819b82979350fb85558b",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "Cloudflare outage June 22 2026 status incident",
+          "Cloudflare June 22 2026 outage",
+          "Cloudflare launches partner initiative AI SASE adoption June 18 2026",
+          "Cloudflare news June 17 2026"
+        ],
+        "query": "Cloudflare outage June 22 2026 status incident"
+      }
+    },
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a39992b85b8819b8494e22e7f1ade54",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_04a2eb20ce6ad6f8016a39992b9090819b868cc4de44726b49",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "site:blog.cloudflare.com June 18 2026 Cloudflare blog",
+          "site:blog.cloudflare.com June 17 2026 Cloudflare blog",
+          "site:blog.cloudflare.com June 16 2026 Cloudflare blog",
+          "site:blog.cloudflare.com June 15 2026 Cloudflare blog"
+        ],
+        "query": "site:blog.cloudflare.com June 18 2026 Cloudflare blog"
+      }
+    },
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a39992d42b8819b91e73be8db39cf7f",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_04a2eb20ce6ad6f8016a39992d7720819bb7a20bb6db6d12a7",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://www.cloudflarestatus.com/uptime"
+      }
+    },
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a39992eccb0819ba2f60db633880269",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_04a2eb20ce6ad6f8016a39992f55d4819b90baed7dcc1189b4",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://www.cloudflarestatus.com/incidents/v3yl7jqmqj51"
+      }
+    },
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a3999317194819b8aa69341a57c7022",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_04a2eb20ce6ad6f8016a3999321808819b8065a8f50825261d",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "Cloudflare after:2026-06-15 before:2026-06-23 news",
+          "Cloudflare site:reuters.com after:2026-06-15 before:2026-06-23",
+          "Cloudflare site:finance.yahoo.com after:2026-06-15 before:2026-06-23",
+          "Cloudflare site:investors.com after:2026-06-15 before:2026-06-23"
+        ],
+        "query": "Cloudflare after:2026-06-15 before:2026-06-23 news"
+      }
+    },
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a3999393be8819bb6199dd097e3c451",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_04a2eb20ce6ad6f8016a39993a4038819bb990a96c3388c97f",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "Cloudflare Flue agent harnesses frameworks June 2026",
+          "site:blog.cloudflare.com Flue Cloudflare June 2026",
+          "\"Bringing more agent harnesses\" Cloudflare",
+          "Cloudflare AI Agents SDK Flue June 2026"
+        ],
+        "query": "Cloudflare Flue agent harnesses frameworks June 2026"
+      }
+    },
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a399941a9ec819b9772297dbafe616a",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_04a2eb20ce6ad6f8016a399941c820819b9c737c5bbac428a5",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://noise.getoto.net/2026/06/17/bringing-more-agent-harnesses-and-frameworks-to-cloudflare-starting-with-flue/"
+      }
+    },
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a399943832c819bb678926f11223a00",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_04a2eb20ce6ad6f8016a399943e4d0819bbfeb601cd55a683d",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://blog.cloudflare.com/agents-platform-flue-sdk/"
+      }
+    },
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a399945c25c819b8329904bba285bd7",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_04a2eb20ce6ad6f8016a3999491ed0819b8c1623b7545fca7a",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://blog.cloudflare.com/temporary-cloudflare-accounts-for-ai-agents/"
+      }
+    },
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a39994b78d0819b8e663097a07806c8",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_04a2eb20ce6ad6f8016a39994bb2c4819bb73593fb0cf46293",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://blog.cloudflare.com/agents-platform-flue-sdk/"
+      }
+    },
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a39994f2f9c819b9088ecfeb3e06e00",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "ws_04a2eb20ce6ad6f8016a39994f902c819bb852d31e550d7771",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://blog.cloudflare.com/temporary-accounts/"
+      }
+    },
+    {
+      "id": "rs_04a2eb20ce6ad6f8016a399950fae4819ba302f413d4bfaf40",
+      "type": "reasoning",
+      "content": [],
+      "summary": []
+    },
+    {
+      "id": "msg_04a2eb20ce6ad6f8016a399953b544819ba7651b7966a4cb7e",
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "output_text",
+          "annotations": [
+            {
+              "type": "url_citation",
+              "end_index": 511,
+              "start_index": 430,
+              "title": "Cloudflare Status - Increased Error Rates",
+              "url": "https://www.cloudflarestatus.com/incidents/v3yl7jqmqj51"
+            },
+            {
+              "type": "url_citation",
+              "end_index": 1021,
+              "start_index": 947,
+              "title": "Introducing the Cloudflare One stack: agent-powered deployment",
+              "url": "https://blog.cloudflare.com/cloudflare-one-stack/"
+            },
+            {
+              "type": "url_citation",
+              "end_index": 1471,
+              "start_index": 1399,
+              "title": "Temporary Cloudflare Accounts for AI agents",
+              "url": "https://blog.cloudflare.com/temporary-accounts/"
+            }
+          ],
+          "logprobs": [],
+          "text": "Treating “this week” as **June 15–22, 2026**:\n\n- **Cloudflare had a North America/Europe-impacting service incident on June 22.** Its status page said increased error rates and latency began at **13:35 UTC**, affecting **Analytics, CDN/Cache, and Durable Objects**; Cloudflare later pointed to a **fiber cut in Eastern North America** and said traffic-engineering work had mitigated most congestion/packet drops by the afternoon. ([cloudflarestatus.com](https://www.cloudflarestatus.com/incidents/v3yl7jqmqj51))\n\n- **Cloudflare pushed harder into AI-assisted Zero Trust/SASE deployments.** It launched the **Cloudflare One Stack**, a set of agent “skills” for configuring, migrating, and managing Zero Trust environments, alongside a new **Cloudflare One Design Partner** initiative aimed at partners helping customers move from legacy security architectures; early named partners included Arctiq, Consortium, CMT, Presidio, and The Missing Link. ([blog.cloudflare.com](https://blog.cloudflare.com/cloudflare-one-stack/))\n\n- **Cloudflare advanced its “AI agents can build and deploy” strategy.** It introduced **Temporary Cloudflare Accounts for AI agents**, letting agents use `wrangler deploy --temporary` to ship Workers without a prior account for a 60-minute claim window, and also opened more Agents SDK primitives to frameworks such as **Flue** for durable, production-grade agent workflows. ([blog.cloudflare.com](https://blog.cloudflare.com/temporary-accounts/))"
+        }
+      ],
+      "phase": "final_answer",
+      "role": "assistant"
+    }
+  ],
+  "status": "completed",
+  "usage": {
+    "input_tokens": 83593,
+    "output_tokens": 1842,
+    "total_tokens": 85435,
+    "input_tokens_details": {
+      "cached_tokens": 4224
+    },
+    "output_tokens_details": {
+      "reasoning_tokens": 1515
+    }
+  },
+  "background": false,
+  "billing": {
+    "payer": "developer"
+  },
+  "completed_at": 1782159704,
+  "error": null,
+  "frequency_penalty": 0,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": 4096,
+  "max_tool_calls": null,
+  "moderation": null,
+  "parallel_tool_calls": true,
+  "presence_penalty": 0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+    "context": "current_turn",
+    "effort": "medium",
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "store": false,
+  "temperature": 1,
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_content_types": [
+        "text"
+      ],
+      "search_context_size": "medium",
+      "user_location": {
+        "type": "approximate",
+        "city": null,
+        "country": "US",
+        "region": null,
+        "timezone": null
+      }
+    }
+  ],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "user": null,
+  "metadata": {},
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
+```
+
 ## Parameters
 
 Schema variant
 
 ResponsesChat Completions
 
-* [ Input ](#tab-panel-1352)
-* [ Output ](#tab-panel-1353)
+* [ Input ](#tab-panel-1438)
+* [ Output ](#tab-panel-1439)
 
 ▶input
 

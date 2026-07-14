@@ -13,14 +13,24 @@ Manage key/value strings.
 
 Current respected settings:
 
+- `branch_prefix`: Prefix used by `glab stack` when naming generated branches. Defaults to `$USER`, falling back to `glab-stack`.
 - `browser`: If unset, uses the default browser. Override with environment variable `$BROWSER`.
 - `check_update`: If true, notifies of new versions of glab. Defaults to `true`. Override with environment variable `$GLAB_CHECK_UPDATE`.
 - `display_hyperlinks`: If `false`, disables hyperlinks in terminal output. Defaults to `true`. Override with environment variable `$FORCE_HYPERLINKS`.
+- `duo_cli_auto_download`: If `true`, automatically downloads the Duo CLI binary without prompting.
+- `duo_cli_auto_run`: If `true`, automatically runs GitLab Duo CLI without prompting.
 - `editor`: If unset, uses the default editor. Override with environment variable `$EDITOR`.
+- `git_protocol`: Protocol used for Git operations. Supported values: `ssh`, `https`. Defaults to `ssh`.
 - `glab_pager`: Your desired pager command to use, such as `less -R`.
 - `glamour_style`: Your desired Markdown renderer style. Options are dark, light, notty. Custom styles are available using [glamour](https://github.com/charmbracelet/glamour#styles).
 - `host`: If unset, defaults to `https://gitlab.com`.
+- `no_prompt`: If `true`, disables interactive prompts. Defaults to `false`. Override with environment variable `$NO_PROMPT`.
+- `notify_skill_updates`: If `true`, shows a notice when an installed agent skill has updates available. Defaults to `true`. Override with environment variable `$GLAB_NOTIFY_SKILL_UPDATES`.
+- `orbit_local_auto_download`: If `true`, automatically downloads the Orbit local CLI binary without prompting.
+- `orbit_local_auto_run`: If `true`, automatically runs Orbit local CLI without prompting.
+- `remote_alias`: Name of the `git remote` that points at the GitLab repository. Used to resolve which remote to operate against when multiple are configured.
 - `show_whats_new`: If true, shows a one-time post-upgrade banner pointing at `glab whatsnew` when a new version is detected. Defaults to `true`. Override with environment variable `$GLAB_SHOW_WHATS_NEW`.
+- `telemetry`: If `false`, disables sending usage data to your GitLab instance. Defaults to `true`. Override with environment variable `$GLAB_SEND_TELEMETRY`.
 - `token`: Your GitLab access token. Defaults to environment variables.
 - `visual`: Takes precedence over `editor`. If unset, uses the default editor. Override with environment variable `$VISUAL`.
 

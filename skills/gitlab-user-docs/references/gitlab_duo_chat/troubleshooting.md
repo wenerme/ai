@@ -195,6 +195,12 @@ You might get an error that states
 
 This error occurs when streaming response from AI Gateway failed. Try your request again.
 
+If a long response stops partway through with no error, a proxy, load balancer, or
+firewall might have cut the connection. For more information, see:
+
+- [Allow outbound connections from the GitLab instance to GitLab Duo](../../administration/gitlab_duo/configure/_index.md#allow-outbound-connections-from-the-gitlab-instance-to-gitlab-duo).
+- [Responses are truncated without an error](../../administration/gitlab_duo_self_hosted/troubleshooting.md#responses-are-truncated-without-an-error) for GitLab Duo Self-Hosted.
+
 ### GitLab Duo Self-Hosted
 
 If you encounter this issue when using Chat with GitLab Duo Self-Hosted, check

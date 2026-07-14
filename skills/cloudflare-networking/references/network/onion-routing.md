@@ -33,8 +33,8 @@ You should note that the visible domain in the user interface remains unchanged,
 
 ## Enable Onion Routing
 
-* [ Dashboard ](#tab-panel-9500)
-* [ API ](#tab-panel-9501)
+* [ Dashboard ](#tab-panel-10115)
+* [ API ](#tab-panel-10116)
 
 To enable **Onion Routing** in the dashboard:
 

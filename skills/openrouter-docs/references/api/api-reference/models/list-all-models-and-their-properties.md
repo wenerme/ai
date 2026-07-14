@@ -97,6 +97,36 @@ paths:
       summary: List all models and their properties
       operationId: getModels
       parameters:
+        - description: >-
+            Number of records to skip for pagination. When both offset and limit
+            are omitted, the full list is returned
+          in: query
+          name: offset
+          required: false
+          schema:
+            default: 0
+            description: >-
+              Number of records to skip for pagination. When both offset and
+              limit are omitted, the full list is returned
+            example: 0
+            minimum: 0
+            nullable: true
+            type: integer
+        - description: >-
+            Maximum number of records to return (max 1000). When both offset and
+            limit are omitted, the full list is returned
+          in: query
+          name: limit
+          required: false
+          schema:
+            default: 500
+            description: >-
+              Maximum number of records to return (max 1000). When both offset
+              and limit are omitted, the full list is returned
+            example: 500
+            maximum: 1000
+            minimum: 1
+            type: integer
         - description: Filter models by use case category
           in: query
           name: category
@@ -231,8 +261,7 @@ paths:
               Minimum context length (tokens). Models with smaller context are
               excluded.
             example: 128000
-            exclusiveMinimum: true
-            minimum: 0
+            minimum: 1
             type: integer
         - description: Minimum prompt price in $/M tokens.
           in: query
@@ -556,7 +585,7 @@ components:
             id: openai/gpt-4
             knowledge_cutoff: null
             links:
-              details: /api/v1/models/openai/gpt-5.4/endpoints
+              details: /api/v1/models/openai/gpt-4/endpoints
             name: GPT-4
             per_request_limits: null
             pricing:
@@ -575,11 +604,33 @@ components:
               context_length: 8192
               is_moderated: true
               max_completion_tokens: 4096
+        links:
+          next: /api/v1/models?offset=500&limit=500
+        total_count: 150
       properties:
         data:
           $ref: '#/components/schemas/ModelsListResponseData'
+        links:
+          description: Pagination links
+          properties:
+            next:
+              description: >-
+                URL for the next page of results, or null if this is the last
+                page
+              example: /api/v1/models?offset=500&limit=500
+              nullable: true
+              type: string
+          required:
+            - next
+          type: object
+        total_count:
+          description: Total number of models matching the query
+          example: 150
+          type: integer
       required:
         - data
+        - total_count
+        - links
       type: object
     BadRequestResponse:
       description: Bad Request - Invalid request parameters or malformed input
@@ -643,7 +694,7 @@ components:
           id: openai/gpt-4
           knowledge_cutoff: null
           links:
-            details: /api/v1/models/openai/gpt-5.4/endpoints
+            details: /api/v1/models/openai/gpt-4/endpoints
           name: GPT-4
           per_request_limits: null
           pricing:
@@ -858,34 +909,7 @@ components:
             $ref: '#/components/schemas/InputModality'
           type: array
         instruct_type:
-          description: Instruction format type
-          enum:
-            - none
-            - airoboros
-            - alpaca
-            - alpaca-modif
-            - chatml
-            - claude
-            - code-llama
-            - gemma
-            - llama2
-            - llama3
-            - mistral
-            - nemotron
-            - neural
-            - openchat
-            - phi3
-            - rwkv
-            - vicuna
-            - zephyr
-            - deepseek-r1
-            - deepseek-v3.1
-            - qwq
-            - qwen3
-            - null
-          example: chatml
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/InstructType'
         modality:
           description: Primary modality of the model
           example: text->text
@@ -1055,6 +1079,17 @@ components:
         internal_reasoning:
           description: Price in USD per internal reasoning token
           type: string
+        overrides:
+          description: >-
+            Conditional overrides of the base pricing (e.g. long-context
+            pricing). An entry applies when all of its condition fields (e.g.
+            min_prompt_tokens) match the request; among applicable entries,
+            later entries win per key; price keys absent from an entry inherit
+            the base price. The top-level pricing keys always reflect the price
+            that applies under default conditions.
+          items:
+            $ref: '#/components/schemas/PricingOverride'
+          type: array
         prompt:
           description: Price in USD per token for prompt (input) processing
           type: string
@@ -1180,6 +1215,35 @@ components:
         - video
       example: text
       type: string
+    InstructType:
+      description: Instruction format type
+      enum:
+        - none
+        - airoboros
+        - alpaca
+        - alpaca-modif
+        - chatml
+        - claude
+        - code-llama
+        - gemma
+        - llama2
+        - llama3
+        - mistral
+        - nemotron
+        - neural
+        - openchat
+        - phi3
+        - rwkv
+        - vicuna
+        - zephyr
+        - deepseek-r1
+        - deepseek-v3.1
+        - qwq
+        - qwen3
+        - null
+      example: chatml
+      nullable: true
+      type: string
     OutputModality:
       enum:
         - text
@@ -1286,6 +1350,45 @@ components:
         - elo
         - win_rate
         - rank
+      type: object
+    PricingOverride:
+      description: >-
+        A conditional override of the base pricing. An entry applies only when
+        all of its condition fields (e.g. min_prompt_tokens) match the request;
+        among applicable entries, later entries win per price key; price keys
+        absent from an entry inherit the base price.
+      example:
+        completion: '0.00002'
+        min_prompt_tokens: 200000
+        prompt: '0.000005'
+      properties:
+        audio:
+          description: Overridden price in USD per audio input token
+          type: string
+        completion:
+          description: Overridden price in USD per token for completion (output) generation
+          type: string
+        input_audio_cache:
+          description: Overridden price in USD per cached audio input token
+          type: string
+        input_cache_read:
+          description: Overridden price in USD per cached input token (read)
+          type: string
+        input_cache_write:
+          description: Overridden price in USD per cache-write token
+          type: string
+        input_cache_write_1h:
+          description: Overridden price in USD per 1-hour cache-write token
+          type: string
+        min_prompt_tokens:
+          description: >-
+            Condition: the entry applies when the total prompt tokens of a
+            request are strictly greater than this threshold
+          format: double
+          type: number
+        prompt:
+          description: Overridden price in USD per token for prompt (input) processing
+          type: string
       type: object
     ReasoningEffort:
       enum:

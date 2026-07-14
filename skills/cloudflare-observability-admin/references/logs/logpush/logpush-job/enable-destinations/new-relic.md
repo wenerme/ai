@@ -24,8 +24,8 @@ For domain (also known as zone): [ Go to **Logpush** ](https://dash.cloudflare.c
 1. In **Select a destination**, choose **New Relic**.
 2. Enter the **New Relic Logs Endpoint**:
 
-* [ US ](#tab-panel-9769)
-* [ EU ](#tab-panel-9770)
+* [ US ](#tab-panel-10093)
+* [ EU ](#tab-panel-10094)
 
 * `"https://log-api.newrelic.com/log/v1?Api-Key=<NR_LICENSE_KEY>&format=cloudflare"`
 

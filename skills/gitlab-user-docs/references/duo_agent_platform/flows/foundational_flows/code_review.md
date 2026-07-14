@@ -15,13 +15,15 @@
 - LLM [updated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236876) to Claude Sonnet 4.6 Vertex in GitLab 19.1.
 
 > [!note]
-> Depending on your add-on, GitLab runs one of two code review features:
+> Depending on your add-on and group settings, GitLab runs one of two code review features:
 >
 > - Code Review Flow: the agentic version, part of GitLab Duo Agent Platform.
 > - GitLab Duo Code Review: the non-agentic version, available only for users with the GitLab Duo Enterprise add-on.
 >
 > This page describes the agentic version.
-> Learn how [the two features compare](../../../project/merge_requests/duo_in_merge_requests.md#use-gitlab-duo-to-review-your-code).
+>
+> For more information about how the two features compare and how to turn on Code Review Flow for GitLab Duo Enterprise seats,
+> see [use GitLab Duo to review your code.](../../../project/merge_requests/duo_in_merge_requests.md#use-gitlab-duo-to-review-your-code).
 
 The Code Review Flow helps you streamline code reviews with agentic AI.
 
@@ -432,3 +434,4 @@ For more information, see [run the configuration diagnostic script](../../troubl
 
 - [GitLab Duo in merge requests](../../../project/merge_requests/duo_in_merge_requests.md)
 - [Agent Platform AI models](../../model_selection.md)
+- [Turn on Code Review Flow for GitLab Duo Enterprise seats](../../../project/merge_requests/duo_in_merge_requests.md#turn-on-code-review-flow-for-gitlab-duo-enterprise-seats).

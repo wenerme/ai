@@ -2,7 +2,7 @@
 title: "Comfy Cloud MCP"
 description: "从 Claude Code、Claude Desktop、Cursor、Codex 或任何兼容 MCP 的代理连接 Comfy Cloud MCP：生成图像、视频、音频和 3D，搜索模型与节点，并运行工作流。"
 translationSourceHash: 01763e3c
-translationFrom: agent-tools/cloud.mdx
+translationFrom: agent-tools/mcp.mdx
 translationBlockHashes:
   "_intro": b1c56a40
   "Overview": 4b68a7b5
@@ -425,7 +425,7 @@ MCP 服务器在云端运行，**绝不会将文件写入你的机器**。当生
 | 资源 | 用途 |
 | --- | --- |
 | [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) | Claude Code 插件市场与社区技能库。上述使用的 **comfy-cloud** 插件即在此分发；可浏览或贡献适用于 Comfy 工作流的其他技能。 |
-| [Comfy CLI](/zh/agent-tools/comfy-cli) | 用于在本地安装/启动 ComfyUI，以及从脚本或 CI 中调用托管合作节点的命令行工具（`comfy generate`，测试版）。当需要终端或自动化工作流时，可补充 MCP 使用。 |
+| [Comfy CLI](/zh/agent-tools/cli) | 用于在本地安装/启动 ComfyUI，以及从脚本或 CI 中调用托管合作节点的命令行工具（`comfy generate`，测试版）。当需要终端或自动化工作流时，可补充 MCP 使用。 |
 | [在 Comfy Cloud 上分享工作流](/zh/cloud/share-workflow) | 从 Comfy Cloud UI 界面分享工作流（MCP 的 `share_workflow` 工具可在代理会话中完成此操作）。 |
 
 ## 反馈
@@ -480,4 +480,4 @@ Comfy Cloud MCP 为早期版本。以下为已知的限制，团队正在努力�
     在 Claude Code 中，运行 `/mcp`，选择 **comfy-cloud**，然后选择 **Authenticate**。在 Claude Desktop 中，重新打开“自定义 → 连接器”中的连接器，并触发登录。
   
   
-    Comfy Cloud MCP 是我们的托管服务，但自 ComfyUI 开源以来，本地代理工作流就已存在。请参阅 Agent Tools 概述中的[关于本地 ComfyUI？](/zh/agent-tools#what-about-local-comfyui)部分，了解 Cloud 首先发布的原因、当前可用的社区 MCP 服务器，以及另一个选择——[Comfy CLI](/zh/agent-tools/comfy-cli)。
+    Comfy Cloud MCP 是我们的托管服务，但自 ComfyUI 开源以来，本地代理工作流就已存在。请参阅 Agent Tools 概述中的[关于本地 ComfyUI？](/zh/agent-tools#what-about-local-comfyui)部分，了解 Cloud 首先发布的原因、当前可用的社区 MCP 服务器，以及另一个选择——[Comfy CLI](/zh/agent-tools/cli)。

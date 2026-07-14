@@ -29,8 +29,8 @@ Alibaba's Wan 2.6 text-to-image model generating images from text prompts with o
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-92)
-* [ cURL ](#tab-panel-93)
+* [ TypeScript ](#tab-panel-100)
+* [ cURL ](#tab-panel-101)
 
 **TypeScript**
 
@@ -54,8 +54,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-90)
-* [ Raw response ](#tab-panel-91)
+* [ Output ](#tab-panel-98)
+* [ Raw response ](#tab-panel-99)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/simple-generation.png)
 
@@ -75,8 +75,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Dimensions**  — Specify image size in WxH format
 
-* [ TypeScript ](#tab-panel-96)
-* [ cURL ](#tab-panel-97)
+* [ TypeScript ](#tab-panel-104)
+* [ cURL ](#tab-panel-105)
 
 **TypeScript**
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-94)
-* [ Raw response ](#tab-panel-95)
+* [ Output ](#tab-panel-102)
+* [ Raw response ](#tab-panel-103)
 
 ![Custom Dimensions](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/custom-dimensions.png)
 
@@ -124,8 +124,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Square Format**  — Square image for social media or product photos
 
-* [ TypeScript ](#tab-panel-100)
-* [ cURL ](#tab-panel-101)
+* [ TypeScript ](#tab-panel-108)
+* [ cURL ](#tab-panel-109)
 
 **TypeScript**
 
@@ -154,8 +154,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-98)
-* [ Raw response ](#tab-panel-99)
+* [ Output ](#tab-panel-106)
+* [ Raw response ](#tab-panel-107)
 
 ![Square Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/square-format.png)
 
@@ -173,8 +173,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Negative Prompt**  — Guide generation away from unwanted elements
 
-* [ TypeScript ](#tab-panel-104)
-* [ cURL ](#tab-panel-105)
+* [ TypeScript ](#tab-panel-112)
+* [ cURL ](#tab-panel-113)
 
 **TypeScript**
 
@@ -202,8 +202,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-102)
-* [ Raw response ](#tab-panel-103)
+* [ Output ](#tab-panel-110)
+* [ Raw response ](#tab-panel-111)
 
 ![Negative Prompt](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/negative-prompt.png)
 
@@ -221,8 +221,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Format**  — Tall vertical image for portraits
 
-* [ TypeScript ](#tab-panel-108)
-* [ cURL ](#tab-panel-109)
+* [ TypeScript ](#tab-panel-116)
+* [ cURL ](#tab-panel-117)
 
 **TypeScript**
 
@@ -250,8 +250,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-106)
-* [ Raw response ](#tab-panel-107)
+* [ Output ](#tab-panel-114)
+* [ Raw response ](#tab-panel-115)
 
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/portrait-format.png)
 
@@ -269,8 +269,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-110)
-* [ Output ](#tab-panel-111)
+* [ Input ](#tab-panel-118)
+* [ Output ](#tab-panel-119)
 
 prompt
 

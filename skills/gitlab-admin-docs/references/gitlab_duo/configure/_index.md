@@ -33,6 +33,10 @@ You can configure GitLab Duo to use:
   through the proxy server, GitLab Duo features like the GitLab Duo health check,
   the GitLab Credits dashboard, and GitLab Duo Agent Platform might time out or fail.
   For more information, see [issue 602538](https://gitlab.com/gitlab-org/gitlab/-/issues/602538).
+- AI features stream responses over long-lived HTTP connections. An HTTP/S proxy server
+  or firewall that enforces a maximum request duration or idle timeout can cut off long
+  responses without an error. Configure your proxy with a longer timeout than the other
+  components in the path.
 
 ## Allow inbound connections from clients to the GitLab instance
 

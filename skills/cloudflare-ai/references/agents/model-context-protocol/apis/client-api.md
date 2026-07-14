@@ -29,8 +29,8 @@ This page covers connecting to MCP servers as a client. To create your own MCP s
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-5971)
-* [  TypeScript ](#tab-panel-5972)
+* [  JavaScript ](#tab-panel-6215)
+* [  TypeScript ](#tab-panel-6216)
 
 **JavaScript**
 
@@ -100,8 +100,8 @@ Connections persist in the agent's [SQL storage](https://developers.cloudflare.c
 
 Use `addMcpServer()` to connect to an MCP server. For non-OAuth servers, no options are needed:
 
-* [  JavaScript ](#tab-panel-5965)
-* [  TypeScript ](#tab-panel-5966)
+* [  JavaScript ](#tab-panel-6209)
+* [  TypeScript ](#tab-panel-6210)
 
 **JavaScript**
 
@@ -135,8 +135,8 @@ await this.addMcpServer("github", "https://mcp.github.com/mcp", {
 
 By default, each connection is assigned a generated `nanoid(8)` ID. Pass `id` for connector-style integrations so tools surface as readable keys instead of opaque connection IDs.
 
-* [  JavaScript ](#tab-panel-5963)
-* [  TypeScript ](#tab-panel-5964)
+* [  JavaScript ](#tab-panel-6207)
+* [  TypeScript ](#tab-panel-6208)
 
 **JavaScript**
 
@@ -166,8 +166,8 @@ Stable IDs are fully additive — no existing code breaks. If you add `{ id: "gi
 
 MCP supports multiple transport types:
 
-* [  JavaScript ](#tab-panel-5967)
-* [  TypeScript ](#tab-panel-5968)
+* [  JavaScript ](#tab-panel-6211)
+* [  TypeScript ](#tab-panel-6212)
 
 **JavaScript**
 
@@ -199,8 +199,8 @@ await this.addMcpServer("server", "https://mcp.example.com/mcp", {
 
 For servers behind authentication (like Cloudflare Access) or using bearer tokens:
 
-* [  JavaScript ](#tab-panel-5969)
-* [  TypeScript ](#tab-panel-5970)
+* [  JavaScript ](#tab-panel-6213)
+* [  TypeScript ](#tab-panel-6214)
 
 **JavaScript**
 
@@ -274,8 +274,8 @@ sequenceDiagram
 
 ### Handling OAuth in your agent
 
-* [  JavaScript ](#tab-panel-5973)
-* [  TypeScript ](#tab-panel-5974)
+* [  JavaScript ](#tab-panel-6217)
+* [  TypeScript ](#tab-panel-6218)
 
 **JavaScript**
 
@@ -337,8 +337,8 @@ OAuth tokens are securely stored in SQLite, and persist across agent restarts.
 
 When using `sendIdentityOnConnect: false` to hide sensitive instance names (like session IDs or user IDs), the default OAuth callback URL would expose the instance name. To prevent this security issue, you must provide a custom `callbackPath`.
 
-* [  JavaScript ](#tab-panel-5997)
-* [  TypeScript ](#tab-panel-5998)
+* [  JavaScript ](#tab-panel-6243)
+* [  TypeScript ](#tab-panel-6244)
 
 **JavaScript**
 
@@ -462,8 +462,8 @@ OAuth callbacks are matched by the `state` query parameter (format: `{serverId}:
 
 Configure how OAuth completion is handled. By default, successful authentication redirects to your application origin, while failed authentication displays an HTML error page.
 
-* [  JavaScript ](#tab-panel-5985)
-* [  TypeScript ](#tab-panel-5986)
+* [  JavaScript ](#tab-panel-6223)
+* [  TypeScript ](#tab-panel-6224)
 
 **JavaScript**
 
@@ -517,14 +517,321 @@ export class MyAgent extends Agent {
 }
 ```
 
+## Elicitation
+
+[MCP elicitation ↗](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation) lets a server request user input while handling another request, such as a tool call. The current stable MCP specification defines form and URL modes.
+
+Register a handler for each mode your Agent supports in `onStart()`:
+
+* [  JavaScript ](#tab-panel-6235)
+* [  TypeScript ](#tab-panel-6236)
+
+**JavaScript**
+
+```js
+import { Agent } from "agents";
+
+
+class MyAgent extends Agent {
+  onStart() {
+    this.mcp.configureElicitationHandlers({
+      form: (request, serverId) =>
+        this.forwardElicitationToBrowser(request, serverId),
+      url: (request, serverId) =>
+        this.forwardElicitationToBrowser(request, serverId),
+    });
+  }
+
+
+  forwardElicitationToBrowser(request, serverId) {
+    // Forward the request to your UI and resolve after the user responds.
+    // A complete implementation appears in Forward elicitation to a UI.
+    throw new Error(
+      `Implement elicitation for ${serverId}: ${request.params.message}`,
+    );
+  }
+}
+```
+
+**TypeScript**
+
+```ts
+import { Agent } from "agents";
+import type { ElicitRequest, ElicitResult } from "agents/mcp";
+
+
+class MyAgent extends Agent<Env> {
+  onStart() {
+    this.mcp.configureElicitationHandlers({
+      form: (request, serverId) =>
+        this.forwardElicitationToBrowser(request, serverId),
+      url: (request, serverId) =>
+        this.forwardElicitationToBrowser(request, serverId),
+    });
+  }
+
+
+  private forwardElicitationToBrowser(
+    request: ElicitRequest,
+    serverId: string,
+  ): Promise<ElicitResult> {
+    // Forward the request to your UI and resolve after the user responds.
+    // A complete implementation appears in Forward elicitation to a UI.
+    throw new Error(
+      `Implement elicitation for ${serverId}: ${request.params.message}`,
+    );
+  }
+}
+```
+
+The `serverId` identifies the connection that sent the request. Use it to tell the user which server is asking for input and to apply server-specific policy.
+
+### Capability negotiation and hibernation
+
+At the MCP `initialize` handshake, a connection advertises only the modes with configured handlers. A form-only handler advertises form mode. A URL-only handler advertises URL mode. A connection without handlers advertises no elicitation capability, which lets the server use its fallback.
+
+The SDK stores the advertised modes with each server registration. A connection restored after Durable Object hibernation can therefore advertise the same modes when it reconnects. Callback functions remain in memory and reattach when `onStart()` runs.
+
+You can explicitly narrow the advertised modes when adding a server:
+
+* [  JavaScript ](#tab-panel-6219)
+* [  TypeScript ](#tab-panel-6220)
+
+**JavaScript**
+
+```js
+await this.addMcpServer("portal", "https://portal.example.com/mcp", {
+  client: {
+    capabilities: {
+      elicitation: { form: {} },
+    },
+  },
+});
+```
+
+**TypeScript**
+
+```ts
+await this.addMcpServer("portal", "https://portal.example.com/mcp", {
+  client: {
+    capabilities: {
+      elicitation: { form: {} },
+    },
+  },
+});
+```
+
+An explicit `client.capabilities.elicitation` value takes precedence over handler-derived modes and persists with the server registration. Do not advertise a mode without a matching handler. If the server sends that mode, the connection returns an error because it cannot handle the request.
+
+### Form mode
+
+Form mode collects structured, non-sensitive data in the client. The request includes a restricted JSON Schema in `requestedSchema`. If the user submits the form, return `action: "accept"` with matching `content`:
+
+* [  JavaScript ](#tab-panel-6221)
+* [  TypeScript ](#tab-panel-6222)
+
+**JavaScript**
+
+```js
+this.mcp.configureElicitationHandlers({
+  form: async (request) => {
+    const content = await showFormToUser(request.params.requestedSchema);
+    return content ? { action: "accept", content } : { action: "cancel" };
+  },
+});
+```
+
+**TypeScript**
+
+```ts
+this.mcp.configureElicitationHandlers({
+  form: async (request) => {
+    const content = await showFormToUser(request.params.requestedSchema);
+    return content ? { action: "accept", content } : { action: "cancel" };
+  },
+});
+```
+
+Allow the user to review and edit values before submission. Validate accepted content against `requestedSchema`. Do not use form mode to request passwords, API keys, access tokens, payment credentials, or other secrets.
+
+### URL mode
+
+URL mode asks the user to open an external page. Use it for out-of-band interactions that may collect secrets, such as third-party authorization or payment. Keep the URL in the dedicated elicitation path and out of model-visible messages and tool-result text.
+
+A URL handler should:
+
+1. Show which MCP server sent the request.
+2. Show the request message, target host, and full URL.
+3. Ask for consent before opening the URL.
+4. Open the page in a browser context the Agent and model cannot inspect.
+5. Return `action: "accept"` without `content` after consent.
+6. Offer distinct decline and cancel controls.
+
+Do not prefetch the URL or its metadata. Treat the URL as untrusted input. Production servers should send HTTPS URLs.
+
+For URL mode, `accept` means the user consented to open the URL. It does not mean the external interaction finished. A server may later send `notifications/elicitation/complete` with the request `elicitationId`.
+
+### Response actions
+
+Both modes support three actions:
+
+| Action  | Meaning                                                           |
+| ------- | ----------------------------------------------------------------- |
+| accept  | The user submitted the form or consented to open the URL.         |
+| decline | The user explicitly rejected the request.                         |
+| cancel  | The user dismissed the request without making an explicit choice. |
+
+Include `content` only for an accepted form response. Omit it for URL, decline, and cancel responses.
+
+### Forward elicitation to a UI
+
+A handler returns a promise, but the response often comes from a browser. Broadcast the request to connected clients, then resolve the promise through a `@callable` method:
+
+* [  JavaScript ](#tab-panel-6257)
+* [  TypeScript ](#tab-panel-6258)
+
+**JavaScript**
+
+```js
+import { Agent, callable } from "agents";
+
+
+class MyAgent extends Agent {
+  pendingElicitations = new Map();
+
+
+  onStart() {
+    this.mcp.configureElicitationHandlers({
+      form: (request, serverId) => this.forward(request, serverId),
+      url: (request, serverId) => this.forward(request, serverId),
+    });
+  }
+
+
+  forward(request, serverId) {
+    const id = crypto.randomUUID();
+
+
+    const result = new Promise((resolve) => {
+      const timeout = setTimeout(() => {
+        if (this.pendingElicitations.delete(id)) {
+          resolve({ action: "cancel" });
+        }
+      }, 55_000);
+      this.pendingElicitations.set(id, { resolve, timeout });
+    });
+
+
+    this.broadcast(
+      JSON.stringify({
+        type: "mcp-elicitation",
+        id,
+        serverId,
+        params: request.params,
+      }),
+    );
+
+
+    return result;
+  }
+
+
+  @callable()
+  respondToElicitation(id, result) {
+    const pending = this.pendingElicitations.get(id);
+    if (!pending) return;
+
+
+    this.pendingElicitations.delete(id);
+    clearTimeout(pending.timeout);
+    pending.resolve(result);
+  }
+}
+```
+
+**TypeScript**
+
+```ts
+import { Agent, callable } from "agents";
+import type { ElicitRequest, ElicitResult } from "agents/mcp";
+
+
+type PendingResolver = {
+  resolve: (result: ElicitResult) => void;
+  timeout: ReturnType<typeof setTimeout>;
+};
+
+
+class MyAgent extends Agent<Env> {
+  private pendingElicitations = new Map<string, PendingResolver>();
+
+
+  onStart() {
+    this.mcp.configureElicitationHandlers({
+      form: (request, serverId) => this.forward(request, serverId),
+      url: (request, serverId) => this.forward(request, serverId),
+    });
+  }
+
+
+  private forward(
+    request: ElicitRequest,
+    serverId: string,
+  ): Promise<ElicitResult> {
+    const id = crypto.randomUUID();
+
+
+    const result = new Promise<ElicitResult>((resolve) => {
+      const timeout = setTimeout(() => {
+        if (this.pendingElicitations.delete(id)) {
+          resolve({ action: "cancel" });
+        }
+      }, 55_000);
+      this.pendingElicitations.set(id, { resolve, timeout });
+    });
+
+
+    this.broadcast(
+      JSON.stringify({
+        type: "mcp-elicitation",
+        id,
+        serverId,
+        params: request.params,
+      }),
+    );
+
+
+    return result;
+  }
+
+
+  @callable()
+  respondToElicitation(id: string, result: ElicitResult) {
+    const pending = this.pendingElicitations.get(id);
+    if (!pending) return;
+
+
+    this.pendingElicitations.delete(id);
+    clearTimeout(pending.timeout);
+    pending.resolve(result);
+  }
+}
+```
+
+The example uses a 55-second timeout because MCP SDK requests default to 60 seconds. If your client call sets a longer request timeout, adjust this timeout to finish first.
+
+Refer to the [mcp-client example ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-client) for the browser implementation. The [mcp-elicitation example ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation) is a server that sends both modes.
+
+To send elicitation requests from an MCP server, refer to [elicitInput](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#elicitinputoptions-context).
+
 ## Using MCP capabilities
 
 Once connected, access the server's capabilities:
 
 ### Getting available tools
 
-* [  JavaScript ](#tab-panel-5975)
-* [  TypeScript ](#tab-panel-5976)
+* [  JavaScript ](#tab-panel-6225)
+* [  TypeScript ](#tab-panel-6226)
 
 **JavaScript**
 
@@ -558,8 +865,8 @@ for (const tool of state.tools) {
 
 ### Resources and prompts
 
-* [  JavaScript ](#tab-panel-5981)
-* [  TypeScript ](#tab-panel-5982)
+* [  JavaScript ](#tab-panel-6231)
+* [  TypeScript ](#tab-panel-6232)
 
 **JavaScript**
 
@@ -599,8 +906,8 @@ for (const prompt of state.prompts) {
 
 ### Server status
 
-* [  JavaScript ](#tab-panel-5979)
-* [  TypeScript ](#tab-panel-5980)
+* [  JavaScript ](#tab-panel-6229)
+* [  TypeScript ](#tab-panel-6230)
 
 **JavaScript**
 
@@ -630,8 +937,8 @@ for (const [id, server] of Object.entries(state.servers)) {
 
 To use MCP tools with the AI SDK, use `this.mcp.getAITools()` which converts MCP tools to AI SDK format:
 
-* [  JavaScript ](#tab-panel-5987)
-* [  TypeScript ](#tab-panel-5988)
+* [  JavaScript ](#tab-panel-6237)
+* [  TypeScript ](#tab-panel-6238)
 
 **JavaScript**
 
@@ -685,8 +992,8 @@ Note
 
 ### Removing a server
 
-* [  JavaScript ](#tab-panel-5977)
-* [  TypeScript ](#tab-panel-5978)
+* [  JavaScript ](#tab-panel-6227)
+* [  TypeScript ](#tab-panel-6228)
 
 **JavaScript**
 
@@ -712,8 +1019,8 @@ MCP servers persist across agent restarts:
 
 ### Listing all servers
 
-* [  JavaScript ](#tab-panel-5983)
-* [  TypeScript ](#tab-panel-5984)
+* [  JavaScript ](#tab-panel-6233)
+* [  TypeScript ](#tab-panel-6234)
 
 **JavaScript**
 
@@ -741,8 +1048,8 @@ for (const [id, server] of Object.entries(state.servers)) {
 
 Connected clients receive real-time MCP updates via WebSocket:
 
-* [  JavaScript ](#tab-panel-6003)
-* [  TypeScript ](#tab-panel-6004)
+* [  JavaScript ](#tab-panel-6253)
+* [  TypeScript ](#tab-panel-6254)
 
 **JavaScript**
 
@@ -1015,8 +1322,8 @@ If OAuth fails, the connection state becomes `"failed"` and the error message is
 
 Configure in `onStart()` before any OAuth flows begin:
 
-* [  JavaScript ](#tab-panel-5993)
-* [  TypeScript ](#tab-panel-5994)
+* [  JavaScript ](#tab-panel-6245)
+* [  TypeScript ](#tab-panel-6246)
 
 **JavaScript**
 
@@ -1072,8 +1379,8 @@ Override the default OAuth provider used when connecting to MCP servers by imple
 
 The override is used for both new connections (`addMcpServer`) and restored connections after a Durable Object restart.
 
-* [  JavaScript ](#tab-panel-5999)
-* [  TypeScript ](#tab-panel-6000)
+* [  JavaScript ](#tab-panel-6249)
+* [  TypeScript ](#tab-panel-6250)
 
 **JavaScript**
 
@@ -1144,8 +1451,8 @@ If you do not override this method, the agent uses the default provider which pe
 
 To keep the built-in OAuth logic (CSRF state, PKCE, nonce generation, token management) but route token storage to a different backend, import `DurableObjectOAuthClientProvider` and pass your own storage adapter:
 
-* [  JavaScript ](#tab-panel-5989)
-* [  TypeScript ](#tab-panel-5990)
+* [  JavaScript ](#tab-panel-6239)
+* [  TypeScript ](#tab-panel-6240)
 
 **JavaScript**
 
@@ -1188,8 +1495,8 @@ For fine-grained control, use `this.mcp` directly:
 
 ### Step-by-step connection
 
-* [  JavaScript ](#tab-panel-6005)
-* [  TypeScript ](#tab-panel-6006)
+* [  JavaScript ](#tab-panel-6255)
+* [  TypeScript ](#tab-panel-6256)
 
 **JavaScript**
 
@@ -1273,8 +1580,8 @@ if (connectResult.state === "connected") {
 
 ### Event subscription
 
-* [  JavaScript ](#tab-panel-5991)
-* [  TypeScript ](#tab-panel-5992)
+* [  JavaScript ](#tab-panel-6241)
+* [  TypeScript ](#tab-panel-6242)
 
 **JavaScript**
 
@@ -1418,8 +1725,8 @@ Tools are automatically namespaced by server ID to prevent conflicts when multip
 
 Pass an `MCPServerFilter` to scope the returned tools to a subset of connected servers:
 
-* [  JavaScript ](#tab-panel-5995)
-* [  TypeScript ](#tab-panel-5996)
+* [  JavaScript ](#tab-panel-6247)
+* [  TypeScript ](#tab-panel-6248)
 
 **JavaScript**
 
@@ -1480,8 +1787,8 @@ All specified filter criteria are AND'd together. The same filter parameter is a
 
 Use error detection utilities to handle connection errors:
 
-* [  JavaScript ](#tab-panel-6001)
-* [  TypeScript ](#tab-panel-6002)
+* [  JavaScript ](#tab-panel-6251)
+* [  TypeScript ](#tab-panel-6252)
 
 **JavaScript**
 
@@ -1536,6 +1843,6 @@ export class MyAgent extends Agent {
 [ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) Learn about agent persistence.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#page","headline":"McpClient · Cloudflare Agents docs","description":"Connect Agents to external MCP servers to use their tools, resources, and prompts over the Model Context Protocol.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#page","headline":"McpClient · Cloudflare Agents docs","description":"Connect Agents to external MCP servers to use their tools, resources, and prompts over the Model Context Protocol.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/apis/","name":"APIs"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/apis/client-api/","name":"McpClient"}}]}
 ```

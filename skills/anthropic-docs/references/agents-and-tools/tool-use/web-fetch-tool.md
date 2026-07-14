@@ -4,6 +4,10 @@ Fetch and read content from specific URLs to augment Claude's context with live 
 
 ---
 
+<Note>
+  This feature is eligible for [Zero Data Retention (ZDR)](/docs/en/build-with-claude/api-and-data-retention). When your organization has a ZDR arrangement, data sent through this feature is not stored after the API response is returned.
+</Note>
+
 The web fetch tool allows Claude to retrieve full content from specified web pages and PDF documents.
 
 The latest web fetch tool version (`web_fetch_20260318`) supports **dynamic filtering** with Claude Fable 5, Claude Opus 4.8, Claude Mythos 5, [Claude Mythos Preview](https://anthropic.com/glasswing), Claude Opus 4.7, Claude Opus 4.6, Claude Sonnet 5, and Claude Sonnet 4.6. Claude can write and execute code to filter fetched content before it reaches the context window, keeping only relevant information and discarding the rest. This reduces token consumption while maintaining response quality. `web_fetch_20260318` also adds [response inclusion](#response-inclusion) control for agentic workflows. The previous versions (`web_fetch_20260309` for dynamic filtering and [cache bypass](#cache-bypass), `web_fetch_20260209` for dynamic filtering only, `web_fetch_20250910` for basic fetch) remain available.
@@ -73,7 +77,7 @@ This dynamic filtering is particularly useful for:
   Dynamic filtering runs on the [code execution tool](/docs/en/agents-and-tools/tool-use/code-execution-tool), which the API enables automatically for the request. You don't need to add the code execution tool to the `tools` array.
 </Note>
 
-To enable dynamic filtering, use `web_fetch_20260209` or any later version. The following examples use `web_fetch_20260209`:
+To enable dynamic filtering, use `web_fetch_20260209` or any later version. The following examples use `web_fetch_20260318`:
 
 <CodeGroup>
   ```bash cURL
@@ -91,7 +95,7 @@ To enable dynamic filtering, use `web_fetch_20260209` or any later version. The 
               }
           ],
           "tools": [{
-              "type": "web_fetch_20260209",
+              "type": "web_fetch_20260318",
               "name": "web_fetch"
           }]
       }'
@@ -107,7 +111,7 @@ To enable dynamic filtering, use `web_fetch_20260209` or any later version. The 
         Fetch the content at https://example.com/research-paper
         and extract the key findings.
   tools:
-    - type: web_fetch_20260209
+    - type: web_fetch_20260318
       name: web_fetch
   YAML
   ```
@@ -124,7 +128,7 @@ To enable dynamic filtering, use `web_fetch_20260209` or any later version. The 
               "content": "Fetch the content at https://example.com/research-paper and extract the key findings.",
           }
       ],
-      tools=[{"type": "web_fetch_20260209", "name": "web_fetch"}],
+      tools=[{"type": "web_fetch_20260318", "name": "web_fetch"}],
   )
   print(response)
   ```
@@ -142,7 +146,7 @@ To enable dynamic filtering, use `web_fetch_20260209` or any later version. The 
           "Fetch the content at https://example.com/research-paper and extract the key findings."
       }
     ],
-    tools: [{ type: "web_fetch_20260209", name: "web_fetch" }]
+    tools: [{ type: "web_fetch_20260318", name: "web_fetch" }]
   });
 
   console.log(response);
@@ -156,7 +160,7 @@ To enable dynamic filtering, use `web_fetch_20260209` or any later version. The 
       Model = Model.ClaudeOpus4_8,
       MaxTokens = 4096,
       Messages = [new() { Role = Role.User, Content = "Fetch the content at https://example.com/research-paper and extract the key findings." }],
-      Tools = [new ToolUnion(new WebFetchTool20260209())]
+      Tools = [new ToolUnion(new WebFetchTool20260318())]
   };
 
   var message = await client.Messages.Create(parameters);
@@ -173,7 +177,7 @@ To enable dynamic filtering, use `web_fetch_20260209` or any later version. The 
   		anthropic.NewUserMessage(anthropic.NewTextBlock("Fetch the content at https://example.com/research-paper and extract the key findings.")),
   	},
   	Tools: []anthropic.ToolUnionParam{
-  		{OfWebFetchTool20260209: &anthropic.WebFetchTool20260209Param{}},
+  		{OfWebFetchTool20260318: &anthropic.WebFetchTool20260318Param{}},
   	},
   })
   if err != nil {
@@ -183,7 +187,7 @@ To enable dynamic filtering, use `web_fetch_20260209` or any later version. The 
   ```
 
   ```java Java
-  import com.anthropic.models.messages.WebFetchTool20260209;
+  import com.anthropic.models.messages.WebFetchTool20260318;
 
   void main() {
       AnthropicClient client = AnthropicOkHttpClient.fromEnv();
@@ -192,7 +196,7 @@ To enable dynamic filtering, use `web_fetch_20260209` or any later version. The 
           .model(Model.CLAUDE_OPUS_4_8)
           .maxTokens(4096L)
           .addUserMessage("Fetch the content at https://example.com/research-paper and extract the key findings.")
-          .addTool(WebFetchTool20260209.builder().build())
+          .addTool(WebFetchTool20260318.builder().build())
           .build();
 
       Message response = client.messages().create(params);
@@ -210,7 +214,7 @@ To enable dynamic filtering, use `web_fetch_20260209` or any later version. The 
       ],
       model: 'claude-opus-4-8',
       tools: [[
-          'type' => 'web_fetch_20260209',
+          'type' => 'web_fetch_20260318',
           'name' => 'web_fetch',
       ]],
   );
@@ -227,7 +231,7 @@ To enable dynamic filtering, use `web_fetch_20260209` or any later version. The 
       { role: "user", content: "Fetch the content at https://example.com/research-paper and extract the key findings." }
     ],
     tools: [{
-      type: "web_fetch_20260209",
+      type: "web_fetch_20260318",
       name: "web_fetch"
     }]
   )

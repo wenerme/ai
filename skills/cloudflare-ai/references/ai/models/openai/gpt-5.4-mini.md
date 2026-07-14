@@ -31,8 +31,8 @@ GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 fo
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1266)
-* [ cURL ](#tab-panel-1267)
+* [ TypeScript ](#tab-panel-1340)
+* [ cURL ](#tab-panel-1341)
 
 **TypeScript**
 
@@ -59,8 +59,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1276)
-* [ Raw response ](#tab-panel-1277)
+* [ Output ](#tab-panel-1352)
+* [ Raw response ](#tab-panel-1353)
 
 The three laws of thermodynamics are:
 
@@ -125,8 +125,8 @@ If you want, I can also give you a **very simple everyday analogy** for each law
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-1268)
-* [ cURL ](#tab-panel-1269)
+* [ TypeScript ](#tab-panel-1342)
+* [ cURL ](#tab-panel-1343)
 
 **TypeScript**
 
@@ -162,8 +162,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1278)
-* [ Raw response ](#tab-panel-1279)
+* [ Output ](#tab-panel-1354)
+* [ Raw response ](#tab-panel-1355)
 
 Use Python’s built-in `json` module.
 
@@ -242,8 +242,8 @@ If you want, I can also show how to:
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-1272)
-* [ cURL ](#tab-panel-1273)
+* [ TypeScript ](#tab-panel-1346)
+* [ cURL ](#tab-panel-1347)
 
 **TypeScript**
 
@@ -293,8 +293,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1280)
-* [ Raw response ](#tab-panel-1281)
+* [ Output ](#tab-panel-1356)
+* [ Raw response ](#tab-panel-1357)
 
 Absolutely — the San Francisco to Los Angeles drive has a lot of great stop options depending on whether you want the **fastest route** or the **most scenic one**.
 
@@ -411,8 +411,8 @@ If you want, I can also make you:
 
 **Creative Writing**  — Longer completion for creative output
 
-* [ TypeScript ](#tab-panel-1270)
-* [ cURL ](#tab-panel-1271)
+* [ TypeScript ](#tab-panel-1344)
+* [ cURL ](#tab-panel-1345)
 
 **TypeScript**
 
@@ -448,8 +448,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1282)
-* [ Raw response ](#tab-panel-1283)
+* [ Output ](#tab-panel-1358)
+* [ Raw response ](#tab-panel-1359)
 
 The rain had been falling since midnight, soft and persistent, turning the city into a blur of sodium light and reflected secrets. Detective Mara Venn stood in the doorway of apartment 4B, one gloved hand resting against the frame, and looked down at the object gleaming on the floorboards.
 
@@ -516,8 +516,8 @@ And somehow, they had expected her to come.
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-1274)
-* [ cURL ](#tab-panel-1275)
+* [ TypeScript ](#tab-panel-1348)
+* [ cURL ](#tab-panel-1349)
 
 **TypeScript**
 
@@ -552,8 +552,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1284)
-* [ Raw response ](#tab-panel-1285)
+* [ Output ](#tab-panel-1362)
+* [ Raw response ](#tab-panel-1363)
 
 Recursion is when a function solves a problem by calling itself on a smaller version of the same problem.
 
@@ -5374,14 +5374,207 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 ]
 ```
 
+**Web Search**  — Letting the model use OpenAI's built-in web search tool to answer with current information
+
+* [ TypeScript ](#tab-panel-1350)
+* [ cURL ](#tab-panel-1351)
+
+**TypeScript**
+
+```ts
+const response = await env.AI.run(
+  'openai/gpt-5.4-mini',
+  {
+    input: 'What were the top news stories about Cloudflare this week? Summarise in three bullets.',
+    max_output_tokens: 4096,
+    tools: [{ type: 'web_search_preview' }],
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/gpt-5.4-mini",
+  "input": "What were the top news stories about Cloudflare this week? Summarise in three bullets.",
+  "max_output_tokens": 4096,
+  "tools": [
+    {
+      "type": "web_search_preview"
+    }
+  ]
+}'
+```
+
+* [ Output ](#tab-panel-1360)
+* [ Raw response ](#tab-panel-1361)
+
+Here are the top Cloudflare stories from **this week** I found, in three bullets:
+
+- **Cloudflare had a service degradation/outage today, June 22, 2026**, with widespread user reports of 500 errors and impacted services; discussion online suggests it affected a broad set of Cloudflare-dependent sites. ([reddit.com](https://www.reddit.com/r/sysadmin/comments/1ucm4f2/cloudflare_na_service_degraded_6222026/?utm_source=openai))
+
+- **Cloudflare announced a new partner initiative for AI and SASE adoption** on **June 18, 2026**, adding a Cloudflare One Design Partner designation and AI tooling to help customers migrate away from fragmented security setups. ([itpro.com](https://www.itpro.com/technology/artificial-intelligence/cloudflare-launches-new-partner-initiative-to-support-ai-and-sase-adoption?utm_source=openai))
+
+- **Cloudflare’s June product/news cycle was dominated by AI and platform expansion**, including the launch of “Application Services for Private Origins” on **June 10**, the company’s acquisition of **VoidZero** on **June 4**, and new AI security/budgeting features on **June 5**. ([blog.cloudflare.com](https://blog.cloudflare.com/?utm_source=openai))
+
+If you want, I can turn this into a **more newsroom-style summary** or a **“most important + why it matters”** version.
+
+```json
+{
+  "id": "resp_0f020ddf70098206016a399675cf94819bbe9b7eee768256c3",
+  "object": "response",
+  "created_at": 1782158965,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "output": [
+    {
+      "id": "ws_0f020ddf70098206016a3996763370819b932817a9ee0bacdc",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "Cloudflare news this week June 2026 Cloudflare",
+          "Cloudflare this week news June 2026",
+          "Cloudflare latest news June 2026 site:reuters.com OR site:bloomberg.com OR site:techcrunch.com OR site:theverge.com"
+        ],
+        "query": "Cloudflare news this week June 2026 Cloudflare"
+      }
+    },
+    {
+      "id": "ws_0f020ddf70098206016a399678a478819ba4f867a7c11a5136",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "queries": [
+          "site:reuters.com Cloudflare June 2026 outage June 22 2026",
+          "site:cloudflare.com blog June 2026 Cloudflare outage June 22 2026",
+          "site:techcrunch.com Cloudflare June 2026 outage"
+        ],
+        "query": "site:reuters.com Cloudflare June 2026 outage June 22 2026"
+      }
+    },
+    {
+      "id": "msg_0f020ddf70098206016a39967aa8f0819bb32294764e0878d9",
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "output_text",
+          "annotations": [
+            {
+              "type": "url_citation",
+              "end_index": 427,
+              "start_index": 303,
+              "title": "Cloudflare NA service degraded 6-22-2026",
+              "url": "https://www.reddit.com/r/sysadmin/comments/1ucm4f2/cloudflare_na_service_degraded_6222026/?utm_source=openai"
+            },
+            {
+              "type": "url_citation",
+              "end_index": 822,
+              "start_index": 658,
+              "title": "Cloudflare launches new partner initiative to support AI and SASE adoption",
+              "url": "https://www.itpro.com/technology/artificial-intelligence/cloudflare-launches-new-partner-initiative-to-support-ai-and-sase-adoption?utm_source=openai"
+            },
+            {
+              "type": "url_citation",
+              "end_index": 1176,
+              "start_index": 1105,
+              "title": "The Cloudflare Blog",
+              "url": "https://blog.cloudflare.com/?utm_source=openai"
+            }
+          ],
+          "logprobs": [],
+          "text": "Here are the top Cloudflare stories from **this week** I found, in three bullets:\n\n- **Cloudflare had a service degradation/outage today, June 22, 2026**, with widespread user reports of 500 errors and impacted services; discussion online suggests it affected a broad set of Cloudflare-dependent sites. ([reddit.com](https://www.reddit.com/r/sysadmin/comments/1ucm4f2/cloudflare_na_service_degraded_6222026/?utm_source=openai))\n\n- **Cloudflare announced a new partner initiative for AI and SASE adoption** on **June 18, 2026**, adding a Cloudflare One Design Partner designation and AI tooling to help customers migrate away from fragmented security setups. ([itpro.com](https://www.itpro.com/technology/artificial-intelligence/cloudflare-launches-new-partner-initiative-to-support-ai-and-sase-adoption?utm_source=openai))\n\n- **Cloudflare’s June product/news cycle was dominated by AI and platform expansion**, including the launch of “Application Services for Private Origins” on **June 10**, the company’s acquisition of **VoidZero** on **June 4**, and new AI security/budgeting features on **June 5**. ([blog.cloudflare.com](https://blog.cloudflare.com/?utm_source=openai))\n\nIf you want, I can turn this into a **more newsroom-style summary** or a **“most important + why it matters”** version."
+        }
+      ],
+      "phase": "final_answer",
+      "role": "assistant"
+    }
+  ],
+  "status": "completed",
+  "usage": {
+    "input_tokens": 17121,
+    "output_tokens": 485,
+    "total_tokens": 17606,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens_details": {
+      "reasoning_tokens": 196
+    }
+  },
+  "background": false,
+  "billing": {
+    "payer": "developer"
+  },
+  "completed_at": 1782158971,
+  "error": null,
+  "frequency_penalty": 0,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": 4096,
+  "max_tool_calls": null,
+  "moderation": null,
+  "parallel_tool_calls": true,
+  "presence_penalty": 0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": "current_turn",
+    "effort": "none",
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "store": false,
+  "temperature": 1,
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_content_types": [
+        "text"
+      ],
+      "search_context_size": "medium",
+      "user_location": {
+        "type": "approximate",
+        "city": null,
+        "country": "US",
+        "region": null,
+        "timezone": null
+      }
+    }
+  ],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "user": null,
+  "metadata": {},
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
+```
+
 ## Parameters
 
 Schema variant
 
 ResponsesChat Completions
 
-* [ Input ](#tab-panel-1286)
-* [ Output ](#tab-panel-1287)
+* [ Input ](#tab-panel-1364)
+* [ Output ](#tab-panel-1365)
 
 ▶input
 

@@ -33,8 +33,8 @@ curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agent
 
 Or if you’re building an AI Agent using Workers, you can use TypeScript:
 
-* [  JavaScript ](#tab-panel-8985)
-* [  TypeScript ](#tab-panel-8986)
+* [  JavaScript ](#tab-panel-9303)
+* [  TypeScript ](#tab-panel-9304)
 
 **JavaScript**
 
@@ -76,6 +76,8 @@ date: Wed, 11 Feb 2026 11:44:48 GMT
 content-type: text/markdown; charset=utf-8
 content-length: 2899
 vary: accept
+cache-control: public, max-age=3600
+strict-transport-security: max-age=63072000; includeSubDomains
 x-markdown-tokens: 725
 x-original-tokens: 12345
 content-signal: ai-train=yes, search=yes, ai-input=yes
@@ -95,6 +97,19 @@ ultimately resulting in better results while minimizing token waste.
 ...
 ```
 
+### Response headers
+
+Markdown for Agents preserves the headers from your origin response on the converted response, so security- and cache-relevant headers survive conversion. This includes headers such as `Strict-Transport-Security` (HSTS), `Content-Security-Policy` (CSP), `X-Frame-Options`, `Set-Cookie`, CORS headers (for example, `Access-Control-Allow-Origin`), and caching headers (`Cache-Control`, `Expires`, `Age`).
+
+Because the body is replaced with converted Markdown, the following changes are applied:
+
+* `Content-Type` is set to `text/markdown; charset=utf-8`.
+* `Vary` includes `Accept` (any `Vary` dimensions your origin already declared are preserved) so that caches store separate variants for Markdown and HTML.
+* `Content-Length` is recalculated to match the size of the Markdown response.
+* Headers that describe the original body are removed, because they no longer match the converted response: `Content-Encoding`, `Content-Range`, `Transfer-Encoding`, `ETag`, and `Last-Modified`. `ETag` and `Last-Modified` are dropped because conditional requests (`If-None-Match`, `If-Modified-Since`) cannot be honored for converted responses.
+
+Markdown for Agents also adds the token count headers described below.
+
 ### Token count headers
 
 Note that we include token count headers with the converted response. `x-markdown-tokens` indicates the estimated number of tokens in the Markdown document, and `x-original-tokens` indicates the estimated number of tokens in the original HTML document before conversion. You can use these values in your flow, for example to calculate the size of a context window, estimate the token savings from Markdown conversion, or decide on your chunking strategy.
@@ -103,7 +118,9 @@ Note that we include token count headers with the converted response. `x-markdow
 
 [Content Signals ↗](https://contentsignals.org/) is a framework that allows anyone to express their preferences for how their content can be used after it has been accessed.
 
-By default Markdown for Agents converted responses include the `Content-Signal: ai-train=yes, search=yes, ai-input=yes` header signaling that the content can be used for AI Training, Search results and AI Input, which includes agentic use. Markdown for Agents will provide options to define custom Content Signal policies in the future.
+If your origin already sets a `content-signal` header, Markdown for Agents preserves that value on the converted response — your origin's policy is authoritative. This lets you define custom Content Signal policies by setting the `content-signal` header at your origin.
+
+When the origin response does not include a `content-signal` header, Markdown for Agents adds a default `Content-Signal: ai-train=yes, search=yes, ai-input=yes`, signaling that the content can be used for AI Training, Search results, and AI Input, which includes agentic use.
 
 ## Output format
 
@@ -169,9 +186,9 @@ Example output:
 
 ## How to enable
 
-* [ Dashboard ](#tab-panel-8982)
-* [ API ](#tab-panel-8983)
-* [ Custom Hostnames ](#tab-panel-8984)
+* [ Dashboard ](#tab-panel-9300)
+* [ API ](#tab-panel-9301)
+* [ Custom Hostnames ](#tab-panel-9302)
 
 To enable Markdown for Agents for your zone in the dashboard:
 
@@ -310,6 +327,6 @@ If you’re building AI systems that require arbitrary document conversion from 
 * The Browser Run [/markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/) endpoint supports markdown conversion if you need to render a dynamic page or application in a real browser before converting it.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/#page","headline":"Markdown for Agents · Cloudflare Fundamentals docs","description":"Cloudflare's Markdown for Agents converts HTML to Markdown at the edge, allowing AI systems to request content in text/markdown format.","url":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/#page","headline":"Markdown for Agents · Cloudflare Fundamentals docs","description":"Cloudflare's Markdown for Agents converts HTML to Markdown at the edge, allowing AI systems to request content in text/markdown format.","url":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/markdown-for-agents/","name":"Markdown for Agents"}}]}
 ```

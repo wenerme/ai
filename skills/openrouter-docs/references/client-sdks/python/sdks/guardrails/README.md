@@ -44,7 +44,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.guardrails.list()
+    res = open_router.guardrails.list(offset=0, limit=50)
 
     while res is not None:
         # Handle items
@@ -323,7 +323,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.guardrails.list_guardrail_key_assignments(id="550e8400-e29b-41d4-a716-446655440000")
+    res = open_router.guardrails.list_guardrail_key_assignments(id="550e8400-e29b-41d4-a716-446655440000", offset=0, limit=50)
 
     while res is not None:
         # Handle items
@@ -479,7 +479,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.guardrails.list_guardrail_member_assignments(id="550e8400-e29b-41d4-a716-446655440000")
+    res = open_router.guardrails.list_guardrail_member_assignments(id="550e8400-e29b-41d4-a716-446655440000", offset=0, limit=50)
 
     while res is not None:
         # Handle items
@@ -637,7 +637,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.guardrails.list_key_assignments()
+    res = open_router.guardrails.list_key_assignments(offset=0, limit=50)
 
     while res is not None:
         # Handle items
@@ -687,7 +687,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.guardrails.list_member_assignments()
+    res = open_router.guardrails.list_member_assignments(offset=0, limit=50)
 
     while res is not None:
         # Handle items

@@ -1,11 +1,11 @@
 ---
 title: "Ambient | Models"
-description: "Use Ambient models with Mastra. 4 models available."
+description: "Use Ambient models with Mastra. 6 models available."
 ---
 
 # [Ambient logo]Ambient
 
-Access 4 Ambient models through Mastra's model router. Authentication is handled automatically using the `AMBIENT_API_KEY` environment variable.
+Access 6 Ambient models through Mastra's model router. Authentication is handled automatically using the `AMBIENT_API_KEY` environment variable.
 
 Learn more in the [Ambient documentation](https://ambient.xyz).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "ambient/moonshotai/kimi-k2.6"
+  model: "ambient/ambient/large"
 });
 
 // Generate a response
@@ -39,6 +39,18 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "ambient/ambient/large",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 101376,
+    "maxOutput": 101376,
+    "inputCost": 1.4,
+    "outputCost": 4.4
+  },
   {
     "model": "ambient/moonshotai/kimi-k2.6",
     "imageInput": true,
@@ -60,8 +72,20 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": 0.84,
-    "outputCost": 3.99
+    "inputCost": 0.719,
+    "outputCost": 3.49
+  },
+  {
+    "model": "ambient/z-ai/glm-5.2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 101376,
+    "maxOutput": 101376,
+    "inputCost": 1.4,
+    "outputCost": 4.4
   },
   {
     "model": "ambient/zai-org/GLM-5.1-FP8",
@@ -100,7 +124,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.ambient.xyz/v1",
-    id: "ambient/moonshotai/kimi-k2.6",
+    id: "ambient/ambient/large",
     apiKey: process.env.AMBIENT_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -119,7 +143,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "ambient/zai-org/GLM-5.2-FP8"
-      : "ambient/moonshotai/kimi-k2.6";
+      : "ambient/ambient/large";
   }
 });
 ```

@@ -34,29 +34,31 @@ If you don't have an OpenRouter account, sign up at [https://openrouter.ai](http
 
 You need to install the OpenRouter SDK. Choose TypeScript or Python based on your project:
 
-**TypeScript (npm):**
+<CodeGroup>
+  ```bash title="npm" lines theme={null}
+  npm install @openrouter/sdk
+  ```
 
-```bash lines theme={null}
-npm install @openrouter/sdk
-```
+  ```bash title="pnpm" lines theme={null}
+  pnpm add @openrouter/sdk
+  ```
 
-**TypeScript (yarn):**
+  ```bash title="yarn" lines theme={null}
+  yarn add @openrouter/sdk
+  ```
 
-```bash lines theme={null}
-yarn add @openrouter/sdk
-```
+  ```bash title="bun" lines theme={null}
+  bun add @openrouter/sdk
+  ```
 
-**TypeScript (pnpm):**
+  ```bash title="deno" lines theme={null}
+  deno add npm:@openrouter/sdk
+  ```
 
-```bash lines theme={null}
-pnpm add @openrouter/sdk
-```
-
-**Python:**
-
-```bash lines theme={null}
-pip install openrouter
-```
+  ```bash title="pip" lines theme={null}
+  pip install openrouter
+  ```
+</CodeGroup>
 
 ## API Key Setup
 

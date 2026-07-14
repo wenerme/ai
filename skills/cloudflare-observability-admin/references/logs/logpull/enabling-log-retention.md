@@ -31,9 +31,9 @@ To make a `POST` call, you must have zone-scoped `edit` permissions, such as Sup
 
 ### Check log retention status
 
-* [ Linux ](#tab-panel-9756)
-* [ CMD ](#tab-panel-9757)
-* [ PowerShell ](#tab-panel-9758)
+* [ Linux ](#tab-panel-10080)
+* [ CMD ](#tab-panel-10081)
+* [ PowerShell ](#tab-panel-10082)
 
 Required API token permissions
 
@@ -66,9 +66,9 @@ If the zone has log retention [enabled](https://developers.cloudflare.com/logs/l
 
 ### Turn on log retention
 
-* [ Linux ](#tab-panel-9759)
-* [ CMD ](#tab-panel-9760)
-* [ PowerShell ](#tab-panel-9761)
+* [ Linux ](#tab-panel-10083)
+* [ CMD ](#tab-panel-10084)
+* [ PowerShell ](#tab-panel-10085)
 
 Required API token permissions
 
@@ -113,9 +113,9 @@ Invoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $bodyFlag -Cont
 
 ### Turn off log retention
 
-* [ Linux ](#tab-panel-9762)
-* [ CMD ](#tab-panel-9763)
-* [ PowerShell ](#tab-panel-9764)
+* [ Linux ](#tab-panel-10086)
+* [ CMD ](#tab-panel-10087)
+* [ PowerShell ](#tab-panel-10088)
 
 Required API token permissions
 

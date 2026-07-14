@@ -142,8 +142,8 @@ Scheduling and routing
 
 Most Workers are a variation on the default Workers flow:
 
-* [  JavaScript ](#tab-panel-9709)
-* [  TypeScript ](#tab-panel-9710)
+* [  JavaScript ](#tab-panel-10033)
+* [  TypeScript ](#tab-panel-10034)
 
 **JavaScript**
 

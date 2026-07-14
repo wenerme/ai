@@ -8,13 +8,43 @@
 
 The Client SDKs give you a thin, type-safe layer over the OpenRouter REST API. It handles authentication, request validation, and response typing so you can call any of 400+ models with a single function call — no boilerplate, no provider-specific quirks.
 
-## Install instructions
+## Installation
 
-| Language   | Package                                                            | Install                                   |
-| ---------- | ------------------------------------------------------------------ | ----------------------------------------- |
-| TypeScript | [`@openrouter/sdk`](https://www.npmjs.com/package/@openrouter/sdk) | `npm install @openrouter/sdk`             |
-| Python     | [`openrouter`](https://pypi.org/project/openrouter/)               | `pip install openrouter`                  |
-| Go         | [`go-sdk`](https://pkg.go.dev/github.com/OpenRouterTeam/go-sdk)    | `go get github.com/OpenRouterTeam/go-sdk` |
+| Language   | Package                                                            |
+| ---------- | ------------------------------------------------------------------ |
+| TypeScript | [`@openrouter/sdk`](https://www.npmjs.com/package/@openrouter/sdk) |
+| Python     | [`openrouter`](https://pypi.org/project/openrouter/)               |
+| Go         | [`go-sdk`](https://pkg.go.dev/github.com/OpenRouterTeam/go-sdk)    |
+
+<CodeGroup>
+  ```bash title="npm" lines theme={null}
+  npm install @openrouter/sdk
+  ```
+
+  ```bash title="pnpm" lines theme={null}
+  pnpm add @openrouter/sdk
+  ```
+
+  ```bash title="yarn" lines theme={null}
+  yarn add @openrouter/sdk
+  ```
+
+  ```bash title="bun" lines theme={null}
+  bun add @openrouter/sdk
+  ```
+
+  ```bash title="deno" lines theme={null}
+  deno add npm:@openrouter/sdk
+  ```
+
+  ```bash title="pip" lines theme={null}
+  pip install openrouter
+  ```
+
+  ```bash title="go" lines theme={null}
+  go get github.com/OpenRouterTeam/go-sdk
+  ```
+</CodeGroup>
 
 All three SDKs are auto-generated from the OpenRouter OpenAPI spec, so new models, parameters, and endpoints appear immediately after each API release.
 

@@ -191,6 +191,28 @@ The `[LABEL]` in the error message depends on what triggered the block:
 * For custom patterns without a label: `[BLOCKED]`
 * For NLP-detected entities: the entity type (e.g., `Blocked PII detected: PERSON`)
 
+## Reporting False Positives
+
+If a detection incorrectly flags legitimate content, you can mark it as a false positive from the [Logs](https://openrouter.ai/logs) page. Generations with a guardrail event show a shield icon on the row; hover it to open the guardrail popover.
+
+When a single entity type was detected, click **Mark as false positive** directly in the popover:
+
+<img src="https://mintcdn.com/openrouter-d02e98a0/kf2RyfW5eaywzU9V/assets/guides/features/guardrails/false-positives/fp-popover-single-pattern-sensitive-info.png?fit=max&auto=format&n=kf2RyfW5eaywzU9V&q=85&s=1281f2987439df953b556c316c02c40e" alt="Guardrail popover with a Mark as false positive button for a single detected sensitive info entity type" width="2926" height="452" data-path="assets/guides/features/guardrails/false-positives/fp-popover-single-pattern-sensitive-info.png" />
+
+When multiple entity types were detected, the popover instead links to the generation detail view, where you can select the specific entity types to report:
+
+<img src="https://mintcdn.com/openrouter-d02e98a0/kf2RyfW5eaywzU9V/assets/guides/features/guardrails/false-positives/fp-popover-multi-pattern-sensitive-info.png?fit=max&auto=format&n=kf2RyfW5eaywzU9V&q=85&s=6a96f41e68584a161c76924b611ffc6c" alt="Guardrail popover linking to Review entity types in detail for a multi-entity sensitive info detection" width="2796" height="734" data-path="assets/guides/features/guardrails/false-positives/fp-popover-multi-pattern-sensitive-info.png" />
+
+In the detail view, check the entity types that were flagged incorrectly under **Mark as false positive**, then click **Submit**:
+
+<img src="https://mintcdn.com/openrouter-d02e98a0/kf2RyfW5eaywzU9V/assets/guides/features/guardrails/false-positives/fp-detail-view-multi-pattern-sensitive-info.png?fit=max&auto=format&n=kf2RyfW5eaywzU9V&q=85&s=81f3776824fa91d35dc83bcf43c1d20b" alt="Generation detail view with per-entity Mark as false positive checkboxes for a sensitive info detection" width="3260" height="1310" data-path="assets/guides/features/guardrails/false-positives/fp-detail-view-multi-pattern-sensitive-info.png" />
+
+The event is visually marked and your feedback is recorded for future detection improvements.
+
+<Note>
+  Marking a detection as false positive does not retroactively unblock the request. If the action was **block**, the original request was already rejected.
+</Note>
+
 ## Best Practices
 
 * **Start with Redact** — Use **Redact** as the default action when getting started. This lets requests proceed while protecting sensitive data, giving you time to evaluate detection accuracy before switching to **Block**.
@@ -199,7 +221,7 @@ The `[LABEL]` in the error message depends on what triggered the block:
 
 * **Be aware of NLP latency** — The **Person Name** and **Address** presets use NLP-based detection, which adds latency proportional to input size. If latency is critical, consider using only regex-based presets.
 
-* **Test before deploying** — Use the Test Preview in the guardrail editor to verify your filters work as expected before saving and assigning the guardrail.
+* **Test before deploying** — Use the Test Preview in the guardrail editor to verify your filters work as expected before saving and assigning the guardrail. If a detection misfires, you can [report false positives](#reporting-false-positives) from the Logs page.
 
 * **Combine with other guardrail settings** — Sensitive info filters work alongside budget limits, model allowlists, provider restrictions, and ZDR enforcement. Use them together for comprehensive governance.
 

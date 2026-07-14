@@ -38,20 +38,24 @@ If you only use the REST API client for non-agent features
 ## Step 1: Install the new package
 
 <CodeGroup>
-  ```bash npm lines theme={null}
+  ```bash title="npm" lines theme={null}
   npm install @openrouter/agent
   ```
 
-  ```bash pnpm lines theme={null}
+  ```bash title="pnpm" lines theme={null}
   pnpm add @openrouter/agent
   ```
 
-  ```bash yarn lines theme={null}
+  ```bash title="yarn" lines theme={null}
   yarn add @openrouter/agent
   ```
 
-  ```bash bun lines theme={null}
+  ```bash title="bun" lines theme={null}
   bun add @openrouter/agent
+  ```
+
+  ```bash title="deno" lines theme={null}
+  deno add npm:@openrouter/agent
   ```
 </CodeGroup>
 

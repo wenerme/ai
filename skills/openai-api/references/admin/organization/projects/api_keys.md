@@ -20,6 +20,16 @@ Returns a list of API keys in the project.
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
+- `owner_project_access: optional "active" or "inactive" or "any"`
+
+  Filter API keys by whether the owner currently has effective access to the project. Use `active` for owners with access, `inactive` for owners without access, or `any` for all enabled project API keys. If omitted, the endpoint applies its existing membership-based visibility rules, which may exclude some enabled keys.
+
+  - `"active"`
+
+  - `"inactive"`
+
+  - `"any"`
+
 ### Returns
 
 - `data: array of ProjectAPIKey`
@@ -100,6 +110,14 @@ Returns a list of API keys in the project.
 
         The user's project role.
 
+  - `owner_project_access: "active" or "inactive"`
+
+    Whether the API key's owner currently has effective access to the project.
+
+    - `"active"`
+
+    - `"inactive"`
+
   - `redacted_value: string`
 
     The redacted value of the API key
@@ -148,6 +166,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys \
           "role": "role"
         }
       },
+      "owner_project_access": "active",
       "redacted_value": "redacted_value"
     }
   ],
@@ -161,7 +180,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys \
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys?after=key_abc&limit=20 \
+curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys?after=key_abc&limit=20&owner_project_access=any \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
 ```
@@ -179,6 +198,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys?after=key
             "created_at": 1711471533,
             "last_used_at": 1711471534,
             "id": "key_abc",
+            "owner_project_access": "active",
             "owner": {
                 "type": "user",
                 "user": {
@@ -211,7 +231,7 @@ Retrieves an API key in the project.
 
 ### Returns
 
-- `ProjectAPIKey object { id, created_at, last_used_at, 4 more }`
+- `ProjectAPIKey object { id, created_at, last_used_at, 5 more }`
 
   Represents an individual API key in a project.
 
@@ -291,6 +311,14 @@ Retrieves an API key in the project.
 
         The user's project role.
 
+  - `owner_project_access: "active" or "inactive"`
+
+    Whether the API key's owner currently has effective access to the project.
+
+    - `"active"`
+
+    - `"inactive"`
+
   - `redacted_value: string`
 
     The redacted value of the API key
@@ -327,6 +355,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_K
       "role": "role"
     }
   },
+  "owner_project_access": "active",
   "redacted_value": "redacted_value"
 }
 ```
@@ -349,6 +378,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
     "created_at": 1711471533,
     "last_used_at": 1711471534,
     "id": "key_abc",
+    "owner_project_access": "active",
     "owner": {
         "type": "user",
         "user": {
@@ -427,7 +457,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
 
 ### Project API Key
 
-- `ProjectAPIKey object { id, created_at, last_used_at, 4 more }`
+- `ProjectAPIKey object { id, created_at, last_used_at, 5 more }`
 
   Represents an individual API key in a project.
 
@@ -506,6 +536,14 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
       - `role: string`
 
         The user's project role.
+
+  - `owner_project_access: "active" or "inactive"`
+
+    Whether the API key's owner currently has effective access to the project.
+
+    - `"active"`
+
+    - `"inactive"`
 
   - `redacted_value: string`
 

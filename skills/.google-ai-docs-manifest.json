@@ -206,8 +206,8 @@
   "google-ai-docs/api-key.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-key",
     "skill": "google-ai-docs",
-    "size": 14616,
-    "updatedAt": "2026-06-24T19:28:30.644Z"
+    "size": 14597,
+    "updatedAt": "2026-07-14T03:56:16.354Z"
   },
   "google-ai-docs/model-tuning.md": {
     "url": "https://ai.google.dev/gemini-api/docs/model-tuning",

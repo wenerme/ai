@@ -34,10 +34,19 @@ model="~openai/gpt-latest"
 
 [model_providers.openrouter]
 name = "openrouter"
-
 base_url="https://openrouter.ai/api/v1"
-env_key="OPENROUTER_API_KEY"
+
+[model_providers.openrouter.auth]
+command = "sh"
+args = ["-c", "echo $OPENROUTER_API_KEY"]
 ```
+
+<Note>
+  A plain `env_key = "OPENROUTER_API_KEY"` also works for authentication, but Codex
+  won't fetch the OpenRouter model catalog in that mode — non-OpenAI models will
+  show the "Unknown model" fallback-metadata warning. Prefer the command-based
+  `auth` block above.
+</Note>
 
 ### Step 4: Set Your API Key
 
@@ -49,7 +58,7 @@ export OPENROUTER_API_KEY="sk-or-..."
 ```
 
 <Note>
-  Codex reads the API key from the environment variable specified in `env_key` (default: `OPENROUTER_API_KEY`). Ensure this is set before starting Codex.
+  The `auth` command above reads your key from `$OPENROUTER_API_KEY`, so ensure this environment variable is set before starting Codex.
 </Note>
 
 ### Step 5: Start Codex
@@ -81,11 +90,21 @@ Your requests will now be routed through OpenRouter.
 [model_providers.openrouter]
 name = "openrouter"
 base_url = "https://openrouter.ai/api/v1"
-env_key = "OPENROUTER_API_KEY"
+
+[model_providers.openrouter.auth]
+command = "sh"
+args = ["-c", "echo $OPENROUTER_API_KEY"]
 ```
 
 * **`base_url`**: OpenRouter API endpoint. Use `https://openrouter.ai/api/v1` for production.
-* **`env_key`**: Environment variable name for your API key.
+* **`auth.command` / `auth.args`**: Command Codex runs to obtain your API key — here it echoes `$OPENROUTER_API_KEY`. Command-based auth is what triggers Codex's model-catalog refresh, so non-OpenAI models get correct metadata instead of the fallback-metadata warning.
+
+<Note>
+  A plain `env_key = "OPENROUTER_API_KEY"` also works for authentication, but Codex
+  won't fetch the OpenRouter model catalog in that mode — non-OpenAI models will
+  show the "Unknown model" fallback-metadata warning. Prefer the command-based
+  `auth` block above.
+</Note>
 
 ### Project Trust Levels
 

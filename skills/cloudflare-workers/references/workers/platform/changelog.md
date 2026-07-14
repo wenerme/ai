@@ -18,6 +18,14 @@ This is _different_ from [compatibility dates](https://developers.cloudflare.com
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/workers/platform/changelog/index.xml)
 
+## 2026-06-04
+
+* Updated v8 to version 15.0.
+
+## 2026-05-13
+
+* Fixed a regression where passing an array for to/cc/bcc on the SendEmail builder produced "Invalid email address" errors.
+
 ## 2026-04-27
 
 * Updated v8 to version 14.8.

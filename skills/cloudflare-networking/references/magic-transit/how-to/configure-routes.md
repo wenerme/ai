@@ -32,8 +32,8 @@ The dashboard **Routes** page shows the routes for all of your connectors — in
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-9777)
-* [ API ](#tab-panel-9778)
+* [ Dashboard ](#tab-panel-10101)
+* [ API ](#tab-panel-10102)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -128,8 +128,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-9779)
-* [ API ](#tab-panel-9780)
+* [ Dashboard ](#tab-panel-10103)
+* [ API ](#tab-panel-10104)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -214,8 +214,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-9775)
-* [ API ](#tab-panel-9776)
+* [ Dashboard ](#tab-panel-10099)
+* [ API ](#tab-panel-10100)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.

@@ -43,8 +43,8 @@ Note
 
 To allow IPv6-only clients to connect to IPv4-only origin web servers, keep IPv6 compatibility enabled and configure [Pseudo IPv4](https://developers.cloudflare.com/network/pseudo-ipv4/).
 
-* [ Dashboard ](#tab-panel-9498)
-* [ API ](#tab-panel-9499)
+* [ Dashboard ](#tab-panel-10113)
+* [ API ](#tab-panel-10114)
 
 To turn off IPv6 compatibility in the dashboard:
 

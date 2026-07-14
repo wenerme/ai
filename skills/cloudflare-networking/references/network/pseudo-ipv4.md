@@ -52,8 +52,8 @@ When using _Overwrite Headers_, no software changes are necessary in your origin
 
 To configure **Pseudo IPv4**:
 
-* [ Dashboard ](#tab-panel-9502)
-* [ API ](#tab-panel-9503)
+* [ Dashboard ](#tab-panel-10117)
+* [ API ](#tab-panel-10118)
 
 To change the **Pseudo IPv4** setting in the dashboard:
 
