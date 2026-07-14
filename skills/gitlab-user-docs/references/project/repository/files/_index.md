@@ -34,7 +34,7 @@ If your file has one of the these file extensions, GitLab renders the contents o
 | [AsciiDoc](../../../asciidoc.md)                             | `adoc`, `ad`, `asciidoc` |
 | [Textile](https://textile-lang.com/)                         | `textile`  |
 | [Rdoc](https://rdoc.sourceforge.net/doc/index.html)          | `rdoc`     |
-| [Org mode](https://orgmode.org/)                             | `org`      |
+| [Org mode](../../../org_mode.md)                             | `org`      |
 | [creole](http://www.wikicreole.org/)                         | `creole`   |
 | [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki)        | `wiki`, `mediawiki` |
 

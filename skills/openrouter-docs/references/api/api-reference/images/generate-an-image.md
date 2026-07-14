@@ -768,6 +768,8 @@ components:
         prompt_tokens: 0
         total_tokens: 4175
       properties:
+        cache_creation:
+          $ref: '#/components/schemas/AnthropicCacheCreation'
         completion_tokens:
           description: The tokens generated
           type: integer
@@ -1846,6 +1848,20 @@ components:
           example: model
           nullable: true
           type: string
+      type: object
+    AnthropicCacheCreation:
+      example:
+        ephemeral_1h_input_tokens: 0
+        ephemeral_5m_input_tokens: 100
+      nullable: true
+      properties:
+        ephemeral_1h_input_tokens:
+          type: integer
+        ephemeral_5m_input_tokens:
+          type: integer
+      required:
+        - ephemeral_5m_input_tokens
+        - ephemeral_1h_input_tokens
       type: object
     CostDetails:
       description: Breakdown of upstream inference costs

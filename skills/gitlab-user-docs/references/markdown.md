@@ -151,8 +151,8 @@ Alt-H2
 
 - Heading link generation [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/440733) in GitLab 17.0.
 
-All Markdown-rendered headings automatically
-get IDs that can be linked to, except in comments.
+GitLab automatically adds an anchor to every Markdown heading,
+so you can link to it.
 
 On hover, a link to those IDs becomes visible to make it easier to copy the link to
 the heading to use it somewhere else.
@@ -354,7 +354,7 @@ each backtick with a backslash ` \ `:
 
 [Inline diff with mixed formatting, as rendered by the GitLab interface]
 
-### Horizontal rule
+## Horizontal rule
 
 Create a horizontal rule by using three or more hyphens, asterisks, or underscores:
 
@@ -368,7 +368,7 @@ ___
 
 When rendered, all horizontal rules look similar to:
 
----
+> ---
 
 ## Lists
 
@@ -611,18 +611,18 @@ You can also add task lists to [table cells](#task-lists-in-tables).
 You can create links in multiple ways:
 
 ```markdown
-- This line shows an [inline-style link](https://www.google.com)
+- This line shows an [inline-style link](https://example.com)
 - This line shows a [link to a repository file in the same directory](permissions.md)
 - This line shows a [relative link to a file one directory higher](../_index.md)
-- This line shows a [link that also has title text](https://www.google.com "This link takes you to Google!")
+- This line shows a [link that also has title text](https://example.com "This link takes you to Example!")
 ```
 
 When rendered, the examples look similar to:
 
-> - This line shows an [inline-style link](https://www.google.com)
+> - This line shows an [inline-style link](https://example.com)
 > - This line shows a [link to a repository file in the same directory](permissions.md)
 > - This line shows a [relative link to a file one directory higher](../_index.md)
-> - This line shows a [link that also has title text](https://www.google.com "This link takes you to Google!")
+> - This line shows a [link that also has title text](https://example.com "This link takes you to Example!")
 
 You cannot use relative links to reference project files in a wiki
 page, or a wiki page in a project file. This limitation exists because wikis are always
@@ -669,8 +669,7 @@ When rendered, the example look similar to:
 Almost any URL you put into your text is auto-linked:
 
 ```markdown
-- https://www.google.com
-- https://www.google.com
+- https://example.com
 - ftp://ftp.us.debian.org/debian/
 - smb://foo/bar/baz
 - irc://irc.freenode.net/
@@ -679,8 +678,7 @@ Almost any URL you put into your text is auto-linked:
 
 When rendered, the example looks similar to:
 
-> - <https://www.google.com>
-> - <https://www.google.com>
+> - <https://example.com>
 > - <ftp://ftp.us.debian.org/debian/>
 > - <a href="smb://foo/bar/baz/">smb://foo/bar/baz</a>
 > - <a href="irc://irc.freenode.net">irc://irc.freenode.net</a>
@@ -1506,7 +1504,7 @@ For more information, see the [Kroki integration](../administration/integration/
 ## Math equations
 
 Math written in LaTeX syntax is rendered with [KaTeX](https://github.com/KaTeX/KaTeX).
-_KaTeX only supports a [subset](https://katex.org/docs/supported.html) of LaTeX._
+KaTeX only supports a [subset](https://katex.org/docs/supported.html) of LaTeX.
 This syntax also works in AsciiDoc wikis and files using `:stem: latexmath`. For details, see
 the [Asciidoctor user manual](https://asciidoctor.org/docs/user-manual/#activating-stem-support).
 

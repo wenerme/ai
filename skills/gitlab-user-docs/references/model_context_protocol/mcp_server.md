@@ -2,12 +2,12 @@
 
 Connect AI tools to your GitLab instance with the GitLab MCP server.
 
-- Tier: Premium, Ultimate
+- Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Beta
 
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.3 [with feature flags](../../../administration/feature_flags/_index.md) named `mcp_server` and `oauth_dynamic_client_registration`. Disabled by default.
-- Changed from experiment to [beta](../../../policy/development_stages_support.md#beta) in GitLab 18.6. Feature flags [`mcp_server`](https://gitlab.com/gitlab-org/gitlab/-/issues/556448) and [`oauth_dynamic_client_registration`](https://gitlab.com/gitlab-org/gitlab/-/issues/555942) removed.
+- Introduced as an [experiment](../../policy/development_stages_support.md#experiment) in GitLab 18.3 [with feature flags](../../administration/feature_flags/_index.md) named `mcp_server` and `oauth_dynamic_client_registration`. Disabled by default.
+- Changed from experiment to [beta](../../policy/development_stages_support.md#beta) in GitLab 18.6. Feature flags [`mcp_server`](https://gitlab.com/gitlab-org/gitlab/-/issues/556448) and [`oauth_dynamic_client_registration`](https://gitlab.com/gitlab-org/gitlab/-/issues/555942) removed.
 - Support for `2025-03-26` and `2025-06-18` MCP protocol specifications [added](https://gitlab.com/gitlab-org/gitlab/-/issues/581459) in GitLab 18.7.
 
 > [!warning]
@@ -37,12 +37,9 @@ For a click-through demo, see [GitLab Duo Agent Platform - GitLab MCP server](ht
 
 ## Prerequisites
 
-- Have GitLab Duo turned on:
-  - On GitLab.com, [for the top-level group](../../duo_agent_platform/turn_on_off.md#for-a-top-level-group).
-  - On GitLab Self-Managed and GitLab Dedicated, [for the instance](../../duo_agent_platform/turn_on_off.md#for-an-instance).
-- Have beta and experimental features turned on:
-  - On GitLab.com, [for the top-level group](../../duo_agent_platform/turn_on_off.md#on-gitlabcom-2).
-  - On GitLab Self-Managed and GitLab Dedicated, [for the instance](../../duo_agent_platform/turn_on_off.md#on-gitlab-self-managed-2).
+- Allow access to the MCP server:
+  - On GitLab.com, [for the top-level group](../group/access_and_permissions.md#allow-access-to-the-mcp-server).
+  - On GitLab Self-Managed and GitLab Dedicated, [for the instance](../../administration/settings/visibility_and_access_controls.md#allow-access-to-the-mcp-server).
 
 ## Connect a client to the GitLab MCP server
 
@@ -421,4 +418,4 @@ You can now start a new chat and ask a question depending on the [available tool
 
 ## Related topics
 
-- [MCP servers in the AI Catalog](ai_catalog_mcp_servers.md)
+- [MCP servers in the AI Catalog](../gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md)

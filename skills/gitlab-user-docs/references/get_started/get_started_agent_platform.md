@@ -107,7 +107,7 @@ For more information, see:
 
 - [Knowledge Graph](../project/repository/knowledge_graph/_index.md).
 - [MCP clients](../gitlab_duo/model_context_protocol/mcp_clients.md).
-- [MCP server](../gitlab_duo/model_context_protocol/mcp_server.md).
+- [MCP server](../model_context_protocol/mcp_server.md).
 
 ## Resources
 

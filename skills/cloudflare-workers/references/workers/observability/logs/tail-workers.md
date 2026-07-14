@@ -96,8 +96,8 @@ The following Worker code is an example of what the `events` object may look lik
 
 1. Add the following to the Wrangler file of the producer Worker:
 
-* [  wrangler.jsonc ](#tab-panel-12619)
-* [  wrangler.toml ](#tab-panel-12620)
+* [  wrangler.jsonc ](#tab-panel-12623)
+* [  wrangler.toml ](#tab-panel-12624)
 
 **JSONC**
 

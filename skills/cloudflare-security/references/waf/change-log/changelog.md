@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: This release adds targeted coverage for a path traversal flaw in Fortinet FortiSandbox (CVE-2026-39813) and transitions the Anomaly:Header:User-Agent - Fake Bing or MSN Bot rule action from Block to Disabled.
+description: This release introduces new rules targeting critical infrastructure vulnerabilities. These include an unauthenticated memory disclosure flaw in Citrix NetScaler ADC and Gateway (CVE-2026-8451) and a high-severity pre-authentication remote code execution (RCE) vulnerability in Progress Kemp LoadMaster (CVE-2026-8037).
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -13,6 +13,23 @@ image: https://developers.cloudflare.com/core-services-preview.png
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-07-14
+
+
+**WAF Release - 2026-07-14**
+
+This release introduces new rules targeting critical infrastructure vulnerabilities. These include an unauthenticated memory disclosure flaw in Citrix NetScaler ADC and Gateway (CVE-2026-8451) and a high-severity pre-authentication remote code execution (RCE) vulnerability in Progress Kemp LoadMaster (CVE-2026-8037).
+
+**Key Findings**
+
+* CVE-2026-8451: An insufficient input validation vulnerability affects Citrix NetScaler ADC and NetScaler Gateway appliances configured as a SAML Identity Provider (IdP). Remote, unauthenticated attackers can exploit this flaw by sending malformed requests to trigger a memory overread, allowing them to leak chunks of sensitive data from adjacent appliance memory.
+* CVE-2026-8037: A critical OS command injection vulnerability in Progress Kemp LoadMaster load balancers allows unauthenticated remote attackers to achieve remote code execution (RCE).
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                              | Previous Action | New Action | Comments                 |
+| -------------------------- | ----------- | -------------- | ------------------------------------------------------------------------ | --------------- | ---------- | ------------------------ |
+| Cloudflare Managed Ruleset | ...76973ac4 | N/A            | Citrix Netscaler ADC - Insufficient Input Validation - CVE:CVE-2026-8451 | Log             | Block      | This is a new detection. |
+| Cloudflare Managed Ruleset | ...10233f36 | N/A            | Progress Kemp LoadMaster - Remote Code Execution - CVE:CVE-2026-8037     | Log             | Block      | This is a new detection. |
 
 ## 2026-07-01
 
@@ -589,25 +606,7 @@ This week’s release introduces new detections for CVE-2025-64459 and CVE-2025-
 | Cloudflare Managed Ruleset | ...da8ba7e6 | N/A            | Django SQLI - CVE:CVE-2025-64459                     | Log             | Block      | This is a new detection.                                |
 | Cloudflare Managed Ruleset | ...8d667511 | N/A            | NoSQL, MongoDB - SQLi - Comparison - 2               | Block           | Block      | Rule metadata description refined. Detection unchanged. |
 
-## 2026-01-26
-
-
-**WAF Release - 2026-01-26**
-
-This week’s release introduces new detections for denial-of-service attempts targeting React CVE-2026-23864 ([https://www.cve.org/CVERecord?id=CVE-2026-23864 ↗](https://www.cve.org/CVERecord?id=CVE-2026-23864)).
-
-**Key Findings**
-
-* CVE-2026-23864 ([https://www.cve.org/CVERecord?id=CVE-2026-23864 ↗](https://www.cve.org/CVERecord?id=CVE-2026-23864)) affects `react-server-dom-parcel`, `react-server-dom-turbopack`, and `react-server-dom-webpack` packages.
-* Attackers can send crafted HTTP requests to Server Function endpoints, causing server crashes, out-of-memory exceptions, or excessive CPU usage.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                 | Previous Action | New Action | Comments                 |
-| -------------------------- | ----------- | -------------- | ------------------------------------------- | --------------- | ---------- | ------------------------ |
-| Cloudflare Managed Ruleset | ...61680354 | N/A            | React Server - DOS - CVE:CVE-2026-23864 - 1 | N/A             | Block      | This is a new detection. |
-| Cloudflare Managed Ruleset | ...dcdffcf8 | N/A            | React Server - DOS - CVE:CVE-2026-23864 - 2 | N/A             | Block      | This is a new detection. |
-| Cloudflare Managed Ruleset | ...349edbc6 | N/A            | React Server - DOS - CVE:CVE-2026-23864 - 3 | N/A             | Block      | This is a new detection. |
-
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release adds targeted coverage for a path traversal flaw in Fortinet FortiSandbox (CVE-2026-39813) and transitions the Anomaly:Header:User-Agent - Fake Bing or MSN Bot rule action from Block to Disabled.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release introduces new rules targeting critical infrastructure vulnerabilities. These include an unauthenticated memory disclosure flaw in Citrix NetScaler ADC and Gateway (CVE-2026-8451) and a high-severity pre-authentication remote code execution (RCE) vulnerability in Progress Kemp LoadMaster (CVE-2026-8037).","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}
 ```

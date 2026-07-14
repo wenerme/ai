@@ -13,6 +13,18 @@ Prerequisites:
 
 All merge train endpoints support [offset-based pagination](rest/_index.md#offset-based-pagination) using the `page` and `per_page` parameters.
 
+A merge train can include multiple merge requests. Each object in the API response represents
+one merge request in a train, not the entire train.
+
+If you call `GET /projects/:id/merge_trains` without a target branch, the response can include
+entries from more than one merge train in the project.
+
+> [!note]
+> The REST API response does not include an explicit queue position for each merge request.
+> Sort by `id` in ascending order to list merge requests in the order they were added to the train.
+> For an exact queue position, use the GraphQL API
+> [`MergeTrainCar.index`](graphql/reference/_index.md#mergetraincar-index) field instead.
+
 ## List all merge trains for a project
 
 Lists all merge trains for a specified project.
@@ -27,7 +39,7 @@ Supported attributes:
 | --------- | ----------------- | -------- | ----------- |
 | `id`      | integer or string | Yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
 | `scope`   | string            | No       | Return merge trains filtered by the given scope. Available scopes are `active` (to be merged) and `complete` (have been merged). |
-| `sort`    | string            | No       | Return merge trains sorted in `asc` or `desc` order. Default: `desc`. |
+| `sort`    | string            | No       | Return merge requests sorted by `id` in `asc` or `desc` order. Default: `desc`. A lower `id` means the merge request was added to the train earlier. |
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following response attributes:
 
@@ -124,6 +136,10 @@ Example response:
 
 Lists all merge requests in a merge train for a target branch.
 
+Each object in the response represents one merge request in the train for `target_branch`.
+The response uses the same object type as the
+[list all merge trains](#list-all-merge-trains-for-a-project) endpoint.
+
 ```plaintext
 GET /projects/:id/merge_trains/:target_branch
 ```
@@ -135,7 +151,7 @@ Supported attributes:
 | `id`            | integer or string | Yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
 | `target_branch` | string            | Yes      | The target branch of the merge train. |
 | `scope`         | string            | No       | Return merge trains filtered by the given scope. Available scopes are `active` (to be merged) and `complete` (have been merged). |
-| `sort`          | string            | No       | Return merge trains sorted in `asc` or `desc` order. Default: `desc`. |
+| `sort`          | string            | No       | Return merge requests sorted by `id` in `asc` or `desc` order. Default: `desc`. A lower `id` means the merge request was added to the train earlier. |
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following response attributes:
 

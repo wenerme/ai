@@ -75,7 +75,7 @@ verification methods:
 1. Redis replication can be used as part of HA with Redis sentinel. It's not used between Geo sites.
 1. Object storage replication can be performed by Geo or by your object storage provider/appliance
    native replication feature.
-1. Object Storage verification is behind a [feature flag](../../feature_flags/_index.md), `geo_object_storage_verification`, [introduced in 16.4](https://gitlab.com/groups/gitlab-org/-/epics/8056) and enabled by default. It uses a checksum of the file size to verify the files.
+1. Object storage verification [introduced](https://gitlab.com/groups/gitlab-org/-/epics/8056) in GitLab 16.4 [with a feature flag](../../feature_flags/_index.md) named `geo_object_storage_verification`. Enabled by default.
 
 ### Git repositories
 
@@ -234,4 +234,4 @@ Feature.enable(:geo_package_file_replication)
 
 1. Migrated to self-service framework in 15.5. See GitLab issue [#337436](https://gitlab.com/gitlab-org/gitlab/-/issues/337436) for more details.
 1. Migrated to self-service framework in 15.11. Behind feature flag `geo_project_wiki_repository_replication`, enabled by default. See GitLab issue [#367925](https://gitlab.com/gitlab-org/gitlab/-/issues/367925) for more details.
-1. Verification of files stored in object storage was [introduced](https://gitlab.com/groups/gitlab-org/-/epics/8056) in GitLab 16.4 [with a feature flag](../../feature_flags/_index.md) named `geo_object_storage_verification`, enabled by default.
+1. Object storage verification [introduced](https://gitlab.com/groups/gitlab-org/-/epics/8056) in GitLab 16.4 [with a feature flag](../../feature_flags/_index.md) named `geo_object_storage_verification`. Enabled by default.

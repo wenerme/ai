@@ -1,20 +1,20 @@
 ---
 title: "Comfy Cloud MCP"
-description: "Claude Code, Claude Desktop, Cursor, Codex 또는 MCP 호환 에이전트에서 Comfy Cloud MCP에 연결하여 이미지, 비디오, 오디오 및 3D를 생성하고, 모델과 노드를 검색하며, 워크플로를 실행하세요."
-translationSourceHash: 01763e3c
+description: "Claude Code, Claude Desktop, Cursor, Codex, OpenClaw 또는 MCP 호환 에이전트에서 Comfy Cloud MCP에 연결하여 이미지, 비디오, 오디오 및 3D를 생성하고, 모델과 노드를 검색하며, 워크플로를 실행하세요."
+translationSourceHash: 93f43c41
 translationFrom: agent-tools/mcp.mdx
 translationBlockHashes:
   "_intro": b1c56a40
-  "Overview": 4b68a7b5
-  "Install Comfy Cloud MCP": ca5e817e
+  "Overview": 2972aa17
+  "Install Comfy Cloud MCP": e050becc
   "What your agent can do": 2c2a22e6
   "MCP tools": a9211dee
   "Credits and spending": 20e94ef0
   "Outputs and downloads": a2c8c12f
-  "Related resources": 58e75560
+  "Related resources": 2a86e2c5
   "Feedback": 6872768e
   "Known limitations": 2f9e13ba
-  "FAQ": 920ab7b8
+  "FAQ": c943ff55
 ---
 
 <CloudFeature/>
@@ -27,7 +27,7 @@ translationBlockHashes:
 
 서버는 `cloud.comfy.org/mcp`에서 원격으로 실행됩니다. 워크플로는 Comfy Cloud GPU에서 실행되므로 로컬 GPU가 필요하지 않습니다. 에이전트는 HTTPS를 통해 서버와 통신하며, 서버는 도구 호출을 대신 인증된 요청으로 변환하여 Comfy Cloud에 전송합니다.
 
-모든 **MCP 호환 클라이언트**가 동일한 서버 URL에 연결할 수 있습니다. **Claude Code**, **Claude Desktop**, **Cursor**, **Codex**는 아래에 전용 설정 안내가 있습니다. **Windsurf**, **Amp** 및 기타 에이전트는 OAuth 또는 API 키를 사용하여 동일한 URL을 사용합니다.
+모든 **MCP 호환 클라이언트**가 동일한 서버 URL에 연결할 수 있습니다. **Claude Code**, **Claude Desktop**, **Cursor**, **Codex**, **OpenClaw**는 아래에 전용 설정 안내가 있습니다. **Windsurf**, **Amp** 및 기타 에이전트는 OAuth 또는 API 키를 사용하여 동일한 URL을 사용합니다.
 
 <a id="install-comfy-cloud-mcp"></a>
 
@@ -260,6 +260,50 @@ https://cloud.comfy.org/mcp
   
 
   
+    [ClawHub](https://clawhub.ai/comfy-org/skills/comfy)에서 **Comfy Cloud** 스킬을 설치하세요. OpenClaw를 호스팅된 MCP 서버(`cloud.comfy.org/mcp`)에 연결합니다. Cloud 전용이며, 로컬 ComfyUI 설치를 구동하지 않습니다.
+
+    
+      
+        ```bash
+        openclaw skills install @comfy-org/comfy
+        ```
+
+        스킬 페이지: [clawhub.ai/comfy-org/skills/comfy](https://clawhub.ai/comfy-org/skills/comfy).
+      
+      
+        MCP 서버를 등록하고 Comfy 계정으로 로그인합니다:
+
+        ```bash
+        openclaw mcp set comfy '{"url":"https://cloud.comfy.org/mcp","transport":"streamable-http","auth":"oauth"}'
+        openclaw mcp login comfy
+        openclaw gateway restart
+        ```
+
+        `openclaw mcp login`이 인증 URL을 출력합니다. URL을 열고 로그인한 뒤 CLI 안내에 따라 흐름을 완료하세요(`--code` 값으로 다시 실행하라고 할 수 있음). `openclaw mcp status --verbose`로 확인합니다.
+
+        
+          `auth: "oauth"`가 설정되면 OpenClaw는 해당 서버 항목의 정적 `headers`를 무시합니다. OAuth와 하드코딩된 API 키 헤더를 함께 쓰지 마세요.
+        
+      
+      
+        일반 언어로 요청하세요("고양이 우주비행사 이미지 생성", "Wan 2.2 비디오 템플릿 찾기"). OpenClaw가 대신 MCP 도구를 호출합니다.
+      
+    
+
+    
+      [platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys)에서 키를 생성하세요(`comfyui-`로 시작). 내보낸 뒤 서버를 등록합니다:
+
+      ```bash
+      export COMFY_API_KEY="comfyui-..."
+      openclaw mcp set comfy '{"url":"https://cloud.comfy.org/mcp","transport":"streamable-http","headers":{"Authorization":"Bearer ${COMFY_API_KEY}"}}'
+      openclaw gateway restart
+      ```
+
+      OpenClaw에서는 커스텀 `X-API-Key` 헤더보다 `Authorization: Bearer`를 권장합니다. 일부 OpenClaw 빌드는 streamable-http 전송에서 커스텀 헤더를 드롭할 수 있으며, Bearer가 프록시를 더 안정적으로 통과합니다. `COMFY_API_KEY`는 셸 프로필 또는 OpenClaw 환경에 두세요. 키를 커밋하지 마세요.
+    
+  
+
+  
     **원격 HTTP** 전송을 지원하는 모든 MCP 클라이언트는 Comfy Cloud에 연결할 수 있습니다. 서버 URL은 항상 `https://cloud.comfy.org/mcp`입니다.
 
     
@@ -425,6 +469,7 @@ MCP 클라이언트가 셸 명령을 실행할 수 없는 경우(일부 GUI 전�
 | 리소스 | 용도 |
 | --- | --- |
 | [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) | Claude Code 플러그인 마켓플레이스 및 커뮤니티 스킬 라이브러리입니다. 위에서 사용된 **comfy-cloud** 플러그인이 여기에 배포되어 있습니다. Comfy 워크플로를 위한 추가 스킬을 찾아보거나 기여하세요. |
+| [Comfy Cloud on ClawHub](https://clawhub.ai/comfy-org/skills/comfy) | 호스팅된 Comfy Cloud MCP 서버용 OpenClaw 스킬(`openclaw skills install @comfy-org/comfy`)입니다. |
 | [Comfy CLI](/ko/agent-tools/cli) | 로컬 ComfyUI 설치/실행 및 스크립트나 CI에서 호스팅된 파트너 노드를 호출하기 위한 명령줄 도구입니다 (`comfy generate`, 베타). 터미널 또는 자동화 워크플로가 필요할 때 MCP를 보완합니다. |
 | [Share a workflow on Comfy Cloud](/ko/cloud/share-workflow) | Comfy Cloud UI에서 워크플로를 공유합니다 (MCP `share_workflow` 도구가 에이전트 세션에서 이 작업을 수행합니다). |
 
@@ -457,10 +502,10 @@ Comfy Cloud MCP는 초기 릴리스입니다. 다음 제한 사항이 알려져 
 ## 자주 묻는 질문
 
   
-    원격 HTTP 전송을 지원하는 모든 MCP 호환 클라이언트는 `https://cloud.comfy.org/mcp`에 연결할 수 있습니다. **Claude Code**, **Claude Desktop**, **Cursor** 및 **Codex**에 대한 일급 설정을 문서화합니다. **Windsurf**, **Amp**, **OpenClaw** 및 기타 에이전트는 OAuth 또는 API 키를 사용하여 동일한 URL을 따릅니다. [Comfy Cloud MCP 설치](#install-comfy-cloud-mcp)를 참조하세요.
+    원격 HTTP 전송을 지원하는 모든 MCP 호환 클라이언트는 `https://cloud.comfy.org/mcp`에 연결할 수 있습니다. **Claude Code**, **Claude Desktop**, **Cursor**, **Codex** 및 **OpenClaw**에 대한 일급 설정을 문서화합니다. **Windsurf**, **Amp** 및 기타 에이전트는 OAuth 또는 API 키를 사용하여 동일한 URL을 따릅니다. [Comfy Cloud MCP 설치](#install-comfy-cloud-mcp)를 참조하세요.
   
   
-    OAuth를 지원하는 대화형 클라이언트(Claude Code, Claude Desktop, Codex 등)에는 필요하지 않습니다. **Cursor**의 경우 MCP 구성에 Comfy Cloud API 키가 필요합니다. API 키는 브라우저 없이 헤드리스 또는 CI 설정에서도 필요합니다. [Comfy Cloud MCP 설치](#install-comfy-cloud-mcp)의 **Cursor** 탭 또는 **기타 클라이언트** 탭을 참조하세요.
+    OAuth를 지원하는 대화형 클라이언트(Claude Code, Claude Desktop, Codex, OpenClaw 등)에는 필요하지 않습니다. **Cursor**의 경우 MCP 구성에 Comfy Cloud API 키가 필요합니다. API 키는 브라우저 없이 헤드리스 또는 CI 설정에서도 필요합니다. [Comfy Cloud MCP 설치](#install-comfy-cloud-mcp)의 **Cursor** 탭, **OpenClaw** 탭 또는 **기타 클라이언트** 탭을 참조하세요.
   
   
     유료 생성에는 지출 게이트가 적용됩니다: 실행이 Comfy Cloud 크레딧을 소모하는 경우(파트너 모델 또는 유료 API 노드가 포함된 워크플로/템플릿), 서버는 실행 전에 사용자의 명시적 동의를 요구합니다. 자세한 내용은 [크레딧 및 지출](#credits-and-spending)을 참조하세요.

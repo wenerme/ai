@@ -33534,6 +33534,7 @@ Fields:
 | <a id="cdservice-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the service was created. |
 | <a id="cdservice-description"></a>`description` | [`String`](#string) | Description of the service. |
 | <a id="cdservice-id"></a>`id` | [`CdServiceID!`](#cdserviceid) | Global ID of the service. |
+| <a id="cdservice-lastdeployedat"></a>`lastDeployedAt`  | [`Time`](#time) | Introduced in GitLab 19.2. Status: Experiment. Timestamp of the service's most recently finished deployment. |
 | <a id="cdservice-name"></a>`name` | [`String!`](#string) | Name of the service. |
 | <a id="cdservice-serviceenvironmenthealths"></a>`serviceEnvironmentHealths`  | [`CdServiceEnvironmentHealthConnection`](#cdserviceenvironmenthealthconnection) | Introduced in GitLab 19.2. Status: Experiment. Observed health of the service across environments, ordered from worst to best. Request the first result to get the worst observed health of the service overall. |
 | <a id="cdservice-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the service was last updated. |
