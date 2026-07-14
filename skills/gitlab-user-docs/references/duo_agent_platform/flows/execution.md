@@ -541,8 +541,7 @@ You also have the option to configure your own runner for flows.
 > If your top-level group has [IP address restrictions](../../group/access_and_permissions.md#restrict-group-access-by-ip-address)
 > enabled, hosted runners cannot be used for flows. Hosted runners use dynamic IP addresses
 > from cloud provider pools that cannot be added to your group's IP allowlist. Instead,
-> configure your own group runner with the `gitlab--duo` tag at the top-level group level,
-> and ensure its IP address is included in your group's allowlist.
+> configure your own group runner at the top-level group.
 
 To configure your own runner for flows:
 
@@ -565,6 +564,8 @@ To configure your own runner for flows:
 1. Configure the runner to use an [executor](https://docs.gitlab.com/runner/executors/) that
    supports Docker images, like `docker`, `docker-autoscaler`, or `kubernetes`.
    The `shell` executor is not supported.
+1. If your top-level group has turned on [IP address restrictions](../../group/access_and_permissions.md#restrict-group-access-by-ip-address),
+   add the runner's IP address to your group's IP allowlist so the runner can access the group.
 1. GitLab Self-Managed only. Ensure the runner can reach the services that flows require:
    - [Allow outbound connections from the GitLab instance](../../../administration/gitlab_duo/configure/_index.md#allow-outbound-connections-from-the-gitlab-instance-to-gitlab-duo) to the Agent Platform.
    - [Allow outbound connections from the runner](../../../administration/gitlab_duo/configure/_index.md#allow-connections-from-the-runner) to the Agent Platform.

@@ -20,8 +20,8 @@ WebSockets are open connections sustained between the client and the origin serv
 
 ## Enable WebSockets
 
-* [ Dashboard ](#tab-panel-9504)
-* [ API ](#tab-panel-9505)
+* [ Dashboard ](#tab-panel-10119)
+* [ API ](#tab-panel-10120)
 
 To enable **WebSockets** connections to your origin server in the dashboard:
 

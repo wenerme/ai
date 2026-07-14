@@ -121,6 +121,11 @@ MODEL: Model.GPT_4_Omni
             line = buffer[:line_end].strip()
             buffer = buffer[line_end + 1:]
 
+            # Skip SSE comments (lines starting with ":"), e.g. the
+            # ": OPENROUTER PROCESSING" keep-alive — they are not JSON
+            if line.startswith(':'):
+              continue
+
             if line.startswith('data: '):
               data = line[6:]
               if data == '[DONE]':
@@ -176,6 +181,10 @@ MODEL: Model.GPT_4_Omni
           const line = buffer.slice(0, lineEnd).trim();
           buffer = buffer.slice(lineEnd + 1);
 
+          // Skip SSE comments (lines starting with ":"), e.g. the
+          // ": OPENROUTER PROCESSING" keep-alive — they are not JSON
+          if (line.startsWith(':')) continue;
+
           if (line.startsWith('data: ')) {
             const data = line.slice(6);
             if (data === '[DONE]') break;
@@ -208,6 +217,63 @@ For SSE (Server-Sent Events) streams, OpenRouter occasionally sends comments to 
 ```
 
 Comment payload can be safely ignored per the [SSE specs](https://html.spec.whatwg.org/multipage/server-sent-events.html#event-stream-interpretation). However, you can leverage it to improve UX as needed, e.g. by showing a dynamic loading indicator.
+
+<Warning>
+  If you parse the stream by hand, skip lines that start with `:` before
+  calling `JSON.parse`. Passing a comment line like `: OPENROUTER PROCESSING`
+  to `JSON.parse` throws, and unhandled it will crash your stream loop. The
+  snippets above handle this.
+</Warning>
+
+A spec-compliant parser such as [eventsource-parser](https://github.com/rexxars/eventsource-parser) handles comments, multi-line `data:` fields, and buffering for you:
+
+```typescript title="eventsource-parser" expandable lines theme={null}
+import { createParser } from 'eventsource-parser';
+
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'openai/gpt-4o',
+    messages: [{ role: 'user', content: 'Hello' }],
+    stream: true,
+  }),
+});
+
+// Errors that occur before streaming starts are plain JSON, not SSE
+if (!response.ok) {
+  const error = await response.json();
+  throw new Error(error.error.message);
+}
+
+const parser = createParser({
+  onEvent(event) {
+    if (event.data === '[DONE]') return;
+    try {
+      const chunk = JSON.parse(event.data);
+      const content = chunk.choices?.[0]?.delta?.content;
+      if (content) {
+        console.log(content);
+      }
+    } catch {
+      // Ignore invalid JSON
+    }
+  },
+});
+
+const reader = response.body!.getReader();
+const decoder = new TextDecoder();
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) break;
+  parser.feed(decoder.decode(value, { stream: true }));
+}
+```
+
+A parser only handles the SSE framing — errors that occur mid-generation still arrive as regular `data:` events with an `error` field. See [Handling Errors During Streaming](#handling-errors-during-streaming) below.
 
 The generation ID is returned in the `X-Generation-Id` response header for all endpoints (chat completions, completions, responses, and messages), which can be useful for debugging and correlating requests.
 

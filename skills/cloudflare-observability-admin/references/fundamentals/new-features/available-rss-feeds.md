@@ -57,6 +57,8 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/api-shield.xml)
 * [Bots](https://developers.cloudflare.com/bots/)
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/bots.xml)
+* [Challenges](https://developers.cloudflare.com/cloudflare-challenges/)
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-challenges.xml)
 * [Secrets Store](https://developers.cloudflare.com/secrets-store/)
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/secrets-store.xml)
 * [Security Center](https://developers.cloudflare.com/security-center/)

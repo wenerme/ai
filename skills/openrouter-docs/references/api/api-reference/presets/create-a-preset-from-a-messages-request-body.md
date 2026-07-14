@@ -666,7 +666,7 @@ components:
               - $ref: '#/components/schemas/BashServerTool'
               - $ref: '#/components/schemas/DatetimeServerTool'
               - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
-              - $ref: '#/components/schemas/ChatSearchModelsServerTool'
+              - $ref: '#/components/schemas/MessagesSearchModelsServerTool'
               - $ref: '#/components/schemas/WebFetchServerTool'
               - $ref: '#/components/schemas/OpenRouterWebSearchServerTool'
               - additionalProperties:
@@ -1784,18 +1784,21 @@ components:
                 page_location:
                   $ref: '#/components/schemas/AnthropicCitationPageLocationParam'
                 search_result_location:
-                  $ref: '#/components/schemas/AnthropicCitationSearchResultLocation'
+                  $ref: >-
+                    #/components/schemas/AnthropicCitationSearchResultLocationParam
                 web_search_result_location:
                   $ref: >-
-                    #/components/schemas/AnthropicCitationWebSearchResultLocation
+                    #/components/schemas/AnthropicCitationWebSearchResultLocationParam
               propertyName: type
             oneOf:
               - $ref: '#/components/schemas/AnthropicCitationCharLocationParam'
               - $ref: '#/components/schemas/AnthropicCitationPageLocationParam'
               - $ref: >-
                   #/components/schemas/AnthropicCitationContentBlockLocationParam
-              - $ref: '#/components/schemas/AnthropicCitationWebSearchResultLocation'
-              - $ref: '#/components/schemas/AnthropicCitationSearchResultLocation'
+              - $ref: >-
+                  #/components/schemas/AnthropicCitationWebSearchResultLocationParam
+              - $ref: >-
+                  #/components/schemas/AnthropicCitationSearchResultLocationParam
           nullable: true
           type: array
         text:
@@ -1909,7 +1912,7 @@ components:
       required:
         - type
       type: object
-    ChatSearchModelsServerTool:
+    MessagesSearchModelsServerTool:
       description: >-
         OpenRouter built-in server tool: searches and filters AI models
         available on OpenRouter
@@ -2662,7 +2665,7 @@ components:
         - start_page_number
         - end_page_number
       type: object
-    AnthropicCitationSearchResultLocation:
+    AnthropicCitationSearchResultLocationParam:
       example:
         cited_text: Example cited text
         end_block_index: 1
@@ -2698,7 +2701,7 @@ components:
         - start_block_index
         - end_block_index
       type: object
-    AnthropicCitationWebSearchResultLocation:
+    AnthropicCitationWebSearchResultLocationParam:
       example:
         cited_text: Example cited text
         encrypted_index: enc_idx_0

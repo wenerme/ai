@@ -43,9 +43,27 @@ rather than scaffold a separate project.
 * A place to persist state — a database, Redis, S3, or the local filesystem
 * Optional: a microphone or audio file for the voice section
 
-```bash lines theme={null}
-npm install @openrouter/agent @openrouter/sdk zod
-```
+<CodeGroup>
+  ```bash title="npm" lines theme={null}
+  npm install @openrouter/agent @openrouter/sdk zod
+  ```
+
+  ```bash title="pnpm" lines theme={null}
+  pnpm add @openrouter/agent @openrouter/sdk zod
+  ```
+
+  ```bash title="yarn" lines theme={null}
+  yarn add @openrouter/agent @openrouter/sdk zod
+  ```
+
+  ```bash title="bun" lines theme={null}
+  bun add @openrouter/agent @openrouter/sdk zod
+  ```
+
+  ```bash title="deno" lines theme={null}
+  deno add npm:@openrouter/agent npm:@openrouter/sdk npm:zod
+  ```
+</CodeGroup>
 
 ## 1. Set hard ceilings on every run
 

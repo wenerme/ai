@@ -20,7 +20,7 @@
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/548975) to be generally available on GitLab Duo with self-hosted models in GitLab 18.4.
 
 > [!note]
-> Depending on your add-on, GitLab runs one of two code review features:
+> Depending on your add-on and group settings, GitLab runs one of two code review features:
 >
 > - Code Review Flow: the agentic version, part of GitLab Duo Agent Platform.
 > - GitLab Duo Code Review: the non-agentic version, available only for users with the GitLab Duo Enterprise add-on.
@@ -269,3 +269,4 @@ For more information, see [issue 596794](https://gitlab.com/gitlab-org/gitlab/-/
 ## Related topics
 
 - [GitLab Duo in merge requests](../project/merge_requests/duo_in_merge_requests.md)
+- [Turn on Code Review Flow for GitLab Duo Enterprise seats](../project/merge_requests/duo_in_merge_requests.md#turn-on-code-review-flow-for-gitlab-duo-enterprise-seats).

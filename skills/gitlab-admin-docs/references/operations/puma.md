@@ -86,7 +86,10 @@ More threads lead to excessive swapping and lower performance.
 
 ## Plan the database connections
 
-Before increasing Puma workers or threads, consider the database connection impact on your PostgreSQL `max_connections` setting.
+Before increasing Puma workers or threads, consider the database connection impact.
+The connection-demand formula on the [Tune PostgreSQL](../postgresql/tune.md) page computes the application's frontend connection demand: the number of connections Rails opens to the database or to PgBouncer.
+This value is not the same as PostgreSQL `max_connections`, which is bounded by what the database host can serve.
+For guidance on sizing `max_connections`, see [Determine your database host capacity](../postgresql/tune.md#determine-your-database-host-capacity-max_connections).
 
 For detailed connection planning and calculations, see the [Tune PostgreSQL](../postgresql/tune.md) page.
 

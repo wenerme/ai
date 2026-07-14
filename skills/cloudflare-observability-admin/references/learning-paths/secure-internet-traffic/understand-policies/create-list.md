@@ -40,8 +40,8 @@ When you format a CSV file for upload:
 
 To upload the list to the Cloudflare dashboard:
 
-* [ Dashboard ](#tab-panel-9700)
-* [ Terraform (v5) ](#tab-panel-9701)
+* [ Dashboard ](#tab-panel-10024)
+* [ Terraform (v5) ](#tab-panel-10025)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
@@ -73,9 +73,9 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-9702)
-* [ API ](#tab-panel-9703)
-* [ Terraform (v5) ](#tab-panel-9704)
+* [ Dashboard ](#tab-panel-10026)
+* [ API ](#tab-panel-10027)
+* [ Terraform (v5) ](#tab-panel-10028)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list**.

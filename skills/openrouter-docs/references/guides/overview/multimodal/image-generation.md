@@ -300,6 +300,31 @@ Pass reference images to guide generation via `input_references`:
 
 Reference images can be HTTP(S) URLs or base64 data URLs. The number of references accepted varies by provider.
 
+### Provider Routing
+
+When a model has multiple providers, use the `provider` object to choose which endpoints can serve the request:
+
+```json lines theme={null}
+{
+  "model": "google/gemini-2.5-flash-image",
+  "prompt": "a red panda astronaut floating in space",
+  "provider": {
+    "only": ["google-ai-studio"],
+    "allow_fallbacks": false
+  }
+}
+```
+
+The Image API supports these routing fields:
+
+* `only` — allow only the listed provider slugs.
+* `order` — try providers in the listed order.
+* `ignore` — exclude the listed provider slugs.
+* `sort` — sort eligible endpoints by `price`, `throughput`, or `latency`.
+* `allow_fallbacks` — when `false`, stop after the primary provider instead of trying another eligible provider.
+
+Use `provider_tag` from the [per-endpoint records](#per-endpoint-records) as the base provider slug. See [Provider Routing](/guides/routing/provider-selection) for the routing behavior shared across OpenRouter APIs.
+
 ### Provider-Specific Options
 
 Pass provider-specific parameters through `provider.options`, keyed by the provider slug from the endpoints API:
@@ -450,21 +475,26 @@ For streaming requests, any partial preview images delivered before the stream e
 
 ## Request Parameters
 
-| Parameter            | Type    | Required | Description                                                            |
-| -------------------- | ------- | -------- | ---------------------------------------------------------------------- |
-| `model`              | string  | Yes      | Model slug (e.g. `bytedance-seed/seedream-4.5`)                        |
-| `prompt`             | string  | Yes      | Text description of the desired image                                  |
-| `n`                  | integer | No       | Number of images to generate (1–10)                                    |
-| `resolution`         | string  | No       | Resolution tier (`512`, `1K`, `2K`, `4K`)                              |
-| `aspect_ratio`       | string  | No       | Aspect ratio (`1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `1:4`, `4:1`, etc.) |
-| `size`               | string  | No       | Convenience shorthand — a tier or explicit pixels (`"2048x2048"`)      |
-| `quality`            | string  | No       | `auto`, `low`, `medium`, or `high`                                     |
-| `output_format`      | string  | No       | `png`, `jpeg`, `webp`, or `svg`                                        |
-| `background`         | string  | No       | `auto`, `transparent`, or `opaque`                                     |
-| `output_compression` | integer | No       | Compression level (0–100) for webp/jpeg                                |
-| `seed`               | integer | No       | Seed for deterministic generation (where supported)                    |
-| `stream`             | boolean | No       | Stream partial images via SSE                                          |
-| `input_references`   | array   | No       | Reference images for image-to-image generation                         |
-| `provider.options`   | object  | No       | Provider-specific parameters keyed by provider slug                    |
+| Parameter                  | Type             | Required | Description                                                            |
+| -------------------------- | ---------------- | -------- | ---------------------------------------------------------------------- |
+| `model`                    | string           | Yes      | Model slug (e.g. `bytedance-seed/seedream-4.5`)                        |
+| `prompt`                   | string           | Yes      | Text description of the desired image                                  |
+| `n`                        | integer          | No       | Number of images to generate (1–10)                                    |
+| `resolution`               | string           | No       | Resolution tier (`512`, `1K`, `2K`, `4K`)                              |
+| `aspect_ratio`             | string           | No       | Aspect ratio (`1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `1:4`, `4:1`, etc.) |
+| `size`                     | string           | No       | Convenience shorthand — a tier or explicit pixels (`"2048x2048"`)      |
+| `quality`                  | string           | No       | `auto`, `low`, `medium`, or `high`                                     |
+| `output_format`            | string           | No       | `png`, `jpeg`, `webp`, or `svg`                                        |
+| `background`               | string           | No       | `auto`, `transparent`, or `opaque`                                     |
+| `output_compression`       | integer          | No       | Compression level (0–100) for webp/jpeg                                |
+| `seed`                     | integer          | No       | Seed for deterministic generation (where supported)                    |
+| `stream`                   | boolean          | No       | Stream partial images via SSE                                          |
+| `input_references`         | array            | No       | Reference images for image-to-image generation                         |
+| `provider.only`            | string\[]        | No       | Allow only these provider slugs                                        |
+| `provider.order`           | string\[]        | No       | Try provider slugs in this order                                       |
+| `provider.ignore`          | string\[]        | No       | Exclude these provider slugs                                           |
+| `provider.sort`            | string or object | No       | Sort eligible endpoints by price, throughput, or latency               |
+| `provider.allow_fallbacks` | boolean          | No       | Allow another eligible provider when the primary fails                 |
+| `provider.options`         | object           | No       | Provider-specific parameters keyed by provider slug                    |
 
 Use the [Image Models API](#via-the-image-models-api) to check which parameters each model and endpoint supports.

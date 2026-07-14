@@ -83,10 +83,12 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.models.list()
+    res = open_router.models.list(offset=0, limit=500)
 
-    # Handle response
-    print(res)
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 
@@ -97,6 +99,8 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                  |
 | `x_open_router_title`      | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |                  |
 | `x_open_router_categories` | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                  |
+| `offset`                   | *Optional\[int]*                                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination. When both offset and limit are omitted, the full list is returned                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | 0                |
+| `limit`                    | *Optional\[int]*                                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 1000). When both offset and limit are omitted, the full list is returned                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 500              |
 | `category`                 | [Optional\[operations.GetModelsCategory\]](../../operations/getmodelscategory.mdx) | :heavy\_minus\_sign: | Filter models by use case category                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | programming      |
 | `supported_parameters`     | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | Filter models by supported parameter (comma-separated)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | temperature      |
 | `output_modalities`        | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | Filter models by output modality. Accepts a comma-separated list of modalities (text, image, audio, embeddings) or "all" to include all models. Defaults to "text".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | text             |
@@ -128,7 +132,7 @@ with OpenRouter(
 
 ### Response
 
-**[components.ModelsListResponse](../../components/modelslistresponse.mdx)**
+**[operations.GetModelsResponse](../../operations/getmodelsresponse.mdx)**
 
 ### Errors
 
@@ -204,26 +208,30 @@ with OpenRouter(
 
     res = open_router.models.list_for_user(security=operations.ListModelsUserSecurity(
         bearer=os.getenv("OPENROUTER_BEARER", ""),
-    ))
+    ), offset=0, limit=500)
 
-    # Handle response
-    print(res)
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 
 ### Parameters
 
-| Parameter                  | Type                                                                             | Required             | Description                                                                                                                                                 |
-| -------------------------- | -------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `security`                 | [operations.ListModelsUserSecurity](../../operations/listmodelsusersecurity.mdx) | :heavy\_check\_mark: | N/A                                                                                                                                                         |
-| `http_referer`             | *Optional\[str]*                                                                 | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |
-| `x_open_router_title`      | *Optional\[str]*                                                                 | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |
-| `x_open_router_categories` | *Optional\[str]*                                                                 | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |
-| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx)              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |
+| Parameter                  | Type                                                                             | Required             | Description                                                                                                                                                 | Example |
+| -------------------------- | -------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `security`                 | [operations.ListModelsUserSecurity](../../operations/listmodelsusersecurity.mdx) | :heavy\_check\_mark: | N/A                                                                                                                                                         |         |
+| `http_referer`             | *Optional\[str]*                                                                 | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
+| `x_open_router_title`      | *Optional\[str]*                                                                 | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
+| `x_open_router_categories` | *Optional\[str]*                                                                 | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
+| `offset`                   | *Optional\[int]*                                                                 | :heavy\_minus\_sign: | Number of records to skip for pagination. When both offset and limit are omitted, the full list is returned                                                 | 0       |
+| `limit`                    | *Optional\[int]*                                                                 | :heavy\_minus\_sign: | Maximum number of records to return (max 1000). When both offset and limit are omitted, the full list is returned                                           | 500     |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx)              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
 
 ### Response
 
-**[components.ModelsListResponse](../../components/modelslistresponse.mdx)**
+**[operations.ListModelsUserResponse](../../operations/listmodelsuserresponse.mdx)**
 
 ### Errors
 

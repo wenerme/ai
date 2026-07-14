@@ -286,7 +286,7 @@ components:
         input_modalities:
           description: Supported input modalities
           items:
-            $ref: '#/components/schemas/InputModality'
+            $ref: '#/components/schemas/ImageInputModality'
           type: array
         output_modalities:
           description: Supported output modalities
@@ -318,7 +318,7 @@ components:
         seed:
           type: boolean
       type: object
-    InputModality:
+    ImageInputModality:
       enum:
         - text
         - image

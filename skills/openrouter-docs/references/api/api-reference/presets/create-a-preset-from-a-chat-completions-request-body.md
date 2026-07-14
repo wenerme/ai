@@ -430,7 +430,7 @@ components:
               grammar:
                 $ref: '#/components/schemas/ChatFormatGrammarConfig'
               json_object:
-                $ref: '#/components/schemas/FormatJsonObjectConfig'
+                $ref: '#/components/schemas/ChatFormatJsonObjectConfig'
               json_schema:
                 $ref: '#/components/schemas/ChatFormatJsonSchemaConfig'
               python:
@@ -442,7 +442,7 @@ components:
             type: json_object
           oneOf:
             - $ref: '#/components/schemas/ChatFormatTextConfig'
-            - $ref: '#/components/schemas/FormatJsonObjectConfig'
+            - $ref: '#/components/schemas/ChatFormatJsonObjectConfig'
             - $ref: '#/components/schemas/ChatFormatJsonSchemaConfig'
             - $ref: '#/components/schemas/ChatFormatGrammarConfig'
             - $ref: '#/components/schemas/ChatFormatPythonConfig'
@@ -1342,7 +1342,7 @@ components:
         - type
         - grammar
       type: object
-    FormatJsonObjectConfig:
+    ChatFormatJsonObjectConfig:
       description: JSON object response format
       example:
         type: json_object
@@ -3451,7 +3451,7 @@ components:
             - input_video
           type: string
         video_url:
-          $ref: '#/components/schemas/ChatContentVideoInput'
+          $ref: '#/components/schemas/Legacy_ChatContentVideoInput'
       required:
         - type
         - video_url
@@ -3634,6 +3634,17 @@ components:
         - firecrawl
       example: auto
       type: string
+    Legacy_ChatContentVideoInput:
+      description: Video input object
+      example:
+        url: https://example.com/video.mp4
+      properties:
+        url:
+          description: 'URL of the video (data: URLs supported)'
+          type: string
+      required:
+        - url
+      type: object
     ChatContentVideoInput:
       description: Video input object
       example:

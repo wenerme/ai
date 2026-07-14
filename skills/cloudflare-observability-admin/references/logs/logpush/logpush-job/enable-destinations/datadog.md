@@ -26,8 +26,8 @@ For domain (also known as zone): [ Go to **Logpush** ](https://dash.cloudflare.c
 
   * **Datadog URL Endpoint**, which can be either one below. You can find the difference at [Datadog API reference ↗](https://docs.datadoghq.com/api/latest/logs/).
 
-* [ v1 ](#tab-panel-9765)
-* [ v2 ](#tab-panel-9766)
+* [ v1 ](#tab-panel-10089)
+* [ v2 ](#tab-panel-10090)
 
 * `http-intake.logs.datadoghq.com/v1/input`
 
@@ -73,8 +73,8 @@ To create a job, make a `POST` request to the Logpush jobs endpoint with the fol
 
   * **<DATADOG\_ENDPOINT\_URL>**: The Datadog HTTP logs intake endpoint, which can be either one below. You can find the difference at [Datadog API reference ↗](https://docs.datadoghq.com/api/latest/logs/).
 
-  * [ v1 ](#tab-panel-9767)
-  * [ v2 ](#tab-panel-9768)
+  * [ v1 ](#tab-panel-10091)
+  * [ v2 ](#tab-panel-10092)
 [https://http-intake.logs.datadoghq.com/v1/input\` ↗](https://http-intake.logs.datadoghq.com/v1/input%60)
 `https://http-intake.logs.datadoghq.com/api/v2/logs`
 * `<DATADOG_API_KEY>`: The Datadog API token can be retrieved by following [these steps ↗](https://docs.datadoghq.com/account%5Fmanagement/api-app-keys/#add-an-api-key-or-client-token). For example, `20e6d94e8c57924ad1be3c29bcaee0197d`.

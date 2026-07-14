@@ -1095,6 +1095,9 @@ and include more fields in the payload:
   - `approvals_reset_on_push`: The project has enabled **Reset approvals on push**, and new commits were pushed.
   - `code_owner_approvals_reset_on_push`: The project has enabled **Selective code owner removals**,
     and Code Owner approvals were reset due to changes in files matching CODEOWNERS rules.
+- `object_attributes.action`: For approval reset events, value is:
+  - `unapproved` when the merge request changes from approved to not approved.
+  - `unapproval` when an approval is removed without changing the overall approval status.
 
 Other approval reset scenarios do not trigger webhooks.
 
@@ -1105,7 +1108,7 @@ The following example shows a system-initiated event (partial payload):
   "object_kind": "merge_request",
   "event_type": "merge_request",
   "object_attributes": {
-    "action": "update",
+    "action": "unapproved",
     "system": true,
     "system_action": "approvals_reset_on_push"
   }

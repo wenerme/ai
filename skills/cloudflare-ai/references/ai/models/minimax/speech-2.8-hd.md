@@ -29,8 +29,8 @@ MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion cont
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-952)
-* [ cURL ](#tab-panel-953)
+* [ TypeScript ](#tab-panel-1002)
+* [ cURL ](#tab-panel-1003)
 
 **TypeScript**
 
@@ -66,8 +66,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-948)
-* [ Raw response ](#tab-panel-949)
+* [ Output ](#tab-panel-998)
+* [ Raw response ](#tab-panel-999)
 
 ```json
 {
@@ -85,8 +85,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Voice**  — Use a specific voice and adjust speed
 
-* [ TypeScript ](#tab-panel-956)
-* [ cURL ](#tab-panel-957)
+* [ TypeScript ](#tab-panel-1006)
+* [ cURL ](#tab-panel-1007)
 
 **TypeScript**
 
@@ -122,8 +122,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-950)
-* [ Raw response ](#tab-panel-951)
+* [ Output ](#tab-panel-1000)
+* [ Raw response ](#tab-panel-1001)
 
 ```json
 {
@@ -139,8 +139,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Emotion**  — Apply emotional tone to speech
 
-* [ TypeScript ](#tab-panel-960)
-* [ cURL ](#tab-panel-961)
+* [ TypeScript ](#tab-panel-1010)
+* [ cURL ](#tab-panel-1011)
 
 **TypeScript**
 
@@ -178,8 +178,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-954)
-* [ Raw response ](#tab-panel-955)
+* [ Output ](#tab-panel-1004)
+* [ Raw response ](#tab-panel-1005)
 
 ```json
 {
@@ -195,8 +195,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Sample Rate**  — Studio quality at 44.1kHz sample rate
 
-* [ TypeScript ](#tab-panel-962)
-* [ cURL ](#tab-panel-963)
+* [ TypeScript ](#tab-panel-1012)
+* [ cURL ](#tab-panel-1013)
 
 **TypeScript**
 
@@ -234,8 +234,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-958)
-* [ Raw response ](#tab-panel-959)
+* [ Output ](#tab-panel-1008)
+* [ Raw response ](#tab-panel-1009)
 
 ```json
 {
@@ -251,8 +251,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-964)
-* [ Output ](#tab-panel-965)
+* [ Input ](#tab-panel-1014)
+* [ Output ](#tab-panel-1015)
 
 text
 

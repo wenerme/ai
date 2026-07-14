@@ -38,10 +38,10 @@ client and select the AWS Region and model ID for your deployment:
 - This guide's examples use `us-east-2`, which resolves to
   `https://bedrock-mantle.us-east-2.api.aws/openai/v1`.
 - Use a Bedrock model ID with the `openai.` prefix, such as
-  `openai.gpt-5.5`.
+  `openai.gpt-5.6-sol`.
 
-This example uses `openai.gpt-5.5` in `us-east-2`. Use a supported model and AWS
-Region combination for your Bedrock deployment.
+This example uses `openai.gpt-5.6-sol` in `us-east-2`. Use a supported model and
+AWS Region combination for your Bedrock deployment.
 
 The following example uses a Bedrock API key stored as
 `AWS_BEARER_TOKEN_BEDROCK`. See
@@ -59,7 +59,7 @@ const client = new BedrockOpenAI({
 });
 
 const response = await client.responses.create({
-  model: "openai.gpt-5.5",
+  model: "openai.gpt-5.6-sol",
   input: "Write a haiku about cloud infrastructure.",
 });
 
@@ -72,7 +72,7 @@ from openai import BedrockOpenAI
 client = BedrockOpenAI(aws_region="us-east-2")
 
 response = client.responses.create(
-    model="openai.gpt-5.5",
+    model="openai.gpt-5.6-sol",
     input="Write a haiku about cloud infrastructure.",
 )
 
@@ -84,7 +84,7 @@ curl "https://bedrock-mantle.us-east-2.api.aws/openai/v1/responses" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AWS_BEARER_TOKEN_BEDROCK" \
   -d '{
-    "model": "openai.gpt-5.5",
+    "model": "openai.gpt-5.6-sol",
     "input": "Write a haiku about cloud infrastructure."
   }'
 ```
@@ -115,7 +115,7 @@ const client = new BedrockOpenAI({
 });
 
 const response = await client.responses.create({
-  model: "openai.gpt-5.5",
+  model: "openai.gpt-5.6-sol",
   input: "Write a haiku about cloud infrastructure.",
 });
 
@@ -132,7 +132,7 @@ client = BedrockOpenAI(
 )
 
 response = client.responses.create(
-    model="openai.gpt-5.5",
+    model="openai.gpt-5.6-sol",
     input="Write a haiku about cloud infrastructure.",
 )
 
@@ -158,47 +158,50 @@ Bedrock Region itself and the corresponding AWS terms.
 ## Responses API feature availability
 
 Amazon Bedrock supports a subset of Responses API capabilities available
-through the OpenAI API. This table describes intended feature availability for
-the initial Amazon Bedrock offering. It excludes transient availability and
-service status.
+through the OpenAI API. This table describes feature availability as of the
+date below. It excludes transient availability and service status.
 
-The information below represents feature availability as of June 8, 2026.
+The information below represents feature availability as of July 13, 2026.
   Model and Region availability can also change. For the latest information, see
   the [AWS documentation for OpenAI models in Amazon
   Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-openai.html)
   and [model support by AWS
   Region](https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html).
 
-| Capability                | OpenAI API                | Amazon Bedrock at initial availability |
-| ------------------------- | ------------------------- | -------------------------------------- |
-| Text generation           | Available                 | Available                              |
-| Audio input               | Available                 | Not available                          |
-| Image input               | Available                 | Available                              |
-| File input                | Available                 | Available for supported file types     |
-| Structured outputs        | Available                 | Available                              |
-| Function calling          | Available                 | Available                              |
-| Streaming responses       | Available                 | Available                              |
-| WebSocket connections     | Available                 | Not available                          |
-| Context window            | Model-dependent           | 272,000 tokens for GPT-5.4 and GPT-5.5 |
-| Reasoning effort          | Available                 | Available                              |
-| Prompt caching            | Available                 | Available                              |
-| Custom tools              | Available                 | Available                              |
-| Client-side `tool_search` | Available                 | Available                              |
-| Hosted web search         | Available                 | Not available                          |
-| Hosted file search        | Available                 | Not available                          |
-| Computer use              | Available                 | Not available                          |
-| Shell tool                | Available                 | Not available                          |
-| Image generation tool     | Available                 | Not available                          |
-| Remote MCP servers        | Available                 | Not available                          |
-| Service tiers             | Available where supported | On-demand inference only               |
+| Capability                | OpenAI API                    | Amazon Bedrock                                    |
+| ------------------------- | ----------------------------- | ------------------------------------------------- |
+| Text generation           | Available                     | Available                                         |
+| Audio input               | Available                     | Not available                                     |
+| Image input               | Available                     | Available                                         |
+| File input                | Available                     | Available for supported file types                |
+| Structured outputs        | Available                     | Available                                         |
+| Function calling          | Available                     | Available                                         |
+| Streaming responses       | Available                     | Available                                         |
+| WebSocket connections     | Available                     | Not available                                     |
+| Context window            | Model-dependent               | 272,000 tokens for GPT-5.4, GPT-5.5, and GPT-5.6  |
+| Reasoning effort          | Available                     | Available, including `max` on supported models    |
+| Pro mode                  | Available on supported models | Not available                                     |
+| Persisted reasoning       | Available on supported models | Available on supported models                     |
+| Prompt caching            | Available                     | Implicit and explicit caching on supported models |
+| Programmatic Tool Calling | Available on supported models | Not available                                     |
+| Multi-agent               | Beta on supported models      | Not available                                     |
+| Custom tools              | Available                     | Available                                         |
+| Client-side `tool_search` | Available                     | Available                                         |
+| Hosted web search         | Available                     | Not available                                     |
+| Hosted file search        | Available                     | Not available                                     |
+| Computer use              | Available                     | Not available                                     |
+| Shell tool                | Available                     | Not available                                     |
+| Image generation tool     | Available                     | Not available                                     |
+| Remote MCP servers        | Available                     | Not available                                     |
+| Service tiers             | Available where supported     | On-demand inference only                          |
 
 Client-side `tool_search` is distinct from hosted tools and remote MCP server
 support. Hosted tools run through OpenAI-operated service infrastructure and
-are unavailable in the initial Amazon Bedrock offering.
+are unavailable on Amazon Bedrock.
 
-GPT-5.4 and GPT-5.5 have a 272,000-token context window on Amazon Bedrock.
-Amazon Bedrock rejects requests that exceed this limit. See the AWS model cards
-for current model-specific limits.
+GPT-5.4, GPT-5.5, and GPT-5.6 have a 272,000-token context window on Amazon
+Bedrock. Amazon Bedrock rejects requests that exceed this limit. See the AWS
+model cards for current model-specific limits.
 
 Treat feature parity as workload-specific. If your application depends on a
 specific tool, response mode, or service tier, test that behavior through

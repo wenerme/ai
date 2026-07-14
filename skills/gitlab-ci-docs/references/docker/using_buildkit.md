@@ -27,6 +27,17 @@ BuildKit offers the following methods to build Docker images:
 BuildKit in standalone mode provides rootless image builds without Docker daemon dependency.
 This method eliminates privileged containers entirely and provides a direct replacement for Kaniko builds.
 
+> [!note]
+> Rootless builds still require a runner that permits the system calls BuildKit uses to create
+> user namespaces and mount points. Hosted runners on GitLab.com permit these calls and need no
+> extra configuration, because they run in
+> [privileged mode](../runners/hosted_runners/linux.md#docker-in-docker-support).
+> On self-managed runners that use the Docker executor without privileged mode, builds can fail
+> with permission errors. For more information, see
+> [rootless build fails with permission errors](#rootless-build-fails-with-permission-errors).
+> If you cannot change your runner security settings, use
+> [rootless Buildah](buildah_rootless_multi_arch.md) to build images instead.
+
 Key differences from other methods:
 
 - Uses the `moby/buildkit:rootless` image
@@ -125,6 +136,12 @@ build-rootless:
         --local dockerfile=. \
         --output type=image,name=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA,push=true
 ```
+
+The `entrypoint: [""]` override is required.
+By default, the `moby/buildkit:rootless` image starts the BuildKit daemon as a
+long-running service.
+Without the override, the job runs the daemon instead of the build command and
+hangs until the job times out.
 
 ### Build multi-platform images in rootless mode
 
@@ -293,6 +310,11 @@ any intermediate certificates.
 Because PEM certificates contain newlines, the value of `CA_CERT` cannot be masked.
 To mask the value, use a [file-type variable](../../ci/variables/_index.md#use-file-type-cicd-variables)
 instead and replace `echo "$CA_CERT"` with `cat "$CA_CERT"` in the `before_script`.
+
+If the target registry uses the same certificate authority as your GitLab instance, and the
+runner is configured with `tls-ca-file`, you can reference the predefined
+[`CI_SERVER_TLS_CA_FILE`](../../ci/variables/predefined_variables.md) variable instead of a
+`CA_CERT` variable.
 
 ## Migrate from Kaniko to BuildKit
 
@@ -483,6 +505,8 @@ build-with-buildkit:
 
 ## Troubleshooting
 
+When you build images with BuildKit, you might encounter the following issues.
+
 ### Build fails with authentication errors
 
 If you encounter registry authentication failures:
@@ -494,21 +518,41 @@ If you encounter registry authentication failures:
 
 ### Rootless build fails with permission errors
 
-For permission-related issues in rootless mode:
+If a rootless build fails with a permission error, check the following:
 
 - Ensure `BUILDKITD_FLAGS: --oci-worker-no-process-sandbox` is set.
 - Verify that the GitLab Runner has sufficient resources allocated.
 - Check that no privileged operations are attempted in your `Dockerfile`.
 
-If you receive `[rootlesskit:child ] error: failed to share mount point: /: permission denied`
-on a Kubernetes runner, AppArmor is blocking the mount syscall required for BuildKit.
+On a Kubernetes runner, an AppArmor-related mount permission error can also block rootless
+containers. For more information, see
+[AppArmor mount permission errors on the Kubernetes executor](https://docs.gitlab.com/runner/executors/kubernetes/troubleshooting/#error-failed-to-share-mount-point-permission-denied).
 
-To resolve this issue, add the following to your runner configuration:
+If the failure matches the following error, the runner security policy is blocking a system call
+that rootless BuildKit requires.
 
-```toml
-[runners.kubernetes.pod_annotations]
-  "container.apparmor.security.beta.kubernetes.io/build" = "unconfined"
+#### Error: `fork/exec /proc/self/exe: operation not permitted`
+
+On a runner that uses the Docker executor without privileged mode, you might get one of the
+following errors:
+
+```plaintext
+could not connect to unix:///run/user/1000/buildkit/buildkitd.sock after 10 trials
+[rootlesskit:parent] error: failed to start the child: fork/exec /proc/self/exe: operation not permitted
 ```
+
+This issue occurs because the runner seccomp profile blocks the system calls that rootless
+BuildKit requires. Hosted runners on GitLab.com run in privileged mode and are not affected.
+
+To resolve this issue on self-managed runners, configure the Docker executor
+[`security_opt`](https://docs.gitlab.com/runner/configuration/advanced-configuration/#the-runnersdocker-section)
+setting to permit only the system calls that BuildKit requires.
+
+> [!warning]
+> Do not set `security_opt` to `seccomp:unconfined`. Although it resolves the errors, it
+> disables the container's default seccomp profile, which removes protection against dangerous
+> system calls and reduces isolation. Instead, use a custom seccomp profile that permits only
+> the required calls, or build images with rootless Buildah.
 
 ### Error: `invalid local: stat path/to/image/Dockerfile: not a directory`
 

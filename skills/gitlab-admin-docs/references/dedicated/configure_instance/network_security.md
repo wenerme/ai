@@ -1,6 +1,6 @@
 # GitLab Dedicated network access and security
 
-Configure custom domains, certificate authorities, private network connectivity, IP allowlists, and NAT gateway IPs for GitLab Dedicated.
+Configure network access and security settings for your GitLab Dedicated instance.
 
 - Tier: Ultimate
 - Offering: GitLab Dedicated
@@ -614,6 +614,35 @@ To delete a VPC endpoint:
 1. Go to the endpoint you want to delete, then select
    **Delete** ().
 1. Select **Delete**.
+
+## IPv6 connectivity
+
+IPv6 connectivity lets clients reach your GitLab Dedicated instance over IPv6, in addition to IPv4.
+Cloudflare receives this traffic and translates it to IPv4 before forwarding requests to your
+instance's existing IPv4 infrastructure. Internal communication between GitLab Dedicated platform
+services remains IPv4-only.
+
+When you turn on IPv6 for your instance:
+
+- Your instance operates in dual-stack mode. IPv4 access continues to work alongside IPv6.
+- The GitLab web interface becomes available over IPv6.
+- SSH Git operations, such as clone, push, and pull, become available over IPv6.
+
+Prerequisites:
+
+- Your instance must be proxied through Cloudflare WAF.
+  Contact your Customer Success Manager if you're unsure whether Cloudflare WAF is turned on for your instance.
+- Your instance must run GitLab 18.11.4 or later.
+
+Switchboard doesn't support this configuration. To turn on IPv6 connectivity, open a
+[support ticket](https://support.gitlab.com/hc/en-us/requests/new?ticket_form_id=4414917877650)
+and confirm you want IPv6 connectivity turned on for HTTPS and SSH access to your instance.
+
+After IPv6 is turned on, the public IP addresses for your instance change for both IPv4 and IPv6.
+If you've allowlisted these addresses in firewalls, DNS records, or monitoring systems, update
+those configurations after the change is applied. Turning off IPv6 changes the IP addresses again.
+
+The configuration is applied during the next maintenance window.
 
 ## IP allowlist
 

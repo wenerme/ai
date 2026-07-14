@@ -177,7 +177,39 @@ All pricing values are in USD per token/request/unit. A value of `"0"` indicates
   "web_search": string,      // Cost per web search operation
   "internal_reasoning": string, // Cost for internal reasoning tokens
   "input_cache_read": string,   // Cost per cached input token read
-  "input_cache_write": string   // Cost per cached input token write
+  "input_cache_write": string,  // Cost per cached input token write
+  "overrides": PricingOverride[] // Optional conditional pricing overrides (see below)
+}
+```
+
+##### Pricing Overrides
+
+Some endpoints charge different rates under certain conditions — for example, long-context pricing where requests above a token threshold cost more. These appear in the optional `pricing.overrides` array:
+
+```typescript lines theme={null}
+{
+  // Condition: applies when total prompt tokens are strictly greater than this threshold
+  "min_prompt_tokens": number,
+
+  // Overridden prices — same keys and units as the base pricing object
+  "prompt": string,
+  "completion": string,
+  "input_cache_read": string,
+  "input_cache_write": string
+}
+```
+
+An entry applies when all of its condition fields match the request. When multiple entries apply, later entries win per key. Price keys absent from an entry inherit the base price. The top-level pricing keys always reflect the price that applies to a request under default conditions; `overrides` carries the conditional exceptions.
+
+For example, a model that charges \$2.50/M input tokens normally and \$5/M beyond 200K prompt tokens:
+
+```json lines theme={null}
+"pricing": {
+  "prompt": "0.0000025",
+  "completion": "0.00001",
+  "overrides": [
+    { "min_prompt_tokens": 200000, "prompt": "0.000005", "completion": "0.00002" }
+  ]
 }
 ```
 

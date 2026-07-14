@@ -287,27 +287,7 @@ paths:
                         format: double
                         type: number
                       cost_details:
-                        description: Breakdown of upstream inference costs
-                        example:
-                          upstream_inference_completions_cost: 0.0004
-                          upstream_inference_cost: null
-                          upstream_inference_prompt_cost: 0.0008
-                        nullable: true
-                        properties:
-                          upstream_inference_completions_cost:
-                            format: double
-                            type: number
-                          upstream_inference_cost:
-                            format: double
-                            nullable: true
-                            type: number
-                          upstream_inference_prompt_cost:
-                            format: double
-                            type: number
-                        required:
-                          - upstream_inference_prompt_cost
-                          - upstream_inference_completions_cost
-                        type: object
+                        $ref: '#/components/schemas/CostDetails'
                       is_byok:
                         description: >-
                           Whether a request was made using a Bring Your Own Key
@@ -660,6 +640,28 @@ components:
           example: true
           nullable: true
           type: boolean
+      type: object
+    CostDetails:
+      description: Breakdown of upstream inference costs
+      example:
+        upstream_inference_completions_cost: 0.0004
+        upstream_inference_cost: null
+        upstream_inference_prompt_cost: 0.0008
+      nullable: true
+      properties:
+        upstream_inference_completions_cost:
+          format: double
+          type: number
+        upstream_inference_cost:
+          format: double
+          nullable: true
+          type: number
+        upstream_inference_prompt_cost:
+          format: double
+          type: number
+      required:
+        - upstream_inference_prompt_cost
+        - upstream_inference_completions_cost
       type: object
     BadRequestResponse:
       description: Bad Request - Invalid request parameters or malformed input

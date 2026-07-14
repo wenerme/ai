@@ -82,8 +82,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefi
 
 ### Advertise or withdraw a BGP prefix
 
-* [ Dashboard ](#tab-panel-9773)
-* [ API ](#tab-panel-9774)
+* [ Dashboard ](#tab-panel-10097)
+* [ API ](#tab-panel-10098)
 
 Note
 

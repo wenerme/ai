@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Understand Cloudflare WARP basics
 
-* [ Watch this episode ](#tab-panel-9414)
-* [ Series overview ](#tab-panel-9415)
+* [ Watch this episode ](#tab-panel-10029)
+* [ Series overview ](#tab-panel-10030)
 
 In this episode, we explain the core features of the Cloudflare WARP client and how to troubleshoot common issues. After watching, you will have an understanding of the GUI, the differences between the consumer and corporate WARP, device profiles, the various operating modes of WARP, split tunneling and more.
 

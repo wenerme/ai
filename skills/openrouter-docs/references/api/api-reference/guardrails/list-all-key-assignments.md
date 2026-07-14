@@ -108,6 +108,7 @@ paths:
           name: offset
           required: false
           schema:
+            default: 0
             description: Number of records to skip for pagination
             example: 0
             minimum: 0
@@ -118,6 +119,7 @@ paths:
           name: limit
           required: false
           schema:
+            default: 50
             description: Maximum number of records to return (max 100)
             example: 50
             maximum: 100

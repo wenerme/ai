@@ -71,14 +71,20 @@ After installing the skill, your AI assistant can help you with tasks like:
 The assistant will know to use:
 
 ```typescript lines theme={null}
-import { callModel } from '@openrouter/agent';
+import { OpenRouter } from '@openrouter/agent';
 
-const response = await callModel({
+const openrouter = new OpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY,
+});
+
+const result = openrouter.callModel({
   model: 'anthropic/claude-sonnet-4',
   messages: [
     { role: 'user', content: 'Hello!' }
   ]
 });
+
+const text = await result.getText();
 ```
 
 **"Add a tool to my agent"**
@@ -86,8 +92,12 @@ const response = await callModel({
 The assistant understands the tool pattern:
 
 ```typescript lines theme={null}
-import { callModel, tool } from '@openrouter/agent';
+import { OpenRouter, tool } from '@openrouter/agent';
 import { z } from 'zod';
+
+const openrouter = new OpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY,
+});
 
 const searchTool = tool({
   name: 'search',
@@ -98,11 +108,13 @@ const searchTool = tool({
   },
 });
 
-const result = await callModel({
+const result = openrouter.callModel({
   model: 'anthropic/claude-sonnet-4',
   messages: [{ role: 'user', content: 'Search for TypeScript best practices' }],
   tools: [searchTool],
 });
+
+const text = await result.getText();
 ```
 
 ## Repository

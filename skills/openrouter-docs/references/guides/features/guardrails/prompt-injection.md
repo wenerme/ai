@@ -281,11 +281,33 @@ This catches attempts to hide malicious instructions behind encoding layers. Two
 
 Text with character spacing (e.g., `i g n o r e  p r e v i o u s`) is normalized by collapsing spaces, then re-scanned against all patterns. This prevents simple spacing-based evasion.
 
+## Reporting False Positives
+
+If a detection incorrectly flags legitimate content, you can mark it as a false positive from the [Logs](https://openrouter.ai/logs) page. Generations with a guardrail event show a shield icon on the row; hover it to open the guardrail popover.
+
+When a single pattern was detected, click **Mark as false positive** directly in the popover:
+
+<img src="https://mintcdn.com/openrouter-d02e98a0/asDbbA5Vp75E03XP/assets/guides/features/guardrails/false-positives/fp-popover-single-pattern.png?fit=max&auto=format&n=asDbbA5Vp75E03XP&q=85&s=2ba7445d9c69cc01118e1e891598bb17" alt="Guardrail popover with a Mark as false positive button for a single detected pattern" width="2484" height="1178" data-path="assets/guides/features/guardrails/false-positives/fp-popover-single-pattern.png" />
+
+When multiple patterns were detected, the popover instead links to the generation detail view, where you can select the specific patterns to report:
+
+<img src="https://mintcdn.com/openrouter-d02e98a0/asDbbA5Vp75E03XP/assets/guides/features/guardrails/false-positives/fp-popover-multi-pattern.png?fit=max&auto=format&n=asDbbA5Vp75E03XP&q=85&s=96c62ade14589743b4a056b293aa8c8f" alt="Guardrail popover linking to Review entity types in detail for a multi-pattern detection" width="2648" height="1130" data-path="assets/guides/features/guardrails/false-positives/fp-popover-multi-pattern.png" />
+
+In the detail view, check the patterns that were flagged incorrectly under **Mark as false positive**, then click **Submit**:
+
+<img src="https://mintcdn.com/openrouter-d02e98a0/asDbbA5Vp75E03XP/assets/guides/features/guardrails/false-positives/fp-detail-view-multi-pattern.png?fit=max&auto=format&n=asDbbA5Vp75E03XP&q=85&s=f2dec84fbf64692e87248014f370f1dd" alt="Generation detail view with per-pattern Mark as false positive checkboxes" width="2484" height="1848" data-path="assets/guides/features/guardrails/false-positives/fp-detail-view-multi-pattern.png" />
+
+The event is visually marked and your feedback is recorded for future detection improvements.
+
+<Note>
+  Marking a detection as false positive does not retroactively unblock the request. If the action was **block**, the original request was already rejected.
+</Note>
+
 ## Limitations
 
 * **Regex-based detection is not exhaustive.** Sophisticated or novel injection techniques may not be caught.
 * **Flag mode does not enforce.** A flagged request is forwarded to the model exactly as submitted — the detection is recorded for dashboards and analytics only. Use `flag` to measure match rates on real traffic; switch to `redact` or `block` once you're confident the false-positive rate is acceptable.
-* **False positives** are possible. Some legitimate prompts may contain phrases that match these patterns (e.g., a prompt about security testing). Test your guardrail configuration with representative traffic — ideally in `flag` mode first — before enforcing broadly. To exempt specific known-safe phrases from detection, see the [Allowlist](/guides/features/guardrails/prompt-injection/allowlist).
+* **False positives** are possible. Some legitimate prompts may contain phrases that match these patterns (e.g., a prompt about security testing). Test your guardrail configuration with representative traffic — ideally in `flag` mode first — before enforcing broadly. You can [report false positives](#reporting-false-positives) from the Logs page, or exempt specific known-safe phrases via the [Allowlist](/guides/features/guardrails/prompt-injection/allowlist).
 
 ## Further Reading
 

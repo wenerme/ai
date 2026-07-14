@@ -530,59 +530,9 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
     - `"event"`
 
-### Safety Identifier Blocked Webhook Event
-
-- `SafetyIdentifierBlockedWebhookEvent object { id, created_at, data, 2 more }`
-
-  Sent when a request associated with a safety identifier has been blocked.
-
-  - `id: string`
-
-    The unique ID of the event.
-
-  - `created_at: number`
-
-    The Unix timestamp (in seconds) of when the request was blocked.
-
-  - `data: object { safety_category, safety_identifier, model, 2 more }`
-
-    Event data payload.
-
-    - `safety_category: string`
-
-      The safety category that triggered the block, such as `bio` or `cyber`.
-
-    - `safety_identifier: string`
-
-      The stable safety identifier associated with the blocked request.
-
-    - `model: optional string`
-
-      The model used for the blocked request, if available.
-
-    - `project_id: optional string`
-
-      The project associated with the blocked request, if available.
-
-    - `request_id: optional string`
-
-      The OpenAI request ID for the blocked request, if available.
-
-  - `type: "safety_identifier.blocked"`
-
-    The type of the event. Always `safety_identifier.blocked`.
-
-    - `"safety_identifier.blocked"`
-
-  - `object: optional "event"`
-
-    The object of the event. Always `event`.
-
-    - `"event"`
-
 ### Unwrap Webhook Event
 
-- `UnwrapWebhookEvent = BatchCancelledWebhookEvent or BatchCompletedWebhookEvent or BatchExpiredWebhookEvent or 13 more`
+- `UnwrapWebhookEvent = BatchCancelledWebhookEvent or BatchCompletedWebhookEvent or BatchExpiredWebhookEvent or 12 more`
 
   Sent when a batch API request has been cancelled.
 
@@ -1071,54 +1021,6 @@ Validates that the given payload was sent by OpenAI and parses the payload.
       The type of the event. Always `response.incomplete`.
 
       - `"response.incomplete"`
-
-    - `object: optional "event"`
-
-      The object of the event. Always `event`.
-
-      - `"event"`
-
-  - `SafetyIdentifierBlockedWebhookEvent object { id, created_at, data, 2 more }`
-
-    Sent when a request associated with a safety identifier has been blocked.
-
-    - `id: string`
-
-      The unique ID of the event.
-
-    - `created_at: number`
-
-      The Unix timestamp (in seconds) of when the request was blocked.
-
-    - `data: object { safety_category, safety_identifier, model, 2 more }`
-
-      Event data payload.
-
-      - `safety_category: string`
-
-        The safety category that triggered the block, such as `bio` or `cyber`.
-
-      - `safety_identifier: string`
-
-        The stable safety identifier associated with the blocked request.
-
-      - `model: optional string`
-
-        The model used for the blocked request, if available.
-
-      - `project_id: optional string`
-
-        The project associated with the blocked request, if available.
-
-      - `request_id: optional string`
-
-        The OpenAI request ID for the blocked request, if available.
-
-    - `type: "safety_identifier.blocked"`
-
-      The type of the event. Always `safety_identifier.blocked`.
-
-      - `"safety_identifier.blocked"`
 
     - `object: optional "event"`
 

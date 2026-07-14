@@ -74,10 +74,10 @@ For each model in your request, OpenRouter's default behavior is to load balance
 If you are more sensitive to throughput than price, you can use the `sort` field to explicitly prioritize throughput.
 
 <Tip>
-  When you send a request with `tools` or `tool_choice`, OpenRouter will only
-  route to providers that support tool use. Similarly, if you set a
-  `max_tokens`, then OpenRouter will only route to providers that support a
-  response of that length.
+  When you send a request with `tools` or `tool_choice`, OpenRouter makes a
+  best effort to route to providers known to support tool use. Similarly, if
+  you set a `max_tokens`, then OpenRouter will only route to providers that
+  support a response of that length.
 </Tip>
 
 Here is OpenRouter's default load balancing strategy:

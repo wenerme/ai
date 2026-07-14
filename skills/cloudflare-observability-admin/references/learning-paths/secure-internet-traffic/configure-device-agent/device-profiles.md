@@ -22,9 +22,9 @@ Set your default device profile to be applicable to a majority of your userbase,
 
 To customize the default settings:
 
-* [ Dashboard ](#tab-panel-9683)
-* [ API ](#tab-panel-9684)
-* [ Terraform (v5) ](#tab-panel-9685)
+* [ Dashboard ](#tab-panel-10007)
+* [ API ](#tab-panel-10008)
+* [ Terraform (v5) ](#tab-panel-10009)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select the **Default** profile and select \*_Edit_.

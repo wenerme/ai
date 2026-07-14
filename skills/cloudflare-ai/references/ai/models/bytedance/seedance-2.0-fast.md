@@ -27,8 +27,8 @@ Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-396)
-* [ cURL ](#tab-panel-397)
+* [ TypeScript ](#tab-panel-446)
+* [ cURL ](#tab-panel-447)
 
 **TypeScript**
 
@@ -60,8 +60,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-392)
-* [ Raw response ](#tab-panel-393)
+* [ Output ](#tab-panel-442)
+* [ Raw response ](#tab-panel-443)
 
 ```json
 {
@@ -79,8 +79,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media
 
-* [ TypeScript ](#tab-panel-398)
-* [ cURL ](#tab-panel-399)
+* [ TypeScript ](#tab-panel-448)
+* [ cURL ](#tab-panel-449)
 
 **TypeScript**
 
@@ -112,8 +112,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-394)
-* [ Raw response ](#tab-panel-395)
+* [ Output ](#tab-panel-444)
+* [ Raw response ](#tab-panel-445)
 
 ```json
 {
@@ -129,8 +129,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-400)
-* [ Output ](#tab-panel-401)
+* [ Input ](#tab-panel-450)
+* [ Output ](#tab-panel-451)
 
 prompt
 
@@ -150,7 +150,7 @@ last\_frame\_image
 
 ▶reference\_images\[\]
 
-`array`maxItems: 4Reference images (1-4, HTTP(S) URLs or base64 data URIs) to guide video generation for characters, avatars, clothing, or environments. Cannot be used with 1080p resolution or first/last frame images.
+`array`maxItems: 4Reference images (1-4, HTTP(S) URLs or base64 data URIs) to guide video generation for characters, avatars, clothing, or environments. Cannot be used with first/last frame images.
 
 duration
 

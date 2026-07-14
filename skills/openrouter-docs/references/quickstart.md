@@ -120,12 +120,20 @@ First, install the SDK:
   npm install @openrouter/sdk
   ```
 
+  ```bash title="pnpm" lines theme={null}
+  pnpm add @openrouter/sdk
+  ```
+
   ```bash title="yarn" lines theme={null}
   yarn add @openrouter/sdk
   ```
 
-  ```bash title="pnpm" lines theme={null}
-  pnpm add @openrouter/sdk
+  ```bash title="bun" lines theme={null}
+  bun add @openrouter/sdk
+  ```
+
+  ```bash title="deno" lines theme={null}
+  deno add npm:@openrouter/sdk
   ```
 
   ```bash title="pip" lines theme={null}
@@ -196,13 +204,25 @@ Install the package:
   ```bash title="yarn" lines theme={null}
   yarn add @openrouter/agent
   ```
+
+  ```bash title="bun" lines theme={null}
+  bun add @openrouter/agent
+  ```
+
+  ```bash title="deno" lines theme={null}
+  deno add npm:@openrouter/agent
+  ```
 </CodeGroup>
 
 Build an agent with tools:
 
 ```typescript expandable lines theme={null}
-import { callModel, tool } from '@openrouter/agent';
+import { OpenRouter, tool } from '@openrouter/agent';
 import { z } from 'zod';
+
+const openrouter = new OpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY,
+});
 
 const weatherTool = tool({
   name: 'get_weather',
@@ -215,7 +235,7 @@ const weatherTool = tool({
   },
 });
 
-const result = await callModel({
+const result = openrouter.callModel({
   model: '~anthropic/claude-sonnet-latest',
   messages: [
     { role: 'user', content: 'What is the weather in San Francisco?' },

@@ -13,9 +13,9 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Monitor and batch your website data
 
-* [ Watch this episode ](#tab-panel-9714)
-* [ Step-by-step tutorial ](#tab-panel-9715)
-* [ Series overview ](#tab-panel-9716)
+* [ Watch this episode ](#tab-panel-10038)
+* [ Step-by-step tutorial ](#tab-panel-10039)
+* [ Series overview ](#tab-panel-10040)
 
 Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution. This section demonstrates processing a batch of puns using the Punderful application as an example.
 

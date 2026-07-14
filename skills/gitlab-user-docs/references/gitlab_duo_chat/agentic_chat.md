@@ -59,6 +59,9 @@ You can use GitLab Duo Chat in:
 - A JetBrains IDE.
 - Visual Studio for Windows.
 
+With the [GitLab Duo CLI](../gitlab_duo_cli/_index.md), you can also use Agentic Chat
+in your terminal.
+
 ### Use GitLab Duo Chat in the GitLab UI
 
 - Ability for Chat to remember your most recent conversation [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/203653) in GitLab 18.4.
@@ -350,6 +353,10 @@ This setting applies to all GitLab Duo Agent Platform features.
   - Introduced in [GitLab for VS Code](https://gitlab.com/gitlab-org/gitlab-vscode-extension/-/releases/v6.83.2) 6.83.2.
   - Introduced in [GitLab Duo plugin for JetBrains IDEs](https://gitlab.com/gitlab-org/editor-extensions/gitlab-jetbrains-plugin/-/releases/v3.38.0) 3.38.0.
   - Introduced in [GitLab Duo CLI](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v8.101.0) 8.101.0.
+- Pattern-based tool approval [removed](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/merge_requests/3699) on July 10, 2026.
+  - Removed in [GitLab for VS Code](https://gitlab.com/gitlab-org/gitlab-vscode-extension/-/releases/v6.85.3) 6.85.3.
+  - Removed in [GitLab Duo plugin for JetBrains IDEs](https://gitlab.com/gitlab-org/editor-extensions/gitlab-jetbrains-plugin/-/releases/v3.43.0) 3.43.0.
+  - Removed in [GitLab Duo CLI](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v9.3.0) 9.3.0.
 
 Before Agentic Chat can use a tool on your behalf, it requires your approval.
 By default, each tool invocation requires approval.
@@ -430,9 +437,9 @@ Prerequisites:
 
 - Tool approvals are turned on for your group or instance.
 - For GitLab Duo Chat in your local environment, install and configure one of the following:
-  - [GitLab for VS Code](../../editor_extensions/visual_studio_code/setup.md) 6.72.0 or later. For pattern-based tool approval, 6.83.2 or later.
-  - [GitLab Duo plugin for JetBrains IDEs](../../editor_extensions/jetbrains_ide/setup.md) 3.33.0 or later. For pattern-based tool approval, 3.38.0 or later.
-  - [GitLab Duo CLI](../gitlab_duo_cli/_index.md) 8.80.0 or later. For pattern-based tool approval, 8.101.0 or later.
+  - [GitLab for VS Code](../../editor_extensions/visual_studio_code/setup.md) 6.72.0 or later.
+  - [GitLab Duo plugin for JetBrains IDEs](../../editor_extensions/jetbrains_ide/setup.md) 3.33.0 or later.
+  - [GitLab Duo CLI](../gitlab_duo_cli/_index.md) 8.80.0 or later.
 
 To approve or deny a tool for your current session:
 
@@ -441,11 +448,6 @@ To approve or deny a tool for your current session:
    - **Approve**: Chat can use the tool with these arguments once.
    - **Approve for session**: Chat can use the tool with these arguments for the remainder of the
      session. Different arguments require additional approval.
-   - **Approve all uses of this tool for session** (pattern or wildcard approval): Chat can use this
-     tool for the remainder of the session whenever the arguments match the approved pattern.
-     > [!note]
-     > If tool arguments contain shell metacharacters (`;`, `&&`, `|`, `$`, and others),
-     > pattern-based approval is not available. Use **Approve for session** instead.
    - **Deny**: Chat cannot use the tool.
 
 All approvals reset when you start a new conversation.

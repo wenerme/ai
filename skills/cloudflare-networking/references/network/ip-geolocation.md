@@ -28,8 +28,8 @@ The recommended procedure to enable IP geolocation information is to [enable the
 
 If you only want the request header for the visitor's country, you can enable **IP Geolocation**.
 
-* [ Dashboard ](#tab-panel-9496)
-* [ API ](#tab-panel-9497)
+* [ Dashboard ](#tab-panel-10111)
+* [ API ](#tab-panel-10112)
 
 To enable **IP Geolocation** in the dashboard:
 

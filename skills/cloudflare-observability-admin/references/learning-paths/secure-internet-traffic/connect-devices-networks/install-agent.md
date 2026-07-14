@@ -28,8 +28,8 @@ For more information, refer to [WARP with firewall](https://developers.cloudflar
 Window, macOS, and Linux
 To enroll your device using the client GUI:
 
-  * [ Version 2026.2+ ](#tab-panel-9405)
-  * [ Version 2026.1 and earlier ](#tab-panel-9406)
+  * [ Version 2026.2+ ](#tab-panel-10020)
+  * [ Version 2026.1 and earlier ](#tab-panel-10021)
 
   1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
   2. Launch the Cloudflare One Client.

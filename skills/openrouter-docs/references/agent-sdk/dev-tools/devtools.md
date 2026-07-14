@@ -53,9 +53,27 @@ Developer-friendly hooks that automatically capture:
 
 Install the DevTools package as a development dependency:
 
-```bash lines theme={null}
-npm install @openrouter/devtools --save-dev
-```
+<CodeGroup>
+  ```bash title="npm" lines theme={null}
+  npm install --save-dev @openrouter/devtools
+  ```
+
+  ```bash title="pnpm" lines theme={null}
+  pnpm add -D @openrouter/devtools
+  ```
+
+  ```bash title="yarn" lines theme={null}
+  yarn add -D @openrouter/devtools
+  ```
+
+  ```bash title="bun" lines theme={null}
+  bun add -d @openrouter/devtools
+  ```
+
+  ```bash title="deno" lines theme={null}
+  deno add --dev npm:@openrouter/devtools
+  ```
+</CodeGroup>
 
 **Important:** DevTools is designed for development only. It will throw an error if `NODE_ENV === 'production'` to prevent accidental production deployment.
 
@@ -286,9 +304,27 @@ Cannot find module '@openrouter/devtools'
 
 **Solution:** Install the package:
 
-```bash lines theme={null}
-npm install @openrouter/devtools --save-dev
-```
+<CodeGroup>
+  ```bash title="npm" lines theme={null}
+  npm install --save-dev @openrouter/devtools
+  ```
+
+  ```bash title="pnpm" lines theme={null}
+  pnpm add -D @openrouter/devtools
+  ```
+
+  ```bash title="yarn" lines theme={null}
+  yarn add -D @openrouter/devtools
+  ```
+
+  ```bash title="bun" lines theme={null}
+  bun add -d @openrouter/devtools
+  ```
+
+  ```bash title="deno" lines theme={null}
+  deno add --dev npm:@openrouter/devtools
+  ```
+</CodeGroup>
 
 ***
 

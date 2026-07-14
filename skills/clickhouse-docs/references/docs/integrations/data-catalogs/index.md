@@ -68,7 +68,7 @@ In the flyout, enter your AWS **Region** (e.g. `us-west-2`), then choose an auth
 
 > **note**: Glue supports multiple table formats, but ClickHouse only reads **Iceberg** tables from Glue.
 
-Query Unity Catalog managed [Iceberg](/engines/table-engines/integrations/iceberg) tables using OAuth client credentials from a Databricks service principal. See the [Unity Catalog guide](/use-cases/data-lake/unity-catalog#read-iceberg) for full setup.
+Query Unity Catalog [Iceberg](/engines/table-engines/integrations/iceberg) tables that use external storage locations, using OAuth client credentials from a Databricks service principal. See the [Unity Catalog guide](/use-cases/data-lake/unity-catalog#read-iceberg) for full setup.
 
 Before you connect, confirm:
 
@@ -83,7 +83,7 @@ In the flyout:
 3. Enter the OAuth **Client ID** and **Client secret** for your service principal.
 4. Enter a **Database name** for the ClickHouse database that exposes your Unity Catalog tables.
 
-Query Unity Catalog [Delta Lake](/engines/table-engines/integrations/deltalake) tables using a Databricks Personal Access Token (PAT). See the [Unity Catalog guide](/use-cases/data-lake/unity-catalog#read-delta) for full setup.
+Query Unity Catalog [Delta Lake](/engines/table-engines/integrations/deltalake) tables that use external storage locations, using a Databricks Personal Access Token (PAT). See the [Unity Catalog guide](/use-cases/data-lake/unity-catalog#read-delta) for full setup.
 
 Before you connect, confirm:
 

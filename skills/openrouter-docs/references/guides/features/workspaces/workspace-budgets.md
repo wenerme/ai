@@ -9,7 +9,7 @@
 Workspace budgets let you cap how much a workspace can spend on OpenRouter inference. Set a dollar limit on any combination of intervals — daily, weekly, monthly, or lifetime — and OpenRouter blocks requests automatically once a limit is reached.
 
 <Note>
-  Workspace budgets are available on the **Enterprise** plan. Only **Organization Administrators** can create, edit, or delete budgets — other workspace members can view budgets and current spend but cannot modify them. Contact [sales](https://openrouter.ai/contact/sales) to get started.
+  Workspace budgets are available on the **Enterprise** plan. In the dashboard, only **Organization Administrators** can create, edit, or delete budgets — other workspace members can view budgets and current spend but cannot modify them. Programmatic budget management uses organization [management API keys](/guides/overview/auth/management-api-keys), which operate at the account level. Contact [sales](https://openrouter.ai/contact/sales) to get started.
 </Note>
 
 ## How It Works
@@ -26,7 +26,7 @@ Each workspace can have up to four budgets, one per interval:
 When a request comes in, OpenRouter checks the workspace's current spend against every configured budget. If any budget is met or exceeded, the request returns a `403 Forbidden` error:
 
 ```
-Workspace monthly budget of $500.00 exceeded. Contact your workspace admin.
+Workspace monthly budget of $500.00 exceeded. Contact your org admin.
 ```
 
 The error names the broadest exceeded interval so users know which limit triggered the block.
@@ -54,12 +54,12 @@ For example, if your monthly budget is $1,000, the weekly budget must be less th
 Each budget row shows a progress bar with current-period spend against the limit. If spend already exceeds a limit, the bar turns red and a warning appears.
 
 <Note>
-  These steps require the **Organization Administrator** role.
+  These dashboard steps require the **Organization Administrator** role.
 </Note>
 
 ## Setting Budgets via the API
 
-You can also manage budgets programmatically using a [management API key](/guides/overview/auth/management-api-keys). The endpoints live under `/api/v1/workspaces/{id}/budgets`.
+You can also manage budgets programmatically using an organization [management API key](/guides/overview/auth/management-api-keys). Management keys operate at the account level and can perform administrative actions across all workspaces. The budget endpoints live under `/api/v1/workspaces/{id}/budgets`.
 
 ### List Budgets
 
@@ -149,6 +149,6 @@ Enterprise org admins can also set budgets when creating a new workspace. The wo
   </Accordion>
 
   <Accordion title="Can workspace members override a budget?">
-    No. Only organization admins can modify budgets. Members whose requests are blocked should contact their org admin to raise the limit.
+    No. In the dashboard, only organization admins can modify budgets. Programmatic changes require an organization management API key. Members whose requests are blocked should contact their org admin to raise the limit.
   </Accordion>
 </AccordionGroup>

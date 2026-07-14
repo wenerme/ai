@@ -13,9 +13,9 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Use cron triggers to develop time-aware applications
 
-* [ Watch this episode ](#tab-panel-9719)
-* [ Step-by-step tutorial ](#tab-panel-9720)
-* [ Series overview ](#tab-panel-9721)
+* [ Watch this episode ](#tab-panel-10043)
+* [ Step-by-step tutorial ](#tab-panel-10044)
+* [ Series overview ](#tab-panel-10045)
 
 Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with `step.sleep` allows developers to build sophisticated, time-aware applications.
 
@@ -59,8 +59,8 @@ The episode repository uses the older pattern of a top-level `[triggers]` sectio
 
 In current Workflows projects, you can usually schedule the Workflow directly on its binding instead:
 
-* [  wrangler.jsonc ](#tab-panel-9717)
-* [  wrangler.toml ](#tab-panel-9718)
+* [  wrangler.jsonc ](#tab-panel-10041)
+* [  wrangler.toml ](#tab-panel-10042)
 
 **JSONC**
 

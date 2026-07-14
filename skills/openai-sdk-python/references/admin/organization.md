@@ -20641,6 +20641,16 @@ Returns a list of API keys in the project.
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
+- `owner_project_access: Optional[Literal["active", "inactive", "any"]]`
+
+  Filter API keys by whether the owner currently has effective access to the project. Use `active` for owners with access, `inactive` for owners without access, or `any` for all enabled project API keys. If omitted, the endpoint applies its existing membership-based visibility rules, which may exclude some enabled keys.
+
+  - `"active"`
+
+  - `"inactive"`
+
+  - `"any"`
+
 ### Returns
 
 - `class ProjectAPIKey: …`
@@ -20723,6 +20733,14 @@ Returns a list of API keys in the project.
 
         The user's project role.
 
+  - `owner_project_access: Literal["active", "inactive"]`
+
+    Whether the API key's owner currently has effective access to the project.
+
+    - `"active"`
+
+    - `"inactive"`
+
   - `redacted_value: str`
 
     The redacted value of the API key
@@ -20770,6 +20788,7 @@ print(page.id)
           "role": "role"
         }
       },
+      "owner_project_access": "active",
       "redacted_value": "redacted_value"
     }
   ],
@@ -20876,6 +20895,14 @@ Retrieves an API key in the project.
 
         The user's project role.
 
+  - `owner_project_access: Literal["active", "inactive"]`
+
+    Whether the API key's owner currently has effective access to the project.
+
+    - `"active"`
+
+    - `"inactive"`
+
   - `redacted_value: str`
 
     The redacted value of the API key
@@ -20921,6 +20948,7 @@ print(project_api_key.id)
       "role": "role"
     }
   },
+  "owner_project_access": "active",
   "redacted_value": "redacted_value"
 }
 ```
@@ -21063,6 +21091,14 @@ print(api_key.id)
       - `role: str`
 
         The user's project role.
+
+  - `owner_project_access: Literal["active", "inactive"]`
+
+    Whether the API key's owner currently has effective access to the project.
+
+    - `"active"`
+
+    - `"inactive"`
 
   - `redacted_value: str`
 

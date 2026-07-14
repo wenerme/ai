@@ -648,7 +648,7 @@ Arguments:
 
 AI tool governance rules for a namespace.
 
-Returns [`AiToolRuleConnection!`](#aitoolruleconnection).
+Returns [`AiToolRuleConnection`](#aitoolruleconnection).
 
 This field returns a [connection](#connections). It accepts the
 four standard [pagination arguments](#pagination-arguments):
@@ -5098,6 +5098,31 @@ Fields:
 | <a id="mutation-branchruleexternalstatuscheckupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-branchruleexternalstatuscheckupdate-externalstatuscheck"></a>`externalStatusCheck` | [`ExternalStatusCheck`](#externalstatuscheck) | Updated external status check after mutation. |
 
+### `Mutation.branchRuleSquashOptionCreate`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+Create a squash option for a branch rule.
+
+Input type: `BranchRuleSquashOptionCreateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-branchrulesquashoptioncreate-branchruleid"></a>`branchRuleId` | [`ProjectsBranchRuleID!`](#projectsbranchruleid) | Global ID of the branch rule. |
+| <a id="mutation-branchrulesquashoptioncreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-branchrulesquashoptioncreate-squashoption"></a>`squashOption` | [`SquashOptionSetting!`](#squashoptionsetting) | Squash option to set for the branch rule. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-branchrulesquashoptioncreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-branchrulesquashoptioncreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-branchrulesquashoptioncreate-squashoption"></a>`squashOption` | [`SquashOption`](#squashoption) | Created squash option after mutation. |
+
 ### `Mutation.branchRuleSquashOptionDelete`
 
 - Introduced in GitLab 17.9.
@@ -5543,7 +5568,7 @@ Fields:
 - Introduced in GitLab 19.2.
 - Status: Experiment.
 
-Creates a continuous deployment rollout and its rollout environments in an organization.
+Creates a continuous deployment rollout in an organization.
 
 Input type: `CdRolloutCreateInput`
 
@@ -5552,7 +5577,6 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mutation-cdrolloutcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
-| <a id="mutation-cdrolloutcreate-environments"></a>`environments` | [`[CdRolloutEnvironmentInput!]!`](#cdrolloutenvironmentinput) | Ordered list of environments to target. Position is derived from the order of the list. |
 | <a id="mutation-cdrolloutcreate-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID!`](#organizationsorganizationid) | Global ID of the organization to create the rollout in. |
 | <a id="mutation-cdrolloutcreate-versionsetid"></a>`versionSetId` | [`CdVersionSetID!`](#cdversionsetid) | Global ID of the version set the rollout deploys. |
 
@@ -34494,7 +34518,7 @@ Fields:
 ##### `CiRunner.jobCount`
 
 Number of jobs processed by the runner (limited to 1000, plus one to indicate that more items exist).
-`jobCount` is an optimized version of `jobs { count }`, and can be requested for multiple runners on the same request. When the `runner_job_count_recent_partitions` feature flag is enabled, the count only includes jobs on recent CI build partitions; when disabled, it includes jobs on all partitions.
+`jobCount` is an optimized version of `jobs { count }`, and can be requested for multiple runners on the same request. The count only includes jobs on recent CI build partitions.
 
 Returns [`Int`](#int).
 
@@ -48829,7 +48853,6 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="organization-avatarurl"></a>`avatarUrl`  | [`String`](#string) | Introduced in GitLab 16.7. Status: Experiment. Avatar URL of the organization. |
-| <a id="organization-cdapplications"></a>`cdApplications`  | [`CdApplicationConnection`](#cdapplicationconnection) | Introduced in GitLab 19.1. Status: Experiment. Continuous deployment applications in the organization. |
 | <a id="organization-cdenvironmenttiers"></a>`cdEnvironmentTiers`  | [`[CdEnvironmentTier!]`](#cdenvironmenttier) | Introduced in GitLab 19.2. Status: Experiment. Continuous deployment environment tiers available in the organization. |
 | <a id="organization-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 16.7. Status: Experiment. Description of the organization. |
 | <a id="organization-descriptionhtml"></a>`descriptionHtml`  | [`String`](#string) | Introduced in GitLab 16.7. Status: Experiment. GitLab Flavored Markdown rendering of `description`. |
@@ -48862,6 +48885,25 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="organization-cdapplication-id"></a>`id` | [`CdApplicationID!`](#cdapplicationid) | Global ID of the application. |
+
+##### `Organization.cdApplications`
+
+- Introduced in GitLab 19.1.
+- Status: Experiment.
+
+Continuous deployment applications in the organization.
+
+Returns [`CdApplicationConnection`](#cdapplicationconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="organization-cdapplications-search"></a>`search` | [`String`](#string) | Search applications by name or description. |
 
 ##### `Organization.cdEnvironment`
 
@@ -53760,6 +53802,7 @@ Fields:
 | <a id="projectpermissions-canleave"></a>`canLeave` | [`Boolean!`](#boolean) | If `true`, the user can leave this project. |
 | <a id="projectpermissions-changenamespace"></a>`changeNamespace` | [`Boolean!`](#boolean) | If `true`, the user can perform `change_namespace` on this resource. |
 | <a id="projectpermissions-changevisibilitylevel"></a>`changeVisibilityLevel` | [`Boolean!`](#boolean) | If `true`, the user can perform `change_visibility_level` on this resource. |
+| <a id="projectpermissions-createaicatalogitemconsumer"></a>`createAiCatalogItemConsumer`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. If `true`, the user can enable an AI catalog item in this project by creating an item consumer. |
 | <a id="projectpermissions-createdeployment"></a>`createDeployment` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_deployment` on this resource. |
 | <a id="projectpermissions-createdesign"></a>`createDesign` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_design` on this resource. |
 | <a id="projectpermissions-createissue"></a>`createIssue` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_issue` on this resource. |
@@ -70213,16 +70256,6 @@ Arguments:
 | <a id="bulktoolruleinput-localaccess"></a>`localAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for local or IDE surface. Omitting the field sets it to null, clearing any existing value. |
 | <a id="bulktoolruleinput-toolid"></a>`toolId` | [`String!`](#string) | Tool name string identifying the tool to update. For example, "create_issue". |
 | <a id="bulktoolruleinput-webaccess"></a>`webAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for web surface. Omitting the field sets it to null, clearing any existing value. |
-
-### `CdRolloutEnvironmentInput`
-
-Attributes for an environment targeted by a continuous deployment rollout.
-
-Arguments:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="cdrolloutenvironmentinput-environmentid"></a>`environmentId` | [`CdEnvironmentID!`](#cdenvironmentid) | Global ID of the environment to target. |
 
 ### `CdServiceInput`
 

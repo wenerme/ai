@@ -28,8 +28,8 @@ On the [Load Balancing API](https://developers.cloudflare.com/api/resources/load
 
 ## Create a pool
 
-* [ Dashboard ](#tab-panel-9746)
-* [ API ](#tab-panel-9747)
+* [ Dashboard ](#tab-panel-10070)
+* [ API ](#tab-panel-10071)
 
 You can create a pool within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Pools** tab:
 
@@ -195,8 +195,8 @@ After creating the pool, you would also want to [create a new notification](http
 
 ## Edit a pool
 
-* [ Dashboard ](#tab-panel-9742)
-* [ API ](#tab-panel-9743)
+* [ Dashboard ](#tab-panel-10066)
+* [ API ](#tab-panel-10067)
 
 To edit a pool in the dashboard:
 
@@ -222,8 +222,8 @@ Note
 
 If the pool is referenced by geo steering, the configuration is **not** automatically removed when you change to a different **Traffic Steering** method. To make sure you remove it, select **Geo Steering**, remove the pool, and then apply and save any other necessary changes.
 
-* [ Dashboard ](#tab-panel-9744)
-* [ API ](#tab-panel-9745)
+* [ Dashboard ](#tab-panel-10068)
+* [ API ](#tab-panel-10069)
 
 To delete a pool in the dashboard:
 
