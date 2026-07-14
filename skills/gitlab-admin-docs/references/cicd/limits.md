@@ -366,6 +366,27 @@ To set the maximum number of included files per pipeline:
 1. Enter a value in the **Maximum includes** text box.
 1. Select **Save changes**.
 
+## Maximum size of the CI artifacts archive
+
+This setting restricts YAML sizes for [dynamic child pipelines](../../ci/pipelines/downstream_pipelines.md#dynamic-child-pipelines).
+
+The default maximum size of the CI artifacts archive is 5 megabytes.
+
+To change this limit in the Admin area:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **CI/CD**.
+1. Expand **Continuous Integration and Deployment**.
+1. Enter a value in the **Maximum artifact size for dynamic child pipelines (bytes)** text box.
+1. Select **Save changes**.
+
+To change this limit using the [GitLab Rails console](../operations/rails_console.md#starting-a-rails-console-session),
+update `max_artifacts_content_include_size` with the new value. For example, to set it to 20 MB:
+
+```ruby
+ApplicationSetting.update(max_artifacts_content_include_size: 20.megabytes)
+```
+
 ## Maximum number of caches per job
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/237685) as a [beta](../../policy/development_stages_support.md#beta) in GitLab 18.10.8, 18.11.5, 19.0.2, and 19.1.
@@ -606,20 +627,6 @@ Update `dast_profile_schedules` with the new value:
 Plan.default.actual_limits.update!(dast_profile_schedules: 50)
 ```
 
-### Maximum size of the CI artifacts archive
-
-This setting is used to restrict YAML sizes for [dynamic child pipelines](../../ci/pipelines/downstream_pipelines.md#dynamic-child-pipelines).
-
-The default maximum size of the CI artifacts archive is 5 megabytes.
-
-You can change this limit by using the [GitLab Rails console](../operations/rails_console.md#starting-a-rails-console-session).
-To update the maximum size of the CI artifacts archive,
-update `max_artifacts_content_include_size` with the new value. For example, to set it to 20 MB:
-
-```ruby
-ApplicationSetting.update(max_artifacts_content_include_size: 20.megabytes)
-```
-
 ### Maximum size and depth of CI/CD configuration YAML files
 
 - Default value for `max_yaml_size_bytes` [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/160826) in GitLab 17.3.
@@ -664,6 +671,9 @@ update `ci_max_total_yaml_size_bytes` with the new value. For example, to set it
 ```ruby
 ApplicationSetting.update(ci_max_total_yaml_size_bytes: 20.megabytes)
 ```
+
+This limit also bounds the compiled configuration stored for a single CI/CD job when a pipeline is created.
+A single job's configuration is always a subset of the entire pipeline configuration, so it cannot exceed this limit.
 
 ### Limit CI/CD job annotations
 

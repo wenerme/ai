@@ -3,7 +3,7 @@
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed
 
-- Verification of files stored in object storage was [introduced](https://gitlab.com/groups/gitlab-org/-/epics/8056) in GitLab 16.4 [with a feature flag](../../feature_flags/_index.md) named `geo_object_storage_verification`. Enabled by default.
+- Object storage verification [introduced](https://gitlab.com/groups/gitlab-org/-/epics/8056) in GitLab 16.4 [with a feature flag](../../feature_flags/_index.md) named `geo_object_storage_verification`. Enabled by default.
 
 Geo can be used in combination with Object Storage (AWS S3, or other compatible object storage).
 
@@ -31,6 +31,11 @@ To have:
 ## Object storage verification
 
 Geo verifies files stored in object storage to ensure data integrity between primary and secondary sites.
+
+The `geo_object_storage_verification`
+[feature flag](../../feature_flags/_index.md) controls object storage verification and is enabled by default.
+As an operational control, you can disable the feature flag if verification of files in object storage
+causes excessive database load or memory usage on your instance.
 
 > [!warning]
 > Disabling object storage verification is not recommended.

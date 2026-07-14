@@ -2,7 +2,7 @@
 
 Use these tools to interact with GitLab through the GitLab MCP server.
 
-- Tier: Premium, Ultimate
+- Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Beta
 
@@ -191,8 +191,8 @@ Reply "Thanks, fixed in the latest push" to merge request 42 in project gitlab-o
 Retrieves the notes (comments and system notes) for a specific GitLab merge request.
 
 | Parameter           | Type    | Required | Description                                                                                    |
-|---------------------|---------|----------|------------------------------------------------------------------------------------------------|
-| `url`               | string  | No       | URL of the GitLab merge request. Required if `project_id` and `merge_request_iid` are missing. |
+|---------------------|---------|----------|--------------------------------------------------------------------------------------------------|
+| `url`               | string  | No       | URL of the GitLab merge request. Required if `project_id` and `merge_request_iid` are missing.   |
 | `project_id`        | string  | No       | ID or URL-encoded path of the project. Required if `url` is missing.                           |
 | `merge_request_iid` | integer | No       | Internal ID of the merge request. Required if `url` is missing.                                |
 | `after`             | string  | No       | Cursor for forward pagination.                                                                 |
@@ -228,8 +228,6 @@ Show me all jobs in pipeline 12345 for project gitlab-org/gitlab
 ```
 
 ## `get_job_log`
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/596588) in GitLab 19.1.
 
 Retrieves the trace (log output) for a specific CI/CD job.
 
@@ -347,6 +345,49 @@ Example:
 Show me all comments on work item 42 in project gitlab-org/gitlab
 ```
 
+## `link_work_items`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230221) in GitLab 19.0.
+
+Links a work item to one or more other work items with a relationship type.
+
+| Parameter        | Type             | Required | Description |
+|------------------|------------------|----------|-------------|
+| `work_items_ids` | array of strings | Yes      | Global IDs of the work items to link to (in the format `gid://gitlab/WorkItem/<id>`). Maximum 10 items. |
+| `url`            | string           | No       | URL for the source work item. Required if `group_id` or `project_id` and `work_item_iid` are missing. |
+| `group_id`       | string           | No       | ID or path of the group. Required if `url` and `project_id` are missing. |
+| `project_id`     | string           | No       | ID or path of the project. Required if `url` and `group_id` are missing. |
+| `work_item_iid`  | integer          | No       | Internal ID of the source work item. Required if `url` is missing. |
+| `link_type`      | string           | No       | Type of relationship. One of `relates_to`, `blocks`, or `blocked_by`. Default is `relates_to`. The `blocks` and `blocked_by` types require GitLab Premium or Ultimate. |
+
+Example:
+
+```plaintext
+Mark work item 42 in project gitlab-org/gitlab as blocked by work item 40
+```
+
+## `get_saved_view_work_items`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227911) in GitLab 18.11.
+
+Retrieves a saved view and its list of work items from a namespace. The tool applies the
+filters and the sort order in the saved view to the returned work items.
+
+| Parameter       | Type    | Required | Description |
+|-----------------|---------|----------|-------------|
+| `saved_view_id` | string  | Yes      | Global ID of the saved view (in the format `gid://gitlab/WorkItems::SavedViews::SavedView/<id>`). |
+| `url`           | string  | No       | URL for the namespace (project or group). Required if `group_id` or `project_id` is missing. |
+| `group_id`      | string  | No       | ID or path of the group. Required if `url` and `project_id` are missing. |
+| `project_id`    | string  | No       | ID or path of the project. Required if `url` and `group_id` are missing. |
+| `after`         | string  | No       | Cursor for forward pagination. |
+| `first`         | integer | No       | Number of work items to return. Maximum 100. |
+
+Example:
+
+```plaintext
+Show me the work items in this saved view: <URL>
+```
+
 ## `search`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/566143) in GitLab 18.4.
@@ -355,7 +396,7 @@ Show me all comments on work item 42 in project gitlab-org/gitlab
 
 Searches for a term across the entire GitLab instance with the search API.
 This tool is available for global, group, and project search.
-Available scopes depend on the [search type](../../search/_index.md).
+Available scopes depend on the [search type](../search/_index.md).
 
 | Parameter      | Type             | Required | Description |
 |----------------|------------------|----------|-------------|
@@ -402,11 +443,11 @@ Show me all labels in project gitlab-org/gitlab
 - Add-on: GitLab Duo Core, Pro, or Enterprise
 - Offering: GitLab.com, GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/569624) as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `code_snippet_search_graphqlapi`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/569624) as an [experiment](../../policy/development_stages_support.md#experiment) in GitLab 18.5 [with a feature flag](../../administration/feature_flags/_index.md) named `code_snippet_search_graphqlapi`. Disabled by default.
 - Search by project path [added](https://gitlab.com/gitlab-org/gitlab/-/issues/575234) in GitLab 18.6.
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/568359) from experiment to [beta](../../../policy/development_stages_support.md#beta) in GitLab 18.7. Feature flag `code_snippet_search_graphqlapi` removed.
-- [Added](https://gitlab.com/gitlab-org/gitlab/-/issues/581105) to the GitLab UI in GitLab 18.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `mcp_client`. Disabled by default.
-- [Updated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228569) to use the [REST API](../../../api/search.md#semantic-search) in GitLab 18.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `mcp_semantic_code_search_use_rest_api`. Disabled by default.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/568359) from experiment to [beta](../../policy/development_stages_support.md#beta) in GitLab 18.7. Feature flag `code_snippet_search_graphqlapi` removed.
+- [Added](https://gitlab.com/gitlab-org/gitlab/-/issues/581105) to the GitLab UI in GitLab 18.7 [with a feature flag](../../administration/feature_flags/_index.md) named `mcp_client`. Disabled by default.
+- [Updated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228569) to use the [REST API](../../api/search.md#semantic-search) in GitLab 18.11 [with a feature flag](../../administration/feature_flags/_index.md) named `mcp_semantic_code_search_use_rest_api`. Disabled by default.
 - Using the REST API [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239364) in GitLab 19.1. Feature flag `mcp_semantic_code_search_use_rest_api` removed.
 
 > [!flag]
@@ -415,7 +456,7 @@ Show me all labels in project gitlab-org/gitlab
 
 Searches for relevant code snippets in a GitLab project.
 For more information, including setup and enablement,
-see [semantic code search](../semantic_code_search.md).
+see [semantic code search](../gitlab_duo/semantic_code_search.md).
 
 | Parameter        | Type    | Required | Description |
 |------------------|---------|----------|-------------|

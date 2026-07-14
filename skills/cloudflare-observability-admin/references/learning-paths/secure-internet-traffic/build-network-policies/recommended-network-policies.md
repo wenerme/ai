@@ -20,9 +20,9 @@ For additional commonly used network policy examples, refer to [Common network p
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-* [ Dashboard ](#tab-panel-9979)
-* [ API ](#tab-panel-9980)
-* [ Terraform ](#tab-panel-9981)
+* [ Dashboard ](#tab-panel-9983)
+* [ API ](#tab-panel-9984)
+* [ Terraform ](#tab-panel-9985)
 
 | Selector         | Operator    | Value                               | Logic | Action |
 | ---------------- | ----------- | ----------------------------------- | ----- | ------ |
@@ -71,9 +71,9 @@ Restrict access for devices where baseline posture checks have not passed. If po
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-* [ Dashboard ](#tab-panel-9982)
-* [ API ](#tab-panel-9983)
-* [ Terraform ](#tab-panel-9984)
+* [ Dashboard ](#tab-panel-9986)
+* [ API ](#tab-panel-9987)
+* [ Terraform ](#tab-panel-9988)
 
 | Selector                     | Operator    | Value                               | Logic | Action |
 | ---------------------------- | ----------- | ----------------------------------- | ----- | ------ |
@@ -122,9 +122,9 @@ You can add a number of Cloudflare One Client device posture checks as needed, s
 
 Allow HTTPS access for user groups. For example, the following policy gives finance users access to any known financial applications:
 
-* [ Dashboard ](#tab-panel-9985)
-* [ API ](#tab-panel-9986)
-* [ Terraform ](#tab-panel-9987)
+* [ Dashboard ](#tab-panel-9989)
+* [ API ](#tab-panel-9990)
+* [ Terraform ](#tab-panel-9991)
 
 | Selector         | Operator | Value             | Logic | Action |
 | ---------------- | -------- | ----------------- | ----- | ------ |
@@ -171,9 +171,9 @@ Block traffic to destination IPs, SNIs, and SNI domains that are malicious or po
 
 You can implement this policy by either creating custom blocklists or by using blocklists provided by threat intelligence partners or regional Computer Emergency and Response Teams (CERTs). Ideally, your CERTs can update the blocklist with an [API automation](https://developers.cloudflare.com/security-center/intel-apis/) to provide real-time threat protection.
 
-* [ Dashboard ](#tab-panel-9988)
-* [ API ](#tab-panel-9989)
-* [ Terraform ](#tab-panel-9990)
+* [ Dashboard ](#tab-panel-9992)
+* [ API ](#tab-panel-9993)
+* [ Terraform ](#tab-panel-9994)
 
 | Selector       | Operator | Value              | Logic | Action |
 | -------------- | -------- | ------------------ | ----- | ------ |
@@ -223,9 +223,9 @@ Allow SSH traffic to specific endpoints on the Internet for specific users. You 
 
 Optionally, you can include a selector to filter by source IP or IdP group.
 
-* [ Dashboard ](#tab-panel-9991)
-* [ API ](#tab-panel-9992)
-* [ Terraform ](#tab-panel-9993)
+* [ Dashboard ](#tab-panel-9995)
+* [ API ](#tab-panel-9996)
+* [ Terraform ](#tab-panel-9997)
 
 | Selector          | Operator | Value               | Logic | Action |
 | ----------------- | -------- | ------------------- | ----- | ------ |
@@ -272,9 +272,9 @@ resource "cloudflare_zero_trust_gateway_policy" "all_net_ssh_internet_allowlist"
 
 Block all non-web traffic towards the Internet. By using the **Detected Protocol** selector, you will ensure alternative ports for HTTP and HTTPS are allowed.
 
-* [ Dashboard ](#tab-panel-9994)
-* [ API ](#tab-panel-9995)
-* [ Terraform ](#tab-panel-9996)
+* [ Dashboard ](#tab-panel-9998)
+* [ API ](#tab-panel-9999)
+* [ Terraform ](#tab-panel-10000)
 
 | Selector          | Operator    | Value             | Logic | Action |
 | ----------------- | ----------- | ----------------- | ----- | ------ |
@@ -317,9 +317,9 @@ resource "cloudflare_zero_trust_gateway_policy" "all_net_no_http_https_internet_
 
 Implicitly deny all of your internal IP ranges included in a list. We recommend you place this policy at the [bottom of your policy list](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#order-of-precedence) to ensure you explicitly approve traffic defined in the above policies.
 
-* [ Dashboard ](#tab-panel-9997)
-* [ API ](#tab-panel-9998)
-* [ Terraform ](#tab-panel-9999)
+* [ Dashboard ](#tab-panel-10001)
+* [ API ](#tab-panel-10002)
+* [ Terraform ](#tab-panel-10003)
 
 | Selector       | Operator | Value                  | Action |
 | -------------- | -------- | ---------------------- | ------ |
@@ -363,9 +363,9 @@ Only allow network traffic from known and approved devices.
 
 In the following example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:
 
-* [ Dashboard ](#tab-panel-10000)
-* [ API ](#tab-panel-10001)
-* [ Terraform ](#tab-panel-10002)
+* [ Dashboard ](#tab-panel-10004)
+* [ API ](#tab-panel-10005)
+* [ Terraform ](#tab-panel-10006)
 
 | Selector                     | Operator | Value                   | Logic | Action |
 | ---------------------------- | -------- | ----------------------- | ----- | ------ |

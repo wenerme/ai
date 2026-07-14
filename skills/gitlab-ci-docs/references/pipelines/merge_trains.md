@@ -9,10 +9,35 @@ In projects with frequent merges to the default branch, changes in different mer
 might conflict with each other. Use merge trains to put merge requests in a queue.
 Each merge request is compared to the other, earlier merge requests, to ensure they all work together.
 
-For more information about:
+A [merged results pipeline](merged_results_pipelines.md) tests one merge request's changes
+combined with the target branch.
+A merged results pipeline does not account for other merge requests that merge around the same time.
+Two merge requests can each pass their own pipeline, but their combined changes can still conflict.
+If both merge, the target branch can break, even though every pipeline succeeded.
 
-- How merge trains work, review the [merge train workflow](#merge-train-workflow).
-- Why you might want to use merge trains, read [How starting merge trains improve efficiency for DevOps](https://about.gitlab.com/blog/all-aboard-merge-trains/).
+```mermaid
+%%{init: { "fontFamily": "GitLab Sans" }}%%
+graph LR
+accTitle: Two merge requests that pass individually but conflict together
+accDescr: Merge request A and merge request B each pass a pipeline that tests their changes combined with the target branch alone. When both merge, the combined changes break the target branch.
+
+  subgraph Without merge trains
+    target[Target branch] --> pipeline_a[Pipeline for A: passes]
+    target --> pipeline_b[Pipeline for B: passes]
+    pipeline_a --> merge_both[Both merge]
+    pipeline_b --> merge_both
+    merge_both -.-> broken[Target branch breaks]
+  end
+```
+
+Merge trains prevent this by testing each merge request against the combined changes of every merge request ahead of it in the queue.
+This catches conflicts before they reach the target branch.
+
+Use merge trains if your project has:
+
+- Frequent merges to the default branch
+- Multiple merge requests that are often ready to merge around the same time
+- A requirement to keep pipelines passing on the default branch at all times
 
 ## Merge train workflow
 
@@ -30,6 +55,19 @@ to add it to the train. This second merge train pipeline runs on the changes of
 _both_ merge requests combined with the target branch. Similarly, if you add a
 third merge request, that pipeline runs on the changes of all three merge
 requests merged with the target branch. The pipelines all run in parallel.
+
+```mermaid
+%%{init: { "fontFamily": "GitLab Sans" }}%%
+graph LR
+accTitle: Merge train pipelines test combined changes
+accDescr: Pipeline 1 tests merge request A against the target branch. Pipeline 2 tests merge request A and B together against the target branch. Pipeline 3 tests merge request A, B, and C together against the target branch. The three pipelines run in parallel.
+
+  subgraph Merge train
+    target[Target branch] --> pipeline_1[Pipeline 1: A]
+    target --> pipeline_2[Pipeline 2: A + B]
+    target --> pipeline_3[Pipeline 3: A + B + C]
+  end
+```
 
 Each merge request merges into the target branch only after:
 

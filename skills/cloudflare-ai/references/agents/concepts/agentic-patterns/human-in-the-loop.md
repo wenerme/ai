@@ -1,6 +1,6 @@
 ---
 title: Human-in-the-loop patterns
-description: Implement human-in-the-loop functionality using Cloudflare Agents for workflow approvals and MCP elicitation
+description: Implement human-in-the-loop functionality using Workflow approvals, durable Code Mode approvals, and MCP elicitation.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Human-in-the-loop patterns
 
-Human-in-the-loop (HITL) patterns allow agents to pause execution and wait for human approval, confirmation, or input before proceeding. This is essential for compliance, safety, and oversight in agentic systems.
+Human-in-the-loop (HITL) patterns add approval or input at different layers of an Agent. You can respond to an MCP server request, hold application work in a durable Workflow, or approve a connector call before model-generated code invokes a tool.
 
 ## Why human-in-the-loop?
 
@@ -23,36 +23,26 @@ Human-in-the-loop (HITL) patterns allow agents to pause execution and wait for h
 
 ### Common use cases
 
-| Use Case            | Example                              |
-| ------------------- | ------------------------------------ |
-| Financial approvals | Expense reports, payment processing  |
-| Content moderation  | Publishing, email sending            |
-| Data operations     | Bulk deletions, exports              |
-| AI tool execution   | Confirming tool calls before running |
-| Access control      | Granting permissions, role changes   |
+Common uses include financial approvals, content moderation, bulk data operations, approval before side-effecting tool calls, and access-control changes.
 
 ## Choosing a pattern
 
-Cloudflare provides two main patterns for human-in-the-loop:
+Choose the pattern based on who introduces the pause and where it occurs:
 
-| Pattern               | Best for                                     | Key API           |
-| --------------------- | -------------------------------------------- | ----------------- |
-| **Workflow approval** | Multi-step processes, durable approval gates | waitForApproval() |
-| **MCP elicitation**   | MCP servers requesting structured user input | elicitInput()     |
-
-Decision guide:
-
-* Use **Workflow approval** when you need durable, multi-step processes with approval gates that can wait hours, days, or weeks
-* Use **MCP elicitation** when building MCP servers that need to request additional structured input from users during tool execution
+| Pattern                | Approval layer                             | Initiated by                | Typical wait            | Key API                               |
+| ---------------------- | ------------------------------------------ | --------------------------- | ----------------------- | ------------------------------------- |
+| **MCP elicitation**    | MCP request handled by your Agent client   | MCP server developer        | Minutes                 | configureElicitationHandlers()        |
+| **Workflow approval**  | Durable application task or tool operation | Agent application developer | Months or years         | waitForApproval()                     |
+| **Code Mode approval** | Connector call in model-generated code     | Code Mode Agent developer   | Until configured expiry | requiresApproval, approve(), reject() |
 
 ## Workflow-based approval
 
-For durable, multi-step processes, use [Cloudflare Workflows](https://developers.cloudflare.com/workflows/) with the `waitForApproval()` method. The workflow pauses until a human approves or rejects.
+Use [Cloudflare Workflows](https://developers.cloudflare.com/workflows/) when your application needs to hold a task or tool operation for as long as approval requires. `waitForApproval()` creates a durable gate backed by Cloudflare Workflows, so the wait can continue for months or longer without keeping an Agent running.
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-5589)
-* [  TypeScript ](#tab-panel-5590)
+* [  JavaScript ](#tab-panel-5833)
+* [  TypeScript ](#tab-panel-5834)
 
 **JavaScript**
 
@@ -169,8 +159,8 @@ export class ExpenseWorkflow extends AgentWorkflow<
 
 The agent provides methods to approve or reject waiting workflows:
 
-* [  JavaScript ](#tab-panel-5593)
-* [  TypeScript ](#tab-panel-5594)
+* [  JavaScript ](#tab-panel-5837)
+* [  TypeScript ](#tab-panel-5838)
 
 **JavaScript**
 
@@ -336,8 +326,8 @@ export class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 Set timeouts to prevent workflows from waiting indefinitely:
 
-* [  JavaScript ](#tab-panel-5583)
-* [  TypeScript ](#tab-panel-5584)
+* [  JavaScript ](#tab-panel-5825)
+* [  TypeScript ](#tab-panel-5826)
 
 **JavaScript**
 
@@ -373,8 +363,8 @@ if (!approval) {
 
 Use `schedule()` to set up escalation reminders:
 
-* [  JavaScript ](#tab-panel-5585)
-* [  TypeScript ](#tab-panel-5586)
+* [  JavaScript ](#tab-panel-5829)
+* [  TypeScript ](#tab-panel-5830)
 
 **JavaScript**
 
@@ -476,8 +466,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 Use `this.sql` to maintain an immutable audit trail:
 
-* [  JavaScript ](#tab-panel-5587)
-* [  TypeScript ](#tab-panel-5588)
+* [  JavaScript ](#tab-panel-5831)
+* [  TypeScript ](#tab-panel-5832)
 
 **JavaScript**
 
@@ -565,8 +555,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-5581)
-* [  wrangler.toml ](#tab-panel-5582)
+* [  wrangler.jsonc ](#tab-panel-5823)
+* [  wrangler.toml ](#tab-panel-5824)
 
 **JSONC**
 
@@ -575,7 +565,7 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
   "name": "expense-approval",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-14",
   "compatibility_flags": ["nodejs_compat"],
   "durable_objects": {
     "bindings": [{ "name": "EXPENSE_AGENT", "class_name": "ExpenseAgent" }],
@@ -597,7 +587,7 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 name = "expense-approval"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -619,85 +609,36 @@ new_sqlite_classes = [ "ExpenseAgent" ]
 
 ## MCP elicitation
 
-When building MCP servers with `McpAgent`, you can request additional user input during tool execution using **elicitation**. The MCP client renders a form based on your JSON Schema and returns the user's response.
+MCP elicitation lets an MCP server developer decide that a tool call needs more information or an out-of-band interaction. Your Agent acts as the MCP client: it presents the request to the user and returns their response. These interactions typically complete within minutes.
 
-### Basic pattern
+Form mode collects structured, non-sensitive input. URL mode asks the user to open an out-of-band flow, such as third-party authorization or payment.
 
-* [  JavaScript ](#tab-panel-5595)
-* [  TypeScript ](#tab-panel-5596)
+Configure the user-facing handlers in `onStart()`:
+
+* [  JavaScript ](#tab-panel-5827)
+* [  TypeScript ](#tab-panel-5828)
 
 **JavaScript**
 
 ```js
-import { McpAgent } from "agents/mcp";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { z } from "zod";
+import { Agent } from "agents";
 
 
-export class CounterMCP extends McpAgent {
-  server = new McpServer({
-    name: "counter-server",
-    version: "1.0.0",
-  });
+export class MyAgent extends Agent {
+  onStart() {
+    this.mcp.configureElicitationHandlers({
+      form: (request, serverId) =>
+        this.forwardElicitationToUser(request, serverId),
+      url: (request, serverId) =>
+        this.forwardElicitationToUser(request, serverId),
+    });
+  }
 
 
-  initialState = { counter: 0 };
-
-
-  async init() {
-    this.server.tool(
-      "increase-counter",
-      "Increase the counter by a user-specified amount",
-      { confirm: z.boolean().describe("Do you want to increase the counter?") },
-      async ({ confirm }, extra) => {
-        if (!confirm) {
-          return { content: [{ type: "text", text: "Cancelled." }] };
-        }
-
-
-        // Request additional input from the user
-        const userInput = await this.server.server.elicitInput(
-          {
-            message: "By how much do you want to increase the counter?",
-            requestedSchema: {
-              type: "object",
-              properties: {
-                amount: {
-                  type: "number",
-                  title: "Amount",
-                  description: "The amount to increase the counter by",
-                },
-              },
-              required: ["amount"],
-            },
-          },
-          { relatedRequestId: extra.requestId },
-        );
-
-
-        // Check if user accepted or cancelled
-        if (userInput.action !== "accept" || !userInput.content) {
-          return { content: [{ type: "text", text: "Cancelled." }] };
-        }
-
-
-        // Use the input
-        const amount = Number(userInput.content.amount);
-        this.setState({
-          ...this.state,
-          counter: this.state.counter + amount,
-        });
-
-
-        return {
-          content: [
-            {
-              type: "text",
-              text: `Counter increased by ${amount}, now at ${this.state.counter}`,
-            },
-          ],
-        };
-      },
+  forwardElicitationToUser(request, serverId) {
+    // Present the request in your UI and resolve after the user responds.
+    throw new Error(
+      `Implement elicitation for ${serverId}: ${request.params.message}`,
     );
   }
 }
@@ -706,94 +647,247 @@ export class CounterMCP extends McpAgent {
 **TypeScript**
 
 ```ts
-import { McpAgent } from "agents/mcp";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { z } from "zod";
+import { Agent } from "agents";
+import type { ElicitRequest, ElicitResult } from "agents/mcp";
 
 
-type State = { counter: number };
+export class MyAgent extends Agent<Env> {
+  onStart() {
+    this.mcp.configureElicitationHandlers({
+      form: (request, serverId) =>
+        this.forwardElicitationToUser(request, serverId),
+      url: (request, serverId) =>
+        this.forwardElicitationToUser(request, serverId),
+    });
+  }
 
 
-export class CounterMCP extends McpAgent<Env, State, {}> {
-  server = new McpServer({
-    name: "counter-server",
-    version: "1.0.0",
-  });
-
-
-  initialState: State = { counter: 0 };
-
-
-  async init() {
-    this.server.tool(
-      "increase-counter",
-      "Increase the counter by a user-specified amount",
-      { confirm: z.boolean().describe("Do you want to increase the counter?") },
-      async ({ confirm }, extra) => {
-        if (!confirm) {
-          return { content: [{ type: "text", text: "Cancelled." }] };
-        }
-
-
-        // Request additional input from the user
-        const userInput = await this.server.server.elicitInput(
-          {
-            message: "By how much do you want to increase the counter?",
-            requestedSchema: {
-              type: "object",
-              properties: {
-                amount: {
-                  type: "number",
-                  title: "Amount",
-                  description: "The amount to increase the counter by",
-                },
-              },
-              required: ["amount"],
-            },
-          },
-          { relatedRequestId: extra.requestId },
-        );
-
-
-        // Check if user accepted or cancelled
-        if (userInput.action !== "accept" || !userInput.content) {
-          return { content: [{ type: "text", text: "Cancelled." }] };
-        }
-
-
-        // Use the input
-        const amount = Number(userInput.content.amount);
-        this.setState({
-          ...this.state,
-          counter: this.state.counter + amount,
-        });
-
-
-        return {
-          content: [
-            {
-              type: "text",
-              text: `Counter increased by ${amount}, now at ${this.state.counter}`,
-            },
-          ],
-        };
-      },
+  private forwardElicitationToUser(
+    request: ElicitRequest,
+    serverId: string,
+  ): Promise<ElicitResult> {
+    // Present the request in your UI and resolve after the user responds.
+    throw new Error(
+      `Implement elicitation for ${serverId}: ${request.params.message}`,
     );
   }
 }
 ```
 
-## Elicitation vs workflow approval
+For the complete form, URL, and browser forwarding patterns, refer to [MCP client elicitation](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#elicitation). For the server-side request API, refer to [McpAgent elicitation](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#elicitation).
 
-| Aspect       | MCP Elicitation               | Workflow Approval             |
-| ------------ | ----------------------------- | ----------------------------- |
-| **Context**  | MCP server tool execution     | Multi-step workflow processes |
-| **Duration** | Immediate (within tool call)  | Can wait hours/days/weeks     |
-| **UI**       | JSON Schema-based form        | Custom UI via agent state     |
-| **State**    | MCP session state             | Durable workflow state        |
-| **Use case** | Interactive input during tool | Approval gates in pipelines   |
+## Durable Code Mode approvals
 
-## Building approval UIs
+Use the [durable Code Mode runtime](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/) for coding agents and other Agents that use the Code Mode pattern. Mark a connector method with `requiresApproval: true` to pause model-generated code before it invokes the underlying tool.
+
+The following example marks a GitHub MCP tool as approval-gated, adds the connector to a durable runtime, and exposes methods that a UI can use to inspect, approve, or reject the pending action:
+
+* [  JavaScript ](#tab-panel-5839)
+* [  TypeScript ](#tab-panel-5840)
+
+**JavaScript**
+
+```js
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import {
+  createCodemodeRuntime,
+  DynamicWorkerExecutor,
+  McpConnector,
+} from "@cloudflare/codemode";
+import { callable } from "agents";
+import { convertToModelMessages, stepCountIs, streamText } from "ai";
+import { model } from "./model";
+
+
+class GitHubConnector extends McpConnector {
+  connection;
+
+
+  constructor(ctx, env, connection) {
+    super(ctx, env);
+    this.connection = connection;
+  }
+
+
+  name() {
+    return "github";
+  }
+
+
+  createConnection() {
+    return this.connection;
+  }
+
+
+  tool(name, tool) {
+    if (name === "create_issue") {
+      return { ...tool, requiresApproval: true };
+    }
+    return tool;
+  }
+}
+
+
+export class CodingAgent extends AIChatAgent {
+  runtime() {
+    const server = this.mcp
+      .listServers()
+      .find((item) => item.name === "GitHub");
+    if (!server) throw new Error("GitHub MCP server is not registered.");
+
+
+    const connection = this.mcp.mcpConnections[server.id];
+    if (!connection) throw new Error("GitHub MCP connection is unavailable.");
+
+
+    return createCodemodeRuntime({
+      ctx: this.ctx,
+      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+      connectors: [new GitHubConnector(this.ctx, this.env, connection)],
+    });
+  }
+
+
+  async onChatMessage() {
+    const result = streamText({
+      model,
+      messages: await convertToModelMessages(this.messages),
+      tools: { codemode: this.runtime().tool() },
+      stopWhen: stepCountIs(10),
+    });
+
+
+    return result.toUIMessageStreamResponse();
+  }
+
+
+  @callable()
+  async pendingApprovals() {
+    return this.runtime().pending();
+  }
+
+
+  @callable()
+  async approveExecution(executionId) {
+    return this.runtime().approve({ executionId });
+  }
+
+
+  @callable()
+  async rejectExecution(executionId, seq) {
+    return this.runtime().reject({ executionId, seq });
+  }
+}
+```
+
+**TypeScript**
+
+```ts
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import {
+  createCodemodeRuntime,
+  DynamicWorkerExecutor,
+  McpConnector,
+  type CodemodeRuntimeHandle,
+  type ConnectorTool,
+  type McpConnectionLike,
+  type PendingAction,
+} from "@cloudflare/codemode";
+import { callable } from "agents";
+import { convertToModelMessages, stepCountIs, streamText } from "ai";
+import { model } from "./model";
+
+
+class GitHubConnector extends McpConnector<Env> {
+  private connection: McpConnectionLike;
+
+
+  constructor(
+    ctx: DurableObjectState,
+    env: Env,
+    connection: McpConnectionLike,
+  ) {
+    super(ctx, env);
+    this.connection = connection;
+  }
+
+
+  override name() {
+    return "github";
+  }
+
+
+  protected override createConnection() {
+    return this.connection;
+  }
+
+
+  protected override tool(name: string, tool: ConnectorTool): ConnectorTool {
+    if (name === "create_issue") {
+      return { ...tool, requiresApproval: true };
+    }
+    return tool;
+  }
+}
+
+
+export class CodingAgent extends AIChatAgent<Env> {
+  private runtime(): CodemodeRuntimeHandle {
+    const server = this.mcp
+      .listServers()
+      .find((item) => item.name === "GitHub");
+    if (!server) throw new Error("GitHub MCP server is not registered.");
+
+
+    const connection = this.mcp.mcpConnections[server.id];
+    if (!connection) throw new Error("GitHub MCP connection is unavailable.");
+
+
+    return createCodemodeRuntime({
+      ctx: this.ctx,
+      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+      connectors: [new GitHubConnector(this.ctx, this.env, connection)],
+    });
+  }
+
+
+  async onChatMessage() {
+    const result = streamText({
+      model,
+      messages: await convertToModelMessages(this.messages),
+      tools: { codemode: this.runtime().tool() },
+      stopWhen: stepCountIs(10),
+    });
+
+
+    return result.toUIMessageStreamResponse();
+  }
+
+
+  @callable()
+  async pendingApprovals(): Promise<PendingAction[]> {
+    return this.runtime().pending();
+  }
+
+
+  @callable()
+  async approveExecution(executionId: string) {
+    return this.runtime().approve({ executionId });
+  }
+
+
+  @callable()
+  async rejectExecution(executionId: string, seq: number): Promise<boolean> {
+    return this.runtime().reject({ executionId, seq });
+  }
+}
+```
+
+When generated code calls `github.create_issue()`, the runtime records the pending method and arguments, then pauses before the MCP tool executes. Approval starts another pass with the same source code and execution ID. Previously completed calls replay from the durable log, the approved call executes, and the generated code continues.
+
+Pending approvals and execution history survive request completion and Durable Object hibernation. For the execution and replay model, refer to [Approvals through abort and replay](https://developers.cloudflare.com/agents/tools/codemode/how-it-works/#approvals-through-abort-and-replay).
+
+## Build Workflow approval UIs
 
 ### Pending approvals list
 
@@ -843,12 +937,12 @@ function PendingApprovals() {
 }
 ```
 
-## Multi-approver patterns
+## Add multiple Workflow approvers
 
 For sensitive operations requiring multiple approvers:
 
-* [  JavaScript ](#tab-panel-5591)
-* [  TypeScript ](#tab-panel-5592)
+* [  JavaScript ](#tab-panel-5835)
+* [  TypeScript ](#tab-panel-5836)
 
 **JavaScript**
 
@@ -958,13 +1052,13 @@ class MultiApprovalAgent extends Agent<Env, State> {
 
 [ Run Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) Complete waitForApproval() API reference.
 
-[ MCP servers ](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) Build MCP agents with elicitation.
+[ MCP clients ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) Handle elicitation requests in an Agent acting as an MCP client.
 
-[ Email notifications ](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) Send notifications for pending approvals.
+[ MCP servers ](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) Request form or URL elicitation from an MCP server.
 
-[ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Implement approval timeouts with schedules.
+[ Durable Code Mode runtime ](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/) Pause model-generated code for approval before connector calls.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/#page","headline":"Human-in-the-loop patterns · Cloudflare Agents docs","description":"Implement human-in-the-loop functionality using Cloudflare Agents for workflow approvals and MCP elicitation","url":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/#page","headline":"Human-in-the-loop patterns · Cloudflare Agents docs","description":"Implement human-in-the-loop functionality using Workflow approvals, durable Code Mode approvals, and MCP elicitation.","url":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/agentic-patterns/","name":"Agentic patterns"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/concepts/agentic-patterns/human-in-the-loop/","name":"Human-in-the-loop patterns"}}]}
 ```

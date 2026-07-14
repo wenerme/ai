@@ -29,8 +29,8 @@ This page covers connecting to MCP servers as a client. To create your own MCP s
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-6215)
-* [  TypeScript ](#tab-panel-6216)
+* [  JavaScript ](#tab-panel-6217)
+* [  TypeScript ](#tab-panel-6218)
 
 **JavaScript**
 
@@ -100,8 +100,8 @@ Connections persist in the agent's [SQL storage](https://developers.cloudflare.c
 
 Use `addMcpServer()` to connect to an MCP server. For non-OAuth servers, no options are needed:
 
-* [  JavaScript ](#tab-panel-6209)
-* [  TypeScript ](#tab-panel-6210)
+* [  JavaScript ](#tab-panel-6211)
+* [  TypeScript ](#tab-panel-6212)
 
 **JavaScript**
 
@@ -135,8 +135,8 @@ await this.addMcpServer("github", "https://mcp.github.com/mcp", {
 
 By default, each connection is assigned a generated `nanoid(8)` ID. Pass `id` for connector-style integrations so tools surface as readable keys instead of opaque connection IDs.
 
-* [  JavaScript ](#tab-panel-6207)
-* [  TypeScript ](#tab-panel-6208)
+* [  JavaScript ](#tab-panel-6209)
+* [  TypeScript ](#tab-panel-6210)
 
 **JavaScript**
 
@@ -166,8 +166,8 @@ Stable IDs are fully additive — no existing code breaks. If you add `{ id: "gi
 
 MCP supports multiple transport types:
 
-* [  JavaScript ](#tab-panel-6211)
-* [  TypeScript ](#tab-panel-6212)
+* [  JavaScript ](#tab-panel-6213)
+* [  TypeScript ](#tab-panel-6214)
 
 **JavaScript**
 
@@ -199,8 +199,8 @@ await this.addMcpServer("server", "https://mcp.example.com/mcp", {
 
 For servers behind authentication (like Cloudflare Access) or using bearer tokens:
 
-* [  JavaScript ](#tab-panel-6213)
-* [  TypeScript ](#tab-panel-6214)
+* [  JavaScript ](#tab-panel-6215)
+* [  TypeScript ](#tab-panel-6216)
 
 **JavaScript**
 
@@ -274,8 +274,8 @@ sequenceDiagram
 
 ### Handling OAuth in your agent
 
-* [  JavaScript ](#tab-panel-6217)
-* [  TypeScript ](#tab-panel-6218)
+* [  JavaScript ](#tab-panel-6219)
+* [  TypeScript ](#tab-panel-6220)
 
 **JavaScript**
 
@@ -337,8 +337,8 @@ OAuth tokens are securely stored in SQLite, and persist across agent restarts.
 
 When using `sendIdentityOnConnect: false` to hide sensitive instance names (like session IDs or user IDs), the default OAuth callback URL would expose the instance name. To prevent this security issue, you must provide a custom `callbackPath`.
 
-* [  JavaScript ](#tab-panel-6243)
-* [  TypeScript ](#tab-panel-6244)
+* [  JavaScript ](#tab-panel-6241)
+* [  TypeScript ](#tab-panel-6242)
 
 **JavaScript**
 
@@ -462,8 +462,8 @@ OAuth callbacks are matched by the `state` query parameter (format: `{serverId}:
 
 Configure how OAuth completion is handled. By default, successful authentication redirects to your application origin, while failed authentication displays an HTML error page.
 
-* [  JavaScript ](#tab-panel-6223)
-* [  TypeScript ](#tab-panel-6224)
+* [  JavaScript ](#tab-panel-6229)
+* [  TypeScript ](#tab-panel-6230)
 
 **JavaScript**
 
@@ -517,14 +517,149 @@ export class MyAgent extends Agent {
 }
 ```
 
-## Elicitation
+## Using MCP capabilities
+
+Once connected, access the server's capabilities:
+
+### Get available tools
+
+* [  JavaScript ](#tab-panel-6221)
+* [  TypeScript ](#tab-panel-6222)
+
+**JavaScript**
+
+```js
+const state = this.getMcpServers();
+
+
+// All tools from all connected servers
+for (const tool of state.tools) {
+  console.log(`Tool: ${tool.name}`);
+  console.log(`  From server: ${tool.serverId}`);
+  console.log(`  Title: ${tool.title ?? tool.annotations?.title ?? tool.name}`);
+  console.log(`  Description: ${tool.description}`);
+}
+```
+
+**TypeScript**
+
+```ts
+const state = this.getMcpServers();
+
+
+// All tools from all connected servers
+for (const tool of state.tools) {
+  console.log(`Tool: ${tool.name}`);
+  console.log(`  From server: ${tool.serverId}`);
+  console.log(`  Title: ${tool.title ?? tool.annotations?.title ?? tool.name}`);
+  console.log(`  Description: ${tool.description}`);
+}
+```
+
+#### Integration with AI SDK
+
+To use MCP tools with the AI SDK, use `this.mcp.getAITools()` which converts MCP tools to AI SDK format:
+
+* [  JavaScript ](#tab-panel-6231)
+* [  TypeScript ](#tab-panel-6232)
+
+**JavaScript**
+
+```js
+import { generateText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+
+
+export class MyAgent extends Agent {
+  async onRequest(request) {
+    const workersai = createWorkersAI({ binding: this.env.AI });
+    const response = await generateText({
+      model: workersai("@cf/zai-org/glm-4.7-flash"),
+      prompt: "What's the weather in San Francisco?",
+      tools: this.mcp.getAITools(),
+    });
+
+
+    return new Response(response.text);
+  }
+}
+```
+
+**TypeScript**
+
+```ts
+import { generateText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+
+
+export class MyAgent extends Agent<Env> {
+  async onRequest(request: Request) {
+    const workersai = createWorkersAI({ binding: this.env.AI });
+    const response = await generateText({
+      model: workersai("@cf/zai-org/glm-4.7-flash"),
+      prompt: "What's the weather in San Francisco?",
+      tools: this.mcp.getAITools(),
+    });
+
+
+    return new Response(response.text);
+  }
+}
+```
+
+Note
+
+`getMcpServers().tools` returns raw MCP `Tool` objects for inspection. Use `this.mcp.getAITools()` when passing tools to the AI SDK.
+
+### Resources and prompts
+
+* [  JavaScript ](#tab-panel-6223)
+* [  TypeScript ](#tab-panel-6224)
+
+**JavaScript**
+
+```js
+const state = this.getMcpServers();
+
+
+// Available resources
+for (const resource of state.resources) {
+  console.log(`Resource: ${resource.name} (${resource.uri})`);
+}
+
+
+// Available prompts
+for (const prompt of state.prompts) {
+  console.log(`Prompt: ${prompt.name}`);
+}
+```
+
+**TypeScript**
+
+```ts
+const state = this.getMcpServers();
+
+
+// Available resources
+for (const resource of state.resources) {
+  console.log(`Resource: ${resource.name} (${resource.uri})`);
+}
+
+
+// Available prompts
+for (const prompt of state.prompts) {
+  console.log(`Prompt: ${prompt.name}`);
+}
+```
+
+### Elicitation
 
 [MCP elicitation ↗](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation) lets a server request user input while handling another request, such as a tool call. The current stable MCP specification defines form and URL modes.
 
 Register a handler for each mode your Agent supports in `onStart()`:
 
-* [  JavaScript ](#tab-panel-6235)
-* [  TypeScript ](#tab-panel-6236)
+* [  JavaScript ](#tab-panel-6239)
+* [  TypeScript ](#tab-panel-6240)
 
 **JavaScript**
 
@@ -586,7 +721,7 @@ class MyAgent extends Agent<Env> {
 
 The `serverId` identifies the connection that sent the request. Use it to tell the user which server is asking for input and to apply server-specific policy.
 
-### Capability negotiation and hibernation
+#### Capability negotiation and hibernation
 
 At the MCP `initialize` handshake, a connection advertises only the modes with configured handlers. A form-only handler advertises form mode. A URL-only handler advertises URL mode. A connection without handlers advertises no elicitation capability, which lets the server use its fallback.
 
@@ -594,8 +729,8 @@ The SDK stores the advertised modes with each server registration. A connection 
 
 You can explicitly narrow the advertised modes when adding a server:
 
-* [  JavaScript ](#tab-panel-6219)
-* [  TypeScript ](#tab-panel-6220)
+* [  JavaScript ](#tab-panel-6225)
+* [  TypeScript ](#tab-panel-6226)
 
 **JavaScript**
 
@@ -623,12 +758,12 @@ await this.addMcpServer("portal", "https://portal.example.com/mcp", {
 
 An explicit `client.capabilities.elicitation` value takes precedence over handler-derived modes and persists with the server registration. Do not advertise a mode without a matching handler. If the server sends that mode, the connection returns an error because it cannot handle the request.
 
-### Form mode
+#### Form mode
 
 Form mode collects structured, non-sensitive data in the client. The request includes a restricted JSON Schema in `requestedSchema`. If the user submits the form, return `action: "accept"` with matching `content`:
 
-* [  JavaScript ](#tab-panel-6221)
-* [  TypeScript ](#tab-panel-6222)
+* [  JavaScript ](#tab-panel-6227)
+* [  TypeScript ](#tab-panel-6228)
 
 **JavaScript**
 
@@ -654,7 +789,7 @@ this.mcp.configureElicitationHandlers({
 
 Allow the user to review and edit values before submission. Validate accepted content against `requestedSchema`. Do not use form mode to request passwords, API keys, access tokens, payment credentials, or other secrets.
 
-### URL mode
+#### URL mode
 
 URL mode asks the user to open an external page. Use it for out-of-band interactions that may collect secrets, such as third-party authorization or payment. Keep the URL in the dedicated elicitation path and out of model-visible messages and tool-result text.
 
@@ -671,7 +806,7 @@ Do not prefetch the URL or its metadata. Treat the URL as untrusted input. Produ
 
 For URL mode, `accept` means the user consented to open the URL. It does not mean the external interaction finished. A server may later send `notifications/elicitation/complete` with the request `elicitationId`.
 
-### Response actions
+#### Response actions
 
 Both modes support three actions:
 
@@ -683,12 +818,12 @@ Both modes support three actions:
 
 Include `content` only for an accepted form response. Omit it for URL, decline, and cancel responses.
 
-### Forward elicitation to a UI
+#### Forward elicitation to a UI
 
 A handler returns a promise, but the response often comes from a browser. Broadcast the request to connected clients, then resolve the promise through a `@callable` method:
 
-* [  JavaScript ](#tab-panel-6257)
-* [  TypeScript ](#tab-panel-6258)
+* [  JavaScript ](#tab-panel-6261)
+* [  TypeScript ](#tab-panel-6262)
 
 **JavaScript**
 
@@ -824,200 +959,11 @@ Refer to the [mcp-client example ↗](https://github.com/cloudflare/agents/tree/
 
 To send elicitation requests from an MCP server, refer to [elicitInput](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#elicitinputoptions-context).
 
-## Using MCP capabilities
-
-Once connected, access the server's capabilities:
-
-### Getting available tools
-
-* [  JavaScript ](#tab-panel-6225)
-* [  TypeScript ](#tab-panel-6226)
-
-**JavaScript**
-
-```js
-const state = this.getMcpServers();
-
-
-// All tools from all connected servers
-for (const tool of state.tools) {
-  console.log(`Tool: ${tool.name}`);
-  console.log(`  From server: ${tool.serverId}`);
-  console.log(`  Title: ${tool.title ?? tool.name}`);
-  console.log(`  Description: ${tool.description}`);
-}
-```
-
-**TypeScript**
-
-```ts
-const state = this.getMcpServers();
-
-
-// All tools from all connected servers
-for (const tool of state.tools) {
-  console.log(`Tool: ${tool.name}`);
-  console.log(`  From server: ${tool.serverId}`);
-  console.log(`  Title: ${tool.title ?? tool.name}`);
-  console.log(`  Description: ${tool.description}`);
-}
-```
-
-### Resources and prompts
-
-* [  JavaScript ](#tab-panel-6231)
-* [  TypeScript ](#tab-panel-6232)
-
-**JavaScript**
-
-```js
-const state = this.getMcpServers();
-
-
-// Available resources
-for (const resource of state.resources) {
-  console.log(`Resource: ${resource.name} (${resource.uri})`);
-}
-
-
-// Available prompts
-for (const prompt of state.prompts) {
-  console.log(`Prompt: ${prompt.name}`);
-}
-```
-
-**TypeScript**
-
-```ts
-const state = this.getMcpServers();
-
-
-// Available resources
-for (const resource of state.resources) {
-  console.log(`Resource: ${resource.name} (${resource.uri})`);
-}
-
-
-// Available prompts
-for (const prompt of state.prompts) {
-  console.log(`Prompt: ${prompt.name}`);
-}
-```
-
-### Server status
-
-* [  JavaScript ](#tab-panel-6229)
-* [  TypeScript ](#tab-panel-6230)
-
-**JavaScript**
-
-```js
-const state = this.getMcpServers();
-
-
-for (const [id, server] of Object.entries(state.servers)) {
-  console.log(`${server.name}: ${server.state}`);
-  // state: "ready" | "authenticating" | "connecting" | "connected" | "discovering" | "failed"
-}
-```
-
-**TypeScript**
-
-```ts
-const state = this.getMcpServers();
-
-
-for (const [id, server] of Object.entries(state.servers)) {
-  console.log(`${server.name}: ${server.state}`);
-  // state: "ready" | "authenticating" | "connecting" | "connected" | "discovering" | "failed"
-}
-```
-
-### Integration with AI SDK
-
-To use MCP tools with the AI SDK, use `this.mcp.getAITools()` which converts MCP tools to AI SDK format:
-
-* [  JavaScript ](#tab-panel-6237)
-* [  TypeScript ](#tab-panel-6238)
-
-**JavaScript**
-
-```js
-import { generateText } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
-
-
-export class MyAgent extends Agent {
-  async onRequest(request) {
-    const workersai = createWorkersAI({ binding: this.env.AI });
-    const response = await generateText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-      prompt: "What's the weather in San Francisco?",
-      tools: this.mcp.getAITools(),
-    });
-
-
-    return new Response(response.text);
-  }
-}
-```
-
-**TypeScript**
-
-```ts
-import { generateText } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
-
-
-export class MyAgent extends Agent<Env> {
-  async onRequest(request: Request) {
-    const workersai = createWorkersAI({ binding: this.env.AI });
-    const response = await generateText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-      prompt: "What's the weather in San Francisco?",
-      tools: this.mcp.getAITools(),
-    });
-
-
-    return new Response(response.text);
-  }
-}
-```
-
-Note
-
-`getMcpServers().tools` returns raw MCP `Tool` objects for inspection. Use `this.mcp.getAITools()` when passing tools to the AI SDK.
-
 ## Managing servers
 
-### Removing a server
+MCP server registrations persist across Agent restarts. The SDK stores server configuration in SQLite, stores OAuth tokens securely, and restores connections when the Agent wakes.
 
-* [  JavaScript ](#tab-panel-6227)
-* [  TypeScript ](#tab-panel-6228)
-
-**JavaScript**
-
-```js
-await this.removeMcpServer(serverId);
-```
-
-**TypeScript**
-
-```ts
-await this.removeMcpServer(serverId);
-```
-
-This disconnects from the server and removes it from storage.
-
-### Persistence
-
-MCP servers persist across agent restarts:
-
-* Server configuration stored in SQLite
-* OAuth tokens stored securely
-* Connections restored automatically when agent wakes
-
-### Listing all servers
+### List all servers
 
 * [  JavaScript ](#tab-panel-6233)
 * [  TypeScript ](#tab-panel-6234)
@@ -1043,6 +989,58 @@ for (const [id, server] of Object.entries(state.servers)) {
   console.log(`${id}: ${server.name} (${server.server_url})`);
 }
 ```
+
+### Get server status
+
+Use the server ID to inspect an individual connection:
+
+* [  JavaScript ](#tab-panel-6237)
+* [  TypeScript ](#tab-panel-6238)
+
+**JavaScript**
+
+```js
+const state = this.getMcpServers();
+const server = state.servers[serverId];
+
+
+if (server) {
+  console.log(`${server.name}: ${server.state}`);
+  // state: "ready" | "authenticating" | "connecting" | "connected" | "discovering" | "failed"
+}
+```
+
+**TypeScript**
+
+```ts
+const state = this.getMcpServers();
+const server = state.servers[serverId];
+
+
+if (server) {
+  console.log(`${server.name}: ${server.state}`);
+  // state: "ready" | "authenticating" | "connecting" | "connected" | "discovering" | "failed"
+}
+```
+
+### Remove a server
+
+* [  JavaScript ](#tab-panel-6235)
+* [  TypeScript ](#tab-panel-6236)
+
+**JavaScript**
+
+```js
+await this.removeMcpServer(serverId);
+```
+
+**TypeScript**
+
+```ts
+await this.removeMcpServer(serverId);
+```
+
+This disconnects from the server and removes it from storage.
 
 ## Client-side integration
 
@@ -1322,8 +1320,8 @@ If OAuth fails, the connection state becomes `"failed"` and the error message is
 
 Configure in `onStart()` before any OAuth flows begin:
 
-* [  JavaScript ](#tab-panel-6245)
-* [  TypeScript ](#tab-panel-6246)
+* [  JavaScript ](#tab-panel-6243)
+* [  TypeScript ](#tab-panel-6244)
 
 **JavaScript**
 
@@ -1373,14 +1371,114 @@ export class MyAgent extends Agent {
 }
 ```
 
+### `configureElicitationHandlers()`
+
+Configure handlers for server-initiated `elicitation/create` requests. Add a handler for each elicitation mode your Agent supports.
+
+```txt
+this.mcp.configureElicitationHandlers(handlers?: {
+  form?: (
+    request: ElicitRequest,
+    serverId: string,
+  ) => Promise<ElicitResult>;
+  url?: (
+    request: ElicitRequest,
+    serverId: string,
+  ) => Promise<ElicitResult>;
+}): void
+```
+
+#### Parameters
+
+* `handlers` (object, optional) — Elicitation handlers keyed by mode:
+  * `form` (function, optional) — Handles form-mode requests for structured, non-sensitive input.
+  * `url` (function, optional) — Handles URL-mode requests for out-of-band interactions.
+* `request` (`ElicitRequest`) — The MCP elicitation request. Inspect `request.params.mode` for the mode-specific fields.
+* `serverId` (string) — The ID of the MCP server connection that sent the request.
+
+Each handler returns a promise containing an `ElicitResult`. Return `accept`, `decline`, or `cancel`. Accepted form responses include `content` that matches `requestedSchema`. URL responses omit `content`.
+
+Passing `undefined` clears all configured handlers.
+
+#### Capability behavior
+
+The client advertises only modes with configured handlers during the MCP `initialize` handshake. Handler changes apply immediately to live connections, but servers receive updated advertised modes after those connections reconnect.
+
+The SDK stores the handler-derived modes with each MCP server registration. Restored connections advertise those modes after Durable Object hibernation, and callbacks reattach when `onStart()` runs.
+
+#### Usage
+
+Configure handlers in `onStart()`:
+
+* [  JavaScript ](#tab-panel-6251)
+* [  TypeScript ](#tab-panel-6252)
+
+**JavaScript**
+
+```js
+import { Agent } from "agents";
+
+
+export class MyAgent extends Agent {
+  onStart() {
+    this.mcp.configureElicitationHandlers({
+      form: (request, serverId) =>
+        this.forwardElicitationToBrowser(request, serverId),
+      url: (request, serverId) =>
+        this.forwardElicitationToBrowser(request, serverId),
+    });
+  }
+
+
+  forwardElicitationToBrowser(request, serverId) {
+    // Forward the request to your UI and resolve after the user responds.
+    throw new Error(
+      `Implement elicitation for ${serverId}: ${request.params.message}`,
+    );
+  }
+}
+```
+
+**TypeScript**
+
+```ts
+import { Agent } from "agents";
+import type { ElicitRequest, ElicitResult } from "agents/mcp";
+
+
+export class MyAgent extends Agent<Env> {
+  onStart() {
+    this.mcp.configureElicitationHandlers({
+      form: (request, serverId) =>
+        this.forwardElicitationToBrowser(request, serverId),
+      url: (request, serverId) =>
+        this.forwardElicitationToBrowser(request, serverId),
+    });
+  }
+
+
+  private forwardElicitationToBrowser(
+    request: ElicitRequest,
+    serverId: string,
+  ): Promise<ElicitResult> {
+    // Forward the request to your UI and resolve after the user responds.
+    throw new Error(
+      `Implement elicitation for ${serverId}: ${request.params.message}`,
+    );
+  }
+}
+```
+
+For the complete browser forwarding pattern and mode-specific requirements, refer to [Elicitation](#elicitation).
+
 ## Custom OAuth provider
 
 Override the default OAuth provider used when connecting to MCP servers by implementing `createMcpOAuthProvider()` on your Agent class. This enables custom authentication strategies such as pre-registered client credentials or mTLS, beyond the built-in dynamic client registration.
 
 The override is used for both new connections (`addMcpServer`) and restored connections after a Durable Object restart.
 
-* [  JavaScript ](#tab-panel-6249)
-* [  TypeScript ](#tab-panel-6250)
+* [  JavaScript ](#tab-panel-6255)
+* [  TypeScript ](#tab-panel-6256)
 
 **JavaScript**
 
@@ -1451,8 +1549,8 @@ If you do not override this method, the agent uses the default provider which pe
 
 To keep the built-in OAuth logic (CSRF state, PKCE, nonce generation, token management) but route token storage to a different backend, import `DurableObjectOAuthClientProvider` and pass your own storage adapter:
 
-* [  JavaScript ](#tab-panel-6239)
-* [  TypeScript ](#tab-panel-6240)
+* [  JavaScript ](#tab-panel-6245)
+* [  TypeScript ](#tab-panel-6246)
 
 **JavaScript**
 
@@ -1495,8 +1593,8 @@ For fine-grained control, use `this.mcp` directly:
 
 ### Step-by-step connection
 
-* [  JavaScript ](#tab-panel-6255)
-* [  TypeScript ](#tab-panel-6256)
+* [  JavaScript ](#tab-panel-6259)
+* [  TypeScript ](#tab-panel-6260)
 
 **JavaScript**
 
@@ -1580,8 +1678,8 @@ if (connectResult.state === "connected") {
 
 ### Event subscription
 
-* [  JavaScript ](#tab-panel-6241)
-* [  TypeScript ](#tab-panel-6242)
+* [  JavaScript ](#tab-panel-6247)
+* [  TypeScript ](#tab-panel-6248)
 
 **JavaScript**
 
@@ -1725,8 +1823,8 @@ Tools are automatically namespaced by server ID to prevent conflicts when multip
 
 Pass an `MCPServerFilter` to scope the returned tools to a subset of connected servers:
 
-* [  JavaScript ](#tab-panel-6247)
-* [  TypeScript ](#tab-panel-6248)
+* [  JavaScript ](#tab-panel-6249)
+* [  TypeScript ](#tab-panel-6250)
 
 **JavaScript**
 
@@ -1787,8 +1885,8 @@ All specified filter criteria are AND'd together. The same filter parameter is a
 
 Use error detection utilities to handle connection errors:
 
-* [  JavaScript ](#tab-panel-6251)
-* [  TypeScript ](#tab-panel-6252)
+* [  JavaScript ](#tab-panel-6257)
+* [  TypeScript ](#tab-panel-6258)
 
 **JavaScript**
 
@@ -1843,6 +1941,6 @@ export class MyAgent extends Agent {
 [ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) Learn about agent persistence.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#page","headline":"McpClient · Cloudflare Agents docs","description":"Connect Agents to external MCP servers to use their tools, resources, and prompts over the Model Context Protocol.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#page","headline":"McpClient · Cloudflare Agents docs","description":"Connect Agents to external MCP servers to use their tools, resources, and prompts over the Model Context Protocol.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/apis/","name":"APIs"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/apis/client-api/","name":"McpClient"}}]}
 ```

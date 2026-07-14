@@ -1,20 +1,20 @@
 ---
 title: "Comfy Cloud MCP"
-description: "从 Claude Code、Claude Desktop、Cursor、Codex 或任何兼容 MCP 的代理连接 Comfy Cloud MCP：生成图像、视频、音频和 3D，搜索模型与节点，并运行工作流。"
-translationSourceHash: 01763e3c
+description: "从 Claude Code、Claude Desktop、Cursor、Codex、OpenClaw 或任何兼容 MCP 的代理连接 Comfy Cloud MCP：生成图像、视频、音频和 3D，搜索模型与节点，并运行工作流。"
+translationSourceHash: 93f43c41
 translationFrom: agent-tools/mcp.mdx
 translationBlockHashes:
   "_intro": b1c56a40
-  "Overview": 4b68a7b5
-  "Install Comfy Cloud MCP": ca5e817e
+  "Overview": 2972aa17
+  "Install Comfy Cloud MCP": e050becc
   "What your agent can do": 2c2a22e6
   "MCP tools": a9211dee
   "Credits and spending": 20e94ef0
   "Outputs and downloads": a2c8c12f
-  "Related resources": 58e75560
+  "Related resources": 2a86e2c5
   "Feedback": 6872768e
   "Known limitations": 2f9e13ba
-  "FAQ": 920ab7b8
+  "FAQ": c943ff55
 ---
 
 <CloudFeature/>
@@ -23,13 +23,11 @@ translationBlockHashes:
 
 ## 概述
 
-**Comfy Cloud MCP 服务器**通过[模型上下文协议（MCP）](https://modelcontextprotocol.io)将 AI 代理连接到 [Comfy Cloud](https://cloud.comfy.org)。连接后，你可以通过代理对话生成图像、视频、音频和3D内容，搜索模型、节点和模板，并运行 ComfyUI 工作流。
+**Comfy Cloud MCP 服务器**通过[模型上下文协议（MCP）](https://modelcontextprotocol.io)将 AI 代理连接到 [Comfy Cloud](https://cloud.comfy.org)。连接后，你可以通过代理对话生成图像、视频、音频和3D，搜索模型、节点和模板，并运行 ComfyUI 工作流。
 
 服务器远程运行在 `cloud.comfy.org/mcp`。工作流在 Comfy Cloud GPU 上执行，因此你无需本地 GPU。你的代理通过 HTTPS 与服务器通信；服务器将工具调用转换为经过身份验证的请求，代表你发送给 Comfy Cloud。
 
-任何 **MCP 兼容客户端**都可以连接到相同的服务器 URL。**Claude Code**、**Claude Desktop**、**Cursor** 和 **Codex** 在下方有优先设置指导。**Windsurf**、**Amp** 和其他代理使用相同的 URL，搭配 OAuth 或 API 密钥。
-
-<a id="install-comfy-cloud-mcp"></a>
+任何 **MCP 兼容客户端**都可以连接到相同的服务器 URL。**Claude Code**、**Claude Desktop**、**Cursor**、**Codex** 和 **OpenClaw** 在下方有优先设置指导。**Windsurf**、**Amp** 和其他代理使用相同的 URL，搭配 OAuth 或 API 密钥。
 
 ## 安装 Comfy Cloud MCP
 
@@ -260,7 +258,51 @@ https://cloud.comfy.org/mcp
   
 
   
-    任何支持**远程 HTTP** 传输的 MCP 客户端都可以连接到 Comfy Cloud。服务器 URL 始终是 `https://cloud.comfy.org/mcp`。
+    从 [ClawHub](https://clawhub.ai/comfy-org/skills/comfy) 安装 **Comfy Cloud** 技能。它将 OpenClaw 连接到托管的 MCP 服务器（`cloud.comfy.org/mcp`）。仅限云服务：它不会驱动本地 ComfyUI 安装。
+
+    
+      
+        ```bash
+        openclaw skills install @comfy-org/comfy
+        ```
+
+        技能页面：[clawhub.ai/comfy-org/skills/comfy](https://clawhub.ai/comfy-org/skills/comfy)。
+      
+      
+        注册 MCP 服务器并使用你的 Comfy 账户登录：
+
+        ```bash
+        openclaw mcp set comfy '{"url":"https://cloud.comfy.org/mcp","transport":"streamable-http","auth":"oauth"}'
+        openclaw mcp login comfy
+        openclaw gateway restart
+        ```
+
+        `openclaw mcp login` 会打印一个授权 URL。打开它，登录，然后按照 CLI 的指示完成流程（它可能会要求你使用 `--code` 值重新运行）。使用 `openclaw mcp status --verbose` 验证。
+
+        
+          当 `auth: "oauth"` 被设置时，OpenClaw 会忽略该服务器条目上的静态 `headers`。不要将 OAuth 与硬编码的 API 密钥标头组合使用。
+        
+      
+      
+        用自然语言提问（"生成一张猫宇航员的图像"、"找一个 Wan 2.2 视频模板"）。OpenClaw 会代表你调用 MCP 工具。
+      
+    
+
+    
+      在 [platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys) 创建一个密钥（以 `comfyui-` 开头），导出它，然后注册服务器：
+
+      ```bash
+      export COMFY_API_KEY="comfyui-..."
+      openclaw mcp set comfy '{"url":"https://cloud.comfy.org/mcp","transport":"streamable-http","headers":{"Authorization":"Bearer ${COMFY_API_KEY}"}}'
+      openclaw gateway restart
+      ```
+
+      对于 OpenClaw，推荐使用 `Authorization: Bearer` 而非自定义的 `X-API-Key` 标头。某些 OpenClaw 构建会在 streamable-http 传输上丢弃自定义标头；Bearer 更可靠地通过代理。将 `COMFY_API_KEY` 放入你的 shell 配置或 OpenClaw 环境变量中。不要提交密钥。
+    
+  
+
+  
+    任何支持 **远程 HTTP** 传输的 MCP 客户端都可以连接到 Comfy Cloud。服务器 URL 始终为 `https://cloud.comfy.org/mcp`。
 
     
       
@@ -276,17 +318,17 @@ https://cloud.comfy.org/mcp
         }
         ```
 
-        **Windsurf** 使用 `serverUrl` 代替 `url`。**Amp** 在 **Settings → MCP Servers** 或 `~/.config/amp/settings.json` 中使用相同的 `mcpServers` 结构。
+        **Windsurf** 使用 `serverUrl` 而不是 `url`。**Amp** 在 **设置 → MCP Servers** 或 `~/.config/amp/settings.json` 中使用相同的 `mcpServers` 结构。
       
       
-        如果你的客户端支持 MCP OAuth，在提示时通过浏览器登录。否则，添加 API 密钥标头（见下文）。
+        如果你的客户端支持 MCP OAuth，在提示时通过浏览器登录。否则，添加一个 API 密钥标头（见下文）。
       
       
-        重新启动你的客户端。你应该会看到 Comfy Cloud 工具（`search_templates`、`submit_workflow`、`get_output` 等）在 **comfy-cloud** 服务器下注册。
+        重新启动你的客户端。你应该会看到 Comfy Cloud 工具（`search_templates`、`submit_workflow`、`get_output` 等）注册在 **comfy-cloud** 服务器下。
       
     
 
-    **无界面 / CI (API 密钥)：** 当 OAuth 不可用时，在 [platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys) 创建一个密钥，并将其作为 `X-API-Key` 标头传递：
+    **无界面 / CI（API 密钥）：** 当 OAuth 不可用时，在 [platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys) 创建一个密钥，并将其作为 `X-API-Key` 标头传递：
 
     ```json
     {
@@ -301,13 +343,13 @@ https://cloud.comfy.org/mcp
     }
     ```
 
-    对于 Claude Code 终端：
+    在终端中为 Claude Code 使用：
 
     ```bash
     claude mcp add --transport http comfy-cloud https://cloud.comfy.org/mcp -H "X-API-Key: comfyui-…"
     ```
 
-    推荐使用 `${env:COMFY_API_KEY}` 或你的客户端的密钥插值，而不是在你提交到 git 的配置文件中硬编码密钥。
+    优先使用 `${env:COMFY_API_KEY}` 或你客户端的机密插值，而不是在提交到 git 的配置文件中硬编码密钥。
   
 
 ## 您的代理能做什么
@@ -397,15 +439,13 @@ https://cloud.comfy.org/mcp
 | `submit_feedback` | 获取测试版反馈调查问卷链接 |
 | `report_session_summary` | 与 Comfy 团队分享匿名化的会话摘要——**仅在你明确同意的情况下**；代理必须先征求你的同意，且摘要中不包含任何提示词、文件路径或个人信息 |
 
-<a id="credits-and-spending"></a>
-
 ## 积分与消费
 
 探索功能免费：`search_templates`、`search_models` 和 `search_nodes` 只需一个 [Comfy 账户](https://cloud.comfy.org) 即可使用。运行生成会消耗 Comfy Cloud 积分，且需要订阅或积分余额。
 
-实际花费金钱的工具是**消费门槛限定**的。当生成使用付费合作伙伴模型（`partner_generate`）或包含付费 API 节点的工作流/模板（`run_template`、`run_saved_workflow`、`submit_batch`）时，服务器会阻止执行，直到你的智能体确认你同意花费积分——因此，在这些运行之前，智能体会先与你确认。免费的本地工作流永远不会提示。
+实际花费金钱的工具是**消费门槛限定**的。当生成使用付费合作伙伴模型（`partner_generate`）或包含付费 API 节点的工作流/模板（`run_template`、`run_saved_workflow`、`submit_batch`）时，服务器会阻止执行，直到你的智能体确认你同意花费积分。因此，在这些运行之前，智能体会先与你确认。免费的本地工作流永远不会提示。
 
-你可以随时向智能体询问你的余额（“我还有多少积分？”）——它会通过 `get_billing_status` 回答。
+你可以随时向智能体询问你的余额（“我还有多少积分？”）。它会通过 `get_billing_status` 回答。
 
 ## 输出与下载
 
@@ -425,6 +465,7 @@ MCP 服务器在云端运行，**绝不会将文件写入你的机器**。当生
 | 资源 | 用途 |
 | --- | --- |
 | [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) | Claude Code 插件市场与社区技能库。上述使用的 **comfy-cloud** 插件即在此分发；可浏览或贡献适用于 Comfy 工作流的其他技能。 |
+| [Comfy Cloud on ClawHub](https://clawhub.ai/comfy-org/skills/comfy) | 用于托管 Comfy Cloud MCP 服务器的 OpenClaw 技能（`openclaw skills install @comfy-org/comfy`）。 |
 | [Comfy CLI](/zh/agent-tools/cli) | 用于在本地安装/启动 ComfyUI，以及从脚本或 CI 中调用托管合作节点的命令行工具（`comfy generate`，测试版）。当需要终端或自动化工作流时，可补充 MCP 使用。 |
 | [在 Comfy Cloud 上分享工作流](/zh/cloud/share-workflow) | 从 Comfy Cloud UI 界面分享工作流（MCP 的 `share_workflow` 工具可在代理会话中完成此操作）。 |
 
@@ -457,10 +498,10 @@ Comfy Cloud MCP 为早期版本。以下为已知的限制，团队正在努力�
 ## 常见问题
 
   
-    任何支持远程 HTTP 传输的 MCP 兼容客户端都可以连接到 `https://cloud.comfy.org/mcp`。我们为 **Claude Code**、**Claude Desktop**、**Cursor** 和 **Codex** 提供了最优先的配置说明。**Windsurf**、**Amp**、**OpenClaw** 和其他代理使用相同的 URL，通过 OAuth 或 API 密钥连接。参见[安装 Comfy Cloud MCP](#install-comfy-cloud-mcp)。
+    任何支持远程 HTTP 传输的 MCP 兼容客户端都可以连接到 `https://cloud.comfy.org/mcp`。我们为 **Claude Code**、**Claude Desktop**、**Cursor**、**Codex** 和 **OpenClaw** 提供了最优先的配置说明。**Windsurf**、**Amp** 和其他代理使用相同的 URL，通过 OAuth 或 API 密钥连接。参见[安装 Comfy Cloud MCP](#install-comfy-cloud-mcp)。
   
   
-    对于支持 OAuth 的交互式客户端（Claude Code、Claude Desktop、Codex 等）不需要。**Cursor** 需要在你的 MCP 配置中提供 Comfy Cloud API 密钥。在没有浏览器的无头或 CI 环境中也需要 API 密钥。请参见[安装 Comfy Cloud MCP](#install-comfy-cloud-mcp) 下的 **Cursor** 标签或 **其他客户端** 标签。
+    对于支持 OAuth 的交互式客户端（Claude Code、Claude Desktop、Codex、OpenClaw 等）不需要。**Cursor** 需要在你的 MCP 配置中提供 Comfy Cloud API 密钥。在没有浏览器的无头或 CI 环境中也需要 API 密钥。请参见[安装 Comfy Cloud MCP](#install-comfy-cloud-mcp) 下的 **Cursor** 标签、**OpenClaw** 标签或 **其他客户端** 标签。
   
   
     付费生成受消费确认保护：当一次运行会消耗 Comfy Cloud 积分时（使用合作伙伴模型，或包含付费 API 节点的工作流/模板），服务器会要求你明确同意后才执行。请参阅[积分与消费](#credits-and-spending)。

@@ -22,13 +22,13 @@ translationBlockHashes:
 2. 모델 설치 안내
    - 자동 모델 설치
    - 수동 모델 설치
-3. 첫 번째 텍스트-to-이미지 생성 완료
+3. 첫 번째 텍스트 기반 이미지 생성 완료
 
-## 텍스트-to-이미지란?
+## 텍스트 기반 이미지 생성이란?
 
-텍스트-to-이미지는 텍스트 설명을 바탕으로 이미지를 생성하는 기본적인 AI 드로잉 기능입니다. AI 아트 생성에서 가장 많이 사용되는 기능 중 하나입니다. 이 과정을 생각해보면, 당신의 요구사항(긍정적 및 부정적 프롬프트)을 아티스트(드로잉 모델)에게 전달하고, 아티스트는 당신이 원하는 것을 만들어냅니다. 텍스트-to-이미지에 대한 자세한 설명은 [텍스트 to 이미지](/ko/tutorials/basic/text-to-image) 챕터에서 다룹니다.
+텍스트 기반 이미지 생성은 텍스트 설명을 바탕으로 이미지를 생성하는 기본적인 AI 드로잉 기능입니다. AI 아트 생성에서 가장 많이 사용되는 기능 중 하나입니다. 이 과정을 생각해보면, 당신의 요구사항(긍정적 및 부정적 프롬프트)을 아티스트(드로잉 모델)에게 전달하고, 아티스트는 당신이 원하는 것을 만들어냅니다. 텍스트 기반 이미지 생성에 대한 자세한 설명은 [텍스트 기반 이미지 생성](/ko/tutorials/basic/text-to-image) 챕터에서 다룹니다.
 
-## ComfyUI 텍스트-to-이미지 워크플로드 튜토리얼
+## ComfyUI 텍스트 기반 이미지 생성 워크플로드 튜토리얼
 
 ### 1. ComfyUI 실행하기
 
@@ -38,9 +38,9 @@ translationBlockHashes:
 
 ComfyUI를 설치하지 않았다면, 기기에 맞는 버전을 선택해 설치해주세요.
 
-### 2. 기본 텍스트-to-이미지 워크플로드 로딩하기
+### 2. 기본 텍스트 기반 이미지 생성 워크플로드 로딩하기
 
-ComfyUI는 보통 실행 시 기본 텍스트-to-이미지 워크플로드를 자동으로 로드합니다. 하지만 다양한 방법으로 워크플로드를 로드해 ComfyUI의 기본 작동 방식을 익힐 수 있습니다:
+ComfyUI는 보통 실행 시 기본 텍스트 기반 이미지 생성 워크플로드를 자동으로 로드합니다. 하지만 다양한 방법으로 워크플로드를 로드해 ComfyUI의 기본 작동 방식을 익힐 수 있습니다:
 
   
   [ComfyUI 인터페이스]
@@ -61,7 +61,7 @@ ComfyUI는 보통 실행 시 기본 텍스트-to-이미지 워크플로드를 �
   - 메뉴 **워크플로드** -> **열기**를 사용해 이미지를 열기
 
   이 예제 이미지를 사용해 워크플로드를 로드해보세요:
-  ![ComfyUI-텍스트 to 이미지 워크플로드](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/text-to-image-workflow.png)
+  ![ComfyUI-텍스트 기반 이미지 생성 워크플로드](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/text-to-image-workflow.png)
 
   
 
@@ -70,7 +70,7 @@ ComfyUI는 보통 실행 시 기본 텍스트-to-이미지 워크플로드를 �
 
   이 예제 워크플로드를 다운로드해 로드해보세요:
   <a className="prose" href="https://github.com/Comfy-Org/docs/blob/main/public/text-to-image.json" download style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
-    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>텍스트 to 이미지.json 다운로드</p>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>text-to-image.json 다운로드</p>
   </a>
 
   다운로드 후 메뉴 **워크플로드** -> **열기**를 사용해 JSON 파일을 로드하세요.
@@ -169,9 +169,9 @@ ComfyUI는 보통 실행 시 기본 텍스트-to-이미지 워크플로드를 �
 
 [ComfyUI 첫 번째 이미지 생성 결과]
 
-자세한 텍스트-to-이미지 지침은 종합 가이드를 참조하세요:
+자세한 텍스트 기반 이미지 생성 지침은 종합 가이드를 참조하세요:
 
-  자세한 텍스트-to-이미지 워크플로드 지침은 여기를 클릭하세요
+  자세한 텍스트 기반 이미지 생성 워크플로드 지침은 여기를 클릭하세요
 
 ## 문제 해결
 

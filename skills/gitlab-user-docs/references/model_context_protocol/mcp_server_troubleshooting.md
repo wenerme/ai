@@ -2,7 +2,7 @@
 
 Troubleshoot common issues with the GitLab MCP server.
 
-- Tier: Premium, Ultimate
+- Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Beta
 
@@ -11,7 +11,7 @@ When working with GitLab MCP server, you might encounter the following issues.
 ## `404 Not Found` when starting the GitLab MCP server
 
 You might get a `404 Not Found` error when you try to start the GitLab MCP server.
-This error occurs when GitLab Duo Core or beta and experimental features are turned off.
+This error occurs when MCP server access is turned off.
 
 To resolve this issue, ensure you meet all [prerequisites for the GitLab MCP server](mcp_server.md#prerequisites).
 
@@ -20,8 +20,7 @@ To resolve this issue, ensure you meet all [prerequisites for the GitLab MCP ser
 After the OAuth flow completes successfully, you might still encounter
 an error where `POST /api/v4/mcp` returns `404 Not Found`.
 
-To resolve this issue, on GitLab Self-Managed,
-[ensure GitLab Duo is turned on for the instance](../../duo_agent_platform/turn_on_off.md#for-an-instance).
+To resolve this issue, ensure you meet all [prerequisites for the GitLab MCP server](mcp_server.md#prerequisites).
 
 ## Error: `Server's protocol version is not supported: 2025-06-18`
 

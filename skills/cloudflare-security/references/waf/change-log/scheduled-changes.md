@@ -14,15 +14,21 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
-## 2026-07-06
+## 2026-07-14
 
 
-**WAF Release - Scheduled changes for 2026-07-13**
+**WAF Release - Scheduled changes for 2026-07-20**
 
-| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                                              | Comments                 |
-| ----------------- | ------------ | ---------------- | -------------- | ----------- | ------------------------------------------------------------------------ | ------------------------ |
-| 2026-07-06        | 2026-07-13   | Log              | N/A            | ...76973ac4 | Citrix Netscaler ADC - Insufficient Input Validation - CVE:CVE-2026-8451 | This is a new detection. |
-| 2026-07-06        | 2026-07-13   | Log              | N/A            | ...10233f36 | Progress Kemp LoadMaster - Remote Code Execution - CVE:CVE-2026-8037     | This is a new detection. |
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                                        | Comments                 |
+| ----------------- | ------------ | ---------------- | -------------- | ----------- | ------------------------------------------------------------------ | ------------------------ |
+| 2026-07-12        | 2026-07-20   | Log              | N/A            | ...215e7d31 | SSRF - Restricted Protocol                                         | This is a new detection. |
+| 2026-07-12        | 2026-07-20   | Log              | N/A            | ...a935ee5d | SSRF - Obfuscated Host                                             | This is a new detection. |
+| 2026-07-12        | 2026-07-20   | Log              | N/A            | ...1b0230ac | LFI - Path Traversal                                               | This is a new detection. |
+| 2026-07-14        | 2026-07-20   | Log              | N/A            | ...61349c8b | Adobe ColdFusion - File Upload Path Traversal - CVE:CVE-2026-48276 | This is a new detection. |
+| 2026-07-14        | 2026-07-20   | Log              | N/A            | ...9cb61eac | Adobe ColdFusion - Path Traversal - CVE:CVE-2026-48282             | This is a new detection. |
+| 2026-07-14        | 2026-07-20   | Log              | N/A            | ...4ac5e21f | XSS — JS Bracket Concat Obfuscation - Body                         | This is a new detection. |
+| 2026-07-14        | 2026-07-20   | Log              | N/A            | ...f31f5559 | XSS — JS Bracket Concat Obfuscation - Headers                      | This is a new detection. |
+| 2026-07-14        | 2026-07-20   | Log              | N/A            | ...987984fd | XSS — JS Bracket Concat Obfuscation - URI                          | This is a new detection. |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

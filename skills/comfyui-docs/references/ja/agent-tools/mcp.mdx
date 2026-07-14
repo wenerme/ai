@@ -1,20 +1,20 @@
 ---
 title: "Comfy Cloud MCP"
 description: "Claude Code、Claude Desktop、Cursor、Codex、またはMCP互換エージェントからComfy Cloud MCPに接続: 画像・ビデオ・オーディオ・3Dの生成、モデルとノードの検索、ワークフローの実行。"
-translationSourceHash: 01763e3c
+translationSourceHash: 93f43c41
 translationFrom: agent-tools/mcp.mdx
 translationBlockHashes:
   "_intro": b1c56a40
-  "Overview": 4b68a7b5
-  "Install Comfy Cloud MCP": ca5e817e
+  "Overview": 2972aa17
+  "Install Comfy Cloud MCP": e050becc
   "What your agent can do": 2c2a22e6
   "MCP tools": a9211dee
   "Credits and spending": 20e94ef0
   "Outputs and downloads": a2c8c12f
-  "Related resources": 58e75560
+  "Related resources": 2a86e2c5
   "Feedback": 6872768e
   "Known limitations": 2f9e13ba
-  "FAQ": 920ab7b8
+  "FAQ": c943ff55
 ---
 
 <CloudFeature/>
@@ -27,9 +27,7 @@ translationBlockHashes:
 
 サーバーは `cloud.comfy.org/mcp` でリモート実行されます。ワークフローは Comfy Cloud の GPU 上で実行されるため、ローカル GPU は不要です。エージェントは HTTPS 経由でサーバーと通信し、サーバーはツール呼び出しを認証済みのリクエストとして Comfy Cloud に代行送信します。
 
-MCP 互換のクライアントはいずれも同じサーバー URL に接続できます。**Claude Code**、**Claude Desktop**、**Cursor**、**Codex** については、以下にファーストクラスのセットアップ手順があります。**Windsurf**、**Amp**、およびその他のエージェントは、OAuth または APIキーを使用して同じ URL から利用できます。
-
-<a id="install-comfy-cloud-mcp"></a>
+MCP 互換のクライアントはいずれも同じサーバー URL に接続できます。**Claude Code**、**Claude Desktop**、**Cursor**、**Codex**、**OpenClaw** については、以下にファーストクラスのセットアップ手順があります。**Windsurf**、**Amp**、およびその他のエージェントは、OAuth または APIキーを使用して同じ URL から利用できます。
 
 ## Comfy Cloud MCP のインストール
 
@@ -260,6 +258,50 @@ https://cloud.comfy.org/mcp
   
 
   
+    [ClawHub](https://clawhub.ai/comfy-org/skills/comfy)から**Comfy Cloud**スキルをインストールします。これにより、OpenClawがホストされているMCPサーバー（`cloud.comfy.org/mcp`）に接続されます。クラウド専用：ローカルのComfyUIインストールを駆動しません。
+
+    
+      
+        ```bash
+        openclaw skills install @comfy-org/comfy
+        ```
+
+        スキルページ：[clawhub.ai/comfy-org/skills/comfy](https://clawhub.ai/comfy-org/skills/comfy)
+      
+      
+        MCPサーバーを登録し、Comfyアカウントでログインします：
+
+        ```bash
+        openclaw mcp set comfy '{"url":"https://cloud.comfy.org/mcp","transport":"streamable-http","auth":"oauth"}'
+        openclaw mcp login comfy
+        openclaw gateway restart
+        ```
+
+        `openclaw mcp login`は認証URLを表示します。そのURLを開き、ログインして、CLIの指示に従ってフローを完了します（`--code`値を指定して再実行を求められる場合があります）。`openclaw mcp status --verbose`で確認します。
+
+        
+          `auth: "oauth"`が設定されている場合、OpenClawはそのサーバーエントリの静的な`headers`を無視します。OAuthとハードコードされたAPIキーヘッダーを組み合わせないでください。
+        
+      
+      
+        平易な言葉で質問します（「猫の宇宙飛行士の画像を生成して」「Wan 2.2の動画テンプレートを探して」）。OpenClawがあなたに代わってMCPツールを呼び出します。
+      
+    
+
+    
+      [platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys)でキーを作成し（`comfyui-`で始まります）、エクスポートしてからサーバーを登録します：
+
+      ```bash
+      export COMFY_API_KEY="comfyui-..."
+      openclaw mcp set comfy '{"url":"https://cloud.comfy.org/mcp","transport":"streamable-http","headers":{"Authorization":"Bearer ${COMFY_API_KEY}"}}'
+      openclaw gateway restart
+      ```
+
+      OpenClawではカスタムの`X-API-Key`ヘッダーよりも`Authorization: Bearer`を推奨します。一部のOpenClawビルドでは、streamable-httpトランスポートでカスタムヘッダーが削除される場合があります。Bearerはプロキシをより確実に通過します。`COMFY_API_KEY`をシェルプロファイルまたはOpenClawの環境に設定してください。キーをコミットしないでください。
+    
+  
+
+  
     **リモートHTTP**トランスポートをサポートするMCPクライアントは、Comfy Cloudに接続できます。サーバーURLは常に`https://cloud.comfy.org/mcp`です。
 
     
@@ -425,6 +467,7 @@ MCP クライアントがシェルコマンドを実行できない場合（一�
 | リソース | 用途 |
 | --- | --- |
 | [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) | Claude Code プラグインマーケットプレイスおよびコミュニティスキルライブラリ。上記で使用した **comfy-cloud** プラグインはこちらで配布されています。Comfy ワークフロー用の追加スキルをブラウズしたり、コントリビュートすることができます。 |
+| [Comfy Cloud on ClawHub](https://clawhub.ai/comfy-org/skills/comfy) | ホスト型 Comfy Cloud MCP サーバー用の OpenClaw スキル（`openclaw skills install @comfy-org/comfy`）。 |
 | [Comfy CLI](/ja/agent-tools/cli) | ローカル ComfyUI のインストール/起動、およびスクリプトや CI からホスト型パートナーノードを呼び出すためのコマンドラインツール（`comfy generate`、ベータ版）。ターミナルや自動化ワークフローが必要な場合に MCP を補完します。 |
 | [Share a workflow on Comfy Cloud](/ja/cloud/share-workflow) | Comfy Cloud UI からワークフローを共有します（MCP の `share_workflow` ツールがエージェントセッションからこれを実行します）。 |
 
@@ -457,10 +500,10 @@ Comfy Cloud MCP は初期リリースです。以下の制限事項は既知で�
 ## FAQ
 
   
-    MCP に対応し、リモート HTTP トランスポートをサポートしているクライアントはすべて `https://cloud.comfy.org/mcp` に接続できます。**Claude Code**、**Claude Desktop**、**Cursor**、**Codex** のセットアップ方法を文書化しています。**Windsurf**、**Amp**、**OpenClaw** などの他のエージェントも、同じ URL に OAuth または APIキーで接続します。詳細は [Comfy Cloud MCP のインストール](#install-comfy-cloud-mcp) を参照してください。
+    MCP に対応し、リモート HTTP トランスポートをサポートしているクライアントはすべて `https://cloud.comfy.org/mcp` に接続できます。**Claude Code**、**Claude Desktop**、**Cursor**、**Codex**、**OpenClaw** のセットアップ方法を文書化しています。**Windsurf**、**Amp** などの他のエージェントも、同じ URL に OAuth または APIキーで接続します。詳細は [Comfy Cloud MCP のインストール](#install-comfy-cloud-mcp) を参照してください。
   
   
-    OAuth に対応した対話型クライアント（Claude Code、Claude Desktop、Codex など）では不要です。**Cursor** では、MCP 設定に Comfy Cloud の APIキーが必要です。APIキーは、ブラウザのないヘッドレス環境や CI 環境でも必要です。詳細は [Comfy Cloud MCP のインストール](#install-comfy-cloud-mcp) の **Cursor** タブまたは **その他のクライアント** タブを参照してください。
+    OAuth に対応した対話型クライアント（Claude Code、Claude Desktop、Codex、OpenClaw など）では不要です。**Cursor** では、MCP 設定に Comfy Cloud の APIキーが必要です。APIキーは、ブラウザのないヘッドレス環境や CI 環境でも必要です。詳細は [Comfy Cloud MCP のインストール](#install-comfy-cloud-mcp) の **Cursor** タブ、**OpenClaw** タブ、または **その他のクライアント** タブを参照してください。
   
   
     有料の生成は支出ゲートの対象です：実行が Comfy Cloud のクレジットを消費する場合（パートナーモデル、または有料 API ノードを含むワークフロー/テンプレート）、サーバーは実行前に明示的な同意を必要とします。詳細は [クレジットと支出](#credits-and-spending) を参照してください。

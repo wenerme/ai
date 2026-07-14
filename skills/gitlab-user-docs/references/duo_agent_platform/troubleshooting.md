@@ -102,6 +102,28 @@ To create push rules for the instance:
 1. Follow the previous steps to allow **Commit author's email** and **Branch name**.
 1. Select **Save push rules**.
 
+## Job for a flow does not start or is stuck at `Starting job`
+
+If a job for a flow never starts, or the job is stuck at `Starting job`, no runner is available to pick up the job.
+Flows run on runners that meet the following requirements:
+
+- The runner has the `gitlab--duo` tag.
+- The runner uses an executor that supports Docker images, like `docker`,
+  `docker-autoscaler`, or `kubernetes`. The `shell` executor is not supported.
+- The runner is an instance runner or a group runner assigned to the top-level group.
+  Runners scoped to a subgroup or project do not pick up flow jobs unless the
+  `duo_runner_restrictions` feature flag is turned off.
+
+To resolve this issue:
+
+1. On GitLab.com, confirm that [hosted runners](../../ci/runners/hosted_runners/_index.md)
+   are turned on for the project. Hosted runners meet all of the requirements by default.
+1. If you use your own runners, confirm that at least one runner meets the requirements:
+   1. In the top bar, select **Search or go to** and find your project or top-level group.
+   1. In the left sidebar, select **Build** > **Runners**.
+   1. Confirm that a runner with the `gitlab--duo` tag is online.
+1. If no runner meets the requirements, [configure a runner to execute flows](flows/execution.md#configure-runners-to-execute-flows).
+
 ## Error: `Something went wrong while requesting a review from GitLab Duo`
 
 In GitLab 18.8 and earlier, this error message appears for Code Review Flow failures.
@@ -326,4 +348,4 @@ To run the diagnostic script in GitLab 18.8 to GitLab 18.11:
 - [Troubleshooting GitLab Duo Agentic Chat](../gitlab_duo_chat/troubleshooting.md)
 - [Troubleshooting Code Review Flow](flows/foundational_flows/code_review.md#troubleshooting)
 - [Troubleshooting GitLab MCP clients](../gitlab_duo/model_context_protocol/mcp_clients.md#troubleshooting)
-- [Troubleshooting the GitLab MCP Server](../gitlab_duo/model_context_protocol/mcp_server_troubleshooting.md)
+- [Troubleshooting the GitLab MCP Server](../model_context_protocol/mcp_server_troubleshooting.md)

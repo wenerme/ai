@@ -43,7 +43,7 @@ When you customize the Agent Platform, apply the following best practices:
 
   You can include other configuration files in the `.gitlab/duo/` folder, such as
   [custom flow definitions](../flows/custom.md), or an
-  [MCP server configuration](../../gitlab_duo/model_context_protocol/mcp_server.md) file.
+  [MCP server configuration](../../model_context_protocol/mcp_server.md) file.
 - Document your choices in comments to explain why certain instructions exist.
 - Protect customization files with [Code Owners](../../project/codeowners/_index.md) to manage changes.
 

@@ -9997,9 +9997,9 @@
   },
   "api/api-reference/anthropic-messages/create-a-message.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-a-message.md",
-    "lastModified": "Tue, 14 Jul 2026 03:52:17 GMT",
-    "size": 166441,
-    "updatedAt": "2026-07-14T03:52:17.344Z"
+    "lastModified": "Tue, 14 Jul 2026 12:14:57 GMT",
+    "size": 166535,
+    "updatedAt": "2026-07-14T12:14:57.782Z"
   },
   "api/api-reference/api-keys/create-a-new-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/create-a-new-api-key.md",
@@ -10273,9 +10273,9 @@
   },
   "api/api-reference/images/generate-an-image.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/images/generate-an-image.md",
-    "lastModified": "Tue, 14 Jul 2026 03:52:55 GMT",
-    "size": 57067,
-    "updatedAt": "2026-07-14T03:52:55.631Z"
+    "lastModified": "Tue, 14 Jul 2026 12:15:14 GMT",
+    "size": 57536,
+    "updatedAt": "2026-07-14T12:15:14.230Z"
   },
   "api/api-reference/images/list-endpoints-for-an-image-model.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/images/list-endpoints-for-an-image-model.md",

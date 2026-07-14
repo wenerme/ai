@@ -3639,6 +3639,8 @@ components:
           type: string
         usage:
           properties:
+            cache_creation:
+              $ref: '#/components/schemas/AnthropicCacheCreation'
             cache_creation_input_tokens:
               nullable: true
               type: integer

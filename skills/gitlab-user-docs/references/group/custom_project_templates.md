@@ -91,10 +91,25 @@ For a complete list of what is copied, see [project items that are exported](../
 
 The copying behavior might differ based on your permissions:
 
-- If you have the Owner role for the project that contains the custom templates for the instance or if you're a GitLab administrator:
-  all project settings, including project members, are copied over to the new project.
-- If you do not have the Owner role for the project or if you're not a GitLab administrator:
+- If you're a GitLab administrator, all project settings, including project members,
+  are copied over to the new project.
+- If you have the Owner role for the project that contains the custom templates for the instance but
+  you're not a GitLab administrator:
+  project settings are copied, but project members are not.
+- If you do not have the Owner role for the project and you're not a GitLab administrator:
   project deploy keys and project webhooks are not copied over because they contain sensitive data.
+
+Deploy keys and webhooks contain sensitive secrets. They are copied only when the identity that
+creates the project has the Owner role on the template project or has administrator access. When you
+create a project from a template by using the API, this identity depends on the token:
+
+- Personal access token: Uses the permissions of the token owner. Deploy keys and webhooks are
+  copied if that user has the Owner role on the template project or is an administrator.
+- Group access token or project access token: Acts as a [bot user](settings/group_access_tokens.md#bot-users-for-groups). The bot user is a member
+  only of the group or project where you create the token. If that scope does not include the
+  template project, the bot user does not have the Owner role on the template project, and deploy
+  keys and webhooks are not copied. To copy them, use a personal access token from a user with the
+  Owner role on the template project.
 
 ## User assignments in templates
 
