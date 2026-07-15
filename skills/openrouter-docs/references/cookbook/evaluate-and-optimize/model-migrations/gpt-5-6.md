@@ -26,7 +26,7 @@ There are no breaking changes. Existing requests keep working as-is — you can 
 * [Explicit prompt caching](#explicit-prompt-caching): mark exactly which prompt prefixes get cached
 * [Cache-write billing](#cache-write-billing): a new line item in usage accounting
 
-These additions are supported by OpenAI GPT-5.6 and newer. Explicit prompt caching is only available through the [Responses API](/api/api-reference/responses/create-a-response); `reasoning.mode` and `reasoning.context` work on both the Chat Completions and Responses APIs.
+These additions are supported by OpenAI GPT-5.6 and newer, and work on both the Chat Completions and Responses APIs.
 
 <Note>
   You don't need to filter these fields per model. OpenRouter strips `reasoning.mode`, `prompt_cache_breakpoint`, and `prompt_cache_options` before forwarding requests to providers that don't support them, so requests that fall back to other models keep working.
@@ -103,14 +103,14 @@ See [Reasoning Context Mode](/guides/best-practices/reasoning-tokens#reasoning-c
 
 Automatic prompt caching still works with no code changes. Explicit caching adds direct control over cache boundaries instead of relying on OpenAI's automatic breakpoint placement. Cached prefixes have a minimum 30-minute TTL.
 
-<Note>
-  Explicit caching is **not available** in the Chat Completions API yet. The `prompt_cache_breakpoint` and `prompt_cache_options` fields only exist in the Responses API request format. Chat Completions requests still get automatic prompt caching — you just can't control the breakpoints.
-</Note>
+The fields work in both the [Chat Completions](/api/api-reference/chat/send-a-chat-completion-request) and [Responses](/api/api-reference/responses/create-a-response) APIs.
 
 Two controls:
 
-* `prompt_cache_breakpoint`: placed on an individual `input_text` content block to mark the end of a reusable prefix. Everything through that block becomes the candidate cached prefix. Automatic caching stays enabled.
+* `prompt_cache_breakpoint`: placed on an individual text content block (`input_text` in Responses, `text` in Chat Completions) to mark the end of a reusable prefix. Everything through that block becomes the candidate cached prefix. Automatic caching stays enabled.
 * `prompt_cache_options`: placed at the request root. Setting `mode` to `"explicit"` disables OpenAI-managed breakpoints so only blocks marked with `prompt_cache_breakpoint` participate in caching. Use `ttl` to request a cache duration (e.g. `"30m"`).
+
+Responses API:
 
 ```json lines theme={null}
 {
@@ -141,13 +141,48 @@ Two controls:
 }
 ```
 
+Chat Completions API:
+
+```json lines theme={null}
+{
+  "model": "openai/gpt-5.6-sol",
+  "prompt_cache_key": "my-session-key",
+  "prompt_cache_options": {
+    "mode": "explicit",
+    "ttl": "30m"
+  },
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "<REUSABLE_PREFIX>",
+          "prompt_cache_breakpoint": {
+            "mode": "explicit"
+          }
+        },
+        {
+          "type": "text",
+          "text": "<TASK_SPECIFIC_SUFFIX>"
+        }
+      ]
+    }
+  ]
+}
+```
+
+<Note>
+  The block-level markers are interchangeable with the Anthropic-style `cache_control` blocks Chat Completions also accepts: `cache_control` becomes a `prompt_cache_breakpoint` on GPT-5.6+ models, and `prompt_cache_breakpoint` becomes a default 5-minute `cache_control` on Anthropic and Google. The request-level `prompt_cache_options` stays OpenAI-only.
+</Note>
+
 See [Prompt Caching](/guides/best-practices/prompt-caching#openai) for details.
 
 ## Cache-Write Billing
 
-For GPT-5.6 and later, OpenAI bills cache writes at 1.25x the model's uncached input rate. Cache reads keep the discounted cache-read rate.
+For GPT-5.6 and later, OpenAI bills cache writes at 1.25x the model's uncached input rate — even with automatic caching, no opt-in required. Cache reads keep the discounted cache-read rate. Models before GPT-5.6 have no cache-write fee.
 
-Cache activity is reported in the Responses API's `usage.input_tokens_details`:
+Cache activity is reported in `usage.input_tokens_details` (Responses) and `usage.prompt_tokens_details` (Chat Completions):
 
 * `cache_write_tokens`: prompt tokens written to the cache
 * `cached_tokens`: prompt tokens read from the cache

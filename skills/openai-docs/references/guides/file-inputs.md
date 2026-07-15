@@ -166,6 +166,33 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+```ruby
+require "openai"
+
+openai = OpenAI::Client.new
+
+response = openai.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
+        {
+          type: "input_text",
+          text: "Analyze the letter and provide a summary of the key points."
+        },
+        {
+          type: "input_file",
+          file_url: "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
+        }
+      ]
+    }
+  ]
+)
+
+puts(response.output_text)
+```
+
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -291,6 +318,32 @@ response = client.responses.create(
 )
 
 print(response.output_text)
+```
+
+```ruby
+require "openai"
+
+openai = OpenAI::Client.new
+
+file = openai.files.create(
+  file: File.open("draconomicon.pdf", "rb"),
+  purpose: "user_data"
+)
+
+response = openai.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
+        {type: "input_file", file_id: file.id},
+        {type: "input_text", text: "What is the first dragon in the book?"}
+      ]
+    }
+  ]
+)
+
+puts(response.output_text)
 ```
 
 ```csharp

@@ -43,14 +43,48 @@ Enable Precursor for your zone:
 
 For most customers, selecting a mode is the only configuration required.
 
-### Precursor rules (optional)
+### Precursor Rules (optional)
 
-Precursor runs across your zone by default. Rules do not enable or disable Precursor — they determine which mode applies to each request.
+Precursor runs across your zone by default. Precursor Rules do not enable or disable Precursor — they determine which mode applies to each request.
 
 For example:
 
 * Run **Minimize Friction** across your site, but run **Maximize Security** to enforce a valid session on `/checkout`.
 * Run **Maximize Security** on all pages, except your homepage.
+
+### Use Precursor with APIs
+
+If your zone serves both browser pages and API endpoints, use Precursor Rules to scope where strict enforcement applies.
+
+When Precursor is set to **Maximize Security**, requests must present a valid `cf_clearance` cookie. This can affect:
+
+* API endpoints called by non-browser clients (for example, `curl`, mobile backends, server-to-server jobs)
+* Browser API calls that do not send cookies
+
+For mixed HTML/API traffic, use one of these patterns:
+
+* Start with **Minimize Friction** globally, then apply **Maximize Security** only to sensitive pages or paths with Precursor Rules.
+* Start with **Maximize Security** globally, then add **Minimize Friction** Precursor Rules for API hostnames or API paths.
+
+For browser XHR/fetch requests that must access endpoints under **Maximize Security**, ensure cookies are included:
+
+**JavaScript**
+
+```js
+fetch("/api/search", {
+  credentials: "include",
+});
+```
+
+**JavaScript**
+
+```js
+axios.get("/api/search", {
+  withCredentials: true,
+});
+```
+
+Use **Minimize Friction** on endpoints that should not require challenge-style session enforcement. Precursor still evaluates session behavior and can continue contributing detection signals and bot score context.
 
 ## Relationship to JavaScript Detections
 
@@ -90,6 +124,6 @@ Once Precursor runs on a zone, its detections appear in the zone's Analytics vie
 For more information, refer to [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/precursor/#page","headline":"Precursor · Cloudflare challenges docs","description":"Client-side, session-based verification that continuously evaluates visitor behavior to identify automation.","url":"https://developers.cloudflare.com/cloudflare-challenges/precursor/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/precursor/#page","headline":"Precursor · Cloudflare challenges docs","description":"Client-side, session-based verification that continuously evaluates visitor behavior to identify automation.","url":"https://developers.cloudflare.com/cloudflare-challenges/precursor/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/precursor/","name":"Precursor"}}]}
 ```

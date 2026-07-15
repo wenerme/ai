@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Cloudflare platform access

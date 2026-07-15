@@ -69,13 +69,14 @@ A full list of providers and their data policies can be found [here](/guides/pri
 
 Rather than a single global toggle, OpenRouter lets you enforce ZDR independently for different model groups. This is available in both your [account-level privacy settings](https://openrouter.ai/settings/privacy) and in [guardrails](/guides/features/guardrails).
 
-The four model group scopes are:
+The five model group scopes are:
 
 | Model group      | Effect when enabled                                                           |
 | ---------------- | ----------------------------------------------------------------------------- |
 | **Anthropic**    | Removes first-party Anthropic endpoints (Bedrock and Vertex remain available) |
 | **OpenAI**       | Removes first-party OpenAI endpoints (Azure remains available)                |
 | **Google**       | Removes AI Studio endpoints (Vertex remains available)                        |
+| **xAI**          | Removes non-ZDR xAI endpoints (the ZDR xAI endpoint remains available)        |
 | **Non-frontier** | Removes all other non-ZDR endpoints                                           |
 
 <Tip>
@@ -99,6 +100,7 @@ In the API, these are represented as separate fields on the guardrail object:
 | `enforce_zdr_anthropic` | Enforce ZDR for Anthropic endpoints    |
 | `enforce_zdr_openai`    | Enforce ZDR for OpenAI endpoints       |
 | `enforce_zdr_google`    | Enforce ZDR for Google endpoints       |
+| `enforce_zdr_xai`       | Enforce ZDR for xAI endpoints          |
 | `enforce_zdr_other`     | Enforce ZDR for non-frontier endpoints |
 
 <Note>

@@ -19,11 +19,14 @@ one merge request in a train, not the entire train.
 If you call `GET /projects/:id/merge_trains` without a target branch, the response can include
 entries from more than one merge train in the project.
 
-> [!note]
-> The REST API response does not include an explicit queue position for each merge request.
-> Sort by `id` in ascending order to list merge requests in the order they were added to the train.
-> For an exact queue position, use the GraphQL API
-> [`MergeTrainCar.index`](graphql/reference/_index.md#mergetraincar-index) field instead.
+The REST API response does not include an explicit queue position for each merge request, and
+returns merge requests as a flat list rather than grouped by train:
+
+- For an exact queue position, sort by `id` in ascending order, or use the GraphQL API
+  [`MergeTrainCar.index`](graphql/reference/_index.md#mergetraincar-index) field.
+- To group merge requests by train, use the `target_branch` attribute, or query the GraphQL API
+  [`Project.mergeTrains`](graphql/reference/_index.md#projectmergetrains) and
+  [`MergeTrain.cars`](graphql/reference/_index.md#mergetraincars) fields.
 
 ## List all merge trains for a project
 
@@ -472,3 +475,9 @@ Example response:
   }
 ]
 ```
+
+## Remove a merge request from a merge train
+
+To remove a merge request from a merge train, use the
+[Cancel merge when pipeline succeeds](merge_requests.md#cancel-merge-when-pipeline-succeeds)
+endpoint in the merge requests API.

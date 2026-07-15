@@ -85,7 +85,9 @@ The executor version is managed by GitLab and updated as part of regular release
 
 ## Configure CI/CD execution
 
-You can customize how flows are executed in CI/CD by creating an agent configuration file in your project.
+To customize how flows are executed in CI/CD, create an agent configuration file in your project.
+
+For a list of supported keys and their types, see the [`agent-config.yml` reference](agent_config_yml.md).
 
 > [!note]
 > You cannot use predefined CI/CD variables in this scenario.

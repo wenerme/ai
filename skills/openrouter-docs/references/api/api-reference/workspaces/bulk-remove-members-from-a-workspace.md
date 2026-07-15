@@ -4,7 +4,7 @@
 
 # Bulk remove members from a workspace
 
-> Remove multiple members from a workspace. Members with active API keys in the workspace cannot be removed. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+> Remove multiple members from a workspace. Members with active API keys in the workspace cannot be removed. SCIM-managed members cannot be removed; changes must be made in your identity provider. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 
 
@@ -99,7 +99,8 @@ paths:
       summary: Bulk remove members from a workspace
       description: >-
         Remove multiple members from a workspace. Members with active API keys
-        in the workspace cannot be removed. [Management
+        in the workspace cannot be removed. SCIM-managed members cannot be
+        removed; changes must be made in your identity provider. [Management
         key](/docs/guides/overview/auth/management-api-keys) required.
       operationId: bulkRemoveWorkspaceMembers
       parameters:

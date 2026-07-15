@@ -459,7 +459,7 @@ class GoogleMetadataIdentityTokenProvider
   end
 
   def token_type
-    OpenAI::Auth::TokenType::JWT
+    OpenAI::Auth::TokenType::ID
   end
 
   def get_token

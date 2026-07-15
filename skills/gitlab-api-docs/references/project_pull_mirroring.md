@@ -201,6 +201,8 @@ curl --request PUT \
 
 ## Start the pull mirroring process for a project
 
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/576606) the `force` attribute in GitLab 19.3.
+
 Start the pull mirroring process for a project.
 
 ```plaintext
@@ -212,13 +214,27 @@ Supported attributes:
 | Attribute | Type              | Required | Description |
 |:----------|:------------------|:---------|:------------|
 | `id`      | integer or string | Yes      | ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
+| `force`   | boolean           | No       | If `true`, resets a hard-failed mirror and retries the update. Ignored for requests authenticated with a GitHub webhook signature. |
 
-If successful, returns [`202 Accepted`](rest/troubleshooting.md#status-codes).
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes).
 
 Example request:
 
 ```shell
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/projects/:id/mirror/pull"
+```
+
+To recover a hard-failed mirror, set `force` to `true`.
+For more information, see
+[fix hard failures when mirroring](../user/project/repository/mirror/pull.md#fix-hard-failures-when-mirroring).
+
+Example request:
+
+```shell
+curl --request POST \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --data "force=true" \
   --url "https://gitlab.example.com/api/v4/projects/:id/mirror/pull"
 ```

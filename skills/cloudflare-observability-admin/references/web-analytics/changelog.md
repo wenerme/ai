@@ -16,6 +16,10 @@ Cloudflare occasionally updates the `beacon.min.js` file to improve Web Analytic
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/web-analytics/changelog/index.xml)
 
+## 2026-07-13
+
+The beacon script is now injected with `type="module"` to intentionally exclude long EOL'd (End-of-Life'd) browsers like Internet Explorer from loading the script, given they don't support it anyway. [See FAQ entry for more information](https://developers.cloudflare.com/web-analytics/faq/#why-am-i-seeing-syntax-errors-from-the-beacon-script-in-internet-explorer).
+
 ## 2026-06-16
 
 Updated Google's web-vitals library to version 5.3.0 and updated the JavaScript build output target to ES2015.

@@ -426,6 +426,7 @@ components:
               - $ref: '#/components/schemas/ShellServerTool'
               - $ref: '#/components/schemas/ApplyPatchServerTool'
               - $ref: '#/components/schemas/CustomTool'
+              - $ref: '#/components/schemas/NamespaceTool'
               - $ref: '#/components/schemas/AdvisorServerTool_OpenRouter'
               - $ref: '#/components/schemas/SubagentServerTool_OpenRouter'
               - $ref: '#/components/schemas/DatetimeServerTool'
@@ -618,7 +619,10 @@ components:
       description: >-
         Enable automatic prompt caching. When set at the top level, the system
         automatically applies cache breakpoints to the last cacheable block in
-        the request. Currently supported for Anthropic Claude models.
+        the request. When set on an individual content block, it marks an
+        explicit cache breakpoint; block-level markers also work on OpenAI
+        models that support explicit prompt caching — OpenRouter converts them
+        to the provider's native format.
       example:
         type: ephemeral
       properties:
@@ -1988,6 +1992,36 @@ components:
       required:
         - type
         - name
+      type: object
+    NamespaceTool:
+      description: Groups function/custom tools under a shared namespace
+      example:
+        description: Tools for spawning and managing sub-agents.
+        name: multi_agent_v1
+        tools:
+          - name: spawn_agent
+            type: function
+        type: namespace
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        tools:
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/NamespaceFunctionTool'
+              - $ref: '#/components/schemas/CustomTool'
+          type: array
+        type:
+          enum:
+            - namespace
+          type: string
+      required:
+        - type
+        - name
+        - description
+        - tools
       type: object
     AdvisorServerTool_OpenRouter:
       description: >-
@@ -4074,6 +4108,7 @@ components:
               - $ref: '#/components/schemas/ShellServerTool'
               - $ref: '#/components/schemas/ApplyPatchServerTool'
               - $ref: '#/components/schemas/CustomTool'
+              - $ref: '#/components/schemas/NamespaceTool'
               - $ref: '#/components/schemas/AdvisorServerTool_OpenRouter'
               - $ref: '#/components/schemas/SubagentServerTool_OpenRouter'
               - $ref: '#/components/schemas/DatetimeServerTool'
@@ -4362,6 +4397,7 @@ components:
         - Recraft
         - Reka
         - Relace
+        - Sail Research
         - Sakana AI
         - SambaNova
         - Seed
@@ -4646,6 +4682,48 @@ components:
       required:
         - type
         - filters
+      type: object
+    NamespaceFunctionTool:
+      description: A function tool grouped inside a namespace tool
+      example:
+        name: spawn_agent
+        type: function
+      properties:
+        allowed_callers:
+          items:
+            enum:
+              - direct
+              - programmatic
+            type: string
+          nullable: true
+          type: array
+        defer_loading:
+          type: boolean
+        description:
+          nullable: true
+          type: string
+        name:
+          type: string
+        output_schema:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        parameters:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        strict:
+          nullable: true
+          type: boolean
+        type:
+          enum:
+            - function
+          type: string
+      required:
+        - type
+        - name
       type: object
     AdvisorServerToolConfig:
       description: Configuration for one openrouter:advisor server tool entry.
@@ -5859,9 +5937,12 @@ components:
       example: cloudflare-ai
     PromptCacheBreakpoint:
       description: >-
-        Marks an explicit prompt-cache boundary on this content block.
-        Everything through the block carrying this marker is part of the
-        candidate cached prefix. Only supported by OpenAI GPT-5.6 and newer.
+        Marks an explicit prompt-cache boundary on this content block
+        (OpenAI-style). Everything through the block carrying this marker is
+        part of the candidate cached prefix. Supported natively by OpenAI
+        GPT-5.6 and newer; on providers that use Anthropic-style
+        `cache_control`, OpenRouter converts the marker to that format
+        automatically.
       example:
         mode: explicit
       nullable: true

@@ -27,6 +27,18 @@ To create a release from an annotated Git tag:
 4. Optional. To fetch the new tag locally after the release, run
    `git fetch --tags origin`.
 
+Authentication in CI/CD:
+
+- Recommended: Use `CI_JOB_TOKEN` and turn on CI auto-login by
+  setting `GLAB_ENABLE_CI_AUTOLOGIN=true`. glab sends
+  `CI_JOB_TOKEN` in the `JOB-TOKEN` header, which the Releases
+  API accepts.
+- Alternative: Use `GITLAB_TOKEN` set to a project or group access token with the
+  `api` scope.
+- Do not set `GITLAB_TOKEN=$CI_JOB_TOKEN` because the Releases API will
+  return a `404 Not Found`. `GITLAB_TOKEN` is sent as a personal access token in
+  the `PRIVATE-TOKEN` header, which the Releases API does not accept.
+
 The `--publish-to-catalog` flag is an experiment: it might be
 unstable or removed at any time, and is not ready for production use.
 For more information, see
@@ -62,6 +74,12 @@ glab release create v1.0.1 ./dist/*
 
 # Upload all tarballs in a specified folder (types default to 'other')
 glab release create v1.0.1 ./dist/*.tar.gz
+
+# Create a release from a CI/CD job using the job token
+GLAB_ENABLE_CI_AUTOLOGIN=true glab release create v1.0.1 --notes "See CHANGELOG.md" --ref "$CI_COMMIT_SHA"
+
+# Create a release from a CI/CD job using a project or group access token with the 'api' scope
+GITLAB_TOKEN="$ACCESS_TOKEN" glab release create v1.0.1 --notes "See CHANGELOG.md" --ref "$CI_COMMIT_SHA"
 
 # Create a release with assets specified as JSON object
 glab release create v1.0.1 --assets-links='

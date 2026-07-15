@@ -194,7 +194,7 @@ The following guide assumes that:
    ##
    ## Private address
    ##
-   ip route get 255.255.255.255 | awk '{print "Private address:", $NF; exit}'
+   ip route get 255.255.255.255 | awk '{for (i=1; i<=NF; i++) if ($i == "src") { print "Private address:", $(i+1); exit }}'
 
    ##
    ## Public address

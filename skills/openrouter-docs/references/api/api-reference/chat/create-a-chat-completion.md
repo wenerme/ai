@@ -511,6 +511,11 @@ components:
           format: double
           nullable: true
           type: number
+        prompt_cache_key:
+          nullable: true
+          type: string
+        prompt_cache_options:
+          $ref: '#/components/schemas/PromptCacheOptions'
         provider:
           $ref: '#/components/schemas/ProviderPreferences'
         reasoning:
@@ -1056,7 +1061,10 @@ components:
       description: >-
         Enable automatic prompt caching. When set at the top level, the system
         automatically applies cache breakpoints to the last cacheable block in
-        the request. Currently supported for Anthropic Claude models.
+        the request. When set on an individual content block, it marks an
+        explicit cache breakpoint; block-level markers also work on OpenAI
+        models that support explicit prompt caching — OpenRouter converts them
+        to the provider's native format.
       example:
         type: ephemeral
       properties:
@@ -1518,6 +1526,27 @@ components:
           type: integer
       required:
         - id
+      type: object
+    PromptCacheOptions:
+      description: >-
+        Request-level prompt-cache controls. `mode: "explicit"` disables
+        OpenAI-managed breakpoints so only blocks marked with
+        `prompt_cache_breakpoint` are cached. Only supported by OpenAI GPT-5.6
+        and newer.
+      example:
+        mode: explicit
+        ttl: 30m
+      nullable: true
+      properties:
+        mode:
+          enum:
+            - explicit
+          type: string
+        ttl:
+          nullable: true
+          type: string
+      required:
+        - mode
       type: object
     ProviderPreferences:
       additionalProperties: false
@@ -2073,31 +2102,7 @@ components:
               type: integer
           type: object
         server_tool_use_details:
-          description: Usage for server-side tool execution (e.g., web search)
-          nullable: true
-          properties:
-            tool_calls_executed:
-              description: >-
-                Number of OpenRouter server tool calls that executed and
-                produced a result
-              nullable: true
-              type: integer
-            tool_calls_requested:
-              description: >-
-                Total number of OpenRouter server-orchestrated tool calls the
-                model requested, across all tool types. Provider-native tools
-                (e.g. native web search) are not counted here.
-              nullable: true
-              type: integer
-            web_search_requests:
-              description: >-
-                Number of web searches performed by server-side tools. For
-                server-orchestrated tool calls a web search is also counted in
-                tool_calls_requested; provider-native web search may report
-                web_search_requests only. Do not sum the two.
-              nullable: true
-              type: integer
-          type: object
+          $ref: '#/components/schemas/ServerToolUseDetails'
         total_tokens:
           description: Total number of tokens
           type: integer
@@ -2742,6 +2747,7 @@ components:
         - Recraft
         - Reka
         - Relace
+        - Sail Research
         - Sakana AI
         - SambaNova
         - Seed
@@ -2956,7 +2962,10 @@ components:
         - $ref: '#/components/schemas/AnthropicCacheControlDirective'
         - properties: {}
           type: object
-      description: Cache control for the content part
+      description: >-
+        Anthropic-style cache breakpoint for the content part. Interchangeable
+        with the OpenAI-style `prompt_cache_breakpoint` marker: OpenRouter
+        converts between the two based on the provider serving the request.
       example:
         ttl: 5m
         type: ephemeral
@@ -3379,6 +3388,36 @@ components:
         - upstream_inference_prompt_cost
         - upstream_inference_completions_cost
       type: object
+    ServerToolUseDetails:
+      description: Usage for server-side tool execution (e.g., web search)
+      example:
+        tool_calls_executed: 2
+        tool_calls_requested: 2
+        web_search_requests: 2
+      nullable: true
+      properties:
+        tool_calls_executed:
+          description: >-
+            Number of OpenRouter server tool calls that executed and produced a
+            result.
+          nullable: true
+          type: integer
+        tool_calls_requested:
+          description: >-
+            Total number of OpenRouter server-orchestrated tool calls the model
+            requested, across all tool types. Provider-native tools (e.g. native
+            web search) are not counted here.
+          nullable: true
+          type: integer
+        web_search_requests:
+          description: >-
+            Number of web searches performed by server-side tools. For
+            server-orchestrated tool calls a web search is also counted in
+            tool_calls_requested; provider-native web search may report
+            web_search_requests only. Do not sum the two.
+          nullable: true
+          type: integer
+      type: object
     ChatStreamChoice:
       description: Streaming completion choice chunk
       example:
@@ -3551,6 +3590,8 @@ components:
       properties:
         cache_control:
           $ref: '#/components/schemas/ChatContentCacheControl'
+        prompt_cache_breakpoint:
+          $ref: '#/components/schemas/PromptCacheBreakpoint'
         text:
           type: string
         type:
@@ -4459,6 +4500,25 @@ components:
         - $ref: '#/components/schemas/ReasoningDetailEncrypted'
         - $ref: '#/components/schemas/ReasoningDetailText'
         - $ref: '#/components/schemas/ReasoningDetailServerToolCall'
+    PromptCacheBreakpoint:
+      description: >-
+        Marks an explicit prompt-cache boundary on this content block
+        (OpenAI-style). Everything through the block carrying this marker is
+        part of the candidate cached prefix. Supported natively by OpenAI
+        GPT-5.6 and newer; on providers that use Anthropic-style
+        `cache_control`, OpenRouter converts the marker to that format
+        automatically.
+      example:
+        mode: explicit
+      nullable: true
+      properties:
+        mode:
+          enum:
+            - explicit
+          type: string
+      required:
+        - mode
+      type: object
     AdvisorReasoning:
       description: >-
         Reasoning configuration forwarded to the advisor call. Use this to

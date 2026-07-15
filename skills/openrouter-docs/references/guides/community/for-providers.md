@@ -77,36 +77,60 @@ Valid sampling parameters are: `temperature`, `top_p`, `top_k`, `min_p`, `top_a`
 
 Valid features are: `tools`, `json_mode`, `structured_outputs`, `logprobs`, `web_search`, `reasoning`.
 
-#### Tiered Pricing
+#### Conditional Pricing with `pricing.overrides`
 
-For models with different pricing based on context length (e.g., long context pricing), you can provide `pricing` as an array of tiers instead of a single object:
+For models whose pricing varies by condition — long-context pricing or time-based (peak/off-peak) pricing — add an `overrides` array to the `pricing` object. This is the same shape OpenRouter exposes publicly in [`/v1/models`](/docs/guides/overview/models#pricing-object).
+
+Each override entry carries condition fields plus the prices that apply when the condition matches. Price fields omitted from an override inherit from the base `pricing` values.
+
+**Long-context pricing** uses `min_prompt_tokens` — the override applies when prompt tokens exceed the threshold (strict `>`):
 
 ```json lines theme={null}
 {
-  "pricing": [
-    {
-      "prompt": "0.000002", // base tier pricing per 1 token
-      "completion": "0.000012", // base tier pricing per 1 token
-      "image": "0.01", // pricing per 1 image (base tier only)
-      "request": "0", // pricing per 1 request (base tier only)
-      "input_cache_read": "0.000001" // base tier pricing per 1 token
-    },
-    {
-      "prompt": "0.000004", // long context tier pricing per 1 token
-      "completion": "0.000018", // long context tier pricing per 1 token
-      "input_cache_read": "0.000002", // long context tier pricing per 1 token
-      "min_context": 200000 // minimum input tokens for this tier to apply
-    }
-  ]
+  "pricing": {
+    "prompt": "0.000002", // base pricing per 1 token
+    "completion": "0.000012",
+    "input_cache_read": "0.000001",
+    "overrides": [
+      {
+        "min_prompt_tokens": 200000, // applies when prompt tokens > 200K
+        "prompt": "0.000004",
+        "completion": "0.000018",
+        "input_cache_read": "0.000002"
+      }
+    ]
+  }
 }
 ```
 
-When using tiered pricing, the first tier (index 0) is the base pricing that applies when input tokens are below the `min_context` threshold. The second tier applies when input tokens meet or exceed the `min_context` value.
+**Time-based pricing** uses `utc_start` / `utc_end` — HHMM clock values in UTC. Windows are half-open (`[start, end)`) and may wrap midnight. Entries priced the same as the base pricing describe off-peak segments; list the full daily schedule:
+
+```json lines theme={null}
+{
+  "pricing": {
+    "prompt": "0.00000028", // base (off-peak) pricing per 1 token
+    "completion": "0.0000011",
+    "overrides": [
+      {
+        "utc_start": 100, // peak window: 01:00–05:00 UTC
+        "utc_end": 500,
+        "prompt": "0.00000056",
+        "completion": "0.0000022"
+      }
+    ]
+  }
+}
+```
 
 Limitations:
 
-* Currently, OpenRouter supports up to 2 pricing tiers.
-* The `image` and `request` fields are only supported in the base tier (index 0) and will be ignored if included in other tiers.
+* Up to 2 long-context tiers, or up to 2 peak windows (all peak windows must share the same prices).
+* Long-context and time-based conditions cannot be combined on the same endpoint. Overrides mixing both condition kinds are ignored.
+
+<Note>
+  A legacy format — `pricing` as an array of tiers with `min_context` breakpoints — remains supported
+  for backwards compatibility, but use `pricing.overrides` for all new integrations.
+</Note>
 
 #### Discounts with `discount_to_user`
 

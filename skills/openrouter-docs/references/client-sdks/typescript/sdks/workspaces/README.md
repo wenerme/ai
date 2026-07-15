@@ -892,7 +892,7 @@ run();
 
 ## bulkRemoveMembers
 
-Remove multiple members from a workspace. Members with active API keys in the workspace cannot be removed. [Management key](/client-sdks/typescript/docs/guides/overview/auth/management-api-keys) required.
+Remove multiple members from a workspace. Members with active API keys in the workspace cannot be removed. SCIM-managed members cannot be removed; changes must be made in your identity provider. [Management key](/client-sdks/typescript/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

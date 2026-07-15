@@ -1,11 +1,11 @@
 ---
 title: "Ambient | Models"
-description: "Use Ambient models with Mastra. 6 models available."
+description: "Use Ambient models with Mastra. 7 models available."
 ---
 
 # [Ambient logo]Ambient
 
-Access 6 Ambient models through Mastra's model router. Authentication is handled automatically using the `AMBIENT_API_KEY` environment variable.
+Access 7 Ambient models through Mastra's model router. Authentication is handled automatically using the `AMBIENT_API_KEY` environment variable.
 
 Learn more in the [Ambient documentation](https://ambient.xyz).
 
@@ -48,7 +48,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 101376,
     "maxOutput": 101376,
-    "inputCost": 1.4,
+    "inputCost": 1.05,
     "outputCost": 4.4
   },
   {
@@ -76,6 +76,18 @@ for await (const chunk of stream) {
     "outputCost": 3.49
   },
   {
+    "model": "ambient/stepfun/step-3.7-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.2,
+    "outputCost": 1.15
+  },
+  {
     "model": "ambient/z-ai/glm-5.2",
     "imageInput": false,
     "audioInput": false,
@@ -84,7 +96,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 101376,
     "maxOutput": 101376,
-    "inputCost": 1.4,
+    "inputCost": 1.05,
     "outputCost": 4.4
   },
   {

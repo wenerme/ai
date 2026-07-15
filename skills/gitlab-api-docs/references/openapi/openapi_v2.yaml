@@ -3181,31 +3181,31 @@ paths:
         required: true
       - in: path
         name: distribution
-        description: The Debian Codename or Suite
+        description: The Debian distribution name
         type: string
         required: true
         example: my-distro
       - in: path
         name: letter
-        description: The Debian Classification (first-letter or lib-first-letter)
+        description: The package name first letter
         type: string
         required: true
         example: a
       - in: path
         name: package_name
-        description: The Debian Source Package Name
+        description: The package name
         type: string
         required: true
         example: my-pkg
       - in: path
         name: package_version
-        description: The Debian Source Package Version
+        description: The package version
         type: string
         required: true
         example: 1.0.0
       - in: path
         name: file_name
-        description: The Debian File Name
+        description: The package file name
         type: string
         required: true
         example: example_1.0.0~alpha2_amd64.deb
@@ -7489,18 +7489,18 @@ paths:
         description: The ID or URL-encoded path of the group
         type: string
         required: true
-      - in: query
-        name: path
-        description: Package path
-        type: string
-        required: true
-        example: foo/bar/mypkg/1.0-SNAPSHOT
       - in: path
         name: file_name
         description: Package file name
         type: string
         required: true
         example: mypkg-1.0-SNAPSHOT.jar
+      - in: query
+        name: path
+        description: Package path
+        type: string
+        required: true
+        example: foo/bar/mypkg/1.0-SNAPSHOT
       responses:
         '200':
           description: Download the maven package file at a group level
@@ -9287,17 +9287,17 @@ paths:
       produces:
       - application/json
       parameters:
+      - in: path
+        name: id
+        description: The ID or URL-encoded path of the group or project
+        type: string
+        required: true
       - in: query
         name: with_content
         description: Include pages' content
         type: boolean
         default: false
         required: false
-      - in: path
-        name: id
-        type: integer
-        format: int32
-        required: true
       responses:
         '200':
           description: List all wiki pages for a group
@@ -9321,8 +9321,8 @@ paths:
       parameters:
       - in: path
         name: id
-        type: integer
-        format: int32
+        description: The ID or URL-encoded path of the group or project
+        type: string
         required: true
       - name: postApiV4GroupsIdWikis
         in: body
@@ -9351,6 +9351,11 @@ paths:
       - application/json
       parameters:
       - in: path
+        name: id
+        description: The ID or URL-encoded path of the group or project
+        type: string
+        required: true
+      - in: path
         name: slug
         description: The slug of a wiki page
         type: string
@@ -9366,11 +9371,6 @@ paths:
         type: boolean
         default: false
         required: false
-      - in: path
-        name: id
-        type: integer
-        format: int32
-        required: true
       responses:
         '200':
           description: Retrieve a wiki page for a group
@@ -9391,8 +9391,8 @@ paths:
       parameters:
       - in: path
         name: id
-        type: integer
-        format: int32
+        description: The ID or URL-encoded path of the group or project
+        type: string
         required: true
       - in: path
         name: slug
@@ -9425,14 +9425,14 @@ paths:
       - application/json
       parameters:
       - in: path
-        name: slug
-        description: The slug of a wiki page
+        name: id
+        description: The ID or URL-encoded path of the group or project
         type: string
         required: true
       - in: path
-        name: id
-        type: integer
-        format: int32
+        name: slug
+        description: The slug of a wiki page
+        type: string
         required: true
       responses:
         '204':
@@ -9456,8 +9456,8 @@ paths:
       parameters:
       - in: path
         name: id
-        type: integer
-        format: int32
+        description: The ID or URL-encoded path of the group or project
+        type: string
         required: true
       - name: postApiV4GroupsIdWikisAttachments
         in: body
@@ -15522,25 +15522,25 @@ paths:
         required: true
       - in: path
         name: package_name
-        description: Package name
+        description: The package name
         type: string
         required: true
         example: my-package
       - in: path
         name: package_version
-        description: Package version
+        description: The package version
         type: string
         required: true
         example: '1.0'
       - in: path
         name: package_username
-        description: Package username
+        description: The package username
         type: string
         required: true
         example: my-group+my-project
       - in: path
         name: package_channel
-        description: Package channel
+        description: The package channel
         type: string
         required: true
         example: stable
@@ -16623,25 +16623,25 @@ paths:
         required: true
       - in: path
         name: package_name
-        description: Package name
+        description: The package name
         type: string
         required: true
         example: my-package
       - in: path
         name: package_version
-        description: Package version
+        description: The package version
         type: string
         required: true
         example: '1.0'
       - in: path
         name: package_username
-        description: Package username
+        description: The package username
         type: string
         required: true
         example: my-group+my-project
       - in: path
         name: package_channel
-        description: Package channel
+        description: The package channel
         type: string
         required: true
         example: stable
@@ -19838,6 +19838,7 @@ paths:
         required: true
       - in: path
         name: key_id
+        description: The ID of the client key
         type: integer
         format: int32
         required: true
@@ -27005,18 +27006,18 @@ paths:
         description: The ID or URL-encoded path of the project
         type: string
         required: true
-      - in: query
-        name: path
-        description: Package path
-        type: string
-        required: true
-        example: foo/bar/mypkg/1.0-SNAPSHOT
       - in: path
         name: file_name
         description: Package file name
         type: string
         required: true
         example: mypkg-1.0-SNAPSHOT.jar
+      - in: query
+        name: path
+        description: Package path
+        type: string
+        required: true
+        example: foo/bar/mypkg/1.0-SNAPSHOT
       responses:
         '200':
           description: Download the maven package file at a project level
@@ -28872,8 +28873,6 @@ paths:
           description: Approve merge request
           schema:
             "$ref": "#/definitions/API_Entities_MergeRequestApprovals"
-        '304':
-          description: Not modified
         '404':
           description: Not found
         '401':
@@ -28907,8 +28906,6 @@ paths:
           description: Unapprove a merge request
           schema:
             "$ref": "#/definitions/API_Entities_MergeRequestApprovals"
-        '304':
-          description: Not modified
         '404':
           description: Not found
         '401':
@@ -34612,8 +34609,8 @@ paths:
       parameters:
       - in: path
         name: id
-        type: integer
-        format: int32
+        description: The ID or URL-encoded path of the project
+        type: string
         required: true
       responses:
         '200':
@@ -34640,8 +34637,8 @@ paths:
       parameters:
       - in: path
         name: id
-        type: integer
-        format: int32
+        description: The ID or URL-encoded path of the project
+        type: string
         required: true
       - name: patchApiV4ProjectsIdJobTokenScope
         in: body
@@ -34670,6 +34667,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - in: path
+        name: id
+        description: The ID or URL-encoded path of the project
+        type: string
+        required: true
       - in: query
         name: page
         description: Current page number
@@ -34686,11 +34688,6 @@ paths:
         default: 20
         required: false
         example: 20
-      - in: path
-        name: id
-        type: integer
-        format: int32
-        required: true
       responses:
         '200':
           description: List all projects in a CI/CD job token allowlist
@@ -34752,6 +34749,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - in: path
+        name: id
+        description: The ID or URL-encoded path of the project
+        type: string
+        required: true
       - in: query
         name: page
         description: Current page number
@@ -34768,11 +34770,6 @@ paths:
         default: 20
         required: false
         example: 20
-      - in: path
-        name: id
-        type: integer
-        format: int32
-        required: true
       responses:
         '200':
           description: List all groups in a CI/CD job token allowlist
@@ -35271,16 +35268,16 @@ paths:
       produces:
       - application/x-tar
       parameters:
+      - in: path
+        name: id
+        description: The ID or URL-encoded path of the project
+        type: string
+        required: true
       - in: query
         name: wiki
         description: Set to true to receive the wiki repository
         type: boolean
         required: false
-      - in: path
-        name: id
-        type: integer
-        format: int32
-        required: true
       responses:
         '200':
           description: Download snapshot of a Git repository
@@ -35797,8 +35794,8 @@ paths:
       parameters:
       - in: path
         name: id
-        type: integer
-        format: int32
+        description: The ID or URL-encoded path of the project
+        type: string
         required: true
       responses:
         '201':
@@ -40460,17 +40457,17 @@ paths:
       produces:
       - application/json
       parameters:
+      - in: path
+        name: id
+        description: The ID or URL-encoded path of the group or project
+        type: string
+        required: true
       - in: query
         name: with_content
         description: Include pages' content
         type: boolean
         default: false
         required: false
-      - in: path
-        name: id
-        type: integer
-        format: int32
-        required: true
       responses:
         '200':
           description: List all wiki pages for a project
@@ -40494,8 +40491,8 @@ paths:
       parameters:
       - in: path
         name: id
-        type: integer
-        format: int32
+        description: The ID or URL-encoded path of the group or project
+        type: string
         required: true
       - name: postApiV4ProjectsIdWikis
         in: body
@@ -40524,6 +40521,11 @@ paths:
       - application/json
       parameters:
       - in: path
+        name: id
+        description: The ID or URL-encoded path of the group or project
+        type: string
+        required: true
+      - in: path
         name: slug
         description: The slug of a wiki page
         type: string
@@ -40539,11 +40541,6 @@ paths:
         type: boolean
         default: false
         required: false
-      - in: path
-        name: id
-        type: integer
-        format: int32
-        required: true
       responses:
         '200':
           description: Retrieve a wiki page for a project
@@ -40564,8 +40561,8 @@ paths:
       parameters:
       - in: path
         name: id
-        type: integer
-        format: int32
+        description: The ID or URL-encoded path of the group or project
+        type: string
         required: true
       - in: path
         name: slug
@@ -40598,14 +40595,14 @@ paths:
       - application/json
       parameters:
       - in: path
-        name: slug
-        description: The slug of a wiki page
+        name: id
+        description: The ID or URL-encoded path of the group or project
         type: string
         required: true
       - in: path
-        name: id
-        type: integer
-        format: int32
+        name: slug
+        description: The slug of a wiki page
+        type: string
         required: true
       responses:
         '204':
@@ -40629,8 +40626,8 @@ paths:
       parameters:
       - in: path
         name: id
-        type: integer
-        format: int32
+        description: The ID or URL-encoded path of the group or project
+        type: string
         required: true
       - name: postApiV4ProjectsIdWikisAttachments
         in: body
@@ -43015,25 +43012,25 @@ paths:
       parameters:
       - in: path
         name: package_name
-        description: Package name
+        description: The package name
         type: string
         required: true
         example: my-package
       - in: path
         name: package_version
-        description: Package version
+        description: The package version
         type: string
         required: true
         example: '1.0'
       - in: path
         name: package_username
-        description: Package username
+        description: The package username
         type: string
         required: true
         example: my-group+my-project
       - in: path
         name: package_channel
-        description: Package channel
+        description: The package channel
         type: string
         required: true
         example: stable
@@ -43949,18 +43946,18 @@ paths:
       produces:
       - application/json
       parameters:
-      - in: query
-        name: path
-        description: Package path
-        type: string
-        required: true
-        example: foo/bar/mypkg/1.0-SNAPSHOT
       - in: path
         name: file_name
         description: Package file name
         type: string
         required: true
         example: mypkg-1.0-SNAPSHOT.jar
+      - in: query
+        name: path
+        description: Package path
+        type: string
+        required: true
+        example: foo/bar/mypkg/1.0-SNAPSHOT
       responses:
         '200':
           description: Download the maven package file at instance level
@@ -44154,12 +44151,12 @@ paths:
         required: true
       - in: path
         name: module_name
-        description: Name of the module
+        description: The module name
         type: string
         required: true
       - in: path
         name: module_system
-        description: System of the module
+        description: The module system (provider)
         type: string
         required: true
       responses:
@@ -44188,12 +44185,12 @@ paths:
         required: true
       - in: path
         name: module_name
-        description: Name of the module
+        description: The module name
         type: string
         required: true
       - in: path
         name: module_system
-        description: System of the module
+        description: The module system (provider)
         type: string
         required: true
       responses:
@@ -44220,12 +44217,12 @@ paths:
         required: true
       - in: path
         name: module_name
-        description: Name of the module
+        description: The module name
         type: string
         required: true
       - in: path
         name: module_system
-        description: System of the module
+        description: The module system (provider)
         type: string
         required: true
       responses:
@@ -44254,12 +44251,12 @@ paths:
         required: true
       - in: path
         name: module_name
-        description: Name of the module
+        description: The module name
         type: string
         required: true
       - in: path
         name: module_system
-        description: System of the module
+        description: The module system (provider)
         type: string
         required: true
       - in: query
@@ -44291,12 +44288,12 @@ paths:
         required: true
       - in: path
         name: module_name
-        description: Name of the module
+        description: The module name
         type: string
         required: true
       - in: path
         name: module_system
-        description: System of the module
+        description: The module system (provider)
         type: string
         required: true
       - in: query
@@ -44330,12 +44327,12 @@ paths:
         required: true
       - in: path
         name: module_name
-        description: Name of the module
+        description: The module name
         type: string
         required: true
       - in: path
         name: module_system
-        description: System of the module
+        description: The module system (provider)
         type: string
         required: true
       - in: query
@@ -45278,8 +45275,8 @@ paths:
       parameters:
       - in: path
         name: name
-        type: integer
-        format: int32
+        description: The name of the feature flag
+        type: string
         required: true
       - name: postApiV4FeaturesName
         in: body
@@ -45309,8 +45306,8 @@ paths:
       parameters:
       - in: path
         name: name
-        type: integer
-        format: int32
+        description: The name of the feature flag
+        type: string
         required: true
       responses:
         '204':

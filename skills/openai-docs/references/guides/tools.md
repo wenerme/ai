@@ -6,7 +6,91 @@ When generating model responses or building agents, you can extend capabilities 
 
 <div data-content-switcher-pane data-value="web-search">
     <div class="hidden">Web search</div>
-    </div>
+    Include web search results for the model response
+
+```javascript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const response = await client.responses.create({
+    model: "gpt-5.6",
+    tools: [
+        { type: "web_search" },
+    ],
+    input: "What was a positive news story from today?",
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.6",
+    tools=[{"type": "web_search"}],
+    input="What was a positive news story from today?"
+)
+
+print(response.output_text)
+```
+
+```bash
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+        "model": "gpt-5.6",
+        "tools": [{"type": "web_search"}],
+        "input": "what was a positive news story from today?"
+}'
+```
+
+```cli
+openai responses create \
+  --model gpt-5.6 \
+  --raw-output \
+  --transform 'output.#(type=="message").content.0.text' <<'YAML'
+tools:
+  - type: web_search
+input: What was a positive news story from today?
+YAML
+```
+
+```csharp
+using OpenAI.Responses;
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+
+ResponseCreationOptions options = new();
+options.Tools.Add(ResponseTool.CreateWebSearchTool());
+
+OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
+    ResponseItem.CreateUserMessageItem([
+        ResponseContentPart.CreateInputTextPart("What was a positive news story from today?"),
+    ]),
+], options);
+
+Console.WriteLine(response.GetOutputText());
+```
+
+```ruby
+require "openai"
+
+openai = OpenAI::Client.new
+
+response = openai.responses.create(
+  model: "gpt-5.6",
+  tools: [{type: "web_search"}],
+  input: "What was a positive news story from today?"
+)
+
+puts(response.output_text)
+```
+
+  </div>
   <div data-content-switcher-pane data-value="file-search" hidden>
     <div class="hidden">File search</div>
     Search your files in a response
@@ -59,6 +143,25 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 ], options);
 
 Console.WriteLine(response.GetOutputText());
+```
+
+```ruby
+require "openai"
+
+openai = OpenAI::Client.new
+
+response = openai.responses.create(
+  model: "gpt-5.6",
+  input: "What is deep research by OpenAI?",
+  tools: [
+    {
+      type: "file_search",
+      vector_store_ids: ["<vector_store_id>"]
+    }
+  ]
+)
+
+puts(response)
 ```
 
   </div>
@@ -180,7 +283,185 @@ console.log(response.output);
   </div>
   <div data-content-switcher-pane data-value="function-calling" hidden>
     <div class="hidden">Function calling</div>
-    </div>
+    Call your own function
+
+```javascript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const tools = [
+    {
+        type: "function",
+        name: "get_weather",
+        description: "Get current temperature for a given location.",
+        parameters: {
+            type: "object",
+            properties: {
+                location: {
+                    type: "string",
+                    description: "City and country e.g. Bogotá, Colombia",
+                },
+            },
+            required: ["location"],
+            additionalProperties: false,
+        },
+        strict: true,
+    },
+];
+
+const response = await client.responses.create({
+    model: "gpt-5.6",
+    input: [
+        { role: "user", content: "What is the weather like in Paris today?" },
+    ],
+    tools,
+});
+
+console.log(response.output[0].to_json());
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+tools = [
+    {
+        "type": "function",
+        "name": "get_weather",
+        "description": "Get current temperature for a given location.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "City and country e.g. Bogotá, Colombia",
+                }
+            },
+            "required": ["location"],
+            "additionalProperties": False,
+        },
+        "strict": True,
+    },
+]
+
+response = client.responses.create(
+    model="gpt-5.6",
+    input=[
+        {"role": "user", "content": "What is the weather like in Paris today?"},
+    ],
+    tools=tools,
+)
+
+print(response.output[0].to_json())
+```
+
+```csharp
+using System.Text.Json;
+using OpenAI.Responses;
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+
+ResponseCreationOptions options = new();
+options.Tools.Add(ResponseTool.CreateFunctionTool(
+        functionName: "get_weather",
+        functionDescription: "Get current temperature for a given location.",
+        functionParameters: BinaryData.FromObjectAsJson(new
+        {
+            type = "object",
+            properties = new
+            {
+                location = new
+                {
+                    type = "string",
+                    description = "City and country e.g. Bogotá, Colombia"
+                }
+            },
+            required = new[] { "location" },
+            additionalProperties = false
+        }),
+        strictModeEnabled: true
+    )
+);
+
+OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
+    ResponseItem.CreateUserMessageItem([
+        ResponseContentPart.CreateInputTextPart("What is the weather like in Paris today?")
+    ])
+], options);
+
+Console.WriteLine(JsonSerializer.Serialize(response.OutputItems[0]));
+```
+
+```bash
+curl -X POST https://api.openai.com/v1/responses \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.6",
+    "input": [
+      {"role": "user", "content": "What is the weather like in Paris today?"}
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "name": "get_weather",
+        "description": "Get current temperature for a given location.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "City and country e.g. Bogotá, Colombia"
+            }
+          },
+          "required": ["location"],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ]
+  }'
+```
+
+```ruby
+require "openai"
+
+openai = OpenAI::Client.new
+
+tools = [
+  {
+    type: "function",
+    name: "get_weather",
+    description: "Get current temperature for a given location.",
+    parameters: {
+      type: "object",
+      properties: {
+        location: {
+          type: "string",
+          description: "City and country e.g. Bogotá, Colombia"
+        }
+      },
+      required: ["location"],
+      additionalProperties: false
+    },
+    strict: true
+  }
+]
+
+response = openai.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {role: "user", content: "What is the weather like in Paris today?"}
+  ],
+  tools: tools
+)
+
+puts(response.output.first.to_json)
+```
+
+  </div>
   <div data-content-switcher-pane data-value="remote-mcp" hidden>
     <div class="hidden">Remote MCP</div>
     Call a remote MCP server
@@ -196,7 +477,7 @@ curl https://api.openai.com/v1/responses \
         "type": "mcp",
         "server_label": "dmcp",
         "server_description": "A Dungeons and Dragons MCP server to assist with dice rolling.",
-        "server_url": "https://dmcp-server.deno.dev/sse",
+        "server_url": "https://dmcp-server.deno.dev/mcp",
         "require_approval": "never"
       }
     ],
@@ -215,7 +496,7 @@ const resp = await client.responses.create({
       type: "mcp",
       server_label: "dmcp",
       server_description: "A Dungeons and Dragons MCP server to assist with dice rolling.",
-      server_url: "https://dmcp-server.deno.dev/sse",
+      server_url: "https://dmcp-server.deno.dev/mcp",
       require_approval: "never",
     },
   ],
@@ -237,7 +518,7 @@ resp = client.responses.create(
             "type": "mcp",
             "server_label": "dmcp",
             "server_description": "A Dungeons and Dragons MCP server to assist with dice rolling.",
-            "server_url": "https://dmcp-server.deno.dev/sse",
+            "server_url": "https://dmcp-server.deno.dev/mcp",
             "require_approval": "never",
         },
     ],
@@ -256,7 +537,7 @@ OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 ResponseCreationOptions options = new();
 options.Tools.Add(ResponseTool.CreateMcpTool(
     serverLabel: "dmcp",
-    serverUri: new Uri("https://dmcp-server.deno.dev/sse"),
+    serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
     toolCallApprovalPolicy: new McpToolCallApprovalPolicy(GlobalMcpToolCallApprovalPolicy.NeverRequireApproval)
 ));
 
@@ -267,6 +548,28 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 ], options);
 
 Console.WriteLine(response.GetOutputText());
+```
+
+```ruby
+require "openai"
+
+openai = OpenAI::Client.new
+
+response = openai.responses.create(
+  model: "gpt-5.6",
+  tools: [
+    {
+      type: "mcp",
+      server_label: "dmcp",
+      server_description: "A Dungeons and Dragons MCP server to assist with dice rolling.",
+      server_url: "https://dmcp-server.deno.dev/mcp",
+      require_approval: "never"
+    }
+  ],
+  input: "Roll 2d4+1"
+)
+
+puts(response.output_text)
 ```
 
   </div>

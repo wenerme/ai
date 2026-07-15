@@ -171,8 +171,8 @@ using the top-level `x_search_filter` parameter:
 
 | Parameter                    | Type      | Description                                                 |
 | ---------------------------- | --------- | ----------------------------------------------------------- |
-| `allowed_x_handles`          | string\[] | Only include posts from these handles (max 10)              |
-| `excluded_x_handles`         | string\[] | Exclude posts from these handles (max 10)                   |
+| `allowed_x_handles`          | string\[] | Only include posts from these handles (max 20)              |
+| `excluded_x_handles`         | string\[] | Exclude posts from these handles (max 20)                   |
 | `from_date`                  | string    | Start date for search range (ISO 8601, e.g. `"2025-01-01"`) |
 | `to_date`                    | string    | End date for search range (ISO 8601, e.g. `"2025-12-31"`)   |
 | `enable_image_understanding` | boolean   | Enable analysis of images within posts                      |
@@ -266,7 +266,7 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 
 ### Parallel
 
-[Parallel](https://parallel.ai) is a search engine that supports domain filtering and uses OpenRouter credits at \$0.005 per request. Includes up to 10 results in a request, then \$0.001 per additional result.
+[Parallel](https://parallel.ai) is a search engine that supports domain filtering. OpenRouter uses Parallel's Turbo mode at \$0.001 per request, including up to 10 results, then \$0.001 per additional result.
 
 ```json lines theme={null}
 {
@@ -286,7 +286,7 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 
 * **Native search**: Pricing is passed through directly from the provider (see provider-specific pricing info below)
 * **Exa search**: Uses OpenRouter credits at \$0.005 per request. Includes up to 10 results, then \$0.001 per additional result
-* **Parallel search**: Uses OpenRouter credits at \$0.005 per request. Includes up to 10 results in a request, then \$0.001 per additional result
+* **Parallel search**: Uses OpenRouter credits at \$0.001 per request. Includes up to 10 results in a request, then \$0.001 per additional result
 * **Perplexity search**: Uses OpenRouter credits at \$0.005 per request
 * **Firecrawl search**: Uses your Firecrawl credits directly (2 credits per 10 results + 5 per result scraped with highlights). Refill at [Firecrawl.dev](https://www.firecrawl.dev)
 
