@@ -46,10 +46,10 @@ the heading to use it somewhere else.
 The anchors are generated from the content of the heading according to the following rules:
 
 1. All text is converted to lowercase.
-1. All non-word text (such as punctuation or HTML) is removed.
+1. All characters except letters, numbers, hyphens, and underscores are removed.
 1. All spaces are converted to hyphens.
-1. If a heading with the same anchor has already been generated, a unique incrementing
-   number is appended, starting at 1.
+1. If a heading with the same anchor has already been generated,
+   a unique incrementing number is appended, starting at 1.
 
 Example:
 
@@ -60,7 +60,7 @@ Example:
 ** This heading has spaces in it
 *** This heading has spaces in it
 ** This heading has 3.5 in it (& parentheses)
-** This heading has  multiple spaces and - hyphens
+** This heading has  multiple spaces and - hyphens_and_underscores
 ```
 
 Would generate the following heading anchors:
@@ -71,11 +71,11 @@ Would generate the following heading anchors:
 1. `#this-heading-has-spaces-in-it-1`
 1. `#this-heading-has-spaces-in-it-2`
 1. `#this-heading-has-35-in-it--parentheses`
-1. `#this-heading-has--multiple-spaces-and---hyphens`
+1. `#this-heading-has--multiple-spaces-and---hyphens_and_underscores`
 
 In a snippet, headings also get a prefix derived from the filename,
 to prevent anchor collisions across multiple files.
-For example, an `* TL;DR` heading in a file named `README.org`
+For example, a `* TL;DR` heading in a file named `README.org`
 gets the anchor `#readme-tldr` instead of `#tldr`.
 
 ## Lists
@@ -202,7 +202,7 @@ You can create links in multiple ways:
 - [[https://example.com][This line shows an inline-style link]]
 - [[permissions.md][This line shows a link to a file in the same directory]]
 - [[../_index.md][This line shows a relative link to a file one directory higher]]
-- [[#headings][This line links to a heading on the same page, using a `#` and the heading ID]]
+- [[#headings][This line links to a heading on the same page, using a `#` and the heading anchor]]
 ```
 
 When rendered, the example looks similar to:
@@ -210,7 +210,7 @@ When rendered, the example looks similar to:
 > - [This line shows an inline-style link](https://example.com)
 > - [This line shows a link to a file in the same directory](permissions.md)
 > - [This line shows a relative link to a file one directory higher](../_index.md)
-> - [This line links to a heading on the same page, using a `#` and the heading ID](#headings)
+> - [This line links to a heading on the same page, using a `#` and the heading anchor](#headings)
 
 ### URL auto-linking
 

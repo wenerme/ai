@@ -19,6 +19,7 @@ Advanced patterns and examples for sending emails with Cloudflare Email Service.
 * [ Magic link authentication ](https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/)
 * [ Email attachments ](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/)
 * [ Send email over SMTP ](https://developers.cloudflare.com/email-service/examples/email-sending/smtp/)
+* [ Sync recipient records ](https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/#page","headline":"Email sending · Cloudflare Email Service docs","description":"Advanced patterns and examples for sending transactional emails with Email Service.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

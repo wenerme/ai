@@ -35,7 +35,7 @@ Expand table
 | **Enter an API token.**                                                                                           | Provide a valid Dynatrace API token. Refer to the [Get an API key from Dynatrace](/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace) section for instructions.                                                                                                          |
 | **Enter a domain URL.**                                                                                           | When using **Managed Cluster** API type, you must provide the domain of your Dynatrace server (e.g., `dynatrace.yourcompany.com`).                                                                                                                                                                               |
 | **invalid API Token**                                                                                             | The API token field is empty or contains only whitespace. Enter a valid API token.                                                                                                                                                                                                                               |
-| **invalid TLS certificate**                                                                                       | You enabled **With CA Cert** but did not provide a CA certificate. Either provide the certificate or disable the option.                                                                                                                                                                                         |
+| **invalid TLS certificate**                                                                                       | You enabled **Add self-signed certificate** but did not provide a CA certificate. Either provide the certificate or disable the option.                                                                                                                                                                          |
 | **failed to parse TLS CA PEM certificate**                                                                        | The CA certificate you provided is not in valid PEM format. Ensure the certificate begins with `-----BEGIN CERTIFICATE-----` and ends with `-----END CERTIFICATE-----`.                                                                                                                                          |
 
 ## Connection errors
@@ -130,8 +130,8 @@ TLS errors occur when there are issues with SSL/TLS certificates during secure c
 
 If you’re connecting to a Dynatrace instance with a self-signed certificate or a certificate signed by an internal CA:
 
-1. Enable **Skip TLS Verify** to bypass certificate validation (not recommended for production).
-2. Or, enable **With CA Cert** and provide your CA certificate in PEM format:
+1. Enable **Skip TLS certificate validation** to bypass certificate validation (not recommended for production).
+2. Or, enable **Add self-signed certificate** and provide your CA certificate in PEM format:
 
 [Copy code to clipboard] Copy
 

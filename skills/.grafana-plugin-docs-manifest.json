@@ -551,8 +551,8 @@
   },
   "grafana-dynatrace-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/configure.md",
-    "size": 13263,
-    "updatedAt": "2026-06-25T05:41:57.182Z"
+    "size": 14732,
+    "updatedAt": "2026-07-15T12:15:17.349Z"
   },
   "grafana-dynatrace-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest.md",
@@ -571,8 +571,8 @@
   },
   "grafana-dynatrace-datasource/troubleshoot.md": {
     "url": "https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot.md",
-    "size": 17525,
-    "updatedAt": "2026-06-25T05:41:58.666Z"
+    "size": 17556,
+    "updatedAt": "2026-07-15T12:15:18.071Z"
   },
   "grafana-exploretraces-app/access.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/access.md",

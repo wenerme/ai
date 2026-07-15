@@ -131,10 +131,15 @@ The following settings apply to all API types:
 - **Dynatrace API token** - Enter your Dynatrace API token. At minimum, it must have `metrics.read` and `entities.read` permissions. Refer to [Get an API key from Dynatrace](#get-an-api-key-from-dynatrace) for instructions on creating the token and required scopes for each query type.
 - **Dynatrace Platform token** - *(Optional)* Enter your Dynatrace Platform token. This token is required for querying data stored in Dynatrace Grail. Refer to [Get a Platform token from Dynatrace](#get-a-platform-token-from-dynatrace) for instructions on creating the token and required scopes.
 - **Timeout** - The timeout, in seconds, for the HTTP client. The default is `30`.
-- **Skip TLS Verify** - Enable this option to skip SSL/TLS certificate validation when connecting to the Dynatrace API endpoint. Use with caution.
-- **With CA Cert** - Enable this option to provide a CA certificate for TLS verification.
+- **Add self-signed certificate** - Enable this option to provide your own CA certificate for TLS verification.
 
-  - **CA Cert** - Paste your CA certificate content.
+  - **CA Certificate** - Paste your CA certificate content.
+- **TLS Client Authentication** - Enable this option to configure TLS client authentication using a client certificate and key.
+
+  - **ServerName** - Used to verify the hostname on the returned certificates unless **Skip TLS certificate validation** is enabled.
+  - **Client Certificate** - Paste your client certificate content.
+  - **Client Key** - Paste your client key content.
+- **Skip TLS certificate validation** - Enable this option to skip SSL/TLS certificate validation when connecting to the Dynatrace API endpoint. Use with caution.
 
 ## Configure the data source with provisioning
 
@@ -161,6 +166,8 @@ datasources:
       domain: domain # example: yd8888.managed-sprint.dynalabs.io
       tlsSkipVerify: false
       tlsAuthWithCACert: true
+      tlsAuth: true
+      serverName: dynatrace.example.com
       httpClientTimeout: 360
     secureJsonData:
       apiToken: API token
@@ -170,6 +177,16 @@ datasources:
         1221323123213123231231232+g6DAzj/11231
         sdsaas==
         -----END CERTIFICATE-----
+      tlsClientCert: |
+        -----BEGIN CERTIFICATE-----
+        1221323123213123231231232+g6DAzj/11231
+        sdsaas==
+        -----END CERTIFICATE-----
+      tlsClientKey: |
+        -----BEGIN RSA PRIVATE KEY-----
+        1221323123213123231231232+g6DAzj/11231
+        sdsaas==
+        -----END RSA PRIVATE KEY-----
 ```
 
 ## Configure Dynatrace with Terraform
@@ -254,11 +271,15 @@ resource "grafana_data_source" "dynatrace_advanced" {
     httpClientTimeout = 30
     tlsSkipVerify     = false
     tlsAuthWithCACert = true
+    tlsAuth           = true
+    serverName        = var.dynatrace_server_name
   })
 
   secure_json_data_encoded = jsonencode({
     apiToken      = var.dynatrace_api_token
     tlsCACert     = var.dynatrace_ca_cert
+    tlsClientCert = var.dynatrace_tls_client_cert
+    tlsClientKey  = var.dynatrace_tls_client_key
   })
 }
 
@@ -307,6 +328,26 @@ variable "dynatrace_platform_token" {
 
 variable "dynatrace_ca_cert" {
   description = "CA Certificate for TLS"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "dynatrace_server_name" {
+  description = "TLS Server Name for hostname verification"
+  type        = string
+  default     = ""
+}
+
+variable "dynatrace_tls_client_cert" {
+  description = "TLS Client Certificate for TLS client authentication"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "dynatrace_tls_client_key" {
+  description = "TLS Client Key for TLS client authentication"
   type        = string
   sensitive   = true
   default     = ""

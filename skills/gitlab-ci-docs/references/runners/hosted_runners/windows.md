@@ -55,7 +55,7 @@ The installed .NET Core SDK version and the specific version of Visual Studio Bu
 together determine the pre-installed .NET runtime versions.
 
 The following code runs on a schedule in
-[PowerShell Pipelines on GitLab CI](https://gitlab.com/guided-explorations/microsoft/powershell/powershell-pipelines-on-gitlab-ci/-/pipeline)
+[PowerShell Pipelines on GitLab CI](https://gitlab.com/guided-explorations/microsoft/powershell/powershell-pipelines-on-gitlab-ci/-/pipelines)
 and produces this example list:
 
 For all three runtimes (`Microsoft.AspNetCore.App`, `Microsoft.NETCore.App`, `Microsoft.WindowsDesktop.App`), the available versions are:
@@ -67,7 +67,7 @@ For all three runtimes (`Microsoft.AspNetCore.App`, `Microsoft.NETCore.App`, `Mi
 .NET Framework is version 4.8.04161.
 
 To discover the current state, run the following code or look at a recent log of
-[PowerShell Pipelines on GitLab CI](https://gitlab.com/guided-explorations/microsoft/powershell/powershell-pipelines-on-gitlab-ci/-/pipeline):
+[PowerShell Pipelines on GitLab CI](https://gitlab.com/guided-explorations/microsoft/powershell/powershell-pipelines-on-gitlab-ci/-/pipelines):
 
 ```powershell
 
@@ -94,14 +94,36 @@ if (Test-Path $ndp) {
 
 ## Docker runtimes
 
-The latest Docker version is installed when the image build runs and you can use literal Docker commands in shell runner jobs.
+The latest Docker version (as of the image build date) is installed when the image build runs and you can use literal Docker commands in shell runner jobs.
+
+Start the Docker service with the following code before running Docker commands.
 
 To discover versions, run the following code or look at pipelines from
-[PowerShell Pipelines on GitLab CI](https://gitlab.com/guided-explorations/microsoft/powershell/powershell-pipelines-on-gitlab-ci/-/pipeline):
+[PowerShell Pipelines on GitLab CI](https://gitlab.com/guided-explorations/microsoft/powershell/powershell-pipelines-on-gitlab-ci/-/pipelines):
 
 ```powershell
-      write-host "Docker client and service version:"
-      docker version
+      $svc = Get-Service -Name docker -ErrorAction SilentlyContinue
+
+      if ($null -eq $svc) {
+          Write-Host "Docker service is not installed."
+      }
+      else {
+          if ($svc.Status -eq 'Stopped') {
+              Write-Host "Docker service is stopped; starting it..."
+              Start-Service -Name docker
+              (Get-Service -Name docker).WaitForStatus('Running', '00:00:30')
+              Write-Host "Docker service is now $((Get-Service -Name docker).Status)."
+          }
+          else {
+              Write-Host "Docker service is already $($svc.Status); no action taken."
+          }
+
+          Write-Host "`n=== Docker client and service version ==="
+          if ((Get-Service -Name docker).Status -eq 'Running') {
+              docker info
+              docker version
+          }
+      }
 ```
 
 ## Supported shell

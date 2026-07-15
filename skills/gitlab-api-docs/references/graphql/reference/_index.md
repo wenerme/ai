@@ -11511,6 +11511,31 @@ Fields:
 | <a id="mutation-mergerequestrequestchanges-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-mergerequestrequestchanges-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Merge request after mutation. |
 
+### `Mutation.mergeRequestResyncSecurityPolicies`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+Triggers a re-evaluation of the security approval policies applicable to the merge request.
+
+Input type: `MergeRequestResyncSecurityPoliciesInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-mergerequestresyncsecuritypolicies-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-mergerequestresyncsecuritypolicies-iid"></a>`iid` | [`String!`](#string) | IID of the merge request to re-evaluate. |
+| <a id="mutation-mergerequestresyncsecuritypolicies-projectpath"></a>`projectPath` | [`ID!`](#id) | Project the merge request belongs to. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-mergerequestresyncsecuritypolicies-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-mergerequestresyncsecuritypolicies-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-mergerequestresyncsecuritypolicies-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Merge request after the re-evaluation was scheduled. |
+
 ### `Mutation.mergeRequestReviewerRereview`
 
 Input type: `MergeRequestReviewerRereviewInput`
@@ -33349,10 +33374,48 @@ Fields:
 | <a id="cdapplication-name"></a>`name` | [`String!`](#string) | Name of the application. |
 | <a id="cdapplication-organization"></a>`organization` | [`Organization`](#organization) | Organization the application belongs to. |
 | <a id="cdapplication-rollouts"></a>`rollouts`  | [`CdRolloutConnection`](#cdrolloutconnection) | Introduced in GitLab 19.2. Status: Experiment. Rollouts of the application. |
-| <a id="cdapplication-services"></a>`services`  | [`CdServiceConnection`](#cdserviceconnection) | Introduced in GitLab 19.2. Status: Experiment. Services belonging to the application. |
 | <a id="cdapplication-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the application was last updated. |
 | <a id="cdapplication-userpermissions"></a>`userPermissions`  | [`CdApplicationPermissions`](#cdapplicationpermissions) | Introduced in GitLab 19.2. Status: Experiment. Permissions of the current user for the application. |
-| <a id="cdapplication-versionsets"></a>`versionSets`  | [`CdVersionSetConnection`](#cdversionsetconnection) | Introduced in GitLab 19.2. Status: Experiment. Version sets of the application. |
+
+#### Fields with arguments
+
+##### `CdApplication.services`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+Services belonging to the application.
+
+Returns [`CdServiceConnection`](#cdserviceconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cdapplication-services-search"></a>`search` | [`String`](#string) | Search services by name or description. |
+
+##### `CdApplication.versionSets`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+Version sets of the application.
+
+Returns [`CdVersionSetConnection`](#cdversionsetconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cdapplication-versionsets-search"></a>`search` | [`String`](#string) | Search version sets by name. |
 
 ### `CdApplicationFlowDefinition`
 
@@ -33462,6 +33525,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="cdenvironment-applicationscount"></a>`applicationsCount`  | [`Int!`](#int) | Introduced in GitLab 19.3. Status: Experiment. Number of applications with services in the environment. |
 | <a id="cdenvironment-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the environment was created. |
 | <a id="cdenvironment-description"></a>`description` | [`String`](#string) | Description of the environment. |
 | <a id="cdenvironment-environmentdriverbindings"></a>`environmentDriverBindings`  | [`CdEnvironmentDriverBindingConnection`](#cdenvironmentdriverbindingconnection) | Introduced in GitLab 19.2. Status: Experiment. Driver bindings of the environment. |
@@ -45271,6 +45335,7 @@ Fields:
 | <a id="mergerequest-divergedfromtargetbranch"></a>`divergedFromTargetBranch` | [`Boolean!`](#boolean) | Indicates if the source branch is behind the target branch. |
 | <a id="mergerequest-downvotes"></a>`downvotes` | [`Int!`](#int) | Number of downvotes for the merge request. |
 | <a id="mergerequest-draft"></a>`draft` | [`Boolean!`](#boolean) | Indicates if the merge request is a draft. |
+| <a id="mergerequest-duodependencybumpbreakingchangesavailable"></a>`duoDependencyBumpBreakingChangesAvailable`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether the GitLab Duo resolve dependency bump breaking changes flow can be triggered for the merge request. |
 | <a id="mergerequest-duoworkflows"></a>`duoWorkflows`  | [`DuoWorkflowConnection`](#duoworkflowconnection) | Introduced in GitLab 18.10. Status: Experiment. Duo Workflow sessions associated with the merge request. |
 | <a id="mergerequest-forceremovesourcebranch"></a>`forceRemoveSourceBranch` | [`Boolean`](#boolean) | Indicates if the project settings will lead to source branch deletion after merge. |
 | <a id="mergerequest-hasci"></a>`hasCi` | [`Boolean!`](#boolean) | Indicates if the merge request has CI. |
@@ -48965,6 +49030,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="organization-cdenvironments-search"></a>`search` | [`String`](#string) | Search environments by name or description. |
 | <a id="organization-cdenvironments-tier"></a>`tier` | [`CdEnvironmentTier`](#cdenvironmenttier) | Filter environments by tier. |
 
 ##### `Organization.cdRollout`
