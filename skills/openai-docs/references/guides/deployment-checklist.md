@@ -3,14 +3,19 @@
 | Contents                                                                        | Expected impact                     |
 | ------------------------------------------------------------------------------- | ----------------------------------- |
 | [Use the Responses API](#use-the-responses-api)                                 | Quality, cost, latency, reliability |
+| [Choose a GPT-5.6 model](#choose-a-gpt-56-model)                                | Quality, cost, latency              |
 | [Set up `reasoning.effort`](#set-up-reasoningeffort)                            | Quality, cost, latency              |
 | [Set up `text.verbosity`](#set-up-textverbosity)                                | Quality, cost, latency              |
 | [Set up the assistant `phase` parameter](#set-up-the-assistant-phase-parameter) | Quality, cost                       |
 | [Use `tool_search`](#use-tool_search)                                           | Cost, latency                       |
+| [Use Programmatic Tool Calling](#use-programmatic-tool-calling)                 | Quality, cost, latency              |
+| [Use Multi-agent for parallel work](#use-multi-agent-for-parallel-work)         | Quality, cost, latency              |
 | [Leverage built-in tools](#leverage-built-in-tools)                             | Quality                             |
 | [Leverage compaction](#leverage-compaction)                                     | Cost                                |
 | [Use `prompt_cache_key`](#use-prompt_cache_key)                                 | Latency, cost                       |
 | [Use `reasoning.encrypted_content`](#use-reasoningencrypted_content)            | Quality, latency                    |
+| [Set image detail intentionally](#set-image-detail-intentionally)               | Quality, cost, latency              |
+| [Send a safety identifier](#send-a-safety-identifier)                           | Safety, reliability                 |
 | [Use `background=True`](#use-backgroundtrue)                                    | Resumability                        |
 | [Use WebSocket mode](#use-websocket-mode)                                       | Latency                             |
 
@@ -21,21 +26,42 @@
 API and the best place to access the newest model behavior, built-in tools,
 stateful workflows, and agent features.
 
+## Choose a GPT-5.6 model
+
+Choose a [GPT-5.6 model](https://developers.openai.com/api/docs/guides/latest-model) for the workload instead
+of routing every request to the most capable tier. Use `gpt-5.6` or
+`gpt-5.6-sol` for frontier capability, `gpt-5.6-terra` for strong performance
+at a lower price, and `gpt-5.6-luna` for efficient, high-volume workloads.
+
+When migrating, preserve the current model's workload role and effective
+reasoning effort for the first comparison. Run representative evals before
+changing prompts or adding new capabilities. Compare task success, latency,
+input, output, reasoning, and cache-write tokens, and cost per successful task.
+
 ## Set up `reasoning.effort`
 
 Use `reasoning.effort` to decide how much thinking the model should do before it
 answers.
 
-For `gpt-5.5`, the supported values are `none`, `low`, `medium`, `high`, and
-`xhigh`. The default is `medium`. Lower effort is faster and uses fewer
-reasoning tokens. Higher effort gives the model more time for planning,
-debugging, synthesis, and multi-step tradeoffs. The right value depends on the
-**task**, not just the model.
+For GPT-5.6 models, the supported values are `none`, `low`, `medium`, `high`,
+`xhigh`, and `max`. The default is `medium`. Lower effort is faster and uses
+fewer reasoning tokens. Higher effort gives the model more time for planning,
+debugging, synthesis, and multi-step tradeoffs.
 
 Use `low` when the job is mostly extraction, routing, classification, or a
 simple rewrite. Use `medium` or `high` when the model needs to diagnose a
-problem, compare options, write a plan, or reason through code. Reserve `xhigh`
-for cases where your evals show the extra latency is worth it.
+problem, compare options, write a plan, or reason through code. Use `xhigh` or
+`max` only when representative evals show that the quality gain justifies the
+extra latency and cost. When migrating from GPT-5.5 or GPT-5.4, start with the
+current effort and compare the same setting with one level lower. GPT-5.6 can
+often maintain or improve quality with fewer reasoning tokens, so the lower
+setting may also reduce latency and cost.
+
+For the hardest quality-first workloads, also compare
+[`reasoning.mode: "pro"`](https://developers.openai.com/api/docs/guides/reasoning#reasoning-mode) with
+standard mode at the same effort. Reasoning mode and effort are independent.
+Pro mode can improve reliability by applying more model work before returning a
+single final answer, but it increases latency and token usage.
 
 Tune reasoning effort for the task
 
@@ -54,8 +80,8 @@ const prompt = [
 ].join("\n");
 
 const response = await openai.responses.create({
-  model: "gpt-5.5",
-  reasoning: { effort: "high" },
+  model: "gpt-5.6",
+  reasoning: { effort: "xhigh", mode: "pro" },
   input: prompt,
 });
 
@@ -77,8 +103,8 @@ Identify the likeliest root cause and the smallest safe fix.
 """
 
 response = client.responses.create(
-    model="gpt-5.5",
-    reasoning={"effort": "high"},
+    model="gpt-5.6",
+    reasoning={"effort": "xhigh", "mode": "pro"},
     input=prompt,
 )
 
@@ -97,6 +123,12 @@ generates less and returns output faster.
 For coding, `medium` and `high` tend to produce longer, more organized output
 with clearer structure. `low` keeps the answer tighter and more minimal.
 
+GPT-5.6 tends to be more concise by default than GPT-5.5. When migrating, check
+whether broad instructions like "Be concise" still help. In some cases, they may
+make responses too brief. Keep them only when they still help, and prefer using
+`text.verbosity` to control the default level of detail; then use the prompt to
+specify required content, structure, and a more specific length, if applicable.
+
 Set lower verbosity for compact output
 
 ```javascript
@@ -113,7 +145,7 @@ const incident = [
 ].join("\n");
 
 const response = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   text: { verbosity: "low" },
   input: incident,
 });
@@ -127,7 +159,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     text={"verbosity": "low"},
     input="""
     Summarize this incident for the next on-call engineer.
@@ -178,16 +210,15 @@ Assistant final answer message
 
 This is useful in long-running or tool-heavy workflows where the assistant may
 produce visible progress updates before it finishes. When you send that history
-back to the model, preserve `phase` on assistant messages so the model can tell
-which messages are progress updates and which message is the final result.
-
-**Preserve and resend `phase`** on assistant messages on follow-up requests for
-new models like `gpt-5.3-codex` and later. It helps address early stopping,
-ensuring the agent runs until it reaches the final answer.
+back on follow-up requests for `gpt-5.3-codex` and later models,
+**preserve and resend `phase`** on assistant messages so the model can distinguish
+progress updates from the final result. This helps reduce early stopping, making
+the agent more likely to continue until it reaches the final answer.
 
 ## Use `tool_search`
 
-Instead of loading the full tool catalog into every request, add
+Instead of loading the full tool catalog into every request, use
+[tool search](https://developers.openai.com/api/docs/guides/tools-tool-search): add
 `{"type": "tool_search"}` and mark expensive tool definitions with
 `defer_loading: true`. The model can then load the subset it needs at runtime.
 At request start, the model only sees the search tool name and description. If
@@ -222,51 +253,61 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-const billingLookupInvoice = {
-  type: "function",
-  name: "billing.lookup_invoice",
-  description: "Look up invoice state, taxes, credits, and payment attempts.",
-  parameters: {
-    type: "object",
-    properties: {
-      invoice_id: { type: "string" },
+const billingNamespace = {
+  type: "namespace",
+  name: "billing",
+  description: "Billing tools for invoices, payments, taxes, and credits.",
+  tools: [
+    {
+      type: "function",
+      name: "lookup_invoice",
+      description: "Look up invoice state, taxes, credits, and payment attempts.",
+      parameters: {
+        type: "object",
+        properties: {
+          invoice_id: { type: "string" },
+        },
+        required: ["invoice_id"],
+        additionalProperties: false,
+      },
+      strict: true,
+      defer_loading: true,
     },
-    required: ["invoice_id"],
-    additionalProperties: false,
-  },
-  strict: true,
-  defer_loading: true,
+  ],
 };
 
-const crmGetAccount = {
-  type: "function",
-  name: "crm.get_account",
-  description: "Fetch account owner, plan, health, and payment history.",
-  parameters: {
-    type: "object",
-    properties: {
-      account_id: { type: "string" },
+const crmNamespace = {
+  type: "namespace",
+  name: "crm",
+  description: "CRM tools for account ownership, plans, health, and payment history.",
+  tools: [
+    {
+      type: "function",
+      name: "get_account",
+      description: "Fetch account owner, plan, health, and payment history.",
+      parameters: {
+        type: "object",
+        properties: {
+          account_id: { type: "string" },
+        },
+        required: ["account_id"],
+        additionalProperties: false,
+      },
+      strict: true,
+      defer_loading: true,
     },
-    required: ["account_id"],
-    additionalProperties: false,
-  },
-  strict: true,
-  defer_loading: true,
+  ],
 };
 
 const response = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input:
     "Find the right billing tool and explain why invoice INV-1043 still " +
     "shows overdue after a payment yesterday.",
-  tools: [
-    { type: "tool_search" },
-    billingLookupInvoice,
-    crmGetAccount,
-  ],
+  tools: [billingNamespace, crmNamespace, { type: "tool_search" }],
 });
 
-console.log(response.output_text);
+console.log(response.output);
 ```
 
 ```python
@@ -274,54 +315,114 @@ from openai import OpenAI
 
 client = OpenAI()
 
-billing_lookup_invoice = {
-    "type": "function",
-    "name": "billing.lookup_invoice",
-    "description": "Look up invoice state, taxes, credits, and payment attempts.",
-    "parameters": {
-        "type": "object",
-        "properties": {
-            "invoice_id": {"type": "string"},
-        },
-        "required": ["invoice_id"],
-        "additionalProperties": False,
-    },
-    "strict": True,
-    "defer_loading": True,
+billing_namespace = {
+    "type": "namespace",
+    "name": "billing",
+    "description": "Billing tools for invoices, payments, taxes, and credits.",
+    "tools": [
+        {
+            "type": "function",
+            "name": "lookup_invoice",
+            "description": "Look up invoice state, taxes, credits, and payment attempts.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "invoice_id": {"type": "string"},
+                },
+                "required": ["invoice_id"],
+                "additionalProperties": False,
+            },
+            "strict": True,
+            "defer_loading": True,
+        }
+    ],
 }
 
-crm_get_account = {
-    "type": "function",
-    "name": "crm.get_account",
-    "description": "Fetch account owner, plan, health, and payment history.",
-    "parameters": {
-        "type": "object",
-        "properties": {
-            "account_id": {"type": "string"},
-        },
-        "required": ["account_id"],
-        "additionalProperties": False,
-    },
-    "strict": True,
-    "defer_loading": True,
+crm_namespace = {
+    "type": "namespace",
+    "name": "crm",
+    "description": "CRM tools for account ownership, plans, health, and payment history.",
+    "tools": [
+        {
+            "type": "function",
+            "name": "get_account",
+            "description": "Fetch account owner, plan, health, and payment history.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "account_id": {"type": "string"},
+                },
+                "required": ["account_id"],
+                "additionalProperties": False,
+            },
+            "strict": True,
+            "defer_loading": True,
+        }
+    ],
 }
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=(
         "Find the right billing tool and explain why invoice INV-1043 still "
         "shows overdue after a payment yesterday."
     ),
-    tools=[
-        {"type": "tool_search"},
-        billing_lookup_invoice,
-        crm_get_account,
-    ],
+    tools=[billing_namespace, crm_namespace, {"type": "tool_search"}],
 )
 
-print(response.output_text)
+print(response.output)
 ```
 
+
+## Use Programmatic Tool Calling
+
+[Programmatic Tool Calling](https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling)
+lets GPT-5.6 write JavaScript that calls eligible tools and reduces their
+intermediate results inside a hosted runtime. Use it for bounded stages where
+code can filter, join, rank, remove duplicates, combine, or check large tool
+results before returning a smaller structured result to the model.
+
+Add the `programmatic_tool_calling` tool and opt in each eligible tool. Use
+`allowed_callers: ["programmatic"]` for program-only tools, or use
+`allowed_callers: ["direct", "programmatic"]` when the model may also call the
+tool directly. Keep calls direct when each result may change the model's next
+decision, an action requires approval, or the final answer must preserve
+citations or native artifacts. Document tool return fields and error behavior so
+the model can write a correct program without first inspecting a result.
+
+Your tool loop must handle `program` and `program_output` items, as well as
+program-issued `function_call` items and their `function_call_output` items.
+Preserve each `call_id`, and copy the function call's `caller` into its output so
+the service can resume the correct program.
+
+Test both the `program_output` and the final assistant message. A correct program
+result can still become an incomplete final answer. Compare task success,
+required evidence, total tokens, latency, and cost against the same workflow
+using direct tool calls.
+
+## Use Multi-agent for parallel work
+
+[Multi-agent](https://developers.openai.com/api/docs/guides/responses-multi-agent) is a GPT-5.6 feature that
+lets a root agent delegate independent workstreams to subagents and synthesize
+their results. Use it when you can split research, analysis, or implementation
+into concrete, bounded tasks that use separate context and run in parallel.
+
+Set `multi_agent.enabled` to `true` in the request. For HTTP, use the beta
+Responses SDK with `client.beta.responses` and pass `responses_multi_agent=v1`
+in `betas`. For raw HTTP or WebSocket connections, send
+`OpenAI-Beta: responses_multi_agent=v1`. Item schemas can change while
+Multi-agent is in beta.
+
+Prefer one agent for short tasks, ordered chains where each step depends on the
+last, or work that writes to the same mutable resource. Subagents can increase
+token usage, so start with the default `max_concurrent_subagents` value of `3`
+and measure end-to-end quality, latency, and cost. For tool-heavy or long-running
+Multi-agent workflows, WebSocket mode can reduce continuation overhead.
+
+Before enabling Multi-agent, account for its current limitations:
+`/responses/compact`, `reasoning.summary`, and `max_tool_calls` are not
+supported. The server automatically compacts the root context and every
+subagent context.
 
 ## Leverage built-in tools
 
@@ -393,12 +494,12 @@ const openai = new OpenAI();
 const longWindow = sessionItems;
 
 const compacted = await openai.responses.compact({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: longWindow,
 });
 
 const nextResponse = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   store: false,
   input: [
     ...compacted.output, // Use compact output as-is.
@@ -425,12 +526,12 @@ client = OpenAI()
 long_window = session_items
 
 compacted = client.responses.compact(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=long_window,
 )
 
 next_response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     store=False,
     input=[
         *compacted.output,  # Use compact output as-is.
@@ -455,14 +556,28 @@ print(next_response.output_text)
 and cost when requests reuse the same long prefix. For high-volume workflows,
 set
 [`prompt_cache_key`](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-prompt_cache_key)
-consistently for requests that share the same stable prefix.
+consistently for requests that share the same stable prefix. The service
+combines the key with the prompt prefix hash to help route similar requests to
+the same cache without changing the model input. Keep the key stable for
+genuinely shared prefixes, choose a granularity that avoids sending too much
+traffic to one key, and keep total traffic across the prefixes for each key to
+about 15 requests per minute. Partition higher-volume traffic across more keys
+with a stable mapping.
 
-The cache key is combined with the prompt prefix hash, so it helps route similar
-requests to the same cache without changing the model input. Keep the key stable
-for genuinely shared prefixes, and choose a granularity that avoids sending too
-much traffic to one prefix-key pair. If one prefix and `prompt_cache_key`
-combination exceeds about 15 requests per minute, requests may overflow to
-additional machines and reduce cache effectiveness.
+GPT-5.6 introduced explicit prompt caching. Implicit caching remains the
+default, but GPT-5.6 models and later model families also support explicit
+cache breakpoints and request-wide cache policy. On those models, set
+`prompt_cache_key` to use the more reliable matching for both implicit caching
+and explicit breakpoints. If a changing suffix comes after a stable prefix, add
+an explicit `prompt_cache_breakpoint` at the reusable boundary. Set
+`prompt_cache_options.mode` to `explicit` only when the request should use only
+the breakpoints you provide and no implicit breakpoint. Earlier models continue
+to use automatic prompt caching only.
+
+On GPT-5.6 models and later model families, cache writes cost 1.25× the
+uncached input token rate. Log `cached_tokens` and `cache_write_tokens`, then
+compare write volume with later cache reads to measure net cost and tune key
+granularity and breakpoint placement.
 
 Route related requests to the same prompt cache
 
@@ -478,7 +593,7 @@ const instructions = [
 ].join("\n");
 
 const response = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   prompt_cache_key: "tenant-acme-support-agent",
   instructions,
   input: "Summarize the current escalation for the on-call lead.",
@@ -499,7 +614,7 @@ Use the same tone, safety rules, and tool plan for each ticket.
 """
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     prompt_cache_key="tenant-acme-support-agent",
     instructions=instructions,
     input="Summarize the current escalation for the on-call lead.",
@@ -511,11 +626,19 @@ print(response.output_text)
 
 ## Use `reasoning.encrypted_content`
 
-Always round-trip reasoning items. This helps the model by allowing it to work
-from its prior reasoning. If your [Zero Data Retention
+GPT-5.6 can [preserve reasoning across
+calls](https://developers.openai.com/api/docs/guides/reasoning#preserve-reasoning-across-calls). Use
+`reasoning.context: "all_turns"` when the task's goals, assumptions, and
+priorities remain stable. Use `current_turn` when earlier reasoning is no longer
+relevant and might anchor the model to an outdated approach. If you omit
+`reasoning.context` or set it to `auto`, inspect the response's
+`reasoning.context` field to confirm the effective mode.
+
+[Persisted reasoning](https://developers.openai.com/api/docs/guides/reasoning#keeping-reasoning-items-in-context)
+works only when earlier reasoning items are available. Use `previous_response_id`
+for stored responses. If your [Zero Data Retention
 (ZDR)](https://developers.openai.com/api/docs/guides/your-data#zero-data-retention) requirements do not allow
-storing response data, this is where `reasoning.encrypted_content` is important.
-`reasoning.encrypted_content` gives you a stateless handoff.
+storing response data, use `reasoning.encrypted_content` for a stateless handoff.
 
 Add `reasoning.encrypted_content` to `include`, and reasoning items in the
 response output will include encrypted reasoning content that can be passed back
@@ -530,26 +653,33 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
+const history = [
+  {
+    role: "user",
+    content: "Investigate why invoice INV-1043 has mismatched tax totals.",
+  },
+];
+
 const first = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   store: false,
-  reasoning: { effort: "medium" },
+  reasoning: { effort: "medium", context: "current_turn" },
   include: ["reasoning.encrypted_content"],
-  input: "Investigate why invoice INV-1043 has mismatched tax totals.",
+  input: history,
+});
+
+history.push(...first.output);
+history.push({
+  role: "user",
+  content: "Now write the customer-facing explanation in plain English.",
 });
 
 const second = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   store: false,
-  reasoning: { effort: "medium" },
+  reasoning: { effort: "medium", context: "all_turns" },
   include: ["reasoning.encrypted_content"],
-  input: [
-    ...first.output,
-    {
-      role: "user",
-      content: "Now write the customer-facing explanation in plain English.",
-    },
-  ],
+  input: history,
 });
 
 console.log(second.output_text);
@@ -560,31 +690,66 @@ from openai import OpenAI
 
 client = OpenAI()
 
+history = [
+    {
+        "role": "user",
+        "content": "Investigate why invoice INV-1043 has mismatched tax totals.",
+    }
+]
+
 first = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     store=False,
-    reasoning={"effort": "medium"},
+    reasoning={"effort": "medium", "context": "current_turn"},
     include=["reasoning.encrypted_content"],
-    input="Investigate why invoice INV-1043 has mismatched tax totals.",
+    input=history,
+)
+
+history.extend(item.model_dump(exclude={"status"}) for item in first.output)
+history.append(
+    {
+        "role": "user",
+        "content": "Now write the customer-facing explanation in plain English.",
+    }
 )
 
 second = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     store=False,
-    reasoning={"effort": "medium"},
+    reasoning={"effort": "medium", "context": "all_turns"},
     include=["reasoning.encrypted_content"],
-    input=[
-        *first.output,
-        {
-            "role": "user",
-            "content": "Now write the customer-facing explanation in plain English.",
-        },
-    ],
+    input=history,
 )
 
 print(second.output_text)
 ```
 
+
+## Set image detail intentionally
+
+On GPT-5.6 models, omitted image `detail` and `detail: "auto"` use the same
+sizing behavior as `original`. The service preserves the input dimensions
+instead of resizing the image to a patch budget or pixel-dimension limit. Large
+images can use more input tokens and add latency as a result.
+
+Choose [`detail`](https://developers.openai.com/api/docs/guides/images-vision#choose-an-image-detail-level)
+for the task. Resize the image, use `low` when fine visual detail is not
+important, or use `high` for standard high-fidelity image understanding. Keep
+`original` for large, dense, coordinate-sensitive, OCR, localization, or
+visual-inspection tasks where the extra detail improves quality. Measure
+worst-case image tokens and latency before deployment.
+
+## Send a safety identifier
+
+If your application serves individual end users, send a stable,
+privacy-preserving
+[`safety_identifier`](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers)
+with each request. It helps OpenAI detect misuse and gives your team a stable way
+to trace policy violations. It also reduces the chance that one user's misuse
+disrupts access for your broader organization.
+
+Hash the user's username or email address instead of sending identifying
+information. For logged-out experiences, use a stable session ID.
 
 ## Use `background=True`
 
@@ -594,8 +759,6 @@ and returns an ID. Your app can poll that job until it finishes, fails, or is
 canceled. Use it for large analyses, long tool runs, or work that needs status
 and retry behavior.
 
-`background=True` **requires `store=True`**.
-
 Run and poll a background response
 
 ```javascript
@@ -604,9 +767,9 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 let job = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   background: true,
-  store: true,
+  store: false,
   input: "Analyze this large log bundle and cluster the primary failure modes.",
   tools: [
     {
@@ -634,9 +797,9 @@ import time
 client = OpenAI()
 
 job = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     background=True,
-    store=True,
+    store=False,
     input="Analyze this large log bundle and cluster the primary failure modes.",
     tools=[
         {
@@ -662,9 +825,6 @@ may take longer than a normal request.
 
 From the UI perspective, background mode indicates, "This is running; here is
 the status; the result will appear here when it's ready."
-
-Note: `background=True` is not compatible with [Zero Data
-Retention](https://developers.openai.com/api/docs/guides/your-data#zero-data-retention).
 
 ## Use WebSocket mode
 
@@ -716,7 +876,7 @@ ws.on("open", () => {
   ws.send(
     JSON.stringify({
       type: "response.create",
-      model: "gpt-5.5",
+      model: "gpt-5.6",
       store: false,
       input: [
         {
@@ -760,7 +920,7 @@ ws.send(
     json.dumps(
         {
             "type": "response.create",
-            "model": "gpt-5.5",
+            "model": "gpt-5.6",
             "store": False,
             "input": [
                 {

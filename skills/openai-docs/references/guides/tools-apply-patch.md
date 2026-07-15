@@ -74,7 +74,7 @@ Help me rename the fib() function to fibonacci()
 """
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=RESPONSE_INPUT,
     tools=[{"type": "apply_patch"}],
 )
@@ -135,7 +135,7 @@ for call in patch_calls:
     })
 
 followup = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     previous_response_id=response.id,
     input=results,
     tools=[{"type": "apply_patch"}],
@@ -226,7 +226,7 @@ const editor = new WorkspaceEditor();
 
 const agent = new Agent({
   name: "Patch Assistant",
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   instructions: "You can edit files inside the /tmp directory using the apply_patch tool.",
   tools: [
     applyPatchTool({
@@ -256,7 +256,7 @@ from agents import Agent, ApplyPatchTool, Runner, apply_diff
 class WorkspaceEditor:
     async def create_file(self, operation):
         # convert the diff to the file content
-        content = apply_diff("", operation.diff, create=True)
+        content = apply_diff("", operation.diff, mode="create")
         # write the file content to the file system
         return {"status": "completed", "output": f"Created {operation.path}"}
 
@@ -277,7 +277,7 @@ editor = WorkspaceEditor()
 
 agent = Agent(
     name="Patch Assistant",
-    model="gpt-5.5",
+    model="gpt-5.6",
     instructions="You can edit files inside the /tmp directory using the apply_patch tool.",
     tools=[
         ApplyPatchTool(

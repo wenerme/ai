@@ -104,7 +104,9 @@ async function reviewPullRequest(diff: string): Promise<string> {
 
   return response.output
     .flatMap((item) =>
-      item.type === "message" && item.agent?.agent_name === "/root"
+      item.type === "message" &&
+      item.agent?.agent_name === "/root" &&
+      item.phase === "final_answer"
         ? item.content
         : [],
     )

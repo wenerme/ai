@@ -32,13 +32,13 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \ 
 -H "Authorization: Bearer $OPENAI_API_KEY" \ 
 -d '{
-  "model": "gpt-5.5",
+  "model": "gpt-5.6",
     "tools": [
       {
         "type": "mcp",
         "server_label": "dmcp",
         "server_description": "A Dungeons and Dragons MCP server to assist with dice rolling.",
-        "server_url": "https://dmcp-server.deno.dev/sse",
+        "server_url": "https://dmcp-server.deno.dev/mcp",
         "require_approval": "never"
       }
     ],
@@ -51,13 +51,13 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [
     {
       type: "mcp",
       server_label: "dmcp",
       server_description: "A Dungeons and Dragons MCP server to assist with dice rolling.",
-      server_url: "https://dmcp-server.deno.dev/sse",
+      server_url: "https://dmcp-server.deno.dev/mcp",
       require_approval: "never",
     },
   ],
@@ -73,13 +73,13 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[
         {
             "type": "mcp",
             "server_label": "dmcp",
             "server_description": "A Dungeons and Dragons MCP server to assist with dice rolling.",
-            "server_url": "https://dmcp-server.deno.dev/sse",
+            "server_url": "https://dmcp-server.deno.dev/mcp",
             "require_approval": "never",
         },
     ],
@@ -93,12 +93,12 @@ print(resp.output_text)
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 ResponseCreationOptions options = new();
 options.Tools.Add(ResponseTool.CreateMcpTool(
     serverLabel: "dmcp",
-    serverUri: new Uri("https://dmcp-server.deno.dev/sse"),
+    serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
     toolCallApprovalPolicy: new McpToolCallApprovalPolicy(GlobalMcpToolCallApprovalPolicy.NeverRequireApproval)
 ));
 
@@ -109,6 +109,28 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 ], options);
 
 Console.WriteLine(response.GetOutputText());
+```
+
+```ruby
+require "openai"
+
+openai = OpenAI::Client.new
+
+response = openai.responses.create(
+  model: "gpt-5.6",
+  tools: [
+    {
+      type: "mcp",
+      server_label: "dmcp",
+      server_description: "A Dungeons and Dragons MCP server to assist with dice rolling.",
+      server_url: "https://dmcp-server.deno.dev/mcp",
+      require_approval: "never"
+    }
+  ],
+  input: "Roll 2d4+1"
+)
+
+puts(response.output_text)
 ```
 
 
@@ -132,7 +154,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "tools": [
       {
         "type": "mcp",
@@ -151,7 +173,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [
     {
       type: "mcp",
@@ -173,7 +195,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[
         {
             "type": "mcp",
@@ -194,7 +216,7 @@ using OpenAI.Responses;
 
 string dropboxToken = Environment.GetEnvironmentVariable("DROPBOX_OAUTH_ACCESS_TOKEN")!;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 ResponseCreationOptions options = new();
 options.Tools.Add(ResponseTool.CreateMcpTool(
@@ -318,13 +340,13 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "tools": [
       {
         "type": "mcp",
         "server_label": "dmcp",
         "server_description": "A Dungeons and Dragons MCP server to assist with dice rolling.",
-        "server_url": "https://dmcp-server.deno.dev/sse",
+        "server_url": "https://dmcp-server.deno.dev/mcp",
         "require_approval": "never",
         "allowed_tools": ["roll"]
       }
@@ -338,12 +360,12 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [{
     type: "mcp",
     server_label: "dmcp",
     server_description: "A Dungeons and Dragons MCP server to assist with dice rolling.",
-    server_url: "https://dmcp-server.deno.dev/sse",
+    server_url: "https://dmcp-server.deno.dev/mcp",
     require_approval: "never",
     allowed_tools: ["roll"],
   }],
@@ -359,12 +381,12 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[{
         "type": "mcp",
         "server_label": "dmcp",
         "server_description": "A Dungeons and Dragons MCP server to assist with dice rolling.",
-        "server_url": "https://dmcp-server.deno.dev/sse",
+        "server_url": "https://dmcp-server.deno.dev/mcp",
         "require_approval": "never",
         "allowed_tools": ["roll"],
     }],
@@ -378,12 +400,12 @@ print(resp.output_text)
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 ResponseCreationOptions options = new();
 options.Tools.Add(ResponseTool.CreateMcpTool(
     serverLabel: "dmcp",
-    serverUri: new Uri("https://dmcp-server.deno.dev/sse"),
+    serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
     allowedTools: new McpToolFilter() { ToolNames = { "roll" } },
     toolCallApprovalPolicy: new McpToolCallApprovalPolicy(GlobalMcpToolCallApprovalPolicy.NeverRequireApproval)
 ));
@@ -442,13 +464,13 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "tools": [
       {
         "type": "mcp",
         "server_label": "dmcp",
         "server_description": "A Dungeons and Dragons MCP server to assist with dice rolling.",
-        "server_url": "https://dmcp-server.deno.dev/sse",
+        "server_url": "https://dmcp-server.deno.dev/mcp",
         "require_approval": "always",
       }
     ],
@@ -466,12 +488,12 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [{
     type: "mcp",
     server_label: "dmcp",
     server_description: "A Dungeons and Dragons MCP server to assist with dice rolling.",
-    server_url: "https://dmcp-server.deno.dev/sse",
+    server_url: "https://dmcp-server.deno.dev/mcp",
     require_approval: "always",
   }],
   previous_response_id: "resp_682d498bdefc81918b4a6aa477bfafd904ad1e533afccbfa",
@@ -491,12 +513,12 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[{
         "type": "mcp",
         "server_label": "dmcp",
         "server_description": "A Dungeons and Dragons MCP server to assist with dice rolling.",
-        "server_url": "https://dmcp-server.deno.dev/sse",
+        "server_url": "https://dmcp-server.deno.dev/mcp",
         "require_approval": "always",
     }],
     previous_response_id="resp_682d498bdefc81918b4a6aa477bfafd904ad1e533afccbfa",
@@ -514,12 +536,12 @@ print(resp.output_text)
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 ResponseCreationOptions options = new();
 options.Tools.Add(ResponseTool.CreateMcpTool(
     serverLabel: "dmcp",
-    serverUri: new Uri("https://dmcp-server.deno.dev/sse"),
+    serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
     toolCallApprovalPolicy: new McpToolCallApprovalPolicy(GlobalMcpToolCallApprovalPolicy.AlwaysRequireApproval)
 ));
 
@@ -553,7 +575,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "tools": [
       {
         "type": "mcp",
@@ -575,7 +597,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [
     {
       type: "mcp",
@@ -600,7 +622,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[
         {
             "type": "mcp",
@@ -623,7 +645,7 @@ print(resp.output_text)
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 ResponseCreationOptions options = new();
 options.Tools.Add(ResponseTool.CreateMcpTool(
@@ -654,7 +676,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "input": "Create a payment link for $20",
     "tools": [
       {
@@ -672,7 +694,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: "Create a payment link for $20",
   tools: [
     {
@@ -693,7 +715,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="Create a payment link for $20",
     tools=[
         {
@@ -713,7 +735,7 @@ using OpenAI.Responses;
 
 string authToken = Environment.GetEnvironmentVariable("STRIPE_OAUTH_ACCESS_TOKEN")!;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 ResponseCreationOptions options = new();
 options.Tools.Add(ResponseTool.CreateMcpTool(
@@ -776,7 +798,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "tools": [
       {
         "type": "mcp",
@@ -795,7 +817,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [
     {
       type: "mcp",
@@ -817,7 +839,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[
         {
             "type": "mcp",
@@ -838,7 +860,7 @@ using OpenAI.Responses;
 
 string authToken = Environment.GetEnvironmentVariable("GOOGLE_CALENDAR_OAUTH_ACCESS_TOKEN")!;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
 
 ResponseCreationOptions options = new();
 options.Tools.Add(ResponseTool.CreateMcpTool(
@@ -1178,7 +1200,7 @@ When you defer loading an MCP server, the model can still use the MCP server's l
     "type": "mcp",
     "server_label": "dmcp",
     "server_description": "A Dungeons and Dragons MCP server to assist with dice rolling.",
-    "server_url": "https://dmcp-server.deno.dev/sse",
+    "server_url": "https://dmcp-server.deno.dev/mcp",
 // highlight-start:subtle
     "defer_loading": true,
 // highlight-end

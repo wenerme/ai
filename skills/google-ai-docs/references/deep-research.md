@@ -84,7 +84,7 @@ and poll for results.
     # curl -X GET "https://generativelanguage.googleapis.com/v1beta/interactions/INTERACTION_ID" \
     # -H "x-goog-api-key: $GEMINI_API_KEY"
 
-## Supported Versions
+## Supported versions
 
 The Deep Research agent comes in two versions:
 
@@ -93,13 +93,11 @@ The Deep Research agent comes in two versions:
 
 ## Collaborative planning
 
-> [!WARNING]
-> **Preview:** Collaborative planning allows you to review and refine the research plan before execution.
-
-Collaborative planning gives you control over the research direction
-before the agent starts its work. When enabled, the agent returns a
-proposed research plan instead of executing immediately. You can then
-review, modify, or approve the plan through multi-turn interactions.
+Collaborative planning gives you control over the research direction before the
+agent starts its work by letting you review and refine the research plan before
+execution. When enabled, the agent returns a proposed research plan instead of
+executing immediately. You can then review, modify, or approve the plan through
+multi-turn interactions.
 
 ### Step 1: Request a plan
 
@@ -289,9 +287,6 @@ start the research.
 
 ## Visualization
 
-> [!WARNING]
-> **Preview:** Visualization allows the agent to generate charts and graphs to support its findings.
-
 When `visualization` is set to `"auto"`, the agent can generate charts,
 graphs, and other visual elements to support its research findings.
 Generated images are included in the response steps and streamed as
@@ -304,6 +299,11 @@ when the prompt requests them.
 ### Python
 
     import base64
+    import time
+
+    from google import genai
+
+    client = genai.Client()
 
     interaction = client.interactions.create(
         agent="deep-research-preview-04-2026",
@@ -498,10 +498,11 @@ Allow the agent to execute code for calculations and data analysis:
 
 ### MCP servers
 
-> [!WARNING]
-> **Preview:** Connect to remote MCP servers to give the agent access to external tools and services.
+Connect to remote MCP servers to give the agent access to external tools and
+services.
 
-Provide the server `name` and `url` in the tools configuration. You can also pass authentication credentials and restrict which tools the agent can call.
+Provide the server `name` and `url` in the tools configuration. You can also
+pass authentication credentials and restrict which tools the agent can call.
 
 | Field | Type | Required | Description |
 |---|---|---|---|
@@ -772,10 +773,8 @@ contextualized by the provided inputs.
 
 ### Document understanding
 
-> [!WARNING]
-> **Preview:** Document understanding allows passing documents directly as multimodal input.
-
-Pass documents directly as multimodal input. The agent analyzes the
+Document understanding allows passing documents directly as multimodal input.
+The agent analyzes the
 provided documents and conducts research grounded in their content.
 
 ### Python

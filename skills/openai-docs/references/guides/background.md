@@ -4,11 +4,9 @@ Agents like [Codex](https://openai.com/index/introducing-codex/) and [Deep Resea
 
 Background mode kicks off these tasks asynchronously, and developers can poll response objects to check status over time. To start response generation in the background, make an API request with `background` set to `true`:
 
-Because background mode stores response data for roughly 10 minutes to enable
-  polling, it is not Zero Data Retention (ZDR) compatible. Requests from ZDR
-  projects are still accepted with `background=true` for legacy reasons, but
-  using it breaks ZDR guarantees. Modified Abuse Monitoring (MAM) projects can
-  safely rely on background mode.
+Background requests from Zero Data Retention (ZDR) projects run with
+  `store=false`. Response data is temporarily stored to disk for roughly 10
+  minutes to enable asynchronous execution and polling.
 
 Generate a response in the background
 
@@ -17,7 +15,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-  "model": "gpt-5.5",
+  "model": "gpt-5.6",
   "input": "Write a very long novel about otters in space.",
   "background": true
 }'
@@ -28,7 +26,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: "Write a very long novel about otters in space.",
   background: true,
 });
@@ -42,7 +40,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-  model="gpt-5.5",
+  model="gpt-5.6",
   input="Write a very long novel about otters in space.",
   background=True,
 )
@@ -68,7 +66,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 let resp = await client.responses.create({
-model: "gpt-5.5",
+model: "gpt-5.6",
 input: "Write a very long novel about otters in space.",
 background: true,
 });
@@ -89,7 +87,7 @@ from time import sleep
 client = OpenAI()
 
 resp = client.responses.create(
-  model="gpt-5.5",
+  model="gpt-5.6",
   input="Write a very long novel about otters in space.",
   background=True,
 )
@@ -151,7 +149,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-  "model": "gpt-5.5",
+  "model": "gpt-5.6",
   "input": "Write a very long novel about otters in space.",
   "background": true,
   "stream": true
@@ -168,7 +166,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const stream = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: "Write a very long novel about otters in space.",
   background: true,
   stream: true,
@@ -192,7 +190,7 @@ client = OpenAI()
 
 # Fire off an async response but also start streaming immediately
 stream = client.responses.create(
-  model="gpt-5.5",
+  model="gpt-5.6",
   input="Write a very long novel about otters in space.",
   background=True,
   stream=True,
@@ -212,6 +210,7 @@ for event in stream:
 
 ## Limits
 
-1. Background sampling requires `store=true`; stateless requests are rejected.
+1. Background requests can use `store=false`, but response data is temporarily
+   stored to support asynchronous execution and polling.
 2. To cancel a synchronous response, terminate the connection
 3. You can only start a new stream from a background response if you created it with `stream=true`.

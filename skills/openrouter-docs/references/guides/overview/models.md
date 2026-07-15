@@ -184,12 +184,16 @@ All pricing values are in USD per token/request/unit. A value of `"0"` indicates
 
 ##### Pricing Overrides
 
-Some endpoints charge different rates under certain conditions — for example, long-context pricing where requests above a token threshold cost more. These appear in the optional `pricing.overrides` array:
+Some endpoints charge different rates under certain conditions — for example, long-context pricing where requests above a token threshold cost more, or time-based pricing where peak hours have higher rates. These appear in the optional `pricing.overrides` array:
 
 ```typescript lines theme={null}
 {
   // Condition: applies when total prompt tokens are strictly greater than this threshold
   "min_prompt_tokens": number,
+
+  // Condition: applies when current UTC time is within this daily window
+  "utc_start": number,  // Inclusive start as HHMM clock (e.g. 100 = 01:00, 1030 = 10:30)
+  "utc_end": number,    // Exclusive end as HHMM clock (e.g. 400 = 04:00)
 
   // Overridden prices — same keys and units as the base pricing object
   "prompt": string,

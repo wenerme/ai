@@ -41,6 +41,14 @@ command = "sh"
 args = ["-c", "echo $OPENROUTER_API_KEY"]
 ```
 
+On Windows, use PowerShell instead:
+
+```toml lines theme={null}
+[model_providers.openrouter.auth]
+command = "powershell"
+args = ["-NoProfile", "-Command", "Write-Output $env:OPENROUTER_API_KEY"]
+```
+
 <Note>
   A plain `env_key = "OPENROUTER_API_KEY"` also works for authentication, but Codex
   won't fetch the OpenRouter model catalog in that mode — non-OpenAI models will
@@ -55,6 +63,14 @@ Export your OpenRouter API key in your shell profile:
 ```bash lines theme={null}
 # Add to ~/.zshrc, ~/.bashrc, or ~/.config/fish/config.fish
 export OPENROUTER_API_KEY="sk-or-..."
+```
+
+On Windows, set it as a user-level environment variable and restart Codex
+(including the desktop app, which won't see variables set only in a terminal
+session):
+
+```powershell lines theme={null}
+setx OPENROUTER_API_KEY "sk-or-..."
 ```
 
 <Note>
@@ -97,7 +113,7 @@ args = ["-c", "echo $OPENROUTER_API_KEY"]
 ```
 
 * **`base_url`**: OpenRouter API endpoint. Use `https://openrouter.ai/api/v1` for production.
-* **`auth.command` / `auth.args`**: Command Codex runs to obtain your API key — here it echoes `$OPENROUTER_API_KEY`. Command-based auth is what triggers Codex's model-catalog refresh, so non-OpenAI models get correct metadata instead of the fallback-metadata warning.
+* **`auth.command` / `auth.args`**: Command Codex runs to obtain your API key — here it echoes `$OPENROUTER_API_KEY`. Command-based auth is what triggers Codex's model-catalog refresh, so non-OpenAI models get correct metadata instead of the fallback-metadata warning. On Windows use `command = "powershell"` with `args = ["-NoProfile", "-Command", "Write-Output $env:OPENROUTER_API_KEY"]`, since `sh` does not exist there.
 
 <Note>
   A plain `env_key = "OPENROUTER_API_KEY"` also works for authentication, but Codex
@@ -141,7 +157,7 @@ Point `model` at any OpenRouter slug (e.g. `~openai/gpt-latest`, `~anthropic/cla
 
 ## Troubleshooting
 
-* **Auth Errors:** Ensure `OPENROUTER_API_KEY` is set and valid. Check at [openrouter.ai/keys](https://openrouter.ai/keys).
+* **Auth Errors:** Ensure `OPENROUTER_API_KEY` is set and valid. Check at [openrouter.ai/keys](https://openrouter.ai/keys). A 401 with "Missing Authentication header" usually means the `auth` command failed to run — on Windows, make sure you use the PowerShell variant above and that the environment variable is set user-wide (`setx`), then fully restart Codex.
 * **Model Not Found:** Verify the model ID on [openrouter.ai/models](https://openrouter.ai/models). Use the exact format (e.g., `~openai/gpt-latest`).
 * **Privacy:** OpenRouter does not log your source code prompts unless you opt-in to prompt logging. See our [Privacy Policy](https://openrouter.ai/privacy) for details.
 

@@ -5524,6 +5524,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mutation-cdenvironmentcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-cdenvironmentcreate-description"></a>`description` | [`String`](#string) | Description of the environment. |
+| <a id="mutation-cdenvironmentcreate-environmentdriverbinding"></a>`environmentDriverBinding` | [`CdEnvironmentDriverBindingInput!`](#cdenvironmentdriverbindinginput) | Driver binding to create for the environment. |
 | <a id="mutation-cdenvironmentcreate-name"></a>`name` | [`String!`](#string) | Name of the environment. |
 | <a id="mutation-cdenvironmentcreate-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID!`](#organizationsorganizationid) | Global ID of the organization to create the environment in. |
 | <a id="mutation-cdenvironmentcreate-tier"></a>`tier` | [`CdEnvironmentTier!`](#cdenvironmenttier) | Tier of the environment. |
@@ -5535,6 +5536,31 @@ Fields:
 | <a id="mutation-cdenvironmentcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-cdenvironmentcreate-environment"></a>`environment` | [`CdEnvironment`](#cdenvironment) | Environment created by the mutation. |
 | <a id="mutation-cdenvironmentcreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.cdEnvironmentDriverBindingCreate`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+Creates a new versioned driver binding for a continuous deployment environment.
+
+Input type: `CdEnvironmentDriverBindingCreateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-cdenvironmentdriverbindingcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-cdenvironmentdriverbindingcreate-environmentdriverbinding"></a>`environmentDriverBinding` | [`CdEnvironmentDriverBindingInput!`](#cdenvironmentdriverbindinginput) | Driver binding to create for the environment. |
+| <a id="mutation-cdenvironmentdriverbindingcreate-environmentid"></a>`environmentId` | [`CdEnvironmentID!`](#cdenvironmentid) | Global ID of the environment to bind the driver to. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-cdenvironmentdriverbindingcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-cdenvironmentdriverbindingcreate-environmentdriverbinding"></a>`environmentDriverBinding` | [`CdEnvironmentDriverBinding`](#cdenvironmentdriverbinding) | Environment driver binding created by the mutation. |
+| <a id="mutation-cdenvironmentdriverbindingcreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
 ### `Mutation.cdEnvironmentUpdate`
 
@@ -8355,13 +8381,13 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mutation-duosettingsupdate-aigatewaytimeoutseconds"></a>`aiGatewayTimeoutSeconds` | [`Int`](#int) | Timeout for the AI Gateway request. |
 | <a id="mutation-duosettingsupdate-aigatewayurl"></a>`aiGatewayUrl` | [`String`](#string) | URL for the local AI Gateway server. |
-| <a id="mutation-duosettingsupdate-allowallunixsockets"></a>`allowAllUnixSockets`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Whether to allow all Unix sockets for network access. Ignored if dap_instance_network_access_controls feature flag is disabled. |
-| <a id="mutation-duosettingsupdate-allowprojectextension"></a>`allowProjectExtension`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Whether to allow projects to extend the network access domain allowlist. Ignored if dap_instance_network_access_controls feature flag is disabled. |
+| <a id="mutation-duosettingsupdate-allowallunixsockets"></a>`allowAllUnixSockets`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Whether to allow all Unix sockets for network access. |
+| <a id="mutation-duosettingsupdate-allowprojectextension"></a>`allowProjectExtension`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Whether to allow projects to extend the network access domain allowlist. |
 | <a id="mutation-duosettingsupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-duosettingsupdate-duoagentplatformserviceurl"></a>`duoAgentPlatformServiceUrl` | [`String`](#string) | URL for the local Duo Agent Platform service. |
 | <a id="mutation-duosettingsupdate-duoclienabled"></a>`duoCliEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Indicates whether GitLab Duo CLI access is enabled. |
 | <a id="mutation-duosettingsupdate-duocorefeaturesenabled"></a>`duoCoreFeaturesEnabled` | [`Boolean`](#boolean) | Indicates whether GitLab Duo Core features are enabled. |
-| <a id="mutation-duosettingsupdate-includerecommendedallowed"></a>`includeRecommendedAllowed`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Whether to include recommended domains in the network access allowlist. Ignored if dap_instance_network_access_controls feature flag is disabled. |
+| <a id="mutation-duosettingsupdate-includerecommendedallowed"></a>`includeRecommendedAllowed`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Whether to include recommended domains in the network access allowlist. |
 | <a id="mutation-duosettingsupdate-minimumaccesslevelenableonprojects"></a>`minimumAccessLevelEnableOnProjects`  | [`AccessLevelEnum`](#accesslevelenum) | Introduced in GitLab 18.7. Status: Experiment. Minimum access level for enable on Duo Agent Platform. Ignored if dap_instance_customizable_permissions feature flag is disabled. |
 | <a id="mutation-duosettingsupdate-minimumaccesslevelexecute"></a>`minimumAccessLevelExecute`  | [`AccessLevelEnum`](#accesslevelenum) | Introduced in GitLab 18.7. Status: Experiment. Minimum access level for execute on Duo Agent Platform. Ignored if dap_instance_customizable_permissions feature flag is disabled. |
 | <a id="mutation-duosettingsupdate-minimumaccesslevelexecuteasync"></a>`minimumAccessLevelExecuteAsync`  | [`AccessLevelEnum`](#accesslevelenum) | Introduced in GitLab 18.7. Status: Experiment. Minimum access level to execute Duo Agent Platform features in CI/CD. Ignored if dap_instance_customizable_permissions feature flag is disabled. |
@@ -48854,6 +48880,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="organization-avatarurl"></a>`avatarUrl`  | [`String`](#string) | Introduced in GitLab 16.7. Status: Experiment. Avatar URL of the organization. |
+| <a id="organization-cdavailableagents"></a>`cdAvailableAgents`  | [`ClusterAgentConnection`](#clusteragentconnection) | Introduced in GitLab 19.2. Status: Experiment. GitLab agents for Kubernetes available in the organization. |
 | <a id="organization-cdenvironmenttiers"></a>`cdEnvironmentTiers`  | [`[CdEnvironmentTier!]`](#cdenvironmenttier) | Introduced in GitLab 19.2. Status: Experiment. Continuous deployment environment tiers available in the organization. |
 | <a id="organization-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 16.7. Status: Experiment. Description of the organization. |
 | <a id="organization-descriptionhtml"></a>`descriptionHtml`  | [`String`](#string) | Introduced in GitLab 16.7. Status: Experiment. GitLab Flavored Markdown rendering of `description`. |
@@ -70257,6 +70284,17 @@ Arguments:
 | <a id="bulktoolruleinput-localaccess"></a>`localAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for local or IDE surface. Omitting the field sets it to null, clearing any existing value. |
 | <a id="bulktoolruleinput-toolid"></a>`toolId` | [`String!`](#string) | Tool name string identifying the tool to update. For example, "create_issue". |
 | <a id="bulktoolruleinput-webaccess"></a>`webAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for web surface. Omitting the field sets it to null, clearing any existing value. |
+
+### `CdEnvironmentDriverBindingInput`
+
+Attributes for a continuous deployment environment driver binding.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cdenvironmentdriverbindinginput-driverconfig"></a>`driverConfig` | [`JSON!`](#json) | Configuration of the environment driver binding, defined by the driver's own schema. |
+| <a id="cdenvironmentdriverbindinginput-driverref"></a>`driverRef` | [`String!`](#string) | Reference of the driver. |
 
 ### `CdServiceInput`
 

@@ -551,7 +551,9 @@ paths:
         in: path
       - name: add_on_name
         required: true
-        schema: {}
+        description: The name of the add-on
+        schema:
+          type: string
         in: path
       requestBody:
         required: true
@@ -590,7 +592,9 @@ paths:
         in: path
       - name: add_on_name
         required: true
-        schema: {}
+        description: The name of the add-on
+        schema:
+          type: string
         in: path
     put:
       operationId: putApiV4NamespacesIdSubscriptionAddOnPurchaseAddOnName
@@ -623,7 +627,9 @@ paths:
         in: path
       - name: add_on_name
         required: true
-        schema: {}
+        description: The name of the add-on
+        schema:
+          type: string
         in: path
       requestBody:
         required: true
@@ -1332,6 +1338,12 @@ paths:
         '400':
           description: Bad Request
       parameters:
+      - name: id
+        required: true
+        description: The ID of the workflow
+        schema:
+          type: integer
+        in: path
       - name: accept_compressed
         required: false
         description: Return compressed checkpoints
@@ -1339,12 +1351,6 @@ paths:
           type: boolean
           nullable: true
         in: query
-      - name: id
-        required: true
-        description: The ID of the workflow
-        schema:
-          type: integer
-        in: path
   "/api/v4/ai/duo_workflows/workflows/{id}/checkpoints/{checkpoint_id}":
     get:
       operationId: getApiV4AiDuoWorkflowsWorkflowsIdCheckpointsCheckpointId
@@ -1360,6 +1366,12 @@ paths:
         '400':
           description: Bad Request
       parameters:
+      - name: id
+        required: true
+        description: The ID of the workflow
+        schema:
+          type: integer
+        in: path
       - name: checkpoint_id
         required: true
         description: The ID of the checkpoint
@@ -1374,12 +1386,6 @@ paths:
           type: boolean
           nullable: true
         in: query
-      - name: id
-        required: true
-        description: The ID of the workflow
-        schema:
-          type: integer
-        in: path
   "/api/v4/ai/duo_workflows/workflows/{id}/checkpoint_writes_batch":
     post:
       operationId: postApiV4AiDuoWorkflowsWorkflowsIdCheckpointWritesBatch
@@ -1445,6 +1451,8 @@ paths:
           description: OK
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -4320,10 +4328,14 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesVulnerabilityArchiveExport"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
-        schema: {}
+        description: The ID of the vulnerability archive export
+        schema:
+          type: integer
         in: path
   "/api/v4/security/vulnerability_archive_exports/{id}/download":
     get:
@@ -4337,10 +4349,14 @@ paths:
           description: OK
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
-        schema: {}
+        description: The ID of the vulnerability archive export
+        schema:
+          type: integer
         in: path
   "/api/v4/vulnerabilities/{id}/issue_links":
     get:
@@ -5250,7 +5266,9 @@ paths:
         in: path
       - name: pat_id
         required: true
-        schema: {}
+        description: The ID of the personal access token
+        schema:
+          type: integer
         in: path
   "/api/v4/groups/{id}/manage/personal_access_tokens/{pat_id}/rotate":
     post:
@@ -5281,7 +5299,9 @@ paths:
         in: path
       - name: pat_id
         required: true
-        schema: {}
+        description: The ID of the personal access token
+        schema:
+          type: integer
         in: path
       requestBody:
         required: false
@@ -5305,6 +5325,14 @@ paths:
         '400':
           description: Bad Request
       parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
       - name: revoked
         required: false
         description: Filter tokens where revoked state matches parameter
@@ -5412,14 +5440,6 @@ paths:
           nullable: true
         in: query
         example: 20
-      - name: id
-        required: true
-        description: The ID or URL-encoded path of the group
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
   "/api/v4/groups/{id}/manage/resource_access_tokens/{prat_id}":
     delete:
       operationId: deleteApiV4GroupsIdManageResourceAccessTokensPratId
@@ -5436,15 +5456,6 @@ paths:
         '404':
           description: Not Found
       parameters:
-      - name: expires_at
-        required: false
-        description: The expiration date of the token
-        schema:
-          type: string
-          format: date
-          nullable: true
-        in: query
-        example: '2021-01-31'
       - name: id
         required: true
         description: The ID or URL-encoded path of the group
@@ -5455,8 +5466,19 @@ paths:
         in: path
       - name: prat_id
         required: true
-        schema: {}
+        description: The ID of the resource access token
+        schema:
+          type: integer
         in: path
+      - name: expires_at
+        required: false
+        description: The expiration date of the token
+        schema:
+          type: string
+          format: date
+          nullable: true
+        in: query
+        example: '2021-01-31'
   "/api/v4/groups/{id}/manage/resource_access_tokens/{prat_id}/rotate":
     post:
       operationId: postApiV4GroupsIdManageResourceAccessTokensPratIdRotate
@@ -5483,7 +5505,9 @@ paths:
         in: path
       - name: prat_id
         required: true
-        schema: {}
+        description: The ID of the resource access token
+        schema:
+          type: integer
         in: path
       requestBody:
         required: false
@@ -5511,6 +5535,14 @@ paths:
         '400':
           description: Bad Request
       parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
       - name: created_before
         required: false
         description: Filter ssh keys which were created before given datetime
@@ -5565,14 +5597,6 @@ paths:
           nullable: true
         in: query
         example: 20
-      - name: id
-        required: true
-        description: The ID or URL-encoded path of the group
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
   "/api/v4/groups/{id}/manage/ssh_keys/{key_id}":
     delete:
       operationId: deleteApiV4GroupsIdManageSshKeysKeyId
@@ -5599,7 +5623,9 @@ paths:
         in: path
       - name: key_id
         required: true
-        schema: {}
+        description: The ID of the SSH key
+        schema:
+          type: integer
         in: path
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/blocks":
     get:
@@ -7016,7 +7042,9 @@ paths:
         example: 11
       - name: merge_request_iid
         required: true
-        schema: {}
+        description: The IID of the merge request
+        schema:
+          type: integer
         in: path
     post:
       operationId: postApiV4ProjectsIdMergeTrainsMergeRequestsMergeRequestIid
@@ -7059,7 +7087,9 @@ paths:
         example: 11
       - name: merge_request_iid
         required: true
-        schema: {}
+        description: The IID of the merge request
+        schema:
+          type: integer
         in: path
       requestBody:
         required: false
@@ -7379,7 +7409,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_a7a890622ef9"
+              "$ref": "#/components/schemas/RequestBody_de9fcc78c876"
     put:
       operationId: putApiV4ProjectsIdMirrorPull
       summary: Update project pull mirroring settings
@@ -10292,7 +10322,6 @@ paths:
           - type: string
           - type: integer
         in: path
-        example: 1
       requestBody:
         required: true
         content:
@@ -10317,6 +10346,14 @@ paths:
         '400':
           description: Bad Request
       parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
       - name: page
         required: false
         description: Current page number
@@ -10335,15 +10372,6 @@ paths:
           nullable: true
         in: query
         example: 20
-      - name: id
-        required: true
-        description: The ID or URL-encoded path of the project
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-        example: 1
   "/api/v4/projects/{id}/external_status_checks/{check_id}":
     put:
       operationId: putApiV4ProjectsIdExternalStatusChecksCheckId
@@ -10363,13 +10391,6 @@ paths:
         '400':
           description: Bad Request
       parameters:
-      - name: check_id
-        required: true
-        description: ID of an external status check
-        schema:
-          type: integer
-        in: path
-        example: 1
       - name: id
         required: true
         description: The ID or URL-encoded path of the project
@@ -10377,6 +10398,12 @@ paths:
           oneOf:
           - type: string
           - type: integer
+        in: path
+      - name: check_id
+        required: true
+        description: ID of an external status check
+        schema:
+          type: integer
         in: path
         example: 1
       requestBody:
@@ -10399,12 +10426,6 @@ paths:
         '400':
           description: Bad Request
       parameters:
-      - name: check_id
-        required: true
-        description: ID of an external status check
-        schema:
-          type: integer
-        in: path
       - name: id
         required: true
         description: The ID or URL-encoded path of the project
@@ -10413,7 +10434,12 @@ paths:
           - type: string
           - type: integer
         in: path
-        example: 1
+      - name: check_id
+        required: true
+        description: ID of an external status check
+        schema:
+          type: integer
+        in: path
   "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/status_check_responses":
     post:
       operationId: postApiV4ProjectsIdMergeRequestsMergeRequestIidStatusCheckResponses
@@ -10475,6 +10501,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequestsStatusCheck"
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -10484,10 +10512,9 @@ paths:
           - type: string
           - type: integer
         in: path
-        example: 1
       - name: merge_request_iid
         required: true
-        description: The IID of a merge request
+        description: The IID of the merge request
         schema:
           type: integer
         in: path
@@ -10831,7 +10858,7 @@ paths:
         in: path
       - name: approval_rule_id
         required: true
-        description: The ID of an approval_rule
+        description: The ID of an approval rule
         schema:
           type: integer
         in: path
@@ -18323,15 +18350,17 @@ paths:
           - type: string
           - type: integer
         in: path
+      - name: token_id
+        required: true
+        description: The ID of the personal access token
+        schema:
+          type: integer
+        in: path
       - name: user_id
         required: true
         description: The ID of the service account
         schema:
           type: integer
-        in: path
-      - name: token_id
-        required: true
-        schema: {}
         in: path
   "/api/v4/projects/{id}/service_accounts/{user_id}/personal_access_tokens/{token_id}/rotate":
     post:
@@ -18363,15 +18392,17 @@ paths:
           - type: string
           - type: integer
         in: path
+      - name: token_id
+        required: true
+        description: The ID of the personal access token
+        schema:
+          type: integer
+        in: path
       - name: user_id
         required: true
         description: The ID of the service account
         schema:
           type: integer
-        in: path
-      - name: token_id
-        required: true
-        schema: {}
         in: path
       requestBody:
         required: false
@@ -21217,15 +21248,17 @@ paths:
           - type: string
           - type: integer
         in: path
+      - name: token_id
+        required: true
+        description: The ID of the personal access token
+        schema:
+          type: integer
+        in: path
       - name: user_id
         required: true
         description: The ID of the service account
         schema:
           type: integer
-        in: path
-      - name: token_id
-        required: true
-        schema: {}
         in: path
   "/api/v4/groups/{id}/service_accounts/{user_id}/personal_access_tokens/{token_id}/rotate":
     post:
@@ -21257,15 +21290,17 @@ paths:
           - type: string
           - type: integer
         in: path
+      - name: token_id
+        required: true
+        description: The ID of the personal access token
+        schema:
+          type: integer
+        in: path
       - name: user_id
         required: true
         description: The ID of the service account
         schema:
           type: integer
-        in: path
-      - name: token_id
-        required: true
-        schema: {}
         in: path
       requestBody:
         required: false
@@ -21850,6 +21885,12 @@ paths:
           - type: string
           - type: integer
         in: path
+      - name: name
+        required: true
+        description: The name of a label
+        schema:
+          type: string
+        in: path
       - name: include_ancestor_groups
         required: false
         description: Include ancestor groups
@@ -21858,12 +21899,6 @@ paths:
           default: true
           nullable: true
         in: query
-      - name: name
-        required: true
-        description: The name or id of the label to be updated
-        schema:
-          type: string
-        in: path
     put:
       operationId: putApiV4ProjectsIdLabelsName
       summary: Update a project label
@@ -22210,6 +22245,12 @@ paths:
         schema:
           type: string
         in: path
+      - name: name
+        required: true
+        description: The name of a label
+        schema:
+          type: string
+        in: path
       - name: include_ancestor_groups
         required: false
         description: Include ancestor groups
@@ -22234,12 +22275,6 @@ paths:
           default: true
           nullable: true
         in: query
-      - name: name
-        required: true
-        description: The name or id of the label to be updated
-        schema:
-          type: string
-        in: path
     put:
       operationId: putApiV4GroupsIdLabelsName
       summary: Update a group label
@@ -24669,6 +24704,12 @@ paths:
         '400':
           description: Bad Request
       parameters:
+      - name: queue_name
+        required: true
+        description: The Sidekiq queue name
+        schema:
+          type: string
+        in: path
       - name: organization_id
         required: false
         description: Metadata key to match
@@ -24872,10 +24913,6 @@ paths:
           type: string
           nullable: true
         in: query
-      - name: queue_name
-        required: true
-        schema: {}
-        in: path
   "/api/v4/groups/{id}/wikis":
     get:
       operationId: getApiV4GroupsIdWikis
@@ -24895,6 +24932,14 @@ paths:
         '400':
           description: Bad Request
       parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group or project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
       - name: with_content
         required: false
         description: Include pages' content
@@ -24902,14 +24947,6 @@ paths:
           type: boolean
           nullable: true
         in: query
-      - name: id
-        required: true
-        description: The ID or URL-encoded path of the group
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
     post:
       operationId: postApiV4GroupsIdWikis
       summary: Create a wiki page for a group
@@ -24933,7 +24970,7 @@ paths:
       parameters:
       - name: id
         required: true
-        description: The ID or URL-encoded path of the group
+        description: The ID or URL-encoded path of the group or project
         schema:
           oneOf:
           - type: string
@@ -24964,6 +25001,14 @@ paths:
         '400':
           description: Bad Request
       parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group or project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
       - name: slug
         required: true
         description: The slug of a wiki page
@@ -24984,14 +25029,6 @@ paths:
           type: boolean
           nullable: true
         in: query
-      - name: id
-        required: true
-        description: The ID or URL-encoded path of the group
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
     put:
       operationId: putApiV4GroupsIdWikisSlug
       summary: Update a wiki page for a group
@@ -25014,7 +25051,7 @@ paths:
       parameters:
       - name: id
         required: true
-        description: The ID or URL-encoded path of the group
+        description: The ID or URL-encoded path of the group or project
         schema:
           oneOf:
           - type: string
@@ -25046,19 +25083,19 @@ paths:
         '404':
           description: Not found
       parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group or project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
       - name: slug
         required: true
         description: The slug of a wiki page
         schema:
           type: string
-        in: path
-      - name: id
-        required: true
-        description: The ID or URL-encoded path of the group
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
         in: path
   "/api/v4/groups/{id}/wikis/attachments":
     post:
@@ -25082,7 +25119,7 @@ paths:
       parameters:
       - name: id
         required: true
-        description: The ID or URL-encoded path of the group
+        description: The ID or URL-encoded path of the group or project
         schema:
           oneOf:
           - type: string
@@ -25113,6 +25150,14 @@ paths:
         '400':
           description: Bad Request
       parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group or project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
       - name: with_content
         required: false
         description: Include pages' content
@@ -25120,15 +25165,6 @@ paths:
           type: boolean
           nullable: true
         in: query
-      - name: id
-        required: true
-        description: The ID or URL-encoded path of the project
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-        example: 1
     post:
       operationId: postApiV4ProjectsIdWikis
       summary: Create a wiki page for a project
@@ -25152,13 +25188,12 @@ paths:
       parameters:
       - name: id
         required: true
-        description: The ID or URL-encoded path of the project
+        description: The ID or URL-encoded path of the group or project
         schema:
           oneOf:
           - type: string
           - type: integer
         in: path
-        example: 1
       requestBody:
         required: true
         content:
@@ -25184,6 +25219,14 @@ paths:
         '400':
           description: Bad Request
       parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group or project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
       - name: slug
         required: true
         description: The slug of a wiki page
@@ -25204,15 +25247,6 @@ paths:
           type: boolean
           nullable: true
         in: query
-      - name: id
-        required: true
-        description: The ID or URL-encoded path of the project
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-        example: 1
     put:
       operationId: putApiV4ProjectsIdWikisSlug
       summary: Update a wiki page for a project
@@ -25235,13 +25269,12 @@ paths:
       parameters:
       - name: id
         required: true
-        description: The ID or URL-encoded path of the project
+        description: The ID or URL-encoded path of the group or project
         schema:
           oneOf:
           - type: string
           - type: integer
         in: path
-        example: 1
       - name: slug
         required: true
         description: The slug of a wiki page
@@ -25268,21 +25301,20 @@ paths:
         '404':
           description: Not found
       parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group or project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
       - name: slug
         required: true
         description: The slug of a wiki page
         schema:
           type: string
         in: path
-      - name: id
-        required: true
-        description: The ID or URL-encoded path of the project
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-        example: 1
   "/api/v4/projects/{id}/wikis/attachments":
     post:
       operationId: postApiV4ProjectsIdWikisAttachments
@@ -25305,13 +25337,12 @@ paths:
       parameters:
       - name: id
         required: true
-        description: The ID or URL-encoded path of the project
+        description: The ID or URL-encoded path of the group or project
         schema:
           oneOf:
           - type: string
           - type: integer
         in: path
-        example: 1
       requestBody:
         required: true
         content:
@@ -26365,13 +26396,13 @@ paths:
         in: path
       - name: module_name
         required: true
-        description: Name of the module
+        description: The module name
         schema:
           type: string
         in: path
       - name: module_system
         required: true
-        description: System of the module
+        description: The module system (provider)
         schema:
           type: string
         in: path
@@ -26400,13 +26431,13 @@ paths:
         in: path
       - name: module_name
         required: true
-        description: Name of the module
+        description: The module name
         schema:
           type: string
         in: path
       - name: module_system
         required: true
-        description: System of the module
+        description: The module system (provider)
         schema:
           type: string
         in: path
@@ -26439,13 +26470,13 @@ paths:
         in: path
       - name: module_name
         required: true
-        description: Name of the module
+        description: The module name
         schema:
           type: string
         in: path
       - name: module_system
         required: true
-        description: System of the module
+        description: The module system (provider)
         schema:
           type: string
         in: path
@@ -31658,7 +31689,6 @@ paths:
           - type: string
           - type: integer
         in: path
-        example: 1
   "/api/v4/projects":
     get:
       operationId: getApiV4Projects
@@ -33939,13 +33969,6 @@ paths:
         '400':
           description: Bad Request
       parameters:
-      - name: wiki
-        required: false
-        description: Set to true to receive the wiki repository
-        schema:
-          type: boolean
-          nullable: true
-        in: query
       - name: id
         required: true
         description: The ID or URL-encoded path of the project
@@ -33954,7 +33977,13 @@ paths:
           - type: string
           - type: integer
         in: path
-        example: 1
+      - name: wiki
+        required: false
+        description: Set to true to receive the wiki repository
+        schema:
+          type: boolean
+          nullable: true
+        in: query
   "/api/v4/projects/{id}/packages/protection/rules":
     get:
       operationId: getApiV4ProjectsIdPackagesProtectionRules
@@ -34387,6 +34416,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '400':
+          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -34396,7 +34427,6 @@ paths:
           - type: string
           - type: integer
         in: path
-        example: 1
     patch:
       operationId: patchApiV4ProjectsIdJobTokenScope
       summary: Update the CI/CD job token access settings for a project
@@ -34424,7 +34454,6 @@ paths:
           - type: string
           - type: integer
         in: path
-        example: 1
       requestBody:
         required: true
         content:
@@ -34455,6 +34484,14 @@ paths:
         '400':
           description: Bad Request
       parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
       - name: page
         required: false
         description: Current page number
@@ -34473,15 +34510,6 @@ paths:
           nullable: true
         in: query
         example: 20
-      - name: id
-        required: true
-        description: The ID or URL-encoded path of the project
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-        example: 1
     post:
       operationId: postApiV4ProjectsIdJobTokenScopeAllowlist
       summary: Add a project to a CI/CD job token allowlist
@@ -34544,6 +34572,14 @@ paths:
         '400':
           description: Bad Request
       parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
       - name: page
         required: false
         description: Current page number
@@ -34562,15 +34598,6 @@ paths:
           nullable: true
         in: query
         example: 20
-      - name: id
-        required: true
-        description: The ID or URL-encoded path of the project
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-        example: 1
     post:
       operationId: postApiV4ProjectsIdJobTokenScopeGroupsAllowlist
       summary: Add a group to a CI/CD job token allowlist
@@ -39209,8 +39236,6 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequestApprovals"
-        '304':
-          description: Not modified
         '404':
           description: Not found
         '401':
@@ -39253,8 +39278,6 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequestApprovals"
-        '304':
-          description: Not modified
         '404':
           description: Not found
         '401':
@@ -56371,7 +56394,9 @@ paths:
       parameters:
       - name: name
         required: true
-        schema: {}
+        description: The name of the feature flag
+        schema:
+          type: string
         in: path
       requestBody:
         required: true
@@ -56391,10 +56416,14 @@ paths:
           description: Resource deleted
         '404':
           description: Not Found
+        '400':
+          description: Bad Request
       parameters:
       - name: name
         required: true
-        schema: {}
+        description: The name of the feature flag
+        schema:
+          type: string
         in: path
   "/api/v4/projects/{id}/feature_flags_user_lists":
     get:
@@ -57190,7 +57219,9 @@ paths:
         in: path
       - name: key_id
         required: true
-        schema: {}
+        description: The ID of the client key
+        schema:
+          type: integer
         in: path
   "/api/v4/projects/{id}/environments":
     get:
@@ -59338,7 +59369,7 @@ paths:
         in: path
       - name: distribution
         required: true
-        description: The Debian Codename or Suite
+        description: The Debian distribution name
         schema:
           type: string
           pattern: "(?:^(?:[0-9A-Za-z\\u017F\\u212A][\\x2D.0-9A-Za-z\\u017F\\u212A]*)$)"
@@ -59346,14 +59377,14 @@ paths:
         example: my-distro
       - name: letter
         required: true
-        description: The Debian Classification (first-letter or lib-first-letter)
+        description: The package name first letter
         schema:
           type: string
         in: path
         example: a
       - name: package_name
         required: true
-        description: The Debian Source Package Name
+        description: The package name
         schema:
           type: string
           pattern: "^[a-z0-9][\\-+.a-z0-9]+$"
@@ -59361,7 +59392,7 @@ paths:
         example: my-pkg
       - name: package_version
         required: true
-        description: The Debian Source Package Version
+        description: The package version
         schema:
           type: string
           pattern: "(?:^(?:(?:([0-9]{1,9}):)?([0-9][+.0-9A-Za-z~\\u017F\\u212A]*)(-[+.0-9A-Za-z~\\u017F\\u212A]+){0,14}(?<!-))$)"
@@ -59369,7 +59400,7 @@ paths:
         example: 1.0.0
       - name: file_name
         required: true
-        description: The Debian File Name
+        description: The package file name
         schema:
           type: string
         in: path
@@ -59755,28 +59786,28 @@ paths:
         in: path
       - name: package_name
         required: true
-        description: Package name
+        description: The package name
         schema:
           type: string
         in: path
         example: my-package
       - name: package_version
         required: true
-        description: Package version
+        description: The package version
         schema:
           type: string
         in: path
         example: '1.0'
       - name: package_username
         required: true
-        description: Package username
+        description: The package username
         schema:
           type: string
         in: path
         example: my-group+my-project
       - name: package_channel
         required: true
-        description: Package channel
+        description: The package channel
         schema:
           type: string
         in: path
@@ -61043,28 +61074,28 @@ paths:
         in: path
       - name: package_name
         required: true
-        description: Package name
+        description: The package name
         schema:
           type: string
         in: path
         example: my-package
       - name: package_version
         required: true
-        description: Package version
+        description: The package version
         schema:
           type: string
         in: path
         example: '1.0'
       - name: package_username
         required: true
-        description: Package username
+        description: The package username
         schema:
           type: string
         in: path
         example: my-group+my-project
       - name: package_channel
         required: true
-        description: Package channel
+        description: The package channel
         schema:
           type: string
         in: path
@@ -62237,28 +62268,28 @@ paths:
       parameters:
       - name: package_name
         required: true
-        description: Package name
+        description: The package name
         schema:
           type: string
         in: path
         example: my-package
       - name: package_version
         required: true
-        description: Package version
+        description: The package version
         schema:
           type: string
         in: path
         example: '1.0'
       - name: package_username
         required: true
-        description: Package username
+        description: The package username
         schema:
           type: string
         in: path
         example: my-group+my-project
       - name: package_channel
         required: true
-        description: Package channel
+        description: The package channel
         schema:
           type: string
         in: path
@@ -94891,7 +94922,7 @@ components:
           description: Reject commit when it’s not DCO certified.
           example: true
           nullable: true
-    RequestBody_a7a890622ef9:
+    RequestBody_de9fcc78c876:
       type: object
       properties:
         action:
@@ -94925,6 +94956,11 @@ components:
         pull_request.base.repo.full_name:
           type: string
           description: Target repository
+          nullable: true
+        force:
+          type: boolean
+          description: Reset the mirror if it is in a hard-failed state and retry
+            the update
           nullable: true
     RequestBody_dc0e88ca59c5:
       type: object

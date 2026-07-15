@@ -9,6 +9,7 @@
 - Instance-level and group-level network access controls [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/229531) in GitLab 18.11 [with feature flags](../../administration/feature_flags/_index.md) named `dap_instance_network_access_controls` and `dap_group_network_access_controls`. Disabled by default.
 - Feature flags `dap_instance_network_access_controls` and `dap_group_network_access_controls` [enabled](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235670) in GitLab 19.0.
 - Feature flag `dap_group_network_access_controls` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243118) in 19.2.
+- Feature flag `dap_instance_network_access_controls` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/244957) in 19.3.
 
 The execution environment sandbox provides application-level network and filesystem isolation
 that helps protect GitLab Duo Agent Platform remote flows from unauthorized network access

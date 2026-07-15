@@ -8,8 +8,33 @@
 
 ## Migrate from `release-cli` to `glab` CLI
 
-To migrate from `release-cli` to `glab` CLI,
-update your CI/CD job with the `release` keyword to use the `cli:latest` image:
+To migrate from `release-cli` to `glab` CLI, update one of the following based on your job's configuration:
+
+1. If your job uses the `release` keyword, update to use the `cli:latest` image:
+
+   ```yaml
+   release_job:
+     stage: release
+     image: registry.gitlab.com/gitlab-org/cli:latest
+     rules:
+       - if: $CI_COMMIT_TAG
+     script:
+       - echo "Running the release job."
+     release:
+       tag_name: $CI_COMMIT_TAG
+       name: 'Release $CI_COMMIT_TAG'
+       description: 'Release created using the CLI.'
+   ```
+
+   For more information, see [`release`](../../../ci/yaml/_index.md#release).
+
+1. If your job uses `release-cli` commands in `script` blocks, update to use `glab release create`
+   and configure authentication for the [Releases API](../../../api/releases/_index.md).
+
+### Authenticate with the CI/CD job token
+
+To authenticate with [`CI_JOB_TOKEN`](../../../ci/jobs/ci_job_token.md), set `GLAB_ENABLE_CI_AUTOLOGIN` to `true`.
+The `glab` CLI sends `CI_JOB_TOKEN` in the `JOB-TOKEN` header, which the Releases API accepts.
 
 ```yaml
 release_job:
@@ -17,15 +42,46 @@ release_job:
   image: registry.gitlab.com/gitlab-org/cli:latest
   rules:
     - if: $CI_COMMIT_TAG
+  variables:
+    GLAB_ENABLE_CI_AUTOLOGIN: "true"
   script:
-    - echo "Running the release job."
-  release:
-    tag_name: $CI_COMMIT_TAG
-    name: 'Release $CI_COMMIT_TAG'
-    description: 'Release created using the CLI.'
+    - |
+      glab release create "$CI_COMMIT_TAG" \
+      --name "Release $CI_COMMIT_TAG" \
+      --notes "Release created with glab."
 ```
 
-For more information, see [`release`](../../../ci/yaml/_index.md#release).
+### Authenticate with an access token
+
+To authenticate with a [personal](../../profile/personal_access_tokens.md),
+[project](../settings/project_access_tokens.md), or
+[group](../../group/settings/group_access_tokens.md) access token,
+set `GITLAB_TOKEN` to your access token.
+The token must have the `api` scope.
+
+```yaml
+release_job:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/cli:latest
+  rules:
+    - if: $CI_COMMIT_TAG
+  variables:
+    GITLAB_TOKEN: $RELEASE_ACCESS_TOKEN
+  script:
+    - |
+      glab release create "$CI_COMMIT_TAG" \
+      --name "Release $CI_COMMIT_TAG" \
+      --notes "Release created with glab."
+```
+
+> [!warning]
+> Do not set `GITLAB_TOKEN` to `$CI_JOB_TOKEN`.
+> The `glab` CLI sends `GITLAB_TOKEN` in the `PRIVATE-TOKEN` header, but the Releases API only accepts a job token in the `JOB-TOKEN` header.
+> This combination returns `404 Not Found`.
+> To authenticate with the CI/CD job token, set `GLAB_ENABLE_CI_AUTOLOGIN` to `true` instead.
+
+For a full list of options, see the
+[`glab release create`](https://docs.gitlab.com/cli/release/create/) command reference.
 
 ## Fall back to `release-cli`
 

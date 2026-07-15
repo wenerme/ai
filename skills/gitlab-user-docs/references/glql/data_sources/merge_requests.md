@@ -95,7 +95,6 @@ For more information, see [scopes](_index.md#scopes).
 **Notes**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
-- `>=` and `<=` operators are inclusive of the dates being queried, whereas `>` and `<` are not.
 
 ### Created at {#mr-created-at}
 
@@ -110,7 +109,6 @@ For more information, see [scopes](_index.md#scopes).
 **Notes**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
-- `>=` and `<=` operators are inclusive of the dates being queried, whereas `>` and `<` are not.
 
 ### Draft {#mr-draft}
 
@@ -135,7 +133,6 @@ For more information, see [scopes](_index.md#scopes).
 **Notes**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
-- `>=` and `<=` operators are inclusive of the dates being queried, whereas `>` and `<` are not.
 
 ### Environment {#mr-environment}
 
@@ -199,7 +196,6 @@ For more information, see [scopes](_index.md#scopes).
 **Notes**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
-- `>=` and `<=` operators are inclusive of the dates being queried, whereas `>` and `<` are not.
 
 ### Merged by user {#mr-merged-by-user}
 
@@ -302,7 +298,6 @@ For more information, see [scopes](_index.md#scopes).
 **Notes**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
-- `>=` and `<=` operators are inclusive of the dates being queried, whereas `>` and `<` are not.
 
 ## Display fields
 

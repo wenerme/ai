@@ -42,6 +42,10 @@ flowchart LR
 
 Please view Cloudflare's [certifications and compliance resources ↗](https://www.cloudflare.com/trust-hub/compliance-resources/) and contact your Cloudflare enterprise account manager for more information.
 
+### Is Cloudflare Realtime TURN FIPS 140-3 compliant?
+
+Cloudflare Realtime TURN supports FIPS 140-3 when encryption is used, such as TURN over TLS. TURN itself does not have any control over the encryption of the data flowing underneath the TURN data layer. For end-to-end encryption of the relayed media or data, the layer above TURN must provide that encryption (for example, DTLS when TURN is used with WebRTC).
+
 ### What regions does Cloudflare Realtime TURN operate at?
 
 Cloudflare Realtime TURN server runs on [Cloudflare's global network ↗](https://www.cloudflare.com/network) \- a growing global network of thousands of machines distributed across hundreds of locations, with the notable exception of the Cloudflare's [China Network](https://developers.cloudflare.com/china-network/).
@@ -189,6 +193,6 @@ Even though this is not common, in certain scenarios TURN allocations may be dis
 Cloudflare Realtime will immediately stop billing and recording usage for analytics. After a short delay, the connection will be disconnected.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/faq/#page","headline":"FAQ · Cloudflare Realtime docs","description":"Frequently asked questions about Cloudflare Realtime TURN pricing, credentials, and usage.","url":"https://developers.cloudflare.com/realtime/turn/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/faq/#page","headline":"FAQ · Cloudflare Realtime docs","description":"Frequently asked questions about Cloudflare Realtime TURN pricing, credentials, and usage.","url":"https://developers.cloudflare.com/realtime/turn/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/turn/","name":"TURN Service"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/turn/faq/","name":"FAQ"}}]}
 ```

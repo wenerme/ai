@@ -3116,6 +3116,9 @@ Example response:
 
 ## Cancel merge when pipeline succeeds
 
+Cancels an active auto-merge for a merge request. If the merge request is on a
+[merge train](../ci/pipelines/merge_trains.md), this also removes it from the train.
+
 ```plaintext
 POST /projects/:id/merge_requests/:merge_request_iid/cancel_merge_when_pipeline_succeeds
 ```

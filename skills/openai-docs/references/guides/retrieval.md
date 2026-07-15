@@ -12,9 +12,61 @@ The Retrieval API is powered by [**vector stores**](#vector-stores), which serve
   **Create vector store** and upload files.
 </li>
 
+Create vector store with files
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+vector_store = client.vector_stores.create(        # Create vector store
+    name="Support FAQ",
+)
+
+client.vector_stores.files.upload_and_poll(        # Upload file
+    vector_store_id=vector_store.id,
+    file=open("customer_policies.txt", "rb")
+)
+```
+
+```javascript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const vector_store = await client.vectorStores.create({   // Create vector store
+    name: "Support FAQ",
+});
+
+await client.vector_stores.files.upload_and_poll({         // Upload file
+    vector_store_id: vector_store.id,
+    file: fs.createReadStream("customer_policies.txt"),
+});
+```
+
+
 <li className={s.StandaloneLi} data-number={2}>
   **Send search query** to get relevant results.
 </li>
+
+Search query
+
+```python
+user_query = "What is the return policy?"
+
+results = client.vector_stores.search(
+    vector_store_id=vector_store.id,
+    query=user_query,
+)
+```
+
+```javascript
+const userQuery = "What is the return policy?";
+
+const results = await client.vectorStores.search({
+    vector_store_id: vector_store.id,
+    query: userQuery,
+});
+```
+
 
 To learn how to use the results with our models, check out the [synthesizing
   responses](#synthesizing-responses) section.
@@ -41,6 +93,71 @@ Semantic search is powered by [vector stores](#vector-stores), which we cover in
 
 You can query a vector store using the `search` function and specifying a `query` in natural language. This will return a list of results, each with the relevant chunks, similarity scores, and file of origin.
 
+Search query
+
+```python
+results = client.vector_stores.search(
+    vector_store_id=vector_store.id,
+    query="How many woodchucks are allowed per passenger?",
+)
+```
+
+```javascript
+const results = await client.vectorStores.search({
+    vector_store_id: vector_store.id,
+    query: "How many woodchucks are allowed per passenger?",
+});
+```
+
+
+Results
+
+```json
+{
+  "object": "vector_store.search_results.page",
+  "search_query": "How many woodchucks are allowed per passenger?",
+  "data": [
+    {
+      "file_id": "file-12345",
+      "filename": "woodchuck_policy.txt",
+      "score": 0.85,
+      "attributes": {
+        "region": "North America",
+        "author": "Wildlife Department"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "According to the latest regulations, each passenger is allowed to carry up to two woodchucks."
+        },
+        {
+          "type": "text",
+          "text": "Ensure that the woodchucks are properly contained during transport."
+        }
+      ]
+    },
+    {
+      "file_id": "file-67890",
+      "filename": "transport_guidelines.txt",
+      "score": 0.75,
+      "attributes": {
+        "region": "North America",
+        "author": "Transport Authority"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Passengers must adhere to the guidelines set forth by the Transport Authority regarding the transport of woodchucks."
+        }
+      ]
+    }
+  ],
+  "has_more": false,
+  "next_page": null
+}
+```
+
+
 A response will contain 10 results maximum by default, but you can set up to 50 using the `max_num_results` param.
 
 ### Query rewriting
@@ -61,25 +178,136 @@ Attribute filtering helps narrow down results by applying criteria, such as rest
 
 Use **comparison filters** to compare a specific `key` in a file's `attributes` with a given `value`, and **compound filters** to combine multiple filters using `and` and `or`.
 
+Comparison filter
+
+```json
+{
+  "type": "eq" | "ne" | "gt" | "gte" | "lt" | "lte" | "in" | "nin",  // comparison operators
+  "key": "attributes_key",                           // attributes key
+  "value": "target_value"                             // value to compare against
+}
+```
+
+
+Compound filter
+
+```json
+{
+  "type": "and" | "or",                                // logical operators
+  "filters": [...]                                   
+}
+```
+
+
 Below are some example filters.
 
 
 
 <div data-content-switcher-pane data-value="region">
     <div class="hidden">Region</div>
-    </div>
+    Filter for a region
+
+```json
+{
+  "type": "eq",
+  "key": "region",
+  "value": "us"
+}
+```
+
+  </div>
   <div data-content-switcher-pane data-value="date-range" hidden>
     <div class="hidden">Date range</div>
-    </div>
+    Filter for a date range
+
+```json
+{
+  "type": "and",
+  "filters": [
+    {
+      "type": "gte",
+      "key": "date",
+      "value": 1704067200  // unix timestamp for 2024-01-01
+    },
+    {
+      "type": "lte",
+      "key": "date",
+      "value": 1710892800  // unix timestamp for 2024-03-20
+    }
+  ]
+}
+```
+
+  </div>
   <div data-content-switcher-pane data-value="filename" hidden>
     <div class="hidden">Filenames</div>
-    </div>
+    Filter to match any of a set of filenames
+
+```json
+{
+  "type": "in",
+  "property": "filename",
+  "value": ["example.txt", "example2.txt"]
+}
+```
+
+  </div>
   <div data-content-switcher-pane data-value="exclude-filenames" hidden>
     <div class="hidden">Exclude filenames</div>
-    </div>
+    Filter to exclude drafts by filename
+
+```json
+{
+  "type": "nin",
+  "property": "filename",
+  "value": ["draft.txt", "internal_notes.md"]
+}
+```
+
+  </div>
   <div data-content-switcher-pane data-value="date-range-and-region" hidden>
     <div class="hidden">Complex</div>
-    </div>
+    Filter for top secret projects with certain names in english
+
+```json
+{
+  "type": "or",
+  "filters": [
+    {
+      "type": "and",
+      "filters": [
+        {
+          "type": "or",
+          "filters": [
+            {
+              "type": "eq",
+              "key": "project_code",
+              "value": "X123"
+            },
+            {
+              "type": "eq",
+              "key": "project_code",
+              "value": "X999"
+            }
+          ]
+        },
+        {
+          "type": "eq",
+          "key": "confidentiality",
+          "value": "top_secret"
+        }
+      ]
+    },
+    {
+      "type": "eq",
+      "key": "language",
+      "value": "en"
+    }
+  ]
+}
+```
+
+  </div>
 
 
 
@@ -116,19 +344,89 @@ See [expiration policies](#expiration-policies) for options to minimize costs.
 
 <div data-content-switcher-pane data-value="create">
     <div class="hidden">Create</div>
-    </div>
+    Create vector store
+
+```python
+client.vector_stores.create(
+    name="Support FAQ",
+    file_ids=["file_123"]
+)
+```
+
+```javascript
+await client.vector_stores.create({
+    name: "Support FAQ",
+    file_ids: ["file_123"]
+});
+```
+
+  </div>
   <div data-content-switcher-pane data-value="retrieve" hidden>
     <div class="hidden">Retrieve</div>
-    </div>
+    Retrieve vector store
+
+```python
+client.vector_stores.retrieve(
+    vector_store_id="vs_123"
+)
+```
+
+```javascript
+await client.vector_stores.retrieve({
+    vector_store_id: "vs_123"
+});
+```
+
+  </div>
   <div data-content-switcher-pane data-value="update" hidden>
     <div class="hidden">Update</div>
-    </div>
+    Update vector store
+
+```python
+client.vector_stores.update(
+    vector_store_id="vs_123",
+    name="Support FAQ Updated"
+)
+```
+
+```javascript
+await client.vector_stores.update({
+    vector_store_id: "vs_123",
+    name: "Support FAQ Updated"
+});
+```
+
+  </div>
   <div data-content-switcher-pane data-value="delete" hidden>
     <div class="hidden">Delete</div>
-    </div>
+    Delete vector store
+
+```python
+client.vector_stores.delete(
+    vector_store_id="vs_123"
+)
+```
+
+```javascript
+await client.vector_stores.delete({
+    vector_store_id: "vs_123"
+});
+```
+
+  </div>
   <div data-content-switcher-pane data-value="list" hidden>
     <div class="hidden">List</div>
-    </div>
+    List vector stores
+
+```python
+client.vector_stores.list()
+```
+
+```javascript
+await client.vector_stores.list();
+```
+
+  </div>
 
 
 
@@ -142,22 +440,118 @@ Adding files is rate limited per vector store ID. Requests to [`/vector_stores/{
 
 <div data-content-switcher-pane data-value="create">
     <div class="hidden">Create</div>
-    </div>
+    Create vector store file
+
+```python
+client.vector_stores.files.create_and_poll(
+    vector_store_id="vs_123",
+    file_id="file_123"
+)
+```
+
+```javascript
+await client.vector_stores.files.create_and_poll({
+    vector_store_id: "vs_123",
+    file_id: "file_123"
+});
+```
+
+  </div>
   <div data-content-switcher-pane data-value="upload" hidden>
     <div class="hidden">Upload</div>
-    </div>
+    Upload vector store file
+
+```python
+client.vector_stores.files.upload_and_poll(
+    vector_store_id="vs_123",
+    file=open("customer_policies.txt", "rb")
+)
+```
+
+```javascript
+await client.vector_stores.files.upload_and_poll({
+    vector_store_id: "vs_123",
+    file: fs.createReadStream("customer_policies.txt"),
+});
+```
+
+  </div>
   <div data-content-switcher-pane data-value="retrieve" hidden>
     <div class="hidden">Retrieve</div>
-    </div>
+    Retrieve vector store file
+
+```python
+client.vector_stores.files.retrieve(
+    vector_store_id="vs_123",
+    file_id="file_123"
+)
+```
+
+```javascript
+await client.vector_stores.files.retrieve({
+    vector_store_id: "vs_123",
+    file_id: "file_123"
+});
+```
+
+  </div>
   <div data-content-switcher-pane data-value="update" hidden>
     <div class="hidden">Update</div>
-    </div>
+    Update vector store file
+
+```python
+client.vector_stores.files.update(
+    vector_store_id="vs_123",
+    file_id="file_123",
+    attributes={"key": "value"}
+)
+```
+
+```javascript
+await client.vector_stores.files.update({
+    vector_store_id: "vs_123",
+    file_id: "file_123",
+    attributes: { key: "value" }
+});
+```
+
+  </div>
   <div data-content-switcher-pane data-value="delete" hidden>
     <div class="hidden">Delete</div>
-    </div>
+    Delete vector store file
+
+```python
+client.vector_stores.files.delete(
+    vector_store_id="vs_123",
+    file_id="file_123"
+)
+```
+
+```javascript
+await client.vector_stores.files.delete({
+    vector_store_id: "vs_123",
+    file_id: "file_123"
+});
+```
+
+  </div>
   <div data-content-switcher-pane data-value="list" hidden>
     <div class="hidden">List</div>
-    </div>
+    List vector store files
+
+```python
+client.vector_stores.files.list(
+    vector_store_id="vs_123"
+)
+```
+
+```javascript
+await client.vector_stores.files.list({
+    vector_store_id: "vs_123"
+});
+```
+
+  </div>
 
 
 
@@ -167,16 +561,104 @@ Adding files is rate limited per vector store ID. Requests to [`/vector_stores/{
 
 <div data-content-switcher-pane data-value="create">
     <div class="hidden">Create</div>
-    </div>
+    Batch create operation
+
+```python
+client.vector_stores.file_batches.create_and_poll(
+    vector_store_id="vs_123",
+    files=[
+        {
+            "file_id": "file_123",
+            "attributes": {"department": "finance"}
+        },
+        {
+            "file_id": "file_456",
+            "chunking_strategy": {
+                "type": "static",
+                "max_chunk_size_tokens": 1200,
+                "chunk_overlap_tokens": 200
+            }
+        }
+    ]
+)
+```
+
+```javascript
+await client.vector_stores.file_batches.create_and_poll({
+    vector_store_id: "vs_123",
+    files: [
+        {
+            file_id: "file_123",
+            attributes: { department: "finance" }
+        },
+        {
+            file_id: "file_456",
+            chunking_strategy: {
+                type: "static",
+                max_chunk_size_tokens: 1200,
+                chunk_overlap_tokens: 200
+            }
+        }
+    ]
+});
+```
+
+  </div>
   <div data-content-switcher-pane data-value="retrieve" hidden>
     <div class="hidden">Retrieve</div>
-    </div>
+    Batch retrieve operation
+
+```python
+client.vector_stores.file_batches.retrieve(
+    vector_store_id="vs_123",
+    batch_id="vsfb_123"
+)
+```
+
+```javascript
+await client.vector_stores.file_batches.retrieve({
+    vector_store_id: "vs_123",
+    batch_id: "vsfb_123"
+});
+```
+
+  </div>
   <div data-content-switcher-pane data-value="cancel" hidden>
     <div class="hidden">Cancel</div>
-    </div>
+    Batch cancel operation
+
+```python
+client.vector_stores.file_batches.cancel(
+    vector_store_id="vs_123",
+    batch_id="vsfb_123"
+)
+```
+
+```javascript
+await client.vector_stores.file_batches.cancel({
+    vector_store_id: "vs_123",
+    batch_id: "vsfb_123"
+});
+```
+
+  </div>
   <div data-content-switcher-pane data-value="list" hidden>
     <div class="hidden">List</div>
-    </div>
+    Batch list operation
+
+```python
+client.vector_stores.file_batches.list(
+    vector_store_id="vs_123"
+)
+```
+
+```javascript
+await client.vector_stores.file_batches.list({
+    vector_store_id: "vs_123"
+});
+```
+
+  </div>
 
 
 
@@ -188,9 +670,58 @@ For higher-throughput ingestion into a single vector store, we recommend batch c
 
 Each `vector_store.file` can have associated `attributes`, a dictionary of values that can be referenced when performing [semantic search](#semantic-search) with [attribute filtering](#attribute-filtering). The dictionary can have at most 16 keys, with a limit of 256 characters each.
 
+Create vector store file with attributes
+
+```python
+client.vector_stores.files.create(
+    vector_store_id="<vector_store_id>",
+    file_id="file_123",
+    attributes={
+        "region": "US",
+        "category": "Marketing",
+        "date": 1672531200      # Jan 1, 2023
+    }
+)
+```
+
+```javascript
+await client.vector_stores.files.create(<vector_store_id>, {
+    file_id: "file_123",
+    attributes: {
+        region: "US",
+        category: "Marketing",
+        date: 1672531200, // Jan 1, 2023
+    },
+});
+```
+
+
 ### Expiration policies
 
 You can set an expiration policy on `vector_store` objects with `expires_after`. Once a vector store expires, all associated `vector_store.file` objects will be deleted and you'll no longer be charged for them.
+
+Set expiration policy for vector store
+
+```python
+client.vector_stores.update(
+    vector_store_id="vs_123",
+    expires_after={
+        "anchor": "last_active_at",
+        "days": 7
+    }
+)
+```
+
+```javascript
+await client.vector_stores.update({
+    vector_store_id: "vs_123",
+    expires_after: {
+        anchor: "last_active_at",
+        days: 7,
+    },
+});
+```
+
 
 ### Limits
 
@@ -240,5 +771,111 @@ _For `text/` MIME types, the encoding must be one of `utf-8`, `utf-16`, or `asci
 
 After performing a query you may want to synthesize a response based on the results. You can leverage our models to do so, by supplying the results and original query, to get back a grounded response.
 
+Perform search query to get results
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+user_query = "What is the return policy?"
+
+results = client.vector_stores.search(
+    vector_store_id=vector_store.id,
+    query=user_query,
+)
+```
+
+```javascript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const userQuery = "What is the return policy?";
+
+const results = await client.vectorStores.search({
+    vector_store_id: vector_store.id,
+    query: userQuery,
+});
+```
+
+
+Synthesize a response based on results
+
+```python
+formatted_results = format_results(results.data)
+
+'\n'.join('\n'.join(c.text) for c in result.content for result in results.data)
+
+completion = client.chat.completions.create(
+    model="gpt-5.6",
+    messages=[
+        {
+            "role": "developer",
+            "content": "Produce a concise answer to the query based on the provided sources."
+        },
+        {
+            "role": "user",
+            "content": f"Sources: {formatted_results}\n\nQuery: '{user_query}'"
+        }
+    ],
+)
+
+print(completion.choices[0].message.content)
+```
+
+```javascript
+const formattedResults = formatResults(results.data);
+// Join the text content of all results
+const textSources = results.data.map(result => result.content.map(c => c.text).join('\n')).join('\n');
+
+const completion = await client.chat.completions.create({
+    model: "gpt-5.6",
+    messages: [
+        {
+            role: "developer",
+            content: "Produce a concise answer to the query based on the provided sources."
+        },
+        {
+            role: "user",
+            content: `Sources: ${formattedResults}\n\nQuery: '${userQuery}'`
+        }
+    ],
+});
+
+console.log(completion.choices[0].message.content);
+```
+
+
+```json
+"Our return policy allows returns within 30 days of purchase."
+```
+
 This uses a sample `format_results` function, which could be implemented like
 so:
+
+Sample result formatting function
+
+```python
+def format_results(results):
+    formatted_results = ''
+    for result in results.data:
+        formatted_result = f"<result file_id='{result.file_id}' file_name='{result.file_name}'>"
+        for part in result.content:
+            formatted_result += f"<content>{part.text}</content>"
+        formatted_results += formatted_result + "</result>"
+    return f"<sources>{formatted_results}</sources>"
+```
+
+```javascript
+function formatResults(results) {
+    let formattedResults = '';
+    for (const result of results.data) {
+        let formattedResult = `<result file_id='${result.file_id}' file_name='${result.file_name}'>`;
+        for (const part of result.content) {
+            formattedResult += `<content>${part.text}</content>`;
+        }
+        formattedResults += formattedResult + "</result>";
+    }
+    return `<sources>${formattedResults}</sources>`;
+}
+```

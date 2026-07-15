@@ -164,7 +164,7 @@ Extended prompt cache retention is available for the following models:
 - `gpt-5-codex`
 - `gpt-4.1`
 
-Extended prompt cache retention keeps cached prefixes active for longer, up to a maximum of 24 hours. Extended Prompt Caching works by offloading the key/value tensors to GPU-local storage when memory is full, significantly increasing the storage capacity available for caching.
+Extended prompt cache retention keeps cached prefixes active for longer, up to a maximum of 24 hours. Extended Prompt Caching works by offloading the key/value tensors to GPU-local storage when memory is full, significantly increasing the storage capacity available for caching. Note that only key/value tensors are cached in GPU-local storage, not the prompts themselves.
 
 Key/value tensors are the intermediate representation from the model's attention layers produced during prefill. Only the key/value tensors may be persisted in local storage; the original customer content, such as prompt text, is only retained in memory.
 

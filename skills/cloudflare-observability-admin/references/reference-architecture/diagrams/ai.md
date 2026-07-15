@@ -20,6 +20,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Ingesting BigQuery Data into Workers AI ](https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/)
 * [ Multi-vendor AI observability and control ](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-multivendor-observability-control/)
 * [ Retrieval Augmented Generation (RAG) ](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/)
+* [ Enterprise AI agent workspace ](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/#page","headline":"Artificial Intelligence (AI) · Cloudflare Reference Architecture docs","description":"Reference architecture diagrams for AI solutions.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

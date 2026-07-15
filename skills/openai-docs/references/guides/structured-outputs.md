@@ -118,12 +118,131 @@ When the `refusal` property appears in your output object, you might present the
 
 
 
-  The API response from a refusal will look something like this:
+  ```python
+class Step(BaseModel):
+    explanation: str
+    output: str
+
+class MathReasoning(BaseModel):
+    steps: list[Step]
+    final_answer: str
+
+response = client.responses.parse(
+    model="gpt-5.6",
+    input=[
+        {"role": "system", "content": "You are a helpful math tutor. Guide the user through the solution step by step."},
+        {"role": "user", "content": "how can I solve 8x + 7 = -23"},
+    ],
+    text_format=MathReasoning,
+)
+
+for output in response.output:
+    if output.type != "message":
+        continue
+
+    for item in output.content:
+        if item.type == "refusal":
+            # If the model refuses to respond, you will get a refusal message
+            print(item.refusal)
+            continue
+
+        if not item.parsed:
+            raise Exception("Could not parse response")
+
+        print(item.parsed)
+```
+
+```javascript
+const Step = z.object({
+  explanation: z.string(),
+  output: z.string(),
+});
+
+const MathReasoning = z.object({
+  steps: z.array(Step),
+  final_answer: z.string(),
+});
+
+const response = await openai.responses.parse({
+  model: "gpt-5.6",
+  input: [
+    { role: "system", content: "You are a helpful math tutor. Guide the user through the solution step by step." },
+    { role: "user", content: "how can I solve 8x + 7 = -23" },
+  ],
+  text: {
+    format: zodTextFormat(MathReasoning, "math_response"),
+  },
+});
+
+for (const output of response.output) {
+  if (output.type !== "message") {
+    continue;
+  }
+
+  for (const item of output.content) {
+    if (item.type == "refusal") {
+      // If the model refuses to respond, you will get a refusal message
+      console.log(item.refusal);
+      continue;
+    }
+
+    if (!item.parsed) {
+      throw new Error("Could not parse response");
+    }
+
+    console.log(item.parsed);
+  }
+}
+```
+
+
+
+The API response from a refusal will look something like this:
 
 
 
 
-  Tips and best practices
+  ```json
+{
+  "id": "resp_1234567890",
+  "object": "response",
+  "created_at": 1721596428,
+  "status": "completed",
+  "completed_at": 1721596429,
+  "error": null,
+  "incomplete_details": null,
+  "input": [],
+  "instructions": null,
+  "max_output_tokens": null,
+  "model": "gpt-4o-2024-08-06",
+  "output": [{
+    "id": "msg_1234567890",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+      // highlight-start
+      {
+        "type": "refusal",
+        "refusal": "I'm sorry, I cannot assist with that request."
+      }
+      // highlight-end
+    ]
+  }],
+  "usage": {
+    "input_tokens": 81,
+    "output_tokens": 11,
+    "total_tokens": 92,
+    "output_tokens_details": {
+      "reasoning_tokens": 0,
+    }
+  },
+}
+```
+
+
+
+
+Tips and best practices
 
 
 

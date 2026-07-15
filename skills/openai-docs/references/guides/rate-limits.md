@@ -70,6 +70,12 @@ Project-token headers may be present when a project-scoped token limit applies.
 
 The fine-tuning rate limits for your organization can be [found in the dashboard as well](https://platform.openai.com/settings/organization/limits), and can also be retrieved via API:
 
+```bash
+curl https://api.openai.com/v1/fine_tuning/model_limits \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+
 ## Error mitigation
 
 ### What are some steps I can take to mitigate this?
@@ -98,6 +104,26 @@ Example 1: Using the Tenacity library
 Tenacity is an Apache 2.0 licensed general-purpose retrying library, written in Python, to simplify the task of adding retry behavior to just about anything.
 To add exponential backoff to your requests, you can use the `tenacity.retry` decorator. The below example uses the `tenacity.wait_random_exponential` function to add random exponential backoff to a request.
 
+Using the Tenacity library
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+from tenacity import (
+retry,
+stop_after_attempt,
+wait_random_exponential,
+) # for exponential backoff
+
+@retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
+def completion_with_backoff(**kwargs):
+return client.completions.create(**kwargs)
+
+completion_with_backoff(model="gpt-3.5-turbo-instruct", prompt="Once upon a time,")
+```
+
+
 Note that the Tenacity library is a third-party tool, and OpenAI makes no guarantees about
 its reliability or security.
 
@@ -105,11 +131,88 @@ Example 2: Using the backoff library
 
 Another python library that provides function decorators for backoff and retry is [backoff](https://pypi.org/project/backoff/):
 
+Using the Tenacity library
+
+```python
+import backoff
+import openai
+from openai import OpenAI
+client = OpenAI()
+
+@backoff.on_exception(backoff.expo, openai.RateLimitError)
+def completions_with_backoff(**kwargs):
+return client.completions.create(**kwargs)
+
+completions_with_backoff(model="gpt-3.5-turbo-instruct", prompt="Once upon a time,")
+```
+
+
 Like Tenacity, the backoff library is a third-party tool, and OpenAI makes no guarantees about its reliability or security.
 
 Example 3: Manual backoff implementation
 
 If you don't want to use third-party libraries, you can implement your own backoff logic following this example:
+Using manual backoff implementation
+
+```python
+# imports
+import random
+import time
+
+import openai
+from openai import OpenAI
+client = OpenAI()
+
+# define a retry decorator
+
+def retry_with_exponential_backoff(
+func,
+initial_delay: float = 1,
+exponential_base: float = 2,
+jitter: bool = True,
+max_retries: int = 10,
+errors: tuple = (openai.RateLimitError,),
+):
+"""Retry a function with exponential backoff."""
+
+    def wrapper(*args, **kwargs):
+        # Initialize variables
+        num_retries = 0
+        delay = initial_delay
+
+        # Loop until a successful response or max_retries is hit or an exception is raised
+        while True:
+            try:
+                return func(*args, **kwargs)
+
+            # Retry on specific errors
+            except errors as e:
+                # Increment retries
+                num_retries += 1
+
+                # Check if max retries has been reached
+                if num_retries > max_retries:
+                    raise Exception(
+                        f"Maximum number of retries ({max_retries}) exceeded."
+                    )
+
+                # Increment the delay
+                delay *= exponential_base * (1 + jitter * random.random())
+
+                # Sleep for the delay
+                time.sleep(delay)
+
+            # Raise exceptions for any errors not specified
+            except Exception as e:
+                raise e
+
+    return wrapper
+
+@retry_with_exponential_backoff
+def completions_with_backoff(**kwargs):
+return client.completions.create(**kwargs)
+```
+
 Again, OpenAI makes no guarantees on the security or efficiency of this solution but it can be a good starting place for your own solution.
 
 #### Reduce the `max_tokens` to match the size of your completions

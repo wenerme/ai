@@ -10,6 +10,7 @@ GLQL can query the following data sources:
 | Jobs | Yes | No | `Job` | CI/CD jobs within pipelines. |
 | Projects | Yes | No | `Project` | Projects within a namespace. |
 | Code suggestions | No | Yes | `CodeSuggestion` | Aggregated Duo Code Suggestions analytics. |
+| Contributions | No | Yes | `Contribution` | Aggregated contribution activity analytics. |
 
 Each data source has its own set of supported fields for filtering, display, and sorting.
 

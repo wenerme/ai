@@ -1294,6 +1294,7 @@ components:
         - Recraft
         - Reka
         - Relace
+        - Sail Research
         - Sakana AI
         - SambaNova
         - Seed
@@ -1714,6 +1715,10 @@ components:
             nullable: true
           type: object
         replicate:
+          additionalProperties:
+            nullable: true
+          type: object
+        sail-research:
           additionalProperties:
             nullable: true
           type: object

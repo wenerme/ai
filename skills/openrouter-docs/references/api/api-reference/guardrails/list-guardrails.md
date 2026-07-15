@@ -205,6 +205,7 @@ components:
             enforce_zdr_google: false
             enforce_zdr_openai: true
             enforce_zdr_other: false
+            enforce_zdr_xai: false
             id: 550e8400-e29b-41d4-a716-446655440000
             ignored_models: null
             ignored_providers: null
@@ -287,6 +288,7 @@ components:
         enforce_zdr_google: false
         enforce_zdr_openai: true
         enforce_zdr_other: false
+        enforce_zdr_xai: false
         id: 550e8400-e29b-41d4-a716-446655440000
         ignored_models: null
         ignored_providers: null
@@ -351,9 +353,9 @@ components:
           deprecated: true
           description: >-
             Deprecated. Use enforce_zdr_anthropic, enforce_zdr_openai,
-            enforce_zdr_google, and enforce_zdr_other instead. When provided,
-            its value is copied into any of those per-provider fields that are
-            not explicitly specified on the request.
+            enforce_zdr_google, enforce_zdr_xai, and enforce_zdr_other instead.
+            When provided, its value is copied into any of those per-provider
+            fields that are not explicitly specified on the request.
           example: false
           nullable: true
           type: boolean
@@ -381,8 +383,15 @@ components:
         enforce_zdr_other:
           description: >-
             Whether to enforce zero data retention for models that are not from
-            Anthropic, OpenAI, or Google. Falls back to enforce_zdr when not
-            provided.
+            Anthropic, OpenAI, Google, or xAI. Falls back to enforce_zdr when
+            not provided.
+          example: false
+          nullable: true
+          type: boolean
+        enforce_zdr_xai:
+          description: >-
+            Whether to enforce zero data retention for xAI models. Falls back to
+            enforce_zdr when not provided.
           example: false
           nullable: true
           type: boolean

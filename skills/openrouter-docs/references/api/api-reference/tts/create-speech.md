@@ -878,6 +878,10 @@ components:
           additionalProperties:
             nullable: true
           type: object
+        sail-research:
+          additionalProperties:
+            nullable: true
+          type: object
         sakana:
           additionalProperties:
             nullable: true

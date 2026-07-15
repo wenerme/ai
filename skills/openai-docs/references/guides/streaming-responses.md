@@ -9,6 +9,87 @@ This guide focuses on HTTP streaming (`stream=true`) over server-sent events (SS
 
 To start streaming responses, set `stream=True` in your request to the Responses endpoint:
 
+```javascript
+import { OpenAI } from "openai";
+const client = new OpenAI();
+
+const stream = await client.responses.create({
+    model: "gpt-5.6",
+    input: [
+        {
+            role: "user",
+            content: "Say 'double bubble bath' ten times fast.",
+        },
+    ],
+    stream: true,
+});
+
+for await (const event of stream) {
+    console.log(event);
+}
+```
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+stream = client.responses.create(
+    model="gpt-5.6",
+    input=[
+        {
+            "role": "user",
+            "content": "Say 'double bubble bath' ten times fast.",
+        },
+    ],
+    stream=True,
+)
+
+for event in stream:
+    print(event)
+```
+
+```csharp
+using OpenAI.Responses;
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+
+var responses = client.CreateResponseStreamingAsync([
+    ResponseItem.CreateUserMessageItem([
+        ResponseContentPart.CreateInputTextPart("Say 'double bubble bath' ten times fast."),
+    ]),
+]);
+
+await foreach (var response in responses)
+{
+    if (response is StreamingResponseOutputTextDeltaUpdate delta)
+    {
+        Console.Write(delta.Delta);
+    }
+}
+```
+
+```ruby
+require "openai"
+
+openai = OpenAI::Client.new
+
+stream = openai.responses.stream(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: "Say 'double bubble bath' ten times fast."
+    }
+  ]
+)
+
+stream.each do |event|
+  puts(event)
+end
+```
+
+
 The Responses API uses semantic events for streaming. Each event is typed with a predefined schema, so you can listen for events you care about.
 
 For a full list of event types, see the [API reference for streaming](https://developers.openai.com/api/docs/api-reference/responses-streaming). Here are a few examples:
