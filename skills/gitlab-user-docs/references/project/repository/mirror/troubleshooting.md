@@ -319,6 +319,49 @@ To resolve this, you can do either of the following:
 - Migrate the source repository to a "smart" server.
 - Mirror the repository using the [SSH protocol](_index.md#ssh-authentication) (requires authentication).
 
+## Pull mirroring fails with `Could not update main`
+
+You might get an error similar to:
+
+- `9:Could not update main. Please refresh and try again.`
+
+This can happen during the initial pull mirror update if the destination repository is not completely empty.
+
+For example, the destination repository might already contain:
+
+- An initial README commit.
+- A license or `.gitignore`.
+- Existing branches or tags.
+
+To resolve this issue:
+
+1. Recreate the destination repository as an empty repository.
+1. Make sure the repository uses the same object format as the source repository.
+1. Do not initialize the repository with a README, license, or `.gitignore`.
+1. Configure pull mirroring again and run **Update now**.
+
+As a workaround, if you must keep the existing destination repository,
+enable **Overwrite diverged branches** and ensure the mirroring user has permission to overwrite
+the target branch.
+
+## Error: `mismatched algorithms`
+
+You might get an error similar to:
+
+```plaintext
+13:fetch remote: "fatal: mismatched algorithms: client sha1; server sha256": exit status 128.
+```
+
+This error occurs when the source and destination repositories use different object formats and pull mirroring is not supported between repositories that use different object formats.
+
+For example:
+
+- The source repository uses SHA-1.
+- The destination repository uses SHA-256 or vice versa
+
+To resolve this issue, recreate the destination repository with the same object format as the
+source repository, then configure mirroring again.
+
 ## Error: `File directory conflict`
 
 You might get an error that states something similar to the following:

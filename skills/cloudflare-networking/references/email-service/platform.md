@@ -18,6 +18,7 @@ Platform details for Cloudflare Email Service, including limits and pricing.
 * [ Pricing ](https://developers.cloudflare.com/email-service/platform/pricing/)
 * [ Email Routing REST API ](https://developers.cloudflare.com/api/resources/email%5Frouting/)
 * [ Email Sending REST API ](https://developers.cloudflare.com/api/resources/email%5Fsending/)
+* [ Event subscriptions ](https://developers.cloudflare.com/email-service/platform/event-subscriptions/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/email-service/platform/#page","headline":"Platform · Cloudflare Email Service docs","description":"Email Service platform details including limits, pricing, and plan information.","url":"https://developers.cloudflare.com/email-service/platform/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

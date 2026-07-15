@@ -7324,7 +7324,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_9df7b2e0dd43"
     put:
       operationId: putApiV4ProjectsIdPushRule
-      summary: Update an existing project push rule
+      summary: Update push rules of a project
+      description: Updates the push rules for a specified project.
       tags:
       - Push rules
       responses:
@@ -22548,7 +22549,8 @@ paths:
   "/api/v4/projects/{id}/issues/{noteable_id}/discussions":
     get:
       operationId: getApiV4ProjectsIdIssuesNoteableIdDiscussions
-      summary: Get a list of issue discussions
+      summary: List all discussions for an issue
+      description: Lists all discussions for a specified issue.
       tags:
       - Discussions
       responses:
@@ -22595,7 +22597,9 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdIssuesNoteableIdDiscussions
-      summary: Create a new issue discussion
+      summary: Create an issue discussion
+      description: Creates a discussion for a specified issue. Replies can be added
+        to it later.
       tags:
       - Discussions
       responses:
@@ -22631,7 +22635,8 @@ paths:
   "/api/v4/projects/{id}/issues/{noteable_id}/discussions/{discussion_id}":
     get:
       operationId: getApiV4ProjectsIdIssuesNoteableIdDiscussionsDiscussionId
-      summary: Get a single issue discussion
+      summary: Retrieve a discussion for an issue
+      description: Retrieves a specified discussion for an issue.
       tags:
       - Discussions
       responses:
@@ -22666,7 +22671,8 @@ paths:
         in: path
     put:
       operationId: putApiV4ProjectsIdIssuesNoteableIdDiscussionsDiscussionId
-      summary: Resolve/unresolve an existing issue discussion
+      summary: Resolve or unresolve an issue discussion
+      description: Resolves or unresolves a specified issue discussion.
       tags:
       - Discussions
       responses:
@@ -22708,7 +22714,8 @@ paths:
   "/api/v4/projects/{id}/issues/{noteable_id}/discussions/{discussion_id}/notes":
     get:
       operationId: getApiV4ProjectsIdIssuesNoteableIdDiscussionsDiscussionIdNotes
-      summary: Get comments in a single issue discussion
+      summary: List comments in an issue discussion
+      description: Lists the comments in a specified issue discussion.
       tags:
       - Discussions
       responses:
@@ -22743,7 +22750,8 @@ paths:
         in: path
     post:
       operationId: postApiV4ProjectsIdIssuesNoteableIdDiscussionsDiscussionIdNotes
-      summary: Add a comment to a issue discussion
+      summary: Add a comment to an issue discussion
+      description: Adds a comment to a specified issue discussion.
       tags:
       - Discussions
       responses:
@@ -22785,7 +22793,8 @@ paths:
   "/api/v4/projects/{id}/issues/{noteable_id}/discussions/{discussion_id}/notes/{note_id}":
     get:
       operationId: getApiV4ProjectsIdIssuesNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Get a comment in a issue discussion
+      summary: Retrieve a comment from an issue discussion
+      description: Retrieves a specified comment from a issue discussion.
       tags:
       - Discussions
       responses:
@@ -22826,7 +22835,9 @@ paths:
         in: path
     put:
       operationId: putApiV4ProjectsIdIssuesNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Edit a comment in a issue discussion
+      summary: Update a comment in an issue discussion
+      description: Updates or changes the status of a specified comment in a issue
+        discussion.
       tags:
       - Discussions
       responses:
@@ -22873,7 +22884,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_7a3958209da0"
     delete:
       operationId: deleteApiV4ProjectsIdIssuesNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Delete a comment in a issue discussion
+      summary: Delete a comment from an issue discussion
+      description: Deletes a specified comment from a issue discussion.
       tags:
       - Discussions
       responses:
@@ -22915,7 +22927,8 @@ paths:
   "/api/v4/projects/{id}/snippets/{noteable_id}/discussions":
     get:
       operationId: getApiV4ProjectsIdSnippetsNoteableIdDiscussions
-      summary: Get a list of snippet discussions
+      summary: List all discussions for a snippet
+      description: Lists all discussions for a specified snippet.
       tags:
       - Discussions
       responses:
@@ -22962,7 +22975,9 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdSnippetsNoteableIdDiscussions
-      summary: Create a new snippet discussion
+      summary: Create a snippet discussion
+      description: Creates a discussion for a specified snippet. Replies can be added
+        to it later.
       tags:
       - Discussions
       responses:
@@ -22998,7 +23013,8 @@ paths:
   "/api/v4/projects/{id}/snippets/{noteable_id}/discussions/{discussion_id}":
     get:
       operationId: getApiV4ProjectsIdSnippetsNoteableIdDiscussionsDiscussionId
-      summary: Get a single snippet discussion
+      summary: Retrieve a discussion for a snippet
+      description: Retrieves a specified discussion for a snippet.
       tags:
       - Discussions
       responses:
@@ -23034,7 +23050,8 @@ paths:
   "/api/v4/projects/{id}/snippets/{noteable_id}/discussions/{discussion_id}/notes":
     get:
       operationId: getApiV4ProjectsIdSnippetsNoteableIdDiscussionsDiscussionIdNotes
-      summary: Get comments in a single snippet discussion
+      summary: List comments in a snippet discussion
+      description: Lists the comments in a specified snippet discussion.
       tags:
       - Discussions
       responses:
@@ -23070,6 +23087,7 @@ paths:
     post:
       operationId: postApiV4ProjectsIdSnippetsNoteableIdDiscussionsDiscussionIdNotes
       summary: Add a comment to a snippet discussion
+      description: Adds a comment to a specified snippet discussion.
       tags:
       - Discussions
       responses:
@@ -23111,7 +23129,8 @@ paths:
   "/api/v4/projects/{id}/snippets/{noteable_id}/discussions/{discussion_id}/notes/{note_id}":
     get:
       operationId: getApiV4ProjectsIdSnippetsNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Get a comment in a snippet discussion
+      summary: Retrieve a comment from a snippet discussion
+      description: Retrieves a specified comment from a snippet discussion.
       tags:
       - Discussions
       responses:
@@ -23152,7 +23171,9 @@ paths:
         in: path
     put:
       operationId: putApiV4ProjectsIdSnippetsNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Edit a comment in a snippet discussion
+      summary: Update a comment in a snippet discussion
+      description: Updates or changes the status of a specified comment in a snippet
+        discussion.
       tags:
       - Discussions
       responses:
@@ -23199,7 +23220,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_7a3958209da0"
     delete:
       operationId: deleteApiV4ProjectsIdSnippetsNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Delete a comment in a snippet discussion
+      summary: Delete a comment from a snippet discussion
+      description: Deletes a specified comment from a snippet discussion.
       tags:
       - Discussions
       responses:
@@ -23241,7 +23263,8 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{noteable_id}/discussions":
     get:
       operationId: getApiV4ProjectsIdMergeRequestsNoteableIdDiscussions
-      summary: Get a list of merge request discussions
+      summary: List all discussions for a merge request
+      description: Lists all discussions for a specified merge request.
       tags:
       - Discussions
       responses:
@@ -23288,7 +23311,9 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdMergeRequestsNoteableIdDiscussions
-      summary: Create a new merge request discussion
+      summary: Create a merge request discussion
+      description: Creates a discussion for a specified merge request. Replies can
+        be added to it later.
       tags:
       - Discussions
       responses:
@@ -23324,7 +23349,8 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{noteable_id}/discussions/{discussion_id}":
     get:
       operationId: getApiV4ProjectsIdMergeRequestsNoteableIdDiscussionsDiscussionId
-      summary: Get a single merge request discussion
+      summary: Retrieve a discussion for a merge request
+      description: Retrieves a specified discussion for a merge request.
       tags:
       - Discussions
       responses:
@@ -23359,7 +23385,8 @@ paths:
         in: path
     put:
       operationId: putApiV4ProjectsIdMergeRequestsNoteableIdDiscussionsDiscussionId
-      summary: Resolve/unresolve an existing merge request discussion
+      summary: Resolve or unresolve a merge request discussion
+      description: Resolves or unresolves a specified merge request discussion.
       tags:
       - Discussions
       responses:
@@ -23401,7 +23428,8 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{noteable_id}/discussions/{discussion_id}/notes":
     get:
       operationId: getApiV4ProjectsIdMergeRequestsNoteableIdDiscussionsDiscussionIdNotes
-      summary: Get comments in a single merge request discussion
+      summary: List comments in a merge request discussion
+      description: Lists the comments in a specified merge request discussion.
       tags:
       - Discussions
       responses:
@@ -23437,6 +23465,7 @@ paths:
     post:
       operationId: postApiV4ProjectsIdMergeRequestsNoteableIdDiscussionsDiscussionIdNotes
       summary: Add a comment to a merge request discussion
+      description: Adds a comment to a specified merge request discussion.
       tags:
       - Discussions
       responses:
@@ -23478,7 +23507,8 @@ paths:
   "/api/v4/projects/{id}/merge_requests/{noteable_id}/discussions/{discussion_id}/notes/{note_id}":
     get:
       operationId: getApiV4ProjectsIdMergeRequestsNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Get a comment in a merge request discussion
+      summary: Retrieve a comment from a merge request discussion
+      description: Retrieves a specified comment from a merge request discussion.
       tags:
       - Discussions
       responses:
@@ -23519,7 +23549,9 @@ paths:
         in: path
     put:
       operationId: putApiV4ProjectsIdMergeRequestsNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Edit a comment in a merge request discussion
+      summary: Update a comment in a merge request discussion
+      description: Updates or changes the status of a specified comment in a merge
+        request discussion.
       tags:
       - Discussions
       responses:
@@ -23566,7 +23598,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_7a3958209da0"
     delete:
       operationId: deleteApiV4ProjectsIdMergeRequestsNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Delete a comment in a merge request discussion
+      summary: Delete a comment from a merge request discussion
+      description: Deletes a specified comment from a merge request discussion.
       tags:
       - Discussions
       responses:
@@ -23608,7 +23641,8 @@ paths:
   "/api/v4/projects/{id}/repository/commits/{noteable_id}/discussions":
     get:
       operationId: getApiV4ProjectsIdRepositoryCommitsNoteableIdDiscussions
-      summary: Get a list of commit discussions
+      summary: List all discussions for a commit
+      description: Lists all discussions for a specified commit.
       tags:
       - Discussions
       responses:
@@ -23655,7 +23689,9 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdRepositoryCommitsNoteableIdDiscussions
-      summary: Create a new commit discussion
+      summary: Create a commit discussion
+      description: Creates a discussion for a specified commit. Replies can be added
+        to it later.
       tags:
       - Discussions
       responses:
@@ -23691,7 +23727,8 @@ paths:
   "/api/v4/projects/{id}/repository/commits/{noteable_id}/discussions/{discussion_id}":
     get:
       operationId: getApiV4ProjectsIdRepositoryCommitsNoteableIdDiscussionsDiscussionId
-      summary: Get a single commit discussion
+      summary: Retrieve a discussion for a commit
+      description: Retrieves a specified discussion for a commit.
       tags:
       - Discussions
       responses:
@@ -23727,7 +23764,8 @@ paths:
   "/api/v4/projects/{id}/repository/commits/{noteable_id}/discussions/{discussion_id}/notes":
     get:
       operationId: getApiV4ProjectsIdRepositoryCommitsNoteableIdDiscussionsDiscussionIdNotes
-      summary: Get comments in a single commit discussion
+      summary: List comments in a commit discussion
+      description: Lists the comments in a specified commit discussion.
       tags:
       - Discussions
       responses:
@@ -23763,6 +23801,7 @@ paths:
     post:
       operationId: postApiV4ProjectsIdRepositoryCommitsNoteableIdDiscussionsDiscussionIdNotes
       summary: Add a comment to a commit discussion
+      description: Adds a comment to a specified commit discussion.
       tags:
       - Discussions
       responses:
@@ -23804,7 +23843,8 @@ paths:
   "/api/v4/projects/{id}/repository/commits/{noteable_id}/discussions/{discussion_id}/notes/{note_id}":
     get:
       operationId: getApiV4ProjectsIdRepositoryCommitsNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Get a comment in a commit discussion
+      summary: Retrieve a comment from a commit discussion
+      description: Retrieves a specified comment from a commit discussion.
       tags:
       - Discussions
       responses:
@@ -23845,7 +23885,9 @@ paths:
         in: path
     put:
       operationId: putApiV4ProjectsIdRepositoryCommitsNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Edit a comment in a commit discussion
+      summary: Update a comment in a commit discussion
+      description: Updates or changes the status of a specified comment in a commit
+        discussion.
       tags:
       - Discussions
       responses:
@@ -23892,7 +23934,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_7a3958209da0"
     delete:
       operationId: deleteApiV4ProjectsIdRepositoryCommitsNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Delete a comment in a commit discussion
+      summary: Delete a comment from a commit discussion
+      description: Deletes a specified comment from a commit discussion.
       tags:
       - Discussions
       responses:
@@ -23934,7 +23977,8 @@ paths:
   "/api/v4/groups/{id}/epics/{noteable_id}/discussions":
     get:
       operationId: getApiV4GroupsIdEpicsNoteableIdDiscussions
-      summary: Get a list of epic discussions
+      summary: List all discussions for an epic
+      description: Lists all discussions for a specified epic.
       tags:
       - Discussions
       responses:
@@ -23981,7 +24025,9 @@ paths:
         example: 20
     post:
       operationId: postApiV4GroupsIdEpicsNoteableIdDiscussions
-      summary: Create a new epic discussion
+      summary: Create an epic discussion
+      description: Creates a discussion for a specified epic. Replies can be added
+        to it later.
       tags:
       - Discussions
       responses:
@@ -24017,7 +24063,8 @@ paths:
   "/api/v4/groups/{id}/epics/{noteable_id}/discussions/{discussion_id}":
     get:
       operationId: getApiV4GroupsIdEpicsNoteableIdDiscussionsDiscussionId
-      summary: Get a single epic discussion
+      summary: Retrieve a discussion for an epic
+      description: Retrieves a specified discussion for an epic.
       tags:
       - Discussions
       responses:
@@ -24052,7 +24099,8 @@ paths:
         in: path
     put:
       operationId: putApiV4GroupsIdEpicsNoteableIdDiscussionsDiscussionId
-      summary: Resolve/unresolve an existing epic discussion
+      summary: Resolve or unresolve an epic discussion
+      description: Resolves or unresolves a specified epic discussion.
       tags:
       - Discussions
       responses:
@@ -24094,7 +24142,8 @@ paths:
   "/api/v4/groups/{id}/epics/{noteable_id}/discussions/{discussion_id}/notes":
     get:
       operationId: getApiV4GroupsIdEpicsNoteableIdDiscussionsDiscussionIdNotes
-      summary: Get comments in a single epic discussion
+      summary: List comments in an epic discussion
+      description: Lists the comments in a specified epic discussion.
       tags:
       - Discussions
       responses:
@@ -24129,7 +24178,8 @@ paths:
         in: path
     post:
       operationId: postApiV4GroupsIdEpicsNoteableIdDiscussionsDiscussionIdNotes
-      summary: Add a comment to a epic discussion
+      summary: Add a comment to an epic discussion
+      description: Adds a comment to a specified epic discussion.
       tags:
       - Discussions
       responses:
@@ -24171,7 +24221,8 @@ paths:
   "/api/v4/groups/{id}/epics/{noteable_id}/discussions/{discussion_id}/notes/{note_id}":
     get:
       operationId: getApiV4GroupsIdEpicsNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Get a comment in a epic discussion
+      summary: Retrieve a comment from an epic discussion
+      description: Retrieves a specified comment from a epic discussion.
       tags:
       - Discussions
       responses:
@@ -24212,7 +24263,9 @@ paths:
         in: path
     put:
       operationId: putApiV4GroupsIdEpicsNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Edit a comment in a epic discussion
+      summary: Update a comment in an epic discussion
+      description: Updates or changes the status of a specified comment in a epic
+        discussion.
       tags:
       - Discussions
       responses:
@@ -24259,7 +24312,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_7a3958209da0"
     delete:
       operationId: deleteApiV4GroupsIdEpicsNoteableIdDiscussionsDiscussionIdNotesNoteId
-      summary: Delete a comment in a epic discussion
+      summary: Delete a comment from an epic discussion
+      description: Deletes a specified comment from a epic discussion.
       tags:
       - Discussions
       responses:
@@ -26483,7 +26537,9 @@ paths:
   "/api/v4/projects/{id}/repository/tags":
     get:
       operationId: getApiV4ProjectsIdRepositoryTags
-      summary: Get a project repository tags
+      summary: List all project repository tags
+      description: Lists all repository tags from a project, sorted by update date
+        and time in descending order.
       tags:
       - Tags
       responses:
@@ -26569,7 +26625,8 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdRepositoryTags
-      summary: Create a new repository tag
+      summary: Create a tag
+      description: Creates a tag in the repository that points to a specified reference.
       tags:
       - Tags
       responses:
@@ -26603,7 +26660,9 @@ paths:
   "/api/v4/projects/{id}/repository/tags/{tag_name}":
     get:
       operationId: getApiV4ProjectsIdRepositoryTagsTagName
-      summary: Get a single repository tag
+      summary: Retrieve a single repository tag
+      description: Retrieves a repository tag with a specified name. This endpoint
+        can be accessed without authentication if the repository is publicly accessible.
       tags:
       - Tags
       responses:
@@ -26636,7 +26695,8 @@ paths:
         in: path
     delete:
       operationId: deleteApiV4ProjectsIdRepositoryTagsTagName
-      summary: Delete a repository tag
+      summary: Delete a tag
+      description: Deletes a specified repository tag.
       tags:
       - Tags
       responses:
@@ -26668,7 +26728,9 @@ paths:
   "/api/v4/projects/{id}/repository/tags/{tag_name}/signature":
     get:
       operationId: getApiV4ProjectsIdRepositoryTagsTagNameSignature
-      summary: Get a tag's signature
+      summary: Retrieve X.509 signature of a tag
+      description: Retrieves the X.509 signature from a signed tag. Unsigned tags
+        return a `404 Not Found` response.
       tags:
       - Tags
       responses:
@@ -27100,7 +27162,8 @@ paths:
   "/api/v4/projects/{id}/repository/submodules/{submodule}":
     put:
       operationId: putApiV4ProjectsIdRepositorySubmodulesSubmodule
-      summary: Update existing submodule reference in repository
+      summary: Update a submodule reference
+      description: Updates a reference for a specified submodule.
       tags:
       - Submodules
       responses:
@@ -27158,8 +27221,8 @@ paths:
   "/api/v4/snippets":
     get:
       operationId: getApiV4Snippets
-      summary: Get a snippets list for an authenticated user
-      description: This feature was introduced in GitLab 8.15.
+      summary: List all snippets for current user
+      description: Lists all snippets for the currently authenticated user.
       tags:
       - Snippets
       responses:
@@ -27210,8 +27273,8 @@ paths:
         example: 20
     post:
       operationId: postApiV4Snippets
-      summary: Create new snippet
-      description: This feature was introduced in GitLab 8.15.
+      summary: Create a snippet
+      description: Creates a snippet.
       tags:
       - Snippets
       responses:
@@ -27236,8 +27299,9 @@ paths:
   "/api/v4/snippets/public":
     get:
       operationId: getApiV4SnippetsPublic
-      summary: List all public personal snippets current_user has access to
-      description: This feature was introduced in GitLab 8.15.
+      summary: List all public snippets
+      description: Lists all public snippets accessible to the currently authenticated
+        user.
       tags:
       - Snippets
       responses:
@@ -27289,8 +27353,10 @@ paths:
   "/api/v4/snippets/all":
     get:
       operationId: getApiV4SnippetsAll
-      summary: List all snippets current_user has access to
-      description: This feature was introduced in GitLab 16.3.
+      summary: List all snippets
+      description: Lists all snippets available to the currently authenticated user.
+        Users with Administrator or Auditor access levels can see all snippets (both
+        personal and project). This feature was introduced in GitLab 16.3.
       tags:
       - Snippets
       responses:
@@ -27349,8 +27415,8 @@ paths:
   "/api/v4/snippets/{id}":
     get:
       operationId: getApiV4SnippetsId
-      summary: Get a single snippet
-      description: This feature was introduced in GitLab 8.15.
+      summary: Retrieve a snippet
+      description: Retrieves a specified snippet.
       tags:
       - Snippets
       responses:
@@ -27373,8 +27439,8 @@ paths:
         in: path
     put:
       operationId: putApiV4SnippetsId
-      summary: Update an existing snippet
-      description: This feature was introduced in GitLab 8.15.
+      summary: Update snippet
+      description: Updates a specified snippet.
       tags:
       - Snippets
       responses:
@@ -27405,8 +27471,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_3252d20dbeac"
     delete:
       operationId: deleteApiV4SnippetsId
-      summary: Remove snippet
-      description: This feature was introduced in GitLab 8.15.
+      summary: Delete snippet
+      description: Deletes a specified snippet.
       tags:
       - Snippets
       responses:
@@ -27430,8 +27496,8 @@ paths:
   "/api/v4/snippets/{id}/raw":
     get:
       operationId: getApiV4SnippetsIdRaw
-      summary: Get a raw snippet
-      description: This feature was introduced in GitLab 8.15.
+      summary: Retrieve a raw snippet
+      description: Retrieves the raw contents of a specified snippet as plain text
       tags:
       - Snippets
       responses:
@@ -27451,7 +27517,8 @@ paths:
   "/api/v4/snippets/{id}/files/{ref}/{file_path}/raw":
     get:
       operationId: getApiV4SnippetsIdFilesRefFilePathRaw
-      summary: Get raw snippet file contents from the repository
+      summary: Retrieve snippet file content
+      description: Retrieves the raw file content from a snippet as plain text.
       tags:
       - Snippets
       responses:
@@ -27483,7 +27550,8 @@ paths:
   "/api/v4/snippets/{id}/user_agent_detail":
     get:
       operationId: getApiV4SnippetsIdUserAgentDetail
-      summary: Get the user agent details for a snippet
+      summary: Retrieve user agent details for a snippet
+      description: Retrieves user agent details for a specified snippet.
       tags:
       - Snippets
       responses:
@@ -28946,7 +29014,11 @@ paths:
   "/api/v4/projects/{id}/repository/tree":
     get:
       operationId: getApiV4ProjectsIdRepositoryTree
-      summary: Get a project repository tree
+      summary: List all repository trees in a project
+      description: Lists all repository files and directories in a specified project.
+        This endpoint can be accessed without authentication if the repository is
+        publicly accessible. This command provides essentially the same features as
+        the `git ls-tree` command.
       tags:
       - Repositories
       responses:
@@ -29036,7 +29108,9 @@ paths:
   "/api/v4/projects/{id}/repository/blobs/{sha}/raw":
     get:
       operationId: getApiV4ProjectsIdRepositoryBlobsShaRaw
-      summary: Get raw blob contents from the repository
+      summary: Retrieve raw blob content
+      description: Retrieves the raw file contents for a blob, by blob SHA. This endpoint
+        can be accessed without authentication if the repository is publicly accessible.
       tags:
       - Repositories
       responses:
@@ -29066,7 +29140,10 @@ paths:
   "/api/v4/projects/{id}/repository/blobs/{sha}":
     get:
       operationId: getApiV4ProjectsIdRepositoryBlobsSha
-      summary: Get a blob from the repository
+      summary: Retrieve a blob from a repository
+      description: Retrieves information, such as size and content, about blobs in
+        a repository. Blob content is Base64 encoded. This endpoint can be accessed
+        without authentication, if the repository is publicly accessible.
       tags:
       - Repositories
       responses:
@@ -29096,7 +29173,11 @@ paths:
   "/api/v4/projects/{id}/repository/archive":
     get:
       operationId: getApiV4ProjectsIdRepositoryArchive
-      summary: Get an archive of the repository
+      summary: Retrieve file archive from a repository
+      description: Retrieves the file archive of a specified repository. This endpoint
+        can be accessed without authentication if the repository is publicly accessible.
+        For GitLab.com users, this endpoint has a rate limit threshold of 5 requests
+        per minute.
       tags:
       - Repositories
       responses:
@@ -29172,7 +29253,9 @@ paths:
   "/api/v4/projects/{id}/repository/compare":
     get:
       operationId: getApiV4ProjectsIdRepositoryCompare
-      summary: Compare two branches, tags, or commits
+      summary: Compare branches, tags, or commits
+      description: Compares branches, tags, or commits. Retrieves the differences
+        between two branches, tags, or commits in a specified project.
       tags:
       - Repositories
       responses:
@@ -29238,7 +29321,10 @@ paths:
   "/api/v4/projects/{id}/repository/health":
     get:
       operationId: getApiV4ProjectsIdRepositoryHealth
-      summary: Get repository health
+      summary: Retrieve repository health statistics
+      description: Retrieves statistics related to the health of a project repository.
+        This endpoint is rate-limited to 5 requests/hour per project when `generate`
+        is `true`. Available only to users with push access to the repository.
       tags:
       - Repositories
       responses:
@@ -29272,7 +29358,8 @@ paths:
   "/api/v4/projects/{id}/repository/contributors":
     get:
       operationId: getApiV4ProjectsIdRepositoryContributors
-      summary: Get repository contributors
+      summary: Retrieve contributors metrics
+      description: Retrieves a list of contributors to a specified repository.
       tags:
       - Repositories
       responses:
@@ -29349,7 +29436,8 @@ paths:
   "/api/v4/projects/{id}/repository/merge_base":
     get:
       operationId: getApiV4ProjectsIdRepositoryMergeBase
-      summary: Get the common ancestor between commits
+      summary: Retrieve a merge base
+      description: Retrieves the merge base for two specified commits.
       tags:
       - Repositories
       responses:
@@ -29391,8 +29479,10 @@ paths:
   "/api/v4/projects/{id}/repository/changelog":
     get:
       operationId: getApiV4ProjectsIdRepositoryChangelog
-      summary: Generates a changelog section for a release and returns it
-      description: This feature was introduced in GitLab 14.6
+      summary: Generate changelog data
+      description: Generates changelog data based on commits in a repository, without
+        committing them to a changelog file. Works exactly like `POST /projects/:id/repository/changelog`,
+        except the changelog data is not committed to any changelog file.
       tags:
       - Repositories
       responses:
@@ -29480,9 +29570,8 @@ paths:
         example: main
     post:
       operationId: postApiV4ProjectsIdRepositoryChangelog
-      summary: Generates a changelog section for a release and commits it in a changelog
-        file
-      description: This feature was introduced in GitLab 13.9
+      summary: Add changelog data to file
+      description: Adds changelog data to file.
       tags:
       - Repositories
       responses:
@@ -29511,7 +29600,8 @@ paths:
   "/api/v4/projects/{id}/remote_mirrors":
     get:
       operationId: getApiV4ProjectsIdRemoteMirrors
-      summary: List the project's remote mirrors
+      summary: List all remote mirrors for a project
+      description: Lists all remote mirrors for a specified project.
       tags:
       - Remote mirrors
       responses:
@@ -29556,7 +29646,8 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdRemoteMirrors
-      summary: Create remote mirror for a project
+      summary: Create a push mirror
+      description: Creates a push mirror.
       tags:
       - Remote mirrors
       responses:
@@ -29590,7 +29681,8 @@ paths:
   "/api/v4/projects/{id}/remote_mirrors/{mirror_id}":
     get:
       operationId: getApiV4ProjectsIdRemoteMirrorsMirrorId
-      summary: Get a single remote mirror
+      summary: Retrieve a remote mirror for a project
+      description: Retrieves a specified remote mirror for a project.
       tags:
       - Remote mirrors
       responses:
@@ -29623,7 +29715,9 @@ paths:
         in: path
     put:
       operationId: putApiV4ProjectsIdRemoteMirrorsMirrorId
-      summary: Update the attributes of a single remote mirror
+      summary: Update a remote mirror in a project
+      description: Updates the configuration or operational status of a specified
+        remote mirror.
       tags:
       - Remote mirrors
       responses:
@@ -29662,8 +29756,8 @@ paths:
               "$ref": "#/components/schemas/RequestBody_dbc6cb89995c"
     delete:
       operationId: deleteApiV4ProjectsIdRemoteMirrorsMirrorId
-      summary: Delete a single remote mirror
-      description: This feature was introduced in GitLab 14.10
+      summary: Delete a remote mirror from a project
+      description: Deletes a specified remote mirror from a project.
       tags:
       - Remote mirrors
       responses:
@@ -29693,7 +29787,8 @@ paths:
   "/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync":
     post:
       operationId: postApiV4ProjectsIdRemoteMirrorsMirrorIdSync
-      summary: Triggers a push mirror operation
+      summary: Force push mirror update
+      description: Forces an update to a push mirror.
       tags:
       - Remote mirrors
       responses:
@@ -29723,7 +29818,9 @@ paths:
   "/api/v4/projects/{id}/remote_mirrors/{mirror_id}/public_key":
     get:
       operationId: getApiV4ProjectsIdRemoteMirrorsMirrorIdPublicKey
-      summary: Get the public key of a single remote mirror
+      summary: Retrieve a public key for a remote mirror
+      description: Retrieves the public key of a specified remote mirror that uses
+        SSH authentication.
       tags:
       - Remote mirrors
       responses:
@@ -33672,7 +33769,8 @@ paths:
   "/api/v4/projects/{id}/snippets":
     get:
       operationId: getApiV4ProjectsIdSnippets
-      summary: Get all project snippets
+      summary: List all snippets for a project
+      description: Lists all snippets for a specified project.
       tags:
       - Snippets
       responses:
@@ -33715,7 +33813,9 @@ paths:
         example: 20
     post:
       operationId: postApiV4ProjectsIdSnippets
-      summary: Create a new project snippet
+      summary: Create a project snippet
+      description: Creates a project snippet. The user must have permission to create
+        snippets.
       tags:
       - Snippets
       responses:
@@ -33749,7 +33849,8 @@ paths:
   "/api/v4/projects/{id}/snippets/{snippet_id}":
     get:
       operationId: getApiV4ProjectsIdSnippetsSnippetId
-      summary: Get a single project snippet
+      summary: Retrieve a project snippet
+      description: Retrieves a specified project snippet.
       tags:
       - Snippets
       responses:
@@ -33780,7 +33881,10 @@ paths:
         in: path
     put:
       operationId: putApiV4ProjectsIdSnippetsSnippetId
-      summary: Update an existing project snippet
+      summary: Update a project snippet
+      description: Updates a specified project snippet. The user must have permission
+        to modify snippets. Updates to snippets with multiple files must use the `files`
+        attribute.
       tags:
       - Snippets
       responses:
@@ -33820,6 +33924,7 @@ paths:
     delete:
       operationId: deleteApiV4ProjectsIdSnippetsSnippetId
       summary: Delete a project snippet
+      description: Deletes a specified project snippet.
       tags:
       - Snippets
       responses:
@@ -33847,7 +33952,9 @@ paths:
   "/api/v4/projects/{id}/snippets/{snippet_id}/raw":
     get:
       operationId: getApiV4ProjectsIdSnippetsSnippetIdRaw
-      summary: Get a raw project snippet
+      summary: Retrieve a raw project snippet
+      description: Retrieves the raw contents of a specified project snippet as plain
+        text
       tags:
       - Snippets
       responses:
@@ -33879,7 +33986,9 @@ paths:
   "/api/v4/projects/{id}/snippets/{snippet_id}/files/{ref}/{file_path}/raw":
     get:
       operationId: getApiV4ProjectsIdSnippetsSnippetIdFilesRefFilePathRaw
-      summary: Get raw project snippet file contents from the repository
+      summary: Retrieve snippet repository file content
+      description: Retrieves the raw file content from a snippet repository as plain
+        text.
       tags:
       - Snippets
       responses:
@@ -33923,7 +34032,9 @@ paths:
   "/api/v4/projects/{id}/snippets/{snippet_id}/user_agent_detail":
     get:
       operationId: getApiV4ProjectsIdSnippetsSnippetIdUserAgentDetail
-      summary: Get the user agent details for a project snippet
+      summary: Retrieve user agent details for a project snippet
+      description: Retrieves user agent details for a specified snippet. Available
+        only for administrators.
       tags:
       - Snippets
       responses:
@@ -64076,7 +64187,7 @@ paths:
   "/api/v4/projects/{id}/repository/commits/{sha}/merge_requests":
     get:
       operationId: getApiV4ProjectsIdRepositoryCommitsShaMergeRequests
-      summary: List all merge requests for a commit
+      summary: List all merge requests associated with a commit
       description: Lists all merge requests associated with a specified commit.
       tags:
       - Commits
@@ -69103,7 +69214,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_2b200d12bc21"
+              "$ref": "#/components/schemas/RequestBody_2d428c28b365"
     get:
       operationId: getApiV4GroupsId
       summary: Retrieve a group
@@ -113528,7 +113639,7 @@ components:
       required:
       - name
       - path
-    RequestBody_2b200d12bc21:
+    RequestBody_2d428c28b365:
       type: object
       properties:
         name:
@@ -113987,6 +114098,15 @@ components:
         auto_duo_code_review_enabled:
           type: boolean
           description: Enable automatic reviews by GitLab Duo on merge requests
+          nullable: true
+        ai_audit_events_storage_enabled:
+          type: boolean
+          description: Indicates whether AI audit events are stored for the group
+          nullable: true
+        lock_ai_audit_events_storage_enabled:
+          type: boolean
+          description: Indicates whether AI audit events storage is enforced for all
+            subgroups and projects
           nullable: true
         web_based_commit_signing_enabled:
           type: boolean

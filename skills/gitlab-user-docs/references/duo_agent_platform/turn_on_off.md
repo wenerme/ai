@@ -368,7 +368,7 @@ administrator token that has the `api` scope:
 curl --request PUT \
   --header "PRIVATE-TOKEN: <admin_token>" \
   --data "duo_availability=never_on" \
-  "https://<your-gitlab-host>/api/v4/application_settings"
+  "https://<your-gitlab-host>/api/v4/application/settings"
 ```
 
 You might have to refresh your browser before the GitLab Duo panel disappears.

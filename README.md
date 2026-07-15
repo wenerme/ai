@@ -1250,7 +1250,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 112 skills, 31249 files, 371 MiB total
+> 112 skills, 31251 files, 371 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1276,12 +1276,12 @@ Use when implementing React state management with Zustand, including context-sco
 | [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 3.6 KiB |
-| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 123 | 4.8 MiB |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 123 | 4.9 MiB |
 | [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1100 | 10 MiB |
 | [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1528 | 12 MiB |
-| [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 395 | 3.0 MiB |
-| [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 30 KiB |
-| [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 827 | 5.0 MiB |
+| [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 395 | 3.1 MiB |
+| [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 31 KiB |
+| [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 829 | 5.0 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1234 | 8.2 MiB |
 | [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1007 | 5.6 MiB |
 | [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 781 | 7.3 MiB |

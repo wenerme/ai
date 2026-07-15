@@ -47,7 +47,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 1. **Download Codex**

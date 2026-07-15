@@ -761,6 +761,7 @@ Set the limit to `0` to disable it.
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/132939) in GitLab 16.5.
 - [Removed](https://gitlab.com/gitlab-org/gitlab/-/issues/368009) the 50-node limit from Wiki and repository files.
 - [Added](https://gitlab.com/gitlab-org/gitlab/-/issues/368009) a group-level setting to allow disabling math rendering limits, and re-enabled by default the math limits for wiki and repository files in GitLab 16.9.
+- [Increased](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243169) the maximum number of nodes rendered from 50 to 1000 in GitLab 19.2.
 
 GitLab imposes default limits when rendering math in Markdown fields. These limits provide better security and performance.
 
@@ -768,7 +769,7 @@ The limits for issues, merge requests, epics, wikis, and repository files:
 
 - Maximum number of macro expansions: `1000`.
 - Maximum user-specified size in [em](https://en.wikipedia.org/wiki/Em_(typography)): `20`.
-- Maximum number of nodes rendered: `50`.
+- Maximum number of nodes rendered: `1000`.
 - Maximum number of characters in a math block: `1000`.
 - Maximum rendering time: `2000 ms`.
 

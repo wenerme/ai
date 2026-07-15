@@ -213,7 +213,7 @@ CI/CD job tokens can access the following REST API endpoints:
 | Permission | API endpoint | Permission name | Scope |
 | ---------- | ------------ | --------------- | ----- |
 | Download a project release asset file | `GET /projects/:id/releases/:tag_name/downloads/*direct_asset_path` | `READ_RELEASES` | Read |
-| Generates a changelog section for a release and returns it | `GET /projects/:id/repository/changelog` | `READ_RELEASES` | Read |
+| Generate changelog data | `GET /projects/:id/repository/changelog` | `READ_RELEASES` | Read |
 | Get the latest project release | `GET /projects/:id/releases/permalink/latest(/)(*suffix_path)` | `READ_RELEASES` | Read |
 | List all release links | `GET /projects/:id/releases/:tag_name/assets/links` | `READ_RELEASES` | Read |
 | List all releases in a project | `GET /projects/:id/releases` | `READ_RELEASES` | Read |
@@ -232,12 +232,12 @@ CI/CD job tokens can access the following REST API endpoints:
 
 | Permission | API endpoint | Permission name | Scope |
 | ---------- | ------------ | --------------- | ----- |
-| Get a project repository tags | `GET /projects/:id/repository/tags` | `READ_REPOSITORIES` | Read |
-| Get a single repository tag | `GET /projects/:id/repository/tags/:tag_name` | `READ_REPOSITORIES` | Read |
-| List all merge requests for a commit | `GET /projects/:id/repository/commits/:sha/merge_requests` | `READ_REPOSITORIES` | Read |
+| List all merge requests associated with a commit | `GET /projects/:id/repository/commits/:sha/merge_requests` | `READ_REPOSITORIES` | Read |
+| List all project repository tags | `GET /projects/:id/repository/tags` | `READ_REPOSITORIES` | Read |
 | List all repository branches | `GET /projects/:id/repository/branches` | `READ_REPOSITORIES` | Read |
 | Retrieve a commit | `GET /projects/:id/repository/commits/:sha` | `READ_REPOSITORIES` | Read |
 | Retrieve a raw file from a repository | `GET /projects/:id/repository/files/:file_path/raw` | `READ_REPOSITORIES` | Read |
+| Retrieve a single repository tag | `GET /projects/:id/repository/tags/:tag_name` | `READ_REPOSITORIES` | Read |
 
 ### Secure files endpoints
 

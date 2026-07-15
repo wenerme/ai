@@ -15135,7 +15135,7 @@ paths:
       operationId: getApiV4ProjectsIdRepositoryCommitsShaRefs
   "/api/v4/projects/{id}/repository/commits/{sha}/merge_requests":
     get:
-      summary: List all merge requests for a commit
+      summary: List all merge requests associated with a commit
       description: Lists all merge requests associated with a specified commit.
       produces:
       - application/json
@@ -15175,7 +15175,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: List all merge requests for a commit
+          description: List all merge requests associated with a commit
           schema:
             type: array
             items:
@@ -35290,7 +35290,8 @@ paths:
       operationId: getApiV4ProjectsIdSnapshot
   "/api/v4/projects/{id}/snippets":
     get:
-      description: Get all project snippets
+      summary: List all snippets for a project
+      description: Lists all snippets for a specified project.
       produces:
       - application/json
       parameters:
@@ -35317,7 +35318,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: Get all project snippets
+          description: List all snippets for a project
           schema:
             type: array
             items:
@@ -35328,7 +35329,9 @@ paths:
       - snippets
       operationId: getApiV4ProjectsIdSnippets
     post:
-      description: Create a new project snippet
+      summary: Create a project snippet
+      description: Creates a project snippet. The user must have permission to create
+        snippets.
       produces:
       - application/json
       consumes:
@@ -35346,7 +35349,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdSnippets"
       responses:
         '201':
-          description: Create a new project snippet
+          description: Create a project snippet
           schema:
             "$ref": "#/definitions/API_Entities_ProjectSnippet"
         '400':
@@ -35360,7 +35363,8 @@ paths:
       operationId: postApiV4ProjectsIdSnippets
   "/api/v4/projects/{id}/snippets/{snippet_id}":
     get:
-      description: Get a single project snippet
+      summary: Retrieve a project snippet
+      description: Retrieves a specified project snippet.
       produces:
       - application/json
       parameters:
@@ -35377,7 +35381,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single project snippet
+          description: Retrieve a project snippet
           schema:
             "$ref": "#/definitions/API_Entities_ProjectSnippet"
         '404':
@@ -35386,7 +35390,10 @@ paths:
       - snippets
       operationId: getApiV4ProjectsIdSnippetsSnippetId
     put:
-      description: Update an existing project snippet
+      summary: Update a project snippet
+      description: Updates a specified project snippet. The user must have permission
+        to modify snippets. Updates to snippets with multiple files must use the `files`
+        attribute.
       produces:
       - application/json
       consumes:
@@ -35410,7 +35417,7 @@ paths:
           "$ref": "#/definitions/putApiV4ProjectsIdSnippetsSnippetId"
       responses:
         '200':
-          description: Update an existing project snippet
+          description: Update a project snippet
           schema:
             "$ref": "#/definitions/API_Entities_ProjectSnippet"
         '400':
@@ -35423,7 +35430,8 @@ paths:
       - snippets
       operationId: putApiV4ProjectsIdSnippetsSnippetId
     delete:
-      description: Delete a project snippet
+      summary: Delete a project snippet
+      description: Deletes a specified project snippet.
       produces:
       - application/json
       parameters:
@@ -35450,7 +35458,9 @@ paths:
       operationId: deleteApiV4ProjectsIdSnippetsSnippetId
   "/api/v4/projects/{id}/snippets/{snippet_id}/raw":
     get:
-      description: Get a raw project snippet
+      summary: Retrieve a raw project snippet
+      description: Retrieves the raw contents of a specified project snippet as plain
+        text
       produces:
       - application/json
       parameters:
@@ -35467,7 +35477,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a raw project snippet
+          description: Retrieve a raw project snippet
           schema:
             "$ref": "#/definitions/API_Entities_ProjectSnippet"
         '404':
@@ -35477,7 +35487,9 @@ paths:
       operationId: getApiV4ProjectsIdSnippetsSnippetIdRaw
   "/api/v4/projects/{id}/snippets/{snippet_id}/files/{ref}/{file_path}/raw":
     get:
-      description: Get raw project snippet file contents from the repository
+      summary: Retrieve snippet repository file content
+      description: Retrieves the raw file content from a snippet repository as plain
+        text.
       produces:
       - application/json
       parameters:
@@ -35503,7 +35515,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get raw project snippet file contents from the repository
+          description: Retrieve snippet repository file content
           schema:
             "$ref": "#/definitions/API_Entities_ProjectSnippet"
         '404':
@@ -35513,7 +35525,9 @@ paths:
       operationId: getApiV4ProjectsIdSnippetsSnippetIdFilesRefFilePathRaw
   "/api/v4/projects/{id}/snippets/{snippet_id}/user_agent_detail":
     get:
-      description: Get the user agent details for a project snippet
+      summary: Retrieve user agent details for a project snippet
+      description: Retrieves user agent details for a specified snippet. Available
+        only for administrators.
       produces:
       - application/json
       parameters:
@@ -35530,7 +35544,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get the user agent details for a project snippet
+          description: Retrieve user agent details for a project snippet
           schema:
             "$ref": "#/definitions/API_Entities_UserAgentDetail"
         '404':
@@ -38310,7 +38324,8 @@ paths:
       operationId: deleteApiV4ProjectsIdReleasesTagNameAssetsLinksLinkId
   "/api/v4/projects/{id}/remote_mirrors":
     get:
-      description: List the project's remote mirrors
+      summary: List all remote mirrors for a project
+      description: Lists all remote mirrors for a specified project.
       produces:
       - application/json
       parameters:
@@ -38337,7 +38352,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: List the project's remote mirrors
+          description: List all remote mirrors for a project
           schema:
             type: array
             items:
@@ -38350,7 +38365,8 @@ paths:
       - remote_mirrors
       operationId: getApiV4ProjectsIdRemoteMirrors
     post:
-      description: Create remote mirror for a project
+      summary: Create a push mirror
+      description: Creates a push mirror.
       produces:
       - application/json
       consumes:
@@ -38368,7 +38384,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdRemoteMirrors"
       responses:
         '201':
-          description: Create remote mirror for a project
+          description: Create a push mirror
           schema:
             "$ref": "#/definitions/API_Entities_RemoteMirror"
         '400':
@@ -38382,7 +38398,8 @@ paths:
       operationId: postApiV4ProjectsIdRemoteMirrors
   "/api/v4/projects/{id}/remote_mirrors/{mirror_id}":
     get:
-      description: Get a single remote mirror
+      summary: Retrieve a remote mirror for a project
+      description: Retrieves a specified remote mirror for a project.
       produces:
       - application/json
       parameters:
@@ -38398,7 +38415,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single remote mirror
+          description: Retrieve a remote mirror for a project
           schema:
             "$ref": "#/definitions/API_Entities_RemoteMirror"
         '401':
@@ -38409,7 +38426,9 @@ paths:
       - remote_mirrors
       operationId: getApiV4ProjectsIdRemoteMirrorsMirrorId
     put:
-      description: Update the attributes of a single remote mirror
+      summary: Update a remote mirror in a project
+      description: Updates the configuration or operational status of a specified
+        remote mirror.
       produces:
       - application/json
       consumes:
@@ -38432,7 +38451,7 @@ paths:
           "$ref": "#/definitions/putApiV4ProjectsIdRemoteMirrorsMirrorId"
       responses:
         '200':
-          description: Update the attributes of a single remote mirror
+          description: Update a remote mirror in a project
           schema:
             "$ref": "#/definitions/API_Entities_RemoteMirror"
         '400':
@@ -38445,8 +38464,8 @@ paths:
       - remote_mirrors
       operationId: putApiV4ProjectsIdRemoteMirrorsMirrorId
     delete:
-      summary: Delete a single remote mirror
-      description: This feature was introduced in GitLab 14.10
+      summary: Delete a remote mirror from a project
+      description: Deletes a specified remote mirror from a project.
       produces:
       - application/json
       parameters:
@@ -38462,7 +38481,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete a single remote mirror
+          description: Delete a remote mirror from a project
         '400':
           description: Bad request
         '401':
@@ -38474,7 +38493,8 @@ paths:
       operationId: deleteApiV4ProjectsIdRemoteMirrorsMirrorId
   "/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync":
     post:
-      description: Triggers a push mirror operation
+      summary: Force push mirror update
+      description: Forces an update to a push mirror.
       produces:
       - application/json
       consumes:
@@ -38492,7 +38512,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Triggers a push mirror operation
+          description: Force push mirror update
         '400':
           description: Bad request
         '401':
@@ -38504,7 +38524,9 @@ paths:
       operationId: postApiV4ProjectsIdRemoteMirrorsMirrorIdSync
   "/api/v4/projects/{id}/remote_mirrors/{mirror_id}/public_key":
     get:
-      description: Get the public key of a single remote mirror
+      summary: Retrieve a public key for a remote mirror
+      description: Retrieves the public key of a specified remote mirror that uses
+        SSH authentication.
       produces:
       - application/json
       parameters:
@@ -38520,7 +38542,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get the public key of a single remote mirror
+          description: Retrieve a public key for a remote mirror
         '401':
           description: Unauthorized
         '404':
@@ -38530,7 +38552,11 @@ paths:
       operationId: getApiV4ProjectsIdRemoteMirrorsMirrorIdPublicKey
   "/api/v4/projects/{id}/repository/tree":
     get:
-      description: Get a project repository tree
+      summary: List all repository trees in a project
+      description: Lists all repository files and directories in a specified project.
+        This endpoint can be accessed without authentication if the repository is
+        publicly accessible. This command provides essentially the same features as
+        the `git ls-tree` command.
       produces:
       - application/json
       parameters:
@@ -38594,7 +38620,7 @@ paths:
         example: a1e8f8d745cc87e3a9248358d9352bb7f9a0aeba
       responses:
         '200':
-          description: Get a project repository tree
+          description: List all repository trees in a project
           schema:
             "$ref": "#/definitions/API_Entities_TreeObject"
       tags:
@@ -38602,7 +38628,9 @@ paths:
       operationId: getApiV4ProjectsIdRepositoryTree
   "/api/v4/projects/{id}/repository/blobs/{sha}/raw":
     get:
-      description: Get raw blob contents from the repository
+      summary: Retrieve raw blob content
+      description: Retrieves the raw file contents for a blob, by blob SHA. This endpoint
+        can be accessed without authentication if the repository is publicly accessible.
       produces:
       - application/json
       parameters:
@@ -38620,13 +38648,16 @@ paths:
         example: 7d70e02340bac451f281cecf0a980907974bd8be
       responses:
         '200':
-          description: Get raw blob contents from the repository
+          description: Retrieve raw blob content
       tags:
       - repositories
       operationId: getApiV4ProjectsIdRepositoryBlobsShaRaw
   "/api/v4/projects/{id}/repository/blobs/{sha}":
     get:
-      description: Get a blob from the repository
+      summary: Retrieve a blob from a repository
+      description: Retrieves information, such as size and content, about blobs in
+        a repository. Blob content is Base64 encoded. This endpoint can be accessed
+        without authentication, if the repository is publicly accessible.
       produces:
       - application/json
       parameters:
@@ -38644,13 +38675,17 @@ paths:
         example: 7d70e02340bac451f281cecf0a980907974bd8be
       responses:
         '200':
-          description: Get a blob from the repository
+          description: Retrieve a blob from a repository
       tags:
       - repositories
       operationId: getApiV4ProjectsIdRepositoryBlobsSha
   "/api/v4/projects/{id}/repository/archive":
     get:
-      description: Get an archive of the repository
+      summary: Retrieve file archive from a repository
+      description: Retrieves the file archive of a specified repository. This endpoint
+        can be accessed without authentication if the repository is publicly accessible.
+        For GitLab.com users, this endpoint has a rate limit threshold of 5 requests
+        per minute.
       produces:
       - application/json
       parameters:
@@ -38701,13 +38736,15 @@ paths:
         required: false
       responses:
         '200':
-          description: Get an archive of the repository
+          description: Retrieve file archive from a repository
       tags:
       - repositories
       operationId: getApiV4ProjectsIdRepositoryArchive
   "/api/v4/projects/{id}/repository/compare":
     get:
-      description: Compare two branches, tags, or commits
+      summary: Compare branches, tags, or commits
+      description: Compares branches, tags, or commits. Retrieves the differences
+        between two branches, tags, or commits in a specified project.
       produces:
       - application/json
       parameters:
@@ -38751,7 +38788,7 @@ paths:
         required: false
       responses:
         '200':
-          description: Compare two branches, tags, or commits
+          description: Compare branches, tags, or commits
           schema:
             "$ref": "#/definitions/API_Entities_Compare"
       tags:
@@ -38759,7 +38796,10 @@ paths:
       operationId: getApiV4ProjectsIdRepositoryCompare
   "/api/v4/projects/{id}/repository/health":
     get:
-      description: Get repository health
+      summary: Retrieve repository health statistics
+      description: Retrieves statistics related to the health of a project repository.
+        This endpoint is rate-limited to 5 requests/hour per project when `generate`
+        is `true`. Available only to users with push access to the repository.
       produces:
       - application/json
       parameters:
@@ -38777,7 +38817,7 @@ paths:
         required: false
       responses:
         '200':
-          description: Get repository health
+          description: Retrieve repository health statistics
           schema:
             "$ref": "#/definitions/API_Entities_RepositoryHealth"
       tags:
@@ -38785,7 +38825,8 @@ paths:
       operationId: getApiV4ProjectsIdRepositoryHealth
   "/api/v4/projects/{id}/repository/contributors":
     get:
-      description: Get repository contributors
+      summary: Retrieve contributors metrics
+      description: Retrieves a list of contributors to a specified repository.
       produces:
       - application/json
       parameters:
@@ -38839,7 +38880,7 @@ paths:
         required: false
       responses:
         '200':
-          description: Get repository contributors
+          description: Retrieve contributors metrics
           schema:
             "$ref": "#/definitions/API_Entities_Contributor"
       tags:
@@ -38847,7 +38888,8 @@ paths:
       operationId: getApiV4ProjectsIdRepositoryContributors
   "/api/v4/projects/{id}/repository/merge_base":
     get:
-      description: Get the common ancestor between commits
+      summary: Retrieve a merge base
+      description: Retrieves the merge base for two specified commits.
       produces:
       - application/json
       parameters:
@@ -38870,7 +38912,7 @@ paths:
         - feature
       responses:
         '200':
-          description: Get the common ancestor between commits
+          description: Retrieve a merge base
           schema:
             "$ref": "#/definitions/API_Entities_Commit"
       tags:
@@ -38878,8 +38920,10 @@ paths:
       operationId: getApiV4ProjectsIdRepositoryMergeBase
   "/api/v4/projects/{id}/repository/changelog":
     get:
-      summary: Generates a changelog section for a release and returns it
-      description: This feature was introduced in GitLab 14.6
+      summary: Generate changelog data
+      description: Generates changelog data based on commits in a repository, without
+        committing them to a changelog file. Works exactly like `POST /projects/:id/repository/changelog`,
+        except the changelog data is not committed to any changelog file.
       produces:
       - application/json
       parameters:
@@ -38938,16 +38982,15 @@ paths:
         example: main
       responses:
         '200':
-          description: Generates a changelog section for a release and returns it
+          description: Generate changelog data
           schema:
             "$ref": "#/definitions/API_Entities_Changelog"
       tags:
       - repositories
       operationId: getApiV4ProjectsIdRepositoryChangelog
     post:
-      summary: Generates a changelog section for a release and commits it in a changelog
-        file
-      description: This feature was introduced in GitLab 13.9
+      summary: Add changelog data to file
+      description: Adds changelog data to file.
       produces:
       - application/json
       consumes:
@@ -38966,8 +39009,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdRepositoryChangelog"
       responses:
         '200':
-          description: Generates a changelog section for a release and commits it
-            in a changelog file
+          description: Add changelog data to file
       tags:
       - repositories
       operationId: postApiV4ProjectsIdRepositoryChangelog
@@ -39578,7 +39620,8 @@ paths:
       operationId: getApiV4ProjectsId(-)search
   "/api/v4/projects/{id}/repository/submodules/{submodule}":
     put:
-      description: Update existing submodule reference in repository
+      summary: Update a submodule reference
+      description: Updates a reference for a specified submodule.
       produces:
       - application/json
       consumes:
@@ -39603,7 +39646,7 @@ paths:
           "$ref": "#/definitions/putApiV4ProjectsIdRepositorySubmodulesSubmodule"
       responses:
         '200':
-          description: Update existing submodule reference in repository
+          description: Update a submodule reference
           schema:
             "$ref": "#/definitions/API_Entities_CommitDetail"
         '404':
@@ -39670,7 +39713,9 @@ paths:
       operationId: getApiV4ProjectsIdAttestationsAttestationIidDownload
   "/api/v4/projects/{id}/repository/tags":
     get:
-      description: Get a project repository tags
+      summary: List all project repository tags
+      description: Lists all repository tags from a project, sorted by update date
+        and time in descending order.
       produces:
       - application/json
       parameters:
@@ -39726,7 +39771,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: Get a project repository tags
+          description: List all project repository tags
           schema:
             type: array
             items:
@@ -39743,7 +39788,8 @@ paths:
       - tags
       operationId: getApiV4ProjectsIdRepositoryTags
     post:
-      description: Create a new repository tag
+      summary: Create a tag
+      description: Creates a tag in the repository that points to a specified reference.
       produces:
       - application/json
       consumes:
@@ -39761,7 +39807,7 @@ paths:
           "$ref": "#/definitions/postApiV4ProjectsIdRepositoryTags"
       responses:
         '201':
-          description: Create a new repository tag
+          description: Create a tag
           schema:
             "$ref": "#/definitions/API_Entities_Tag"
         '400':
@@ -39775,7 +39821,9 @@ paths:
       operationId: postApiV4ProjectsIdRepositoryTags
   "/api/v4/projects/{id}/repository/tags/{tag_name}":
     get:
-      description: Get a single repository tag
+      summary: Retrieve a single repository tag
+      description: Retrieves a repository tag with a specified name. This endpoint
+        can be accessed without authentication if the repository is publicly accessible.
       produces:
       - application/json
       parameters:
@@ -39791,7 +39839,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single repository tag
+          description: Retrieve a single repository tag
           schema:
             "$ref": "#/definitions/API_Entities_Tag"
         '403':
@@ -39802,7 +39850,8 @@ paths:
       - tags
       operationId: getApiV4ProjectsIdRepositoryTagsTagName
     delete:
-      description: Delete a repository tag
+      summary: Delete a tag
+      description: Deletes a specified repository tag.
       produces:
       - application/json
       parameters:
@@ -39818,7 +39867,7 @@ paths:
         required: true
       responses:
         '204':
-          description: Delete a repository tag
+          description: Delete a tag
         '400':
           description: Bad request
         '403':
@@ -39832,7 +39881,9 @@ paths:
       operationId: deleteApiV4ProjectsIdRepositoryTagsTagName
   "/api/v4/projects/{id}/repository/tags/{tag_name}/signature":
     get:
-      description: Get a tag's signature
+      summary: Retrieve X.509 signature of a tag
+      description: Retrieves the X.509 signature from a signed tag. Unsigned tags
+        return a `404 Not Found` response.
       produces:
       - application/json
       parameters:
@@ -39848,7 +39899,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a tag's signature
+          description: Retrieve X.509 signature of a tag
           schema:
             "$ref": "#/definitions/API_Entities_TagSignature"
         '404':
@@ -47494,8 +47545,8 @@ paths:
       operationId: getApiV4Search
   "/api/v4/snippets":
     get:
-      summary: Get a snippets list for an authenticated user
-      description: This feature was introduced in GitLab 8.15.
+      summary: List all snippets for current user
+      description: Lists all snippets for the currently authenticated user.
       produces:
       - application/json
       parameters:
@@ -47529,7 +47580,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: Get a snippets list for an authenticated user
+          description: List all snippets for current user
           schema:
             type: array
             items:
@@ -47540,8 +47591,8 @@ paths:
       - snippets
       operationId: getApiV4Snippets
     post:
-      summary: Create new snippet
-      description: This feature was introduced in GitLab 8.15.
+      summary: Create a snippet
+      description: Creates a snippet.
       produces:
       - application/json
       consumes:
@@ -47554,7 +47605,7 @@ paths:
           "$ref": "#/definitions/postApiV4Snippets"
       responses:
         '201':
-          description: Create new snippet
+          description: Create a snippet
           schema:
             "$ref": "#/definitions/API_Entities_PersonalSnippet"
         '400':
@@ -47568,8 +47619,9 @@ paths:
       operationId: postApiV4Snippets
   "/api/v4/snippets/public":
     get:
-      summary: List all public personal snippets current_user has access to
-      description: This feature was introduced in GitLab 8.15.
+      summary: List all public snippets
+      description: Lists all public snippets accessible to the currently authenticated
+        user.
       produces:
       - application/json
       parameters:
@@ -47603,7 +47655,7 @@ paths:
         example: 20
       responses:
         '200':
-          description: List all public personal snippets current_user has access to
+          description: List all public snippets
           schema:
             type: array
             items:
@@ -47615,8 +47667,10 @@ paths:
       operationId: getApiV4SnippetsPublic
   "/api/v4/snippets/all":
     get:
-      summary: List all snippets current_user has access to
-      description: This feature was introduced in GitLab 16.3.
+      summary: List all snippets
+      description: Lists all snippets available to the currently authenticated user.
+        Users with Administrator or Auditor access levels can see all snippets (both
+        personal and project). This feature was introduced in GitLab 16.3.
       produces:
       - application/json
       parameters:
@@ -47655,7 +47709,7 @@ paths:
         required: false
       responses:
         '200':
-          description: List all snippets current_user has access to
+          description: List all snippets
           schema:
             type: array
             items:
@@ -47667,8 +47721,8 @@ paths:
       operationId: getApiV4SnippetsAll
   "/api/v4/snippets/{id}":
     get:
-      summary: Get a single snippet
-      description: This feature was introduced in GitLab 8.15.
+      summary: Retrieve a snippet
+      description: Retrieves a specified snippet.
       produces:
       - application/json
       parameters:
@@ -47680,7 +47734,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a single snippet
+          description: Retrieve a snippet
           schema:
             "$ref": "#/definitions/API_Entities_PersonalSnippet"
         '404':
@@ -47689,8 +47743,8 @@ paths:
       - snippets
       operationId: getApiV4SnippetsId
     put:
-      summary: Update an existing snippet
-      description: This feature was introduced in GitLab 8.15.
+      summary: Update snippet
+      description: Updates a specified snippet.
       produces:
       - application/json
       consumes:
@@ -47709,7 +47763,7 @@ paths:
           "$ref": "#/definitions/putApiV4SnippetsId"
       responses:
         '200':
-          description: Update an existing snippet
+          description: Update snippet
           schema:
             "$ref": "#/definitions/API_Entities_PersonalSnippet"
         '400':
@@ -47722,8 +47776,8 @@ paths:
       - snippets
       operationId: putApiV4SnippetsId
     delete:
-      summary: Remove snippet
-      description: This feature was introduced in GitLab 8.15.
+      summary: Delete snippet
+      description: Deletes a specified snippet.
       produces:
       - application/json
       parameters:
@@ -47737,7 +47791,7 @@ paths:
         '400':
           description: Validation error
         '204':
-          description: Remove snippet
+          description: Delete snippet
           schema:
             "$ref": "#/definitions/API_Entities_PersonalSnippet"
         '404':
@@ -47747,8 +47801,8 @@ paths:
       operationId: deleteApiV4SnippetsId
   "/api/v4/snippets/{id}/raw":
     get:
-      summary: Get a raw snippet
-      description: This feature was introduced in GitLab 8.15.
+      summary: Retrieve a raw snippet
+      description: Retrieves the raw contents of a specified snippet as plain text
       produces:
       - application/json
       parameters:
@@ -47760,7 +47814,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get a raw snippet
+          description: Retrieve a raw snippet
         '404':
           description: Not found
       tags:
@@ -47768,7 +47822,8 @@ paths:
       operationId: getApiV4SnippetsIdRaw
   "/api/v4/snippets/{id}/files/{ref}/{file_path}/raw":
     get:
-      description: Get raw snippet file contents from the repository
+      summary: Retrieve snippet file content
+      description: Retrieves the raw file content from a snippet as plain text.
       produces:
       - application/json
       parameters:
@@ -47789,7 +47844,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get raw snippet file contents from the repository
+          description: Retrieve snippet file content
         '404':
           description: Not found
       tags:
@@ -47797,7 +47852,8 @@ paths:
       operationId: getApiV4SnippetsIdFilesRefFilePathRaw
   "/api/v4/snippets/{id}/user_agent_detail":
     get:
-      description: Get the user agent details for a snippet
+      summary: Retrieve user agent details for a snippet
+      description: Retrieves user agent details for a specified snippet.
       produces:
       - application/json
       parameters:
@@ -47809,7 +47865,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Get the user agent details for a snippet
+          description: Retrieve user agent details for a snippet
           schema:
             "$ref": "#/definitions/API_Entities_UserAgentDetail"
         '404':
@@ -51014,6 +51070,13 @@ definitions:
       auto_duo_code_review_enabled:
         type: boolean
         description: Enable automatic reviews by GitLab Duo on merge requests
+      ai_audit_events_storage_enabled:
+        type: boolean
+        description: Indicates whether AI audit events are stored for the group
+      lock_ai_audit_events_storage_enabled:
+        type: boolean
+        description: Indicates whether AI audit events storage is enforced for all
+          subgroups and projects
       web_based_commit_signing_enabled:
         type: boolean
         description: Enable web based commit signing for this group
@@ -69213,7 +69276,7 @@ definitions:
     - title
     - visibility
     - file_name
-    description: Create a new project snippet
+    description: Create a project snippet
   putApiV4ProjectsIdSnippetsSnippetId:
     type: object
     properties:
@@ -69262,7 +69325,7 @@ definitions:
               description: The previous path of a snippet file
           required:
           - action
-    description: Update an existing project snippet
+    description: Update a project snippet
   API_Entities_ProjectDailyStatistics:
     type: object
     properties:
@@ -72379,7 +72442,7 @@ definitions:
           type: string
     required:
     - url
-    description: Create remote mirror for a project
+    description: Create a push mirror
   putApiV4ProjectsIdRemoteMirrorsMirrorId:
     type: object
     properties:
@@ -72406,7 +72469,7 @@ definitions:
           mirror URL.
         items:
           type: string
-    description: Update the attributes of a single remote mirror
+    description: Update a remote mirror in a project
   API_Entities_TreeObject:
     type: object
     properties:
@@ -72707,8 +72770,7 @@ definitions:
         example: Initial commit
     required:
     - version
-    description: Generates a changelog section for a release and commits it in a changelog
-      file
+    description: Add changelog data to file
   postApiV4ProjectsIdAccessTokensSelfRotate:
     type: object
     properties:
@@ -72784,7 +72846,7 @@ definitions:
     required:
     - commit_sha
     - branch
-    description: Update existing submodule reference in repository
+    description: Update a submodule reference
   API_Entities_SupplyChain_Attestation:
     type: object
     properties:
@@ -72903,7 +72965,7 @@ definitions:
     required:
     - tag_name
     - ref
-    description: Create a new repository tag
+    description: Create a tag
   API_Entities_TagSignature:
     type: object
     properties:
@@ -78998,7 +79060,7 @@ definitions:
     required:
     - title
     - file_name
-    description: Create new snippet
+    description: Create a snippet
   putApiV4SnippetsId:
     type: object
     properties:
@@ -79047,7 +79109,7 @@ definitions:
               description: The previous path of a snippet file
           required:
           - action
-    description: Update an existing snippet
+    description: Update snippet
   putApiV4SuggestionsIdApply:
     type: object
     properties:
