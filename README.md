@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 112 skills available
+> 114 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -75,6 +75,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [justfile-docs](./skills/justfile-docs/SKILL.md) | justfile (just) documentation — a command runner with make-inspired syntax. Covers recipes (parameters, dependencies,... | [casey/just](https://github.com/casey/just) |
 | [k3s-docs](./skills/k3s-docs/SKILL.md) | K3s documentation — lightweight Kubernetes for IoT/edge. Covers installation (air-gap, private registry, HA),... | [k3s-io/docs](https://github.com/k3s-io/docs) |
 | [lark-node-sdk](./skills/lark-node-sdk/SKILL.md) | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... | [larksuite/node-sdk](https://github.com/larksuite/node-sdk) |
+| [linear-docs](./skills/linear-docs/SKILL.md) | Use when working with Linear product workflows, issues, projects, cycles, initiatives, views, integrations, workspace... | [linear.app](https://linear.app/llms.txt) |
 | [litellm-docs](./skills/litellm-docs/SKILL.md) | LiteLLM documentation — unified Python SDK and proxy server for 100+ LLM providers (OpenAI, Anthropic, Google, Azure,... | [BerriAI/litellm](https://github.com/BerriAI/litellm) |
 | [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... | [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp) |
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | USE THIS SKILL WHEN working with LLaMA Factory: fine-tuning LLMs (SFT/DPO/PPO/KTO/ORPO), LoRA/QLoRA training, dataset... | [hiyouga/LlamaFactory](https://github.com/hiyouga/LlamaFactory) |
@@ -84,7 +85,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | mihomo (Clash Meta) 文档 — 高性能代理内核，支持 VMess/VLESS/Trojan/Hysteria2/Shadowsocks/WireGuard/TUIC/SSH/MASQUE/AnyTLS 等协议。覆盖完整... | [MetaCubeX/Meta-Docs](https://github.com/MetaCubeX/Meta-Docs) |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | MikroORM v7 documentation — TypeScript ORM for SQL and MongoDB with Data Mapper, Unit of Work, and Identity Map... | [mikro-orm/mikro-orm](https://github.com/mikro-orm/mikro-orm) |
-| [model-reference](./skills/model-reference/SKILL.md) | AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing... | [docs.anthropic.com](https://docs.anthropic.com) |
+| [model-reference](./skills/model-reference/SKILL.md) | Use when looking up or comparing current AI model IDs, lifecycle, context/output limits, pricing, modalities,... |  |
 | [nats-docs](./skills/nats-docs/SKILL.md) | Use when working with NATS: core messaging, subjects, request-reply, queue groups, JetStream streams/consumers/KV/object... | [nats-io/nats.docs](https://github.com/nats-io/nats.docs) |
 | [openai-api](./skills/openai-api/SKILL.md) | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... | [platform.openai.com](https://platform.openai.com/docs) |
 | [openai-docs](./skills/openai-docs/SKILL.md) | Use when answering questions about OpenAI platform features, guides, and concepts: Responses API usage, agents, function... | [platform.openai.com](https://platform.openai.com/docs) |
@@ -105,6 +106,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [skill-writer](./skills/skill-writer/SKILL.md) | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | [sling-cli](./skills/sling-cli/SKILL.md) | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... | [docs.slingdata.io](https://docs.slingdata.io) |
 | [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption.... | [slopus/happy](https://github.com/slopus/happy) |
+| [stash-docs](./skills/stash-docs/SKILL.md) | Use when configuring or troubleshooting Stash on iOS, macOS, tvOS, or visionOS, including Clash-compatible YAML, proxy... | [stash.wiki](https://stash.wiki/) |
 | [swift-ms-docs](./skills/swift-ms-docs/SKILL.md) | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... | [modelscope/swift](https://github.com/modelscope/swift) |
 | [tea-cli](./skills/tea-cli/SKILL.md) | tea CLI documentation — Gitea's official command-line tool. Covers login/auth, issues, pull requests (checkout, merge,... | [gitea.com](https://gitea.com/gitea/tea) |
 | [tencent-cls](./skills/tencent-cls/SKILL.md) | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... | [cloud.tencent.com](https://cloud.tencent.com/document/product/614) |
@@ -738,6 +740,16 @@ Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk
 
 </details>
 <details>
+<summary><code>linear-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill linear-docs
+```
+
+Use when working with Linear product workflows, issues, projects, cycles, initiatives, views, integrations, workspace administration, AI agents, MCP, GraphQL API, OAuth, webhooks, or the Linear TypeScript SDK
+
+</details>
+<details>
 <summary><code>litellm-docs</code></summary>
 
 ```bash
@@ -834,7 +846,7 @@ MikroORM v7 documentation — TypeScript ORM for SQL and MongoDB with Data Mappe
 npx skills add wenerme/ai --skill model-reference
 ```
 
-AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing models, checking benchmark scores, finding recommended sampling parameters (temperature, top_p, top_k), model sizing/memory requirements, or pricing. Covers LLM, VLM, image, and video generation model families.
+Use when looking up or comparing current AI model IDs, lifecycle, context/output limits, pricing, modalities, open-weight sizes/licenses, generation settings, deployment memory, or image/video model capabilities across Claude, GPT, Gemini, Qwen, DeepSeek, Llama, Kimi, MiniMax, Gemma, Mistral, GLM, Phi, InternVL, and major media-model families.
 
 </details>
 <details>
@@ -1035,6 +1047,16 @@ npx skills add wenerme/ai --skill slopus-happy-docs
 ```
 
 Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption. Covers wire protocol (WebSocket), HTTP API, encryption boundaries, backend architecture, CLI/daemon architecture, session protocol, permission resolution, deployment, and development plans. USE THIS SKILL WHEN the user asks about Happy Coder setup, protocol, architecture, or Claude Code mobile/web client integration.
+
+</details>
+<details>
+<summary><code>stash-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill stash-docs
+```
+
+Use when configuring or troubleshooting Stash on iOS, macOS, tvOS, or visionOS, including Clash-compatible YAML, proxy protocols and groups, rules and rule sets, DNS, HTTP Engine, MitM, URL rewrites, JavaScript scripts, tiles, scheduled tasks, on-demand connections, LAN proxying, subscriptions, URL schemes, licensing, or Stash release behavior.
 
 </details>
 <details>
@@ -1250,7 +1272,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 112 skills, 31259 files, 371 MiB total
+> 114 skills, 31478 files, 373 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1315,6 +1337,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [justfile-docs](./skills/justfile-docs/SKILL.md) | 112 | 164 KiB |
 | [k3s-docs](./skills/k3s-docs/SKILL.md) | 58 | 1.8 MiB |
 | [lark-node-sdk](./skills/lark-node-sdk/SKILL.md) | 1 | 5.8 KiB |
+| [linear-docs](./skills/linear-docs/SKILL.md) | 136 | 1.9 MiB |
 | [litellm-docs](./skills/litellm-docs/SKILL.md) | 1 | 2.8 KiB |
 | [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 47 | 428 KiB |
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 20 | 155 KiB |
@@ -1324,7 +1347,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 153 | 411 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |
-| [model-reference](./skills/model-reference/SKILL.md) | 17 | 64 KiB |
+| [model-reference](./skills/model-reference/SKILL.md) | 17 | 67 KiB |
 | [nats-docs](./skills/nats-docs/SKILL.md) | 6 | 42 KiB |
 | [openai-api](./skills/openai-api/SKILL.md) | 519 | 34 MiB |
 | [openai-docs](./skills/openai-docs/SKILL.md) | 163 | 2.5 MiB |
@@ -1345,6 +1368,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 23 KiB |
 | [sling-cli](./skills/sling-cli/SKILL.md) | 3 | 14 KiB |
 | [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | 75 | 716 KiB |
+| [stash-docs](./skills/stash-docs/SKILL.md) | 83 | 364 KiB |
 | [swift-ms-docs](./skills/swift-ms-docs/SKILL.md) | 67 | 1.2 MiB |
 | [tea-cli](./skills/tea-cli/SKILL.md) | 26 | 81 KiB |
 | [tencent-cls](./skills/tencent-cls/SKILL.md) | 4 | 12 KiB |

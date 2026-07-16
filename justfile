@@ -177,6 +177,22 @@ update-litellm-docs:
 update-mihomo-docs:
     bun scripts/sync-mihomo-docs.ts
 
+# Test Stash Nextra source extraction and safety guards
+test-stash-docs:
+    bun test scripts/fetch-stash-docs.test.ts
+
+# Fetch Stash docs from the Nextra source payload on stash.wiki
+update-stash-docs: test-stash-docs
+    bun scripts/fetch-stash-docs.ts
+
+# Test Linear llms.txt parsing, content cleanup, and safety guards
+test-linear-docs:
+    bun test scripts/fetch-linear-docs.test.ts
+
+# Fetch Linear product/developer docs and GraphQL schema from linear.app/llms.txt
+update-linear-docs: test-linear-docs
+    bun scripts/fetch-linear-docs.ts
+
 # Sync justfile (just) docs from local casey/just clone
 update-justfile-docs:
     bun scripts/sync-justfile-docs.ts
@@ -261,6 +277,8 @@ update:
     -just update-vitest-docs
     -just update-litellm-docs
     -just update-mihomo-docs
+    -just update-stash-docs
+    -just update-linear-docs
     -just update-k3s-docs
     -just update-justfile-docs
     -just update-immich-docs
