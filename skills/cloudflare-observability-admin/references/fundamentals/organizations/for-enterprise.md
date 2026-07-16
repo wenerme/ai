@@ -165,6 +165,8 @@ All users who will be Organization members must have [two-factor authentication 
 
 Organizations allows you to share WAF custom rulesets and Zero Trust Gateway policies (DNS, Network, HTTP, Resolver) across accounts in your Organization. Shared policies are read-only in receiving accounts and automatically stay in sync when updated in the source account.
 
+Organizations also supports [IdP federation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/), which lets you configure a single identity provider (such as Okta or Entra ID) in one account and share it across all accounts in your Organization. Shared IdP connections are read-only in recipient accounts and are automatically provisioned or removed as accounts join or leave the Organization.
+
 For detailed instructions, refer to [Policy sharing](https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/).
 
 Note
@@ -245,6 +247,6 @@ Accounts cannot be moved between Enterprise Organizations.
 If you encounter errors during setup, refer to [Troubleshooting](https://developers.cloudflare.com/fundamentals/organizations/limitations/#troubleshooting).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#page","headline":"Organizations for Enterprise · Cloudflare Fundamentals docs","description":"Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#page","headline":"Organizations for Enterprise · Cloudflare Fundamentals docs","description":"Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/organizations/","name":"Organizations"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/organizations/for-enterprise/","name":"Organizations for Enterprise"}}]}
 ```

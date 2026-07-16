@@ -92,7 +92,7 @@ Group permissions for [group features](group/_index.md):
    information, see the [prerequisites](compliance/audit_events.md#prerequisites).
 1. Developers, Maintainers and Owners: Only if the project creation role is set
    [for the instance](../administration/settings/visibility_and_access_controls.md#define-which-roles-can-create-projects)
-    or [for the group](group/_index.md#specify-who-can-add-projects-to-a-group).
+   or [for the group](group/_index.md#specify-who-can-add-projects-to-a-group).
    Developers: Developers can push commits to the default branch of a new project only
    if the [default branch protection](group/manage.md#change-the-default-branch-protection-of-a-group)
    is set to "Partially protected" or "Not protected".

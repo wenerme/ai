@@ -113,8 +113,8 @@ To create a project-level skill:
    <your_instructions_and_context_for_the_skill>
    ```
 
-    For example, a skill to [sign artifacts using cosign](../../../ci/yaml/signing_examples.md) in
-    `skills/cosign-blob/SKILL.md`:
+   For example, a skill to [sign artifacts using cosign](../../../ci/yaml/signing_examples.md) in
+   `skills/cosign-blob/SKILL.md`:
 
     ````markdown
     ---

@@ -45,11 +45,11 @@ Typically, a Worker bundle will define both the Durable Object class and a Worke
 
 You should ensure that API changes between your Durable Object and its Worker are [forwards and backwards compatible](https://developers.cloudflare.com/durable-objects/platform/known-issues/#code-updates) whether you are using gradual deployments or not. However, using gradual deployments will make it even more likely that different versions of your Durable Objects and its Worker will interact with each other.
 
-## Migrations
+## Durable Object class lifecycle changes
 
-Versions of Worker bundles containing new Durable Object migrations cannot be uploaded. This is because Durable Object migrations are atomic operations. Once a migration is deployed, rollbacks cannot take place to any version prior to the one that included the migration.
+Versions of Worker bundles that change Durable Object class lifecycle cannot be uploaded. This applies to both the declarative [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field and the legacy [migrations](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) array. This is because Durable Object lifecycle changes are atomic operations. Once a lifecycle change is deployed, rollbacks cannot take place to any version prior to the one that included the change.
 
-Durable Object migrations can be deployed with the following command:
+Durable Object lifecycle changes can be deployed with the following command:
 
  npm  yarn  pnpm
 
@@ -65,13 +65,13 @@ yarn wrangler deploy
 pnpm wrangler deploy
 ```
 
-To limit the blast radius of Durable Object migration deployments, migrations should be deployed independently of other code changes.
+To limit the blast radius of these deployments, Durable Object lifecycle changes should be deployed independently of other code changes.
 
-To understand why Durable Object migrations are atomic operations, consider the hypothetical example of gradually deploying a delete migration. If a delete migration were applied to 50% of Durable Object instances, then Workers requesting those Durable Object instances would fail because they would have been deleted.
+To understand why Durable Object lifecycle changes are atomic operations, consider the hypothetical example of gradually deploying a class deletion. If a delete were applied to 50% of Durable Object instances, then Workers requesting those Durable Object instances would fail because they would have been deleted.
 
-To do this without producing errors, a version of the Worker which does not depend on any Durable Object instances would have to have already been rolled out. Then, you can deploy a delete migration without affecting any traffic and there is no reason to do so gradually.
+To do this without producing errors, a version of the Worker which does not depend on any of the Durable Objects to be deleted would have to have already been rolled out. Then, you can deploy the class deletion without affecting any traffic and there is no reason to do so gradually.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/#page","headline":"With Durable Objects · Cloudflare Workers docs","description":"How gradual deployments work with Durable Objects, including version assignment, migrations, and guarantees.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/#page","headline":"With Durable Objects · Cloudflare Workers docs","description":"How gradual deployments work with Durable Objects, including version assignment, migrations, and guarantees.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/versions-and-deployments/","name":"Versions & deployments"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/versions-and-deployments/gradual-deployments/","name":"Gradual deployments"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/versions-and-deployments/gradual-deployments/with-durable-objects/","name":"With Durable Objects"}}]}
 ```

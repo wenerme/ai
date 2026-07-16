@@ -57,7 +57,7 @@ By using alternating `user` and `assistant` messages, you capture the previous s
 
 To manually share context across generated responses, include the model's previous response output as input, and append that input to your next request.
 
-For stateless reasoning-model requests, add `reasoning.encrypted_content` to `include` and preserve every item in the response's `output` array. This keeps encrypted reasoning items and assistant `phase` values intact. Models that support persisted reasoning can use `reasoning.context: "all_turns"` to render the available reasoning from earlier turns into the next sample. See [preserve reasoning across calls](https://developers.openai.com/api/docs/guides/reasoning#preserve-reasoning-across-calls).
+For stateless reasoning-model requests, preserve every item in the response's `output` array. The Responses API returns encrypted reasoning items by default. Replaying the complete output keeps reasoning items and assistant `phase` values intact. Models that support persisted reasoning can use `reasoning.context: "all_turns"` to render the available reasoning from earlier turns into the next sample. See [preserve reasoning across calls](https://developers.openai.com/api/docs/guides/reasoning#preserve-reasoning-across-calls).
 
 In the following example, we ask the model to tell a joke, followed by a request for another joke. Appending previous responses to new requests in this way helps ensure conversations feel natural and retain the context of previous interactions.
 
@@ -82,7 +82,6 @@ const response = await openai.responses.create({
     model: "gpt-5.6",
     input: history,
     store: false,
-    include: ["reasoning.encrypted_content"],
 });
 
 console.log(response.output_text);
@@ -99,7 +98,6 @@ const secondResponse = await openai.responses.create({
     model: "gpt-5.6",
     input: history,
     store: false,
-    include: ["reasoning.encrypted_content"],
 });
 
 console.log(secondResponse.output_text);
@@ -121,7 +119,6 @@ response = client.responses.create(
     model="gpt-5.6",
     input=history,
     store=False,
-    include=["reasoning.encrypted_content"],
 )
 
 print(response.output_text)
@@ -135,7 +132,6 @@ second_response = client.responses.create(
     model="gpt-5.6",
     input=history,
     store=False,
-    include=["reasoning.encrypted_content"],
 )
 
 print(second_response.output_text)

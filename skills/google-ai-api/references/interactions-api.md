@@ -245,11 +245,6 @@ values:
 - `auto`
 
   Automatically include visualizations.
-cached_content string (optional) The name of the cached content used as context to serve the prediction.
-Note: only used in explicit caching, where users can have control over
-caching (e.g. what content to cache) and enjoy guaranteed cost savings.
-Format:
-\`projects/{project}/locations/{location}/cachedContents/{cachedContent}\`
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
 labels object (optional) The labels with user-defined metadata for the request.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
@@ -862,11 +857,6 @@ values:
 - `auto`
 
   Automatically include visualizations.
-cached_content string (optional) The name of the cached content used as context to serve the prediction.
-Note: only used in explicit caching, where users can have control over
-caching (e.g. what content to cache) and enjoy guaranteed cost savings.
-Format:
-\`projects/{project}/locations/{location}/cachedContents/{cachedContent}\`
 created string (optional) Output only. The time at which the response was created in ISO 8601 format
 (YYYY-MM-DDThh:mm:ssZ).
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.

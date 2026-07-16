@@ -715,7 +715,7 @@ The following are the valid connection parameters for Azure. For more informatio
            gitlab_rails['object_store']['objects']['pages']['bucket'] = 'gitlab-pages'
    ```
 
-    If you are using [a managed identity](#azure-workload-and-managed-identities), omit `azure_storage_access_key`.
+   If you are using [a managed identity](#azure-workload-and-managed-identities), omit `azure_storage_access_key`.
 
    ```ruby
    gitlab_rails['object_store']['connection'] = {

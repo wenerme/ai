@@ -11,7 +11,7 @@ export const TermsOfServiceDescriptions = () => {
   const [didError, setDidError] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
-    fetch("https://openrouter.ai/api/frontend/all-providers", {
+    fetch("https://openrouter.ai/api/frontend/v1/all-providers", {
       signal: controller.signal
     }).then(res => res.ok ? res.json() : Promise.reject(new Error(`HTTP ${res.status}`))).then(body => setProviders(body.data ?? [])).catch(err => {
       if (err.name !== "AbortError") setDidError(true);
@@ -49,7 +49,7 @@ The `provider` object can contain the following fields:
 | -------------------------- | ----------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `order`                    | string\[]         | -       | List of provider slugs to try in order (e.g. `["anthropic", "openai"]`). [Learn more](#ordering-specific-providers)                                              |
 | `allow_fallbacks`          | boolean           | `true`  | Whether to allow backup providers when the primary is unavailable. [Learn more](#disabling-fallbacks)                                                            |
-| `require_parameters`       | boolean           | `false` | Only use providers that support all parameters in your request. [Learn more](#requiring-providers-to-support-all-parameters-beta)                                |
+| `require_parameters`       | boolean           | `false` | Only use providers that support all parameters in your request. [Learn more](#requiring-providers-to-support-all-parameters)                                     |
 | `data_collection`          | "allow" \| "deny" | "allow" | Control whether to use providers that may store data. [Learn more](#requiring-providers-to-comply-with-data-policies)                                            |
 | `zdr`                      | boolean           | -       | Restrict routing to only ZDR (Zero Data Retention) endpoints. [Learn more](#zero-data-retention-enforcement)                                                     |
 | `enforce_distillable_text` | boolean           | -       | Restrict routing to only models that allow text distillation. [Learn more](#distillable-text-enforcement)                                                        |
@@ -1087,7 +1087,7 @@ You can restrict requests only to providers that support all parameters in your 
 | -------------------- | ------- | ------- | --------------------------------------------------------------- |
 | `require_parameters` | boolean | `false` | Only use providers that support all parameters in your request. |
 
-With the default routing strategy, providers that don't support all the [LLM parameters](/api/reference/parameters) specified in your request can still receive the request, but will ignore unknown parameters. When you set `require_parameters` to `true`, the request won't even be routed to that provider.
+With the default routing strategy, providers that don't support all the [LLM parameters](/api_reference/parameters) specified in your request can still receive the request, but will ignore unknown parameters. When you set `require_parameters` to `true`, the request won't even be routed to that provider.
 
 ### Example: Excluding providers that don't support JSON formatting
 
@@ -1242,7 +1242,7 @@ When `zdr` is set to `true`, the request will only be routed to endpoints that h
 <Tip>
   **Per-Model-Group and Account-Wide ZDR**
 
-  ZDR can also be enforced per model group (Anthropic, OpenAI, Google, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy) or via [guardrails](/guides/features/guardrails). The per-request `zdr` parameter
+  ZDR can also be enforced per model group (Anthropic, OpenAI, Google, xAI, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy) or via [guardrails](/guides/features/guardrails). The per-request `zdr` parameter
   operates as an "OR" with your account-wide and guardrail ZDR settings — if any of them is enabled, ZDR enforcement is applied. The request-level parameter can only ensure ZDR is enabled, not override account-wide or guardrail enforcement. See [Zero Data Retention](/guides/features/zdr#per-model-group-zdr-enforcement) for details.
 </Tip>
 

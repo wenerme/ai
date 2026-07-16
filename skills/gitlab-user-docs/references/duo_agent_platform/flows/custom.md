@@ -32,7 +32,6 @@ automate complex, multi-step tasks across your GitLab projects.
 ## Prerequisites
 
 - Meet the [prerequisites for the GitLab Duo Agent Platform](../_index.md#prerequisites).
-- Have [beta and experimental features turned on](../turn_on_off.md#turn-on-beta-and-experimental-features).
 - Have [custom flows turned on](#turn-custom-flows-on-or-off).
 
 ## Flow visibility

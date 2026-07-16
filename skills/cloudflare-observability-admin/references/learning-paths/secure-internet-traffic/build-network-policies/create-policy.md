@@ -16,8 +16,8 @@ You can control network-level traffic by filtering requests by selectors such as
 
 To create a new network policy:
 
-* [ Dashboard ](#tab-panel-9653)
-* [ API ](#tab-panel-9654)
+* [ Dashboard ](#tab-panel-10031)
+* [ API ](#tab-panel-10032)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **Network** tab, select **Add a network policy**.

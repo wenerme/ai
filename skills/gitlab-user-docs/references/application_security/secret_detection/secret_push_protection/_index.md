@@ -127,6 +127,11 @@ Secret push protection does not check a file in a commit when:
 Secret push protection scans only the diffs of commits pushed over HTTP(S) and SSH.
 If a secret is already present in a file and not part of the changes, it is not detected.
 
+## Audit events
+
+[Audit events](../../../compliance/audit_event_types.md#secret-detection) are logged when secret push protection
+skips scanning because the push contains [too many changed paths](#push-size-threshold).
+
 ## Push size threshold
 
 Secret push protection is skipped when a push changes more than 3,150 paths or 350,000 lines.

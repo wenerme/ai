@@ -1113,8 +1113,6 @@ have over the results.
         }
       }'
 
-![A photorealistic wide-angle shot of a vibrant coral reef...](https://ai.google.dev/static/gemini-api/docs/images/coral_reef.png) A photorealistic wide-angle shot of a vibrant coral reef...
-
 #### 2. Stylized illustrations \& stickers
 
 Describe the artistic style, subject, and medium. Be specific about the visual

@@ -237,4 +237,4 @@ This is equivalent to:
 }
 ```
 
-See [Model Variants](/guides/routing/model-variants) for more information about available shortcuts.
+See [Model Variants](/guides/routing/model-variants/online) for more information about available shortcuts.

@@ -67,7 +67,7 @@ To prepare to use bundle URI in CI/CD jobs:
        helper_image = "image:tag" ## <-- put the image name and tag here
    ```
 
-    For more details, see [information on the helper image](https://docs.gitlab.com/runner/configuration/advanced-configuration/#helper-image).
+   For more details, see [information on the helper image](https://docs.gitlab.com/runner/configuration/advanced-configuration/#helper-image).
 
 1. Restart the runners for the new configuration to take effect.
 1. Enable the `FF_USE_GIT_NATIVE_CLONE` [GitLab Runner feature flag](https://docs.gitlab.com/runner/configuration/feature-flags/)

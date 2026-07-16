@@ -20,7 +20,7 @@ For the legacy KV-backed Durable Object storage API, refer to [KV-backed Durable
 
 The Durable Object Storage API allows Durable Objects to access transactional and strongly consistent storage. A Durable Object's attached storage is private to its unique instance and cannot be accessed by other objects.
 
-The Durable Object Storage API comes with several methods, including SQL, point-in-time recovery (PITR), key-value (KV), and alarm APIs. Available API methods depend on the storage backend for a Durable Objects class, either [SQLite](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) or [KV](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#create-durable-object-class-with-key-value-storage).
+The Durable Object Storage API comes with several methods, including SQL, point-in-time recovery (PITR), key-value (KV), and alarm APIs. Available API methods depend on the storage backend for a Durable Objects class, either [SQLite](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) or [KV](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/#create-durable-object-class-with-key-value-storage).
 
 | Methods 1           | SQLite-backed Durable Object class | KV-backed Durable Object class |
 | ------------------- | ---------------------------------- | ------------------------------ |
@@ -44,7 +44,7 @@ Cloudflare recommends all new Durable Object namespaces use the [SQLite storage 
 
 Additionally, SQLite-backed Durable Objects allow you to store more types of data (such as tables), and offer Point In Time Recovery API which can restore a Durable Object's embedded SQLite database contents (both SQL data and key-value data) to any point in the past 30 days.
 
-Creating new namespaces with the [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#create-durable-object-class-with-key-value-storage) is no longer supported for accounts without an existing key-value backed namespace. The key-value storage backend remains available for existing namespaces, and a migration path from the key-value storage backend to the SQLite storage backend will be available in the future.
+Creating new namespaces with the [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#storage-backends) is no longer supported for accounts without an existing key-value-backed namespace. The key-value storage backend remains available for existing namespaces, and a migration path from the key-value storage backend to the SQLite storage backend will be available in the future.
 
 Storage billing on SQLite-backed Durable Objects
 
@@ -56,9 +56,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-8762)
-* [  TypeScript ](#tab-panel-8763)
-* [  Python ](#tab-panel-8764)
+* [  JavaScript ](#tab-panel-8916)
+* [  TypeScript ](#tab-panel-8917)
+* [  Python ](#tab-panel-8918)
 
 **JavaScript**
 
@@ -124,8 +124,8 @@ The `SqlStorage` interface encapsulates methods that modify the SQLite database 
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
-* [  TypeScript ](#tab-panel-8754)
-* [  Python ](#tab-panel-8755)
+* [  TypeScript ](#tab-panel-8908)
+* [  Python ](#tab-panel-8909)
 
 **TypeScript**
 
@@ -243,8 +243,8 @@ const rows = cursor.toArray();
   * Returned Iterator supports `next()` and `toArray()` methods above.
   * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
-* [  TypeScript ](#tab-panel-8756)
-* [  Python ](#tab-panel-8757)
+* [  TypeScript ](#tab-panel-8910)
+* [  Python ](#tab-panel-8911)
 
 **TypeScript**
 
@@ -444,8 +444,8 @@ Returned cursor and `raw()` iterator iterate over the same query results:
 
 The current SQLite database size in bytes.
 
-* [  TypeScript ](#tab-panel-8758)
-* [  Python ](#tab-panel-8759)
+* [  TypeScript ](#tab-panel-8912)
+* [  Python ](#tab-panel-8913)
 
 **TypeScript**
 
@@ -485,8 +485,8 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
-* [  TypeScript ](#tab-panel-8760)
-* [  Python ](#tab-panel-8761)
+* [  TypeScript ](#tab-panel-8914)
+* [  Python ](#tab-panel-8915)
 
 **TypeScript**
 

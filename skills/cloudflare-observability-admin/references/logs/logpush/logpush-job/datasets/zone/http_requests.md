@@ -597,7 +597,7 @@ Action of the security rule that triggered a terminating action, if any.
 Type: `array[string]`
 
 Array of actions the Cloudflare security products performed on this request. The individual security products associated with this action can be found in SecuritySources and their respective rule IDs can be found in SecurityRuleIDs. The length of the array is the same as SecurityRuleIDs and SecuritySources.
-Possible actions are _unknown_ | _allow_ | _block_ | _challenge_ | _jschallenge_ | _log_ | _connectionClose_ | _challengeSolved_ | _challengeBypassed_ | _jschallengeSolved_ | _jschallengeBypassed_ | _bypass_ | _managedChallenge_ | _managedChallengeNonInteractiveSolved_ | _managedChallengeInteractiveSolved_ | _managedChallengeBypassed_ | _rewrite_ | _forceConnectionClose_ | _skip_.
+Possible actions are _unknown_ | _allow_ | _block_ | _challenge_ | _jschallenge_ | _log_ | _connectionClose_ | _challengeSolved_ | _challengeBypassed_ | _jschallengeSolved_ | _jschallengeBypassed_ | _bypass_ | _managedChallenge_ | _managedChallengeNonInteractiveSolved_ | _managedChallengeInteractiveSolved_ | _managedChallengeBypassed_ | _rewrite_ | _forceConnectionClose_ | _skip_ | _precursorInterstitialPageIssued_ | _precursorInterstitialPageBypassed_ | _precursorInterstitialPageSolved_.
 
 ## SecurityRuleDescription
 
@@ -622,7 +622,7 @@ Array of rule IDs of the security product that matched the request. The security
 Type: `array[string]`
 
 Array of security products that matched the request. The same product can appear multiple times, which indicates different rules or actions that were activated. The rule IDs can be found in SecurityRuleIDs, and the actions can be found in SecurityActions. The length of the array is the same as SecurityRuleIDs and SecurityActions.
-Possible sources are _unknown_ | _asn_ | _country_ | _ip_ | _ipRange_ | _securityLevel_ | _zoneLockdown_ | _waf_ | _firewallRules_ | _uaBlock_ | _rateLimit_ | _bic_ | _hot_ | _l7ddos_ | _validation_ | _botFight_ | _apiShield_ | _botManagement_ | _dlp_ | _firewallManaged_ | _firewallCustom_ | _apiShieldSchemaValidation_ | _apiShieldTokenValidation_ | _apiShieldSequenceMitigation_.
+Possible sources are _unknown_ | _asn_ | _country_ | _ip_ | _ipRange_ | _securityLevel_ | _zoneLockdown_ | _waf_ | _firewallRules_ | _uaBlock_ | _rateLimit_ | _bic_ | _hot_ | _l7ddos_ | _validation_ | _botFight_ | _apiShield_ | _botManagement_ | _dlp_ | _firewallManaged_ | _firewallCustom_ | _apiShieldSchemaValidation_ | _apiShieldTokenValidation_ | _apiShieldSequenceMitigation_ | _precursor_.
 
 ## SmartRouteColoID
 
@@ -739,6 +739,6 @@ Type: `string`
 The human-readable name of the zone (for example, 'cloudflare.com').
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#page","headline":"HTTP requests · Cloudflare Logs docs","description":"The descriptions below detail the fields available for http_requests.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#page","headline":"HTTP requests · Cloudflare Logs docs","description":"The descriptions below detail the fields available for http_requests.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/datasets/","name":"Datasets"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/datasets/zone/","name":"Zone-scoped datasets"}},{"@type":"ListItem","position":7,"item":{"@id":"/logs/logpush/logpush-job/datasets/zone/http_requests/","name":"HTTP requests"}}]}
 ```

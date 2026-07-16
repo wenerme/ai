@@ -13,13 +13,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 # Reference
 
 * [ In-memory state in a Durable Object ](https://developers.cloudflare.com/durable-objects/reference/in-memory-state/)
-* [ Durable Objects migrations ](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/)
+* [ Durable Object class exports ](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/)
 * [ Data security ](https://developers.cloudflare.com/durable-objects/reference/data-security/)
 * [ Data location ](https://developers.cloudflare.com/durable-objects/reference/data-location/)
 * [ Environments ](https://developers.cloudflare.com/durable-objects/reference/environments/)
 * [ Gradual Deployments ](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#gradual-deployments-for-durable-objects)
 * [ FAQs ](https://developers.cloudflare.com/durable-objects/reference/faq/)
 * [ Glossary ](https://developers.cloudflare.com/durable-objects/reference/glossary/)
+* [ Durable Object class migrations (legacy) ](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/durable-objects/reference/#page","headline":"Reference · Cloudflare Durable Objects docs","description":"Durable Objects reference documentation covering migrations, data location, security, environments, and more.","url":"https://developers.cloudflare.com/durable-objects/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

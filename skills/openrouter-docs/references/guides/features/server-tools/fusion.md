@@ -120,7 +120,7 @@ MODEL: '~anthropic/claude-opus-latest',
 </Template>
 
 <Note title="Chat Completions support is in beta">
-  Fusion in the `tools` array works on `/chat/completions` today, but it's slower there than on the [Responses API](/api/reference/responses). For latency-sensitive use, send the same `tools: [{ type: "openrouter:fusion" }]` payload to the Responses API instead.
+  Fusion in the `tools` array works on `/chat/completions` today, but it's slower there than on the [Responses API](/api_reference/responses/overview). For latency-sensitive use, send the same `tools: [{ type: "openrouter:fusion" }]` payload to the Responses API instead.
 </Note>
 
 ## When does the model invoke it?

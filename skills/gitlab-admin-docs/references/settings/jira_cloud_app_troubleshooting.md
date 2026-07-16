@@ -220,7 +220,7 @@ To locate the relevant log entries in Kibana, either:
   `https://gitlab.com/-/jira_connect/installations`, the
   [Kibana](https://log.gprd.gitlab.net/app/r/s/0FdPP) logs should be filtered for
   `json.meta.caller_id: JiraConnect::InstallationsController#update`, `NOT json.status: 200`
-   and `json.correlation_id: <X-Request-Id>`. This should return two log entries.
+  and `json.correlation_id: <X-Request-Id>`. This should return two log entries.
 
 - If you have the self-managed URL for the customer:
   1. The [Kibana](https://log.gprd.gitlab.net/app/r/s/QVsD4) logs should be filtered for

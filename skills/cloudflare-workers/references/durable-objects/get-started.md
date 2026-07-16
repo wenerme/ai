@@ -112,9 +112,9 @@ If you do not use JavaScript or TypeScript, you will need a [shim ↗](https://d
 
 Your `MyDurableObject` class will have a constructor with two parameters. The first parameter, `ctx`, passed to the class constructor contains state specific to the Durable Object, including methods for accessing storage. The second parameter, `env`, contains any bindings you have associated with the Worker when you uploaded it.
 
-* [  JavaScript ](#tab-panel-8738)
-* [  TypeScript ](#tab-panel-8739)
-* [  Python ](#tab-panel-8740)
+* [  JavaScript ](#tab-panel-9080)
+* [  TypeScript ](#tab-panel-9081)
+* [  Python ](#tab-panel-9082)
 
 **JavaScript**
 
@@ -153,9 +153,9 @@ Workers communicate with a Durable Object using [remote-procedure call](https://
 
 Your file should now look like:
 
-* [  JavaScript ](#tab-panel-8744)
-* [  TypeScript ](#tab-panel-8745)
-* [  Python ](#tab-panel-8746)
+* [  JavaScript ](#tab-panel-9086)
+* [  TypeScript ](#tab-panel-9087)
+* [  Python ](#tab-panel-9088)
 
 **JavaScript**
 
@@ -230,9 +230,9 @@ A Worker is used to [access Durable Objects](https://developers.cloudflare.com/d
 
 To communicate with a Durable Object, the Worker's fetch handler should look like the following:
 
-* [  JavaScript ](#tab-panel-8741)
-* [  TypeScript ](#tab-panel-8742)
-* [  Python ](#tab-panel-8743)
+* [  JavaScript ](#tab-panel-9083)
+* [  TypeScript ](#tab-panel-9084)
+* [  Python ](#tab-panel-9085)
 
 **JavaScript**
 
@@ -297,8 +297,8 @@ Refer to [Access a Durable Object from a Worker](https://developers.cloudflare.c
 
 [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to interact with resources on the Cloudflare developer platform. The Durable Object bindings in your Worker project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) will include a binding name (for this guide, use `MY_DURABLE_OBJECT`) and the class name (`MyDurableObject`).
 
-* [  wrangler.jsonc ](#tab-panel-8734)
-* [  wrangler.toml ](#tab-panel-8735)
+* [  wrangler.jsonc ](#tab-panel-9076)
+* [  wrangler.toml ](#tab-panel-9077)
 
 **JSONC**
 
@@ -331,39 +331,35 @@ The `bindings` section contains the following fields:
 
 ## 5\. Configure Durable Object class with SQLite storage backend
 
-A migration is a mapping process from a class name to a runtime state. You perform a migration when creating a new Durable Object class, or when renaming, deleting or transferring an existing Durable Object class.
+You declare each Durable Object class your Worker exports in the `exports` field of your Wrangler configuration file. Cloudflare uses this declaration to provision a namespace for the class the first time you deploy, and to manage its lifecycle on later deploys (rename, delete, transfer).
 
-Migrations are performed through the `[[migrations]]` configurations key in your Wrangler file.
+The minimal `exports` block to register a new Durable Object class with SQLite storage looks like:
 
-The Durable Object migration to create a new Durable Object class with SQLite storage backend will look like the following in your Worker's Wrangler file:
-
-* [  wrangler.jsonc ](#tab-panel-8736)
-* [  wrangler.toml ](#tab-panel-8737)
+* [  wrangler.jsonc ](#tab-panel-9078)
+* [  wrangler.toml ](#tab-panel-9079)
 
 **JSONC**
 
 ```jsonc
 {
-  "migrations": [
-    {
-      "tag": "v1", // Should be unique for each entry
-      "new_sqlite_classes": [ // Array of new classes
-        "MyDurableObject"
-      ]
+  "exports": {
+    "MyDurableObject": {
+      "type": "durable-object",
+      "storage": "sqlite"
     }
-  ]
+  }
 }
 ```
 
 **TOML**
 
 ```toml
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = [ "MyDurableObject" ]
+[exports.MyDurableObject]
+type = "durable-object"
+storage = "sqlite"
 ```
 
-Refer to [Durable Objects migrations](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) to learn more about the migration process.
+Refer to [Durable Object class exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) to learn more about declaring and managing Durable Object classes. If you have an existing Worker on the legacy `migrations` array, refer to [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/).
 
 ## 6\. Develop a Durable Object Worker locally
 
@@ -393,9 +389,9 @@ Preview your Durable Object Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.de
 
 Your final code should look like this:
 
-* [  JavaScript ](#tab-panel-8747)
-* [  TypeScript ](#tab-panel-8748)
-* [  Python ](#tab-panel-8749)
+* [  JavaScript ](#tab-panel-9089)
+* [  TypeScript ](#tab-panel-9090)
+* [  Python ](#tab-panel-9091)
 
 **JavaScript**
 
@@ -501,6 +497,6 @@ By finishing this tutorial, you have:
 * [Miniflare ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare) \- Helpful tools for mocking and testing your Durable Objects.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/get-started/#page","headline":"Getting started · Cloudflare Durable Objects docs","description":"Create and deploy your first Durable Object with SQLite storage and a companion Worker.","url":"https://developers.cloudflare.com/durable-objects/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/get-started/#page","headline":"Getting started · Cloudflare Durable Objects docs","description":"Create and deploy your first Durable Object with SQLite storage and a companion Worker.","url":"https://developers.cloudflare.com/durable-objects/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/get-started/","name":"Getting started"}}]}
 ```

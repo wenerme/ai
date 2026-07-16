@@ -28,7 +28,7 @@ export const ProviderDataRetentionTable = () => {
   const [didError, setDidError] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
-    fetch("https://openrouter.ai/api/frontend/all-providers", {
+    fetch("https://openrouter.ai/api/frontend/v1/all-providers", {
       signal: controller.signal
     }).then(res => res.ok ? res.json() : Promise.reject(new Error(`HTTP ${res.status}`))).then(body => setProviders(body.data ?? [])).catch(err => {
       if (err.name !== "AbortError") setDidError(true);

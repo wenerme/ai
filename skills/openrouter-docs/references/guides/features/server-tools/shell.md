@@ -57,7 +57,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 <Warning>
   **Responses API only**
 
-  The shell server tool is only available through the [Responses API](/api/reference/responses). Requesting it on the Chat Completions or Messages API returns a `400` error. On the Messages API, use [Bash](/guides/features/server-tools/bash) instead.
+  The shell server tool is only available through the [Responses API](/api_reference/responses/overview). Requesting it on the Chat Completions or Messages API returns a `400` error. On the Messages API, use [Bash](/guides/features/server-tools/bash) instead.
 </Warning>
 
 The `openrouter:shell` server tool gives a model a hosted shell — a sandbox-backed clone of OpenAI's hosted `shell` tool that works with any model. When the model needs to run commands, it emits a shell call; OpenRouter executes the commands server-side in an isolated Linux container and returns each command's `stdout`, `stderr`, and exit or timeout outcome.

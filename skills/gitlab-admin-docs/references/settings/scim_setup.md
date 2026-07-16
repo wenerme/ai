@@ -273,9 +273,8 @@ For detailed instructions on configuring group synchronization in your identity 
 
 - [Okta Groups API](https://developer.okta.com/docs/reference/api/groups/)
 - [Microsoft Entra ID (Azure AD) SCIM Groups](https://learn.microsoft.com/en-us/entra/identity/app-provisioning/use-scim-to-provision-users-and-groups)
-      - By default, the `displayName` source attribute is used to find SAML group links with user-friendly names.
-      - However, if your SAML group links use an object ID for the name,
-      you must update the source attribute to `objectId`.
+  - By default, the `displayName` source attribute is used to find SAML group links with user-friendly names.
+  - However, if your SAML group links use an object ID for the name, you must update the source attribute to `objectId`.
 
 > [!warning]
 > When multiple SAML group links map to the same GitLab group, users are assigned the highest role across all mapping group links. Users removed from an IdP group stay in a GitLab group if they belong to another SAML group linked to it.
