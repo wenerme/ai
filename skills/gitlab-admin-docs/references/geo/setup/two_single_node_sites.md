@@ -309,29 +309,29 @@ Prerequisites:
 
 ### Linux package
 
-    ```shell
-    sudo \
-        -u gitlab-psql /opt/gitlab/embedded/bin/psql \
-        --list \
-        -U gitlab_replicator \
-        -d "dbname=gitlabhq_production sslmode=verify-ca" \
-        -W \
-        -h <primary_site_ip>
-    ```
+   ```shell
+   sudo \
+       -u gitlab-psql /opt/gitlab/embedded/bin/psql \
+       --list \
+       -U gitlab_replicator \
+       -d "dbname=gitlabhq_production sslmode=verify-ca" \
+       -W \
+       -h <primary_site_ip>
+   ```
 
 
 
 
 ### Docker
 
-    ```shell
-    docker exec -it <container_name> su - gitlab-psql -c '/opt/gitlab/embedded/bin/psql \
-        --list \
-        -U gitlab_replicator \
-        -d "dbname=gitlabhq_production sslmode=verify-ca" \
-        -W \
-        -h <primary_site_ip>'
-    ```
+   ```shell
+   docker exec -it <container_name> su - gitlab-psql -c '/opt/gitlab/embedded/bin/psql \
+       --list \
+       -U gitlab_replicator \
+       -d "dbname=gitlabhq_production sslmode=verify-ca" \
+       -W \
+       -h <primary_site_ip>'
+   ```
 
 
 

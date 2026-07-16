@@ -301,7 +301,7 @@ To get job information from the GraphQL API:
    }
    ```
 
-    The `job.detailedStatus.action.path` field contains the job ID using the resource.
+   The `job.detailedStatus.action.path` field contains the job ID using the resource.
 
 1. Run the following query and check `job.status` field according to the criteria above. You can also visit the pipeline page from `pipeline.path` field.
 

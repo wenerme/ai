@@ -34,8 +34,8 @@ The typical file structure for an Agent project created from `npm create cloudfl
 
 The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. Here is a complete example for an agents project:
 
-* [  wrangler.jsonc ](#tab-panel-6673)
-* [  wrangler.toml ](#tab-panel-6674)
+* [  wrangler.jsonc ](#tab-panel-6957)
+* [  wrangler.toml ](#tab-panel-6958)
 
 **JSONC**
 
@@ -45,7 +45,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
   "name": "my-agent-app",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-16",
   "compatibility_flags": ["nodejs_compat"],
 
 
@@ -71,13 +71,17 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
   },
 
 
-  // Required: Enable SQLite storage for agents
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["MyAgent", "ChatAgent"],
+  // Provision storage for each agent class
+  "exports": {
+    "MyAgent": {
+      "type": "durable-object",
+      "storage": "sqlite",
     },
-  ],
+    "ChatAgent": {
+      "type": "durable-object",
+      "storage": "sqlite",
+    },
+  },
 
 
   // AI binding (optional, for Workers AI)
@@ -100,7 +104,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
 name = "my-agent-app"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-16"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -119,9 +123,14 @@ name = "ChatAgent"
 class_name = "ChatAgent"
 
 
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = [ "MyAgent", "ChatAgent" ]
+[exports.MyAgent]
+type = "durable-object"
+storage = "sqlite"
+
+
+[exports.ChatAgent]
+type = "durable-object"
+storage = "sqlite"
 
 
 [ai]
@@ -138,8 +147,8 @@ enabled = true
 
 The `nodejs_compat` flag is required for agents:
 
-* [  wrangler.jsonc ](#tab-panel-6655)
-* [  wrangler.toml ](#tab-panel-6656)
+* [  wrangler.jsonc ](#tab-panel-6931)
+* [  wrangler.toml ](#tab-panel-6932)
 
 **JSONC**
 
@@ -161,8 +170,8 @@ This enables Node.js compatibility mode, which agents depend on for crypto, stre
 
 Each agent class needs a binding:
 
-* [  wrangler.jsonc ](#tab-panel-6657)
-* [  wrangler.toml ](#tab-panel-6658)
+* [  wrangler.jsonc ](#tab-panel-6933)
+* [  wrangler.toml ](#tab-panel-6934)
 
 **JSONC**
 
@@ -196,8 +205,8 @@ When `name` and `class_name` differ
 
 When `name` and `class_name` differ, follow the pattern shown below:
 
-* [  wrangler.jsonc ](#tab-panel-6659)
-* [  wrangler.toml ](#tab-panel-6660)
+* [  wrangler.jsonc ](#tab-panel-6935)
+* [  wrangler.toml ](#tab-panel-6936)
 
 **JSONC**
 
@@ -224,47 +233,47 @@ class_name = "CounterAgent"
 
 This is useful when you want environment variable-style naming (`COUNTER_DO`) but more descriptive class names (`CounterAgent`).
 
-#### `migrations`
+#### `exports`
 
-Migrations tell Cloudflare how to set up storage for your Durable Objects:
+The `exports` field declares each Agent class your Worker exports and the storage backend Cloudflare should use for it:
 
-* [  wrangler.jsonc ](#tab-panel-6661)
-* [  wrangler.toml ](#tab-panel-6662)
+* [  wrangler.jsonc ](#tab-panel-6937)
+* [  wrangler.toml ](#tab-panel-6938)
 
 **JSONC**
 
 ```jsonc
 {
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["MyAgent"],
+  "exports": {
+    "MyAgent": {
+      "type": "durable-object",
+      "storage": "sqlite",
     },
-  ],
+  },
 }
 ```
 
 **TOML**
 
 ```toml
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = [ "MyAgent" ]
+[exports.MyAgent]
+type = "durable-object"
+storage = "sqlite"
 ```
 
-| Field                | Description                                                  |
-| -------------------- | ------------------------------------------------------------ |
-| tag                  | Version identifier (for example, "v1", "v2"). Must be unique |
-| new\_sqlite\_classes | Agent classes that use SQLite storage (state persistence)    |
-| deleted\_classes     | Classes being removed                                        |
-| renamed\_classes     | Classes being renamed                                        |
+| Field   | Description                                                     |
+| ------- | --------------------------------------------------------------- |
+| type    | The kind of export. Always "durable-object" for an Agent.       |
+| storage | The storage backend. Use "sqlite" for new Agents (recommended). |
+
+For details on renaming, deleting, or transferring Agent classes, refer to [Durable Object class exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/). Existing Workers using the legacy `migrations` array continue to work — refer to [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/).
 
 #### `assets`
 
 For serving static files (HTML, CSS, JS):
 
-* [  wrangler.jsonc ](#tab-panel-6663)
-* [  wrangler.toml ](#tab-panel-6664)
+* [  wrangler.jsonc ](#tab-panel-6939)
+* [  wrangler.toml ](#tab-panel-6940)
 
 **JSONC**
 
@@ -287,8 +296,8 @@ binding = "ASSETS"
 
 With a binding, you can serve assets programmatically:
 
-* [  JavaScript ](#tab-panel-6693)
-* [  TypeScript ](#tab-panel-6694)
+* [  JavaScript ](#tab-panel-6969)
+* [  TypeScript ](#tab-panel-6970)
 
 **JavaScript**
 
@@ -332,8 +341,8 @@ export default {
 
 For Workers AI integration:
 
-* [  wrangler.jsonc ](#tab-panel-6665)
-* [  wrangler.toml ](#tab-panel-6666)
+* [  wrangler.jsonc ](#tab-panel-6941)
+* [  wrangler.toml ](#tab-panel-6942)
 
 **JSONC**
 
@@ -354,8 +363,8 @@ binding = "AI"
 
 Access in your agent:
 
-* [  JavaScript ](#tab-panel-6689)
-* [  TypeScript ](#tab-panel-6690)
+* [  JavaScript ](#tab-panel-6967)
+* [  TypeScript ](#tab-panel-6968)
 
 **JavaScript**
 
@@ -429,8 +438,8 @@ The Agents SDK provides a Vite plugin that handles TC39 decorator transforms. Vi
 
 Add the plugin to your `vite.config.ts`:
 
-* [  JavaScript ](#tab-panel-6695)
-* [  TypeScript ](#tab-panel-6696)
+* [  JavaScript ](#tab-panel-6971)
+* [  TypeScript ](#tab-panel-6972)
 
 **JavaScript**
 
@@ -516,8 +525,8 @@ interface Env extends Cloudflare.Env {}
 
 You can also define types manually:
 
-* [  JavaScript ](#tab-panel-6703)
-* [  TypeScript ](#tab-panel-6704)
+* [  JavaScript ](#tab-panel-6979)
+* [  TypeScript ](#tab-panel-6980)
 
 **JavaScript**
 
@@ -578,8 +587,8 @@ DATABASE_URL=postgres://...
 
 Access in your agent:
 
-* [  JavaScript ](#tab-panel-6701)
-* [  TypeScript ](#tab-panel-6702)
+* [  JavaScript ](#tab-panel-6975)
+* [  TypeScript ](#tab-panel-6976)
 
 **JavaScript**
 
@@ -623,8 +632,8 @@ npx wrangler secret delete OPENAI_API_KEY
 
 For non-sensitive configuration, use `vars` in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6667)
-* [  wrangler.toml ](#tab-panel-6668)
+* [  wrangler.jsonc ](#tab-panel-6943)
+* [  wrangler.toml ](#tab-panel-6944)
 
 **JSONC**
 
@@ -649,8 +658,8 @@ DEBUG_MODE = "false"
 
 All values must be strings. Parse numbers and booleans in code:
 
-* [  JavaScript ](#tab-panel-6697)
-* [  TypeScript ](#tab-panel-6698)
+* [  JavaScript ](#tab-panel-6973)
+* [  TypeScript ](#tab-panel-6974)
 
 **JavaScript**
 
@@ -670,8 +679,8 @@ const debugMode = this.env.DEBUG_MODE === "true";
 
 Use `env` sections for different environments (for example, staging, production):
 
-* [  wrangler.jsonc ](#tab-panel-6675)
-* [  wrangler.toml ](#tab-panel-6676)
+* [  wrangler.jsonc ](#tab-panel-6951)
+* [  wrangler.toml ](#tab-panel-6952)
 
 **JSONC**
 
@@ -832,15 +841,15 @@ This:
 
 1. Bundles your code
 2. Uploads to Cloudflare
-3. Applies migrations
+3. Provisions the Agent's Durable Object namespace storage
 4. Makes it live on `*.workers.dev`
 
 ### Custom domain
 
 Add a route in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6669)
-* [  wrangler.toml ](#tab-panel-6670)
+* [  wrangler.jsonc ](#tab-panel-6945)
+* [  wrangler.toml ](#tab-panel-6946)
 
 **JSONC**
 
@@ -865,8 +874,8 @@ zone_name = "example.com"
 
 Or use a custom domain (simpler):
 
-* [  wrangler.jsonc ](#tab-panel-6671)
-* [  wrangler.toml ](#tab-panel-6672)
+* [  wrangler.jsonc ](#tab-panel-6947)
+* [  wrangler.toml ](#tab-panel-6948)
 
 **JSONC**
 
@@ -913,8 +922,8 @@ npx wrangler rollback
 
 Define environments in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6699)
-* [  wrangler.toml ](#tab-panel-6700)
+* [  wrangler.jsonc ](#tab-panel-6977)
+* [  wrangler.toml ](#tab-panel-6978)
 
 **JSONC**
 
@@ -926,12 +935,14 @@ Define environments in the Wrangler configuration file:
 
   // Base configuration (shared)
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-16",
   "compatibility_flags": ["nodejs_compat"],
   "durable_objects": {
     "bindings": [{ "name": "MyAgent", "class_name": "MyAgent" }],
   },
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["MyAgent"] }],
+  "exports": {
+    "MyAgent": { "type": "durable-object", "storage": "sqlite" },
+  },
 
 
   // Environment overrides
@@ -958,7 +969,7 @@ Define environments in the Wrangler configuration file:
 name = "my-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-16"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -967,9 +978,9 @@ name = "MyAgent"
 class_name = "MyAgent"
 
 
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = [ "MyAgent" ]
+[exports.MyAgent]
+type = "durable-object"
+storage = "sqlite"
 
 
 [env.staging]
@@ -1010,8 +1021,8 @@ Each environment gets its own Durable Objects. Staging agents do not share state
 
 To explicitly separate:
 
-* [  wrangler.jsonc ](#tab-panel-6679)
-* [  wrangler.toml ](#tab-panel-6680)
+* [  wrangler.jsonc ](#tab-panel-6961)
+* [  wrangler.toml ](#tab-panel-6962)
 
 **JSONC**
 
@@ -1042,175 +1053,146 @@ class_name = "MyAgent"
 script_name = "my-agent-staging"
 ```
 
-## Migrations
+## Agent class lifecycle
 
-Migrations manage Durable Object storage schema changes.
+Each Agent maps to a Durable Object class. You manage the lifecycle of those classes (create, rename, delete, transfer) through the [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field of your Wrangler configuration file.
 
 ### Adding a new agent
 
-Add to `new_sqlite_classes` in a new migration:
+Declare the new class in the `exports`:
 
-* [  wrangler.jsonc ](#tab-panel-6677)
-* [  wrangler.toml ](#tab-panel-6678)
+* [  wrangler.jsonc ](#tab-panel-6949)
+* [  wrangler.toml ](#tab-panel-6950)
 
 **JSONC**
 
 ```jsonc
 {
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["ExistingAgent"],
-    },
-    {
-      "tag": "v2",
-      "new_sqlite_classes": ["NewAgent"],
-    },
-  ],
+  "exports": {
+    "NewAgent": { "type": "durable-object", "storage": "sqlite" },
+  },
 }
 ```
 
 **TOML**
 
 ```toml
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = [ "ExistingAgent" ]
-
-
-[[migrations]]
-tag = "v2"
-new_sqlite_classes = [ "NewAgent" ]
+[exports.NewAgent]
+type = "durable-object"
+storage = "sqlite"
 ```
 
 ### Renaming an agent class
 
-Use `renamed_classes`:
+Replace the entry for the old name with a `renamed` tombstone and add a live entry for the new name:
 
-* [  wrangler.jsonc ](#tab-panel-6691)
-* [  wrangler.toml ](#tab-panel-6692)
+* [  wrangler.jsonc ](#tab-panel-6959)
+* [  wrangler.toml ](#tab-panel-6960)
 
 **JSONC**
 
 ```jsonc
 {
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["OldName"],
+  "exports": {
+    "OldName": {
+      "type": "durable-object",
+      "state": "renamed",
+      "renamed_to": "NewName",
     },
-    {
-      "tag": "v2",
-      "renamed_classes": [
-        {
-          "from": "OldName",
-          "to": "NewName",
-        },
-      ],
-    },
-  ],
+    "NewName": { "type": "durable-object", "storage": "sqlite" },
+  },
 }
 ```
 
 **TOML**
 
 ```toml
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = [ "OldName" ]
+[exports.OldName]
+type = "durable-object"
+state = "renamed"
+renamed_to = "NewName"
 
 
-[[migrations]]
-tag = "v2"
-
-
-  [[migrations.renamed_classes]]
-  from = "OldName"
-  to = "NewName"
+[exports.NewName]
+type = "durable-object"
+storage = "sqlite"
 ```
 
 Also update:
 
-1. The class name in code
-2. The `class_name` in bindings
-3. Export statements
+1. The class name in code.
+2. The `class_name` in bindings.
+3. Export statements.
 
 ### Deleting an agent class
 
-Use `deleted_classes`:
+Replace the entry with a `deleted` tombstone:
 
-* [  wrangler.jsonc ](#tab-panel-6685)
-* [  wrangler.toml ](#tab-panel-6686)
+* [  wrangler.jsonc ](#tab-panel-6953)
+* [  wrangler.toml ](#tab-panel-6954)
 
 **JSONC**
 
 ```jsonc
 {
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["AgentToDelete", "AgentToKeep"],
-    },
-    {
-      "tag": "v2",
-      "deleted_classes": ["AgentToDelete"],
-    },
-  ],
+  "exports": {
+    "AgentToKeep": { "type": "durable-object", "storage": "sqlite" },
+    "AgentToDelete": { "type": "durable-object", "state": "deleted" },
+  },
 }
 ```
 
 **TOML**
 
 ```toml
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = [ "AgentToDelete", "AgentToKeep" ]
+[exports.AgentToKeep]
+type = "durable-object"
+storage = "sqlite"
 
 
-[[migrations]]
-tag = "v2"
-deleted_classes = [ "AgentToDelete" ]
+[exports.AgentToDelete]
+type = "durable-object"
+state = "deleted"
 ```
 
 Warning
 
 This permanently deletes all data for that class.
 
-### Migration best practices
+### Class lifecycle best practices
 
-1. **Never modify existing migrations** \- Always add new ones.
-2. **Use sequential tags** \- v1, v2, v3 (or use dates: 2025-01-15).
-3. **Test locally first** \- Migrations run on deploy.
-4. **Back up production data** \- Before renaming or deleting.
+1. **Keep `exports` in sync with your code.** Every Agent class your Worker exports needs an entry.
+2. **Use tombstones, not silent removal.** When retiring a class, leave a `deleted` / `renamed` / `transferred` tombstone in `exports` so Cloudflare reconciles the change explicitly.
+3. **Test locally first.** Lifecycle changes apply on `wrangler deploy`.
+4. **Back up production data** before renaming or deleting.
+
+Existing Workers using the legacy `migrations` array continue to work — refer to [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) for the legacy reference, or [Migrate from the legacy migrations flow](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#migrate-from-the-legacy-migrations-flow) to move to `exports`.
 
 ## Troubleshooting
 
 ### No such Durable Object class
 
-The class is not in migrations:
+The class is missing from `exports`. Declare the class and its storage:
 
-* [  wrangler.jsonc ](#tab-panel-6681)
-* [  wrangler.toml ](#tab-panel-6682)
+* [  wrangler.jsonc ](#tab-panel-6955)
+* [  wrangler.toml ](#tab-panel-6956)
 
 **JSONC**
 
 ```jsonc
 {
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["MissingClassName"],
-    },
-  ],
+  "exports": {
+    "MissingClassName": { "type": "durable-object", "storage": "sqlite" },
+  },
 }
 ```
 
 **TOML**
 
 ```toml
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = [ "MissingClassName" ]
+[exports.MissingClassName]
+type = "durable-object"
+storage = "sqlite"
 ```
 
 ### Cannot find module in types
@@ -1230,12 +1212,12 @@ cat .env
 # Should show: MY_SECRET=value
 ```
 
-### Migration tag conflict
+### Migration tag conflict (legacy `migrations` only)
 
-Migration tags must be unique. If you see conflicts:
+If your Worker uses the legacy [migrations](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) array, each entry must have a unique `tag`:
 
-* [  wrangler.jsonc ](#tab-panel-6683)
-* [  wrangler.toml ](#tab-panel-6684)
+* [  wrangler.jsonc ](#tab-panel-6963)
+* [  wrangler.toml ](#tab-panel-6964)
 
 **JSONC**
 
@@ -1262,8 +1244,8 @@ tag = "v1"
 new_sqlite_classes = [ "B" ]
 ```
 
-* [  wrangler.jsonc ](#tab-panel-6687)
-* [  wrangler.toml ](#tab-panel-6688)
+* [  wrangler.jsonc ](#tab-panel-6965)
+* [  wrangler.toml ](#tab-panel-6966)
 
 **JSONC**
 
@@ -1290,6 +1272,8 @@ tag = "v2"
 new_sqlite_classes = [ "B" ]
 ```
 
+Consider converting to the declarative [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field.
+
 ## Next steps
 
 [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK.
@@ -1299,6 +1283,6 @@ new_sqlite_classes = [ "B" ]
 [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Background processing with delayed and cron-based tasks.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configure Wrangler bindings, environment variables, and type generation for a project using the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/operations/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configure Wrangler bindings, environment variables, and type generation for a project using the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/operations/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/operations/","name":"Operations"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/operations/configuration/","name":"Configuration"}}]}
 ```

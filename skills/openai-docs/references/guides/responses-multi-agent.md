@@ -255,7 +255,6 @@ while True:
         input=history,
         tools=tools,
         store=False,
-        include=["reasoning.encrypted_content"],
         multi_agent={
             "enabled": True,
             "max_concurrent_subagents": 3,
@@ -372,7 +371,6 @@ while (true) {
     input: history as BetaResponseInput,
     tools,
     store: false,
-    include: ["reasoning.encrypted_content"],
     multi_agent: {
       enabled: true,
       max_concurrent_subagents: 3,

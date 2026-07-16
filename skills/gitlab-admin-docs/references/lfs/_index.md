@@ -489,7 +489,7 @@ An error about a missing LFS object may occur in either of these situations:
   /var/opt/gitlab/gitlab-rails/shared/lfs-objects/00/66/22269c61b41bf14a22bbe0e43be3acf86a4a446afb4250c3794ea47541a7
   ```
 
-   (Line breaks have been added for legibility.)
+  (Line breaks have been added for legibility.)
 
 - When running the
   [integrity check for LFS objects](../raketasks/check.md#uploaded-files-integrity)

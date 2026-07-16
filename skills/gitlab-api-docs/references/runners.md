@@ -470,7 +470,7 @@ GET /runners/:id/jobs
 |-------------|---------|----------|-------------|
 | `id`        | integer | yes      | The ID of a runner |
 | `system_id` | string  | no       | System ID of the machine where the runner manager is running |
-| `status`    | string  | no       | Status of the job; one of: `running`, `success`, `failed`, `canceled` |
+| `status`    | string  | no       | Status of the job; one of: `created`, `waiting_for_resource`, `preparing`, `waiting_for_callback`, `pending`, `running`, `success`, `failed`, `canceling`, `canceled`, `skipped`, `manual`, `scheduled` |
 | `order_by`  | string  | no       | Order jobs by `id` |
 | `sort`      | string  | no       | Sort jobs in `asc` or `desc` order (default: `desc`). If `sort` is specified, `order_by` must be specified as well |
 

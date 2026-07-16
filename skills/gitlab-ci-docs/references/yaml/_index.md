@@ -5022,6 +5022,9 @@ Use `rules:if` clauses to specify when to add a job to a pipeline:
   with [some exceptions](../variables/where_variables_can_be_used.md#gitlab-ciyml-file).
 - In order, following [`rules` execution flow](#rules).
 
+Inconsistent rules between jobs can lead to unexpected behavior, though [`workflow`](#workflow) rules can help mitigate this problem.
+For example, it's possible to accidentally configure jobs that cause [duplicate pipelines](../jobs/job_rules.md#avoid-duplicate-pipelines).
+
 **Keyword type**: Job-specific and pipeline-specific. You can use it as part of a job
 to configure the job behavior, or with [`workflow`](#workflow) to configure the pipeline behavior.
 
@@ -5059,7 +5062,6 @@ job:
 **Related topics**:
 
 - [Common `if` expressions for `rules`](../jobs/job_rules.md#common-if-clauses-with-predefined-variables).
-- [Avoid duplicate pipelines](../jobs/job_rules.md#avoid-duplicate-pipelines).
 - [Use `rules` to run merge request pipelines](../pipelines/merge_request_pipelines.md#configure-merge-request-pipelines).
 
 ---

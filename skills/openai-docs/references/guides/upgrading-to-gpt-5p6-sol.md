@@ -200,7 +200,7 @@ If deliberately enabling persisted reasoning:
 - use `reasoning.context: "all_turns"` only when the objective and assumptions remain stable;
 - prefer `previous_response_id` when the server can carry state;
 - when replaying manually, preserve every prior user input and every relevant output item, not only assistant text;
-- with `store: false` or ZDR, request and replay `reasoning.encrypted_content`;
+- with `store: false` or ZDR, preserve and replay returned reasoning items, including `encrypted_content`;
 - use current-turn behavior when old reasoning may be stale or misleading.
 
 For manual replay, preserve item types, IDs, call IDs, caller metadata, and assistant phase values exactly. Incomplete replay can silently reduce quality or break tool continuation.

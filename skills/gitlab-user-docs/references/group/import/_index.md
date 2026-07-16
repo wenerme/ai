@@ -85,6 +85,11 @@ transfer, you must use the [API](../../../api/bulk_imports.md#start-a-group-or-p
   - Ban the users.
   - Remove the contributions.
   For more information, see [issue 508111](https://gitlab.com/gitlab-org/gitlab/-/work_items/508111).
+- During migration, URL references in notes, issue descriptions, and merge request descriptions are only
+  rewritten for links that belong to the group or project being migrated (the `source_full_path`).
+  URLs that point to other groups or projects on the source instance are not rewritten, even if those groups
+  or projects are also migrated.
+  After migration, you can manually update any external links that still point to the source instance.
 
 ## Estimating migration duration
 

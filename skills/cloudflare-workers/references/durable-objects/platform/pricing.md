@@ -18,8 +18,8 @@ Note
 
 Durable Objects are available both on Workers Free and Workers Paid plans.
 
-* **Workers Free plan**: Only Durable Objects with [SQLite storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#create-migration) are available.
-* **Workers Paid plan**: Durable Objects with the SQLite storage backend are available. The [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#create-durable-object-class-with-key-value-storage) is only available to accounts that already have a key-value backed namespace.
+* **Workers Free plan**: Only Durable Objects with [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) are available.
+* **Workers Paid plan**: Durable Objects with the SQLite storage backend are available. The [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#storage-backends) is only available to accounts that already have a key-value-backed namespace.
 
 If you wish to downgrade from a Workers Paid plan to a Workers Free plan, you must first ensure that you have deleted all Durable Object namespaces with the key-value storage backend.
 
@@ -65,7 +65,7 @@ await durableObjectStub.cat(); // billed as a request
 The [Durable Objects Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) is only accessible from within Durable Objects. Pricing depends on the storage backend of your Durable Objects.
 
 * **SQLite-backed Durable Objects (recommended)**: [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) is recommended for all new Durable Object classes. Workers Free plan can only create and access SQLite-backed Durable Objects.
-* **Key-value backed Durable Objects**: [Key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#create-durable-object-class-with-key-value-storage) is only available on the Workers Paid plan.
+* **Key-value backed Durable Objects**: [Key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/#create-durable-object-class-with-key-value-storage) is only available on the Workers Paid plan.
 
 ### SQLite storage backend
 

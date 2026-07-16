@@ -20,7 +20,7 @@ For the newer SQLite-backed Durable Object storage API, refer to [SQLite-backed 
 
 The Durable Object Storage API allows Durable Objects to access transactional and strongly consistent storage. A Durable Object's attached storage is private to its unique instance and cannot be accessed by other objects.
 
-The Durable Object Storage API comes with several methods, including SQL, point-in-time recovery (PITR), key-value (KV), and alarm APIs. Available API methods depend on the storage backend for a Durable Objects class, either [SQLite](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) or [KV](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#create-durable-object-class-with-key-value-storage).
+The Durable Object Storage API comes with several methods, including SQL, point-in-time recovery (PITR), key-value (KV), and alarm APIs. Available API methods depend on the storage backend for a Durable Objects class, either [SQLite](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) or [KV](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/#create-durable-object-class-with-key-value-storage).
 
 | Methods 1           | SQLite-backed Durable Object class | KV-backed Durable Object class |
 | ------------------- | ---------------------------------- | ------------------------------ |
@@ -44,7 +44,7 @@ Cloudflare recommends all new Durable Object namespaces use the [SQLite storage 
 
 Additionally, SQLite-backed Durable Objects allow you to store more types of data (such as tables), and offer Point In Time Recovery API which can restore a Durable Object's embedded SQLite database contents (both SQL data and key-value data) to any point in the past 30 days.
 
-Creating new namespaces with the [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#create-durable-object-class-with-key-value-storage) is no longer supported for accounts without an existing key-value backed namespace. The key-value storage backend remains available for existing namespaces, and a migration path from the key-value storage backend to the SQLite storage backend will be available in the future.
+Creating new namespaces with the [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#storage-backends) is no longer supported for accounts without an existing key-value-backed namespace. The key-value storage backend remains available for existing namespaces, and a migration path from the key-value storage backend to the SQLite storage backend will be available in the future.
 
 ## Access storage
 
@@ -52,9 +52,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-8748)
-* [  TypeScript ](#tab-panel-8749)
-* [  Python ](#tab-panel-8750)
+* [  JavaScript ](#tab-panel-8902)
+* [  TypeScript ](#tab-panel-8903)
+* [  Python ](#tab-panel-8904)
 
 **JavaScript**
 

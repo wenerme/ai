@@ -197,6 +197,7 @@ paths:
               - inflection
               - io-net
               - ionstream
+              - krea
               - liquid
               - mancer
               - mara
@@ -549,6 +550,7 @@ components:
         - inflection
         - io-net
         - ionstream
+        - krea
         - liquid
         - mancer
         - mara

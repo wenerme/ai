@@ -365,6 +365,8 @@ components:
               - $ref: '#/components/schemas/ParetoRouterPlugin'
               - $ref: '#/components/schemas/FusionPlugin'
           type: array
+        prediction:
+          $ref: '#/components/schemas/Prediction'
         presence_penalty:
           description: Presence penalty (-2.0 to 2.0)
           example: 0
@@ -1179,6 +1181,29 @@ components:
       required:
         - id
       type: object
+    Prediction:
+      description: >-
+        Static predicted output content. Supported models can use this to reduce
+        latency when much of the response is known in advance.
+      example:
+        content: Expected response
+        type: content
+      nullable: true
+      properties:
+        content:
+          anyOf:
+            - type: string
+            - items:
+                $ref: '#/components/schemas/PredictionContentText'
+              type: array
+        type:
+          enum:
+            - content
+          type: string
+      required:
+        - type
+        - content
+      type: object
     PromptCacheOptions:
       description: >-
         Request-level prompt-cache controls. `mode: "explicit"` disables
@@ -1957,6 +1982,22 @@ components:
             - approximate
           type: string
       type: object
+    PredictionContentText:
+      description: Text content part for a predicted output.
+      example:
+        text: Expected response
+        type: text
+      properties:
+        text:
+          type: string
+        type:
+          enum:
+            - text
+          type: string
+      required:
+        - type
+        - text
+      type: object
     ProviderName:
       enum:
         - Meta
@@ -2049,6 +2090,7 @@ components:
         - Wafer
         - WandB
         - Quiver
+        - Krea
         - Xiaomi
         - xAI
         - Z.AI
@@ -3864,6 +3906,7 @@ components:
         - openai-responses-v1
         - azure-openai-responses-v1
         - xai-responses-v1
+        - meta-responses-v1
         - anthropic-claude-v1
         - google-gemini-v1
         - null

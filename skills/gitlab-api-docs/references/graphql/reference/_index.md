@@ -2954,7 +2954,6 @@ Arguments:
 | <a id="mutation-adminsidekiqqueuesdeletejobs-mvccmanifest"></a>`mvccManifest` | [`String`](#string) | Delete jobs matching mvcc_manifest in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-organizationid"></a>`organizationId` | [`String`](#string) | Delete jobs matching organization_id in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-pipelineid"></a>`pipelineId` | [`String`](#string) | Delete jobs matching pipeline_id in the context metadata. |
-| <a id="mutation-adminsidekiqqueuesdeletejobs-policysyncconfigid"></a>`policySyncConfigId` | [`String`](#string) | Delete jobs matching policy_sync_config_id in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-project"></a>`project` | [`String`](#string) | Delete jobs matching project in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-queuename"></a>`queueName` | [`String!`](#string) | Name of the queue to delete jobs from. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-relatedclass"></a>`relatedClass` | [`String`](#string) | Delete jobs matching related_class in the context metadata. |
@@ -22859,6 +22858,43 @@ Fields:
 | <a id="dependencyproxymanifestregistryedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="dependencyproxymanifestregistryedge-node"></a>`node` | [`DependencyProxyManifestRegistry`](#dependencyproxymanifestregistry) | The item at the end of the edge. |
 
+#### `DependencyTrackedRefConnection`
+
+The connection type for [`DependencyTrackedRef`](#dependencytrackedref).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="dependencytrackedrefconnection-edges"></a>`edges` | [`[DependencyTrackedRefEdge]`](#dependencytrackedrefedge) | A list of edges. |
+| <a id="dependencytrackedrefconnection-nodes"></a>`nodes` | [`[DependencyTrackedRef]`](#dependencytrackedref) | A list of nodes. |
+| <a id="dependencytrackedrefconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+##### Fields with arguments
+
+###### `DependencyTrackedRefConnection.count`
+
+Total count of collection. Returns limit + 1 for counts greater than the limit.
+
+Returns [`Int!`](#int).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="dependencytrackedrefconnection-count-limit"></a>`limit` | [`Int`](#int) | Limit applied to the count query, returns limit + 1. When not provided, returns the exact count. |
+
+#### `DependencyTrackedRefEdge`
+
+The edge type for [`DependencyTrackedRef`](#dependencytrackedref).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="dependencytrackedrefedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="dependencytrackedrefedge-node"></a>`node` | [`DependencyTrackedRef`](#dependencytrackedref) | The item at the end of the edge. |
+
 #### `DeploymentConnection`
 
 The connection type for [`Deployment`](#deployment).
@@ -37747,6 +37783,19 @@ Fields:
 | <a id="dependencyproxysetting-enabled"></a>`enabled` | [`Boolean!`](#boolean) | Indicates whether the dependency proxy is enabled for the group. |
 | <a id="dependencyproxysetting-identity"></a>`identity` | [`String`](#string) | Identity credential used to authenticate with Docker Hub when pulling images. Can be a username (for password or personal access token (PAT)) or organization name (for organization access token (OAT)). |
 
+### `DependencyTrackedRef`
+
+Ref (branch or tag) where a software dependency appears.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="dependencytrackedref-id"></a>`id` | [`SecurityProjectTrackedContextID!`](#securityprojecttrackedcontextid) | Global ID of the tracked ref. |
+| <a id="dependencytrackedref-isdefault"></a>`isDefault` | [`Boolean!`](#boolean) | Indicates whether the ref is the default branch. |
+| <a id="dependencytrackedref-name"></a>`name` | [`String!`](#string) | Name of the ref (branch or tag name). |
+| <a id="dependencytrackedref-reftype"></a>`refType` | [`SecurityTrackedRefType!`](#securitytrackedreftype) | Type of the ref (branch or tag). |
+
 ### `Deployment`
 
 The deployment of an environment.
@@ -42829,7 +42878,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="group-securitymetrics-projectid"></a>`projectId` | [`[ID!]`](#id) | Filter by project IDs in a group. This argument is ignored when we are querying for a project. |
+| <a id="group-securitymetrics-projectid"></a>`projectId` | [`[ID!]`](#id) | Filter by project IDs in a group. This argument is ignored when we are querying for a project or an organization. |
 | <a id="group-securitymetrics-reporttype"></a>`reportType` | [`[VulnerabilityReportType!]`](#vulnerabilityreporttype) | Filter by report types. |
 | <a id="group-securitymetrics-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 18.8. Status: Experiment. Filter by security attributes. |
 | <a id="group-securitymetrics-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 18.11. Status: Experiment. Filter by tracked ref IDs. This argument is ignored when querying for a group. To use this argument, you must have advanced search configured, advanced vulnerability management set up and `vulnerabilities_across_contexts` feature flag enabled. |
@@ -49147,6 +49196,24 @@ Arguments:
 | <a id="organization-projects-withissuesenabled"></a>`withIssuesEnabled` | [`Boolean`](#boolean) | Return only projects with issues enabled. |
 | <a id="organization-projects-withmergerequestsenabled"></a>`withMergeRequestsEnabled` | [`Boolean`](#boolean) | Return only projects with merge requests enabled. |
 
+##### `Organization.securityMetrics`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Security metrics aggregated across the organization. Available only when the `organization_security_dashboard` feature flag is enabled. This feature is currently under development and not yet available for general use.
+
+Returns [`SecurityMetrics`](#securitymetrics).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="organization-securitymetrics-projectid"></a>`projectId` | [`[ID!]`](#id) | Filter by project IDs in a group. This argument is ignored when we are querying for a project or an organization. |
+| <a id="organization-securitymetrics-reporttype"></a>`reportType` | [`[VulnerabilityReportType!]`](#vulnerabilityreporttype) | Filter by report types. |
+| <a id="organization-securitymetrics-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 18.8. Status: Experiment. Filter by security attributes. |
+| <a id="organization-securitymetrics-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 18.11. Status: Experiment. Filter by tracked ref IDs. This argument is ignored when querying for a group. To use this argument, you must have advanced search configured, advanced vulnerability management set up and `vulnerabilities_across_contexts` feature flag enabled. |
+
 ##### `Organization.workItemTypes`
 
 - Introduced in GitLab 18.10.
@@ -51745,6 +51812,26 @@ Arguments:
 | <a id="project-dependencypaths-limit"></a>`limit` | [`Int`](#int) | Number of paths to fetch. |
 | <a id="project-dependencypaths-occurrence"></a>`occurrence` | [`SbomOccurrenceID!`](#sbomoccurrenceid) | Dependency path for occurrence. |
 
+##### `Project.dependencyTrackedRefs`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Refs (branches or tags) where a software dependency appears.
+
+Returns [`DependencyTrackedRefConnection`](#dependencytrackedrefconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="project-dependencytrackedrefs-componentversionid"></a>`componentVersionId` | [`SbomComponentVersionID!`](#sbomcomponentversionid) | Global ID of the component version to find refs for. |
+| <a id="project-dependencytrackedrefs-search"></a>`search` | [`String`](#string) | Filter refs by name. |
+
 ##### `Project.deployment`
 
 Details of the deployment of the project.
@@ -52989,7 +53076,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="project-securitymetrics-projectid"></a>`projectId` | [`[ID!]`](#id) | Filter by project IDs in a group. This argument is ignored when we are querying for a project. |
+| <a id="project-securitymetrics-projectid"></a>`projectId` | [`[ID!]`](#id) | Filter by project IDs in a group. This argument is ignored when we are querying for a project or an organization. |
 | <a id="project-securitymetrics-reporttype"></a>`reportType` | [`[VulnerabilityReportType!]`](#vulnerabilityreporttype) | Filter by report types. |
 | <a id="project-securitymetrics-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 18.8. Status: Experiment. Filter by security attributes. |
 | <a id="project-securitymetrics-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 18.11. Status: Experiment. Filter by tracked ref IDs. This argument is ignored when querying for a group. To use this argument, you must have advanced search configured, advanced vulnerability management set up and `vulnerabilities_across_contexts` feature flag enabled. |

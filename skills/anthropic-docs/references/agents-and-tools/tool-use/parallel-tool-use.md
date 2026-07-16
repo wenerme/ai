@@ -203,11 +203,11 @@ The following script sends a request that should trigger parallel tool calls, ve
 
     if (toolUses.length > 1) {
       console.log("✓ Parallel tool calls detected!");
-      toolUses.forEach((tool) => {
+      for (const tool of toolUses) {
         if (tool.type === "tool_use") {
           console.log(`  - ${tool.name}: ${JSON.stringify(tool.input)}`);
         }
-      });
+      }
     } else {
       console.log("✗ No parallel tool calls detected");
     }
@@ -1429,7 +1429,7 @@ See [Handle tool calls](/docs/en/agents-and-tools/tool-use/handle-tool-calls) fo
 
 **2. Weak prompting**
 
-Default prompting may not be sufficient. Use the stronger system prompt from [Maximizing parallel tool use](#maximizing-parallel-tool-use).
+Default prompting might not be sufficient. Use the stronger system prompt from [Maximizing parallel tool use](#maximizing-parallel-tool-use).
 
 **3. Measuring parallel tool usage**
 

@@ -79,7 +79,7 @@ Valid features are: `tools`, `json_mode`, `structured_outputs`, `logprobs`, `web
 
 #### Conditional Pricing with `pricing.overrides`
 
-For models whose pricing varies by condition — long-context pricing or time-based (peak/off-peak) pricing — add an `overrides` array to the `pricing` object. This is the same shape OpenRouter exposes publicly in [`/v1/models`](/docs/guides/overview/models#pricing-object).
+For models whose pricing varies by condition — long-context pricing or time-based (peak/off-peak) pricing — add an `overrides` array to the `pricing` object. This is the same shape OpenRouter exposes publicly in [`/v1/models`](/guides/overview/models#pricing-object).
 
 Each override entry carries condition fields plus the prices that apply when the condition matches. Price fields omitted from an override inherit from the base `pricing` values.
 

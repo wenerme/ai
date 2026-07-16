@@ -60,7 +60,7 @@ The [Durable Object Storage API](https://developers.cloudflare.com/durable-objec
 
 There are two flavors of the storage API, a [key-value (KV) API](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/) and an [SQL API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/).
 
-When using the [new SQLite in Durable Objects storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#create-migration), you have access to both the APIs. However, if you use the previous storage backend you only have access to the key-value API.
+When using the [new SQLite in Durable Objects storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class), you have access to both the APIs. However, if you use the previous storage backend you only have access to the key-value API.
 
 ### Alarms API
 
@@ -124,6 +124,6 @@ Get started now by following the ["Get started" guide](https://developers.cloudf
 1. Storage per Durable Object with SQLite is currently 1 GB. This will be raised to 10 GB for general availability. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/concepts/what-are-durable-objects/#page","headline":"What are Durable Objects? · Cloudflare Durable Objects docs","description":"Durable Objects provide globally unique, single-threaded compute instances with persistent storage on Cloudflare.","url":"https://developers.cloudflare.com/durable-objects/concepts/what-are-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/concepts/what-are-durable-objects/#page","headline":"What are Durable Objects? · Cloudflare Durable Objects docs","description":"Durable Objects provide globally unique, single-threaded compute instances with persistent storage on Cloudflare.","url":"https://developers.cloudflare.com/durable-objects/concepts/what-are-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/concepts/what-are-durable-objects/","name":"What are Durable Objects?"}}]}
 ```

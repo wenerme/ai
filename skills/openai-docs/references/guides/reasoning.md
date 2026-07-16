@@ -324,7 +324,9 @@ Use `current_turn` when replaying older response items that the model no longer 
 
 ### Preserve reasoning without stored responses
 
-When using the Responses API in a stateless mode, either with `store` set to `false` or for an organization enrolled in zero data retention, request `reasoning.encrypted_content` in the `include` parameter on every call:
+When you create a response in stateless mode, reasoning items in the response's `output` array include an `encrypted_content` property by default. Stateless mode applies when `store` is `false` or when your organization uses Zero Data Retention (ZDR). The API still accepts the legacy `reasoning.encrypted_content` value in `include` for compatibility, but doesn't require it.
+
+The following request returns encrypted reasoning content without specifying `include`:
 
 ```bash
 curl https://api.openai.com/v1/responses \
@@ -332,17 +334,17 @@ curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
     "model": "gpt-5.6",
+    "store": false,
     "reasoning": {"effort": "medium"},
     "input": "What is the weather like today?",
-    "tools": [ ... function config here ... ],
-    "include": [ "reasoning.encrypted_content" ]
+    "tools": [ ... function config here ... ]
   }'
 ```
 
 
 Reasoning items in the `output` array will include an `encrypted_content` property containing encrypted reasoning tokens that you can pass to future calls.
 
-To use `all_turns` with `store: false`, request encrypted reasoning content on every call, preserve every output item, append the next user message, and replay the complete history:
+To use `all_turns` with `store: false`, preserve every output item, append the next user message, and replay the complete history:
 
 Preserve reasoning without storing responses
 
@@ -362,7 +364,6 @@ const first = await client.responses.create({
   model: "YOUR_MODEL_ID",
   store: false,
   input: history,
-  include: ["reasoning.encrypted_content"],
   reasoning: { context: "current_turn" },
 });
 
@@ -377,7 +378,6 @@ const second = await client.responses.create({
   model: "YOUR_MODEL_ID",
   store: false,
   input: history,
-  include: ["reasoning.encrypted_content"],
   reasoning: { context: "all_turns" },
 });
 
@@ -400,7 +400,6 @@ first = client.responses.create(
     model="YOUR_MODEL_ID",
     store=False,
     input=history,
-    include=["reasoning.encrypted_content"],
     reasoning={"context": "current_turn"},
 )
 
@@ -417,7 +416,6 @@ second = client.responses.create(
     model="YOUR_MODEL_ID",
     store=False,
     input=history,
-    include=["reasoning.encrypted_content"],
     reasoning={"context": "all_turns"},
 )
 

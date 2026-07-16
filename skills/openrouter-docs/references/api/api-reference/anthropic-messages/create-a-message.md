@@ -2275,6 +2275,7 @@ components:
         - Wafer
         - WandB
         - Quiver
+        - Krea
         - Xiaomi
         - xAI
         - Z.AI
@@ -3835,6 +3836,7 @@ components:
                 - Wafer
                 - WandB
                 - Quiver
+                - Krea
                 - Xiaomi
                 - xAI
                 - Z.AI

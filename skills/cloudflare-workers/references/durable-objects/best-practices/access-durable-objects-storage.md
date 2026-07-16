@@ -24,7 +24,7 @@ Cloudflare recommends all new Durable Object namespaces use the [SQLite storage 
 
 Additionally, SQLite-backed Durable Objects allow you to store more types of data (such as tables), and offer Point In Time Recovery API which can restore a Durable Object's embedded SQLite database contents (both SQL data and key-value data) to any point in the past 30 days.
 
-Creating new namespaces with the [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#create-durable-object-class-with-key-value-storage) is no longer supported for accounts without an existing key-value backed namespace. The key-value storage backend remains available for existing namespaces, and a migration path from the key-value storage backend to the SQLite storage backend will be available in the future.
+Creating new namespaces with the [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#storage-backends) is no longer supported for accounts without an existing key-value-backed namespace. The key-value storage backend remains available for existing namespaces, and a migration path from the key-value storage backend to the SQLite storage backend will be available in the future.
 
 Storage billing on SQLite-backed Durable Objects
 
@@ -38,8 +38,8 @@ Only Durable Object classes with a SQLite storage backend can access SQL API.
 
 Use `new_sqlite_classes` on the migration in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8778)
-* [  wrangler.toml ](#tab-panel-8779)
+* [  wrangler.jsonc ](#tab-panel-8932)
+* [  wrangler.toml ](#tab-panel-8933)
 
 **JSONC**
 

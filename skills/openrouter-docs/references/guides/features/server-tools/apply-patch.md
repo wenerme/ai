@@ -57,7 +57,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 <Warning>
   **Responses API only**
 
-  The apply patch server tool is only available through the [Responses API](/api/reference/responses). It is not supported via the Chat Completions API.
+  The apply patch server tool is only available through the [Responses API](/api_reference/responses/overview). It is not supported via the Chat Completions API.
 </Warning>
 
 <Note>

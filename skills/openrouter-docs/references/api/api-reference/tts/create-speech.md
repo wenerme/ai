@@ -726,6 +726,10 @@ components:
           additionalProperties:
             nullable: true
           type: object
+        krea:
+          additionalProperties:
+            nullable: true
+          type: object
         lambda:
           additionalProperties:
             nullable: true

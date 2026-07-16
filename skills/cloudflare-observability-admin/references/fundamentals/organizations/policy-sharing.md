@@ -20,6 +20,8 @@ Organizations allows you to create security policies in one account and share th
 
 Policy sharing works the same way for both [Enterprise](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/) and [MSSP/Distributor](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/) Organizations.
 
+In addition to WAF and Gateway policies, Organizations supports [IdP federation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/), which lets you configure a single identity provider (such as Okta or Entra ID) in one account and share it across all accounts in your Organization. Shared IdP connections are read-only in recipient accounts and are automatically provisioned or removed as accounts join or leave the Organization.
+
 ## Prerequisites
 
 Policy sharing requires the appropriate product entitlements on the accounts involved. Organizations does not grant access to WAF or Gateway features — your accounts must already have the required SKUs.
@@ -102,6 +104,6 @@ The policy is immediately removed from the destination account.
 * **Monitor shared policy coverage**: Regularly review which accounts have shared policies applied to ensure no accounts are missing critical security rules.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/#page","headline":"Policy sharing · Cloudflare Fundamentals docs","description":"Share WAF and Gateway policies across accounts in your Cloudflare Organization.","url":"https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/#page","headline":"Policy sharing · Cloudflare Fundamentals docs","description":"Share WAF and Gateway policies across accounts in your Cloudflare Organization.","url":"https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/organizations/","name":"Organizations"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/organizations/policy-sharing/","name":"Policy sharing"}}]}
 ```

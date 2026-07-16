@@ -128,8 +128,20 @@ The Models API returns a standardized JSON response format that provides compreh
 {
   "data": [
     /* Array of Model objects */
-  ]
+  ],
+  "total_count": 150,        // Total number of models matching the query
+  "links": {
+    "next": "/api/v1/models?offset=500&limit=500" // Next page URL, or null on the last page
+  }
 }
+```
+
+##### Pagination
+
+The list endpoint supports optional `offset` and `limit` query parameters. Pagination is opt-in: when both are omitted, the full list is returned and `links.next` is `null`. When you paginate, `limit` defaults to 500 (max 1000), and `links.next` contains the ready-to-use URL for the next page (or `null` on the last page):
+
+```bash lines theme={null}
+curl "https://openrouter.ai/api/v1/models?offset=0&limit=500"
 ```
 
 #### Model Object Schema
@@ -145,7 +157,7 @@ Each model in the `data` array contains the following standardized fields:
 | `description`          | `string`                                      | Detailed description of the model's capabilities and characteristics                   |
 | `context_length`       | `number`                                      | Maximum context window size in tokens                                                  |
 | `architecture`         | `Architecture`                                | Object describing the model's technical capabilities                                   |
-| `pricing`              | `Pricing`                                     | Lowest price structure for using this model                                            |
+| `pricing`              | `Pricing`                                     | Pricing from the top provider for this model                                           |
 | `top_provider`         | `TopProvider`                                 | Configuration details for the primary provider                                         |
 | `per_request_limits`   | Rate limiting information (null if no limits) |                                                                                        |
 | `supported_parameters` | `string[]`                                    | Array of supported API parameters for this model                                       |
@@ -186,20 +198,20 @@ All pricing values are in USD per token/request/unit. A value of `"0"` indicates
 
 Some endpoints charge different rates under certain conditions — for example, long-context pricing where requests above a token threshold cost more, or time-based pricing where peak hours have higher rates. These appear in the optional `pricing.overrides` array:
 
-```typescript lines theme={null}
+```json lines theme={null}
 {
   // Condition: applies when total prompt tokens are strictly greater than this threshold
-  "min_prompt_tokens": number,
+  "min_prompt_tokens": 200000,
 
   // Condition: applies when current UTC time is within this daily window
-  "utc_start": number,  // Inclusive start as HHMM clock (e.g. 100 = 01:00, 1030 = 10:30)
-  "utc_end": number,    // Exclusive end as HHMM clock (e.g. 400 = 04:00)
+  "utc_start": 1630,  // Inclusive start as HHMM clock (16:30 UTC)
+  "utc_end": 30,      // Exclusive end as HHMM clock (00:30 UTC — the window may wrap past midnight)
 
   // Overridden prices — same keys and units as the base pricing object
-  "prompt": string,
-  "completion": string,
-  "input_cache_read": string,
-  "input_cache_write": string
+  "prompt": "0.000005",
+  "completion": "0.00002",
+  "input_cache_read": "0.0000005",
+  "input_cache_write": "0.00000625"
 }
 ```
 
@@ -212,7 +224,36 @@ For example, a model that charges \$2.50/M input tokens normally and \$5/M beyon
   "prompt": "0.0000025",
   "completion": "0.00001",
   "overrides": [
-    { "min_prompt_tokens": 200000, "prompt": "0.000005", "completion": "0.00002" }
+    {
+      "min_prompt_tokens": 200000,
+      "prompt": "0.000005",
+      "completion": "0.00002"
+    }
+  ]
+}
+```
+
+Time-window conditions express peak/off-peak pricing. The `overrides` array always lists every window — peak and off-peak — tiling the full 24-hour day, so the complete schedule is recoverable regardless of when the response was generated. For example, a model that charges half price between 16:30 and 00:30 UTC:
+
+```json lines theme={null}
+"pricing": {
+  // Top-level prices always reflect the window that applies right now
+  // (here: the current UTC time is between 00:30 and 16:30)
+  "prompt": "0.00000028",
+  "completion": "0.00000042",
+  "overrides": [
+    {
+      "utc_start": 30,
+      "utc_end": 1630,
+      "prompt": "0.00000028",
+      "completion": "0.00000042"
+    },
+    {
+      "utc_start": 1630,
+      "utc_end": 30,
+      "prompt": "0.00000014",
+      "completion": "0.00000021"
+    }
   ]
 }
 ```

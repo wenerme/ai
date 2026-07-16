@@ -35,25 +35,29 @@ MSSP/Distributor Organizations use a **multi-tier structure**:
 ```plaintext
 Distributor Organization
 ├── MSSP Organization A
-│   ├── Customer Account 1
-│   │   ├── Zone A
-│   │   └── Zone B
-│   └── Customer Account 2
-│       └── Zone C
+│   ├── Sub-Organization A1
+│   │   ├── Customer Account 1
+│   │   │   ├── Zone A
+│   │   │   └── Zone B
+│   │   └── Customer Account 2
+│   │       └── Zone C
+│   └── Customer Account 3
+│       └── Zone D
 ├── MSSP Organization B
-│   ├── Customer Account 3
-│   │   └── Zone D
-│   └── Customer Account 4
-│       ├── Zone E
+│   ├── Customer Account 4
+│   │   └── Zone E
+│   └── Customer Account 5
 │       └── Zone F
 └── MSSP Organization C
-    └── Customer Account 5
-        └── Zone G
+    └── Sub-Organization C1
+        └── Customer Account 6
+            └── Zone G
 ```
 
 **Key characteristics:**
 
 * Distributors create and manage child MSSP Organizations
+* MSSP Organizations can create up to 5 levels of nested sub-organizations
 * Each MSSP Organization manages its own customer accounts
 * MSSP Organization members have [implicit access](#implicit-access) to their customer accounts
 * Accounts can be moved between MSSP Organizations
@@ -173,6 +177,8 @@ Organizations allows you to share WAF custom rulesets and Zero Trust Gateway pol
 
 For Distributor Organizations, policies can be shared across MSSP Organization boundaries within the same Distributor Organization.
 
+Organizations also supports [IdP federation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/), which lets you configure a single identity provider (such as Okta or Entra ID) in one account and share it across all accounts in your Organization. Shared IdP connections are read-only in recipient accounts and are automatically provisioned or removed as accounts join or leave the Organization.
+
 For detailed instructions, refer to [Policy sharing](https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/).
 
 Note
@@ -244,11 +250,7 @@ If you encounter errors during setup or management, refer to [Troubleshooting](h
 
 MSSP/Distributor Organizations cannot assign existing accounts. Use account creation to add new accounts to your Organization.
 
-### Create nested sub-organizations
-
-MSSP Organizations cannot create their own child Organizations. The hierarchy is limited to two tiers: Distributor → MSSP Organizations.
-
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/#page","headline":"Organizations for MSSP and Distributors · Cloudflare Fundamentals docs","description":"Set up and manage an MSSP or Distributor Organization to manage customer accounts and partner sub-organizations.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/#page","headline":"Organizations for MSSP and Distributors · Cloudflare Fundamentals docs","description":"Set up and manage an MSSP or Distributor Organization to manage customer accounts and partner sub-organizations.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/organizations/","name":"Organizations"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/organizations/for-mssp-distributors/","name":"Organizations for MSSP and Distributors"}}]}
 ```

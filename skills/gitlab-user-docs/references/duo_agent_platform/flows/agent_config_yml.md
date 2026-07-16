@@ -1,4 +1,4 @@
-# Agent configuration file reference
+# Agent configuration file syntax
 
 The `agent-config.yml` file configures how flows execute in CI/CD for your project.
 Place the file at `.gitlab/duo/agent-config.yml` in your project repository.

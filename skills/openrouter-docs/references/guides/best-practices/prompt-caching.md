@@ -62,6 +62,8 @@ You can provide `session_id` in two ways:
 
 The `session_id` must be at most 256 characters.
 
+If neither is set, OpenRouter falls back to the OpenAI-style `prompt_cache_key` request field as the sticky routing key. Clients that already send `prompt_cache_key` get session-pinned routing without any changes.
+
 ```json lines theme={null}
 {
   "model": "anthropic/claude-sonnet-4",

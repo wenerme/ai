@@ -16,7 +16,7 @@ Search finds sources; code execution analyzes and synthesizes. Claude searches f
 {
   "tools": [
     { "type": "web_search_20260209", "name": "web_search" },
-    { "type": "code_execution_20250825", "name": "code_execution" }
+    { "type": "code_execution_20260521", "name": "code_execution" }
   ]
 }
 ```
@@ -84,7 +84,7 @@ The computer use tool subsumes most others by operating a full desktop. Claude s
 }
 ```
 
-Computer use is the most general option and also the slowest, since every action requires a screenshot roundtrip. Prefer narrower tools when they cover your use case, and reach for computer use when nothing else fits. See [Computer use tool](/docs/en/agents-and-tools/tool-use/computer-use-tool) for the sandbox setup.
+Computer use is the most general option and also the slowest, because every action requires a screenshot roundtrip. Prefer narrower tools when they cover your use case, and reach for computer use when nothing else fits. See [Computer use tool](/docs/en/agents-and-tools/tool-use/computer-use-tool) for the sandbox setup.
 
 ## Next steps
 

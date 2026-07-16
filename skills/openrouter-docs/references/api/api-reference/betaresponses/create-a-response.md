@@ -5444,6 +5444,7 @@ components:
         - Wafer
         - WandB
         - Quiver
+        - Krea
         - Xiaomi
         - xAI
         - Z.AI
@@ -7941,6 +7942,7 @@ components:
         - openai-responses-v1
         - azure-openai-responses-v1
         - xai-responses-v1
+        - meta-responses-v1
         - anthropic-claude-v1
         - google-gemini-v1
         - null

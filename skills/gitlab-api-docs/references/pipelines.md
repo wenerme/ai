@@ -37,7 +37,7 @@ control the pagination of results.
 | `sha`            | string            | No       | Return pipelines for the specified commit SHA. |
 | `sort`           | string            | No       | The sort order: `asc` or `desc` (default: `desc`). |
 | `source`         | string            | No       | Return pipelines with the specified [source](../ci/jobs/job_rules.md#ci_pipeline_source-predefined-variable). |
-| `status`         | string            | No       | Return pipelines with the specified status: `created`, `waiting_for_resource`, `preparing`, `pending`, `running`, `success`, `failed`, `canceled`, `skipped`, `manual`, or `scheduled`. |
+| `status`         | string            | No       | Return pipelines with the specified status: `created`, `waiting_for_resource`, `preparing`, `waiting_for_callback`, `pending`, `running`, `success`, `failed`, `canceling`, `canceled`, `skipped`, `manual`, or `scheduled`. |
 | `updated_after`  | datetime          | No       | Return pipelines updated after the specified date. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `updated_before` | datetime          | No       | Return pipelines updated before the specified date. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `created_after`  | datetime          | No       | Return pipelines created after the specified date. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |

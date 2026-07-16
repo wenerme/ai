@@ -818,6 +818,7 @@ components:
         - Wafer
         - WandB
         - Quiver
+        - Krea
         - Xiaomi
         - xAI
         - Z.AI

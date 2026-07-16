@@ -39,8 +39,8 @@ If the answer to a majority of these questions is no and your organization relie
 
 To turn on TLS inspection for your Zero Trust organization:
 
-* [ Dashboard ](#tab-panel-9647)
-* [ Terraform (v5) ](#tab-panel-9648)
+* [ Dashboard ](#tab-panel-10025)
+* [ Terraform (v5) ](#tab-panel-10026)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -95,8 +95,8 @@ You can build pass-through rules to accommodate any type of device or user group
 
 For example, if users are issued a corporate-managed iPhone with limited permissions, set an additional Do Not Inspect policy for all traffic matching the device posture value. That could include the OS type, OS version, or a list of serial numbers (updated via the API with hooks from your MDM tool) for those iPhones:
 
-* [ Dashboard ](#tab-panel-9651)
-* [ API ](#tab-panel-9652)
+* [ Dashboard ](#tab-panel-10029)
+* [ API ](#tab-panel-10030)
 
 | Selector              | Operator | Value                                   | Logic | Action         |
 | --------------------- | -------- | --------------------------------------- | ----- | -------------- |
@@ -145,8 +145,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 If you filter your network-connected devices with IPsec/GRE tunnels, Cloudflare Mesh, or other devices that do not have a Cloudflare certificate installed, you will need to accommodate by creating pass-through policies. For these devices, you should explicitly exempt TLS inspection for the source network IP range from which that traffic will be originating. For example:
 
-* [ Dashboard ](#tab-panel-9649)
-* [ API ](#tab-panel-9650)
+* [ Dashboard ](#tab-panel-10027)
+* [ API ](#tab-panel-10028)
 
 | Selector           | Operator | Value          | Action         |
 | ------------------ | -------- | -------------- | -------------- |

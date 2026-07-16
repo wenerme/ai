@@ -14,6 +14,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/durable-objects/release-notes/index.xml)
 
+## 2026-06-30
+
+**Declarative class lifecycle with \`exports\`**
+
+A new declarative [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field in your Wrangler configuration file replaces the imperative `migrations` array for creating, deleting, renaming, and transferring Durable Object classes. Each `wrangler deploy` now prints a structured reconciliation report. Existing Workers on `migrations` continue to work unchanged.
+
 ## 2026-01-07
 
 **Billing for SQLite Storage**

@@ -292,7 +292,6 @@ while (true) {
     store: false,
     input,
     tools,
-    include: ["reasoning.encrypted_content"],
   });
 
   if (response.status !== "completed") {
@@ -415,7 +414,6 @@ while True:
         store=False,
         input=input_items,
         tools=tools,
-        include=["reasoning.encrypted_content"],
     )
 
     if response.status != "completed":
@@ -458,7 +456,7 @@ while True:
 
 When you store responses, you can continue from `previous_response_id` instead of resending all earlier response items. Send the new `function_call_output` items as the next input. With `store: false`, replay the complete sequence in order, including every `program`, reasoning, function-call, function-call-output, and `program_output` item.
 
-For stateless reasoning-model requests, include `reasoning.encrypted_content` and replay the returned reasoning items. See [conversation state](https://developers.openai.com/api/docs/guides/conversation-state#manually-manage-conversation-state) for the general stateless pattern.
+For stateless reasoning-model requests, replay every returned reasoning item. Each item includes `encrypted_content` by default. See [conversation state](https://developers.openai.com/api/docs/guides/conversation-state#manually-manage-conversation-state) for the general stateless pattern.
 
 ## Design tools for programs
 

@@ -22,8 +22,8 @@ If you are using Wrangler environments, you must specify any [Durable Object bin
 
 Durable Object bindings are not inherited. For example, you can define an environment named `staging` as below:
 
-* [  wrangler.jsonc ](#tab-panel-8772)
-* [  wrangler.toml ](#tab-panel-8773)
+* [  wrangler.jsonc ](#tab-panel-9140)
+* [  wrangler.toml ](#tab-panel-9141)
 
 **JSONC**
 
@@ -54,8 +54,8 @@ class_name = "DurableObjectExample"
 
 Because Wrangler appends the [environment name](https://developers.cloudflare.com/workers/wrangler/environments/) to the top-level name when publishing, for a Worker named `worker-name` the above example is equivalent to:
 
-* [  wrangler.jsonc ](#tab-panel-8774)
-* [  wrangler.toml ](#tab-panel-8775)
+* [  wrangler.jsonc ](#tab-panel-9142)
+* [  wrangler.toml ](#tab-panel-9143)
 
 **JSONC**
 
@@ -90,8 +90,8 @@ script_name = "worker-name-staging"
 
 If you want an environment-specific binding that accesses the same Objects as the top-level binding, specify the top-level Worker code name explicitly using `script_name`:
 
-* [  wrangler.jsonc ](#tab-panel-8776)
-* [  wrangler.toml ](#tab-panel-8777)
+* [  wrangler.jsonc ](#tab-panel-9144)
+* [  wrangler.toml ](#tab-panel-9145)
 
 **JSONC**
 
@@ -124,9 +124,9 @@ script_name = "worker-name"
 
 ### Migration environments
 
-You can define a Durable Object migration for each environment, as well as at the top level. Migrations at at the environment-level override migrations at the top level.
+You can define a Durable Object migration for each environment, as well as at the top level. Migrations at the environment-level override migrations at the top level.
 
-For more information, refer to [Migration Wrangler Configuration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#migration-wrangler-configuration).
+For more information, refer to [Migration Wrangler Configuration](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/#migration-wrangler-configuration).
 
 ## Local development
 
@@ -152,6 +152,6 @@ Warning
 Remote development is only available for KV-backed Durable Objects. SQLite-backed Durable Objects do not support remote development.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/environments/#page","headline":"Environments · Cloudflare Durable Objects docs","description":"Configure Durable Object bindings across Wrangler environments for staging, production, and custom deployments.","url":"https://developers.cloudflare.com/durable-objects/reference/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/environments/#page","headline":"Environments · Cloudflare Durable Objects docs","description":"Configure Durable Object bindings across Wrangler environments for staging, production, and custom deployments.","url":"https://developers.cloudflare.com/durable-objects/reference/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/reference/environments/","name":"Environments"}}]}
 ```

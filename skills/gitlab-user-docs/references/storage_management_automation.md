@@ -768,7 +768,7 @@ The following process describes how the script searches for the artifact expiry 
             project_name = project_obj.name
             project_web_url = project_obj.web_url
             try:
-                lint_result = project.ci_lint.get()
+                lint_result = project_obj.ci_lint.get()
                 if lint_result.merged_yaml is None:
                     continue
 

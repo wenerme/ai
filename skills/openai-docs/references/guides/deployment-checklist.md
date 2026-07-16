@@ -638,13 +638,14 @@ relevant and might anchor the model to an outdated approach. If you omit
 works only when earlier reasoning items are available. Use `previous_response_id`
 for stored responses. If your [Zero Data Retention
 (ZDR)](https://developers.openai.com/api/docs/guides/your-data#zero-data-retention) requirements do not allow
-storing response data, use `reasoning.encrypted_content` for a stateless handoff.
+storing response data, encrypted reasoning content enables a stateless
+handoff.
 
-Add `reasoning.encrypted_content` to `include`, and reasoning items in the
-response output will include encrypted reasoning content that can be passed back
-into the next request. Your app does not need to understand that value. It just
-keeps the reasoning item exactly as returned and sends it back during the next
-turn, so the model can use it to continue the workflow.
+Reasoning items in the response output include encrypted reasoning content by
+default. You can access the encrypted reasoning content from each reasoning
+item's `encrypted_content` property. Your app does not need to understand that
+value. It just keeps each reasoning item exactly as returned and sends it back
+during the next turn, so the model can use it to continue the workflow.
 
 Pass encrypted reasoning between stateless turns
 
@@ -664,7 +665,6 @@ const first = await openai.responses.create({
   model: "gpt-5.6",
   store: false,
   reasoning: { effort: "medium", context: "current_turn" },
-  include: ["reasoning.encrypted_content"],
   input: history,
 });
 
@@ -678,7 +678,6 @@ const second = await openai.responses.create({
   model: "gpt-5.6",
   store: false,
   reasoning: { effort: "medium", context: "all_turns" },
-  include: ["reasoning.encrypted_content"],
   input: history,
 });
 
@@ -701,7 +700,6 @@ first = client.responses.create(
     model="gpt-5.6",
     store=False,
     reasoning={"effort": "medium", "context": "current_turn"},
-    include=["reasoning.encrypted_content"],
     input=history,
 )
 
@@ -717,7 +715,6 @@ second = client.responses.create(
     model="gpt-5.6",
     store=False,
     reasoning={"effort": "medium", "context": "all_turns"},
-    include=["reasoning.encrypted_content"],
     input=history,
 )
 

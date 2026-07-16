@@ -588,6 +588,7 @@ components:
         - Wafer
         - WandB
         - Quiver
+        - Krea
         - Xiaomi
         - xAI
         - Z.AI
@@ -632,6 +633,7 @@ components:
         - logit_bias
         - logprobs
         - top_logprobs
+        - prediction
         - seed
         - response_format
         - structured_outputs

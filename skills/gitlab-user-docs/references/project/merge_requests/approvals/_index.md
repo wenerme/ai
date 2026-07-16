@@ -128,7 +128,7 @@ Each reviewer's status is shown next to their name.
 -  Reviewer commented
 -  Reviewer requested changes
 
-   [The warning status indicating a reviewer has requested changes.]
+  [The warning status indicating a reviewer has requested changes.]
 
 To [re-request a review](../reviews/_index.md#re-request-a-review), select the **Re-request a review** icon () next to the user.
 

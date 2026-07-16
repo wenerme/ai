@@ -61,6 +61,6 @@ To select a model for a feature:
 
    > [!note]
    > To restrict Agentic Chat to specific models, you must select a GitLab-managed
-     model as the default model.
+   > model as the default model.
    > If you do not restrict Agentic Chat to specific models, users can choose from
    > all GitLab-managed models.

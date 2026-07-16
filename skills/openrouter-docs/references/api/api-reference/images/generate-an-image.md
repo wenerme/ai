@@ -1311,6 +1311,7 @@ components:
         - Wafer
         - WandB
         - Quiver
+        - Krea
         - Xiaomi
         - xAI
         - Z.AI
@@ -1563,6 +1564,10 @@ components:
             nullable: true
           type: object
         klusterai:
+          additionalProperties:
+            nullable: true
+          type: object
+        krea:
           additionalProperties:
             nullable: true
           type: object
