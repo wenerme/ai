@@ -1,97 +1,47 @@
 # Llama (Meta)
 
+> Last verified: 2026-07-16. This is a manual snapshot of Meta's official Llama model cards. Verify the exact checkpoint license and acceptable-use terms before deployment.
+
 - Creator: Meta
-- GitHub: [meta-llama](https://github.com/meta-llama)
-- HuggingFace: [meta-llama](https://huggingface.co/meta-llama)
-- License: Llama Community License (free for <700M MAU)
+- Official repositories: <https://github.com/meta-llama>
+- Official Hugging Face organization: <https://huggingface.co/meta-llama>
 
-## Model Timeline
+## Current Llama 4 Weights
 
-| Version  | Date    | Sizes                           | Context | Notes                              |
-| -------- | ------- | ------------------------------- | ------- | ---------------------------------- |
-| Llama 4  | 2025-04 | Scout 109B-A17B, Maverick 400B-A17B | 1M, 10M | MoE, Vision, multilingual         |
-| Llama 3.3 | 2024-12 | 70B                            | 128K    | Dense, improved from 3.1          |
-| Llama 3.2 | 2024-09 | 1B, 3B, 11B, 90B              | 128K    | Added vision (11B, 90B)           |
-| Llama 3.1 | 2024-07 | 8B, 70.6B, 405B               | 128K    |                                    |
-| Llama 3  | 2024-04 | 8B, 70.6B                      | 8K-128K |                                    |
-| Llama 2  | 2023-07 | 6.7B, 13B, 69B                 | 4K      |                                    |
-| LLaMA    | 2023-02 | 6.7B, 13B, 32.5B, 65.2B        | 2K      | Original release                   |
+| Lifecycle | Official weight ID | Total / active params | Experts | Context | Modality | License |
+| --- | --- | ---: | ---: | ---: | --- | --- |
+| Weights-only; current generation | `meta-llama/Llama-4-Scout-17B-16E`, `...-Instruct` | 109B / 17B | 16 total / 1 active | 256K pretrained; up to 10M on Instruct | Text + image input, text output | Llama 4 Community License Agreement |
+| Weights-only; current generation | `meta-llama/Llama-4-Maverick-17B-128E`, `...-Instruct` | 400B / 17B | 128 total / 1 active | 256K pretrained; up to 1M on Instruct | Text + image input, text output | Llama 4 Community License Agreement |
 
-## Recommended Sampling Parameters
+The frequently repeated context ordering matters: **Scout is the 10M Instruct model; Maverick is the 1M Instruct model.**
 
-| Mode        | Temperature | TopP | Notes                     |
-| ----------- | ----------- | ---- | ------------------------- |
-| General     | 0.6         | 0.9  |                           |
-| Creative    | 0.8-1.0     | 0.95 |                           |
-| Code        | 0.2         | 0.9  |                           |
-| Factual     | 0.0-0.1     | 0.9  |                           |
+Llama 4 Behemoth was announced as a training/preview model but no generally released official weight ID was confirmed in this audit, so it is not listed as downloadable.
 
-- Llama 4: Supports tool calling natively
-- Repetition penalty: 1.0-1.1 recommended
+## Previous Generations
 
-## Architecture
+| Family | Important official variants | Context / role |
+| --- | --- | --- |
+| Llama 3.3 | 70B Instruct | 128K dense text model |
+| Llama 3.2 | 1B/3B text; 11B/90B vision | 128K on supported checkpoints |
+| Llama 3.1 | 8B/70B/405B | 128K text models |
+| Llama 3 | 8B/70B | Historical 3.x foundation |
 
-### Llama 4 (MoE)
+Use older generations for compatibility or evaluated deployment constraints, not because they are current mainline.
 
-| Spec          | Scout 109B-A17B | Maverick 400B-A17B |
-| ------------- | --------------- | ------------------|
-| Total Params  | 109B            | 400B              |
-| Active Params | 17B             | 17B               |
-| Context       | 1M              | 10M               |
-| Architecture  | MoE             | MoE               |
-| Vision        | Yes             | Yes               |
-| Experts       | 16 total / 1 active | 128 total / 1 active |
-| Training Data | 40T+ tokens     | 40T+ tokens       |
+## Deployment Notes
 
-### Llama 3 Architecture
+- Llama 4 MoE weight storage/residency follows total parameters, not 17B active parameters, unless expert offload is explicitly configured.
+- The Llama Community License is a custom license with attribution, acceptable-use, and large-service conditions. Do not summarize it as Apache/MIT or as simply “free below a user count.”
+- Multimodal support, tool calling, chat template, and context extension belong to exact Instruct checkpoints; do not transfer them to base checkpoints without confirmation.
+- Generation settings are model-card/checkpoint specific. The previous generic temperature presets were unsourced and have been removed.
 
-- GQA (Grouped Query Attention)
-- RoPE (Rotary Position Embeddings)
-- SwiGLU activation
-- 128K vocabulary size
-- BPE tokenizer (tiktoken-based)
+## Benchmark Policy
 
-## Memory Requirements
+Llama model cards include Meta-reported evaluations. Treat them as vendor-reported and compare only within the documented release/setup. Do not mix Scout/Maverick scores with Llama 3 scores or third-party serving quantizations as a universal ranking.
 
-| Model     | FP16   | INT8  | INT4  |
-| --------- | ------ | ----- | ----- |
-| 405B      | ~810GB | ~405GB | ~200GB |
-| 70B       | ~140GB | ~70GB | ~35GB |
-| 8B        | ~16GB  | ~8GB  | ~4GB  |
+## Official Sources
 
-## Benchmarks
-
-### Llama 4 Instruct
-
-| Benchmark         | Scout  | Maverick |
-| ----------------- | ------ | -------- |
-| MMLU-Pro          | 74.3   | 80.5     |
-| GPQA Diamond      | 57.2   | 69.8     |
-| LiveCodeBench     | 32.8   | 43.4     |
-| MMMU              | 69.4   | 73.4     |
-| DocVQA            | 94.4   | 94.4     |
-| MGSM              | 90.6   | 92.3     |
-
-### Llama 3.3 70B Instruct
-
-| Benchmark    | 3.3 70B | 3.1 70B |
-| ------------ | ------- | ------- |
-| MMLU         | 86.0    | 86.0    |
-| MMLU-Pro     | 68.9    | 66.4    |
-| GPQA Diamond | 50.5    | 48.0    |
-| HumanEval    | 88.4    | 80.5    |
-| MATH         | 77.0    | 68.0    |
-| IFEval       | 92.1    | 87.5    |
-
-## Ecosystem
-
-- Extended context: [llama3-gradient](https://ollama.com/library/llama3-gradient) 8K→1M
-  - 256K requires ~64GB RAM
-  - 1M+ requires 100GB+ RAM
-- Llama Guard: Safety classifier
-- Code Llama: Code-specialized
-
-## References
-
-- https://llama.meta.com/
-- Llama 3 paper: https://arxiv.org/abs/2407.21783
+- Llama 4 model card: <https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md>
+- Llama 4 release: <https://ai.meta.com/blog/llama-4-multimodal-intelligence/>
+- Official model repositories: <https://github.com/meta-llama/llama-models>
+- Official weight organization: <https://huggingface.co/meta-llama>
