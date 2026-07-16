@@ -29,8 +29,8 @@ In this example, you will create a boolean flag called `new-checkout` that contr
 
 Add the Flagship binding in your Wrangler configuration file so your Worker can evaluate flags through a binding.
 
-* [  wrangler.jsonc ](#tab-panel-8910)
-* [  wrangler.toml ](#tab-panel-8911)
+* [  wrangler.jsonc ](#tab-panel-9282)
+* [  wrangler.toml ](#tab-panel-9283)
 
 **JSONC**
 
@@ -61,8 +61,8 @@ After updating the Wrangler configuration, run `npx wrangler types` to generate 
 
 Use the `env.FLAGS` binding to evaluate the flag. The binding provides type-safe methods that return the flag value and fall back to the default you provide if evaluation fails.
 
-* [  JavaScript ](#tab-panel-8912)
-* [  TypeScript ](#tab-panel-8913)
+* [  JavaScript ](#tab-panel-9284)
+* [  TypeScript ](#tab-panel-9285)
 
 **JavaScript**
 
@@ -160,13 +160,13 @@ bun add @cloudflare/flagship @openfeature/server-sdk
 
 Evaluate flags using the OpenFeature client:
 
-* [ With binding ](#tab-panel-8918)
-* [ With app ID ](#tab-panel-8919)
+* [ With binding ](#tab-panel-9290)
+* [ With app ID ](#tab-panel-9291)
 
 Pass the Flagship binding directly to the provider. This avoids additional HTTP overhead and is the recommended approach inside a Worker. The binding handles authentication automatically.
 
-* [  JavaScript ](#tab-panel-8916)
-* [  TypeScript ](#tab-panel-8917)
+* [  JavaScript ](#tab-panel-9288)
+* [  TypeScript ](#tab-panel-9289)
 
 **JavaScript**
 
@@ -232,8 +232,8 @@ export default {
 
 Use an app ID, account ID, and an API token when running outside of a Worker (for example, in Node.js). Generate an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) from your Cloudflare account with Flagship Evaluate permission.
 
-* [  JavaScript ](#tab-panel-8914)
-* [  TypeScript ](#tab-panel-8915)
+* [  JavaScript ](#tab-panel-9286)
+* [  TypeScript ](#tab-panel-9287)
 
 **JavaScript**
 
@@ -287,12 +287,13 @@ Refer to the [SDK documentation](https://developers.cloudflare.com/flagship/sdk/
 
 ## Next steps
 
+* Manage flags from the command line with the [wrangler flagship commands](https://developers.cloudflare.com/flagship/reference/wrangler-commands/).
 * Learn about [targeting rules](https://developers.cloudflare.com/flagship/targeting/) to serve different values based on user attributes.
 * Explore the full [binding API reference](https://developers.cloudflare.com/flagship/binding/) for all evaluation methods.
 * Read about [percentage rollouts](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/) for gradual feature releases.
 * Refer to the [Flagship API reference](https://developers.cloudflare.com/flagship/reference/api-reference/) to manage Flagship programmatically.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/get-started/#page","headline":"Get started · Cloudflare Flagship docs","description":"Create your first Flagship feature flag and evaluate it inside a Cloudflare Worker using the binding API.","url":"https://developers.cloudflare.com/flagship/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/get-started/#page","headline":"Get started · Cloudflare Flagship docs","description":"Create your first Flagship feature flag and evaluate it inside a Cloudflare Worker using the binding API.","url":"https://developers.cloudflare.com/flagship/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/get-started/","name":"Get started"}}]}
 ```

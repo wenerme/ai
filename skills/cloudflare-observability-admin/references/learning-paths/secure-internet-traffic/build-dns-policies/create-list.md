@@ -18,9 +18,9 @@ Gateway supports creating [lists](https://developers.cloudflare.com/cloudflare-o
 
 ## Example list policy
 
-* [ Dashboard ](#tab-panel-9567)
-* [ API ](#tab-panel-9568)
-* [ Terraform ](#tab-panel-9569)
+* [ Dashboard ](#tab-panel-10010)
+* [ API ](#tab-panel-10011)
+* [ Terraform ](#tab-panel-10012)
 
 The following DNS policy will allow access to all approved corporate domains included in a list called **Corporate Domains**.
 

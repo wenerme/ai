@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Protect your users from Internet risks
 
-* [ Watch this episode ](#tab-panel-9270)
-* [ Series overview ](#tab-panel-9271)
+* [ Watch this episode ](#tab-panel-10004)
+* [ Series overview ](#tab-panel-10005)
 
 The Internet has become part of your corporate network, however browsing the web comes with hidden risks including malware, phishing attacks, and malicious websites. In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users safe by filtering and inspecting Internet traffic in real time. Whether you are protecting a remote workforce or securing an entire organization, Cloudflare ensures that users can access the web securely — without sacrificing speed or productivity.
 

@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ## Cloudflare platform access

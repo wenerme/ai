@@ -1272,7 +1272,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 114 skills, 31478 files, 373 MiB total
+> 114 skills, 31485 files, 374 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1303,13 +1303,13 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1528 | 12 MiB |
 | [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 395 | 3.1 MiB |
 | [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 31 KiB |
-| [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 829 | 5.0 MiB |
-| [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1234 | 8.2 MiB |
+| [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 830 | 5.0 MiB |
+| [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1235 | 8.3 MiB |
 | [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1007 | 5.6 MiB |
-| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 782 | 7.3 MiB |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 783 | 7.4 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 929 | 9.7 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
-| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4776 | 15 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4780 | 15 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1588 | 9.5 MiB |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
@@ -1379,7 +1379,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [transformers-docs](./skills/transformers-docs/SKILL.md) | 168 | 1.3 MiB |
 | [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 43 | 1.7 MiB |
 | [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 493 | 4.3 MiB |
-| [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 539 KiB |
+| [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 541 KiB |
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 220 | 1.3 MiB |
 | [vllm-docs](./skills/vllm-docs/SKILL.md) | 172 | 1.4 MiB |
 | [wails-docs](./skills/wails-docs/SKILL.md) | 56 | 314 KiB |

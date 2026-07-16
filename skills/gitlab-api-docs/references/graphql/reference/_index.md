@@ -725,6 +725,7 @@ Arguments:
 | <a id="query-blobsearch-excludeforks"></a>`excludeForks`  | [`Boolean`](#boolean) | Introduced in GitLab 17.11. Status: Experiment. Excludes forked projects in the search. Always false for project search. Default is true. |
 | <a id="query-blobsearch-groupid"></a>`groupId`  | [`GroupID`](#groupid) | Introduced in GitLab 17.2. Status: Experiment. Group to search in. |
 | <a id="query-blobsearch-includearchived"></a>`includeArchived`  | [`Boolean`](#boolean) | Introduced in GitLab 17.7. Status: Experiment. Includes archived projects in the search. Always true for project search. Default is false. |
+| <a id="query-blobsearch-language"></a>`language`  | [`[String!]`](#string) | Introduced in GitLab 19.3. Status: Experiment. Filter results to the given detected languages (for example, `["Ruby", "Go"]`). Requires the `zoekt_language_aggregations` feature flag. |
 | <a id="query-blobsearch-page"></a>`page`  | [`Int`](#int) | Introduced in GitLab 17.2. Status: Experiment. Page number to fetch the results. |
 | <a id="query-blobsearch-perpage"></a>`perPage`  | [`Int`](#int) | Introduced in GitLab 17.2. Status: Experiment. Number of results per page. |
 | <a id="query-blobsearch-projectid"></a>`projectId`  | [`ProjectID`](#projectid) | Introduced in GitLab 17.2. Status: Experiment. Project to search in. |
@@ -12924,7 +12925,7 @@ Arguments:
 | <a id="mutation-projectcicdsettingsupdate-keeplatestartifact"></a>`keepLatestArtifact` | [`Boolean`](#boolean) | Indicates whether the latest artifact should be kept for the project. |
 | <a id="mutation-projectcicdsettingsupdate-maxpipelinespermergetrain"></a>`maxPipelinesPerMergeTrain` | [`Int`](#int) | Maximum number of parallel pipelines per merge train. |
 | <a id="mutation-projectcicdsettingsupdate-mergepipelinesenabled"></a>`mergePipelinesEnabled` | [`Boolean`](#boolean) | Indicates if merged results pipelines are enabled for the project. |
-| <a id="mutation-projectcicdsettingsupdate-mergetrainenforcement"></a>`mergeTrainEnforcement` | [`MergeTrainEnforcement`](#mergetrainenforcement) | Merge train enforcement level for the project. Ignored unless the `merge_train_enforcement` feature flag is also enabled. |
+| <a id="mutation-projectcicdsettingsupdate-mergetrainenforcement"></a>`mergeTrainEnforcement` | [`MergeTrainEnforcement`](#mergetrainenforcement) | Merge train enforcement level for the project. |
 | <a id="mutation-projectcicdsettingsupdate-mergetrainsenabled"></a>`mergeTrainsEnabled` | [`Boolean`](#boolean) | Indicates if merge trains are enabled for the project. |
 | <a id="mutation-projectcicdsettingsupdate-mergetrainsskiptrainallowed"></a>`mergeTrainsSkipTrainAllowed` | [`Boolean`](#boolean) | Indicates whether an option is allowed to merge without refreshing the merge train. Ignored unless the `merge_trains_skip_train` feature flag is also enabled. |
 | <a id="mutation-projectcicdsettingsupdate-pipelinevariablesminimumoverriderole"></a>`pipelineVariablesMinimumOverrideRole` | [`String`](#string) | Minimum role required to set variables when creating a pipeline or running a job. |
@@ -33691,6 +33692,7 @@ Fields:
 | <a id="cdversion-artifactsource"></a>`artifactSource` | [`CdArtifactSource`](#cdartifactsource) | Artifact source the version belongs to. |
 | <a id="cdversion-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the version was created. |
 | <a id="cdversion-digest"></a>`digest` | [`String`](#string) | Digest of the version. |
+| <a id="cdversion-environments"></a>`environments`  | [`CdEnvironmentConnection`](#cdenvironmentconnection) | Introduced in GitLab 19.2. Status: Experiment. Distinct environments the version has been deployed to. |
 | <a id="cdversion-id"></a>`id` | [`CdVersionID!`](#cdversionid) | Global ID of the version. |
 | <a id="cdversion-name"></a>`name` | [`String!`](#string) | Name of the version. |
 | <a id="cdversion-reference"></a>`reference` | [`String`](#string) | Reference of the version. |
@@ -42880,7 +42882,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="group-securitymetrics-projectid"></a>`projectId` | [`[ID!]`](#id) | Filter by project IDs in a group. This argument is ignored when we are querying for a project or an organization. |
 | <a id="group-securitymetrics-reporttype"></a>`reportType` | [`[VulnerabilityReportType!]`](#vulnerabilityreporttype) | Filter by report types. |
-| <a id="group-securitymetrics-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 18.8. Status: Experiment. Filter by security attributes. |
+| <a id="group-securitymetrics-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 18.8. Status: Experiment. Filter by security attributes. Up to 20 filters. |
 | <a id="group-securitymetrics-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 18.11. Status: Experiment. Filter by tracked ref IDs. This argument is ignored when querying for a group. To use this argument, you must have advanced search configured, advanced vulnerability management set up and `vulnerabilities_across_contexts` feature flag enabled. |
 
 ##### `Group.securityPolicies`
@@ -49211,7 +49213,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="organization-securitymetrics-projectid"></a>`projectId` | [`[ID!]`](#id) | Filter by project IDs in a group. This argument is ignored when we are querying for a project or an organization. |
 | <a id="organization-securitymetrics-reporttype"></a>`reportType` | [`[VulnerabilityReportType!]`](#vulnerabilityreporttype) | Filter by report types. |
-| <a id="organization-securitymetrics-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 18.8. Status: Experiment. Filter by security attributes. |
+| <a id="organization-securitymetrics-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 18.8. Status: Experiment. Filter by security attributes. Up to 20 filters. |
 | <a id="organization-securitymetrics-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 18.11. Status: Experiment. Filter by tracked ref IDs. This argument is ignored when querying for a group. To use this argument, you must have advanced search configured, advanced vulnerability management set up and `vulnerabilities_across_contexts` feature flag enabled. |
 
 ##### `Organization.workItemTypes`
@@ -53078,7 +53080,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="project-securitymetrics-projectid"></a>`projectId` | [`[ID!]`](#id) | Filter by project IDs in a group. This argument is ignored when we are querying for a project or an organization. |
 | <a id="project-securitymetrics-reporttype"></a>`reportType` | [`[VulnerabilityReportType!]`](#vulnerabilityreporttype) | Filter by report types. |
-| <a id="project-securitymetrics-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 18.8. Status: Experiment. Filter by security attributes. |
+| <a id="project-securitymetrics-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 18.8. Status: Experiment. Filter by security attributes. Up to 20 filters. |
 | <a id="project-securitymetrics-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 18.11. Status: Experiment. Filter by tracked ref IDs. This argument is ignored when querying for a group. To use this argument, you must have advanced search configured, advanced vulnerability management set up and `vulnerabilities_across_contexts` feature flag enabled. |
 
 ##### `Project.securityPolicies`
@@ -53634,7 +53636,7 @@ Fields:
 | <a id="projectcicdsetting-keeplatestartifact"></a>`keepLatestArtifact` | [`Boolean`](#boolean) | Indicates whether the latest artifact should be kept for the project. |
 | <a id="projectcicdsetting-maxpipelinespermergetrain"></a>`maxPipelinesPerMergeTrain` | [`Int`](#int) | Maximum number of parallel pipelines per merge train. When null, the plan limit applies. |
 | <a id="projectcicdsetting-mergepipelinesenabled"></a>`mergePipelinesEnabled` | [`Boolean`](#boolean) | Indicates whether merged results pipelines are enabled. |
-| <a id="projectcicdsetting-mergetrainenforcement"></a>`mergeTrainEnforcement` | [`MergeTrainEnforcement!`](#mergetrainenforcement) | Merge train enforcement level for the project. Ignored unless the `merge_train_enforcement` feature flag is enabled. |
+| <a id="projectcicdsetting-mergetrainenforcement"></a>`mergeTrainEnforcement` | [`MergeTrainEnforcement!`](#mergetrainenforcement) | Merge train enforcement level for the project. |
 | <a id="projectcicdsetting-mergetrainsenabled"></a>`mergeTrainsEnabled` | [`Boolean`](#boolean) | Whether merge trains are enabled. |
 | <a id="projectcicdsetting-mergetrainsskiptrainallowed"></a>`mergeTrainsSkipTrainAllowed` | [`Boolean!`](#boolean) | Whether merge immediately is allowed for merge trains. |
 | <a id="projectcicdsetting-pipelinevariablesminimumoverriderole"></a>`pipelineVariablesMinimumOverrideRole` | [`String!`](#string) | Minimum role required to set variables when creating a pipeline or running a job. |
