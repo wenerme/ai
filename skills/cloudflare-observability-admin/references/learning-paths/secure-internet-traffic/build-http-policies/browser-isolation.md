@@ -28,8 +28,8 @@ As you have begun deploying Cloudflare Zero Trust, you may have started to visua
 
 You can control potential risk and shape user behavior without applying heavy-handed block policies by applying policies to isolate user traffic to applications that match your defined categories. You can then set additional parameters in the policy, such as the ability to restrict copy/paste and upload/download. Users can still access information in the tools -- if not use the tools to a lesser extent -- while you minimize the risk of data loss.
 
-* [ Dashboard ](#tab-panel-9607)
-* [ API ](#tab-panel-9608)
+* [ Dashboard ](#tab-panel-10050)
+* [ API ](#tab-panel-10051)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
@@ -92,8 +92,8 @@ You can accomplish this by creating the following policies:
 
 In this context, if some traffic is unknown to your organization, Cloudflare will isolate it by default. Cloudflare will also prevent any malicious code from being executed client side, with additional controls available.
 
-* [ Dashboard ](#tab-panel-9605)
-* [ API ](#tab-panel-9606)
+* [ Dashboard ](#tab-panel-10048)
+* [ API ](#tab-panel-10049)
 
 * Allow known applications and websites:
 

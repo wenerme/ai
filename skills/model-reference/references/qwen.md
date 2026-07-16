@@ -1,114 +1,53 @@
 # Qwen (通义千问)
 
-- Creator: Alibaba / [QwenLM](https://github.com/QwenLM)
-- HuggingFace: [Qwen](https://huggingface.co/Qwen)
-- License: Apache-2.0 (most models)
+> Last verified: 2026-07-16. This is a manual snapshot of official Qwen repositories and model cards. Verify the exact checkpoint's chat template and generation config before deployment.
 
-## Model Timeline
+- Creator: Alibaba / Qwen Team
+- GitHub: <https://github.com/QwenLM>
+- Hugging Face: <https://huggingface.co/Qwen>
 
-| Version          | Date    | Sizes                                                  | Context | Notes                                   |
-| ---------------- | ------- | ------------------------------------------------------ | ------- | --------------------------------------- |
-| Qwen3.5          | 2026-02 | 397B-A17B, 122B-A10B, 35B-A3B, 27B                    | 262K    | MoE, Early Fusion multimodal, 201 lang |
-| Qwen3 2507       | 2025-07 | Coder 480B-A35B, Coder-Flash 30B-A3B, 235B-A22B       | 256K    | Yarn 1M                                |
-| Qwen3-VL         | 2025-10 | 2B-32B Instruct/Thinking, 235B-A22B                   |         | Vision, absolute coords                |
-| Qwen3-Embedding  | 2025-06 | 0.6B, 4B, 8B                                          | 32K     | MRL(1024,2560,4096), 100+ lang         |
-| Qwen3             | 2025-04 | 0.6B,1.7B,4B,8B,14B,30B,32B,235B, 30B-A3B,235B-A22B  | 40K     | Dense+MoE, Reasoning, 100+ lang        |
-| Qwen2.5-Omni     | 2025-03 | 3B, 7B                                                | 32K     | text,audio,image,video,speech           |
-| Qwen2.5-VL       | 2025-01 | 3B, 7B, 32B, 72B                                      | 125K    | Vision, 2D-RoPE                         |
-| Qwen2.5          | 2025-01 | 0.5B-72B                                              | 32K-1M  |                                         |
-| Qwen2            | 2024-06 | 0.5B-72B, 57B-A14B MoE                                | 32-128K | 7T tokens training                     |
-| Qwen1.5          | 2024    |                                                        |         |                                         |
-| Qwen             | 2023-08 | 7B                                                     |         | First release                           |
+## Current Open-Weight Families
 
-## Recommended Sampling Parameters
+| Lifecycle | Family / official weight IDs | Size | Context / modality | License |
+| --- | --- | ---: | --- | --- |
+| Weights-only; current mainline | `Qwen/Qwen3.6-35B-A3B`, `Qwen/Qwen3.6-27B` | 35B-A3B MoE; 27B dense | Official deployment examples use 262,144; text + vision | Apache-2.0 |
+| Weights-only; available predecessor | `Qwen/Qwen3.5-397B-A17B`, `122B-A10B`, `35B-A3B`, `27B`, `9B`, `4B`, `2B`, `0.8B` | Dense and MoE | Early-fusion text + vision; 201 languages/dialects reported | Apache-2.0 |
+| Weights-only; Qwen3 branch | `Qwen/Qwen3-Next-80B-A3B-Instruct`, `Qwen/Qwen3-Next-80B-A3B-Thinking` | 80B-A3B | Hybrid attention, ultra-sparse MoE | Apache-2.0 |
 
-### Qwen3.5
+Qwen3.6 is the official latest mainline in the Qwen3.6 repository. Qwen3.5 remains useful for sizes not yet represented in the Qwen3.6 release set, but should not be labeled latest.
 
-| Mode                  | Temperature | TopP | TopK | MinP | Presence Penalty | Repetition Penalty |
-| --------------------- | ----------- | ---- | ---- | ---- | ---------------- | ------------------ |
-| Thinking mode general | 1.0         | 0.95 | 20   | 0.0  | 1.5              | 1.0                |
-| Thinking mode coding  | 0.6         | 0.95 | 20   | 0.0  | 0.0              | 1.0                |
-| Instruct general      | 0.7         | 0.8  | 20   | 0.0  | 1.5              | 1.0                |
-| Instruct reasoning    | 1.0         | 0.95 | 20   | 0.0  | 1.5              | 1.0                |
+## Other Active Qwen Lines
 
-### Qwen3
+| Family | Official identity / purpose |
+| --- | --- |
+| Qwen3 | Dense and MoE general/reasoning checkpoints such as `Qwen3-30B-A3B` and `Qwen3-235B-A22B` |
+| Qwen3-Coder | Code-focused checkpoints; verify the current collection for exact IDs and context extensions |
+| Qwen3-VL | Vision-language Instruct/Thinking checkpoints |
+| Qwen3-Embedding / Reranker | 0.6B, 4B, and 8B retrieval models with model-specific embedding dimensions |
+| Qwen2.5-Omni | Text/image/audio/video input with speech output on selected checkpoints |
+| Qwen-Image | Image generation/editing; see `image-models.md` |
 
-| Mode     | Temperature | TopP | TopK | MinP |
-| -------- | ----------- | ---- | ---- | ---- |
-| Thinking | 0.6         | 0.95 | 20   | 0.0  |
-| Instruct | 0.7         | 0.8  | 20   | 0.0  |
+## Generation Settings
 
-### Qwen2.5-VL
+Generation settings are checkpoint- and mode-specific. Do not apply one Qwen3/Qwen3.5 “Thinking” temperature table to Qwen3.6, VL, Coder, or embedding models.
 
-| Mode    | Temperature | TopP | TopK |
-| ------- | ----------- | ---- | ---- |
-| General | 0.6         | 1.0  | 50   |
-| OCR     | 0.0-0.001   | 0.9-1.0 | 0-5 |
+Use the selected model card's `generation_config.json`, chat template, and deployment example. In particular:
 
-## Architecture Details
+- preserve the model's required thinking/non-thinking template;
+- do not mix Instruct and Thinking defaults;
+- verify native versus provider-extended context;
+- verify multimodal token budgeting separately from text context.
 
-### Qwen3.5
+## Deployment Notes
 
-- MoE + Gated Delta Networks (gated linear attention)
-- 60 layers, 512 experts (route ~10 active)
-- Self-Speculative Decoding
-- Native 262K context (commercial: 1M+)
-- Early Fusion multimodal (text+image+video from scratch)
-- 201 languages and dialects
+- `35B-A3B` means total and routed active parameters; weight residency is based on total weights unless expert offload is used.
+- Qwen3.6 and Qwen3.5 model cards list supported Transformers/vLLM/SGLang versions. Older runtimes can fail on new architecture/config fields.
+- Commercial hosted Qwen APIs can expose different IDs, context extensions, pricing, and content policies from the open weights. Do not treat a Hugging Face ID as an Alibaba Cloud API model ID.
 
-### Qwen3 30B-A3B (Popular Edge Model)
+## Official Sources
 
-| Spec             | Value               |
-| ---------------- | ------------------- |
-| Total Parameters | 30.5B (3.3B active) |
-| Hidden Size      | 4096                |
-| Attention        | GQA (32Q/4KV)       |
-| Activation       | SwiGLU              |
-| Head Size        | 128                 |
-| Layers           | 48                  |
-| Experts          | 128 total / 8 active |
-| Vocab Size       | 151,669             |
-| Data Type        | bf16                |
-
-### Qwen2.5-VL Architecture
-
-| Config                 | 3B   | 7B   | 72B  |
-| ---------------------- | ---- | ---- | ---- |
-| **ViT** Hidden Size    | 1280 | 1280 | 1280 |
-| ViT Layers             | 32   | 32   | 32   |
-| ViT Heads              | 16   | 16   | 16   |
-| Patch Size             | 14   | 14   | 14   |
-| Window Size            | 112  | 112  | 112  |
-| **LLM** Hidden Size    | 2048 | 3584 | 8192 |
-| LLM Layers             | 36   | 28   | 80   |
-| KV Heads               | 2    | 4    | 8    |
-| Vocab Size             | 151646 | 151646 | 151646 |
-
-Vision token calculation:
-- 28x28 pixels = 1 token
-- Min: 4 tokens (56x56 px)
-- Max: 16384 tokens (3584x3584 px)
-- MAX_RATIO: 200 (width/height ratio limit)
-
-## Sub-Projects
-
-| Project          | Description                           |
-| ---------------- | ------------------------------------- |
-| QwQ              | Question answering / reasoning        |
-| QvQ              | Visual reasoning                      |
-| QwenLong-L1      | Long context reasoning, DocQA         |
-| Qwen-Image       | 20B, T2I, Editing, Apache-2.0        |
-| Qwen-Image-Edit  | Image editing                         |
-
-## Known Issues
-
-- Qwen2.5-VL: Output repetition at high DPI (300DPI). Use 72DPI for better results.
-  - Workaround: `convert a.jpg -resize 25% -resize 'x28<' a.output.jpg`
-- Qwen3-VL: Switched back to absolute coordinates (from relative in Qwen2.5-VL)
-
-## References
-
-- [QwenLM/Qwen3](https://github.com/QwenLM/Qwen3) — Qwen3 Technical Report: https://arxiv.org/abs/2505.09388
-- [QwenLM/Qwen2.5-VL](https://github.com/QwenLM/Qwen2.5-VL) — https://arxiv.org/abs/2502.13923
-- [QwenLM/Qwen2.5](https://github.com/QwenLM/Qwen2.5) — https://arxiv.org/abs/2412.15115
-- HF Collections: [Qwen3.5](https://huggingface.co/collections/Qwen/qwen35), [Qwen3](https://huggingface.co/collections/Qwen/qwen3), [Qwen2.5-VL](https://huggingface.co/collections/Qwen/qwen25-vl-6795ffac22b334a837c0f9a5)
+- Qwen3.6 repository: <https://github.com/QwenLM/Qwen3.6>
+- Qwen3.6 collection: <https://huggingface.co/collections/Qwen/qwen36>
+- Qwen3.5 collection: <https://huggingface.co/collections/Qwen/qwen35>
+- Qwen3 repository: <https://github.com/QwenLM/Qwen3>
+- Qwen organization and collections: <https://huggingface.co/Qwen>

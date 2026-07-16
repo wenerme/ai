@@ -1,105 +1,65 @@
 # GPT / OpenAI
 
-- Creator: OpenAI
-- Docs: https://platform.openai.com/docs
-- HuggingFace (OSS): [openai](https://huggingface.co/openai)
+> Last verified: 2026-07-16. This is a manual snapshot of OpenAI's public API and official open-weight releases. Recheck aliases, snapshots, pricing, and deprecations before production use.
 
-## Proprietary Models
+- Creator/API provider: OpenAI
+- API model catalog: <https://developers.openai.com/api/docs/models>
+- Official open weights: <https://github.com/openai/gpt-oss>
 
-### GPT-5 Family
+## GPT-5.6 API Family
 
-| Version          | Date    | Context | Output | Notes                                     |
-| ---------------- | ------- | ------- | ------ | ----------------------------------------- |
-| GPT-5.4          | 2026-03 | 1.05M   | 128K   | Flagship, Computer Use, Tool Search       |
-| GPT-5.3 Codex    | 2026-02 | -       | -      | Coding specialized                        |
-| GPT-5.3 Instant  | 2026-03 | -       | -      | Fast variant                              |
-| GPT-5.2          | 2025-12 | 400K    | -      | Thinking tiers (Instant/Thinking/Pro)     |
-| GPT-5.0          | 2025-08 | -       | -      | First unified o-series + GPT architecture |
+| Lifecycle | API ID / alias | Positioning | Context | Max output | <=272K input: input / cached input / output per MTok | Knowledge cutoff |
+| --- | --- | --- | ---: | ---: | ---: | --- |
+| Production | `gpt-5.6-sol`; alias `gpt-5.6` routes to Sol | Flagship capability | 1,050,000 | 128,000 | $5 / $0.50 / $30 | 2026-02-16 |
+| Production | `gpt-5.6-terra` | Balanced quality and cost | 1,050,000 | 128,000 | $2.50 / $0.25 / $15 | 2026-02-16 |
+| Production | `gpt-5.6-luna` | Economical, high-volume workloads | 1,050,000 | 128,000 | $1 / $0.10 / $6 | 2026-02-16 |
 
-#### GPT-5.4 Specs
+GPT-5.6 supports reasoning effort `none`, `low`, `medium`, `high`, `xhigh`, and `max`. Pro mode is selected with `reasoning.mode: "pro"`; it is not a separate model slug.
 
-- **Context**: 1,050,000 tokens
-- **Max output**: 128,000 tokens
-- **Reasoning tiers**: none, low, medium, high, xhigh
-- **Native capabilities**: Computer Use, Tool Search, original-resolution images
-- **Token efficiency**: 18-47% more efficient than GPT-5.2
-- **Pricing**: $2.50/M input, $15.00/M output
+Key GPT-5.6 capabilities include image input, original image detail, function/tool calling, computer use, tool search, persisted reasoning, explicit prompt caching, programmatic tool calling, and Responses API multi-agent beta. Use the Responses API for new reasoning/tool workflows unless a compatibility requirement dictates Chat Completions.
 
-#### GPT-5.4 Benchmarks
+Reasoning tokens are billed as output tokens. Cache writes are 1.25x uncached input; cache reads use the cached-input price. Batch is generally about 50% of standard token pricing and Priority is generally higher-priced; verify the current pricing table.
 
-| Benchmark            | Score  | Notes                          |
-| -------------------- | ------ | ------------------------------ |
-| AIME 2025            | 100%   | First perfect score            |
-| GPQA Diamond         | 89.4%  | PhD-level science              |
-| SWE-bench Verified   | 74.9%  |                                |
-| OSWorld-Verified     | 75.0%  | Exceeds human baseline (72.4%) |
-| ARC-AGI-2            | 52.9%  | 3.1x over GPT-4 era           |
-| HealthBench          | 96.6%  | Medical accuracy               |
+For prompts with more than 272K input tokens, OpenAI prices the **full request** at 2x input and 1.5x output. Apply that tier before comparing long-context costs across Sol, Terra, and Luna.
 
-### Earlier Models
+## Previous GPT-5 Generations
 
-| Version          | Date    | Context | Notes                         |
-| ---------------- | ------- | ------- | ----------------------------- |
-| Horizon Alpha    | 2025-07 | 256K    | Frontier reasoning            |
-| o3, o3-mini      | 2025-01 | 200K    | Reasoning                     |
-| GPT-4.1          | 2025-04 | 1M      | Also mini, nano variants      |
-| ChatGPT 4.5      | 2025-02 | 128K    |                               |
-| o1               | 2024-12 | 200K    | Reasoning                     |
-| GPT-4o           | 2024-05 | 128K    | Text, audio, image            |
-| GPT-4o mini      | 2024-07 | 128K    | Cost-efficient                |
-| GPT-4 Turbo      | 2023-11 | 128K    | Vision support                |
-| GPT-4            | 2023-03 | 8K/32K  | Image input                   |
-| GPT-3.5 Turbo    | 2023-03 | 4K/16K  |                               |
+| Model | Official identity | Lifecycle note |
+| --- | --- | --- |
+| GPT-5.5 | `gpt-5.5`; snapshot `gpt-5.5-2026-04-23` | Released 2026-04-23; superseded as default recommendation by GPT-5.6 |
+| GPT-5.5 Pro | `gpt-5.5-pro` | Responses-only high-compute model; superseded for new selection by GPT-5.6 pro mode |
+| GPT-5.4 | See current model catalog for snapshots | Older production generation; do not label current flagship |
+| GPT-5.3 Codex | `gpt-5.3-codex` | Specialized coding model still listed; Codex defaults are moving to GPT-5.6 |
 
-## Open Source Models (GPT OSS)
+ChatGPT product labels such as “Instant” are not automatically public API model IDs. Only use IDs listed in the API catalog.
 
-| Model        | Date    | Params              | Context | Notes                    |
-| ------------ | ------- | ------------------- | ------- | ------------------------ |
-| gpt-oss-120b | 2025-08 | 117B (5.1B active)  | 128K    | MoE, Reasoning, Tools   |
-| gpt-oss-20b  | 2025-08 | 21B (3.6B active)   | 128K    | MoE, Reasoning, Tools   |
+## Reasoning And Legacy Lifecycle
 
-### GPT OSS Architecture
+- `o3` and `o3-pro` can remain available but GPT-5.x is the starting point for new reasoning applications.
+- `o4-mini`, `o3-mini`, and `o1-2024-12-17` are deprecated and scheduled to shut down on 2026-10-23.
+- Legacy deep-research and search-preview model IDs have separate 2026 lifecycle dates; check the deprecations page before use.
+- `gpt-5-codex` and `codex-mini-latest` are deprecated.
+- `Horizon Alpha` is not a current official production API model and is intentionally excluded.
 
-| Spec             | gpt-oss-120b      | gpt-oss-20b        |
-| ---------------- | ------------------ | ------------------- |
-| Hidden Size      | 2880               | 2880                |
-| Attention        | GQA + Sparse       | GQA + Sparse        |
-| Heads (Q/Group)  | 64 / 8             | 64 / 8              |
-| Activation       | SwiGLU             | SwiGLU              |
-| Head Size        | 64                 | 64                  |
-| Layers           | 36                 | 24                  |
-| Experts          | 128 / 4 active     | 32 / 4 active       |
-| Vocab Size       | 201,088            | 201,088             |
-| Data Type        | MXFP4 / bf16       | MXFP4 / bf16        |
-| Tokenizer        | o200k_harmony (BPE) | o200k_harmony (BPE) |
+## Open-Weight GPT-OSS
 
-## Pricing
+GPT-OSS model names are weight repository IDs, not OpenAI hosted API IDs.
 
-| Model        | Input $/1M | Output $/1M | Notes            |
-| ------------ | ---------- | ----------- | ---------------- |
-| GPT-5.4      | $2.50      | $15.00      | Current flagship |
-| GPT-4.1      | $2.00      | $8.00       |                  |
-| GPT-4.1 mini | $0.40      | $1.60       |                  |
-| GPT-4.1 nano | $0.10      | $0.40       |                  |
-| GPT-4o       | $2.50      | $10.00      |                  |
-| GPT-4o mini  | $0.15      | $0.60       |                  |
-| o3           | $2.00      | $8.00       | Reasoning tokens |
-| o3-mini      | $1.10      | $4.40       |                  |
+| Official weight ID | Total / active params | Context | License | Notes |
+| --- | ---: | ---: | --- | --- |
+| `openai/gpt-oss-120b` | 117B / 5.1B active | 128K | Apache-2.0 | MoE reasoning/tool-use model; Harmony format |
+| `openai/gpt-oss-20b` | 21B / 3.6B active | 128K | Apache-2.0 | Smaller MoE reasoning/tool-use model; Harmony format |
 
-## Key Features
+OpenAI does not assign hosted token API pricing to these weights. Runtime cost depends on the selected inference provider or self-hosted deployment.
 
-- **Responses API**: Newer stateful API (replaces Chat Completions for new apps)
-- **Reasoning tiers** (GPT-5+): none/low/medium/high/xhigh compute effort levels
-- **Computer Use** (GPT-5.4): Native desktop environment control
-- **Tool Search** (GPT-5.4): Dynamic API definition retrieval
-- **Tool use**: Function calling, code interpreter, file search
-- **Structured outputs**: JSON schema enforcement
-- **Vision**: GPT-4o+, image input; GPT-5.4 original-resolution support
-- **Audio**: GPT-4o+ native audio input/output
-- **Long-horizon agents** (GPT-5.4): Multi-hour workflow context maintenance
+## Official Sources
 
-## References
-
-- [openai/gpt-oss-120b](https://huggingface.co/openai/gpt-oss-120b)
-- [openai/gpt-oss-20b](https://huggingface.co/openai/gpt-oss-20b)
-- https://platform.openai.com/docs/models
+- Current model catalog: <https://developers.openai.com/api/docs/models>
+- GPT-5.6 guide: <https://developers.openai.com/api/docs/guides/latest-model>
+- GPT-5.6 Sol: <https://developers.openai.com/api/docs/models/gpt-5.6-sol>
+- GPT-5.6 Terra: <https://developers.openai.com/api/docs/models/gpt-5.6-terra>
+- GPT-5.6 Luna: <https://developers.openai.com/api/docs/models/gpt-5.6-luna>
+- Pricing: <https://developers.openai.com/api/docs/pricing>
+- Deprecations: <https://developers.openai.com/api/docs/deprecations>
+- Codex model guidance: <https://developers.openai.com/codex/models>
+- GPT-OSS repository and model cards: <https://github.com/openai/gpt-oss>, <https://huggingface.co/openai/gpt-oss-120b>, <https://huggingface.co/openai/gpt-oss-20b>

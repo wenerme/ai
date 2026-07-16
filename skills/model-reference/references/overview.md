@@ -1,160 +1,134 @@
 # Model Reference Overview
 
-## Memory Requirements
+> Last verified: 2026-07-16. This is a manual multi-source snapshot. Recheck provider documentation before production decisions involving aliases, preview models, pricing, quotas, or lifecycle.
 
-**General formula**: Parameters × Precision = Memory
+## How To Compare Models
 
-| Precision | Bytes/Param | 7B    | 13B   | 70B    |
-| --------- | ----------- | ----- | ----- | ------ |
-| FP32      | 4           | 28GB  | 52GB  | 280GB  |
-| FP16/BF16 | 2           | 14GB  | 26GB  | 140GB  |
-| INT8      | 1           | 7GB   | 13GB  | 70GB   |
-| INT4      | 0.5         | 3.5GB | 6.5GB | 35GB   |
+Do not reduce model selection to one universal leaderboard. Compare candidates within the same operational constraints:
 
-**Quick rule**: 1B params ≈ 2GB (FP16) or 0.5GB (INT4)
+| Dimension | Questions to answer |
+| --- | --- |
+| Availability | Is the model stable, preview, deprecated, retired, API-only, or downloadable weights? |
+| Identity | Is the name a callable API ID, a moving alias, a pinned snapshot, an app product name, or a weight repository ID? |
+| Modality | Which text, image, audio, video, document, embedding, and generation modes are supported? |
+| Limits | What are the native input context, maximum output, media limits, and provider-specific long-context tiers? |
+| Tooling | Does the selected endpoint support tools, structured output, reasoning controls, grounding, code execution, or computer use? |
+| Cost | Which provider, region, prompt tier, cache/batch mode, and unit does the price describe? |
+| Deployment | Must all weights reside in accelerator memory? What quantization, KV cache, activation, and runtime overhead applies? |
+| Evaluation | Are scores measured with the same prompt, tool access, sampling, pass count, benchmark version, and date? |
 
-### Practical VRAM Guide
+## Source Confidence
 
-| Model Size | FP16   | INT4  | Typical Hardware       |
-| ---------- | ------ | ----- | ---------------------- |
-| 1-3B       | 2-6GB  | 1-2GB | Any GPU, Mobile        |
-| 7-8B       | 14-16GB | 4GB  | RTX 3060/4060 (8GB+)  |
-| 13-14B     | 26-28GB | 7GB  | RTX 3090/4090 (16GB+) |
-| 30-32B     | 60-64GB | 16GB | 2× RTX 3090 or A100   |
-| 70B        | 140GB  | 35GB | A100 80GB or 4× 3090  |
-| 235B MoE   | ~60GB* | ~20GB* | *Active params only  |
+| Label | Meaning |
+| --- | --- |
+| Official specification | Provider API/model docs, official model card, repository, release, or technical report |
+| Vendor-reported benchmark | Score reported by the model vendor; useful within its stated setup, not automatically cross-vendor comparable |
+| Empirical recommendation | Generation/deployment guidance measured by a third party or local operator; must state its environment |
+| Unverified | Conflicting or unavailable primary evidence; do not present as production fact |
 
-### GGUF Quantization
+## Weight Memory
 
-| Quant   | Quality    | Speed   | Notes                        |
-| ------- | ---------- | ------- | ---------------------------- |
-| Q4_0    | Lower      | Fastest | Basic 4-bit                  |
-| Q4_1    | Better     | Slower  | +offset for accuracy         |
-| Q4_K_M  | Good       | Good    | Recommended default          |
-| Q5_K_M  | Very good  | Medium  | Best quality/size tradeoff   |
-| Q6_K    | Near FP16  | Slower  | Near-lossless                |
-| Q8_0    | Excellent  | Slow    | 8-bit, minimal loss          |
+Weight-only memory is approximately:
 
-## Architecture Comparison
+```text
+weight_bytes = total_parameters * bits_per_weight / 8
+```
 
-| Model         | Params              | Architecture | Attention    | Experts        | Vocab  |
-| ------------- | ------------------- | ------------ | ------------ | -------------- | ------ |
-| Kimi K2       | 1.04T (32B active)  | MoE          | MLA          | 384/8+1 shared | 160K   |
-| DeepSeek R1   | 671B (37B active)   | MoE          | MLA          | 256+1 shared   | -      |
-| GLM 4.7       | ~400B (32B active)  | MoE          | -            | -              | -      |
-| Qwen3-235B    | 235B (22B active)   | MoE          | GQA          | 128/8          | 151K   |
-| MiniMax M2    | 230B (10B active)   | MoE          | -            | -              | -      |
-| GPT-OSS-120B  | 117B (5.1B active)  | MoE          | GQA+Sparse   | 128/4          | 201K   |
-| Llama 4 Scout | 109B (17B active)   | MoE          | GQA          | 16/1           | -      |
-| Seed-OSS-36B  | 36B                 | Dense        | GQA          | -              | 155K   |
-| Qwen3-32B     | 32.8B               | Dense        | GQA          | -              | 151K   |
-| Gemma 3 27B   | 27B                 | Dense        | Local/Global | -              | 262K   |
+| Storage precision | Nominal bytes/parameter | 7B | 14B | 32B | 70B |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| FP32 | 4 | 28 GB | 56 GB | 128 GB | 280 GB |
+| FP16/BF16 | 2 | 14 GB | 28 GB | 64 GB | 140 GB |
+| INT8 | 1 | 7 GB | 14 GB | 32 GB | 70 GB |
+| 4-bit nominal | 0.5 | 3.5 GB | 7 GB | 16 GB | 35 GB |
 
-Common patterns:
-- **SwiGLU**: Nearly universal activation function
-- **GQA**: Grouped Query Attention (dominant, replacing MHA)
-- **MLA**: Multi-head Latent Attention (DeepSeek innovation)
-- **MoE**: Mixture of Experts for efficiency at scale
-- **RoPE**: Rotary Position Embeddings (most models)
-- **BPE**: Byte Pair Encoding tokenizer (most models)
+These are decimal, weight-only estimates. Real deployments also require:
 
-## Model Suffixes
+- quantization scales, zero points, metadata, and alignment;
+- KV cache, which grows with sequence length, layers, batch size, and KV-head layout;
+- activations, temporary workspaces, graph/runtime allocations, and media encoders;
+- duplicated or sharded buffers across devices;
+- host memory and transfer headroom when using CPU/GPU offload.
 
-| Suffix   | Meaning                                     |
-| -------- | ------------------------------------------- |
-| `-pt`    | Pre-Training — base model, needs fine-tuning |
-| `-ft`    | Fine-Tuned                                  |
-| `-it`    | Instruction-Tuned — ready for tasks          |
-| `-A*B`   | MoE active params (e.g., 30B-A3B = 3B active) |
-| `-e*B`   | Effective params (Gemma 3n PLE)              |
+### MoE Caveat
 
-## Benchmark Comparison (Cross-Model)
+For Mixture-of-Experts models:
 
-> Note: Different models use different evaluation settings (shots, methods). Direct comparison should be treated as approximate.
+- **total parameters** normally determine stored/downloaded weight size and full weight residency;
+- **active parameters per token** primarily describe routed compute, not complete model memory;
+- memory can approach active-weight size only with an explicit expert-offload or expert-streaming design, which adds bandwidth and latency constraints.
 
-### Reasoning & Knowledge
+Never size a 200B+ MoE deployment from a 10B-30B active-parameter number alone.
 
-| Model                    | Size          | MMLU  | MMLU-Pro | GPQA Diamond | AIME 2025 | MATH-500 |
-| ------------------------ | ------------- | ----- | -------- | ------------ | --------- | -------- |
-| GLM-4.7                  | ~400B MoE     | -     | -        | 85.7         | 95.7      | -        |
-| Kimi K2 Thinking         | 1T MoE        | -     | -        | ~80+         | 96.1      | -        |
-| DeepSeek-V3.2            | 685B MoE      | -     | 85.0     | 79.9         | 89.3      | -        |
-| DeepSeek-R1              | 671B MoE      | 90.8  | 84.0     | 71.5         | -         | 97.3     |
-| Kimi K2                  | 1T MoE        | 89.5  | 81.1     | 75.1         | 49.5      | 97.4     |
-| MiniMax M2.5             | 230B MoE      | -     | -        | 85.2         | 86.3      | -        |
-| MiniMax M2.1             | 230B MoE      | -     | 88.0     | 83.0         | 83.0      | -        |
-| GLM-4.5                  | 355B MoE      | -     | -        | -            | 91.0†     | 98.2     |
-| Llama 4 Maverick         | 400B MoE      | -     | 80.5     | 69.8         | -         | -        |
-| Phi-4-reasoning          | 14B           | -     | 74.3     | 65.8         | 62.9      | -        |
-| Magistral Small          | 24B           | -     | -        | 68.2         | 62.8      | -        |
+## Quantization Terms
 
-† GLM-4.5 AIME is 2024 edition
+The same nominal bit width can produce different quality, size, and kernel support. Record the exact format and quantizer rather than saying only “4-bit.”
 
-### Coding & SWE
+| Example format | Typical intent | Important qualifier |
+| --- | --- | --- |
+| GGUF `Q4_K_M` | Balanced llama.cpp-family local inference | File size includes per-block metadata and may differ by architecture |
+| GGUF `Q5_K_M` / `Q6_K` | Higher quality at larger size | Throughput depends on backend and hardware |
+| `Q8_0` | Near-source quality with large memory use | Not equivalent to generic INT8 activation quantization |
+| GPTQ / AWQ | GPU-oriented weight-only quantization | Kernel, group size, calibration, and activation assumptions matter |
+| FP8 / MXFP4 | Native or packaged low-precision weights on selected models/hardware | Do not infer compatibility from bit count alone |
 
-| Model                    | Size          | LiveCodeBench | SWE-bench Verified |
-| ------------------------ | ------------- | ------------- | ------------------ |
-| GLM-4.7                  | ~400B MoE     | 84.9          | 73.8               |
-| MiniMax M2.5             | 230B MoE      | -             | 80.2               |
-| MiniMax M2.1             | 230B MoE      | ~83           | 74.0               |
-| DeepSeek-V3.2            | 685B MoE      | 74.1          | 67.8               |
-| Kimi K2                  | 1T MoE        | 53.7          | 65.8               |
-| DeepSeek-R1              | 671B MoE      | 65.9          | 49.2               |
-| GLM-4.5                  | 355B MoE      | -             | 64.2               |
-| GLM-Z1-32B              | 32B           | 57.5          | -                  |
-| Magistral Small          | 24B           | 55.8          | -                  |
-| Phi-4-reasoning          | 14B           | 53.8          | -                  |
-| Llama 4 Maverick         | 400B MoE      | 43.4          | -                  |
+See the serving runtime's own documentation for supported quantization and memory calculators.
 
-### Sampling Parameters Quick Reference
+## Identity And Lifecycle Terms
 
-| Model              | Temperature | TopP | TopK | Other                              |
-| ------------------ | ----------- | ---- | ---- | ---------------------------------- |
-| Qwen3.5 Thinking   | 1.0         | 0.95 | 20   | Presence penalty 1.5               |
-| Qwen3.5 Instruct   | 0.7         | 0.8  | 20   |                                    |
-| Qwen3 Thinking     | 0.6         | 0.95 | 20   |                                    |
-| Qwen3 Instruct     | 0.7         | 0.8  | 20   |                                    |
-| DeepSeek-R1        | 0.6         | 0.95 | -    | No system prompt; max=32768        |
-| DeepSeek-V3        | 0.7         | -    | -    | V3-0324: T_model = T_api × 0.3    |
-| Kimi K2            | 0.6         | -    | -    | real_temp = request_temp × 0.6     |
-| MiniMax M2         | 1.0         | 0.95 | 40   | Keep `<think>` in history          |
-| Gemma 3            | 1.0         | 0.95 | 64   |                                    |
-| GLM-Z1-32B         | 0.6         | 0.95 | 40   | max=30000                          |
-| GLM-4-9B           | 0.95        | -    | 1    |                                    |
-| Phi-4-reasoning    | 0.8 (MUST)  | 0.95 | 50   | Required for full capability       |
-| Magistral Small    | 0.7         | 0.95 | -    | max=40960                          |
-| Mistral Small 3.1  | 0.15        | -    | -    |                                    |
+| Term | Meaning |
+| --- | --- |
+| Stable model ID | Provider-supported production model identifier |
+| Snapshot ID | Pinned model revision; behavior is expected to remain fixed for its lifecycle |
+| Alias | Moving identifier that may be repointed to a newer snapshot |
+| Preview / experimental | API or behavior can change and may have reduced guarantees |
+| Deprecated | Still callable for a transition period but has a published migration path or retirement plan |
+| Retired / shut down | No longer callable from the referenced provider endpoint |
+| Weights-only | Downloadable model without a canonical hosted API ID |
 
-## Leaderboards & Benchmarks
+## Common Weight-Model Suffixes
 
-### LLM
+| Suffix or pattern | Common meaning | Caveat |
+| --- | --- | --- |
+| `Base` / `-pt` | Pretrained base model | Usually not instruction-following without a chat template or fine-tune |
+| `Instruct` / `Chat` / `-it` | Instruction-tuned model | Exact template and system/tool support remain model-specific |
+| `Thinking` / `Reasoning` | Deliberative variant or mode | Thinking representation and required sampling/history rules differ |
+| `Coder` | Code-focused training or post-training | Does not by itself guarantee tool use or repository-scale context |
+| `VL` / `Vision` / `Omni` | One or more non-text modalities | Check exact input/output modality matrix |
+| `30B-A3B` | Approximate total and active MoE parameters | Naming conventions are vendor-specific; verify the model card |
+| Quantization suffix | Packaged precision/quantizer | Not a new base model and not always vendor-produced |
 
-- [Open LLM Leaderboard](https://huggingface.co/open-llm-leaderboard) — HuggingFace hosted
-- [LMSYS Chatbot Arena](https://lmarena.ai/) — ELO-based human preference
-- [Vellum LLM Leaderboard](https://www.vellum.ai/llm-leaderboard) — Curated comparison
-- [LiveBench](https://livebench.ai/) — Contamination-free benchmark
-- [BFCL](https://gorilla.cs.berkeley.edu/leaderboard.html) — Berkeley Function-Calling Leaderboard
-- [Aider Code Leaderboard](https://aider.chat/docs/leaderboards/) — Coding benchmark
-- [OpenRouter Rankings](https://openrouter.ai/rankings) — Usage-based
-- [xLang Arena](https://arena.xlang.ai/leaderboard) — Agent benchmark
+## Task Routing
 
-### Vision/Multimodal
+Use family references to build a shortlist, then validate against the consuming endpoint or runtime:
 
-- [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) — VLM evaluation toolkit
-- [UncheatableEval](https://huggingface.co/spaces/Jellyfish042/UncheatableEval) — Anti-contamination eval
+| Need | Start with |
+| --- | --- |
+| Hosted frontier text/reasoning/tool models | `claude.md`, `gpt.md`, `gemini.md`, plus the relevant provider docs skill |
+| Self-hosted general/coding/reasoning LLM | `qwen.md`, `deepseek.md`, `llama.md`, `kimi.md`, `minimax.md`, `mistral.md`, `glm.md` |
+| Compact/on-device model | `gemma.md`, `phi.md`, and small variants in other family files |
+| Vision-language understanding | `qwen.md`, `llama.md`, `gemma.md`, `glm.md`, `phi.md`, `internvl.md`, `kimi.md` |
+| Image generation/editing | `image-models.md` |
+| Video generation/editing | `video-models.md` |
 
-### Image Generation
+## Freshness Index
 
-- [Text-to-Image Leaderboard](https://huggingface.co/spaces/ArtificialAnalysis/Text-to-Image-Leaderboard)
+| Reference | Last verified | Channel/lifecycle coverage |
+| --- | --- | --- |
+| [overview.md](overview.md) | 2026-07-16 | Comparison, identity, memory, lifecycle, and routing policy |
+| [claude.md](claude.md) | 2026-07-16 | Anthropic production, limited-availability, deprecated, and retired API models |
+| [gpt.md](gpt.md) | 2026-07-16 | OpenAI production/deprecated API models and GPT-OSS weights |
+| [gemini.md](gemini.md) | 2026-07-16 | Gemini stable, preview, superseded, and shut-down API models |
+| [qwen.md](qwen.md) | 2026-07-16 | Qwen current/predecessor open weights |
+| [deepseek.md](deepseek.md) | 2026-07-16 | DeepSeek current/historical open weights |
+| [llama.md](llama.md) | 2026-07-16 | Llama current/predecessor open weights |
+| [kimi.md](kimi.md) | 2026-07-16 | Moonshot current/available APIs and open weights |
+| [minimax.md](minimax.md) | 2026-07-16 | MiniMax current/legacy APIs and open weights |
+| [gemma.md](gemma.md) | 2026-07-16 | Gemma 4 current and Gemma 3 predecessor open weights |
+| [mistral.md](mistral.md) | 2026-07-16 | Mistral current/open and legacy APIs/weights |
+| [glm.md](glm.md) | 2026-07-16 | Z.ai current/previous APIs and open weights |
+| [phi.md](phi.md) | 2026-07-16 | Microsoft Phi-4 open weights |
+| [internvl.md](internvl.md) | 2026-07-16 | OpenGVLab InternVL3.5 open weights |
+| [image-models.md](image-models.md) | 2026-07-16 | Hosted current/deprecated APIs and current open weights |
+| [video-models.md](video-models.md) | 2026-07-16 | Hosted current/deprecated APIs and current/historical open weights |
 
-### Pricing
-
-- [LLM Prices](https://www.llm-prices.com/)
-- [OpenRouter Models](https://openrouter.ai/models)
-- [Price Per Token](https://pricepertoken.com/)
-- [LiteLLM Models](https://models.litellm.ai/)
-
-### Model Indexes
-
-- [Ollama Library](https://ollama.com/library)
-- [HuggingFace Models](https://huggingface.co/models)
+Each family file carries its own `Last verified` date and exact source links. A missing or old date is a signal to recheck, not permission to infer.

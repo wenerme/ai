@@ -25,6 +25,7 @@ The core Wrangler commands for creating, developing, and deploying Workers are o
 * [ Certificates ](https://developers.cloudflare.com/workers/wrangler/commands/certificates/)
 * [ Containers ](https://developers.cloudflare.com/workers/wrangler/commands/containers/)
 * [ D1 ](https://developers.cloudflare.com/workers/wrangler/commands/d1/)
+* [ Flagship ](https://developers.cloudflare.com/workers/wrangler/commands/flagship/)
 * [ General commands ](https://developers.cloudflare.com/workers/wrangler/commands/general/)
 * [ Hyperdrive ](https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/)
 * [ KV ](https://developers.cloudflare.com/workers/wrangler/commands/kv/)

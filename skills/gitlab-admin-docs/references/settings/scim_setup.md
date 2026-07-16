@@ -115,16 +115,15 @@ After saving, the **Mappings** and **Settings** sections appear.
 
 #### Configure mappings
 
-Under the **Mappings** section, first provision the groups:
+Group synchronization is optional. If you want to configure it, under the **Mappings** section, first provision the groups:
 
 1. Select **Provision Microsoft Entra ID Groups**.
-1. On the Attribute Mapping page, turn off the **Enabled** toggle.
-
-   SCIM group provisioning is not supported in GitLab. Leaving group provisioning enabled does not break the SCIM user provisioning, but it causes errors in the
-   Entra ID SCIM provisioning log that might be confusing and misleading.
-
-   > [!note]
-   > Even when **Provision Microsoft Entra ID Groups** is disabled, the mappings section might display **Enabled: Yes**. This behavior is a display bug that you can safely ignore.
+1. On the Attribute Mapping page, turn on the **Enabled** toggle.
+1. Under **Target Object Actions**, select the **Create**, **Update**, and **Delete** checkboxes.
+1. Under **Attribute Mappings**, edit the first attribute to have a:
+   - **source attribute** of `displayName`.
+   - **target attribute** of `displayName`.
+   - **matching precedence** of `1`.
 
 1. Select **Save**.
 
@@ -137,9 +136,10 @@ Next, provision the users:
    the [configured attribute mappings](#configure-attribute-mappings):
    1. Optional. In the **customappsso Attribute** column, find `externalId` and delete it.
    1. Edit the first attribute to have a:
-      - **source attribute** of `objectId`.
-      - **target attribute** of `externalId`.
-      - **matching precedence** of `1`.
+      - **Source attribute** of `objectId`.
+      - **Target attribute** of `externalId`.
+      - **Matching precedence** of `1`.
+      - **Apply this mapping** is set to `Always`
    1. Update the existing **customappsso** attributes to match the
       [configured attribute mappings](#configure-attribute-mappings).
    1. Delete any additional attributes that are not present in the [attribute mappings table](#configure-attribute-mappings). They do not cause problems if they are
@@ -211,8 +211,9 @@ After you have configured the mappings and the settings, return to the app overv
 
 ## Remove access
 
-Removing or deactivating a user on the identity provider blocks the user on
-the GitLab instance, while the SCIM identity remains linked to the GitLab user.
+Removing or deactivating a user on the identity provider blocks the user on GitLab by marking the identity with `active: false`, while the SCIM identity remains linked to the GitLab user account.
+
+Deprovisioning a user through SCIM does not remove the linked SAML identity.
 
 To update the user SCIM identity, use the
 [internal GitLab SCIM API](../../development/internal_api/_index.md#update-a-single-scim-provisioned-user-1).
@@ -222,11 +223,11 @@ To update the user SCIM identity, use the
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/379149) in GitLab 16.0 [with a feature flag](../feature_flags/_index.md) named `skip_saml_identity_destroy_during_scim_deprovision`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/121226) in GitLab 16.4. Feature flag `skip_saml_identity_destroy_during_scim_deprovision` removed.
 
-After a user is removed or deactivated through SCIM, you can reactivate that user by
-adding them to the SCIM identity provider.
+After a user is removed or deactivated through SCIM, you can reactivate that user by adding them to the SCIM identity provider.
 
 After the identity provider performs a sync based on its configured schedule,
 the user's SCIM identity is reactivated and their GitLab instance access is restored.
+Because the linked SAML identity is retained during deprovisioning, users can immediately sign in using SSO.
 
 ## Group synchronization with SCIM
 

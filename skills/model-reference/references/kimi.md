@@ -1,86 +1,57 @@
 # Kimi (Moonshot AI)
 
-- Creator: Moonshot AI (月之暗面)
-- GitHub: [MoonshotAI](https://github.com/MoonshotAI)
-- HuggingFace: [moonshotai](https://huggingface.co/moonshotai)
+> Last verified: 2026-07-16. This is a manual snapshot of Moonshot's API docs and official weight releases. Recheck hosted prices and fixed generation parameters before production use.
 
-## Model Timeline
+- Creator/API provider: Moonshot AI
+- API: <https://platform.moonshot.ai/>
+- Official weights: <https://huggingface.co/moonshotai>
 
-| Version       | Date    | Sizes           | Context | Notes                            |
-| ------------- | ------- | --------------- | ------- | -------------------------------- |
-| Kimi K2.5     | 2026-01 |                 | 256K    | Multimodal, Reasoning            |
-| Kimi K2 Thinking | 2025-11 | 1T-A32B     | 128K    | Long CoT reasoning               |
-| Kimi K2       | 2025-07 | 1.04T (32B active) | 128K | MoE, Agentic, MCP optimized     |
+## Current Models
 
-## Architecture
+| Lifecycle | API/weight identity | Role | Context | Input pricing per MTok: cache hit / miss | Output per MTok |
+| --- | --- | --- | ---: | ---: | ---: |
+| Current API + weights; coding/agent | API `kimi-k2.7-code`; high-speed `kimi-k2.7-code-highspeed`; weight `moonshotai/Kimi-K2.7-Code` | Coding, agents, tools, multimodal | 256K / 262,144 | $0.19 / $0.95 | $4 |
+| Current API + weights; general | API `kimi-k2.6`; weight `moonshotai/Kimi-K2.6` | Writing, analysis, conversation, general tasks | Check exact endpoint/model card | $0.16 / $0.95 | $4 |
+| Available API + weights; predecessor | API/weight `kimi-k2.5` / `moonshotai/Kimi-K2.5` | General multimodal reasoning | 256K | $0.10 / $0.60 | $3 |
 
-| Spec             | Kimi K2                       |
-| ---------------- | ----------------------------- |
-| Total Parameters | 1.04 Trillion                 |
-| Active Parameters | 32B per token                |
-| Architecture     | Sparse MoE + MLA              |
-| Layers           | 61 (1 Dense + 60 MoE)        |
-| Attention        | MLA (Multi-head Latent Attention) |
-| Hidden Size      | 7,168                         |
-| Attention Heads  | 64                            |
-| Experts          | 384 total, 8+1 shared active  |
-| Activation       | SwiGLU                        |
-| Vocab Size       | 160K                          |
-| Training Data    | 15.5T tokens                  |
-| Optimizer        | MuonClip (Muon at 1T scale)   |
-| Weight Format    | Block-FP8                     |
-| Context Window   | 128K (K2), 256K (K2.5)        |
-| License          | Modified MIT                  |
+Kimi K2.7 Code is the latest coding/agent line; K2.6 is the current general model. K2.5 remains available but is no longer latest.
 
-## Benchmarks
+## K2.7 Code Specifications
 
-### Kimi K2 (Standard)
+| Field | Official value |
+| --- | ---: |
+| Total parameters | ~1T |
+| Active parameters per token | 32B |
+| Vision encoder | MoonViT, ~400M |
+| Input | Text, image, video |
+| Output | Text with thinking/tool use |
+| API default `max_tokens` | 32,768; this is not documented as the absolute model output limit |
 
-| Benchmark         | Score  | Notes                     |
-| ----------------- | ------ | ------------------------- |
-| MMLU              | 89.5%  |                           |
-| MMLU-Pro          | 81.1%  |                           |
-| MATH-500          | 97.4%  |                           |
-| GPQA Diamond      | 75.1%  |                           |
-| SWE-bench Verified | 65.8% | 1-attempt                 |
-| LiveCodeBench v6  | 53.7%  | Surpassed GPT-4 (44.7%)  |
-| AIME 2024         | 69.6%  |                           |
-| Tau2 (Tool-use)   | 70.6%  |                           |
-| AceBench          | 76.5%  | Agentic coding            |
+Full weight residency follows total parameters, not 32B active parameters.
 
-### Kimi K2 Thinking / K2.5
+## Required Generation Settings
 
-| Benchmark          | Score  | Notes                    |
-| ------------------ | ------ | ------------------------ |
-| AIME 2025          | 96.1%  | Surpassing GPT-4o level  |
-| GPQA Diamond       | ~80%+  | Reasoning-enhanced       |
-| HLE-Full (tools)   | 50.2%  | Humanity's Last Exam     |
-| HLE-Full (no tools) | 30.1% |                         |
+K2.7 Code's official API accepts a constrained generation configuration:
 
-## Recommended Sampling Parameters
+| Parameter | Required value |
+| --- | ---: |
+| `temperature` | 1.0 |
+| `top_p` | 0.95 |
+| `n` | 1 |
+| presence/frequency penalties | 0 |
 
-| Parameter   | Value | Notes                            |
-| ----------- | ----- | -------------------------------- |
-| Temperature | 0.6   | real_temp = request_temp × 0.6   |
-| max_tokens  | 8000  | Eval default; adjust per task    |
+Other values can be rejected. For K2.5, the official model card recommends `temperature=1.0` in thinking mode and `0.6` in instant mode, with `top_p=0.95`.
 
-## Key Features
+The old family-wide `real_temp = request_temp * 0.6` rule was removed; it is not a current Moonshot API contract.
 
-- **Agentic focus**: Optimized for MCP, autonomous problem-solving
-- **Tool use**: Web browsing, Python execution, file management
-- **MuonClip optimizer**: First to scale Muon to 1T params with zero training instability
-- **Cost**: ~$0.60/M input tokens (~5x cheaper than GPT-4)
+## License And Benchmarks
 
-## HuggingFace Models
+- Moonshot releases K2.x weights, but license terms can differ by checkpoint. Do not label the whole family “Modified MIT” without reading the selected model card/license.
+- Moonshot benchmark tables are vendor-reported. Competitor rows can include Moonshot re-runs and are not a universal cross-vendor ranking.
 
-| Variant        | Description              |
-| -------------- | ------------------------ |
-| Kimi-K2-Base   | Base model, fine-tunable |
-| Kimi-K2-Instruct | Chat + tool calling   |
+## Official Sources
 
-## References
-
-- [MoonshotAI/Kimi-K2](https://github.com/MoonshotAI/Kimi-K2)
-- [moonshotai/Kimi-K2-Instruct](https://huggingface.co/moonshotai/Kimi-K2-Instruct)
-- Paper: https://arxiv.org/abs/2507.20534
-- API: https://platform.moonshot.ai
+- Platform and docs: <https://platform.moonshot.ai/>, <https://platform.moonshot.ai/docs/guide>, <https://platform.moonshot.ai/docs/api/chat>
+- K2.7 Code release: <https://www.kimi.com/resources/kimi-k2-7-code>
+- K2.7 Code model card: <https://huggingface.co/moonshotai/Kimi-K2.7-Code>
+- K2.5 repository: <https://github.com/MoonshotAI/Kimi-K2.5>

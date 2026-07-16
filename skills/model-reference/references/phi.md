@@ -1,72 +1,49 @@
 # Phi (Microsoft)
 
-- Creator: Microsoft Research
-- HuggingFace: [microsoft](https://huggingface.co/microsoft)
-- License: MIT
+> Last verified: 2026-07-16. This is a manual snapshot of Microsoft's official Phi-4 model cards and release material. Phi-4 is a family of parallel specialized checkpoints, not one 128K multimodal model.
 
-## Model Timeline
+- Creator: Microsoft
+- Official models: <https://huggingface.co/microsoft>
+- License: MIT for the listed Phi-4 weights; verify each model card
 
-| Version | Date    | Sizes           | Context | Notes                                       |
-| ------- | ------- | --------------- | ------- | ------------------------------------------- |
-| Phi-4   | 2024-12 | 14B             | 128K    | Mini-reasoning, multimodal                  |
-| Phi-3.5 | 2024-08 | 3.8B, 7B, 14B  | 128K    | MoE variant available                       |
-| Phi-3   | 2024-04 | 3.8B, 7B, 14B   | 4K-128K | First multimodal Phi                        |
+## Phi-4 Family
 
-## Phi-4 Capabilities
+| Lifecycle | Official weight ID | Params | Context | Modality / role |
+| --- | --- | ---: | ---: | --- |
+| Weights-only | `microsoft/phi-4` | 14B | 16K | Text-only general model |
+| Weights-only | `microsoft/Phi-4-mini-instruct` | 3.8B | 128K | Compact text instruction model |
+| Weights-only | `microsoft/Phi-4-multimodal-instruct` | ~5.6B | 128K | Text + image + audio input |
+| Weights-only | `microsoft/Phi-4-reasoning` | 14B | 32K | Deliberative reasoning |
+| Weights-only | `microsoft/Phi-4-reasoning-plus` | 14B | 32K | Higher-compute reasoning variant |
+| Weights-only | `microsoft/Phi-4-mini-flash-reasoning` | 3.8B | 64K | Compact mathematical reasoning |
+| Weights-only | `microsoft/Phi-4-reasoning-vision-15B` | 15B | Check model card | Vision reasoning |
 
-| Modality | Languages                                                                                                       |
-| -------- | --------------------------------------------------------------------------------------------------------------- |
-| Text     | Arabic, Chinese, Czech, Danish, Dutch, English, Finnish, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Norwegian, Polish, Portuguese, Russian, Spanish, Swedish, Thai, Turkish, Ukrainian |
-| Vision   | English only                                                                                                     |
-| Audio    | English, Chinese, German, French, Italian, Japanese, Spanish, Portuguese                                         |
+Do not transfer vision/audio capabilities from `Phi-4-multimodal-instruct` to the base `microsoft/phi-4` model.
 
-## Recommended Sampling Parameters
+## Generation Settings
 
-| Mode     | Temperature | TopP | Notes          |
-| -------- | ----------- | ---- | -------------- |
-| General  | 0.7         | 0.9  |                |
-| Code     | 0.2         | 0.9  |                |
-| Precise  | 0.0         | 1.0  | Deterministic  |
+Microsoft's reasoning model cards can require model-specific sampling. For the checkpoint that explicitly documents the following settings:
 
-## Phi-4-reasoning
+| Parameter | Value |
+| --- | ---: |
+| Temperature | 0.8 |
+| Top-p | 0.95 |
+| Top-k | 50 |
+| Sampling | Enabled |
+| Max new tokens | Up to 32,768 for the documented reasoning setup |
 
-**IMPORTANT**: Must use specific sampling parameters for full capability:
+Apply these only to the referenced Phi-4 reasoning checkpoint. They are not defaults for base, mini, multimodal, or reasoning-vision models.
 
-| Parameter     | Value | Notes      |
-| ------------- | ----- | ---------- |
-| Temperature   | 0.8   | **Required** |
-| TopP          | 0.95  |            |
-| TopK          | 50    |            |
-| do_sample     | True  |            |
-| max_new_tokens | 32768 | Long CoT   |
+## Deployment Notes
 
-## Benchmarks
+- Use the exact model card's chat template and Transformers/runtime version.
+- A 128K context limit does not mean practical memory use is small; KV cache and multimodal encoders add runtime memory.
+- Phi-4 benchmarks are Microsoft vendor-reported and use model-specific prompting/sampling. The old combined comparison tables have been removed.
 
-### Phi-4 (14B)
+## Official Sources
 
-| Benchmark | Phi-4 | GPT-4o-mini | GPT-4o |
-| --------- | ----- | ----------- | ------ |
-| MMLU      | 84.8  | 81.8        | 88.1   |
-| GPQA      | 56.1  | 40.9        | 50.6   |
-| MATH      | 80.4  | 73.0        | 74.6   |
-| HumanEval | 82.6  | 86.2        | 90.6   |
-
-### Phi-4-reasoning
-
-| Benchmark    | reasoning | reasoning-plus |
-| ------------ | --------- | -------------- |
-| AIME 2024    | 75.3      | 81.3           |
-| AIME 2025    | 62.9      | 78.0           |
-| GPQA Diamond | 65.8      | 68.9           |
-| LiveCodeBench | 53.8     | 53.1           |
-| HumanEvalPlus | 92.9     | 92.3           |
-| MMLU-Pro     | 74.3      | 76.0           |
-
-## Key Models
-
-- [microsoft/phi-4](https://huggingface.co/microsoft/phi-4) — 14B text
-- [microsoft/Phi-4-multimodal-instruct](https://huggingface.co/microsoft/Phi-4-multimodal-instruct) — Multimodal (text+vision+audio)
-
-## References
-
-- https://huggingface.co/microsoft/phi-4
+- Phi-4 technical report: <https://www.microsoft.com/en-us/research/publication/phi-4-technical-report/>
+- Phi-4 Mini Flash Reasoning: <https://azure.microsoft.com/en-us/blog/reasoning-reimagined-introducing-phi-4-mini-flash-reasoning/>
+- Phi-4 Reasoning Vision repository: <https://github.com/microsoft/Phi-4-vision>
+- Azure model catalog entry: <https://ai.azure.com/catalog/models/Phi-4>
+- Official model cards: <https://huggingface.co/microsoft>

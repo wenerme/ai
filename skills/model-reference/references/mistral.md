@@ -1,73 +1,50 @@
 # Mistral
 
-- Creator: Mistral AI
-- HuggingFace: [mistralai](https://huggingface.co/mistralai)
-- License: Apache-2.0 (most models)
+> Last verified: 2026-07-16. This is a manual snapshot of Mistral's official model catalog, pricing, releases, and model cards. License and modalities are model-specific.
 
-## Model Timeline
+- Creator/API provider: Mistral AI
+- API model catalog: <https://docs.mistral.ai/models/overview>
+- Official weights: <https://huggingface.co/mistralai>
 
-| Version        | Date    | Sizes           | Context | Notes                                |
-| -------------- | ------- | --------------- | ------- | ------------------------------------ |
-| Voxtral 1.0    | 2025-07 | Mini 3B, Small 24B | 32K  | Audio, 30min transcription           |
-| Magistral      | 2025-06 | Small 24B       | 39K     | Reasoning, Multilingual              |
-| Ministral 3    | 2025-10 | 3B, 8B, 14B    |         | Text, 11 languages                   |
-| Mistral Large 2 | 2024-07 | 123B           | 128K    | Flagship                             |
-| Mixtral 8x22B  | 2024-04 | 141B (39B active) | 65K  | MoE                                  |
-| Mistral Small  | 2024    | 22B             | 32K     |                                      |
-| Mixtral 8x7B   | 2023-12 | 46.7B           | 33K     | MoE, first open MoE LLM             |
-| Mistral 7B     | 2023-12 | 7B              | 33K     | First release                        |
+## Current General Models
 
-## Recommended Sampling Parameters
+| Lifecycle | API ID / alias | Official weight ID | Total / active params | Context | Modality | Input / output per MTok | License |
+| --- | --- | --- | ---: | ---: | --- | ---: | --- |
+| Current/open API + weights | `mistral-medium-3-5`; alias `mistral-medium-latest` | `mistralai/Mistral-Medium-3.5-128B` | 128B dense | 256K | Text + image input, text output | $1.50 / $7.50 | Modified MIT |
+| Current/open API + weights | snapshot `mistral-small-2603`; alias `mistral-small-latest` | `mistralai/Mistral-Small-4-119B-2603` | 119B total; ~6-6.5B active/token | 256K | Text + image input, text output | $0.15 / $0.60 | Apache-2.0 |
+| Current/open API + weights | snapshot `mistral-large-2512`; alias `mistral-large-latest` | `mistralai/Mistral-Large-3-675B-Instruct-2512` | 675B / 41B active | 256K | Text + image input, text output | $0.50 / $1.50 | Apache-2.0 |
 
-| Mode     | Temperature | TopP | Notes            |
-| -------- | ----------- | ---- | ---------------- |
-| General  | 0.7         | 0.9  |                  |
-| Creative | 0.9         | 0.95 |                  |
-| Code     | 0.2         | 0.9  |                  |
-| Precise  | 0.0         | 1.0  | Deterministic    |
+Official cards did not publish one independent max-output value for every row in this audit. Do not copy 256K context into a max-output field.
 
-## Benchmarks
+## Specialized Current Lines
 
-### Magistral Small
+- Ministral 3: small/edge-oriented text model family; verify exact current IDs and license per size.
+- Voxtral: audio understanding/transcription family; model IDs and audio duration limits are endpoint-specific.
+- OCR 4: OCR/document model family, not a general chat substitute.
+- Devstral/Leanstral and Labs IDs can have explicit short lifecycle dates; check the model catalog before use.
+- Magistral remains a reasoning-oriented historical/current-specialized line but is not the current general flagship table above.
 
-| Benchmark     | Small  | Medium |
-| ------------- | ------ | ------ |
-| AIME 2024     | 70.7%  | 73.6%  |
-| AIME 2025     | 62.8%  | 65.0%  |
-| GPQA Diamond  | 68.2%  | 70.8%  |
-| LiveCodeBench | 55.8%  | 59.4%  |
+## Alias And Lifecycle Rules
 
-### Mistral Small 3.1 (24B)
+- `*-latest` aliases roll forward. Use dated snapshots for reproducibility.
+- Medium 3.5 is the v26.04 current/open model and became a current Le Chat/Vibe default in May 2026.
+- Small 4 was released 2026-03-16.
+- Large 3 was released 2025-12-02.
+- Older Mistral Large 2, Small 3.x, Mixtral, and Mistral 7B are compatibility/open-weight choices, not current default API selections.
 
-| Benchmark    | Score  |
-| ------------ | ------ |
-| MMLU         | 80.6%  |
-| MMLU-Pro     | 66.8%  |
-| MATH         | 69.3%  |
-| GPQA Diamond | 46.0%  |
-| HumanEval    | 88.4%  |
-| DocVQA       | 94.1%  |
-| RULER 128K   | 81.2%  |
+## Generation And License
 
-## Architecture
+- The old generic `General/Creative/Code/Precise` sampling table was not an official family contract and has been removed.
+- Use the exact model card and Mistral sampling docs for temperature/top-p behavior.
+- Mistral licenses vary across Apache-2.0, Modified MIT, Mistral Research License, and commercial API terms. Never label the whole vendor catalog “mostly Apache-2.0.”
+- Benchmark tables in releases/model cards are Mistral vendor-reported and should be read with their exact harness.
 
-### Magistral (Reasoning)
+## Official Sources
 
-- 24B dense model
-- Specialized for reasoning tasks via RL training
-- 39K context window
-- Multilingual support
-
-### Mixtral MoE
-
-- Sparse MoE: 8 experts, 2 active per token
-- Sliding window attention
-- GQA (Grouped Query Attention)
-- SwiGLU activation
-- BPE tokenizer (32K vocab for Mistral 7B, 32K for Mixtral)
-
-## References
-
-- https://mistral.ai/
-- Mistral 7B: https://arxiv.org/abs/2310.06825
-- Mixtral: https://arxiv.org/abs/2401.04088
+- Model catalog: <https://docs.mistral.ai/models/overview>
+- Model selection: <https://docs.mistral.ai/models/model-selection-guide>
+- Pricing: <https://docs.mistral.ai/deployment/laplateforme/pricing>, <https://mistral.ai/pricing/api/>
+- Sampling: <https://docs.mistral.ai/models/best-practices/sampling>
+- Medium 3.5 card: <https://docs.mistral.ai/models/model-cards/mistral-medium-3-5-26-04>
+- Small 4 release/card: <https://mistral.ai/news/mistral-small-4/>, <https://huggingface.co/mistralai/Mistral-Small-4-119B-2603>
+- Large 3 release/card: <https://mistral.ai/news/mistral-3/>, <https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512>

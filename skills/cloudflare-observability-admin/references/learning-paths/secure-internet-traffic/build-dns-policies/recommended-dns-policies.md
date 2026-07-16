@@ -20,9 +20,9 @@ For additional commonly used DNS policy examples, refer to [Common DNS policies]
 
 Allowlist any known domains and hostnames. With this policy, you ensure that your users can access your organization's domains even if the domains fall under a blocked category, such as **Newly Seen Domains** or **Login Screens**.
 
-* [ Dashboard ](#tab-panel-9573)
-* [ API ](#tab-panel-9574)
-* [ Terraform ](#tab-panel-9575)
+* [ Dashboard ](#tab-panel-10016)
+* [ API ](#tab-panel-10017)
+* [ Terraform ](#tab-panel-10018)
 
 | Selector | Operator | Value           | Logic | Action |
 | -------- | -------- | --------------- | ----- | ------ |
@@ -65,9 +65,9 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_whitelist_policy" {
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-* [ Dashboard ](#tab-panel-9576)
-* [ API ](#tab-panel-9577)
-* [ Terraform ](#tab-panel-9578)
+* [ Dashboard ](#tab-panel-10019)
+* [ API ](#tab-panel-10020)
+* [ Terraform ](#tab-panel-10021)
 
 | Selector         | Operator    | Value                         | Logic | Action |
 | ---------------- | ----------- | ----------------------------- | ----- | ------ |
@@ -113,9 +113,9 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_restrict_quarantined_users"
 
 Block [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories), such as **Command and Control & Botnet** and **Malware**, based on Cloudflare's threat intelligence.
 
-* [ Dashboard ](#tab-panel-9594)
-* [ API ](#tab-panel-9595)
-* [ Terraform ](#tab-panel-9596)
+* [ Dashboard ](#tab-panel-10037)
+* [ API ](#tab-panel-10038)
+* [ Terraform ](#tab-panel-10039)
 
 | Selector            | Operator | Value                | Action |
 | ------------------- | -------- | -------------------- | ------ |
@@ -160,9 +160,9 @@ Entries in the [security risk content subcategory](https://developers.cloudflare
 
 After your test is complete, we recommend you change the action to Block to minimize risk to your organization.
 
-* [ Dashboard ](#tab-panel-9597)
-* [ API ](#tab-panel-9598)
-* [ Terraform ](#tab-panel-9599)
+* [ Dashboard ](#tab-panel-10040)
+* [ API ](#tab-panel-10041)
+* [ Terraform ](#tab-panel-10042)
 
 | Selector           | Operator | Value                                                     | Action |
 | ------------------ | -------- | --------------------------------------------------------- | ------ |
@@ -205,9 +205,9 @@ resource "cloudflare_zero_trust_gateway_policy" "block_content_categories" {
 
 Block unauthorized applications to limit your users' access to certain web-based tools and minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/). For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-9600)
-* [ API ](#tab-panel-9601)
-* [ Terraform ](#tab-panel-9602)
+* [ Dashboard ](#tab-panel-10043)
+* [ API ](#tab-panel-10044)
+* [ Terraform ](#tab-panel-10045)
 
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
@@ -250,9 +250,9 @@ resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
 
 Block websites hosted in countries categorized as high risk. The designation of such countries may result from your organization's users or through the implementation of regulations including [EAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries), [OFAC ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries), and [ITAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries).
 
-* [ Dashboard ](#tab-panel-9579)
-* [ API ](#tab-panel-9580)
-* [ Terraform ](#tab-panel-9581)
+* [ Dashboard ](#tab-panel-10022)
+* [ API ](#tab-panel-10023)
+* [ Terraform ](#tab-panel-10024)
 
 | Selector                        | Operator | Value                                                                                                                                                           | Action |
 | ------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
@@ -294,9 +294,9 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_geolocation_block_policy" {
 
 Block frequently misused top-level domains (TLDs) to reduce security risks, especially when there is no discernible advantage to be gained from allowing access. Similarly, restricting access to specific country-level TLDs may be necessary to comply with regulations such as [OFAC ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries) and [ITAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries).
 
-* [ Dashboard ](#tab-panel-9582)
-* [ API ](#tab-panel-9583)
-* [ Terraform ](#tab-panel-9584)
+* [ Dashboard ](#tab-panel-10025)
+* [ API ](#tab-panel-10026)
+* [ Terraform ](#tab-panel-10027)
 
 | Selector | Operator      | Value                                                                                              | Action |
 | -------- | ------------- | -------------------------------------------------------------------------------------------------- | ------ |
@@ -338,9 +338,9 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_blacklist_policy" {
 
 Block misused domains to protect your users against sophisticated phishing attacks, such as domains that specifically target your organization. For example, the following policy blocks specific keywords associated with an organization or its authentication services (such as `okta`, `2fa`, `cloudflare` and `sso`) while still allowing access to known domains.
 
-* [ Dashboard ](#tab-panel-9585)
-* [ API ](#tab-panel-9586)
-* [ Terraform ](#tab-panel-9587)
+* [ Dashboard ](#tab-panel-10028)
+* [ API ](#tab-panel-10029)
+* [ Terraform ](#tab-panel-10030)
 
 | Selector | Operator      | Value                                          | Logic | Action |
 | -------- | ------------- | ---------------------------------------------- | ----- | ------ |
@@ -385,9 +385,9 @@ Block specific IP addresses that are malicious or pose a threat to your organiza
 
 You can implement this policy by either creating custom blocklists or by using blocklists provided by threat intelligence partners or regional Computer Emergency and Response Teams (CERTs). Ideally, your CERTs can update the blocklist with an [API automation](https://developers.cloudflare.com/security-center/intel-apis/) to provide real-time threat protection.
 
-* [ Dashboard ](#tab-panel-9588)
-* [ API ](#tab-panel-9589)
-* [ Terraform ](#tab-panel-9590)
+* [ Dashboard ](#tab-panel-10031)
+* [ API ](#tab-panel-10032)
+* [ Terraform ](#tab-panel-10033)
 
 | Selector    | Operator | Value          | Action |
 | ----------- | -------- | -------------- | ------ |
@@ -429,9 +429,9 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_resolvedip_blocklist_rule" 
 
 Block specific domains or hosts that are malicious or pose a threat to your organization. Like **All-DNS-ResolvedIP-Blocklist**, this blocklist can be updated manually or via API automation.
 
-* [ Dashboard ](#tab-panel-9591)
-* [ API ](#tab-panel-9592)
-* [ Terraform ](#tab-panel-9593)
+* [ Dashboard ](#tab-panel-10034)
+* [ API ](#tab-panel-10035)
+* [ Terraform ](#tab-panel-10036)
 
 | Selector | Operator      | Value              | Logic | Action |
 | -------- | ------------- | ------------------ | ----- | ------ |

@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Connect and secure from any network to anywhere
 
-* [ Watch this episode ](#tab-panel-9266)
-* [ Series overview ](#tab-panel-9267)
+* [ Watch this episode ](#tab-panel-10000)
+* [ Series overview ](#tab-panel-10001)
 
 Build your new corporate network with Cloudflare, connecting any network into our modern SASE platform and secure applications, users, devices and your company data. In this video you will learn all the different methods of connecting networks to Cloudflare and what services can be used to improve security and performance.
 
