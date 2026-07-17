@@ -14,6 +14,15 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/index.xml)
 
+## 2026-07-17
+
+**RealtimeKit Web Core 2.0.1**
+
+**Fixes**
+
+* Fixed ES5 builds containing `VERSION_PLACEHOLDER` in the bundle instead of the actual SDK version.
+* Fixed SDK initialization failure when the initial socket connection attempt failed, which also prevented plugin store creation. The SDK now retries store creation based on the socket connection state.
+
 ## 2026-06-18
 
 **RealtimeKit Web Core 2.0.0**

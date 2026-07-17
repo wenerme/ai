@@ -76,7 +76,7 @@ You can also filter by completed and upcoming milestones on the initiative view.
 
 ## Milestones progress
 
-When viewing milestones in the project details pane, we will show a completion percentage for each milestone. This is the percentage of issues in the milestone that have been moved to a completed status.
+When viewing milestones in the project details pane, we show a completion percentage for each milestone to highlight the progress of the linked issues. Progress starts counting the moment an issue moves to a started status, and increases further once it's completed.
 
 The diamond icon for the milestone will change depending on the completion status and the milestone currently being worked towards will have a yellow icon to show focus. Take a look at the below video to see this in action.
 

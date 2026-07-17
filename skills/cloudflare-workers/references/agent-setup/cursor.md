@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ## Cloudflare platform access

@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ## Cloudflare platform access

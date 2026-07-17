@@ -34,6 +34,9 @@ Current respected settings:
 - `token`: Your GitLab access token. Defaults to environment variables.
 - `visual`: Takes precedence over `editor`. If unset, uses the default editor. Override with environment variable `$VISUAL`.
 
+Configuration file locations follow the XDG Base Directory specification.
+For the full search order and platform-specific paths, see [configuration](https://gitlab.com/gitlab-org/cli#configuration).
+
 ## Aliases
 
 ```plaintext

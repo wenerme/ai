@@ -147,6 +147,7 @@ This change has been observed to notably improve response times in internal benc
 GitLab has validated and tested the following providers. The AI Gateway supports LLM providers that are compatible with [LiteLLM](https://docs.litellm.ai/docs/providers).
 
 - [AWS Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html)
+- [Amazon Bedrock Mantle](#configure-amazon-bedrock-mantle)
 - [Gemini Enterprise Agent Platform](https://cloud.google.com/products/gemini-enterprise-agent-platform)
 - [Azure OpenAI](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure?tabs=global-standard&pivots=azure-openai)
 - [Anthropic](https://platform.claude.com/docs/en/about-claude/models/overview)
@@ -405,6 +406,30 @@ docker run -d \
 ```
 
 For more information, see [Amazon Bedrock Guardrails](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html).
+
+### Configure Amazon Bedrock Mantle
+
+- Status: Beta
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/22787) as a [beta](../../policy/development_stages_support.md#beta) in GitLab 19.3.
+
+[Amazon Bedrock Mantle](https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-mantle.html) is an
+OpenAI API-compatible inference service from AWS.
+Configure Amazon Bedrock Mantle with the API platform like other OpenAI-compatible endpoints.
+
+Only GPT OSS 120B is validated and supported on Amazon Bedrock Mantle.
+
+To configure an Amazon Bedrock Mantle model,
+[add a self-hosted model](configure_duo_features.md#add-a-self-hosted-model) with the following values:
+
+- For **Model family**, select the family that matches the model.
+  For GPT OSS 120B, select **GPT**.
+- For **Endpoint**, enter the regional endpoint in the form `https://bedrock-mantle.<region>.api.aws/v1`
+  (for example, `https://bedrock-mantle.us-east-1.api.aws/v1`).
+- For **Model identifier**, use the `bedrock_mantle/` prefix
+  (for example, `bedrock_mantle/openai.gpt-oss-120b`).
+- For **API key**, enter an Amazon Bedrock Mantle API key.
+  For more information, see [AWS Bedrock API keys](#aws-bedrock-api-keys).
 
 ### Configure authentication with Gemini Enterprise Agent Platform
 

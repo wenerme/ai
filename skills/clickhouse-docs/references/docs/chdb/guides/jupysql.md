@@ -5,7 +5,7 @@ keywords: ['chdb', 'JupySQL']
 doc_type: 'guide'
 ---
 
-[JupySQL](https://jupysql.ploomber.io/en/latest/quick-start.html) is a Python library that lets you run SQL in Jupyter notebooks and the IPython shell.
+[JupySQL](https://jupysql.readthedocs.io/en/latest/quick-start.html) is a Python library that lets you run SQL in Jupyter notebooks and the IPython shell.
 In this guide, we're going to learn how to query data using chDB and JupySQL.
 
 <div class='vimeo-container'>

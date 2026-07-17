@@ -200,13 +200,8 @@ For information on how credit usage is attributed for automatic reviews, see
 
 ## Exclude merge requests from automatic reviews
 
-- Status: Beta
-
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240236) in GitLab 19.2 as a [beta](../../../../policy/development_stages_support.md#beta) [with a flag](../../../../administration/feature_flags/_index.md) named `duo_code_review_automated_rules`. Enabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245852) in GitLab 19.3. Feature flag `duo_code_review_automated_rules` removed.
 
 When automatic reviews are turned on for a project,
 GitLab Duo reviews every eligible merge request.
