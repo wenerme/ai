@@ -1,0 +1,66 @@
+---
+title: '`glab variable import`'
+stage: AI Coding
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Import variables from a JSON file or standard input.
+
+## Synopsis
+
+The inverse of `glab variable export`. Reads a JSON array of
+variable objects, in the same shape `export --output json` emits.
+
+The command:
+
+- Reads from standard input, or from a file with `--input-file`.
+- Imports into the current project by default. Use `--group` to
+  import into a group instead.
+- Stops with an error if a variable already exists. Pass
+  `--skip-existing` to skip those and continue.
+
+Hidden variables' values aren't included in `export` output,
+so re-importing one is skipped with a warning. Set its value again
+with `glab variable set --hidden`.
+
+```plaintext
+glab variable import [flags]
+```
+
+## Aliases
+
+```plaintext
+im
+```
+
+## Examples
+
+```console
+# Pipe an export straight into an import, to restore the same project
+glab variable export | glab variable import
+
+# Import variables from a saved file instead of standard input
+glab variable import --input-file variables.json
+
+# Import into a group instead of the current project
+glab variable export --group gitlab-org | glab variable import --group gitlab-org
+
+# Skip variables that already exist instead of failing
+glab variable import --input-file variables.json --skip-existing
+```
+
+## Options
+
+```plaintext
+  -g, --group string        Select a group or subgroup. Ignored if a repository argument is set.
+  -i, --input-file string   Read the variables JSON from this file instead of standard input.
+  -R, --repo string         Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+      --skip-existing       Skip variables that already exist instead of failing.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

@@ -587,6 +587,7 @@ setting is used:
 | `ci_max_artifact_size_performance`          | 0             |
 | `ci_max_artifact_size_requirements`         | 0             |
 | `ci_max_artifact_size_requirements_v2`      | 0             |
+| `ci_max_artifact_size_sarif`                | 10 MB         |
 | `ci_max_artifact_size_sast`                 | 0             |
 | `ci_max_artifact_size_secret_detection`     | 0             |
 | `ci_max_artifact_size_terraform`            | 5 MB          |

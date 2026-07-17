@@ -5,25 +5,23 @@
 
 ## How AI credits work
 
-Linear's [coding sessions](https://linear.app/docs/coding-sessions) and [agent loops ](https://linear.app/docs/loops)features are billed based on actual usage, not a fixed per-seat fee. Charges are deducted from a prepaid, workspace-level balance.
+Linear's [coding sessions](https://linear.app/docs/coding-sessions) are billed based on actual usage, not a fixed per-seat fee. Charges are deducted from a prepaid, workspace-level balance.
 
 * Your balance is shown in US dollars
 * The balance is pooled across the workspace and shared across AI features that use it
 * You add funds to your balance before they are spent by topping up your credit balance
 
-Using AI credits is **opt-in**. If your workspace never adds funds, you will not have access to these additional features, and you will never be charged for them.
+Using AI credits is **opt-in**. If your workspace never adds funds, you will never be charged for them.
 
 ## How AI credits are used
 
 Feature | Available on | How it's billed
 --- | --- | ---
 Coding sessions | Basic, Business, and Enterprise | Per session, based on the model chosen, complexity of the work, and how long the session runs.
-Loops | Business and Enterprise | Per loop run, based on on the complexity of the loop's instructions and if coding sessions are used.
 
 AI credits are currently used by:
 
 * **Coding sessions**, when Linear Agent writes code and creates pull requests
-* **Agent loops**, when a loop runs agent work in the background
 
 Other Linear AI features are included in your plan and do not draw from your AI credits balance.
 
@@ -31,7 +29,6 @@ Other Linear AI features are included in your plan and do not draw from your AI 
 
 Cost | Task
 --- | ---
-$0.07 - $0.20 | Loop run without a coding session
 $0.50 - $1 | Copy and styling tweaks
 $3 - $5 | Small bug fixes
 $5+ | The cost of more complex tasks varies depending on the time, token consumption, and selected model
@@ -114,23 +111,13 @@ Usage history is retained for 12 months.
 ## FAQ
 
 <details>
-<summary>Which workspaces get promotional launch credits?</summary>
-All existing Business and Enterprise workspaces, and workspaces who upgrade to a Basic, Business or Enterprise plan within 30 days of this launch.
-</details>
-
-<details>
 <summary>Can an admin or owner control who in the workspace has access to use credits?</summary>
-Not at this time. If AI credits are enabled for the workspace, anyone who has access to features that use AI credits can spend from the shared balance, including coding sessions and agent loops.
+Not at this time. If AI credits are enabled for the workspace, anyone who has access to features that use AI credits can spend from the shared balance.
 </details>
 
 <details>
 <summary>Can an owner or admin restrict guests from using AI credits and coding sessions?</summary>
 If you go to _Security, Integrations & applications_ there is a toggle to **Prevent guests from interacting with agents in the workspace.** That prevents guests from using coding sessions and other agent features that consume AI credits.
-</details>
-
-<details>
-<summary>Who can create or manage agent loops?</summary>
-Workspace admins can control who can create, update, and delete workspace loops from [Settings → Security → Workspace management → Manage loops](https://linear.app/settings/security#workspace-management). Team-level loop permissions may also depend on permissions for the team where the loop is created.
 </details>
 
 <details>

@@ -1,5 +1,3 @@
-# Agents Overview
-
 <br />
 
 Managed agents on the Gemini API give you a configurable agent
@@ -57,7 +55,12 @@ interact with external systems.
 
 ## Pricing
 
-Managed agents use a [pay-as-you-go model](https://ai.google.dev/gemini-api/docs/pricing#pricing-for-agents) based on Gemini model tokens and tool usage. A single interaction can trigger multiple reasoning loops, typically consuming 100k to 3M tokens. Environment compute is **not billed** during the preview. See [estimated costs](https://ai.google.dev/gemini-api/docs/antigravity-agent#availability-and-pricing) for per-task breakdowns.
+Managed agents use a [pay-as-you-go model](https://ai.google.dev/gemini-api/docs/pricing#pricing-for-agents)
+based on Gemini model tokens and tool usage. A single interaction can trigger
+multiple reasoning loops, typically consuming 100k to 3M tokens. Environment
+compute is **not billed** during the preview. See [estimated costs](https://ai.google.dev/gemini-api/docs/antigravity-agent#availability-and-pricing)
+for per-task breakdowns. Managed agents are also available on the free tier with
+a free rate limit and usage quota.
 
 ## Limits
 

@@ -338,13 +338,14 @@ components:
         error:
           $ref: '#/components/schemas/BadRequestResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -358,13 +359,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -378,13 +380,14 @@ components:
         error:
           $ref: '#/components/schemas/PaymentRequiredResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -398,13 +401,14 @@ components:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -418,13 +422,14 @@ components:
         error:
           $ref: '#/components/schemas/TooManyRequestsResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -438,13 +443,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -465,6 +471,7 @@ components:
             - frame_type
           type: object
       example:
+        frame_type: first_frame
         image_url:
           url: https://example.com/image.png
         type: image_url
@@ -500,496 +507,376 @@ components:
           max_tokens: 1000
       properties:
         01ai:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         ai21:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         aion-labs:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         akashml:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         alibaba:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         amazon-bedrock:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         amazon-nova:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         ambient:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         anthropic:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         anyscale:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         arcee-ai:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         atlas-cloud:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         atoma:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         avian:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         azure:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         baidu:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         baseten:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         black-forest-labs:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         byteplus:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         centml:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         cerebras:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         chutes:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         cirrascale:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         clarifai:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         cloudflare:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         cohere:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         crofai:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         crucible:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         crusoe:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         darkbloom:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         decart:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         deepgram:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         deepinfra:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         deepseek:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         dekallm:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         digitalocean:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         enfer:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         fake-provider:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         featherless:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         fireworks:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         friendli:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         gmicloud:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         google-ai-studio:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         google-vertex:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         gopomelo:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         groq:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         heygen:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         huggingface:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         hyperbolic:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         hyperbolic-quantized:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         inception:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         inceptron:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         inferact-vllm:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         inference-net:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         infermatic:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         inflection:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         inocloud:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         io-net:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         ionstream:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         klusterai:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         krea:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         lambda:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         lepton:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         liquid:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         lynn:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         lynn-private:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         mancer:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         mancer-old:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         mara:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         meta:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         minimax:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         mistral:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         modal:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         modelrun:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         modular:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         moonshotai:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         morph:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         ncompass:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         nebius:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         nex-agi:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         nextbit:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         nineteen:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         novita:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         nvidia:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         octoai:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         open-inference:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         openai:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         parasail:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         perceptron:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         perplexity:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         phala:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         poolside:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         quiver:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         recraft:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         recursal:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         reflection:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         reka:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         relace:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         replicate:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         sail-research:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         sakana:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         sambanova:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         sambanova-cloaked:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         seed:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         sf-compute:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         siliconflow:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         sourceful:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         stealth:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         stepfun:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         streamlake:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         switchpoint:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         targon:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
+          type: object
+        tencent:
+          additionalProperties: {}
           type: object
         tenstorrent:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         together:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         together-lite:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         ubicloud:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         upstage:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         venice:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         wafer:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         wandb:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         xai:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         xiaomi:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         z-ai:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
       type: object
     VideoGenerationUsage:
@@ -1003,8 +890,9 @@ components:
         cost:
           description: The cost of the video generation in USD.
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         is_byok:
           description: >-
             Whether the request was made using a Bring Your Own Key
@@ -1022,10 +910,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1041,10 +929,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1060,10 +948,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1079,10 +967,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1098,10 +986,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1117,10 +1005,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message

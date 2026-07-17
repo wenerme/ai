@@ -1,11 +1,11 @@
 ---
 title: "Kimi For Coding | Models"
-description: "Use Kimi For Coding models with Mastra. 5 models available."
+description: "Use Kimi For Coding models with Mastra. 6 models available."
 ---
 
 # [Kimi For Coding logo]Kimi For Coding
 
-Access 5 Kimi For Coding models through Mastra's model router. Authentication is handled automatically using the `KIMI_API_KEY` environment variable.
+Access 6 Kimi For Coding models through Mastra's model router. Authentication is handled automatically using the `KIMI_API_KEY` environment variable.
 
 Learn more in the [Kimi For Coding documentation](https://www.kimi.com/code/docs/en/third-party-tools/other-coding-agents.html).
 
@@ -72,6 +72,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kimi-for-coding/k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },

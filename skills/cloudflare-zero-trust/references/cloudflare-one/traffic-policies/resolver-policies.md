@@ -40,7 +40,7 @@ Gateway will route user traffic to your configured DNS resolver based on the mat
 
 You may use resolver policies if you require access to non-publicly routed domains, such as private network services or internal resources. You may also use resolver policies if you need to access a protected DNS service or want to simplify DNS management for multiple locations.
 
-### Internal DNS Beta
+### Internal DNS
 
 [Cloudflare Internal DNS](https://developers.cloudflare.com/dns/internal-dns/) allows you to manage DNS records for internal resources on a private network. DNS zones configured in Internal DNS can only be queried by the Gateway resolver. With resolver policies, you can determine how Gateway resolves your organization's DNS queries to resolve to internal resources based on the context of the query, such as known source IPs for a geographic location.
 
@@ -93,8 +93,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-8021)
-* [ Terraform (v5) ](#tab-panel-8022)
+* [ Dashboard ](#tab-panel-8357)
+* [ Terraform (v5) ](#tab-panel-8358)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
@@ -335,6 +335,6 @@ To evaluate multiple conditions in an expression, select the **And** logical ope
 The **Or** operator will only work with conditions in the same expression group. For example, you cannot compare conditions in **Traffic** with conditions in Identity.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#page","headline":"Resolver policies · Cloudflare One docs","description":"Configure Resolver policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","IPv4","IPv6","QUIC"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#page","headline":"Resolver policies · Cloudflare One docs","description":"Configure Resolver policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","IPv4","IPv6","QUIC"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/resolver-policies/","name":"Resolver policies"}}]}
 ```

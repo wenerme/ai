@@ -563,7 +563,7 @@ You can cancel a running background interaction using the `cancel` method.
 
 ### JavaScript
 
-    await client.interactions.cancel({ id: "INTERACTION_ID" });
+    await client.interactions.cancel("INTERACTION_ID");
 
 ### REST
 
@@ -690,14 +690,431 @@ Each call creates or reuses a Linux sandbox. The `environment` parameter takes t
 
 See [Environments](https://ai.google.dev/gemini-api/docs/agent-environment) for details on sources (Git, GCS, inline), networking, lifecycle, and resource limits.
 
+## Triggers
+
+Triggers let you schedule an agent to run automatically on a cron schedule. A trigger binds an agent, environment, prompt, and schedule into a persistent resource that fires without manual intervention. Each execution reuses the same environment, so files created in one run persist and are visible to the next.
+
+### Create a trigger
+
+Create a trigger by specifying a cron schedule, time zone, and the interaction configuration. The trigger starts in `active` status and will fire on the next matching cron time. Save the returned `id` to manage the trigger in subsequent calls.
+
+### Python
+
+    from google import genai
+
+    client = genai.Client()
+
+    trigger = client.triggers.create(
+        schedule="0 9 * * *",
+        time_zone="America/Argentina/Buenos_Aires",
+        display_name="issue-solver",
+        interaction={
+            "agent": "antigravity-preview-05-2026",
+            "input": "Review open PRs in my-org/my-app for new comments and address feedback. Close issues whose PRs were merged. Then check for new issues labeled 'accepted', skip any already tracked in /workspace/solved-issues/, fix the rest, and open a PR for each. Save reports to /workspace/solved-issues/.",
+            "environment": {
+                "type": "remote",
+                "network": {
+                    "allowlist": [
+                        {
+                            "domain": "api.github.com",
+                            "transform": {
+                                "Authorization": "Bearer ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                            },
+                        },
+                        {"domain": "github.com"},
+                    ]
+                },
+            },
+        },
+    )
+
+    print(f"Trigger created: {trigger.id}")
+    print(f"Next run: {trigger.next_run_time}")
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const client = new GoogleGenAI({});
+
+    const trigger = await client.triggers.create({
+        schedule: "0 9 * * *",
+        time_zone: "America/Argentina/Buenos_Aires",
+        display_name: "issue-solver",
+        interaction: {
+            agent: "antigravity-preview-05-2026",
+            input: [{
+                type: "text",
+                text: "Review open PRs in my-org/my-app for new comments and address feedback. Close issues whose PRs were merged. Then check for new issues labeled 'accepted', skip any already tracked in /workspace/solved-issues/, fix the rest, and open a PR for each. Save reports to /workspace/solved-issues/.",
+            }],
+            environment: {
+                type: "remote",
+                network: {
+                    allowlist: [
+                        {
+                            domain: "api.github.com",
+                            transform: {
+                                "Authorization": "Bearer ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                            },
+                        },
+                        { domain: "github.com" },
+                    ],
+                },
+            },
+        },
+    });
+
+    console.log(`Trigger created: ${trigger.id}`);
+    console.log(`Next run: ${trigger.next_run_time}`);
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/triggers" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -d '{
+          "schedule": "0 9 * * *",
+          "time_zone": "America/Argentina/Buenos_Aires",
+          "display_name": "issue-solver",
+          "interaction": {
+              "agent": "antigravity-preview-05-2026",
+              "input": [{"type": "text", "text": "Review open PRs in my-org/my-app for new comments and address feedback. Close issues whose PRs were merged. Then check for new issues labeled accepted, skip any already tracked in /workspace/solved-issues/, fix the rest, and open a PR for each. Save reports to /workspace/solved-issues/."}],
+              "environment": {
+                  "type": "remote",
+                  "network": {
+                      "allowlist": [
+                          {
+                              "domain": "api.github.com",
+                              "transform": {
+                                  "Authorization": "Bearer ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                              }
+                          },
+                          {"domain": "github.com"}
+                      ]
+                  }
+              }
+          }
+      }'
+
+The `CreateTrigger` request accepts the following fields:
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `schedule` | string | Yes | Cron expression (e.g., `0 * * * *` for hourly, `0 9 * * 1-5` for weekday mornings). |
+| `time_zone` | string | Yes | IANA time zone (e.g., `UTC`, `America/Argentina/Buenos_Aires`). |
+| `display_name` | string | No | Human-readable name for the trigger. |
+| `max_consecutive_failures` | integer | No | Max failures before the trigger is automatically paused. Default: 5. |
+| `execution_timeout_seconds` | integer | No | Timeout per execution in seconds. Default: 600. |
+| `interaction` | object | Yes | A `CreateInteractionRequest` defining the agent, input, tools, and environment. |
+
+The response includes the following key fields:
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | string | Unique identifier for the trigger. Use this in all subsequent operations. |
+| `status` | string | Current state: `active`, `paused`, or `disabled`. |
+| `next_run_time` | string | ISO 8601 timestamp of the next scheduled execution. |
+| `consecutive_failure_count` | integer | Number of consecutive failed executions since the last success. |
+
+### List triggers
+
+Retrieve all triggers associated with your project.
+
+### Python
+
+    triggers = client.triggers.list()
+    for trigger in triggers.triggers:
+        print(f"{trigger.id}: {trigger.display_name} ({trigger.status})")
+
+### JavaScript
+
+    const triggers = await client.triggers.list();
+    for (const trigger of triggers.triggers) {
+        console.log(`${trigger.id}: ${trigger.display_name} (${trigger.status})`);
+    }
+
+### REST
+
+    curl -X GET "https://generativelanguage.googleapis.com/v1beta/triggers" \
+      -H "x-goog-api-key: $GEMINI_API_KEY"
+
+### Get a trigger
+
+Fetch the full configuration and current state of a single trigger.
+
+### Python
+
+    trigger = client.triggers.get(id="TRIGGER_ID")
+    print(f"Schedule: {trigger.schedule}")
+    print(f"Next run: {trigger.next_run_time}")
+
+### JavaScript
+
+    const trigger = await client.triggers.get("TRIGGER_ID");
+    console.log(`Schedule: ${trigger.schedule}`);
+    console.log(`Next run: ${trigger.next_run_time}`);
+
+### REST
+
+    curl -X GET "https://generativelanguage.googleapis.com/v1beta/triggers/TRIGGER_ID" \
+      -H "x-goog-api-key: $GEMINI_API_KEY"
+
+### Pause and resume
+
+You can pause a trigger to stop scheduled executions, and resume it to reactivate the schedule. Pausing does not affect manual executions.
+
+### Python
+
+    # Pause
+    client.triggers.update(id="TRIGGER_ID", status="paused")
+
+    # Resume
+    client.triggers.update(id="TRIGGER_ID", status="active")
+
+### JavaScript
+
+    // Pause
+    await client.triggers.update("TRIGGER_ID", { status: "paused" });
+
+    // Resume
+    await client.triggers.update("TRIGGER_ID", { status: "active" });
+
+### REST
+
+    # Pause
+    curl -X PATCH "https://generativelanguage.googleapis.com/v1beta/triggers/TRIGGER_ID" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -d '{"status": "paused"}'
+
+    # Resume
+    curl -X PATCH "https://generativelanguage.googleapis.com/v1beta/triggers/TRIGGER_ID" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -d '{"status": "active"}'
+
+### Delete a trigger
+
+Permanently remove a trigger. Past execution history is not deleted.
+
+### Python
+
+    client.triggers.delete(id="TRIGGER_ID")
+
+### JavaScript
+
+    await client.triggers.delete("TRIGGER_ID");
+
+### REST
+
+    curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/triggers/TRIGGER_ID" \
+      -H "x-goog-api-key: $GEMINI_API_KEY"
+
+### Run a trigger immediately
+
+Fire a trigger on demand without waiting for the next scheduled time. This works even if the trigger is paused.
+
+### Python
+
+    client.triggers.run(trigger_id="TRIGGER_ID")
+
+### JavaScript
+
+    await client.triggers.run("TRIGGER_ID");
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/triggers/TRIGGER_ID/executions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY"
+
+### List executions
+
+View the execution history for a trigger. Each execution includes a `status`, timestamps, an `interaction_id` you can use to fetch the full interaction output, and an `environment_id` confirming that all runs share the same sandbox.
+
+### Python
+
+    executions = client.triggers.list_executions(trigger_id="TRIGGER_ID")
+    for ex in executions.trigger_executions:
+        print(f"{ex.id}: {ex.status} ({ex.start_time} - {ex.end_time})")
+
+    # Fetch the full interaction for an execution
+    interaction = client.interactions.get(id=ex.interaction_id)
+    print(interaction.output_text)
+
+### JavaScript
+
+    const executions = await client.triggers.listExecutions("TRIGGER_ID");
+    for (const ex of executions.trigger_executions) {
+        console.log(`${ex.id}: ${ex.status} (${ex.start_time} - ${ex.end_time})`);
+    }
+
+    // Fetch the full interaction for an execution
+    const interaction = await client.interactions.get(ex.interaction_id);
+    console.log(interaction.output_text);
+
+### REST
+
+    curl -X GET "https://generativelanguage.googleapis.com/v1beta/triggers/TRIGGER_ID/executions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY"
+
 ## Availability and pricing
 
-Antigravity agent is available in preview through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) in Google AI Studio and the Gemini API.
+Antigravity agent is available in preview through the
+[Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) in Google AI Studio
+and the Gemini API for both free tier and paid tier projects.
 
-Pricing follows a [pay-as-you-go model](https://ai.google.dev/gemini-api/docs/pricing#pricing-for-agents) based on the underlying Gemini model tokens and the tools the agent uses. Unlike a standard chat request that produces a single output, an Antigravity interaction is an agentic workflow. A single request triggers an autonomous loop of reasoning, tool execution, code running, and file management.
+Pricing follows a [pay-as-you-go model](https://ai.google.dev/gemini-api/docs/pricing#pricing-for-agents)
+based on the underlying Gemini model tokens and the tools the agent uses. Unlike a
+standard chat request that produces a single output, an Antigravity interaction is an
+agentic workflow. A single request triggers an autonomous loop of reasoning, tool
+execution, code running, and file management. Free tier projects include a free rate limit
+and usage quota.
 
-> [!NOTE]
-> **Note:** Unlike standard Gemini models, the Antigravity agent runs through multiple autonomous loops per interaction and can accumulate a high number of tokens. You can monitor your agent runs (through [SSE streaming](https://ai.google.dev/gemini-api/docs/streaming)) and cancel the request if the agent appears to be stuck or is running longer than expected.
+Antigravity interactions run multi-turn autonomous loops and can consume
+significant tokens. Set [budget controls](https://ai.google.dev/gemini-api/docs/antigravity-agent#budget-controls) on your request to
+limit token usage. You can also monitor progress in real time with
+[SSE streaming](https://ai.google.dev/gemini-api/docs/streaming), or cancel running requests.
+
+### Budget controls
+
+Set `max_total_tokens` inside `agent_config` (with `"type": "antigravity"`) to limit
+the total number of tokens (input + output + thinking) an interaction can consume.
+Cached tokens do not count toward this limit. When the agent reaches the limit, the
+interaction stops and returns with `status: "incomplete"`. The limit is best-effort:
+actual usage may slightly exceed it depending on when the agent checks the budget
+between steps.
+
+Set the budget on the interaction request in `agent_config` alongside `agent` and `input`.
+
+### Python
+
+    from google import genai
+
+    client = genai.Client()
+
+    interaction = client.interactions.create(
+        agent="antigravity-preview-05-2026",
+        input="Analyze the dataset in /workspace/data.csv and generate a summary report.",
+        agent_config={
+            "type": "antigravity",
+            "max_total_tokens": 50000
+        },
+        environment={
+            "type": "remote",
+            "sources": [
+                {
+                    "type": "inline",
+                    "target": "/workspace/data.csv",
+                    "content": "id,name,value\n1,alpha,100\n2,beta,200\n",
+                }
+            ],
+        }
+    )
+    print(f"Status: {interaction.status}")  # "incomplete" if budget was hit
+    print(f"Tokens used: {interaction.usage.total_tokens}")
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const client = new GoogleGenAI({});
+
+    const interaction = await client.interactions.create({
+        agent: "antigravity-preview-05-2026",
+        input: "Analyze the dataset in /workspace/data.csv and generate a summary report.",
+        agent_config: {
+            type: "antigravity",
+            max_total_tokens: 50000
+        },
+        environment: {
+            type: "remote",
+            sources: [
+                {
+                    type: "inline",
+                    target: "/workspace/data.csv",
+                    content: "id,name,value\n1,alpha,100\n2,beta,200\n",
+                },
+            ],
+        },
+    });
+    console.log(`Status: ${interaction.status}`);
+    console.log(`Tokens used: ${interaction.usage.total_tokens}`);
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -d '{
+        "agent": "antigravity-preview-05-2026",
+        "input": "Analyze the dataset in /workspace/data.csv and generate a summary report.",
+        "agent_config": {
+          "type": "antigravity",
+          "max_total_tokens": 50000
+        },
+        "environment": {
+          "type": "remote",
+          "sources": [
+            {
+              "type": "inline",
+              "target": "/workspace/data.csv",
+              "content": "id,name,value\n1,alpha,100\n2,beta,200\n"
+            }
+          ]
+        }
+      }'
+
+#### Continuing an incomplete interaction
+
+When an interaction returns `status: "incomplete"`, the agent's work and context
+are preserved. Send a new interaction referencing the original interaction `id` and
+`environment_id` to pick up where it left off. The new interaction gets its own
+`max_total_tokens` budget.
+
+### Python
+
+    # Continue from where the agent stopped
+    continuation = client.interactions.create(
+        agent="antigravity-preview-05-2026",
+        input="continue",
+        previous_interaction_id=interaction.id,
+        environment=interaction.environment_id,
+        agent_config={
+            "type": "antigravity",
+            "max_total_tokens": 50000
+        }
+    )
+    print(f"Status: {continuation.status}")
+
+### JavaScript
+
+    const continuation = await client.interactions.create({
+        agent: "antigravity-preview-05-2026",
+        input: "continue",
+        previous_interaction_id: interaction.id,
+        environment: interaction.environment_id,
+        agent_config: {
+            type: "antigravity",
+            max_total_tokens: 50000
+        }
+    });
+    console.log(`Status: ${continuation.status}`);
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -d '{
+        "agent": "antigravity-preview-05-2026",
+        "input": "continue",
+        "previous_interaction_id": "INTERACTION_ID",
+        "environment": "ENVIRONMENT_ID",
+        "agent_config": {
+          "type": "antigravity",
+          "max_total_tokens": 50000
+        }
+      }'
 
 ### Estimated costs
 

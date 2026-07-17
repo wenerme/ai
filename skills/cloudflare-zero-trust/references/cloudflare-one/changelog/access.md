@@ -14,6 +14,17 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/access.xml)
 
+## 2026-07-16
+
+
+**Bulk print PDFs for browser-based RDP**
+
+Users in browser-based RDP sessions can now print multiple PDF files as a single print job. Copy the files to your clipboard on the remote machine, then select **Print all PDFs** in the clipboard panel. The files are combined into one PDF and sent to your local printer.
+
+![The clipboard panel showing the Print all PDFs option for multiple selected PDF files.](https://developers.cloudflare.com/_astro/rdp-bulk-print.DT4sCcI-_Z1XuBEQ.webp)
+
+Bulk print is available in Chromium-based browsers and Firefox. For more information, refer to [Print PDFs for browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#print-pdfs).
+
 ## 2026-07-07
 
 

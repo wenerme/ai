@@ -111,8 +111,9 @@ paths:
             description: Number of records to skip for pagination
             example: 0
             minimum: 0
-            nullable: true
-            type: integer
+            type:
+              - integer
+              - 'null'
         - description: Maximum number of records to return (max 100)
           in: query
           name: limit
@@ -216,13 +217,14 @@ components:
         error:
           $ref: '#/components/schemas/BadRequestResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -236,13 +238,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -256,13 +259,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -284,14 +288,17 @@ components:
         created_at:
           type: string
         creator_user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         description:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         designated_version_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         id:
           type: string
         name:
@@ -301,13 +308,15 @@ components:
         status:
           $ref: '#/components/schemas/PresetStatus'
         status_updated_at:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         updated_at:
           type: string
         workspace_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - id
         - creator_user_id
@@ -332,10 +341,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -351,10 +360,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -370,10 +379,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message

@@ -34,13 +34,15 @@ Retrieves a service account in the project.
 
     - `"organization.project.service_account"`
 
-  - `role: "owner" or "member"`
+  - `role: "owner" or "member" or "none"`
 
-    `owner` or `member`
+    `owner`, `member`, or `none`
 
     - `"owner"`
 
     - `"member"`
+
+    - `"none"`
 
 ### Example
 

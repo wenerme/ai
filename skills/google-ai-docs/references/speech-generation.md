@@ -29,7 +29,7 @@ capabilities, as listed in the [Supported models](https://ai.google.dev/gemini-a
 section. For optimal results, consider which model best fits your specific
 use case.
 
-You may find it useful to \[test the Gemini 2.5 TTS models in AI Studio\]
+You may find it useful to [test the Gemini TTS models in AI Studio](https://aistudio.google.com/generate-speech) before you start building.
 
 > [!NOTE]
 > **Note:** TTS models accept text-only inputs and produce audio-only outputs. For a complete list of restrictions specific to TTS models, review the [Limitations](https://ai.google.dev/gemini-api/docs/speech-generation#limitations) section.
@@ -433,7 +433,7 @@ TTS models support the following 30 voice options in the `voice_name` field:
 | **Achird** -- *Friendly* | **Zubenelgenubi** -- *Casual* | **Vindemiatrix** -- *Gentle* |
 | **Sadachbia** -- *Lively* | **Sadaltager** -- *Knowledgeable* | **Sulafat** -- *Warm* |
 
-You can hear all the voice options in
+You can hear all the voice options in [AI Studio](https://aistudio.google.com/generate-speech).
 
 ## Supported languages
 

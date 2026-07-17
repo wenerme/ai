@@ -40,13 +40,15 @@ Returns a list of service accounts in the project.
 
     - `"organization.project.service_account"`
 
-  - `role: "owner" or "member"`
+  - `role: "owner" or "member" or "none"`
 
-    `owner` or `member`
+    `owner`, `member`, or `none`
 
     - `"owner"`
 
     - `"member"`
+
+    - `"none"`
 
 - `has_more: boolean`
 

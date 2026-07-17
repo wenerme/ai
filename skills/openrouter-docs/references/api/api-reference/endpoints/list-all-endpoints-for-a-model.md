@@ -166,7 +166,7 @@ paths:
                           request: '0'
                         provider_name: OpenAI
                         quantization: fp16
-                        status: default
+                        status: 0
                         supported_parameters:
                           - temperature
                           - top_p
@@ -236,6 +236,7 @@ components:
               p99: 0.85
             max_completion_tokens: 4096
             max_prompt_tokens: 8192
+            model_id: openai/gpt-4
             model_name: GPT-4
             name: 'OpenAI: GPT-4'
             pricing:
@@ -245,7 +246,7 @@ components:
               request: '0'
             provider_name: OpenAI
             quantization: fp16
-            status: default
+            status: 0
             supported_parameters:
               - temperature
               - top_p
@@ -268,11 +269,7 @@ components:
         architecture:
           allOf:
             - $ref: '#/components/schemas/ModelArchitecture'
-            - example:
-                instruct_type: chatml
-                modality: text
-                tokenizer: GPT
-              properties:
+            - properties:
                 input_modalities:
                   description: Supported input modalities
                   items:
@@ -283,17 +280,18 @@ components:
                 modality:
                   description: Primary modality of the model
                   example: text
-                  nullable: true
-                  type: string
+                  type:
+                    - string
+                    - 'null'
                 output_modalities:
                   description: Supported output modalities
                   items:
                     $ref: '#/components/schemas/OutputModality'
                   type: array
                 tokenizer:
-                  allOf:
+                  anyOf:
                     - $ref: '#/components/schemas/ModelGroup'
-                    - nullable: true
+                    - type: 'null'
               required:
                 - tokenizer
                 - instruct_type
@@ -341,13 +339,14 @@ components:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -361,13 +360,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -392,8 +392,9 @@ components:
         modality:
           description: Primary modality of the model
           example: text->text
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         output_modalities:
           description: Supported output modalities
           items:
@@ -442,8 +443,9 @@ components:
         - qwen3
         - null
       example: chatml
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     OutputModality:
       enum:
         - text
@@ -523,11 +525,13 @@ components:
         latency_last_30m:
           $ref: '#/components/schemas/PercentileStats'
         max_completion_tokens:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         max_prompt_tokens:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         model_id:
           description: The unique identifier for the model (permaslug)
           example: openai/gpt-4
@@ -612,9 +616,9 @@ components:
         provider_name:
           $ref: '#/components/schemas/ProviderName'
         quantization:
-          allOf:
+          anyOf:
             - $ref: '#/components/schemas/Quantization'
-            - nullable: true
+            - type: 'null'
         status:
           $ref: '#/components/schemas/EndpointStatus'
         supported_parameters:
@@ -639,20 +643,23 @@ components:
             requests / (successful + error requests) * 100. Rate-limited
             requests are excluded. Returns null if insufficient data.
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         uptime_last_30m:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         uptime_last_5m:
           description: >-
             Uptime percentage over the last 5 minutes, calculated as successful
             requests / (successful + error requests) * 100. Rate-limited
             requests are excluded. Returns null if insufficient data.
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
       required:
         - name
         - model_id
@@ -683,10 +690,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -702,10 +709,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -720,7 +727,6 @@ components:
         p75: 35.2
         p90: 48.7
         p99: 85.3
-      nullable: true
       properties:
         p50:
           description: Median (50th percentile)
@@ -747,7 +753,9 @@ components:
         - p75
         - p90
         - p99
-      type: object
+      type:
+        - object
+        - 'null'
     PricingOverride:
       description: >-
         A conditional override of the base pricing. An entry applies only when
@@ -805,7 +813,6 @@ components:
       type: object
     ProviderName:
       enum:
-        - Meta
         - AkashML
         - AI21
         - AionLabs
@@ -856,6 +863,7 @@ components:
         - Liquid
         - Mara
         - Mancer 2
+        - Meta
         - Minimax
         - ModelRun
         - Mistral
@@ -888,6 +896,7 @@ components:
         - Stealth
         - StreamLake
         - Switchpoint
+        - Tencent
         - Tenstorrent
         - Together
         - Upstage

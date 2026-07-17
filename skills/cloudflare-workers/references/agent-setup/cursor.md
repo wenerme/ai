@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Cloudflare platform access
@@ -71,7 +71,7 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 * AI Gateway server Search your logs, get details about the prompts and responses https://ai-gateway.mcp.cloudflare.com/mcp
 * Audit Logs server Query audit logs and generate reports for review https://auditlogs.mcp.cloudflare.com/mcp
 * Workers Bindings server Build Workers applications with storage, AI, and compute primitives https://bindings.mcp.cloudflare.com/mcp
-* Browser rendering server Fetch web pages, convert them to markdown and take screenshots https://browser.mcp.cloudflare.com/mcp
+* Browser Run server Fetch web pages, convert them to markdown and take screenshots https://browser.mcp.cloudflare.com/mcp
 * Workers Builds server Get insights and manage your Cloudflare Workers Builds https://builds.mcp.cloudflare.com/mcp
 * Cloudflare One CASB server Quickly identify any security misconfigurations for SaaS applications to safeguard users & data https://casb.mcp.cloudflare.com/mcp
 * Container server Spin up a sandbox development environment https://containers.mcp.cloudflare.com/mcp

@@ -1437,11 +1437,11 @@ as input for the model's response.
 
           - `"output_text"`
 
-        - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+        - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
           Citations associated with the text content.
 
-          - `array of object { file_id, filename, index, type }`
+          - `FileCitation object { file_id, filename, index, type }`
 
             - `file_id: string`
 
@@ -1461,7 +1461,7 @@ as input for the model's response.
 
               - `"file_citation"`
 
-          - `array of object { end_index, start_index, title, 2 more }`
+          - `URLCitation object { end_index, start_index, title, 2 more }`
 
             - `end_index: number`
 
@@ -1485,7 +1485,7 @@ as input for the model's response.
 
               The URL of the cited resource.
 
-          - `array of object { container_id, end_index, file_id, 3 more }`
+          - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
             - `container_id: string`
 
@@ -3836,8 +3836,9 @@ as input for the model's response.
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -8114,11 +8115,11 @@ as input for the model's response.
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
-            - `array of object { file_id, filename, index, type }`
+            - `FileCitation object { file_id, filename, index, type }`
 
               - `file_id: string`
 
@@ -8138,7 +8139,7 @@ as input for the model's response.
 
                 - `"file_citation"`
 
-            - `array of object { end_index, start_index, title, 2 more }`
+            - `URLCitation object { end_index, start_index, title, 2 more }`
 
               - `end_index: number`
 
@@ -8162,7 +8163,7 @@ as input for the model's response.
 
                 The URL of the cited resource.
 
-            - `array of object { container_id, end_index, file_id, 3 more }`
+            - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
               - `container_id: string`
 
@@ -10513,8 +10514,9 @@ as input for the model's response.
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -12552,8 +12554,9 @@ as input for the model's response.
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -19857,11 +19860,11 @@ Retrieves a model response with the given ID.
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
-            - `array of object { file_id, filename, index, type }`
+            - `FileCitation object { file_id, filename, index, type }`
 
               - `file_id: string`
 
@@ -19881,7 +19884,7 @@ Retrieves a model response with the given ID.
 
                 - `"file_citation"`
 
-            - `array of object { end_index, start_index, title, 2 more }`
+            - `URLCitation object { end_index, start_index, title, 2 more }`
 
               - `end_index: number`
 
@@ -19905,7 +19908,7 @@ Retrieves a model response with the given ID.
 
                 The URL of the cited resource.
 
-            - `array of object { container_id, end_index, file_id, 3 more }`
+            - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
               - `container_id: string`
 
@@ -22256,8 +22259,9 @@ Retrieves a model response with the given ID.
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -24295,8 +24299,9 @@ Retrieves a model response with the given ID.
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -30905,11 +30910,11 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
-            - `array of object { file_id, filename, index, type }`
+            - `FileCitation object { file_id, filename, index, type }`
 
               - `file_id: string`
 
@@ -30929,7 +30934,7 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `"file_citation"`
 
-            - `array of object { end_index, start_index, title, 2 more }`
+            - `URLCitation object { end_index, start_index, title, 2 more }`
 
               - `end_index: number`
 
@@ -30953,7 +30958,7 @@ the `background` parameter set to `true` can be cancelled.
 
                 The URL of the cited resource.
 
-            - `array of object { container_id, end_index, file_id, 3 more }`
+            - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
               - `container_id: string`
 
@@ -33304,8 +33309,9 @@ the `background` parameter set to `true` can be cancelled.
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -35343,8 +35349,9 @@ the `background` parameter set to `true` can be cancelled.
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -42021,11 +42028,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `"output_text"`
 
-        - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+        - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
           Citations associated with the text content.
 
-          - `array of object { file_id, filename, index, type }`
+          - `FileCitation object { file_id, filename, index, type }`
 
             - `file_id: string`
 
@@ -42045,7 +42052,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"file_citation"`
 
-          - `array of object { end_index, start_index, title, 2 more }`
+          - `URLCitation object { end_index, start_index, title, 2 more }`
 
             - `end_index: number`
 
@@ -42069,7 +42076,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               The URL of the cited resource.
 
-          - `array of object { container_id, end_index, file_id, 3 more }`
+          - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
             - `container_id: string`
 
@@ -44420,8 +44427,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -49325,8 +49333,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -54222,8 +54231,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -57453,11 +57463,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
-            - `array of object { file_id, filename, index, type }`
+            - `FileCitation object { file_id, filename, index, type }`
 
               - `file_id: string`
 
@@ -57477,7 +57487,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                 - `"file_citation"`
 
-            - `array of object { end_index, start_index, title, 2 more }`
+            - `URLCitation object { end_index, start_index, title, 2 more }`
 
               - `end_index: number`
 
@@ -57501,7 +57511,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                 The URL of the cited resource.
 
-            - `array of object { container_id, end_index, file_id, 3 more }`
+            - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
               - `container_id: string`
 
@@ -59852,8 +59862,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -61891,8 +61902,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -68467,11 +68479,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
-              - `array of object { file_id, filename, index, type }`
+              - `FileCitation object { file_id, filename, index, type }`
 
                 - `file_id: string`
 
@@ -68491,7 +68503,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   - `"file_citation"`
 
-              - `array of object { end_index, start_index, title, 2 more }`
+              - `URLCitation object { end_index, start_index, title, 2 more }`
 
                 - `end_index: number`
 
@@ -68515,7 +68527,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   The URL of the cited resource.
 
-              - `array of object { container_id, end_index, file_id, 3 more }`
+              - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
                 - `container_id: string`
 
@@ -70866,8 +70878,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
           - `encrypted_content: optional string`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -72905,8 +72918,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -79942,11 +79956,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
-              - `array of object { file_id, filename, index, type }`
+              - `FileCitation object { file_id, filename, index, type }`
 
                 - `file_id: string`
 
@@ -79966,7 +79980,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   - `"file_citation"`
 
-              - `array of object { end_index, start_index, title, 2 more }`
+              - `URLCitation object { end_index, start_index, title, 2 more }`
 
                 - `end_index: number`
 
@@ -79990,7 +80004,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   The URL of the cited resource.
 
-              - `array of object { container_id, end_index, file_id, 3 more }`
+              - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
                 - `container_id: string`
 
@@ -82341,8 +82355,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
           - `encrypted_content: optional string`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -84380,8 +84395,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -90862,11 +90878,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
-              - `array of object { file_id, filename, index, type }`
+              - `FileCitation object { file_id, filename, index, type }`
 
                 - `file_id: string`
 
@@ -90886,7 +90902,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   - `"file_citation"`
 
-              - `array of object { end_index, start_index, title, 2 more }`
+              - `URLCitation object { end_index, start_index, title, 2 more }`
 
                 - `end_index: number`
 
@@ -90910,7 +90926,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   The URL of the cited resource.
 
-              - `array of object { container_id, end_index, file_id, 3 more }`
+              - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
                 - `container_id: string`
 
@@ -93261,8 +93277,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
           - `encrypted_content: optional string`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -95300,8 +95317,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -102081,11 +102099,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
-              - `array of object { file_id, filename, index, type }`
+              - `FileCitation object { file_id, filename, index, type }`
 
                 - `file_id: string`
 
@@ -102105,7 +102123,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   - `"file_citation"`
 
-              - `array of object { end_index, start_index, title, 2 more }`
+              - `URLCitation object { end_index, start_index, title, 2 more }`
 
                 - `end_index: number`
 
@@ -102129,7 +102147,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   The URL of the cited resource.
 
-              - `array of object { container_id, end_index, file_id, 3 more }`
+              - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
                 - `container_id: string`
 
@@ -104480,8 +104498,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
           - `encrypted_content: optional string`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -106519,8 +106538,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -112872,11 +112892,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
-              - `array of object { file_id, filename, index, type }`
+              - `FileCitation object { file_id, filename, index, type }`
 
                 - `file_id: string`
 
@@ -112896,7 +112916,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   - `"file_citation"`
 
-              - `array of object { end_index, start_index, title, 2 more }`
+              - `URLCitation object { end_index, start_index, title, 2 more }`
 
                 - `end_index: number`
 
@@ -112920,7 +112940,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   The URL of the cited resource.
 
-              - `array of object { container_id, end_index, file_id, 3 more }`
+              - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
                 - `container_id: string`
 
@@ -115271,8 +115291,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
           - `encrypted_content: optional string`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -117310,8 +117331,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -123572,11 +123594,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
           - `"output_text"`
 
-        - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+        - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
           Citations associated with the text content.
 
-          - `array of object { file_id, filename, index, type }`
+          - `FileCitation object { file_id, filename, index, type }`
 
             - `file_id: string`
 
@@ -123596,7 +123618,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
               - `"file_citation"`
 
-          - `array of object { end_index, start_index, title, 2 more }`
+          - `URLCitation object { end_index, start_index, title, 2 more }`
 
             - `end_index: number`
 
@@ -123620,7 +123642,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
               The URL of the cited resource.
 
-          - `array of object { container_id, end_index, file_id, 3 more }`
+          - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
             - `container_id: string`
 
@@ -125971,8 +125993,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -128381,11 +128404,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
           - `"output_text"`
 
-        - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+        - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
           Citations associated with the text content.
 
-          - `array of object { file_id, filename, index, type }`
+          - `FileCitation object { file_id, filename, index, type }`
 
             - `file_id: string`
 
@@ -128405,7 +128428,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
               - `"file_citation"`
 
-          - `array of object { end_index, start_index, title, 2 more }`
+          - `URLCitation object { end_index, start_index, title, 2 more }`
 
             - `end_index: number`
 
@@ -128429,7 +128452,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
               The URL of the cited resource.
 
-          - `array of object { container_id, end_index, file_id, 3 more }`
+          - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
             - `container_id: string`
 
@@ -130780,8 +130803,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -134091,8 +134115,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
     - `encrypted_content: optional string`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -138710,8 +138735,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -143351,8 +143377,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -148636,11 +148663,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
-              - `array of object { file_id, filename, index, type }`
+              - `FileCitation object { file_id, filename, index, type }`
 
                 - `file_id: string`
 
@@ -148660,7 +148687,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   - `"file_citation"`
 
-              - `array of object { end_index, start_index, title, 2 more }`
+              - `URLCitation object { end_index, start_index, title, 2 more }`
 
                 - `end_index: number`
 
@@ -148684,7 +148711,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   The URL of the cited resource.
 
-              - `array of object { container_id, end_index, file_id, 3 more }`
+              - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
                 - `container_id: string`
 
@@ -151035,8 +151062,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
           - `encrypted_content: optional string`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -153074,8 +153102,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -160020,11 +160049,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                 - `"output_text"`
 
-              - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+              - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
                 Citations associated with the text content.
 
-                - `array of object { file_id, filename, index, type }`
+                - `FileCitation object { file_id, filename, index, type }`
 
                   - `file_id: string`
 
@@ -160044,7 +160073,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                     - `"file_citation"`
 
-                - `array of object { end_index, start_index, title, 2 more }`
+                - `URLCitation object { end_index, start_index, title, 2 more }`
 
                   - `end_index: number`
 
@@ -160068,7 +160097,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                     The URL of the cited resource.
 
-                - `array of object { container_id, end_index, file_id, 3 more }`
+                - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
                   - `container_id: string`
 
@@ -162419,8 +162448,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
             - `encrypted_content: optional string`
 
-              The encrypted content of the reasoning item - populated when a response is
-              generated with `reasoning.encrypted_content` in the `include` parameter.
+              The encrypted content of the reasoning item. This is populated by default
+              for reasoning items returned by `POST /v1/responses` and WebSocket
+              `response.create` requests.
 
             - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -164458,8 +164488,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
           - `encrypted_content: optional string`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -172791,11 +172822,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
-              - `array of object { file_id, filename, index, type }`
+              - `FileCitation object { file_id, filename, index, type }`
 
                 - `file_id: string`
 
@@ -172815,7 +172846,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   - `"file_citation"`
 
-              - `array of object { end_index, start_index, title, 2 more }`
+              - `URLCitation object { end_index, start_index, title, 2 more }`
 
                 - `end_index: number`
 
@@ -172839,7 +172870,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                   The URL of the cited resource.
 
-              - `array of object { container_id, end_index, file_id, 3 more }`
+              - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
                 - `container_id: string`
 
@@ -175190,8 +175221,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
           - `encrypted_content: optional string`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -178700,11 +178732,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
-            - `array of object { file_id, filename, index, type }`
+            - `FileCitation object { file_id, filename, index, type }`
 
               - `file_id: string`
 
@@ -178724,7 +178756,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                 - `"file_citation"`
 
-            - `array of object { end_index, start_index, title, 2 more }`
+            - `URLCitation object { end_index, start_index, title, 2 more }`
 
               - `end_index: number`
 
@@ -178748,7 +178780,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                 The URL of the cited resource.
 
-            - `array of object { container_id, end_index, file_id, 3 more }`
+            - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
               - `container_id: string`
 
@@ -180949,8 +180981,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -183663,11 +183696,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                 - `"output_text"`
 
-              - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+              - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
                 Citations associated with the text content.
 
-                - `array of object { file_id, filename, index, type }`
+                - `FileCitation object { file_id, filename, index, type }`
 
                   - `file_id: string`
 
@@ -183687,7 +183720,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                     - `"file_citation"`
 
-                - `array of object { end_index, start_index, title, 2 more }`
+                - `URLCitation object { end_index, start_index, title, 2 more }`
 
                   - `end_index: number`
 
@@ -183711,7 +183744,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                     The URL of the cited resource.
 
-                - `array of object { container_id, end_index, file_id, 3 more }`
+                - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
                   - `container_id: string`
 
@@ -186062,8 +186095,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
             - `encrypted_content: optional string`
 
-              The encrypted content of the reasoning item - populated when a response is
-              generated with `reasoning.encrypted_content` in the `include` parameter.
+              The encrypted content of the reasoning item. This is populated by default
+              for reasoning items returned by `POST /v1/responses` and WebSocket
+              `response.create` requests.
 
             - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -188101,8 +188135,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
           - `encrypted_content: optional string`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -195333,11 +195368,11 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
-            - `array of object { file_id, filename, index, type }`
+            - `FileCitation object { file_id, filename, index, type }`
 
               - `file_id: string`
 
@@ -195357,7 +195392,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                 - `"file_citation"`
 
-            - `array of object { end_index, start_index, title, 2 more }`
+            - `URLCitation object { end_index, start_index, title, 2 more }`
 
               - `end_index: number`
 
@@ -195381,7 +195416,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
                 The URL of the cited resource.
 
-            - `array of object { container_id, end_index, file_id, 3 more }`
+            - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
               - `container_id: string`
 
@@ -197582,8 +197617,9 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -202509,8 +202545,9 @@ Returns a list of input items for a given response.
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -207290,8 +207327,9 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -209737,11 +209775,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `"output_text"`
 
-        - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+        - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
           Citations associated with the text content.
 
-          - `array of object { file_id, filename, index, type }`
+          - `FileCitation object { file_id, filename, index, type }`
 
             - `file_id: string`
 
@@ -209761,7 +209799,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"file_citation"`
 
-          - `array of object { end_index, start_index, title, 2 more }`
+          - `URLCitation object { end_index, start_index, title, 2 more }`
 
             - `end_index: number`
 
@@ -209785,7 +209823,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The URL of the cited resource.
 
-          - `array of object { container_id, end_index, file_id, 3 more }`
+          - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
             - `container_id: string`
 
@@ -212136,8 +212174,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 

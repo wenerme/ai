@@ -1,11 +1,11 @@
 ---
 title: "Agent Tools / MCP"
 description: "通过 Model Context Protocol (MCP) 将 AI 代理连接到 ComfyUI，用于生成图像、视频、音频和 3D 内容。"
-translationSourceHash: 0647990d
+translationSourceHash: f467366b
 translationFrom: agent-tools/index.mdx
 translationBlockHashes:
-  "_intro": 57347fa8
-  "Which One Should I Use?": fa16d052
+  "_intro": 9db234db
+  "Which One Should I Use?": 7b3ab710
   "What about local ComfyUI?": 6e518082
   "What is MCP?": bb62fbe5
 ---
@@ -23,9 +23,6 @@ ComfyUI 提供了 **MCP 服务器** 和 **Comfy CLI**，让 AI 代理和开发�
     Comfy Cloud 内部的代理体验（通过聊天构建和编辑您的画面）。*私有内测；目前仅限候补名单。*
   
   
-    使用 Comfy Partner-Node SDK 运行本地 MCP 服务器。提供统一的 <code>generate_image</code>、<code>generate_video</code>、<code>generate_3d</code> 等工具，覆盖 30+ 合作伙伴提供商。
-  
-  
     第一方本地 MCP 服务器，通过 <code>comfy-cli</code> 驱动您**自己的** ComfyUI 安装。*私有测试；尚未公开提供。*
   
   
@@ -36,14 +33,14 @@ ComfyUI 提供了 **MCP 服务器** 和 **Comfy CLI**，让 AI 代理和开发�
 
 ## 我该用哪个？
 
-| | Comfy Cloud MCP | Comfy Partner MCP | Comfy Local MCP | Comfy CLI |
-|---|---|---|---|---|
-| **类型** | 远程（托管） | 本地 MCP 服务器 | 本地 MCP 服务器 | 本地 CLI |
-| **需要** | Comfy Cloud 订阅 | [Comfy API 密钥](/zh/development/api-development/getting-an-api-key) | 本地 ComfyUI + [comfy-cli](https://github.com/Comfy-Org/comfy-cli) | [Comfy API 密钥](/zh/development/api-development/getting-an-api-key) |
-| **模型** | Comfy Cloud 模型（预装） | 30+ 合作伙伴提供商（BFL、Ideogram、Kling、Runway、Veo、ElevenLabs 等） | 您的本地模型和自定义节点 | 通过 `comfy generate` 调用的合作伙伴节点 |
-| **工作流** | 完整的 ComfyUI 工作流执行 | 合作伙伴 API 生成（无需自定义工作流） | 完整的本地 ComfyUI 工作流执行 | 一次性合作伙伴 API 调用（无需工作流 JSON） |
-| **GPU** | Cloud GPU（无需本地 GPU） | 无需 GPU（基于 API） | 您的本地 GPU | 无需 GPU（基于 API） |
-| **最佳用途** | 聊天驱动代理、模板搜索 | 跨提供商的统一 MCP 工具 | 从聊天驱动您的本地 ComfyUI | 脚本、CI、批处理作业 |
+| | Comfy Cloud MCP | Comfy Local MCP | Comfy CLI |
+|---|---|---|---|
+| **类型** | 远程（托管） | 本地 MCP 服务器 | 本地 CLI |
+| **需要** | Comfy Cloud 订阅 | 本地 ComfyUI + [comfy-cli](https://github.com/Comfy-Org/comfy-cli) | [Comfy API 密钥](/zh/development/api-development/getting-an-api-key) |
+| **模型** | Comfy Cloud 模型（预装） | 您的本地模型和自定义节点 | 通过 `comfy generate` 调用的合作伙伴节点 |
+| **工作流** | 完整的 ComfyUI 工作流执行 | 完整的本地 ComfyUI 工作流执行 | 一次性合作伙伴 API 调用（无需工作流 JSON） |
+| **GPU** | Cloud GPU（无需本地 GPU） | 您的本地 GPU | 无需 GPU（基于 API） |
+| **最佳用途** | 聊天驱动代理、模板搜索 | 从聊天驱动您的本地 ComfyUI | 脚本、CI、批处理作业 |
 
 ---
 

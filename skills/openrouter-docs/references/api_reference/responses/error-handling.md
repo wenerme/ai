@@ -15,7 +15,7 @@
 <Info>
   **Stateless Only**
 
-  This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request.
+  This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request. Requests that set `store: true` or a non-null `previous_response_id` are rejected with a `400` error.
 </Info>
 
 The Responses API Beta returns structured error responses that follow a consistent format.

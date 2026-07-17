@@ -2542,8 +2542,9 @@ Create a conversation.
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -6807,8 +6808,9 @@ Create items in a conversation with the given ID.
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -10173,8 +10175,9 @@ Create items in a conversation with the given ID.
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -13672,8 +13675,9 @@ List all items for a conversation with the given ID.
 
     - `encrypted_content?: string | null`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -17098,8 +17102,9 @@ Get a single item from a conversation with the given IDs.
 
     - `encrypted_content?: string | null`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -20567,8 +20572,9 @@ console.log(conversation);
 
     - `encrypted_content?: string | null`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -23882,8 +23888,9 @@ console.log(conversation);
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 

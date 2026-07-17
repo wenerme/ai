@@ -14,6 +14,34 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/gateway.xml)
 
+## 2026-07-15
+
+
+**Internal DNS is now generally available**
+
+[Internal DNS](https://developers.cloudflare.com/dns/internal-dns/) is now generally available. Internal DNS provides authoritative and recursive DNS for private networks on the same global network and control plane you already use for public DNS, Zero Trust, and application services.
+
+#### Why it matters
+
+* **Consolidate DNS operations.** Public and private DNS run on one platform, with one API, one audit trail, and one place to set policy.
+* **Simplify split-horizon DNS.** Internal and external resolution are defined as separate [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/) over shared zones, managed from a single control plane — so there is no drift to chase down.
+* **Extend Zero Trust to DNS.** Resolver policies decide which users and devices resolve against which view, enforced by the same [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) that already governs the rest of your traffic.
+
+Setting up Internal DNS takes three steps: create a zone, create a view, and define a resolver policy.
+
+```json
+POST /zones
+{
+  "account": {
+    "id": "<ACCOUNT_ID>"
+  },
+  "name": "corp.internal",
+  "type": "internal"
+}
+```
+
+Internal DNS is included with [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) for Enterprise customers. To get started, refer to the [Internal DNS documentation](https://developers.cloudflare.com/dns/internal-dns/).
+
 ## 2026-06-30
 
 
@@ -80,8 +108,8 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7506)
-* [  wrangler.toml ](#tab-panel-7507)
+* [  wrangler.jsonc ](#tab-panel-7838)
+* [  wrangler.toml ](#tab-panel-7839)
 
 **JSONC**
 
@@ -106,8 +134,8 @@ network_id = "cf1:network"
 remote = true
 ```
 
-* [  JavaScript ](#tab-panel-7508)
-* [  TypeScript ](#tab-panel-7509)
+* [  JavaScript ](#tab-panel-7840)
+* [  TypeScript ](#tab-panel-7841)
 
 **JavaScript**
 

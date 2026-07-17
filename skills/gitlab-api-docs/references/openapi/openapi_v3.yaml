@@ -17300,7 +17300,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_e4642b3ac7e6"
+              "$ref": "#/components/schemas/RequestBody_0974bb273dbe"
   "/api/v4/service_accounts":
     post:
       operationId: postApiV4ServiceAccounts
@@ -84012,6 +84012,10 @@ components:
           type: string
         issues_create_limit:
           type: string
+        project_create_limit:
+          type: string
+        group_create_limit:
+          type: string
         notes_create_limit:
           type: string
         notes_create_limit_allowlist_raw:
@@ -97365,7 +97369,7 @@ components:
           description: Scopes available to the application. Separate multiple scopes
             with a space.
           nullable: true
-    RequestBody_e4642b3ac7e6:
+    RequestBody_0974bb273dbe:
       type: object
       properties:
         admin_mode:
@@ -99140,6 +99144,12 @@ components:
           type: string
           nullable: true
         email_restrictions:
+          type: string
+          nullable: true
+        project_create_limit:
+          type: string
+          nullable: true
+        group_create_limit:
           type: string
           nullable: true
         notes_create_limit:

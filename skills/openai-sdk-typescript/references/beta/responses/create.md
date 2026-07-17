@@ -1426,11 +1426,11 @@ as input for the model's response.
 
               - `"output_text"`
 
-            - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+            - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
               Citations associated with the text content.
 
-              - `Array<UnionMember0>`
+              - `FileCitation`
 
                 - `file_id: string`
 
@@ -1450,7 +1450,7 @@ as input for the model's response.
 
                   - `"file_citation"`
 
-              - `Array<UnionMember1>`
+              - `URLCitation`
 
                 - `end_index: number`
 
@@ -1474,7 +1474,7 @@ as input for the model's response.
 
                   The URL of the cited resource.
 
-              - `Array<UnionMember2>`
+              - `ContainerFileCitation`
 
                 - `container_id: string`
 
@@ -2843,8 +2843,9 @@ as input for the model's response.
 
           - `encrypted_content?: string | null`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -6201,11 +6202,11 @@ as input for the model's response.
 
             - `"output_text"`
 
-          - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+          - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
             Citations associated with the text content.
 
-            - `Array<UnionMember0>`
+            - `FileCitation`
 
               - `file_id: string`
 
@@ -6225,7 +6226,7 @@ as input for the model's response.
 
                 - `"file_citation"`
 
-            - `Array<UnionMember1>`
+            - `URLCitation`
 
               - `end_index: number`
 
@@ -6249,7 +6250,7 @@ as input for the model's response.
 
                 The URL of the cited resource.
 
-            - `Array<UnionMember2>`
+            - `ContainerFileCitation`
 
               - `container_id: string`
 
@@ -7618,8 +7619,9 @@ as input for the model's response.
 
         - `encrypted_content?: string | null`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status?: "in_progress" | "completed" | "incomplete"`
 

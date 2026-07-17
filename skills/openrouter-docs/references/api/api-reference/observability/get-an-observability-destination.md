@@ -203,13 +203,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -223,13 +224,14 @@ components:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -243,13 +245,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -336,10 +339,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -355,10 +358,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -374,10 +377,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -409,8 +412,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             apiKey:
@@ -454,8 +458,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -522,8 +527,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             apiKey:
@@ -562,8 +568,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -632,8 +639,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             database:
@@ -683,8 +691,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -751,8 +760,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             apiKey:
@@ -799,8 +809,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -867,8 +878,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             apiKey:
@@ -907,8 +919,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -975,8 +988,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             baseUrl:
@@ -1015,8 +1029,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -1083,8 +1098,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             apiKey:
@@ -1131,8 +1147,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -1178,7 +1195,7 @@ components:
         api_key_hashes: null
         config:
           licenseKey: '****...AbCd'
-          region: US
+          region: us
         created_at: '2025-08-24T10:30:00Z'
         enabled: true
         filter_rules: null
@@ -1198,8 +1215,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             headers:
@@ -1237,8 +1255,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -1305,8 +1324,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             apiKey:
@@ -1346,8 +1366,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -1412,8 +1433,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             endpoint:
@@ -1447,8 +1469,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -1514,8 +1537,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             apiKey:
@@ -1550,8 +1574,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -1617,8 +1642,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             apiKey:
@@ -1654,8 +1680,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -1722,8 +1749,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             accessKeyId:
@@ -1785,8 +1813,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -1831,6 +1860,7 @@ components:
       example:
         api_key_hashes: null
         config:
+          dsn: https://abc123@o0.ingest.sentry.io/0
           otlpEndpoint: https://o0.ingest.sentry.io/api/0/otlp
         created_at: '2025-08-24T10:30:00Z'
         enabled: true
@@ -1851,8 +1881,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             dsn:
@@ -1888,8 +1919,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -1955,8 +1987,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             account:
@@ -2004,8 +2037,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -2073,8 +2107,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             apiKey:
@@ -2117,8 +2152,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -2183,8 +2219,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         config:
           properties:
             headers:
@@ -2220,8 +2257,9 @@ components:
         name:
           description: Human-readable name for the destination.
           example: Production Langfuse
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         privacy_mode:
           description: >-
             When true, request/response bodies are not forwarded to this
@@ -2265,7 +2303,6 @@ components:
     ObservabilityFilterRulesConfig:
       description: Optional structured filter rules controlling which events are forwarded.
       example: null
-      nullable: true
       properties:
         enabled:
           default: true
@@ -2276,7 +2313,9 @@ components:
           type: array
       required:
         - groups
-      type: object
+      type:
+        - object
+        - 'null'
     ObservabilityFilterRuleGroup:
       example:
         logic: and

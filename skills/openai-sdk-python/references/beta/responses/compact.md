@@ -1562,11 +1562,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `"output_text"`
 
-        - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+        - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
           Citations associated with the text content.
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+          - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
             - `file_id: str`
 
@@ -1586,7 +1586,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"file_citation"`
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+          - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
             - `end_index: int`
 
@@ -1610,7 +1610,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               The URL of the cited resource.
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+          - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
             - `container_id: str`
 
@@ -2991,8 +2991,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -5408,8 +5409,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 

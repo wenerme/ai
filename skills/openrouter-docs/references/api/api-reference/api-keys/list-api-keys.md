@@ -119,8 +119,9 @@ paths:
             description: Number of API keys to skip for pagination
             example: 0
             minimum: 0
-            nullable: true
-            type: integer
+            type:
+              - integer
+              - 'null'
         - description: >-
             Filter API keys by workspace ID. By default, keys in the default
             workspace are returned.
@@ -248,8 +249,9 @@ paths:
                             created the key. For individual users, this is the
                             user's own ID.
                           example: user_2dHFtVWx2n56w6HkM0000000000
-                          nullable: true
-                          type: string
+                          type:
+                            - string
+                            - 'null'
                         disabled:
                           description: Whether the API key is disabled
                           example: false
@@ -260,8 +262,9 @@ paths:
                             null if no expiration
                           example: '2027-12-31T23:59:59Z'
                           format: date-time
-                          nullable: true
-                          type: string
+                          type:
+                            - string
+                            - 'null'
                         hash:
                           description: Unique hash identifier for the API key
                           example: >-
@@ -281,19 +284,22 @@ paths:
                           description: Spending limit for the API key in USD
                           example: 100
                           format: double
-                          nullable: true
-                          type: number
+                          type:
+                            - number
+                            - 'null'
                         limit_remaining:
                           description: Remaining spending limit in USD
                           example: 74.5
                           format: double
-                          nullable: true
-                          type: number
+                          type:
+                            - number
+                            - 'null'
                         limit_reset:
                           description: Type of limit reset for the API key
                           example: monthly
-                          nullable: true
-                          type: string
+                          type:
+                            - string
+                            - 'null'
                         name:
                           description: Name of the API key
                           example: My Production Key
@@ -303,8 +309,9 @@ paths:
                             ISO 8601 timestamp of when the API key was last
                             updated
                           example: '2025-08-24T15:45:00Z'
-                          nullable: true
-                          type: string
+                          type:
+                            - string
+                            - 'null'
                         usage:
                           description: >-
                             Total OpenRouter credit usage (in USD) for the API
@@ -406,13 +413,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -426,13 +434,14 @@ components:
         error:
           $ref: '#/components/schemas/TooManyRequestsResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -446,13 +455,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -467,10 +477,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -486,10 +496,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -505,10 +515,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message

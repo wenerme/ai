@@ -3291,8 +3291,9 @@ Retrieves a model response with the given ID.
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -4871,8 +4872,9 @@ Retrieves a model response with the given ID.
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 

@@ -1815,13 +1815,15 @@ Returns a list of service accounts in the project.
 
     - `"organization.project.service_account"`
 
-  - `role: "owner" | "member"`
+  - `role: "owner" | "member" | "none"`
 
-    `owner` or `member`
+    `owner`, `member`, or `none`
 
     - `"owner"`
 
     - `"member"`
+
+    - `"none"`
 
 ### Example
 
@@ -1866,7 +1868,7 @@ for await (const projectServiceAccount of client.admin.organization.projects.ser
 
 **post** `/organization/projects/{project_id}/service_accounts`
 
-Creates a new service account in the project. This also returns an unredacted API key for the service account.
+Creates a new service account in the project. By default, this also returns an unredacted API key for the service account.
 
 ### Parameters
 
@@ -1877,6 +1879,10 @@ Creates a new service account in the project. This also returns an unredacted AP
   - `name: string`
 
     The name of the service account being created.
+
+  - `create_service_account_only?: boolean | null`
+
+    Create the service account without default roles or an API key.
 
 ### Returns
 
@@ -1908,11 +1914,13 @@ Creates a new service account in the project. This also returns an unredacted AP
 
     - `"organization.project.service_account"`
 
-  - `role: "member"`
+  - `role: "member" | "none"`
 
-    Service accounts can only have one role of type `member`
+    Service accounts created with default project membership have role `member`. Accounts created with `create_service_account_only` have role `none`.
 
     - `"member"`
+
+    - `"none"`
 
 ### Example
 
@@ -1992,13 +2000,15 @@ Retrieves a service account in the project.
 
     - `"organization.project.service_account"`
 
-  - `role: "owner" | "member"`
+  - `role: "owner" | "member" | "none"`
 
-    `owner` or `member`
+    `owner`, `member`, or `none`
 
     - `"owner"`
 
     - `"member"`
+
+    - `"none"`
 
 ### Example
 
@@ -2083,13 +2093,15 @@ Updates a service account in the project.
 
     - `"organization.project.service_account"`
 
-  - `role: "owner" | "member"`
+  - `role: "owner" | "member" | "none"`
 
-    `owner` or `member`
+    `owner`, `member`, or `none`
 
     - `"owner"`
 
     - `"member"`
+
+    - `"none"`
 
 ### Example
 
@@ -2206,13 +2218,15 @@ console.log(serviceAccount.id);
 
     - `"organization.project.service_account"`
 
-  - `role: "owner" | "member"`
+  - `role: "owner" | "member" | "none"`
 
-    `owner` or `member`
+    `owner`, `member`, or `none`
 
     - `"owner"`
 
     - `"member"`
+
+    - `"none"`
 
 ### Service Account Create Response
 
@@ -2244,11 +2258,13 @@ console.log(serviceAccount.id);
 
     - `"organization.project.service_account"`
 
-  - `role: "member"`
+  - `role: "member" | "none"`
 
-    Service accounts can only have one role of type `member`
+    Service accounts created with default project membership have role `member`. Accounts created with `create_service_account_only` have role `none`.
 
     - `"member"`
+
+    - `"none"`
 
 ### Service Account Delete Response
 
@@ -2261,6 +2277,101 @@ console.log(serviceAccount.id);
   - `object: "organization.project.service_account.deleted"`
 
     - `"organization.project.service_account.deleted"`
+
+# API Keys
+
+## Create project service account API key
+
+`client.admin.organization.projects.serviceAccounts.apiKeys.create(stringserviceAccountID, APIKeyCreateParamsparams, RequestOptionsoptions?): APIKeyCreateResponse`
+
+**post** `/organization/projects/{project_id}/service_accounts/{service_account_id}/api_keys`
+
+Creates an API key for a service account in the project.
+
+### Parameters
+
+- `serviceAccountID: string`
+
+- `params: APIKeyCreateParams`
+
+  - `project_id: string`
+
+    Path param: The ID of the project.
+
+  - `name?: string`
+
+    Body param: API key name.
+
+  - `scopes?: Array<string>`
+
+    Body param: API key scopes.
+
+### Returns
+
+- `APIKeyCreateResponse`
+
+  - `id: string`
+
+  - `created_at: number`
+
+  - `name: string`
+
+  - `object: "organization.project.service_account.api_key"`
+
+    The object type, which is always `organization.project.service_account.api_key`
+
+    - `"organization.project.service_account.api_key"`
+
+  - `value: string`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const apiKey = await client.admin.organization.projects.serviceAccounts.apiKeys.create(
+  'service_account_id',
+  { project_id: 'project_id' },
+);
+
+console.log(apiKey.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project.service_account.api_key",
+  "value": "value"
+}
+```
+
+## Domain Types
+
+### API Key Create Response
+
+- `APIKeyCreateResponse`
+
+  - `id: string`
+
+  - `created_at: number`
+
+  - `name: string`
+
+  - `object: "organization.project.service_account.api_key"`
+
+    The object type, which is always `organization.project.service_account.api_key`
+
+    - `"organization.project.service_account.api_key"`
+
+  - `value: string`
 
 # API Keys
 

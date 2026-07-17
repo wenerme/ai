@@ -130,19 +130,30 @@ paths:
           content:
             application/json:
               example:
+                container: null
                 content:
-                  - text: >-
+                  - citations: []
+                    text: >-
                       I'm doing well, thank you for asking! How can I help you
                       today?
                     type: text
                 id: msg_abc123
                 model: anthropic/claude-sonnet-4
                 role: assistant
+                stop_details: null
                 stop_reason: end_turn
+                stop_sequence: null
                 type: message
                 usage:
+                  cache_creation: null
+                  cache_creation_input_tokens: null
+                  cache_read_input_tokens: null
+                  inference_geo: null
                   input_tokens: 12
                   output_tokens: 18
+                  output_tokens_details: null
+                  server_tool_use: null
+                  service_tier: standard
               schema:
                 $ref: '#/components/schemas/MessagesResult'
             text/event-stream:
@@ -314,7 +325,6 @@ components:
         cache_control:
           $ref: '#/components/schemas/AnthropicCacheControlDirective'
         context_management:
-          nullable: true
           properties:
             edits:
               items:
@@ -328,12 +338,13 @@ components:
                           - items:
                               type: string
                             type: array
-                          - nullable: true
+                          - type: 'null'
                       exclude_tools:
                         items:
                           type: string
-                        nullable: true
-                        type: array
+                        type:
+                          - array
+                          - 'null'
                       keep:
                         $ref: '#/components/schemas/AnthropicToolUsesKeep'
                       trigger:
@@ -378,16 +389,19 @@ components:
                     type: object
                   - properties:
                       instructions:
-                        nullable: true
-                        type: string
+                        type:
+                          - string
+                          - 'null'
                       pause_after_compaction:
                         type: boolean
                       trigger:
-                        allOf:
-                          - $ref: '#/components/schemas/AnthropicInputTokensTrigger'
-                          - nullable: true
-                            properties: {}
-                            type: object
+                        anyOf:
+                          - allOf:
+                              - $ref: >-
+                                  #/components/schemas/AnthropicInputTokensTrigger
+                              - properties: {}
+                                type: object
+                          - type: 'null'
                         example:
                           type: input_tokens
                           value: 100000
@@ -399,7 +413,9 @@ components:
                       - type
                     type: object
               type: array
-          type: object
+          type:
+            - object
+            - 'null'
         fallbacks:
           description: >-
             Fallback models to try if the primary model fails or refuses, in
@@ -410,20 +426,23 @@ components:
             - model: claude-opus-4-8
           items:
             $ref: '#/components/schemas/MessagesFallbackParam'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         max_tokens:
           type: integer
         messages:
           items:
             $ref: '#/components/schemas/MessagesMessageParam'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         metadata:
           properties:
             user_id:
-              nullable: true
-              type: string
+              type:
+                - string
+                - 'null'
           type: object
         model:
           type: string
@@ -597,16 +616,15 @@ components:
                   description:
                     type: string
                   input_schema:
-                    additionalProperties:
-                      nullable: true
+                    additionalProperties: {}
                     properties:
-                      properties:
-                        nullable: true
+                      properties: {}
                       required:
                         items:
                           type: string
-                        nullable: true
-                        type: array
+                        type:
+                          - array
+                          - 'null'
                       type:
                         default: object
                         type: string
@@ -655,18 +673,21 @@ components:
                   allowed_domains:
                     items:
                       type: string
-                    nullable: true
-                    type: array
+                    type:
+                      - array
+                      - 'null'
                   blocked_domains:
                     items:
                       type: string
-                    nullable: true
-                    type: array
+                    type:
+                      - array
+                      - 'null'
                   cache_control:
                     $ref: '#/components/schemas/AnthropicCacheControlDirective'
                   max_uses:
-                    nullable: true
-                    type: integer
+                    type:
+                      - integer
+                      - 'null'
                   name:
                     enum:
                       - web_search
@@ -687,18 +708,21 @@ components:
                   allowed_domains:
                     items:
                       type: string
-                    nullable: true
-                    type: array
+                    type:
+                      - array
+                      - 'null'
                   blocked_domains:
                     items:
                       type: string
-                    nullable: true
-                    type: array
+                    type:
+                      - array
+                      - 'null'
                   cache_control:
                     $ref: '#/components/schemas/AnthropicCacheControlDirective'
                   max_uses:
-                    nullable: true
-                    type: integer
+                    type:
+                      - integer
+                      - 'null'
                   name:
                     enum:
                       - web_search
@@ -719,9 +743,9 @@ components:
                   cache_control:
                     $ref: '#/components/schemas/AnthropicCacheControlDirective'
                   caching:
-                    allOf:
+                    anyOf:
                       - $ref: '#/components/schemas/AnthropicCacheControlDirective'
-                      - nullable: true
+                      - type: 'null'
                   defer_loading:
                     type: boolean
                   max_uses:
@@ -747,8 +771,7 @@ components:
               - $ref: '#/components/schemas/MessagesSearchModelsServerTool'
               - $ref: '#/components/schemas/WebFetchServerTool'
               - $ref: '#/components/schemas/OpenRouterWebSearchServerTool'
-              - additionalProperties:
-                  nullable: true
+              - additionalProperties: {}
                 properties:
                   type:
                     type: string
@@ -781,12 +804,10 @@ components:
         - $ref: '#/components/schemas/BaseMessagesResult'
         - properties:
             context_management:
-              nullable: true
               properties:
                 applied_edits:
                   items:
-                    additionalProperties:
-                      nullable: true
+                    additionalProperties: {}
                     properties:
                       type:
                         type: string
@@ -796,7 +817,9 @@ components:
                   type: array
               required:
                 - applied_edits
-              type: object
+              type:
+                - object
+                - 'null'
             openrouter_metadata:
               $ref: '#/components/schemas/OpenRouterMetadata'
             provider:
@@ -807,8 +830,9 @@ components:
                 - properties:
                     cost:
                       format: double
-                      nullable: true
-                      type: number
+                      type:
+                        - number
+                        - 'null'
                     cost_details:
                       $ref: '#/components/schemas/CostDetails'
                     is_byok:
@@ -818,8 +842,9 @@ components:
                         $ref: '#/components/schemas/AnthropicUsageIteration'
                       type: array
                     service_tier:
-                      nullable: true
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                     speed:
                       $ref: '#/components/schemas/AnthropicSpeed'
                   type: object
@@ -830,6 +855,7 @@ components:
                 inference_geo: null
                 input_tokens: 100
                 output_tokens: 50
+                output_tokens_details: null
                 server_tool_use: null
                 service_tier: standard
           type: object
@@ -856,6 +882,7 @@ components:
           inference_geo: null
           input_tokens: 12
           output_tokens: 15
+          output_tokens_details: null
           server_tool_use: null
           service_tier: standard
     MessagesStreamingResponse:
@@ -903,13 +930,14 @@ components:
         error:
           $ref: '#/components/schemas/ForbiddenResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -937,7 +965,6 @@ components:
       example:
         type: input_tokens
         value: 50000
-      nullable: true
       properties:
         type:
           enum:
@@ -948,7 +975,9 @@ components:
       required:
         - type
         - value
-      type: object
+      type:
+        - object
+        - 'null'
     AnthropicToolUsesKeep:
       example:
         type: tool_uses
@@ -1010,8 +1039,7 @@ components:
         - value
       type: object
     MessagesFallbackParam:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       description: >-
         Fallback model to try when the primary model fails or refuses. Only the
         `model` field is supported; per-attempt overrides are rejected.
@@ -1042,8 +1070,7 @@ components:
                         $ref: '#/components/schemas/AnthropicCacheControlDirective'
                       id:
                         type: string
-                      input:
-                        nullable: true
+                      input: {}
                       name:
                         type: string
                       type:
@@ -1124,8 +1151,7 @@ components:
                         $ref: '#/components/schemas/AnthropicCacheControlDirective'
                       id:
                         type: string
-                      input:
-                        nullable: true
+                      input: {}
                       name:
                         type: string
                       type:
@@ -1179,8 +1205,9 @@ components:
                       cache_control:
                         $ref: '#/components/schemas/AnthropicCacheControlDirective'
                       content:
-                        nullable: true
-                        type: string
+                        type:
+                          - string
+                          - 'null'
                       type:
                         enum:
                           - compaction
@@ -1221,18 +1248,17 @@ components:
             - max
             - null
           example: medium
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         format:
           description: >-
             A schema to specify Claude's output format in responses. See
             [structured
             outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs).
-          nullable: true
           properties:
             schema:
-              additionalProperties:
-                nullable: true
+              additionalProperties: {}
               type: object
             type:
               enum:
@@ -1241,7 +1267,9 @@ components:
           required:
             - type
             - schema
-          type: object
+          type:
+            - object
+            - 'null'
         task_budget:
           description: >-
             Task budget for an agentic turn. The model sees a countdown of
@@ -1250,12 +1278,12 @@ components:
           example:
             total: 400000
             type: tokens
-          nullable: true
           properties:
             remaining:
               minimum: 0
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             total:
               minimum: 20000
               type: integer
@@ -1266,7 +1294,9 @@ components:
           required:
             - type
             - total
-          type: object
+          type:
+            - object
+            - 'null'
       type: object
     AutoRouterPlugin:
       example:
@@ -1442,15 +1472,15 @@ components:
                     - format: double
                       type: number
                     - type: boolean
-                    - nullable: true
+                    - type: 'null'
                     - items:
                         anyOf:
                           - type: string
                           - format: double
                             type: number
                           - type: boolean
-                          - nullable: true
-                          - nullable: true
+                          - type: 'null'
+                          - type: 'null'
                       type: array
                     - additionalProperties:
                         anyOf:
@@ -1458,10 +1488,10 @@ components:
                           - format: double
                             type: number
                           - type: boolean
-                          - nullable: true
-                          - nullable: true
+                          - type: 'null'
+                          - type: 'null'
                       type: object
-                    - nullable: true
+                    - type: 'null'
                 description: >-
                   Optional configuration forwarded as the tool's `parameters`
                   object.
@@ -1657,7 +1687,6 @@ components:
         routing preference.
       example:
         allow_fallbacks: true
-      nullable: true
       properties:
         allow_fallbacks:
           description: >
@@ -1668,8 +1697,9 @@ components:
 
             - false: use only the primary/custom provider, and return the
             upstream error if it's unavailable.
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         data_collection:
           description: >-
             Data collection setting. If no available model provider meets the
@@ -1685,16 +1715,18 @@ components:
             - allow
             - null
           example: allow
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         enforce_distillable_text:
           description: >-
             Whether to restrict routing to only models that allow text
             distillation. When true, only models where the author has allowed
             distillation will be used.
           example: true
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         ignore:
           description: >-
             List of provider slugs to ignore. If provided, this list is merged
@@ -1706,8 +1738,9 @@ components:
             anyOf:
               - $ref: '#/components/schemas/ProviderName'
               - type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         max_price:
           description: >-
             The object specifying the maximum price you want to pay for this
@@ -1740,8 +1773,9 @@ components:
             anyOf:
               - $ref: '#/components/schemas/ProviderName'
               - type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         order:
           description: >-
             An ordered list of provider slugs. The router will attempt to use
@@ -1756,8 +1790,9 @@ components:
             anyOf:
               - $ref: '#/components/schemas/ProviderName'
               - type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         preferred_max_latency:
           $ref: '#/components/schemas/PreferredMaxLatency'
         preferred_min_throughput:
@@ -1766,21 +1801,23 @@ components:
           description: A list of quantization levels to filter the provider by.
           items:
             $ref: '#/components/schemas/Quantization'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         require_parameters:
           description: >-
             Whether to filter providers to only those that support the
             parameters you've provided. If this setting is omitted or set to
             false, then providers will receive only the parameters they support,
             and ignore the rest.
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         sort:
           anyOf:
             - $ref: '#/components/schemas/ProviderSort'
             - $ref: '#/components/schemas/ProviderSortConfig'
-            - nullable: true
+            - type: 'null'
           description: >-
             The sorting strategy to use for this request, if "order" is not
             specified. When set, no load balancing is performed.
@@ -1791,9 +1828,12 @@ components:
             endpoints. When true, only endpoints that do not retain prompts will
             be used.
           example: true
-          nullable: true
-          type: boolean
-      type: object
+          type:
+            - boolean
+            - 'null'
+      type:
+        - object
+        - 'null'
     DeprecatedRoute:
       deprecated: true
       description: >-
@@ -1805,8 +1845,9 @@ components:
         - sort
         - null
       example: fallback
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
       x-fern-ignore: true
       x-speakeasy-deprecation-message: Use providers.sort.partition instead.
       x-speakeasy-ignore: true
@@ -1816,8 +1857,9 @@ components:
         - standard
         - null
       example: standard
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     StopServerToolsWhen:
       description: >-
         Stop conditions for the server-tool agent loop. Any condition firing
@@ -1865,8 +1907,9 @@ components:
                   #/components/schemas/AnthropicCitationWebSearchResultLocationParam
               - $ref: >-
                   #/components/schemas/AnthropicCitationSearchResultLocationParam
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         text:
           type: string
         type:
@@ -1883,8 +1926,9 @@ components:
         - omitted
         - null
       example: summarized
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     AnthropicWebSearchToolUserLocation:
       example:
         city: San Francisco
@@ -1892,27 +1936,32 @@ components:
         region: California
         timezone: America/Los_Angeles
         type: approximate
-      nullable: true
       properties:
         city:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         country:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         region:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         timezone:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - approximate
           type: string
       required:
         - type
-      type: object
+      type:
+        - object
+        - 'null'
     AnthropicAllowedCallers:
       example:
         - direct
@@ -2033,8 +2082,7 @@ components:
         - type
       type: object
     TraceConfig:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       description: >-
         Metadata for observability and tracing. Known keys (trace_id,
         trace_name, span_name, generation_name, parent_span_id) have special
@@ -2071,10 +2119,15 @@ components:
         stop_sequence: null
         type: message
         usage:
+          cache_creation: null
           cache_creation_input_tokens: null
           cache_read_input_tokens: null
+          inference_geo: null
           input_tokens: 12
           output_tokens: 8
+          output_tokens_details: null
+          server_tool_use: null
+          service_tier: standard
       properties:
         container:
           $ref: '#/components/schemas/AnthropicContainer'
@@ -2095,8 +2148,9 @@ components:
         stop_reason:
           $ref: '#/components/schemas/ORAnthropicStopReason'
         stop_sequence:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - message
@@ -2166,8 +2220,9 @@ components:
             $ref: '#/components/schemas/PipelineStage'
           type: array
         region:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         requested:
           type: string
         strategy:
@@ -2185,7 +2240,6 @@ components:
       type: object
     ProviderName:
       enum:
-        - Meta
         - AkashML
         - AI21
         - AionLabs
@@ -2236,6 +2290,7 @@ components:
         - Liquid
         - Mara
         - Mancer 2
+        - Meta
         - Minimax
         - ModelRun
         - Mistral
@@ -2268,6 +2323,7 @@ components:
         - Stealth
         - StreamLake
         - Switchpoint
+        - Tencent
         - Tenstorrent
         - Together
         - Upstage
@@ -2297,14 +2353,17 @@ components:
         cache_creation:
           $ref: '#/components/schemas/AnthropicCacheCreation'
         cache_creation_input_tokens:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         cache_read_input_tokens:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         inference_geo:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         input_tokens:
           type: integer
         output_tokens:
@@ -2332,22 +2391,24 @@ components:
         upstream_inference_completions_cost: 0.0004
         upstream_inference_cost: null
         upstream_inference_prompt_cost: 0.0008
-      nullable: true
       properties:
         upstream_inference_completions_cost:
           format: double
           type: number
         upstream_inference_cost:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         upstream_inference_prompt_cost:
           format: double
           type: number
       required:
         - upstream_inference_prompt_cost
         - upstream_inference_completions_cost
-      type: object
+      type:
+        - object
+        - 'null'
     AnthropicUsageIteration:
       anyOf:
         - $ref: '#/components/schemas/AnthropicCompactionUsageIteration'
@@ -2424,10 +2485,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2478,14 +2539,16 @@ components:
         cache_control:
           $ref: '#/components/schemas/AnthropicCacheControlDirective'
         citations:
-          nullable: true
           properties:
             enabled:
               type: boolean
-          type: object
+          type:
+            - object
+            - 'null'
         context:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         source:
           oneOf:
             - $ref: '#/components/schemas/AnthropicBase64PdfSource'
@@ -2517,8 +2580,9 @@ components:
             - $ref: '#/components/schemas/AnthropicUrlPdfSource'
             - $ref: '#/components/schemas/AnthropicFileDocumentSource'
         title:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - document
@@ -2571,8 +2635,9 @@ components:
         encrypted_content:
           type: string
         page_age:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         title:
           type: string
         type:
@@ -2600,8 +2665,7 @@ components:
         type: advisor_tool_result
       properties:
         content:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         tool_use_id:
           type: string
@@ -2646,31 +2710,36 @@ components:
         region: California
         timezone: America/Los_Angeles
         type: approximate
-      nullable: true
       properties:
         city:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         country:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         region:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         timezone:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - approximate
           type: string
-      type: object
+      type:
+        - object
+        - 'null'
     PreferredMaxLatency:
       anyOf:
         - format: double
           type: number
         - $ref: '#/components/schemas/PercentileLatencyCutoffs'
-        - nullable: true
+        - type: 'null'
       description: >-
         Preferred maximum latency (in seconds). Can be a number (applies to p50)
         or an object with percentile-specific cutoffs. Endpoints above the
@@ -2683,7 +2752,7 @@ components:
         - format: double
           type: number
         - $ref: '#/components/schemas/PercentileThroughputCutoffs'
-        - nullable: true
+        - type: 'null'
       description: >-
         Preferred minimum throughput (in tokens per second). Can be a number
         (applies to p50) or an object with percentile-specific cutoffs.
@@ -2729,8 +2798,9 @@ components:
             - exacto
             - null
           example: price
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         partition:
           description: >-
             Partitioning strategy for sorting: "model" (default) groups
@@ -2741,8 +2811,9 @@ components:
             - none
             - null
           example: model
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       type: object
     StopServerToolsWhenCondition:
       description: A single condition that, when met, halts the server-tool agent loop.
@@ -2782,8 +2853,9 @@ components:
         document_index:
           type: integer
         document_title:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         end_char_index:
           type: integer
         start_char_index:
@@ -2814,8 +2886,9 @@ components:
         document_index:
           type: integer
         document_title:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         end_block_index:
           type: integer
         start_block_index:
@@ -2846,8 +2919,9 @@ components:
         document_index:
           type: integer
         document_title:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         end_page_number:
           type: integer
         start_page_number:
@@ -2885,8 +2959,9 @@ components:
         start_block_index:
           type: integer
         title:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - search_result_location
@@ -2913,8 +2988,9 @@ components:
         encrypted_index:
           type: string
         title:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - web_search_result_location
@@ -2957,8 +3033,7 @@ components:
           - type: string
           - format: double
             type: number
-          - items:
-              nullable: true
+          - items: {}
             type: array
       description: >-
         Configuration for the openrouter:image_generation server tool. Accepts
@@ -3079,7 +3154,6 @@ components:
       example:
         expires_at: '2026-04-08T00:00:00Z'
         id: ctr_01abc
-      nullable: true
       properties:
         expires_at:
           type: string
@@ -3088,7 +3162,9 @@ components:
       required:
         - id
         - expires_at
-      type: object
+      type:
+        - object
+        - 'null'
     ORAnthropicContentBlock:
       discriminator:
         mapping:
@@ -3146,18 +3222,19 @@ components:
         category: cyber
         explanation: The request was refused due to policy.
         type: refusal
-      nullable: true
       properties:
         category:
           enum:
             - cyber
             - bio
             - null
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         explanation:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - refusal
@@ -3166,7 +3243,9 @@ components:
         - type
         - category
         - explanation
-      type: object
+      type:
+        - object
+        - 'null'
     ORAnthropicStopReason:
       enum:
         - end_turn
@@ -3178,8 +3257,9 @@ components:
         - compaction
         - null
       example: end_turn
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     RouterAttempt:
       example:
         model: openai/gpt-4o
@@ -3216,8 +3296,7 @@ components:
         - available
       type: object
     RouterParams:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       example:
         version_group: anthropic/claude-sonnet-4
       properties:
@@ -3246,11 +3325,11 @@ components:
       properties:
         cost_usd:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         data:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         guardrail_id:
           type: string
@@ -3283,7 +3362,6 @@ components:
       example:
         ephemeral_1h_input_tokens: 0
         ephemeral_5m_input_tokens: 100
-      nullable: true
       properties:
         ephemeral_1h_input_tokens:
           type: integer
@@ -3292,22 +3370,24 @@ components:
       required:
         - ephemeral_5m_input_tokens
         - ephemeral_1h_input_tokens
-      type: object
+      type:
+        - object
+        - 'null'
     AnthropicOutputTokensDetails:
       example:
         thinking_tokens: 0
-      nullable: true
       properties:
         thinking_tokens:
           type: integer
       required:
         - thinking_tokens
-      type: object
+      type:
+        - object
+        - 'null'
     AnthropicServerToolUsage:
       example:
         web_fetch_requests: 0
         web_search_requests: 1
-      nullable: true
       properties:
         web_fetch_requests:
           type: integer
@@ -3316,7 +3396,9 @@ components:
       required:
         - web_search_requests
         - web_fetch_requests
-      type: object
+      type:
+        - object
+        - 'null'
     AnthropicServiceTier:
       enum:
         - standard
@@ -3324,8 +3406,9 @@ components:
         - batch
         - null
       example: standard
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     AnthropicCompactionUsageIteration:
       allOf:
         - $ref: '#/components/schemas/AnthropicBaseUsageIteration'
@@ -3494,8 +3577,9 @@ components:
               type: object
             - properties:
                 content:
-                  nullable: true
-                  type: string
+                  type:
+                    - string
+                    - 'null'
                 type:
                   enum:
                     - compaction_delta
@@ -3519,6 +3603,7 @@ components:
       description: Event sent when a new content block starts
       example:
         content_block:
+          citations: []
           text: ''
           type: text
         index: 0
@@ -3542,8 +3627,9 @@ components:
             - $ref: '#/components/schemas/AnthropicAdvisorToolResult'
             - properties:
                 content:
-                  nullable: true
-                  type: string
+                  type:
+                    - string
+                    - 'null'
                 type:
                   enum:
                     - compaction
@@ -3614,12 +3700,18 @@ components:
       description: Event sent when the message metadata changes (e.g., stop_reason)
       example:
         delta:
+          container: null
           stop_details: null
           stop_reason: end_turn
           stop_sequence: null
         type: message_delta
         usage:
+          cache_creation_input_tokens: null
+          cache_read_input_tokens: null
+          input_tokens: null
           output_tokens: 15
+          output_tokens_details: null
+          server_tool_use: null
       properties:
         delta:
           properties:
@@ -3630,8 +3722,9 @@ components:
             stop_reason:
               $ref: '#/components/schemas/ORAnthropicStopReason'
             stop_sequence:
-              nullable: true
-              type: string
+              type:
+                - string
+                - 'null'
           required:
             - container
             - stop_details
@@ -3647,14 +3740,17 @@ components:
             cache_creation:
               $ref: '#/components/schemas/AnthropicCacheCreation'
             cache_creation_input_tokens:
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             cache_read_input_tokens:
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             input_tokens:
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             iterations:
               items:
                 $ref: '#/components/schemas/AnthropicUsageIteration'
@@ -3664,7 +3760,6 @@ components:
             output_tokens_details:
               $ref: '#/components/schemas/AnthropicOutputTokensDetails'
             server_tool_use:
-              nullable: true
               properties:
                 web_fetch_requests:
                   type: integer
@@ -3673,7 +3768,9 @@ components:
               required:
                 - web_search_requests
                 - web_fetch_requests
-              type: object
+              type:
+                - object
+                - 'null'
           required:
             - input_tokens
             - output_tokens
@@ -3691,6 +3788,7 @@ components:
       description: Event sent at the start of a streaming message
       example:
         message:
+          container: null
           content: []
           id: msg_01XFDUDYJgAACzvnptvVoYEL
           model: claude-sonnet-4-5-20250929
@@ -3700,8 +3798,15 @@ components:
           stop_sequence: null
           type: message
           usage:
+            cache_creation: null
+            cache_creation_input_tokens: null
+            cache_read_input_tokens: null
+            inference_geo: null
             input_tokens: 12
             output_tokens: 0
+            output_tokens_details: null
+            server_tool_use: null
+            service_tier: standard
         type: message_start
       properties:
         message:
@@ -3734,7 +3839,6 @@ components:
                 - Lynn 2
                 - Lynn
                 - Mancer
-                - Meta
                 - Modal
                 - Nineteen
                 - OctoAI
@@ -3797,6 +3901,7 @@ components:
                 - Liquid
                 - Mara
                 - Mancer 2
+                - Meta
                 - Minimax
                 - ModelRun
                 - Mistral
@@ -3829,6 +3934,7 @@ components:
                 - Stealth
                 - StreamLake
                 - Switchpoint
+                - Tencent
                 - Tenstorrent
                 - Together
                 - Upstage
@@ -3848,10 +3954,8 @@ components:
               type: string
             stop_details:
               $ref: '#/components/schemas/AnthropicRefusalStopDetails'
-            stop_reason:
-              nullable: true
-            stop_sequence:
-              nullable: true
+            stop_reason: {}
+            stop_sequence: {}
             type:
               enum:
                 - message
@@ -3874,6 +3978,7 @@ components:
                 inference_geo: null
                 input_tokens: 100
                 output_tokens: 50
+                output_tokens_details: null
                 server_tool_use: null
                 service_tier: standard
           required:
@@ -4085,23 +4190,27 @@ components:
         p50:
           description: Maximum p50 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p75:
           description: Maximum p75 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p90:
           description: Maximum p90 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p99:
           description: Maximum p99 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
       type: object
     PercentileThroughputCutoffs:
       description: >-
@@ -4114,23 +4223,27 @@ components:
         p50:
           description: Minimum p50 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p75:
           description: Minimum p75 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p90:
           description: Minimum p90 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p99:
           description: Minimum p99 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
       type: object
     StopServerToolsWhenFinishReasonIs:
       description: Stop when the upstream model emits this finish reason (e.g. `length`).
@@ -4308,17 +4421,21 @@ components:
         type: approximate
       properties:
         city:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         country:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         region:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         timezone:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - approximate
@@ -4333,8 +4450,7 @@ components:
         type: advisor_tool_result
       properties:
         content:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         tool_use_id:
           type: string
@@ -4401,8 +4517,9 @@ components:
         type: compaction
       properties:
         content:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - compaction
@@ -4443,7 +4560,8 @@ components:
       type: object
     ORAnthropicServerToolUseBlock:
       example:
-        caller: null
+        caller:
+          type: direct
         id: srvtoolu_01abc
         input: {}
         name: advisor
@@ -4453,8 +4571,7 @@ components:
           $ref: '#/components/schemas/ORAnthropicNullableCaller'
         id:
           type: string
-        input:
-          nullable: true
+        input: {}
         name:
           type: string
         type:
@@ -4475,8 +4592,9 @@ components:
         citations:
           items:
             $ref: '#/components/schemas/AnthropicTextCitation'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         text:
           type: string
         type:
@@ -4569,8 +4687,7 @@ components:
           $ref: '#/components/schemas/AnthropicCaller'
         id:
           type: string
-        input:
-          nullable: true
+        input: {}
         name:
           type: string
         type:
@@ -4710,13 +4827,15 @@ components:
         document_index:
           type: integer
         document_title:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         end_char_index:
           type: integer
         file_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         start_char_index:
           type: integer
         type:
@@ -4747,13 +4866,15 @@ components:
         document_index:
           type: integer
         document_title:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         end_block_index:
           type: integer
         file_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         start_block_index:
           type: integer
         type:
@@ -4784,13 +4905,15 @@ components:
         document_index:
           type: integer
         document_title:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         end_page_number:
           type: integer
         file_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         start_page_number:
           type: integer
         type:
@@ -4827,8 +4950,9 @@ components:
         start_block_index:
           type: integer
         title:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - search_result_location
@@ -4855,8 +4979,9 @@ components:
         encrypted_index:
           type: string
         title:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - web_search_result_location
@@ -4958,12 +5083,13 @@ components:
           direct:
             $ref: '#/components/schemas/AnthropicDirectCaller'
         propertyName: type
-      example: null
+      example:
+        type: direct
       oneOf:
         - $ref: '#/components/schemas/AnthropicDirectCaller'
         - $ref: '#/components/schemas/AnthropicCodeExecution20250825Caller'
         - $ref: '#/components/schemas/AnthropicCodeExecution20260120Caller'
-        - nullable: true
+        - type: 'null'
     AnthropicTextCitation:
       discriminator:
         mapping:
@@ -5085,8 +5211,9 @@ components:
         encrypted_content:
           type: string
         page_age:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         title:
           type: string
         type:
@@ -5129,13 +5256,14 @@ components:
       example:
         ephemeral_1h_input_tokens: 0
         ephemeral_5m_input_tokens: 0
-      nullable: true
       properties:
         ephemeral_1h_input_tokens:
           type: integer
         ephemeral_5m_input_tokens:
           type: integer
-      type: object
+      type:
+        - object
+        - 'null'
     AnthropicBashCodeExecutionResult:
       example:
         content: []
@@ -5327,20 +5455,25 @@ components:
         lines:
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         new_lines:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         new_start:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         old_lines:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         old_start:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         type:
           enum:
             - text_editor_code_execution_str_replace_result
@@ -5368,8 +5501,9 @@ components:
             - file_not_found
           type: string
         error_message:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - text_editor_code_execution_tool_result_error
@@ -5397,14 +5531,17 @@ components:
             - pdf
           type: string
         num_lines:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         start_line:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         total_lines:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         type:
           enum:
             - text_editor_code_execution_view_result
@@ -5426,8 +5563,9 @@ components:
         error_code:
           $ref: '#/components/schemas/AnthropicServerToolErrorCode'
         error_message:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - tool_search_tool_result_error
@@ -5473,8 +5611,9 @@ components:
         content:
           $ref: '#/components/schemas/AnthropicDocumentBlock'
         retrieved_at:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - web_fetch_result
@@ -5581,8 +5720,9 @@ components:
             - $ref: '#/components/schemas/AnthropicBase64PdfSource'
             - $ref: '#/components/schemas/AnthropicPlainTextSource'
         title:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - document
@@ -5596,13 +5736,14 @@ components:
       default: null
       example:
         enabled: true
-      nullable: true
       properties:
         enabled:
           type: boolean
       required:
         - enabled
-      type: object
+      type:
+        - object
+        - 'null'
   securitySchemes:
     apiKey:
       description: API key as bearer token in Authorization header

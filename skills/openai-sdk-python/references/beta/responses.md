@@ -1457,11 +1457,11 @@ as input for the model's response.
 
           - `"output_text"`
 
-        - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+        - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
           Citations associated with the text content.
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+          - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
             - `file_id: str`
 
@@ -1481,7 +1481,7 @@ as input for the model's response.
 
               - `"file_citation"`
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+          - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
             - `end_index: int`
 
@@ -1505,7 +1505,7 @@ as input for the model's response.
 
               The URL of the cited resource.
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+          - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
             - `container_id: str`
 
@@ -2886,8 +2886,9 @@ as input for the model's response.
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -6243,11 +6244,11 @@ as input for the model's response.
 
             - `"output_text"`
 
-          - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+          - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
             Citations associated with the text content.
 
-            - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+            - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
               - `file_id: str`
 
@@ -6267,7 +6268,7 @@ as input for the model's response.
 
                 - `"file_citation"`
 
-            - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+            - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
               - `end_index: int`
 
@@ -6291,7 +6292,7 @@ as input for the model's response.
 
                 The URL of the cited resource.
 
-            - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+            - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
               - `container_id: str`
 
@@ -7672,8 +7673,9 @@ as input for the model's response.
 
         - `encrypted_content: Optional[str]`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -13704,11 +13706,11 @@ Retrieves a model response with the given ID.
 
             - `"output_text"`
 
-          - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+          - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
             Citations associated with the text content.
 
-            - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+            - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
               - `file_id: str`
 
@@ -13728,7 +13730,7 @@ Retrieves a model response with the given ID.
 
                 - `"file_citation"`
 
-            - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+            - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
               - `end_index: int`
 
@@ -13752,7 +13754,7 @@ Retrieves a model response with the given ID.
 
                 The URL of the cited resource.
 
-            - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+            - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
               - `container_id: str`
 
@@ -15133,8 +15135,9 @@ Retrieves a model response with the given ID.
 
         - `encrypted_content: Optional[str]`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -20470,11 +20473,11 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"output_text"`
 
-          - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+          - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
             Citations associated with the text content.
 
-            - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+            - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
               - `file_id: str`
 
@@ -20494,7 +20497,7 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `"file_citation"`
 
-            - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+            - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
               - `end_index: int`
 
@@ -20518,7 +20521,7 @@ the `background` parameter set to `true` can be cancelled.
 
                 The URL of the cited resource.
 
-            - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+            - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
               - `container_id: str`
 
@@ -21899,8 +21902,9 @@ the `background` parameter set to `true` can be cancelled.
 
         - `encrypted_content: Optional[str]`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -27291,11 +27295,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `"output_text"`
 
-        - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+        - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
           Citations associated with the text content.
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+          - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
             - `file_id: str`
 
@@ -27315,7 +27319,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"file_citation"`
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+          - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
             - `end_index: int`
 
@@ -27339,7 +27343,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               The URL of the cited resource.
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+          - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
             - `container_id: str`
 
@@ -28720,8 +28724,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -31137,8 +31142,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -34948,8 +34954,9 @@ print(compacted_response)
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -40173,11 +40180,11 @@ print(compacted_response)
 
             - `"output_text"`
 
-          - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+          - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
             Citations associated with the text content.
 
-            - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+            - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
               - `file_id: str`
 
@@ -40197,7 +40204,7 @@ print(compacted_response)
 
                 - `"file_citation"`
 
-            - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+            - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
               - `end_index: int`
 
@@ -40221,7 +40228,7 @@ print(compacted_response)
 
                 The URL of the cited resource.
 
-            - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+            - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
               - `container_id: str`
 
@@ -41602,8 +41609,9 @@ print(compacted_response)
 
         - `encrypted_content: Optional[str]`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -47204,11 +47212,11 @@ print(compacted_response)
 
               - `"output_text"`
 
-            - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+            - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
               Citations associated with the text content.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+              - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
                 - `file_id: str`
 
@@ -47228,7 +47236,7 @@ print(compacted_response)
 
                   - `"file_citation"`
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+              - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
                 - `end_index: int`
 
@@ -47252,7 +47260,7 @@ print(compacted_response)
 
                   The URL of the cited resource.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+              - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
                 - `container_id: str`
 
@@ -48633,8 +48641,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -54750,11 +54759,11 @@ print(compacted_response)
 
               - `"output_text"`
 
-            - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+            - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
               Citations associated with the text content.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+              - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
                 - `file_id: str`
 
@@ -54774,7 +54783,7 @@ print(compacted_response)
 
                   - `"file_citation"`
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+              - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
                 - `end_index: int`
 
@@ -54798,7 +54807,7 @@ print(compacted_response)
 
                   The URL of the cited resource.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+              - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
                 - `container_id: str`
 
@@ -56179,8 +56188,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -61655,11 +61665,11 @@ print(compacted_response)
 
               - `"output_text"`
 
-            - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+            - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
               Citations associated with the text content.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+              - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
                 - `file_id: str`
 
@@ -61679,7 +61689,7 @@ print(compacted_response)
 
                   - `"file_citation"`
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+              - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
                 - `end_index: int`
 
@@ -61703,7 +61713,7 @@ print(compacted_response)
 
                   The URL of the cited resource.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+              - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
                 - `container_id: str`
 
@@ -63084,8 +63094,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -69488,11 +69499,11 @@ print(compacted_response)
 
               - `"output_text"`
 
-            - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+            - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
               Citations associated with the text content.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+              - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
                 - `file_id: str`
 
@@ -69512,7 +69523,7 @@ print(compacted_response)
 
                   - `"file_citation"`
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+              - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
                 - `end_index: int`
 
@@ -69536,7 +69547,7 @@ print(compacted_response)
 
                   The URL of the cited resource.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+              - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
                 - `container_id: str`
 
@@ -70917,8 +70928,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -75979,11 +75991,11 @@ print(compacted_response)
 
               - `"output_text"`
 
-            - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+            - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
               Citations associated with the text content.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+              - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
                 - `file_id: str`
 
@@ -76003,7 +76015,7 @@ print(compacted_response)
 
                   - `"file_citation"`
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+              - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
                 - `end_index: int`
 
@@ -76027,7 +76039,7 @@ print(compacted_response)
 
                   The URL of the cited resource.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+              - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
                 - `container_id: str`
 
@@ -77408,8 +77420,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -82379,11 +82392,11 @@ print(compacted_response)
 
           - `"output_text"`
 
-        - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+        - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
           Citations associated with the text content.
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+          - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
             - `file_id: str`
 
@@ -82403,7 +82416,7 @@ print(compacted_response)
 
               - `"file_citation"`
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+          - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
             - `end_index: int`
 
@@ -82427,7 +82440,7 @@ print(compacted_response)
 
               The URL of the cited resource.
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+          - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
             - `container_id: str`
 
@@ -83808,8 +83821,9 @@ print(compacted_response)
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -86225,11 +86239,11 @@ print(compacted_response)
 
           - `"output_text"`
 
-        - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+        - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
           Citations associated with the text content.
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+          - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
             - `file_id: str`
 
@@ -86249,7 +86263,7 @@ print(compacted_response)
 
               - `"file_citation"`
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+          - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
             - `end_index: int`
 
@@ -86273,7 +86287,7 @@ print(compacted_response)
 
               The URL of the cited resource.
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+          - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
             - `container_id: str`
 
@@ -87654,8 +87668,9 @@ print(compacted_response)
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -90059,11 +90074,11 @@ print(compacted_response)
 
         - `"output_text"`
 
-      - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+      - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
         Citations associated with the text content.
 
-        - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+        - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
           - `file_id: str`
 
@@ -90083,7 +90098,7 @@ print(compacted_response)
 
             - `"file_citation"`
 
-        - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+        - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
           - `end_index: int`
 
@@ -90107,7 +90122,7 @@ print(compacted_response)
 
             The URL of the cited resource.
 
-        - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+        - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
           - `container_id: str`
 
@@ -91488,8 +91503,9 @@ print(compacted_response)
 
     - `encrypted_content: Optional[str]`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -94200,11 +94216,11 @@ print(compacted_response)
 
         - `"output_text"`
 
-      - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+      - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
         Citations associated with the text content.
 
-        - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+        - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
           - `file_id: str`
 
@@ -94224,7 +94240,7 @@ print(compacted_response)
 
             - `"file_citation"`
 
-        - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+        - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
           - `end_index: int`
 
@@ -94248,7 +94264,7 @@ print(compacted_response)
 
             The URL of the cited resource.
 
-        - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+        - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
           - `container_id: str`
 
@@ -95629,8 +95645,9 @@ print(compacted_response)
 
     - `encrypted_content: Optional[str]`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -99616,8 +99633,9 @@ print(compacted_response)
 
     - `encrypted_content: Optional[str]`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -102155,8 +102173,9 @@ print(compacted_response)
 
     - `encrypted_content: Optional[str]`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -105739,8 +105758,9 @@ print(compacted_response)
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -109345,8 +109365,9 @@ print(compacted_response)
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -113602,11 +113623,11 @@ print(compacted_response)
 
               - `"output_text"`
 
-            - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+            - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
               Citations associated with the text content.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+              - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
                 - `file_id: str`
 
@@ -113626,7 +113647,7 @@ print(compacted_response)
 
                   - `"file_citation"`
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+              - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
                 - `end_index: int`
 
@@ -113650,7 +113671,7 @@ print(compacted_response)
 
                   The URL of the cited resource.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+              - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
                 - `container_id: str`
 
@@ -115031,8 +115052,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -118681,8 +118703,9 @@ print(compacted_response)
 
   - `encrypted_content: Optional[str]`
 
-    The encrypted content of the reasoning item - populated when a response is
-    generated with `reasoning.encrypted_content` in the `include` parameter.
+    The encrypted content of the reasoning item. This is populated by default
+    for reasoning items returned by `POST /v1/responses` and WebSocket
+    `response.create` requests.
 
   - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -120757,11 +120780,11 @@ print(compacted_response)
 
                 - `"output_text"`
 
-              - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+              - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
                 Citations associated with the text content.
 
-                - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+                - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
                   - `file_id: str`
 
@@ -120781,7 +120804,7 @@ print(compacted_response)
 
                     - `"file_citation"`
 
-                - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+                - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
                   - `end_index: int`
 
@@ -120805,7 +120828,7 @@ print(compacted_response)
 
                     The URL of the cited resource.
 
-                - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+                - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
                   - `container_id: str`
 
@@ -122186,8 +122209,9 @@ print(compacted_response)
 
             - `encrypted_content: Optional[str]`
 
-              The encrypted content of the reasoning item - populated when a response is
-              generated with `reasoning.encrypted_content` in the `include` parameter.
+              The encrypted content of the reasoning item. This is populated by default
+              for reasoning items returned by `POST /v1/responses` and WebSocket
+              `response.create` requests.
 
             - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -131567,11 +131591,11 @@ print(compacted_response)
 
               - `"output_text"`
 
-            - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+            - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
               Citations associated with the text content.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+              - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
                 - `file_id: str`
 
@@ -131591,7 +131615,7 @@ print(compacted_response)
 
                   - `"file_citation"`
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+              - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
                 - `end_index: int`
 
@@ -131615,7 +131639,7 @@ print(compacted_response)
 
                   The URL of the cited resource.
 
-              - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+              - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
                 - `container_id: str`
 
@@ -132996,8 +133020,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -136770,11 +136795,11 @@ print(compacted_response)
 
                 - `"output_text"`
 
-              - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+              - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
                 Citations associated with the text content.
 
-                - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+                - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
                   - `file_id: str`
 
@@ -136794,7 +136819,7 @@ print(compacted_response)
 
                     - `"file_citation"`
 
-                - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+                - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
                   - `end_index: int`
 
@@ -136818,7 +136843,7 @@ print(compacted_response)
 
                     The URL of the cited resource.
 
-                - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+                - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
                   - `container_id: str`
 
@@ -138199,8 +138224,9 @@ print(compacted_response)
 
             - `encrypted_content: Optional[str]`
 
-              The encrypted content of the reasoning item - populated when a response is
-              generated with `reasoning.encrypted_content` in the `include` parameter.
+              The encrypted content of the reasoning item. This is populated by default
+              for reasoning items returned by `POST /v1/responses` and WebSocket
+              `response.create` requests.
 
             - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -147762,8 +147788,9 @@ Returns a list of input items for a given response.
 
     - `encrypted_content: Optional[str]`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -151406,8 +151433,9 @@ print(response.data)
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -153743,11 +153771,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `"output_text"`
 
-        - `annotations: Optional[Union[List[MultiAgentCallOutputOutputAnnotationsUnionMember0], List[MultiAgentCallOutputOutputAnnotationsUnionMember1], List[MultiAgentCallOutputOutputAnnotationsUnionMember2], null]]`
+        - `annotations: Optional[List[MultiAgentCallOutputOutputAnnotation]]`
 
           Citations associated with the text content.
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember0]`
+          - `class MultiAgentCallOutputOutputAnnotationFileCitation: …`
 
             - `file_id: str`
 
@@ -153767,7 +153795,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"file_citation"`
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember1]`
+          - `class MultiAgentCallOutputOutputAnnotationURLCitation: …`
 
             - `end_index: int`
 
@@ -153791,7 +153819,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               The URL of the cited resource.
 
-          - `List[MultiAgentCallOutputOutputAnnotationsUnionMember2]`
+          - `class MultiAgentCallOutputOutputAnnotationContainerFileCitation: …`
 
             - `container_id: str`
 
@@ -155172,8 +155200,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 

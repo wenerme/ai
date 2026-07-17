@@ -42,13 +42,15 @@ Returns a list of service accounts in the project.
 
     - `"organization.project.service_account"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: Literal["owner", "member", "none"]`
 
-    `owner` or `member`
+    `owner`, `member`, or `none`
 
     - `"owner"`
 
     - `"member"`
+
+    - `"none"`
 
 ### Example
 

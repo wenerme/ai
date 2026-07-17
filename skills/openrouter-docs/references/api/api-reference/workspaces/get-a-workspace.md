@@ -203,13 +203,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -223,13 +224,14 @@ components:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -243,13 +245,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -278,30 +281,35 @@ components:
         created_by:
           description: User ID of the workspace creator
           example: user_abc123
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         default_image_model:
           description: Default image model for this workspace
           example: openai/dall-e-3
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         default_provider_sort:
           description: >-
             Default provider sort preference (price, throughput, latency,
             exacto)
           example: price
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         default_text_model:
           description: Default text model for this workspace
           example: openai/gpt-4o
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         description:
           description: Description of the workspace
           example: Production environment workspace
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         id:
           description: Unique identifier for the workspace
           example: 550e8400-e29b-41d4-a716-446655440000
@@ -314,8 +322,9 @@ components:
           example: null
           items:
             type: integer
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         io_logging_sampling_rate:
           description: >-
             Sampling rate for I/O logging (0.0001-1). 1 means 100% of requests
@@ -346,8 +355,9 @@ components:
         updated_at:
           description: ISO 8601 timestamp of when the workspace was last updated
           example: '2025-08-24T15:45:00Z'
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - id
         - name
@@ -376,10 +386,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -395,10 +405,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -414,10 +424,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message

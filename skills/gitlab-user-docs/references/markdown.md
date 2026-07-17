@@ -187,6 +187,11 @@ Would generate the following heading anchors:
 1. `#this-heading-has-35-in-it-and-parentheses`
 1. `#this-heading-has--multiple-spaces-and-----hyphens_and_underscores`
 
+In a snippet, headings also get a prefix derived from the filename,
+to prevent anchor collisions across multiple files.
+For example, a `## TL;DR` heading in a file named `README.md`
+gets the anchor `#readme-tldr` instead of `#tldr`.
+
 ## Line breaks
 
 A line break is inserted (a new paragraph starts) if the previous text is

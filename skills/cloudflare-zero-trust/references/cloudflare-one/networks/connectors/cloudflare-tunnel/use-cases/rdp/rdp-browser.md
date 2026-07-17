@@ -26,6 +26,7 @@ Browser-based RDP can be used in conjunction with [the Cloudflare One Client](ht
 * An [active domain on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/).
 * The domain uses either a [full setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or a [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/).
 * An RDP server running a supported [Windows operating system](#rdp-server-operating-systems).
+* The RDP server's [security layer](#known-limitations) allows TLS (set to **Negotiate** or **SSL**, not the legacy **RDP** option).
 
 ## 1\. Connect the server to Cloudflare
 
@@ -42,9 +43,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-7699)
-* [ API ](#tab-panel-7700)
-* [ Terraform ](#tab-panel-7701)
+* [ Dashboard ](#tab-panel-7971)
+* [ API ](#tab-panel-7972)
+* [ Terraform ](#tab-panel-7973)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -260,9 +261,9 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure connection settings
 
-* [ Dashboard ](#tab-panel-7696)
-* [ API ](#tab-panel-7697)
-* [ Terraform ](#tab-panel-7698)
+* [ Dashboard ](#tab-panel-7968)
+* [ API ](#tab-panel-7969)
+* [ Terraform ](#tab-panel-7970)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.
@@ -360,7 +361,11 @@ To transfer files from the remote Windows session to your local machine:
 3. Select one of the following options:
   * **Download**: Download the file to your local machine.
   * **Download zip**: Download multiple files at once as a zipped folder to your local machine.
-  * **Print** (PDF files only): Print the file to a local printer on your network.
+  * **Print**: [Print PDF files](#print-pdfs) to a local printer on your network.
+
+#### Print PDFs
+
+You can print PDF files from the clipboard panel to a local printer. To print a single file, select the print icon next to the PDF. To print multiple files at once, copy the files together into the clipboard on the remote machine, then select **Print all PDFs** in the clipboard panel. The files are combined into a single PDF and sent to your browser as one print job.
 
 Note
 
@@ -469,8 +474,9 @@ Google tag gateway is configured at the zone level and cannot be scoped to speci
 * **Clipboard size limit**: Data copied between the local machine and the browser-based RDP session may not exceed 500 KB.
 * **Clipboard data types**: Text clipboard controls only support text data. Image clipboard transfers are not supported.
 * **File transfer availability**: File transfer is in beta. Refer to [Transfer files](#transfer-files) for supported functionality and limitations.
-* **Print to local printer**: Local printing from a browser-based RDP session is only supported for PDF files through the [file transfer control panel](#download-files-remote-to-local).
-* **Network Level Authentication for Entra-joined accounts**: Browser-based RDP does not support PKU2U authentication which is required for [Network Level Authentication (NLA) ↗](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/remotepc/remote-desktop-allow-access#why-allow-connections-only-with-network-level-authentication) with Entra-joined accounts. Connecting to Entra-joined accounts requires disabling enforcement of NLA on the remote Windows machine. You can disable NLA from **Settings** \> **System** \> **Remote Desktop**, or use the Local Group Policy Editor to disable **Require user authentication for remote connections by using Network Level Authentication**.
+* **Print to local printer**: Local printing from a browser-based RDP session is only supported for PDF files through the [file transfer control panel](#print-pdfs).
+* **Network Level Authentication for Entra-joined accounts**: Browser-based RDP does not support PKU2U authentication which is required for [Network Level Authentication (NLA) ↗](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/remotepc/remote-desktop-allow-access#why-allow-connections-only-with-network-level-authentication) with Entra-joined accounts. Connecting to Entra-joined accounts requires disabling enforcement of NLA on the remote Windows machine. You can disable NLA from **Settings** \> **System** \> **Remote Desktop**, or use the Local Group Policy Editor to disable **Require user authentication for remote connections by using Network Level Authentication**. When disabling NLA, only turn off NLA itself — do not switch the security layer to the legacy **RDP** option, because browser-based RDP still requires TLS (refer to the **RDP security layer must allow TLS** limitation).
+* **RDP security layer must allow TLS**: Browser-based RDP connects to the remote machine over TLS, so the machine's RDP security layer must be set to at least **Negotiate** (or **SSL**). If the server is set to use the legacy **RDP** security layer, connections will fail. You can configure this in the Local Group Policy Editor by setting **Require use of specific security layer for remote (RDP) connections** to **Negotiate** or **SSL**.
 * **Clipboard browser compatibility**: Automatic clipboard sharing between the local and remote machine is only available in Chromium-based browsers by default (Google Chrome, Microsoft Edge, Opera, Brave). To enable this functionality in Firefox:
   1. Type `about:config` into the browser address bar and press **Enter**.
   2. Accept the warning prompt if displayed.
@@ -479,6 +485,6 @@ Google tag gateway is configured at the zone level and cannot be scoped to speci
   5. Search for `dom.events.asyncClipboard.readText` and set it to `true`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#page","headline":"Connect to RDP in a browser · Cloudflare One docs","description":"Connect to RDP in a browser in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RDP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#page","headline":"Connect to RDP in a browser · Cloudflare One docs","description":"Connect to RDP in a browser in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RDP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/","name":"RDP"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/","name":"Connect to RDP in a browser"}}]}
 ```

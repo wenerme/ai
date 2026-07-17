@@ -131,7 +131,7 @@ Creates and executes a batch from an uploaded file of requests
 
   - `errors: optional object { data, object }`
 
-    - `data: optional array of object { code, line, message, param }`
+    - `data: optional array of BatchError`
 
       - `code: optional string`
 
@@ -193,7 +193,7 @@ Creates and executes a batch from an uploaded file of requests
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts: optional object { completed, failed, total }`
+  - `request_counts: optional BatchRequestCounts`
 
     The request counts for different statuses within the batch.
 
@@ -435,7 +435,7 @@ Retrieves a batch.
 
   - `errors: optional object { data, object }`
 
-    - `data: optional array of object { code, line, message, param }`
+    - `data: optional array of BatchError`
 
       - `code: optional string`
 
@@ -497,7 +497,7 @@ Retrieves a batch.
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts: optional object { completed, failed, total }`
+  - `request_counts: optional BatchRequestCounts`
 
     The request counts for different statuses within the batch.
 
@@ -728,7 +728,7 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 
   - `errors: optional object { data, object }`
 
-    - `data: optional array of object { code, line, message, param }`
+    - `data: optional array of BatchError`
 
       - `code: optional string`
 
@@ -790,7 +790,7 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts: optional object { completed, failed, total }`
+  - `request_counts: optional BatchRequestCounts`
 
     The request counts for different statuses within the batch.
 
@@ -1029,7 +1029,7 @@ List your organization's batches.
 
   - `errors: optional object { data, object }`
 
-    - `data: optional array of object { code, line, message, param }`
+    - `data: optional array of BatchError`
 
       - `code: optional string`
 
@@ -1091,7 +1091,7 @@ List your organization's batches.
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts: optional object { completed, failed, total }`
+  - `request_counts: optional BatchRequestCounts`
 
     The request counts for different statuses within the batch.
 
@@ -1341,7 +1341,7 @@ curl https://api.openai.com/v1/batches?limit=2 \
 
   - `errors: optional object { data, object }`
 
-    - `data: optional array of object { code, line, message, param }`
+    - `data: optional array of BatchError`
 
       - `code: optional string`
 
@@ -1403,7 +1403,7 @@ curl https://api.openai.com/v1/batches?limit=2 \
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts: optional object { completed, failed, total }`
+  - `request_counts: optional BatchRequestCounts`
 
     The request counts for different statuses within the batch.
 
@@ -1453,6 +1453,44 @@ curl https://api.openai.com/v1/batches?limit=2 \
     - `total_tokens: number`
 
       The total number of tokens used.
+
+### Batch Error
+
+- `BatchError object { code, line, message, param }`
+
+  - `code: optional string`
+
+    An error code identifying the error type.
+
+  - `line: optional number`
+
+    The line number of the input file where the error occurred, if applicable.
+
+  - `message: optional string`
+
+    A human-readable message providing more details about the error.
+
+  - `param: optional string`
+
+    The name of the parameter that caused the error, if applicable.
+
+### Batch Request Counts
+
+- `BatchRequestCounts object { completed, failed, total }`
+
+  The request counts for different statuses within the batch.
+
+  - `completed: number`
+
+    Number of requests that have been completed successfully.
+
+  - `failed: number`
+
+    Number of requests that have failed.
+
+  - `total: number`
+
+    Total number of requests in the batch.
 
 ### Batch Usage
 

@@ -76,8 +76,8 @@ In Logpush, you can configure [filters](https://developers.cloudflare.com/logs/l
 
 Enable logging on your Worker by adding a new property, `logpush = true`, to your Wrangler file. This can be added either in the top-level configuration or under an [environment](https://developers.cloudflare.com/workers/wrangler/environments/). Any new Workers with this property will automatically get picked up by the Logpush job.
 
-* [  wrangler.jsonc ](#tab-panel-12736)
-* [  wrangler.toml ](#tab-panel-12737)
+* [  wrangler.jsonc ](#tab-panel-12734)
+* [  wrangler.toml ](#tab-panel-12735)
 
 **JSONC**
 

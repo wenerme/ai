@@ -1,10 +1,15 @@
-The Interactions API is our simplest and best way to build with Gemini models and agents. As of June 2026, it is Generally Available and recommended for all new projects. While it is now considered legacy, the original [`generateContent`](https://ai.google.dev/gemini-api/docs/generate-content/text-generation) API remains fully supported.
+The Interactions API is the best way to build with Gemini models
+and agents. As of June 2026, it is Generally Available and recommended for all
+new projects. While it is now considered legacy, the original
+[`generateContent`](https://ai.google.dev/gemini-api/docs/generate-content/text-generation) API
+remains fully supported.
 
 ## Why use the Interactions API?
 
 - **Universal interface for all applications**: Designed as the standard interface for every use case, including single-turn text generation, multimodal understanding, structured outputs, tool orchestration, and agentic workflows.
 - **Single API for models and agents**: One unified endpoint and pattern for calling standard Gemini models as well as specialized agents directly (such as Deep Research and custom managed agents).
-- **New capabilities out of the box** : Features like optional server-side conversation state using `previous_interaction_id`, observable execution steps for debugging and UI rendering, and [background execution](https://ai.google.dev/gemini-api/docs/background-execution) for long-running tasks using `background=true`.
+- **New capabilities out of the box** : Features like optional server-side conversation state using `previous_interaction_id`, observable execution steps for debugging and UI rendering, and [background
+  execution](https://ai.google.dev/gemini-api/docs/background-execution) for long-running tasks using `background=true`.
 - **Lower cost with higher cache hit rates**: When using multi-turn conversations, optional server-side state management enables more efficient context caching across turns, reducing token costs.
 - **Where new features launch**: Going forward, all new models, multimodal capabilities, tools, and agentic features will launch on the Interactions API.
 
@@ -16,12 +21,12 @@ details.
 
 ## Get started
 
-- **Set up your coding agent** : Connect to the **Gemini Docs MCP** and install the `gemini-interactions-api` skill to give your assistant direct access to the latest developer docs and best practices. [Set up your coding agent →](https://ai.google.dev/gemini-api/docs/coding-agents)
-- **Migrate from `generateContent`** : If you have an existing integration, follow the [Migration Guide](https://ai.google.dev/gemini-api/docs/migrate-to-interactions) to transition to the Interactions API.
-- **Get started** : Get started in the [Interactions API Get started
+- **Set up your coding agent** : Connect to the **Gemini Docs MCP** and install the `gemini-interactions-api` skill to give your assistant direct access to the latest developer docs and best practices. For detailed steps, see the [Set up your coding agent guide](https://ai.google.dev/gemini-api/docs/coding-agents)
+- **Migrate from `generateContent`** : If you have an existing integration, follow the [Migration guide](https://ai.google.dev/gemini-api/docs/migrate-to-interactions) to transition to the Interactions API.
+- **Get started** : Follow the steps in the [Interactions API Get started
   guide](https://ai.google.dev/gemini-api/docs/get-started).
 
-### Feature Guides
+### Feature guides
 
 Explore the specific capabilities of the Interactions API through these guides. You can use the toggle on these pages to switch between generateContent and Interactions API:
 
@@ -72,8 +77,8 @@ simplify use of server-side state management features (with
 `previous_interaction_id`), [background execution](https://ai.google.dev/gemini-api/docs/background-execution) (using `background=true`) and
 observability purposes.
 
-- **Paid Tier** : The system retains interactions for **55 days**.
-- **Free Tier** : The system retains interactions for **1 day**.
+- **Paid tier** : The system retains interactions for **55 days**.
+- **Free tier** : The system retains interactions for **1 day**.
 
 If you don't want this, you can
 set `store=false` in your request. This control is separate from state
@@ -96,7 +101,7 @@ deleted automatically.
 
 Interactions objects are processed according to the [terms](https://ai.google.dev/gemini-api/terms).
 
-### View Interactions in AI Studio
+### View interactions in AI Studio
 
 The API stores Interactions API requests executed with `store=true` for
 projects on the Paid Tier. You can view them directly from the
