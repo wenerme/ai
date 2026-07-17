@@ -192,6 +192,51 @@ If you are still running into concurrency limits you can [request a higher limit
 
 ---
 
+## Session management
+
+### Should I open a new browser for every task, or reuse a session and open tabs
+
+For most workloads, reuse an existing browser session and open a new tab instead of launching a fresh browser for each task. Browser Run counts browser instances against your [concurrent browsers](https://developers.cloudflare.com/browser-run/limits/#workers-paid) and [new browser instance rate](https://developers.cloudflare.com/browser-run/limits/#workers-paid) limits, but tabs inside an existing session do not count against either limit. Reusing a session also avoids the cold-start cost of launching a new browser.
+
+A single browser can run many tabs, but all tabs share the same browser process and memory. Heavy pages (for example, pages with large JavaScript bundles, media, or complex DOMs) consume more memory per tab, so opening too many tabs in the same browser can cause it to crash. Test your workload to find a safe number of tabs per browser. For lightweight pages, tens of tabs may be fine. For heavy pages, only a few.
+
+If you reuse a session but still need isolation between tasks, use an incognito browser context. Incognito contexts isolate cookies, local storage, and cache from each other and from the default context, so you can run separate tasks in tabs within the same browser without data leaking between them.
+
+* [ Puppeteer ](#tab-panel-7509)
+* [ Playwright ](#tab-panel-7510)
+
+**TypeScript**
+
+```ts
+import puppeteer from "@cloudflare/puppeteer";
+
+
+const browser = await puppeteer.connect(env.MYBROWSER, sessionId);
+// or await puppeteer.launch(env.MYBROWSER);
+
+
+const context = await browser.createBrowserContext();
+const page = await context.newPage();
+```
+
+**TypeScript**
+
+```ts
+import { connect } from "@cloudflare/playwright";
+
+
+const browser = await connect(env.BROWSER, sessionId);
+// or use the browser returned by acquire()
+
+
+const context = await browser.newContext();
+const page = await context.newPage();
+```
+
+Open a fresh browser only when you need full process-level isolation, a different browser configuration, or after a browser has become unstable. For automated screenshot, scrape, and crawl workloads, reusing sessions and tabs is usually the right choice. [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) manage sessions and tabs automatically, so you do not need to handle reuse yourself.
+
+---
+
 ## Security & Data Handling
 
 ### Does Cloudflare store or retain the HTML content I submit for rendering?
@@ -212,6 +257,6 @@ For [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Play
 For the [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/), all crawl job results are stored in R2 for 14 days after completion.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/faq/#page","headline":"Frequently asked questions about Cloudflare Browser Run · Cloudflare Browser Run docs","description":"Find answers to frequently asked questions about Browser Run, including errors, troubleshooting, and session management.","url":"https://developers.cloudflare.com/browser-run/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/faq/#page","headline":"Frequently asked questions about Cloudflare Browser Run · Cloudflare Browser Run docs","description":"Find answers to frequently asked questions about Browser Run, including errors, troubleshooting, and session management.","url":"https://developers.cloudflare.com/browser-run/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/faq/","name":"FAQ"}}]}
 ```

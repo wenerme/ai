@@ -5707,6 +5707,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mutation-cdversionsetcreate-applicationid"></a>`applicationId` | [`CdApplicationID!`](#cdapplicationid) | Global ID of the application to create the version set in. |
 | <a id="mutation-cdversionsetcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-cdversionsetcreate-description"></a>`description` | [`String`](#string) | Description of the version set. |
 | <a id="mutation-cdversionsetcreate-name"></a>`name` | [`String!`](#string) | Name of the version set. |
 | <a id="mutation-cdversionsetcreate-versionids"></a>`versionIds` | [`[CdVersionID!]!`](#cdversionid) | Global IDs of the versions that make up the version set, one per service. A version set must contain at least one version. |
 
@@ -33470,7 +33471,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="cdapplication-versionsets-search"></a>`search` | [`String`](#string) | Search version sets by name. |
+| <a id="cdapplication-versionsets-search"></a>`search` | [`String`](#string) | Search version sets by name or description. |
 
 ### `CdApplicationFlowDefinition`
 
@@ -33727,6 +33728,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="cdversionset-application"></a>`application` | [`CdApplication`](#cdapplication) | Application the version set belongs to. |
 | <a id="cdversionset-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the version set was created. |
+| <a id="cdversionset-description"></a>`description` | [`String`](#string) | Description of the version set. |
 | <a id="cdversionset-entriesdigest"></a>`entriesDigest` | [`String`](#string) | Digest of the version set entries. |
 | <a id="cdversionset-id"></a>`id` | [`CdVersionSetID!`](#cdversionsetid) | Global ID of the version set. |
 | <a id="cdversionset-name"></a>`name` | [`String!`](#string) | Name of the version set. |
@@ -56887,6 +56889,7 @@ Fields:
 | <a id="todo-targetentity"></a>`targetEntity` | [`Todoable`](#todoable) | Target of the to-do item. |
 | <a id="todo-targettype"></a>`targetType` | [`TodoTargetEnum!`](#todotargetenum) | Target type of the to-do item. |
 | <a id="todo-targeturl"></a>`targetUrl` | [`String`](#string) | URL of the to-do item target. |
+| <a id="todo-transferfailedretryurl"></a>`transferFailedRetryUrl` | [`String`](#string) | URL that retries a transfer-failed to-do item. |
 
 ### `Topic`
 
@@ -65672,6 +65675,7 @@ Values for sorting timelogs.
 | <a id="todoactionenum-review_submitted"></a>`review_submitted` | Todo action name for review_submitted. |
 | <a id="todoactionenum-ssh_key_expired"></a>`ssh_key_expired` | Todo action name for ssh_key_expired. |
 | <a id="todoactionenum-ssh_key_expiring_soon"></a>`ssh_key_expiring_soon` | Todo action name for ssh_key_expiring_soon. |
+| <a id="todoactionenum-transfer_failed"></a>`transfer_failed` | Todo action name for transfer_failed. |
 | <a id="todoactionenum-unmergeable"></a>`unmergeable` | Todo action name for unmergeable. |
 
 ### `TodoSort`

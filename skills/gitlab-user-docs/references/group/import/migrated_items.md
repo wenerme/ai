@@ -107,6 +107,11 @@ Project items that are migrated to the destination GitLab instance include:
   > These settings might cause an unprotected branch to be imported as protected.
 
 - CI pipelines
+
+  > [!note]
+  > Pipeline and job records, such as status, stage, and timestamps, are migrated.
+  > Job logs and job artifacts are not migrated. For more information, see [excluded items](#excluded-items-1).
+
 - Commit comments
 - Designs
 - External merge requests

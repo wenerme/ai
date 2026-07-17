@@ -8441,6 +8441,41 @@ paths:
           type: object
           nullable: true
         in: query
+    post:
+      operationId: postApiV4ExperimentsExperimentNameAssignments
+      summary: Force a variant assignment for an experiment context
+      description: Forces a specific variant assignment for the given experiment and
+        context. The assignment is stored in Redis cache and will persist until overwritten.
+        Defaults to current user if no context is provided.
+      tags:
+      - Experiments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesExperimentsAssignment"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: experiment_name
+        required: true
+        schema:
+          type: string
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/RequestBody_bddd5de04ffa"
   "/api/v4/elasticsearch_indexed_namespaces/rollout":
     put:
       operationId: putApiV4ElasticsearchIndexedNamespacesRollout
@@ -16357,6 +16392,7 @@ paths:
           - review_submitted
           - ssh_key_expired
           - ssh_key_expiring_soon
+          - transfer_failed
           - merge_train_removed
           - okr_checkin_requested
           - added_approver
@@ -95497,6 +95533,20 @@ components:
             is valid. Once expired, it will be reverified. This has no effect when
             set on a secondary node.
           nullable: true
+    RequestBody_bddd5de04ffa:
+      type: object
+      properties:
+        variant:
+          type: string
+          description: The variant name to assign (e.g., control, candidate)
+          nullable: true
+        context:
+          type: object
+          description: Context parameters (user, namespace, project). An actor context
+            is resolved from the user. Defaults to current user.
+          nullable: true
+      required:
+      - variant
     RequestBody_5c6d6eacec15:
       type: object
       properties:

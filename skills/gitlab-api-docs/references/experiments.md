@@ -120,13 +120,51 @@ curl --request DELETE \
 
 ## Experiment assignments
 
-Use this endpoint to read experiment variant assignments
+Use these endpoints to force and read experiment variant assignments
 in the GLEX Redis cache. This is useful for backend-only experiments that run
 outside of a request/response cycle, where the `glex_force` query parameter
 is not available.
 
 The experiment must declare `context_keys` in its experiment class in
 `app/experiments`.
+
+### Force a variant assignment
+
+Write a variant assignment to the experiment cache for a given context.
+
+```plaintext
+POST /experiments/:experiment_name/assignments
+```
+
+Parameters:
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `experiment_name` | string | Yes | Name of the experiment. |
+| `variant` | string | Yes | Variant name to assign (for example, `control`, `candidate`). |
+| `context[user]` | string | No | Username for context. |
+| `context[namespace]` | string | No | Full path of the namespace for context. |
+| `context[project]` | string | No | Full path of the project for context. |
+
+If you omit the `context` parameter, the API uses the authenticated user.
+
+```shell
+curl --request POST \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/experiments/my_experiment/assignments" \
+  --data "variant=candidate" \
+  --data "context[user]=sidney-jones"
+```
+
+Example response:
+
+```json
+{
+  "experiment": "my_experiment",
+  "variant": "candidate",
+  "context_key": "my_experiment:a1b2c3d4e5f6"
+}
+```
 
 ### Get the current assignment
 
@@ -160,7 +198,7 @@ Example request for an experiment with a `user` context:
 ```shell
 curl --request GET \
   --header "PRIVATE-TOKEN: <your_access_token>" \
-  --url "https://gitlab.example.com/api/v4/experiments/my_experiment/assignments?context[user]=john-doe"
+  --url "https://gitlab.example.com/api/v4/experiments/my_experiment/assignments?context[user]=sidney-jones"
 ```
 
 Example request for an experiment with a `namespace` context:
@@ -176,7 +214,7 @@ Example request for an experiment that declares `context_keys :user, :namespace`
 ```shell
 curl --request GET \
   --header "PRIVATE-TOKEN: <your_access_token>" \
-  --url "https://gitlab.example.com/api/v4/experiments/my_experiment/assignments?context[user]=john-doe&context[namespace]=my-group"
+  --url "https://gitlab.example.com/api/v4/experiments/my_experiment/assignments?context[user]=sidney-jones&context[namespace]=my-group"
 ```
 
 Example response:

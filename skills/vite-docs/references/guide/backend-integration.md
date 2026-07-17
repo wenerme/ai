@@ -11,6 +11,8 @@ If you need a custom integration, you can follow the steps in this guide to conf
    import { defineConfig } from 'vite'
    // ---cut---
    export default defineConfig({
+     // overwrite default .html entry
+     input: '/path/to/main.js',
      server: {
        cors: {
          // the origin you will be accessing via browser
@@ -20,10 +22,6 @@ If you need a custom integration, you can follow the steps in this guide to conf
      build: {
        // generate .vite/manifest.json in outDir
        manifest: true,
-       rolldownOptions: {
-         // overwrite default .html entry
-         input: '/path/to/main.js',
-       },
      },
    })
    ```

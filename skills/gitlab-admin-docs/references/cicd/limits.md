@@ -272,8 +272,8 @@ These limits can help save resources and improve stability.
 GitLab enforces two types of rate limits for pipeline creation:
 
 - **Per project, commit, and user**: Limits pipelines created for the same combination of project,
-  commit SHA, and user. Disabled by default.
-- **Per user**: Limits total pipelines created by a user across all projects. Disabled by default.
+  commit SHA, and user. Set to `0` (no limit) by default.
+- **Per user**: Limits total pipelines created by a user across all projects. Set to `0` (no limit) by default.
 
 For example, if you set a per-user limit of `100`, and a user sends `101` pipeline creation requests
 to the [trigger API](../../ci/triggers/_index.md) within one minute across different projects,
@@ -295,7 +295,7 @@ To limit the number of pipeline requests:
 1. In the left sidebar, select **Settings** > **Network**.
 1. Expand **Pipelines Rate Limits**.
    - Under **Max requests per minute per project, user, and commit**, enter a value greater than `0` to limit pipelines
-     for the same project, commit, and user combination.
+     for the same project, commit, and user combination. Set to `0` for unlimited requests per minute.
    - Under **Max requests per minute per user**, enter a value greater than `0` to limit total pipelines created by each user.
      Set to `0` for unlimited requests per minute.
 1. Select **Save changes**.
