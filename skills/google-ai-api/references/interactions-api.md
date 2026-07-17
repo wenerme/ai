@@ -24,60 +24,54 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 
 #### Possible values
 
-- `gemini-2.5-computer-use-preview-10-2025`
-
-  An agentic capability model designed for direct interface interaction, allowing Gemini to perceive and navigate digital environments.
 - `gemini-2.5-flash`
 
   Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-- `gemini-2.5-flash-image`
-
-  Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
-- `gemini-2.5-flash-lite`
-
-  Our smallest and most cost effective model, built for at scale usage.
-- `gemini-2.5-flash-lite-preview-09-2025`
-
-  The latest model based on Gemini 2.5 Flash lite optimized for cost-efficiency, high throughput and high quality.
-- `gemini-2.5-flash-native-audio-preview-12-2025`
-
-  Our native audio models optimized for higher quality audio outputs with better pacing, voice naturalness, verbosity, and mood.
-- `gemini-2.5-flash-preview-09-2025`
-
-  The latest model based on the 2.5 Flash model. 2.5 Flash Preview is best for large scale processing, low-latency, high volume tasks that require thinking, and agentic use cases.
-- `gemini-2.5-flash-preview-tts`
-
-  Our 2.5 Flash text-to-speech model optimized for powerful, low-latency controllable speech generation.
 - `gemini-2.5-pro`
 
   Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
-- `gemini-2.5-pro-preview-tts`
+- `gemma-4-26b-a4b-it`
 
-  Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency speech generation for more natural outputs and easier to steer prompts.
+  Gemma 4 26B A4B IT
+- `gemma-4-31b-it`
+
+  Gemma 4 31B IT
+- `gemini-flash-latest`
+
+  Latest release of Gemini Flash
+- `gemini-flash-lite-latest`
+
+  Latest release of Gemini Flash-Lite
+- `gemini-pro-latest`
+
+  Latest release of Gemini Pro
+- `gemini-2.5-flash-lite`
+
+  Our smallest and most cost effective model, built for at scale usage.
+- `gemini-2.5-flash-image`
+
+  Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
 - `gemini-3-flash-preview`
 
   Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
-- `gemini-3-pro-image-preview`
-
-  State-of-the-art image generation and editing model.
-- `gemini-3-pro-preview`
-
-  Our most intelligent model with SOTA reasoning and multimodal understanding, and powerful agentic and vibe coding capabilities.
 - `gemini-3.1-pro-preview`
 
   Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
-- `gemini-3.1-flash-image-preview`
+- `gemini-3.1-pro-preview-customtools`
 
-  Pro-level visual intelligence with Flash-speed efficiency and reality-grounded generation capabilities.
+  Gemini 3.1 Pro Preview optimized for custom tool usage
 - `gemini-3.1-flash-lite`
 
   Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-lite-preview`
+- `gemini-3-pro-image`
 
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-tts-preview`
+  Gemini 3 Pro Image
+- `nano-banana-pro-preview`
 
-  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
+  Gemini 3 Pro Image Preview
+- `gemini-3.1-flash-image`
+
+  Gemini 3.1 Flash Image.
 - `gemini-3.5-flash`
 
   Our most intelligent model for sustained frontier performance in agentic and coding tasks.
@@ -87,6 +81,9 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `lyria-3-pro-preview`
 
   Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
+- `gemini-robotics-er-1.6-preview`
+
+  Gemini Robotics-ER 1.6 Preview
 agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.   
 **Required if \`model\` is not provided.**
 The agent to interact with.
@@ -245,6 +242,76 @@ values:
 - `auto`
 
   Automatically include visualizations.
+CodeMenderAgentConfig Configuration for the CodeMender agent.
+find_request FindRequest (optional) Parameters for finding vulnerabilities.
+Request parameters specific to FIND sessions, used for discovering
+vulnerabilities in a codebase.
+
+#### Fields
+
+description string (optional) Additional context or custom instructions provided by the user to guide
+the vulnerability analysis.
+finding_id string (optional) The identifier of a specific finding to verify. This is primarily used in
+VERIFY mode to focus the agent's execution-based validation on a single
+vulnerability.
+mode enum (string) (optional) The mode of the find session.
+
+Possible
+values:
+
+- `scan`
+
+  Fast scan using only the initial classifier.
+- `verify`
+
+  Performs classification followed by detailed investigation.
+source_files FileContent (optional) A list of source files to provide as context for the scan.
+Content of a single file in the codebase.
+
+#### Fields
+
+content string (optional) The UTF-8 encoded text content of the file.
+path string (optional) The relative path of the file from the project root.
+fix_request FixRequest (optional) Parameters for fixing vulnerabilities.
+Request parameters specific to FIX sessions, used for generating and
+validating security patches.
+
+#### Fields
+
+description string (optional) Additional context or custom instructions provided by the user to guide
+the patch generation process.
+finding_id string (optional) The identifier of the specific security finding to be remediated. This ID
+maps to a previously discovered vulnerability.
+source_files FileContent (optional) A list of source files providing context for the remediation. These files
+are typically the ones containing the identified vulnerability.
+Content of a single file in the codebase.
+
+#### Fields
+
+content string (optional) The UTF-8 encoded text content of the file.
+path string (optional) The relative path of the file from the project root.
+model string (optional) The name of the model to use for the CodeMender agent. One
+CodeMender session will only use one model.
+session_config SessionConfig (optional) Optional session-specific configurations to override default agent
+behavior.
+The configuration of CodeMender sessions.
+
+#### Fields
+
+max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
+before reaching a timeout.
+session_id string (optional) Parameter for grouping multiple interactions that belong to
+the same CodeMender session.
+type object (required) No description provided.
+
+Always set to `"code-mender"`.
+AntigravityAgentConfig Configuration for the Antigravity agent runtime.
+Provides server-side control over the agent's execution environment
+and tool configuration.
+max_total_tokens string (optional) Max total tokens for the agent run.
+type object (required) No description provided.
+
+Always set to `"antigravity"`.
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
 labels object (optional) The labels with user-defined metadata for the request.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
@@ -857,6 +924,76 @@ values:
 - `auto`
 
   Automatically include visualizations.
+CodeMenderAgentConfig Configuration for the CodeMender agent.
+find_request FindRequest (optional) Parameters for finding vulnerabilities.
+Request parameters specific to FIND sessions, used for discovering
+vulnerabilities in a codebase.
+
+#### Fields
+
+description string (optional) Additional context or custom instructions provided by the user to guide
+the vulnerability analysis.
+finding_id string (optional) The identifier of a specific finding to verify. This is primarily used in
+VERIFY mode to focus the agent's execution-based validation on a single
+vulnerability.
+mode enum (string) (optional) The mode of the find session.
+
+Possible
+values:
+
+- `scan`
+
+  Fast scan using only the initial classifier.
+- `verify`
+
+  Performs classification followed by detailed investigation.
+source_files FileContent (optional) A list of source files to provide as context for the scan.
+Content of a single file in the codebase.
+
+#### Fields
+
+content string (optional) The UTF-8 encoded text content of the file.
+path string (optional) The relative path of the file from the project root.
+fix_request FixRequest (optional) Parameters for fixing vulnerabilities.
+Request parameters specific to FIX sessions, used for generating and
+validating security patches.
+
+#### Fields
+
+description string (optional) Additional context or custom instructions provided by the user to guide
+the patch generation process.
+finding_id string (optional) The identifier of the specific security finding to be remediated. This ID
+maps to a previously discovered vulnerability.
+source_files FileContent (optional) A list of source files providing context for the remediation. These files
+are typically the ones containing the identified vulnerability.
+Content of a single file in the codebase.
+
+#### Fields
+
+content string (optional) The UTF-8 encoded text content of the file.
+path string (optional) The relative path of the file from the project root.
+model string (optional) The name of the model to use for the CodeMender agent. One
+CodeMender session will only use one model.
+session_config SessionConfig (optional) Optional session-specific configurations to override default agent
+behavior.
+The configuration of CodeMender sessions.
+
+#### Fields
+
+max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
+before reaching a timeout.
+session_id string (optional) Parameter for grouping multiple interactions that belong to
+the same CodeMender session.
+type object (required) No description provided.
+
+Always set to `"code-mender"`.
+AntigravityAgentConfig Configuration for the Antigravity agent runtime.
+Provides server-side control over the agent's execution environment
+and tool configuration.
+max_total_tokens string (optional) Max total tokens for the agent run.
+type object (required) No description provided.
+
+Always set to `"antigravity"`.
 created string (optional) Output only. The time at which the response was created in ISO 8601 format
 (YYYY-MM-DDThh:mm:ssZ).
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
@@ -872,60 +1009,54 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 
 #### Possible values
 
-- `gemini-2.5-computer-use-preview-10-2025`
-
-  An agentic capability model designed for direct interface interaction, allowing Gemini to perceive and navigate digital environments.
 - `gemini-2.5-flash`
 
   Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-- `gemini-2.5-flash-image`
-
-  Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
-- `gemini-2.5-flash-lite`
-
-  Our smallest and most cost effective model, built for at scale usage.
-- `gemini-2.5-flash-lite-preview-09-2025`
-
-  The latest model based on Gemini 2.5 Flash lite optimized for cost-efficiency, high throughput and high quality.
-- `gemini-2.5-flash-native-audio-preview-12-2025`
-
-  Our native audio models optimized for higher quality audio outputs with better pacing, voice naturalness, verbosity, and mood.
-- `gemini-2.5-flash-preview-09-2025`
-
-  The latest model based on the 2.5 Flash model. 2.5 Flash Preview is best for large scale processing, low-latency, high volume tasks that require thinking, and agentic use cases.
-- `gemini-2.5-flash-preview-tts`
-
-  Our 2.5 Flash text-to-speech model optimized for powerful, low-latency controllable speech generation.
 - `gemini-2.5-pro`
 
   Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
-- `gemini-2.5-pro-preview-tts`
+- `gemma-4-26b-a4b-it`
 
-  Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency speech generation for more natural outputs and easier to steer prompts.
+  Gemma 4 26B A4B IT
+- `gemma-4-31b-it`
+
+  Gemma 4 31B IT
+- `gemini-flash-latest`
+
+  Latest release of Gemini Flash
+- `gemini-flash-lite-latest`
+
+  Latest release of Gemini Flash-Lite
+- `gemini-pro-latest`
+
+  Latest release of Gemini Pro
+- `gemini-2.5-flash-lite`
+
+  Our smallest and most cost effective model, built for at scale usage.
+- `gemini-2.5-flash-image`
+
+  Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
 - `gemini-3-flash-preview`
 
   Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
-- `gemini-3-pro-image-preview`
-
-  State-of-the-art image generation and editing model.
-- `gemini-3-pro-preview`
-
-  Our most intelligent model with SOTA reasoning and multimodal understanding, and powerful agentic and vibe coding capabilities.
 - `gemini-3.1-pro-preview`
 
   Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
-- `gemini-3.1-flash-image-preview`
+- `gemini-3.1-pro-preview-customtools`
 
-  Pro-level visual intelligence with Flash-speed efficiency and reality-grounded generation capabilities.
+  Gemini 3.1 Pro Preview optimized for custom tool usage
 - `gemini-3.1-flash-lite`
 
   Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-lite-preview`
+- `gemini-3-pro-image`
 
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-tts-preview`
+  Gemini 3 Pro Image
+- `nano-banana-pro-preview`
 
-  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
+  Gemini 3 Pro Image Preview
+- `gemini-3.1-flash-image`
+
+  Gemini 3.1 Flash Image.
 - `gemini-3.5-flash`
 
   Our most intelligent model for sustained frontier performance in agentic and coding tasks.
@@ -935,6 +1066,9 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `lyria-3-pro-preview`
 
   Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
+- `gemini-robotics-er-1.6-preview`
+
+  Gemini Robotics-ER 1.6 Preview
 output_audio AudioContent (optional) The last audio generated by the model in response to the current request.
 
 Note: this is added by the SDK.

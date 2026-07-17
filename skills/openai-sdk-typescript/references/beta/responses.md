@@ -1448,11 +1448,11 @@ as input for the model's response.
 
               - `"output_text"`
 
-            - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+            - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
               Citations associated with the text content.
 
-              - `Array<UnionMember0>`
+              - `FileCitation`
 
                 - `file_id: string`
 
@@ -1472,7 +1472,7 @@ as input for the model's response.
 
                   - `"file_citation"`
 
-              - `Array<UnionMember1>`
+              - `URLCitation`
 
                 - `end_index: number`
 
@@ -1496,7 +1496,7 @@ as input for the model's response.
 
                   The URL of the cited resource.
 
-              - `Array<UnionMember2>`
+              - `ContainerFileCitation`
 
                 - `container_id: string`
 
@@ -2865,8 +2865,9 @@ as input for the model's response.
 
           - `encrypted_content?: string | null`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -6223,11 +6224,11 @@ as input for the model's response.
 
             - `"output_text"`
 
-          - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+          - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
             Citations associated with the text content.
 
-            - `Array<UnionMember0>`
+            - `FileCitation`
 
               - `file_id: string`
 
@@ -6247,7 +6248,7 @@ as input for the model's response.
 
                 - `"file_citation"`
 
-            - `Array<UnionMember1>`
+            - `URLCitation`
 
               - `end_index: number`
 
@@ -6271,7 +6272,7 @@ as input for the model's response.
 
                 The URL of the cited resource.
 
-            - `Array<UnionMember2>`
+            - `ContainerFileCitation`
 
               - `container_id: string`
 
@@ -7640,8 +7641,9 @@ as input for the model's response.
 
         - `encrypted_content?: string | null`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -13676,11 +13678,11 @@ Retrieves a model response with the given ID.
 
             - `"output_text"`
 
-          - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+          - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
             Citations associated with the text content.
 
-            - `Array<UnionMember0>`
+            - `FileCitation`
 
               - `file_id: string`
 
@@ -13700,7 +13702,7 @@ Retrieves a model response with the given ID.
 
                 - `"file_citation"`
 
-            - `Array<UnionMember1>`
+            - `URLCitation`
 
               - `end_index: number`
 
@@ -13724,7 +13726,7 @@ Retrieves a model response with the given ID.
 
                 The URL of the cited resource.
 
-            - `Array<UnionMember2>`
+            - `ContainerFileCitation`
 
               - `container_id: string`
 
@@ -15093,8 +15095,9 @@ Retrieves a model response with the given ID.
 
         - `encrypted_content?: string | null`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -20410,11 +20413,11 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"output_text"`
 
-          - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+          - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
             Citations associated with the text content.
 
-            - `Array<UnionMember0>`
+            - `FileCitation`
 
               - `file_id: string`
 
@@ -20434,7 +20437,7 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `"file_citation"`
 
-            - `Array<UnionMember1>`
+            - `URLCitation`
 
               - `end_index: number`
 
@@ -20458,7 +20461,7 @@ the `background` parameter set to `true` can be cancelled.
 
                 The URL of the cited resource.
 
-            - `Array<UnionMember2>`
+            - `ContainerFileCitation`
 
               - `container_id: string`
 
@@ -21827,8 +21830,9 @@ the `background` parameter set to `true` can be cancelled.
 
         - `encrypted_content?: string | null`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -27195,11 +27199,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"output_text"`
 
-          - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+          - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
             Citations associated with the text content.
 
-            - `Array<UnionMember0>`
+            - `FileCitation`
 
               - `file_id: string`
 
@@ -27219,7 +27223,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 - `"file_citation"`
 
-            - `Array<UnionMember1>`
+            - `URLCitation`
 
               - `end_index: number`
 
@@ -27243,7 +27247,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 The URL of the cited resource.
 
-            - `Array<UnionMember2>`
+            - `ContainerFileCitation`
 
               - `container_id: string`
 
@@ -28612,8 +28616,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `encrypted_content?: string | null`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -31023,8 +31028,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -34819,8 +34825,9 @@ console.log(compactedResponse);
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -40016,11 +40023,11 @@ console.log(compactedResponse);
 
             - `"output_text"`
 
-          - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+          - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
             Citations associated with the text content.
 
-            - `Array<UnionMember0>`
+            - `FileCitation`
 
               - `file_id: string`
 
@@ -40040,7 +40047,7 @@ console.log(compactedResponse);
 
                 - `"file_citation"`
 
-            - `Array<UnionMember1>`
+            - `URLCitation`
 
               - `end_index: number`
 
@@ -40064,7 +40071,7 @@ console.log(compactedResponse);
 
                 The URL of the cited resource.
 
-            - `Array<UnionMember2>`
+            - `ContainerFileCitation`
 
               - `container_id: string`
 
@@ -41433,8 +41440,9 @@ console.log(compactedResponse);
 
         - `encrypted_content?: string | null`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -47010,11 +47018,11 @@ console.log(compactedResponse);
 
               - `"output_text"`
 
-            - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+            - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
               Citations associated with the text content.
 
-              - `Array<UnionMember0>`
+              - `FileCitation`
 
                 - `file_id: string`
 
@@ -47034,7 +47042,7 @@ console.log(compactedResponse);
 
                   - `"file_citation"`
 
-              - `Array<UnionMember1>`
+              - `URLCitation`
 
                 - `end_index: number`
 
@@ -47058,7 +47066,7 @@ console.log(compactedResponse);
 
                   The URL of the cited resource.
 
-              - `Array<UnionMember2>`
+              - `ContainerFileCitation`
 
                 - `container_id: string`
 
@@ -48427,8 +48435,9 @@ console.log(compactedResponse);
 
           - `encrypted_content?: string | null`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -54519,11 +54528,11 @@ console.log(compactedResponse);
 
               - `"output_text"`
 
-            - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+            - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
               Citations associated with the text content.
 
-              - `Array<UnionMember0>`
+              - `FileCitation`
 
                 - `file_id: string`
 
@@ -54543,7 +54552,7 @@ console.log(compactedResponse);
 
                   - `"file_citation"`
 
-              - `Array<UnionMember1>`
+              - `URLCitation`
 
                 - `end_index: number`
 
@@ -54567,7 +54576,7 @@ console.log(compactedResponse);
 
                   The URL of the cited resource.
 
-              - `Array<UnionMember2>`
+              - `ContainerFileCitation`
 
                 - `container_id: string`
 
@@ -55936,8 +55945,9 @@ console.log(compactedResponse);
 
           - `encrypted_content?: string | null`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -61383,11 +61393,11 @@ console.log(compactedResponse);
 
               - `"output_text"`
 
-            - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+            - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
               Citations associated with the text content.
 
-              - `Array<UnionMember0>`
+              - `FileCitation`
 
                 - `file_id: string`
 
@@ -61407,7 +61417,7 @@ console.log(compactedResponse);
 
                   - `"file_citation"`
 
-              - `Array<UnionMember1>`
+              - `URLCitation`
 
                 - `end_index: number`
 
@@ -61431,7 +61441,7 @@ console.log(compactedResponse);
 
                   The URL of the cited resource.
 
-              - `Array<UnionMember2>`
+              - `ContainerFileCitation`
 
                 - `container_id: string`
 
@@ -62800,8 +62810,9 @@ console.log(compactedResponse);
 
           - `encrypted_content?: string | null`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -69175,11 +69186,11 @@ console.log(compactedResponse);
 
               - `"output_text"`
 
-            - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+            - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
               Citations associated with the text content.
 
-              - `Array<UnionMember0>`
+              - `FileCitation`
 
                 - `file_id: string`
 
@@ -69199,7 +69210,7 @@ console.log(compactedResponse);
 
                   - `"file_citation"`
 
-              - `Array<UnionMember1>`
+              - `URLCitation`
 
                 - `end_index: number`
 
@@ -69223,7 +69234,7 @@ console.log(compactedResponse);
 
                   The URL of the cited resource.
 
-              - `Array<UnionMember2>`
+              - `ContainerFileCitation`
 
                 - `container_id: string`
 
@@ -70592,8 +70603,9 @@ console.log(compactedResponse);
 
           - `encrypted_content?: string | null`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -75629,11 +75641,11 @@ console.log(compactedResponse);
 
               - `"output_text"`
 
-            - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+            - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
               Citations associated with the text content.
 
-              - `Array<UnionMember0>`
+              - `FileCitation`
 
                 - `file_id: string`
 
@@ -75653,7 +75665,7 @@ console.log(compactedResponse);
 
                   - `"file_citation"`
 
-              - `Array<UnionMember1>`
+              - `URLCitation`
 
                 - `end_index: number`
 
@@ -75677,7 +75689,7 @@ console.log(compactedResponse);
 
                   The URL of the cited resource.
 
-              - `Array<UnionMember2>`
+              - `ContainerFileCitation`
 
                 - `container_id: string`
 
@@ -77046,8 +77058,9 @@ console.log(compactedResponse);
 
           - `encrypted_content?: string | null`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -81998,11 +82011,11 @@ console.log(compactedResponse);
 
           - `"output_text"`
 
-        - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+        - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
           Citations associated with the text content.
 
-          - `Array<UnionMember0>`
+          - `FileCitation`
 
             - `file_id: string`
 
@@ -82022,7 +82035,7 @@ console.log(compactedResponse);
 
               - `"file_citation"`
 
-          - `Array<UnionMember1>`
+          - `URLCitation`
 
             - `end_index: number`
 
@@ -82046,7 +82059,7 @@ console.log(compactedResponse);
 
               The URL of the cited resource.
 
-          - `Array<UnionMember2>`
+          - `ContainerFileCitation`
 
             - `container_id: string`
 
@@ -83415,8 +83428,9 @@ console.log(compactedResponse);
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -85817,11 +85831,11 @@ console.log(compactedResponse);
 
           - `"output_text"`
 
-        - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+        - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
           Citations associated with the text content.
 
-          - `Array<UnionMember0>`
+          - `FileCitation`
 
             - `file_id: string`
 
@@ -85841,7 +85855,7 @@ console.log(compactedResponse);
 
               - `"file_citation"`
 
-          - `Array<UnionMember1>`
+          - `URLCitation`
 
             - `end_index: number`
 
@@ -85865,7 +85879,7 @@ console.log(compactedResponse);
 
               The URL of the cited resource.
 
-          - `Array<UnionMember2>`
+          - `ContainerFileCitation`
 
             - `container_id: string`
 
@@ -87234,8 +87248,9 @@ console.log(compactedResponse);
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -89624,11 +89639,11 @@ console.log(compactedResponse);
 
         - `"output_text"`
 
-      - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+      - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
         Citations associated with the text content.
 
-        - `Array<UnionMember0>`
+        - `FileCitation`
 
           - `file_id: string`
 
@@ -89648,7 +89663,7 @@ console.log(compactedResponse);
 
             - `"file_citation"`
 
-        - `Array<UnionMember1>`
+        - `URLCitation`
 
           - `end_index: number`
 
@@ -89672,7 +89687,7 @@ console.log(compactedResponse);
 
             The URL of the cited resource.
 
-        - `Array<UnionMember2>`
+        - `ContainerFileCitation`
 
           - `container_id: string`
 
@@ -91041,8 +91056,9 @@ console.log(compactedResponse);
 
     - `encrypted_content?: string | null`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -93738,11 +93754,11 @@ console.log(compactedResponse);
 
         - `"output_text"`
 
-      - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+      - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
         Citations associated with the text content.
 
-        - `Array<UnionMember0>`
+        - `FileCitation`
 
           - `file_id: string`
 
@@ -93762,7 +93778,7 @@ console.log(compactedResponse);
 
             - `"file_citation"`
 
-        - `Array<UnionMember1>`
+        - `URLCitation`
 
           - `end_index: number`
 
@@ -93786,7 +93802,7 @@ console.log(compactedResponse);
 
             The URL of the cited resource.
 
-        - `Array<UnionMember2>`
+        - `ContainerFileCitation`
 
           - `container_id: string`
 
@@ -95155,8 +95171,9 @@ console.log(compactedResponse);
 
     - `encrypted_content?: string | null`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -99122,8 +99139,9 @@ console.log(compactedResponse);
 
     - `encrypted_content?: string | null`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -101657,8 +101675,9 @@ console.log(compactedResponse);
 
     - `encrypted_content?: string | null`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -105225,8 +105244,9 @@ console.log(compactedResponse);
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -108815,8 +108835,9 @@ console.log(compactedResponse);
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -113043,11 +113064,11 @@ console.log(compactedResponse);
 
               - `"output_text"`
 
-            - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+            - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
               Citations associated with the text content.
 
-              - `Array<UnionMember0>`
+              - `FileCitation`
 
                 - `file_id: string`
 
@@ -113067,7 +113088,7 @@ console.log(compactedResponse);
 
                   - `"file_citation"`
 
-              - `Array<UnionMember1>`
+              - `URLCitation`
 
                 - `end_index: number`
 
@@ -113091,7 +113112,7 @@ console.log(compactedResponse);
 
                   The URL of the cited resource.
 
-              - `Array<UnionMember2>`
+              - `ContainerFileCitation`
 
                 - `container_id: string`
 
@@ -114460,8 +114481,9 @@ console.log(compactedResponse);
 
           - `encrypted_content?: string | null`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -118102,8 +118124,9 @@ console.log(compactedResponse);
 
   - `encrypted_content?: string | null`
 
-    The encrypted content of the reasoning item - populated when a response is
-    generated with `reasoning.encrypted_content` in the `include` parameter.
+    The encrypted content of the reasoning item. This is populated by default
+    for reasoning items returned by `POST /v1/responses` and WebSocket
+    `response.create` requests.
 
   - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -120161,11 +120184,11 @@ console.log(compactedResponse);
 
                 - `"output_text"`
 
-              - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+              - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
                 Citations associated with the text content.
 
-                - `Array<UnionMember0>`
+                - `FileCitation`
 
                   - `file_id: string`
 
@@ -120185,7 +120208,7 @@ console.log(compactedResponse);
 
                     - `"file_citation"`
 
-                - `Array<UnionMember1>`
+                - `URLCitation`
 
                   - `end_index: number`
 
@@ -120209,7 +120232,7 @@ console.log(compactedResponse);
 
                     The URL of the cited resource.
 
-                - `Array<UnionMember2>`
+                - `ContainerFileCitation`
 
                   - `container_id: string`
 
@@ -121578,8 +121601,9 @@ console.log(compactedResponse);
 
             - `encrypted_content?: string | null`
 
-              The encrypted content of the reasoning item - populated when a response is
-              generated with `reasoning.encrypted_content` in the `include` parameter.
+              The encrypted content of the reasoning item. This is populated by default
+              for reasoning items returned by `POST /v1/responses` and WebSocket
+              `response.create` requests.
 
             - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -130914,11 +130938,11 @@ console.log(compactedResponse);
 
               - `"output_text"`
 
-            - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+            - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
               Citations associated with the text content.
 
-              - `Array<UnionMember0>`
+              - `FileCitation`
 
                 - `file_id: string`
 
@@ -130938,7 +130962,7 @@ console.log(compactedResponse);
 
                   - `"file_citation"`
 
-              - `Array<UnionMember1>`
+              - `URLCitation`
 
                 - `end_index: number`
 
@@ -130962,7 +130986,7 @@ console.log(compactedResponse);
 
                   The URL of the cited resource.
 
-              - `Array<UnionMember2>`
+              - `ContainerFileCitation`
 
                 - `container_id: string`
 
@@ -132331,8 +132355,9 @@ console.log(compactedResponse);
 
           - `encrypted_content?: string | null`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -136084,11 +136109,11 @@ console.log(compactedResponse);
 
                 - `"output_text"`
 
-              - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+              - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
                 Citations associated with the text content.
 
-                - `Array<UnionMember0>`
+                - `FileCitation`
 
                   - `file_id: string`
 
@@ -136108,7 +136133,7 @@ console.log(compactedResponse);
 
                     - `"file_citation"`
 
-                - `Array<UnionMember1>`
+                - `URLCitation`
 
                   - `end_index: number`
 
@@ -136132,7 +136157,7 @@ console.log(compactedResponse);
 
                     The URL of the cited resource.
 
-                - `Array<UnionMember2>`
+                - `ContainerFileCitation`
 
                   - `container_id: string`
 
@@ -137501,8 +137526,9 @@ console.log(compactedResponse);
 
             - `encrypted_content?: string | null`
 
-              The encrypted content of the reasoning item - populated when a response is
-              generated with `reasoning.encrypted_content` in the `include` parameter.
+              The encrypted content of the reasoning item. This is populated by default
+              for reasoning items returned by `POST /v1/responses` and WebSocket
+              `response.create` requests.
 
             - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -147032,8 +147058,9 @@ Returns a list of input items for a given response.
 
     - `encrypted_content?: string | null`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -150659,8 +150686,9 @@ console.log(response.data);
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -152981,11 +153009,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"output_text"`
 
-          - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+          - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
             Citations associated with the text content.
 
-            - `Array<UnionMember0>`
+            - `FileCitation`
 
               - `file_id: string`
 
@@ -153005,7 +153033,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"file_citation"`
 
-            - `Array<UnionMember1>`
+            - `URLCitation`
 
               - `end_index: number`
 
@@ -153029,7 +153057,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 The URL of the cited resource.
 
-            - `Array<UnionMember2>`
+            - `ContainerFileCitation`
 
               - `container_id: string`
 
@@ -154398,8 +154426,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `encrypted_content?: string | null`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status?: "in_progress" | "completed" | "incomplete"`
 

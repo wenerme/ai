@@ -504,7 +504,6 @@ components:
         routing preference.
       example:
         allow_fallbacks: true
-      nullable: true
       properties:
         allow_fallbacks:
           description: >
@@ -515,8 +514,9 @@ components:
 
             - false: use only the primary/custom provider, and return the
             upstream error if it's unavailable.
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         data_collection:
           description: >-
             Data collection setting. If no available model provider meets the
@@ -532,16 +532,18 @@ components:
             - allow
             - null
           example: allow
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         enforce_distillable_text:
           description: >-
             Whether to restrict routing to only models that allow text
             distillation. When true, only models where the author has allowed
             distillation will be used.
           example: true
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         ignore:
           description: >-
             List of provider slugs to ignore. If provided, this list is merged
@@ -553,8 +555,9 @@ components:
             anyOf:
               - $ref: '#/components/schemas/ProviderName'
               - type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         max_price:
           description: >-
             The object specifying the maximum price you want to pay for this
@@ -587,8 +590,9 @@ components:
             anyOf:
               - $ref: '#/components/schemas/ProviderName'
               - type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         order:
           description: >-
             An ordered list of provider slugs. The router will attempt to use
@@ -603,8 +607,9 @@ components:
             anyOf:
               - $ref: '#/components/schemas/ProviderName'
               - type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         preferred_max_latency:
           $ref: '#/components/schemas/PreferredMaxLatency'
         preferred_min_throughput:
@@ -613,21 +618,23 @@ components:
           description: A list of quantization levels to filter the provider by.
           items:
             $ref: '#/components/schemas/Quantization'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         require_parameters:
           description: >-
             Whether to filter providers to only those that support the
             parameters you've provided. If this setting is omitted or set to
             false, then providers will receive only the parameters they support,
             and ignore the rest.
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         sort:
           anyOf:
             - $ref: '#/components/schemas/ProviderSort'
             - $ref: '#/components/schemas/ProviderSortConfig'
-            - nullable: true
+            - type: 'null'
           description: >-
             The sorting strategy to use for this request, if "order" is not
             specified. When set, no load balancing is performed.
@@ -638,31 +645,36 @@ components:
             endpoints. When true, only endpoints that do not retain prompts will
             be used.
           example: true
-          nullable: true
-          type: boolean
-      type: object
+          type:
+            - boolean
+            - 'null'
+      type:
+        - object
+        - 'null'
     CostDetails:
       description: Breakdown of upstream inference costs
       example:
         upstream_inference_completions_cost: 0.0004
         upstream_inference_cost: null
         upstream_inference_prompt_cost: 0.0008
-      nullable: true
       properties:
         upstream_inference_completions_cost:
           format: double
           type: number
         upstream_inference_cost:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         upstream_inference_prompt_cost:
           format: double
           type: number
       required:
         - upstream_inference_prompt_cost
         - upstream_inference_completions_cost
-      type: object
+      type:
+        - object
+        - 'null'
     BadRequestResponse:
       description: Bad Request - Invalid request parameters or malformed input
       example:
@@ -673,13 +685,14 @@ components:
         error:
           $ref: '#/components/schemas/BadRequestResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -693,13 +706,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -713,13 +727,14 @@ components:
         error:
           $ref: '#/components/schemas/PaymentRequiredResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -733,13 +748,14 @@ components:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -753,13 +769,14 @@ components:
         error:
           $ref: '#/components/schemas/TooManyRequestsResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -773,13 +790,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -793,13 +811,14 @@ components:
         error:
           $ref: '#/components/schemas/BadGatewayResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -813,13 +832,14 @@ components:
         error:
           $ref: '#/components/schemas/ServiceUnavailableResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -833,13 +853,14 @@ components:
         error:
           $ref: '#/components/schemas/EdgeNetworkTimeoutResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -853,13 +874,14 @@ components:
         error:
           $ref: '#/components/schemas/ProviderOverloadedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -877,7 +899,6 @@ components:
       type: object
     ProviderName:
       enum:
-        - Meta
         - AkashML
         - AI21
         - AionLabs
@@ -928,6 +949,7 @@ components:
         - Liquid
         - Mara
         - Mancer 2
+        - Meta
         - Minimax
         - ModelRun
         - Mistral
@@ -960,6 +982,7 @@ components:
         - Stealth
         - StreamLake
         - Switchpoint
+        - Tencent
         - Tenstorrent
         - Together
         - Upstage
@@ -979,7 +1002,7 @@ components:
         - format: double
           type: number
         - $ref: '#/components/schemas/PercentileLatencyCutoffs'
-        - nullable: true
+        - type: 'null'
       description: >-
         Preferred maximum latency (in seconds). Can be a number (applies to p50)
         or an object with percentile-specific cutoffs. Endpoints above the
@@ -992,7 +1015,7 @@ components:
         - format: double
           type: number
         - $ref: '#/components/schemas/PercentileThroughputCutoffs'
-        - nullable: true
+        - type: 'null'
       description: >-
         Preferred minimum throughput (in tokens per second). Can be a number
         (applies to p50) or an object with percentile-specific cutoffs.
@@ -1038,8 +1061,9 @@ components:
             - exacto
             - null
           example: price
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         partition:
           description: >-
             Partitioning strategy for sorting: "model" (default) groups
@@ -1050,8 +1074,9 @@ components:
             - none
             - null
           example: model
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       type: object
     BadRequestResponseErrorData:
       description: Error data for BadRequestResponse
@@ -1064,10 +1089,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1083,10 +1108,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1102,10 +1127,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1121,10 +1146,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1140,10 +1165,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1159,10 +1184,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1178,10 +1203,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1197,10 +1222,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1216,10 +1241,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1235,10 +1260,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -1254,23 +1279,27 @@ components:
         p50:
           description: Maximum p50 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p75:
           description: Maximum p75 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p90:
           description: Maximum p90 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p99:
           description: Maximum p99 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
       type: object
     PercentileThroughputCutoffs:
       description: >-
@@ -1283,23 +1312,27 @@ components:
         p50:
           description: Minimum p50 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p75:
           description: Minimum p75 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p90:
           description: Minimum p90 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p99:
           description: Minimum p99 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
       type: object
   securitySchemes:
     apiKey:

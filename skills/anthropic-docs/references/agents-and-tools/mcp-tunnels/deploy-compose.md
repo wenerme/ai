@@ -21,7 +21,7 @@ You need:
   * **Programmatic access (recommended).** Turn on **Set up programmatic access** when creating the tunnel (or create the federation rule directly under **Settings > Workload identity** if you're letting the setup component create the tunnel) so the setup component can authenticate through Workload Identity Federation. Record the federation rule ID (`fdrl_...`) and your organization ID.
   * **Manual.** Skip programmatic access. You'll [get the tunnel token from the Console](/docs/en/agents-and-tools/mcp-tunnels/console#get-the-connection-details), generate a CA and server certificate yourself, and [register the CA in the Console](/docs/en/agents-and-tools/mcp-tunnels/console#add-a-ca-certificate).
 
-* **A host with Docker and Docker Compose** installed. The manual flow also requires `openssl` (1.1.1 or newer).
+* **A host with Docker and Docker Compose** installed. The manual flow also requires `openssl` (1.1.1 or later).
 
 * **Outbound network connectivity** from the host to `api.anthropic.com` (443 TCP) and the [tunnel edge](/docs/en/agents-and-tools/mcp-tunnels/concepts#components) (7844 TCP and UDP). See the full [network requirements](/docs/en/agents-and-tools/mcp-tunnels/overview#network-requirements).
 
@@ -80,7 +80,7 @@ This guide provides one reference approach using Docker Compose. You are respons
         cat > docker-compose.yaml <<'EOF'
         services:
           setup:
-            image: us-docker.pkg.dev/anthropic-public-registry/images/mcp-proxy@sha256:dab8c3f6ac44c15d91b1580af23a7da6e579865d5852e9ad31e35b6940daf436
+            image: us-docker.pkg.dev/anthropic-public-registry/images/mcp-proxy@sha256:9d4c80593b559fc3ca3814866418744fa94858b02a4d4a4cc52d423e732ccc81
             entrypoint: ["/setup"]
             command:
               - init
@@ -124,7 +124,7 @@ This guide provides one reference approach using Docker Compose. You are respons
                 max-file: "3"
 
           mcp-proxy:
-            image: us-docker.pkg.dev/anthropic-public-registry/images/mcp-proxy@sha256:dab8c3f6ac44c15d91b1580af23a7da6e579865d5852e9ad31e35b6940daf436
+            image: us-docker.pkg.dev/anthropic-public-registry/images/mcp-proxy@sha256:9d4c80593b559fc3ca3814866418744fa94858b02a4d4a4cc52d423e732ccc81
             volumes:
               - ./config/mcp-proxy.yaml:/etc/mcp-gateway/config.yaml:ro
               - ./data:/data:ro
@@ -190,7 +190,7 @@ This guide provides one reference approach using Docker Compose. You are respons
         ```
 
         <Note>
-          Workload Identity Federation tokens are short-lived (one hour by default) and expire automatically; there is nothing to revoke after setup completes.
+          Workload Identity Federation tokens are short-lived (1 hour by default) and expire automatically; there is nothing to revoke after setup completes.
         </Note>
       </Step>
 
@@ -339,7 +339,7 @@ This guide provides one reference approach using Docker Compose. You are respons
                 max-file: "3"
 
           mcp-proxy:
-            image: us-docker.pkg.dev/anthropic-public-registry/images/mcp-proxy@sha256:dab8c3f6ac44c15d91b1580af23a7da6e579865d5852e9ad31e35b6940daf436
+            image: us-docker.pkg.dev/anthropic-public-registry/images/mcp-proxy@sha256:9d4c80593b559fc3ca3814866418744fa94858b02a4d4a4cc52d423e732ccc81
             volumes:
               - ./config/mcp-proxy.yaml:/etc/mcp-gateway/config.yaml:ro
               - ./data:/data:ro

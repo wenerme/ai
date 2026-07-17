@@ -302,13 +302,14 @@ components:
         error:
           $ref: '#/components/schemas/BadRequestResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -322,13 +323,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -342,13 +344,14 @@ components:
         error:
           $ref: '#/components/schemas/TooManyRequestsResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -362,13 +365,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -388,14 +392,16 @@ components:
           description: Artificial Analysis Agentic Index composite score. Higher is better.
           example: 58.3
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         coding_index:
           description: Artificial Analysis Coding Index composite score. Higher is better.
           example: 65.8
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         display_name:
           description: Model name as listed on Artificial Analysis.
           example: GPT-4o
@@ -406,8 +412,9 @@ components:
             better.
           example: 71.2
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         model_permaslug:
           description: Stable OpenRouter model identifier.
           example: openai/gpt-4o
@@ -456,8 +463,9 @@ components:
           description: Average generation time in milliseconds.
           example: 3200
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         category:
           description: Category within the arena.
           example: codecategories
@@ -488,20 +496,25 @@ components:
           description: Placement distribution from tournament matches.
           properties:
             first_place:
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             fourth_place:
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             second_place:
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             third_place:
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             total:
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
           required:
             - first_place
             - second_place
@@ -550,8 +563,9 @@ components:
           example: >-
             Source: Artificial Analysis (artificialanalysis.ai) via OpenRouter
             (openrouter.ai/rankings).
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         model_count:
           description: Number of unique models in the response.
           type: integer
@@ -562,19 +576,22 @@ components:
             - design-arena
             - null
           example: artificial-analysis
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         source_url:
           description: >-
             URL of the upstream data source, or null when results span multiple
             sources.
           example: https://artificialanalysis.ai
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         task_type:
           description: The task_type filter applied, or null if showing all.
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         version:
           description: Dataset version.
           enum:
@@ -600,10 +617,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -619,10 +636,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -638,10 +655,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -657,10 +674,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -672,7 +689,6 @@ components:
       example:
         completion: '0.000015'
         prompt: '0.000003'
-      nullable: true
       properties:
         completion:
           description: Cost per output token (USD, decimal string).
@@ -685,7 +701,9 @@ components:
       required:
         - prompt
         - completion
-      type: object
+      type:
+        - object
+        - 'null'
   securitySchemes:
     apiKey:
       description: API key as bearer token in Authorization header

@@ -57,7 +57,7 @@ Some settings apply globally across all workspaces:
 
 * **Org admins** have admin permissions across all workspaces. Only org admins can create or delete workspaces and add or remove member access.
 * **Org members** have member permissions in each workspace they've been added to. Members can belong to multiple workspaces, and their API keys in each workspace are governed by that workspace's settings.
-* All org members automatically have member access to the **Default workspace**. Chatroom and Fusion usage is governed by the Default workspace's settings.
+* All org members automatically have member access to the **Default workspace**. Chat and Fusion requests run in the member's active workspace, which they can change via the [workspace switcher](/guides/features/workspaces/switching). The Default workspace is the initial active workspace.
 
 ## Frequently Asked Questions
 
@@ -82,7 +82,7 @@ Some settings apply globally across all workspaces:
     When a member is removed from a workspace, they lose access to it. Before removing them, you must first delete any API keys they created in that workspace. Their access to other workspaces is unaffected. Note: all org members retain access to the Default workspace as long as they remain in the org.
   </Accordion>
 
-  <Accordion title="Is my chatroom/fusion usage in a workspace?">
-    Yes. All chatroom and fusion usage is in the Default workspace.
+  <Accordion title="Is my Chat/Fusion usage in a workspace?">
+    Yes. Chat and Fusion usage runs in your active workspace. It defaults to the Default workspace, and you can switch from the Chat or Fusion [sidebar workspace switcher](/guides/features/workspaces/switching).
   </Accordion>
 </AccordionGroup>

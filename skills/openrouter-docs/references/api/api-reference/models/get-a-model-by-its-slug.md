@@ -137,12 +137,18 @@ paths:
                     output_modalities:
                       - text
                     tokenizer: GPT
+                  canonical_slug: openai/gpt-4
                   context_length: 8192
                   created: 1692901234
+                  default_parameters: null
                   description: >-
                     GPT-4 is a large multimodal model that can solve difficult
                     problems with greater accuracy.
+                  expiration_date: null
                   id: openai/gpt-4
+                  knowledge_cutoff: null
+                  links:
+                    details: /api/v1/models/openai/gpt-4/endpoints
                   name: GPT-4
                   per_request_limits: null
                   pricing:
@@ -154,6 +160,7 @@ paths:
                     - temperature
                     - top_p
                     - max_tokens
+                  supported_voices: null
                   top_provider:
                     context_length: 8192
                     is_moderated: true
@@ -195,12 +202,18 @@ components:
             output_modalities:
               - text
             tokenizer: GPT
+          canonical_slug: openai/gpt-4
           context_length: 8192
           created: 1692901234
+          default_parameters: null
           description: >-
             GPT-4 is a large multimodal model that can solve difficult problems
             with greater accuracy.
+          expiration_date: null
           id: openai/gpt-4
+          knowledge_cutoff: null
+          links:
+            details: /api/v1/models/openai/gpt-4/endpoints
           name: GPT-4
           per_request_limits: null
           pricing:
@@ -212,6 +225,7 @@ components:
             - temperature
             - top_p
             - max_tokens
+          supported_voices: null
           top_provider:
             context_length: 8192
             is_moderated: true
@@ -232,13 +246,14 @@ components:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -252,13 +267,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -322,8 +338,9 @@ components:
         context_length:
           description: Maximum context length in tokens
           example: 8192
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         created:
           description: Unix timestamp of when the model was created
           example: 1692901234
@@ -341,13 +358,15 @@ components:
             The date after which the model may be removed. ISO 8601 date string
             (YYYY-MM-DD) or null if no expiration.
           example: '2025-06-01'
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         hugging_face_id:
           description: Hugging Face model identifier, if applicable
           example: microsoft/DialoGPT-medium
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         id:
           description: Unique identifier for the model
           example: openai/gpt-4
@@ -357,8 +376,9 @@ components:
             The date up to which the model was trained on data. ISO 8601 date
             string (YYYY-MM-DD) or null if unknown.
           example: '2024-10-01'
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         links:
           $ref: '#/components/schemas/ModelLinks'
         name:
@@ -383,8 +403,9 @@ components:
           example: null
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         top_provider:
           $ref: '#/components/schemas/TopProviderInfo'
       required:
@@ -413,10 +434,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -432,10 +453,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -461,8 +482,9 @@ components:
         modality:
           description: Primary modality of the model
           example: text->text
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         output_modalities:
           description: Supported output modalities
           items:
@@ -517,32 +539,39 @@ components:
         temperature: 0.7
         top_k: 0
         top_p: 0.9
-      nullable: true
       properties:
         frequency_penalty:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         presence_penalty:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         repetition_penalty:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         temperature:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         top_k:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         top_p:
           format: double
-          nullable: true
-          type: number
-      type: object
+          type:
+            - number
+            - 'null'
+      type:
+        - object
+        - 'null'
     ModelLinks:
       description: Related API endpoints and resources for this model.
       example:
@@ -560,7 +589,6 @@ components:
       example:
         completion_tokens: 1000
         prompt_tokens: 1000
-      nullable: true
       properties:
         completion_tokens:
           description: Maximum completion tokens per request
@@ -573,7 +601,9 @@ components:
       required:
         - prompt_tokens
         - completion_tokens
-      type: object
+      type:
+        - object
+        - 'null'
     PublicPricing:
       description: Pricing information for the model
       example:
@@ -691,8 +721,9 @@ components:
             values are accepted.
           items:
             $ref: '#/components/schemas/ReasoningEffort'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         supports_max_tokens:
           description: >-
             Present and `true` when the model accepts `reasoning.max_tokens` in
@@ -742,8 +773,9 @@ components:
         context_length:
           description: Context length from the top provider
           example: 8192
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         is_moderated:
           description: Whether the top provider moderates content
           example: true
@@ -751,8 +783,9 @@ components:
         max_completion_tokens:
           description: Maximum completion tokens from the top provider
           example: 4096
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
       required:
         - is_moderated
       type: object
@@ -792,8 +825,9 @@ components:
         - qwen3
         - null
       example: chatml
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     OutputModality:
       enum:
         - text
@@ -842,20 +876,23 @@ components:
           description: Artificial Analysis Agentic Index score
           example: 55.8
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         coding_index:
           description: Artificial Analysis Coding Index score
           example: 63.2
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         intelligence_index:
           description: Artificial Analysis Intelligence Index score
           example: 71.4
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
       required:
         - intelligence_index
         - coding_index
@@ -967,8 +1004,9 @@ components:
         - none
         - null
       example: medium
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
   securitySchemes:
     apiKey:
       description: API key as bearer token in Authorization header

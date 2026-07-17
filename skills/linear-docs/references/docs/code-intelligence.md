@@ -4,7 +4,7 @@ Code Intelligence gives Linear controlled access to your connected GitHub reposi
 
 > [!NOTE]
 > **Pricing**
-> Code Intelligence is available in beta for Business and Enterprise plans, and is free to use during the beta period. We'll share more about pricing as the feature evolves.
+> Code Intelligence is available in beta for Business and Enterprise plans, and is free to use during the beta period.
 
 ![Codebase analysis through Code Intelligence](https://webassets.linear.app/images/ornj730p/production/a39eab368c6ab67c6b90eab4419d2741c1712d00-2150x1826.png?q=95&auto=format&dpr=2)
 

@@ -240,34 +240,40 @@ components:
         top_p: 0.9
       properties:
         background:
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         cache_control:
           $ref: '#/components/schemas/AnthropicCacheControlDirective'
         debug:
           $ref: '#/components/schemas/ChatDebugOptions'
         frequency_penalty:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         image_config:
           $ref: '#/components/schemas/ImageConfig'
         include:
           items:
             $ref: '#/components/schemas/ResponseIncludesEnum'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         input:
           $ref: '#/components/schemas/Inputs'
         instructions:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         max_output_tokens:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         max_tool_calls:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         metadata:
           $ref: '#/components/schemas/RequestMetadata'
         modalities:
@@ -287,8 +293,9 @@ components:
             type: string
           type: array
         parallel_tool_calls:
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         plugins:
           description: >-
             Plugins you want to enable for this request, including their
@@ -328,16 +335,21 @@ components:
           type: array
         presence_penalty:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         previous_response_id:
-          nullable: true
-          type: string
+          description: >-
+            Not supported. The Responses API is stateless: no responses are
+            stored, so a previous response cannot be referenced. Requests with a
+            non-null value are rejected with a 400 error. Send the full
+            conversation history in `input` instead.
         prompt:
           $ref: '#/components/schemas/StoredPromptTemplate'
         prompt_cache_key:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         prompt_cache_options:
           $ref: '#/components/schemas/PromptCacheOptions'
         provider:
@@ -347,8 +359,9 @@ components:
         route:
           $ref: '#/components/schemas/DeprecatedRoute'
         safety_identifier:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         service_tier:
           default: auto
           enum:
@@ -358,8 +371,9 @@ components:
             - priority
             - scale
             - null
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         session_id:
           description: >-
             A unique identifier for grouping related requests (e.g., a
@@ -382,8 +396,9 @@ components:
           type: boolean
         temperature:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         text:
           $ref: '#/components/schemas/TextExtendedConfig'
         tool_choice:
@@ -443,12 +458,14 @@ components:
         top_k:
           type: integer
         top_logprobs:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         top_p:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         trace:
           $ref: '#/components/schemas/TraceConfig'
         truncation:
@@ -505,13 +522,14 @@ components:
         error:
           $ref: '#/components/schemas/BadRequestResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -525,13 +543,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -545,13 +564,14 @@ components:
         error:
           $ref: '#/components/schemas/ForbiddenResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -565,13 +585,14 @@ components:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -585,13 +606,14 @@ components:
         error:
           $ref: '#/components/schemas/ConflictResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -605,13 +627,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -653,8 +676,7 @@ components:
           - type: string
           - format: double
             type: number
-          - items:
-              nullable: true
+          - items: {}
             type: array
       description: >-
         Provider-specific image configuration options. Keys and values vary by
@@ -698,7 +720,7 @@ components:
                                     #/components/schemas/OpenAIResponsesRefusalContent
                             type: array
                           - type: string
-                          - nullable: true
+                          - type: 'null'
                     type: object
                 description: An output message item
                 example:
@@ -716,8 +738,9 @@ components:
                       summary:
                         items:
                           $ref: '#/components/schemas/ReasoningSummaryText'
-                        nullable: true
-                        type: array
+                        type:
+                          - array
+                          - 'null'
                     type: object
                 description: An output item containing reasoning
                 example:
@@ -788,8 +811,9 @@ components:
       example:
         session_id: abc-def-ghi
         user_id: '123'
-      nullable: true
-      type: object
+      type:
+        - object
+        - 'null'
     OutputModalityEnum:
       enum:
         - text
@@ -970,15 +994,15 @@ components:
                     - format: double
                       type: number
                     - type: boolean
-                    - nullable: true
+                    - type: 'null'
                     - items:
                         anyOf:
                           - type: string
                           - format: double
                             type: number
                           - type: boolean
-                          - nullable: true
-                          - nullable: true
+                          - type: 'null'
+                          - type: 'null'
                       type: array
                     - additionalProperties:
                         anyOf:
@@ -986,10 +1010,10 @@ components:
                           - format: double
                             type: number
                           - type: boolean
-                          - nullable: true
-                          - nullable: true
+                          - type: 'null'
+                          - type: 'null'
                       type: object
-                    - nullable: true
+                    - type: 'null'
                 description: >-
                   Optional configuration forwarded as the tool's `parameters`
                   object.
@@ -1183,7 +1207,6 @@ components:
         id: prompt-abc123
         variables:
           name: John
-      nullable: true
       properties:
         id:
           type: string
@@ -1194,11 +1217,14 @@ components:
               - $ref: '#/components/schemas/InputText'
               - $ref: '#/components/schemas/InputImage'
               - $ref: '#/components/schemas/InputFile'
-          nullable: true
-          type: object
+          type:
+            - object
+            - 'null'
       required:
         - id
-      type: object
+      type:
+        - object
+        - 'null'
     PromptCacheOptions:
       description: >-
         Request-level prompt-cache controls. `mode: "explicit"` disables
@@ -1208,18 +1234,20 @@ components:
       example:
         mode: explicit
         ttl: 30m
-      nullable: true
       properties:
         mode:
           enum:
             - explicit
           type: string
         ttl:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - mode
-      type: object
+      type:
+        - object
+        - 'null'
     ProviderPreferences:
       additionalProperties: false
       description: >-
@@ -1227,7 +1255,6 @@ components:
         routing preference.
       example:
         allow_fallbacks: true
-      nullable: true
       properties:
         allow_fallbacks:
           description: >
@@ -1238,8 +1265,9 @@ components:
 
             - false: use only the primary/custom provider, and return the
             upstream error if it's unavailable.
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         data_collection:
           description: >-
             Data collection setting. If no available model provider meets the
@@ -1255,16 +1283,18 @@ components:
             - allow
             - null
           example: allow
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         enforce_distillable_text:
           description: >-
             Whether to restrict routing to only models that allow text
             distillation. When true, only models where the author has allowed
             distillation will be used.
           example: true
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         ignore:
           description: >-
             List of provider slugs to ignore. If provided, this list is merged
@@ -1276,8 +1306,9 @@ components:
             anyOf:
               - $ref: '#/components/schemas/ProviderName'
               - type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         max_price:
           description: >-
             The object specifying the maximum price you want to pay for this
@@ -1310,8 +1341,9 @@ components:
             anyOf:
               - $ref: '#/components/schemas/ProviderName'
               - type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         order:
           description: >-
             An ordered list of provider slugs. The router will attempt to use
@@ -1326,8 +1358,9 @@ components:
             anyOf:
               - $ref: '#/components/schemas/ProviderName'
               - type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         preferred_max_latency:
           $ref: '#/components/schemas/PreferredMaxLatency'
         preferred_min_throughput:
@@ -1336,21 +1369,23 @@ components:
           description: A list of quantization levels to filter the provider by.
           items:
             $ref: '#/components/schemas/Quantization'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         require_parameters:
           description: >-
             Whether to filter providers to only those that support the
             parameters you've provided. If this setting is omitted or set to
             false, then providers will receive only the parameters they support,
             and ignore the rest.
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         sort:
           anyOf:
             - $ref: '#/components/schemas/ProviderSort'
             - $ref: '#/components/schemas/ProviderSortConfig'
-            - nullable: true
+            - type: 'null'
           description: >-
             The sorting strategy to use for this request, if "order" is not
             specified. When set, no load balancing is performed.
@@ -1361,21 +1396,27 @@ components:
             endpoints. When true, only endpoints that do not retain prompts will
             be used.
           example: true
-          nullable: true
-          type: boolean
-      type: object
+          type:
+            - boolean
+            - 'null'
+      type:
+        - object
+        - 'null'
     ReasoningConfig:
-      allOf:
-        - $ref: '#/components/schemas/BaseReasoningConfig'
-        - nullable: true
-          properties:
-            enabled:
-              nullable: true
-              type: boolean
-            max_tokens:
-              nullable: true
-              type: integer
-          type: object
+      anyOf:
+        - allOf:
+            - $ref: '#/components/schemas/BaseReasoningConfig'
+            - properties:
+                enabled:
+                  type:
+                    - boolean
+                    - 'null'
+                max_tokens:
+                  type:
+                    - integer
+                    - 'null'
+              type: object
+        - type: 'null'
       description: Configuration for reasoning mode in the response
       example:
         enabled: true
@@ -1391,8 +1432,9 @@ components:
         - sort
         - null
       example: fallback
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
       x-fern-ignore: true
       x-speakeasy-deprecation-message: Use providers.sort.partition instead.
       x-speakeasy-ignore: true
@@ -1421,8 +1463,9 @@ components:
                 - xhigh
                 - max
                 - null
-              nullable: true
-              type: string
+              type:
+                - string
+                - 'null'
           type: object
       description: Text output configuration including format and verbosity
       example:
@@ -1501,18 +1544,20 @@ components:
         type: function
       properties:
         description:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         name:
           type: string
         parameters:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         strict:
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         type:
           enum:
             - function
@@ -1681,7 +1726,7 @@ components:
                 - value
               type: object
             - $ref: '#/components/schemas/CompoundFilter'
-            - nullable: true
+            - type: 'null'
         max_num_results:
           type: integer
         ranking_options:
@@ -1758,8 +1803,9 @@ components:
                     - 16g
                     - 64g
                     - null
-                  nullable: true
-                  type: string
+                  type:
+                    - string
+                    - 'null'
                 type:
                   enum:
                     - auto
@@ -1795,7 +1841,7 @@ components:
                     type: string
                   type: array
               type: object
-            - nullable: true
+            - type: 'null'
         authorization:
           type: string
         connector_id:
@@ -1812,8 +1858,9 @@ components:
         headers:
           additionalProperties:
             type: string
-          nullable: true
-          type: object
+          type:
+            - object
+            - 'null'
         require_approval:
           anyOf:
             - properties:
@@ -1838,7 +1885,7 @@ components:
             - enum:
                 - never
               type: string
-            - nullable: true
+            - type: 'null'
         server_description:
           type: string
         server_label:
@@ -1870,8 +1917,9 @@ components:
             - high
             - low
             - null
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         input_image_mask:
           properties:
             file_id:
@@ -2251,8 +2299,7 @@ components:
         - type
       type: object
     TraceConfig:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       description: >-
         Metadata for observability and tracing. Known keys (trace_id,
         trace_name, span_name, generation_name, parent_span_id) have special
@@ -2279,8 +2326,9 @@ components:
         - disabled
         - null
       example: auto
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     PresetWithDesignatedVersion:
       allOf:
         - $ref: '#/components/schemas/Preset'
@@ -2325,10 +2373,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2344,10 +2392,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2363,10 +2411,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2382,10 +2430,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2401,10 +2449,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2420,10 +2468,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2441,13 +2489,15 @@ components:
             content:
               items:
                 $ref: '#/components/schemas/ReasoningTextContent'
-              nullable: true
-              type: array
+              type:
+                - array
+                - 'null'
             format:
               $ref: '#/components/schemas/ReasoningFormat'
             signature:
-              nullable: true
-              type: string
+              type:
+                - string
+                - 'null'
           type: object
       description: Reasoning output item with signature and format extensions
       example:
@@ -2480,7 +2530,7 @@ components:
                   - $ref: '#/components/schemas/InputVideo'
               type: array
             - type: string
-            - nullable: true
+            - type: 'null'
         phase:
           anyOf:
             - enum:
@@ -2489,7 +2539,7 @@ components:
             - enum:
                 - final_answer
               type: string
-            - nullable: true
+            - type: 'null'
           description: >-
             The phase of an assistant message. Use `commentary` for an
             intermediate assistant message and `final_answer` for the final
@@ -2544,8 +2594,9 @@ components:
               - $ref: '#/components/schemas/InputFile'
               - $ref: '#/components/schemas/InputAudio'
               - $ref: '#/components/schemas/InputVideo'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         id:
           type: string
         role:
@@ -2631,8 +2682,9 @@ components:
         call_id:
           type: string
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         operation:
           $ref: '#/components/schemas/ApplyPatchCallOperation'
         status:
@@ -2661,11 +2713,13 @@ components:
         call_id:
           type: string
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         output:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         status:
           enum:
             - completed
@@ -2779,15 +2833,17 @@ components:
             content:
               items:
                 $ref: '#/components/schemas/ReasoningTextContent'
-              nullable: true
-              type: array
+              type:
+                - array
+                - 'null'
             format:
               $ref: '#/components/schemas/ReasoningFormat'
             signature:
               description: A signature for the reasoning content, used for verification
               example: EvcBCkgIChABGAIqQKkSDbRuVEQUk9qN1odC098l9SEj...
-              nullable: true
-              type: string
+              type:
+                - string
+                - 'null'
           type: object
       description: An output item containing reasoning
       example:
@@ -2923,8 +2979,7 @@ components:
         status: completed
         type: computer_call
       properties:
-        action:
-          nullable: true
+        action: {}
         call_id:
           type: string
         id:
@@ -3118,8 +3173,9 @@ components:
           description: >-
             The generated image as a base64-encoded string or URL, matching
             OpenAI image_generation_call format
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         revisedPrompt:
           type: string
         status:
@@ -3332,8 +3388,7 @@ components:
           enum:
             - openrouter:memory
           type: string
-        value:
-          nullable: true
+        value: {}
       required:
         - status
         - type
@@ -3618,18 +3673,21 @@ components:
                 type: string
               type: object
             timeout_ms:
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             type:
               enum:
                 - exec
               type: string
             user:
-              nullable: true
-              type: string
+              type:
+                - string
+                - 'null'
             working_directory:
-              nullable: true
-              type: string
+              type:
+                - string
+                - 'null'
           required:
             - type
             - command
@@ -3667,9 +3725,9 @@ components:
         output:
           type: string
         status:
-          allOf:
+          anyOf:
             - $ref: '#/components/schemas/ToolCallStatus'
-            - nullable: true
+            - type: 'null'
         type:
           enum:
             - local_shell_call_output
@@ -3698,25 +3756,27 @@ components:
                 type: string
               type: array
             max_output_length:
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             timeout_ms:
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
           required:
             - commands
           type: object
         call_id:
           type: string
-        environment:
-          nullable: true
+        environment: {}
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         status:
-          allOf:
+          anyOf:
             - $ref: '#/components/schemas/ToolCallStatus'
-            - nullable: true
+            - type: 'null'
         type:
           enum:
             - shell_call
@@ -3740,22 +3800,25 @@ components:
         call_id:
           type: string
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         max_output_length:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         output:
           items:
-            additionalProperties:
-              nullable: true
+            additionalProperties: {}
             properties:
               content:
-                nullable: true
-                type: string
+                type:
+                  - string
+                  - 'null'
               exit_code:
-                nullable: true
-                type: integer
+                type:
+                  - integer
+                  - 'null'
               type:
                 type: string
             required:
@@ -3763,9 +3826,9 @@ components:
             type: object
           type: array
         status:
-          allOf:
+          anyOf:
             - $ref: '#/components/schemas/ToolCallStatus'
-            - nullable: true
+            - type: 'null'
         type:
           enum:
             - shell_call_output
@@ -3791,8 +3854,9 @@ components:
         type: mcp_list_tools
       properties:
         error:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         id:
           type: string
         server_label:
@@ -3800,14 +3864,13 @@ components:
         tools:
           items:
             properties:
-              annotations:
-                nullable: true
+              annotations: {}
               description:
-                nullable: true
-                type: string
+                type:
+                  - string
+                  - 'null'
               input_schema:
-                additionalProperties:
-                  nullable: true
+                additionalProperties: {}
                 type: object
               name:
                 type: string
@@ -3867,11 +3930,13 @@ components:
         approve:
           type: boolean
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         reason:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - mcp_approval_response
@@ -3894,15 +3959,17 @@ components:
         arguments:
           type: string
         error:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         id:
           type: string
         name:
           type: string
         output:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         server_label:
           type: string
         type:
@@ -3985,8 +4052,7 @@ components:
         output: patch applied successfully
         type: custom_tool_call_output
     CompactionItem:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       description: A context compaction marker with encrypted summary
       example:
         encrypted_content: enc_abc123...
@@ -3995,8 +4061,9 @@ components:
         encrypted_content:
           type: string
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - compaction
@@ -4006,19 +4073,20 @@ components:
         - encrypted_content
       type: object
     ContextCompactionItem:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       description: A context compaction marker with an optional encrypted summary
       example:
         encrypted_content: enc_abc123...
         type: context_compaction
       properties:
         encrypted_content:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - context_compaction
@@ -4057,8 +4125,9 @@ components:
         type: additional_tools
       properties:
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         role:
           enum:
             - unknown
@@ -4121,8 +4190,7 @@ components:
               - $ref: '#/components/schemas/ApplyPatchServerTool_OpenRouter'
               - $ref: '#/components/schemas/BashServerTool'
               - $ref: '#/components/schemas/ShellServerTool_OpenRouter'
-              - additionalProperties:
-                  nullable: true
+              - additionalProperties: {}
                 properties:
                   type:
                     type: string
@@ -4140,8 +4208,7 @@ components:
         - tools
       type: object
     AgentMessageItem:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       description: A message routed between agents in a multi-agent session
       example:
         author: /root/worker
@@ -4152,15 +4219,15 @@ components:
         type: agent_message
       properties:
         agent:
-          additionalProperties:
-            nullable: true
-          nullable: true
+          additionalProperties: {}
           properties:
             agent_name:
               type: string
           required:
             - agent_name
-          type: object
+          type:
+            - object
+            - 'null'
         author:
           type: string
         content:
@@ -4176,8 +4243,7 @@ components:
                   detail: auto
                   image_url: https://example.com/image.jpg
                   type: input_image
-              - additionalProperties:
-                  nullable: true
+              - additionalProperties: {}
                 properties:
                   encrypted_content:
                     type: string
@@ -4191,8 +4257,9 @@ components:
                 type: object
           type: array
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         recipient:
           type: string
         type:
@@ -4237,25 +4304,30 @@ components:
         region: California
         timezone: America/Los_Angeles
         type: approximate
-      nullable: true
       properties:
         city:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         country:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         region:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         timezone:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - approximate
           type: string
-      type: object
+      type:
+        - object
+        - 'null'
     InputText:
       description: Text input content item
       example:
@@ -4289,8 +4361,9 @@ components:
             - original
           type: string
         image_url:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - input_image
@@ -4309,8 +4382,9 @@ components:
         file_data:
           type: string
         file_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         file_url:
           type: string
         filename:
@@ -4324,7 +4398,6 @@ components:
       type: object
     ProviderName:
       enum:
-        - Meta
         - AkashML
         - AI21
         - AionLabs
@@ -4375,6 +4448,7 @@ components:
         - Liquid
         - Mara
         - Mancer 2
+        - Meta
         - Minimax
         - ModelRun
         - Mistral
@@ -4407,6 +4481,7 @@ components:
         - Stealth
         - StreamLake
         - Switchpoint
+        - Tencent
         - Tenstorrent
         - Together
         - Upstage
@@ -4426,7 +4501,7 @@ components:
         - format: double
           type: number
         - $ref: '#/components/schemas/PercentileLatencyCutoffs'
-        - nullable: true
+        - type: 'null'
       description: >-
         Preferred maximum latency (in seconds). Can be a number (applies to p50)
         or an object with percentile-specific cutoffs. Endpoints above the
@@ -4439,7 +4514,7 @@ components:
         - format: double
           type: number
         - $ref: '#/components/schemas/PercentileThroughputCutoffs'
-        - nullable: true
+        - type: 'null'
       description: >-
         Preferred minimum throughput (in tokens per second). Can be a number
         (applies to p50) or an object with percentile-specific cutoffs.
@@ -4485,8 +4560,9 @@ components:
             - exacto
             - null
           example: price
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         partition:
           description: >-
             Partitioning strategy for sorting: "model" (default) groups
@@ -4497,14 +4573,14 @@ components:
             - none
             - null
           example: model
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       type: object
     BaseReasoningConfig:
       example:
         effort: medium
         summary: auto
-      nullable: true
       properties:
         context:
           $ref: '#/components/schemas/ReasoningContext'
@@ -4514,7 +4590,9 @@ components:
           $ref: '#/components/schemas/ReasoningMode'
         summary:
           $ref: '#/components/schemas/ReasoningSummaryVerbosity'
-      type: object
+      type:
+        - object
+        - 'null'
     StopServerToolsWhenCondition:
       description: A single condition that, when met, halts the server-tool agent loop.
       discriminator:
@@ -4554,8 +4632,9 @@ components:
             - low
             - medium
             - null
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       type: object
     ToolChoiceAllowed:
       description: Constrains the model to a pre-defined set of allowed tools
@@ -4576,8 +4655,7 @@ components:
               type: string
         tools:
           items:
-            additionalProperties:
-              nullable: true
+            additionalProperties: {}
             type: object
           type: array
         type:
@@ -4611,19 +4689,22 @@ components:
           - example.com
         excluded_domains:
           - spam.com
-      nullable: true
       properties:
         allowed_domains:
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         excluded_domains:
           items:
             type: string
-          nullable: true
-          type: array
-      type: object
+          type:
+            - array
+            - 'null'
+      type:
+        - object
+        - 'null'
     SearchContextSizeEnum:
       description: Size of the search context for web search tools
       enum:
@@ -4639,27 +4720,32 @@ components:
         region: California
         timezone: America/Los_Angeles
         type: approximate
-      nullable: true
       properties:
         city:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         country:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         region:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         timezone:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - approximate
           type: string
       required:
         - type
-      type: object
+      type:
+        - object
+        - 'null'
     CompoundFilter:
       description: A compound filter that combines multiple comparison or compound filters
       example:
@@ -4671,8 +4757,7 @@ components:
       properties:
         filters:
           items:
-            additionalProperties:
-              nullable: true
+            additionalProperties: {}
             type: object
           type: array
         type:
@@ -4696,28 +4781,31 @@ components:
               - direct
               - programmatic
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         defer_loading:
           type: boolean
         description:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         name:
           type: string
         output_schema:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         parameters:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         strict:
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         type:
           enum:
             - function
@@ -4985,8 +5073,7 @@ components:
           items:
             properties:
               parameters:
-                additionalProperties:
-                  nullable: true
+                additionalProperties: {}
                 description: >-
                   Optional configuration forwarded as the tool's `parameters`
                   object.
@@ -5008,8 +5095,7 @@ components:
           - type: string
           - format: double
             type: number
-          - items:
-              nullable: true
+          - items: {}
             type: array
       description: >-
         Configuration for the openrouter:image_generation server tool. Accepts
@@ -5180,14 +5266,17 @@ components:
         created_at:
           type: string
         creator_user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         description:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         designated_version_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         id:
           type: string
         name:
@@ -5197,13 +5286,15 @@ components:
         status:
           $ref: '#/components/schemas/PresetStatus'
         status_updated_at:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         updated_at:
           type: string
         workspace_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - id
         - creator_user_id
@@ -5232,11 +5323,9 @@ components:
         system_prompt: You are a helpful assistant.
         updated_at: '2026-04-20T10:00:00Z'
         version: 1
-      nullable: true
       properties:
         config:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         created_at:
           type: string
@@ -5247,8 +5336,9 @@ components:
         preset_id:
           type: string
         system_prompt:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         updated_at:
           type: string
         version:
@@ -5262,7 +5352,9 @@ components:
         - config
         - created_at
         - updated_at
-      type: object
+      type:
+        - object
+        - 'null'
     OutputItemReasoning:
       example:
         id: reasoning-abc123
@@ -5276,8 +5368,9 @@ components:
             $ref: '#/components/schemas/ReasoningTextContent'
           type: array
         encrypted_content:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         id:
           type: string
         status:
@@ -5330,8 +5423,9 @@ components:
         - google-gemini-v1
         - null
       example: unknown
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     InputAudio:
       description: Audio input content item
       example:
@@ -5421,8 +5515,9 @@ components:
         call_id:
           type: string
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         output:
           anyOf:
             - type: string
@@ -5442,9 +5537,9 @@ components:
                   - $ref: '#/components/schemas/InputFile'
               type: array
         status:
-          allOf:
+          anyOf:
             - $ref: '#/components/schemas/ToolCallStatus'
-            - nullable: true
+            - type: 'null'
         type:
           enum:
             - function_call_output
@@ -5511,7 +5606,7 @@ components:
             - enum:
                 - final_answer
               type: string
-            - nullable: true
+            - type: 'null'
           description: >-
             The phase of an assistant message. Use `commentary` for an
             intermediate assistant message and `final_answer` for the final
@@ -5632,8 +5727,9 @@ components:
                     - open_page
                   type: string
                 url:
-                  nullable: true
-                  type: string
+                  type:
+                    - string
+                    - 'null'
               required:
                 - type
               type: object
@@ -5703,8 +5799,9 @@ components:
           type: string
         result:
           default: null
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         status:
           $ref: '#/components/schemas/ImageGenerationStatus'
         type:
@@ -5729,8 +5826,9 @@ components:
         type: code_interpreter_call
       properties:
         code:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         container_id:
           type: string
         id:
@@ -5760,8 +5858,9 @@ components:
                   - type
                   - logs
                 type: object
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         status:
           $ref: '#/components/schemas/ToolCallStatus'
         type:
@@ -5947,7 +6046,6 @@ components:
         automatically.
       example:
         mode: explicit
-      nullable: true
       properties:
         mode:
           enum:
@@ -5955,7 +6053,9 @@ components:
           type: string
       required:
         - mode
-      type: object
+      type:
+        - object
+        - 'null'
     PercentileLatencyCutoffs:
       description: >-
         Percentile-based latency cutoffs. All specified cutoffs must be met for
@@ -5967,23 +6067,27 @@ components:
         p50:
           description: Maximum p50 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p75:
           description: Maximum p75 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p90:
           description: Maximum p90 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p99:
           description: Maximum p99 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
       type: object
     PercentileThroughputCutoffs:
       description: >-
@@ -5996,23 +6100,27 @@ components:
         p50:
           description: Minimum p50 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p75:
           description: Minimum p75 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p90:
           description: Minimum p90 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p99:
           description: Minimum p99 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
       type: object
     ReasoningContext:
       description: >-
@@ -6026,8 +6134,9 @@ components:
         - current_turn
         - null
       example: all_turns
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     ReasoningEffort:
       enum:
         - max
@@ -6039,8 +6148,9 @@ components:
         - none
         - null
       example: medium
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     ReasoningMode:
       description: >-
         Selects the reasoning mode. `standard` is the default; `pro` engages
@@ -6051,8 +6161,9 @@ components:
         - pro
         - null
       example: standard
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     ReasoningSummaryVerbosity:
       enum:
         - auto
@@ -6060,8 +6171,9 @@ components:
         - detailed
         - null
       example: auto
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     StopServerToolsWhenFinishReasonIs:
       description: Stop when the upstream model emits this finish reason (e.g. `length`).
       example:
@@ -6177,8 +6289,7 @@ components:
           type: integer
       type: object
     AdvisorNestedTool:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       description: >-
         A tool made available to the advisor sub-agent. Only OpenRouter server
         tools (e.g. openrouter:web_search) are supported; function tools are
@@ -6188,8 +6299,7 @@ components:
         type: openrouter:web_search
       properties:
         parameters:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         type:
           type: string
@@ -6222,8 +6332,7 @@ components:
           type: integer
       type: object
     SubagentNestedTool:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       description: >-
         A tool made available to the subagent. Only OpenRouter server tools
         (e.g. openrouter:web_search) are supported; function tools are rejected
@@ -6233,8 +6342,7 @@ components:
         type: openrouter:web_search
       properties:
         parameters:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         type:
           type: string
@@ -6284,17 +6392,21 @@ components:
         type: approximate
       properties:
         city:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         country:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         region:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         timezone:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - approximate
@@ -6602,12 +6714,12 @@ components:
         name:
           type: string
         schema:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         strict:
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         type:
           enum:
             - json_schema

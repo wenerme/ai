@@ -2744,8 +2744,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `encrypted_content?: string | null`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -4842,8 +4843,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 

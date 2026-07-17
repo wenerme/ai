@@ -13,6 +13,7 @@ Set rate limits on Projects API endpoints.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/120445) in GitLab 16.0. Feature flag `rate_limit_for_unauthenticated_projects_api_access` removed.
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/421909) rate limit for the group and projects API in GitLab 17.1 with a [flag](../feature_flags/_index.md) named `rate_limit_groups_and_projects_api`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/461316) in GitLab 18.1. Feature flag `rate_limit_groups_and_projects_api` removed.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245318) a rate limit on creating projects in GitLab 19.3 with a [flag](../feature_flags/_index.md) named `namespace_create_rate_limit`. Disabled by default.
 
 Configure the rate limit for each IP address and user for requests to the following Projects API endpoints:
 
@@ -24,6 +25,7 @@ Configure the rate limit for each IP address and user for requests to the follow
 | [`GET /users/:user_id/projects`](../../api/projects.md#list-all-personal-projects-for-a-user)               | 300     | 1 minute |
 | [`GET /users/:user_id/contributed_projects`](../../api/projects.md#list-all-projects-contributions-for-a-user) | 100     | 1 minute |
 | [`GET /users/:user_id/starred_projects`](../../api/project_starring.md#list-projects-starred-by-a-user)     | 100     | 1 minute |
+| [`POST /projects`](../../api/projects.md#create-a-project)                                                  | 200     | 1 day |
 
 Prerequisites:
 

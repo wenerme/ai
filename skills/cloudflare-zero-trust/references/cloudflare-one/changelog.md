@@ -14,6 +14,49 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-07-16
+
+[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**Bulk print PDFs for browser-based RDP**
+
+Users in browser-based RDP sessions can now print multiple PDF files as a single print job. Copy the files to your clipboard on the remote machine, then select **Print all PDFs** in the clipboard panel. The files are combined into one PDF and sent to your local printer.
+
+![The clipboard panel showing the Print all PDFs option for multiple selected PDF files.](https://developers.cloudflare.com/_astro/rdp-bulk-print.DT4sCcI-_Z1XuBEQ.webp)
+
+Bulk print is available in Chromium-based browsers and Firefox. For more information, refer to [Print PDFs for browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#print-pdfs).
+
+## 2026-07-15
+
+[ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[ DNS ](https://developers.cloudflare.com/dns/)
+
+
+**Internal DNS is now generally available**
+
+[Internal DNS](https://developers.cloudflare.com/dns/internal-dns/) is now generally available. Internal DNS provides authoritative and recursive DNS for private networks on the same global network and control plane you already use for public DNS, Zero Trust, and application services.
+
+#### Why it matters
+
+* **Consolidate DNS operations.** Public and private DNS run on one platform, with one API, one audit trail, and one place to set policy.
+* **Simplify split-horizon DNS.** Internal and external resolution are defined as separate [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/) over shared zones, managed from a single control plane — so there is no drift to chase down.
+* **Extend Zero Trust to DNS.** Resolver policies decide which users and devices resolve against which view, enforced by the same [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) that already governs the rest of your traffic.
+
+Setting up Internal DNS takes three steps: create a zone, create a view, and define a resolver policy.
+
+```json
+POST /zones
+{
+  "account": {
+    "id": "<ACCOUNT_ID>"
+  },
+  "name": "corp.internal",
+  "type": "internal"
+}
+```
+
+Internal DNS is included with [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) for Enterprise customers. To get started, refer to the [Internal DNS documentation](https://developers.cloudflare.com/dns/internal-dns/).
+
 ## 2026-07-10
 
 [ Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
@@ -647,8 +690,8 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7682)
-* [  wrangler.toml ](#tab-panel-7683)
+* [  wrangler.jsonc ](#tab-panel-7834)
+* [  wrangler.toml ](#tab-panel-7835)
 
 **JSONC**
 
@@ -673,8 +716,8 @@ network_id = "cf1:network"
 remote = true
 ```
 
-* [  JavaScript ](#tab-panel-7684)
-* [  TypeScript ](#tab-panel-7685)
+* [  JavaScript ](#tab-panel-7836)
+* [  TypeScript ](#tab-panel-7837)
 
 **JavaScript**
 
@@ -5243,8 +5286,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp)
 
-* [ Zero Trust Dashboard ](#tab-panel-7680)
-* [ Core Dashboard ](#tab-panel-7681)
+* [ Zero Trust Dashboard ](#tab-panel-7832)
+* [ Core Dashboard ](#tab-panel-7833)
 
 To update your view preference in the Zero Trust dashboard:
 

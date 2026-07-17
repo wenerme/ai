@@ -28,8 +28,8 @@ When setting up internal zones, observe the following conditions:
 
 ## Create an internal zone
 
-* [ Dashboard ](#tab-panel-8446)
-* [ API ](#tab-panel-8447)
+* [ Dashboard ](#tab-panel-8786)
+* [ API ](#tab-panel-8787)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -76,7 +76,13 @@ curl "https://api.cloudflare.com/client/v4/zones" \
 
 ## Other API actions
 
-The API endpoints to manage internal zones are the same as for managing public zones. The main difference is that the zone type must be set to `internal`. Refer to the API documentation below for details:
+The API endpoints to manage internal zones are the same as for managing public zones. The main difference is that the zone type must be set to `internal`.
+
+Note
+
+When creating API tokens for Internal DNS, we recommend scoping them to specific internal zones rather than using "All zones". This follows the principle of least privilege. If you create new internal zones later, you will need to update the token scope to include them.
+
+Refer to the following API documentation for details:
 
 * [Update an internal zone](https://developers.cloudflare.com/api/resources/zones/methods/edit/) (`PATCH`)
 * [Get internal zone details](https://developers.cloudflare.com/api/resources/zones/methods/get/) (`GET`)
@@ -84,6 +90,6 @@ The API endpoints to manage internal zones are the same as for managing public z
 * [Delete an internal zone](https://developers.cloudflare.com/api/resources/zones/methods/delete/) (`DELETE`)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/setup/#page","headline":"Manage internal zones · Cloudflare DNS docs","description":"Understand how to set up and manage internal DNS zones with Cloudflare. Explore configuration conditions, zone creation, and available API endpoints.","url":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/internal-dns/","name":"Internal DNS (beta)"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/internal-dns/internal-zones/","name":"Internal zones"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/internal-dns/internal-zones/setup/","name":"Manage internal zones"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/setup/#page","headline":"Manage internal zones · Cloudflare DNS docs","description":"Understand how to set up and manage internal DNS zones with Cloudflare. Explore configuration conditions, zone creation, and available API endpoints.","url":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/internal-dns/","name":"Internal DNS"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/internal-dns/internal-zones/","name":"Internal zones"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/internal-dns/internal-zones/setup/","name":"Manage internal zones"}}]}
 ```

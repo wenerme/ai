@@ -82,15 +82,15 @@ Get completions usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
       - `input_tokens: number`
 
-        The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `num_model_requests: number`
 
@@ -102,7 +102,7 @@ Get completions usage details for the organization.
 
       - `output_tokens: number`
 
-        The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `api_key_id: optional string`
 
@@ -114,11 +114,39 @@ Get completions usage details for the organization.
 
       - `input_audio_tokens: optional number`
 
-        The aggregated number of audio input tokens used, including cached tokens.
+        The aggregated number of uncached audio input tokens used.
+
+      - `input_cache_write_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache.
+
+      - `input_cached_audio_tokens: optional number`
+
+        The aggregated number of cached audio input tokens used.
+
+      - `input_cached_image_tokens: optional number`
+
+        The aggregated number of cached image input tokens used.
+
+      - `input_cached_text_tokens: optional number`
+
+        The aggregated number of cached text input tokens used.
 
       - `input_cached_tokens: optional number`
 
-        The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+      - `input_image_tokens: optional number`
+
+        The aggregated number of uncached image input tokens used.
+
+      - `input_text_tokens: optional number`
+
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+      - `input_uncached_tokens: optional number`
+
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
       - `model: optional string`
 
@@ -127,6 +155,14 @@ Get completions usage details for the organization.
       - `output_audio_tokens: optional number`
 
         The aggregated number of audio output tokens used.
+
+      - `output_image_tokens: optional number`
+
+        The aggregated number of image output tokens used.
+
+      - `output_text_tokens: optional number`
+
+        The aggregated number of text output tokens used.
 
       - `project_id: optional string`
 
@@ -474,9 +510,18 @@ curl https://api.openai.com/v1/organization/usage/completions \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_tokens": 0,
+          "input_cached_audio_tokens": 0,
+          "input_cached_image_tokens": 0,
+          "input_cached_text_tokens": 0,
           "input_cached_tokens": 0,
+          "input_image_tokens": 0,
+          "input_text_tokens": 0,
+          "input_uncached_tokens": 0,
           "model": "model",
           "output_audio_tokens": 0,
+          "output_image_tokens": 0,
+          "output_text_tokens": 0,
           "project_id": "project_id",
           "service_tier": "service_tier",
           "user_id": "user_id"
@@ -513,10 +558,19 @@ curl "https://api.openai.com/v1/organization/usage/completions?start_time=173041
                 {
                     "object": "organization.usage.completions.result",
                     "input_tokens": 1000,
+                    "input_cached_tokens": 400,
+                    "input_cache_write_tokens": 100,
+                    "input_uncached_tokens": 500,
                     "output_tokens": 500,
-                    "input_cached_tokens": 800,
-                    "input_audio_tokens": 0,
-                    "output_audio_tokens": 0,
+                    "input_text_tokens": 400,
+                    "output_text_tokens": 400,
+                    "input_cached_text_tokens": 300,
+                    "input_audio_tokens": 50,
+                    "input_cached_audio_tokens": 50,
+                    "output_audio_tokens": 50,
+                    "input_image_tokens": 50,
+                    "input_cached_image_tokens": 50,
+                    "output_image_tokens": 50,
                     "num_model_requests": 5,
                     "project_id": null,
                     "user_id": null,

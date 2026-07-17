@@ -368,7 +368,7 @@ Handle common errors gracefully:
 
 ## Multiple Turn Conversations
 
-Since the Responses API Beta is stateless, you must include the full conversation history in each request to maintain context:
+Since the Responses API Beta is stateless, you must include the full conversation history in each request to maintain context. Stateful parameters like `store: true` and `previous_response_id` are not supported and are rejected with a `400` error:
 
 <CodeGroup>
   ```typescript title="TypeScript" expandable lines theme={null}

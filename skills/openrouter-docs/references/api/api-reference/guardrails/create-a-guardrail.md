@@ -228,8 +228,9 @@ components:
           items:
             type: string
           minItems: 1
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         allowed_providers:
           description: List of allowed provider IDs
           example:
@@ -239,8 +240,9 @@ components:
           items:
             type: string
           minItems: 1
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         content_filter_builtins:
           description: >-
             Builtin content filters to apply. The "flag" action is only
@@ -252,8 +254,9 @@ components:
               slug: regex-prompt-injection
           items:
             $ref: '#/components/schemas/ContentFilterBuiltinEntryInput'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         content_filters:
           description: Custom regex content filters to apply to request messages
           example:
@@ -262,14 +265,16 @@ components:
               pattern: \b(sk-[a-zA-Z0-9]{48})\b
           items:
             $ref: '#/components/schemas/ContentFilterEntry'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         description:
           description: Description of the guardrail
           example: A guardrail for limiting API usage
           maxLength: 1000
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         enforce_zdr:
           deprecated: true
           description: >-
@@ -278,44 +283,50 @@ components:
             When provided, its value is copied into any of those per-provider
             fields that are not explicitly specified on the request.
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         enforce_zdr_anthropic:
           description: >-
             Whether to enforce zero data retention for Anthropic models. Falls
             back to enforce_zdr when not provided.
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         enforce_zdr_google:
           description: >-
             Whether to enforce zero data retention for Google models. Falls back
             to enforce_zdr when not provided.
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         enforce_zdr_openai:
           description: >-
             Whether to enforce zero data retention for OpenAI models. Falls back
             to enforce_zdr when not provided.
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         enforce_zdr_other:
           description: >-
             Whether to enforce zero data retention for models that are not from
             Anthropic, OpenAI, Google, or xAI. Falls back to enforce_zdr when
             not provided.
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         enforce_zdr_xai:
           description: >-
             Whether to enforce zero data retention for xAI models. Falls back to
             enforce_zdr when not provided.
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         ignored_models:
           description: >-
             Array of model identifiers to exclude from routing (slug or
@@ -325,8 +336,9 @@ components:
           items:
             type: string
           minItems: 1
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         ignored_providers:
           description: List of provider IDs to exclude from routing
           example:
@@ -334,14 +346,16 @@ components:
           items:
             type: string
           minItems: 1
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         limit_usd:
           description: Spending limit in USD
           example: 50
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         name:
           description: Name for the new guardrail
           example: My New Guardrail
@@ -407,13 +421,14 @@ components:
         error:
           $ref: '#/components/schemas/BadRequestResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -427,13 +442,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -447,13 +463,14 @@ components:
         error:
           $ref: '#/components/schemas/ForbiddenResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -467,13 +484,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -517,8 +535,9 @@ components:
           description: Optional label used in redaction placeholders or error messages
           example: '[API_KEY]'
           maxLength: 100
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         pattern:
           description: A regex pattern to match against request content
           example: \b(sk-[a-zA-Z0-9]{48})\b
@@ -536,8 +555,9 @@ components:
         - monthly
         - null
       example: monthly
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     Guardrail:
       example:
         allowed_models: null
@@ -575,8 +595,9 @@ components:
             - deepseek/deepseek-r1-0528:free
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         allowed_providers:
           description: List of allowed provider IDs
           example:
@@ -585,8 +606,9 @@ components:
             - google
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         content_filter_builtins:
           description: >-
             Builtin content filters applied to requests. Includes PII detectors
@@ -597,8 +619,9 @@ components:
               slug: email
           items:
             $ref: '#/components/schemas/ContentFilterBuiltinEntry'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         content_filters:
           description: Custom regex content filters applied to request messages
           example:
@@ -607,8 +630,9 @@ components:
               pattern: \b(sk-[a-zA-Z0-9]{48})\b
           items:
             $ref: '#/components/schemas/ContentFilterEntry'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         created_at:
           description: ISO 8601 timestamp of when the guardrail was created
           example: '2025-08-24T10:30:00Z'
@@ -616,8 +640,9 @@ components:
         description:
           description: Description of the guardrail
           example: Guardrail for production environment
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         enforce_zdr:
           deprecated: true
           description: >-
@@ -626,44 +651,50 @@ components:
             When provided, its value is copied into any of those per-provider
             fields that are not explicitly specified on the request.
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         enforce_zdr_anthropic:
           description: >-
             Whether to enforce zero data retention for Anthropic models. Falls
             back to enforce_zdr when not provided.
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         enforce_zdr_google:
           description: >-
             Whether to enforce zero data retention for Google models. Falls back
             to enforce_zdr when not provided.
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         enforce_zdr_openai:
           description: >-
             Whether to enforce zero data retention for OpenAI models. Falls back
             to enforce_zdr when not provided.
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         enforce_zdr_other:
           description: >-
             Whether to enforce zero data retention for models that are not from
             Anthropic, OpenAI, Google, or xAI. Falls back to enforce_zdr when
             not provided.
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         enforce_zdr_xai:
           description: >-
             Whether to enforce zero data retention for xAI models. Falls back to
             enforce_zdr when not provided.
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         id:
           description: Unique identifier for the guardrail
           example: 550e8400-e29b-41d4-a716-446655440000
@@ -675,22 +706,25 @@ components:
             - openai/gpt-4o-mini-2024-07-18
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         ignored_providers:
           description: List of provider IDs to exclude from routing
           example:
             - azure
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         limit_usd:
           description: Spending limit in USD
           example: 100
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         name:
           description: Name of the guardrail
           example: Production Guardrail
@@ -700,8 +734,9 @@ components:
         updated_at:
           description: ISO 8601 timestamp of when the guardrail was last updated
           example: '2025-08-24T15:45:00Z'
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         workspace_id:
           description: The workspace ID this guardrail belongs to.
           example: 0df9e665-d932-5740-b2c7-b52af166bc11
@@ -723,10 +758,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -742,10 +777,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -761,10 +796,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -780,10 +815,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message

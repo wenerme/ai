@@ -129,7 +129,7 @@ Creates and executes a batch from an uploaded file of requests
 
   - `errors: optional object { data, object }`
 
-    - `data: optional array of object { code, line, message, param }`
+    - `data: optional array of BatchError`
 
       - `code: optional string`
 
@@ -191,7 +191,7 @@ Creates and executes a batch from an uploaded file of requests
 
     The ID of the file containing the outputs of successfully executed requests.
 
-  - `request_counts: optional object { completed, failed, total }`
+  - `request_counts: optional BatchRequestCounts`
 
     The request counts for different statuses within the batch.
 

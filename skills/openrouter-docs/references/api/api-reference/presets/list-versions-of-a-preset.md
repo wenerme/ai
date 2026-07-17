@@ -120,8 +120,9 @@ paths:
             description: Number of records to skip for pagination
             example: 0
             minimum: 0
-            nullable: true
-            type: integer
+            type:
+              - integer
+              - 'null'
         - description: Maximum number of records to return (max 100)
           in: query
           name: limit
@@ -233,13 +234,14 @@ components:
         error:
           $ref: '#/components/schemas/BadRequestResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -253,13 +255,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -273,13 +276,14 @@ components:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -293,13 +297,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -318,11 +323,9 @@ components:
         system_prompt: You are a helpful assistant.
         updated_at: '2026-04-20T10:00:00Z'
         version: 1
-      nullable: true
       properties:
         config:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         created_at:
           type: string
@@ -333,8 +336,9 @@ components:
         preset_id:
           type: string
         system_prompt:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         updated_at:
           type: string
         version:
@@ -348,7 +352,9 @@ components:
         - config
         - created_at
         - updated_at
-      type: object
+      type:
+        - object
+        - 'null'
     BadRequestResponseErrorData:
       description: Error data for BadRequestResponse
       example:
@@ -360,10 +366,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -379,10 +385,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -398,10 +404,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -417,10 +423,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message

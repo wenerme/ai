@@ -33410,11 +33410,29 @@ Fields:
 | <a id="cdapplication-links"></a>`links`  | [`CdApplicationLinkConnection`](#cdapplicationlinkconnection) | Introduced in GitLab 19.2. Status: Experiment. Links belonging to the application. |
 | <a id="cdapplication-name"></a>`name` | [`String!`](#string) | Name of the application. |
 | <a id="cdapplication-organization"></a>`organization` | [`Organization`](#organization) | Organization the application belongs to. |
-| <a id="cdapplication-rollouts"></a>`rollouts`  | [`CdRolloutConnection`](#cdrolloutconnection) | Introduced in GitLab 19.2. Status: Experiment. Rollouts of the application. |
 | <a id="cdapplication-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the application was last updated. |
 | <a id="cdapplication-userpermissions"></a>`userPermissions`  | [`CdApplicationPermissions`](#cdapplicationpermissions) | Introduced in GitLab 19.2. Status: Experiment. Permissions of the current user for the application. |
 
 #### Fields with arguments
+
+##### `CdApplication.rollouts`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+Rollouts of the application.
+
+Returns [`CdRolloutConnection`](#cdrolloutconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cdapplication-rollouts-search"></a>`search` | [`String`](#string) | Search rollouts by ID (IID). |
 
 ##### `CdApplication.services`
 
@@ -33603,6 +33621,7 @@ Fields:
 | <a id="cdrollout-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the rollout was created. |
 | <a id="cdrollout-finishedat"></a>`finishedAt` | [`Time`](#time) | Timestamp of when the rollout finished. |
 | <a id="cdrollout-id"></a>`id` | [`CdRolloutID!`](#cdrolloutid) | Global ID of the rollout. |
+| <a id="cdrollout-iid"></a>`iid` | [`Int!`](#int) | Internal ID of the rollout, unique and user-facing within its application. |
 | <a id="cdrollout-rolloutenvironments"></a>`rolloutEnvironments`  | [`CdRolloutEnvironmentConnection`](#cdrolloutenvironmentconnection) | Introduced in GitLab 19.2. Status: Experiment. Rollout environments of the rollout. |
 | <a id="cdrollout-rollouttransitions"></a>`rolloutTransitions`  | [`CdRolloutTransitionConnection`](#cdrollouttransitionconnection) | Introduced in GitLab 19.2. Status: Experiment. Transition journal of the rollout. |
 | <a id="cdrollout-startedat"></a>`startedAt` | [`Time`](#time) | Timestamp of when the rollout started. |
@@ -33711,9 +33730,29 @@ Fields:
 | <a id="cdversionset-entriesdigest"></a>`entriesDigest` | [`String`](#string) | Digest of the version set entries. |
 | <a id="cdversionset-id"></a>`id` | [`CdVersionSetID!`](#cdversionsetid) | Global ID of the version set. |
 | <a id="cdversionset-name"></a>`name` | [`String!`](#string) | Name of the version set. |
-| <a id="cdversionset-rollouts"></a>`rollouts`  | [`CdRolloutConnection`](#cdrolloutconnection) | Introduced in GitLab 19.2. Status: Experiment. Rollouts of the version set. |
 | <a id="cdversionset-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the version set was last updated. |
 | <a id="cdversionset-versionsetentries"></a>`versionSetEntries`  | [`CdVersionSetEntryConnection`](#cdversionsetentryconnection) | Introduced in GitLab 19.2. Status: Experiment. Entries of the version set. |
+
+#### Fields with arguments
+
+##### `CdVersionSet.rollouts`
+
+- Introduced in GitLab 19.2.
+- Status: Experiment.
+
+Rollouts of the version set.
+
+Returns [`CdRolloutConnection`](#cdrolloutconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cdversionset-rollouts-search"></a>`search` | [`String`](#string) | Search rollouts by ID (IID). |
 
 ### `CdVersionSetEntry`
 
@@ -48997,6 +49036,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="organization-avatarurl"></a>`avatarUrl`  | [`String`](#string) | Introduced in GitLab 16.7. Status: Experiment. Avatar URL of the organization. |
 | <a id="organization-cdavailableagents"></a>`cdAvailableAgents`  | [`ClusterAgentConnection`](#clusteragentconnection) | Introduced in GitLab 19.2. Status: Experiment. GitLab agents for Kubernetes available in the organization. |
+| <a id="organization-cdavailabledeploydrivers"></a>`cdAvailableDeployDrivers`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Reference of continuous deployment deploy drivers available in the organization. |
 | <a id="organization-cdenvironmenttiers"></a>`cdEnvironmentTiers`  | [`[CdEnvironmentTier!]`](#cdenvironmenttier) | Introduced in GitLab 19.2. Status: Experiment. Continuous deployment environment tiers available in the organization. |
 | <a id="organization-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 16.7. Status: Experiment. Description of the organization. |
 | <a id="organization-descriptionhtml"></a>`descriptionHtml`  | [`String`](#string) | Introduced in GitLab 16.7. Status: Experiment. GitLab Flavored Markdown rendering of `description`. |
@@ -71410,6 +71450,18 @@ Arguments:
 | <a id="statusmappinginput-newstatusid"></a>`newStatusId` | [`WorkItemsStatusesStatusID!`](#workitemsstatusesstatusid) | Global ID of the replacement status. |
 | <a id="statusmappinginput-oldstatusid"></a>`oldStatusId` | [`WorkItemsStatusesStatusID!`](#workitemsstatusesstatusid) | Global ID of the status being removed/replaced. |
 
+### `TaskListToggleInput`
+
+Toggles a single task list item checkbox instead of replacing the full Markdown source.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="tasklisttoggleinput-checked"></a>`checked` | [`Boolean!`](#boolean) | Indicates the state the task list item should be toggled to. |
+| <a id="tasklisttoggleinput-linesource"></a>`lineSource` | [`String!`](#string) | Full Markdown source of the line containing the task list item; used to detect concurrent edits. |
+| <a id="tasklisttoggleinput-linesourcepos"></a>`lineSourcepos` | [`String!`](#string) | Source position of the task list item in the Markdown source; for example, `5:1-5:14`. |
+
 ### `Timeframe`
 
 A time-frame defined as a closed inclusive range of two dates.
@@ -71803,7 +71855,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="workitemwidgetdescriptioninput-description"></a>`description` | [`String!`](#string) | Description of the work item. |
+| <a id="workitemwidgetdescriptioninput-description"></a>`description` | [`String`](#string) | Description of the work item. |
+| <a id="workitemwidgetdescriptioninput-tasklisttoggle"></a>`taskListToggle`  | [`TaskListToggleInput`](#tasklisttoggleinput) | Introduced in GitLab 19.2. Status: Experiment. Toggle a single task list item instead of replacing the full description. Only supported when updating a work item, and only when the `work_items_task_list_toggle` feature flag is enabled. |
 
 ### `WorkItemWidgetDevelopmentCreateInput`
 

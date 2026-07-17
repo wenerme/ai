@@ -14,10 +14,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Follow this guide to get started with Internal DNS.
 
-Note
-
-Internal DNS is currently in beta. Using it on production traffic is at your own risk.
-
 ## Before you begin
 
 * Make sure you have an Enterprise account with access to [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) and [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/).
@@ -42,12 +38,19 @@ API token configuration
 
 **Zone Resources**
 
-* _Include_ \- _All zones_
+* _Include_ \- _Specific zones_
+When creating a token for Internal DNS, we recommend scoping it to specific internal zones rather than using "All zones". This follows the principle of least privilege. If you create new internal zones later, you will need to update the token scope to include them. Support for automatic zone-type scoping (for example, "all internal zones") is planned for a future release.
+
+About authentication
+
+Internal DNS uses the same authentication model as the rest of Cloudflare DNS. There is no separate role or special permission group for internal zones. You use standard DNS permissions scoped to the specific zones you want to manage.
+
+One important distinction: a zone-scoped token cannot create a zone because the zone does not exist yet to be scoped to. To create an internal zone via API, you need a token with **Zone > Zone > Edit** scoped to **All zones** or at the account level. After the zone exists, switch to a zone-scoped token for managing records and settings.
 
 ## 1\. Set up your internal DNS zone
 
-* [ Dashboard ](#tab-panel-8440)
-* [ API ](#tab-panel-8441)
+* [ Dashboard ](#tab-panel-8780)
+* [ API ](#tab-panel-8781)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -119,8 +122,8 @@ During an [internal DNS query resolution](https://developers.cloudflare.com/dns/
 
 For details, refer to [reference zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/).
 
-* [ Dashboard ](#tab-panel-8442)
-* [ API ](#tab-panel-8443)
+* [ Dashboard ](#tab-panel-8782)
+* [ API ](#tab-panel-8783)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -156,8 +159,8 @@ curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f
 
 Since the resolver policy will require a [DNS view](https://developers.cloudflare.com/dns/internal-dns/dns-views/), you must have at least one view to be able to route requests to internal zones.
 
-* [ Dashboard ](#tab-panel-8438)
-* [ API ](#tab-panel-8439)
+* [ Dashboard ](#tab-panel-8778)
+* [ API ](#tab-panel-8779)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -196,8 +199,8 @@ The Gateway configuration must exist within the same Cloudflare account where th
 
 Besides selecting an internal DNS view when setting up your resolver policies, you can also enable the **fallback through public DNS** option.
 
-* [ Dashboard ](#tab-panel-8436)
-* [ API ](#tab-panel-8437)
+* [ Dashboard ](#tab-panel-8776)
+* [ API ](#tab-panel-8777)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies** \> **Resolver policies**.
 2. Select **Add a policy** and enter a name and description.
@@ -217,7 +220,13 @@ Use the rule settings object to define `resolve_dns_internally`, specifying `vie
 
 Once you add the Gateway resolver policy, it will be listed in the respective internal view under **Resolver policies referencing this view**.
 
+## Manage with Terraform
+
+You can also manage Internal DNS resources with the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs). The patterns are identical to public DNS zones — the only difference is setting `type = "internal"` on the `cloudflare_zone` resource.
+
+Use a zone-scoped API token for day-to-day management and an account-level token for creating new zones. If your token is scoped to specific zones, remember to update it when you add new internal zones. For a complete working example, refer to the [Terraform provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/get-started/#page","headline":"Get started · Cloudflare DNS docs","description":"Set up Internal DNS for private name resolution.","url":"https://developers.cloudflare.com/dns/internal-dns/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/internal-dns/","name":"Internal DNS (beta)"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/internal-dns/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/get-started/#page","headline":"Get started · Cloudflare DNS docs","description":"Set up Internal DNS for private name resolution.","url":"https://developers.cloudflare.com/dns/internal-dns/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/internal-dns/","name":"Internal DNS"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/internal-dns/get-started/","name":"Get started"}}]}
 ```

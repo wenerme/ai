@@ -396,8 +396,9 @@ paths:
                               - ZM
                               - ZW
                             type: string
-                          nullable: true
-                          type: array
+                          type:
+                            - array
+                            - 'null'
                         headquarters:
                           description: >-
                             ISO 3166-1 Alpha-2 country code of the provider
@@ -654,8 +655,9 @@ paths:
                             - ZW
                             - null
                           example: US
-                          nullable: true
-                          type: string
+                          type:
+                            - string
+                            - 'null'
                         name:
                           description: Display name of the provider
                           example: OpenAI
@@ -663,8 +665,9 @@ paths:
                         privacy_policy_url:
                           description: URL to the provider's privacy policy
                           example: https://openai.com/privacy
-                          nullable: true
-                          type: string
+                          type:
+                            - string
+                            - 'null'
                         slug:
                           description: URL-friendly identifier for the provider
                           example: openai
@@ -672,13 +675,15 @@ paths:
                         status_page_url:
                           description: URL to the provider's status page
                           example: https://status.openai.com
-                          nullable: true
-                          type: string
+                          type:
+                            - string
+                            - 'null'
                         terms_of_service_url:
                           description: URL to the provider's terms of service
                           example: https://openai.com/terms
-                          nullable: true
-                          type: string
+                          type:
+                            - string
+                            - 'null'
                       required:
                         - name
                         - slug
@@ -711,13 +716,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -732,10 +738,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message

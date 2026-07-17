@@ -1435,11 +1435,11 @@ as input for the model's response.
 
           - `"output_text"`
 
-        - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+        - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
           Citations associated with the text content.
 
-          - `array of object { file_id, filename, index, type }`
+          - `FileCitation object { file_id, filename, index, type }`
 
             - `file_id: string`
 
@@ -1459,7 +1459,7 @@ as input for the model's response.
 
               - `"file_citation"`
 
-          - `array of object { end_index, start_index, title, 2 more }`
+          - `URLCitation object { end_index, start_index, title, 2 more }`
 
             - `end_index: number`
 
@@ -1483,7 +1483,7 @@ as input for the model's response.
 
               The URL of the cited resource.
 
-          - `array of object { container_id, end_index, file_id, 3 more }`
+          - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
             - `container_id: string`
 
@@ -3834,8 +3834,9 @@ as input for the model's response.
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -8112,11 +8113,11 @@ as input for the model's response.
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or array of object { end_index, start_index, title, 2 more }  or array of object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
-            - `array of object { file_id, filename, index, type }`
+            - `FileCitation object { file_id, filename, index, type }`
 
               - `file_id: string`
 
@@ -8136,7 +8137,7 @@ as input for the model's response.
 
                 - `"file_citation"`
 
-            - `array of object { end_index, start_index, title, 2 more }`
+            - `URLCitation object { end_index, start_index, title, 2 more }`
 
               - `end_index: number`
 
@@ -8160,7 +8161,7 @@ as input for the model's response.
 
                 The URL of the cited resource.
 
-            - `array of object { container_id, end_index, file_id, 3 more }`
+            - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
               - `container_id: string`
 
@@ -10511,8 +10512,9 @@ as input for the model's response.
 
         - `encrypted_content: optional string`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -12550,8 +12552,9 @@ as input for the model's response.
 
       - `encrypted_content: optional string`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 

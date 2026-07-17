@@ -9,6 +9,7 @@ Connect AI tools to your GitLab instance with the GitLab MCP server.
 - Introduced as an [experiment](../../policy/development_stages_support.md#experiment) in GitLab 18.3 [with feature flags](../../administration/feature_flags/_index.md) named `mcp_server` and `oauth_dynamic_client_registration`. Disabled by default.
 - Changed from experiment to [beta](../../policy/development_stages_support.md#beta) in GitLab 18.6. Feature flags [`mcp_server`](https://gitlab.com/gitlab-org/gitlab/-/issues/556448) and [`oauth_dynamic_client_registration`](https://gitlab.com/gitlab-org/gitlab/-/issues/555942) removed.
 - Support for `2025-03-26` and `2025-06-18` MCP protocol specifications [added](https://gitlab.com/gitlab-org/gitlab/-/issues/581459) in GitLab 18.7.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/590729) to a separate setting and [moved](https://gitlab.com/groups/gitlab-org/-/work_items/21183) from GitLab Premium to GitLab Free in GitLab 19.2.
 
 > [!warning]
 > To provide feedback on this feature, leave a comment on [issue 561564](https://gitlab.com/gitlab-org/gitlab/-/issues/561564).
@@ -415,6 +416,63 @@ You can now start a new chat and ask a question depending on the [available tool
 > [!warning]
 > You're responsible for guarding against prompt injection when you use these tools.
 > Exercise extreme caution or use MCP tools only on GitLab objects you trust.
+
+## Reuse a single OAuth application
+
+- Offering: GitLab Self-Managed, GitLab Dedicated
+
+When an MCP client connects to the GitLab MCP server,
+it uses OAuth 2.0 Dynamic Client Registration (DCR)
+to create a new OAuth application on your GitLab instance.
+In environments with many users or frequent reconnections, this can result in a large number
+of OAuth applications on the instance.
+
+To avoid a large number of OAuth applications, create a single, shared OAuth application and give
+its client ID to users.
+
+When users configure their MCP client with this client ID,
+all connections reuse the same OAuth application instead of creating new ones.
+
+When a user authenticates with the shared `clientId`, GitLab reuses the same OAuth application
+for every subsequent authentication from any user with the same configuration.
+User authorize with OAuth and receive their own access token.
+The shared application is the OAuth client identity, not a shared credential.
+
+Prerequisites:
+
+- You must be an administrator.
+- An MCP client that supports the following:
+  - Pre-configured OAuth credentials
+  - The `clientId` field in its configuration
+
+1. Use the [REST API](../../api/applications.md#create-an-application) to create a single OAuth application
+   for the instance. Set `mcp` as the scope and `confidential: false`
+1. Give the `application_id` in the response to your users. This is the `clientID` that users
+   configure in the MCP client. The configuration key varies by client, but is typically named `clientId` or `client_id`
+   in the OAuth configuration of the GitLab MCP server. This is typically in an `mcp.json` file.
+
+> [!note]
+> The redirect URI registered on the OAuth application must exactly match the redirect URI
+> your MCP client sends during the OAuth flow.
+> Check your client's documentation for the redirect URI it uses.
+> A single shared OAuth application cannot serve MCP clients that use different redirect URIs.
+> If your users use MCP clients with different redirect URIs, create a separate shared OAuth application for each client type.
+
+### Security considerations
+
+Users who authenticate with the client ID must still complete the OAuth authorization
+with their own GitLab credentials. They can access only the data they are permitted to.
+
+GitLab does not verify which MCP client application presents the `clientId`.
+If you create an OAuth application for a specific MCP client,
+any other MCP client that supports pre-registration could use the same `clientId` to authenticate.
+The `clientId` controls which OAuth application is used, not which client software is allowed.
+
+Pre-registered applications created with the REST API do not enforce Proof Key for Code Exchange (PKCE).
+PKCE defends against authorization code interception for public clients.
+
+To enforce PKCE, verify that your MCP client sends `code_challenge` and `code_challenge_method` parameters during the OAuth flow.
+GitLab accepts PKCE parameters for pre-registered applications, but does not require them.
 
 ## Related topics
 

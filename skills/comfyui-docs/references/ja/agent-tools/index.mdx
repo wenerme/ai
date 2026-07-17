@@ -1,11 +1,11 @@
 ---
 title: "Agent Tools / MCP"
 description: "Model Context Protocol (MCP) を使用して AI エージェントを ComfyUI に接続し、画像、動画、オーディオ、3D コンテンツを生成します。"
-translationSourceHash: 0647990d
+translationSourceHash: f467366b
 translationFrom: agent-tools/index.mdx
 translationBlockHashes:
-  "_intro": 57347fa8
-  "Which One Should I Use?": fa16d052
+  "_intro": 9db234db
+  "Which One Should I Use?": 7b3ab710
   "What about local ComfyUI?": 6e518082
   "What is MCP?": bb62fbe5
 ---
@@ -23,9 +23,6 @@ ComfyUI は **MCP サーバー** と **Comfy CLI** を提供しているので�
     Comfy Cloud 内のエージェント体験（チャットでグラフを構築・編集）。*プライベートアルファ。現在はウェイトリストのみ。*
   
   
-    Comfy Partner-Node SDK を使用したローカル MCP サーバー。30以上のパートナープロバイダーに対応する統一された <code>generate_image</code>、<code>generate_video</code>、<code>generate_3d</code> などのツールを提供します。
-  
-  
     ファーストパーティのローカル MCP サーバーです。<code>comfy-cli</code> を使用して、<strong>お使いの</strong> ComfyUI インストールを操作します。<em>非公開テスト。まだ一般公開されていません。</em>
   
   
@@ -34,14 +31,14 @@ ComfyUI は **MCP サーバー** と **Comfy CLI** を提供しているので�
 
 ## どちらを使うべき？
 
-| | Comfy Cloud MCP | Comfy Partner MCP | Comfy Local MCP | Comfy CLI |
-|---|---|---|---|---|
-| **タイプ** | リモート（ホスト型） | ローカル MCP サーバー | ローカル MCP サーバー | ローカル CLI |
-| **必要条件** | Comfy Cloud サブスクリプション | [Comfy APIキー](/ja/development/api-development/getting-an-api-key) | ローカル ComfyUI + [comfy-cli](https://github.com/Comfy-Org/comfy-cli) | [Comfy APIキー](/ja/development/api-development/getting-an-api-key) |
-| **モデル** | Comfy Cloud モデル（プリインストール済み） | 30以上のパートナープロバイダー（BFL、Ideogram、Kling、Runway、Veo、ElevenLabs など） | あなたのローカルモデルとカスタムノード | `comfy generate` によるパートナーノード |
-| **ワークフロー** | 完全な ComfyUI ワークフロー実行 | パートナーAPI生成（カスタムワークフローなし） | 完全なローカル ComfyUI ワークフロー実行 | 単発のパートナーAPI呼び出し（ワークフローJSON不要） |
-| **GPU** | クラウド GPU（ローカル GPU 不要） | GPU不要（APIベース） | あなたのローカル GPU | GPU不要（APIベース） |
-| **最適な用途** | チャット駆動のエージェント、テンプレート検索 | プロバイダー間の統一MCPツール | チャットから自分のローカル ComfyUI を操作 | スクリプト、CI、バッチジョブ |
+| | Comfy Cloud MCP | Comfy Local MCP | Comfy CLI |
+|---|---|---|---|
+| **タイプ** | リモート（ホスト型） | ローカル MCP サーバー | ローカル CLI |
+| **必要条件** | Comfy Cloud サブスクリプション | ローカル ComfyUI + [comfy-cli](https://github.com/Comfy-Org/comfy-cli) | [Comfy APIキー](/ja/development/api-development/getting-an-api-key) |
+| **モデル** | Comfy Cloud モデル（プリインストール済み） | あなたのローカルモデルとカスタムノード | `comfy generate` によるパートナーノード |
+| **ワークフロー** | 完全な ComfyUI ワークフロー実行 | 完全なローカル ComfyUI ワークフロー実行 | 単発のパートナーAPI呼び出し（ワークフローJSON不要） |
+| **GPU** | クラウド GPU（ローカル GPU 不要） | あなたのローカル GPU | GPU不要（APIベース） |
+| **最適な用途** | チャット駆動のエージェント、テンプレート検索 | チャットから自分のローカル ComfyUI を操作 | スクリプト、CI、バッチジョブ |
 
 ---
 

@@ -143,6 +143,7 @@ paths:
                 id: chatcmpl-123
                 model: openai/gpt-4
                 object: chat.completion
+                system_fingerprint: fp_44709d6fcb
                 usage:
                   completion_tokens: 10
                   prompt_tokens: 25
@@ -384,8 +385,9 @@ components:
           description: Frequency penalty (-2.0 to 2.0)
           example: 0
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         image_config:
           $ref: '#/components/schemas/ImageConfig'
         logit_bias:
@@ -395,25 +397,29 @@ components:
           description: Token logit bias adjustments
           example:
             '50256': -100
-          nullable: true
-          type: object
+          type:
+            - object
+            - 'null'
         logprobs:
           description: Return log probabilities
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         max_completion_tokens:
           description: Maximum tokens in completion
           example: 100
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         max_tokens:
           description: >-
             Maximum tokens (deprecated, use max_completion_tokens). Note: some
             providers enforce a minimum of 16.
           example: 100
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         messages:
           description: List of messages for the conversation
           example:
@@ -440,8 +446,9 @@ components:
             filtered out. Not all providers support this parameter.
           example: 0.1
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         modalities:
           description: >-
             Output modalities for the response. Supported values are "text",
@@ -466,8 +473,9 @@ components:
             true, the model may generate multiple tool calls in a single
             response.
           example: true
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         plugins:
           description: >-
             Plugins you want to enable for this request, including their
@@ -511,11 +519,13 @@ components:
           description: Presence penalty (-2.0 to 2.0)
           example: 0
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         prompt_cache_key:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         prompt_cache_options:
           $ref: '#/components/schemas/PromptCacheOptions'
         provider:
@@ -538,8 +548,9 @@ components:
                 - none
                 - null
               example: medium
-              nullable: true
-              type: string
+              type:
+                - string
+                - 'null'
             summary:
               $ref: '#/components/schemas/ChatReasoningSummaryVerbosityEnum'
           type: object
@@ -558,8 +569,9 @@ components:
             - none
             - null
           example: medium
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         repetition_penalty:
           description: >-
             Penalizes tokens based on how much they have already appeared in the
@@ -568,8 +580,9 @@ components:
             parameter.
           example: 1
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         response_format:
           description: Response format configuration
           discriminator:
@@ -598,8 +611,9 @@ components:
         seed:
           description: Random seed for deterministic outputs
           example: 42
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         service_tier:
           description: The service tier to use for processing this request.
           enum:
@@ -610,8 +624,9 @@ components:
             - scale
             - null
           example: auto
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         session_id:
           description: >-
             A unique identifier for grouping related requests (e.g., a
@@ -630,7 +645,7 @@ components:
                 type: string
               maxItems: 4
               type: array
-            - nullable: true
+            - type: 'null'
           description: Stop sequences (up to 4)
           example:
             - |+
@@ -648,8 +663,9 @@ components:
           description: Sampling temperature (0-2)
           example: 0.7
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         tool_choice:
           $ref: '#/components/schemas/ChatToolChoice'
         tools:
@@ -669,27 +685,31 @@ components:
             this parameter.
           example: 0
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         top_k:
           description: >-
             Limits the model to choose from the top K most likely tokens at each
             step. A value of 1 means the model will always pick the most likely
             next token. Not all providers support this parameter.
           example: 40
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         top_logprobs:
           description: Number of top log probabilities to return (0-20)
           example: 5
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         top_p:
           description: Nucleus sampling parameter (0-1)
           example: 1
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         trace:
           $ref: '#/components/schemas/TraceConfig'
         user:
@@ -712,6 +732,7 @@ components:
         id: chatcmpl-123
         model: openai/gpt-4
         object: chat.completion
+        system_fingerprint: fp_44709d6fcb
         usage:
           completion_tokens: 15
           prompt_tokens: 10
@@ -743,13 +764,15 @@ components:
         service_tier:
           description: The service tier used by the upstream provider for this request
           example: default
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         system_fingerprint:
           description: System fingerprint
           example: fp_44709d6fcb
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         usage:
           $ref: '#/components/schemas/ChatUsage'
       required:
@@ -789,13 +812,14 @@ components:
         error:
           $ref: '#/components/schemas/BadRequestResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -809,13 +833,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -829,13 +854,14 @@ components:
         error:
           $ref: '#/components/schemas/PaymentRequiredResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -849,13 +875,14 @@ components:
         error:
           $ref: '#/components/schemas/ForbiddenResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -869,13 +896,14 @@ components:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -889,13 +917,14 @@ components:
         error:
           $ref: '#/components/schemas/RequestTimeoutResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -909,13 +938,14 @@ components:
         error:
           $ref: '#/components/schemas/PayloadTooLargeResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -929,13 +959,14 @@ components:
         error:
           $ref: '#/components/schemas/UnprocessableEntityResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -949,13 +980,14 @@ components:
         error:
           $ref: '#/components/schemas/TooManyRequestsResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -969,13 +1001,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -989,13 +1022,14 @@ components:
         error:
           $ref: '#/components/schemas/BadGatewayResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -1009,13 +1043,14 @@ components:
         error:
           $ref: '#/components/schemas/ServiceUnavailableResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -1029,13 +1064,14 @@ components:
         error:
           $ref: '#/components/schemas/EdgeNetworkTimeoutResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -1049,13 +1085,14 @@ components:
         error:
           $ref: '#/components/schemas/ProviderOverloadedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -1097,8 +1134,7 @@ components:
           - type: string
           - format: double
             type: number
-          - items:
-              nullable: true
+          - items: {}
             type: array
       description: >-
         Provider-specific image configuration options. Keys and values vary by
@@ -1321,15 +1357,15 @@ components:
                     - format: double
                       type: number
                     - type: boolean
-                    - nullable: true
+                    - type: 'null'
                     - items:
                         anyOf:
                           - type: string
                           - format: double
                             type: number
                           - type: boolean
-                          - nullable: true
-                          - nullable: true
+                          - type: 'null'
+                          - type: 'null'
                       type: array
                     - additionalProperties:
                         anyOf:
@@ -1337,10 +1373,10 @@ components:
                           - format: double
                             type: number
                           - type: boolean
-                          - nullable: true
-                          - nullable: true
+                          - type: 'null'
+                          - type: 'null'
                       type: object
-                    - nullable: true
+                    - type: 'null'
                 description: >-
                   Optional configuration forwarded as the tool's `parameters`
                   object.
@@ -1536,7 +1572,6 @@ components:
       example:
         content: Expected response
         type: content
-      nullable: true
       properties:
         content:
           anyOf:
@@ -1551,7 +1586,9 @@ components:
       required:
         - type
         - content
-      type: object
+      type:
+        - object
+        - 'null'
     PromptCacheOptions:
       description: >-
         Request-level prompt-cache controls. `mode: "explicit"` disables
@@ -1561,18 +1598,20 @@ components:
       example:
         mode: explicit
         ttl: 30m
-      nullable: true
       properties:
         mode:
           enum:
             - explicit
           type: string
         ttl:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - mode
-      type: object
+      type:
+        - object
+        - 'null'
     ProviderPreferences:
       additionalProperties: false
       description: >-
@@ -1580,7 +1619,6 @@ components:
         routing preference.
       example:
         allow_fallbacks: true
-      nullable: true
       properties:
         allow_fallbacks:
           description: >
@@ -1591,8 +1629,9 @@ components:
 
             - false: use only the primary/custom provider, and return the
             upstream error if it's unavailable.
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         data_collection:
           description: >-
             Data collection setting. If no available model provider meets the
@@ -1608,16 +1647,18 @@ components:
             - allow
             - null
           example: allow
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         enforce_distillable_text:
           description: >-
             Whether to restrict routing to only models that allow text
             distillation. When true, only models where the author has allowed
             distillation will be used.
           example: true
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         ignore:
           description: >-
             List of provider slugs to ignore. If provided, this list is merged
@@ -1629,8 +1670,9 @@ components:
             anyOf:
               - $ref: '#/components/schemas/ProviderName'
               - type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         max_price:
           description: >-
             The object specifying the maximum price you want to pay for this
@@ -1663,8 +1705,9 @@ components:
             anyOf:
               - $ref: '#/components/schemas/ProviderName'
               - type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         order:
           description: >-
             An ordered list of provider slugs. The router will attempt to use
@@ -1679,8 +1722,9 @@ components:
             anyOf:
               - $ref: '#/components/schemas/ProviderName'
               - type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         preferred_max_latency:
           $ref: '#/components/schemas/PreferredMaxLatency'
         preferred_min_throughput:
@@ -1689,21 +1733,23 @@ components:
           description: A list of quantization levels to filter the provider by.
           items:
             $ref: '#/components/schemas/Quantization'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         require_parameters:
           description: >-
             Whether to filter providers to only those that support the
             parameters you've provided. If this setting is omitted or set to
             false, then providers will receive only the parameters they support,
             and ignore the rest.
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         sort:
           anyOf:
             - $ref: '#/components/schemas/ProviderSort'
             - $ref: '#/components/schemas/ProviderSortConfig'
-            - nullable: true
+            - type: 'null'
           description: >-
             The sorting strategy to use for this request, if "order" is not
             specified. When set, no load balancing is performed.
@@ -1714,9 +1760,12 @@ components:
             endpoints. When true, only endpoints that do not retain prompts will
             be used.
           example: true
-          nullable: true
-          type: boolean
-      type: object
+          type:
+            - boolean
+            - 'null'
+      type:
+        - object
+        - 'null'
     ChatReasoningSummaryVerbosityEnum:
       enum:
         - auto
@@ -1724,8 +1773,9 @@ components:
         - detailed
         - null
       example: concise
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     ChatFormatGrammarConfig:
       description: Custom grammar response format
       example:
@@ -1815,8 +1865,9 @@ components:
         - sort
         - null
       example: fallback
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
       x-fern-ignore: true
       x-speakeasy-deprecation-message: Use providers.sort.partition instead.
       x-speakeasy-ignore: true
@@ -1837,7 +1888,6 @@ components:
       description: Streaming configuration options
       example:
         include_usage: true
-      nullable: true
       properties:
         include_usage:
           deprecated: true
@@ -1846,7 +1896,9 @@ components:
             included.
           example: true
           type: boolean
-      type: object
+      type:
+        - object
+        - 'null'
     ChatToolChoice:
       anyOf:
         - enum:
@@ -1893,8 +1945,7 @@ components:
                   maxLength: 64
                   type: string
                 parameters:
-                  additionalProperties:
-                    nullable: true
+                  additionalProperties: {}
                   description: Function parameters as JSON Schema object
                   example:
                     properties:
@@ -1908,8 +1959,9 @@ components:
                 strict:
                   description: Enable strict schema adherence
                   example: false
-                  nullable: true
-                  type: boolean
+                  type:
+                    - boolean
+                    - 'null'
               required:
                 - name
               type: object
@@ -1954,8 +2006,7 @@ components:
             type: object
         type: function
     TraceConfig:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       description: >-
         Metadata for observability and tracing. Known keys (trace_id,
         trace_name, span_name, generation_name, parent_span_id) have special
@@ -2033,8 +2084,9 @@ components:
             $ref: '#/components/schemas/PipelineStage'
           type: array
         region:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         requested:
           type: string
         strategy:
@@ -2075,30 +2127,36 @@ components:
           type: integer
         completion_tokens_details:
           description: Detailed completion token usage
-          nullable: true
           properties:
             accepted_prediction_tokens:
               description: Accepted prediction tokens
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             audio_tokens:
               description: Tokens used for audio output
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             reasoning_tokens:
               description: Tokens used for reasoning
-              nullable: true
-              type: integer
+              type:
+                - integer
+                - 'null'
             rejected_prediction_tokens:
               description: Rejected prediction tokens
-              nullable: true
-              type: integer
-          type: object
+              type:
+                - integer
+                - 'null'
+          type:
+            - object
+            - 'null'
         cost:
           description: Cost of the completion
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         cost_details:
           $ref: '#/components/schemas/CostDetails'
         is_byok:
@@ -2109,7 +2167,6 @@ components:
           type: integer
         prompt_tokens_details:
           description: Detailed prompt token usage
-          nullable: true
           properties:
             audio_tokens:
               description: Audio input tokens
@@ -2125,7 +2182,9 @@ components:
             video_tokens:
               description: Video input tokens
               type: integer
-          type: object
+          type:
+            - object
+            - 'null'
         server_tool_use_details:
           $ref: '#/components/schemas/ServerToolUseDetails'
         total_tokens:
@@ -2208,8 +2267,9 @@ components:
         service_tier:
           description: The service tier used by the upstream provider for this request
           example: default
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         system_fingerprint:
           description: System fingerprint
           example: fp_44709d6fcb
@@ -2235,10 +2295,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2254,10 +2314,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2273,10 +2333,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2292,10 +2352,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2311,10 +2371,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2330,10 +2390,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2349,10 +2409,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2368,10 +2428,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2387,10 +2447,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2406,10 +2466,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2425,10 +2485,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2444,10 +2504,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2463,10 +2523,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2482,10 +2542,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -2510,7 +2570,7 @@ components:
             - items:
                 $ref: '#/components/schemas/ChatContentItems'
               type: array
-            - nullable: true
+            - type: 'null'
           description: Assistant message content
         images:
           $ref: '#/components/schemas/ChatAssistantImages'
@@ -2519,14 +2579,16 @@ components:
           type: string
         reasoning:
           description: Reasoning output
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         reasoning_details:
           $ref: '#/components/schemas/ChatReasoningDetails'
         refusal:
           description: Refusal message if content was refused
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         role:
           enum:
             - assistant
@@ -2678,25 +2740,30 @@ components:
         region: California
         timezone: America/Los_Angeles
         type: approximate
-      nullable: true
       properties:
         city:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         country:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         region:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         timezone:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - approximate
           type: string
-      type: object
+      type:
+        - object
+        - 'null'
     PredictionContentText:
       description: Text content part for a predicted output.
       example:
@@ -2715,7 +2782,6 @@ components:
       type: object
     ProviderName:
       enum:
-        - Meta
         - AkashML
         - AI21
         - AionLabs
@@ -2766,6 +2832,7 @@ components:
         - Liquid
         - Mara
         - Mancer 2
+        - Meta
         - Minimax
         - ModelRun
         - Mistral
@@ -2798,6 +2865,7 @@ components:
         - Stealth
         - StreamLake
         - Switchpoint
+        - Tencent
         - Tenstorrent
         - Together
         - Upstage
@@ -2817,7 +2885,7 @@ components:
         - format: double
           type: number
         - $ref: '#/components/schemas/PercentileLatencyCutoffs'
-        - nullable: true
+        - type: 'null'
       description: >-
         Preferred maximum latency (in seconds). Can be a number (applies to p50)
         or an object with percentile-specific cutoffs. Endpoints above the
@@ -2830,7 +2898,7 @@ components:
         - format: double
           type: number
         - $ref: '#/components/schemas/PercentileThroughputCutoffs'
-        - nullable: true
+        - type: 'null'
       description: >-
         Preferred minimum throughput (in tokens per second). Can be a number
         (applies to p50) or an object with percentile-specific cutoffs.
@@ -2876,8 +2944,9 @@ components:
             - exacto
             - null
           example: price
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         partition:
           description: >-
             Partitioning strategy for sorting: "model" (default) groups
@@ -2888,8 +2957,9 @@ components:
             - none
             - null
           example: model
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       type: object
     ChatJsonSchemaConfig:
       description: JSON Schema configuration object
@@ -2915,8 +2985,7 @@ components:
           maxLength: 64
           type: string
         schema:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           description: JSON Schema object
           example:
             properties:
@@ -2929,8 +2998,9 @@ components:
         strict:
           description: Enable strict schema adherence
           example: false
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
       required:
         - name
       type: object
@@ -3281,8 +3351,9 @@ components:
         - error
         - null
       example: stop
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
     ChatTokenLogprobs:
       description: Log probabilities for the completion
       example:
@@ -3292,23 +3363,26 @@ components:
             token: ' Hello'
             top_logprobs: []
         refusal: null
-      nullable: true
       properties:
         content:
           description: Log probabilities for content tokens
           items:
             $ref: '#/components/schemas/ChatTokenLogprob'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         refusal:
           description: Log probabilities for refusal tokens
           items:
             $ref: '#/components/schemas/ChatTokenLogprob'
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
       required:
         - content
-      type: object
+      type:
+        - object
+        - 'null'
     RouterAttempt:
       example:
         model: openai/gpt-4o
@@ -3345,8 +3419,7 @@ components:
         - available
       type: object
     RouterParams:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       example:
         version_group: anthropic/claude-sonnet-4
       properties:
@@ -3375,11 +3448,11 @@ components:
       properties:
         cost_usd:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         data:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         guardrail_id:
           type: string
@@ -3414,52 +3487,58 @@ components:
         upstream_inference_completions_cost: 0.0004
         upstream_inference_cost: null
         upstream_inference_prompt_cost: 0.0008
-      nullable: true
       properties:
         upstream_inference_completions_cost:
           format: double
           type: number
         upstream_inference_cost:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         upstream_inference_prompt_cost:
           format: double
           type: number
       required:
         - upstream_inference_prompt_cost
         - upstream_inference_completions_cost
-      type: object
+      type:
+        - object
+        - 'null'
     ServerToolUseDetails:
       description: Usage for server-side tool execution (e.g., web search)
       example:
         tool_calls_executed: 2
         tool_calls_requested: 2
         web_search_requests: 2
-      nullable: true
       properties:
         tool_calls_executed:
           description: >-
             Number of OpenRouter server tool calls that executed and produced a
             result.
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         tool_calls_requested:
           description: >-
             Total number of OpenRouter server-orchestrated tool calls the model
             requested, across all tool types. Provider-native tools (e.g. native
             web search) are not counted here.
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         web_search_requests:
           description: >-
             Number of web searches performed by server-side tools. For
             server-orchestrated tool calls a web search is also counted in
             tool_calls_requested; provider-native web search may report
             web_search_requests only. Do not sum the two.
-          nullable: true
-          type: integer
-      type: object
+          type:
+            - integer
+            - 'null'
+      type:
+        - object
+        - 'null'
     ChatStreamChoice:
       description: Streaming completion choice chunk
       example:
@@ -3586,8 +3665,8 @@ components:
     ChatReasoningDetails:
       description: Reasoning details for extended thinking models
       example:
-        - thinking: Let me work through this step by step...
-          type: thinking
+        - text: Let me work through this step by step...
+          type: reasoning.text
       items:
         $ref: '#/components/schemas/ReasoningDetailUnion'
       type: array
@@ -3669,23 +3748,27 @@ components:
         p50:
           description: Maximum p50 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p75:
           description: Maximum p75 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p90:
           description: Maximum p90 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p99:
           description: Maximum p99 latency (seconds)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
       type: object
     PercentileThroughputCutoffs:
       description: >-
@@ -3698,23 +3781,27 @@ components:
         p50:
           description: Minimum p50 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p75:
           description: Minimum p75 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p90:
           description: Minimum p90 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         p99:
           description: Minimum p99 throughput (tokens/sec)
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
       type: object
     StopServerToolsWhenFinishReasonIs:
       description: Stop when the upstream model emits this finish reason (e.g. `length`).
@@ -4014,8 +4101,7 @@ components:
           items:
             properties:
               parameters:
-                additionalProperties:
-                  nullable: true
+                additionalProperties: {}
                 description: >-
                   Optional configuration forwarded as the tool's `parameters`
                   object.
@@ -4037,8 +4123,7 @@ components:
           - type: string
           - format: double
             type: number
-          - items:
-              nullable: true
+          - items: {}
             type: array
       description: >-
         Configuration for the openrouter:image_generation server tool. Accepts
@@ -4255,17 +4340,21 @@ components:
         type: approximate
       properties:
         city:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         country:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         region:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         timezone:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - approximate
@@ -4286,8 +4375,9 @@ components:
           description: UTF-8 bytes of the token
           items:
             type: integer
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         logprob:
           description: Log probability of the token
           format: double
@@ -4302,8 +4392,9 @@ components:
               bytes:
                 items:
                   type: integer
-                nullable: true
-                type: array
+                type:
+                  - array
+                  - 'null'
               logprob:
                 format: double
                 type: number
@@ -4364,20 +4455,23 @@ components:
         content:
           description: Message content delta
           example: Hello
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         reasoning:
           description: Reasoning content delta
           example: I need to
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         reasoning_details:
           $ref: '#/components/schemas/ChatStreamReasoningDetails'
         refusal:
           description: Refusal message delta
           example: null
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         role:
           description: The role of the message author
           enum:
@@ -4552,7 +4646,6 @@ components:
         automatically.
       example:
         mode: explicit
-      nullable: true
       properties:
         mode:
           enum:
@@ -4560,7 +4653,9 @@ components:
           type: string
       required:
         - mode
-      type: object
+      type:
+        - object
+        - 'null'
     AdvisorReasoning:
       description: >-
         Reasoning configuration forwarded to the advisor call. Use this to
@@ -4585,8 +4680,7 @@ components:
           type: integer
       type: object
     AdvisorNestedTool:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       description: >-
         A tool made available to the advisor sub-agent. Only OpenRouter server
         tools (e.g. openrouter:web_search) are supported; function tools are
@@ -4596,8 +4690,7 @@ components:
         type: openrouter:web_search
       properties:
         parameters:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         type:
           type: string
@@ -4664,8 +4757,7 @@ components:
           type: integer
       type: object
     SubagentNestedTool:
-      additionalProperties:
-        nullable: true
+      additionalProperties: {}
       description: >-
         A tool made available to the subagent. Only OpenRouter server tools
         (e.g. openrouter:web_search) are supported; function tools are rejected
@@ -4675,8 +4767,7 @@ components:
         type: openrouter:web_search
       properties:
         parameters:
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           type: object
         type:
           type: string
@@ -4703,7 +4794,7 @@ components:
       description: Reasoning details for extended thinking models
       example:
         - text: Let me think about this...
-          type: text
+          type: reasoning.text
       items:
         $ref: '#/components/schemas/ReasoningDetailUnion'
       type: array
@@ -4779,8 +4870,9 @@ components:
         format:
           $ref: '#/components/schemas/ReasoningFormat'
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         index:
           type: integer
         type:
@@ -4808,15 +4900,17 @@ components:
         format:
           $ref: '#/components/schemas/ReasoningFormat'
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         index:
           type: integer
         result:
           type: string
         tool_call_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         tool_name:
           type: string
         type:
@@ -4840,8 +4934,9 @@ components:
         format:
           $ref: '#/components/schemas/ReasoningFormat'
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         index:
           type: integer
         summary:
@@ -4866,16 +4961,19 @@ components:
         format:
           $ref: '#/components/schemas/ReasoningFormat'
         id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         index:
           type: integer
         signature:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         text:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - reasoning.text
@@ -4927,8 +5025,9 @@ components:
         - google-gemini-v1
         - null
       example: unknown
-      nullable: true
-      type: string
+      type:
+        - string
+        - 'null'
   securitySchemes:
     apiKey:
       description: API key as bearer token in Authorization header

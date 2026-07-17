@@ -80,7 +80,6 @@ For more information about setting up the community image see [here](https://git
     <p>If you are using the FolderView plugin go the Docker tab and select "<b>New Folder</b>".Label it <i>"Immich"</i> and use this URL as the logo: https://raw.githubusercontent.com/immich-app/immich/main/design/immich-logo.pngThen simply select all the Immich related containers before clicking "<b>Submit</b>"</p>
     [Go to Docker Tab and visit the address listed next to immich-web]
     [Go to Docker Tab and visit the address listed next to immich-web]
-    
 
 > **tip**: For more information on how to use the application once installed, please refer to the [Post Install](/install/post-install.mdx) guide.
 

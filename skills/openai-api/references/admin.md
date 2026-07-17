@@ -48,7 +48,7 @@ List user actions and configuration changes within this organization.
 
     Return only events whose `effective_at` (Unix seconds) is less than or equal to this value.
 
-- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 56 more`
+- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 140 more`
 
   Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/docs/api-reference/audit-logs/object).
 
@@ -170,6 +170,174 @@ List user actions and configuration changes within this organization.
 
   - `"user.deleted"`
 
+  - `"tenant.metadata.updated"`
+
+  - `"tenant.microsoft_entra_mapping.upserted"`
+
+  - `"tenant.microsoft_entra_mapping.deleted"`
+
+  - `"tenant.workload_identity.provider.created"`
+
+  - `"tenant.workload_identity.provider.updated"`
+
+  - `"tenant.workload_identity.provider.archived"`
+
+  - `"tenant.workload_identity.mapping.created"`
+
+  - `"tenant.workload_identity.mapping.updated"`
+
+  - `"tenant.workload_identity.mapping.archived"`
+
+  - `"tenant.workload_identity.binding.created"`
+
+  - `"tenant.workload_identity.principal.provisioned"`
+
+  - `"tenant.admin_api_key.created"`
+
+  - `"tenant.admin_api_key.updated"`
+
+  - `"tenant.admin_api_key.deleted"`
+
+  - `"tenant.project_api_key.created"`
+
+  - `"tenant.chatgpt_access_token.revoked"`
+
+  - `"tenant.migration.completed"`
+
+  - `"tenant.sso.migrated"`
+
+  - `"tenant.domains.migrated"`
+
+  - `"tenant.sso_connection.created"`
+
+  - `"tenant.sso_connection.updated"`
+
+  - `"tenant.sso_connection.deleted"`
+
+  - `"tenant.sso_connection.setup.started"`
+
+  - `"tenant.policy.created"`
+
+  - `"tenant.policy.updated"`
+
+  - `"tenant.policy.deleted"`
+
+  - `"tenant.policy.attached"`
+
+  - `"tenant.policy.detached"`
+
+  - `"tenant.principal_authentication_policy.resolved"`
+
+  - `"tenant.scim.setup.started"`
+
+  - `"tenant.scim.deletion.requested"`
+
+  - `"tenant.scim.directory.created"`
+
+  - `"tenant.product_access_policy.updated"`
+
+  - `"tenant.resource_share_grant.created"`
+
+  - `"tenant.resource_share_grant.updated"`
+
+  - `"tenant.resource_share_grant.accepted"`
+
+  - `"tenant.resource_share_grant.declined"`
+
+  - `"tenant.resource_share_grant.revoked"`
+
+  - `"tenant.resource_share_grant.deleted"`
+
+  - `"tenant.service_account.updated"`
+
+  - `"tenant.service_account.deleted"`
+
+  - `"tenant.service_account.token.revoked"`
+
+  - `"tenant.billing.overage_limit.updated"`
+
+  - `"tenant.billing.alerts.updated"`
+
+  - `"tenant.billing.info.updated"`
+
+  - `"tenant.usage_limit.workspace.updated"`
+
+  - `"tenant.usage_limit.group.updated"`
+
+  - `"tenant.usage_limit.user.updated"`
+
+  - `"tenant.usage_limit.increase_request.updated"`
+
+  - `"tenant.usage_limit.increase_request.resolved"`
+
+  - `"tenant.group.created"`
+
+  - `"tenant.group.updated"`
+
+  - `"tenant.group.deleted"`
+
+  - `"tenant.group.member.added"`
+
+  - `"tenant.group.member.removed"`
+
+  - `"tenant.migration_rollout.status.updated"`
+
+  - `"tenant.migration_rollout.tier.updated"`
+
+  - `"tenant.role.metadata.updated"`
+
+  - `"tenant.custom_role.created"`
+
+  - `"tenant.custom_role.updated"`
+
+  - `"tenant.custom_role.deleted"`
+
+  - `"tenant.role_assignment.created"`
+
+  - `"tenant.role_assignment.deleted"`
+
+  - `"tenant.resource_role_assignment.created"`
+
+  - `"tenant.resource_role_assignment.deleted"`
+
+  - `"tenant.resource_access.updated"`
+
+  - `"tenant.resource_access.deleted"`
+
+  - `"tenant.session_policy.created"`
+
+  - `"tenant.session_policy.updated"`
+
+  - `"tenant.session_policy.deleted"`
+
+  - `"tenant.session_revocation.started"`
+
+  - `"tenant.third_party_app_policy.updated"`
+
+  - `"tenant.user.added"`
+
+  - `"tenant.user.updated"`
+
+  - `"tenant.user.removed"`
+
+  - `"tenant.user.looked_up"`
+
+  - `"tenant.user.invited"`
+
+  - `"tenant.membership.revoked"`
+
+  - `"tenant.api_organization_invite.upserted"`
+
+  - `"tenant.api_organization_invite.deleted"`
+
+  - `"tenant.chatgpt_workspace_invite.upserted"`
+
+  - `"tenant.membership.accepted"`
+
+  - `"tenant.membership.declined"`
+
+  - `"tenant.workspace_invite_email_settings.updated"`
+
 - `limit: optional number`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
@@ -198,7 +366,7 @@ List user actions and configuration changes within this organization.
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 56 more`
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 140 more`
 
     The event type.
 
@@ -319,6 +487,174 @@ List user actions and configuration changes within this organization.
     - `"user.updated"`
 
     - `"user.deleted"`
+
+    - `"tenant.metadata.updated"`
+
+    - `"tenant.microsoft_entra_mapping.upserted"`
+
+    - `"tenant.microsoft_entra_mapping.deleted"`
+
+    - `"tenant.workload_identity.provider.created"`
+
+    - `"tenant.workload_identity.provider.updated"`
+
+    - `"tenant.workload_identity.provider.archived"`
+
+    - `"tenant.workload_identity.mapping.created"`
+
+    - `"tenant.workload_identity.mapping.updated"`
+
+    - `"tenant.workload_identity.mapping.archived"`
+
+    - `"tenant.workload_identity.binding.created"`
+
+    - `"tenant.workload_identity.principal.provisioned"`
+
+    - `"tenant.admin_api_key.created"`
+
+    - `"tenant.admin_api_key.updated"`
+
+    - `"tenant.admin_api_key.deleted"`
+
+    - `"tenant.project_api_key.created"`
+
+    - `"tenant.chatgpt_access_token.revoked"`
+
+    - `"tenant.migration.completed"`
+
+    - `"tenant.sso.migrated"`
+
+    - `"tenant.domains.migrated"`
+
+    - `"tenant.sso_connection.created"`
+
+    - `"tenant.sso_connection.updated"`
+
+    - `"tenant.sso_connection.deleted"`
+
+    - `"tenant.sso_connection.setup.started"`
+
+    - `"tenant.policy.created"`
+
+    - `"tenant.policy.updated"`
+
+    - `"tenant.policy.deleted"`
+
+    - `"tenant.policy.attached"`
+
+    - `"tenant.policy.detached"`
+
+    - `"tenant.principal_authentication_policy.resolved"`
+
+    - `"tenant.scim.setup.started"`
+
+    - `"tenant.scim.deletion.requested"`
+
+    - `"tenant.scim.directory.created"`
+
+    - `"tenant.product_access_policy.updated"`
+
+    - `"tenant.resource_share_grant.created"`
+
+    - `"tenant.resource_share_grant.updated"`
+
+    - `"tenant.resource_share_grant.accepted"`
+
+    - `"tenant.resource_share_grant.declined"`
+
+    - `"tenant.resource_share_grant.revoked"`
+
+    - `"tenant.resource_share_grant.deleted"`
+
+    - `"tenant.service_account.updated"`
+
+    - `"tenant.service_account.deleted"`
+
+    - `"tenant.service_account.token.revoked"`
+
+    - `"tenant.billing.overage_limit.updated"`
+
+    - `"tenant.billing.alerts.updated"`
+
+    - `"tenant.billing.info.updated"`
+
+    - `"tenant.usage_limit.workspace.updated"`
+
+    - `"tenant.usage_limit.group.updated"`
+
+    - `"tenant.usage_limit.user.updated"`
+
+    - `"tenant.usage_limit.increase_request.updated"`
+
+    - `"tenant.usage_limit.increase_request.resolved"`
+
+    - `"tenant.group.created"`
+
+    - `"tenant.group.updated"`
+
+    - `"tenant.group.deleted"`
+
+    - `"tenant.group.member.added"`
+
+    - `"tenant.group.member.removed"`
+
+    - `"tenant.migration_rollout.status.updated"`
+
+    - `"tenant.migration_rollout.tier.updated"`
+
+    - `"tenant.role.metadata.updated"`
+
+    - `"tenant.custom_role.created"`
+
+    - `"tenant.custom_role.updated"`
+
+    - `"tenant.custom_role.deleted"`
+
+    - `"tenant.role_assignment.created"`
+
+    - `"tenant.role_assignment.deleted"`
+
+    - `"tenant.resource_role_assignment.created"`
+
+    - `"tenant.resource_role_assignment.deleted"`
+
+    - `"tenant.resource_access.updated"`
+
+    - `"tenant.resource_access.deleted"`
+
+    - `"tenant.session_policy.created"`
+
+    - `"tenant.session_policy.updated"`
+
+    - `"tenant.session_policy.deleted"`
+
+    - `"tenant.session_revocation.started"`
+
+    - `"tenant.third_party_app_policy.updated"`
+
+    - `"tenant.user.added"`
+
+    - `"tenant.user.updated"`
+
+    - `"tenant.user.removed"`
+
+    - `"tenant.user.looked_up"`
+
+    - `"tenant.user.invited"`
+
+    - `"tenant.membership.revoked"`
+
+    - `"tenant.api_organization_invite.upserted"`
+
+    - `"tenant.api_organization_invite.deleted"`
+
+    - `"tenant.chatgpt_workspace_invite.upserted"`
+
+    - `"tenant.membership.accepted"`
+
+    - `"tenant.membership.declined"`
+
+    - `"tenant.workspace_invite_email_settings.updated"`
 
   - `actor: optional object { api_key, session, type }`
 
@@ -1754,7 +2090,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 56 more`
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 140 more`
 
     The event type.
 
@@ -1875,6 +2211,174 @@ curl https://api.openai.com/v1/organization/audit_logs \
     - `"user.updated"`
 
     - `"user.deleted"`
+
+    - `"tenant.metadata.updated"`
+
+    - `"tenant.microsoft_entra_mapping.upserted"`
+
+    - `"tenant.microsoft_entra_mapping.deleted"`
+
+    - `"tenant.workload_identity.provider.created"`
+
+    - `"tenant.workload_identity.provider.updated"`
+
+    - `"tenant.workload_identity.provider.archived"`
+
+    - `"tenant.workload_identity.mapping.created"`
+
+    - `"tenant.workload_identity.mapping.updated"`
+
+    - `"tenant.workload_identity.mapping.archived"`
+
+    - `"tenant.workload_identity.binding.created"`
+
+    - `"tenant.workload_identity.principal.provisioned"`
+
+    - `"tenant.admin_api_key.created"`
+
+    - `"tenant.admin_api_key.updated"`
+
+    - `"tenant.admin_api_key.deleted"`
+
+    - `"tenant.project_api_key.created"`
+
+    - `"tenant.chatgpt_access_token.revoked"`
+
+    - `"tenant.migration.completed"`
+
+    - `"tenant.sso.migrated"`
+
+    - `"tenant.domains.migrated"`
+
+    - `"tenant.sso_connection.created"`
+
+    - `"tenant.sso_connection.updated"`
+
+    - `"tenant.sso_connection.deleted"`
+
+    - `"tenant.sso_connection.setup.started"`
+
+    - `"tenant.policy.created"`
+
+    - `"tenant.policy.updated"`
+
+    - `"tenant.policy.deleted"`
+
+    - `"tenant.policy.attached"`
+
+    - `"tenant.policy.detached"`
+
+    - `"tenant.principal_authentication_policy.resolved"`
+
+    - `"tenant.scim.setup.started"`
+
+    - `"tenant.scim.deletion.requested"`
+
+    - `"tenant.scim.directory.created"`
+
+    - `"tenant.product_access_policy.updated"`
+
+    - `"tenant.resource_share_grant.created"`
+
+    - `"tenant.resource_share_grant.updated"`
+
+    - `"tenant.resource_share_grant.accepted"`
+
+    - `"tenant.resource_share_grant.declined"`
+
+    - `"tenant.resource_share_grant.revoked"`
+
+    - `"tenant.resource_share_grant.deleted"`
+
+    - `"tenant.service_account.updated"`
+
+    - `"tenant.service_account.deleted"`
+
+    - `"tenant.service_account.token.revoked"`
+
+    - `"tenant.billing.overage_limit.updated"`
+
+    - `"tenant.billing.alerts.updated"`
+
+    - `"tenant.billing.info.updated"`
+
+    - `"tenant.usage_limit.workspace.updated"`
+
+    - `"tenant.usage_limit.group.updated"`
+
+    - `"tenant.usage_limit.user.updated"`
+
+    - `"tenant.usage_limit.increase_request.updated"`
+
+    - `"tenant.usage_limit.increase_request.resolved"`
+
+    - `"tenant.group.created"`
+
+    - `"tenant.group.updated"`
+
+    - `"tenant.group.deleted"`
+
+    - `"tenant.group.member.added"`
+
+    - `"tenant.group.member.removed"`
+
+    - `"tenant.migration_rollout.status.updated"`
+
+    - `"tenant.migration_rollout.tier.updated"`
+
+    - `"tenant.role.metadata.updated"`
+
+    - `"tenant.custom_role.created"`
+
+    - `"tenant.custom_role.updated"`
+
+    - `"tenant.custom_role.deleted"`
+
+    - `"tenant.role_assignment.created"`
+
+    - `"tenant.role_assignment.deleted"`
+
+    - `"tenant.resource_role_assignment.created"`
+
+    - `"tenant.resource_role_assignment.deleted"`
+
+    - `"tenant.resource_access.updated"`
+
+    - `"tenant.resource_access.deleted"`
+
+    - `"tenant.session_policy.created"`
+
+    - `"tenant.session_policy.updated"`
+
+    - `"tenant.session_policy.deleted"`
+
+    - `"tenant.session_revocation.started"`
+
+    - `"tenant.third_party_app_policy.updated"`
+
+    - `"tenant.user.added"`
+
+    - `"tenant.user.updated"`
+
+    - `"tenant.user.removed"`
+
+    - `"tenant.user.looked_up"`
+
+    - `"tenant.user.invited"`
+
+    - `"tenant.membership.revoked"`
+
+    - `"tenant.api_organization_invite.upserted"`
+
+    - `"tenant.api_organization_invite.deleted"`
+
+    - `"tenant.chatgpt_workspace_invite.upserted"`
+
+    - `"tenant.membership.accepted"`
+
+    - `"tenant.membership.declined"`
+
+    - `"tenant.workspace_invite_email_settings.updated"`
 
   - `actor: optional object { api_key, session, type }`
 
@@ -3459,15 +3963,15 @@ Get audio speeches usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
       - `input_tokens: number`
 
-        The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `num_model_requests: number`
 
@@ -3479,7 +3983,7 @@ Get audio speeches usage details for the organization.
 
       - `output_tokens: number`
 
-        The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `api_key_id: optional string`
 
@@ -3491,11 +3995,39 @@ Get audio speeches usage details for the organization.
 
       - `input_audio_tokens: optional number`
 
-        The aggregated number of audio input tokens used, including cached tokens.
+        The aggregated number of uncached audio input tokens used.
+
+      - `input_cache_write_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache.
+
+      - `input_cached_audio_tokens: optional number`
+
+        The aggregated number of cached audio input tokens used.
+
+      - `input_cached_image_tokens: optional number`
+
+        The aggregated number of cached image input tokens used.
+
+      - `input_cached_text_tokens: optional number`
+
+        The aggregated number of cached text input tokens used.
 
       - `input_cached_tokens: optional number`
 
-        The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+      - `input_image_tokens: optional number`
+
+        The aggregated number of uncached image input tokens used.
+
+      - `input_text_tokens: optional number`
+
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+      - `input_uncached_tokens: optional number`
+
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
       - `model: optional string`
 
@@ -3504,6 +4036,14 @@ Get audio speeches usage details for the organization.
       - `output_audio_tokens: optional number`
 
         The aggregated number of audio output tokens used.
+
+      - `output_image_tokens: optional number`
+
+        The aggregated number of image output tokens used.
+
+      - `output_text_tokens: optional number`
+
+        The aggregated number of text output tokens used.
 
       - `project_id: optional string`
 
@@ -3851,9 +4391,18 @@ curl https://api.openai.com/v1/organization/usage/audio_speeches \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_tokens": 0,
+          "input_cached_audio_tokens": 0,
+          "input_cached_image_tokens": 0,
+          "input_cached_text_tokens": 0,
           "input_cached_tokens": 0,
+          "input_image_tokens": 0,
+          "input_text_tokens": 0,
+          "input_uncached_tokens": 0,
           "model": "model",
           "output_audio_tokens": 0,
+          "output_image_tokens": 0,
+          "output_text_tokens": 0,
           "project_id": "project_id",
           "service_tier": "service_tier",
           "user_id": "user_id"
@@ -3980,15 +4529,15 @@ Get audio transcriptions usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
       - `input_tokens: number`
 
-        The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `num_model_requests: number`
 
@@ -4000,7 +4549,7 @@ Get audio transcriptions usage details for the organization.
 
       - `output_tokens: number`
 
-        The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `api_key_id: optional string`
 
@@ -4012,11 +4561,39 @@ Get audio transcriptions usage details for the organization.
 
       - `input_audio_tokens: optional number`
 
-        The aggregated number of audio input tokens used, including cached tokens.
+        The aggregated number of uncached audio input tokens used.
+
+      - `input_cache_write_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache.
+
+      - `input_cached_audio_tokens: optional number`
+
+        The aggregated number of cached audio input tokens used.
+
+      - `input_cached_image_tokens: optional number`
+
+        The aggregated number of cached image input tokens used.
+
+      - `input_cached_text_tokens: optional number`
+
+        The aggregated number of cached text input tokens used.
 
       - `input_cached_tokens: optional number`
 
-        The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+      - `input_image_tokens: optional number`
+
+        The aggregated number of uncached image input tokens used.
+
+      - `input_text_tokens: optional number`
+
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+      - `input_uncached_tokens: optional number`
+
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
       - `model: optional string`
 
@@ -4025,6 +4602,14 @@ Get audio transcriptions usage details for the organization.
       - `output_audio_tokens: optional number`
 
         The aggregated number of audio output tokens used.
+
+      - `output_image_tokens: optional number`
+
+        The aggregated number of image output tokens used.
+
+      - `output_text_tokens: optional number`
+
+        The aggregated number of text output tokens used.
 
       - `project_id: optional string`
 
@@ -4372,9 +4957,18 @@ curl https://api.openai.com/v1/organization/usage/audio_transcriptions \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_tokens": 0,
+          "input_cached_audio_tokens": 0,
+          "input_cached_image_tokens": 0,
+          "input_cached_text_tokens": 0,
           "input_cached_tokens": 0,
+          "input_image_tokens": 0,
+          "input_text_tokens": 0,
+          "input_uncached_tokens": 0,
           "model": "model",
           "output_audio_tokens": 0,
+          "output_image_tokens": 0,
+          "output_text_tokens": 0,
           "project_id": "project_id",
           "service_tier": "service_tier",
           "user_id": "user_id"
@@ -4483,15 +5077,15 @@ Get code interpreter sessions usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
       - `input_tokens: number`
 
-        The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `num_model_requests: number`
 
@@ -4503,7 +5097,7 @@ Get code interpreter sessions usage details for the organization.
 
       - `output_tokens: number`
 
-        The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `api_key_id: optional string`
 
@@ -4515,11 +5109,39 @@ Get code interpreter sessions usage details for the organization.
 
       - `input_audio_tokens: optional number`
 
-        The aggregated number of audio input tokens used, including cached tokens.
+        The aggregated number of uncached audio input tokens used.
+
+      - `input_cache_write_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache.
+
+      - `input_cached_audio_tokens: optional number`
+
+        The aggregated number of cached audio input tokens used.
+
+      - `input_cached_image_tokens: optional number`
+
+        The aggregated number of cached image input tokens used.
+
+      - `input_cached_text_tokens: optional number`
+
+        The aggregated number of cached text input tokens used.
 
       - `input_cached_tokens: optional number`
 
-        The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+      - `input_image_tokens: optional number`
+
+        The aggregated number of uncached image input tokens used.
+
+      - `input_text_tokens: optional number`
+
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+      - `input_uncached_tokens: optional number`
+
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
       - `model: optional string`
 
@@ -4528,6 +5150,14 @@ Get code interpreter sessions usage details for the organization.
       - `output_audio_tokens: optional number`
 
         The aggregated number of audio output tokens used.
+
+      - `output_image_tokens: optional number`
+
+        The aggregated number of image output tokens used.
+
+      - `output_text_tokens: optional number`
+
+        The aggregated number of text output tokens used.
 
       - `project_id: optional string`
 
@@ -4875,9 +5505,18 @@ curl https://api.openai.com/v1/organization/usage/code_interpreter_sessions \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_tokens": 0,
+          "input_cached_audio_tokens": 0,
+          "input_cached_image_tokens": 0,
+          "input_cached_text_tokens": 0,
           "input_cached_tokens": 0,
+          "input_image_tokens": 0,
+          "input_text_tokens": 0,
+          "input_uncached_tokens": 0,
           "model": "model",
           "output_audio_tokens": 0,
+          "output_image_tokens": 0,
+          "output_text_tokens": 0,
           "project_id": "project_id",
           "service_tier": "service_tier",
           "user_id": "user_id"
@@ -5008,15 +5647,15 @@ Get completions usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
       - `input_tokens: number`
 
-        The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `num_model_requests: number`
 
@@ -5028,7 +5667,7 @@ Get completions usage details for the organization.
 
       - `output_tokens: number`
 
-        The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `api_key_id: optional string`
 
@@ -5040,11 +5679,39 @@ Get completions usage details for the organization.
 
       - `input_audio_tokens: optional number`
 
-        The aggregated number of audio input tokens used, including cached tokens.
+        The aggregated number of uncached audio input tokens used.
+
+      - `input_cache_write_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache.
+
+      - `input_cached_audio_tokens: optional number`
+
+        The aggregated number of cached audio input tokens used.
+
+      - `input_cached_image_tokens: optional number`
+
+        The aggregated number of cached image input tokens used.
+
+      - `input_cached_text_tokens: optional number`
+
+        The aggregated number of cached text input tokens used.
 
       - `input_cached_tokens: optional number`
 
-        The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+      - `input_image_tokens: optional number`
+
+        The aggregated number of uncached image input tokens used.
+
+      - `input_text_tokens: optional number`
+
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+      - `input_uncached_tokens: optional number`
+
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
       - `model: optional string`
 
@@ -5053,6 +5720,14 @@ Get completions usage details for the organization.
       - `output_audio_tokens: optional number`
 
         The aggregated number of audio output tokens used.
+
+      - `output_image_tokens: optional number`
+
+        The aggregated number of image output tokens used.
+
+      - `output_text_tokens: optional number`
+
+        The aggregated number of text output tokens used.
 
       - `project_id: optional string`
 
@@ -5400,9 +6075,18 @@ curl https://api.openai.com/v1/organization/usage/completions \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_tokens": 0,
+          "input_cached_audio_tokens": 0,
+          "input_cached_image_tokens": 0,
+          "input_cached_text_tokens": 0,
           "input_cached_tokens": 0,
+          "input_image_tokens": 0,
+          "input_text_tokens": 0,
+          "input_uncached_tokens": 0,
           "model": "model",
           "output_audio_tokens": 0,
+          "output_image_tokens": 0,
+          "output_text_tokens": 0,
           "project_id": "project_id",
           "service_tier": "service_tier",
           "user_id": "user_id"
@@ -5439,10 +6123,19 @@ curl "https://api.openai.com/v1/organization/usage/completions?start_time=173041
                 {
                     "object": "organization.usage.completions.result",
                     "input_tokens": 1000,
+                    "input_cached_tokens": 400,
+                    "input_cache_write_tokens": 100,
+                    "input_uncached_tokens": 500,
                     "output_tokens": 500,
-                    "input_cached_tokens": 800,
-                    "input_audio_tokens": 0,
-                    "output_audio_tokens": 0,
+                    "input_text_tokens": 400,
+                    "output_text_tokens": 400,
+                    "input_cached_text_tokens": 300,
+                    "input_audio_tokens": 50,
+                    "input_cached_audio_tokens": 50,
+                    "output_audio_tokens": 50,
+                    "input_image_tokens": 50,
+                    "input_cached_image_tokens": 50,
+                    "output_image_tokens": 50,
                     "num_model_requests": 5,
                     "project_id": null,
                     "user_id": null,
@@ -5535,15 +6228,15 @@ Get embeddings usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
       - `input_tokens: number`
 
-        The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `num_model_requests: number`
 
@@ -5555,7 +6248,7 @@ Get embeddings usage details for the organization.
 
       - `output_tokens: number`
 
-        The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `api_key_id: optional string`
 
@@ -5567,11 +6260,39 @@ Get embeddings usage details for the organization.
 
       - `input_audio_tokens: optional number`
 
-        The aggregated number of audio input tokens used, including cached tokens.
+        The aggregated number of uncached audio input tokens used.
+
+      - `input_cache_write_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache.
+
+      - `input_cached_audio_tokens: optional number`
+
+        The aggregated number of cached audio input tokens used.
+
+      - `input_cached_image_tokens: optional number`
+
+        The aggregated number of cached image input tokens used.
+
+      - `input_cached_text_tokens: optional number`
+
+        The aggregated number of cached text input tokens used.
 
       - `input_cached_tokens: optional number`
 
-        The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+      - `input_image_tokens: optional number`
+
+        The aggregated number of uncached image input tokens used.
+
+      - `input_text_tokens: optional number`
+
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+      - `input_uncached_tokens: optional number`
+
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
       - `model: optional string`
 
@@ -5580,6 +6301,14 @@ Get embeddings usage details for the organization.
       - `output_audio_tokens: optional number`
 
         The aggregated number of audio output tokens used.
+
+      - `output_image_tokens: optional number`
+
+        The aggregated number of image output tokens used.
+
+      - `output_text_tokens: optional number`
+
+        The aggregated number of text output tokens used.
 
       - `project_id: optional string`
 
@@ -5927,9 +6656,18 @@ curl https://api.openai.com/v1/organization/usage/embeddings \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_tokens": 0,
+          "input_cached_audio_tokens": 0,
+          "input_cached_image_tokens": 0,
+          "input_cached_text_tokens": 0,
           "input_cached_tokens": 0,
+          "input_image_tokens": 0,
+          "input_text_tokens": 0,
+          "input_uncached_tokens": 0,
           "model": "model",
           "output_audio_tokens": 0,
+          "output_image_tokens": 0,
+          "output_text_tokens": 0,
           "project_id": "project_id",
           "service_tier": "service_tier",
           "user_id": "user_id"
@@ -6084,15 +6822,15 @@ Get images usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
       - `input_tokens: number`
 
-        The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `num_model_requests: number`
 
@@ -6104,7 +6842,7 @@ Get images usage details for the organization.
 
       - `output_tokens: number`
 
-        The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `api_key_id: optional string`
 
@@ -6116,11 +6854,39 @@ Get images usage details for the organization.
 
       - `input_audio_tokens: optional number`
 
-        The aggregated number of audio input tokens used, including cached tokens.
+        The aggregated number of uncached audio input tokens used.
+
+      - `input_cache_write_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache.
+
+      - `input_cached_audio_tokens: optional number`
+
+        The aggregated number of cached audio input tokens used.
+
+      - `input_cached_image_tokens: optional number`
+
+        The aggregated number of cached image input tokens used.
+
+      - `input_cached_text_tokens: optional number`
+
+        The aggregated number of cached text input tokens used.
 
       - `input_cached_tokens: optional number`
 
-        The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+      - `input_image_tokens: optional number`
+
+        The aggregated number of uncached image input tokens used.
+
+      - `input_text_tokens: optional number`
+
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+      - `input_uncached_tokens: optional number`
+
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
       - `model: optional string`
 
@@ -6129,6 +6895,14 @@ Get images usage details for the organization.
       - `output_audio_tokens: optional number`
 
         The aggregated number of audio output tokens used.
+
+      - `output_image_tokens: optional number`
+
+        The aggregated number of image output tokens used.
+
+      - `output_text_tokens: optional number`
+
+        The aggregated number of text output tokens used.
 
       - `project_id: optional string`
 
@@ -6476,9 +7250,18 @@ curl https://api.openai.com/v1/organization/usage/images \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_tokens": 0,
+          "input_cached_audio_tokens": 0,
+          "input_cached_image_tokens": 0,
+          "input_cached_text_tokens": 0,
           "input_cached_tokens": 0,
+          "input_image_tokens": 0,
+          "input_text_tokens": 0,
+          "input_uncached_tokens": 0,
           "model": "model",
           "output_audio_tokens": 0,
+          "output_image_tokens": 0,
+          "output_text_tokens": 0,
           "project_id": "project_id",
           "service_tier": "service_tier",
           "user_id": "user_id"
@@ -6607,15 +7390,15 @@ Get moderations usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
       - `input_tokens: number`
 
-        The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `num_model_requests: number`
 
@@ -6627,7 +7410,7 @@ Get moderations usage details for the organization.
 
       - `output_tokens: number`
 
-        The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `api_key_id: optional string`
 
@@ -6639,11 +7422,39 @@ Get moderations usage details for the organization.
 
       - `input_audio_tokens: optional number`
 
-        The aggregated number of audio input tokens used, including cached tokens.
+        The aggregated number of uncached audio input tokens used.
+
+      - `input_cache_write_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache.
+
+      - `input_cached_audio_tokens: optional number`
+
+        The aggregated number of cached audio input tokens used.
+
+      - `input_cached_image_tokens: optional number`
+
+        The aggregated number of cached image input tokens used.
+
+      - `input_cached_text_tokens: optional number`
+
+        The aggregated number of cached text input tokens used.
 
       - `input_cached_tokens: optional number`
 
-        The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+      - `input_image_tokens: optional number`
+
+        The aggregated number of uncached image input tokens used.
+
+      - `input_text_tokens: optional number`
+
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+      - `input_uncached_tokens: optional number`
+
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
       - `model: optional string`
 
@@ -6652,6 +7463,14 @@ Get moderations usage details for the organization.
       - `output_audio_tokens: optional number`
 
         The aggregated number of audio output tokens used.
+
+      - `output_image_tokens: optional number`
+
+        The aggregated number of image output tokens used.
+
+      - `output_text_tokens: optional number`
+
+        The aggregated number of text output tokens used.
 
       - `project_id: optional string`
 
@@ -6999,9 +7818,18 @@ curl https://api.openai.com/v1/organization/usage/moderations \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_tokens": 0,
+          "input_cached_audio_tokens": 0,
+          "input_cached_image_tokens": 0,
+          "input_cached_text_tokens": 0,
           "input_cached_tokens": 0,
+          "input_image_tokens": 0,
+          "input_text_tokens": 0,
+          "input_uncached_tokens": 0,
           "model": "model",
           "output_audio_tokens": 0,
+          "output_image_tokens": 0,
+          "output_text_tokens": 0,
           "project_id": "project_id",
           "service_tier": "service_tier",
           "user_id": "user_id"
@@ -7110,15 +7938,15 @@ Get vector stores usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
       - `input_tokens: number`
 
-        The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `num_model_requests: number`
 
@@ -7130,7 +7958,7 @@ Get vector stores usage details for the organization.
 
       - `output_tokens: number`
 
-        The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `api_key_id: optional string`
 
@@ -7142,11 +7970,39 @@ Get vector stores usage details for the organization.
 
       - `input_audio_tokens: optional number`
 
-        The aggregated number of audio input tokens used, including cached tokens.
+        The aggregated number of uncached audio input tokens used.
+
+      - `input_cache_write_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache.
+
+      - `input_cached_audio_tokens: optional number`
+
+        The aggregated number of cached audio input tokens used.
+
+      - `input_cached_image_tokens: optional number`
+
+        The aggregated number of cached image input tokens used.
+
+      - `input_cached_text_tokens: optional number`
+
+        The aggregated number of cached text input tokens used.
 
       - `input_cached_tokens: optional number`
 
-        The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+      - `input_image_tokens: optional number`
+
+        The aggregated number of uncached image input tokens used.
+
+      - `input_text_tokens: optional number`
+
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+      - `input_uncached_tokens: optional number`
+
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
       - `model: optional string`
 
@@ -7155,6 +8011,14 @@ Get vector stores usage details for the organization.
       - `output_audio_tokens: optional number`
 
         The aggregated number of audio output tokens used.
+
+      - `output_image_tokens: optional number`
+
+        The aggregated number of image output tokens used.
+
+      - `output_text_tokens: optional number`
+
+        The aggregated number of text output tokens used.
 
       - `project_id: optional string`
 
@@ -7502,9 +8366,18 @@ curl https://api.openai.com/v1/organization/usage/vector_stores \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_tokens": 0,
+          "input_cached_audio_tokens": 0,
+          "input_cached_image_tokens": 0,
+          "input_cached_text_tokens": 0,
           "input_cached_tokens": 0,
+          "input_image_tokens": 0,
+          "input_text_tokens": 0,
+          "input_uncached_tokens": 0,
           "model": "model",
           "output_audio_tokens": 0,
+          "output_image_tokens": 0,
+          "output_text_tokens": 0,
           "project_id": "project_id",
           "service_tier": "service_tier",
           "user_id": "user_id"
@@ -7627,15 +8500,15 @@ Get file search calls usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
       - `input_tokens: number`
 
-        The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `num_model_requests: number`
 
@@ -7647,7 +8520,7 @@ Get file search calls usage details for the organization.
 
       - `output_tokens: number`
 
-        The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `api_key_id: optional string`
 
@@ -7659,11 +8532,39 @@ Get file search calls usage details for the organization.
 
       - `input_audio_tokens: optional number`
 
-        The aggregated number of audio input tokens used, including cached tokens.
+        The aggregated number of uncached audio input tokens used.
+
+      - `input_cache_write_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache.
+
+      - `input_cached_audio_tokens: optional number`
+
+        The aggregated number of cached audio input tokens used.
+
+      - `input_cached_image_tokens: optional number`
+
+        The aggregated number of cached image input tokens used.
+
+      - `input_cached_text_tokens: optional number`
+
+        The aggregated number of cached text input tokens used.
 
       - `input_cached_tokens: optional number`
 
-        The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+      - `input_image_tokens: optional number`
+
+        The aggregated number of uncached image input tokens used.
+
+      - `input_text_tokens: optional number`
+
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+      - `input_uncached_tokens: optional number`
+
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
       - `model: optional string`
 
@@ -7672,6 +8573,14 @@ Get file search calls usage details for the organization.
       - `output_audio_tokens: optional number`
 
         The aggregated number of audio output tokens used.
+
+      - `output_image_tokens: optional number`
+
+        The aggregated number of image output tokens used.
+
+      - `output_text_tokens: optional number`
+
+        The aggregated number of text output tokens used.
 
       - `project_id: optional string`
 
@@ -8019,9 +8928,18 @@ curl https://api.openai.com/v1/organization/usage/file_search_calls \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_tokens": 0,
+          "input_cached_audio_tokens": 0,
+          "input_cached_image_tokens": 0,
+          "input_cached_text_tokens": 0,
           "input_cached_tokens": 0,
+          "input_image_tokens": 0,
+          "input_text_tokens": 0,
+          "input_uncached_tokens": 0,
           "model": "model",
           "output_audio_tokens": 0,
+          "output_image_tokens": 0,
+          "output_text_tokens": 0,
           "project_id": "project_id",
           "service_tier": "service_tier",
           "user_id": "user_id"
@@ -8159,15 +9077,15 @@ Get web search calls usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
       - `input_tokens: number`
 
-        The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `num_model_requests: number`
 
@@ -8179,7 +9097,7 @@ Get web search calls usage details for the organization.
 
       - `output_tokens: number`
 
-        The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `api_key_id: optional string`
 
@@ -8191,11 +9109,39 @@ Get web search calls usage details for the organization.
 
       - `input_audio_tokens: optional number`
 
-        The aggregated number of audio input tokens used, including cached tokens.
+        The aggregated number of uncached audio input tokens used.
+
+      - `input_cache_write_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache.
+
+      - `input_cached_audio_tokens: optional number`
+
+        The aggregated number of cached audio input tokens used.
+
+      - `input_cached_image_tokens: optional number`
+
+        The aggregated number of cached image input tokens used.
+
+      - `input_cached_text_tokens: optional number`
+
+        The aggregated number of cached text input tokens used.
 
       - `input_cached_tokens: optional number`
 
-        The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+      - `input_image_tokens: optional number`
+
+        The aggregated number of uncached image input tokens used.
+
+      - `input_text_tokens: optional number`
+
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+      - `input_uncached_tokens: optional number`
+
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
       - `model: optional string`
 
@@ -8204,6 +9150,14 @@ Get web search calls usage details for the organization.
       - `output_audio_tokens: optional number`
 
         The aggregated number of audio output tokens used.
+
+      - `output_image_tokens: optional number`
+
+        The aggregated number of image output tokens used.
+
+      - `output_text_tokens: optional number`
+
+        The aggregated number of text output tokens used.
 
       - `project_id: optional string`
 
@@ -8551,9 +9505,18 @@ curl https://api.openai.com/v1/organization/usage/web_search_calls \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_tokens": 0,
+          "input_cached_audio_tokens": 0,
+          "input_cached_image_tokens": 0,
+          "input_cached_text_tokens": 0,
           "input_cached_tokens": 0,
+          "input_image_tokens": 0,
+          "input_text_tokens": 0,
+          "input_uncached_tokens": 0,
           "model": "model",
           "output_audio_tokens": 0,
+          "output_image_tokens": 0,
+          "output_text_tokens": 0,
           "project_id": "project_id",
           "service_tier": "service_tier",
           "user_id": "user_id"
@@ -8663,15 +9626,15 @@ Get costs details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
       - `input_tokens: number`
 
-        The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `num_model_requests: number`
 
@@ -8683,7 +9646,7 @@ Get costs details for the organization.
 
       - `output_tokens: number`
 
-        The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
       - `api_key_id: optional string`
 
@@ -8695,11 +9658,39 @@ Get costs details for the organization.
 
       - `input_audio_tokens: optional number`
 
-        The aggregated number of audio input tokens used, including cached tokens.
+        The aggregated number of uncached audio input tokens used.
+
+      - `input_cache_write_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache.
+
+      - `input_cached_audio_tokens: optional number`
+
+        The aggregated number of cached audio input tokens used.
+
+      - `input_cached_image_tokens: optional number`
+
+        The aggregated number of cached image input tokens used.
+
+      - `input_cached_text_tokens: optional number`
+
+        The aggregated number of cached text input tokens used.
 
       - `input_cached_tokens: optional number`
 
-        The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+      - `input_image_tokens: optional number`
+
+        The aggregated number of uncached image input tokens used.
+
+      - `input_text_tokens: optional number`
+
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+      - `input_uncached_tokens: optional number`
+
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
       - `model: optional string`
 
@@ -8708,6 +9699,14 @@ Get costs details for the organization.
       - `output_audio_tokens: optional number`
 
         The aggregated number of audio output tokens used.
+
+      - `output_image_tokens: optional number`
+
+        The aggregated number of image output tokens used.
+
+      - `output_text_tokens: optional number`
+
+        The aggregated number of text output tokens used.
 
       - `project_id: optional string`
 
@@ -9055,9 +10054,18 @@ curl https://api.openai.com/v1/organization/costs \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_tokens": 0,
+          "input_cached_audio_tokens": 0,
+          "input_cached_image_tokens": 0,
+          "input_cached_text_tokens": 0,
           "input_cached_tokens": 0,
+          "input_image_tokens": 0,
+          "input_text_tokens": 0,
+          "input_uncached_tokens": 0,
           "model": "model",
           "output_audio_tokens": 0,
+          "output_image_tokens": 0,
+          "output_text_tokens": 0,
           "project_id": "project_id",
           "service_tier": "service_tier",
           "user_id": "user_id"
@@ -9124,15 +10132,15 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
         - `input_tokens: number`
 
-          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `num_model_requests: number`
 
@@ -9144,7 +10152,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `output_tokens: number`
 
-          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `api_key_id: optional string`
 
@@ -9156,11 +10164,39 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `input_audio_tokens: optional number`
 
-          The aggregated number of audio input tokens used, including cached tokens.
+          The aggregated number of uncached audio input tokens used.
+
+        - `input_cache_write_tokens: optional number`
+
+          The aggregated number of input tokens written to the cache.
+
+        - `input_cached_audio_tokens: optional number`
+
+          The aggregated number of cached audio input tokens used.
+
+        - `input_cached_image_tokens: optional number`
+
+          The aggregated number of cached image input tokens used.
+
+        - `input_cached_text_tokens: optional number`
+
+          The aggregated number of cached text input tokens used.
 
         - `input_cached_tokens: optional number`
 
-          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+        - `input_image_tokens: optional number`
+
+          The aggregated number of uncached image input tokens used.
+
+        - `input_text_tokens: optional number`
+
+          The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+        - `input_uncached_tokens: optional number`
+
+          The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
         - `model: optional string`
 
@@ -9169,6 +10205,14 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
         - `output_audio_tokens: optional number`
 
           The aggregated number of audio output tokens used.
+
+        - `output_image_tokens: optional number`
+
+          The aggregated number of image output tokens used.
+
+        - `output_text_tokens: optional number`
+
+          The aggregated number of text output tokens used.
 
         - `project_id: optional string`
 
@@ -9504,15 +10548,15 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
         - `input_tokens: number`
 
-          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `num_model_requests: number`
 
@@ -9524,7 +10568,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `output_tokens: number`
 
-          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `api_key_id: optional string`
 
@@ -9536,11 +10580,39 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `input_audio_tokens: optional number`
 
-          The aggregated number of audio input tokens used, including cached tokens.
+          The aggregated number of uncached audio input tokens used.
+
+        - `input_cache_write_tokens: optional number`
+
+          The aggregated number of input tokens written to the cache.
+
+        - `input_cached_audio_tokens: optional number`
+
+          The aggregated number of cached audio input tokens used.
+
+        - `input_cached_image_tokens: optional number`
+
+          The aggregated number of cached image input tokens used.
+
+        - `input_cached_text_tokens: optional number`
+
+          The aggregated number of cached text input tokens used.
 
         - `input_cached_tokens: optional number`
 
-          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+        - `input_image_tokens: optional number`
+
+          The aggregated number of uncached image input tokens used.
+
+        - `input_text_tokens: optional number`
+
+          The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+        - `input_uncached_tokens: optional number`
+
+          The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
         - `model: optional string`
 
@@ -9549,6 +10621,14 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
         - `output_audio_tokens: optional number`
 
           The aggregated number of audio output tokens used.
+
+        - `output_image_tokens: optional number`
+
+          The aggregated number of image output tokens used.
+
+        - `output_text_tokens: optional number`
+
+          The aggregated number of text output tokens used.
 
         - `project_id: optional string`
 
@@ -9884,15 +10964,15 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
         - `input_tokens: number`
 
-          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `num_model_requests: number`
 
@@ -9904,7 +10984,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `output_tokens: number`
 
-          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `api_key_id: optional string`
 
@@ -9916,11 +10996,39 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `input_audio_tokens: optional number`
 
-          The aggregated number of audio input tokens used, including cached tokens.
+          The aggregated number of uncached audio input tokens used.
+
+        - `input_cache_write_tokens: optional number`
+
+          The aggregated number of input tokens written to the cache.
+
+        - `input_cached_audio_tokens: optional number`
+
+          The aggregated number of cached audio input tokens used.
+
+        - `input_cached_image_tokens: optional number`
+
+          The aggregated number of cached image input tokens used.
+
+        - `input_cached_text_tokens: optional number`
+
+          The aggregated number of cached text input tokens used.
 
         - `input_cached_tokens: optional number`
 
-          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+        - `input_image_tokens: optional number`
+
+          The aggregated number of uncached image input tokens used.
+
+        - `input_text_tokens: optional number`
+
+          The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+        - `input_uncached_tokens: optional number`
+
+          The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
         - `model: optional string`
 
@@ -9929,6 +11037,14 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
         - `output_audio_tokens: optional number`
 
           The aggregated number of audio output tokens used.
+
+        - `output_image_tokens: optional number`
+
+          The aggregated number of image output tokens used.
+
+        - `output_text_tokens: optional number`
+
+          The aggregated number of text output tokens used.
 
         - `project_id: optional string`
 
@@ -10264,15 +11380,15 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
         - `input_tokens: number`
 
-          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `num_model_requests: number`
 
@@ -10284,7 +11400,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `output_tokens: number`
 
-          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `api_key_id: optional string`
 
@@ -10296,11 +11412,39 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `input_audio_tokens: optional number`
 
-          The aggregated number of audio input tokens used, including cached tokens.
+          The aggregated number of uncached audio input tokens used.
+
+        - `input_cache_write_tokens: optional number`
+
+          The aggregated number of input tokens written to the cache.
+
+        - `input_cached_audio_tokens: optional number`
+
+          The aggregated number of cached audio input tokens used.
+
+        - `input_cached_image_tokens: optional number`
+
+          The aggregated number of cached image input tokens used.
+
+        - `input_cached_text_tokens: optional number`
+
+          The aggregated number of cached text input tokens used.
 
         - `input_cached_tokens: optional number`
 
-          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+        - `input_image_tokens: optional number`
+
+          The aggregated number of uncached image input tokens used.
+
+        - `input_text_tokens: optional number`
+
+          The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+        - `input_uncached_tokens: optional number`
+
+          The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
         - `model: optional string`
 
@@ -10309,6 +11453,14 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
         - `output_audio_tokens: optional number`
 
           The aggregated number of audio output tokens used.
+
+        - `output_image_tokens: optional number`
+
+          The aggregated number of image output tokens used.
+
+        - `output_text_tokens: optional number`
+
+          The aggregated number of text output tokens used.
 
         - `project_id: optional string`
 
@@ -10644,15 +11796,15 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
         - `input_tokens: number`
 
-          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `num_model_requests: number`
 
@@ -10664,7 +11816,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `output_tokens: number`
 
-          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `api_key_id: optional string`
 
@@ -10676,11 +11828,39 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `input_audio_tokens: optional number`
 
-          The aggregated number of audio input tokens used, including cached tokens.
+          The aggregated number of uncached audio input tokens used.
+
+        - `input_cache_write_tokens: optional number`
+
+          The aggregated number of input tokens written to the cache.
+
+        - `input_cached_audio_tokens: optional number`
+
+          The aggregated number of cached audio input tokens used.
+
+        - `input_cached_image_tokens: optional number`
+
+          The aggregated number of cached image input tokens used.
+
+        - `input_cached_text_tokens: optional number`
+
+          The aggregated number of cached text input tokens used.
 
         - `input_cached_tokens: optional number`
 
-          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+        - `input_image_tokens: optional number`
+
+          The aggregated number of uncached image input tokens used.
+
+        - `input_text_tokens: optional number`
+
+          The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+        - `input_uncached_tokens: optional number`
+
+          The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
         - `model: optional string`
 
@@ -10689,6 +11869,14 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
         - `output_audio_tokens: optional number`
 
           The aggregated number of audio output tokens used.
+
+        - `output_image_tokens: optional number`
+
+          The aggregated number of image output tokens used.
+
+        - `output_text_tokens: optional number`
+
+          The aggregated number of text output tokens used.
 
         - `project_id: optional string`
 
@@ -11024,15 +12212,15 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
         - `input_tokens: number`
 
-          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `num_model_requests: number`
 
@@ -11044,7 +12232,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `output_tokens: number`
 
-          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `api_key_id: optional string`
 
@@ -11056,11 +12244,39 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `input_audio_tokens: optional number`
 
-          The aggregated number of audio input tokens used, including cached tokens.
+          The aggregated number of uncached audio input tokens used.
+
+        - `input_cache_write_tokens: optional number`
+
+          The aggregated number of input tokens written to the cache.
+
+        - `input_cached_audio_tokens: optional number`
+
+          The aggregated number of cached audio input tokens used.
+
+        - `input_cached_image_tokens: optional number`
+
+          The aggregated number of cached image input tokens used.
+
+        - `input_cached_text_tokens: optional number`
+
+          The aggregated number of cached text input tokens used.
 
         - `input_cached_tokens: optional number`
 
-          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+        - `input_image_tokens: optional number`
+
+          The aggregated number of uncached image input tokens used.
+
+        - `input_text_tokens: optional number`
+
+          The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+        - `input_uncached_tokens: optional number`
+
+          The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
         - `model: optional string`
 
@@ -11069,6 +12285,14 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
         - `output_audio_tokens: optional number`
 
           The aggregated number of audio output tokens used.
+
+        - `output_image_tokens: optional number`
+
+          The aggregated number of image output tokens used.
+
+        - `output_text_tokens: optional number`
+
+          The aggregated number of text output tokens used.
 
         - `project_id: optional string`
 
@@ -11404,15 +12628,15 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
         - `input_tokens: number`
 
-          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `num_model_requests: number`
 
@@ -11424,7 +12648,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `output_tokens: number`
 
-          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `api_key_id: optional string`
 
@@ -11436,11 +12660,39 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `input_audio_tokens: optional number`
 
-          The aggregated number of audio input tokens used, including cached tokens.
+          The aggregated number of uncached audio input tokens used.
+
+        - `input_cache_write_tokens: optional number`
+
+          The aggregated number of input tokens written to the cache.
+
+        - `input_cached_audio_tokens: optional number`
+
+          The aggregated number of cached audio input tokens used.
+
+        - `input_cached_image_tokens: optional number`
+
+          The aggregated number of cached image input tokens used.
+
+        - `input_cached_text_tokens: optional number`
+
+          The aggregated number of cached text input tokens used.
 
         - `input_cached_tokens: optional number`
 
-          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+        - `input_image_tokens: optional number`
+
+          The aggregated number of uncached image input tokens used.
+
+        - `input_text_tokens: optional number`
+
+          The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+        - `input_uncached_tokens: optional number`
+
+          The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
         - `model: optional string`
 
@@ -11449,6 +12701,14 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
         - `output_audio_tokens: optional number`
 
           The aggregated number of audio output tokens used.
+
+        - `output_image_tokens: optional number`
+
+          The aggregated number of image output tokens used.
+
+        - `output_text_tokens: optional number`
+
+          The aggregated number of text output tokens used.
 
         - `project_id: optional string`
 
@@ -11784,15 +13044,15 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
         - `input_tokens: number`
 
-          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `num_model_requests: number`
 
@@ -11804,7 +13064,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `output_tokens: number`
 
-          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `api_key_id: optional string`
 
@@ -11816,11 +13076,39 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `input_audio_tokens: optional number`
 
-          The aggregated number of audio input tokens used, including cached tokens.
+          The aggregated number of uncached audio input tokens used.
+
+        - `input_cache_write_tokens: optional number`
+
+          The aggregated number of input tokens written to the cache.
+
+        - `input_cached_audio_tokens: optional number`
+
+          The aggregated number of cached audio input tokens used.
+
+        - `input_cached_image_tokens: optional number`
+
+          The aggregated number of cached image input tokens used.
+
+        - `input_cached_text_tokens: optional number`
+
+          The aggregated number of cached text input tokens used.
 
         - `input_cached_tokens: optional number`
 
-          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+        - `input_image_tokens: optional number`
+
+          The aggregated number of uncached image input tokens used.
+
+        - `input_text_tokens: optional number`
+
+          The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+        - `input_uncached_tokens: optional number`
+
+          The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
         - `model: optional string`
 
@@ -11829,6 +13117,14 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
         - `output_audio_tokens: optional number`
 
           The aggregated number of audio output tokens used.
+
+        - `output_image_tokens: optional number`
+
+          The aggregated number of image output tokens used.
+
+        - `output_text_tokens: optional number`
+
+          The aggregated number of text output tokens used.
 
         - `project_id: optional string`
 
@@ -12164,15 +13460,15 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
         - `input_tokens: number`
 
-          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `num_model_requests: number`
 
@@ -12184,7 +13480,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `output_tokens: number`
 
-          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `api_key_id: optional string`
 
@@ -12196,11 +13492,39 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `input_audio_tokens: optional number`
 
-          The aggregated number of audio input tokens used, including cached tokens.
+          The aggregated number of uncached audio input tokens used.
+
+        - `input_cache_write_tokens: optional number`
+
+          The aggregated number of input tokens written to the cache.
+
+        - `input_cached_audio_tokens: optional number`
+
+          The aggregated number of cached audio input tokens used.
+
+        - `input_cached_image_tokens: optional number`
+
+          The aggregated number of cached image input tokens used.
+
+        - `input_cached_text_tokens: optional number`
+
+          The aggregated number of cached text input tokens used.
 
         - `input_cached_tokens: optional number`
 
-          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+        - `input_image_tokens: optional number`
+
+          The aggregated number of uncached image input tokens used.
+
+        - `input_text_tokens: optional number`
+
+          The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+        - `input_uncached_tokens: optional number`
+
+          The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
         - `model: optional string`
 
@@ -12209,6 +13533,14 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
         - `output_audio_tokens: optional number`
 
           The aggregated number of audio output tokens used.
+
+        - `output_image_tokens: optional number`
+
+          The aggregated number of image output tokens used.
+
+        - `output_text_tokens: optional number`
+
+          The aggregated number of text output tokens used.
 
         - `project_id: optional string`
 
@@ -12544,15 +13876,15 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
         - `input_tokens: number`
 
-          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `num_model_requests: number`
 
@@ -12564,7 +13896,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `output_tokens: number`
 
-          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `api_key_id: optional string`
 
@@ -12576,11 +13908,39 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `input_audio_tokens: optional number`
 
-          The aggregated number of audio input tokens used, including cached tokens.
+          The aggregated number of uncached audio input tokens used.
+
+        - `input_cache_write_tokens: optional number`
+
+          The aggregated number of input tokens written to the cache.
+
+        - `input_cached_audio_tokens: optional number`
+
+          The aggregated number of cached audio input tokens used.
+
+        - `input_cached_image_tokens: optional number`
+
+          The aggregated number of cached image input tokens used.
+
+        - `input_cached_text_tokens: optional number`
+
+          The aggregated number of cached text input tokens used.
 
         - `input_cached_tokens: optional number`
 
-          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+        - `input_image_tokens: optional number`
+
+          The aggregated number of uncached image input tokens used.
+
+        - `input_text_tokens: optional number`
+
+          The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+        - `input_uncached_tokens: optional number`
+
+          The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
         - `model: optional string`
 
@@ -12589,6 +13949,14 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
         - `output_audio_tokens: optional number`
 
           The aggregated number of audio output tokens used.
+
+        - `output_image_tokens: optional number`
+
+          The aggregated number of image output tokens used.
+
+        - `output_text_tokens: optional number`
+
+          The aggregated number of text output tokens used.
 
         - `project_id: optional string`
 
@@ -12924,15 +14292,15 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
         - `input_tokens: number`
 
-          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `num_model_requests: number`
 
@@ -12944,7 +14312,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `output_tokens: number`
 
-          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
         - `api_key_id: optional string`
 
@@ -12956,11 +14324,39 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
         - `input_audio_tokens: optional number`
 
-          The aggregated number of audio input tokens used, including cached tokens.
+          The aggregated number of uncached audio input tokens used.
+
+        - `input_cache_write_tokens: optional number`
+
+          The aggregated number of input tokens written to the cache.
+
+        - `input_cached_audio_tokens: optional number`
+
+          The aggregated number of cached audio input tokens used.
+
+        - `input_cached_image_tokens: optional number`
+
+          The aggregated number of cached image input tokens used.
+
+        - `input_cached_text_tokens: optional number`
+
+          The aggregated number of cached text input tokens used.
 
         - `input_cached_tokens: optional number`
 
-          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+          The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+
+        - `input_image_tokens: optional number`
+
+          The aggregated number of uncached image input tokens used.
+
+        - `input_text_tokens: optional number`
+
+          The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+
+        - `input_uncached_tokens: optional number`
+
+          The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
         - `model: optional string`
 
@@ -12969,6 +14365,14 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
         - `output_audio_tokens: optional number`
 
           The aggregated number of audio output tokens used.
+
+        - `output_image_tokens: optional number`
+
+          The aggregated number of image output tokens used.
+
+        - `output_text_tokens: optional number`
+
+          The aggregated number of text output tokens used.
 
         - `project_id: optional string`
 
@@ -21774,13 +23178,15 @@ Returns a list of service accounts in the project.
 
     - `"organization.project.service_account"`
 
-  - `role: "owner" or "member"`
+  - `role: "owner" or "member" or "none"`
 
-    `owner` or `member`
+    `owner`, `member`, or `none`
 
     - `"owner"`
 
     - `"member"`
+
+    - `"none"`
 
 - `has_more: boolean`
 
@@ -21851,7 +23257,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts?a
 
 **post** `/organization/projects/{project_id}/service_accounts`
 
-Creates a new service account in the project. This also returns an unredacted API key for the service account.
+Creates a new service account in the project. By default, this also returns an unredacted API key for the service account.
 
 ### Path Parameters
 
@@ -21862,6 +23268,10 @@ Creates a new service account in the project. This also returns an unredacted AP
 - `name: string`
 
   The name of the service account being created.
+
+- `create_service_account_only: optional boolean`
+
+  Create the service account without default roles or an API key.
 
 ### Returns
 
@@ -21891,11 +23301,13 @@ Creates a new service account in the project. This also returns an unredacted AP
 
   - `"organization.project.service_account"`
 
-- `role: "member"`
+- `role: "member" or "none"`
 
-  Service accounts can only have one role of type `member`
+  Service accounts created with default project membership have role `member`. Accounts created with `create_service_account_only` have role `none`.
 
   - `"member"`
+
+  - `"none"`
 
 ### Example
 
@@ -21993,13 +23405,15 @@ Retrieves a service account in the project.
 
     - `"organization.project.service_account"`
 
-  - `role: "owner" or "member"`
+  - `role: "owner" or "member" or "none"`
 
-    `owner` or `member`
+    `owner`, `member`, or `none`
 
     - `"owner"`
 
     - `"member"`
+
+    - `"none"`
 
 ### Example
 
@@ -22090,13 +23504,15 @@ Updates a service account in the project.
 
     - `"organization.project.service_account"`
 
-  - `role: "owner" or "member"`
+  - `role: "owner" or "member" or "none"`
 
-    `owner` or `member`
+    `owner`, `member`, or `none`
 
     - `"owner"`
 
     - `"member"`
+
+    - `"none"`
 
 ### Example
 
@@ -22230,13 +23646,15 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_
 
     - `"organization.project.service_account"`
 
-  - `role: "owner" or "member"`
+  - `role: "owner" or "member" or "none"`
 
-    `owner` or `member`
+    `owner`, `member`, or `none`
 
     - `"owner"`
 
     - `"member"`
+
+    - `"none"`
 
 ### Service Account Create Response
 
@@ -22268,11 +23686,13 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_
 
     - `"organization.project.service_account"`
 
-  - `role: "member"`
+  - `role: "member" or "none"`
 
-    Service accounts can only have one role of type `member`
+    Service accounts created with default project membership have role `member`. Accounts created with `create_service_account_only` have role `none`.
 
     - `"member"`
+
+    - `"none"`
 
 ### Service Account Delete Response
 
@@ -22285,6 +23705,110 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_
   - `object: "organization.project.service_account.deleted"`
 
     - `"organization.project.service_account.deleted"`
+
+# API Keys
+
+## Create project service account API key
+
+**post** `/organization/projects/{project_id}/service_accounts/{service_account_id}/api_keys`
+
+Creates an API key for a service account in the project.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `service_account_id: string`
+
+### Body Parameters
+
+- `name: optional string`
+
+  API key name.
+
+- `scopes: optional array of string`
+
+  API key scopes.
+
+### Returns
+
+- `id: string`
+
+- `created_at: number`
+
+- `name: string`
+
+- `object: "organization.project.service_account.api_key"`
+
+  The object type, which is always `organization.project.service_account.api_key`
+
+  - `"organization.project.service_account.api_key"`
+
+- `value: string`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts/$SERVICE_ACCOUNT_ID/api_keys \
+    -X POST \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project.service_account.api_key",
+  "value": "value"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/svc_acct_abc/api_keys \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "Production App",
+      "scopes": ["api.responses.write"]
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.service_account.api_key",
+    "value": "sk-abcdefghijklmnop123",
+    "name": "Production App",
+    "created_at": 1711471533,
+    "id": "key_abc"
+}
+```
+
+## Domain Types
+
+### API Key Create Response
+
+- `APIKeyCreateResponse object { id, created_at, name, 2 more }`
+
+  - `id: string`
+
+  - `created_at: number`
+
+  - `name: string`
+
+  - `object: "organization.project.service_account.api_key"`
+
+    The object type, which is always `organization.project.service_account.api_key`
+
+    - `"organization.project.service_account.api_key"`
+
+  - `value: string`
 
 # API Keys
 

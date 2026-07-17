@@ -6,10 +6,6 @@ AI-native features and functionality.
 - Add-on: GitLab Duo Pro or Enterprise
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [GitLab Duo first introduced](https://about.gitlab.com/blog/gitlab-ai-assisted-features/) in GitLab 16.0.
-- [Removed third-party AI setting](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/136144) in GitLab 16.6.
-- [Removed support for OpenAI from all GitLab Duo features](https://gitlab.com/groups/gitlab-org/-/epics/10964) in GitLab 16.6.
-
 The following features are generally available on GitLab.com, GitLab Self-Managed, and GitLab Dedicated.
 They require a Premium or Ultimate subscription and one of the available add-ons.
 

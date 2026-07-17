@@ -1547,11 +1547,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"output_text"`
 
-          - `annotations?: Array<UnionMember0> | Array<UnionMember1> | Array<UnionMember2>`
+          - `annotations?: Array<FileCitation | URLCitation | ContainerFileCitation>`
 
             Citations associated with the text content.
 
-            - `Array<UnionMember0>`
+            - `FileCitation`
 
               - `file_id: string`
 
@@ -1571,7 +1571,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 - `"file_citation"`
 
-            - `Array<UnionMember1>`
+            - `URLCitation`
 
               - `end_index: number`
 
@@ -1595,7 +1595,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 The URL of the cited resource.
 
-            - `Array<UnionMember2>`
+            - `ContainerFileCitation`
 
               - `container_id: string`
 
@@ -2964,8 +2964,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `encrypted_content?: string | null`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status?: "in_progress" | "completed" | "incomplete"`
 
@@ -5375,8 +5376,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       - `encrypted_content?: string | null`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status?: "in_progress" | "completed" | "incomplete"`
 

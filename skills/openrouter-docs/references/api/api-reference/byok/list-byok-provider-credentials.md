@@ -114,8 +114,9 @@ paths:
             description: Number of records to skip for pagination
             example: 0
             minimum: 0
-            nullable: true
-            type: integer
+            type:
+              - integer
+              - 'null'
         - description: Maximum number of records to return (max 100)
           in: query
           name: limit
@@ -234,6 +235,7 @@ paths:
               - stepfun
               - streamlake
               - switchpoint
+              - tencent
               - tenstorrent
               - together
               - upstage
@@ -329,13 +331,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -349,13 +352,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -383,8 +387,9 @@ components:
           items:
             type: string
           maxItems: 100
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         allowed_models:
           description: >-
             Optional allowlist of model slugs this credential may be used for.
@@ -393,8 +398,9 @@ components:
           items:
             type: string
           maxItems: 100
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         allowed_user_ids:
           description: >-
             Optional allowlist of user IDs that may use this credential. `null`
@@ -403,8 +409,9 @@ components:
           items:
             type: string
           maxItems: 100
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         created_at:
           description: ISO timestamp of when the credential was created.
           example: '2025-08-24T10:30:00Z'
@@ -433,8 +440,9 @@ components:
         name:
           description: Optional human-readable name for the credential.
           example: Production OpenAI Key
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         provider:
           $ref: '#/components/schemas/BYOKProviderSlug'
         sort_order:
@@ -472,10 +480,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -491,10 +499,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -587,6 +595,7 @@ components:
         - stepfun
         - streamlake
         - switchpoint
+        - tencent
         - tenstorrent
         - together
         - upstage

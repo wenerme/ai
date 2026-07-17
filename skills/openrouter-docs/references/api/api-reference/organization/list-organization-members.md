@@ -112,8 +112,9 @@ paths:
             description: Number of records to skip for pagination
             example: 0
             minimum: 0
-            nullable: true
-            type: integer
+            type:
+              - integer
+              - 'null'
         - description: Maximum number of records to return (max 100)
           in: query
           name: limit
@@ -135,7 +136,7 @@ paths:
                     first_name: Jane
                     id: user_2dHFtVWx2n56w6HkM0000000000
                     last_name: Doe
-                    role: member
+                    role: org:member
                 total_count: 25
               schema:
                 properties:
@@ -150,8 +151,9 @@ paths:
                         first_name:
                           description: First name of the member
                           example: Jane
-                          nullable: true
-                          type: string
+                          type:
+                            - string
+                            - 'null'
                         id:
                           description: User ID of the organization member
                           example: user_2dHFtVWx2n56w6HkM0000000000
@@ -159,8 +161,9 @@ paths:
                         last_name:
                           description: Last name of the member
                           example: Doe
-                          nullable: true
-                          type: string
+                          type:
+                            - string
+                            - 'null'
                         role:
                           description: Role of the member in the organization
                           enum:
@@ -227,13 +230,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -247,13 +251,14 @@ components:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -267,13 +272,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -288,10 +294,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -307,10 +313,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -326,10 +332,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message

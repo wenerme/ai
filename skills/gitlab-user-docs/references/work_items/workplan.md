@@ -33,6 +33,24 @@ The **Workplan** widget appears on the work item and shows the workplan status:
 - **No workplan**: The work item has no workplan, and you do not have permission to create one.
 - **Ready to view**: The work item has a workplan.
 
+## Benefits
+
+A workplan separates intent from implementation:
+
+- The work item description captures intent, or what you want and why.
+  People read the description to understand the goal.
+- The workplan captures implementation, or how to do the work.
+  Agents follow the workplan to carry out the work.
+
+This separation gives you three benefits:
+
+- Intent protection: An agent iterates on the workplan in a field separate from the work item
+  description, so your intent stays intact even as the plan changes across several runs.
+- Plan review: An agent pauses after producing a workplan, so you can review, refine, and approve
+  the plan before any work starts.
+- Agent focus: Because the workplan is a dedicated field, an agent asked to plan work puts that
+  context there instead of rewriting the description or other parts of the work item.
+
 ## When to use a workplan
 
 Use a workplan when you plan to give work to an agent, either by selecting **Implement**

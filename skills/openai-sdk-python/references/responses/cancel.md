@@ -2653,8 +2653,9 @@ the `background` parameter set to `true` can be cancelled.
 
         - `encrypted_content: Optional[str]`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 

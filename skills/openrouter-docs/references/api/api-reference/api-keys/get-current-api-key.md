@@ -209,16 +209,18 @@ paths:
                           keys, this is the member who created the key. For
                           individual users, this is the user's own ID.
                         example: user_2dHFtVWx2n56w6HkM0000000000
-                        nullable: true
-                        type: string
+                        type:
+                          - string
+                          - 'null'
                       expires_at:
                         description: >-
                           ISO 8601 UTC timestamp when the API key expires, or
                           null if no expiration
                         example: '2027-12-31T23:59:59Z'
                         format: date-time
-                        nullable: true
-                        type: string
+                        type:
+                          - string
+                          - 'null'
                       include_byok_in_limit:
                         description: >-
                           Whether to include external BYOK usage in the credit
@@ -246,19 +248,22 @@ paths:
                         description: Spending limit for the API key in USD
                         example: 100
                         format: double
-                        nullable: true
-                        type: number
+                        type:
+                          - number
+                          - 'null'
                       limit_remaining:
                         description: Remaining spending limit in USD
                         example: 74.5
                         format: double
-                        nullable: true
-                        type: number
+                        type:
+                          - number
+                          - 'null'
                       limit_reset:
                         description: Type of limit reset for the API key
                         example: monthly
-                        nullable: true
-                        type: string
+                        type:
+                          - string
+                          - 'null'
                       rate_limit:
                         deprecated: true
                         description: >-
@@ -368,13 +373,14 @@ components:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -388,13 +394,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -409,10 +416,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -428,10 +435,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message

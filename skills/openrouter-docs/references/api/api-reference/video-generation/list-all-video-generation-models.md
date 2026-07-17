@@ -195,13 +195,14 @@ components:
         error:
           $ref: '#/components/schemas/BadRequestResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -215,13 +216,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -272,13 +274,15 @@ components:
           type: string
         generate_audio:
           description: Whether the model supports generating audio alongside video
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         hugging_face_id:
           description: Hugging Face model identifier, if applicable
           example: microsoft/DialoGPT-medium
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
         id:
           description: Unique identifier for the model
           example: openai/gpt-4
@@ -291,14 +295,16 @@ components:
           additionalProperties:
             type: string
           description: Pricing SKUs with provider prefix stripped, values as strings
-          nullable: true
-          type: object
+          type:
+            - object
+            - 'null'
         seed:
           description: >-
             Whether the model supports deterministic generation via seed
             parameter
-          nullable: true
-          type: boolean
+          type:
+            - boolean
+            - 'null'
         supported_aspect_ratios:
           description: Supported output aspect ratios
           items:
@@ -313,14 +319,16 @@ components:
               - '21:9'
               - '9:21'
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         supported_durations:
           description: Supported video durations in seconds
           items:
             type: integer
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         supported_frame_images:
           description: Supported frame image types (e.g. first_frame, last_frame)
           items:
@@ -328,8 +336,9 @@ components:
               - first_frame
               - last_frame
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         supported_resolutions:
           description: Supported output resolutions
           items:
@@ -341,8 +350,9 @@ components:
               - 2K
               - 4K
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
         supported_sizes:
           description: Supported output sizes (width x height)
           items:
@@ -384,8 +394,9 @@ components:
               - 3840x2160
               - 5040x2160
             type: string
-          nullable: true
-          type: array
+          type:
+            - array
+            - 'null'
       required:
         - id
         - canonical_slug
@@ -411,10 +422,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message
@@ -430,10 +441,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message

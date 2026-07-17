@@ -120,7 +120,7 @@ paths:
                       request: '0'
                     provider_name: OpenAI
                     quantization: fp16
-                    status: default
+                    status: 0
                     supported_parameters:
                       - temperature
                       - top_p
@@ -156,7 +156,7 @@ paths:
                         request: '0'
                       provider_name: OpenAI
                       quantization: fp16
-                      status: default
+                      status: 0
                       supported_parameters:
                         - temperature
                         - top_p
@@ -234,11 +234,13 @@ components:
         latency_last_30m:
           $ref: '#/components/schemas/PercentileStats'
         max_completion_tokens:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         max_prompt_tokens:
-          nullable: true
-          type: integer
+          type:
+            - integer
+            - 'null'
         model_id:
           description: The unique identifier for the model (permaslug)
           example: openai/gpt-4
@@ -323,9 +325,9 @@ components:
         provider_name:
           $ref: '#/components/schemas/ProviderName'
         quantization:
-          allOf:
+          anyOf:
             - $ref: '#/components/schemas/Quantization'
-            - nullable: true
+            - type: 'null'
         status:
           $ref: '#/components/schemas/EndpointStatus'
         supported_parameters:
@@ -350,20 +352,23 @@ components:
             requests / (successful + error requests) * 100. Rate-limited
             requests are excluded. Returns null if insufficient data.
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         uptime_last_30m:
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
         uptime_last_5m:
           description: >-
             Uptime percentage over the last 5 minutes, calculated as successful
             requests / (successful + error requests) * 100. Rate-limited
             requests are excluded. Returns null if insufficient data.
           format: double
-          nullable: true
-          type: number
+          type:
+            - number
+            - 'null'
       required:
         - name
         - model_id
@@ -393,13 +398,14 @@ components:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
         openrouter_metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
         user_id:
-          nullable: true
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - error
       type: object
@@ -413,7 +419,6 @@ components:
         p75: 35.2
         p90: 48.7
         p99: 85.3
-      nullable: true
       properties:
         p50:
           description: Median (50th percentile)
@@ -440,7 +445,9 @@ components:
         - p75
         - p90
         - p99
-      type: object
+      type:
+        - object
+        - 'null'
     PricingOverride:
       description: >-
         A conditional override of the base pricing. An entry applies only when
@@ -498,7 +505,6 @@ components:
       type: object
     ProviderName:
       enum:
-        - Meta
         - AkashML
         - AI21
         - AionLabs
@@ -549,6 +555,7 @@ components:
         - Liquid
         - Mara
         - Mancer 2
+        - Meta
         - Minimax
         - ModelRun
         - Mistral
@@ -581,6 +588,7 @@ components:
         - Stealth
         - StreamLake
         - Switchpoint
+        - Tencent
         - Tenstorrent
         - Together
         - Upstage
@@ -659,10 +667,10 @@ components:
         message:
           type: string
         metadata:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
       required:
         - code
         - message

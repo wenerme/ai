@@ -1,3 +1,5 @@
+This guide introduces all the models available through the Gemini API.
+
 *** ** * ** ***
 
 ## Gemini 3

@@ -1,12 +1,7 @@
-# Generate images using Imagen
-
 <br />
 
 > [!WARNING]
 > This model is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on August 17, 2026; migrate to Nano Banana for image generation.
-
-> [!IMPORTANT]
-> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
 Imagen is Google's high-fidelity image generation model, capable of generating
 realistic and high quality images from text prompts. All generated images

@@ -15,7 +15,7 @@
 <Info>
   **Stateless Only**
 
-  This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request.
+  This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request. Requests that set `store: true` or a non-null `previous_response_id` are rejected with a `400` error.
 </Info>
 
 OpenRouter's Responses API Beta provides OpenAI-compatible access to multiple AI models through a unified interface, designed to be a drop-in replacement for OpenAI's Responses API. This stateless API offers enhanced capabilities including reasoning, tool calling, and web search integration, with each request being independent and no server-side state persisted.

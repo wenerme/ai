@@ -163,14 +163,6 @@ This lets the agent bring external context into your workflows to investigate is
 
 For more information to configure MCP servers within your workspace, check out our documentation [here](https://linear.app/docs/connect-mcp-servers).
 
-### Loops
-
-Loops let Linear work in the background to keep your processes moving. They can run when issues match certain conditions or on a schedule, helping with recurring triage, follow-up, and other routine workflows.
-
-For setup details, triggers, permissions, and troubleshooting, see the [Loops](https://linear.app/docs/loops) help doc.
-
-![Loop Automations](https://webassets.linear.app/images/ornj730p/production/4be69961f6c6d949f19a529bcee10a815ff25200-2880x1599.avif?q=95&auto=format&dpr=2)
-
 ### Guidance
 
 Guidance is a set of instructions for how Linear operates within your workspace and across teams. Use guidance to make outputs consistent with conventions in your workspace. You might specify how you want issues titled, what fields should be included in bug reports, or how updates should be structured.

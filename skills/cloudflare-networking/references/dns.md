@@ -18,7 +18,7 @@ Leverage Cloudflare's global network to deliver excellent performance and reliab
 
 Cloudflare DNS is a fast, resilient, and easy-to-manage authoritative DNS service. It delivers excellent performance and reliability to your domain while also protecting your business from [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) and [route leaks and hijacking ↗](https://www.cloudflare.com/learning/security/glossary/bgp-hijacking/). To know where to begin, refer to [Get started](https://developers.cloudflare.com/dns/get-started/).
 
-Enterprise customers can also use Cloudflare DNS for their private network with [Internal DNS (Beta)](https://developers.cloudflare.com/dns/internal-dns/) and proxy public hostnames to [private origins (Beta)](https://developers.cloudflare.com/dns/private-origins/).
+Enterprise customers can also use Cloudflare DNS for their private network with [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/) and proxy public hostnames to [private origins (Beta)](https://developers.cloudflare.com/dns/private-origins/).
 
 ---
 
@@ -60,6 +60,6 @@ Before you can start using Cloudflare DNS you must first have a domain. Buy and 
 Cloudflare DNS focuses on businesses and their domain administration. If you are a consumer and want a more private way to browse the Internet, check out 1.1.1.1, Cloudflare's public DNS Resolver.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/#page","headline":"Cloudflare DNS · Cloudflare DNS docs","description":"Manage DNS records, nameservers, and DNSSEC with Cloudflare DNS.","url":"https://developers.cloudflare.com/dns/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/#page","headline":"Cloudflare DNS · Cloudflare DNS docs","description":"Manage DNS records, nameservers, and DNSSEC with Cloudflare DNS.","url":"https://developers.cloudflare.com/dns/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}}]}
 ```

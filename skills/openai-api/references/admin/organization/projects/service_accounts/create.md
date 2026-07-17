@@ -2,7 +2,7 @@
 
 **post** `/organization/projects/{project_id}/service_accounts`
 
-Creates a new service account in the project. This also returns an unredacted API key for the service account.
+Creates a new service account in the project. By default, this also returns an unredacted API key for the service account.
 
 ### Path Parameters
 
@@ -13,6 +13,10 @@ Creates a new service account in the project. This also returns an unredacted AP
 - `name: string`
 
   The name of the service account being created.
+
+- `create_service_account_only: optional boolean`
+
+  Create the service account without default roles or an API key.
 
 ### Returns
 
@@ -42,11 +46,13 @@ Creates a new service account in the project. This also returns an unredacted AP
 
   - `"organization.project.service_account"`
 
-- `role: "member"`
+- `role: "member" or "none"`
 
-  Service accounts can only have one role of type `member`
+  Service accounts created with default project membership have role `member`. Accounts created with `create_service_account_only` have role `none`.
 
   - `"member"`
+
+  - `"none"`
 
 ### Example
 

@@ -791,6 +791,7 @@ All reasoning detail objects share these common fields:
   * `"openai-responses-v1"` - OpenAI responses format version 1
   * `"azure-openai-responses-v1"` - Azure OpenAI responses format version 1
   * `"xai-responses-v1"` - xAI responses format version 1
+  * `"meta-responses-v1"` - Meta responses format version 1
   * `"anthropic-claude-v1"` - Anthropic Claude format version 1 (default)
   * `"google-gemini-v1"` - Google Gemini format version 1
 * `index` (number, optional): Sequential index of the reasoning detail

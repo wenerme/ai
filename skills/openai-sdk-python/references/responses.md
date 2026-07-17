@@ -2666,8 +2666,9 @@ as input for the model's response.
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -7060,8 +7061,9 @@ as input for the model's response.
 
         - `encrypted_content: Optional[str]`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -13741,8 +13743,9 @@ Retrieves a model response with the given ID.
 
         - `encrypted_content: Optional[str]`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -19723,8 +19726,9 @@ the `background` parameter set to `true` can be cancelled.
 
         - `encrypted_content: Optional[str]`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -25768,8 +25772,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -27874,8 +27879,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -31326,8 +31332,9 @@ print(compacted_response)
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -37510,8 +37517,9 @@ print(compacted_response)
 
         - `encrypted_content: Optional[str]`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -43656,8 +43664,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -50544,8 +50553,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -56628,8 +56638,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -63560,8 +63571,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -69270,8 +69282,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -74858,8 +74871,9 @@ print(compacted_response)
 
     - `encrypted_content: Optional[str]`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -78627,8 +78641,9 @@ print(compacted_response)
 
     - `encrypted_content: Optional[str]`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -82226,8 +82241,9 @@ print(compacted_response)
 
     - `encrypted_content: Optional[str]`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -84426,8 +84442,9 @@ print(compacted_response)
 
     - `encrypted_content: Optional[str]`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -87654,8 +87671,9 @@ print(compacted_response)
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -90896,8 +90914,9 @@ print(compacted_response)
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -96137,8 +96156,9 @@ print(compacted_response)
 
           - `encrypted_content: Optional[str]`
 
-            The encrypted content of the reasoning item - populated when a response is
-            generated with `reasoning.encrypted_content` in the `include` parameter.
+            The encrypted content of the reasoning item. This is populated by default
+            for reasoning items returned by `POST /v1/responses` and WebSocket
+            `response.create` requests.
 
           - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -99218,8 +99238,9 @@ print(compacted_response)
 
   - `encrypted_content: Optional[str]`
 
-    The encrypted content of the reasoning item - populated when a response is
-    generated with `reasoning.encrypted_content` in the `include` parameter.
+    The encrypted content of the reasoning item. This is populated by default
+    for reasoning items returned by `POST /v1/responses` and WebSocket
+    `response.create` requests.
 
   - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -102367,8 +102388,9 @@ print(compacted_response)
 
             - `encrypted_content: Optional[str]`
 
-              The encrypted content of the reasoning item - populated when a response is
-              generated with `reasoning.encrypted_content` in the `include` parameter.
+              The encrypted content of the reasoning item. This is populated by default
+              for reasoning items returned by `POST /v1/responses` and WebSocket
+              `response.create` requests.
 
             - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -111872,8 +111894,9 @@ print(compacted_response)
 
         - `encrypted_content: Optional[str]`
 
-          The encrypted content of the reasoning item - populated when a response is
-          generated with `reasoning.encrypted_content` in the `include` parameter.
+          The encrypted content of the reasoning item. This is populated by default
+          for reasoning items returned by `POST /v1/responses` and WebSocket
+          `response.create` requests.
 
         - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -116456,8 +116479,9 @@ print(compacted_response)
 
             - `encrypted_content: Optional[str]`
 
-              The encrypted content of the reasoning item - populated when a response is
-              generated with `reasoning.encrypted_content` in the `include` parameter.
+              The encrypted content of the reasoning item. This is populated by default
+              for reasoning items returned by `POST /v1/responses` and WebSocket
+              `response.create` requests.
 
             - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -124619,8 +124643,9 @@ Returns a list of input items for a given response.
 
     - `encrypted_content: Optional[str]`
 
-      The encrypted content of the reasoning item - populated when a response is
-      generated with `reasoning.encrypted_content` in the `include` parameter.
+      The encrypted content of the reasoning item. This is populated by default
+      for reasoning items returned by `POST /v1/responses` and WebSocket
+      `response.create` requests.
 
     - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -127912,8 +127937,9 @@ print(response.data)
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
@@ -131338,8 +131364,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `encrypted_content: Optional[str]`
 
-        The encrypted content of the reasoning item - populated when a response is
-        generated with `reasoning.encrypted_content` in the `include` parameter.
+        The encrypted content of the reasoning item. This is populated by default
+        for reasoning items returned by `POST /v1/responses` and WebSocket
+        `response.create` requests.
 
       - `status: Optional[Literal["in_progress", "completed", "incomplete"]]`
 
