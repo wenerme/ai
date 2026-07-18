@@ -353,7 +353,6 @@ import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.core.http.HttpClient;
 import com.openai.errors.SubjectTokenProviderException;
-import com.openai.models.ChatModel;
 import com.openai.models.responses.ResponseCreateParams;
 import java.util.concurrent.CompletableFuture;
 import software.amazon.awssdk.regions.Region;
@@ -361,83 +360,81 @@ import software.amazon.awssdk.services.sts.StsClient;
 import software.amazon.awssdk.services.sts.model.GetWebIdentityTokenRequest;
 
 public final class AwsOutboundWorkloadIdentityExample {
-    private AwsOutboundWorkloadIdentityExample() {}
+  private AwsOutboundWorkloadIdentityExample() {}
 
-    static final class AwsOutboundWebIdentityTokenProvider implements SubjectTokenProvider {
-        private final StsClient stsClient;
-        private final String audience;
+  static final class AwsOutboundWebIdentityTokenProvider implements SubjectTokenProvider {
+    private final StsClient stsClient;
+    private final String audience;
 
-        AwsOutboundWebIdentityTokenProvider(StsClient stsClient, String audience) {
-            this.stsClient = stsClient;
-            this.audience = audience;
-        }
+    AwsOutboundWebIdentityTokenProvider(StsClient stsClient, String audience) {
+      this.stsClient = stsClient;
+      this.audience = audience;
+    }
 
-        @Override
-        public SubjectTokenType tokenType() {
-            return SubjectTokenType.JWT;
-        }
+    @Override
+    public SubjectTokenType tokenType() {
+      return SubjectTokenType.JWT;
+    }
 
-        @Override
-        public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
-            try {
-                String token = stsClient.getWebIdentityToken(GetWebIdentityTokenRequest.builder()
+    @Override
+    public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
+      try {
+        String token =
+            stsClient
+                .getWebIdentityToken(
+                    GetWebIdentityTokenRequest.builder()
                         .audience(audience)
                         .durationSeconds(300)
                         .signingAlgorithm("ES384")
-                        .build()).webIdentityToken();
+                        .build())
+                .webIdentityToken();
 
-                if (token == null || token.isEmpty()) {
-                    throw new SubjectTokenProviderException(
-                            "aws-outbound",
-                            "AWS STS did not return a web identity token",
-                            null);
-                }
-
-                return token;
-            } catch (SubjectTokenProviderException e) {
-                throw e;
-            } catch (Exception e) {
-                throw new SubjectTokenProviderException(
-                        "aws-outbound",
-                        "failed to request AWS web identity token",
-                        e);
-            }
+        if (token == null || token.isEmpty()) {
+          throw new SubjectTokenProviderException(
+              "aws-outbound", "AWS STS did not return a web identity token", null);
         }
 
-        @Override
-        public CompletableFuture<String> getTokenAsync(
-                HttpClient httpClient, JsonMapper jsonMapper) {
-            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
-        }
+        return token;
+      } catch (SubjectTokenProviderException e) {
+        throw e;
+      } catch (Exception e) {
+        throw new SubjectTokenProviderException(
+            "aws-outbound", "failed to request AWS web identity token", e);
+      }
     }
 
-    public static void main(String[] args) {
-        String audience = System.getenv("OPENAI_WIF_AUDIENCE");
-        StsClient stsClient = StsClient.builder()
-                .region(Region.of(System.getenv("AWS_REGION")))
-                .build();
-
-        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
-                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
-                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
-                .provider(new AwsOutboundWebIdentityTokenProvider(stsClient, audience))
-                .build();
-
-        OpenAIClient client = OpenAIOkHttpClient.builder()
-                .workloadIdentity(workloadIdentity)
-                .build();
-
-        ResponseCreateParams params = ResponseCreateParams.builder()
-                .model(ChatModel.GPT_4_1_MINI)
-                .input("Say hello from AWS outbound workload identity federation.")
-                .build();
-
-        client.responses().create(params).output().stream()
-                .flatMap(item -> item.message().stream())
-                .flatMap(message -> message.content().stream())
-                .flatMap(content -> content.outputText().stream())
-                .forEach(outputText -> System.out.println(outputText.text()));
+    @Override
+    public CompletableFuture<String> getTokenAsync(HttpClient httpClient, JsonMapper jsonMapper) {
+      return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
     }
+  }
+
+  public static void main(String[] args) {
+    String audience = System.getenv("OPENAI_WIF_AUDIENCE");
+    StsClient stsClient =
+        StsClient.builder().region(Region.of(System.getenv("AWS_REGION"))).build();
+
+    WorkloadIdentity workloadIdentity =
+        WorkloadIdentity.builder()
+            .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+            .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+            .provider(new AwsOutboundWebIdentityTokenProvider(stsClient, audience))
+            .build();
+
+    OpenAIClient client = OpenAIOkHttpClient.builder().workloadIdentity(workloadIdentity).build();
+
+    ResponseCreateParams params =
+        ResponseCreateParams.builder()
+            .model("gpt-5.6-terra")
+            .input("Say hello from AWS outbound workload identity federation.")
+            .build();
+
+    client.responses().create(params).output().stream()
+        .flatMap(item -> item.message().stream())
+        .flatMap(message -> message.content().stream())
+        .flatMap(content -> content.outputText().stream())
+        .forEach(outputText -> System.out.println(outputText.text()));
+  }
 }
 ```
 
@@ -803,80 +800,74 @@ import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.core.http.HttpClient;
 import com.openai.errors.SubjectTokenProviderException;
-import com.openai.models.ChatModel;
 import com.openai.models.responses.ResponseCreateParams;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
 public final class AwsEksWorkloadIdentityExample {
-    private static final String TOKEN_PATH = "/var/run/secrets/tokens/token";
+  private static final String TOKEN_PATH = "/var/run/secrets/tokens/token";
 
-    private AwsEksWorkloadIdentityExample() {}
+  private AwsEksWorkloadIdentityExample() {}
 
-    static final class MountedEksServiceAccountTokenProvider implements SubjectTokenProvider {
-        private final Path tokenPath;
+  static final class MountedEksServiceAccountTokenProvider implements SubjectTokenProvider {
+    private final Path tokenPath;
 
-        MountedEksServiceAccountTokenProvider(String tokenPath) {
-            this.tokenPath = Path.of(tokenPath);
-        }
-
-        @Override
-        public SubjectTokenType tokenType() {
-            return SubjectTokenType.JWT;
-        }
-
-        @Override
-        public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
-            String token;
-            try {
-                token = Files.readString(tokenPath).trim();
-            } catch (Exception e) {
-                throw new SubjectTokenProviderException(
-                        "aws-eks",
-                        "failed to read mounted EKS service account token",
-                        e);
-            }
-
-            if (token.isEmpty()) {
-                throw new SubjectTokenProviderException(
-                        "aws-eks",
-                        "mounted EKS service account token is empty",
-                        null);
-            }
-
-            return token;
-        }
-
-        @Override
-        public CompletableFuture<String> getTokenAsync(
-                HttpClient httpClient, JsonMapper jsonMapper) {
-            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
-        }
+    MountedEksServiceAccountTokenProvider(String tokenPath) {
+      this.tokenPath = Path.of(tokenPath);
     }
 
-    public static void main(String[] args) {
-        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
-                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
-                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
-                .provider(new MountedEksServiceAccountTokenProvider(TOKEN_PATH))
-                .build();
-
-        OpenAIClient client = OpenAIOkHttpClient.builder()
-                .workloadIdentity(workloadIdentity)
-                .build();
-
-        ResponseCreateParams params = ResponseCreateParams.builder()
-                .model(ChatModel.GPT_4_1_MINI)
-                .input("Say hello from AWS workload identity federation.")
-                .build();
-
-        client.responses().create(params).output().stream()
-                .flatMap(item -> item.message().stream())
-                .flatMap(message -> message.content().stream())
-                .flatMap(content -> content.outputText().stream())
-                .forEach(outputText -> System.out.println(outputText.text()));
+    @Override
+    public SubjectTokenType tokenType() {
+      return SubjectTokenType.JWT;
     }
+
+    @Override
+    public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
+      String token;
+      try {
+        token = Files.readString(tokenPath).trim();
+      } catch (Exception e) {
+        throw new SubjectTokenProviderException(
+            "aws-eks", "failed to read mounted EKS service account token", e);
+      }
+
+      if (token.isEmpty()) {
+        throw new SubjectTokenProviderException(
+            "aws-eks", "mounted EKS service account token is empty", null);
+      }
+
+      return token;
+    }
+
+    @Override
+    public CompletableFuture<String> getTokenAsync(HttpClient httpClient, JsonMapper jsonMapper) {
+      return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+    }
+  }
+
+  public static void main(String[] args) {
+    WorkloadIdentity workloadIdentity =
+        WorkloadIdentity.builder()
+            .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+            .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+            .provider(new MountedEksServiceAccountTokenProvider(TOKEN_PATH))
+            .build();
+
+    OpenAIClient client = OpenAIOkHttpClient.builder().workloadIdentity(workloadIdentity).build();
+
+    ResponseCreateParams params =
+        ResponseCreateParams.builder()
+            .model("gpt-5.6-terra")
+            .input("Say hello from AWS workload identity federation.")
+            .build();
+
+    client.responses().create(params).output().stream()
+        .flatMap(item -> item.message().stream())
+        .flatMap(message -> message.content().stream())
+        .flatMap(content -> content.outputText().stream())
+        .forEach(outputText -> System.out.println(outputText.text()));
+  }
 }
 ```
 

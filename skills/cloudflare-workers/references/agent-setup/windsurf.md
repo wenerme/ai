@@ -48,7 +48,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**
 Open Cascade and try a prompt — for example:
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ## Cloudflare platform access
@@ -83,6 +83,7 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 * AI Gateway server Search your logs, get details about the prompts and responses https://ai-gateway.mcp.cloudflare.com/mcp
 * Audit Logs server Query audit logs and generate reports for review https://auditlogs.mcp.cloudflare.com/mcp
 * Workers Bindings server Build Workers applications with storage, AI, and compute primitives https://bindings.mcp.cloudflare.com/mcp
+* Cloudflare Blog server Search and read posts from the Cloudflare Blog https://blog.mcp.cloudflare.com/mcp
 * Browser Run server Fetch web pages, convert them to markdown and take screenshots https://browser.mcp.cloudflare.com/mcp
 * Workers Builds server Get insights and manage your Cloudflare Workers Builds https://builds.mcp.cloudflare.com/mcp
 * Cloudflare One CASB server Quickly identify any security misconfigurations for SaaS applications to safeguard users & data https://casb.mcp.cloudflare.com/mcp

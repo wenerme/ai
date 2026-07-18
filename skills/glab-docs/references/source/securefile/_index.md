@@ -33,3 +33,4 @@ and binary files are supported, but they must be smaller than 5 MB.
 - [`get`](get.md)
 - [`list`](list.md)
 - [`remove`](remove.md)
+- [`update`](update.md)

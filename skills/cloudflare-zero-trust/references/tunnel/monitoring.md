@@ -95,8 +95,8 @@ cloudflared tunnel --loglevel info --logfile cloudflared.log run <UUID>
 
 You can stream real-time logs from a running tunnel without SSH access to the server.
 
-* [ CLI ](#tab-panel-11358)
-* [ Dashboard ](#tab-panel-11359)
+* [ CLI ](#tab-panel-11803)
+* [ Dashboard ](#tab-panel-11804)
 
 The `cloudflared` daemon can stream logs from any tunnel in your account to the local command line. `cloudflared` must be installed on both your local machine and the origin server.
 
@@ -132,7 +132,7 @@ cloudflared tail --level debug <UUID>
 | \--level    | Return logs at this level and above. Works independently of the [\--loglevel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#loglevel) setting on the server. | debug, info, warn, error, fatal | debug         |
 | \--sampling | Sample a fraction of the total logs.                                                                                                                                                                                                    | Number from 0.0 to 1.0          | 1.0           |
 
-Dashboard log streams are only available for remotely-managed tunnels. To stream tunnel logs from the dashboard:
+To stream tunnel logs from the dashboard:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select **View logs** next to the tunnel you want to monitor.

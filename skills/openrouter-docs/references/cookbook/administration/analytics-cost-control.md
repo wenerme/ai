@@ -189,7 +189,7 @@ Under the hood, the agent filters to that model and groups by `api_key_id` using
 }
 ```
 
-`api_key_id`, `app`, `user`, and `workspace` resolve to human-readable names in the response, so each row names the key directly. Here's the row shape, filled with the internal run's numbers (rounded, key name changed):
+`api_key_id`, `app`, and `workspace` resolve to human-readable names in the response, so each row names the key directly. Here's the row shape, filled with the internal run's numbers (rounded, key name changed):
 
 ```json lines theme={null}
 {
@@ -198,6 +198,14 @@ Under the hood, the agent filters to that model and groups by `api_key_id` using
   "tokens_total": "127000000",
   "request_count": "37000"
 }
+```
+
+The `user` dimension is the exception: grouping by `user` returns **two** fields per row instead of one. `user` is the account's display name (or `null` when the user has no name set), and `user_email` is their email (`null` when the user has no email on file). The raw user ID is never returned, so use `user_email` to cross-reference users against your own records:
+
+```json lines theme={null}
+{ "user": "Ada Lovelace",  "user_email": "ada@example.com", "request_count": 42 }
+{ "user": null,            "user_email": "grace@example.com", "request_count": 7 }
+{ "user": "Alan Turing",   "user_email": null,               "request_count": 3 }
 ```
 
 In the internal run, this is where the recommendation wrote itself: a batch-pipeline key doing 37K requests at \~\$48/Mtok is high-volume, low-complexity work on the wrong model. Repointing it to a cheap production model recovers the whole line item at near-zero risk.

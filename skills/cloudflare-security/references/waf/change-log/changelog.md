@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: This release introduces new rules targeting critical infrastructure vulnerabilities. These include an unauthenticated memory disclosure flaw in Citrix NetScaler ADC and Gateway (CVE-2026-8451) and a high-severity pre-authentication remote code execution (RCE) vulnerability in Progress Kemp LoadMaster (CVE-2026-8037).
+description: This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE) and SQL injection (SQLi) vulnerability found in popular web frameworks.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -13,6 +13,25 @@ image: https://developers.cloudflare.com/core-services-preview.png
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-07-17
+
+
+**WAF Release - 2026-07-17 - Emergency**
+
+This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE) and SQL injection (SQLi) vulnerability found in popular web frameworks.
+
+**Key Findings**
+
+* Generic Frameworks - Unauthenticated RCE: Attackers can execute arbitrary system commands with web server privileges by sending malicious input containing invalid path sequences during request processing.
+* Generic Frameworks - SQLi: Attackers can execute unauthorized database queries due to a failure to sanitize input values within request parameters.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                         | Previous Action | New Action | Comments                 |
+| -------------------------- | ----------- | -------------- | ----------------------------------- | --------------- | ---------- | ------------------------ |
+| Cloudflare Managed Ruleset | ...550664b6 | N/A            | Generic Rules - Unauthenticated RCE | N/A             | Block      | This is a new detection. |
+| Cloudflare Managed Ruleset | ...ed933fcc | N/A            | Generic Rules - SQLi                | N/A             | Block      | This is a new detection. |
+| Cloudflare Free Ruleset    | ...b5ec246a | N/A            | Generic Rules - Unauthenticated RCE | N/A             | Block      | This is a new detection. |
+| Cloudflare Free Ruleset    | ...33697a1a | N/A            | Generic Rules - SQLi                | N/A             | Block      | This is a new detection. |
 
 ## 2026-07-14
 
@@ -588,25 +607,7 @@ This week’s release changes the rule action from BLOCK to Disabled for Anomaly
 | -------------------------- | ----------- | -------------- | ------------------------------------------- | --------------- | ---------- | --------------------------------------------------------------- |
 | Cloudflare Managed Ruleset | ...6aa0bef8 | N/A            | Anomaly:Header:User-Agent - Fake Google Bot | Enabled         | Disabled   | We are changing the action for this rule from BLOCK to Disabled |
 
-## 2026-02-02
-
-
-**WAF Release - 2026-02-02**
-
-This week’s release introduces new detections for CVE-2025-64459 and CVE-2025-24893.
-
-**Key Findings**
-
-* CVE-2025-64459: Django versions prior to 5.1.14, 5.2.8, and 4.2.26 are vulnerable to SQL injection via crafted dictionaries passed to QuerySet methods and the `Q()` class.
-* CVE-2025-24893: XWiki allows unauthenticated remote code execution through crafted requests to the SolrSearch endpoint, affecting the entire installation.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                          | Previous Action | New Action | Comments                                                |
-| -------------------------- | ----------- | -------------- | ---------------------------------------------------- | --------------- | ---------- | ------------------------------------------------------- |
-| Cloudflare Managed Ruleset | ...30698ff3 | N/A            | XWiki - Remote Code Execution - CVE:CVE-2025-24893 2 | Log             | Block      | This is a new detection.                                |
-| Cloudflare Managed Ruleset | ...da8ba7e6 | N/A            | Django SQLI - CVE:CVE-2025-64459                     | Log             | Block      | This is a new detection.                                |
-| Cloudflare Managed Ruleset | ...8d667511 | N/A            | NoSQL, MongoDB - SQLi - Comparison - 2               | Block           | Block      | Rule metadata description refined. Detection unchanged. |
-
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release introduces new rules targeting critical infrastructure vulnerabilities. These include an unauthenticated memory disclosure flaw in Citrix NetScaler ADC and Gateway (CVE-2026-8451) and a high-severity pre-authentication remote code execution (RCE) vulnerability in Progress Kemp LoadMaster (CVE-2026-8037).","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE) and SQL injection (SQLi) vulnerability found in popular web frameworks.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}
 ```

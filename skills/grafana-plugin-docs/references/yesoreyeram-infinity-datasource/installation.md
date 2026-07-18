@@ -11,7 +11,7 @@ You can install the Infinity data source plugin using several methods, depending
 
 ## Before you begin
 
-- Grafana 10.4.8 or later.
+- Grafana 11.6 or later.
 - Administrator access to your Grafana instance.
 
 ## Grafana Cloud

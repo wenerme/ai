@@ -66,6 +66,18 @@ For sent emails, see delivery details:
 * Bounce reason codes and categories.
 * Final delivery status.
 
+### Message preview
+
+For sent emails, expand the email in the Activity log to open the **Preview** section and inspect the message as it was sent. The preview provides the following tabs:
+
+* **HTML**: The rendered HTML body.
+* **Text**: The plain text body.
+* **Headers**: The message headers.
+* **Attachments**: Files included with the message.
+* **Raw**: The full raw [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) message source.
+
+To make sent messages previewable, turn on [**Email preview**](https://developers.cloudflare.com/email-service/configuration/domains/#email-preview) for the sending domain. Previews cover messages sent while the setting is turned on and are retained for about seven days. New sending domains have **Email preview** turned on automatically.
+
 ## Best practices for log monitoring
 
 ### Regular review
@@ -92,6 +104,6 @@ For sent emails, see delivery details:
 Email logs provide the visibility needed to maintain high deliverability and properly route incoming emails. Use this data to optimize your email configuration and quickly resolve any delivery issues.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/observability/logs/#page","headline":"Email logs · Cloudflare Email Service docs","description":"View and analyze Email Service sending and routing activity logs with authentication and delivery details.","url":"https://developers.cloudflare.com/email-service/observability/logs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/observability/logs/#page","headline":"Email logs · Cloudflare Email Service docs","description":"View and analyze Email Service sending and routing activity logs with authentication and delivery details.","url":"https://developers.cloudflare.com/email-service/observability/logs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/observability/","name":"Observability and logs"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/observability/logs/","name":"Email logs"}}]}
 ```

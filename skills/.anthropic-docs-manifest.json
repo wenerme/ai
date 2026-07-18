@@ -332,8 +332,8 @@
   "anthropic-docs/build-with-claude/vision.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/vision",
     "skill": "anthropic-docs",
-    "size": 47110,
-    "updatedAt": "2026-07-17T03:28:27.646Z"
+    "size": 45931,
+    "updatedAt": "2026-07-18T03:18:13.189Z"
   },
   "anthropic-docs/build-with-claude/vision-coordinates.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/vision-coordinates",
@@ -518,8 +518,8 @@
   "anthropic-docs/managed-agents/skills.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/skills",
     "skill": "anthropic-docs",
-    "size": 13357,
-    "updatedAt": "2026-07-17T03:28:37.109Z"
+    "size": 13515,
+    "updatedAt": "2026-07-18T03:18:23.736Z"
   },
   "anthropic-docs/managed-agents/environments.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/environments",

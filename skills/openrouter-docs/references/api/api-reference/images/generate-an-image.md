@@ -1289,6 +1289,7 @@ components:
         - DigitalOcean
         - Featherless
         - Fireworks
+        - Fish Audio
         - Friendli
         - GMICloud
         - Google
@@ -1481,6 +1482,9 @@ components:
           additionalProperties: {}
           type: object
         fireworks:
+          additionalProperties: {}
+          type: object
+        fish-audio:
           additionalProperties: {}
           type: object
         friendli:

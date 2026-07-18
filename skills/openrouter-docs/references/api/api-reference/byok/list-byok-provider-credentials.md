@@ -184,6 +184,7 @@ paths:
               - digitalocean
               - featherless
               - fireworks
+              - fish-audio
               - friendli
               - gmicloud
               - google-ai-studio
@@ -544,6 +545,7 @@ components:
         - digitalocean
         - featherless
         - fireworks
+        - fish-audio
         - friendli
         - gmicloud
         - google-ai-studio

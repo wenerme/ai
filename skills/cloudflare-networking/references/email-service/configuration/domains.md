@@ -20,8 +20,8 @@ Configure your domains to work with Cloudflare Email Service. This includes DNS 
 
 Cloudflare can configure all required DNS records for you when you onboard a domain onto Email Sending or Email Routing.
 
-* [ Email Sending ](#tab-panel-8855)
-* [ Email Routing ](#tab-panel-8856)
+* [ Email Sending ](#tab-panel-9223)
+* [ Email Routing ](#tab-panel-9224)
 
 Before using Email Sending, configure your domain.
 
@@ -68,10 +68,10 @@ Cloudflare automatically configures required DNS records for both email sending 
 
 These records authenticate your outbound emails. Email Sending creates DNS records on a `cf-bounce.` subdomain of your domain to handle bounce processing. These are separate from the records used by Email Routing.
 
-* [ MX records ](#tab-panel-8846)
-* [ SPF record ](#tab-panel-8847)
-* [ DKIM record ](#tab-panel-8848)
-* [ DMARC record ](#tab-panel-8849)
+* [ MX records ](#tab-panel-9214)
+* [ SPF record ](#tab-panel-9215)
+* [ DKIM record ](#tab-panel-9216)
+* [ DMARC record ](#tab-panel-9217)
 
 **Purpose**: Route bounce emails back to Cloudflare for processing.
 
@@ -137,9 +137,9 @@ TXT _dmarc.yourdomain.com "v=DMARC1; p=reject;"
 
 These records route incoming emails to Cloudflare and authenticate forwarded emails. Email Routing DNS records are configured on the root domain.
 
-* [ MX records ](#tab-panel-8850)
-* [ SPF record ](#tab-panel-8851)
-* [ DKIM record ](#tab-panel-8852)
+* [ MX records ](#tab-panel-9218)
+* [ SPF record ](#tab-panel-9219)
+* [ DKIM record ](#tab-panel-9220)
 
 **Purpose**: Route incoming emails to Cloudflare's mail servers.
 
@@ -243,8 +243,8 @@ For more information, refer to [DNS troubleshooting: \_dc- and \_dc-mx subdomain
 
 ### Verification troubleshooting
 
-* [ DNS propagation ](#tab-panel-8853)
-* [ Record conflicts ](#tab-panel-8854)
+* [ DNS propagation ](#tab-panel-9221)
+* [ Record conflicts ](#tab-panel-9222)
 
 **Issue**: Records show as "Not Found" immediately after adding.
 
@@ -330,6 +330,17 @@ Disabling Email Routing on a domain stops processing incoming emails and removes
 2. DNS records are tied to the account, not to specific users.
 3. Use Cloudflare account-level permissions to manage access.
 
+## Email preview
+
+Turn on **Email preview** to store sent messages so you can inspect their content in the [Activity log](https://developers.cloudflare.com/email-service/observability/logs/#message-preview). Previews cover messages sent while the setting is turned on and are retained for about seven days.
+
+New sending domains have **Email preview** turned on automatically. To change the setting for a domain:
+
+1. Go to **Compute** \> **Email Service** \> **Email Sending**.
+[ Go to **Email Sending** ](https://dash.cloudflare.com/?to=/:account/email-service/sending)
+2. Select the domain, then open **Settings**.
+3. Toggle **Enable email preview**.
+
 ## Next steps
 
 * **[Send emails API](https://developers.cloudflare.com/email-service/api/send-emails/)**: Workers binding and REST API reference
@@ -337,6 +348,6 @@ Disabling Email Routing on a domain stops processing incoming emails and removes
 * **[Deliverability](https://developers.cloudflare.com/email-service/concepts/deliverability/)**: Optimize email delivery
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/domains/#page","headline":"Domain configuration · Cloudflare Email Service docs","description":"Configure and verify DNS records for Email Service sending and routing on your domain.","url":"https://developers.cloudflare.com/email-service/configuration/domains/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/domains/#page","headline":"Domain configuration · Cloudflare Email Service docs","description":"Configure and verify DNS records for Email Service sending and routing on your domain.","url":"https://developers.cloudflare.com/email-service/configuration/domains/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/configuration/domains/","name":"Domain configuration"}}]}
 ```

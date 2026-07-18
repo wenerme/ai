@@ -424,35 +424,50 @@
     "size": 24646,
     "updatedAt": "2026-06-25T05:41:51.138Z"
   },
+  "grafana-databricks-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/alerting.md",
+    "size": 6273,
+    "updatedAt": "2026-07-18T03:52:02.961Z"
+  },
   "grafana-databricks-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/annotations.md",
-    "size": 2625,
-    "updatedAt": "2026-06-25T05:41:51.501Z"
+    "size": 4070,
+    "updatedAt": "2026-07-18T03:52:03.132Z"
   },
   "grafana-databricks-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure.md",
-    "size": 23233,
-    "updatedAt": "2026-06-25T05:41:51.867Z"
+    "size": 29377,
+    "updatedAt": "2026-07-18T03:52:03.299Z"
   },
   "grafana-databricks-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest.md",
-    "size": 2464,
-    "updatedAt": "2026-06-25T05:41:52.212Z"
+    "size": 3915,
+    "updatedAt": "2026-07-18T03:52:03.461Z"
+  },
+  "grafana-databricks-datasource/install.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/install.md",
+    "size": 12531,
+    "updatedAt": "2026-07-18T03:52:03.632Z"
+  },
+  "grafana-databricks-datasource/logs.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/logs.md",
+    "size": 5970,
+    "updatedAt": "2026-07-18T03:52:03.802Z"
   },
   "grafana-databricks-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/query-editor.md",
-    "size": 14247,
-    "updatedAt": "2026-06-25T05:41:52.572Z"
+    "size": 14819,
+    "updatedAt": "2026-07-18T03:52:03.969Z"
   },
   "grafana-databricks-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/template-variables.md",
-    "size": 1533,
-    "updatedAt": "2026-06-25T05:41:52.914Z"
+    "size": 4172,
+    "updatedAt": "2026-07-18T03:52:04.129Z"
   },
-  "grafana-databricks-datasource/troubleshoot.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/troubleshoot.md",
-    "size": 11707,
-    "updatedAt": "2026-06-25T05:41:53.271Z"
+  "grafana-databricks-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/troubleshooting.md",
+    "size": 29011,
+    "updatedAt": "2026-07-18T03:52:04.306Z"
   },
   "grafana-datadog-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/alerting.md",
@@ -2901,8 +2916,8 @@
   },
   "yesoreyeram-infinity-datasource/advanced-features/url.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/url.md",
-    "size": 5953,
-    "updatedAt": "2026-06-25T05:44:50.476Z"
+    "size": 6169,
+    "updatedAt": "2026-07-18T03:53:20.351Z"
   },
   "yesoreyeram-infinity-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/annotations.md",
@@ -2991,8 +3006,8 @@
   },
   "yesoreyeram-infinity-datasource/installation.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/installation.md",
-    "size": 4735,
-    "updatedAt": "2026-06-25T05:44:57.528Z"
+    "size": 4733,
+    "updatedAt": "2026-07-18T03:53:23.146Z"
   },
   "yesoreyeram-infinity-datasource/query.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query.md",
@@ -3016,8 +3031,8 @@
   },
   "yesoreyeram-infinity-datasource/query/jq-backend.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/jq-backend.md",
-    "size": 4646,
-    "updatedAt": "2026-06-25T05:44:59.408Z"
+    "size": 4701,
+    "updatedAt": "2026-07-18T03:53:23.961Z"
   },
   "yesoreyeram-infinity-datasource/query/macros.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/macros.md",
@@ -3026,18 +3041,18 @@
   },
   "yesoreyeram-infinity-datasource/query/time-formats.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/time-formats.md",
-    "size": 6079,
-    "updatedAt": "2026-06-25T05:45:00.288Z"
+    "size": 6114,
+    "updatedAt": "2026-07-18T03:53:24.265Z"
   },
   "yesoreyeram-infinity-datasource/query/uql.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/uql.md",
-    "size": 19858,
-    "updatedAt": "2026-06-25T05:45:00.683Z"
+    "size": 19890,
+    "updatedAt": "2026-07-18T03:53:24.418Z"
   },
   "yesoreyeram-infinity-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/troubleshooting.md",
-    "size": 14514,
-    "updatedAt": "2026-06-25T05:45:01.078Z"
+    "size": 33326,
+    "updatedAt": "2026-07-18T03:53:24.579Z"
   },
   "yesoreyeram-infinity-datasource/variables.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables.md",

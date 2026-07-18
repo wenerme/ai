@@ -408,12 +408,11 @@ func main() {
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
-import com.openai.errors.SubjectTokenProviderException;
 import com.openai.auth.SubjectTokenType;
 import com.openai.auth.WorkloadIdentity;
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
-import com.openai.models.ChatModel;
+import com.openai.errors.SubjectTokenProviderException;
 import com.openai.models.responses.ResponseCreateParams;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -423,103 +422,101 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 
 public final class GitHubActionsWorkloadIdentityExample {
-    private GitHubActionsWorkloadIdentityExample() {}
+  private GitHubActionsWorkloadIdentityExample() {}
 
-    static final class GitHubActionsOidcTokenProvider implements SubjectTokenProvider {
-        private final String requestUrl;
-        private final String requestToken;
-        private final String audience;
+  static final class GitHubActionsOidcTokenProvider implements SubjectTokenProvider {
+    private final String requestUrl;
+    private final String requestToken;
+    private final String audience;
 
-        GitHubActionsOidcTokenProvider(String requestUrl, String requestToken, String audience) {
-            this.requestUrl = requestUrl;
-            this.requestToken = requestToken;
-            this.audience = audience;
-        }
-
-        @Override
-        public SubjectTokenType tokenType() {
-            return SubjectTokenType.JWT;
-        }
-
-        @Override
-        public String getToken(
-                com.openai.core.http.HttpClient httpClient, JsonMapper jsonMapper) {
-            try {
-                String separator = requestUrl.contains("?") ? "&" : "?";
-                URI uri = URI.create(
-                        requestUrl
-                                + separator
-                                + "audience="
-                                + URLEncoder.encode(audience, StandardCharsets.UTF_8));
-
-                HttpRequest request = HttpRequest.newBuilder(uri)
-                        .header("Authorization", "bearer " + requestToken)
-                        .GET()
-                        .build();
-
-                HttpResponse<String> response = java.net.http.HttpClient.newHttpClient()
-                        .send(request, HttpResponse.BodyHandlers.ofString());
-
-                if (response.statusCode() < 200 || response.statusCode() >= 300) {
-                    throw new SubjectTokenProviderException(
-                            "github-actions",
-                            "GitHub OIDC token request failed with status "
-                                    + response.statusCode(),
-                            null);
-                }
-
-                JsonNode payload = jsonMapper.readTree(response.body());
-                String token = payload.path("value").asText("");
-                if (token.isEmpty()) {
-                    throw new SubjectTokenProviderException(
-                            "github-actions",
-                            "GitHub OIDC token response did not include a value",
-                            null);
-                }
-
-                return token;
-            } catch (SubjectTokenProviderException e) {
-                throw e;
-            } catch (Exception e) {
-                throw new SubjectTokenProviderException(
-                        "github-actions",
-                        "failed to request GitHub OIDC token",
-                        e);
-            }
-        }
-
-        @Override
-        public CompletableFuture<String> getTokenAsync(
-                com.openai.core.http.HttpClient httpClient, JsonMapper jsonMapper) {
-            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
-        }
+    GitHubActionsOidcTokenProvider(String requestUrl, String requestToken, String audience) {
+      this.requestUrl = requestUrl;
+      this.requestToken = requestToken;
+      this.audience = audience;
     }
 
-    public static void main(String[] args) {
-        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
-                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
-                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
-                .provider(new GitHubActionsOidcTokenProvider(
-                        System.getenv("ACTIONS_ID_TOKEN_REQUEST_URL"),
-                        System.getenv("ACTIONS_ID_TOKEN_REQUEST_TOKEN"),
-                        System.getenv("OPENAI_WIF_AUDIENCE")))
-                .build();
-
-        OpenAIClient client = OpenAIOkHttpClient.builder()
-                .workloadIdentity(workloadIdentity)
-                .build();
-
-        ResponseCreateParams params = ResponseCreateParams.builder()
-                .model(ChatModel.GPT_4_1_MINI)
-                .input("Say hello from GitHub Actions workload identity federation.")
-                .build();
-
-        client.responses().create(params).output().stream()
-                .flatMap(item -> item.message().stream())
-                .flatMap(message -> message.content().stream())
-                .flatMap(content -> content.outputText().stream())
-                .forEach(outputText -> System.out.println(outputText.text()));
+    @Override
+    public SubjectTokenType tokenType() {
+      return SubjectTokenType.JWT;
     }
+
+    @Override
+    public String getToken(com.openai.core.http.HttpClient httpClient, JsonMapper jsonMapper) {
+      try {
+        String separator = requestUrl.contains("?") ? "&" : "?";
+        URI uri =
+            URI.create(
+                requestUrl
+                    + separator
+                    + "audience="
+                    + URLEncoder.encode(audience, StandardCharsets.UTF_8));
+
+        HttpRequest request =
+            HttpRequest.newBuilder(uri)
+                .header("Authorization", "bearer " + requestToken)
+                .GET()
+                .build();
+
+        HttpResponse<String> response =
+            java.net.http.HttpClient.newHttpClient()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() < 200 || response.statusCode() >= 300) {
+          throw new SubjectTokenProviderException(
+              "github-actions",
+              "GitHub OIDC token request failed with status " + response.statusCode(),
+              null);
+        }
+
+        JsonNode payload = jsonMapper.readTree(response.body());
+        String token = payload.path("value").asText("");
+        if (token.isEmpty()) {
+          throw new SubjectTokenProviderException(
+              "github-actions", "GitHub OIDC token response did not include a value", null);
+        }
+
+        return token;
+      } catch (SubjectTokenProviderException e) {
+        throw e;
+      } catch (Exception e) {
+        throw new SubjectTokenProviderException(
+            "github-actions", "failed to request GitHub OIDC token", e);
+      }
+    }
+
+    @Override
+    public CompletableFuture<String> getTokenAsync(
+        com.openai.core.http.HttpClient httpClient, JsonMapper jsonMapper) {
+      return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+    }
+  }
+
+  public static void main(String[] args) {
+    WorkloadIdentity workloadIdentity =
+        WorkloadIdentity.builder()
+            .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+            .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+            .provider(
+                new GitHubActionsOidcTokenProvider(
+                    System.getenv("ACTIONS_ID_TOKEN_REQUEST_URL"),
+                    System.getenv("ACTIONS_ID_TOKEN_REQUEST_TOKEN"),
+                    System.getenv("OPENAI_WIF_AUDIENCE")))
+            .build();
+
+    OpenAIClient client = OpenAIOkHttpClient.builder().workloadIdentity(workloadIdentity).build();
+
+    ResponseCreateParams params =
+        ResponseCreateParams.builder()
+            .model("gpt-5.6-terra")
+            .input("Say hello from GitHub Actions workload identity federation.")
+            .build();
+
+    client.responses().create(params).output().stream()
+        .flatMap(item -> item.message().stream())
+        .flatMap(message -> message.content().stream())
+        .flatMap(content -> content.outputText().stream())
+        .forEach(outputText -> System.out.println(outputText.text()));
+  }
 }
 ```
 

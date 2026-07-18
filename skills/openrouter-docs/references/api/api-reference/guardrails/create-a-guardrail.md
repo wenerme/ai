@@ -245,10 +245,8 @@ components:
             - 'null'
         content_filter_builtins:
           description: >-
-            Builtin content filters to apply. The "flag" action is only
-            supported for "regex-prompt-injection"; PII slugs (email, phone,
-            ssn, credit-card, ip-address, person-name, address) accept "block"
-            or "redact" only.
+            Builtin content filters to apply. Every builtin slug supports
+            "block", "redact", and the detect-only "flag" action.
           example:
             - action: block
               slug: regex-prompt-injection
@@ -858,6 +856,7 @@ components:
       enum:
         - redact
         - block
+        - flag
       example: block
       type: string
     ContentFilterBuiltinEntry:

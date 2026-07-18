@@ -40,7 +40,7 @@ Reference: [PQC for all websites and APIs ↗](https://blog.cloudflare.com/post-
 * The Cloudflare API and dashboard.
 * [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) self-hosted applications (browser-to-edge leg).
 
-This section only covers the inbound TLS connection from the end-user client to Cloudflare's edge. When a Worker fetches data from a backend storage service ([D1](https://developers.cloudflare.com/d1/), [KV](https://developers.cloudflare.com/kv/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), [R2](https://developers.cloudflare.com/r2/), [Workers AI](https://developers.cloudflare.com/workers-ai/), [Hyperdrive](https://developers.cloudflare.com/hyperdrive/), and similar), that connection is governed by the [Cloudflare internal network](#cloudflare-internal-network) section. When a Worker calls out to a third-party origin via `fetch()`, it is governed by the [Cloudflare to origin](#cloudflare-to-origin) section. The [Agentless via proxy endpoints](#agentless-via-proxy-endpoints) on-ramp to Cloudflare Gateway terminates inbound TLS in its own edge stack and is covered separately below.
+This section only covers the inbound TLS connection from the end-user client to Cloudflare's edge. When a Worker fetches data from a backend storage service ([D1](https://developers.cloudflare.com/d1/), [KV](https://developers.cloudflare.com/kv/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), [R2](https://developers.cloudflare.com/r2/), [Workers AI](https://developers.cloudflare.com/workers-ai/), [Hyperdrive](https://developers.cloudflare.com/hyperdrive/), and similar), that connection is governed by the [Cloudflare internal network](#cloudflare-internal-network) section. When a Worker calls out to a third-party origin via `fetch()`, it is governed by the [Cloudflare to origin](#cloudflare-to-origin) section.
 
 ## Cloudflare internal network
 
@@ -114,22 +114,10 @@ Mesh inherits its post-quantum protection from the [Cloudflare One Client](#clou
 
 * The [Cloudflare One Client](#cloudflare-one-client).
 * A [Cloudflare IPsec](#cloudflare-ipsec) tunnel.
-* The [Agentless via proxy endpoints](#agentless-via-proxy-endpoints) on-ramp.
 
 The egress leg from Gateway to third-party origin servers is covered by [Cloudflare to origin](#cloudflare-to-origin) and is independent of the on-ramp.
 
 Reference: [PQC and Cloudflare One: Secure Web Gateway](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/#secure-web-gateway).
-
-### Agentless via proxy endpoints
-
-Cloudflare Gateway [proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) let browsers route their egress HTTPS traffic through Cloudflare Gateway for inspection and filtering, without an agent installed on the device. Browsers are configured via a Proxy Auto-Configuration (PAC) file or system proxy settings to forward traffic to a Cloudflare-hosted proxy endpoint, which terminates TLS at Cloudflare's edge.
-
-| Protection    | Status           |
-| ------------- | ---------------- |
-| Key agreement | ✅ X25519MLKEM768 |
-| Signatures    | Not yet          |
-
-Reference: [Proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/), [PQC and Cloudflare One: Secure Web Gateway](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/#secure-web-gateway).
 
 ### Cloudflare IPsec
 
@@ -161,6 +149,6 @@ Reference: [PQC SASE ↗](https://blog.cloudflare.com/post-quantum-sase/), [Clou
 This listing is maintained alongside the rest of the Cloudflare SSL/TLS documentation. If you spot an inaccuracy or have an update after a product announcement, [contributions](https://developers.cloudflare.com/style-guide/contributions/) are welcome.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/#page","headline":"PQC in Cloudflare products · Cloudflare SSL/TLS docs","description":"Track which Cloudflare products support post-quantum key agreement and post-quantum signatures.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/#page","headline":"PQC in Cloudflare products · Cloudflare SSL/TLS docs","description":"Track which Cloudflare products support post-quantum key agreement and post-quantum signatures.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/post-quantum-cryptography/","name":"Post-quantum cryptography (PQC)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/post-quantum-cryptography/pqc-cloudflare-products/","name":"PQC in Cloudflare products"}}]}
 ```

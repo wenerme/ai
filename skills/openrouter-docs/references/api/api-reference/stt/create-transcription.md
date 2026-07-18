@@ -751,6 +751,9 @@ components:
         fireworks:
           additionalProperties: {}
           type: object
+        fish-audio:
+          additionalProperties: {}
+          type: object
         friendli:
           additionalProperties: {}
           type: object

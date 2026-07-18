@@ -1,0 +1,58 @@
+---
+title: '`glab securefile update`'
+stage: AI Coding
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Update a secure file in a project.
+
+## Synopsis
+
+Update a secure file in a project, identified by its name.
+The command asks for confirmation before updating; use `-y` to skip
+the prompt in scripts.
+
+By default, the file is updated in the current project. Use `--repo`
+to target another project.
+
+If the file content is unchanged, no update is performed.
+
+Updating a secure file changes its ID. When you download the file afterward, reference it by `--name` instead of `--id`.
+
+```plaintext
+glab securefile update <name> <path> [flags]
+```
+
+## Aliases
+
+```plaintext
+overwrite
+```
+
+## Examples
+
+```console
+# Update a secure file
+glab securefile update "file.txt" securefiles/localfile.txt
+
+# Skip the confirmation prompt
+glab securefile update "file.txt" securefiles/localfile.txt -y
+
+# Use the 'overwrite' alias
+glab securefile overwrite "file.txt" securefiles/localfile.txt
+
+```
+
+## Options
+
+```plaintext
+  -y, --yes   Skip the confirmation prompt.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

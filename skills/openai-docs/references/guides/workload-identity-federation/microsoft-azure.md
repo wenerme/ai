@@ -362,7 +362,6 @@ import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.core.http.HttpClient;
 import com.openai.errors.SubjectTokenProviderException;
-import com.openai.models.ChatModel;
 import com.openai.models.responses.ResponseCreateParams;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -372,100 +371,95 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 
 public final class AzureManagedIdentityWorkloadIdentityExample {
-    private static final String IMDS_ENDPOINT =
-            "http://169.254.169.254/metadata/identity/oauth2/token";
+  private static final String IMDS_ENDPOINT =
+      "http://169.254.169.254/metadata/identity/oauth2/token";
 
-    private AzureManagedIdentityWorkloadIdentityExample() {}
+  private AzureManagedIdentityWorkloadIdentityExample() {}
 
-    static final class AzureManagedIdentityTokenProvider implements SubjectTokenProvider {
-        private final String resource;
+  static final class AzureManagedIdentityTokenProvider implements SubjectTokenProvider {
+    private final String resource;
 
-        AzureManagedIdentityTokenProvider(String resource) {
-            this.resource = resource;
-        }
-
-        @Override
-        public SubjectTokenType tokenType() {
-            return SubjectTokenType.JWT;
-        }
-
-        @Override
-        public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
-            try {
-                String query = "api-version=2018-02-01&resource="
-                        + URLEncoder.encode(resource, StandardCharsets.UTF_8);
-                String clientId = System.getenv("AZURE_CLIENT_ID");
-                if (clientId != null && !clientId.isEmpty()) {
-                    query += "&client_id="
-                            + URLEncoder.encode(clientId, StandardCharsets.UTF_8);
-                }
-
-                HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(IMDS_ENDPOINT + "?" + query))
-                        .header("Metadata", "true")
-                        .GET()
-                        .build();
-
-                HttpResponse<String> response = java.net.http.HttpClient.newHttpClient()
-                        .send(request, HttpResponse.BodyHandlers.ofString());
-                if (response.statusCode() < 200 || response.statusCode() >= 300) {
-                    throw new SubjectTokenProviderException(
-                            "azure-managed-identity",
-                            "Azure IMDS token request failed with status "
-                                    + response.statusCode(),
-                            null);
-                }
-
-                JsonNode body = jsonMapper.readTree(response.body());
-                String token = body.path("access_token").asText();
-                if (token.isEmpty()) {
-                    throw new SubjectTokenProviderException(
-                            "azure-managed-identity",
-                            "Azure IMDS did not return an access token",
-                            null);
-                }
-
-                return token;
-            } catch (SubjectTokenProviderException e) {
-                throw e;
-            } catch (Exception e) {
-                throw new SubjectTokenProviderException(
-                        "azure-managed-identity",
-                        "failed to request Azure managed identity token",
-                        e);
-            }
-        }
-
-        @Override
-        public CompletableFuture<String> getTokenAsync(
-                HttpClient httpClient, JsonMapper jsonMapper) {
-            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
-        }
+    AzureManagedIdentityTokenProvider(String resource) {
+      this.resource = resource;
     }
 
-    public static void main(String[] args) {
-        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
-                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
-                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
-                .provider(new AzureManagedIdentityTokenProvider(
-                        System.getenv("OPENAI_WIF_AUDIENCE")))
-                .build();
-
-        OpenAIClient client = OpenAIOkHttpClient.builder()
-                .workloadIdentity(workloadIdentity)
-                .build();
-
-        ResponseCreateParams params = ResponseCreateParams.builder()
-                .model(ChatModel.GPT_4_1_MINI)
-                .input("Say hello from Azure managed identity workload identity federation.")
-                .build();
-
-        client.responses().create(params).output().stream()
-                .flatMap(item -> item.message().stream())
-                .flatMap(message -> message.content().stream())
-                .flatMap(content -> content.outputText().stream())
-                .forEach(outputText -> System.out.println(outputText.text()));
+    @Override
+    public SubjectTokenType tokenType() {
+      return SubjectTokenType.JWT;
     }
+
+    @Override
+    public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
+      try {
+        String query =
+            "api-version=2018-02-01&resource="
+                + URLEncoder.encode(resource, StandardCharsets.UTF_8);
+        String clientId = System.getenv("AZURE_CLIENT_ID");
+        if (clientId != null && !clientId.isEmpty()) {
+          query += "&client_id=" + URLEncoder.encode(clientId, StandardCharsets.UTF_8);
+        }
+
+        HttpRequest request =
+            HttpRequest.newBuilder()
+                .uri(URI.create(IMDS_ENDPOINT + "?" + query))
+                .header("Metadata", "true")
+                .GET()
+                .build();
+
+        HttpResponse<String> response =
+            java.net.http.HttpClient.newHttpClient()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() < 200 || response.statusCode() >= 300) {
+          throw new SubjectTokenProviderException(
+              "azure-managed-identity",
+              "Azure IMDS token request failed with status " + response.statusCode(),
+              null);
+        }
+
+        JsonNode body = jsonMapper.readTree(response.body());
+        String token = body.path("access_token").asText();
+        if (token.isEmpty()) {
+          throw new SubjectTokenProviderException(
+              "azure-managed-identity", "Azure IMDS did not return an access token", null);
+        }
+
+        return token;
+      } catch (SubjectTokenProviderException e) {
+        throw e;
+      } catch (Exception e) {
+        throw new SubjectTokenProviderException(
+            "azure-managed-identity", "failed to request Azure managed identity token", e);
+      }
+    }
+
+    @Override
+    public CompletableFuture<String> getTokenAsync(HttpClient httpClient, JsonMapper jsonMapper) {
+      return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+    }
+  }
+
+  public static void main(String[] args) {
+    WorkloadIdentity workloadIdentity =
+        WorkloadIdentity.builder()
+            .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+            .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+            .provider(new AzureManagedIdentityTokenProvider(System.getenv("OPENAI_WIF_AUDIENCE")))
+            .build();
+
+    OpenAIClient client = OpenAIOkHttpClient.builder().workloadIdentity(workloadIdentity).build();
+
+    ResponseCreateParams params =
+        ResponseCreateParams.builder()
+            .model("gpt-5.6-terra")
+            .input("Say hello from Azure managed identity workload identity federation.")
+            .build();
+
+    client.responses().create(params).output().stream()
+        .flatMap(item -> item.message().stream())
+        .flatMap(message -> message.content().stream())
+        .flatMap(content -> content.outputText().stream())
+        .forEach(outputText -> System.out.println(outputText.text()));
+  }
 }
 ```
 
@@ -865,80 +859,74 @@ import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.core.http.HttpClient;
 import com.openai.errors.SubjectTokenProviderException;
-import com.openai.models.ChatModel;
 import com.openai.models.responses.ResponseCreateParams;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
 public final class AzureAksWorkloadIdentityExample {
-    private static final String TOKEN_PATH = "/var/run/secrets/tokens/token";
+  private static final String TOKEN_PATH = "/var/run/secrets/tokens/token";
 
-    private AzureAksWorkloadIdentityExample() {}
+  private AzureAksWorkloadIdentityExample() {}
 
-    static final class MountedAksServiceAccountTokenProvider implements SubjectTokenProvider {
-        private final Path tokenPath;
+  static final class MountedAksServiceAccountTokenProvider implements SubjectTokenProvider {
+    private final Path tokenPath;
 
-        MountedAksServiceAccountTokenProvider(String tokenPath) {
-            this.tokenPath = Path.of(tokenPath);
-        }
-
-        @Override
-        public SubjectTokenType tokenType() {
-            return SubjectTokenType.JWT;
-        }
-
-        @Override
-        public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
-            String token;
-            try {
-                token = Files.readString(tokenPath).trim();
-            } catch (Exception e) {
-                throw new SubjectTokenProviderException(
-                        "azure-aks",
-                        "failed to read mounted AKS service account token",
-                        e);
-            }
-
-            if (token.isEmpty()) {
-                throw new SubjectTokenProviderException(
-                        "azure-aks",
-                        "mounted AKS service account token is empty",
-                        null);
-            }
-
-            return token;
-        }
-
-        @Override
-        public CompletableFuture<String> getTokenAsync(
-                HttpClient httpClient, JsonMapper jsonMapper) {
-            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
-        }
+    MountedAksServiceAccountTokenProvider(String tokenPath) {
+      this.tokenPath = Path.of(tokenPath);
     }
 
-    public static void main(String[] args) {
-        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
-                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
-                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
-                .provider(new MountedAksServiceAccountTokenProvider(TOKEN_PATH))
-                .build();
-
-        OpenAIClient client = OpenAIOkHttpClient.builder()
-                .workloadIdentity(workloadIdentity)
-                .build();
-
-        ResponseCreateParams params = ResponseCreateParams.builder()
-                .model(ChatModel.GPT_4_1_MINI)
-                .input("Say hello from AKS workload identity federation.")
-                .build();
-
-        client.responses().create(params).output().stream()
-                .flatMap(item -> item.message().stream())
-                .flatMap(message -> message.content().stream())
-                .flatMap(content -> content.outputText().stream())
-                .forEach(outputText -> System.out.println(outputText.text()));
+    @Override
+    public SubjectTokenType tokenType() {
+      return SubjectTokenType.JWT;
     }
+
+    @Override
+    public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
+      String token;
+      try {
+        token = Files.readString(tokenPath).trim();
+      } catch (Exception e) {
+        throw new SubjectTokenProviderException(
+            "azure-aks", "failed to read mounted AKS service account token", e);
+      }
+
+      if (token.isEmpty()) {
+        throw new SubjectTokenProviderException(
+            "azure-aks", "mounted AKS service account token is empty", null);
+      }
+
+      return token;
+    }
+
+    @Override
+    public CompletableFuture<String> getTokenAsync(HttpClient httpClient, JsonMapper jsonMapper) {
+      return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+    }
+  }
+
+  public static void main(String[] args) {
+    WorkloadIdentity workloadIdentity =
+        WorkloadIdentity.builder()
+            .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+            .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+            .provider(new MountedAksServiceAccountTokenProvider(TOKEN_PATH))
+            .build();
+
+    OpenAIClient client = OpenAIOkHttpClient.builder().workloadIdentity(workloadIdentity).build();
+
+    ResponseCreateParams params =
+        ResponseCreateParams.builder()
+            .model("gpt-5.6-terra")
+            .input("Say hello from AKS workload identity federation.")
+            .build();
+
+    client.responses().create(params).output().stream()
+        .flatMap(item -> item.message().stream())
+        .flatMap(message -> message.content().stream())
+        .flatMap(content -> content.outputText().stream())
+        .forEach(outputText -> System.out.println(outputText.text()));
+  }
 }
 ```
 

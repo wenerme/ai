@@ -613,6 +613,7 @@ components:
       enum:
         - redact
         - block
+        - flag
       example: block
       type: string
   securitySchemes:

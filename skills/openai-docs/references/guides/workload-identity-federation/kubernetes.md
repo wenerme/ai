@@ -293,80 +293,74 @@ import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.core.http.HttpClient;
 import com.openai.errors.SubjectTokenProviderException;
-import com.openai.models.ChatModel;
 import com.openai.models.responses.ResponseCreateParams;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
 public final class KubernetesWorkloadIdentityExample {
-    private static final String TOKEN_PATH = "/var/run/secrets/tokens/token";
+  private static final String TOKEN_PATH = "/var/run/secrets/tokens/token";
 
-    private KubernetesWorkloadIdentityExample() {}
+  private KubernetesWorkloadIdentityExample() {}
 
-    static final class MountedServiceAccountTokenProvider implements SubjectTokenProvider {
-        private final Path tokenPath;
+  static final class MountedServiceAccountTokenProvider implements SubjectTokenProvider {
+    private final Path tokenPath;
 
-        MountedServiceAccountTokenProvider(String tokenPath) {
-            this.tokenPath = Path.of(tokenPath);
-        }
-
-        @Override
-        public SubjectTokenType tokenType() {
-            return SubjectTokenType.JWT;
-        }
-
-        @Override
-        public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
-            String token;
-            try {
-                token = Files.readString(tokenPath).trim();
-            } catch (Exception e) {
-                throw new SubjectTokenProviderException(
-                        "kubernetes",
-                        "failed to read mounted service account token",
-                        e);
-            }
-
-            if (token.isEmpty()) {
-                throw new SubjectTokenProviderException(
-                        "kubernetes",
-                        "mounted service account token is empty",
-                        null);
-            }
-
-            return token;
-        }
-
-        @Override
-        public CompletableFuture<String> getTokenAsync(
-                HttpClient httpClient, JsonMapper jsonMapper) {
-            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
-        }
+    MountedServiceAccountTokenProvider(String tokenPath) {
+      this.tokenPath = Path.of(tokenPath);
     }
 
-    public static void main(String[] args) {
-        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
-                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
-                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
-                .provider(new MountedServiceAccountTokenProvider(TOKEN_PATH))
-                .build();
-
-        OpenAIClient client = OpenAIOkHttpClient.builder()
-                .workloadIdentity(workloadIdentity)
-                .build();
-
-        ResponseCreateParams params = ResponseCreateParams.builder()
-                .model(ChatModel.GPT_4_1_MINI)
-                .input("Say hello from Kubernetes workload identity federation.")
-                .build();
-
-        client.responses().create(params).output().stream()
-                .flatMap(item -> item.message().stream())
-                .flatMap(message -> message.content().stream())
-                .flatMap(content -> content.outputText().stream())
-                .forEach(outputText -> System.out.println(outputText.text()));
+    @Override
+    public SubjectTokenType tokenType() {
+      return SubjectTokenType.JWT;
     }
+
+    @Override
+    public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
+      String token;
+      try {
+        token = Files.readString(tokenPath).trim();
+      } catch (Exception e) {
+        throw new SubjectTokenProviderException(
+            "kubernetes", "failed to read mounted service account token", e);
+      }
+
+      if (token.isEmpty()) {
+        throw new SubjectTokenProviderException(
+            "kubernetes", "mounted service account token is empty", null);
+      }
+
+      return token;
+    }
+
+    @Override
+    public CompletableFuture<String> getTokenAsync(HttpClient httpClient, JsonMapper jsonMapper) {
+      return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+    }
+  }
+
+  public static void main(String[] args) {
+    WorkloadIdentity workloadIdentity =
+        WorkloadIdentity.builder()
+            .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+            .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+            .provider(new MountedServiceAccountTokenProvider(TOKEN_PATH))
+            .build();
+
+    OpenAIClient client = OpenAIOkHttpClient.builder().workloadIdentity(workloadIdentity).build();
+
+    ResponseCreateParams params =
+        ResponseCreateParams.builder()
+            .model("gpt-5.6-terra")
+            .input("Say hello from Kubernetes workload identity federation.")
+            .build();
+
+    client.responses().create(params).output().stream()
+        .flatMap(item -> item.message().stream())
+        .flatMap(message -> message.content().stream())
+        .flatMap(content -> content.outputText().stream())
+        .forEach(outputText -> System.out.println(outputText.text()));
+  }
 }
 ```
 

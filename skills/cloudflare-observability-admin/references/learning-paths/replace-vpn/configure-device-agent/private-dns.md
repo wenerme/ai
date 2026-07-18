@@ -27,14 +27,14 @@ To learn more about how Local Domain Fallback works, refer to [How the Cloudflar
 
 To add a domain to the Local Domain Fallback list:
 
-* [ Dashboard ](#tab-panel-9535)
-* [ Terraform (v5) ](#tab-panel-9536)
+* [ Dashboard ](#tab-panel-9978)
+* [ Terraform (v5) ](#tab-panel-9979)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
 3. Scroll down to **Local Domain Fallback** and select **Manage**.
 1. In **Domain**, enter the apex domain (`example.com`) that you want to resolve using your private DNS server. All prefixes under the apex domain are subject to Local Domain Fallback (in other words, `example.com` is interpreted as `*.example.com`).
-2. In **DNS Servers**, enter the IP address of the DNS servers that should resolve that domain name.
+2. In **DNS Servers**, enter the IP address of the DNS servers that should resolve that domain name. Cloudflare recommends keeping the list to a maximum of eight servers to avoid performance issues.
 3. Enter an optional description and select **Save domain**.
 
 A Local Domain Fallback list is scoped to a specific [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/). If a device profile does not have a corresponding Local Domain Fallback resource, those devices will use the default local domains shown in Step 2.
@@ -116,7 +116,7 @@ resource "cloudflare_zero_trust_device_custom_profile_local_domain_fallback" "ex
 }
 ```
 
-For `suffix`, specify the apex domain (`example.com`) that you want to resolve using your private DNS server. All prefixes under the apex domain are subject to Local Domain Fallback (in other words, `example.com` is interpreted as `*.example.com`). For `dns_server`, enter the IP address of the DNS servers that should resolve that domain name.
+For `suffix`, specify the apex domain (`example.com`) that you want to resolve using your private DNS server. All prefixes under the apex domain are subject to Local Domain Fallback (in other words, `example.com` is interpreted as `*.example.com`). For `dns_server`, enter the IP address of the DNS servers that should resolve that domain name. Cloudflare recommends keeping the list to a maximum of eight servers to avoid performance issues.
 
 The Cloudflare One Client tries all servers and always uses the fastest response, even if that response is `no records found`. We recommend specifying at least one DNS server for each domain. If a value is not specified, the Cloudflare One Client will try to identify the DNS server (or servers) used on the device before it started, and use that server for each domain in the Local Domain Fallback list.
 
@@ -148,8 +148,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-9533)
-* [ Terraform (v5) ](#tab-panel-9534)
+* [ Dashboard ](#tab-panel-9976)
+* [ Terraform (v5) ](#tab-panel-9977)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.

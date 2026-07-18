@@ -26,6 +26,20 @@ A prefix binding maps a CIDR (within a BYOIP prefix you own) to a [region key](#
 
 Bindings are managed through the Data Localization Suite API under `/accounts/{account_id}/dls/`.
 
+## Choose which CIDR to bind
+
+A binding covers a range of addresses within a prefix, not just a single address — you do **not** need to create one binding per IP address. The `cidr` you bind must:
+
+* Fall within the prefix identified by `prefix_id`.
+* Be **more specific than the prefix itself** — a sub-range within it. For example, within a `/24` prefix you can bind any range from a `/25` down to a single address (a `/32` for IPv4, or a `/128` for IPv6). Binding the entire prefix (the full `/24`) is rejected with a [conflict error](#handle-a-conflict-error), because the whole prefix range is already in use once Cloudflare advertises it.
+
+How you choose the CIDR depends on how you want to split the prefix across regions:
+
+* **One region for the whole prefix** — cover the prefix with sub-ranges that all point to the same region. For example, bind both `203.0.113.0/25` and `203.0.113.128/25` to `eu` to regionalize every address in a `/24`.
+* **Different regions for different addresses** — bind each range to the region you want (for example, `203.0.113.0/25` to `eu` and `203.0.113.128/25` to `us`). Cloudflare applies the most specific binding that matches a given address, so a narrower binding takes precedence over a broader one that overlaps it.
+
+Each CIDR can have only one binding. If you try to create a second binding for a CIDR that is already bound, the API returns a [conflict error](#handle-a-conflict-error). To change the region for an existing binding, [update it](#update-the-region-for-a-binding) instead of creating a new one.
+
 ## Prerequisites
 
 Before you create a binding, make sure that:
@@ -98,7 +112,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/dls/regions
 
 ## Create a prefix binding
 
-Bind a CIDR from one of your BYOIP prefixes to a region. The `cidr` must fall within the prefix identified by `prefix_id`.
+Bind a CIDR from one of your BYOIP prefixes to a region. The `cidr` must fall within the prefix identified by `prefix_id` and be [more specific than the prefix itself](#choose-which-cidr-to-bind).
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/dls/regional_services/prefix_bindings" \
@@ -106,7 +120,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/dls/regiona
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
   --json '{
     "prefix_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-    "cidr": "203.0.113.0/24",
+    "cidr": "203.0.113.0/25",
     "region_key": "eu"
   }'
 ```
@@ -121,7 +135,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/dls/regiona
   "result": {
     "id": "f0e1d2c3-b4a5-6789-0abc-def123456789",
     "prefix_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-    "cidr": "203.0.113.0/24",
+    "cidr": "203.0.113.0/25",
     "region_key": "eu"
   }
 }
@@ -134,6 +148,37 @@ After you create or change a binding, it can take a few hours for the change to 
 Connectivity to these addresses is not interrupted while the binding propagates — existing traffic continues to be served. However, a binding must finish propagating and become **active** before you can add its addresses to an [address map](https://developers.cloudflare.com/byoip/address-maps/) (including creating a new address map that contains them). Until the binding is active, those operations are rejected.
 
 For this reason, create the binding **first** and allow it to finish propagating before you configure address maps for the affected addresses.
+
+### Handle a conflict error
+
+Because [each CIDR can have only one binding](#choose-which-cidr-to-bind), a create request for a CIDR that is already bound fails with an HTTP `409` conflict:
+
+**Response**
+
+```json
+{
+  "result": null,
+  "success": false,
+  "errors": [
+    {
+      "code": 1108,
+      "message": "conflict: binding already exists for CIDR 203.0.113.0/24"
+    }
+  ],
+  "messages": []
+}
+```
+
+You get this error in two cases:
+
+* **You tried to bind the entire prefix.** The full prefix range (for example, the whole `/24`) is already in use once Cloudflare advertises your prefix, so it cannot be bound to a region directly. Bind a more specific range within the prefix instead — a `/25` down to a single `/32` — and cover the prefix with several sub-ranges if you need to regionalize all of its addresses.
+* **The CIDR is already bound.** A binding for that exact range already exists, for example from an earlier request that succeeded.
+
+To resolve it:
+
+* [List your existing bindings](#list-prefix-bindings) to see what is already configured.
+* To move an existing binding to a different region, [update it](#update-the-region-for-a-binding) rather than creating a new one.
+* To bind a different range, choose a CIDR that is not already bound. To replace an existing binding with a different CIDR, [delete it](#delete-a-binding) first, then create the new one.
 
 ## List prefix bindings
 
@@ -154,7 +199,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/dls/regiona
     {
       "id": "f0e1d2c3-b4a5-6789-0abc-def123456789",
       "prefix_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-      "cidr": "203.0.113.0/24",
+      "cidr": "203.0.113.0/25",
       "region_key": "eu"
     }
   ],
@@ -197,7 +242,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/dls/regiona
   "result": {
     "id": "f0e1d2c3-b4a5-6789-0abc-def123456789",
     "prefix_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-    "cidr": "203.0.113.0/24",
+    "cidr": "203.0.113.0/25",
     "region_key": "us"
   }
 }
@@ -231,6 +276,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/dls/regiona
 * [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/) — onboard your own IP prefixes to Cloudflare.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/#page","headline":"Regionalized IP Bindings · Cloudflare Data Localization Suite docs","description":"Bind a BYOIP prefix to a region so traffic to those IP addresses is processed in-region.","url":"https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/#page","headline":"Regionalized IP Bindings · Cloudflare Data Localization Suite docs","description":"Bind a BYOIP prefix to a region so traffic to those IP addresses is processed in-region.","url":"https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/regional-services/","name":"Regional Services"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/regional-services/ip-bindings/","name":"Regionalized IP Bindings"}}]}
 ```

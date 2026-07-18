@@ -193,22 +193,22 @@ Expand table
 
 Expand table
 
-| Function                           | Syntax                                   | Description                           |
-|------------------------------------|------------------------------------------|---------------------------------------|
-| `todatetime`                       | `todatetime("dob")`                      | Convert string to datetime            |
-| `tounixtime`                       | `tounixtime("dob")`                      | Convert datetime to unix epoch (ms)   |
-| `format_datetime`                  | `format_datetime("dob",'DD/MM/YYYY')`    | Format datetime as string             |
-| `add_datetime`                     | `add_datetime("dob",'-1d')`              | Add duration (e.g., `-1d`, `2h`)      |
-| `unixtime_seconds_todatetime`      | `unixtime_seconds_todatetime("ts")`      | Convert unix seconds to datetime      |
-| `unixtime_milliseconds_todatetime` | `unixtime_milliseconds_todatetime("ts")` | Convert unix milliseconds to datetime |
-| `unixtime_microseconds_todatetime` | `unixtime_microseconds_todatetime("ts")` | Convert unix microseconds to datetime |
-| `unixtime_nanoseconds_todatetime`  | `unixtime_nanoseconds_todatetime("ts")`  | Convert unix nanoseconds to datetime  |
-| `startofminute`                    | `startofminute("dob")`                   | Round to start of minute              |
-| `startofhour`                      | `startofhour("dob")`                     | Round to start of hour                |
-| `startofday`                       | `startofday("dob")`                      | Round to start of day                 |
-| `startofweek`                      | `startofweek("dob")`                     | Round to start of week                |
-| `startofmonth`                     | `startofmonth("dob")`                    | Round to start of month               |
-| `startofyear`                      | `startofyear("dob")`                     | Round to start of year                |
+| Function                           | Syntax                                   | Description                             |
+|------------------------------------|------------------------------------------|-----------------------------------------|
+| `todatetime`                       | `todatetime("dob")`                      | Convert string to datetime              |
+| `tounixtime`                       | `tounixtime("dob")`                      | Convert datetime to unix epoch (ms)     |
+| `format_datetime`                  | `format_datetime("dob",'DD/MM/YYYY')`    | Format datetime as string               |
+| `add_datetime`                     | `add_datetime("dob",'-1d')`              | Add duration (for example, `-1d`, `2h`) |
+| `unixtime_seconds_todatetime`      | `unixtime_seconds_todatetime("ts")`      | Convert unix seconds to datetime        |
+| `unixtime_milliseconds_todatetime` | `unixtime_milliseconds_todatetime("ts")` | Convert unix milliseconds to datetime   |
+| `unixtime_microseconds_todatetime` | `unixtime_microseconds_todatetime("ts")` | Convert unix microseconds to datetime   |
+| `unixtime_nanoseconds_todatetime`  | `unixtime_nanoseconds_todatetime("ts")`  | Convert unix nanoseconds to datetime    |
+| `startofminute`                    | `startofminute("dob")`                   | Round to start of minute                |
+| `startofhour`                      | `startofhour("dob")`                     | Round to start of hour                  |
+| `startofday`                       | `startofday("dob")`                      | Round to start of day                   |
+| `startofweek`                      | `startofweek("dob")`                     | Round to start of week                  |
+| `startofmonth`                     | `startofmonth("dob")`                    | Round to start of month                 |
+| `startofyear`                      | `startofyear("dob")`                     | Round to start of year                  |
 
 #### Math functions
 

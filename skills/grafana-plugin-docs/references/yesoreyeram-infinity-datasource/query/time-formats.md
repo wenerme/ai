@@ -15,11 +15,11 @@ When defining columns, you can choose from three time-related types:
 
 Expand table
 
-| Column type    | Description                | Use when                                                      |
-|----------------|----------------------------|---------------------------------------------------------------|
-| Time           | Standard date/time parsing | Your data uses readable date formats (ISO 8601, RFC formats)  |
-| Time (UNIX ms) | Unix epoch in milliseconds | Your data uses millisecond timestamps (e.g., `1262304000000`) |
-| Time (UNIX s)  | Unix epoch in seconds      | Your data uses second timestamps (e.g., `1262304000`)         |
+| Column type    | Description                | Use when                                                             |
+|----------------|----------------------------|----------------------------------------------------------------------|
+| Time           | Standard date/time parsing | Your data uses readable date formats (ISO 8601, RFC formats)         |
+| Time (UNIX ms) | Unix epoch in milliseconds | Your data uses millisecond timestamps (for example, `1262304000000`) |
+| Time (UNIX s)  | Unix epoch in seconds      | Your data uses second timestamps (for example, `1262304000`)         |
 
 ## Frontend parser time formats
 
