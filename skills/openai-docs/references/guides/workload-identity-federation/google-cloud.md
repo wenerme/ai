@@ -341,7 +341,6 @@ import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.core.http.HttpClient;
 import com.openai.errors.SubjectTokenProviderException;
-import com.openai.models.ChatModel;
 import com.openai.models.responses.ResponseCreateParams;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -351,95 +350,89 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 
 public final class GoogleWorkloadIdentityExample {
-    private static final String METADATA_ENDPOINT =
-            "http://metadata.google.internal/computeMetadata/v1/instance/"
-                    + "service-accounts/default/identity";
+  private static final String METADATA_ENDPOINT =
+      "http://metadata.google.internal/computeMetadata/v1/instance/"
+          + "service-accounts/default/identity";
 
-    private GoogleWorkloadIdentityExample() {}
+  private GoogleWorkloadIdentityExample() {}
 
-    static final class GoogleMetadataIdentityTokenProvider implements SubjectTokenProvider {
-        private final String audience;
+  static final class GoogleMetadataIdentityTokenProvider implements SubjectTokenProvider {
+    private final String audience;
 
-        GoogleMetadataIdentityTokenProvider(String audience) {
-            this.audience = audience;
-        }
-
-        @Override
-        public SubjectTokenType tokenType() {
-            return SubjectTokenType.JWT;
-        }
-
-        @Override
-        public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
-            try {
-                String query = "audience="
-                        + URLEncoder.encode(audience, StandardCharsets.UTF_8)
-                        + "&format=full";
-                HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(METADATA_ENDPOINT + "?" + query))
-                        .header("Metadata-Flavor", "Google")
-                        .GET()
-                        .build();
-
-                HttpResponse<String> response = java.net.http.HttpClient.newHttpClient()
-                        .send(request, HttpResponse.BodyHandlers.ofString());
-                if (response.statusCode() < 200 || response.statusCode() >= 300) {
-                    throw new SubjectTokenProviderException(
-                            "google-metadata",
-                            "Google metadata token request failed with status "
-                                    + response.statusCode(),
-                            null);
-                }
-
-                String token = response.body().trim();
-                if (token.isEmpty()) {
-                    throw new SubjectTokenProviderException(
-                            "google-metadata",
-                            "Google metadata server did not return an identity token",
-                            null);
-                }
-
-                return token;
-            } catch (SubjectTokenProviderException e) {
-                throw e;
-            } catch (Exception e) {
-                throw new SubjectTokenProviderException(
-                        "google-metadata",
-                        "failed to request Google identity token",
-                        e);
-            }
-        }
-
-        @Override
-        public CompletableFuture<String> getTokenAsync(
-                HttpClient httpClient, JsonMapper jsonMapper) {
-            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
-        }
+    GoogleMetadataIdentityTokenProvider(String audience) {
+      this.audience = audience;
     }
 
-    public static void main(String[] args) {
-        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
-                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
-                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
-                .provider(new GoogleMetadataIdentityTokenProvider(
-                        System.getenv("OPENAI_WIF_AUDIENCE")))
-                .build();
-
-        OpenAIClient client = OpenAIOkHttpClient.builder()
-                .workloadIdentity(workloadIdentity)
-                .build();
-
-        ResponseCreateParams params = ResponseCreateParams.builder()
-                .model(ChatModel.GPT_4_1_MINI)
-                .input("Say hello from Google Cloud workload identity federation.")
-                .build();
-
-        client.responses().create(params).output().stream()
-                .flatMap(item -> item.message().stream())
-                .flatMap(message -> message.content().stream())
-                .flatMap(content -> content.outputText().stream())
-                .forEach(outputText -> System.out.println(outputText.text()));
+    @Override
+    public SubjectTokenType tokenType() {
+      return SubjectTokenType.JWT;
     }
+
+    @Override
+    public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
+      try {
+        String query =
+            "audience=" + URLEncoder.encode(audience, StandardCharsets.UTF_8) + "&format=full";
+        HttpRequest request =
+            HttpRequest.newBuilder()
+                .uri(URI.create(METADATA_ENDPOINT + "?" + query))
+                .header("Metadata-Flavor", "Google")
+                .GET()
+                .build();
+
+        HttpResponse<String> response =
+            java.net.http.HttpClient.newHttpClient()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() < 200 || response.statusCode() >= 300) {
+          throw new SubjectTokenProviderException(
+              "google-metadata",
+              "Google metadata token request failed with status " + response.statusCode(),
+              null);
+        }
+
+        String token = response.body().trim();
+        if (token.isEmpty()) {
+          throw new SubjectTokenProviderException(
+              "google-metadata", "Google metadata server did not return an identity token", null);
+        }
+
+        return token;
+      } catch (SubjectTokenProviderException e) {
+        throw e;
+      } catch (Exception e) {
+        throw new SubjectTokenProviderException(
+            "google-metadata", "failed to request Google identity token", e);
+      }
+    }
+
+    @Override
+    public CompletableFuture<String> getTokenAsync(HttpClient httpClient, JsonMapper jsonMapper) {
+      return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+    }
+  }
+
+  public static void main(String[] args) {
+    WorkloadIdentity workloadIdentity =
+        WorkloadIdentity.builder()
+            .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+            .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+            .provider(new GoogleMetadataIdentityTokenProvider(System.getenv("OPENAI_WIF_AUDIENCE")))
+            .build();
+
+    OpenAIClient client = OpenAIOkHttpClient.builder().workloadIdentity(workloadIdentity).build();
+
+    ResponseCreateParams params =
+        ResponseCreateParams.builder()
+            .model("gpt-5.6-terra")
+            .input("Say hello from Google Cloud workload identity federation.")
+            .build();
+
+    client.responses().create(params).output().stream()
+        .flatMap(item -> item.message().stream())
+        .flatMap(message -> message.content().stream())
+        .flatMap(content -> content.outputText().stream())
+        .forEach(outputText -> System.out.println(outputText.text()));
+  }
 }
 ```
 
@@ -828,80 +821,74 @@ import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.core.http.HttpClient;
 import com.openai.errors.SubjectTokenProviderException;
-import com.openai.models.ChatModel;
 import com.openai.models.responses.ResponseCreateParams;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
 public final class GoogleGkeWorkloadIdentityExample {
-    private static final String TOKEN_PATH = "/var/run/secrets/tokens/token";
+  private static final String TOKEN_PATH = "/var/run/secrets/tokens/token";
 
-    private GoogleGkeWorkloadIdentityExample() {}
+  private GoogleGkeWorkloadIdentityExample() {}
 
-    static final class MountedGkeServiceAccountTokenProvider implements SubjectTokenProvider {
-        private final Path tokenPath;
+  static final class MountedGkeServiceAccountTokenProvider implements SubjectTokenProvider {
+    private final Path tokenPath;
 
-        MountedGkeServiceAccountTokenProvider(String tokenPath) {
-            this.tokenPath = Path.of(tokenPath);
-        }
-
-        @Override
-        public SubjectTokenType tokenType() {
-            return SubjectTokenType.JWT;
-        }
-
-        @Override
-        public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
-            String token;
-            try {
-                token = Files.readString(tokenPath).trim();
-            } catch (Exception e) {
-                throw new SubjectTokenProviderException(
-                        "google-gke",
-                        "failed to read mounted GKE service account token",
-                        e);
-            }
-
-            if (token.isEmpty()) {
-                throw new SubjectTokenProviderException(
-                        "google-gke",
-                        "mounted GKE service account token is empty",
-                        null);
-            }
-
-            return token;
-        }
-
-        @Override
-        public CompletableFuture<String> getTokenAsync(
-                HttpClient httpClient, JsonMapper jsonMapper) {
-            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
-        }
+    MountedGkeServiceAccountTokenProvider(String tokenPath) {
+      this.tokenPath = Path.of(tokenPath);
     }
 
-    public static void main(String[] args) {
-        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
-                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
-                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
-                .provider(new MountedGkeServiceAccountTokenProvider(TOKEN_PATH))
-                .build();
-
-        OpenAIClient client = OpenAIOkHttpClient.builder()
-                .workloadIdentity(workloadIdentity)
-                .build();
-
-        ResponseCreateParams params = ResponseCreateParams.builder()
-                .model(ChatModel.GPT_4_1_MINI)
-                .input("Say hello from Google GKE workload identity federation.")
-                .build();
-
-        client.responses().create(params).output().stream()
-                .flatMap(item -> item.message().stream())
-                .flatMap(message -> message.content().stream())
-                .flatMap(content -> content.outputText().stream())
-                .forEach(outputText -> System.out.println(outputText.text()));
+    @Override
+    public SubjectTokenType tokenType() {
+      return SubjectTokenType.JWT;
     }
+
+    @Override
+    public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
+      String token;
+      try {
+        token = Files.readString(tokenPath).trim();
+      } catch (Exception e) {
+        throw new SubjectTokenProviderException(
+            "google-gke", "failed to read mounted GKE service account token", e);
+      }
+
+      if (token.isEmpty()) {
+        throw new SubjectTokenProviderException(
+            "google-gke", "mounted GKE service account token is empty", null);
+      }
+
+      return token;
+    }
+
+    @Override
+    public CompletableFuture<String> getTokenAsync(HttpClient httpClient, JsonMapper jsonMapper) {
+      return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+    }
+  }
+
+  public static void main(String[] args) {
+    WorkloadIdentity workloadIdentity =
+        WorkloadIdentity.builder()
+            .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+            .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+            .provider(new MountedGkeServiceAccountTokenProvider(TOKEN_PATH))
+            .build();
+
+    OpenAIClient client = OpenAIOkHttpClient.builder().workloadIdentity(workloadIdentity).build();
+
+    ResponseCreateParams params =
+        ResponseCreateParams.builder()
+            .model("gpt-5.6-terra")
+            .input("Say hello from Google GKE workload identity federation.")
+            .build();
+
+    client.responses().create(params).output().stream()
+        .flatMap(item -> item.message().stream())
+        .flatMap(message -> message.content().stream())
+        .flatMap(content -> content.outputText().stream())
+        .forEach(outputText -> System.out.println(outputText.text()));
+  }
 }
 ```
 

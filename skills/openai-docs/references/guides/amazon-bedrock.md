@@ -236,5 +236,5 @@ plan to use.
 - Confirm your supported model and AWS Region in Amazon Bedrock.
 - Verify the exact API features your workload needs.
 - Compare Bedrock pricing and direct API pricing before launch.
-- For Codex-specific setup, see
-  [Use Codex with Amazon Bedrock](https://developers.openai.com/codex/amazon-bedrock).
+- For setup in ChatGPT Work and Codex, see
+  [Use ChatGPT Work and Codex with Amazon Bedrock](https://developers.openai.com/codex/amazon-bedrock).

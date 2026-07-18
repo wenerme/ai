@@ -48,7 +48,7 @@ For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-
 4. **Try a prompt**
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ## Cloudflare platform access
@@ -83,6 +83,7 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 * AI Gateway server Search your logs, get details about the prompts and responses https://ai-gateway.mcp.cloudflare.com/mcp
 * Audit Logs server Query audit logs and generate reports for review https://auditlogs.mcp.cloudflare.com/mcp
 * Workers Bindings server Build Workers applications with storage, AI, and compute primitives https://bindings.mcp.cloudflare.com/mcp
+* Cloudflare Blog server Search and read posts from the Cloudflare Blog https://blog.mcp.cloudflare.com/mcp
 * Browser Run server Fetch web pages, convert them to markdown and take screenshots https://browser.mcp.cloudflare.com/mcp
 * Workers Builds server Get insights and manage your Cloudflare Workers Builds https://builds.mcp.cloudflare.com/mcp
 * Cloudflare One CASB server Quickly identify any security misconfigurations for SaaS applications to safeguard users & data https://casb.mcp.cloudflare.com/mcp

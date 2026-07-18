@@ -1,0 +1,154 @@
+---
+title: Getting started
+description: Two self-serve ways to see Privacy Pass work — get a real token with the demo tool, and run the issuance and redemption flow locally.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-pass/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Getting started
+
+There are two self-serve ways to see Privacy Pass in action:
+
+* **Get a real token with the demo tool:** the fastest way to obtain a real, issuer-signed token, using a browser tool and a Cloudflare-provided demo issuer.
+* **See a local example:** run the complete issuance and redemption flow on your own machine in a few minutes, using real Blind RSA cryptography.
+
+To understand the protocol itself, refer to [Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/). When you are ready to validate a real, Cloudflare-operated deployment, refer to [Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/) and [contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to begin setting up the necessary infrastructure.
+
+---
+
+## Get a real token with the demo tool
+
+The quickest way to see what an issuer-signed token looks like is with Cloudflare's [Privacy Pass Demo Tool ↗](https://privacypass-demo.cloudflare.app/). Pointed at an issuer, it runs the full issuance flow in your browser and returns a verified token.
+
+### Prerequisites
+
+* Our **demo issuer directory URL**, provided here: [https://demo-pat.issuer.cloudflare.com/.well-known/private-token-issuer-directory ↗](https://demo-pat.issuer.cloudflare.com/.well-known/private-token-issuer-directory).
+
+### How to get a token
+
+1. Open the [Privacy Pass demo tool ↗](https://privacypass-demo.cloudflare.app/).
+2. In **Fetch from issuer URL**, paste the demo issuer directory URL and submit. The tool displays the issuer directory—a list of `token-keys` with token type `2` (Blind RSA)—and automatically fills in the fields for the following steps.
+3. In **Create challenge**, submit the prefilled form. The tool builds a `WWW-Authenticate` token challenge from the issuer's key.
+4. In **Send Token Request**, submit the prefilled form. The tool blinds the request, sends it to the issuer, unblinds the response, and verifies the result.
+
+A successful run shows:
+
+```txt
+Draft 16 Valid: true
+PrivateToken token=...
+```
+
+`Draft 16 Valid: true` means the issuer returned a real token that verifies against its public key. The `PrivateToken token=...` value is the finalized token a client would send to an Origin in an `Authorization` header.
+
+Note
+
+The demo tool routes its requests through its own backend to work around browser cross-origin (CORS) limits. It needs no attester or client certificate here because the demo issuer is open for testing. Production issuers accept requests only from an authenticated Attester, so they cannot be exercised this way — refer to [Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/).
+
+---
+
+## See a local example
+
+You can run the issuance and redemption flow on your machine in a few minutes, with no Cloudflare setup. It uses real Blind RSA cryptography, but everything happens in one process: the issuer key is generated locally and attestation is stubbed out. It is a quick way to see the protocol in action.
+
+### Prerequisites
+
+* [Node.js ↗](https://nodejs.org/) and [git ↗](https://git-scm.com/).
+
+### Run the example
+
+The [@cloudflare/privacypass-ts ↗](https://github.com/cloudflare/privacypass-ts) library ships runnable examples. Clone the repository and install dependencies:
+
+```sh
+git clone https://github.com/cloudflare/privacypass-ts.git
+cd privacypass-ts
+npm ci
+```
+
+The publicly-verifiable example ([pub\_verif.example.ts ↗](https://github.com/cloudflare/privacypass-ts/blob/main/examples/pub%5Fverif.example.ts)) only exports its functions, so add a small runner that calls just that one. Create `examples/run-pub-verif.ts`:
+
+* [  JavaScript ](#tab-panel-10357)
+* [  TypeScript ](#tab-panel-10358)
+
+**JavaScript**
+
+```js
+import { publicVerifiableTokensPSS } from "./pub_verif.example.js";
+
+
+await publicVerifiableTokensPSS();
+```
+
+**TypeScript**
+
+```ts
+import { publicVerifiableTokensPSS } from "./pub_verif.example.js";
+
+
+await publicVerifiableTokensPSS();
+```
+
+Compile the examples and run your runner:
+
+```sh
+npx tsc -b examples
+node ./lib/examples/run-pub-verif.js
+```
+
+It prints:
+
+```txt
+Public-Verifiable tokens
+    Suite: ...
+    Valid token: true
+```
+
+`Valid token: true` means a token was issued, unblinded, and verified successfully.
+
+### How the example maps to the four roles
+
+The example creates an Issuer, a Client, and an Origin in a single process (the Issuer key pair is generated up front in `setup()` with `Issuer.generateKey`), then runs them through the protocol. The code annotations in the diagram sit at the point in the flow where each step happens:
+
+```txt
+// +--------+            +--------+         +----------+ +--------+
+// | Origin |            | Client |         | Attester | | Issuer |
+// +---+----+            +---+----+         +----+-----+ +---+----+
+//     |                     |                   |           |
+//     |<----- Request ------+                   |           |
+const redemptionContext = crypto.getRandomValues(new Uint8Array(32));
+const tokChl = origin.createTokenChallenge(issuer.name, redemptionContext);  // Origin issues a token challenge
+//     +-- TokenChallenge -->|                   |           |
+//     |                     |<== Attestation ==>|           |   // stubbed: no real Attester runs
+//     |                     |                   |           |
+const tokReq = await client.createTokenRequest(tokChl, pkIssuer);            // Client blinds the request
+//     |                     +--------- TokenRequest ------->|
+//     |                     |                   |           |
+const tokRes = await issuer.issue(tokReq);                                   // Issuer signs the blinded request
+//     |                     |<-------- TokenResponse -------+
+//     |                     |                   |           |
+const token = await client.finalize(tokRes);                                 // Client unblinds to recover the token
+//     |<-- Request+Token ---+                   |           |
+//     |                     |                   |           |
+const isValid = await origin.verify(token, issuer.publicKey);                // Origin verifies against the issuer key
+```
+
+Note
+
+This demonstrates the protocol and the cryptography. It does **not** reflect a real deployment: in production the roles are operated by separate parties, attestation is real, and the issuer is run by Cloudflare. To validate a real, Cloudflare-operated deployment, refer to [Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/).
+
+---
+
+## Next steps
+
+* [Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/) — when you are ready to go beyond these self-serve demos, this is the in-depth guide to validating a real, Cloudflare-operated deployment, with your Attester, Issuer, and Origin working together.
+* [Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/) — the four roles, the issuance and redemption flow, and the blinded signatures that produce tokens.
+* [Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/) — who operates each role and the deployment models.
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/getting-started/#page","headline":"Getting started · Cloudflare Privacy Pass docs","description":"Two self-serve ways to see Privacy Pass work — get a real token with the demo tool, and run the issuance and redemption flow locally.","url":"https://developers.cloudflare.com/privacy-pass/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-pass/","name":"Privacy Pass"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-pass/getting-started/","name":"Getting started"}}]}
+```

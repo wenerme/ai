@@ -14,6 +14,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/index.xml)
 
+## 2026-07-17
+
+**RealtimeKit Android Core 3.1.0**
+
+**Enhancements**
+
+* Room joins are up to 25% faster under normal network conditions
+* Improved the initial quality of video received from mobile participants
+
+**Fixes**
+
+* Fixed a crash when switching between breakout rooms
+* When unmuting audio or video, the SDK now requests permission when the corresponding `RtkMeetingInfo.enableAudio` or `RtkMeetingInfo.enableVideo` field is `false`. The UI Kit component is no longer silently disabled.
+
 ## 2026-06-24
 
 **RealtimeKit Android Core 3.0.0**

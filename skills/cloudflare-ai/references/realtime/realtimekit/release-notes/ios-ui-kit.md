@@ -14,7 +14,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-ui-kit/index.xml)
 
-## 2026-06-24
+## 2026-07-17
+
+**RealtimeKit iOS UI Kit 3.1.0**
+
+**Enhancements**
+
+* Aligned the version with [RealtimeKit iOS Core v3.1.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-core/#2026-07-17). This release has no breaking changes.
+
+**Fixes**
+
+* Audio and video toggle buttons no longer check permissions or disable themselves. The core SDK handles permission requests.
+
+## 2026-06-30
 
 **RealtimeKit iOS UI Kit 2.0.0**
 

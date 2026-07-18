@@ -120,7 +120,7 @@ Create an issue on repository
 
 Edit one or more issues
 
-**--add-assignees, -a**="": Comma-separated list of usernames to assign
+**--add-assignees, -a**="": Comma-separated list of usernames to assign. Takes precedence over --remove-assignees
 
 **--add-labels, -L**="": Comma-separated list of labels to assign. Takes precedence over --remove-labels
 
@@ -136,9 +136,13 @@ Edit one or more issues
 
 **--remote, -R**="": Discover Gitea login from remote. Optional
 
+**--remove-assignees**="": Comma-separated list of usernames to remove
+
 **--remove-labels**="": Comma-separated list of labels to remove
 
 **--repo, -r**="": Override local repository path or gitea repository slug to interact with. Optional
+
+**--set-assignees**="": Clear all existing assignees and assign comma-separated list of usernames. Takes precedence over --add-assignees and --remove-assignees
 
 **--title, -t**="": 
 

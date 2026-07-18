@@ -370,6 +370,8 @@ components:
           items:
             discriminator:
               mapping:
+                auto-beta-router:
+                  $ref: '#/components/schemas/AutoBetaRouterPlugin'
                 auto-router:
                   $ref: '#/components/schemas/AutoRouterPlugin'
                 context-compression:
@@ -391,6 +393,7 @@ components:
               propertyName: id
             oneOf:
               - $ref: '#/components/schemas/AutoRouterPlugin'
+              - $ref: '#/components/schemas/AutoBetaRouterPlugin'
               - $ref: '#/components/schemas/ModerationPlugin'
               - $ref: '#/components/schemas/WebSearchPlugin'
               - $ref: '#/components/schemas/WebFetchPlugin'
@@ -1224,6 +1227,52 @@ components:
           type:
             - object
             - 'null'
+      type: object
+    AutoBetaRouterPlugin:
+      example:
+        allowed_models:
+          - anthropic/*
+          - openai/gpt-4o
+        cost_quality_tradeoff: 7
+        enabled: true
+        id: auto-beta-router
+      properties:
+        allowed_models:
+          description: >-
+            List of model patterns to filter which models the auto-beta-router
+            can route between. Supports wildcards (e.g., "anthropic/*" matches
+            all Anthropic models). When not specified, uses the default
+            supported models list.
+          example:
+            - anthropic/*
+            - openai/gpt-4o
+            - google/*
+          items:
+            type: string
+          type: array
+        cost_quality_tradeoff:
+          description: >-
+            Balances routing between cost and quality on a 0-10 scale. The
+            auto-beta-router ranks models for the classified task type by
+            community spend share, then filters candidates by their average cost
+            per generation for that task. Higher values favor cheaper models: 10
+            keeps only models around the cheapest 10th percentile, while 0
+            permits models up to the 90th percentile for cost. Defaults to 7.
+          example: 7
+          maximum: 10
+          minimum: 0
+          type: integer
+        enabled:
+          description: >-
+            Set to false to disable the auto-beta-router plugin for this
+            request. Defaults to true.
+          type: boolean
+        id:
+          enum:
+            - auto-beta-router
+          type: string
+      required:
+        - id
       type: object
     AutoRouterPlugin:
       example:
@@ -2453,6 +2502,7 @@ components:
         - DigitalOcean
         - Featherless
         - Fireworks
+        - Fish Audio
         - Friendli
         - GMICloud
         - Google

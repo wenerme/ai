@@ -117,6 +117,26 @@ entirely, enable **"Always use for this provider"** on
 your BYOK keys in your
 [workspace BYOK settings](https://openrouter.ai/workspaces/default/byok).
 
+### BYOK with Data Policies
+
+BYOK endpoints are subject to your data policies. Bringing your own key changes which credential authenticates the upstream request — it doesn't change which endpoints you're allowed to route to. Your provider, account, and guardrail data policies are applied **before** BYOK endpoints are created, so BYOK only routes to endpoints that already satisfy them.
+
+This means a BYOK key does not exempt a provider from your [Zero Data Retention](/guides/features/zdr) or `data_collection` restrictions. If you enforce ZDR (via `provider.zdr`, account privacy settings, or a guardrail) and a provider's endpoint retains prompts, that endpoint stays ineligible even when you supply your own key.
+
+For example, if you enforce ZDR and send a request that would otherwise use a BYOK key for a provider whose endpoint retains prompts:
+
+```json lines theme={null}
+{
+  "provider": {
+    "zdr": true
+  }
+}
+```
+
+The retaining endpoint is filtered out before your BYOK key is considered, and the request fails if no ZDR-compliant endpoint remains — even though you have a valid key for that provider.
+
+To use a provider via BYOK, make sure it's permitted by your data policies: the provider's endpoint must satisfy any ZDR or `data_collection` restrictions you've enabled. See [Zero Data Retention](/guides/features/zdr) and [Provider Routing](/guides/routing/provider-selection).
+
 ### Multiple BYOK Keys for the Same Provider
 
 You can configure multiple BYOK keys for the same provider. All matching keys are used for routing, and each key produces its own endpoint copy that is pinned to that specific key throughout the request lifecycle.

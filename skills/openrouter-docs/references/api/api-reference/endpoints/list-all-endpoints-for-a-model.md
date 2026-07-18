@@ -846,6 +846,7 @@ components:
         - DigitalOcean
         - Featherless
         - Fireworks
+        - Fish Audio
         - Friendli
         - GMICloud
         - Google

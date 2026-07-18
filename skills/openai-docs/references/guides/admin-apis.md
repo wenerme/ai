@@ -68,9 +68,8 @@ openai = OpenAI::Client.new(
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 
-OpenAIClient client = OpenAIOkHttpClient.builder()
-    .adminApiKey(System.getenv("OPENAI_ADMIN_KEY"))
-    .build();
+OpenAIClient client =
+    OpenAIOkHttpClient.builder().adminApiKey(System.getenv("OPENAI_ADMIN_KEY")).build();
 ```
 
 
@@ -133,17 +132,18 @@ import com.openai.models.admin.organization.projects.modelpermissions.ModelPermi
 import com.openai.models.admin.organization.projects.modelpermissions.ProjectModelPermissions;
 import java.util.List;
 
-ProjectModelPermissions modelPermissions = client.admin()
-    .organization()
-    .projects()
-    .modelPermissions()
-    .update(
-        "proj_abc",
-        ModelPermissionUpdateParams.builder()
-            .mode(ModelPermissionUpdateParams.Mode.ALLOW_LIST)
-            .modelIds(List.of("gpt-4.1", "o3"))
-            .build()
-    );
+ProjectModelPermissions modelPermissions =
+    client
+        .admin()
+        .organization()
+        .projects()
+        .modelPermissions()
+        .update(
+            "proj_abc",
+            ModelPermissionUpdateParams.builder()
+                .mode(ModelPermissionUpdateParams.Mode.ALLOW_LIST)
+                .modelIds(List.of("gpt-4.1", "o3"))
+                .build());
 
 System.out.println(modelPermissions.mode());
 ```
@@ -231,24 +231,24 @@ puts(spend_alert.id)
 import com.openai.models.admin.organization.projects.spendalerts.ProjectSpendAlert;
 import com.openai.models.admin.organization.projects.spendalerts.SpendAlertCreateParams;
 
-ProjectSpendAlert spendAlert = client.admin()
-    .organization()
-    .projects()
-    .spendAlerts()
-    .create(
-        "proj_abc",
-        SpendAlertCreateParams.builder()
-            .currency(SpendAlertCreateParams.Currency.USD)
-            .interval(SpendAlertCreateParams.Interval.MONTH)
-            .notificationChannel(
-                SpendAlertCreateParams.NotificationChannel.builder()
-                    .addRecipient("billing@example.com")
-                    .subjectPrefix("[OpenAI spend]")
-                    .build()
-            )
-            .thresholdAmount(50000L)
-            .build()
-    );
+ProjectSpendAlert spendAlert =
+    client
+        .admin()
+        .organization()
+        .projects()
+        .spendAlerts()
+        .create(
+            "proj_abc",
+            SpendAlertCreateParams.builder()
+                .currency(SpendAlertCreateParams.Currency.USD)
+                .interval(SpendAlertCreateParams.Interval.MONTH)
+                .notificationChannel(
+                    SpendAlertCreateParams.NotificationChannel.builder()
+                        .addRecipient("billing@example.com")
+                        .subjectPrefix("[OpenAI spend]")
+                        .build())
+                .thresholdAmount(50000L)
+                .build());
 
 System.out.println(spendAlert.id());
 ```
@@ -308,16 +308,17 @@ puts(data_retention.type)
 import com.openai.models.admin.organization.projects.dataretention.DataRetentionUpdateParams;
 import com.openai.models.admin.organization.projects.dataretention.ProjectDataRetention;
 
-ProjectDataRetention dataRetention = client.admin()
-    .organization()
-    .projects()
-    .dataRetention()
-    .update(
-        "proj_abc",
-        DataRetentionUpdateParams.builder()
-            .retentionType(DataRetentionUpdateParams.RetentionType.ORGANIZATION_DEFAULT)
-            .build()
-    );
+ProjectDataRetention dataRetention =
+    client
+        .admin()
+        .organization()
+        .projects()
+        .dataRetention()
+        .update(
+            "proj_abc",
+            DataRetentionUpdateParams.builder()
+                .retentionType(DataRetentionUpdateParams.RetentionType.ORGANIZATION_DEFAULT)
+                .build());
 
 System.out.println(dataRetention.type());
 ```
@@ -374,12 +375,16 @@ puts(invite.id)
 import com.openai.models.admin.organization.invites.Invite;
 import com.openai.models.admin.organization.invites.InviteCreateParams;
 
-Invite invite = client.admin().organization().invites().create(
-    InviteCreateParams.builder()
-        .email("user@example.com")
-        .role(InviteCreateParams.Role.READER)
-        .build()
-);
+Invite invite =
+    client
+        .admin()
+        .organization()
+        .invites()
+        .create(
+            InviteCreateParams.builder()
+                .email("user@example.com")
+                .role(InviteCreateParams.Role.READER)
+                .build());
 
 System.out.println(invite.id());
 ```
@@ -432,11 +437,12 @@ end
 ```java
 import com.openai.models.admin.organization.auditlogs.AuditLogListParams;
 
-var page = client.admin().organization().auditLogs().list(
-    AuditLogListParams.builder()
-        .limit(10L)
-        .build()
-);
+var page =
+    client
+        .admin()
+        .organization()
+        .auditLogs()
+        .list(AuditLogListParams.builder().limit(10L).build());
 
 page.data().forEach(auditLog -> System.out.println(auditLog.id()));
 ```

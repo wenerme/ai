@@ -9,6 +9,10 @@ description: "Configure URLs, HTTP methods, headers, and request bodies for Infi
 
 The Infinity data source supports advanced URL configuration options including HTTP methods, custom headers, query parameters, and request bodies. Use these options to connect to any REST API or web endpoint.
 
+> Note
+>
+> If you specify a URL without an `http://` or `https://` scheme, the Infinity data source defaults to `https://` for non-localhost URLs. To use `http://` instead, include the scheme explicitly in the URL.
+
 ## Before you begin
 
 - Ensure you have the Infinity data source installed and configured

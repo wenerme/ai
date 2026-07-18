@@ -28,6 +28,7 @@ In addition to writing queries, the query editor also allows you to create and u
 
 - [Macros](#macros)
 - [Annotations](/docs/plugins/grafana-databricks-datasource/latest/annotations/)
+- [Logs](/docs/plugins/grafana-databricks-datasource/latest/logs/)
 
 ## Builder mode
 
@@ -37,7 +38,7 @@ The following components will help you build a Databricks SQL query:
 
 - **Format** - Select a format response from the drop-down for the Databricks query. The default is **Table**. Refer to [Table queries](#table-queries) and [Time series queries](#time-series-queries) for more information and examples. If you select the **Time series** format option, you must include a `time` column.
 - **Filter** - Toggle to add filters.
-- **Filter by column value** - *Optional*. If you toggle **Filter** you can add a column to filter by from the drop-down. To filter by additional columns, click the **+ sign** to the right of the condition drop-down. You can choose a variety of operators from the drop-down next to the condition. When multiple filters are added, use the `AND` or `OR` operators to define how conditions are evaluated. `AND` requires all conditions to be true, while `OR` requires any condition to be true. Use the second drop-down to select the filter value. To remove a filter, click the **X icon** next to it. If you select a `date-type` column, you can use macros from the operator list and choose `timeFilter` to insert the `$\_\_timeFilter` macro into your query with the selected date column.
+- **Filter by column value** - *Optional*. If you toggle **Filter** you can add a column to filter by from the drop-down. To filter by additional columns, click the **+ sign** to the right of the condition drop-down. You can choose a variety of operators from the drop-down next to the condition. When multiple filters are added, use the `AND` or `OR` operators to define how conditions are evaluated. `AND` requires all conditions to be true, while `OR` requires any condition to be true. Use the second drop-down to select the filter value. To remove a filter, click the **X icon** next to it. If you select a `date-type` column, you can use macros from the operator list and choose `timeFilter` to insert the `$__timeFilter` macro into your query with the selected date column.
 - **Group** - Toggle to add a `GROUP BY` column.
 - **Group by column** - Select a column to filter by from the drop-down. Click the **+sign** to filter by multiple columns. Click the **X** to remove a filter.
 - **Order** - Toggle to add an `ORDER BY` statement.
@@ -135,15 +136,15 @@ SQL [Copy code to clipboard] Copy
 
 ```sql
 SELECT
-  event_time AS datetime,
+  event_time AS time,
   COUNT(*) AS total_events
 FROM events
-WHERE event_time BETWEEN $__timeFrom() AND $__timeTo()
+WHERE $__timeFilter(event_time)
 GROUP BY event_time
 ORDER BY event_time
 ```
 
-This query returns the total number of events that occurred over time. It counts all rows in the events table for each timestamp within the Grafana dashboard’s selected time range. The macros `$__timeFrom()` and `$__timeTo()` automatically substitute the start and end times from the dashboard’s time picker.
+This query returns the total number of events that occurred over time. It counts all rows in the events table for each timestamp within the Grafana dashboard’s selected time range. The `$__timeFilter(event_time)` macro automatically restricts results to the start and end times from the dashboard’s time picker by expanding to a `WHERE` condition on the `event_time` column.
 
 ### Multi-line time series
 
@@ -174,20 +175,22 @@ Use these macros to filter data by the dashboard’s selected time range, group 
 
 Expand table
 
-| Macro example                             | Description                                                                                                                                                                 |
-|-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `$__interval_long`                        | Converts Grafana’s interval to an INTERVAL DAY TO SECOND literal for use in Spark SQL window grouping expressions.                                                          |
-| `$__timeFilter(dateColumn)`               | Adds a time range filter for the specified column. Example: `time BETWEEN '2006-01-02T15:04:05Z07:00' AND '2006-01-02T15:04:05Z07:00'`                                      |
-| `$__timeFrom(dateColumn)`                 | Replaced by the start of the currently active time selection. Example: `time > '2006-01-02T15:04:05Z07:00'`                                                                 |
-| `$__timeGroup(dateColumn,'5m')`           | Replaced by an expression usable in a GROUP BY clause. Example: `UNIX_TIMESTAMP(time_column) DIV 900 * 900`                                                                 |
-| `$__timeGroup(dateColumn,'5m', 0)`        | Same as above, but with a fill parameter. Missing points in the series will be added by Grafana with 0 as the value (only works with time series queries).                  |
-| `$__timeGroup(dateColumn,'5m', NULL)`     | Same as above, but NULL will be used as the value for missing points (only works with time series queries).                                                                 |
-| `$__timeGroup(dateColumn,'5m', previous)` | Same as above, but the previous value in the series will be used as the fill value. If no value has been seen yet, NULL will be used (only works with time series queries). |
-| `$__timeTo(dateColumn)`                   | Replaced by the end of the currently active time selection. Example: `time < '2006-01-02T15:04:05Z07:00'`                                                                   |
+| Macro example                             | Description                                                                                                                                                                   |
+|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `$__interval`                             | Replaced by the interval Grafana calculates, as a duration string. **Example:** `10m`                                                                                         |
+| `$__interval_ms`                          | Replaced by the interval Grafana calculates, in milliseconds. **Example:** `600000`                                                                                           |
+| `$__interval_long`                        | Converts the Grafana dashboard interval into a Spark SQL interval string for use in `window()` grouping expressions. **Example:** `2 MINUTE`                                  |
+| `$__timeFilter(dateColumn)`               | Adds a time range filter on the specified column for the dashboard’s time range. **Example:** `dateColumn >= '2024-01-15T08:00:00Z' AND dateColumn <= '2024-01-15T09:00:00Z'` |
+| `$__timeFrom(dateColumn)`                 | Replaced by a filter on the specified column from the start of the active time selection. **Example:** `dateColumn >= '2024-01-15T08:00:00Z'`                                 |
+| `$__timeGroup(dateColumn,'5m')`           | Replaced by an expression usable in a GROUP BY clause. The interval (`5m`) is converted to seconds. **Example:** `UNIX_TIMESTAMP(dateColumn) DIV 300 * 300`                   |
+| `$__timeGroup(dateColumn,'5m', 0)`        | Same as above, but with a fill parameter. Missing points in the series are filled by Grafana with `0` as the value (only works with time series queries).                     |
+| `$__timeGroup(dateColumn,'5m', NULL)`     | Same as above, but `NULL` is used as the value for missing points (only works with time series queries).                                                                      |
+| `$__timeGroup(dateColumn,'5m', previous)` | Same as above, but the previous value in the series is used as the fill value. If no value has been seen yet, `NULL` is used (only works with time series queries).           |
+| `$__timeTo(dateColumn)`                   | Replaced by a filter on the specified column up to the end of the active time selection. **Example:** `dateColumn <= '2024-01-15T09:00:00Z'`                                  |
 
 ### `$__interval_long` macro
 
-The `$__interval_long` macro converts Grafana’s dashboard interval into a Spark SQL-compatible `INTERVAL` format, making it easy to use with Spark SQL window functions.
+The `$__interval_long` macro converts the Grafana dashboard interval into a Spark SQL-compatible `INTERVAL` format, making it easy to use with Spark SQL window functions.
 
 **Example query:**
 
@@ -223,4 +226,4 @@ Expand table
 | `1h`               | `1 HOUR`    |
 | `1d`               | `1 DAY`     |
 
-The macro converts any Grafana interval (like `30s`, `5m`, `1h`, or `1d`) into the appropriate Spark SQL interval format (`30 SECOND`, `5 MINUTE`, `1 HOUR`, `1 DAY`). This ensures your queries remain compatible with Spark SQL’s interval syntax regardless of how users interact with the dashboard’s time controls.
+The macro converts any Grafana interval (like `30s`, `5m`, `1h`, or `1d`) into the appropriate Spark SQL interval format (`30 SECOND`, `5 MINUTE`, `1 HOUR`, `1 DAY`). This ensures your queries remain compatible with the Spark SQL interval syntax regardless of how users interact with the dashboard’s time controls.

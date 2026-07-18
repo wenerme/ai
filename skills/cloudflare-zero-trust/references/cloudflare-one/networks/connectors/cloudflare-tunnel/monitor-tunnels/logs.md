@@ -34,7 +34,7 @@ Note
 
 Tunnel log streams require [edit permissions](https://developers.cloudflare.com/fundamentals/manage-members/roles/) for Cloudflare Tunnel. Due to the sensitive nature of these logs, read-only roles (such as `Zero Trust Read Only`) do not have access.
 
-Dashboard log streams are only available for remotely-managed tunnels. To stream tunnel logs from the dashboard:
+To stream tunnel logs from the dashboard:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select **View logs** next to the tunnel you want to monitor.

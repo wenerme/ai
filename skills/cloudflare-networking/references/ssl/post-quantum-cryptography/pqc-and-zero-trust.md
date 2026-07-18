@@ -19,7 +19,6 @@ Organizations can obtain end-to-end post-quantum encryption of their private net
 Post-quantum encryption is offered in all major Cloudflare One network configurations, including the following on-ramps:
 
 * Agentless [browser access to Cloudflare-proxied applications](#agentless-cloudflare-access) (including self-hosted apps behind Cloudflare Access)
-* Agentless [browser on-ramp to Cloudflare Gateway](#secure-web-gateway) via [proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/)
 * [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) (on the end-user device)
 * [Cloudflare IPsec](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/) on-ramp
 
@@ -114,21 +113,17 @@ A [secure web gateway (SWG) ↗](https://www.cloudflare.com/learning/access-mana
 
 [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) [supports post-quantum cryptography for HTTPS traffic](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#post-quantum-support). As long as the third-party website that is being inspected supports post-quantum key agreement, Cloudflare's SWG also supports post-quantum key agreement.
 
-![Diagram of how post-quantum cryptography works with Cloudflare's Secure Web Gateway](https://developers.cloudflare.com/_astro/pqc-secure-web-gateway.Br-ATUfe_146I1p.webp)
-
-Cloudflare Gateway's HTTPS filtering feature involves two post-quantum TLS connections, as follows:
+Cloudflare Gateway's HTTPS filtering feature involves two post-quantum connections, as follows:
 
 **1\. Connection from the client to Gateway**
 
-A [modern web browser that supports post-quantum key agreement](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-support/#browsers) connects to Gateway via the [Agentless via proxy endpoints](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/#agentless-via-proxy-endpoints) on-ramp. The connection is secured by TLS 1.3 with post-quantum key agreement.
-
-The [Cloudflare One Client](#cloudflare-one-client) and [Cloudflare IPsec](#cloudflare-ipsec) on-ramps described in the sections above can also route traffic to Gateway with post-quantum protection.
+The client reaches Gateway through one of the post-quantum on-ramps: the [Cloudflare One Client](#cloudflare-one-client) or a [Cloudflare IPsec](#cloudflare-ipsec) tunnel. These on-ramps carry the client's traffic to Gateway with post-quantum key agreement.
 
 **2\. Connection from Gateway to the origin server**
 
 A TLS connection is initiated from a data center in Cloudflare's network to the origin server, which is typically controlled by a third party. The connection from Cloudflare's SWG supports post-quantum key agreement, as long as the third-party origin server also supports post-quantum key agreement. You can test this out by using [https://pq.cloudflareresearch.com/ ↗](https://pq.cloudflareresearch.com/) as your third-party origin server.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/#page","headline":"Post-quantum cryptography in Cloudflare One · Cloudflare SSL/TLS docs","description":"Use post-quantum cryptography with Cloudflare One on-ramps and off-ramps.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/#page","headline":"Post-quantum cryptography in Cloudflare One · Cloudflare SSL/TLS docs","description":"Use post-quantum cryptography with Cloudflare One on-ramps and off-ramps.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/post-quantum-cryptography/","name":"Post-quantum cryptography (PQC)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/post-quantum-cryptography/pqc-and-zero-trust/","name":"Post-quantum cryptography in Cloudflare One"}}]}
 ```
