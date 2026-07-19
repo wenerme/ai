@@ -6,15 +6,42 @@
 
 > Automatically select the best model for your prompt
 
-The [Auto Router](https://openrouter.ai/openrouter/auto) (`openrouter/auto`) automatically selects the best model for your prompt, powered by [NotDiamond](https://www.notdiamond.ai/).
+The Auto Router automatically selects the best model for your prompt. It comes in two versions:
+
+* **[Auto](https://openrouter.ai/openrouter/auto)** (`openrouter/auto`) — powered by [NotDiamond](https://www.notdiamond.ai/). **Deprecated**: it will soon be replaced by the beta router below.
+* **[Auto Beta](https://openrouter.ai/openrouter/auto-beta)** (`openrouter/auto-beta`) — powered by OpenRouter's own task type rankings: live, community-wide usage data about which models developers actually rely on for each kind of task. See [How Auto Beta Works](#how-auto-beta-works), [Benchmarks](#benchmarks), and the [Cost / Quality Tradeoff](#cost--quality-tradeoff) dial.
 
 ## Overview
 
 Instead of manually choosing a model, let the Auto Router analyze your prompt and select the optimal model from a curated set of high-quality options. The router considers factors like prompt complexity, task type, and model capabilities.
 
+## How Auto Beta Works
+
+Auto Beta routes on evidence: what thousands of developers, in aggregate, keep using for exactly the kind of task your prompt represents.
+
+1. **Classify the task.** A fast, lightweight classifier assigns each prompt one of \~30 fine-grained task types — for example `code:debugging`, `agent:multi_step_planning`, `qa_knowledge`, `math`, `customer_support`, or `research_report`.
+2. **Rank by real-world spend share.** For that task type, Auto Beta looks up which models the OpenRouter community actually spends on over a trailing 7-day window — the "Share of Spend" view from the [rankings page](https://openrouter.ai/rankings). This is a live signal: when developers migrate a workload to a new model, the router follows within days, with no retraining or manual curation.
+3. **Apply your cost / quality dial.** The [`cost_quality_tradeoff`](#cost--quality-tradeoff) setting filters the candidate pool by cost, so you choose how much to favor cheaper models.
+4. **Route with fallbacks.** The top surviving models (in spend-share order) become the primary pick plus fallbacks, after honoring your `allowed_models` restrictions and output-modality requirements. If classification or rankings are ever unavailable, the router degrades gracefully to a default model set — a request never fails because routing infrastructure hiccuped.
+
+## Benchmarks
+
+We benchmarked Auto Beta against the current Auto router on three very different workloads: GPQA Diamond (198 PhD-level science questions), τ-bench Verified Airline (50 multi-turn agentic customer-service tasks with tool use), and DRACO (20 deep-research report tasks across 10 domains, LLM-judged). Claude Opus 4.8 and GLM 5.2 were run as fixed-model reference points on GPQA and τ-bench. `cqt` is the [`cost_quality_tradeoff`](#cost--quality-tradeoff) setting: 0 is the high-quality end, 7 is the cost-sensitive default.
+
+| Config                          | GPQA Diamond | τ-bench Airline | DRACO (norm. score) |
+| ------------------------------- | ------------ | --------------- | ------------------- |
+| **Auto Beta — quality (cqt=0)** | **83.8%**    | **74.0%**       | 60.0                |
+| **Auto Beta — default (cqt=7)** | 74.2%        | 66.0%           | **63.2**            |
+| Auto — quality (cqt=0)          | 50.0%        | 34.0%           | 19.6                |
+| Auto — default (cqt=7)          | 61.6%        | 30.0%           | 25.6                |
+| Claude Opus 4.8                 | 86.9%        | 78.0%           | —                   |
+| GLM 5.2                         | 75.8%        | 72.0%           | —                   |
+
+Auto Beta wins everywhere, and the gap widens as tasks get harder: it more than doubles Auto's τ-bench accuracy at every setting and scores \~2.5× higher on deep research. At the quality setting it lands within a few points of running Claude Opus on every single question — without you having to know which model is best for the job.
+
 ## Usage
 
-Set your model to `openrouter/auto`:
+Set your model to `openrouter/auto-beta` (or the deprecated `openrouter/auto`):
 
 <CodeGroup>
   ```typescript title="TypeScript SDK" lines theme={null}
@@ -25,7 +52,7 @@ Set your model to `openrouter/auto`:
   });
 
   const completion = await openRouter.chat.send({
-    model: 'openrouter/auto',
+    model: 'openrouter/auto-beta',
     messages: [
       {
         role: 'user',
@@ -47,7 +74,7 @@ Set your model to `openrouter/auto`:
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'openrouter/auto',
+      model: 'openrouter/auto-beta',
       messages: [
         {
           role: 'user',
@@ -74,7 +101,7 @@ Set your model to `openrouter/auto`:
       "Content-Type": "application/json",
     },
     data=json.dumps({
-      "model": "openrouter/auto",
+      "model": "openrouter/auto-beta",
       "messages": [
         {
           "role": "user",
@@ -115,13 +142,6 @@ The response includes the `model` field showing which model was actually used:
 }
 ```
 
-## How It Works
-
-1. **Prompt Analysis**: Your prompt is analyzed by NotDiamond's routing system
-2. **Model Selection**: The optimal model is selected based on the task requirements
-3. **Request Forwarding**: Your request is forwarded to the selected model
-4. **Response Tracking**: The response includes metadata showing which model was used
-
 ## Session Stickiness
 
 The Auto Router pins both the selected **model** and **provider** so that subsequent requests in the same conversation route to the same place. This ensures consistent behavior within a conversation and maximizes [prompt cache](/guides/best-practices/prompt-caching) hits.
@@ -140,7 +160,7 @@ For full details on how sticky routing works, cache key granularity, and the `x-
 <CodeGroup>
   ```typescript title="TypeScript SDK" expandable lines theme={null}
   const completion = await openRouter.chat.send({
-    model: 'openrouter/auto',
+    model: 'openrouter/auto-beta',
     session_id: 'my-conversation-123',
     messages: [
       {
@@ -152,7 +172,7 @@ For full details on how sticky routing works, cache key granularity, and the `x-
 
   // Subsequent requests with the same session_id will use the same model and provider
   const followUp = await openRouter.chat.send({
-    model: 'openrouter/auto',
+    model: 'openrouter/auto-beta',
     session_id: 'my-conversation-123',
     messages: [
       { role: 'user', content: 'Explain quantum entanglement' },
@@ -170,7 +190,7 @@ For full details on how sticky routing works, cache key granularity, and the `x-
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'openrouter/auto',
+      model: 'openrouter/auto-beta',
       session_id: 'my-conversation-123',
       messages: [
         {
@@ -190,7 +210,7 @@ For full details on how sticky routing works, cache key granularity, and the `x-
       "Content-Type": "application/json",
     },
     data=json.dumps({
-      "model": "openrouter/auto",
+      "model": "openrouter/auto-beta",
       "session_id": "my-conversation-123",
       "messages": [
         {
@@ -235,7 +255,7 @@ Use wildcard patterns to filter models. For example, `anthropic/*` matches all A
 <CodeGroup>
   ```typescript title="TypeScript SDK" lines theme={null}
   const completion = await openRouter.chat.send({
-    model: 'openrouter/auto',
+    model: 'openrouter/auto-beta',
     messages: [
       {
         role: 'user',
@@ -259,7 +279,7 @@ Use wildcard patterns to filter models. For example, `anthropic/*` matches all A
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'openrouter/auto',
+      model: 'openrouter/auto-beta',
       messages: [
         {
           role: 'user',
@@ -284,7 +304,7 @@ Use wildcard patterns to filter models. For example, `anthropic/*` matches all A
       "Content-Type": "application/json",
     },
     data=json.dumps({
-      "model": "openrouter/auto",
+      "model": "openrouter/auto-beta",
       "messages": [
         {
           "role": "user",
@@ -335,12 +355,22 @@ Control how aggressively the Auto Router optimizes for cost vs. quality using th
 
 The default is **7**, which balances cost savings with strong output quality.
 
+### How It Works in Auto Beta
+
+In Auto Beta, the tradeoff acts as a cost-percentile ceiling on the ranked candidate pool for your prompt's task type. Each candidate model has an average cost per generation for that task; the dial keeps only models at or below a percentile of that cost distribution:
+
+* At **0**, nearly the whole pool is eligible (up to the 90th cost percentile), so the top spend-share models win regardless of price.
+* At the default of **7**, only the cheapest \~third of candidates survive.
+* At **10**, just the cheapest decile remains.
+
+The cheapest model is always kept, so the filter can never come up empty, and the surviving models are still ranked by spend share — the dial changes how expensive a model is allowed to be, not how candidates are ordered.
+
 ### Via API Request
 
 <CodeGroup>
   ```typescript title="TypeScript SDK" lines theme={null}
   const completion = await openRouter.chat.send({
-    model: 'openrouter/auto',
+    model: 'openrouter/auto-beta',
     messages: [
       {
         role: 'user',
@@ -364,7 +394,7 @@ The default is **7**, which balances cost savings with strong output quality.
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'openrouter/auto',
+      model: 'openrouter/auto-beta',
       messages: [
         {
           role: 'user',
@@ -389,7 +419,7 @@ The default is **7**, which balances cost savings with strong output quality.
       "Content-Type": "application/json",
     },
     data=json.dumps({
-      "model": "openrouter/auto",
+      "model": "openrouter/auto-beta",
       "messages": [
         {
           "role": "user",

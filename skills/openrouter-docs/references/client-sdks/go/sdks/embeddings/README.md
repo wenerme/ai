@@ -95,6 +95,7 @@ import(
 	"context"
 	"os"
 	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/optionalnullable"
 	"log"
 )
 
@@ -105,26 +106,40 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Embeddings.ListModels(ctx)
+    res, err := s.Embeddings.ListModels(ctx, optionalnullable.From(openrouter.Pointer[int64](0)), openrouter.Pointer[int64](500))
     if err != nil {
         log.Fatal(err)
     }
     if res != nil {
-        // handle response
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
     }
 }
 ```
 
 ### Parameters
 
-| Parameter | Type                                                       | Required             | Description                         |
-| --------- | ---------------------------------------------------------- | -------------------- | ----------------------------------- |
-| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request. |
-| `opts`    | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.       |
+| Parameter | Type                                                       | Required             | Description                                                                                                       | Example |
+| --------- | ---------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------- | ------- |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                                                                               |         |
+| `offset`  | optionalnullable.OptionalNullable\[`int64`]                | :heavy\_minus\_sign: | Number of records to skip for pagination. When both offset and limit are omitted, the full list is returned       | 0       |
+| `limit`   | `*int64`                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 1000). When both offset and limit are omitted, the full list is returned | 500     |
+| `opts`    | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                                                                                     |         |
 
 ### Response
 
-**[\*components.ModelsListResponse](../../models/components/modelslistresponse.mdx), error**
+**[\*operations.ListEmbeddingsModelsResponse](../../models/operations/listembeddingsmodelsresponse.mdx), error**
 
 ### Errors
 

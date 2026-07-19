@@ -238,7 +238,7 @@ Prefer using existing proxies; if a proxy with that name does not exist, specify
 
 `#RULES` is to connect in accordance with routing rules, equivalent to [respect-rules](./index.md#respect-rules).
 
-If querying through a proxy is required, `proxy-server-nameserver` should be configured to prevent egg issues.
+If querying through a proxy is required, `proxy-server-nameserver` should be configured to avoid a chicken-and-egg problem.
 
 ### h3
 
@@ -249,6 +249,10 @@ This option does not conflict with `prefer-h3`. After filling it in, it forces t
 ### skip-cert-verify
 
 Skip TLS certificate verification
+
+### name-cert-verify
+
+Only modifies the certificate's DNSName verification target, without altering the SNI.
 
 ### ecs
 

@@ -19,6 +19,11 @@ proxies:
     #   -----BEGIN PRIVATE KEY-----
     #   ...
     #   -----END PRIVATE KEY-----
+    # tls-auth: |
+    #   -----BEGIN OpenVPN Static key V1-----
+    #   ...
+    #   -----END OpenVPN Static key V1-----
+    # key-direction: "1"
     ca: |
       -----BEGIN CERTIFICATE-----
       MIIB...example
@@ -27,6 +32,10 @@ proxies:
     #  -----BEGIN OpenVPN Static key V1-----
     #  ...
     #  -----END OpenVPN Static key V1-----
+    # tls-crypt-v2: |
+    #  -----BEGIN OpenVPN tls-crypt-v2 client key-----
+    #  ...
+    #  -----END OpenVPN tls-crypt-v2 client key-----
     # peer-info:
     #   IV_HWADDR: "52:54:00:ff:72:87"
     #   UV_DEVICE_ID: "laptop-001"
@@ -35,6 +44,8 @@ proxies:
     # handshake-timeout: 30
     # dev: tun
     # cipher: AES-128-GCM
+    # data-ciphers: [AES-256-GCM, AES-128-GCM]
+    # data-ciphers-fallback: AES-128-CBC
     # auth: SHA256
     # comp-lzo: "no"
     udp: true
@@ -77,9 +88,21 @@ Optional, protocol type. Supports `udp` or `tcp`. Defaults to `udp`.
 
 **Optional**, client private key content. Copy this from the `<key>` tag in your `.ovpn` file. Can be omitted when using username/password authentication.
 
+## tls-auth
+
+**Optional**, copy from the `<tls-auth>` tag in the `.ovpn` file. **Mutually exclusive with `tls-crypt` / `tls-crypt-v2`**.
+
+## key-direction
+
+**Optional**, required when using `tls-auth`, supports `"1"` or `"0"`. If left blank or as an empty string, it defaults to `bidirectional` mode.
+
 ## tls-crypt
 
-**Optional**, TLS encryption key. Copy this from the `<tls-crypt>` tag in your `.ovpn` file; do not include the tags themselves.
+**Optional**, TLS encryption key. Copy this from the `<tls-crypt>` tag in your `.ovpn` file; do not include the tags themselves. **Mutually exclusive with `tls-auth` / `tls-crypt-v2`**.
+
+## tls-crypt-v2
+
+**Optional**, copy the client key from the `<tls-crypt-v2>` tag in your `.ovpn` file; do not include the tags themselves. **Mutually exclusive with `tls-auth` / `tls-crypt`**.
 
 ## ping
 
@@ -104,6 +127,14 @@ Optional, virtual network interface type. Currently only `tun` is supported. Def
 ## cipher
 
 Optional, encryption method. Supports `AES-128-GCM` / `AES-256-GCM` / `AES-128-CBC` / `AES-256-CBC` / `CHACHA20-POLY1305`. Defaults to `AES-128-GCM`. `AES-CBC` will be treated as `AES-128-CBC`.
+
+## data-ciphers
+
+Optional, data channel cipher negotiation list, sends IV_CIPHERS to the server; the cipher list pushed by the server is intersected with the local list, and the first matching item is selected.
+
+## data-ciphers-fallback
+
+Optional, fallback cipher when negotiation fails (corresponds to --data-ciphers-fallback)
 
 ## auth
 

@@ -11,6 +11,7 @@ proxies:
   - h2
   - http/1.1
   skip-cert-verify: true
+  # name-cert-verify: example.com
   # certificate: xxxx
   # private-key: xxx
   client-fingerprint: chrome
@@ -22,6 +23,15 @@ proxies:
     enable: true
     config: base64_encoded_config
     # query-server-name: xxx.com
+  shadow-tls-opts: 
+    version: 3 
+    password: shadow-tls-password
+  restls-opts:
+    password: restls-password
+    version-hint: tls13
+  jls-opts:
+    username: jls-user
+    password: jls-password
   tlsmirror-opts:
     primary-key: MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=
     explicit-nonce-ciphersuites: [
@@ -98,6 +108,10 @@ openssl x509 -noout -fingerprint -sha256 -inform pem -in yourcert.pem
 
 跳过证书验证，仅适用于使用 `tls` 的协议
 
+## name-cert-verify
+
+可选，仅修改证书 DNSName 校验目标，不修改 SNI
+
 ## certificate
 
 如果填写则开启 [mTLS](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/)（需要和 private-key 同时填写），内容为证书 PEM 格式，或者 证书的路径
@@ -149,9 +163,49 @@ ECH 配置，如果为空则通过 dns 解析，不为空则通过该值指定�
 
 可选项，不为空时用于指定通过 dns 解析时的域名
 
+## shadow-tls-opts
+
+需要开启 `tls: true`；使用通用配置中的 `sni` / `servername` 作为 ShadowTLS 的 SNI。
+
+### shadow-tls-opts.version
+
+支持 `v1` / `v2` / `v3`；留空时默认为 `v2`。
+
+### shadow-tls-opts.password
+
+ShadowTLS 密码
+
+## restls-opts
+
+需要开启 `tls: true`；使用通用配置中的 `sni` / `servername` 作为 Restls 的 SNI。
+
+### restls-opts.password
+
+Restls 密码
+
+### restls-opts.version-hint
+
+TLS 版本提示，可选值为 `tls12` / `tls13`
+
+### restls-opts.restls-script
+
+可选，用于控制握手后的 Restls 载体流量脚本
+
+## jls-opts
+
+需要开启 `tls: true`。使用通用配置中的 `sni` / `servername` 作为 JLS 的 SNI。
+
+### jls-opts.username
+
+JLS 用户名
+
+### jls-opts.password
+
+JLS 密码
+
 ## tlsmirror-opts
 
-当 `tls` 为 `true` 且配置 `tlsmirror-opts` 时启用 tlsmirror。tlsmirror 的 TLS 载体会使用同一出站中的 `servername`、`alpn`、`skip-cert-verify`、`fingerprint`、`certificate`、`private-key`、`client-fingerprint` 和 `ech-opts` 配置；`servername` 为空时使用 `server`。
+当 `tls` 为 `true` 且配置 `tlsmirror-opts` 时启用 tlsmirror。tlsmirror 的 TLS 载体会使用同一出站中的 `servername`、`alpn`、`skip-cert-verify`、`name-cert-verify`、`fingerprint`、`certificate`、`private-key`、`client-fingerprint` 和 `ech-opts` 配置；`servername` 为空时使用 `server`。
 
 !!! note
     目前仅 VMess 支持开启 tlsmirror，请勿在其他协议上使用

@@ -17,6 +17,16 @@ proxies:
     - h2
     - http/1.1
   skip-cert-verify: true
+  name-cert-verify: example.com
+  shadow-tls-opts:
+    version: 3
+    password: shadow-tls-password
+  restls-opts:
+    password: restls-password
+    version-hint: tls13
+  jls-opts:
+    username: jls-user
+    password: jls-password
 ```
 
 [通用字段](./index.md)
@@ -24,7 +34,7 @@ proxies:
 [TLS 字段](./tls.md)
 
 !!! tip
-    Mihomo 不支持 AnyTLS+Reality 的组合（未来也不会支持），如果您想隐藏 SNI 请配合[ECH](./tls.md#ech-opts)使用，如果您非要使用 Reality 请选择[Vmess](./vmess.md)、[VLESS](./vless.md)、[Trojan](./trojan.md)协议。
+    Mihomo 不支持 AnyTLS+Reality 的组合（未来也不会支持）。如果您想隐藏 SNI，请配合 [ECH](./tls.md#ech-opts) 使用，或选择与 [ShadowTLS](./tls.md#shadow-tls-opts)、[ResTLS](./tls.md#restls-opts)、[JLS](./tls.md#jls-opts) 组合使用。如果您非要使用 Reality，请选择 [Vmess](./vmess.md)、[VLESS](./vless.md)、[Trojan](./trojan.md) 协议。
 
 ## idle-session-check-interval
 
