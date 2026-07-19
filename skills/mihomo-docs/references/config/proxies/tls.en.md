@@ -11,6 +11,7 @@ proxies:
   - h2
   - http/1.1
   skip-cert-verify: true
+  # name-cert-verify: example.com
   # certificate: xxxx
   # private-key: xxx
   client-fingerprint: chrome
@@ -22,6 +23,15 @@ proxies:
     enable: true
     config: base64_encoded_config
     # query-server-name: xxx.com
+  shadow-tls-opts: 
+    version: 3 
+    password: shadow-tls-password
+  restls-opts:
+    password: restls-password
+    version-hint: tls13
+  jls-opts:
+    username: jls-user
+    password: jls-password
   tlsmirror-opts:
     primary-key: MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=
     explicit-nonce-ciphersuites: [
@@ -98,6 +108,10 @@ Refer to [Application-Layer Protocol Negotiation](https://en.wikipedia.org/wiki/
 
 Bypasses certificate verification, applicable only to protocols that use `tls`.
 
+## name-cert-verify
+
+Optional. Only modifies the certificate's DNSName verification target, without altering the SNI.
+
 ## certificate
 
 If filled, this enables [mTLS](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) (must be filled in with private-key). The content is the certificate in PEM format or the path to the certificate.
@@ -150,9 +164,49 @@ The ECH configuration, if empty, will be resolved via DNS; otherwise, it will be
 
 Optional, if not empty, it is used to specify the domain name when resolving via DNS.
 
+## shadow-tls-opts
+
+Requires `tls: true`. Uses `sni` / `servername` from the general configuration as the ShadowTLS SNI.
+
+### shadow-tls-opts.version
+
+Supports `v1` / `v2` / `v3`. Defaults to `v2` if left empty.
+
+### shadow-tls-opts.password
+
+ShadowTLS password.
+
+## restls-opts
+
+Requires `tls: true`. Uses `sni` / `servername` from the general configuration as the Restls SNI.
+
+### restls-opts.password
+
+Restls password.
+
+### restls-opts.version-hint
+
+TLS version hint. Available values: `tls12` / `tls13`.
+
+### restls-opts.restls-script
+
+Optional Restls carrier traffic script after the handshake.
+
+## jls-opts
+
+Requires `tls: true`. Uses `sni` / `servername` from the general configuration as the JLS SNI.
+
+### jls-opts.username
+
+JLS username.
+
+### jls-opts.password
+
+JLS password.
+
 ## tlsmirror-opts
 
-When `tls` is `true`, configuring `tlsmirror-opts` enables tlsmirror. The TLS carrier used by tlsmirror uses `servername`, `alpn`, `skip-cert-verify`, `fingerprint`, `certificate`, `private-key`, `client-fingerprint`, and `ech-opts` from the same outbound. If `servername` is empty, `server` is used.
+When `tls` is `true`, configuring `tlsmirror-opts` enables tlsmirror. The TLS carrier used by tlsmirror uses `servername`, `alpn`, `skip-cert-verify`, `name-cert-verify`, `fingerprint`, `certificate`, `private-key`, `client-fingerprint`, and `ech-opts` from the same outbound. If `servername` is empty, `server` is used.
 
 !!! note
     Currently, only VMess supports enabling tlsmirror. Do not use it with other protocols.

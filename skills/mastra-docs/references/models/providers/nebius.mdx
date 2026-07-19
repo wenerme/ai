@@ -1,11 +1,11 @@
 ---
 title: "Nebius Token Factory | Models"
-description: "Use Nebius Token Factory models with Mastra. 19 models available."
+description: "Use Nebius Token Factory models with Mastra. 21 models available."
 ---
 
 # [Nebius Token Factory logo]Nebius Token Factory
 
-Access 19 Nebius Token Factory models through Mastra's model router. Authentication is handled automatically using the `NEBIUS_API_KEY` environment variable.
+Access 21 Nebius Token Factory models through Mastra's model router. Authentication is handled automatically using the `NEBIUS_API_KEY` environment variable.
 
 Learn more in the [Nebius Token Factory documentation](https://docs.tokenfactory.nebius.com/).
 
@@ -86,6 +86,30 @@ for await (const chunk of stream) {
     "maxOutput": 8192,
     "inputCost": 0.3,
     "outputCost": 1.2
+  },
+  {
+    "model": "nebius/MiniMaxAI/MiniMax-M3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
+    "model": "nebius/moonshotai/Kimi-K2.7-Code",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 8000,
+    "inputCost": 0.95,
+    "outputCost": 4
   },
   {
     "model": "nebius/NousResearch/Hermes-4-405B",

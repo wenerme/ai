@@ -19,6 +19,11 @@ proxies:
     #   -----BEGIN PRIVATE KEY-----
     #   ...
     #   -----END PRIVATE KEY-----
+    # tls-auth: |
+    #   -----BEGIN OpenVPN Static key V1-----
+    #   ...
+    #   -----END OpenVPN Static key V1-----
+    # key-direction: "1"
     ca: |
       -----BEGIN CERTIFICATE-----
       MIIB...example
@@ -27,6 +32,10 @@ proxies:
     #  -----BEGIN OpenVPN Static key V1-----
     #  ...
     #  -----END OpenVPN Static key V1-----
+    # tls-crypt-v2: |
+    #  -----BEGIN OpenVPN tls-crypt-v2 client key-----
+    #  ...
+    #  -----END OpenVPN tls-crypt-v2 client key-----
     # peer-info:
     #   IV_HWADDR: "52:54:00:ff:72:87"
     #   UV_DEVICE_ID: "laptop-001"
@@ -35,6 +44,8 @@ proxies:
     # handshake-timeout: 30
     # dev: tun
     # cipher: AES-128-GCM
+    # data-ciphers: [AES-256-GCM, AES-128-GCM]
+    # data-ciphers-fallback: AES-128-CBC
     # auth: SHA256
     # comp-lzo: "no"
     udp: true
@@ -77,9 +88,21 @@ proxies:
 
 **可选**，客户端私钥内容。从 `.ovpn` 文件的 `<key>` 标签中复制。使用用户名/密码认证时可省略。
 
+## tls-auth
+
+**可选**，从 `.ovpn` 文件的 `<tls-auth>` 标签中复制，**与 `tls-crypt` / `tls-crypt-v2` 互斥**
+
+## key-direction
+
+**可选**，使用 `tls-auth` 时填写，支持 `"1"` 或 `"0"`；如果不填或为空字符串，则默认为双向模式（`bidirectional`）。
+
 ## tls-crypt
 
-**可选**，TLS 加密密钥。从 `.ovpn` 文件的 `<tls-crypt>` 标签中复制，不需要保留标签。
+**可选**，TLS 加密密钥。从 `.ovpn` 文件的 `<tls-crypt>` 标签中复制，不需要保留标签。**与 `tls-auth` / `tls-crypt-v2` 互斥**。
+
+## tls-crypt-v2
+
+**可选**，从 `.ovpn` 文件的 `<tls-crypt-v2>` 标签中复制客户端密钥，不需要保留标签。**与 `tls-auth` / `tls-crypt` 互斥**。
 
 ## ping
 
@@ -104,6 +127,14 @@ proxies:
 ## cipher
 
 可选，加密方式，支持 `AES-128-GCM` / `AES-256-GCM`/ `AES-128-CBC` / `AES-256-CBC` /`CHACHA20-POLY1305`默认 `AES-128-GCM`， `AES-CBC` 会按 `AES-128-CBC` 处理。
+
+## data-ciphers
+
+可选，数据通道 cipher 协商列表，发送 IV_CIPHERS 给服务端；服务端 push 的 cipher 列表与本地列表取交集，取第一个匹配项。
+
+## data-ciphers-fallback
+
+可选，协商失败时的回退 cipher（对应 --data-ciphers-fallback）
 
 ## auth
 

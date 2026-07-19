@@ -48,7 +48,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Workspaces.List(ctx, optionalnullable.From[int64](nil), nil)
+    res, err := s.Workspaces.List(ctx, optionalnullable.From(openrouter.Pointer[int64](0)), openrouter.Pointer[int64](50))
     if err != nil {
         log.Fatal(err)
     }
@@ -520,7 +520,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Workspaces.ListMembers(ctx, "production", optionalnullable.From[int64](nil), nil)
+    res, err := s.Workspaces.ListMembers(ctx, "production", optionalnullable.From(openrouter.Pointer[int64](0)), openrouter.Pointer[int64](50))
     if err != nil {
         log.Fatal(err)
     }
@@ -631,7 +631,7 @@ func main() {
 
 ## BulkRemoveMembers
 
-Remove multiple members from a workspace. Members with active API keys in the workspace cannot be removed. [Management key](/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
+Remove multiple members from a workspace. Members with active API keys in the workspace cannot be removed. SCIM-managed members cannot be removed; changes must be made in your identity provider. [Management key](/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

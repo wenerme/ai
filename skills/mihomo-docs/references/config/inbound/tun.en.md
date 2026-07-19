@@ -44,6 +44,10 @@ tun:
   - 1000
   exclude-uid-range:
   - 1000:9999
+  include-mac-address:
+  - 00:11:22:33:44:55
+  exclude-mac-address:
+  - 00:11:22:33:44:66
   include-android-user:
   - 0
   - 10
@@ -77,14 +81,14 @@ TUN mode protocol stack. If no usage issues occur, `mixed` stack is recommended.
 Available values: `system/gvisor/mixed`
 
 !!! note "Differences between protocol stacks"
-* `system` uses the system protocol stack, providing a more stable/comprehensive TUN experience with relatively lower resource usage compared to other stacks.
-* `gvisor` implements the network protocol stack in user space, offering higher security and isolation while avoiding context switching between the OS kernel and user space, which can yield better network processing performance under specific conditions.
-* `mixed` is a hybrid stack where TCP uses the `system` stack and UDP uses the `gvisor` stack, potentially delivering a better overall user experience.
-* [Simple Performance Test](tun.md%23tun_1)
-* If the firewall is turned on, `system` and `mixed` protocol stacks cannot be used. Allow the core binary through the firewall using the following methods:
-* Windows: Settings -> Windows Security -> Allow an app through firewall -> Select the core binary.
-* MacOS: Generally no configuration is required as the firewall allows signed software by default. If you encounter issues where it cannot be used with the firewall enabled, you can try allowing it: System Settings -> Network -> Firewall -> Options -> Add Mihomo app.
-* Linux: Generally no configuration is required as the firewall does not block applications by default. If you encounter issues with the firewall enabled, you can try allowing outbound traffic from the TUN interface (assuming the TUN interface is named Mihomo): `sudo iptables -A OUTPUT -o Mihomo -j ACCEPT`
+    * `system` uses the system protocol stack, providing a more stable/comprehensive TUN experience with relatively lower resource usage compared to other stacks.
+    * `gvisor` implements the network protocol stack in user space, offering higher security and isolation while avoiding context switching between the OS kernel and user space, which can yield better network processing performance under specific conditions.
+    * `mixed` is a hybrid stack where TCP uses the `system` stack and UDP uses the `gvisor` stack, potentially delivering a better overall user experience.
+    * [Simple Performance Test](#network-loopback-test-for-tun-protocol-stacks)
+    * If the firewall is turned on, `system` and `mixed` protocol stacks cannot be used. Allow the core binary through the firewall using the following methods:
+    * Windows: Settings -> Windows Security -> Allow an app through firewall -> Select the core binary.
+    * MacOS: Generally no configuration is required as the firewall allows signed software by default. If you encounter issues where it cannot be used with the firewall enabled, you can try allowing it: System Settings -> Network -> Firewall -> Options -> Add Mihomo app.
+    * Linux: Generally no configuration is required as the firewall does not block applications by default. If you encounter issues with the firewall enabled, you can try allowing outbound traffic from the TUN interface (assuming the TUN interface is named Mihomo): `sudo iptables -A OUTPUT -o Mihomo -j ACCEPT`
 
 ## device
 
@@ -115,8 +119,8 @@ Automatically detect the outbound interface for traffic. It is recommended to ma
 DNS hijacking. Redirects matched connections into the internal [DNS](../dns/index.md) module. If no protocol is specified, it defaults to `udp://`.
 
 !!! warning ""
-* On `MacOS`/`Windows`, it cannot automatically hijack DNS requests sent to the local network.
-* On `Android`, if `Private DNS` is enabled, DNS requests cannot be automatically hijacked.
+    * On `MacOS`/`Windows`, it cannot automatically hijack DNS requests sent to the local network.
+    * On `Android`, if `Private DNS` is enabled, DNS requests cannot be automatically hijacked.
 
 ## strict-route
 
@@ -152,8 +156,8 @@ The maximum length of a data chunk.
 Specify the IPv6 address of the TUN interface.
 
 !!! note
-* Currently, the program will check other system interfaces for IPv6 upon startup. If none exists, this feature will be disabled. To force enable the v6 address for the TUN interface, please manually set the `SKIP_SYSTEM_IPV6_CHECK=1` system environment variable.
-* It requires `ipv6` to be set to `true` in the top-level configuration simultaneously to take effect.
+    * Currently, the program will check other system interfaces for IPv6 upon startup. If none exists, this feature will be disabled. To force enable the v6 address for the TUN interface, please manually set the `SKIP_SYSTEM_IPV6_CHECK=1` system environment variable.
+    * It requires `ipv6` to be set to `true` in the top-level configuration simultaneously to take effect.
 
 ## udp-timeout
 
@@ -177,7 +181,7 @@ Adds destination IP CIDR rules from the specified rule set to the firewall; non-
 Linux only, and requires nftables as well as `auto-route` and `auto-redirect` to be enabled.
 
 !!! warning ""
-Conflicts with `routing-mark` in any configuration.
+    Conflicts with `routing-mark` in any configuration.
 
 ## route-exclude-address-set
 
@@ -185,7 +189,7 @@ Adds destination IP CIDR rules from the specified rule set to the firewall; matc
 Linux only, and requires nftables as well as `auto-route` and `auto-redirect` to be enabled.
 
 !!! warning ""
-Conflicts with `routing-mark` in any configuration.
+    Conflicts with `routing-mark` in any configuration.
 
 ## route-address
 
@@ -208,7 +212,7 @@ Exclude interfaces from routing. Conflicts with `include-interface`, cannot be c
 Included users to have their traffic routed by the TUN interface. Users not configured will not have their traffic routed by the TUN interface. No restrictions by default.
 
 !!! note ""
-UID rules are supported under Linux only, and require `auto-route`.
+    UID rules are supported under Linux only, and require `auto-route`.
 
 ## include-uid-range
 
@@ -222,12 +226,20 @@ Exclude users to prevent their traffic from being routed by the TUN interface.
 
 Exclude user range to prevent their traffic from being routed by the TUN interface.
 
+## include-mac-address
+
+Restrict routed LAN devices by source MAC address. Linux only; requires `auto-route` and `auto-redirect`.
+
+## exclude-mac-address
+
+Exclude LAN device traffic by source MAC address. Linux only; requires `auto-route` and `auto-redirect`.
+
 ## include-android-user
 
 Included Android users to have their traffic routed by the TUN interface. Users not configured will not have their traffic routed by the TUN interface.
 
 !!! note ""
-Android user and application rules are supported under Android only, and require `auto-route`.
+    Android user and application rules are supported under Android only, and require `auto-route`.
 
 | Common User | ID |
 | --- | --- |

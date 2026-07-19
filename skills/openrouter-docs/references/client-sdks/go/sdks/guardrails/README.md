@@ -50,7 +50,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Guardrails.List(ctx, optionalnullable.From[int64](nil), nil, nil)
+    res, err := s.Guardrails.List(ctx, optionalnullable.From(openrouter.Pointer[int64](0)), openrouter.Pointer[int64](50), nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -131,6 +131,7 @@ func main() {
         EnforceZdrGoogle: optionalnullable.From(openrouter.Pointer(false)),
         EnforceZdrOpenai: optionalnullable.From(openrouter.Pointer(true)),
         EnforceZdrOther: optionalnullable.From(openrouter.Pointer(false)),
+        EnforceZdrXai: optionalnullable.From(openrouter.Pointer(false)),
         IgnoredModels: optionalnullable.From[[]string](nil),
         IgnoredProviders: optionalnullable.From[[]string](nil),
         LimitUsd: optionalnullable.From(openrouter.Pointer[float64](50.0)),
@@ -363,7 +364,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Guardrails.ListGuardrailKeyAssignments(ctx, "550e8400-e29b-41d4-a716-446655440000", optionalnullable.From[int64](nil), nil)
+    res, err := s.Guardrails.ListGuardrailKeyAssignments(ctx, "550e8400-e29b-41d4-a716-446655440000", optionalnullable.From(openrouter.Pointer[int64](0)), openrouter.Pointer[int64](50))
     if err != nil {
         log.Fatal(err)
     }
@@ -554,7 +555,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Guardrails.ListGuardrailMemberAssignments(ctx, "550e8400-e29b-41d4-a716-446655440000", optionalnullable.From[int64](nil), nil)
+    res, err := s.Guardrails.ListGuardrailMemberAssignments(ctx, "550e8400-e29b-41d4-a716-446655440000", optionalnullable.From(openrouter.Pointer[int64](0)), openrouter.Pointer[int64](50))
     if err != nil {
         log.Fatal(err)
     }
@@ -747,7 +748,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Guardrails.ListKeyAssignments(ctx, optionalnullable.From[int64](nil), nil)
+    res, err := s.Guardrails.ListKeyAssignments(ctx, optionalnullable.From(openrouter.Pointer[int64](0)), openrouter.Pointer[int64](50))
     if err != nil {
         log.Fatal(err)
     }
@@ -814,7 +815,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Guardrails.ListMemberAssignments(ctx, optionalnullable.From[int64](nil), nil)
+    res, err := s.Guardrails.ListMemberAssignments(ctx, optionalnullable.From(openrouter.Pointer[int64](0)), openrouter.Pointer[int64](50))
     if err != nil {
         log.Fatal(err)
     }

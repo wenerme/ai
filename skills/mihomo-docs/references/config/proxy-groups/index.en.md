@@ -133,18 +133,18 @@ Includes all [proxy sets](../proxy-providers/index.md), sorted by name.
 
 ## filter
 
-Filters nodes that meet keywords or [regular expressions](https://github.com/ziishaned/learn-regex/blob/master/translations/README-cn.md). You can use ` to separate multiple regular expressions.
+Filters nodes that match keywords or [regular expressions](https://github.com/ziishaned/learn-regex/blob/master/translations/README-cn.md). Use `|` to separate multiple regular expressions.
 
 !!! info ""
     This only applies to included proxy sets and [including all outbound proxies](./index.md#include-all-proxies).
 
 ## exclude-filter
 
-Excludes nodes that meet keywords or [regular expressions](https://github.com/ziishaned/learn-regex/blob/master/translations/README-cn.md). You can use ` to separate multiple regular expressions.
+Excludes nodes that match keywords or [regular expressions](https://github.com/ziishaned/learn-regex/blob/master/translations/README-cn.md). Use `|` to separate multiple regular expressions.
 
 ## exclude-type
 
-Regular expressions are not supported. Split by `|`, exclude based on node type, only excluding [ingress outbound proxies](#proxies)
+Regular expressions are not supported. Split by `|` and exclude by node type. This applies only to [included outbound proxies](#proxies).
 
 For supported types, please refer to [Adapter Type](https://github.com/MetaCubeX/mihomo/blob/fbead56ec97ae93f904f4476df1741af718c9c2a/constant/adapters.go#L18-L45), ignore case sensitivity
 

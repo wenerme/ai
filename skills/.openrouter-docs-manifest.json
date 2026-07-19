@@ -10645,9 +10645,9 @@
   },
   "client-sdks/go/sdks/byok/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/byok/README.md",
-    "lastModified": "Mon, 06 Jul 2026 14:29:00 GMT",
-    "size": 14163,
-    "updatedAt": "2026-07-06T14:29:00.881Z"
+    "lastModified": "Sun, 19 Jul 2026 04:13:00 GMT",
+    "size": 14207,
+    "updatedAt": "2026-07-19T04:13:00.327Z"
   },
   "client-sdks/go/sdks/chat/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/chat/README.md",
@@ -10675,9 +10675,9 @@
   },
   "client-sdks/go/sdks/embeddings/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/embeddings/README.md",
-    "lastModified": "Mon, 06 Jul 2026 14:29:03 GMT",
-    "size": 4784,
-    "updatedAt": "2026-07-06T14:29:04.026Z"
+    "lastModified": "Sun, 19 Jul 2026 04:13:02 GMT",
+    "size": 5942,
+    "updatedAt": "2026-07-19T04:13:02.794Z"
   },
   "client-sdks/go/sdks/endpoints/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/endpoints/README.md",
@@ -10699,9 +10699,9 @@
   },
   "client-sdks/go/sdks/guardrails/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/guardrails/README.md",
-    "lastModified": "Mon, 06 Jul 2026 14:29:07 GMT",
-    "size": 39327,
-    "updatedAt": "2026-07-06T14:29:07.573Z"
+    "lastModified": "Sun, 19 Jul 2026 04:13:04 GMT",
+    "size": 39620,
+    "updatedAt": "2026-07-19T04:13:04.951Z"
   },
   "client-sdks/go/sdks/images/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/images/README.md",
@@ -10711,9 +10711,9 @@
   },
   "client-sdks/go/sdks/models/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/models/README.md",
-    "lastModified": "Mon, 06 Jul 2026 14:29:08 GMT",
-    "size": 9461,
-    "updatedAt": "2026-07-06T14:29:08.552Z"
+    "lastModified": "Sun, 19 Jul 2026 04:13:05 GMT",
+    "size": 10964,
+    "updatedAt": "2026-07-19T04:13:05.732Z"
   },
   "client-sdks/go/sdks/oauth/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/oauth/README.md",
@@ -10723,21 +10723,21 @@
   },
   "client-sdks/go/sdks/observability/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/observability/README.md",
-    "lastModified": "Mon, 06 Jul 2026 14:29:09 GMT",
-    "size": 21953,
-    "updatedAt": "2026-07-06T14:29:09.540Z"
+    "lastModified": "Sun, 19 Jul 2026 04:13:06 GMT",
+    "size": 21997,
+    "updatedAt": "2026-07-19T04:13:06.815Z"
   },
   "client-sdks/go/sdks/organization/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/organization/README.md",
-    "lastModified": "Mon, 06 Jul 2026 14:29:10 GMT",
-    "size": 2817,
-    "updatedAt": "2026-07-06T14:29:10.055Z"
+    "lastModified": "Sun, 19 Jul 2026 04:13:07 GMT",
+    "size": 2861,
+    "updatedAt": "2026-07-19T04:13:07.252Z"
   },
   "client-sdks/go/sdks/presets/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/presets/README.md",
-    "lastModified": "Mon, 06 Jul 2026 14:29:10 GMT",
-    "size": 26075,
-    "updatedAt": "2026-07-06T14:29:10.642Z"
+    "lastModified": "Sun, 19 Jul 2026 04:13:07 GMT",
+    "size": 26163,
+    "updatedAt": "2026-07-19T04:13:07.832Z"
   },
   "client-sdks/go/sdks/providers/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/providers/README.md",
@@ -10777,9 +10777,9 @@
   },
   "client-sdks/go/sdks/workspaces/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/workspaces/README.md",
-    "lastModified": "Mon, 06 Jul 2026 14:29:15 GMT",
-    "size": 30679,
-    "updatedAt": "2026-07-06T14:29:15.254Z"
+    "lastModified": "Sun, 19 Jul 2026 04:13:11 GMT",
+    "size": 30855,
+    "updatedAt": "2026-07-19T04:13:11.200Z"
   },
   "client-sdks/overview.md": {
     "url": "https://openrouter.ai/docs/client-sdks/overview.md",
@@ -12037,9 +12037,9 @@
   },
   "guides/routing/routers/auto-router.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/auto-router.md",
-    "lastModified": "Mon, 06 Jul 2026 14:31:13 GMT",
-    "size": 13757,
-    "updatedAt": "2026-07-06T14:31:13.901Z"
+    "lastModified": "Sun, 19 Jul 2026 04:14:48 GMT",
+    "size": 17752,
+    "updatedAt": "2026-07-19T04:14:48.463Z"
   },
   "guides/routing/routers/body-builder.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/body-builder.md",

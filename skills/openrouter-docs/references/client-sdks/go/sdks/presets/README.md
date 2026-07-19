@@ -44,7 +44,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Presets.List(ctx, optionalnullable.From[int64](nil), nil)
+    res, err := s.Presets.List(ctx, optionalnullable.From(openrouter.Pointer[int64](0)), openrouter.Pointer[int64](50))
     if err != nil {
         log.Fatal(err)
     }
@@ -387,7 +387,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Presets.ListVersions(ctx, "my-preset", optionalnullable.From[int64](nil), nil)
+    res, err := s.Presets.ListVersions(ctx, "my-preset", optionalnullable.From(openrouter.Pointer[int64](0)), openrouter.Pointer[int64](50))
     if err != nil {
         log.Fatal(err)
     }

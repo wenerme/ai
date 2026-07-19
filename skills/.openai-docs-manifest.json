@@ -818,10 +818,10 @@
   "openai-docs/guides/reasoning.md": {
     "url": "https://developers.openai.com/api/docs/guides/reasoning.md",
     "skill": "openai-docs",
-    "etag": "W/\"bf004ead5b37de77a9c4718383f2e50a\"",
-    "lastModified": "Thu, 16 Jul 2026 03:07:01 GMT",
-    "size": 27891,
-    "updatedAt": "2026-07-16T03:34:15.088Z"
+    "etag": "W/\"ed151747acee149a9a83cd299781632c\"",
+    "lastModified": "Sat, 18 Jul 2026 23:32:38 GMT",
+    "size": 28270,
+    "updatedAt": "2026-07-19T03:48:58.371Z"
   },
   "openai-docs/guides/red-teaming.md": {
     "url": "https://developers.openai.com/api/docs/guides/red-teaming.md",

@@ -45,6 +45,7 @@ The tools/clients listed here use or include the mihomo core. We **do not direct
 |[ClashMac](https://github.com/666OS/ClashMac)|Maintained | Closed-source |
 |[Bettbox](https://github.com/appshubcc/Bettbox)|Maintained |
 |[ClashBar](https://github.com/Sitoi/ClashBar)|Maintained |
+|[CatBar](https://github.com/QuentinHsu/cat-bar)|Maintained |
 |[Zephyr](https://github.com/Juwan-Hwang/Zephyr)|Maintained |
 |[SlothClash](https://github.com/Nemu-x/SlothClash)|Maintained |
 |[KumoApp](https://github.com/ProjectKumo/KumoApp)|Maintained |
@@ -88,6 +89,7 @@ The tools/clients listed here use or include the mihomo core. We **do not direct
 |[ClashFest](https://github.com/Nemu-x/ClashFest)|Maintained |
 |[AsteriskMETA](https://github.com/Asterisk4Magisk/AsteriskMETA)|Maintained |
 |[SlClash](https://github.com/songzhengpei/Slclash)|Maintained |
+|[MikuBox](https://github.com/HatsuneMikuUwU/MikuBoxForAndroid)|Maintained |
 
 ## iOS
 
