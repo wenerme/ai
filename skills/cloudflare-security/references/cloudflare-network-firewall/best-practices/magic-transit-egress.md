@@ -1,7 +1,7 @@
 ---
 title: Magic Transit egress
 description: Configure Network Firewall for Magic Transit egress traffic.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -22,6 +22,6 @@ For Magic Transit egress traffic, consider the following information:
 * If you have a Network Firewall "default drop" catchall rule for ingress traffic, you will need to add an earlier rule to permit traffic sourced from your Magic Transit prefix with the destination as **any** to allow outbound egress traffic.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/magic-transit-egress/#page","headline":"Magic Transit egress · Cloudflare Network Firewall docs","description":"Configure Network Firewall for Magic Transit egress traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/magic-transit-egress/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/magic-transit-egress/#page","headline":"Magic Transit egress · Cloudflare Network Firewall docs","description":"Configure Network Firewall for Magic Transit egress traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/magic-transit-egress/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/best-practices/magic-transit-egress/","name":"Magic Transit egress"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Connect with Cloudflare Tunnel
 description: Create a tunnel to your private network.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,8 +18,8 @@ Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any 
 
 To connect your private network:
 
-* [ Dashboard ](#tab-panel-9551)
-* [ Terraform (v5) ](#tab-panel-9552)
+* [ Dashboard ](#tab-panel-9994)
+* [ Terraform (v5) ](#tab-panel-9995)
 
 1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
@@ -91,10 +91,10 @@ resource "vault_generic_secret" "tunnel_token" {
 ```
 5. Install `cloudflared` on a host machine in your private network and run the tunnel:
 
-  * [ Linux ](#tab-panel-9547)
-  * [ Windows ](#tab-panel-9548)
-  * [ macOS ](#tab-panel-9549)
-  * [ Docker ](#tab-panel-9550)
+  * [ Linux ](#tab-panel-9990)
+  * [ Windows ](#tab-panel-9991)
+  * [ macOS ](#tab-panel-9992)
+  * [ Docker ](#tab-panel-9993)
 
   1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
   2. Run the following command:
@@ -140,6 +140,6 @@ If the tunnel is disconnected:
 * [Update cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/update-cloudflared/) regularly.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflared/#page","headline":"Connect with Cloudflare Tunnel · Cloudflare Learning Paths","description":"Create a tunnel to your private network.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflared/#page","headline":"Connect with Cloudflare Tunnel · Cloudflare Learning Paths","description":"Create a tunnel to your private network.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/connect-private-network/","name":"Connect your private network"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/connect-private-network/cloudflared/","name":"Connect with Cloudflare Tunnel"}}]}
 ```

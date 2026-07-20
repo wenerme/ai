@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Load and run a dynamic Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -41,8 +41,8 @@ In order for a Worker to be able to create Dynamic Workers, it needs a Worker Lo
 
 Configure it like so, in your Worker's `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-8798)
-* [  wrangler.toml ](#tab-panel-8799)
+* [  wrangler.jsonc ](#tab-panel-9166)
+* [  wrangler.toml ](#tab-panel-9167)
 
 **JSONC**
 
@@ -69,8 +69,8 @@ Your Worker will then have access to the Worker Loader API via `env.LOADER`.
 
 Use `env.LOADER.load()` to create a Dynamic Worker and run it:
 
-* [  JavaScript ](#tab-panel-8806)
-* [  TypeScript ](#tab-panel-8807)
+* [  JavaScript ](#tab-panel-9174)
+* [  TypeScript ](#tab-panel-9175)
 
 **JavaScript**
 
@@ -79,7 +79,7 @@ export default {
   async fetch(request, env) {
     // Load a worker.
     const worker = env.LOADER.load({
-      compatibilityDate: "2026-07-01",
+      compatibilityDate: "2026-07-20",
 
 
       mainModule: "src/index.js",
@@ -117,7 +117,7 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     // Load a worker.
     const worker = env.LOADER.load({
-      compatibilityDate: "2026-07-01",
+      compatibilityDate: "2026-07-20",
 
 
       mainModule: "src/index.js",
@@ -158,8 +158,8 @@ If you expect to load the exact same Worker more than once, use [get(id, callbac
 
 The callback you provide will only be called if the Worker is not already loaded. This lets you skip loading the code from storage when the Worker is already running.
 
-* [  JavaScript ](#tab-panel-8800)
-* [  TypeScript ](#tab-panel-8801)
+* [  JavaScript ](#tab-panel-9168)
+* [  TypeScript ](#tab-panel-9169)
 
 **JavaScript**
 
@@ -175,7 +175,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
   // Return the same format as `env.LOADER.load()` accepts.
   return {
-    compatibilityDate: "2026-07-01",
+    compatibilityDate: "2026-07-20",
     mainModule: "index.js",
     modules: { "index.js": code },
     globalOutbound: null,
@@ -197,7 +197,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
   // Return the same format as `env.LOADER.load()` accepts.
   return {
-    compatibilityDate: "2026-07-01",
+    compatibilityDate: "2026-07-20",
     mainModule: "index.js",
     modules: { "index.js": code, },
     globalOutbound: null,
@@ -215,14 +215,14 @@ For the full list of supported module types, refer to the [API reference](https:
 
 To run Python code in a Dynamic Worker, you must include the `python_workers` compatibility flag. Without this flag, the Dynamic Worker will fail to load the Python runtime.
 
-* [  JavaScript ](#tab-panel-8802)
-* [  TypeScript ](#tab-panel-8803)
+* [  JavaScript ](#tab-panel-9170)
+* [  TypeScript ](#tab-panel-9171)
 
 **JavaScript**
 
 ```js
 const worker = env.LOADER.load({
-  compatibilityDate: "2026-07-01",
+  compatibilityDate: "2026-07-20",
   compatibilityFlags: ["python_workers"],
   mainModule: "worker.py",
   modules: {
@@ -242,7 +242,7 @@ class Default(WorkerEntrypoint):
 
 ```ts
 const worker = env.LOADER.load({
-  compatibilityDate: "2026-07-01",
+  compatibilityDate: "2026-07-20",
   compatibilityFlags: ["python_workers"],
   mainModule: "worker.py",
   modules: {
@@ -264,8 +264,8 @@ If your Dynamic Worker needs TypeScript compilation or npm dependencies, the cod
 
 [@cloudflare/worker-bundler ↗](https://www.npmjs.com/package/@cloudflare/worker-bundler) is a library that handles this for you. Use it to bundle source files into a format that `load()` and `get()` accept:
 
-* [  JavaScript ](#tab-panel-8804)
-* [  TypeScript ](#tab-panel-8805)
+* [  JavaScript ](#tab-panel-9172)
+* [  TypeScript ](#tab-panel-9173)
 
 **JavaScript**
 
@@ -289,7 +289,7 @@ const worker = env.LOADER.get("my-worker", async () => {
   });
 
 
-  return { mainModule, modules, compatibilityDate: "2026-07-01" };
+  return { mainModule, modules, compatibilityDate: "2026-07-20" };
 });
 ```
 
@@ -315,13 +315,13 @@ const worker = env.LOADER.get("my-worker", async () => {
   });
 
 
-  return { mainModule, modules, compatibilityDate: "2026-07-01" };
+  return { mainModule, modules, compatibilityDate: "2026-07-20" };
 });
 ```
 
 `createWorker()` handles TypeScript compilation, dependency resolution from npm, and bundling. It returns `mainModule` and `modules` ready to pass directly to `load()` or `get()`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/getting-started/#page","headline":"Getting started · Cloudflare Dynamic Workers docs","description":"Load and run a dynamic Worker.","url":"https://developers.cloudflare.com/dynamic-workers/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/getting-started/#page","headline":"Getting started · Cloudflare Dynamic Workers docs","description":"Load and run a dynamic Worker.","url":"https://developers.cloudflare.com/dynamic-workers/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/getting-started/","name":"Getting started"}}]}
 ```

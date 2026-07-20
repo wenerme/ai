@@ -1,6 +1,6 @@
 ---
 title: RTKChat
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,7 +18,6 @@ This is the chat module, which can be used to send and receive messages from the
     * [new module.exports(context, chatSocketHandler, self, participants)](#new%5Fmodule%5FRTKChat--module.exports%5Fnew)
     * ~~[.messages](#module%5FRTKChat--module.exports+messages)~~
     * [.telemetry](#module%5FRTKChat--module.exports+telemetry)
-    * [.pinned](#module%5FRTKChat--module.exports+pinned)
     * [.setMaxTextLimit(limit)](#module%5FRTKChat--module.exports+setMaxTextLimit)
     * [.sendMessageInternal(message, \[participantIds\])](#module%5FRTKChat--module.exports+sendMessageInternal)
     * [.sendTextMessageInternal(message, \[peerIds\])](#module%5FRTKChat--module.exports+sendTextMessageInternal)
@@ -35,15 +34,11 @@ This is the chat module, which can be used to send and receive messages from the
     * [.editFileMessage(messageId, file)](#module%5FRTKChat--module.exports+editFileMessage)
     * [.editMessage(messageId, message)](#module%5FRTKChat--module.exports+editMessage)
     * [.deleteMessage(messageId)](#module%5FRTKChat--module.exports+deleteMessage)
-    * ~~[.getMessagesByUser(userId)](#module%5FRTKChat--module.exports+getMessagesByUser)~~
-    * ~~[.getMessagesByType(type)](#module%5FRTKChat--module.exports+getMessagesByType)~~
     * [.pin(id)](#module%5FRTKChat--module.exports+pin)
     * [.unpin(id)](#module%5FRTKChat--module.exports+unpin)
     * [.fetchPublicMessages(options)](#module%5FRTKChat--module.exports+fetchPublicMessages)
     * [.fetchPrivateMessages(options)](#module%5FRTKChat--module.exports+fetchPrivateMessages)
     * [.fetchPinnedMessages(options)](#module%5FRTKChat--module.exports+fetchPinnedMessages)
-    * ~~[.getMessages(timeStamp, size, reversed, \[offset\])](#module%5FRTKChat--module.exports+getMessages)~~
-    * ~~[.searchMessages(query, \[filters\])](#module%5FRTKChat--module.exports+searchMessages)~~
 
 ### module.exports ⏏
 
@@ -67,11 +62,6 @@ _**Deprecated**_
 #### module.exports.telemetry
 
 **Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
-
-#### module.exports.pinned
-
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
-**Deprecated.**: This property is deprecated. Please use `fetchPinnedMessages()` instead. Returns an array of pinned messages.
 
 #### module.exports.setMaxTextLimit(limit)
 
@@ -225,26 +215,6 @@ Sends a message to the meeting. This method can be used to send text, image, or 
 | --------- | ------ | ---------------------------- |
 | messageId | string | Id of the message to delete. |
 
-#### ~~module.exports.getMessagesByUser(userId)~~
-
-_**Deprecated**_
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
-
-| Param  | Type   | Description                                    |
-| ------ | ------ | ---------------------------------------------- |
-| userId | string | The user id of the user that sent the message. |
-
-#### ~~module.exports.getMessagesByType(type)~~
-
-_**Deprecated**_
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
-
-| Param | Type              | Description |          |        |                                               |
-| ----- | ----------------- | ----------- | -------- | ------ | --------------------------------------------- |
-| type  | 'text' \| 'image' | 'file'      | 'custom' | 'poll' | 'text', 'image', 'file', 'custom', or 'poll'. |
-
 #### module.exports.pin(id)
 
 Pins a chat message
@@ -295,31 +265,7 @@ Fetches pinned messages with pagination.
 | ------- | ------------------- | ---------------------------------------------------------------------------------------------- |
 | options | FetchMessageOptions | Configuration options for fetching pinned messages, including timestamp, limit, and direction. |
 
-#### ~~module.exports.getMessages(timeStamp, size, reversed, \[offset\])~~
-
-_**Deprecated**_
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
-
-| Param      | Type    | Default |
-| ---------- | ------- | ------- |
-| timeStamp  | number  |         |
-| size       | number  |         |
-| reversed   | boolean |         |
-| \[offset\] | number  | 0       |
-
-#### ~~module.exports.searchMessages(query, \[filters\])~~
-
-_**Deprecated**_
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
-
-| Param       | Type          |
-| ----------- | ------------- |
-| query       | string        |
-| \[filters\] | SearchFilters |
-
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/#page","headline":"RTKChat · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/#page","headline":"RTKChat · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/api-reference/","name":"API Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/realtime/realtimekit/core/api-reference/rtkchat/","name":"RTKChat"}}]}
 ```

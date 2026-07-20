@@ -1,7 +1,7 @@
 ---
 title: Use MCP tools with Code Mode
 description: Expose tools from an existing MCP connection to models through a durable Code Mode runtime.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -40,8 +40,8 @@ bun add @cloudflare/codemode
 2. **Create an MCP connector**
 Create the connector in its own file. It is a plain class with no special file name or import syntax.
 
-  * [  JavaScript ](#tab-panel-6805)
-  * [  TypeScript ](#tab-panel-6806)
+  * [  JavaScript ](#tab-panel-7079)
+  * [  TypeScript ](#tab-panel-7080)
 
 **src/github-connector.js**
 ```js
@@ -114,8 +114,8 @@ The `tool()` decoration hook receives each generated method by its sanitized nam
 3. **Add the connector to the runtime**
 In your Agent, find the existing MCP connection and pass it to the connector. Then include the connector when you create the Code Mode runtime:
 
-  * [  JavaScript ](#tab-panel-6803)
-  * [  TypeScript ](#tab-panel-6804)
+  * [  JavaScript ](#tab-panel-7077)
+  * [  TypeScript ](#tab-panel-7078)
 
 **src/server.js**
 ```js
@@ -203,8 +203,8 @@ When the model calls `github.create_issue()`, the runtime returns a paused execu
 
 For a smaller integration without durable approvals or `codemode.search()` and `codemode.describe()`, pass the Agents SDK tool collection directly to `createCodeTool()`:
 
-* [  JavaScript ](#tab-panel-6801)
-* [  TypeScript ](#tab-panel-6802)
+* [  JavaScript ](#tab-panel-7075)
+* [  TypeScript ](#tab-panel-7076)
 
 **JavaScript**
 
@@ -243,6 +243,6 @@ const codemode = createCodeTool({
 This approach exposes the MCP tools under the default `codemode` namespace. It does not use the connector runtime's durable pause, approval, and resume flow. Use `McpConnector` when tools can cause side effects or when the model needs on-demand discovery.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/mcp/#page","headline":"Use MCP tools with Code Mode · Cloudflare Agents docs","description":"Expose tools from an existing MCP connection to models through a durable Code Mode runtime.","url":"https://developers.cloudflare.com/agents/tools/codemode/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/mcp/#page","headline":"Use MCP tools with Code Mode · Cloudflare Agents docs","description":"Expose tools from an existing MCP connection to models through a durable Code Mode runtime.","url":"https://developers.cloudflare.com/agents/tools/codemode/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/codemode/","name":"Code Mode"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/codemode/mcp/","name":"Use MCP tools with Code Mode"}}]}
 ```

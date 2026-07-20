@@ -1,7 +1,7 @@
 ---
 title: FAQ
 description: Known issues and answers to common WARP client questions.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -49,6 +49,6 @@ The WARP client for Windows requires .NET Framework version 4.7.2 or later to be
 * WARP does not proxy WebRTC traffic. Applications or sites that have access to your microphone or camera, such as for live video calls or online gaming, will bypass WARP. As a result, your IP address will be visible to these websites.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/known-issues-and-faq/#page","headline":"FAQ · Cloudflare WARP client docs","description":"Known issues and answers to common WARP client questions.","url":"https://developers.cloudflare.com/warp-client/known-issues-and-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/known-issues-and-faq/#page","headline":"FAQ · Cloudflare WARP client docs","description":"Known issues and answers to common WARP client questions.","url":"https://developers.cloudflare.com/warp-client/known-issues-and-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/warp-client/","name":"WARP Client"}},{"@type":"ListItem","position":3,"item":{"@id":"/warp-client/known-issues-and-faq/","name":"FAQ"}}]}
 ```

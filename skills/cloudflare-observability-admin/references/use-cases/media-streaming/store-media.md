@@ -1,7 +1,7 @@
 ---
 title: Store media at scale
 description: Store media files with zero egress fees using R2.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -37,6 +37,6 @@ Build and deploy serverless applications on Cloudflare's global network. [Learn 
 3. [Workers get started](https://developers.cloudflare.com/workers/get-started/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/media-streaming/store-media/#page","headline":"Store media at scale · Cloudflare use cases","description":"Store media files with zero egress fees using R2.","url":"https://developers.cloudflare.com/use-cases/media-streaming/store-media/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/media-streaming/store-media/#page","headline":"Store media at scale · Cloudflare use cases","description":"Store media files with zero egress fees using R2.","url":"https://developers.cloudflare.com/use-cases/media-streaming/store-media/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/media-streaming/","name":"Media and streaming"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/media-streaming/store-media/","name":"Store media at scale"}}]}
 ```

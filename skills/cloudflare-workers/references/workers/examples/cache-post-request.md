@@ -1,7 +1,7 @@
 ---
 title: Cache POST requests
 description: Cache POST requests using the Cache API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11956)
-* [  TypeScript ](#tab-panel-11957)
-* [  Python ](#tab-panel-11958)
-* [  Hono ](#tab-panel-11959)
+* [  JavaScript ](#tab-panel-12475)
+* [  TypeScript ](#tab-panel-12476)
+* [  Python ](#tab-panel-12477)
+* [  Hono ](#tab-panel-12478)
 
 **JavaScript**
 
@@ -233,6 +233,6 @@ export default app;
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/cache-post-request/#page","headline":"Cache POST requests · Cloudflare Workers docs","description":"Cache POST requests using the Cache API.","url":"https://developers.cloudflare.com/workers/examples/cache-post-request/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","Caching","JavaScript","TypeScript","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/cache-post-request/#page","headline":"Cache POST requests · Cloudflare Workers docs","description":"Cache POST requests using the Cache API.","url":"https://developers.cloudflare.com/workers/examples/cache-post-request/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","Caching","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/cache-post-request/","name":"Cache POST requests"}}]}
 ```

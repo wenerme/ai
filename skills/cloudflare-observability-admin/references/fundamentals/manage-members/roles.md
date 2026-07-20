@@ -1,7 +1,7 @@
 ---
 title: Roles
 description: Review the account-scoped, domain-scoped, and resource-scoped roles available for Cloudflare account members.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -142,6 +142,6 @@ Resource-scoped roles is currently in Beta.
 | Individual Cloudflare Mesh nodes          | Scopes permissions to a specific [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) node. Refer to [Granular permissions for Cloudflare Tunnel and Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/) for details. |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/roles/#page","headline":"Account roles · Cloudflare Fundamentals docs","description":"Review the account-scoped, domain-scoped, and resource-scoped roles available for Cloudflare account members.","url":"https://developers.cloudflare.com/fundamentals/manage-members/roles/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/roles/#page","headline":"Account roles · Cloudflare Fundamentals docs","description":"Review the account-scoped, domain-scoped, and resource-scoped roles available for Cloudflare account members.","url":"https://developers.cloudflare.com/fundamentals/manage-members/roles/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-members/","name":"Members and permissions"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-members/roles/","name":"Roles"}}]}
 ```

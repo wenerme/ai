@@ -1,7 +1,7 @@
 ---
 title: Require Access protection
 description: Require Access protection in Access.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -42,6 +42,6 @@ To allow traffic to a hostname when **Block traffic to all domains in this accou
 When a user attempts to access a hostname without an Access application, Cloudflare displays a block page with `Error 1050: This resource is blocked by this account's Default-Deny policy.` The user cannot proceed until an administrator creates an Access application for that hostname.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/#page","headline":"Require Access protection · Cloudflare One docs","description":"Require Access protection in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/#page","headline":"Require Access protection · Cloudflare One docs","description":"Require Access protection in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/access-settings/","name":"Access settings"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/access-settings/require-access-protection/","name":"Require Access protection"}}]}
 ```

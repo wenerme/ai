@@ -1,7 +1,7 @@
 ---
 title: SSL/TLS certificates
 description: Configure SSL/TLS server and client certificates for secure Hyperdrive database connections.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -61,8 +61,8 @@ You must use the CA certificate bundle that is for your specific region. You can
 
 Once your CA certificate has been created, you can create a Hyperdrive configuration with the newly created certificates using either the dashboard or Wrangler. You must also specify the SSL mode to use (`verify-ca`/`verify-full` for PostgreSQL or `VERIFY_CA`/`VERIFY_IDENTITY` for MySQL).
 
-* [ Wrangler ](#tab-panel-9033)
-* [ Dashboard ](#tab-panel-9034)
+* [ Wrangler ](#tab-panel-9470)
+* [ Dashboard ](#tab-panel-9471)
 
 Using Wrangler, enter the following command in your terminal to create a Hyperdrive configuration with the CA certificate and SSL mode:
 
@@ -118,8 +118,8 @@ ID: <YOUR_ID_FOR_THE_CLIENT_CERTIFICATE_PAIR>
 
 You can now create a Hyperdrive configuration using the newly created client certificate bundle using the dashboard or Wrangler.
 
-* [ Wrangler ](#tab-panel-9035)
-* [ Dashboard ](#tab-panel-9036)
+* [ Wrangler ](#tab-panel-9472)
+* [ Dashboard ](#tab-panel-9473)
 
 Using Wrangler, enter the following command in your terminal to create a Hyperdrive configuration with the client certificate pair:
 
@@ -147,6 +147,6 @@ Note
 Hyperdrive will attempt to connect to your database with the provided credentials to verify they are correct before creating a configuration. If you encounter an error when attempting to connect, refer to Hyperdrive's [troubleshooting documentation](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug possible causes.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/#page","headline":"SSL/TLS certificates · Cloudflare Hyperdrive docs","description":"Configure SSL/TLS server and client certificates for secure Hyperdrive database connections.","url":"https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/#page","headline":"SSL/TLS certificates · Cloudflare Hyperdrive docs","description":"Configure SSL/TLS server and client certificates for secure Hyperdrive database connections.","url":"https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/","name":"SSL/TLS certificates"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: robots.txt and sitemaps
 description: Configure robots.txt rules and sitemaps to control how Browser Run accesses your website.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -193,6 +193,6 @@ Browser Run periodically refetches sitemaps to keep content fresh. Serve your si
 * [Automatic request headers](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/) — User-Agent strings and non-configurable headers used by Browser Run
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/robots-txt/#page","headline":"robots.txt and sitemaps · Cloudflare Browser Run docs","description":"Configure robots.txt rules and sitemaps to control how Browser Run accesses your website.","url":"https://developers.cloudflare.com/browser-run/reference/robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/robots-txt/#page","headline":"robots.txt and sitemaps · Cloudflare Browser Run docs","description":"Configure robots.txt rules and sitemaps to control how Browser Run accesses your website.","url":"https://developers.cloudflare.com/browser-run/reference/robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/reference/robots-txt/","name":"robots.txt and sitemaps"}}]}
 ```

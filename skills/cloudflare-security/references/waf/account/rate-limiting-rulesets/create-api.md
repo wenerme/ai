@@ -1,7 +1,7 @@
 ---
 title: Create a rate limiting ruleset via API
 description: Create account-level rate limiting rulesets using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -196,6 +196,6 @@ For instructions on deploying a rate limiting rule at the zone level via API, re
 For more information on the different rate limiting parameters you can configure in your rate limiting rules, refer to [Rate limiting parameters](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-api/#page","headline":"Create a rate limiting ruleset via API · Cloudflare Web Application Firewall (WAF) docs","description":"Create account-level rate limiting rulesets using the API.","url":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-api/#page","headline":"Create a rate limiting ruleset via API · Cloudflare Web Application Firewall (WAF) docs","description":"Create account-level rate limiting rulesets using the API.","url":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/account/","name":"Account-level WAF configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/account/rate-limiting-rulesets/","name":"Rate limiting rulesets"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/account/rate-limiting-rulesets/create-api/","name":"Create a rate limiting ruleset via API"}}]}
 ```

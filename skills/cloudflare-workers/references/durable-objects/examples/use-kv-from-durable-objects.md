@@ -1,7 +1,7 @@
 ---
 title: Use Workers KV from Durable Objects
 description: Read and write to/from KV within a Durable Object
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -24,8 +24,8 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-8722)
-* [  wrangler.toml ](#tab-panel-8723)
+* [  wrangler.jsonc ](#tab-panel-9064)
+* [  wrangler.toml ](#tab-panel-9065)
 
 **JSONC**
 
@@ -69,8 +69,8 @@ name = "YOUR_DO_CLASS"
 class_name = "YourDurableObject"
 ```
 
-* [  TypeScript ](#tab-panel-8720)
-* [  Python ](#tab-panel-8721)
+* [  TypeScript ](#tab-panel-9062)
+* [  Python ](#tab-panel-9063)
 
 **TypeScript**
 
@@ -192,6 +192,6 @@ class YourDurableObject(DurableObject):
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/use-kv-from-durable-objects/#page","headline":"Durable Objects - Use KV within Durable Objects · Cloudflare Durable Objects docs","description":"Read and write to/from KV within a Durable Object","url":"https://developers.cloudflare.com/durable-objects/examples/use-kv-from-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/use-kv-from-durable-objects/#page","headline":"Durable Objects - Use KV within Durable Objects · Cloudflare Durable Objects docs","description":"Read and write to/from KV within a Durable Object","url":"https://developers.cloudflare.com/durable-objects/examples/use-kv-from-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/use-kv-from-durable-objects/","name":"Use Workers KV from Durable Objects"}}]}
 ```

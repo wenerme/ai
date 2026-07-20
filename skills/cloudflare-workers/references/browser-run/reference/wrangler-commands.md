@@ -1,7 +1,7 @@
 ---
 title: Wrangler commands
 description: Manage Browser Run sessions from the command line using Wrangler.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,9 +18,9 @@ Use `wrangler browser` commands to manage Browser Run sessions from the command 
 
 Create a new Browser Run session
 
-* [  npm ](#tab-panel-7288)
-* [  pnpm ](#tab-panel-7289)
-* [  yarn ](#tab-panel-7290)
+* [  npm ](#tab-panel-7587)
+* [  pnpm ](#tab-panel-7588)
+* [  yarn ](#tab-panel-7589)
 
 ```sh
 npx wrangler browser create
@@ -68,9 +68,9 @@ Use a specific auth profile
 
 Close a Browser Run session
 
-* [  npm ](#tab-panel-7291)
-* [  pnpm ](#tab-panel-7292)
-* [  yarn ](#tab-panel-7293)
+* [  npm ](#tab-panel-7590)
+* [  pnpm ](#tab-panel-7591)
+* [  yarn ](#tab-panel-7592)
 
 ```sh
 npx wrangler browser close [SESSIONID]
@@ -114,9 +114,9 @@ Use a specific auth profile
 
 List active Browser Run sessions
 
-* [  npm ](#tab-panel-7294)
-* [  pnpm ](#tab-panel-7295)
-* [  yarn ](#tab-panel-7296)
+* [  npm ](#tab-panel-7593)
+* [  pnpm ](#tab-panel-7594)
+* [  yarn ](#tab-panel-7595)
 
 ```sh
 npx wrangler browser list
@@ -158,9 +158,9 @@ Use a specific auth profile
 
 View a live browser session
 
-* [  npm ](#tab-panel-7297)
-* [  pnpm ](#tab-panel-7298)
-* [  yarn ](#tab-panel-7299)
+* [  npm ](#tab-panel-7596)
+* [  pnpm ](#tab-panel-7597)
+* [  yarn ](#tab-panel-7598)
 
 ```sh
 npx wrangler browser view [SESSIONID]
@@ -205,6 +205,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Browser Run docs","description":"Manage Browser Run sessions from the command line using Wrangler.","url":"https://developers.cloudflare.com/browser-run/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Browser Run docs","description":"Manage Browser Run sessions from the command line using Wrangler.","url":"https://developers.cloudflare.com/browser-run/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/reference/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

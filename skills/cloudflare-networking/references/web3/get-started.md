@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Set up a Cloudflare Web3 gateway for Ethereum or IPFS.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -126,6 +126,6 @@ Some plans also have access to alerts through [PagerDuty](https://developers.clo
 Once you have created a gateway and updated your Cloudflare settings, you can start using your [IPFS](https://developers.cloudflare.com/web3/how-to/use-ipfs-gateway/) or [Ethereum](https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/get-started/#page","headline":"Get started · Cloudflare Web3 docs","description":"Set up a Cloudflare Web3 gateway for Ethereum or IPFS.","url":"https://developers.cloudflare.com/web3/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/get-started/#page","headline":"Get started · Cloudflare Web3 docs","description":"Set up a Cloudflare Web3 gateway for Ethereum or IPFS.","url":"https://developers.cloudflare.com/web3/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/get-started/","name":"Get started"}}]}
 ```

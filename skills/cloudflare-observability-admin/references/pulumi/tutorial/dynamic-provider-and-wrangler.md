@@ -1,7 +1,7 @@
 ---
 title: Create different resources using Pulumi and Wrangler
 description: Pulumi and Wrangler can be used to create different types of resources.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -367,6 +367,6 @@ pulumi stack output myServiceTokenClientSecret --show-secrets
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/dynamic-provider-and-wrangler/#page","headline":"Create different resources using Pulumi and Wrangler · Pulumi docs","description":"Pulumi and Wrangler can be used to create different types of resources.","url":"https://developers.cloudflare.com/pulumi/tutorial/dynamic-provider-and-wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/dynamic-provider-and-wrangler/#page","headline":"Create different resources using Pulumi and Wrangler · Pulumi docs","description":"Pulumi and Wrangler can be used to create different types of resources.","url":"https://developers.cloudflare.com/pulumi/tutorial/dynamic-provider-and-wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pulumi/","name":"Pulumi"}},{"@type":"ListItem","position":3,"item":{"@id":"/pulumi/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/pulumi/tutorial/dynamic-provider-and-wrangler/","name":"Create different resources using Pulumi and Wrangler"}}]}
 ```

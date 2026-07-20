@@ -1,7 +1,7 @@
 ---
 title: Load shedding
 description: Use load shedding to prevent an at-risk endpoint from becoming unhealthy and starting the failover process.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -132,6 +132,6 @@ If all pools within a load balancer have _Load shedding_ enabled, some traffic w
 If you enable load shedding on a pool, it will shed the same percentage of traffic across all your load balancers. If you need an endpoint to shed different percentages of traffic for different load balancers, put that endpoint in multiple pools.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/load-shedding/#page","headline":"Load shedding · Cloudflare Load Balancing docs","description":"Use load shedding to prevent an at-risk endpoint from becoming unhealthy and starting the failover process.","url":"https://developers.cloudflare.com/load-balancing/additional-options/load-shedding/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/load-shedding/#page","headline":"Load shedding · Cloudflare Load Balancing docs","description":"Use load shedding to prevent an at-risk endpoint from becoming unhealthy and starting the failover process.","url":"https://developers.cloudflare.com/load-balancing/additional-options/load-shedding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/additional-options/","name":"Additional configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/additional-options/load-shedding/","name":"Load shedding"}}]}
 ```

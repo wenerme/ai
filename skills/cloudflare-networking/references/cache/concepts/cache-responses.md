@@ -1,7 +1,7 @@
 ---
 title: Cloudflare cache responses
 description: Cache status headers returned by Cloudflare in HTTP responses.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -66,6 +66,6 @@ The resource was expired but served from Cloudflare's cache while the origin upd
 Cloudflare does not consider the asset eligible to cache and your Cloudflare settings do not explicitly instruct Cloudflare to cache the asset. Instead, the asset was requested from the origin web server. Use [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) to implement custom caching options.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cache-responses/#page","headline":"Cloudflare cache responses · Cloudflare Cache (CDN) docs","description":"Cache status headers returned by Cloudflare in HTTP responses.","url":"https://developers.cloudflare.com/cache/concepts/cache-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cache-responses/#page","headline":"Cloudflare cache responses · Cloudflare Cache (CDN) docs","description":"Cache status headers returned by Cloudflare in HTTP responses.","url":"https://developers.cloudflare.com/cache/concepts/cache-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/concepts/cache-responses/","name":"Cloudflare cache responses"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: indictrans2-en-indic-1B
 description: IndicTrans2 is the first open-source transformer-based multilingual NMT model that supports high-quality translations across all the 22 scheduled Indic languages
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,9 +26,9 @@ IndicTrans2 is the first open-source transformer-based multilingual NMT model th
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2316)
-* [  Python ](#tab-panel-2317)
-* [  curl ](#tab-panel-2318)
+* [  TypeScript ](#tab-panel-2462)
+* [  Python ](#tab-panel-2463)
+* [  curl ](#tab-panel-2464)
 
 ```ts
 export interface Env {
@@ -87,8 +87,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2319)
-* [ Output ](#tab-panel-2320)
+* [ Input ](#tab-panel-2465)
+* [ Output ](#tab-panel-2466)
 
 ▶text
 
@@ -109,6 +109,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-ind
 Output [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/ai4bharat/indictrans2-en-indic-1B/#page","headline":"indictrans2-en-indic-1B (ai4bharat) · Cloudflare AI docs · Cloudflare AI docs","description":"IndicTrans2 is the first open-source transformer-based multilingual NMT model that supports high-quality translations across all the 22 scheduled Indic languages","url":"https://developers.cloudflare.com/ai/models/%40cf/ai4bharat/indictrans2-en-indic-1B/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/ai4bharat/indictrans2-en-indic-1B/#page","headline":"indictrans2-en-indic-1B (ai4bharat) · Cloudflare AI docs · Cloudflare AI docs","description":"IndicTrans2 is the first open-source transformer-based multilingual NMT model that supports high-quality translations across all the 22 scheduled Indic languages","url":"https://developers.cloudflare.com/ai/models/%40cf/ai4bharat/indictrans2-en-indic-1B/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

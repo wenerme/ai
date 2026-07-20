@@ -1,7 +1,7 @@
 ---
 title: mistral-7b-instruct-v0.1
 description: Instruct fine-tuned version of the Mistral-7b generative text model with 7 billion parameters
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2447)
-* [  TypeScript ](#tab-panel-2448)
-* [  Python ](#tab-panel-2449)
-* [  curl ](#tab-panel-2450)
+* [  Worker (Streaming) ](#tab-panel-2593)
+* [  TypeScript ](#tab-panel-2594)
+* [  Python ](#tab-panel-2595)
+* [  curl ](#tab-panel-2596)
 
 **TypeScript**
 
@@ -228,6 +228,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.1/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.1/streaming-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/mistral/mistral-7b-instruct-v0.1/#page","headline":"mistral-7b-instruct-v0.1 (MistralAI) · Cloudflare AI docs · Cloudflare AI docs","description":"Instruct fine-tuned version of the Mistral-7b generative text model with 7 billion parameters","url":"https://developers.cloudflare.com/ai/models/%40cf/mistral/mistral-7b-instruct-v0.1/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/mistral/mistral-7b-instruct-v0.1/#page","headline":"mistral-7b-instruct-v0.1 (MistralAI) · Cloudflare AI docs · Cloudflare AI docs","description":"Instruct fine-tuned version of the Mistral-7b generative text model with 7 billion parameters","url":"https://developers.cloudflare.com/ai/models/%40cf/mistral/mistral-7b-instruct-v0.1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

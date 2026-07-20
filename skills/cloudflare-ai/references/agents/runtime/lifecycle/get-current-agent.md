@@ -1,7 +1,7 @@
 ---
 title: getCurrentAgent()
 description: Access the current Agent context from external utility functions using getCurrentAgent() in the Agents SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ The framework detects and wraps custom Agent methods during initialization so `g
 
 ## How it works
 
-* [  JavaScript ](#tab-panel-6537)
-* [  TypeScript ](#tab-panel-6538)
+* [  JavaScript ](#tab-panel-6811)
+* [  TypeScript ](#tab-panel-6812)
 
 **JavaScript**
 
@@ -77,8 +77,8 @@ No configuration is required. The framework automatically:
 
 ## Real-world example
 
-* [  JavaScript ](#tab-panel-6553)
-* [  TypeScript ](#tab-panel-6554)
+* [  JavaScript ](#tab-panel-6827)
+* [  TypeScript ](#tab-panel-6828)
 
 **JavaScript**
 
@@ -160,8 +160,8 @@ export class MyAgent extends AIChatAgent {
 
 ### The context flow
 
-* [  JavaScript ](#tab-panel-6535)
-* [  TypeScript ](#tab-panel-6536)
+* [  JavaScript ](#tab-panel-6809)
+* [  TypeScript ](#tab-panel-6810)
 
 **JavaScript**
 
@@ -187,8 +187,8 @@ agent.customMethod();
 
 ### Working with AI SDK tools
 
-* [  JavaScript ](#tab-panel-6547)
-* [  TypeScript ](#tab-panel-6548)
+* [  JavaScript ](#tab-panel-6821)
+* [  TypeScript ](#tab-panel-6822)
 
 **JavaScript**
 
@@ -242,8 +242,8 @@ export class MyAgent extends AIChatAgent {
 
 ### Calling external libraries
 
-* [  JavaScript ](#tab-panel-6543)
-* [  TypeScript ](#tab-panel-6544)
+* [  JavaScript ](#tab-panel-6817)
+* [  TypeScript ](#tab-panel-6818)
 
 **JavaScript**
 
@@ -291,8 +291,8 @@ export class MyAgent extends AIChatAgent {
 
 ### Accessing request and connection context
 
-* [  JavaScript ](#tab-panel-6549)
-* [  TypeScript ](#tab-panel-6550)
+* [  JavaScript ](#tab-panel-6823)
+* [  TypeScript ](#tab-panel-6824)
 
 **JavaScript**
 
@@ -348,8 +348,8 @@ The agent context only propagates along the call tree of the original invocation
 
 Route the callback through a public method on the agent. Custom methods are wrapped automatically, so calling `agent.someMethod()` re-enters that agent's context:
 
-* [  JavaScript ](#tab-panel-6555)
-* [  TypeScript ](#tab-panel-6556)
+* [  JavaScript ](#tab-panel-6829)
+* [  TypeScript ](#tab-panel-6830)
 
 **JavaScript**
 
@@ -425,8 +425,8 @@ Server-initiated MCP requests (`elicitInput`, `createMessage`, and `listRoots`) 
 
 Gets the current agent from any context where it is available.
 
-* [  JavaScript ](#tab-panel-6539)
-* [  TypeScript ](#tab-panel-6540)
+* [  JavaScript ](#tab-panel-6813)
+* [  TypeScript ](#tab-panel-6814)
 
 **JavaScript**
 
@@ -459,8 +459,8 @@ function getCurrentAgent<T extends Agent>(): {
 
 #### Usage:
 
-* [  JavaScript ](#tab-panel-6551)
-* [  TypeScript ](#tab-panel-6552)
+* [  JavaScript ](#tab-panel-6825)
+* [  TypeScript ](#tab-panel-6826)
 
 **JavaScript**
 
@@ -514,8 +514,8 @@ The context available depends on how the method was invoked:
 2. **Use `getCurrentAgent()` in external functions**: When you need agent context in utility functions or libraries that do not have access to `this`.
 3. **Check for undefined**: The returned values may be `undefined` if called outside an agent context.
 
-  * [  JavaScript ](#tab-panel-6545)
-  * [  TypeScript ](#tab-panel-6546)
+  * [  JavaScript ](#tab-panel-6819)
+  * [  TypeScript ](#tab-panel-6820)
 
 **JavaScript**
 ```js
@@ -536,8 +536,8 @@ if (agent) {
 ```
 4. **Type the agent**: Pass your agent class as a type parameter for proper typing.
 
-  * [  JavaScript ](#tab-panel-6541)
-  * [  TypeScript ](#tab-panel-6542)
+  * [  JavaScript ](#tab-panel-6815)
+  * [  TypeScript ](#tab-panel-6816)
 
 **JavaScript**
 ```js
@@ -560,6 +560,6 @@ const { agent } = getCurrentAgent<MyAgent>();
 [ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) Manage and sync agent state.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/#page","headline":"getCurrentAgent() · Cloudflare Agents docs","description":"Access the current Agent context from external utility functions using getCurrentAgent() in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/#page","headline":"getCurrentAgent() · Cloudflare Agents docs","description":"Access the current Agent context from external utility functions using getCurrentAgent() in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/lifecycle/","name":"Lifecycle"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/lifecycle/get-current-agent/","name":"getCurrentAgent()"}}]}
 ```

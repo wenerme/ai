@@ -1,7 +1,7 @@
 ---
 title: Manage hosted images with Workers
 description: Use the Images binding to upload, list, retrieve, update, and delete hosted images from a Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ Hosted image operations require a [paid Images plan with storage](https://develo
 
 To bind Images to your Worker, add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9272)
-* [  wrangler.toml ](#tab-panel-9273)
+* [  wrangler.jsonc ](#tab-panel-9715)
+* [  wrangler.toml ](#tab-panel-9716)
 
 **JSONC**
 
@@ -108,8 +108,8 @@ Deletes an image. Returns `true` if the image was deleted or `false` if no image
 
 ### Upload an image from a request body
 
-* [  JavaScript ](#tab-panel-9274)
-* [  TypeScript ](#tab-panel-9275)
+* [  JavaScript ](#tab-panel-9717)
+* [  TypeScript ](#tab-panel-9718)
 
 **JavaScript**
 
@@ -159,8 +159,8 @@ export default {
 
 Set `encoding: "base64"` and the binding will decode the body for you before uploading.
 
-* [  JavaScript ](#tab-panel-9278)
-* [  TypeScript ](#tab-panel-9279)
+* [  JavaScript ](#tab-panel-9721)
+* [  TypeScript ](#tab-panel-9722)
 
 **JavaScript**
 
@@ -206,8 +206,8 @@ export default {
 
 ### List images with pagination
 
-* [  JavaScript ](#tab-panel-9282)
-* [  TypeScript ](#tab-panel-9283)
+* [  JavaScript ](#tab-panel-9725)
+* [  TypeScript ](#tab-panel-9726)
 
 **JavaScript**
 
@@ -253,8 +253,8 @@ export default {
 
 ### Get the details for a single image
 
-* [  JavaScript ](#tab-panel-9276)
-* [  TypeScript ](#tab-panel-9277)
+* [  JavaScript ](#tab-panel-9719)
+* [  TypeScript ](#tab-panel-9720)
 
 **JavaScript**
 
@@ -286,8 +286,8 @@ export default {
 
 ### Stream the original bytes for an image
 
-* [  JavaScript ](#tab-panel-9280)
-* [  TypeScript ](#tab-panel-9281)
+* [  JavaScript ](#tab-panel-9723)
+* [  TypeScript ](#tab-panel-9724)
 
 **JavaScript**
 
@@ -319,8 +319,8 @@ export default {
 
 ### Update image metadata
 
-* [  JavaScript ](#tab-panel-9284)
-* [  TypeScript ](#tab-panel-9285)
+* [  JavaScript ](#tab-panel-9727)
+* [  TypeScript ](#tab-panel-9728)
 
 **JavaScript**
 
@@ -350,8 +350,8 @@ export default {
 
 ### Delete an image
 
-* [  JavaScript ](#tab-panel-9286)
-* [  TypeScript ](#tab-panel-9287)
+* [  JavaScript ](#tab-panel-9729)
+* [  TypeScript ](#tab-panel-9730)
 
 **JavaScript**
 
@@ -383,8 +383,8 @@ export default {
 
 This example fetches an image from a remote URL, uploads it into your Images account, and returns the first variant URL.
 
-* [  JavaScript ](#tab-panel-9288)
-* [  TypeScript ](#tab-panel-9289)
+* [  JavaScript ](#tab-panel-9731)
+* [  TypeScript ](#tab-panel-9732)
 
 **JavaScript**
 
@@ -496,6 +496,6 @@ The mock is only suitable for local development. To exercise the real Images ser
 * [Manage hosted images](https://developers.cloudflare.com/images/storage/manage-images/) — Dashboard and API workflows for managing stored images.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/binding/#page","headline":"Manage hosted images with Workers · Cloudflare Images docs","description":"Use the Images binding to upload, list, retrieve, update, and delete hosted images from a Worker.","url":"https://developers.cloudflare.com/images/storage/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/binding/#page","headline":"Manage hosted images with Workers · Cloudflare Images docs","description":"Use the Images binding to upload, list, retrieve, update, and delete hosted images from a Worker.","url":"https://developers.cloudflare.com/images/storage/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/storage/","name":"Storage"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/storage/binding/","name":"Manage hosted images with Workers"}}]}
 ```

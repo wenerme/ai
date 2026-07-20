@@ -1,7 +1,7 @@
 ---
 title: Migrating from Netlify to Pages
 description: Learn how to migrate from Netlify to Cloudflare. This guide includes instructions for migrating redirects and headers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -106,6 +106,6 @@ In **DNS**, your record's **Content** should be your `<SUBDOMAIN>.pages.dev` sub
 With the above steps completed, you have successfully migrated your Netlify project to Cloudflare Pages.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/migrations/migrating-from-netlify/#page","headline":"Migrating from Netlify to Pages · Cloudflare Pages docs","description":"Learn how to migrate from Netlify to Cloudflare. This guide includes instructions for migrating redirects and headers.","url":"https://developers.cloudflare.com/pages/migrations/migrating-from-netlify/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/migrations/migrating-from-netlify/#page","headline":"Migrating from Netlify to Pages · Cloudflare Pages docs","description":"Learn how to migrate from Netlify to Cloudflare. This guide includes instructions for migrating redirects and headers.","url":"https://developers.cloudflare.com/pages/migrations/migrating-from-netlify/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/migrations/","name":"Migration guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/migrations/migrating-from-netlify/","name":"Migrating from Netlify to Pages"}}]}
 ```

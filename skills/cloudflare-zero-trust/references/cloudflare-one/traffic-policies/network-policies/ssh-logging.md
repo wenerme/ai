@@ -1,7 +1,7 @@
 ---
 title: SSH proxy and command logs (legacy)
 description: SSH proxy and command logs (legacy) in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -113,8 +113,8 @@ Other short-lived CAs, such as those used to [secure SSH servers behind Cloudfla
 
 To generate a Gateway SSH proxy CA and get its public key:
 
-* [ Dashboard ](#tab-panel-8017)
-* [ API ](#tab-panel-8018)
+* [ Dashboard ](#tab-panel-8355)
+* [ API ](#tab-panel-8356)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **SSH**.
 2. Select **Add a certificate**.
@@ -212,8 +212,8 @@ cat /etc/ssh/sshd_config
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-8015)
-* [ CentOS/RHEL ](#tab-panel-8016)
+* [ Debian/Ubuntu ](#tab-panel-8353)
+* [ CentOS/RHEL ](#tab-panel-8354)
 
 For Debian/Ubuntu:
 
@@ -290,6 +290,6 @@ This command outputs a `sshlog-decrypted.zip` file with the decrypted logs.
 SSH Command Logging does not support SFTP since it cannot be inspected and logged.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/ssh-logging/#page","headline":"SSH proxy and command logs (legacy) · Cloudflare One docs","description":"SSH proxy and command logs (legacy) in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/ssh-logging/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/ssh-logging/#page","headline":"SSH proxy and command logs (legacy) · Cloudflare One docs","description":"SSH proxy and command logs (legacy) in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/ssh-logging/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/network-policies/","name":"Network policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/network-policies/ssh-logging/","name":"SSH proxy and command logs (legacy)"}}]}
 ```

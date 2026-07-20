@@ -1,7 +1,7 @@
 ---
 title: Routing traffic
 description: Control how traffic routes to pools and servers.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -74,6 +74,6 @@ Finally, specific settings can also affect the ways a load balancer distributes 
 * Sending all requests from a [specific end user](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/) to the same server, preserving information about their user session like items in a shopping cart.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/concepts/routing/#page","headline":"Routing traffic · Cloudflare Learning Paths","description":"Control how traffic routes to pools and servers.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/concepts/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/concepts/routing/#page","headline":"Routing traffic · Cloudflare Learning Paths","description":"Control how traffic routes to pools and servers.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/concepts/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/load-balancing/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/load-balancing/concepts/routing/","name":"Routing traffic"}}]}
 ```

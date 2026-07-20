@@ -1,7 +1,7 @@
 ---
 title: Cloudy AI agent (beta)
 description: Cloudy is Cloudflare's AI agent that helps you understand and optimize your Cloudflare configurations across multiple products.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -55,6 +55,6 @@ To opt out of the chat interface, do the following:
 As noted above, Cloudy is not trained on user or customer data and does not share your Cloudflare setup with other customers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/#page","headline":"Cloudy AI agent (beta) · Cloudflare Fundamentals docs","description":"Cloudy is Cloudflare's AI agent that helps you understand and optimize your Cloudflare configurations across multiple products.","url":"https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/#page","headline":"Cloudy AI agent (beta) · Cloudflare Fundamentals docs","description":"Cloudy is Cloudflare's AI agent that helps you understand and optimize your Cloudflare configurations across multiple products.","url":"https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/cloudy-ai-agent/","name":"Cloudy AI agent (beta)"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Built with Cloudflare button
 description: Set up a Built with Cloudflare button
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -24,9 +24,9 @@ The "Built with Cloudflare" button can be used to share that you're using Cloudf
 
 The Built with Cloudflare button is an SVG and can be embedded anywhere. Use the following snippet to paste the button into your README, blog post, or documentation.
 
-* [ Markdown ](#tab-panel-12245)
-* [ HTML ](#tab-panel-12246)
-* [ URL ](#tab-panel-12247)
+* [ Markdown ](#tab-panel-12766)
+* [ HTML ](#tab-panel-12767)
+* [ URL ](#tab-panel-12768)
 
 ```md
 [![Built with Cloudflare](https://workers.cloudflare.com/built-with-cloudflare.svg)](https://cloudflare.com)
@@ -41,6 +41,6 @@ https://workers.cloudflare.com/built-with-cloudflare.svg
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/built-with-cloudflare/#page","headline":"Built with Cloudflare button · Cloudflare Workers docs","description":"Set up a Built with Cloudflare button","url":"https://developers.cloudflare.com/workers/platform/built-with-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/built-with-cloudflare/#page","headline":"Built with Cloudflare button · Cloudflare Workers docs","description":"Set up a Built with Cloudflare button","url":"https://developers.cloudflare.com/workers/platform/built-with-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/built-with-cloudflare/","name":"Built with Cloudflare button"}}]}
 ```

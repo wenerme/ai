@@ -1,7 +1,7 @@
 ---
 title: Custom Indicator Feeds
 description: Receive curated threat intelligence feeds from Cyber Defense Collaboration groups.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -150,6 +150,6 @@ Once an account is granted access to a feed, it will be available to match traff
 For more information on creating Gateway policies, refer to [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/indicator-feeds/#page","headline":"Custom Indicator Feeds · Cloudflare Security Center docs","description":"Receive curated threat intelligence feeds from Cyber Defense Collaboration groups.","url":"https://developers.cloudflare.com/security-center/indicator-feeds/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/indicator-feeds/#page","headline":"Custom Indicator Feeds · Cloudflare Security Center docs","description":"Receive curated threat intelligence feeds from Cyber Defense Collaboration groups.","url":"https://developers.cloudflare.com/security-center/indicator-feeds/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/indicator-feeds/","name":"Custom Indicator Feeds"}}]}
 ```

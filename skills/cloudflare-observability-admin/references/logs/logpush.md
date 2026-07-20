@@ -1,7 +1,7 @@
 ---
 title: Logpush
 description: Push logs in near real-time to storage or SIEM.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -64,6 +64,6 @@ Note
 Users without an Enterprise plan can still access [Workers Trace Events Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/) by subscribing to the [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/) plan.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/#page","headline":"Logpush · Cloudflare Logs docs","description":"Push logs in near real-time to storage or SIEM.","url":"https://developers.cloudflare.com/logs/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/#page","headline":"Logpush · Cloudflare Logs docs","description":"Push logs in near real-time to storage or SIEM.","url":"https://developers.cloudflare.com/logs/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}}]}
 ```

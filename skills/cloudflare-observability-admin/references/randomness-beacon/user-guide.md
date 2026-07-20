@@ -1,7 +1,7 @@
 ---
 title: User Guide
 description: Guide for consuming randomness from drand.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -15,6 +15,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 For the most up-to-date user documentation, please visit [drand.love/developer ↗](https://drand.love/developer/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/randomness-beacon/user-guide/#page","headline":"User Guide · Cloudflare Randomness Beacon docs","description":"Guide for consuming randomness from drand.","url":"https://developers.cloudflare.com/randomness-beacon/user-guide/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/randomness-beacon/user-guide/#page","headline":"User Guide · Cloudflare Randomness Beacon docs","description":"Guide for consuming randomness from drand.","url":"https://developers.cloudflare.com/randomness-beacon/user-guide/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/randomness-beacon/","name":"Randomness Beacon"}},{"@type":"ListItem","position":3,"item":{"@id":"/randomness-beacon/user-guide/","name":"User Guide"}}]}
 ```

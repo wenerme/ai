@@ -1,7 +1,7 @@
 ---
 title: whisper-tiny-en
 description: Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. Trained on 680k hours of labelled data, Whisper models demonstrate a strong ability to generalize to many datasets and domains without the need for fine-tuning. This is the English-only version of the Whisper Tiny model which was trained on the task of speech recognition.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2544)
-* [  curl ](#tab-panel-2545)
+* [  TypeScript ](#tab-panel-2692)
+* [  curl ](#tab-panel-2693)
 
 ```ts
 export interface Env {
@@ -68,8 +68,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2546)
-* [ Output ](#tab-panel-2547)
+* [ Input ](#tab-panel-2694)
+* [ Output ](#tab-panel-2695)
 
 Option 1
 
@@ -102,6 +102,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/whisper-tiny-en/sc
 Output [ ](https://developers.cloudflare.com/workers-ai/models/whisper-tiny-en/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/whisper-tiny-en/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/openai/whisper-tiny-en/#page","headline":"whisper-tiny-en (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. Trained on 680k hours of labelled data, Whisper models demonstrate a strong ability to generalize to many datasets and domains without the need for fine-tuning. This is the English-only version of the Whisper Tiny model which was trained on the task of speech recognition.","url":"https://developers.cloudflare.com/ai/models/%40cf/openai/whisper-tiny-en/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/openai/whisper-tiny-en/#page","headline":"whisper-tiny-en (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. Trained on 680k hours of labelled data, Whisper models demonstrate a strong ability to generalize to many datasets and domains without the need for fine-tuning. This is the English-only version of the Whisper Tiny model which was trained on the task of speech recognition.","url":"https://developers.cloudflare.com/ai/models/%40cf/openai/whisper-tiny-en/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

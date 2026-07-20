@@ -1,7 +1,7 @@
 ---
 title: Delete key-value pairs
 description: Remove keys and their associated values from a Workers KV namespace using the delete() method.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To delete a key-value pair, call the `delete()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9312)
-* [  Python ](#tab-panel-9313)
+* [  JavaScript ](#tab-panel-9755)
+* [  Python ](#tab-panel-9756)
 
 **JavaScript**
 
@@ -33,8 +33,8 @@ self.env.NAMESPACE.delete(key)
 
 An example of deleting a key-value pair from within a Worker:
 
-* [  JavaScript ](#tab-panel-9314)
-* [  Python ](#tab-panel-9315)
+* [  JavaScript ](#tab-panel-9757)
+* [  Python ](#tab-panel-9758)
 
 **JavaScript**
 
@@ -84,8 +84,8 @@ The following method is provided to delete from KV:
 
 To delete a key-value pair, call the `delete()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any KV namespace you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9316)
-* [  Python ](#tab-panel-9317)
+* [  JavaScript ](#tab-panel-9759)
+* [  Python ](#tab-panel-9760)
 
 **JavaScript**
 
@@ -126,6 +126,6 @@ The bulk REST API can accept up to 10,000 KV pairs at once. Bulk writes are not 
 You can also [delete key-value pairs from the command line with Wrangler](https://developers.cloudflare.com/kv/reference/kv-commands/#kv-namespace-delete) or [with the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/values/methods/delete/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/delete-key-value-pairs/#page","headline":"Delete key-value pairs · Cloudflare Workers KV docs","description":"Remove keys and their associated values from a Workers KV namespace using the delete() method.","url":"https://developers.cloudflare.com/kv/api/delete-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/delete-key-value-pairs/#page","headline":"Delete key-value pairs · Cloudflare Workers KV docs","description":"Remove keys and their associated values from a Workers KV namespace using the delete() method.","url":"https://developers.cloudflare.com/kv/api/delete-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/api/delete-key-value-pairs/","name":"Delete key-value pairs"}}]}
 ```

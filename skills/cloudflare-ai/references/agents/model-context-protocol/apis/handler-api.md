@@ -1,7 +1,7 @@
 ---
 title: createMcpHandler
 description: Create a stateless MCP server fetch handler for a plain Worker using createMcpHandler and streamable HTTP transport.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -85,8 +85,8 @@ The URL path where the MCP handler responds. Requests to other paths return a 40
 
 **Default:** `"/mcp"`
 
-* [  JavaScript ](#tab-panel-6007)
-* [  TypeScript ](#tab-panel-6008)
+* [  JavaScript ](#tab-panel-6281)
+* [  TypeScript ](#tab-panel-6282)
 
 **JavaScript**
 
@@ -114,8 +114,8 @@ When using the [OAuthProvider](https://developers.cloudflare.com/agents/model-co
 
 A custom `WorkerTransport` instance. If not provided, a new transport is created on every request.
 
-* [  JavaScript ](#tab-panel-6009)
-* [  TypeScript ](#tab-panel-6010)
+* [  JavaScript ](#tab-panel-6283)
+* [  TypeScript ](#tab-panel-6284)
 
 **JavaScript**
 
@@ -167,8 +167,8 @@ MCP SDK 1.26.0 introduces a guard that prevents connecting to a server instance 
 
 See the [migration guide](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#migration-guide-for-mcp-sdk-1260) below for details.
 
-* [  JavaScript ](#tab-panel-6029)
-* [  TypeScript ](#tab-panel-6030)
+* [  JavaScript ](#tab-panel-6303)
+* [  TypeScript ](#tab-panel-6304)
 
 **JavaScript**
 
@@ -268,8 +268,8 @@ For stateful MCP servers that need to maintain session state across multiple req
 
 Provide a custom `WorkerTransport` with persistent storage. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation).
 
-* [  JavaScript ](#tab-panel-6031)
-* [  TypeScript ](#tab-panel-6032)
+* [  JavaScript ](#tab-panel-6305)
+* [  TypeScript ](#tab-panel-6306)
 
 **JavaScript**
 
@@ -358,8 +358,8 @@ export class MyStatefulMcpAgent extends Agent<Env, State> {
 
 In this case we are defining the `sessionIdGenerator` to return the Agent name as the session ID. To make sure we route to the correct Agent we can use `getAgentByName` in the Worker handler:
 
-* [  JavaScript ](#tab-panel-6015)
-* [  TypeScript ](#tab-panel-6016)
+* [  JavaScript ](#tab-panel-6289)
+* [  TypeScript ](#tab-panel-6290)
 
 **JavaScript**
 
@@ -433,8 +433,8 @@ The previous pattern of declaring `McpServer` instances in the global scope allo
 
 ### Before (broken with SDK 1.26.0)
 
-* [  JavaScript ](#tab-panel-6021)
-* [  TypeScript ](#tab-panel-6022)
+* [  JavaScript ](#tab-panel-6295)
+* [  TypeScript ](#tab-panel-6296)
 
 **JavaScript**
 
@@ -496,8 +496,8 @@ export default {
 
 ### After (correct)
 
-* [  JavaScript ](#tab-panel-6027)
-* [  TypeScript ](#tab-panel-6028)
+* [  JavaScript ](#tab-panel-6301)
+* [  TypeScript ](#tab-panel-6302)
 
 **JavaScript**
 
@@ -573,8 +573,8 @@ export default {
 
 If you are using the raw SDK transport directly (not via `createMcpHandler`), you must also create new transport instances per request:
 
-* [  JavaScript ](#tab-panel-6025)
-* [  TypeScript ](#tab-panel-6026)
+* [  JavaScript ](#tab-panel-6299)
+* [  TypeScript ](#tab-panel-6300)
 
 **JavaScript**
 
@@ -719,8 +719,8 @@ interface WorkerTransportOptions {
 
 Provides a custom session identifier. This session identifier is used to identify the session in the MCP Client.
 
-* [  JavaScript ](#tab-panel-6011)
-* [  TypeScript ](#tab-panel-6012)
+* [  JavaScript ](#tab-panel-6285)
+* [  TypeScript ](#tab-panel-6286)
 
 **JavaScript**
 
@@ -742,8 +742,8 @@ const transport = new WorkerTransport({
 
 Disables SSE streaming and returns responses as standard JSON.
 
-* [  JavaScript ](#tab-panel-6013)
-* [  TypeScript ](#tab-panel-6014)
+* [  JavaScript ](#tab-panel-6287)
+* [  TypeScript ](#tab-panel-6288)
 
 **JavaScript**
 
@@ -765,8 +765,8 @@ const transport = new WorkerTransport({
 
 A callback that fires when a session is initialized, either by creating a new session or restoring from storage.
 
-* [  JavaScript ](#tab-panel-6017)
-* [  TypeScript ](#tab-panel-6018)
+* [  JavaScript ](#tab-panel-6291)
+* [  TypeScript ](#tab-panel-6292)
 
 **JavaScript**
 
@@ -804,8 +804,8 @@ interface CORSOptions {
 }
 ```
 
-* [  JavaScript ](#tab-panel-6019)
-* [  TypeScript ](#tab-panel-6020)
+* [  JavaScript ](#tab-panel-6293)
+* [  TypeScript ](#tab-panel-6294)
 
 **JavaScript**
 
@@ -853,8 +853,8 @@ interface TransportState {
 }
 ```
 
-* [  JavaScript ](#tab-panel-6023)
-* [  TypeScript ](#tab-panel-6024)
+* [  JavaScript ](#tab-panel-6297)
+* [  TypeScript ](#tab-panel-6298)
 
 **JavaScript**
 
@@ -913,8 +913,8 @@ import { getMcpAuthContext } from "agents/mcp";
 function getMcpAuthContext(): McpAuthContext | undefined;
 ```
 
-* [  JavaScript ](#tab-panel-6035)
-* [  TypeScript ](#tab-panel-6036)
+* [  JavaScript ](#tab-panel-6309)
+* [  TypeScript ](#tab-panel-6310)
 
 **JavaScript**
 
@@ -988,8 +988,8 @@ For a complete guide on setting up OAuth authentication with MCP servers, see th
 
 The `createMcpHandler` automatically catches errors and returns JSON-RPC error responses with code `-32603` (Internal error).
 
-* [  JavaScript ](#tab-panel-6033)
-* [  TypeScript ](#tab-panel-6034)
+* [  JavaScript ](#tab-panel-6307)
+* [  TypeScript ](#tab-panel-6308)
 
 **JavaScript**
 
@@ -1050,6 +1050,6 @@ server.tool("riskyOperation", "An operation that might fail", {}, async () => {
 [ McpAgent API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) Build stateful MCP servers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#page","headline":"createMcpHandler · Cloudflare Agents docs","description":"Create a stateless MCP server fetch handler for a plain Worker using createMcpHandler and streamable HTTP transport.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#page","headline":"createMcpHandler · Cloudflare Agents docs","description":"Create a stateless MCP server fetch handler for a plain Worker using createMcpHandler and streamable HTTP transport.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/apis/","name":"APIs"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/apis/handler-api/","name":"createMcpHandler"}}]}
 ```

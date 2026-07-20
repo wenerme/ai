@@ -1,7 +1,7 @@
 ---
 title: Content Security Policy
 description: Content Security Policy directives required for Turnstile widgets.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -34,6 +34,6 @@ If you are using [Turnstile in pre-clearance mode](https://developers.cloudflare
 For this request to succeed, your `connect-src` directive must include `'self'`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/reference/content-security-policy/#page","headline":"Content Security Policy · Cloudflare Turnstile docs","description":"Content Security Policy directives required for Turnstile widgets.","url":"https://developers.cloudflare.com/turnstile/reference/content-security-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CSP","Headers"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/reference/content-security-policy/#page","headline":"Content Security Policy · Cloudflare Turnstile docs","description":"Content Security Policy directives required for Turnstile widgets.","url":"https://developers.cloudflare.com/turnstile/reference/content-security-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CSP","Headers"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/reference/content-security-policy/","name":"Content Security Policy"}}]}
 ```

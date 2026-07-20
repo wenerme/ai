@@ -1,7 +1,7 @@
 ---
 title: Configure your mobile app or IoT device
 description: This tutorial demonstrates how to configure your Internet-of-things (IoT) device and mobile application to use client certificates with API Shield.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -473,6 +473,6 @@ After creating Cloudflare-issued certificates, the next step is to [enable mTLS]
 To configure API Shield to require client certificates, [create a mTLS rule](https://developers.cloudflare.com/api-shield/security/mtls/configure/#create-an-mtls-rule).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/#page","headline":"Configure your mobile app or IoT device · Cloudflare SSL/TLS docs","description":"This tutorial demonstrates how to configure your Internet-of-things (IoT) device and mobile application to use client certificates with API Shield.","url":"https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","iOS","Android"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/#page","headline":"Configure your mobile app or IoT device · Cloudflare SSL/TLS docs","description":"This tutorial demonstrates how to configure your Internet-of-things (IoT) device and mobile application to use client certificates with API Shield.","url":"https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","iOS","Android"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/client-certificates/","name":"Client certificates (mTLS)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/client-certificates/configure-your-mobile-app-or-iot-device/","name":"Configure your mobile app or IoT device"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Recraft V4 Pro
 description: Recraft V4 Pro generates high-resolution, art-directed images at 2048px+ with strong composition, text rendering, and design taste. Built for print and production work.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Recraft V4 Pro generates high-resolution, art-directed images at 2048px+ with st
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1820)
-* [ cURL ](#tab-panel-1821)
+* [ TypeScript ](#tab-panel-1966)
+* [ cURL ](#tab-panel-1967)
 
 **TypeScript**
 
@@ -57,8 +57,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1818)
-* [ Raw response ](#tab-panel-1819)
+* [ Output ](#tab-panel-1964)
+* [ Raw response ](#tab-panel-1965)
 
 ![Print-Ready Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/print-ready-illustration.png)
 
@@ -78,8 +78,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Large Format Art**  — Large canvas digital art
 
-* [ TypeScript ](#tab-panel-1824)
-* [ cURL ](#tab-panel-1825)
+* [ TypeScript ](#tab-panel-1970)
+* [ cURL ](#tab-panel-1971)
 
 **TypeScript**
 
@@ -108,8 +108,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1822)
-* [ Raw response ](#tab-panel-1823)
+* [ Output ](#tab-panel-1968)
+* [ Raw response ](#tab-panel-1969)
 
 ![Large Format Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/large-format-art.png)
 
@@ -127,8 +127,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Brand Asset**  — Professional brand asset with controlled colors
 
-* [ TypeScript ](#tab-panel-1832)
-* [ cURL ](#tab-panel-1833)
+* [ TypeScript ](#tab-panel-1978)
+* [ cURL ](#tab-panel-1979)
 
 **TypeScript**
 
@@ -186,8 +186,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1826)
-* [ Raw response ](#tab-panel-1827)
+* [ Output ](#tab-panel-1972)
+* [ Raw response ](#tab-panel-1973)
 
 ![Brand Asset](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/brand-asset.png)
 
@@ -205,8 +205,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Editorial Illustration**  — Magazine-quality editorial illustration
 
-* [ TypeScript ](#tab-panel-1830)
-* [ cURL ](#tab-panel-1831)
+* [ TypeScript ](#tab-panel-1976)
+* [ cURL ](#tab-panel-1977)
 
 **TypeScript**
 
@@ -233,8 +233,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1828)
-* [ Raw response ](#tab-panel-1829)
+* [ Output ](#tab-panel-1974)
+* [ Raw response ](#tab-panel-1975)
 
 ![Editorial Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/editorial-illustration.png)
 
@@ -252,8 +252,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1834)
-* [ Output ](#tab-panel-1835)
+* [ Input ](#tab-panel-1980)
+* [ Output ](#tab-panel-1981)
 
 prompt
 
@@ -286,6 +286,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro/sche
 Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro/#page","headline":"Recraft V4 Pro (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Recraft V4 Pro generates high-resolution, art-directed images at 2048px+ with strong composition, text rendering, and design taste. Built for print and production work.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro/#page","headline":"Recraft V4 Pro (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Recraft V4 Pro generates high-resolution, art-directed images at 2048px+ with strong composition, text rendering, and design taste. Built for print and production work.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

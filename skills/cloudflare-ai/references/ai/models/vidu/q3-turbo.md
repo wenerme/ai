@@ -1,7 +1,7 @@
 ---
 title: Vidu Q3 Turbo
 description: Vidu Q3 Turbo is a faster version of Vidu Q3 optimized for lower latency video generation while maintaining audio support and up to 16-second clips.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Vidu Q3 Turbo is a faster version of Vidu Q3 optimized for lower latency video g
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1940)
-* [ cURL ](#tab-panel-1941)
+* [ TypeScript ](#tab-panel-2086)
+* [ cURL ](#tab-panel-2087)
 
 **TypeScript**
 
@@ -56,8 +56,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1938)
-* [ Raw response ](#tab-panel-1939)
+* [ Output ](#tab-panel-2084)
+* [ Raw response ](#tab-panel-2085)
 
 ```json
 {
@@ -75,8 +75,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — Generate at 1080p
 
-* [ TypeScript ](#tab-panel-1944)
-* [ cURL ](#tab-panel-1945)
+* [ TypeScript ](#tab-panel-2090)
+* [ cURL ](#tab-panel-2091)
 
 **TypeScript**
 
@@ -107,8 +107,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1942)
-* [ Raw response ](#tab-panel-1943)
+* [ Output ](#tab-panel-2088)
+* [ Raw response ](#tab-panel-2089)
 
 ```json
 {
@@ -124,8 +124,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for mobile viewing
 
-* [ TypeScript ](#tab-panel-1950)
-* [ cURL ](#tab-panel-1951)
+* [ TypeScript ](#tab-panel-2096)
+* [ cURL ](#tab-panel-2097)
 
 **TypeScript**
 
@@ -157,8 +157,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1946)
-* [ Raw response ](#tab-panel-1947)
+* [ Output ](#tab-panel-2092)
+* [ Raw response ](#tab-panel-2093)
 
 ```json
 {
@@ -174,8 +174,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Extended Duration**  — Longer video clip
 
-* [ TypeScript ](#tab-panel-1952)
-* [ cURL ](#tab-panel-1953)
+* [ TypeScript ](#tab-panel-2098)
+* [ cURL ](#tab-panel-2099)
 
 **TypeScript**
 
@@ -206,8 +206,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1948)
-* [ Raw response ](#tab-panel-1949)
+* [ Output ](#tab-panel-2094)
+* [ Raw response ](#tab-panel-2095)
 
 ```json
 {
@@ -223,8 +223,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Low Resolution Fast Preview**  — Quick preview at 540p
 
-* [ TypeScript ](#tab-panel-1956)
-* [ cURL ](#tab-panel-1957)
+* [ TypeScript ](#tab-panel-2102)
+* [ cURL ](#tab-panel-2103)
 
 **TypeScript**
 
@@ -254,8 +254,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1954)
-* [ Raw response ](#tab-panel-1955)
+* [ Output ](#tab-panel-2100)
+* [ Raw response ](#tab-panel-2101)
 
 ```json
 {
@@ -271,8 +271,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1958)
-* [ Output ](#tab-panel-1959)
+* [ Input ](#tab-panel-2104)
+* [ Output ](#tab-panel-2105)
 
 prompt
 
@@ -313,6 +313,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/vidu/q3-turbo/schema-input
 Output [ ](https://developers.cloudflare.com/ai/models/vidu/q3-turbo/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/vidu/q3-turbo/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/vidu/q3-turbo/#page","headline":"Vidu Q3 Turbo (Vidu) · Cloudflare AI docs · Cloudflare AI docs","description":"Vidu Q3 Turbo is a faster version of Vidu Q3 optimized for lower latency video generation while maintaining audio support and up to 16-second clips.","url":"https://developers.cloudflare.com/ai/models/vidu/q3-turbo/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/vidu/q3-turbo/#page","headline":"Vidu Q3 Turbo (Vidu) · Cloudflare AI docs · Cloudflare AI docs","description":"Vidu Q3 Turbo is a faster version of Vidu Q3 optimized for lower latency video generation while maintaining audio support and up to 16-second clips.","url":"https://developers.cloudflare.com/ai/models/vidu/q3-turbo/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

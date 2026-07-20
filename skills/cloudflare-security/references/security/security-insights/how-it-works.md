@@ -1,7 +1,7 @@
 ---
 title: How it works
 description: How Security Insights scans your account and produces security findings.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -46,6 +46,6 @@ Cloudflare performs scans automatically for all accounts and zones by default. O
 Eligible accounts (Business, Enterprise, or Teams plans) can also manually start a scan. Refer to [Get started](https://developers.cloudflare.com/security-center/get-started/) for instructions.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/how-it-works/#page","headline":"How it works · Security dashboard docs","description":"How Security Insights scans your account and produces security findings.","url":"https://developers.cloudflare.com/security/security-insights/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/how-it-works/#page","headline":"How it works · Security dashboard docs","description":"How Security Insights scans your account and produces security findings.","url":"https://developers.cloudflare.com/security/security-insights/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/security-insights/","name":"Security Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/security/security-insights/how-it-works/","name":"How it works"}}]}
 ```

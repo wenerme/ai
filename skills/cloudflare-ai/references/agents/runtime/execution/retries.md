@@ -1,7 +1,7 @@
 ---
 title: Retries
 description: Retry failed operations with exponential backoff and jitter using the built-in retry system in the Agents SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,8 +27,8 @@ Transient failures are common when calling external APIs, interacting with other
 
 Use `this.retry()` to retry any async operation:
 
-* [  JavaScript ](#tab-panel-6313)
-* [  TypeScript ](#tab-panel-6314)
+* [  JavaScript ](#tab-panel-6587)
+* [  TypeScript ](#tab-panel-6588)
 
 **JavaScript**
 
@@ -101,8 +101,8 @@ async retry<T>(
 
 **Basic retry:**
 
-* [  JavaScript ](#tab-panel-6309)
-* [  TypeScript ](#tab-panel-6310)
+* [  JavaScript ](#tab-panel-6583)
+* [  TypeScript ](#tab-panel-6584)
 
 **JavaScript**
 
@@ -118,8 +118,8 @@ const data = await this.retry(() => fetch("https://api.example.com/data"));
 
 **Custom retry options:**
 
-* [  JavaScript ](#tab-panel-6315)
-* [  TypeScript ](#tab-panel-6316)
+* [  JavaScript ](#tab-panel-6589)
+* [  TypeScript ](#tab-panel-6590)
 
 **JavaScript**
 
@@ -157,8 +157,8 @@ const data = await this.retry(
 
 **Using the attempt number:**
 
-* [  JavaScript ](#tab-panel-6311)
-* [  TypeScript ](#tab-panel-6312)
+* [  JavaScript ](#tab-panel-6585)
+* [  TypeScript ](#tab-panel-6586)
 
 **JavaScript**
 
@@ -182,8 +182,8 @@ const result = await this.retry(async (attempt) => {
 
 Use `shouldRetry` to stop retrying on specific errors. The predicate receives both the error and the next attempt number:
 
-* [  JavaScript ](#tab-panel-6321)
-* [  TypeScript ](#tab-panel-6322)
+* [  JavaScript ](#tab-panel-6595)
+* [  TypeScript ](#tab-panel-6596)
 
 **JavaScript**
 
@@ -233,8 +233,8 @@ const data = await this.retry(
 
 Pass retry options when creating a schedule:
 
-* [  JavaScript ](#tab-panel-6337)
-* [  TypeScript ](#tab-panel-6338)
+* [  JavaScript ](#tab-panel-6611)
+* [  TypeScript ](#tab-panel-6612)
 
 **JavaScript**
 
@@ -344,8 +344,8 @@ If the callback throws, it is retried according to the retry options. If all att
 
 Pass retry options when adding a task to the queue:
 
-* [  JavaScript ](#tab-panel-6325)
-* [  TypeScript ](#tab-panel-6326)
+* [  JavaScript ](#tab-panel-6599)
+* [  TypeScript ](#tab-panel-6600)
 
 **JavaScript**
 
@@ -395,8 +395,8 @@ If the callback throws, it is retried before the task is dequeued. After all att
 
 Retry options are validated eagerly when you call `this.retry()`, `queue()`, `schedule()`, or `scheduleEvery()`. Invalid options throw immediately instead of failing later at execution time:
 
-* [  JavaScript ](#tab-panel-6331)
-* [  TypeScript ](#tab-panel-6332)
+* [  JavaScript ](#tab-panel-6605)
+* [  TypeScript ](#tab-panel-6606)
 
 **JavaScript**
 
@@ -478,8 +478,8 @@ These defaults apply to `this.retry()`, `queue()`, `schedule()`, and `scheduleEv
 
 Override the defaults for your entire agent via `static options`:
 
-* [  JavaScript ](#tab-panel-6317)
-* [  TypeScript ](#tab-panel-6318)
+* [  JavaScript ](#tab-panel-6591)
+* [  TypeScript ](#tab-panel-6592)
 
 **JavaScript**
 
@@ -503,8 +503,8 @@ class MyAgent extends Agent {
 
 You only need to specify the fields you want to change — unset fields fall back to the built-in defaults:
 
-* [  JavaScript ](#tab-panel-6319)
-* [  TypeScript ](#tab-panel-6320)
+* [  JavaScript ](#tab-panel-6593)
+* [  TypeScript ](#tab-panel-6594)
 
 **JavaScript**
 
@@ -530,8 +530,8 @@ class MyAgent extends Agent {
 
 Class-level defaults are used as fallbacks when a call site does not specify retry options. Per-call-site options always take priority:
 
-* [  JavaScript ](#tab-panel-6323)
-* [  TypeScript ](#tab-panel-6324)
+* [  JavaScript ](#tab-panel-6597)
+* [  TypeScript ](#tab-panel-6598)
 
 **JavaScript**
 
@@ -557,8 +557,8 @@ await this.retry(() => fetch(url), { maxAttempts: 2 });
 
 To disable retries for a specific task, set `maxAttempts: 1`:
 
-* [  JavaScript ](#tab-panel-6329)
-* [  TypeScript ](#tab-panel-6330)
+* [  JavaScript ](#tab-panel-6603)
+* [  TypeScript ](#tab-panel-6604)
 
 **JavaScript**
 
@@ -635,8 +635,8 @@ With `maxAttempts: 5` and `baseDelayMs: 500`:
 
 When adding an MCP server, you can configure retry options for connection and reconnection attempts:
 
-* [  JavaScript ](#tab-panel-6327)
-* [  TypeScript ](#tab-panel-6328)
+* [  JavaScript ](#tab-panel-6601)
+* [  TypeScript ](#tab-panel-6602)
 
 **JavaScript**
 
@@ -665,8 +665,8 @@ Default: 3 attempts, 500ms base delay, 5s max delay.
 
 ### Retry with logging
 
-* [  JavaScript ](#tab-panel-6335)
-* [  TypeScript ](#tab-panel-6336)
+* [  JavaScript ](#tab-panel-6609)
+* [  TypeScript ](#tab-panel-6610)
 
 **JavaScript**
 
@@ -720,8 +720,8 @@ class MyAgent extends Agent {
 
 ### Retry with fallback
 
-* [  JavaScript ](#tab-panel-6333)
-* [  TypeScript ](#tab-panel-6334)
+* [  JavaScript ](#tab-panel-6607)
+* [  TypeScript ](#tab-panel-6608)
 
 **JavaScript**
 
@@ -769,8 +769,8 @@ class MyAgent extends Agent {
 
 For operations that might take a long time to recover (minutes or hours), combine `this.retry()` for immediate retries with `this.schedule()` for delayed retries:
 
-* [  JavaScript ](#tab-panel-6339)
-* [  TypeScript ](#tab-panel-6340)
+* [  JavaScript ](#tab-panel-6613)
+* [  TypeScript ](#tab-panel-6614)
 
 **JavaScript**
 
@@ -855,6 +855,6 @@ class MyAgent extends Agent {
 [ Run Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) Durable multi-step processing with automatic retries.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/retries/#page","headline":"Retries · Cloudflare Agents docs","description":"Retry failed operations with exponential backoff and jitter using the built-in retry system in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/execution/retries/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/retries/#page","headline":"Retries · Cloudflare Agents docs","description":"Retry failed operations with exponential backoff and jitter using the built-in retry system in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/execution/retries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/retries/","name":"Retries"}}]}
 ```

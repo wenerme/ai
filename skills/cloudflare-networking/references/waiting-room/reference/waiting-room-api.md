@@ -1,7 +1,7 @@
 ---
 title: API commands
 description: API commands for managing waiting rooms.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -46,6 +46,6 @@ For help with endpoints and pagination, refer to [Getting Started: Endpoints](ht
 | [Get the current status of a waiting room](https://developers.cloudflare.com/api/resources/waiting%5Frooms/subresources/statuses/methods/get/) | GET zones/{:zone\_identifier}/waiting\_rooms/{:identifier}/status | Returns queueing if the queue is activated (clients are put in the waiting room).Returns not\_queueing if the queue is not activated or if the waiting room is suspended. |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/reference/waiting-room-api/#page","headline":"API commands · Cloudflare Waiting Room docs","description":"API commands for managing waiting rooms.","url":"https://developers.cloudflare.com/waiting-room/reference/waiting-room-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/reference/waiting-room-api/#page","headline":"API commands · Cloudflare Waiting Room docs","description":"API commands for managing waiting rooms.","url":"https://developers.cloudflare.com/waiting-room/reference/waiting-room-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/reference/waiting-room-api/","name":"API commands"}}]}
 ```

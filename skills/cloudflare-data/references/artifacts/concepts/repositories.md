@@ -1,7 +1,7 @@
 ---
 title: Repositories
 description: Understand repository identity, APIs, and scope.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -82,6 +82,6 @@ Use one repository per agent, session, user task, baseline, or fork target when 
 For more information, refer to [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/), [How Artifacts works](https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/), and [Best practices for Artifacts](https://developers.cloudflare.com/artifacts/concepts/best-practices/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/repositories/#page","headline":"Repositories · Cloudflare Artifacts docs","description":"Understand repository identity, APIs, and scope.","url":"https://developers.cloudflare.com/artifacts/concepts/repositories/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/repositories/#page","headline":"Repositories · Cloudflare Artifacts docs","description":"Understand repository identity, APIs, and scope.","url":"https://developers.cloudflare.com/artifacts/concepts/repositories/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/concepts/repositories/","name":"Repositories"}}]}
 ```

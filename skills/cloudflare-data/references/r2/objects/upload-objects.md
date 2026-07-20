@@ -1,7 +1,7 @@
 ---
 title: Upload objects
 description: Upload objects to R2 using single-part or multipart uploads via the dashboard, Workers API, or S3 API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -53,8 +53,8 @@ Use R2 [bindings](https://developers.cloudflare.com/workers/runtime-apis/binding
 
 Use `put()` to upload an object in a single request. This is the simplest approach for small to medium objects.
 
-* [  JavaScript ](#tab-panel-10218)
-* [  TypeScript ](#tab-panel-10219)
+* [  JavaScript ](#tab-panel-10663)
+* [  TypeScript ](#tab-panel-10664)
 
 **JavaScript**
 
@@ -124,8 +124,8 @@ export default {
 
 Use `createMultipartUpload()` and `resumeMultipartUpload()` for large files or when you need to upload parts in parallel. Each part must be at least 5 MiB (except the last part).
 
-* [  JavaScript ](#tab-panel-10220)
-* [  TypeScript ](#tab-panel-10221)
+* [  JavaScript ](#tab-panel-10665)
+* [  TypeScript ](#tab-panel-10666)
 
 **JavaScript**
 
@@ -209,8 +209,8 @@ export default {
 
 In most cases, the multipart state (the `uploadId` and uploaded part ETags) is tracked by the client sending requests to your Worker. The following example exposes an HTTP API that a client application can call to create, upload parts for, and complete a multipart upload:
 
-* [  JavaScript ](#tab-panel-10224)
-* [  TypeScript ](#tab-panel-10225)
+* [  JavaScript ](#tab-panel-10669)
+* [  TypeScript ](#tab-panel-10670)
 
 **JavaScript**
 
@@ -386,8 +386,8 @@ For the complete Workers API reference, refer to [Workers API reference](https:/
 
 When you need clients (browsers, mobile apps) to upload directly to R2 without proxying through your Worker, generate a presigned URL server-side and hand it to the client:
 
-* [  JavaScript ](#tab-panel-10222)
-* [  TypeScript ](#tab-panel-10223)
+* [  JavaScript ](#tab-panel-10667)
+* [  TypeScript ](#tab-panel-10668)
 
 **JavaScript**
 
@@ -467,9 +467,9 @@ Use S3-compatible SDKs to upload objects. You will need your [account ID](https:
 
 ### Single upload
 
-* [  TypeScript ](#tab-panel-10206)
-* [  JavaScript ](#tab-panel-10207)
-* [  Python ](#tab-panel-10208)
+* [  TypeScript ](#tab-panel-10651)
+* [  JavaScript ](#tab-panel-10652)
+* [  Python ](#tab-panel-10653)
 
 **TypeScript**
 
@@ -566,9 +566,9 @@ Most S3 SDKs handle multipart uploads automatically when the file exceeds a conf
 
 The SDK splits the file and uploads parts in parallel.
 
-* [  TypeScript ](#tab-panel-10209)
-* [  JavaScript ](#tab-panel-10210)
-* [  Python ](#tab-panel-10211)
+* [  TypeScript ](#tab-panel-10654)
+* [  JavaScript ](#tab-panel-10655)
+* [  Python ](#tab-panel-10656)
 
 **TypeScript**
 
@@ -675,9 +675,9 @@ s3.upload_file(
 
 Use the low-level API when you need full control over part sizes or upload order.
 
-* [  TypeScript ](#tab-panel-10212)
-* [  JavaScript ](#tab-panel-10213)
-* [  Python ](#tab-panel-10214)
+* [  TypeScript ](#tab-panel-10657)
+* [  JavaScript ](#tab-panel-10658)
+* [  Python ](#tab-panel-10659)
 
 **TypeScript**
 
@@ -923,9 +923,9 @@ except Exception:
 
 For client-side uploads where users upload directly to R2 without going through your server, generate a presigned PUT URL. Your server creates the URL and the client uploads to it — no API credentials are exposed to the client.
 
-* [  TypeScript ](#tab-panel-10215)
-* [  JavaScript ](#tab-panel-10216)
-* [  Python ](#tab-panel-10217)
+* [  TypeScript ](#tab-panel-10660)
+* [  JavaScript ](#tab-panel-10661)
+* [  Python ](#tab-panel-10662)
 
 **TypeScript**
 
@@ -1096,6 +1096,6 @@ For example, if a two-part upload has part ETags `bce6bf66aeb76c7040fdd5f4eccb78
 [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Configure automatic cleanup of incomplete multipart uploads.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/objects/upload-objects/#page","headline":"Upload objects · Cloudflare R2 docs","description":"Upload objects to R2 using single-part or multipart uploads via the dashboard, Workers API, or S3 API.","url":"https://developers.cloudflare.com/r2/objects/upload-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/objects/upload-objects/#page","headline":"Upload objects · Cloudflare R2 docs","description":"Upload objects to R2 using single-part or multipart uploads via the dashboard, Workers API, or S3 API.","url":"https://developers.cloudflare.com/r2/objects/upload-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/objects/","name":"Objects"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/objects/upload-objects/","name":"Upload objects"}}]}
 ```

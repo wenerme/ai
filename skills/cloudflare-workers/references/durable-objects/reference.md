@@ -1,7 +1,7 @@
 ---
 title: Reference
 description: Durable Objects reference documentation covering migrations, data location, security, environments, and more.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Durable Object class migrations (legacy) ](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/durable-objects/reference/#page","headline":"Reference · Cloudflare Durable Objects docs","description":"Durable Objects reference documentation covering migrations, data location, security, environments, and more.","url":"https://developers.cloudflare.com/durable-objects/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/durable-objects/reference/#page","headline":"Reference · Cloudflare Durable Objects docs","description":"Durable Objects reference documentation covering migrations, data location, security, environments, and more.","url":"https://developers.cloudflare.com/durable-objects/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/reference/","name":"Reference"}}]}
 ```

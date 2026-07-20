@@ -1,7 +1,7 @@
 ---
 title: Sub-agent RPC and programmatic turns
 description: Stream Think turns through a child agent with chat(), and trigger turns programmatically with saveMessages(), continueLastTurn(), and abort.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -54,8 +54,8 @@ Tools belong to the child agent. Define durable capabilities with the child's `g
 
 ### Example: parent calling a child
 
-* [  JavaScript ](#tab-panel-5897)
-* [  TypeScript ](#tab-panel-5898)
+* [  JavaScript ](#tab-panel-6159)
+* [  TypeScript ](#tab-panel-6160)
 
 **JavaScript**
 
@@ -162,8 +162,8 @@ export class ChildAgent extends Think<Env> {
 
 Use `onStart` and `cancelChat()` for RPC-safe cancellation across a sub-agent boundary:
 
-* [  JavaScript ](#tab-panel-5893)
-* [  TypeScript ](#tab-panel-5894)
+* [  JavaScript ](#tab-panel-6155)
+* [  TypeScript ](#tab-panel-6156)
 
 **JavaScript**
 
@@ -231,8 +231,8 @@ await turn;
 
 If the caller and callee are not separated by Workers RPC, you can also pass an `AbortSignal` to cancel mid-stream:
 
-* [  JavaScript ](#tab-panel-5887)
-* [  TypeScript ](#tab-panel-5888)
+* [  JavaScript ](#tab-panel-6149)
+* [  TypeScript ](#tab-panel-6150)
 
 **JavaScript**
 
@@ -288,8 +288,8 @@ Pass `options.signal` to cancel a programmatic turn from the Durable Object that
 
 ### Static messages
 
-* [  JavaScript ](#tab-panel-5889)
-* [  TypeScript ](#tab-panel-5890)
+* [  JavaScript ](#tab-panel-6151)
+* [  TypeScript ](#tab-panel-6152)
 
 **JavaScript**
 
@@ -319,8 +319,8 @@ await this.saveMessages([
 
 When multiple `saveMessages` calls queue up, the function form runs with the latest messages when the turn actually starts:
 
-* [  JavaScript ](#tab-panel-5891)
-* [  TypeScript ](#tab-panel-5892)
+* [  JavaScript ](#tab-panel-6153)
+* [  TypeScript ](#tab-panel-6154)
 
 **JavaScript**
 
@@ -352,8 +352,8 @@ await this.saveMessages((current) => [
 
 Trigger a recurring prompt turn with [getScheduledTasks()](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/):
 
-* [  JavaScript ](#tab-panel-5895)
-* [  TypeScript ](#tab-panel-5896)
+* [  JavaScript ](#tab-panel-6157)
+* [  TypeScript ](#tab-panel-6158)
 
 **JavaScript**
 
@@ -444,6 +444,6 @@ protected abortAllRequests(): void
 Use `abortRequest()` when you know the request ID. Use `abortAllRequests()` for single-purpose helpers that should cancel whatever turn is currently running. Prefer `SaveMessagesOptions.signal` for programmatic turns when you can pass a signal at the call site.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/sub-agents/#page","headline":"Sub-agent RPC and programmatic turns · Cloudflare Agents docs","description":"Stream Think turns through a child agent with chat(), and trigger turns programmatically with saveMessages(), continueLastTurn(), and abort.","url":"https://developers.cloudflare.com/agents/harnesses/think/sub-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/sub-agents/#page","headline":"Sub-agent RPC and programmatic turns · Cloudflare Agents docs","description":"Stream Think turns through a child agent with chat(), and trigger turns programmatically with saveMessages(), continueLastTurn(), and abort.","url":"https://developers.cloudflare.com/agents/harnesses/think/sub-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/sub-agents/","name":"Sub-agent RPC and programmatic turns"}}]}
 ```

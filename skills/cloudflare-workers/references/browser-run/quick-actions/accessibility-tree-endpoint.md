@@ -1,7 +1,7 @@
 ---
 title: /accessibilityTree - Capture accessibility tree
 description: Capture the accessibility tree from a webpage after JavaScript execution using the Browser Run /accessibilityTree endpoint.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -37,9 +37,9 @@ You must provide either `url` or `html`:
 
 ### Capture the accessibility tree from a URL
 
-* [ curl ](#tab-panel-7281)
-* [ TypeScript SDK ](#tab-panel-7282)
-* [ Workers binding ](#tab-panel-7283)
+* [ curl ](#tab-panel-7555)
+* [ TypeScript SDK ](#tab-panel-7556)
+* [ Workers binding ](#tab-panel-7557)
 
 Go to `https://example.com/` and return the page's accessibility tree.
 
@@ -291,6 +291,6 @@ The `userAgent` parameter does not bypass bot protection. Requests from Browser 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/accessibility-tree-endpoint/#page","headline":"/accessibilityTree - Capture accessibility tree · Cloudflare Browser Run docs","description":"Capture the accessibility tree from a webpage after JavaScript execution using the Browser Run /accessibilityTree endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/accessibility-tree-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/accessibility-tree-endpoint/#page","headline":"/accessibilityTree - Capture accessibility tree · Cloudflare Browser Run docs","description":"Capture the accessibility tree from a webpage after JavaScript execution using the Browser Run /accessibilityTree endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/accessibility-tree-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/quick-actions/","name":"Quick Actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/quick-actions/accessibility-tree-endpoint/","name":"/accessibilityTree - Capture accessibility tree"}}]}
 ```

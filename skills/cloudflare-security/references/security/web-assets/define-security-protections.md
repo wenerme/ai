@@ -1,7 +1,7 @@
 ---
 title: Define security protections
 description: Use Web Assets operations and labels with Cloudflare detections, then create rules to act on risky traffic.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -64,6 +64,6 @@ For example, a rule can match requests addressed to an operation labeled `cf-llm
 You can use [custom rules](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) to log, challenge, block, or skip traffic. You can use [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to limit high-volume activity.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/define-security-protections/#page","headline":"Define security protections · Security dashboard docs","description":"Use Web Assets operations and labels with Cloudflare detections, then create rules to act on risky traffic.","url":"https://developers.cloudflare.com/security/web-assets/define-security-protections/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/define-security-protections/#page","headline":"Define security protections · Security dashboard docs","description":"Use Web Assets operations and labels with Cloudflare detections, then create rules to act on risky traffic.","url":"https://developers.cloudflare.com/security/web-assets/define-security-protections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/web-assets/","name":"Web Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/security/web-assets/define-security-protections/","name":"Define security protections"}}]}
 ```

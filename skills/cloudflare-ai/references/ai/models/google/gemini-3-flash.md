@@ -1,7 +1,7 @@
 ---
 title: Gemini 3 Flash
 description: Gemini 3 Flash is Google's fast multimodal model with frontier intelligence, superior search, and grounding capabilities.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,8 +31,8 @@ Gemini 3 Flash is Google's fast multimodal model with frontier intelligence, sup
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-536)
-* [ cURL ](#tab-panel-537)
+* [ TypeScript ](#tab-panel-586)
+* [ cURL ](#tab-panel-587)
 
 **TypeScript**
 
@@ -65,8 +65,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-542)
-* [ Raw response ](#tab-panel-543)
+* [ Output ](#tab-panel-592)
+* [ Raw response ](#tab-panel-593)
 
 While there are actually four laws of thermodynamics (numbered 0 through 3), the "Three Laws" usually refer to the following fundamental principles that govern how energy, heat, and matter behave:
 
@@ -153,8 +153,8 @@ Scientists often use a cynical "gambling" analogy to remember the laws:
 
 **With System Instruction**  — Using a system instruction to set context
 
-* [ TypeScript ](#tab-panel-538)
-* [ cURL ](#tab-panel-539)
+* [ TypeScript ](#tab-panel-588)
+* [ cURL ](#tab-panel-589)
 
 **TypeScript**
 
@@ -203,8 +203,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-546)
-* [ Raw response ](#tab-panel-547)
+* [ Output ](#tab-panel-596)
+* [ Raw response ](#tab-panel-597)
 
 To read a JSON file in Python, you use the built-in **`json`** module.
 
@@ -315,8 +315,8 @@ print(data)
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-544)
-* [ cURL ](#tab-panel-545)
+* [ TypeScript ](#tab-panel-594)
+* [ cURL ](#tab-panel-595)
 
 **TypeScript**
 
@@ -385,8 +385,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-548)
-* [ Raw response ](#tab-panel-549)
+* [ Output ](#tab-panel-598)
+* [ Raw response ](#tab-panel-599)
 
 To give you the best recommendations, it helps to know how much time you have. The drive can
 
@@ -437,8 +437,8 @@ To give you the best recommendations, it helps to know how much time you have. T
 
 **Creative Writing**  — Higher temperature for creative output
 
-* [ TypeScript ](#tab-panel-540)
-* [ cURL ](#tab-panel-541)
+* [ TypeScript ](#tab-panel-590)
+* [ cURL ](#tab-panel-591)
 
 **TypeScript**
 
@@ -483,8 +483,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-550)
-* [ Raw response ](#tab-panel-551)
+* [ Output ](#tab-panel-600)
+* [ Raw response ](#tab-panel-601)
 
 The yellow police tape hummed in the drafty
 
@@ -539,8 +539,8 @@ Schema variant
 
 Generate ContentChat Completions
 
-* [ Input ](#tab-panel-552)
-* [ Output ](#tab-panel-553)
+* [ Input ](#tab-panel-602)
+* [ Output ](#tab-panel-603)
 
 ▶contents\[\]
 
@@ -665,6 +665,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/sche
 Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-3-flash/#page","headline":"Gemini 3 Flash (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Gemini 3 Flash is Google's fast multimodal model with frontier intelligence, superior search, and grounding capabilities.","url":"https://developers.cloudflare.com/ai/models/google/gemini-3-flash/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-3-flash/#page","headline":"Gemini 3 Flash (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Gemini 3 Flash is Google's fast multimodal model with frontier intelligence, superior search, and grounding capabilities.","url":"https://developers.cloudflare.com/ai/models/google/gemini-3-flash/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

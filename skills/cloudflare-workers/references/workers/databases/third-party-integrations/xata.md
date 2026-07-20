@@ -1,7 +1,7 @@
 ---
 title: Xata
 description: Connect Cloudflare Workers to a Xata PostgreSQL database using Hyperdrive.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -55,8 +55,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-11902)
-* [ Wrangler CLI ](#tab-panel-11903)
+* [ Dashboard ](#tab-panel-12421)
+* [ Wrangler CLI ](#tab-panel-12422)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -74,8 +74,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-  * [  wrangler.jsonc ](#tab-panel-11900)
-  * [  wrangler.toml ](#tab-panel-11901)
+  * [  wrangler.jsonc ](#tab-panel-12419)
+  * [  wrangler.toml ](#tab-panel-12420)
 
 **JSONC**
 ```jsonc
@@ -84,7 +84,7 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
   "name": "hyperdrive-example",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -104,7 +104,7 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -163,8 +163,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-11904)
-* [  wrangler.toml ](#tab-panel-11905)
+* [  wrangler.jsonc ](#tab-panel-12423)
+* [  wrangler.toml ](#tab-panel-12424)
 
 **JSONC**
 
@@ -175,7 +175,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
     "nodejs_compat"
   ],
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "hyperdrive": [
     {
       "binding": "HYPERDRIVE",
@@ -190,7 +190,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [[hyperdrive]]
@@ -250,6 +250,6 @@ export default {
 * Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/xata/#page","headline":"Xata · Cloudflare Workers docs","description":"Connect Cloudflare Workers to a Xata PostgreSQL database using Hyperdrive.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/xata/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/xata/#page","headline":"Xata · Cloudflare Workers docs","description":"Connect Cloudflare Workers to a Xata PostgreSQL database using Hyperdrive.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/xata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/databases/","name":"Databases"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/databases/third-party-integrations/","name":"3rd Party Integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/databases/third-party-integrations/xata/","name":"Xata"}}]}
 ```

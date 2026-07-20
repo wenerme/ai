@@ -1,7 +1,7 @@
 ---
 title: Attribution Business Insights
 description: Understand which bots help or harm your business with crawl-to-referral ratios and behavior-based classification.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -37,6 +37,6 @@ The dashboard surfaces both existing and new metrics that help you evaluate AI t
 * **Action**: Action reflects whether requests from this company are Blocked, Allowed, or Partially blocked. Companies that have some bots blocked but at least 1 bot allowed will be marked as "Partially Blocked", and configuration can be confirmed in [Security rules](https://developers.cloudflare.com/security/rules/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/attribution-business-insights/#page","headline":"Attribution Business Insights · Cloudflare bot solutions docs","description":"Understand which bots help or harm your business with crawl-to-referral ratios and behavior-based classification.","url":"https://developers.cloudflare.com/bots/attribution-business-insights/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Bots"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/attribution-business-insights/#page","headline":"Attribution Business Insights · Cloudflare bot solutions docs","description":"Understand which bots help or harm your business with crawl-to-referral ratios and behavior-based classification.","url":"https://developers.cloudflare.com/bots/attribution-business-insights/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Bots"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/attribution-business-insights/","name":"Attribution Business Insights"}}]}
 ```

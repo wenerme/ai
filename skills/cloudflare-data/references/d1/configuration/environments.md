@@ -1,7 +1,7 @@
 ---
 title: Environments
 description: Configure separate D1 databases for staging and production Wrangler environments.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To specify different D1 databases for different environments, use the following syntax in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8237)
-* [  wrangler.toml ](#tab-panel-8238)
+* [  wrangler.jsonc ](#tab-panel-8577)
+* [  wrangler.toml ](#tab-panel-8578)
 
 **JSONC**
 
@@ -69,8 +69,8 @@ In the code above, the `staging` environment is using a different database (`DAT
 
 If you need to specify different D1 databases for different environments, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) may contain bindings that resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-8235)
-* [  wrangler.toml ](#tab-panel-8236)
+* [  wrangler.jsonc ](#tab-panel-8575)
+* [  wrangler.toml ](#tab-panel-8576)
 
 **JSONC**
 
@@ -120,8 +120,8 @@ Therefore, the above binding is equivalent to:
 
 ### Example
 
-* [  wrangler.jsonc ](#tab-panel-8239)
-* [  wrangler.toml ](#tab-panel-8240)
+* [  wrangler.jsonc ](#tab-panel-8579)
+* [  wrangler.toml ](#tab-panel-8580)
 
 **JSONC**
 
@@ -193,6 +193,6 @@ The above is equivalent to the following structure in JSON:
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/configuration/environments/#page","headline":"Environments · Cloudflare D1 docs","description":"Configure separate D1 databases for staging and production Wrangler environments.","url":"https://developers.cloudflare.com/d1/configuration/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/configuration/environments/#page","headline":"Environments · Cloudflare D1 docs","description":"Configure separate D1 databases for staging and production Wrangler environments.","url":"https://developers.cloudflare.com/d1/configuration/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/configuration/environments/","name":"Environments"}}]}
 ```

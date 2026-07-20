@@ -1,7 +1,7 @@
 ---
 title: Deploy rulesets
 description: Deploy rulesets to a phase entry point using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -125,6 +125,6 @@ Refer to [Work with managed rulesets](https://developers.cloudflare.com/ruleset-
 For more information on the available API endpoints for editing and deploying rulesets, refer to [Update or deploy a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/#page","headline":"Deploy rulesets · Cloudflare Ruleset Engine docs","description":"Deploy rulesets to a phase entry point using the API.","url":"https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/#page","headline":"Deploy rulesets · Cloudflare Ruleset Engine docs","description":"Deploy rulesets to a phase entry point using the API.","url":"https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/basic-operations/","name":"Basic API operations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/basic-operations/deploy-rulesets/","name":"Deploy rulesets"}}]}
 ```

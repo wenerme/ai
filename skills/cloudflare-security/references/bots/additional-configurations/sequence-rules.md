@@ -1,7 +1,7 @@
 ---
 title: Sequence rules
 description: Detect and mitigate bot traffic based on cookie-based request sequences.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -46,8 +46,8 @@ These sequence fields are available in:
 
 ## Build a sequence custom rule via the Cloudflare dashboard
 
-* [  New dashboard ](#tab-panel-7156)
-* [ Old dashboard ](#tab-panel-7157)
+* [  New dashboard ](#tab-panel-7485)
+* [ Old dashboard ](#tab-panel-7486)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -195,6 +195,6 @@ Cloudflare only supports HTTPS requests since our cookies set the `Secure` attri
 Sequence rules is currently in private beta. If you would like to be included in the beta, contact your account team.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/#page","headline":"Sequence rules · Cloudflare bot solutions docs","description":"Detect and mitigate bot traffic based on cookie-based request sequences.","url":"https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/#page","headline":"Sequence rules · Cloudflare bot solutions docs","description":"Detect and mitigate bot traffic based on cookie-based request sequences.","url":"https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/additional-configurations/sequence-rules/","name":"Sequence rules"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: API Gateway
 description: Use Cloudflare as your API gateway for security, management, and routing.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -46,6 +46,6 @@ To begin using Cloudflare API Shield, refer to our [Get started](https://develop
 For detailed instructions and additional resources, refer to the [API Shield documentation](https://developers.cloudflare.com/api-shield/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/api-gateway/#page","headline":"API Gateway · Cloudflare API Shield docs","description":"Use Cloudflare as your API gateway for security, management, and routing.","url":"https://developers.cloudflare.com/api-shield/api-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/api-gateway/#page","headline":"API Gateway · Cloudflare API Shield docs","description":"Use Cloudflare as your API gateway for security, management, and routing.","url":"https://developers.cloudflare.com/api-shield/api-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/api-gateway/","name":"API Gateway"}}]}
 ```

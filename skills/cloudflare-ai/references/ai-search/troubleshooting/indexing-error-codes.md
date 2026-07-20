@@ -1,7 +1,7 @@
 ---
 title: Indexing error codes
 description: Resolve asynchronous indexing, sync, and crawl error codes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -141,6 +141,6 @@ These errors pause the whole instance and stop all indexing until the underlying
 | hybrid\_search\_is\_full              | Pauses the instance. The hybrid search index is full. Its file limit is lower than the standard instance limit, so it can be reached earlier. | [Request a higher limit ↗](https://forms.gle/wnizxrEUW33Y15CT8) to resume the instance, or create another instance to index additional content. See [limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#limits). |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/#page","headline":"Indexing error codes · Cloudflare AI Search docs","description":"Resolve asynchronous indexing, sync, and crawl error codes.","url":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/#page","headline":"Indexing error codes · Cloudflare AI Search docs","description":"Resolve asynchronous indexing, sync, and crawl error codes.","url":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/troubleshooting/indexing-error-codes/","name":"Indexing error codes"}}]}
 ```

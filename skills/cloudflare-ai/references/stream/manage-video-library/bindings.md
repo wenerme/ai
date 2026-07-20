@@ -1,7 +1,7 @@
 ---
 title: Bind to Workers API
 description: A binding connects your Worker to external resources on the Developer Platform, like Stream, R2 buckets, or KV namespaces.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ The Stream binding is enabled on a per-Worker basis.
 
 To bind Stream to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11180)
-* [  wrangler.toml ](#tab-panel-11181)
+* [  wrangler.jsonc ](#tab-panel-11625)
+* [  wrangler.toml ](#tab-panel-11626)
 
 **JSONC**
 
@@ -182,8 +182,8 @@ Delete a watermark profile. Returns `Promise<void>`.
 
 ### Upload a video from a URL
 
-* [  JavaScript ](#tab-panel-11182)
-* [  TypeScript ](#tab-panel-11183)
+* [  JavaScript ](#tab-panel-11627)
+* [  TypeScript ](#tab-panel-11628)
 
 **JavaScript**
 
@@ -217,8 +217,8 @@ export default {
 
 ### Create a direct upload
 
-* [  JavaScript ](#tab-panel-11184)
-* [  TypeScript ](#tab-panel-11185)
+* [  JavaScript ](#tab-panel-11629)
+* [  TypeScript ](#tab-panel-11630)
 
 **JavaScript**
 
@@ -252,8 +252,8 @@ export default {
 
 ### List videos
 
-* [  JavaScript ](#tab-panel-11188)
-* [  TypeScript ](#tab-panel-11189)
+* [  JavaScript ](#tab-panel-11633)
+* [  TypeScript ](#tab-panel-11634)
 
 **JavaScript**
 
@@ -285,8 +285,8 @@ export default {
 
 ### Get video details
 
-* [  JavaScript ](#tab-panel-11186)
-* [  TypeScript ](#tab-panel-11187)
+* [  JavaScript ](#tab-panel-11631)
+* [  TypeScript ](#tab-panel-11632)
 
 **JavaScript**
 
@@ -312,8 +312,8 @@ export default {
 
 ### Update video metadata
 
-* [  JavaScript ](#tab-panel-11192)
-* [  TypeScript ](#tab-panel-11193)
+* [  JavaScript ](#tab-panel-11637)
+* [  TypeScript ](#tab-panel-11638)
 
 **JavaScript**
 
@@ -345,8 +345,8 @@ export default {
 
 ### Delete a video
 
-* [  JavaScript ](#tab-panel-11190)
-* [  TypeScript ](#tab-panel-11191)
+* [  JavaScript ](#tab-panel-11635)
+* [  TypeScript ](#tab-panel-11636)
 
 **JavaScript**
 
@@ -372,8 +372,8 @@ export default {
 
 ### Generate a signed URL token
 
-* [  JavaScript ](#tab-panel-11194)
-* [  TypeScript ](#tab-panel-11195)
+* [  JavaScript ](#tab-panel-11639)
+* [  TypeScript ](#tab-panel-11640)
 
 **JavaScript**
 
@@ -399,8 +399,8 @@ export default {
 
 ### Upload captions
 
-* [  JavaScript ](#tab-panel-11198)
-* [  TypeScript ](#tab-panel-11199)
+* [  JavaScript ](#tab-panel-11643)
+* [  TypeScript ](#tab-panel-11644)
 
 **JavaScript**
 
@@ -434,8 +434,8 @@ export default {
 
 ### Generate AI captions
 
-* [  JavaScript ](#tab-panel-11196)
-* [  TypeScript ](#tab-panel-11197)
+* [  JavaScript ](#tab-panel-11641)
+* [  TypeScript ](#tab-panel-11642)
 
 **JavaScript**
 
@@ -461,8 +461,8 @@ export default {
 
 ### List and delete captions
 
-* [  JavaScript ](#tab-panel-11200)
-* [  TypeScript ](#tab-panel-11201)
+* [  JavaScript ](#tab-panel-11645)
+* [  TypeScript ](#tab-panel-11646)
 
 **JavaScript**
 
@@ -492,8 +492,8 @@ export default {
 
 ### Generate and list downloads
 
-* [  JavaScript ](#tab-panel-11202)
-* [  TypeScript ](#tab-panel-11203)
+* [  JavaScript ](#tab-panel-11647)
+* [  TypeScript ](#tab-panel-11648)
 
 **JavaScript**
 
@@ -525,8 +525,8 @@ export default {
 
 ### Create a watermark profile
 
-* [  JavaScript ](#tab-panel-11206)
-* [  TypeScript ](#tab-panel-11207)
+* [  JavaScript ](#tab-panel-11651)
+* [  TypeScript ](#tab-panel-11652)
 
 **JavaScript**
 
@@ -570,8 +570,8 @@ export default {
 
 ### List and delete watermark profiles
 
-* [  JavaScript ](#tab-panel-11204)
-* [  TypeScript ](#tab-panel-11205)
+* [  JavaScript ](#tab-panel-11649)
+* [  TypeScript ](#tab-panel-11650)
 
 **JavaScript**
 
@@ -1029,8 +1029,8 @@ The following error subtypes may be thrown:
 
 Use a `try...catch` block to handle errors:
 
-* [  JavaScript ](#tab-panel-11208)
-* [  TypeScript ](#tab-panel-11209)
+* [  JavaScript ](#tab-panel-11653)
+* [  TypeScript ](#tab-panel-11654)
 
 **JavaScript**
 
@@ -1071,6 +1071,6 @@ export default {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/manage-video-library/bindings/#page","headline":"Bind to Workers API · Cloudflare Stream docs","description":"A binding connects your Worker to external resources on the Developer Platform, like Stream, R2 buckets, or KV namespaces.","url":"https://developers.cloudflare.com/stream/manage-video-library/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/manage-video-library/bindings/#page","headline":"Bind to Workers API · Cloudflare Stream docs","description":"A binding connects your Worker to external resources on the Developer Platform, like Stream, R2 buckets, or KV namespaces.","url":"https://developers.cloudflare.com/stream/manage-video-library/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/manage-video-library/","name":"Manage videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/manage-video-library/bindings/","name":"Bind to Workers API"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Share a Radar chart
 description: Download Cloudflare Radar charts as PNG images or embed interactive charts in your website.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -33,6 +33,6 @@ Charts supporting this feature will have a share icon next to its description.
 **Note**: Your current selections, such as date range, location, autonomous system (ASN), and visible series, will be reflected in the shared chart.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/get-started/embed/#page","headline":"Share a Radar chart · Cloudflare Radar docs","description":"Download Cloudflare Radar charts as PNG images or embed interactive charts in your website.","url":"https://developers.cloudflare.com/radar/get-started/embed/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/get-started/embed/#page","headline":"Share a Radar chart · Cloudflare Radar docs","description":"Download Cloudflare Radar charts as PNG images or embed interactive charts in your website.","url":"https://developers.cloudflare.com/radar/get-started/embed/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/get-started/embed/","name":"Share a Radar chart"}}]}
 ```

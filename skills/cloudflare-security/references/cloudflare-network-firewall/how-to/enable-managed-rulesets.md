@@ -1,7 +1,7 @@
 ---
 title: Enable Managed Rulesets
 description: Enable managed rulesets for the Network Firewall.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -181,6 +181,6 @@ The Cloudflare dashboard should now show you the rule-level override you have se
 Your Cloudflare Network Firewall managed ruleset is now deleted.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/#page","headline":"Enable Managed Rulesets · Cloudflare Network Firewall docs","description":"Enable managed rulesets for the Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/#page","headline":"Enable Managed Rulesets · Cloudflare Network Firewall docs","description":"Enable managed rulesets for the Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/how-to/enable-managed-rulesets/","name":"Enable Managed Rulesets"}}]}
 ```

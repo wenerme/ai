@@ -1,7 +1,7 @@
 ---
 title: Logpush datasets
 description: Logpush datasets that support Customer Metadata Boundary by region.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -61,6 +61,6 @@ If you enable CMB for a region where a dataset is not available (marked ✘ in t
 1. Customer Metadata Boundary does not apply in this case, as these logs are sent directly from the processing location to your configured destination. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/#page","headline":"Logpush datasets · Cloudflare Data Localization Suite docs","description":"Logpush datasets that support Customer Metadata Boundary by region.","url":"https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/#page","headline":"Logpush datasets · Cloudflare Data Localization Suite docs","description":"Logpush datasets that support Customer Metadata Boundary by region.","url":"https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/metadata-boundary/","name":"Customer Metadata Boundary"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/metadata-boundary/logpush-datasets/","name":"Logpush datasets"}}]}
 ```

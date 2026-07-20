@@ -1,7 +1,7 @@
 ---
 title: Pools
 description: Pools of origin servers for load balancing traffic distribution.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -61,6 +61,6 @@ The Cloudflare API supports the following commands for pools. Examples are given
 | [List Pool References](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/subresources/references/methods/get/) | GET    | accounts/:account\_id/load\_balancers/pools/:id/references |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/pools/#page","headline":"Pools · Cloudflare Load Balancing docs","description":"Pools of origin servers for load balancing traffic distribution.","url":"https://developers.cloudflare.com/load-balancing/pools/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/pools/#page","headline":"Pools · Cloudflare Load Balancing docs","description":"Pools of origin servers for load balancing traffic distribution.","url":"https://developers.cloudflare.com/load-balancing/pools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/pools/","name":"Pools"}}]}
 ```

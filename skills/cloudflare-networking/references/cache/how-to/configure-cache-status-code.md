@@ -1,7 +1,7 @@
 ---
 title: Cache by status code
 description: Cache responses based on origin HTTP status codes.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -107,6 +107,6 @@ For example, if a user specifies a TTL of one hour for status `200` and 0 second
 This behavior is likely undesirable unless the user has a specific use case. Therefore, users should ensure that the TTL for `304` matches the TTL for `200` unless they intentionally require this behavior.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/#page","headline":"Cache by status code · Cloudflare Cache (CDN) docs","description":"Cache responses based on origin HTTP status codes.","url":"https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/#page","headline":"Cache by status code · Cloudflare Cache (CDN) docs","description":"Cache responses based on origin HTTP status codes.","url":"https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/configure-cache-status-code/","name":"Cache by status code"}}]}
 ```

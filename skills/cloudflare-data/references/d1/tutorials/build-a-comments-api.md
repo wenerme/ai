@@ -1,7 +1,7 @@
 ---
 title: Build a Comments API
 description: Use D1 to add comments to a static blog site. Create a D1 database and build a JSON API with Hono that allows the creation and retrieval of comments.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -79,8 +79,8 @@ npx wrangler@latest d1 create d1-comments-api
 2. When prompted `Would you like Wrangler to add it on your behalf?`, select `Yes`. This automatically adds the `DB` binding to your Wrangler configuration file.
 Confirm that your Wrangler configuration file contains the `d1_databases` binding and the full project configuration:
 
-  * [  wrangler.jsonc ](#tab-panel-8272)
-  * [  wrangler.toml ](#tab-panel-8273)
+  * [  wrangler.jsonc ](#tab-panel-8612)
+  * [  wrangler.toml ](#tab-panel-8613)
 
 **JSONC**
 ```jsonc
@@ -89,7 +89,7 @@ Confirm that your Wrangler configuration file contains the `d1_databases` bindin
   "name": "d1-comments-api",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "d1_databases": [
     {
       "binding": "DB",
@@ -105,7 +105,7 @@ Confirm that your Wrangler configuration file contains the `d1_databases` bindin
 name = "d1-comments-api"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 [[d1_databases]]
 binding = "DB" # available in your Worker on env.DB
 database_name = "d1-comments-api"
@@ -156,8 +156,8 @@ npx wrangler d1 execute d1-comments-api --remote --file schemas/schema.sql
 
 Replace the contents of `src/index.ts` with the following code. This sets up a Hono application with a typed `Bindings` interface so that `env.DB` is correctly typed as a `D1Database`:
 
-* [  JavaScript ](#tab-panel-8278)
-* [  TypeScript ](#tab-panel-8279)
+* [  JavaScript ](#tab-panel-8618)
+* [  TypeScript ](#tab-panel-8619)
 
 **JavaScript**
 
@@ -216,8 +216,8 @@ export default app;
 
 Add the logic for the `GET` endpoint to retrieve comments for a given post. This uses the D1 [Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) to prepare and execute a parameterized query:
 
-* [  JavaScript ](#tab-panel-8274)
-* [  TypeScript ](#tab-panel-8275)
+* [  JavaScript ](#tab-panel-8614)
+* [  TypeScript ](#tab-panel-8615)
 
 **JavaScript**
 
@@ -253,8 +253,8 @@ The code uses [prepare](https://developers.cloudflare.com/d1/worker-api/d1-datab
 
 Add the `POST` endpoint to create new comments. This validates the request body before inserting a row:
 
-* [  JavaScript ](#tab-panel-8280)
-* [  TypeScript ](#tab-panel-8281)
+* [  JavaScript ](#tab-panel-8620)
+* [  TypeScript ](#tab-panel-8621)
 
 **JavaScript**
 
@@ -321,8 +321,8 @@ app.post("/api/posts/:slug/comments", async (c) => {
 
 If you plan to call this API from a front-end application on a different origin, add CORS middleware. Import the `cors` module from Hono and add it before your routes:
 
-* [  JavaScript ](#tab-panel-8276)
-* [  TypeScript ](#tab-panel-8277)
+* [  JavaScript ](#tab-panel-8616)
+* [  TypeScript ](#tab-panel-8617)
 
 **JavaScript**
 
@@ -392,8 +392,8 @@ curl https://d1-comments-api.<YOUR_SUBDOMAIN>.workers.dev/api/posts/hello-world/
 
 The complete `src/index.ts` with all routes and CORS support:
 
-* [  JavaScript ](#tab-panel-8282)
-* [  TypeScript ](#tab-panel-8283)
+* [  JavaScript ](#tab-panel-8622)
+* [  TypeScript ](#tab-panel-8623)
 
 **JavaScript**
 
@@ -512,6 +512,6 @@ export default app;
 * Explore [community projects built on D1](https://developers.cloudflare.com/d1/reference/community-projects/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/#page","headline":"Build a Comments API · Cloudflare D1 docs","description":"Use D1 to add comments to a static blog site. Create a D1 database and build a JSON API with Hono that allows the creation and retrieval of comments.","url":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript","SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/#page","headline":"Build a Comments API · Cloudflare D1 docs","description":"Use D1 to add comments to a static blog site. Create a D1 database and build a JSON API with Hono that allows the creation and retrieval of comments.","url":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript","SQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/tutorials/build-a-comments-api/","name":"Build a Comments API"}}]}
 ```

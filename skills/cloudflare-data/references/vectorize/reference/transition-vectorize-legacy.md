@@ -1,7 +1,7 @@
 ---
 title: Transition legacy Vectorize indexes
 description: Migrate from legacy Vectorize V1 indexes to the current V2 format.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -73,6 +73,6 @@ These mutation operations are: [Vector Inserts](https://developers.cloudflare.co
 To check the identifier and the timestamp of the last mutation processed, use the Vectorize [Info command](https://developers.cloudflare.com/vectorize/reference/client-api/#get-index-info).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/#page","headline":"Transition legacy Vectorize indexes · Cloudflare Vectorize docs","description":"Migrate from legacy Vectorize V1 indexes to the current V2 format.","url":"https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/#page","headline":"Transition legacy Vectorize indexes · Cloudflare Vectorize docs","description":"Migrate from legacy Vectorize V1 indexes to the current V2 format.","url":"https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/reference/transition-vectorize-legacy/","name":"Transition legacy Vectorize indexes"}}]}
 ```

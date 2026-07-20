@@ -1,7 +1,7 @@
 ---
 title: AssemblyAI Universal-3 Pro
 description: AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcri
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-310)
-* [ cURL ](#tab-panel-311)
+* [ TypeScript ](#tab-panel-360)
+* [ cURL ](#tab-panel-361)
 
 **TypeScript**
 
@@ -54,8 +54,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-318)
-* [ Raw response ](#tab-panel-319)
+* [ Output ](#tab-panel-368)
+* [ Raw response ](#tab-panel-369)
 
 The sun rises in the east and sets in the west. This simple fact has been observed by humans for thousands of years.
 
@@ -242,8 +242,8 @@ The sun rises in the east and sets in the west. This simple fact has been observ
 
 **With Language Code**  — Transcribe with an explicit language code
 
-* [ TypeScript ](#tab-panel-312)
-* [ cURL ](#tab-panel-313)
+* [ TypeScript ](#tab-panel-362)
+* [ cURL ](#tab-panel-363)
 
 **TypeScript**
 
@@ -268,8 +268,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-322)
-* [ Raw response ](#tab-panel-323)
+* [ Output ](#tab-panel-372)
+* [ Raw response ](#tab-panel-373)
 
 In the heart of the city, there is a large park where people go to relax and enjoy nature. The park has a beautiful pond with ducks and swans.
 
@@ -496,8 +496,8 @@ In the heart of the city, there is a large park where people go to relax and enj
 
 **With Key Terms**  — Improve accuracy for domain-specific vocabulary
 
-* [ TypeScript ](#tab-panel-316)
-* [ cURL ](#tab-panel-317)
+* [ TypeScript ](#tab-panel-366)
+* [ cURL ](#tab-panel-367)
 
 **TypeScript**
 
@@ -530,8 +530,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-324)
-* [ Raw response ](#tab-panel-325)
+* [ Output ](#tab-panel-374)
+* [ Raw response ](#tab-panel-375)
 
 In the kitchen, the aroma of freshly baked bread filled the air. The loaves were golden brown and crusty on the outside and soft and warm on the inside.
 
@@ -758,8 +758,8 @@ In the kitchen, the aroma of freshly baked bread filled the air. The loaves were
 
 **Speaker Diarization**  — Identify different speakers in the audio
 
-* [ TypeScript ](#tab-panel-314)
-* [ cURL ](#tab-panel-315)
+* [ TypeScript ](#tab-panel-364)
+* [ cURL ](#tab-panel-365)
 
 **TypeScript**
 
@@ -784,8 +784,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-320)
-* [ Raw response ](#tab-panel-321)
+* [ Output ](#tab-panel-370)
+* [ Raw response ](#tab-panel-371)
 
 The train chugged along the tracks, carrying passengers to their destinations. The rhythmic sound of the wheels on the rails was soothing.
 
@@ -971,8 +971,8 @@ The train chugged along the tracks, carrying passengers to their destinations. T
 
 ## Parameters
 
-* [ Input ](#tab-panel-326)
-* [ Output ](#tab-panel-327)
+* [ Input ](#tab-panel-376)
+* [ Output ](#tab-panel-377)
 
 audio\_url
 
@@ -1129,6 +1129,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro
 Output [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/#page","headline":"AssemblyAI Universal-3 Pro (AssemblyAI) · Cloudflare AI docs · Cloudflare AI docs","description":"AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription.","url":"https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/#page","headline":"AssemblyAI Universal-3 Pro (AssemblyAI) · Cloudflare AI docs · Cloudflare AI docs","description":"AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription.","url":"https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

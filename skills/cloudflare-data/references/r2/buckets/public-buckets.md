@@ -1,7 +1,7 @@
 ---
 title: Public buckets
 description: Expose R2 bucket contents to the Internet via a custom domain or r2.dev subdomain.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -147,6 +147,6 @@ To disable public access for your bucket:
 4. In **Disallow Public Access?**, type `disallow` to confirm and select **Disallow**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/public-buckets/#page","headline":"Public buckets · Cloudflare R2 docs","description":"Expose R2 bucket contents to the Internet via a custom domain or r2.dev subdomain.","url":"https://developers.cloudflare.com/r2/buckets/public-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/public-buckets/#page","headline":"Public buckets · Cloudflare R2 docs","description":"Expose R2 bucket contents to the Internet via a custom domain or r2.dev subdomain.","url":"https://developers.cloudflare.com/r2/buckets/public-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/buckets/","name":"Buckets"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/buckets/public-buckets/","name":"Public buckets"}}]}
 ```

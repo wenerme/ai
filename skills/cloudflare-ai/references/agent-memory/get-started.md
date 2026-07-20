@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Add durable memory recall and ingestion to an agent.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -109,8 +109,8 @@ You will use the namespace name, `my-agent`, in your Worker binding.
 
 Add an `agent_memory` binding to your Wrangler configuration. If you use the Agents SDK, also register your agent Durable Object.
 
-* [  wrangler.jsonc ](#tab-panel-5337)
-* [  wrangler.toml ](#tab-panel-5338)
+* [  wrangler.jsonc ](#tab-panel-5597)
+* [  wrangler.toml ](#tab-panel-5598)
 
 **JSONC**
 
@@ -120,7 +120,7 @@ Add an `agent_memory` binding to your Wrangler configuration. If you use the Age
   "name": "memory-agent",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -158,7 +158,7 @@ Add an `agent_memory` binding to your Wrangler configuration. If you use the Age
 name = "memory-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = ["nodejs_compat"]
 
 
@@ -205,8 +205,8 @@ With the Agents SDK [Session API](https://developers.cloudflare.com/agents/runti
 
 Create `src/server.ts` and add the recall setup:
 
-* [  JavaScript ](#tab-panel-5345)
-* [  TypeScript ](#tab-panel-5346)
+* [  JavaScript ](#tab-panel-5605)
+* [  TypeScript ](#tab-panel-5606)
 
 **src/server.js**
 
@@ -344,8 +344,8 @@ Next, give your agent a way to add durable memories. In a chat agent, the usual 
 
 Change the `agents` import and add the AI SDK imports. Keep the `Session` import from step 4.
 
-* [  JavaScript ](#tab-panel-5341)
-* [  TypeScript ](#tab-panel-5342)
+* [  JavaScript ](#tab-panel-5601)
+* [  TypeScript ](#tab-panel-5602)
 
 **src/server.js**
 
@@ -368,8 +368,8 @@ import { createWorkersAI } from "workers-ai-provider";
 
 Add the ingestion delay near the top of the file, below the imports:
 
-* [  JavaScript ](#tab-panel-5339)
-* [  TypeScript ](#tab-panel-5340)
+* [  JavaScript ](#tab-panel-5599)
+* [  TypeScript ](#tab-panel-5600)
 
 **src/server.js**
 
@@ -385,8 +385,8 @@ const MEMORY_INGEST_DELAY_SECONDS = 10;
 
 Then update `ChatAgent` with the following shape. The comment marks where to keep the Session setup from step 4.
 
-* [  JavaScript ](#tab-panel-5347)
-* [  TypeScript ](#tab-panel-5348)
+* [  JavaScript ](#tab-panel-5607)
+* [  TypeScript ](#tab-panel-5608)
 
 **src/server.js**
 
@@ -616,8 +616,8 @@ export class ChatAgent extends Agent<Env, ChatAgentState> {
 
 Replace the default export with a small test endpoint. Each `conversationId` maps to a separate Agent instance with its own Session history.
 
-* [  JavaScript ](#tab-panel-5343)
-* [  TypeScript ](#tab-panel-5344)
+* [  JavaScript ](#tab-panel-5603)
+* [  TypeScript ](#tab-panel-5604)
 
 **src/server.js**
 
@@ -746,6 +746,6 @@ The model should call `search_context`, receive recalled memory from Agent Memor
 [ Workers API ](https://developers.cloudflare.com/agent-memory/api/workers-api/) Use \`ingest()\`, \`remember()\`, \`recall()\`, and \`getSummary()\` from Workers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/get-started/#page","headline":"Get started · Cloudflare Agent Memory docs","description":"Add durable memory recall and ingestion to an agent.","url":"https://developers.cloudflare.com/agent-memory/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/get-started/#page","headline":"Get started · Cloudflare Agent Memory docs","description":"Add durable memory recall and ingestion to an agent.","url":"https://developers.cloudflare.com/agent-memory/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agent-memory/","name":"Agent Memory"}},{"@type":"ListItem","position":3,"item":{"@id":"/agent-memory/get-started/","name":"Get started"}}]}
 ```

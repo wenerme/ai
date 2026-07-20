@@ -1,7 +1,7 @@
 ---
 title: Images
 description: Images is a platform for creating scalable and reliable image pipelines, designed to help developers deploy media-rich applications faster.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -85,6 +85,6 @@ Ask questions, show what you're building, and discuss the platform with other de
 Follow @CloudflareDev on Twitter to learn about product announcements from the Developer Platform.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/images/#page","headline":"Overview · Cloudflare Images docs","description":"Images is a platform for creating scalable and reliable image pipelines, designed to help developers deploy media-rich applications faster.","url":"https://developers.cloudflare.com/images/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/images/#page","headline":"Overview · Cloudflare Images docs","description":"Images is a platform for creating scalable and reliable image pipelines, designed to help developers deploy media-rich applications faster.","url":"https://developers.cloudflare.com/images/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}}]}
 ```

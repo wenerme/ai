@@ -1,7 +1,7 @@
 ---
 title: Use Direct Upload with continuous integration
 description: Deploy prebuilt assets to Cloudflare Pages using Wrangler in your CI/CD pipeline.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -207,6 +207,6 @@ This will set the Node.js version to 18\. You have also set branches you want yo
 You can also modify the Wrangler command with any [wrangler pages deploy options](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/#page","headline":"Use Direct Upload with continuous integration · Cloudflare Pages docs","description":"Deploy prebuilt assets to Cloudflare Pages using Wrangler in your CI/CD pipeline.","url":"https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/#page","headline":"Use Direct Upload with continuous integration · Cloudflare Pages docs","description":"Deploy prebuilt assets to Cloudflare Pages using Wrangler in your CI/CD pipeline.","url":"https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/use-direct-upload-with-continuous-integration/","name":"Use Direct Upload with continuous integration"}}]}
 ```

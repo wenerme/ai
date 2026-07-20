@@ -1,7 +1,7 @@
 ---
 title: Limitations
 description: Caveats and limitations when deploying Data Localization Suite features.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -69,6 +69,6 @@ If you encounter a message on the dashboard indicating that your data is unavail
 In some cases, when using Customer Metadata Boundary set to the EU, some Dashboard UI Analytics might show up empty.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/limitations/#page","headline":"Limitations · Cloudflare Data Localization Suite docs","description":"Caveats and limitations when deploying Data Localization Suite features.","url":"https://developers.cloudflare.com/data-localization/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/limitations/#page","headline":"Limitations · Cloudflare Data Localization Suite docs","description":"Caveats and limitations when deploying Data Localization Suite features.","url":"https://developers.cloudflare.com/data-localization/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/limitations/","name":"Limitations"}}]}
 ```

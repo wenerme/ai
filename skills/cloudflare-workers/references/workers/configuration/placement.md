@@ -1,7 +1,7 @@
 ---
 title: Placement
 description: Control where your Worker runs to reduce latency.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 By default, [Workers](https://developers.cloudflare.com/workers/) and [Pages Functions](https://developers.cloudflare.com/pages/functions/) run in a data center closest to where the request was received. If your Worker makes requests to back-end infrastructure such as databases or APIs, it may be more performant to run that Worker closer to your back-end than the end user.
 
-* [  wrangler.jsonc ](#tab-panel-11824)
-* [  wrangler.toml ](#tab-panel-11825)
+* [  wrangler.jsonc ](#tab-panel-12347)
+* [  wrangler.toml ](#tab-panel-12348)
 
 **JSONC**
 
@@ -87,8 +87,8 @@ Smart Placement is available on all Workers plans.
 
 Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11822)
-* [  wrangler.toml ](#tab-panel-11823)
+* [  wrangler.jsonc ](#tab-panel-12345)
+* [  wrangler.toml ](#tab-panel-12346)
 
 **JSONC**
 
@@ -175,8 +175,8 @@ Workers run on [Cloudflare's global network ↗](https://www.cloudflare.com/netw
 
 If your infrastructure runs in AWS, GCP, or Azure, set the `placement.region` property using the format `{provider}:{region}`:
 
-* [  wrangler.jsonc ](#tab-panel-11826)
-* [  wrangler.toml ](#tab-panel-11827)
+* [  wrangler.jsonc ](#tab-panel-12349)
+* [  wrangler.toml ](#tab-panel-12350)
 
 **JSONC**
 
@@ -207,8 +207,8 @@ Host-based placement is experimental.
 
 Set `placement.host` to identify a layer 4 service. Cloudflare uses TCP CONNECT checks to measure latency and selects the best data center.
 
-* [  wrangler.jsonc ](#tab-panel-11828)
-* [  wrangler.toml ](#tab-panel-11829)
+* [  wrangler.jsonc ](#tab-panel-12351)
+* [  wrangler.toml ](#tab-panel-12352)
 
 **JSONC**
 
@@ -229,8 +229,8 @@ host = "my_database_host.com:5432"
 
 Set `placement.hostname` to identify a layer 7 service. Cloudflare uses HTTP HEAD checks to measure latency and selects the best data center.
 
-* [  wrangler.jsonc ](#tab-panel-11830)
-* [  wrangler.toml ](#tab-panel-11831)
+* [  wrangler.jsonc ](#tab-panel-12353)
+* [  wrangler.toml ](#tab-panel-12354)
 
 **JSONC**
 
@@ -303,11 +303,11 @@ This example shows two Workers:
 * `auth-worker` — runs at the edge (no placement), handles authentication
 * `app-worker` — placed near your database, handles data queries
 
-* [ auth-worker ](#tab-panel-11836)
-* [ app-worker ](#tab-panel-11837)
+* [ auth-worker ](#tab-panel-12359)
+* [ app-worker ](#tab-panel-12360)
 
-* [  wrangler.jsonc ](#tab-panel-11832)
-* [  wrangler.toml ](#tab-panel-11833)
+* [  wrangler.jsonc ](#tab-panel-12355)
+* [  wrangler.toml ](#tab-panel-12356)
 
 **JSONC**
 
@@ -368,8 +368,8 @@ async function validateToken(token: string): Promise<string | null> {
 }
 ```
 
-* [  wrangler.jsonc ](#tab-panel-11834)
-* [  wrangler.toml ](#tab-panel-11835)
+* [  wrangler.jsonc ](#tab-panel-12357)
+* [  wrangler.toml ](#tab-panel-12358)
 
 **JSONC**
 
@@ -484,6 +484,6 @@ export class AgentHistory extends DurableObject {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/placement/#page","headline":"Placement · Cloudflare Workers docs","description":"Control where your Worker runs to reduce latency.","url":"https://developers.cloudflare.com/workers/configuration/placement/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/placement/#page","headline":"Placement · Cloudflare Workers docs","description":"Control where your Worker runs to reduce latency.","url":"https://developers.cloudflare.com/workers/configuration/placement/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/placement/","name":"Placement"}}]}
 ```

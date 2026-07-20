@@ -1,7 +1,7 @@
 ---
 title: Email agent
 description: Build an agent that sends, receives, routes, and replies to email using Cloudflare Email Service and the Agents SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,8 +36,8 @@ DNS changes usually complete within 5-15 minutes for domains using Cloudflare DN
 
 Add the email binding to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-5669)
-* [  wrangler.toml ](#tab-panel-5670)
+* [  wrangler.jsonc ](#tab-panel-5931)
+* [  wrangler.toml ](#tab-panel-5932)
 
 **JSONC**
 
@@ -65,8 +65,8 @@ The `remote = true` option lets you call the real Email Service API during local
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-5695)
-* [  TypeScript ](#tab-panel-5696)
+* [  JavaScript ](#tab-panel-5957)
+* [  TypeScript ](#tab-panel-5958)
 
 **JavaScript**
 
@@ -170,8 +170,8 @@ export default {
 
 `sendEmail()` sends outbound email through a `send_email` binding that you pass explicitly. It automatically injects agent routing headers (`X-Agent-Name`, `X-Agent-ID`) into every message, and optionally signs them with HMAC-SHA256 so that replies can be routed back to the same agent instance.
 
-* [  JavaScript ](#tab-panel-5679)
-* [  TypeScript ](#tab-panel-5680)
+* [  JavaScript ](#tab-panel-5941)
+* [  TypeScript ](#tab-panel-5942)
 
 **JavaScript**
 
@@ -231,8 +231,8 @@ For basic Email Service sending and receiving, `createAddressBasedEmailResolver(
 
 Recommended for inbound mail. Routes emails based on the recipient address.
 
-* [  JavaScript ](#tab-panel-5673)
-* [  TypeScript ](#tab-panel-5674)
+* [  JavaScript ](#tab-panel-5935)
+* [  TypeScript ](#tab-panel-5936)
 
 **JavaScript**
 
@@ -270,8 +270,8 @@ Agent class names in the recipient address are matched case-insensitively. Email
 
 For reply flows with signature verification. Verifies that incoming emails are authentic replies to your outbound emails, preventing attackers from routing emails to arbitrary agent instances.
 
-* [  JavaScript ](#tab-panel-5675)
-* [  TypeScript ](#tab-panel-5676)
+* [  JavaScript ](#tab-panel-5937)
+* [  TypeScript ](#tab-panel-5938)
 
 **JavaScript**
 
@@ -295,8 +295,8 @@ When your agent sends an email with `replyToEmail()` or `sendEmail()` and a `sec
 
 **Options:**
 
-* [  JavaScript ](#tab-panel-5681)
-* [  TypeScript ](#tab-panel-5682)
+* [  JavaScript ](#tab-panel-5943)
+* [  TypeScript ](#tab-panel-5944)
 
 **JavaScript**
 
@@ -336,8 +336,8 @@ const resolver = createSecureReplyEmailResolver(env.EMAIL_SECRET, {
 
 For single-instance routing. Routes all emails to a specific agent instance regardless of the recipient address.
 
-* [  JavaScript ](#tab-panel-5677)
-* [  TypeScript ](#tab-panel-5678)
+* [  JavaScript ](#tab-panel-5939)
+* [  TypeScript ](#tab-panel-5940)
 
 **JavaScript**
 
@@ -363,8 +363,8 @@ const resolver = createCatchAllEmailResolver("EmailAgent", "default");
 
 You can combine resolvers to handle different scenarios:
 
-* [  JavaScript ](#tab-panel-5693)
-* [  TypeScript ](#tab-panel-5694)
+* [  JavaScript ](#tab-panel-5955)
+* [  TypeScript ](#tab-panel-5956)
 
 **JavaScript**
 
@@ -459,8 +459,8 @@ type AgentEmail = {
 
 Use a library like [postal-mime ↗](https://www.npmjs.com/package/postal-mime) to parse the raw email:
 
-* [  JavaScript ](#tab-panel-5683)
-* [  TypeScript ](#tab-panel-5684)
+* [  JavaScript ](#tab-panel-5945)
+* [  TypeScript ](#tab-panel-5946)
 
 **JavaScript**
 
@@ -506,8 +506,8 @@ class MyAgent extends Agent {
 
 Use `isAutoReplyEmail()` to detect auto-reply emails and avoid mail loops:
 
-* [  JavaScript ](#tab-panel-5687)
-* [  TypeScript ](#tab-panel-5688)
+* [  JavaScript ](#tab-panel-5949)
+* [  TypeScript ](#tab-panel-5950)
 
 **JavaScript**
 
@@ -565,8 +565,8 @@ This checks for standard RFC 3834 headers (`Auto-Submitted`, `X-Auto-Response-Su
 
 Use `this.replyToEmail()` to send a reply through the inbound email's reply channel:
 
-* [  JavaScript ](#tab-panel-5689)
-* [  TypeScript ](#tab-panel-5690)
+* [  JavaScript ](#tab-panel-5951)
+* [  TypeScript ](#tab-panel-5952)
 
 **JavaScript**
 
@@ -612,8 +612,8 @@ class MyAgent extends Agent {
 
 `replyToEmail()` requires a live `AgentEmail` object, so it only works inside `onEmail()`. If you need to reply later — from a scheduled task, a callable method, or after a human-in-the-loop approval — store the sender info in state and use `sendEmail()`:
 
-* [  JavaScript ](#tab-panel-5701)
-* [  TypeScript ](#tab-panel-5702)
+* [  JavaScript ](#tab-panel-5963)
+* [  TypeScript ](#tab-panel-5964)
 
 **JavaScript**
 
@@ -697,8 +697,8 @@ The `inReplyTo` field sets the `In-Reply-To` header so mail clients thread the r
 
 ### Forwarding emails
 
-* [  JavaScript ](#tab-panel-5685)
-* [  TypeScript ](#tab-panel-5686)
+* [  JavaScript ](#tab-panel-5947)
+* [  TypeScript ](#tab-panel-5948)
 
 **JavaScript**
 
@@ -722,8 +722,8 @@ class MyAgent extends Agent {
 
 ### Rejecting emails
 
-* [  JavaScript ](#tab-panel-5691)
-* [  TypeScript ](#tab-panel-5692)
+* [  JavaScript ](#tab-panel-5953)
+* [  TypeScript ](#tab-panel-5954)
 
 **JavaScript**
 
@@ -757,8 +757,8 @@ class MyAgent extends Agent {
 
 When sending emails via `sendEmail()` or `replyToEmail()`, handle these common errors:
 
-* [  JavaScript ](#tab-panel-5703)
-* [  TypeScript ](#tab-panel-5704)
+* [  JavaScript ](#tab-panel-5965)
+* [  TypeScript ](#tab-panel-5966)
 
 **JavaScript**
 
@@ -851,8 +851,8 @@ When your agent sends emails and expects replies, use secure reply routing to pr
 
 1. Add a secret to your Worker:
 
-  * [  wrangler.jsonc ](#tab-panel-5671)
-  * [  wrangler.toml ](#tab-panel-5672)
+  * [  wrangler.jsonc ](#tab-panel-5933)
+  * [  wrangler.toml ](#tab-panel-5934)
 
 **JSONC**
 ```jsonc
@@ -875,8 +875,8 @@ npx wrangler secret put EMAIL_SECRET
 ```
 2. Use the combined resolver pattern:
 
-  * [  JavaScript ](#tab-panel-5699)
-  * [  TypeScript ](#tab-panel-5700)
+  * [  JavaScript ](#tab-panel-5961)
+  * [  TypeScript ](#tab-panel-5962)
 
 **JavaScript**
 ```js
@@ -917,8 +917,8 @@ export default {
 ```
 3. Sign outbound emails:
 
-  * [  JavaScript ](#tab-panel-5697)
-  * [  TypeScript ](#tab-panel-5698)
+  * [  JavaScript ](#tab-panel-5959)
+  * [  TypeScript ](#tab-panel-5960)
 
 **JavaScript**
 ```js
@@ -960,8 +960,8 @@ When an email is routed via `createSecureReplyEmailResolver`, the `replyToEmail(
 
 Here is a complete Email Service agent that sends outbound mail and handles secure replies:
 
-* [  JavaScript ](#tab-panel-5705)
-* [  TypeScript ](#tab-panel-5706)
+* [  JavaScript ](#tab-panel-5967)
+* [  TypeScript ](#tab-panel-5968)
 
 **JavaScript**
 
@@ -1261,6 +1261,6 @@ Useful when sending emails through external services while maintaining secure re
 [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/email-agent/#page","headline":"Email agent · Cloudflare Agents docs","description":"Build an agent that sends, receives, routes, and replies to email using Cloudflare Email Service and the Agents SDK.","url":"https://developers.cloudflare.com/agents/examples/email-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/email-agent/#page","headline":"Email agent · Cloudflare Agents docs","description":"Build an agent that sends, receives, routes, and replies to email using Cloudflare Email Service and the Agents SDK.","url":"https://developers.cloudflare.com/agents/examples/email-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/examples/email-agent/","name":"Email agent"}}]}
 ```

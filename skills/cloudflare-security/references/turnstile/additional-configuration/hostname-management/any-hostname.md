@@ -1,7 +1,7 @@
 ---
 title: Any Hostname (Enterprise only)
 description: Allow Turnstile widgets on any hostname with Enterprise plans.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -84,6 +84,6 @@ The Any Hostname feature is particularly valuable for customers with:
 * Development environments that test across various staging and development domains.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/any-hostname/#page","headline":"Any Hostname (Enterprise only) · Cloudflare Turnstile docs","description":"Allow Turnstile widgets on any hostname with Enterprise plans.","url":"https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/any-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/any-hostname/#page","headline":"Any Hostname (Enterprise only) · Cloudflare Turnstile docs","description":"Allow Turnstile widgets on any hostname with Enterprise plans.","url":"https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/any-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/additional-configuration/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/additional-configuration/hostname-management/","name":"Hostname management"}},{"@type":"ListItem","position":5,"item":{"@id":"/turnstile/additional-configuration/hostname-management/any-hostname/","name":"Any Hostname (Enterprise only)"}}]}
 ```

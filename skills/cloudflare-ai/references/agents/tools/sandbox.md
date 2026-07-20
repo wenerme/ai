@@ -1,7 +1,7 @@
 ---
 title: Sandbox
 description: Give agents isolated Linux environments for running code, managing files, and executing commands.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ Use Sandbox for agents that need to:
 
 Bind the Sandbox Durable Object to your Worker, then access a sandbox from your agent methods with `getSandbox()`.
 
-* [  JavaScript ](#tab-panel-6825)
-* [  TypeScript ](#tab-panel-6826)
+* [  JavaScript ](#tab-panel-7099)
+* [  TypeScript ](#tab-panel-7100)
 
 **JavaScript**
 
@@ -109,8 +109,8 @@ export class CodeAgent extends Agent<Env, { lastOutput?: string }> {
 
 Configure the Sandbox container, Durable Object binding, and migration in `wrangler.jsonc`.
 
-* [  wrangler.jsonc ](#tab-panel-6823)
-* [  wrangler.toml ](#tab-panel-6824)
+* [  wrangler.jsonc ](#tab-panel-7097)
+* [  wrangler.toml ](#tab-panel-7098)
 
 **JSONC**
 
@@ -176,6 +176,6 @@ For long-running sandbox work, pair Sandbox with [durable execution with fibers]
 [ Manage files ](https://developers.cloudflare.com/sandbox/guides/manage-files/) Read, write, upload, and download sandbox files.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/sandbox/#page","headline":"Sandbox · Cloudflare Agents docs","description":"Give agents isolated Linux environments for running code, managing files, and executing commands.","url":"https://developers.cloudflare.com/agents/tools/sandbox/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/sandbox/#page","headline":"Sandbox · Cloudflare Agents docs","description":"Give agents isolated Linux environments for running code, managing files, and executing commands.","url":"https://developers.cloudflare.com/agents/tools/sandbox/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/sandbox/","name":"Sandbox"}}]}
 ```

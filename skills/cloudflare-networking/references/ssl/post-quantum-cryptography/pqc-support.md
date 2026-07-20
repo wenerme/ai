@@ -1,7 +1,7 @@
 ---
 title: PQC support
 description: Consider information about post-quantum cryptography at Cloudflare - deployed key agreements, signatures, and software support.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -242,6 +242,6 @@ Extension crate for [rustls](#rustls-rust) that provides post-quantum algorithms
 * **Reference:** [Traefik ↗](https://traefik.io/traefik/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-support/#page","headline":"PQC support · Cloudflare SSL/TLS docs","description":"Consider information about post-quantum cryptography at Cloudflare - deployed key agreements, signatures, and software support.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-support/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-support/#page","headline":"PQC support · Cloudflare SSL/TLS docs","description":"Consider information about post-quantum cryptography at Cloudflare - deployed key agreements, signatures, and software support.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-support/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/post-quantum-cryptography/","name":"Post-quantum cryptography (PQC)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/post-quantum-cryptography/pqc-support/","name":"PQC support"}}]}
 ```

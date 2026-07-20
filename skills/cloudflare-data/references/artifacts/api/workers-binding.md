@@ -1,7 +1,7 @@
 ---
 title: Workers binding
 description: Call Artifacts from a Worker binding.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespa
 
 Add the Artifacts binding to your Wrangler config file:
 
-* [  wrangler.jsonc ](#tab-panel-7061)
-* [  wrangler.toml ](#tab-panel-7062)
+* [  wrangler.jsonc ](#tab-panel-7390)
+* [  wrangler.toml ](#tab-panel-7391)
 
 **JSONC**
 
@@ -76,8 +76,8 @@ Use namespace methods on `env.ARTIFACTS` to create, list, inspect, import, or de
 
 `create()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save these values if you need them later.
 
-* [  JavaScript ](#tab-panel-7067)
-* [  TypeScript ](#tab-panel-7068)
+* [  JavaScript ](#tab-panel-7396)
+* [  TypeScript ](#tab-panel-7397)
 
 **JavaScript**
 
@@ -127,8 +127,8 @@ async function createRepo(artifacts: Artifacts) {
 
 `get()` returns a handle to an existing repo. Use the handle to call async methods on the repo, such as `createToken()`, `listTokens()`, `revokeToken()`, and `fork()`.
 
-* [  JavaScript ](#tab-panel-7063)
-* [  TypeScript ](#tab-panel-7064)
+* [  JavaScript ](#tab-panel-7392)
+* [  TypeScript ](#tab-panel-7393)
 
 **JavaScript**
 
@@ -156,8 +156,8 @@ async function getRepoHandle(artifacts: Artifacts) {
 * `opts.cursor` ` Cursor ` optional
 * Returns ` Promise<ArtifactsRepoListResult> `
 
-* [  JavaScript ](#tab-panel-7071)
-* [  TypeScript ](#tab-panel-7072)
+* [  JavaScript ](#tab-panel-7400)
+* [  TypeScript ](#tab-panel-7401)
 
 **JavaScript**
 
@@ -209,8 +209,8 @@ Import a repository from an external git remote.
 
 `import()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save the `remote` and `name` values if you need them later.
 
-* [  JavaScript ](#tab-panel-7077)
-* [  TypeScript ](#tab-panel-7078)
+* [  JavaScript ](#tab-panel-7406)
+* [  TypeScript ](#tab-panel-7407)
 
 **JavaScript**
 
@@ -263,8 +263,8 @@ async function importFromGitHub(artifacts: Artifacts) {
 * `name` ` RepoName ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-7065)
-* [  TypeScript ](#tab-panel-7066)
+* [  JavaScript ](#tab-panel-7394)
+* [  TypeScript ](#tab-panel-7395)
 
 **JavaScript**
 
@@ -292,8 +292,8 @@ Call `await artifacts.get(name)` to get a repo handle. Use the handle to call as
 * `ttl` ` number ` optional (seconds)
 * Returns ` Promise<ArtifactsCreateTokenResult> `
 
-* [  JavaScript ](#tab-panel-7069)
-* [  TypeScript ](#tab-panel-7070)
+* [  JavaScript ](#tab-panel-7398)
+* [  TypeScript ](#tab-panel-7399)
 
 **JavaScript**
 
@@ -319,8 +319,8 @@ Unlike `create()` and `import()`, `repo.createToken()` returns a structured resu
 
 * Returns ` Promise<ArtifactsTokenListResult> `
 
-* [  JavaScript ](#tab-panel-7075)
-* [  TypeScript ](#tab-panel-7076)
+* [  JavaScript ](#tab-panel-7404)
+* [  TypeScript ](#tab-panel-7405)
 
 **JavaScript**
 
@@ -353,8 +353,8 @@ async function listRepoTokens(artifacts: Artifacts) {
 * `tokenOrId` ` string ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-7073)
-* [  TypeScript ](#tab-panel-7074)
+* [  JavaScript ](#tab-panel-7402)
+* [  TypeScript ](#tab-panel-7403)
 
 **JavaScript**
 
@@ -384,8 +384,8 @@ async function revokeToken(artifacts: Artifacts, tokenOrId: string) {
 
 `fork()` returns metadata for the new repo. Save the `remote` and `name` values if you need them later.
 
-* [  JavaScript ](#tab-panel-7083)
-* [  TypeScript ](#tab-panel-7084)
+* [  JavaScript ](#tab-panel-7412)
+* [  TypeScript ](#tab-panel-7413)
 
 **JavaScript**
 
@@ -426,8 +426,8 @@ async function forkRepo(artifacts: Artifacts) {
 * `opts.offset` ` number ` optional
 * Returns ` Promise<ArtifactsLogResult> `
 
-* [  JavaScript ](#tab-panel-7079)
-* [  TypeScript ](#tab-panel-7080)
+* [  JavaScript ](#tab-panel-7408)
+* [  TypeScript ](#tab-panel-7409)
 
 **JavaScript**
 
@@ -454,8 +454,8 @@ async function readCommitHistory(artifacts: Artifacts) {
 * `hash` ` string ` required — Commit SHA-1 hash.
 * Returns ` Promise<ArtifactsCommit> `
 
-* [  JavaScript ](#tab-panel-7081)
-* [  TypeScript ](#tab-panel-7082)
+* [  JavaScript ](#tab-panel-7410)
+* [  TypeScript ](#tab-panel-7411)
 
 **JavaScript**
 
@@ -480,8 +480,8 @@ async function readCommit(artifacts: Artifacts, hash: string) {
 * `hash` ` string ` required — Tree SHA-1 hash.
 * Returns ` Promise<ArtifactsTree> `
 
-* [  JavaScript ](#tab-panel-7085)
-* [  TypeScript ](#tab-panel-7086)
+* [  JavaScript ](#tab-panel-7414)
+* [  TypeScript ](#tab-panel-7415)
 
 **JavaScript**
 
@@ -505,8 +505,8 @@ async function readTree(artifacts: Artifacts, hash: string) {
 
 This example combines the binding methods in one Worker route.
 
-* [  JavaScript ](#tab-panel-7087)
-* [  TypeScript ](#tab-panel-7088)
+* [  JavaScript ](#tab-panel-7416)
+* [  TypeScript ](#tab-panel-7417)
 
 **src/index.js**
 
@@ -594,6 +594,6 @@ Run `npx wrangler types` in your own project and treat the generated `worker-con
 [ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/) Use repo remotes and tokens with standard git-over-HTTPS clients.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/workers-binding/#page","headline":"Workers binding · Artifacts · Cloudflare Artifacts docs","description":"Call Artifacts from a Worker binding.","url":"https://developers.cloudflare.com/artifacts/api/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/workers-binding/#page","headline":"Workers binding · Artifacts · Cloudflare Artifacts docs","description":"Call Artifacts from a Worker binding.","url":"https://developers.cloudflare.com/artifacts/api/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/api/workers-binding/","name":"Workers binding"}}]}
 ```

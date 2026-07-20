@@ -1,7 +1,7 @@
 ---
 title: GPT-5.5 pro
 description: GPT-5.5 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,8 +31,8 @@ GPT-5.5 pro uses OpenAI's Responses API with built-in tools, improved reasoning,
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1440)
-* [ cURL ](#tab-panel-1441)
+* [ TypeScript ](#tab-panel-1458)
+* [ cURL ](#tab-panel-1459)
 
 **TypeScript**
 
@@ -54,8 +54,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1452)
-* [ Raw response ](#tab-panel-1453)
+* [ Output ](#tab-panel-1470)
+* [ Raw response ](#tab-panel-1471)
 
 The **three laws of thermodynamics** are:
 
@@ -164,8 +164,8 @@ There is also a **Zeroth Law**, often stated separately: if two systems are each
 
 **With Instructions**  — Using instructions to set context
 
-* [ TypeScript ](#tab-panel-1442)
-* [ cURL ](#tab-panel-1443)
+* [ TypeScript ](#tab-panel-1460)
+* [ cURL ](#tab-panel-1461)
 
 **TypeScript**
 
@@ -191,8 +191,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1454)
-* [ Raw response ](#tab-panel-1455)
+* [ Output ](#tab-panel-1472)
+* [ Raw response ](#tab-panel-1473)
 
 Use Python’s built-in `json` module:
 
@@ -327,8 +327,8 @@ Use `json.load(file)` for reading from a file, and `json.loads(string)` for pars
 
 **Multi-turn Conversation**  — Continuing a conversation with message array
 
-* [ TypeScript ](#tab-panel-1448)
-* [ cURL ](#tab-panel-1449)
+* [ TypeScript ](#tab-panel-1466)
+* [ cURL ](#tab-panel-1467)
 
 **TypeScript**
 
@@ -378,8 +378,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1456)
-* [ Raw response ](#tab-panel-1457)
+* [ Output ](#tab-panel-1474)
+* [ Raw response ](#tab-panel-1475)
 
 - Monterey/Carmel is great for beaches, seafood, and a quick scenic stroll.
 - Big Sur offers dramatic ocean views, Bixby Bridge, and McWay Falls.
@@ -471,8 +471,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 **Temperature Control**  — Using temperature for creative responses
 
-* [ TypeScript ](#tab-panel-1444)
-* [ cURL ](#tab-panel-1445)
+* [ TypeScript ](#tab-panel-1462)
+* [ cURL ](#tab-panel-1463)
 
 **TypeScript**
 
@@ -495,8 +495,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1458)
-* [ Raw response ](#tab-panel-1459)
+* [ Output ](#tab-panel-1476)
+* [ Raw response ](#tab-panel-1477)
 
 Silent circuits dream
 Learning patterns in starlight
@@ -588,8 +588,8 @@ Dawn hums through the code
 
 **With Reasoning**  — Using reasoning effort for complex problems
 
-* [ TypeScript ](#tab-panel-1446)
-* [ cURL ](#tab-panel-1447)
+* [ TypeScript ](#tab-panel-1464)
+* [ cURL ](#tab-panel-1465)
 
 **TypeScript**
 
@@ -618,8 +618,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1460)
-* [ Raw response ](#tab-panel-1461)
+* [ Output ](#tab-panel-1478)
+* [ Raw response ](#tab-panel-1479)
 
 Assuming both trains leave at the same time:
 
@@ -741,8 +741,8 @@ More exactly, they meet after **6 hours, 25 minutes, and 43 seconds**.
 
 **Web Search**  — Letting the model use OpenAI's built-in web search tool to answer with current information
 
-* [ TypeScript ](#tab-panel-1450)
-* [ cURL ](#tab-panel-1451)
+* [ TypeScript ](#tab-panel-1468)
+* [ cURL ](#tab-panel-1469)
 
 **TypeScript**
 
@@ -774,8 +774,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1462)
-* [ Raw response ](#tab-panel-1463)
+* [ Output ](#tab-panel-1480)
+* [ Raw response ](#tab-panel-1481)
 
 Assuming **“this week” = Jun 16–22, 2026**:
 
@@ -1109,8 +1109,8 @@ Assuming **“this week” = Jun 16–22, 2026**:
 
 ## Parameters
 
-* [ Input ](#tab-panel-1464)
-* [ Output ](#tab-panel-1465)
+* [ Input ](#tab-panel-1482)
+* [ Output ](#tab-panel-1483)
 
 ▶input
 
@@ -1191,6 +1191,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/schema-
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/#page","headline":"GPT-5.5 pro (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.5 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/#page","headline":"GPT-5.5 pro (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.5 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: WAF Managed Rules configuration using Terraform
 description: Deploy and configure Cloudflare WAF Managed Rules at the zone or account level using Terraform.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -54,8 +54,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example deploys two managed rulesets to the zone with ID `<ZONE_ID>` using Terraform, using a `cloudflare_ruleset` resource with two rules that execute the managed rulesets.
 
-* [ Terraform (v5) ](#tab-panel-11326)
-* [ Terraform (v4) ](#tab-panel-11327)
+* [ Terraform (v5) ](#tab-panel-11771)
+* [ Terraform (v4) ](#tab-panel-11772)
 
 Required API token permissions
 
@@ -144,8 +144,8 @@ Notes
 
 The following example deploys two managed rulesets to the account with ID `<ACCOUNT_ID>` using Terraform, using a `cloudflare_ruleset` resource with two rules that execute the managed rulesets for two hostnames belonging to Enterprise zones.
 
-* [ Terraform (v5) ](#tab-panel-11328)
-* [ Terraform (v4) ](#tab-panel-11329)
+* [ Terraform (v5) ](#tab-panel-11773)
+* [ Terraform (v4) ](#tab-panel-11774)
 
 Required API token permissions
 
@@ -233,8 +233,8 @@ The following example adds two [exceptions](https://developers.cloudflare.com/wa
 
 Add the two exceptions to the `cloudflare_ruleset` resource before the rule that deploys the Cloudflare Managed Ruleset:
 
-* [ Terraform (v5) ](#tab-panel-11318)
-* [ Terraform (v4) ](#tab-panel-11319)
+* [ Terraform (v5) ](#tab-panel-11763)
+* [ Terraform (v4) ](#tab-panel-11764)
 
 ```tf
 resource "cloudflare_ruleset" "zone_level_managed_waf" {
@@ -346,8 +346,8 @@ Ruleset overrides and tag overrides apply to both existing and _future_ rules in
 
 The following configuration includes the three overrides in the rule that executes the Cloudflare Managed Ruleset:
 
-* [ Terraform (v5) ](#tab-panel-11320)
-* [ Terraform (v4) ](#tab-panel-11321)
+* [ Terraform (v5) ](#tab-panel-11765)
+* [ Terraform (v4) ](#tab-panel-11766)
 
 ```tf
   # (...)
@@ -427,8 +427,8 @@ This example enables [payload logging](https://developers.cloudflare.com/waf/man
 
 Building upon the rule that deploys the Cloudflare Managed Ruleset, the following rule configuration adds the `matched_data` object with the public key used to encrypt the payload:
 
-* [ Terraform (v5) ](#tab-panel-11322)
-* [ Terraform (v4) ](#tab-panel-11323)
+* [ Terraform (v5) ](#tab-panel-11767)
+* [ Terraform (v4) ](#tab-panel-11768)
 
 ```tf
   # (...)
@@ -491,8 +491,8 @@ The following example rule of a `cloudflare_ruleset` Terraform resource performs
 * Sets the score threshold to `60` (_Low_).
 * Sets the ruleset action to `log`.
 
-* [ Terraform (v5) ](#tab-panel-11324)
-* [ Terraform (v4) ](#tab-panel-11325)
+* [ Terraform (v5) ](#tab-panel-11769)
+* [ Terraform (v4) ](#tab-panel-11770)
 
 ```tf
   # (...)
@@ -571,6 +571,6 @@ The following example rule of a `cloudflare_ruleset` Terraform resource performs
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/#page","headline":"WAF Managed Rules configuration using Terraform · Cloudflare Terraform docs","description":"Deploy and configure Cloudflare WAF Managed Rules at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/#page","headline":"WAF Managed Rules configuration using Terraform · Cloudflare Terraform docs","description":"Deploy and configure Cloudflare WAF Managed Rules at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/waf-managed-rulesets/","name":"WAF Managed Rules configuration using Terraform"}}]}
 ```

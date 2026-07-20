@@ -1,7 +1,7 @@
 ---
 title: Reference
 description: Reference information for APO, including caching, Page Rules, and query parameters.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,6 +18,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Subdomains and subdirectories ](https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/automatic-platform-optimization/reference/#page","headline":"Reference · Cloudflare Automatic Platform Optimization docs","description":"Reference information for APO, including caching, Page Rules, and query parameters.","url":"https://developers.cloudflare.com/automatic-platform-optimization/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/automatic-platform-optimization/reference/#page","headline":"Reference · Cloudflare Automatic Platform Optimization docs","description":"Reference information for APO, including caching, Page Rules, and query parameters.","url":"https://developers.cloudflare.com/automatic-platform-optimization/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/automatic-platform-optimization/","name":"Automatic Platform Optimization"}},{"@type":"ListItem","position":3,"item":{"@id":"/automatic-platform-optimization/reference/","name":"Reference"}}]}
 ```

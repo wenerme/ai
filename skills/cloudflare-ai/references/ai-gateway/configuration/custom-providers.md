@@ -1,7 +1,7 @@
 ---
 title: Custom Providers
 description: Create and manage custom AI providers for your account.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -46,8 +46,8 @@ To create an API token:
 
 ## Create a custom provider
 
-* [ API ](#tab-panel-6838)
-* [ Dashboard ](#tab-panel-6839)
+* [ API ](#tab-panel-7112)
+* [ Dashboard ](#tab-panel-7113)
 
 To create a new custom provider using the API:
 
@@ -128,8 +128,8 @@ To create a new custom provider using the dashboard:
 
 ## List custom providers
 
-* [ API ](#tab-panel-6840)
-* [ Dashboard ](#tab-panel-6841)
+* [ API ](#tab-panel-7114)
+* [ Dashboard ](#tab-panel-7115)
 
 Retrieve all custom providers with optional filtering and pagination:
 
@@ -204,7 +204,7 @@ To view all your custom providers:
 
 ## Get a specific custom provider
 
-* [ API ](#tab-panel-6837)
+* [ API ](#tab-panel-7111)
 
 Retrieve details for a specific custom provider by its ID:
 
@@ -244,8 +244,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custo
 
 ## Update a custom provider
 
-* [ API ](#tab-panel-6842)
-* [ Dashboard ](#tab-panel-6843)
+* [ API ](#tab-panel-7116)
+* [ Dashboard ](#tab-panel-7117)
 
 Update an existing custom provider. All fields are optional - only include the fields you want to change:
 
@@ -314,8 +314,8 @@ To update an existing custom provider:
 
 ## Delete a custom provider
 
-* [ API ](#tab-panel-6844)
-* [ Dashboard ](#tab-panel-6845)
+* [ API ](#tab-panel-7118)
+* [ Dashboard ](#tab-panel-7119)
 
 Delete a custom provider:
 
@@ -670,6 +670,6 @@ If you receive a 404 from the upstream provider, the most common cause is an inc
 * [Rate limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/custom-providers/#page","headline":"Custom Providers · Cloudflare AI Gateway docs","description":"Create and manage custom AI providers for your account.","url":"https://developers.cloudflare.com/ai-gateway/configuration/custom-providers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/custom-providers/#page","headline":"Custom Providers · Cloudflare AI Gateway docs","description":"Create and manage custom AI providers for your account.","url":"https://developers.cloudflare.com/ai-gateway/configuration/custom-providers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/configuration/custom-providers/","name":"Custom Providers"}}]}
 ```

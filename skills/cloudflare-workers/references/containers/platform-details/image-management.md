@@ -1,7 +1,7 @@
 ---
 title: Image Management
 description: Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,8 +18,8 @@ When running `wrangler deploy`, if you set the `image` attribute in your [Wrangl
 
 Just provide the path to your Dockerfile:
 
-* [  wrangler.jsonc ](#tab-panel-8199)
-* [  wrangler.toml ](#tab-panel-8200)
+* [  wrangler.jsonc ](#tab-panel-8539)
+* [  wrangler.toml ](#tab-panel-8540)
 
 **JSONC**
 
@@ -64,8 +64,8 @@ To use a public Docker Hub image, set `image` to a fully qualified Docker Hub im
 
 For example:
 
-* [  wrangler.jsonc ](#tab-panel-8201)
-* [  wrangler.toml ](#tab-panel-8202)
+* [  wrangler.jsonc ](#tab-panel-8541)
+* [  wrangler.toml ](#tab-panel-8542)
 
 **JSONC**
 
@@ -205,8 +205,8 @@ printf '%s' "$AWS_SECRET_ACCESS_KEY" | npx wrangler containers registries config
 
 After you configure the registry, use the fully qualified Amazon ECR image reference in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8203)
-* [  wrangler.toml ](#tab-panel-8204)
+* [  wrangler.jsonc ](#tab-panel-8543)
+* [  wrangler.toml ](#tab-panel-8544)
 
 **JSONC**
 
@@ -281,8 +281,8 @@ npx wrangler containers registries configure <REGION>-docker.pkg.dev --gar-email
 
 After you configure the registry, use the fully qualified Google Artifact Registry image reference in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8205)
-* [  wrangler.toml ](#tab-panel-8206)
+* [  wrangler.jsonc ](#tab-panel-8545)
+* [  wrangler.toml ](#tab-panel-8546)
 
 **JSONC**
 
@@ -347,8 +347,8 @@ pnpm wrangler containers build -p -t <TAG> .
 
 This will output an image registry URI that you can then use in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8207)
-* [  wrangler.toml ](#tab-panel-8208)
+* [  wrangler.jsonc ](#tab-panel-8547)
+* [  wrangler.toml ](#tab-panel-8548)
 
 **JSONC**
 
@@ -388,6 +388,6 @@ Images are limited in size by available disk of the configured [instance type](h
 Delete images with `wrangler containers images delete` to free up space, but reverting a Worker to a previous version that uses a deleted image will then error.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/platform-details/image-management/#page","headline":"Image Management · Cloudflare Containers docs","description":"Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.","url":"https://developers.cloudflare.com/containers/platform-details/image-management/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/platform-details/image-management/#page","headline":"Image Management · Cloudflare Containers docs","description":"Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.","url":"https://developers.cloudflare.com/containers/platform-details/image-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/platform-details/","name":"Platform Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/platform-details/image-management/","name":"Image Management"}}]}
 ```

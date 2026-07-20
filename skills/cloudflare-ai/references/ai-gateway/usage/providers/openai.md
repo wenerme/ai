@@ -1,7 +1,7 @@
 ---
 title: OpenAI
 description: Route OpenAI API requests through AI Gateway for observability and control.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -38,8 +38,8 @@ When making requests to OpenAI, replace `https://api.openai.com/v1` in the URL y
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-6896)
-* [ Unauthenticated Gateway ](#tab-panel-6897)
+* [ With Authenticated Gateway ](#tab-panel-7170)
+* [ Unauthenticated Gateway ](#tab-panel-7171)
 
 ```js
 import OpenAI from "openai";
@@ -103,8 +103,8 @@ const response = await client.chat.completions.create({
 
 Responses API with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-6898)
-* [ Unauthenticated Gateway ](#tab-panel-6899)
+* [ With Authenticated Gateway ](#tab-panel-7172)
+* [ Unauthenticated Gateway ](#tab-panel-7173)
 
 ```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/responses \
@@ -139,8 +139,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
 
 Chat Completions with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-6900)
-* [ Unauthenticated Gateway ](#tab-panel-6901)
+* [ With Authenticated Gateway ](#tab-panel-7174)
+* [ Unauthenticated Gateway ](#tab-panel-7175)
 
 ```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
@@ -208,6 +208,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/openai/#page","headline":"OpenAI · Cloudflare AI Gateway docs","description":"Route OpenAI API requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/openai/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/openai/#page","headline":"OpenAI · Cloudflare AI Gateway docs","description":"Route OpenAI API requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/openai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/openai/","name":"OpenAI"}}]}
 ```

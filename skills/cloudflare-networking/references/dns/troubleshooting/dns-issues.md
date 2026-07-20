@@ -1,7 +1,7 @@
 ---
 title: General DNS issues
 description: Troubleshoot common DNS resolution errors like &quot;This site can't be reached&quot;, err_name_not_resolved, and Error 1001 when using Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -120,6 +120,6 @@ Querying the authoritative nameserver directly bypasses resolver caching. If the
 If you are locked out of the Cloudflare account that contains your DNS configuration, refer to [Account recovery](https://developers.cloudflare.com/fundamentals/user-profiles/account-recovery/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/troubleshooting/dns-issues/#page","headline":"General DNS issues · Cloudflare DNS docs","description":"Troubleshoot common DNS resolution errors like \"This site can't be reached\", err\\_name\\_not\\_resolved, and Error 1001 when using Cloudflare.","url":"https://developers.cloudflare.com/dns/troubleshooting/dns-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/troubleshooting/dns-issues/#page","headline":"General DNS issues · Cloudflare DNS docs","description":"Troubleshoot common DNS resolution errors like \"This site can't be reached\", err\\_name\\_not\\_resolved, and Error 1001 when using Cloudflare.","url":"https://developers.cloudflare.com/dns/troubleshooting/dns-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/troubleshooting/dns-issues/","name":"General DNS issues"}}]}
 ```

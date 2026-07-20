@@ -1,7 +1,7 @@
 ---
 title: IAB TCF Compliance
 description: Configure IAB TCF compliance for Zaraz consent.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -25,6 +25,6 @@ Using the Zaraz Consent Management Platform in IAB TCF Compliance Mode is is opt
 4. Press **Save**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/consent-management/iab-tcf-compliance/#page","headline":"IAB Transparency & Consent Framework Compliance · Cloudflare Zaraz docs","description":"Configure IAB TCF compliance for Zaraz consent.","url":"https://developers.cloudflare.com/zaraz/consent-management/iab-tcf-compliance/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/consent-management/iab-tcf-compliance/#page","headline":"IAB Transparency & Consent Framework Compliance · Cloudflare Zaraz docs","description":"Configure IAB TCF compliance for Zaraz consent.","url":"https://developers.cloudflare.com/zaraz/consent-management/iab-tcf-compliance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/consent-management/","name":"Consent management"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/consent-management/iab-tcf-compliance/","name":"IAB TCF Compliance"}}]}
 ```

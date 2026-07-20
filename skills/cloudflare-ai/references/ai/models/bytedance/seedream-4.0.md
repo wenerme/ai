@@ -1,7 +1,7 @@
 ---
 title: Seedream 4.0
 description: Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,8 +27,8 @@ Seedream 4.0 is ByteDance's image creation model that combines text-to-image gen
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-404)
-* [ cURL ](#tab-panel-405)
+* [ TypeScript ](#tab-panel-454)
+* [ cURL ](#tab-panel-455)
 
 **TypeScript**
 
@@ -52,8 +52,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-402)
-* [ Raw response ](#tab-panel-403)
+* [ Output ](#tab-panel-452)
+* [ Raw response ](#tab-panel-453)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/simple-generation.jpeg)
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — 4K quality image generation
 
-* [ TypeScript ](#tab-panel-408)
-* [ cURL ](#tab-panel-409)
+* [ TypeScript ](#tab-panel-458)
+* [ cURL ](#tab-panel-459)
 
 **TypeScript**
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-406)
-* [ Raw response ](#tab-panel-407)
+* [ Output ](#tab-panel-456)
+* [ Raw response ](#tab-panel-457)
 
 ![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/high-resolution.jpeg)
 
@@ -124,8 +124,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Widescreen Landscape**  — Cinematic aspect ratio image
 
-* [ TypeScript ](#tab-panel-412)
-* [ cURL ](#tab-panel-413)
+* [ TypeScript ](#tab-panel-462)
+* [ cURL ](#tab-panel-463)
 
 **TypeScript**
 
@@ -156,8 +156,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-410)
-* [ Raw response ](#tab-panel-411)
+* [ Output ](#tab-panel-460)
+* [ Raw response ](#tab-panel-461)
 
 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/widescreen-landscape.jpeg)
 
@@ -175,8 +175,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Format**  — Vertical image for portraits
 
-* [ TypeScript ](#tab-panel-416)
-* [ cURL ](#tab-panel-417)
+* [ TypeScript ](#tab-panel-466)
+* [ cURL ](#tab-panel-467)
 
 **TypeScript**
 
@@ -206,8 +206,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-414)
-* [ Raw response ](#tab-panel-415)
+* [ Output ](#tab-panel-464)
+* [ Raw response ](#tab-panel-465)
 
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/portrait-format.jpeg)
 
@@ -225,8 +225,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Detailed 4K**  — High-resolution detailed botanical illustration
 
-* [ TypeScript ](#tab-panel-420)
-* [ cURL ](#tab-panel-421)
+* [ TypeScript ](#tab-panel-470)
+* [ cURL ](#tab-panel-471)
 
 **TypeScript**
 
@@ -256,8 +256,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-418)
-* [ Raw response ](#tab-panel-419)
+* [ Output ](#tab-panel-468)
+* [ Raw response ](#tab-panel-469)
 
 ![Detailed 4K](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/detailed-4k.jpeg)
 
@@ -275,8 +275,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-422)
-* [ Output ](#tab-panel-423)
+* [ Input ](#tab-panel-472)
+* [ Output ](#tab-panel-473)
 
 prompt
 
@@ -313,6 +313,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/sch
 Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/#page","headline":"Seedream 4.0 (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/#page","headline":"Seedream 4.0 (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

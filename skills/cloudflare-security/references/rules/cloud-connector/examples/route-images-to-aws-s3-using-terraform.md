@@ -1,7 +1,7 @@
 ---
 title: Route /images to an S3 Bucket using Terraform
 description: Route requests with a URI path starting with `/images` to a specific AWS S3 bucket with Cloud Connector using Terraform.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -43,6 +43,6 @@ For additional guidance on using Terraform with Cloudflare, refer to the followi
 * [Cloudflare Provider for Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-aws-s3-using-terraform/#page","headline":"Route /images to an S3 Bucket using Terraform · Cloudflare Rules docs","description":"Route requests with a URI path starting with /images to a specific AWS S3 bucket with Cloud Connector using Terraform.","url":"https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-aws-s3-using-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform","AWS","S3"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-aws-s3-using-terraform/#page","headline":"Route /images to an S3 Bucket using Terraform · Cloudflare Rules docs","description":"Route requests with a URI path starting with /images to a specific AWS S3 bucket with Cloud Connector using Terraform.","url":"https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-aws-s3-using-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform","AWS","S3"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/cloud-connector/","name":"Cloud Connector"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/cloud-connector/examples/","name":"Cloud Connector examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/cloud-connector/examples/route-images-to-aws-s3-using-terraform/","name":"Route /images to an S3 Bucket using Terraform"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Secrets Store integrations
 description: Use Secrets Store with Workers, AI Gateway, and other Cloudflare products.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,6 +16,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ AI Gateway integration ](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/secrets-store/integrations/#page","headline":"Secrets Store integrations · Cloudflare Secrets Store docs","description":"Use Secrets Store with Workers, AI Gateway, and other Cloudflare products.","url":"https://developers.cloudflare.com/secrets-store/integrations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/secrets-store/integrations/#page","headline":"Secrets Store integrations · Cloudflare Secrets Store docs","description":"Use Secrets Store with Workers, AI Gateway, and other Cloudflare products.","url":"https://developers.cloudflare.com/secrets-store/integrations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/secrets-store/","name":"Secrets Store"}},{"@type":"ListItem","position":3,"item":{"@id":"/secrets-store/integrations/","name":"Secrets Store integrations"}}]}
 ```

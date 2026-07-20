@@ -1,7 +1,7 @@
 ---
 title: Workflows
 description: Wrangler commands for managing and configuring Cloudflare Workflows.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,9 +30,9 @@ For more information, refer to [Workflows local development](https://developers.
 
 List Workflows associated to account
 
-* [  npm ](#tab-panel-13223)
-* [  pnpm ](#tab-panel-13224)
-* [  yarn ](#tab-panel-13225)
+* [  npm ](#tab-panel-13780)
+* [  pnpm ](#tab-panel-13781)
+* [  yarn ](#tab-panel-13782)
 
 ```sh
 npx wrangler workflows list
@@ -80,9 +80,9 @@ Use a specific auth profile
 
 Describe Workflow resource
 
-* [  npm ](#tab-panel-13226)
-* [  pnpm ](#tab-panel-13227)
-* [  yarn ](#tab-panel-13228)
+* [  npm ](#tab-panel-13783)
+* [  pnpm ](#tab-panel-13784)
+* [  yarn ](#tab-panel-13785)
 
 ```sh
 npx wrangler workflows describe [NAME]
@@ -128,9 +128,9 @@ Use a specific auth profile
 
 Delete workflow - when deleting a workflow, it will also delete it's own instances
 
-* [  npm ](#tab-panel-13229)
-* [  pnpm ](#tab-panel-13230)
-* [  yarn ](#tab-panel-13231)
+* [  npm ](#tab-panel-13786)
+* [  pnpm ](#tab-panel-13787)
+* [  yarn ](#tab-panel-13788)
 
 ```sh
 npx wrangler workflows delete [NAME]
@@ -176,9 +176,9 @@ Use a specific auth profile
 
 Trigger a workflow, creating a new instance. Can optionally take a JSON string to pass a parameter into the workflow instance
 
-* [  npm ](#tab-panel-13232)
-* [  pnpm ](#tab-panel-13233)
-* [  yarn ](#tab-panel-13234)
+* [  npm ](#tab-panel-13789)
+* [  pnpm ](#tab-panel-13790)
+* [  yarn ](#tab-panel-13791)
 
 ```sh
 npx wrangler workflows trigger [NAME] [PARAMS]
@@ -228,9 +228,9 @@ Use a specific auth profile
 
 Instance related commands (list, describe, terminate, pause, resume)
 
-* [  npm ](#tab-panel-13235)
-* [  pnpm ](#tab-panel-13236)
-* [  yarn ](#tab-panel-13237)
+* [  npm ](#tab-panel-13792)
+* [  pnpm ](#tab-panel-13793)
+* [  yarn ](#tab-panel-13794)
 
 ```sh
 npx wrangler workflows instances list [NAME]
@@ -284,9 +284,9 @@ Use a specific auth profile
 
 Describe a workflow instance - see its logs, retries and errors
 
-* [  npm ](#tab-panel-13238)
-* [  pnpm ](#tab-panel-13239)
-* [  yarn ](#tab-panel-13240)
+* [  npm ](#tab-panel-13795)
+* [  pnpm ](#tab-panel-13796)
+* [  yarn ](#tab-panel-13797)
 
 ```sh
 npx wrangler workflows instances describe [NAME] [ID]
@@ -338,9 +338,9 @@ Use a specific auth profile
 
 Send an event to a workflow instance
 
-* [  npm ](#tab-panel-13241)
-* [  pnpm ](#tab-panel-13242)
-* [  yarn ](#tab-panel-13243)
+* [  npm ](#tab-panel-13798)
+* [  pnpm ](#tab-panel-13799)
+* [  yarn ](#tab-panel-13800)
 
 ```sh
 npx wrangler workflows instances send-event [NAME] [ID]
@@ -392,9 +392,9 @@ Use a specific auth profile
 
 Terminate a workflow instance
 
-* [  npm ](#tab-panel-13244)
-* [  pnpm ](#tab-panel-13245)
-* [  yarn ](#tab-panel-13246)
+* [  npm ](#tab-panel-13801)
+* [  pnpm ](#tab-panel-13802)
+* [  yarn ](#tab-panel-13803)
 
 ```sh
 npx wrangler workflows instances terminate [NAME] [ID]
@@ -442,9 +442,9 @@ Use a specific auth profile
 
 Restart a workflow instance
 
-* [  npm ](#tab-panel-13247)
-* [  pnpm ](#tab-panel-13248)
-* [  yarn ](#tab-panel-13249)
+* [  npm ](#tab-panel-13804)
+* [  pnpm ](#tab-panel-13805)
+* [  yarn ](#tab-panel-13806)
 
 ```sh
 npx wrangler workflows instances restart [NAME] [ID]
@@ -498,9 +498,9 @@ Use a specific auth profile
 
 Pause a workflow instance
 
-* [  npm ](#tab-panel-13250)
-* [  pnpm ](#tab-panel-13251)
-* [  yarn ](#tab-panel-13252)
+* [  npm ](#tab-panel-13807)
+* [  pnpm ](#tab-panel-13808)
+* [  yarn ](#tab-panel-13809)
 
 ```sh
 npx wrangler workflows instances pause [NAME] [ID]
@@ -548,9 +548,9 @@ Use a specific auth profile
 
 Resume a workflow instance
 
-* [  npm ](#tab-panel-13253)
-* [  pnpm ](#tab-panel-13254)
-* [  yarn ](#tab-panel-13255)
+* [  npm ](#tab-panel-13810)
+* [  pnpm ](#tab-panel-13811)
+* [  yarn ](#tab-panel-13812)
 
 ```sh
 npx wrangler workflows instances resume [NAME] [ID]
@@ -595,6 +595,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workflows/#page","headline":"Workflows · Cloudflare Workers docs","description":"Wrangler commands for managing and configuring Cloudflare Workflows.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workflows/#page","headline":"Workflows · Cloudflare Workers docs","description":"Wrangler commands for managing and configuring Cloudflare Workflows.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/workflows/","name":"Workflows"}}]}
 ```

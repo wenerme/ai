@@ -1,7 +1,7 @@
 ---
 title: Recraft V4.1 SVG
 description: Generate production-ready SVG vector graphics from text prompts with high aesthetic quality, clean geometry, structured layers, and editable paths.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Generate production-ready SVG vector graphics from text prompts with high aesthe
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1802)
-* [ cURL ](#tab-panel-1803)
+* [ TypeScript ](#tab-panel-1948)
+* [ cURL ](#tab-panel-1949)
 
 **TypeScript**
 
@@ -54,8 +54,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1800)
-* [ Raw response ](#tab-panel-1801)
+* [ Output ](#tab-panel-1946)
+* [ Raw response ](#tab-panel-1947)
 
 ![Simple Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/simple-icon.jpg)
 
@@ -75,8 +75,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **App Icon**  — Mobile app icon in vector format
 
-* [ TypeScript ](#tab-panel-1806)
-* [ cURL ](#tab-panel-1807)
+* [ TypeScript ](#tab-panel-1952)
+* [ cURL ](#tab-panel-1953)
 
 **TypeScript**
 
@@ -104,8 +104,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1804)
-* [ Raw response ](#tab-panel-1805)
+* [ Output ](#tab-panel-1950)
+* [ Raw response ](#tab-panel-1951)
 
 ![App Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/app-icon.jpg)
 
@@ -123,8 +123,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Illustration**  — Vector illustration for web use
 
-* [ TypeScript ](#tab-panel-1810)
-* [ cURL ](#tab-panel-1811)
+* [ TypeScript ](#tab-panel-1956)
+* [ cURL ](#tab-panel-1957)
 
 **TypeScript**
 
@@ -153,8 +153,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1808)
-* [ Raw response ](#tab-panel-1809)
+* [ Output ](#tab-panel-1954)
+* [ Raw response ](#tab-panel-1955)
 
 ![Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/illustration.jpg)
 
@@ -172,8 +172,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Brand Colors**  — Vector with specific color palette
 
-* [ TypeScript ](#tab-panel-1814)
-* [ cURL ](#tab-panel-1815)
+* [ TypeScript ](#tab-panel-1960)
+* [ cURL ](#tab-panel-1961)
 
 **TypeScript**
 
@@ -228,8 +228,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1812)
-* [ Raw response ](#tab-panel-1813)
+* [ Output ](#tab-panel-1958)
+* [ Raw response ](#tab-panel-1959)
 
 ![With Brand Colors](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/with-brand-colors.jpg)
 
@@ -247,8 +247,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1816)
-* [ Output ](#tab-panel-1817)
+* [ Input ](#tab-panel-1962)
+* [ Output ](#tab-panel-1963)
 
 prompt
 
@@ -281,6 +281,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-vector
 Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-vector/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-vector/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-vector/#page","headline":"Recraft V4.1 SVG (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Generate production-ready SVG vector graphics from text prompts with high aesthetic quality, clean geometry, structured layers, and editable paths.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-vector/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-vector/#page","headline":"Recraft V4.1 SVG (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Generate production-ready SVG vector graphics from text prompts with high aesthetic quality, clean geometry, structured layers, and editable paths.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-vector/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

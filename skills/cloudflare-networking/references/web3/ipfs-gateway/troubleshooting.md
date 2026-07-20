@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Resolve common IPFS Gateway issues including 523 and 524 errors.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -61,6 +61,6 @@ The second command will run indefinitely and has quite complicated output, so yo
 IPFS issues mandatory updates from time to time that introduce breaking protocol changes. Cloudflare tries to say ahead of these updates and may, as a result, lose connectivity with older nodes.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Web3 docs","description":"Resolve common IPFS Gateway issues including 523 and 524 errors.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Web3 docs","description":"Resolve common IPFS Gateway issues including 523 and 524 errors.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ipfs-gateway/","name":"IPFS Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ipfs-gateway/troubleshooting/","name":"Troubleshooting"}}]}
 ```

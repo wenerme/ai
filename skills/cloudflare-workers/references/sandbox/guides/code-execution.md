@@ -1,7 +1,7 @@
 ---
 title: Use code interpreter
 description: Execute Python and JavaScript code with rich outputs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -34,8 +34,8 @@ Use `exec()` for **advanced or custom workflows**:
 
 Code contexts maintain state between executions:
 
-* [  JavaScript ](#tab-panel-10730)
-* [  TypeScript ](#tab-panel-10731)
+* [  JavaScript ](#tab-panel-11175)
+* [  TypeScript ](#tab-panel-11176)
 
 **JavaScript**
 
@@ -91,8 +91,8 @@ const jsContext = await sandbox.createCodeContext({
 
 ### Simple execution
 
-* [  JavaScript ](#tab-panel-10732)
-* [  TypeScript ](#tab-panel-10733)
+* [  JavaScript ](#tab-panel-11177)
+* [  TypeScript ](#tab-panel-11178)
 
 **JavaScript**
 
@@ -143,8 +143,8 @@ console.log('Success:', result.success);
 
 Variables and imports remain available between executions in the same context, as long as the container stays active:
 
-* [  JavaScript ](#tab-panel-10738)
-* [  TypeScript ](#tab-panel-10739)
+* [  JavaScript ](#tab-panel-11183)
+* [  TypeScript ](#tab-panel-11184)
 
 **JavaScript**
 
@@ -218,8 +218,8 @@ Context state is lost if the container restarts due to inactivity. For critical 
 
 The code interpreter returns multiple output formats:
 
-* [  JavaScript ](#tab-panel-10742)
-* [  TypeScript ](#tab-panel-10743)
+* [  JavaScript ](#tab-panel-11187)
+* [  TypeScript ](#tab-panel-11188)
 
 **JavaScript**
 
@@ -308,8 +308,8 @@ if (result.outputs.json) {
 
 For long-running code, stream output in real-time:
 
-* [  JavaScript ](#tab-panel-10740)
-* [  TypeScript ](#tab-panel-10741)
+* [  JavaScript ](#tab-panel-11185)
+* [  TypeScript ](#tab-panel-11186)
 
 **JavaScript**
 
@@ -387,8 +387,8 @@ print("Done!")
 
 Run LLM-generated code safely in a sandbox:
 
-* [  JavaScript ](#tab-panel-10744)
-* [  TypeScript ](#tab-panel-10745)
+* [  JavaScript ](#tab-panel-11189)
+* [  TypeScript ](#tab-panel-11190)
 
 **JavaScript**
 
@@ -468,8 +468,8 @@ console.log('Success:', result.success);
 
 ### List all contexts
 
-* [  JavaScript ](#tab-panel-10734)
-* [  TypeScript ](#tab-panel-10735)
+* [  JavaScript ](#tab-panel-11179)
+* [  TypeScript ](#tab-panel-11180)
 
 **JavaScript**
 
@@ -501,8 +501,8 @@ for (const ctx of contexts) {
 
 ### Delete contexts
 
-* [  JavaScript ](#tab-panel-10736)
-* [  TypeScript ](#tab-panel-10737)
+* [  JavaScript ](#tab-panel-11181)
+* [  TypeScript ](#tab-panel-11182)
 
 **JavaScript**
 
@@ -550,6 +550,6 @@ console.log('All contexts deleted');
 * [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) \- Lower-level command execution
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/code-execution/#page","headline":"Use code interpreter · Cloudflare Sandbox SDK docs","description":"Execute Python and JavaScript code with rich outputs.","url":"https://developers.cloudflare.com/sandbox/guides/code-execution/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/code-execution/#page","headline":"Use code interpreter · Cloudflare Sandbox SDK docs","description":"Execute Python and JavaScript code with rich outputs.","url":"https://developers.cloudflare.com/sandbox/guides/code-execution/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/code-execution/","name":"Use code interpreter"}}]}
 ```

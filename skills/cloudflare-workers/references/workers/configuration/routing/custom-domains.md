@@ -1,7 +1,7 @@
 ---
 title: Custom Domains
 description: Connect a Cloudflare Worker to a domain or subdomain with automatic DNS and certificate management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -56,8 +56,8 @@ After you have added the domain or subdomain, Cloudflare will create a new DNS r
 
 To configure a Custom Domain in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), add the `custom_domain=true` option on each pattern under `routes`. For example, to configure a Custom Domain:
 
-* [  wrangler.jsonc ](#tab-panel-11842)
-* [  wrangler.toml ](#tab-panel-11843)
+* [  wrangler.jsonc ](#tab-panel-12361)
+* [  wrangler.toml ](#tab-panel-12362)
 
 **JSONC**
 
@@ -82,8 +82,8 @@ custom_domain = true
 
 To configure multiple Custom Domains:
 
-* [  wrangler.jsonc ](#tab-panel-11846)
-* [  wrangler.toml ](#tab-panel-11847)
+* [  wrangler.jsonc ](#tab-panel-12365)
+* [  wrangler.toml ](#tab-panel-12366)
 
 **JSONC**
 
@@ -225,8 +225,8 @@ To migrate the route `example.com/*` in your [Wrangler configuration file](https
 2. Delete the CNAME record for `example.com`.
 3. Add the following to your Wrangler file:
 
-  * [  wrangler.jsonc ](#tab-panel-11844)
-  * [  wrangler.toml ](#tab-panel-11845)
+  * [  wrangler.jsonc ](#tab-panel-12363)
+  * [  wrangler.toml ](#tab-panel-12364)
 
 **JSONC**
 ```jsonc
@@ -249,6 +249,6 @@ custom_domain = true
 4. Run `npx wrangler deploy` to create the Custom Domain your Worker will run on.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#page","headline":"Custom Domains · Cloudflare Workers docs","description":"Connect a Cloudflare Worker to a domain or subdomain with automatic DNS and certificate management.","url":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#page","headline":"Custom Domains · Cloudflare Workers docs","description":"Connect a Cloudflare Worker to a domain or subdomain with automatic DNS and certificate management.","url":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/routing/","name":"Routes and domains"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/routing/custom-domains/","name":"Custom Domains"}}]}
 ```

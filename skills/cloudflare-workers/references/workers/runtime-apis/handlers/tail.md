@@ -1,7 +1,7 @@
 ---
 title: Tail Handler
 description: Process real-time logs from producer Workers using the tail() handler in Tail Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -22,8 +22,8 @@ To configure a Tail Worker, refer to [Tail Workers documentation](https://develo
 
 ## Syntax
 
-* [  JavaScript ](#tab-panel-12364)
-* [  Python ](#tab-panel-12365)
+* [  JavaScript ](#tab-panel-12889)
+* [  Python ](#tab-panel-12890)
 
 **JavaScript**
 
@@ -203,6 +203,6 @@ Records an unhandled exception that occurred during the Worker invocation.
 * [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) \- Configure a Tail Worker to receive information about the execution of other Workers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/#page","headline":"Tail Handler · Cloudflare Workers docs","description":"Process real-time logs from producer Workers using the tail() handler in Tail Workers.","url":"https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/#page","headline":"Tail Handler · Cloudflare Workers docs","description":"Process real-time logs from producer Workers using the tail() handler in Tail Workers.","url":"https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/handlers/","name":"Handlers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/handlers/tail/","name":"Tail Handler"}}]}
 ```

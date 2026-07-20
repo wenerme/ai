@@ -1,7 +1,7 @@
 ---
 title: Network ports
 description: Review the HTTP and HTTPS ports Cloudflare proxies by default and how to enable proxy support for additional ports.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -86,6 +86,6 @@ Note
 * [Managing DNS records at Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/network-ports/#page","headline":"Network ports · Cloudflare Fundamentals docs","description":"Review the HTTP and HTTPS ports Cloudflare proxies by default and how to enable proxy support for additional ports.","url":"https://developers.cloudflare.com/fundamentals/reference/network-ports/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/network-ports/#page","headline":"Network ports · Cloudflare Fundamentals docs","description":"Review the HTTP and HTTPS ports Cloudflare proxies by default and how to enable proxy support for additional ports.","url":"https://developers.cloudflare.com/fundamentals/reference/network-ports/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/network-ports/","name":"Network ports"}}]}
 ```

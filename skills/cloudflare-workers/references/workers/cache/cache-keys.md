@@ -1,7 +1,7 @@
 ---
 title: Cache keys
 description: How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -96,8 +96,8 @@ When your Worker is invoked through a [service binding](https://developers.cloud
 
 This is the mechanism that makes caching safe for multi-tenant Workers invoked over a service binding. If you use `ctx.props` to carry per-caller authorization context — user ID, tenant ID, organization, role — caching is safe by default. Responses that logically belong to one caller cannot leak to another through the cache.
 
-* [  JavaScript ](#tab-panel-11843)
-* [  TypeScript ](#tab-panel-11844)
+* [  JavaScript ](#tab-panel-12241)
+* [  TypeScript ](#tab-panel-12242)
 
 **src/backend.js**
 
@@ -168,8 +168,8 @@ Service binding calls deserve a specific note because the URL you pass does not 
 
 When you call a service binding with [fetch()](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#use-the-fetch-method), the hostname in the URL is a placeholder. The request is routed via the binding, not by DNS — the hostname is never resolved. And because the host is not part of the cache key (as described in [The cache belongs to the Worker, not to a domain](#the-cache-belongs-to-the-worker-not-to-a-domain)), the placeholder has no effect on caching either. Only the **path** (and query string) contribute to the cache key, alongside the target entrypoint and `ctx.props`:
 
-* [  JavaScript ](#tab-panel-11841)
-* [  TypeScript ](#tab-panel-11842)
+* [  JavaScript ](#tab-panel-12239)
+* [  TypeScript ](#tab-panel-12240)
 
 **src/gateway.js**
 
@@ -227,8 +227,8 @@ By default, the path and query string of the request URL form the URL component 
 
 In the example below, the `Backend` entrypoint is the cached one. The default entrypoint forwards requests to it through `ctx.exports`, choosing the cache key itself:
 
-* [  JavaScript ](#tab-panel-11845)
-* [  TypeScript ](#tab-panel-11846)
+* [  JavaScript ](#tab-panel-12243)
+* [  TypeScript ](#tab-panel-12244)
 
 **src/index.js**
 
@@ -318,8 +318,8 @@ Set `cf.cacheKey` to an empty string, or omit it, to fall back to the default UR
 
 In this pattern the default entrypoint is a gateway that should run on every request, so disable caching on it and leave it on for `Backend` (see [Per-entrypoint caching](https://developers.cloudflare.com/workers/cache/configuration/#per-entrypoint-caching)):
 
-* [  wrangler.jsonc ](#tab-panel-11839)
-* [  wrangler.toml ](#tab-panel-11840)
+* [  wrangler.jsonc ](#tab-panel-12237)
+* [  wrangler.toml ](#tab-panel-12238)
 
 **JSONC**
 
@@ -328,7 +328,7 @@ In this pattern the default entrypoint is a gateway that should run on every req
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-07",
+  "compatibility_date": "2026-07-20",
   "cache": { "enabled": true },
   "exports": {
     "default": { "type": "worker", "cache": { "enabled": false } },
@@ -343,7 +343,7 @@ In this pattern the default entrypoint is a gateway that should run on every req
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-07"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -381,6 +381,6 @@ For per-caller isolation, continue to use [ctx.props](#multi-tenant-safety-with-
 This also means `cf.cacheKey` has no effect on eyeball requests. The `cf` object on an inbound request from a browser or API client is populated by Cloudflare, not by the client, so a client cannot set its own cache key.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/cache-keys/#page","headline":"Cache keys · Cloudflare Workers docs","description":"How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.","url":"https://developers.cloudflare.com/workers/cache/cache-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/cache-keys/#page","headline":"Cache keys · Cloudflare Workers docs","description":"How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.","url":"https://developers.cloudflare.com/workers/cache/cache-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/cache/cache-keys/","name":"Cache keys"}}]}
 ```

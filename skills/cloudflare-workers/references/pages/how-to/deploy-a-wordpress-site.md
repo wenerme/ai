@@ -1,7 +1,7 @@
 ---
 title: Deploy a static WordPress site
 description: Learn how to deploy a static WordPress site using Cloudflare Pages.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -75,6 +75,6 @@ With a static version of your site being served, you can:
 Connect with the [Cloudflare Developer community on Discord ↗](https://discord.cloudflare.com) to ask questions and discuss the platform with other developers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/#page","headline":"Deploy a static WordPress site · Cloudflare Pages docs","description":"Learn how to deploy a static WordPress site using Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/#page","headline":"Deploy a static WordPress site · Cloudflare Pages docs","description":"Learn how to deploy a static WordPress site using Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/deploy-a-wordpress-site/","name":"Deploy a static WordPress site"}}]}
 ```

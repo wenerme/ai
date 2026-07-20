@@ -1,7 +1,7 @@
 ---
 title: Cipher suites
 description: Review a list of cipher suites that Cloudflare presents to origins during an SSL/TLS handshake.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -68,6 +68,6 @@ ssl_prefer_server_ciphers on;
 1. Refer to [TLS 1.3 cipher suites](#tls-13-cipher-suites) for details. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/#page","headline":"Cipher suites — Origin · Cloudflare SSL/TLS docs","description":"Review a list of cipher suites that Cloudflare presents to origins during an SSL/TLS handshake.","url":"https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/#page","headline":"Cipher suites — Origin · Cloudflare SSL/TLS docs","description":"Review a list of cipher suites that Cloudflare presents to origins during an SSL/TLS handshake.","url":"https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/origin-configuration/","name":"Origin server"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/origin-configuration/cipher-suites/","name":"Cipher suites"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Nano Banana
 description: Google's fast image generation model producing high-quality images from text prompts.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Google's fast image generation model producing high-quality images from text pro
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-654)
-* [ cURL ](#tab-panel-655)
+* [ TypeScript ](#tab-panel-704)
+* [ cURL ](#tab-panel-705)
 
 **TypeScript**
 
@@ -59,8 +59,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-652)
-* [ Raw response ](#tab-panel-653)
+* [ Output ](#tab-panel-702)
+* [ Raw response ](#tab-panel-703)
 
 ![Cozy Coffee Shop](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/cozy-coffee-shop.png)
 
@@ -80,8 +80,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Vintage Tokyo Poster**  — Retro travel poster style illustration
 
-* [ TypeScript ](#tab-panel-658)
-* [ cURL ](#tab-panel-659)
+* [ TypeScript ](#tab-panel-708)
+* [ cURL ](#tab-panel-709)
 
 **TypeScript**
 
@@ -110,8 +110,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-656)
-* [ Raw response ](#tab-panel-657)
+* [ Output ](#tab-panel-706)
+* [ Raw response ](#tab-panel-707)
 
 ![Vintage Tokyo Poster](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/vintage-tokyo-poster.png)
 
@@ -129,8 +129,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Dewdrops Macro**  — Photorealistic macro photography
 
-* [ TypeScript ](#tab-panel-662)
-* [ cURL ](#tab-panel-663)
+* [ TypeScript ](#tab-panel-712)
+* [ cURL ](#tab-panel-713)
 
 **TypeScript**
 
@@ -159,8 +159,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-660)
-* [ Raw response ](#tab-panel-661)
+* [ Output ](#tab-panel-710)
+* [ Raw response ](#tab-panel-711)
 
 ![Dewdrops Macro](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/dewdrops-macro.png)
 
@@ -178,8 +178,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Pixel Art Marketplace**  — Isometric pixel art scene
 
-* [ TypeScript ](#tab-panel-666)
-* [ cURL ](#tab-panel-667)
+* [ TypeScript ](#tab-panel-716)
+* [ cURL ](#tab-panel-717)
 
 **TypeScript**
 
@@ -208,8 +208,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-664)
-* [ Raw response ](#tab-panel-665)
+* [ Output ](#tab-panel-714)
+* [ Raw response ](#tab-panel-715)
 
 ![Pixel Art Marketplace](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/pixel-art-marketplace.png)
 
@@ -227,8 +227,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution Landscape**  — Generate a high-resolution 4K landscape image
 
-* [ TypeScript ](#tab-panel-670)
-* [ cURL ](#tab-panel-671)
+* [ TypeScript ](#tab-panel-720)
+* [ cURL ](#tab-panel-721)
 
 **TypeScript**
 
@@ -261,8 +261,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-668)
-* [ Raw response ](#tab-panel-669)
+* [ Output ](#tab-panel-718)
+* [ Raw response ](#tab-panel-719)
 
 ![High Resolution Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/high-resolution-landscape.png)
 
@@ -280,8 +280,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-672)
-* [ Output ](#tab-panel-673)
+* [ Input ](#tab-panel-722)
+* [ Output ](#tab-panel-723)
 
 prompt
 
@@ -314,6 +314,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-
 Output [ ](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/nano-banana/#page","headline":"Nano Banana (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's fast image generation model producing high-quality images from text prompts.","url":"https://developers.cloudflare.com/ai/models/google/nano-banana/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/nano-banana/#page","headline":"Nano Banana (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's fast image generation model producing high-quality images from text prompts.","url":"https://developers.cloudflare.com/ai/models/google/nano-banana/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

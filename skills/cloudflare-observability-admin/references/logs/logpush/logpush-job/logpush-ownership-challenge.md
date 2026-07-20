@@ -1,7 +1,7 @@
 ---
 title: Ownership challenge FAQ
 description: Understand the Logpush destination ownership challenge.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -94,6 +94,6 @@ For destinations that do not require an ownership challenge, Cloudflare uses alt
 * [Enable GCS destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/google-cloud-storage/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/#page","headline":"Logpush ownership challenge · Cloudflare Logs docs","description":"Understand the Logpush destination ownership challenge.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/#page","headline":"Logpush ownership challenge · Cloudflare Logs docs","description":"Understand the Logpush destination ownership challenge.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/logpush-ownership-challenge/","name":"Ownership challenge FAQ"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Files
 description: Read, write, and manage files in the Sandbox SDK filesystem.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -33,8 +33,8 @@ await sandbox.writeFile(path: string, content: string, options?: WriteFileOption
 * `options` (optional):
   * `encoding` \- File encoding (`"utf-8"` or `"base64"`, default: `"utf-8"`)
 
-* [  JavaScript ](#tab-panel-10540)
-* [  TypeScript ](#tab-panel-10541)
+* [  JavaScript ](#tab-panel-10985)
+* [  TypeScript ](#tab-panel-10986)
 
 **JavaScript**
 
@@ -94,8 +94,8 @@ Encoding
 
 The `"none"` encoding property was added in 0.10.1 and aims to improve support for streaming binary data. When `encoding: "none"` is provided the `content` field will be a `ReadableStream<Uint8Array>`. It is only supported with the [RPC transport](https://developers.cloudflare.com/sandbox/configuration/transport/).
 
-* [  JavaScript ](#tab-panel-10554)
-* [  TypeScript ](#tab-panel-10555)
+* [  JavaScript ](#tab-panel-10999)
+* [  TypeScript ](#tab-panel-11000)
 
 **JavaScript**
 
@@ -182,8 +182,8 @@ const result = await sandbox.exists(path: string): Promise<FileExistsResult>
 
 **Returns**: `Promise<FileExistsResult>` with `exists` boolean
 
-* [  JavaScript ](#tab-panel-10550)
-* [  TypeScript ](#tab-panel-10551)
+* [  JavaScript ](#tab-panel-10995)
+* [  TypeScript ](#tab-panel-10996)
 
 **JavaScript**
 
@@ -239,8 +239,8 @@ await sandbox.mkdir(path: string, options?: MkdirOptions): Promise<void>
 * `options` (optional):
   * `recursive` \- Create parent directories if needed (default: `false`)
 
-* [  JavaScript ](#tab-panel-10544)
-* [  TypeScript ](#tab-panel-10545)
+* [  JavaScript ](#tab-panel-10989)
+* [  TypeScript ](#tab-panel-10990)
 
 **JavaScript**
 
@@ -276,8 +276,8 @@ await sandbox.deleteFile(path: string): Promise<void>
 
 * `path` \- Absolute path to the file
 
-* [  JavaScript ](#tab-panel-10542)
-* [  TypeScript ](#tab-panel-10543)
+* [  JavaScript ](#tab-panel-10987)
+* [  TypeScript ](#tab-panel-10988)
 
 **JavaScript**
 
@@ -306,8 +306,8 @@ await sandbox.renameFile(oldPath: string, newPath: string): Promise<void>
 * `oldPath` \- Current file path
 * `newPath` \- New file path
 
-* [  JavaScript ](#tab-panel-10546)
-* [  TypeScript ](#tab-panel-10547)
+* [  JavaScript ](#tab-panel-10991)
+* [  TypeScript ](#tab-panel-10992)
 
 **JavaScript**
 
@@ -336,8 +336,8 @@ await sandbox.moveFile(sourcePath: string, destinationPath: string): Promise<voi
 * `sourcePath` \- Current file path
 * `destinationPath` \- Destination path
 
-* [  JavaScript ](#tab-panel-10548)
-* [  TypeScript ](#tab-panel-10549)
+* [  JavaScript ](#tab-panel-10993)
+* [  TypeScript ](#tab-panel-10994)
 
 **JavaScript**
 
@@ -369,8 +369,8 @@ await sandbox.gitCheckout(repoUrl: string, options?: GitCheckoutOptions): Promis
   * `targetDir` \- Directory to clone into (default: `/workspace/{repoName}`)
   * `depth` \- Clone depth for shallow clones (e.g., `1` for latest commit only)
 
-* [  JavaScript ](#tab-panel-10552)
-* [  TypeScript ](#tab-panel-10553)
+* [  JavaScript ](#tab-panel-10997)
+* [  TypeScript ](#tab-panel-10998)
 
 **JavaScript**
 
@@ -416,6 +416,6 @@ await sandbox.gitCheckout('https://github.com/facebook/react', {
 * [Commands API](https://developers.cloudflare.com/sandbox/api/commands/) \- Execute commands
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/files/#page","headline":"Files · Cloudflare Sandbox SDK docs","description":"Read, write, and manage files in the Sandbox SDK filesystem.","url":"https://developers.cloudflare.com/sandbox/api/files/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/files/#page","headline":"Files · Cloudflare Sandbox SDK docs","description":"Read, write, and manage files in the Sandbox SDK filesystem.","url":"https://developers.cloudflare.com/sandbox/api/files/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/files/","name":"Files"}}]}
 ```

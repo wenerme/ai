@@ -1,7 +1,7 @@
 ---
 title: Sandbox bridge
 description: Deploy the sandbox bridge Worker to control Cloudflare Sandboxes over HTTP from any language or platform.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -86,9 +86,9 @@ export SANDBOX_API_KEY=<your-token>
 
 ### Create a sandbox and run a command
 
-* [ curl ](#tab-panel-10622)
-* [ Node.js ](#tab-panel-10623)
-* [ Python ](#tab-panel-10624)
+* [ curl ](#tab-panel-11067)
+* [ Node.js ](#tab-panel-11068)
+* [ Python ](#tab-panel-11069)
 
 ```sh
 # Create a sandbox
@@ -206,9 +206,9 @@ httpx.delete(f"{API_URL}/v1/sandbox/{sandbox_id}", headers=headers)
 
 ### Write and read files
 
-* [ curl ](#tab-panel-10625)
-* [ Node.js ](#tab-panel-10626)
-* [ Python ](#tab-panel-10627)
+* [ curl ](#tab-panel-11070)
+* [ Node.js ](#tab-panel-11071)
+* [ Python ](#tab-panel-11072)
 
 ```sh
 # Write a file
@@ -307,6 +307,6 @@ The bridge source code and examples are available on GitHub:
 * [OpenAI Agents SDK tutorial](https://developers.cloudflare.com/sandbox/tutorials/openai-agents/) — Build a Python coding agent with the bridge.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/bridge/#page","headline":"Sandbox bridge · Cloudflare Sandbox SDK docs","description":"Deploy the sandbox bridge Worker to control Cloudflare Sandboxes over HTTP from any language or platform.","url":"https://developers.cloudflare.com/sandbox/bridge/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python","Node.js","Docker"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/bridge/#page","headline":"Sandbox bridge · Cloudflare Sandbox SDK docs","description":"Deploy the sandbox bridge Worker to control Cloudflare Sandboxes over HTTP from any language or platform.","url":"https://developers.cloudflare.com/sandbox/bridge/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python","Node.js","Docker"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/bridge/","name":"Sandbox bridge"}}]}
 ```

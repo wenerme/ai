@@ -1,7 +1,7 @@
 ---
 title: Private origins (beta)
 description: Connect Cloudflare's application services to your private network by proxying public hostnames to private origins.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -41,6 +41,6 @@ This feature is in closed beta. Contact your account team to request access.
 Connect your private network to Cloudflare with IPsec tunnels.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/private-origins/#page","headline":"Private origins (beta) · Cloudflare DNS docs","description":"Connect Cloudflare's application services to your private network by proxying public hostnames to private origins.","url":"https://developers.cloudflare.com/dns/private-origins/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/private-origins/#page","headline":"Private origins (beta) · Cloudflare DNS docs","description":"Connect Cloudflare's application services to your private network by proxying public hostnames to private origins.","url":"https://developers.cloudflare.com/dns/private-origins/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/private-origins/","name":"Private origins (beta)"}}]}
 ```

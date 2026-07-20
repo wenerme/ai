@@ -1,7 +1,7 @@
 ---
 title: Gemini 2.5 Flash
 description: Google's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token context window.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,8 +31,8 @@ Google's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token c
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-482)
-* [ cURL ](#tab-panel-483)
+* [ TypeScript ](#tab-panel-532)
+* [ cURL ](#tab-panel-533)
 
 **TypeScript**
 
@@ -65,8 +65,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-488)
-* [ Raw response ](#tab-panel-489)
+* [ Output ](#tab-panel-538)
+* [ Raw response ](#tab-panel-539)
 
 The three laws of thermodynamics are fundamental principles that govern how energy is transferred and transformed in physical systems. They are:
 
@@ -132,8 +132,8 @@ These three laws are cornerstones of physics and chemistry, explaining a vast ra
 
 **With System Instruction**  — Using a system instruction to set context
 
-* [ TypeScript ](#tab-panel-484)
-* [ cURL ](#tab-panel-485)
+* [ TypeScript ](#tab-panel-534)
+* [ cURL ](#tab-panel-535)
 
 **TypeScript**
 
@@ -182,8 +182,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-490)
-* [ Raw response ](#tab-panel-491)
+* [ Output ](#tab-panel-540)
+* [ Raw response ](#tab-panel-541)
 
 Reading a JSON (JavaScript Object Notation) file in Python is straightforward, thanks to the built-in `json` module.
 
@@ -372,8 +372,8 @@ When `json.load()` or `json.loads()` parses JSON, it converts JSON data types to
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-492)
-* [ cURL ](#tab-panel-493)
+* [ TypeScript ](#tab-panel-542)
+* [ cURL ](#tab-panel-543)
 
 **TypeScript**
 
@@ -442,8 +442,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-494)
-* [ Raw response ](#tab-panel-495)
+* [ Output ](#tab-panel-544)
+* [ Raw response ](#tab-panel-545)
 
 Okay, you've got two main routes, each with its own character and fantastic stops
 
@@ -493,8 +493,8 @@ Okay, you've got two main routes, each with its own character and fantastic stop
 
 **Creative Writing**  — Higher temperature for creative output
 
-* [ TypeScript ](#tab-panel-486)
-* [ cURL ](#tab-panel-487)
+* [ TypeScript ](#tab-panel-536)
+* [ cURL ](#tab-panel-537)
 
 **TypeScript**
 
@@ -539,8 +539,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-496)
-* [ Raw response ](#tab-panel-497)
+* [ Output ](#tab-panel-546)
+* [ Raw response ](#tab-panel-547)
 
 The rain had been a relentless drumbeat against
 
@@ -594,8 +594,8 @@ Schema variant
 
 Generate ContentChat Completions
 
-* [ Input ](#tab-panel-498)
-* [ Output ](#tab-panel-499)
+* [ Input ](#tab-panel-548)
+* [ Output ](#tab-panel-549)
 
 ▶contents\[\]
 
@@ -720,6 +720,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/sc
 Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/#page","headline":"Gemini 2.5 Flash (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token context window.","url":"https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/#page","headline":"Gemini 2.5 Flash (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token context window.","url":"https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

@@ -2,7 +2,7 @@
 title: Use cron triggers to develop time-aware applications
 description: Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with `step.sleep` allows developers to build sophisticated, time-aware applications.
 
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -13,9 +13,9 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Use cron triggers to develop time-aware applications
 
-* [ Watch this episode ](#tab-panel-10043)
-* [ Step-by-step tutorial ](#tab-panel-10044)
-* [ Series overview ](#tab-panel-10045)
+* [ Watch this episode ](#tab-panel-10162)
+* [ Step-by-step tutorial ](#tab-panel-10163)
+* [ Series overview ](#tab-panel-10164)
 
 Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with `step.sleep` allows developers to build sophisticated, time-aware applications.
 
@@ -59,8 +59,8 @@ The episode repository uses the older pattern of a top-level `[triggers]` sectio
 
 In current Workflows projects, you can usually schedule the Workflow directly on its binding instead:
 
-* [  wrangler.jsonc ](#tab-panel-10041)
-* [  wrangler.toml ](#tab-panel-10042)
+* [  wrangler.jsonc ](#tab-panel-10160)
+* [  wrangler.toml ](#tab-panel-10161)
 
 **JSONC**
 
@@ -156,6 +156,6 @@ This command will show details about the most recent run of the specified workfl
 [ Watch Episode 3: Use cron triggers to develop time-aware applications ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/) In this episode, we review Workflows ability to explicitly schedule tasks using cron triggers and pause execution with \`step.sleep\` allows developers to build sophisticated, time-aware applications.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/#page","headline":"Use cron triggers to develop time-aware applications · Cloudflare Learning Paths","description":"Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with step.sleep allows developers to build sophisticated, time-aware applications.","url":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/#page","headline":"Use cron triggers to develop time-aware applications · Cloudflare Learning Paths","description":"Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with step.sleep allows developers to build sophisticated, time-aware applications.","url":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/workflows-course/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/workflows-course/series/workflows-3/","name":"Use cron triggers to develop time-aware applications"}}]}
 ```

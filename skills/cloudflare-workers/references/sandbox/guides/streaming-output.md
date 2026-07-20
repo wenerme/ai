@@ -1,7 +1,7 @@
 ---
 title: Stream output
 description: Handle real-time output from commands and processes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -34,8 +34,8 @@ Use non-streaming (`exec()`) for:
 
 Use `execStream()` to get real-time output:
 
-* [  JavaScript ](#tab-panel-10924)
-* [  TypeScript ](#tab-panel-10925)
+* [  JavaScript ](#tab-panel-11369)
+* [  TypeScript ](#tab-panel-11370)
 
 **JavaScript**
 
@@ -113,8 +113,8 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
 
 Return streaming output to users via Server-Sent Events:
 
-* [  JavaScript ](#tab-panel-10920)
-* [  TypeScript ](#tab-panel-10921)
+* [  JavaScript ](#tab-panel-11365)
+* [  TypeScript ](#tab-panel-11366)
 
 **JavaScript**
 
@@ -172,8 +172,8 @@ export default {
 
 Client-side consumption:
 
-* [  JavaScript ](#tab-panel-10918)
-* [  TypeScript ](#tab-panel-10919)
+* [  JavaScript ](#tab-panel-11363)
+* [  TypeScript ](#tab-panel-11364)
 
 **JavaScript**
 
@@ -219,8 +219,8 @@ eventSource.addEventListener('complete', (event) => {
 
 Monitor background process output:
 
-* [  JavaScript ](#tab-panel-10922)
-* [  TypeScript ](#tab-panel-10923)
+* [  JavaScript ](#tab-panel-11367)
+* [  TypeScript ](#tab-panel-11368)
 
 **JavaScript**
 
@@ -272,8 +272,8 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 Check exit codes and handle stream errors:
 
-* [  JavaScript ](#tab-panel-10926)
-* [  TypeScript ](#tab-panel-10927)
+* [  JavaScript ](#tab-panel-11371)
+* [  TypeScript ](#tab-panel-11372)
 
 **JavaScript**
 
@@ -342,6 +342,6 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
 * [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) \- Stream code execution output
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/streaming-output/#page","headline":"Stream output · Cloudflare Sandbox SDK docs","description":"Handle real-time output from commands and processes.","url":"https://developers.cloudflare.com/sandbox/guides/streaming-output/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/streaming-output/#page","headline":"Stream output · Cloudflare Sandbox SDK docs","description":"Handle real-time output from commands and processes.","url":"https://developers.cloudflare.com/sandbox/guides/streaming-output/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/streaming-output/","name":"Stream output"}}]}
 ```

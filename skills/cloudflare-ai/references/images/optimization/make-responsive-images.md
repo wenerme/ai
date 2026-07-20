@@ -1,7 +1,7 @@
 ---
 title: Make responsive images
 description: Automatically resize images for optimal display on every device.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -190,6 +190,6 @@ The default sizes for user-agent detection are:
 You can override the default sizes using the [wmobile and wdesktop](https://developers.cloudflare.com/images/optimization/features/#width) sub-parameters, which accept positive integers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/make-responsive-images/#page","headline":"Make responsive images · Cloudflare Images docs","description":"Automatically resize images for optimal display on every device.","url":"https://developers.cloudflare.com/images/optimization/make-responsive-images/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/make-responsive-images/#page","headline":"Make responsive images · Cloudflare Images docs","description":"Automatically resize images for optimal display on every device.","url":"https://developers.cloudflare.com/images/optimization/make-responsive-images/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/make-responsive-images/","name":"Make responsive images"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Agents as tools
 description: Run Think and AIChatAgent sub-agents as retained, streaming tools from a parent agent.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ Use `agentTool()` or `runAgentTool()` when a parent model or workflow delegates 
 
 Use `agentTool()` when the parent model should decide when to call the helper.
 
-* [  JavaScript ](#tab-panel-6267)
-* [  TypeScript ](#tab-panel-6268)
+* [  JavaScript ](#tab-panel-6541)
+* [  TypeScript ](#tab-panel-6542)
 
 **JavaScript**
 
@@ -91,8 +91,8 @@ export class Assistant extends Think<Env> {
 
 The child can also be an `AIChatAgent`:
 
-* [  JavaScript ](#tab-panel-6287)
-* [  TypeScript ](#tab-panel-6288)
+* [  JavaScript ](#tab-panel-6561)
+* [  TypeScript ](#tab-panel-6562)
 
 **JavaScript**
 
@@ -226,8 +226,8 @@ For Think children that do workflow-style work without user-facing assistant tex
 
 Persist any structured output before the child turn finishes, because `getAgentToolOutput()` is read as soon as `saveMessages()` resolves. Keep `getAgentToolSummary()` concise for display; the full structured value is stored separately as the tool output.
 
-* [  JavaScript ](#tab-panel-6261)
-* [  TypeScript ](#tab-panel-6262)
+* [  JavaScript ](#tab-panel-6535)
+* [  TypeScript ](#tab-panel-6536)
 
 **JavaScript**
 
@@ -269,8 +269,8 @@ export class Extractor extends Think<Env> {
 
 Use `runAgentTool()` for deterministic workflows, scheduled work, HTTP handlers, or fan-out code.
 
-* [  JavaScript ](#tab-panel-6263)
-* [  TypeScript ](#tab-panel-6264)
+* [  JavaScript ](#tab-panel-6537)
+* [  TypeScript ](#tab-panel-6538)
 
 **JavaScript**
 
@@ -324,8 +324,8 @@ type DetachedRunAgentToolResult = {
 
 `detached: true` is fire-and-forget — observe the run through `agent-tool-event` frames (the same ones `useAgentToolEvents()` consumes) and the global `onAgentToolFinish()` hook. Pass an object to wire a targeted, durable completion callback:
 
-* [  JavaScript ](#tab-panel-6281)
-* [  TypeScript ](#tab-panel-6282)
+* [  JavaScript ](#tab-panel-6555)
+* [  TypeScript ](#tab-panel-6556)
 
 **JavaScript**
 
@@ -402,8 +402,8 @@ Key behaviors:
 * **Bounded.** Every detached run has an absolute `maxBudgetMs` ceiling (per-run, or the `detachedMaxBudgetMs` static option; default 24h). On expiry the parent gives up watching and tears the child down so an abandoned run cannot hold a `maxConcurrentAgentTools` slot forever.
 * **No inherited signal.** A detached run must outlive the spawning turn, so it does **not** inherit `options.signal`. Cancel it explicitly:
 
-* [  JavaScript ](#tab-panel-6257)
-* [  TypeScript ](#tab-panel-6258)
+* [  JavaScript ](#tab-panel-6531)
+* [  TypeScript ](#tab-panel-6532)
 
 **JavaScript**
 
@@ -421,8 +421,8 @@ await this.cancelAgentTool(runId); // idempotent; delivers onFinish "aborted"
 
 On a chat agent (`@cloudflare/think` or `AIChatAgent`) you usually want the model to _react_ to a finished background run. Instead of wiring `onFinish` by hand, pass `notify: true` — when the run finishes the agent injects a message into the chat (idempotent per run + status, so an exactly-once finish never duplicates) and the model takes its next turn with the result in context:
 
-* [  JavaScript ](#tab-panel-6259)
-* [  TypeScript ](#tab-panel-6260)
+* [  JavaScript ](#tab-panel-6533)
+* [  TypeScript ](#tab-panel-6534)
 
 **JavaScript**
 
@@ -438,8 +438,8 @@ await this.runAgentTool(ResearchAgent, { input, detached: { notify: true } });
 
 If your app routes or hides synthetic messages by `metadata.source`, pass your own source:
 
-* [  JavaScript ](#tab-panel-6265)
-* [  TypeScript ](#tab-panel-6266)
+* [  JavaScript ](#tab-panel-6539)
+* [  TypeScript ](#tab-panel-6540)
 
 **JavaScript**
 
@@ -469,8 +469,8 @@ A child's `inspectAgentToolRun(runId)` returns the run's current status snapshot
 
 A sub-agent running as an agent tool — awaited or detached — can report mid-run progress so a parent can render a live status line, meter the run server-side, or react to a named checkpoint before the run finishes. Call `reportProgress()` from inside the child (for example, from a tool's `execute`):
 
-* [  JavaScript ](#tab-panel-6277)
-* [  TypeScript ](#tab-panel-6278)
+* [  JavaScript ](#tab-panel-6551)
+* [  TypeScript ](#tab-panel-6552)
 
 **JavaScript**
 
@@ -541,8 +541,8 @@ Ephemeral signals ride the child's own turn stream as a transient `data-agent-pr
 
 Override `onProgress()` to meter, steer, or surface progress server-side. It fires best-effort whenever a child progress signal is forwarded through the parent, for both awaited and detached runs:
 
-* [  JavaScript ](#tab-panel-6271)
-* [  TypeScript ](#tab-panel-6272)
+* [  JavaScript ](#tab-panel-6545)
+* [  TypeScript ](#tab-panel-6546)
 
 **JavaScript**
 
@@ -579,8 +579,8 @@ export class Assistant extends Think<Env> {
 
 Naming a `milestone` promotes a signal from the ephemeral tier to a **durable** one — there is still only one emit method:
 
-* [  JavaScript ](#tab-panel-6269)
-* [  TypeScript ](#tab-panel-6270)
+* [  JavaScript ](#tab-panel-6543)
+* [  TypeScript ](#tab-panel-6544)
 
 **JavaScript**
 
@@ -606,8 +606,8 @@ A milestone is persisted as one row on the child with a monotonic per-run `seque
 
 For a detached run on a chat agent, `detached: { onMilestones }` surfaces a chat message when a configured milestone lands, _before_ the run finishes. Each `(runId, name)` fires at most once — whether observed live or reconciled after eviction — so the deterministic ID collapses warm and cold delivery to at-most-once:
 
-* [  JavaScript ](#tab-panel-6279)
-* [  TypeScript ](#tab-panel-6280)
+* [  JavaScript ](#tab-panel-6553)
+* [  TypeScript ](#tab-panel-6554)
 
 **JavaScript**
 
@@ -655,8 +655,8 @@ Once a detached child has reported at least one signal, the reconcile backbone g
 
 `useAgentToolEvents()` is a headless hook. It subscribes to the existing parent connection, deduplicates replay/live races, applies child `UIMessageChunk` bodies to message parts, and groups sibling runs by parent tool call ID. Each run state carries `progress` and `milestones`, so a background-runs tray can render a live bar, phase, and milestone chips without drilling in.
 
-* [  JavaScript ](#tab-panel-6285)
-* [  TypeScript ](#tab-panel-6286)
+* [  JavaScript ](#tab-panel-6559)
+* [  TypeScript ](#tab-panel-6560)
 
 **JavaScript**
 
@@ -708,8 +708,8 @@ Imperative runs without a parent tool call are available as `agentTools.unboundR
 
 Agents as tools are normal sub-agents. Connect to a retained child through the parent route:
 
-* [  JavaScript ](#tab-panel-6273)
-* [  TypeScript ](#tab-panel-6274)
+* [  JavaScript ](#tab-panel-6547)
+* [  TypeScript ](#tab-panel-6548)
 
 **JavaScript**
 
@@ -747,8 +747,8 @@ override async onBeforeSubAgent(_request, child) {
 
 Runs and child facets are retained by default for refresh, drill-in, and later inspection. Delete them explicitly when clearing chat history or applying your own retention policy:
 
-* [  JavaScript ](#tab-panel-6275)
-* [  TypeScript ](#tab-panel-6276)
+* [  JavaScript ](#tab-panel-6549)
+* [  TypeScript ](#tab-panel-6550)
 
 **JavaScript**
 
@@ -793,8 +793,8 @@ A hung child can never block recovery forever. The no-progress budget bounds a s
 
 Monitor parent reconciliation through the `agentTool` observability channel:
 
-* [  JavaScript ](#tab-panel-6283)
-* [  TypeScript ](#tab-panel-6284)
+* [  JavaScript ](#tab-panel-6557)
+* [  TypeScript ](#tab-panel-6558)
 
 **JavaScript**
 
@@ -835,6 +835,6 @@ Raw `diagnostics_channel` subscribers should use the channel name `agents:agent_
 [ Chat agents ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) Build AI chat interfaces with AIChatAgent and useAgentChat.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/#page","headline":"Agents as tools · Cloudflare Agents docs","description":"Run Think and AIChatAgent sub-agents as retained, streaming tools from a parent agent.","url":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/#page","headline":"Agents as tools · Cloudflare Agents docs","description":"Run Think and AIChatAgent sub-agents as retained, streaming tools from a parent agent.","url":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/agent-tools/","name":"Agents as tools"}}]}
 ```

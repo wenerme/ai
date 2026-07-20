@@ -1,7 +1,7 @@
 ---
 title: Simple Proxy Protocol Header
 description: Format of the Simple Proxy Protocol header prepended to UDP datagrams.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -79,6 +79,6 @@ struct {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/simple-proxy-protocol-header/#page","headline":"Simple Proxy Protocol Header · Cloudflare Spectrum docs","description":"Format of the Simple Proxy Protocol header prepended to UDP datagrams.","url":"https://developers.cloudflare.com/spectrum/reference/simple-proxy-protocol-header/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/simple-proxy-protocol-header/#page","headline":"Simple Proxy Protocol Header · Cloudflare Spectrum docs","description":"Format of the Simple Proxy Protocol header prepended to UDP datagrams.","url":"https://developers.cloudflare.com/spectrum/reference/simple-proxy-protocol-header/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/reference/simple-proxy-protocol-header/","name":"Simple Proxy Protocol Header"}}]}
 ```

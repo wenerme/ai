@@ -1,7 +1,7 @@
 ---
 title: Cryptographic Attestation of Personhood
 description: Cloudflare's Cryptographic Attestation of Personhood (CAP) lets visitors prove they are human using a hardware key instead of a CAPTCHA.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -94,6 +94,6 @@ If you do not have the necessary hardware (such as a Yubikey), you can still sol
 * [Introducing Zero-Knowledge Proofs ↗](https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/) (blog)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cryptographic-personhood/#page","headline":"Cryptographic Attestation of Personhood · Cloudflare Fundamentals docs","description":"Cloudflare's Cryptographic Attestation of Personhood (CAP) lets visitors prove they are human using a hardware key instead of a CAPTCHA.","url":"https://developers.cloudflare.com/fundamentals/reference/cryptographic-personhood/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cryptographic-personhood/#page","headline":"Cryptographic Attestation of Personhood · Cloudflare Fundamentals docs","description":"Cloudflare's Cryptographic Attestation of Personhood (CAP) lets visitors prove they are human using a hardware key instead of a CAPTCHA.","url":"https://developers.cloudflare.com/fundamentals/reference/cryptographic-personhood/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/cryptographic-personhood/","name":"Cryptographic Attestation of Personhood"}}]}
 ```

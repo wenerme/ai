@@ -1,7 +1,7 @@
 ---
 title: Encrypt network flow data
 description: Encrypt the network flowData sent from your router to Cloudflare by routing your network traffic through a device running the Cloudflare One Client.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -86,6 +86,6 @@ In the machine running the Cloudflare One Client, you can redirect this traffic 
 If you do not want all traffic on your device to route through the Cloudflare One Client, [configure split tunnels/proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) to either only allow Network Flow traffic towards `162.159.65.1` or exclude everything else.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/tutorials/encrypt-network-flow-data/#page","headline":"Network Flow encrypt network flow data · Cloudflare Network Flow docs","description":"Encrypt the network flowData sent from your router to Cloudflare by routing your network traffic through a device running the Cloudflare One Client.","url":"https://developers.cloudflare.com/network-flow/tutorials/encrypt-network-flow-data/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Shell","CLI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/tutorials/encrypt-network-flow-data/#page","headline":"Network Flow encrypt network flow data · Cloudflare Network Flow docs","description":"Encrypt the network flowData sent from your router to Cloudflare by routing your network traffic through a device running the Cloudflare One Client.","url":"https://developers.cloudflare.com/network-flow/tutorials/encrypt-network-flow-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Shell","CLI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/network-flow/tutorials/encrypt-network-flow-data/","name":"Encrypt network flow data"}}]}
 ```

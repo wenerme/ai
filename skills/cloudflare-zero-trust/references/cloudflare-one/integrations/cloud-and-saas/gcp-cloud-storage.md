@@ -1,7 +1,7 @@
 ---
 title: Google Cloud Platform (GCP) Cloud Storage
 description: Reference information for Google Cloud Platform (GCP) Cloud Storage in Zero Trust integrations.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -94,6 +94,6 @@ Flag security issues in Cloud Storage Buckets, including overpermissioning, acce
 | Google Cloud Platform: GCS Bucket IAM Policy Using Legacy Roles                  | 11a592b9-4f51-4a1a-9925-a48a5ed01521 | Low      |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/gcp-cloud-storage/#page","headline":"Google Cloud Platform (GCP) Cloud Storage · Cloudflare One docs","description":"Reference information for Google Cloud Platform (GCP) Cloud Storage in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/gcp-cloud-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/gcp-cloud-storage/#page","headline":"Google Cloud Platform (GCP) Cloud Storage · Cloudflare One docs","description":"Reference information for Google Cloud Platform (GCP) Cloud Storage in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/gcp-cloud-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/cloud-and-saas/","name":"Cloud and SaaS integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/cloud-and-saas/gcp-cloud-storage/","name":"Google Cloud Platform (GCP) Cloud Storage"}}]}
 ```

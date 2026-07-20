@@ -1,7 +1,7 @@
 ---
 title: Rate limiting (previous version) upgrade
 description: Guide on upgrading rate limiting rules from the previous version to the new version.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -183,6 +183,6 @@ Cloudflare also offers an Advanced version of Rate Limiting, which is available 
 To learn more about what you can do with the new rate limiting, refer to [Rate limiting best practices](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/upgrade/#page","headline":"Rate limiting (previous version) upgrade · Cloudflare Web Application Firewall (WAF) docs","description":"Guide on upgrading rate limiting rules from the previous version to the new version.","url":"https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/upgrade/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/upgrade/#page","headline":"Rate limiting (previous version) upgrade · Cloudflare Web Application Firewall (WAF) docs","description":"Guide on upgrading rate limiting rules from the previous version to the new version.","url":"https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/upgrade/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/reference/legacy/","name":"Legacy features"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/reference/legacy/old-rate-limiting/","name":"Rate Limiting (previous version)"}},{"@type":"ListItem","position":6,"item":{"@id":"/waf/reference/legacy/old-rate-limiting/upgrade/","name":"Rate limiting (previous version) upgrade"}}]}
 ```

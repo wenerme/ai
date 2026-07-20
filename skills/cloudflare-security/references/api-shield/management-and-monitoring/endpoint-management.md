@@ -1,7 +1,7 @@
 ---
 title: Endpoint Management
 description: Save, organize, and monitor API endpoints in API Shield.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ When an endpoint is using [Cloudflare Workers](https://developers.cloudflare.com
 
 ## Access
 
-* [  New dashboard ](#tab-panel-7021)
-* [ Old dashboard ](#tab-panel-7022)
+* [  New dashboard ](#tab-panel-7350)
+* [ Old dashboard ](#tab-panel-7351)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -47,8 +47,8 @@ There are two ways to add API endpoints from Discovery.
 
 #### Add from the Endpoints tab
 
-* [  New dashboard ](#tab-panel-7011)
-* [ Old dashboard ](#tab-panel-7012)
+* [  New dashboard ](#tab-panel-7340)
+* [ Old dashboard ](#tab-panel-7341)
 
 1. From **Endpoints**, go to **Add endpoints** \> **Select from Discovery** tab.
 2. Select the discovered endpoints you would like to add.
@@ -60,8 +60,8 @@ There are two ways to add API endpoints from Discovery.
 
 #### Add from the Discovery tab
 
-* [  New dashboard ](#tab-panel-7013)
-* [ Old dashboard ](#tab-panel-7014)
+* [  New dashboard ](#tab-panel-7342)
+* [ Old dashboard ](#tab-panel-7343)
 
 1. From **Web assets**, go to the **Discovery** tab.
 2. Select the discovered endpoints you would like to add.
@@ -73,8 +73,8 @@ There are two ways to add API endpoints from Discovery.
 
 ### Add endpoints from Schema validation
 
-* [  New dashboard ](#tab-panel-7015)
-* [ Old dashboard ](#tab-panel-7016)
+* [  New dashboard ](#tab-panel-7344)
+* [ Old dashboard ](#tab-panel-7345)
 
 1. From **Web assets**, go to the **Endpoints** tab.
 2. Select **Add endpoints** \> **Upload Schema**.
@@ -93,8 +93,8 @@ If you deselect **Save new endpoints to endpoint management**, the endpoints wil
 
 ### Add endpoints manually
 
-* [  New dashboard ](#tab-panel-7017)
-* [ Old dashboard ](#tab-panel-7018)
+* [  New dashboard ](#tab-panel-7346)
+* [ Old dashboard ](#tab-panel-7347)
 
 1. From **Web assets**, go to the **Endpoints** tab.
 2. Select **Add endpoints** \> **Manually add**.
@@ -137,8 +137,8 @@ For more information on how Cloudflare uses variables in API Shield, refer to th
 
 You can delete endpoints one at a time or in bulk.
 
-* [  New dashboard ](#tab-panel-7019)
-* [ Old dashboard ](#tab-panel-7020)
+* [  New dashboard ](#tab-panel-7348)
+* [ Old dashboard ](#tab-panel-7349)
 
 1. From **Web assets**, go to the **Endpoints** tab.
 2. Select the checkboxes for the endpoints that you want to delete.
@@ -198,6 +198,6 @@ This limitation is specifically observed when:
 In these scenarios, the system is unable to accurately measure the origin response time, and the metric will not be populated in the dashboard.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#page","headline":"Endpoint Management · Cloudflare API Shield docs","description":"Save, organize, and monitor API endpoints in API Shield.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#page","headline":"Endpoint Management · Cloudflare API Shield docs","description":"Save, organize, and monitor API endpoints in API Shield.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/management-and-monitoring/","name":"Management and Monitoring"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/management-and-monitoring/endpoint-management/","name":"Endpoint Management"}}]}
 ```

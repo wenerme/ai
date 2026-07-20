@@ -1,7 +1,7 @@
 ---
 title: Build watch paths
 description: Reduce compute for your monorepo by specifying paths for Workers Builds to skip
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -65,6 +65,6 @@ If you want to trigger a build for a specific file or specific filetype, for exa
 * Exclude paths: \`\`
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/#page","headline":"Build watch paths · Cloudflare Workers docs","description":"Reduce compute for your monorepo by specifying paths for Workers Builds to skip","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/#page","headline":"Build watch paths · Cloudflare Workers docs","description":"Reduce compute for your monorepo by specifying paths for Workers Builds to skip","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/build-watch-paths/","name":"Build watch paths"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: PCAPs bucket setup
 description: Configure a storage bucket for packet captures.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ You can configure an Amazon S3 or Google Cloud Platform bucket to use as a targe
 
 Learn how to set up a bucket for use with full packet captures.
 
-* [ Dashboard ](#tab-panel-7387)
-* [ API ](#tab-panel-7388)
+* [ Dashboard ](#tab-panel-7721)
+* [ API ](#tab-panel-7722)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select the **Diagnostics** tab > **Buckets**.
@@ -42,8 +42,8 @@ Next, validate the bucket and confirm ownership.
 
 After the initial bucket set up, you need to confirm you own the bucket via an ownership challenge. After you validate your bucket, you can begin using it to collect full packet captures.
 
-* [ Dashboard ](#tab-panel-7389)
-* [ API ](#tab-panel-7390)
+* [ Dashboard ](#tab-panel-7723)
+* [ API ](#tab-panel-7724)
 
 1. From the **Prove ownership** step of the **Bucket configuration**, locate the **Ownership token** field.
 2. In the **Ownership token** field, enter the ownership token for your service provider.
@@ -130,8 +130,8 @@ The bucket status displays one of the following options:
 
 View a list of all buckets configured on your account.
 
-* [ Dashboard ](#tab-panel-7391)
-* [ API ](#tab-panel-7392)
+* [ Dashboard ](#tab-panel-7725)
+* [ API ](#tab-panel-7726)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. In **Diagnostics**, select **Buckets**.
@@ -221,6 +221,6 @@ The [response](https://developers.cloudflare.com/api/resources/magic%5Ftransit/s
 Refer to the [Validate a bucket](#validate-a-bucket) API instructions for more details on the entire process to [validate your R2 bucket](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/subresources/ownership/methods/validate/). When specifying the R2 destination for this validation, exclude the secret and access keys from the URL.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/#page","headline":"PCAPs bucket setup · Cloudflare Network Firewall docs","description":"Configure a storage bucket for packet captures.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3","GCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/#page","headline":"PCAPs bucket setup · Cloudflare Network Firewall docs","description":"Configure a storage bucket for packet captures.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3","GCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/packet-captures/","name":"Packet captures"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/","name":"PCAPs bucket setup"}}]}
 ```

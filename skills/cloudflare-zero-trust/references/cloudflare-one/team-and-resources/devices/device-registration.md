@@ -1,7 +1,7 @@
 ---
 title: Device registration
 description: Reference information for Device registration in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ A single physical device can have [multiple device registrations](https://develo
 
 ## Review device registration status
 
-* [ Dashboard ](#tab-panel-7842)
-* [ API ](#tab-panel-7843)
+* [ Dashboard ](#tab-panel-8180)
+* [ API ](#tab-panel-8181)
 
 To review how many device registrations are associated with a device:
 
@@ -112,8 +112,8 @@ The following table summarizes the actions available for managing device registr
 
 Devices can have multiple device registrations. Deleting one registration does not affect other registrations on the same device.
 
-* [ Dashboard ](#tab-panel-7844)
-* [ API ](#tab-panel-7845)
+* [ Dashboard ](#tab-panel-8182)
+* [ API ](#tab-panel-8183)
 
 To delete a device registration:
 
@@ -234,6 +234,6 @@ User record persistence
 You cannot delete or archive a user record. You can [remove a user](#remove-a-user) from a seat, but their user record will remain in your Zero Trust Organization. Inactive users do not count towards billing.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/#page","headline":"Device registration · Cloudflare One docs","description":"Reference information for Device registration in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/#page","headline":"Device registration · Cloudflare One docs","description":"Reference information for Device registration in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/device-registration/","name":"Device registration"}}]}
 ```

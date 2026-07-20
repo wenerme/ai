@@ -1,7 +1,7 @@
 ---
 title: GitLab CI/CD
 description: Integrate Workers development into your existing GitLab Pipelines workflows.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -56,6 +56,6 @@ Don't store the value of `CLOUDFLARE_API_TOKEN` in your repository, as it gives 
 Refer to [GitLab's blog ↗](https://about.gitlab.com/blog/2022/11/21/deploy-remix-with-gitlab-and-cloudflare/) for an example pipeline. Under the `script` key, replace `npm run deploy` with [npx wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/gitlab-cicd/#page","headline":"GitLab CI/CD · Cloudflare Workers docs","description":"Integrate Workers development into your existing GitLab Pipelines workflows.","url":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/gitlab-cicd/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/gitlab-cicd/#page","headline":"GitLab CI/CD · Cloudflare Workers docs","description":"Integrate Workers development into your existing GitLab Pipelines workflows.","url":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/gitlab-cicd/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/external-cicd/","name":"External CI/CD"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/external-cicd/gitlab-cicd/","name":"GitLab CI/CD"}}]}
 ```

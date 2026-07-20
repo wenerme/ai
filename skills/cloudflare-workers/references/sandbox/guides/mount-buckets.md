@@ -1,7 +1,7 @@
 ---
 title: Mount buckets
 description: Mount S3-compatible object storage as local filesystems for persistent data storage.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ The SDK works with any S3-compatible object storage provider. Examples include C
 
 To mount an R2 bucket in production without passing credentials into the container, add an R2 binding and export `ContainerProxy` from your Worker entrypoint.
 
-* [  wrangler.jsonc ](#tab-panel-10852)
-* [  wrangler.toml ](#tab-panel-10853)
+* [  wrangler.jsonc ](#tab-panel-11297)
+* [  wrangler.toml ](#tab-panel-11298)
 
 **JSONC**
 
@@ -51,8 +51,8 @@ binding = "MY_BUCKET"
 bucket_name = "my-r2-bucket"
 ```
 
-* [  JavaScript ](#tab-panel-10856)
-* [  TypeScript ](#tab-panel-10857)
+* [  JavaScript ](#tab-panel-11301)
+* [  TypeScript ](#tab-panel-11302)
 
 **JavaScript**
 
@@ -85,8 +85,8 @@ Mount S3-compatible buckets when you need:
 
 ## Mount an R2 bucket
 
-* [  JavaScript ](#tab-panel-10868)
-* [  TypeScript ](#tab-panel-10869)
+* [  JavaScript ](#tab-panel-11313)
+* [  TypeScript ](#tab-panel-11314)
 
 **JavaScript**
 
@@ -168,8 +168,8 @@ R2 credentials
 
 We also automatically detect `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` for compatibility with other S3-compatible providers.
 
-* [  JavaScript ](#tab-panel-10858)
-* [  TypeScript ](#tab-panel-10859)
+* [  JavaScript ](#tab-panel-11303)
+* [  TypeScript ](#tab-panel-11304)
 
 **JavaScript**
 
@@ -193,8 +193,8 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Pass credentials directly when needed:
 
-* [  JavaScript ](#tab-panel-10860)
-* [  TypeScript ](#tab-panel-10861)
+* [  JavaScript ](#tab-panel-11305)
+* [  TypeScript ](#tab-panel-11306)
 
 **JavaScript**
 
@@ -228,8 +228,8 @@ Set `credentialProxy: true` to keep credentials out of the container entirely. I
 
 This works with [AWS SigV4 ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) signing for S3-compatible endpoints (including R2) and HMAC signing for Google Cloud Storage. It is recommended to set `credentialProxy: true` for all endpoint mounts. The option defaults to `false` for backwards compatibility and will become the default in a future version of the Sandbox SDK.
 
-* [  JavaScript ](#tab-panel-10862)
-* [  TypeScript ](#tab-panel-10863)
+* [  JavaScript ](#tab-panel-11307)
+* [  TypeScript ](#tab-panel-11308)
 
 **JavaScript**
 
@@ -276,8 +276,8 @@ export { ContainerProxy };
 
 Mount a specific subdirectory within a bucket using the `prefix` option. Only contents under the prefix are visible at the mount point:
 
-* [  JavaScript ](#tab-panel-10880)
-* [  TypeScript ](#tab-panel-10881)
+* [  JavaScript ](#tab-panel-11325)
+* [  TypeScript ](#tab-panel-11326)
 
 **JavaScript**
 
@@ -349,8 +349,8 @@ The `prefix` must start with `/` (for example, `/data` or `/logs/2024/`).
 
 Protect data by mounting buckets in read-only mode:
 
-* [  JavaScript ](#tab-panel-10864)
-* [  TypeScript ](#tab-panel-10865)
+* [  JavaScript ](#tab-panel-11309)
+* [  TypeScript ](#tab-panel-11310)
 
 **JavaScript**
 
@@ -388,8 +388,8 @@ await sandbox.writeFile('/data/new-file.txt', 'data');  // Error: Read-only file
 
 You can also mount R2 buckets during local development with `wrangler dev` by passing the `localBucket` option. Production R2 binding mounts and local `localBucket` mounts both avoid explicit credentials, but they are different execution paths. Production uses credential-less egress interception and overlays the target path. Local development uses periodic synchronization with the R2 binding.
 
-* [  JavaScript ](#tab-panel-10866)
-* [  TypeScript ](#tab-panel-10867)
+* [  JavaScript ](#tab-panel-11311)
+* [  TypeScript ](#tab-panel-11312)
 
 **JavaScript**
 
@@ -434,8 +434,8 @@ When `localBucket` is `true`, the SDK uses local R2 binding synchronization. Whe
 
 The `readOnly` and `prefix` options work the same way in local mode:
 
-* [  JavaScript ](#tab-panel-10872)
-* [  TypeScript ](#tab-panel-10873)
+* [  JavaScript ](#tab-panel-11317)
+* [  TypeScript ](#tab-panel-11318)
 
 **JavaScript**
 
@@ -485,8 +485,8 @@ These considerations apply to local development with `wrangler dev` only. In pro
 
 ## Unmount buckets
 
-* [  JavaScript ](#tab-panel-10870)
-* [  TypeScript ](#tab-panel-10871)
+* [  JavaScript ](#tab-panel-11315)
+* [  TypeScript ](#tab-panel-11316)
 
 **JavaScript**
 
@@ -528,8 +528,8 @@ The SDK supports any S3-compatible object storage. Here are examples for common 
 
 ### Amazon S3
 
-* [  JavaScript ](#tab-panel-10874)
-* [  TypeScript ](#tab-panel-10875)
+* [  JavaScript ](#tab-panel-11319)
+* [  TypeScript ](#tab-panel-11320)
 
 **JavaScript**
 
@@ -557,8 +557,8 @@ await sandbox.mountBucket('my-s3-bucket', '/data', {
 
 ### Google Cloud Storage
 
-* [  JavaScript ](#tab-panel-10876)
-* [  TypeScript ](#tab-panel-10877)
+* [  JavaScript ](#tab-panel-11321)
+* [  TypeScript ](#tab-panel-11322)
 
 **JavaScript**
 
@@ -592,8 +592,8 @@ Generate HMAC keys in GCS console under **Settings** \> **Interoperability**.
 
 For providers like Backblaze B2, MinIO, Wasabi, or others, use the standard mount pattern:
 
-* [  JavaScript ](#tab-panel-10878)
-* [  TypeScript ](#tab-panel-10879)
+* [  JavaScript ](#tab-panel-11323)
+* [  TypeScript ](#tab-panel-11324)
 
 **JavaScript**
 
@@ -629,8 +629,8 @@ For provider-specific configuration, see the [s3fs-fuse wiki ↗](https://github
 
 **Solution**: Ensure your Worker has an `r2_buckets` binding and that `mountBucket()` uses the binding name, not the bucket's dashboard name:
 
-* [  wrangler.jsonc ](#tab-panel-10854)
-* [  wrangler.toml ](#tab-panel-10855)
+* [  wrangler.jsonc ](#tab-panel-11299)
+* [  wrangler.toml ](#tab-panel-11300)
 
 **JSONC**
 
@@ -690,8 +690,8 @@ npx wrangler secret put AWS_SECRET_ACCESS_KEY
 
 Verify your binding or endpoint configuration:
 
-* [  JavaScript ](#tab-panel-10882)
-* [  TypeScript ](#tab-panel-10883)
+* [  JavaScript ](#tab-panel-11327)
+* [  TypeScript ](#tab-panel-11328)
 
 **JavaScript**
 
@@ -721,8 +721,8 @@ try {
 
 **Solution**: Unmount first or use a different path:
 
-* [  JavaScript ](#tab-panel-10884)
-* [  TypeScript ](#tab-panel-10885)
+* [  JavaScript ](#tab-panel-11329)
+* [  TypeScript ](#tab-panel-11330)
 
 **JavaScript**
 
@@ -752,8 +752,8 @@ File operations on mounted buckets are slower than local filesystem due to netwo
 
 **Solution**: Copy frequently accessed files locally:
 
-* [  JavaScript ](#tab-panel-10886)
-* [  TypeScript ](#tab-panel-10887)
+* [  JavaScript ](#tab-panel-11331)
+* [  TypeScript ](#tab-panel-11332)
 
 **JavaScript**
 
@@ -812,6 +812,6 @@ await sandbox.exec('cp', { args: ['/workspace/results.json', '/data/results/outp
 * [Outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) \- Learn how `ContainerProxy` and outbound interception work
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/mount-buckets/#page","headline":"Mount buckets · Cloudflare Sandbox SDK docs","description":"Mount S3-compatible object storage as local filesystems for persistent data storage.","url":"https://developers.cloudflare.com/sandbox/guides/mount-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/mount-buckets/#page","headline":"Mount buckets · Cloudflare Sandbox SDK docs","description":"Mount S3-compatible object storage as local filesystems for persistent data storage.","url":"https://developers.cloudflare.com/sandbox/guides/mount-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/mount-buckets/","name":"Mount buckets"}}]}
 ```

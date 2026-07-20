@@ -1,7 +1,7 @@
 ---
 title: Use R2 from Workers
 description: Bind an R2 bucket to a Worker and perform read, write, and list operations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -74,8 +74,8 @@ A binding is defined in the Wrangler file of your Worker project's directory.
 
 To bind your R2 bucket to your Worker, add the following to your Wrangler file. Update the `binding` property to a valid JavaScript variable identifier and `bucket_name` to the `<YOUR_BUCKET_NAME>` you used to create your bucket in [step 2](#2-create-your-bucket):
 
-* [  wrangler.jsonc ](#tab-panel-10156)
-* [  wrangler.toml ](#tab-panel-10157)
+* [  wrangler.jsonc ](#tab-panel-10601)
+* [  wrangler.toml ](#tab-panel-10602)
 
 **JSONC**
 
@@ -112,9 +112,9 @@ If you want the R2 operations that are performed during development to be perfor
 
 An R2 bucket is able to READ, LIST, WRITE, and DELETE objects. You can see an example of all operations below using the Module Worker syntax. Add the following snippet into your project's `index.js` file:
 
-* [  TypeScript ](#tab-panel-10151)
-* [  JavaScript ](#tab-panel-10152)
-* [  Python ](#tab-panel-10153)
+* [  TypeScript ](#tab-panel-10596)
+* [  JavaScript ](#tab-panel-10597)
+* [  Python ](#tab-panel-10598)
 
 **TypeScript**
 
@@ -303,8 +303,8 @@ For `PUT` and `DELETE` requests, you will make use of a new `AUTH_KEY_SECRET` en
 
 For `GET` requests, you will ensure that only a specific file can be requested. All of this custom logic occurs inside of an `authorizeRequest` function, with the `hasValidHeader` function handling the custom header logic. If all validation passes, then the operation is allowed.
 
-* [  JavaScript ](#tab-panel-10154)
-* [  Python ](#tab-panel-10155)
+* [  JavaScript ](#tab-panel-10599)
+* [  Python ](#tab-panel-10600)
 
 **JavaScript**
 
@@ -458,6 +458,6 @@ By completing this guide, you have successfully installed Wrangler and deployed 
 2. [Workers Examples](https://developers.cloudflare.com/workers/examples/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/#page","headline":"Use R2 from Workers · Cloudflare R2 docs","description":"Bind an R2 bucket to a Worker and perform read, write, and list operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/#page","headline":"Use R2 from Workers · Cloudflare R2 docs","description":"Bind an R2 bucket to a Worker and perform read, write, and list operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/workers/","name":"Workers API"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/workers/workers-api-usage/","name":"Use R2 from Workers"}}]}
 ```

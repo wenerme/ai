@@ -1,7 +1,7 @@
 ---
 title: Application security dashboard
 description: The application security dashboard helps you understand the current security posture of your web applications and allows you configure different security rules for those applications.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -65,6 +65,6 @@ Perform security actions on incoming requests that match specified filters.
 Compare available Cloudflare plans
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security/#page","headline":"Overview · Security dashboard docs","description":"The application security dashboard helps you understand the current security posture of your web applications and allows you configure different security rules for those applications.","url":"https://developers.cloudflare.com/security/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security/#page","headline":"Overview · Security dashboard docs","description":"The application security dashboard helps you understand the current security posture of your web applications and allows you configure different security rules for those applications.","url":"https://developers.cloudflare.com/security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Supported languages
 description: Languages supported by Cloudflare Turnstile widgets.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -63,6 +63,6 @@ You can also submit feedback on a translation error via [this form ↗](https://
 | Vietnamese (Vietnam)             | vi-vn                    | vi                       |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/reference/supported-languages/#page","headline":"Supported languages · Cloudflare Turnstile docs","description":"Languages supported by Cloudflare Turnstile widgets.","url":"https://developers.cloudflare.com/turnstile/reference/supported-languages/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Localization"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/reference/supported-languages/#page","headline":"Supported languages · Cloudflare Turnstile docs","description":"Languages supported by Cloudflare Turnstile widgets.","url":"https://developers.cloudflare.com/turnstile/reference/supported-languages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Localization"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/reference/supported-languages/","name":"Supported languages"}}]}
 ```

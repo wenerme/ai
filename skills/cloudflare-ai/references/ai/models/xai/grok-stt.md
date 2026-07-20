@@ -1,7 +1,7 @@
 ---
 title: Grok STT
 description: xAI's Grok speech-to-text model. Transcribes audio files into text across 25 languages with word-level timestamps, multichannel transcription, speaker diarization, and key-term biasing.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ xAI's Grok speech-to-text model. Transcribes audio files into text across 25 lan
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-2104)
-* [ cURL ](#tab-panel-2105)
+* [ TypeScript ](#tab-panel-2250)
+* [ cURL ](#tab-panel-2251)
 
 **TypeScript**
 
@@ -53,8 +53,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2114)
-* [ Raw response ](#tab-panel-2115)
+* [ Output ](#tab-panel-2260)
+* [ Raw response ](#tab-panel-2261)
 
 How old is the Brooklyn Bridge?
 
@@ -108,8 +108,8 @@ How old is the Brooklyn Bridge?
 
 **With Language and Formatting**  — Enable Inverse Text Normalization so spoken numbers become digits
 
-* [ TypeScript ](#tab-panel-2106)
-* [ cURL ](#tab-panel-2107)
+* [ TypeScript ](#tab-panel-2252)
+* [ cURL ](#tab-panel-2253)
 
 **TypeScript**
 
@@ -139,8 +139,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2116)
-* [ Raw response ](#tab-panel-2117)
+* [ Output ](#tab-panel-2262)
+* [ Raw response ](#tab-panel-2263)
 
 How old is the Brooklyn Bridge?
 
@@ -192,8 +192,8 @@ How old is the Brooklyn Bridge?
 
 **Speaker Diarization with Key Terms**  — Identify speakers and bias transcription toward proper nouns
 
-* [ TypeScript ](#tab-panel-2110)
-* [ cURL ](#tab-panel-2111)
+* [ TypeScript ](#tab-panel-2256)
+* [ cURL ](#tab-panel-2257)
 
 **TypeScript**
 
@@ -228,8 +228,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2120)
-* [ Raw response ](#tab-panel-2121)
+* [ Output ](#tab-panel-2266)
+* [ Raw response ](#tab-panel-2267)
 
 How old is the Brooklyn Bridge?
 
@@ -287,8 +287,8 @@ How old is the Brooklyn Bridge?
 
 **Filler Words Preserved**  — Keep filler words (uh, um, er) in the transcript instead of removing them
 
-* [ TypeScript ](#tab-panel-2108)
-* [ cURL ](#tab-panel-2109)
+* [ TypeScript ](#tab-panel-2254)
+* [ cURL ](#tab-panel-2255)
 
 **TypeScript**
 
@@ -318,8 +318,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2118)
-* [ Raw response ](#tab-panel-2119)
+* [ Output ](#tab-panel-2264)
+* [ Raw response ](#tab-panel-2265)
 
 How old is the Brooklyn Bridge?
 
@@ -371,8 +371,8 @@ How old is the Brooklyn Bridge?
 
 **Data URI Upload**  — Pass the audio file directly as a base64 data URI (mutually exclusive with \`url\`)
 
-* [ TypeScript ](#tab-panel-2112)
-* [ cURL ](#tab-panel-2113)
+* [ TypeScript ](#tab-panel-2258)
+* [ cURL ](#tab-panel-2259)
 
 **TypeScript**
 
@@ -412,8 +412,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2122)
-* [ Output ](#tab-panel-2123)
+* [ Input ](#tab-panel-2268)
+* [ Output ](#tab-panel-2269)
 
 file
 
@@ -490,6 +490,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-input.
 Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-stt/#page","headline":"Grok STT (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok speech-to-text model. Transcribes audio files into text across 25 languages with word-level timestamps, multichannel transcription, speaker diarization, and key-term biasing.","url":"https://developers.cloudflare.com/ai/models/xai/grok-stt/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-stt/#page","headline":"Grok STT (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok speech-to-text model. Transcribes audio files into text across 25 languages with word-level timestamps, multichannel transcription, speaker diarization, and key-term biasing.","url":"https://developers.cloudflare.com/ai/models/xai/grok-stt/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

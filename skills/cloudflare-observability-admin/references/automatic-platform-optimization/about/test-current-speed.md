@@ -1,7 +1,7 @@
 ---
 title: Test current speed
 description: Benchmark your site speed before enabling APO with GTmetrix.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -21,6 +21,6 @@ Before you begin using APO, we recommend testing your current site speed. Your s
 After the test runs, you can view your site's grade, performance rating, and other performance metrics.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/about/test-current-speed/#page","headline":"Test current speed · Cloudflare Automatic Platform Optimization docs","description":"Benchmark your site speed before enabling APO with GTmetrix.","url":"https://developers.cloudflare.com/automatic-platform-optimization/about/test-current-speed/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/about/test-current-speed/#page","headline":"Test current speed · Cloudflare Automatic Platform Optimization docs","description":"Benchmark your site speed before enabling APO with GTmetrix.","url":"https://developers.cloudflare.com/automatic-platform-optimization/about/test-current-speed/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/automatic-platform-optimization/","name":"Automatic Platform Optimization"}},{"@type":"ListItem","position":3,"item":{"@id":"/automatic-platform-optimization/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/automatic-platform-optimization/about/test-current-speed/","name":"Test current speed"}}]}
 ```

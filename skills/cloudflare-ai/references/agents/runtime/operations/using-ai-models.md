@@ -1,7 +1,7 @@
 ---
 title: Using AI Models
 description: Call AI models from Workers AI, OpenAI, Anthropic, Google Gemini, or any provider within Cloudflare Agents.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ Agents can call AI models on their own — autonomously — and can handle long-
 
 Modern reasoning models can take some time to both generate a response _and_ stream the response back to the client. Instead of buffering the entire response, you can stream it back over [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/).
 
-* [  JavaScript ](#tab-panel-6739)
-* [  TypeScript ](#tab-panel-6740)
+* [  JavaScript ](#tab-panel-7013)
+* [  TypeScript ](#tab-panel-7014)
 
 **src/index.js**
 
@@ -130,8 +130,8 @@ You can use [any of the models available in Workers AI](https://developers.cloud
 
 Workers AI supports streaming responses by setting `stream: true`. Use streaming to avoid buffering and delaying responses, especially for larger models or reasoning models.
 
-* [  JavaScript ](#tab-panel-6733)
-* [  TypeScript ](#tab-panel-6734)
+* [  JavaScript ](#tab-panel-7007)
+* [  TypeScript ](#tab-panel-7008)
 
 **src/index.js**
 
@@ -188,8 +188,8 @@ export class MyAgent extends Agent<Env> {
 
 Your Wrangler configuration needs an `ai` binding:
 
-* [  wrangler.jsonc ](#tab-panel-6727)
-* [  wrangler.toml ](#tab-panel-6728)
+* [  wrangler.jsonc ](#tab-panel-7001)
+* [  wrangler.toml ](#tab-panel-7002)
 
 **JSONC**
 
@@ -212,8 +212,8 @@ binding = "AI"
 
 You can use [AI Gateway](https://developers.cloudflare.com/ai-gateway/) directly from an Agent by specifying a [gateway configuration](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) when calling the AI binding. Model routing lets you route requests across providers based on availability, rate limits, or cost budgets.
 
-* [  JavaScript ](#tab-panel-6737)
-* [  TypeScript ](#tab-panel-6738)
+* [  JavaScript ](#tab-panel-7011)
+* [  TypeScript ](#tab-panel-7012)
 
 **src/index.js**
 
@@ -278,8 +278,8 @@ export class MyAgent extends Agent<Env> {
 
 The `ai` binding in your Wrangler configuration is shared across both Workers AI and AI Gateway.
 
-* [  wrangler.jsonc ](#tab-panel-6729)
-* [  wrangler.toml ](#tab-panel-6730)
+* [  wrangler.jsonc ](#tab-panel-7003)
+* [  wrangler.toml ](#tab-panel-7004)
 
 **JSONC**
 
@@ -322,8 +322,8 @@ pnpm add ai workers-ai-provider
 bun add ai workers-ai-provider
 ```
 
-* [  JavaScript ](#tab-panel-6735)
-* [  TypeScript ](#tab-panel-6736)
+* [  JavaScript ](#tab-panel-7009)
+* [  TypeScript ](#tab-panel-7010)
 
 **src/index.js**
 
@@ -394,8 +394,8 @@ pnpm add ai @ai-sdk/openai
 bun add ai @ai-sdk/openai
 ```
 
-* [  JavaScript ](#tab-panel-6731)
-* [  TypeScript ](#tab-panel-6732)
+* [  JavaScript ](#tab-panel-7005)
+* [  TypeScript ](#tab-panel-7006)
 
 **src/index.js**
 
@@ -445,8 +445,8 @@ Agents can call models across any service that supports the OpenAI API. For exam
 
 Agents can stream responses back over HTTP using Server-Sent Events (SSE) from within an `onRequest` handler, or by using the native [WebSocket API](https://developers.cloudflare.com/agents/runtime/communication/websockets/) to stream responses back to a client.
 
-* [  JavaScript ](#tab-panel-6741)
-* [  TypeScript ](#tab-panel-6742)
+* [  JavaScript ](#tab-panel-7015)
+* [  TypeScript ](#tab-panel-7016)
 
 **src/index.js**
 
@@ -541,6 +541,6 @@ export class MyAgent extends Agent {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/#page","headline":"Using AI Models · Cloudflare Agents docs","description":"Call AI models from Workers AI, OpenAI, Anthropic, Google Gemini, or any provider within Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/#page","headline":"Using AI Models · Cloudflare Agents docs","description":"Call AI models from Workers AI, OpenAI, Anthropic, Google Gemini, or any provider within Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/operations/","name":"Operations"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/operations/using-ai-models/","name":"Using AI Models"}}]}
 ```

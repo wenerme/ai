@@ -1,7 +1,7 @@
 ---
 title: Version affinity
 description: Consistently route users to the same Worker version during gradual deployments using version affinity.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -103,8 +103,8 @@ Selected operation under **Modify request header**: _Set dynamic_
 
 **Option 2: Set a long-lived cookie from your Worker.** On the first request (which will be randomly assigned), your Worker generates a stable identifier and sets it as a cookie. All subsequent requests use that cookie as the version key. This gives the best consistency for anonymous users, at the cost of a small amount of application code.
 
-* [  JavaScript ](#tab-panel-12609)
-* [  TypeScript ](#tab-panel-12610)
+* [  JavaScript ](#tab-panel-13097)
+* [  TypeScript ](#tab-panel-13098)
 
 **JavaScript**
 
@@ -203,6 +203,6 @@ During gradual rollouts, monitor your Worker's analytics for increased 404 respo
 * [Version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) \- Access version ID and tag from within your Worker
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/#page","headline":"Version affinity · Cloudflare Workers docs","description":"Consistently route users to the same Worker version during gradual deployments using version affinity.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/#page","headline":"Version affinity · Cloudflare Workers docs","description":"Consistently route users to the same Worker version during gradual deployments using version affinity.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/versions-and-deployments/","name":"Versions & deployments"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/versions-and-deployments/gradual-deployments/","name":"Gradual deployments"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/versions-and-deployments/gradual-deployments/version-affinity/","name":"Version affinity"}}]}
 ```

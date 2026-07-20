@@ -1,7 +1,7 @@
 ---
 title: Security
 description: Discover, validate, and protect API endpoints with API Shield security features.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -42,6 +42,6 @@ The following table maps each OWASP vulnerability to the Cloudflare features tha
 | Unsafe Consumption of APIs                      | [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/), [WAF managed rules](https://developers.cloudflare.com/waf/managed-rules/)                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/api-shield/security/#page","headline":"Security · Cloudflare API Shield docs","description":"Discover, validate, and protect API endpoints with API Shield security features.","url":"https://developers.cloudflare.com/api-shield/security/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/api-shield/security/#page","headline":"Security · Cloudflare API Shield docs","description":"Discover, validate, and protect API endpoints with API Shield security features.","url":"https://developers.cloudflare.com/api-shield/security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Diagnostics Channel
 description: Use the Node.js diagnostics_channel API in Cloudflare Workers for low-overhead diagnostic event reporting.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -125,6 +125,6 @@ channel.tracePromise(
 Refer to the [Node.js documentation for diagnostics\_channel ↗](https://nodejs.org/dist/latest-v20.x/docs/api/diagnostics%5Fchannel.html) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/diagnostics-channel/#page","headline":"Diagnostics Channel · Cloudflare Workers docs","description":"Use the Node.js diagnostics\\_channel API in Cloudflare Workers for low-overhead diagnostic event reporting.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/diagnostics-channel/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/diagnostics-channel/#page","headline":"Diagnostics Channel · Cloudflare Workers docs","description":"Use the Node.js diagnostics\\_channel API in Cloudflare Workers for low-overhead diagnostic event reporting.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/diagnostics-channel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/nodejs/","name":"Node.js compatibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/nodejs/diagnostics-channel/","name":"Diagnostics Channel"}}]}
 ```

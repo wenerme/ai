@@ -1,7 +1,7 @@
 ---
 title: Vidstack
 description: Example of video playback with Cloudflare Stream and Vidstack
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,6 +31,6 @@ There's a few options to choose from when getting started with Vidstack, follow 
 Feel free to check out [Vidstack Examples ↗](https://github.com/vidstack/examples) for building with various JS frameworks and styling options (e.g., CSS or Tailwind CSS).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/examples/vidstack/#page","headline":"Vidstack · Cloudflare Stream docs","description":"Example of video playback with Cloudflare Stream and Vidstack","url":"https://developers.cloudflare.com/stream/examples/vidstack/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Playback"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/examples/vidstack/#page","headline":"Vidstack · Cloudflare Stream docs","description":"Example of video playback with Cloudflare Stream and Vidstack","url":"https://developers.cloudflare.com/stream/examples/vidstack/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Playback"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/examples/vidstack/","name":"Vidstack"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Configuration settings
 description: Configure client-side security monitoring, logging, and connection tracking settings.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -43,8 +43,8 @@ Only available to customers with Client-Side Security Advanced.
 
 To configure the CSP reporting endpoint:
 
-* [  New dashboard ](#tab-panel-7319)
-* [ Old dashboard ](#tab-panel-7320)
+* [  New dashboard ](#tab-panel-7653)
+* [ Old dashboard ](#tab-panel-7654)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -66,8 +66,8 @@ By default, client-side security only checks the domain against malicious threat
 
 ### Configure the connection target details to use
 
-* [  New dashboard ](#tab-panel-7321)
-* [ Old dashboard ](#tab-panel-7322)
+* [  New dashboard ](#tab-panel-7655)
+* [ Old dashboard ](#tab-panel-7656)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -87,8 +87,8 @@ When you turn off client-side security's resource monitoring, you lose visibilit
 
 To turn off client-side resource monitoring:
 
-* [  New dashboard ](#tab-panel-7323)
-* [ Old dashboard ](#tab-panel-7324)
+* [  New dashboard ](#tab-panel-7657)
+* [ Old dashboard ](#tab-panel-7658)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -101,8 +101,8 @@ To turn off client-side resource monitoring:
 
 Turning off client-side security's resource monitoring does not turn off [content security rules](https://developers.cloudflare.com/client-side-security/rules/) (previously known as policies). To turn off content security rules:
 
-* [  New dashboard ](#tab-panel-7317)
-* [ Old dashboard ](#tab-panel-7318)
+* [  New dashboard ](#tab-panel-7651)
+* [ Old dashboard ](#tab-panel-7652)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -113,6 +113,6 @@ Turning off client-side security's resource monitoring does not turn off [conten
 2. For each rule, set the toggle to **Off**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/reference/settings/#page","headline":"Configuration settings · Client-side security docs","description":"Configure client-side security monitoring, logging, and connection tracking settings.","url":"https://developers.cloudflare.com/client-side-security/reference/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/reference/settings/#page","headline":"Configuration settings · Client-side security docs","description":"Configure client-side security monitoring, logging, and connection tracking settings.","url":"https://developers.cloudflare.com/client-side-security/reference/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/client-side-security/reference/settings/","name":"Configuration settings"}}]}
 ```

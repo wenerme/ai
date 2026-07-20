@@ -1,7 +1,7 @@
 ---
 title: Build with Workflows
 description: Guides for building, configuring, and deploying Cloudflare Workflows applications.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -24,6 +24,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Visualize Workflows ](https://developers.cloudflare.com/workflows/build/visualizer/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workflows/build/#page","headline":"Build with Workflows · Cloudflare Workflows docs","description":"Guides for building, configuring, and deploying Cloudflare Workflows applications.","url":"https://developers.cloudflare.com/workflows/build/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workflows/build/#page","headline":"Build with Workflows · Cloudflare Workflows docs","description":"Guides for building, configuring, and deploying Cloudflare Workflows applications.","url":"https://developers.cloudflare.com/workflows/build/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}}]}
 ```

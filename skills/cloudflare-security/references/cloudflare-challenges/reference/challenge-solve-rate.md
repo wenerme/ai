@@ -1,7 +1,7 @@
 ---
 title: Challenge solve rate (CSR)
 description: Measure the percentage of issued challenges that visitors solve successfully.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ CSR indicates the false positive percentage of a rule. A high CSR means a large 
 
 You can find the CSR of a rule by going to its corresponding dashboard page:
 
-* [  New dashboard ](#tab-panel-7335)
-* [ Old dashboard ](#tab-panel-7336)
+* [  New dashboard ](#tab-panel-7669)
+* [ Old dashboard ](#tab-panel-7670)
 
 For [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), go to your zone > **Security** \> **Security rules**.
 
@@ -71,6 +71,6 @@ Key reasons a challenge may be issued but never solved:
 * The script environment (often a bot's controlled browser) fails to run the necessary client-side checks.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/#page","headline":"Challenge solve rate (CSR) · Cloudflare challenges docs","description":"Measure the percentage of issued challenges that visitors solve successfully.","url":"https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/#page","headline":"Challenge solve rate (CSR) · Cloudflare challenges docs","description":"Measure the percentage of issued challenges that visitors solve successfully.","url":"https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/reference/challenge-solve-rate/","name":"Challenge solve rate (CSR)"}}]}
 ```

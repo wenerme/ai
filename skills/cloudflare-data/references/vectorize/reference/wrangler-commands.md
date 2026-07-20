@@ -1,7 +1,7 @@
 ---
 title: Wrangler commands
 description: Wrangler CLI commands for creating, managing, and querying Vectorize indexes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,9 +18,9 @@ Vectorize uses the following [Wrangler Commands](https://developers.cloudflare.c
 
 Create a Vectorize index
 
-* [  npm ](#tab-panel-11506)
-* [  pnpm ](#tab-panel-11507)
-* [  yarn ](#tab-panel-11508)
+* [  npm ](#tab-panel-11906)
+* [  pnpm ](#tab-panel-11907)
+* [  yarn ](#tab-panel-11908)
 
 ```sh
 npx wrangler vectorize create [NAME]
@@ -80,9 +80,9 @@ Use a specific auth profile
 
 Delete a Vectorize index
 
-* [  npm ](#tab-panel-11509)
-* [  pnpm ](#tab-panel-11510)
-* [  yarn ](#tab-panel-11511)
+* [  npm ](#tab-panel-11909)
+* [  pnpm ](#tab-panel-11910)
+* [  yarn ](#tab-panel-11911)
 
 ```sh
 npx wrangler vectorize delete [NAME]
@@ -128,9 +128,9 @@ Use a specific auth profile
 
 Get a Vectorize index by name
 
-* [  npm ](#tab-panel-11512)
-* [  pnpm ](#tab-panel-11513)
-* [  yarn ](#tab-panel-11514)
+* [  npm ](#tab-panel-11912)
+* [  pnpm ](#tab-panel-11913)
+* [  yarn ](#tab-panel-11914)
 
 ```sh
 npx wrangler vectorize get [NAME]
@@ -176,9 +176,9 @@ Use a specific auth profile
 
 List your Vectorize indexes
 
-* [  npm ](#tab-panel-11515)
-* [  pnpm ](#tab-panel-11516)
-* [  yarn ](#tab-panel-11517)
+* [  npm ](#tab-panel-11915)
+* [  pnpm ](#tab-panel-11916)
+* [  yarn ](#tab-panel-11917)
 
 ```sh
 npx wrangler vectorize list
@@ -222,9 +222,9 @@ Use a specific auth profile
 
 List vector identifiers in a Vectorize index
 
-* [  npm ](#tab-panel-11518)
-* [  pnpm ](#tab-panel-11519)
-* [  yarn ](#tab-panel-11520)
+* [  npm ](#tab-panel-11918)
+* [  pnpm ](#tab-panel-11919)
+* [  yarn ](#tab-panel-11920)
 
 ```sh
 npx wrangler vectorize list-vectors [NAME]
@@ -272,9 +272,9 @@ Use a specific auth profile
 
 Query a Vectorize index
 
-* [  npm ](#tab-panel-11521)
-* [  pnpm ](#tab-panel-11522)
-* [  yarn ](#tab-panel-11523)
+* [  npm ](#tab-panel-11921)
+* [  pnpm ](#tab-panel-11922)
+* [  yarn ](#tab-panel-11923)
 
 ```sh
 npx wrangler vectorize query [NAME]
@@ -330,9 +330,9 @@ Use a specific auth profile
 
 Insert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-11524)
-* [  pnpm ](#tab-panel-11525)
-* [  yarn ](#tab-panel-11526)
+* [  npm ](#tab-panel-11924)
+* [  pnpm ](#tab-panel-11925)
+* [  yarn ](#tab-panel-11926)
 
 ```sh
 npx wrangler vectorize insert [NAME]
@@ -382,9 +382,9 @@ Use a specific auth profile
 
 Upsert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-11527)
-* [  pnpm ](#tab-panel-11528)
-* [  yarn ](#tab-panel-11529)
+* [  npm ](#tab-panel-11927)
+* [  pnpm ](#tab-panel-11928)
+* [  yarn ](#tab-panel-11929)
 
 ```sh
 npx wrangler vectorize upsert [NAME]
@@ -432,9 +432,9 @@ Use a specific auth profile
 
 Get vectors from a Vectorize index
 
-* [  npm ](#tab-panel-11530)
-* [  pnpm ](#tab-panel-11531)
-* [  yarn ](#tab-panel-11532)
+* [  npm ](#tab-panel-11930)
+* [  pnpm ](#tab-panel-11931)
+* [  yarn ](#tab-panel-11932)
 
 ```sh
 npx wrangler vectorize get-vectors [NAME]
@@ -478,9 +478,9 @@ Use a specific auth profile
 
 Delete vectors in a Vectorize index
 
-* [  npm ](#tab-panel-11533)
-* [  pnpm ](#tab-panel-11534)
-* [  yarn ](#tab-panel-11535)
+* [  npm ](#tab-panel-11933)
+* [  pnpm ](#tab-panel-11934)
+* [  yarn ](#tab-panel-11935)
 
 ```sh
 npx wrangler vectorize delete-vectors [NAME]
@@ -524,9 +524,9 @@ Use a specific auth profile
 
 Get additional details about the index
 
-* [  npm ](#tab-panel-11536)
-* [  pnpm ](#tab-panel-11537)
-* [  yarn ](#tab-panel-11538)
+* [  npm ](#tab-panel-11936)
+* [  pnpm ](#tab-panel-11937)
+* [  yarn ](#tab-panel-11938)
 
 ```sh
 npx wrangler vectorize info [NAME]
@@ -570,9 +570,9 @@ Use a specific auth profile
 
 Enable metadata filtering on the specified property
 
-* [  npm ](#tab-panel-11539)
-* [  pnpm ](#tab-panel-11540)
-* [  yarn ](#tab-panel-11541)
+* [  npm ](#tab-panel-11939)
+* [  pnpm ](#tab-panel-11940)
+* [  yarn ](#tab-panel-11941)
 
 ```sh
 npx wrangler vectorize create-metadata-index [NAME]
@@ -618,9 +618,9 @@ Use a specific auth profile
 
 List metadata properties on which metadata filtering is enabled
 
-* [  npm ](#tab-panel-11542)
-* [  pnpm ](#tab-panel-11543)
-* [  yarn ](#tab-panel-11544)
+* [  npm ](#tab-panel-11942)
+* [  pnpm ](#tab-panel-11943)
+* [  yarn ](#tab-panel-11944)
 
 ```sh
 npx wrangler vectorize list-metadata-index [NAME]
@@ -664,9 +664,9 @@ Use a specific auth profile
 
 Delete metadata indexes
 
-* [  npm ](#tab-panel-11545)
-* [  pnpm ](#tab-panel-11546)
-* [  yarn ](#tab-panel-11547)
+* [  npm ](#tab-panel-11945)
+* [  pnpm ](#tab-panel-11946)
+* [  yarn ](#tab-panel-11947)
 
 ```sh
 npx wrangler vectorize delete-metadata-index [NAME]
@@ -707,6 +707,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Vectorize docs","description":"Wrangler CLI commands for creating, managing, and querying Vectorize indexes.","url":"https://developers.cloudflare.com/vectorize/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Vectorize docs","description":"Wrangler CLI commands for creating, managing, and querying Vectorize indexes.","url":"https://developers.cloudflare.com/vectorize/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/reference/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

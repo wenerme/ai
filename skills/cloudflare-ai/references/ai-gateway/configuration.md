@@ -1,7 +1,7 @@
 ---
 title: Configuration
 description: Configure AI Gateway settings including authentication, fallbacks, custom providers, and request handling.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ Configure your AI Gateway with multiple options and customizations.
 * [ Authenticated Gateway ](https://developers.cloudflare.com/ai-gateway/configuration/authentication/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/configuration/#page","headline":"Configuration · Cloudflare AI Gateway docs","description":"Configure AI Gateway settings including authentication, fallbacks, custom providers, and request handling.","url":"https://developers.cloudflare.com/ai-gateway/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/configuration/#page","headline":"Configuration · Cloudflare AI Gateway docs","description":"Configure AI Gateway settings including authentication, fallbacks, custom providers, and request handling.","url":"https://developers.cloudflare.com/ai-gateway/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/configuration/","name":"Configuration"}}]}
 ```

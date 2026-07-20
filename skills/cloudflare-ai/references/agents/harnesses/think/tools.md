@@ -1,7 +1,7 @@
 ---
 title: Tools
 description: Built-in workspace tools (including bash), custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -49,8 +49,8 @@ To keep tool calls bounded, the Bash tool snapshots up to 1,000 workspace files 
 
 Disable the default Bash tool for conservative deployments:
 
-* [  JavaScript ](#tab-panel-5903)
-* [  TypeScript ](#tab-panel-5904)
+* [  JavaScript ](#tab-panel-6165)
+* [  TypeScript ](#tab-panel-6166)
 
 **JavaScript**
 
@@ -82,8 +82,8 @@ export class MyAgent extends Think<Env> {
 
 By default, the workspace stores everything in SQLite. For large files, override `workspace` to add R2 spillover:
 
-* [  JavaScript ](#tab-panel-5911)
-* [  TypeScript ](#tab-panel-5912)
+* [  JavaScript ](#tab-panel-6173)
+* [  TypeScript ](#tab-panel-6174)
 
 **JavaScript**
 
@@ -129,8 +129,8 @@ export class MyAgent extends Think<Env> {
 
 This requires an R2 bucket binding:
 
-* [  wrangler.jsonc ](#tab-panel-5899)
-* [  wrangler.toml ](#tab-panel-5900)
+* [  wrangler.jsonc ](#tab-panel-6161)
+* [  wrangler.toml ](#tab-panel-6162)
 
 **JSONC**
 
@@ -158,8 +158,8 @@ bucket_name = "agent-files"
 
 Override `getTools()` to add your own tools. These are standard AI SDK `tool()` definitions with Zod schemas:
 
-* [  JavaScript ](#tab-panel-5925)
-* [  TypeScript ](#tab-panel-5926)
+* [  JavaScript ](#tab-panel-6187)
+* [  TypeScript ](#tab-panel-6188)
 
 **JavaScript**
 
@@ -283,8 +283,8 @@ Think inherits MCP client support from the `Agent` base class. MCP tools from co
 
 Set `waitForMcpConnections` to ensure MCP servers are connected before inference runs:
 
-* [  JavaScript ](#tab-panel-5907)
-* [  TypeScript ](#tab-panel-5908)
+* [  JavaScript ](#tab-panel-6169)
+* [  TypeScript ](#tab-panel-6170)
 
 **JavaScript**
 
@@ -316,8 +316,8 @@ export class MyAgent extends Think<Env> {
 
 Add MCP servers programmatically or via `@callable` methods:
 
-* [  JavaScript ](#tab-panel-5919)
-* [  TypeScript ](#tab-panel-5920)
+* [  JavaScript ](#tab-panel-6181)
+* [  TypeScript ](#tab-panel-6182)
 
 **JavaScript**
 
@@ -379,8 +379,8 @@ npm install @cloudflare/codemode
 
 The one-liner infers everything from the agent — `state.*` from `this.workspace`, the executor from `env.LOADER`, and a live browser (`cdp.*`) from `env.BROWSER` if bound:
 
-* [  JavaScript ](#tab-panel-5915)
-* [  TypeScript ](#tab-panel-5916)
+* [  JavaScript ](#tab-panel-6177)
+* [  TypeScript ](#tab-panel-6178)
 
 **JavaScript**
 
@@ -426,8 +426,8 @@ export class MyAgent extends Think<Env> {
 
 Setup checklist:
 
-* [  wrangler.jsonc ](#tab-panel-5901)
-* [  wrangler.toml ](#tab-panel-5902)
+* [  wrangler.jsonc ](#tab-panel-6163)
+* [  wrangler.toml ](#tab-panel-6164)
 
 **JSONC**
 
@@ -456,8 +456,8 @@ binding = "LOADER"
 binding = "BROWSER" # optional — enables cdp.*
 ```
 
-* [  JavaScript ](#tab-panel-5913)
-* [  TypeScript ](#tab-panel-5914)
+* [  JavaScript ](#tab-panel-6175)
+* [  TypeScript ](#tab-panel-6176)
 
 **JavaScript**
 
@@ -488,8 +488,8 @@ Inside the sandbox the model sees typed namespaces plus the platform SDK:
 
 Pass overrides for anything beyond the defaults — for example, custom `tools.*` alongside the agent-derived state:
 
-* [  JavaScript ](#tab-panel-5909)
-* [  TypeScript ](#tab-panel-5910)
+* [  JavaScript ](#tab-panel-6171)
+* [  TypeScript ](#tab-panel-6172)
 
 **JavaScript**
 
@@ -505,8 +505,8 @@ execute: createExecuteTool(this, { tools: myDomainTools });
 
 Or fully explicit options (no agent inference):
 
-* [  JavaScript ](#tab-panel-5921)
-* [  TypeScript ](#tab-panel-5922)
+* [  JavaScript ](#tab-panel-6183)
+* [  TypeScript ](#tab-panel-6184)
 
 **JavaScript**
 
@@ -556,8 +556,8 @@ For a working approval card, refer to the [assistant example ↗](https://github
 
 `createExecuteRuntime` returns the moving parts when the host needs more than the tool — and the handle is also assigned to `this.codemode` when created from an agent:
 
-* [  JavaScript ](#tab-panel-5917)
-* [  TypeScript ](#tab-panel-5918)
+* [  JavaScript ](#tab-panel-6179)
+* [  TypeScript ](#tab-panel-6180)
 
 **JavaScript**
 
@@ -587,8 +587,8 @@ await runtime.saveSnippet("name", { executionId }); // promote a script for reus
 
 Give your agent access to the Chrome DevTools Protocol (CDP) for web page inspection, scraping, screenshots, and debugging. Requires `@cloudflare/codemode` and a Browser Run binding.
 
-* [  JavaScript ](#tab-panel-5929)
-* [  TypeScript ](#tab-panel-5930)
+* [  JavaScript ](#tab-panel-6191)
+* [  TypeScript ](#tab-panel-6192)
 
 **JavaScript**
 
@@ -640,8 +640,8 @@ export class MyAgent extends Think<Env> {
 }
 ```
 
-* [  wrangler.jsonc ](#tab-panel-5905)
-* [  wrangler.toml ](#tab-panel-5906)
+* [  wrangler.jsonc ](#tab-panel-6167)
+* [  wrangler.toml ](#tab-panel-6168)
 
 **JSONC**
 
@@ -692,8 +692,8 @@ The simplest setup is the unified execute tool in [Code execution tool](#code-ex
 
 For a custom Chrome endpoint, pass `cdpUrl` instead of `browser`:
 
-* [  JavaScript ](#tab-panel-5923)
-* [  TypeScript ](#tab-panel-5924)
+* [  JavaScript ](#tab-panel-6185)
+* [  TypeScript ](#tab-panel-6186)
 
 **JavaScript**
 
@@ -723,8 +723,8 @@ Extensions are dynamically loaded sandboxed Workers that add tools at runtime. T
 
 Extensions require a `worker_loaders` binding:
 
-* [  JavaScript ](#tab-panel-5927)
-* [  TypeScript ](#tab-panel-5928)
+* [  JavaScript ](#tab-panel-6189)
+* [  TypeScript ](#tab-panel-6190)
 
 **JavaScript**
 
@@ -762,8 +762,8 @@ export class MyAgent extends Think<Env> {
 
 Define extensions that load at startup:
 
-* [  JavaScript ](#tab-panel-5939)
-* [  TypeScript ](#tab-panel-5940)
+* [  JavaScript ](#tab-panel-6201)
+* [  TypeScript ](#tab-panel-6202)
 
 **JavaScript**
 
@@ -841,8 +841,8 @@ Extension tools are namespaced — a `math` extension with an `add` tool becomes
 
 Give the model `createExtensionTools` so it can load extensions dynamically:
 
-* [  JavaScript ](#tab-panel-5937)
-* [  TypeScript ](#tab-panel-5938)
+* [  JavaScript ](#tab-panel-6199)
+* [  TypeScript ](#tab-panel-6200)
 
 **JavaScript**
 
@@ -925,8 +925,8 @@ The context block is registered as `notes_scratchpad` (namespaced by extension n
 
 The individual tool factories are exported for use with custom storage backends:
 
-* [  JavaScript ](#tab-panel-5931)
-* [  TypeScript ](#tab-panel-5932)
+* [  JavaScript ](#tab-panel-6193)
+* [  TypeScript ](#tab-panel-6194)
 
 **JavaScript**
 
@@ -960,8 +960,8 @@ import {
 
 Implement the operations interface for your storage backend:
 
-* [  JavaScript ](#tab-panel-5933)
-* [  TypeScript ](#tab-panel-5934)
+* [  JavaScript ](#tab-panel-6195)
+* [  TypeScript ](#tab-panel-6196)
 
 **JavaScript**
 
@@ -992,8 +992,8 @@ const readTool = createReadTool({ ops: myReadOps });
 
 Or create the full set from a `Workspace`, optionally disabling the Bash tool:
 
-* [  JavaScript ](#tab-panel-5935)
-* [  TypeScript ](#tab-panel-5936)
+* [  JavaScript ](#tab-panel-6197)
+* [  TypeScript ](#tab-panel-6198)
 
 **JavaScript**
 
@@ -1020,6 +1020,6 @@ const toolsWithoutBash = createWorkspaceTools(myCustomWorkspace, {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/tools/#page","headline":"Tools · Cloudflare Agents docs","description":"Built-in workspace tools (including bash), custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/tools/#page","headline":"Tools · Cloudflare Agents docs","description":"Built-in workspace tools (including bash), custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/tools/","name":"Tools"}}]}
 ```

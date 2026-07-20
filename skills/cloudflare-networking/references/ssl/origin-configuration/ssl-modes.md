@@ -1,7 +1,7 @@
 ---
 title: Encryption modes
 description: Encryption modes allow you to control how Cloudflare connects to your origin web server and how certificates presented by your origin are validated.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,7 +16,7 @@ Your zone's **SSL/TLS Encryption Mode** controls how Cloudflare manages two conn
 
 flowchart LR
     accTitle: SSL/TLS Encryption mode
-    A[Browser] <--Connection 1--> B((Cloudflare))<--Connection 2--> C[(Origin server)]
+    A[Visitor] <--Connection 1--> B((Cloudflare))<--Connection 2--> C[(Origin server)]
 
 
 If possible, Cloudflare strongly recommends using [**Full**](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/) or [**Full (strict)**](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) modes to prevent malicious connections to your origin.
@@ -115,16 +115,16 @@ bash opt-out-multiple-zones.sh
 
 To use Custom SSL/TLS, select the custom option (if you prefer to manually set the encryption mode instead of using [Automatic SSL/TLS](#automatic-ssltls-default)):
 
-* [ Off (no encryption) ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/) :  No encryption is used for traffic between browsers and Cloudflare or between Cloudflare and origins. Everything is cleartext HTTP.
-* [ Flexible ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/flexible/) :  Traffic from browsers to Cloudflare can be encrypted via HTTPS, but traffic from Cloudflare to the origin server is not. This mode is common for origins that do not support TLS, though upgrading the origin configuration is recommended whenever possible.
-* [ Full ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/) :  Cloudflare matches the browser request protocol when connecting to the origin. If the browser uses HTTP, Cloudflare connects to the origin via HTTP; if HTTPS, Cloudflare uses HTTPS without validating the origin’s certificate. This mode is common for origins that use self-signed or otherwise invalid certificates.
+* [ Off (no encryption) ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/) :  No encryption is used for traffic between visitors and Cloudflare or between Cloudflare and origins. Everything is cleartext HTTP.
+* [ Flexible ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/flexible/) :  Traffic from visitors to Cloudflare can be encrypted via HTTPS, but traffic from Cloudflare to the origin server is not. This mode is common for origins that do not support TLS, though upgrading the origin configuration is recommended whenever possible.
+* [ Full ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/) :  Cloudflare matches the visitor request protocol when connecting to the origin. If the visitor uses HTTP, Cloudflare connects to the origin via HTTP; if HTTPS, Cloudflare uses HTTPS without validating the origin’s certificate. This mode is common for origins that use self-signed or otherwise invalid certificates.
 * [ Full (strict) ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) :  Similar to Full Mode, but with added validation of the origin server’s certificate, which can be issued by a public CA like Let’s Encrypt or by Cloudflare Origin CA.
-* [ Strict (SSL-Only Origin Pull) ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull/) :  Regardless of whether the browser-to-Cloudflare connection uses HTTP or HTTPS, Cloudflare always connects to the origin over HTTPS with certificate validation.
+* [ Strict (SSL-Only Origin Pull) ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull/) :  Regardless of whether the visitor-to-Cloudflare connection uses HTTP or HTTPS, Cloudflare always connects to the origin over HTTPS with certificate validation.
 
 ## Update your encryption mode
 
-* [ Dashboard ](#tab-panel-11073)
-* [ API ](#tab-panel-11074)
+* [ Dashboard ](#tab-panel-11518)
+* [ API ](#tab-panel-11519)
 
 To change your encryption mode in the dashboard:
 
@@ -139,6 +139,6 @@ Note
 To use this feature on specific hostnames - instead of across your entire zone - use a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/#page","headline":"Encryption modes · Cloudflare SSL/TLS docs","description":"Encryption modes allow you to control how Cloudflare connects to your origin web server and how certificates presented by your origin are validated.","url":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/#page","headline":"Encryption modes · Cloudflare SSL/TLS docs","description":"Encryption modes allow you to control how Cloudflare connects to your origin web server and how certificates presented by your origin are validated.","url":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/origin-configuration/","name":"Origin server"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/origin-configuration/ssl-modes/","name":"Encryption modes"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Privacy Proxy
 description: Privacy Proxy is a MASQUE-based forward proxy that hides client IP addresses while preserving geolocation accuracy.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -69,6 +69,6 @@ Cloudflare's consumer VPN application that uses similar privacy-preserving proxy
 Privacy Proxy is available as a managed service for Enterprise customers. [Contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to discuss your use case and get started.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/privacy-proxy/#page","headline":"Privacy Proxy · Cloudflare Privacy Proxy docs","description":"Privacy Proxy is a MASQUE-based forward proxy that hides client IP addresses while preserving geolocation accuracy.","url":"https://developers.cloudflare.com/privacy-proxy/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/privacy-proxy/#page","headline":"Privacy Proxy · Cloudflare Privacy Proxy docs","description":"Privacy Proxy is a MASQUE-based forward proxy that hides client IP addresses while preserving geolocation accuracy.","url":"https://developers.cloudflare.com/privacy-proxy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}}]}
 ```

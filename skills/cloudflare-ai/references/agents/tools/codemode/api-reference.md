@@ -1,7 +1,7 @@
 ---
 title: Code Mode API reference
 description: Reference the public classes, functions, options, runtime methods, connector hooks, and result types exported by Code Mode.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -964,6 +964,6 @@ export { CodemodeRuntime } from "@cloudflare/codemode";
 A connector import can target one connector file or a directory. A directory import re-exports every matching connector file under that directory.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/api-reference/#page","headline":"Code Mode API reference · Cloudflare Agents docs","description":"Reference the public classes, functions, options, runtime methods, connector hooks, and result types exported by Code Mode.","url":"https://developers.cloudflare.com/agents/tools/codemode/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/api-reference/#page","headline":"Code Mode API reference · Cloudflare Agents docs","description":"Reference the public classes, functions, options, runtime methods, connector hooks, and result types exported by Code Mode.","url":"https://developers.cloudflare.com/agents/tools/codemode/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/codemode/","name":"Code Mode"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/codemode/api-reference/","name":"Code Mode API reference"}}]}
 ```

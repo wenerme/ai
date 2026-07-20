@@ -1,7 +1,7 @@
 ---
 title: Enable Splunk
 description: Push Cloudflare logs to Splunk via HEC.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -154,8 +154,8 @@ Refer to the [Logpush FAQ](https://developers.cloudflare.com/logs/faq/logpush/) 
 
 If your logpush destination hostname is proxied through Cloudflare, and you have the Cloudflare Web Application Firewall (WAF) turned on, you may be challenged or blocked when Cloudflare makes a request to Splunk HTTP Event Collector (HEC). To make sure this does not happen, you have to create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) that allows Cloudflare to bypass the HEC endpoint.
 
-* [  New dashboard ](#tab-panel-10095)
-* [ Old dashboard ](#tab-panel-10096)
+* [  New dashboard ](#tab-panel-10214)
+* [ Old dashboard ](#tab-panel-10215)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -252,6 +252,6 @@ Logpush integrates with the [Cloudflare App for Splunk ↗](https://splunkbase.s
 For detailed setup instructions, refer to [Splunk Analytics integration](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/#page","headline":"Enable Logpush to Splunk · Cloudflare Logs docs","description":"Push Cloudflare logs to Splunk via HEC.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/#page","headline":"Enable Logpush to Splunk · Cloudflare Logs docs","description":"Push Cloudflare logs to Splunk via HEC.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/","name":"Enable destinations"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/splunk/","name":"Enable Splunk"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Access internal applications securely
 description: Implement Zero Trust access to internal applications without the complexity of VPNs.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -44,6 +44,6 @@ Securely route traffic through Cloudflare's network. [Learn more about Cloudflar
 * [Set up in-browser RDP](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/in-browser-rdp/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/company-security/employee-access/#page","headline":"Access internal applications securely · Cloudflare use cases","description":"Implement Zero Trust access to internal applications without the complexity of VPNs.","url":"https://developers.cloudflare.com/use-cases/company-security/employee-access/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/company-security/employee-access/#page","headline":"Access internal applications securely · Cloudflare use cases","description":"Implement Zero Trust access to internal applications without the complexity of VPNs.","url":"https://developers.cloudflare.com/use-cases/company-security/employee-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/company-security/","name":"Company security"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/company-security/employee-access/","name":"Access internal applications securely"}}]}
 ```

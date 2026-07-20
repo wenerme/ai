@@ -1,7 +1,7 @@
 ---
 title: Account and domain management best practices
 description: Protect your Cloudflare account and domains by decentralizing access, managing billing, and planning for continuity.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -46,6 +46,6 @@ Most if not all online services have automated billing processes that will attem
 While often overlooked, an important part of having an online presence is ensuring continuity in the event of an unexpected accident or incapacitation of the account holder. Create clear instructions for domain or account management in the event the account holder is unable to administer the account. If you learn no instructions are available on how to access the account of the deceased, Cloudflare may be able to assist you.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/best-practices/#page","headline":"Account and domain management best practices · Cloudflare Fundamentals docs","description":"Protect your Cloudflare account and domains by decentralizing access, managing billing, and planning for continuity.","url":"https://developers.cloudflare.com/fundamentals/reference/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/best-practices/#page","headline":"Account and domain management best practices · Cloudflare Fundamentals docs","description":"Protect your Cloudflare account and domains by decentralizing access, managing billing, and planning for continuity.","url":"https://developers.cloudflare.com/fundamentals/reference/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/best-practices/","name":"Account and domain management best practices"}}]}
 ```

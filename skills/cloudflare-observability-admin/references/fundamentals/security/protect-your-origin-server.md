@@ -1,7 +1,7 @@
 ---
 title: Protect your origin server
 description: Secure your origin server with Cloudflare by hiding its IP address, limiting connections, and monitoring health.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -164,6 +164,6 @@ For more fine-grained control over traffic distribution — including automatic 
 To protect specific endpoints from being overwhelmed by traffic spikes, [set up a waiting room](https://developers.cloudflare.com/waiting-room/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/#page","headline":"Protect your origin server · Cloudflare Fundamentals docs","description":"Secure your origin server with Cloudflare by hiding its IP address, limiting connections, and monitoring health.","url":"https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/#page","headline":"Protect your origin server · Cloudflare Fundamentals docs","description":"Secure your origin server with Cloudflare by hiding its IP address, limiting connections, and monitoring health.","url":"https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/security/protect-your-origin-server/","name":"Protect your origin server"}}]}
 ```

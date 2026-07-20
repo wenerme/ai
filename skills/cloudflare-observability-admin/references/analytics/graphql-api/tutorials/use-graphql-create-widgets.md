@@ -1,7 +1,7 @@
 ---
 title: Use GraphQL to create widgets
 description: Build dashboard widgets with GraphQL Analytics queries.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -413,6 +413,6 @@ query GetOngoingAttacks($accountTag: string, $filter: filter) {
 If there are no ongoing attacks, use the `GetPreviousAttacks` query to display data for attacks within an absolute time interval.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/use-graphql-create-widgets/#page","headline":"Use GraphQL to create widgets · Cloudflare Analytics docs","description":"Build dashboard widgets with GraphQL Analytics queries.","url":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/use-graphql-create-widgets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/use-graphql-create-widgets/#page","headline":"Use GraphQL to create widgets · Cloudflare Analytics docs","description":"Build dashboard widgets with GraphQL Analytics queries.","url":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/use-graphql-create-widgets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/tutorials/use-graphql-create-widgets/","name":"Use GraphQL to create widgets"}}]}
 ```

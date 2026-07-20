@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Start using Artifacts with Workers or the REST API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -21,6 +21,6 @@ Start here to create, inspect, and version Artifacts from Cloudflare developer w
 * [ REST API ](https://developers.cloudflare.com/artifacts/get-started/rest-api/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/artifacts/get-started/#page","headline":"Get started · Cloudflare Artifacts docs","description":"Start using Artifacts with Workers or the REST API.","url":"https://developers.cloudflare.com/artifacts/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/artifacts/get-started/#page","headline":"Get started · Cloudflare Artifacts docs","description":"Start using Artifacts with Workers or the REST API.","url":"https://developers.cloudflare.com/artifacts/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/get-started/","name":"Get started"}}]}
 ```

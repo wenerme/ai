@@ -1,7 +1,7 @@
 ---
 title: Wrangler commands
 description: Manage Artifacts namespaces, repositories, and repo tokens from the command line using Wrangler.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,9 +18,9 @@ Use `wrangler artifacts` commands to manage Artifacts namespaces, repositories, 
 
 List Artifacts namespaces
 
-* [  npm ](#tab-panel-7124)
-* [  pnpm ](#tab-panel-7125)
-* [  yarn ](#tab-panel-7126)
+* [  npm ](#tab-panel-7418)
+* [  pnpm ](#tab-panel-7419)
+* [  yarn ](#tab-panel-7420)
 
 ```sh
 npx wrangler artifacts namespaces list
@@ -62,9 +62,9 @@ Use a specific auth profile
 
 Get an Artifacts namespace
 
-* [  npm ](#tab-panel-7127)
-* [  pnpm ](#tab-panel-7128)
-* [  yarn ](#tab-panel-7129)
+* [  npm ](#tab-panel-7421)
+* [  pnpm ](#tab-panel-7422)
+* [  yarn ](#tab-panel-7423)
 
 ```sh
 npx wrangler artifacts namespaces get [NAME]
@@ -108,9 +108,9 @@ Use a specific auth profile
 
 Create an Artifacts repository
 
-* [  npm ](#tab-panel-7130)
-* [  pnpm ](#tab-panel-7131)
-* [  yarn ](#tab-panel-7132)
+* [  npm ](#tab-panel-7424)
+* [  pnpm ](#tab-panel-7425)
+* [  yarn ](#tab-panel-7426)
 
 ```sh
 npx wrangler artifacts repos create [NAME]
@@ -162,9 +162,9 @@ Use a specific auth profile
 
 List Artifacts repositories in a namespace
 
-* [  npm ](#tab-panel-7133)
-* [  pnpm ](#tab-panel-7134)
-* [  yarn ](#tab-panel-7135)
+* [  npm ](#tab-panel-7427)
+* [  pnpm ](#tab-panel-7428)
+* [  yarn ](#tab-panel-7429)
 
 ```sh
 npx wrangler artifacts repos list
@@ -208,9 +208,9 @@ Use a specific auth profile
 
 Get an Artifacts repository
 
-* [  npm ](#tab-panel-7136)
-* [  pnpm ](#tab-panel-7137)
-* [  yarn ](#tab-panel-7138)
+* [  npm ](#tab-panel-7430)
+* [  pnpm ](#tab-panel-7431)
+* [  yarn ](#tab-panel-7432)
 
 ```sh
 npx wrangler artifacts repos get [NAME]
@@ -256,9 +256,9 @@ Use a specific auth profile
 
 Delete an Artifacts repository
 
-* [  npm ](#tab-panel-7139)
-* [  pnpm ](#tab-panel-7140)
-* [  yarn ](#tab-panel-7141)
+* [  npm ](#tab-panel-7433)
+* [  pnpm ](#tab-panel-7434)
+* [  yarn ](#tab-panel-7435)
 
 ```sh
 npx wrangler artifacts repos delete [NAME]
@@ -306,9 +306,9 @@ Use a specific auth profile
 
 Issue a repo-scoped Artifacts token
 
-* [  npm ](#tab-panel-7142)
-* [  pnpm ](#tab-panel-7143)
-* [  yarn ](#tab-panel-7144)
+* [  npm ](#tab-panel-7436)
+* [  pnpm ](#tab-panel-7437)
+* [  yarn ](#tab-panel-7438)
 
 ```sh
 npx wrangler artifacts repos issue-token [REPO]
@@ -355,6 +355,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/wrangler/#page","headline":"Wrangler commands · Cloudflare Artifacts docs","description":"Manage Artifacts namespaces, repositories, and repo tokens from the command line using Wrangler.","url":"https://developers.cloudflare.com/artifacts/api/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/wrangler/#page","headline":"Wrangler commands · Cloudflare Artifacts docs","description":"Manage Artifacts namespaces, repositories, and repo tokens from the command line using Wrangler.","url":"https://developers.cloudflare.com/artifacts/api/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/api/wrangler/","name":"Wrangler commands"}}]}
 ```

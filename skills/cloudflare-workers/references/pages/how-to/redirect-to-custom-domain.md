@@ -1,7 +1,7 @@
 ---
 title: Redirecting *.pages.dev to a Custom Domain
 description: Use Bulk Redirects to redirect your pages.dev subdomain to a custom domain.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -41,6 +41,6 @@ To test that your redirect worked, go to your `<project>.pages.dev` domain. If t
 * [Handle redirects with Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/redirect-to-custom-domain/#page","headline":"Redirecting *.pages.dev to a Custom Domain · Cloudflare Pages docs","description":"Use Bulk Redirects to redirect your pages.dev subdomain to a custom domain.","url":"https://developers.cloudflare.com/pages/how-to/redirect-to-custom-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/redirect-to-custom-domain/#page","headline":"Redirecting *.pages.dev to a Custom Domain · Cloudflare Pages docs","description":"Use Bulk Redirects to redirect your pages.dev subdomain to a custom domain.","url":"https://developers.cloudflare.com/pages/how-to/redirect-to-custom-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/redirect-to-custom-domain/","name":"Redirecting *.pages.dev to a Custom Domain"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Insights
 description: Insights resources and guides for Zero Trust analytics.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -61,6 +61,6 @@ Users may report problems like slow or failing connections to internal apps.
 3. Use [DEX](https://developers.cloudflare.com/cloudflare-one/insights/dex/) to diagnose device- or network-level causes with [synthetic tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) and [device monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/#page","headline":"Insights · Cloudflare One docs","description":"Insights resources and guides for Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/#page","headline":"Insights · Cloudflare One docs","description":"Insights resources and guides for Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}}]}
 ```

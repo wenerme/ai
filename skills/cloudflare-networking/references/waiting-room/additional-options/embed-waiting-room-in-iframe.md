@@ -1,7 +1,7 @@
 ---
 title: Embed in an iFrame
 description: Embed a waiting room page inside an iFrame.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -124,6 +124,6 @@ In general, if there is an issue setting and retrieving the waiting room cookie,
 These limitations may not apply if the embedded page and embedding page share a common domain name. For example, a page at `example.com` embedding a waiting room at `shop.example.com` may be considered first party by browsers, and not subject to third-party cookie restrictions.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/additional-options/embed-waiting-room-in-iframe/#page","headline":"Embed in an iFrame · Cloudflare Waiting Room docs","description":"Embed a waiting room page inside an iFrame.","url":"https://developers.cloudflare.com/waiting-room/additional-options/embed-waiting-room-in-iframe/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/additional-options/embed-waiting-room-in-iframe/#page","headline":"Embed in an iFrame · Cloudflare Waiting Room docs","description":"Embed a waiting room page inside an iFrame.","url":"https://developers.cloudflare.com/waiting-room/additional-options/embed-waiting-room-in-iframe/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/additional-options/embed-waiting-room-in-iframe/","name":"Embed in an iFrame"}}]}
 ```

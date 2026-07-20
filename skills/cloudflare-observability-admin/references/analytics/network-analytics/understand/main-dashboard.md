@@ -1,7 +1,7 @@
 ---
 title: Main dashboard
 description: Navigate the Network Analytics dashboard sections.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -155,6 +155,6 @@ To set the number of items to display for each dimension, open the drop-down lis
 The **TCP Flag** panel displays the TCP flags set for all the traffic currently displayed in the dashboard, including both allowed and mitigated traffic.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/network-analytics/understand/main-dashboard/#page","headline":"Network Analytics main dashboard · Cloudflare Analytics docs","description":"Navigate the Network Analytics dashboard sections.","url":"https://developers.cloudflare.com/analytics/network-analytics/understand/main-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/network-analytics/understand/main-dashboard/#page","headline":"Network Analytics main dashboard · Cloudflare Analytics docs","description":"Navigate the Network Analytics dashboard sections.","url":"https://developers.cloudflare.com/analytics/network-analytics/understand/main-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/network-analytics/","name":"Network analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/network-analytics/understand/","name":"About"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/network-analytics/understand/main-dashboard/","name":"Main dashboard"}}]}
 ```

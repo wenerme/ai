@@ -1,7 +1,7 @@
 ---
 title: Use Pages as an origin for Load Balancing
 description: This tutorial is intended as an introductory example of how you can leverage Cloudflare's global traffic management.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -168,6 +168,6 @@ If you have an Enterprise account, also evaluate your application for any exclud
 2. Configure your load balancer to receive production traffic by editing the **Hostname** of your existing load balancer.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/#page","headline":"Use Pages as an origin for Load Balancing · Cloudflare Load Balancing docs","description":"This tutorial is intended as an introductory example of how you can leverage Cloudflare's global traffic management.","url":"https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/#page","headline":"Use Pages as an origin for Load Balancing · Cloudflare Load Balancing docs","description":"This tutorial is intended as an introductory example of how you can leverage Cloudflare's global traffic management.","url":"https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/pools/","name":"Pools"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/pools/cloudflare-pages-origin/","name":"Use Pages as an origin for Load Balancing"}}]}
 ```

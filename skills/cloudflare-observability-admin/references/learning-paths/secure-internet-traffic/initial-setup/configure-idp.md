@@ -1,7 +1,7 @@
 ---
 title: Configure an identity provider
 description: Set up identity provider integration.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ Some admins choose to test by authenticating with a [one-time PIN (OTP)](https:/
 
 To add an identity provider:
 
-* [ Dashboard ](#tab-panel-10022)
-* [ Terraform (v5) ](#tab-panel-10023)
+* [ Dashboard ](#tab-panel-10141)
+* [ Terraform (v5) ](#tab-panel-10142)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.
@@ -54,6 +54,6 @@ If you do not see your identity provider listed, these providers can typically s
 Users will now be able to select this IdP when they are prompted to authenticate.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/initial-setup/configure-idp/#page","headline":"Configure an identity provider · Cloudflare Learning Paths","description":"Set up identity provider integration.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/initial-setup/configure-idp/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/initial-setup/configure-idp/#page","headline":"Configure an identity provider · Cloudflare Learning Paths","description":"Set up identity provider integration.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/initial-setup/configure-idp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/initial-setup/","name":"Get started with Zero Trust"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/initial-setup/configure-idp/","name":"Configure an identity provider"}}]}
 ```

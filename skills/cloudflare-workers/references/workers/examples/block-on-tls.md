@@ -1,7 +1,7 @@
 ---
 title: Block on TLS
 description: Inspects the incoming request's TLS version and blocks if under TLSv1.2.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -14,10 +14,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Inspects the incoming request's TLS version and blocks if under TLSv1.2.
 
-* [  JavaScript ](#tab-panel-11940)
-* [  TypeScript ](#tab-panel-11941)
-* [  Hono ](#tab-panel-11942)
-* [  Python ](#tab-panel-11943)
+* [  JavaScript ](#tab-panel-12459)
+* [  TypeScript ](#tab-panel-12460)
+* [  Hono ](#tab-panel-12461)
+* [  Python ](#tab-panel-12462)
 
 **JavaScript**
 
@@ -130,6 +130,6 @@ class Default(WorkerEntrypoint):
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/block-on-tls/#page","headline":"Block on TLS · Cloudflare Workers docs","description":"Inspects the incoming request's TLS version and blocks if under TLSv1.2.","url":"https://developers.cloudflare.com/workers/examples/block-on-tls/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security","Middleware","JavaScript","TypeScript","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/block-on-tls/#page","headline":"Block on TLS · Cloudflare Workers docs","description":"Inspects the incoming request's TLS version and blocks if under TLSv1.2.","url":"https://developers.cloudflare.com/workers/examples/block-on-tls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security","Middleware","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/block-on-tls/","name":"Block on TLS"}}]}
 ```

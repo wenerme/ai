@@ -1,7 +1,7 @@
 ---
 title: Changelog
 description: Latest changes and updates to Cloudflare Stream.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -474,6 +474,6 @@ Videos with multiple audio tracks (ex: 5.1 surround sound) are now mixed down to
 Cloudflare now emails you if your account is using 75% or more of your prepaid video storage, so that you can take action and plan ahead.
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/stream/changelog/#page","headline":"Changelog · Cloudflare Stream docs","description":"Latest changes and updates to Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/stream/changelog/#page","headline":"Changelog · Cloudflare Stream docs","description":"Latest changes and updates to Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/changelog/","name":"Changelog"}}]}
 ```

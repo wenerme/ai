@@ -1,7 +1,7 @@
 ---
 title: NAv1 to NAv2 schema map
 description: Map Network Analytics v1 fields to v2 fields.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -47,6 +47,6 @@ The following table lists direct mappings between NAv1 and NAv2 fields, when ava
 \* The `attackId` field value may be different between NAv1 and NAv2 for the same attack.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/schema-map/#page","headline":"NAv1 to NAv2 schema map · Cloudflare Analytics docs","description":"Map Network Analytics v1 fields to v2 fields.","url":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/schema-map/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/schema-map/#page","headline":"NAv1 to NAv2 schema map · Cloudflare Analytics docs","description":"Map Network Analytics v1 fields to v2 fields.","url":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/schema-map/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/migration-guides/","name":"Migration guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/migration-guides/network-analytics-v2/","name":"Network Analytics v1 to Network Analytics v2"}},{"@type":"ListItem","position":6,"item":{"@id":"/analytics/graphql-api/migration-guides/network-analytics-v2/schema-map/","name":"NAv1 to NAv2 schema map"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: gpt-oss-20b
 description: OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-20b is for lower latency, and local or specialized use-cases.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,9 +29,9 @@ OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2299)
-* [  Python ](#tab-panel-2300)
-* [  curl ](#tab-panel-2301)
+* [  TypeScript ](#tab-panel-2445)
+* [  Python ](#tab-panel-2446)
+* [  curl ](#tab-panel-2447)
 
 ```ts
 export default {
@@ -87,8 +87,8 @@ This model supports three different API formats:
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-2302)
-* [ Output ](#tab-panel-2303)
+* [ Input ](#tab-panel-2448)
+* [ Output ](#tab-panel-2449)
 
 Input format
 
@@ -166,8 +166,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
-* [ Input ](#tab-panel-2304)
-* [ Output ](#tab-panel-2305)
+* [ Input ](#tab-panel-2450)
+* [ Output ](#tab-panel-2451)
 
 Input format
 
@@ -253,8 +253,8 @@ format
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-2306)
-* [ Output ](#tab-panel-2307)
+* [ Input ](#tab-panel-2452)
+* [ Output ](#tab-panel-2453)
 
 ▶requests\[\]
 
@@ -287,6 +287,6 @@ response
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/openai/gpt-oss-20b/#page","headline":"gpt-oss-20b (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-20b is for lower latency, and local or specialized use-cases.","url":"https://developers.cloudflare.com/ai/models/%40cf/openai/gpt-oss-20b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/openai/gpt-oss-20b/#page","headline":"gpt-oss-20b (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-20b is for lower latency, and local or specialized use-cases.","url":"https://developers.cloudflare.com/ai/models/%40cf/openai/gpt-oss-20b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

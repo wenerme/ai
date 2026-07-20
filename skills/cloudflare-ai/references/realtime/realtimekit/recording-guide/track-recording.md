@@ -1,7 +1,7 @@
 ---
 title: Track recording
 description: Record separate audio tracks for selected RealtimeKit participants and download per-participant WebM files.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -157,6 +157,6 @@ File names use this format:
 The `date_time` value is the Unix timestamp in milliseconds when the file was generated.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/#page","headline":"Track recording · Cloudflare Realtime docs","description":"Record separate audio tracks for selected RealtimeKit participants and download per-participant WebM files.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/#page","headline":"Track recording · Cloudflare Realtime docs","description":"Record separate audio tracks for selected RealtimeKit participants and download per-participant WebM files.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/recording-guide/","name":"Recording"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/recording-guide/track-recording/","name":"Track recording"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: How Queues Works
 description: Learn about Queues architecture including producers, consumers, and message lifecycle.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -171,8 +171,8 @@ export default {
 
 You then connect that consumer to a queue with `wrangler queues consumer <queue-name> <worker-script-name>` or by defining a `[[queues.consumers]]` configuration in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) manually:
 
-* [  wrangler.jsonc ](#tab-panel-10042)
-* [  wrangler.toml ](#tab-panel-10043)
+* [  wrangler.jsonc ](#tab-panel-10487)
+* [  wrangler.toml ](#tab-panel-10488)
 
 **JSONC**
 
@@ -260,6 +260,6 @@ Any JSON serializable object can be published to a queue. For most developers, t
 Messages themselves can be [batched when delivered to a consumer](https://developers.cloudflare.com/queues/configuration/batching-retries/). By default, messages within a batch are treated as all or nothing when determining retries. If the last message in a batch fails to be processed, the entire batch will be retried. You can also choose to [explicitly acknowledge](https://developers.cloudflare.com/queues/configuration/batching-retries/) messages as they are successfully processed, and/or mark individual messages to be retried.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/reference/how-queues-works/#page","headline":"How Queues Works · Cloudflare Queues docs","description":"Learn about Queues architecture including producers, consumers, and message lifecycle.","url":"https://developers.cloudflare.com/queues/reference/how-queues-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/reference/how-queues-works/#page","headline":"How Queues Works · Cloudflare Queues docs","description":"Learn about Queues architecture including producers, consumers, and message lifecycle.","url":"https://developers.cloudflare.com/queues/reference/how-queues-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/reference/how-queues-works/","name":"How Queues Works"}}]}
 ```

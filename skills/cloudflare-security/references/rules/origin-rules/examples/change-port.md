@@ -1,7 +1,7 @@
 ---
 title: Change the destination port
 description: Create an origin rule to change the destination port.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,8 +16,8 @@ Create an origin rule to change the destination port.
 
 The following origin rule overrides the destination port to `8081` for all requests where the URI path starts with `/team/calendar/`.
 
-* [ Dashboard ](#tab-panel-10410)
-* [ API ](#tab-panel-10411)
+* [ Dashboard ](#tab-panel-10855)
+* [ API ](#tab-panel-10856)
 
 Text in Expression Editor:
 
@@ -118,6 +118,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/examples/change-port/#page","headline":"Change the destination port · Cloudflare Rules docs","description":"Create an origin rule to change the destination port.","url":"https://developers.cloudflare.com/rules/origin-rules/examples/change-port/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/examples/change-port/#page","headline":"Change the destination port · Cloudflare Rules docs","description":"Create an origin rule to change the destination port.","url":"https://developers.cloudflare.com/rules/origin-rules/examples/change-port/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/origin-rules/","name":"Origin Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/origin-rules/examples/","name":"Origin Rules examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/origin-rules/examples/change-port/","name":"Change the destination port"}}]}
 ```

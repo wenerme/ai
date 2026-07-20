@@ -1,7 +1,7 @@
 ---
 title: flux-1-schnell
 description: FLUX.1 [schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,9 +27,9 @@ FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable 
 
 ## Usage
 
-* [  Worker (Data URI) ](#tab-panel-2223)
-* [  Worker (Image) ](#tab-panel-2224)
-* [  curl ](#tab-panel-2225)
+* [  Worker (Data URI) ](#tab-panel-2369)
+* [  Worker (Image) ](#tab-panel-2370)
+* [  curl ](#tab-panel-2371)
 
 **TypeScript**
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2226)
-* [ Output ](#tab-panel-2227)
+* [ Input ](#tab-panel-2372)
+* [ Output ](#tab-panel-2373)
 
 prompt
 
@@ -110,6 +110,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/sch
 Output [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-1-schnell/#page","headline":"flux-1-schnell (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.1 \\[schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions.","url":"https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-1-schnell/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-1-schnell/#page","headline":"flux-1-schnell (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.1 \\[schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions.","url":"https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-1-schnell/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

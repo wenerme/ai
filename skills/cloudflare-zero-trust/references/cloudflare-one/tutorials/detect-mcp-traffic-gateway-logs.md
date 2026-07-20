@@ -1,7 +1,7 @@
 ---
 title: Detect MCP traffic in Gateway logs
 description: Scan Gateway logs for unauthorized MCP traffic.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -47,8 +47,8 @@ MCP traffic can be identified by three signals:
 
 The following GraphQL query scans Gateway logs for the first two signals:
 
-* [  JavaScript ](#tab-panel-8057)
-* [  TypeScript ](#tab-panel-8058)
+* [  JavaScript ](#tab-panel-8395)
+* [  TypeScript ](#tab-panel-8396)
 
 **JavaScript**
 
@@ -164,8 +164,8 @@ Replace `<YOUR_ACCOUNT_ID>` with your Cloudflare account ID. Replace `<START_DAT
 
 Each group in the response represents aggregated traffic for a specific `httpHost` and `action` combination. Parse the results to identify unblocked MCP connections:
 
-* [  JavaScript ](#tab-panel-8051)
-* [  TypeScript ](#tab-panel-8052)
+* [  JavaScript ](#tab-panel-8389)
+* [  TypeScript ](#tab-panel-8390)
 
 **JavaScript**
 
@@ -258,8 +258,8 @@ Before building detection patterns, note the following DLP limitations:
 
 MCP indicators can be found in JSON-RPC method fields. The following regex patterns cover the core MCP protocol methods:
 
-* [  JavaScript ](#tab-panel-8059)
-* [  TypeScript ](#tab-panel-8060)
+* [  JavaScript ](#tab-panel-8397)
+* [  TypeScript ](#tab-panel-8398)
 
 **JavaScript**
 
@@ -366,8 +366,8 @@ Pattern explanation:
 
 Send a `POST` request to create a custom DLP profile containing all detection patterns:
 
-* [  JavaScript ](#tab-panel-8055)
-* [  TypeScript ](#tab-panel-8056)
+* [  JavaScript ](#tab-panel-8393)
+* [  TypeScript ](#tab-panel-8394)
 
 **JavaScript**
 
@@ -449,8 +449,8 @@ Replace `${accountId}` with your Cloudflare account ID and `${apiToken}` with yo
 
 After the DLP profile exists, create a Gateway HTTP policy that blocks requests matching the profile:
 
-* [  JavaScript ](#tab-panel-8049)
-* [  TypeScript ](#tab-panel-8050)
+* [  JavaScript ](#tab-panel-8387)
+* [  TypeScript ](#tab-panel-8388)
 
 **JavaScript**
 
@@ -502,8 +502,8 @@ When analyzing Gateway logs, it is helpful to differentiate between two types of
 
 Extend the query processing from [Process the query results](#3-process-the-query-results) to classify traffic by comparing hostnames against your list of approved portal domains:
 
-* [  JavaScript ](#tab-panel-8053)
-* [  TypeScript ](#tab-panel-8054)
+* [  JavaScript ](#tab-panel-8391)
+* [  TypeScript ](#tab-panel-8392)
 
 **JavaScript**
 
@@ -586,6 +586,6 @@ Replace the `portalDomains` array with the actual domains of your approved MCP S
 * [Logpush](https://developers.cloudflare.com/logs/logpush/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/#page","headline":"Detect MCP traffic in Gateway logs · Cloudflare One docs","description":"Scan Gateway logs for unauthorized MCP traffic.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP","Logging","TypeScript","GraphQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/#page","headline":"Detect MCP traffic in Gateway logs · Cloudflare One docs","description":"Scan Gateway logs for unauthorized MCP traffic.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP","Logging","TypeScript","GraphQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/","name":"Detect MCP traffic in Gateway logs"}}]}
 ```

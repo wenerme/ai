@@ -1,7 +1,7 @@
 ---
 title: Workers binding
 description: Create, populate, and query an AI Search instance from a Cloudflare Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -61,8 +61,8 @@ Create a binding between your Worker and your AI Search instance. [Bindings](htt
 
 Add the following to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6963)
-* [  wrangler.toml ](#tab-panel-6964)
+* [  wrangler.jsonc ](#tab-panel-7221)
+* [  wrangler.toml ](#tab-panel-7222)
 
 **JSONC**
 
@@ -94,8 +94,8 @@ This binds the `default` namespace to `env.AI_SEARCH`. Instances that you create
 
 Update the `src/index.ts` file in your `ai-search-tutorial` directory with the following code. It exposes two routes: `/setup` creates an instance named `my-instance` and indexes a sample document, and the default route queries it.
 
-* [  JavaScript ](#tab-panel-6965)
-* [  TypeScript ](#tab-panel-6966)
+* [  JavaScript ](#tab-panel-7223)
+* [  TypeScript ](#tab-panel-7224)
 
 **src/index.js**
 
@@ -209,6 +209,6 @@ https://ai-search-tutorial.<YOUR_SUBDOMAIN>.workers.dev
 [ Items Workers binding ](https://developers.cloudflare.com/ai-search/api/items/workers-binding/) Upload, list, and manage documents from a Worker.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/workers/#page","headline":"Workers binding · Cloudflare AI Search docs","description":"Create, populate, and query an AI Search instance from a Cloudflare Worker.","url":"https://developers.cloudflare.com/ai-search/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/workers/#page","headline":"Workers binding · Cloudflare AI Search docs","description":"Create, populate, and query an AI Search instance from a Cloudflare Worker.","url":"https://developers.cloudflare.com/ai-search/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/get-started/workers/","name":"Workers binding"}}]}
 ```

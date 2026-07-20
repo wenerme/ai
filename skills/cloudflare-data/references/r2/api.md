@@ -1,7 +1,7 @@
 ---
 title: API
 description: Access R2 storage through the S3-compatible API, Workers API, or Cloudflare REST API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ R2 provides three API surfaces for interacting with your data:
 * **[Cloudflare REST API](https://developers.cloudflare.com/api/resources/r2/):** The `api.cloudflare.com` REST API used by the Cloudflare Dashboard and Wrangler CLI. Supports bucket management and object operations. [Rate limits apply](https://developers.cloudflare.com/r2/platform/limits/#cloudflare-rest-api). Use the S3-compatible API or Workers API for high-throughput workloads.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/api/#page","headline":"API · Cloudflare R2 docs","description":"Access R2 storage through the S3-compatible API, Workers API, or Cloudflare REST API.","url":"https://developers.cloudflare.com/r2/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/api/#page","headline":"API · Cloudflare R2 docs","description":"Access R2 storage through the S3-compatible API, Workers API, or Cloudflare REST API.","url":"https://developers.cloudflare.com/r2/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}}]}
 ```

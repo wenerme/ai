@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting builds
 description: Resolve common Cloudflare Pages git integration errors related to deployments and installations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -67,6 +67,6 @@ This is an internal error in the Cloudflare Pages SCM system. You can attempt to
 This indicates that GitHub or GitLab may be experiencing an incident affecting push events to Cloudflare. It is recommended to monitor their status page ([GitHub ↗](https://www.githubstatus.com/), [GitLab ↗](https://status.gitlab.com/)) for updates and try deploying again later.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/#page","headline":"Troubleshooting builds · Cloudflare Pages docs","description":"Resolve common Cloudflare Pages git integration errors related to deployments and installations.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/#page","headline":"Troubleshooting builds · Cloudflare Pages docs","description":"Resolve common Cloudflare Pages git integration errors related to deployments and installations.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/git-integration/","name":"Git integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/configuration/git-integration/troubleshooting/","name":"Troubleshooting builds"}}]}
 ```

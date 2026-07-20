@@ -1,7 +1,7 @@
 ---
 title: Get account details
 description: Retrieve account information for tenant-managed Cloudflare accounts using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -40,6 +40,6 @@ curl "https://api.cloudflare.com/client/v4/tenants/{tenant_id}/accounts?page=1&p
 A successful request will return an HTTP status of `200` and a response body containing account information and feature flags for all accounts managed by the Tenant.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/get-account-details/#page","headline":"Get account details · Cloudflare Tenant docs","description":"Retrieve account information for tenant-managed Cloudflare accounts using the API.","url":"https://developers.cloudflare.com/tenant/how-to/get-account-details/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/get-account-details/#page","headline":"Get account details · Cloudflare Tenant docs","description":"Retrieve account information for tenant-managed Cloudflare accounts using the API.","url":"https://developers.cloudflare.com/tenant/how-to/get-account-details/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/tenant/how-to/get-account-details/","name":"Get account details"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Voice agent
 description: Build a real-time voice agent with speech-to-text, LLM processing, and text-to-speech on Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -42,8 +42,8 @@ The starter gives you a working Vite + React + Cloudflare Workers setup. You wil
 
 Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for your voice agent:
 
-* [  wrangler.jsonc ](#tab-panel-5709)
-* [  wrangler.toml ](#tab-panel-5710)
+* [  wrangler.jsonc ](#tab-panel-5971)
+* [  wrangler.toml ](#tab-panel-5972)
 
 **JSONC**
 
@@ -51,7 +51,7 @@ Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for
 {
   "name": "voice-agent",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": ["nodejs_compat"],
   "main": "src/server.ts",
   "ai": {
@@ -79,7 +79,7 @@ Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for
 ```toml
 name = "voice-agent"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 main = "src/server.ts"
 
@@ -102,8 +102,8 @@ new_sqlite_classes = [ "MyVoiceAgent" ]
 
 Replace `src/server.ts` with the following. The `withVoice` mixin adds the full voice pipeline — STT, sentence chunking, TTS, and conversation persistence — to a standard `Agent` class.
 
-* [  JavaScript ](#tab-panel-5715)
-* [  TypeScript ](#tab-panel-5716)
+* [  JavaScript ](#tab-panel-5977)
+* [  TypeScript ](#tab-panel-5978)
 
 **JavaScript**
 
@@ -336,8 +336,8 @@ Open the app in your browser, select **Start Call**, and speak. You will see the
 
 You can intercept and transform data at each stage of the pipeline. For example, filter out short transcripts (noise) and adjust pronunciation before TTS:
 
-* [  JavaScript ](#tab-panel-5711)
-* [  TypeScript ](#tab-panel-5712)
+* [  JavaScript ](#tab-panel-5973)
+* [  TypeScript ](#tab-panel-5974)
 
 **JavaScript**
 
@@ -395,8 +395,8 @@ Returning `null` from `afterTranscribe` drops the utterance entirely — useful 
 
 Swap in third-party STT or TTS providers without changing your agent logic:
 
-* [  JavaScript ](#tab-panel-5713)
-* [  TypeScript ](#tab-panel-5714)
+* [  JavaScript ](#tab-panel-5975)
+* [  TypeScript ](#tab-panel-5976)
 
 **JavaScript**
 
@@ -457,6 +457,6 @@ export class MyVoiceAgent extends VoiceAgent<Env> {
 [ Using AI models ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) Use Workers AI, OpenAI, Anthropic, Gemini, or any provider with your agents.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/voice-agent/#page","headline":"Voice agent · Cloudflare Agents docs","description":"Build a real-time voice agent with speech-to-text, LLM processing, and text-to-speech on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/examples/voice-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/voice-agent/#page","headline":"Voice agent · Cloudflare Agents docs","description":"Build a real-time voice agent with speech-to-text, LLM processing, and text-to-speech on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/examples/voice-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/examples/voice-agent/","name":"Voice agent"}}]}
 ```

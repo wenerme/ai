@@ -1,7 +1,7 @@
 ---
 title: Spectrum
 description: Use Load Balancing with Spectrum for TCP and UDP traffic.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -78,6 +78,6 @@ The exact settings will vary depending on your use case. Refer to the following 
 2. A fallback pool is the pool of last resort. When all pools are disabled or unhealthy, this is where the load balancer will send traffic. [↩](#user-content-fnref-2)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/load-balancing/additional-options/spectrum/#page","headline":"Add load balancing to Spectrum applications · Cloudflare Load Balancing docs","description":"Use Load Balancing with Spectrum for TCP and UDP traffic.","url":"https://developers.cloudflare.com/load-balancing/additional-options/spectrum/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/load-balancing/additional-options/spectrum/#page","headline":"Add load balancing to Spectrum applications · Cloudflare Load Balancing docs","description":"Use Load Balancing with Spectrum for TCP and UDP traffic.","url":"https://developers.cloudflare.com/load-balancing/additional-options/spectrum/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/additional-options/","name":"Additional configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/additional-options/spectrum/","name":"Spectrum"}}]}
 ```

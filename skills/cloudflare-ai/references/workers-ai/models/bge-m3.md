@@ -1,7 +1,7 @@
 ---
 title: bge-m3
 description: Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,9 +27,9 @@ Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4967)
-* [  Python ](#tab-panel-4968)
-* [  curl ](#tab-panel-4969)
+* [  TypeScript ](#tab-panel-5225)
+* [  Python ](#tab-panel-5226)
+* [  curl ](#tab-panel-5227)
 
 ```ts
 export interface Env {
@@ -103,8 +103,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-4970)
-* [ Output ](#tab-panel-4971)
+* [ Input ](#tab-panel-5228)
+* [ Output ](#tab-panel-5229)
 
 query
 
@@ -124,8 +124,8 @@ request\_id
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-4972)
-* [ Output ](#tab-panel-4973)
+* [ Input ](#tab-panel-5230)
+* [ Output ](#tab-panel-5231)
 
 ▶requests\[\]
 
@@ -146,6 +146,6 @@ request\_id
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-m3/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-m3/batch-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bge-m3/#page","headline":"bge-m3 (BAAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.","url":"https://developers.cloudflare.com/workers-ai/models/bge-m3/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bge-m3/#page","headline":"bge-m3 (BAAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.","url":"https://developers.cloudflare.com/workers-ai/models/bge-m3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

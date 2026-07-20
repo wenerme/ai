@@ -1,7 +1,7 @@
 ---
 title: Applications with integrated SSO
 description: Manage applications with existing SSO integrations.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -54,6 +54,6 @@ app.public.com")-->E("Browser displays app.public.com")
 All users - whether in the office, remote, using or not using the VPN client - will always route through the Cloudflare Access authentication flow at `app.public.com` to access a private application. This provides a single control plane for policy application and security audits, and no additional user training is necessary.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/integrated-sso/#page","headline":"Applications with integrated SSO · Cloudflare Learning Paths","description":"Manage applications with existing SSO integrations.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/integrated-sso/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/integrated-sso/#page","headline":"Applications with integrated SSO · Cloudflare Learning Paths","description":"Manage applications with existing SSO integrations.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/integrated-sso/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/migrate-applications/","name":"Migrate applications"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/clientless-access/migrate-applications/integrated-sso/","name":"Applications with integrated SSO"}}]}
 ```

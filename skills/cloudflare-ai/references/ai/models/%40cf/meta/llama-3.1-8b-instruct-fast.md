@@ -1,7 +1,7 @@
 ---
 title: llama-3.1-8b-instruct-fast
 description: [Fast version] The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -33,10 +33,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2383)
-* [  TypeScript ](#tab-panel-2384)
-* [  Python ](#tab-panel-2385)
-* [  curl ](#tab-panel-2386)
+* [  Worker (Streaming) ](#tab-panel-2529)
+* [  TypeScript ](#tab-panel-2530)
+* [  Python ](#tab-panel-2531)
+* [  curl ](#tab-panel-2532)
 
 **TypeScript**
 
@@ -225,6 +225,6 @@ type
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/streaming-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.1-8b-instruct-fast/#page","headline":"llama-3.1-8b-instruct-fast (Meta) · Cloudflare AI docs · Cloudflare AI docs","description":"\\[Fast version] The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks.","url":"https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.1-8b-instruct-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.1-8b-instruct-fast/#page","headline":"llama-3.1-8b-instruct-fast (Meta) · Cloudflare AI docs · Cloudflare AI docs","description":"\\[Fast version] The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks.","url":"https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.1-8b-instruct-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

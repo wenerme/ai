@@ -1,7 +1,7 @@
 ---
 title: Qwen 3.5 397B A17B
 description: Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active parameters, offering strong reasoning capabilities with efficient inference.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -4640,6 +4640,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/
 Output [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/#page","headline":"Qwen 3.5 397B A17B (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active parameters, offering strong reasoning capabilities with efficient inference.","url":"https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/#page","headline":"Qwen 3.5 397B A17B (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active parameters, offering strong reasoning capabilities with efficient inference.","url":"https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

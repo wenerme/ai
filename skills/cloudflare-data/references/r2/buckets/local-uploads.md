@@ -1,7 +1,7 @@
 ---
 title: Local uploads
 description: Improve R2 upload performance by writing object data to a nearby location before async copy.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -86,8 +86,8 @@ Local uploads are not supported for buckets with [jurisdictional restrictions](h
 
 When you enable Local Uploads, existing uploads will complete as expected with no interruption to traffic.
 
-* [ Dashboard ](#tab-panel-10160)
-* [ Wrangler ](#tab-panel-10161)
+* [ Dashboard ](#tab-panel-10605)
+* [ Wrangler ](#tab-panel-10606)
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -105,8 +105,8 @@ npx wrangler r2 bucket local-uploads enable <BUCKET_NAME>
 
 You can disable local uploads at any time. Existing requests made with local uploads will complete replication with no interruption to your traffic.
 
-* [ Dashboard ](#tab-panel-10162)
-* [ Wrangler ](#tab-panel-10163)
+* [ Dashboard ](#tab-panel-10607)
+* [ Wrangler ](#tab-panel-10608)
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -125,6 +125,6 @@ npx wrangler r2 bucket local-uploads disable <BUCKET_NAME>
 There is **no additional cost** to enable local uploads. Upload requests made with this feature enabled incur the standard [Class A operation costs](https://developers.cloudflare.com/r2/pricing/), same as upload requests made without local uploads.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/local-uploads/#page","headline":"Local uploads · Cloudflare R2 docs","description":"Improve R2 upload performance by writing object data to a nearby location before async copy.","url":"https://developers.cloudflare.com/r2/buckets/local-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/local-uploads/#page","headline":"Local uploads · Cloudflare R2 docs","description":"Improve R2 upload performance by writing object data to a nearby location before async copy.","url":"https://developers.cloudflare.com/r2/buckets/local-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/buckets/","name":"Buckets"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/buckets/local-uploads/","name":"Local uploads"}}]}
 ```

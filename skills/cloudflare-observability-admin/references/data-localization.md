@@ -1,7 +1,7 @@
 ---
 title: Data Localization Suite
 description: Control where your data is inspected, processed, and stored with the Data Localization Suite.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -63,6 +63,6 @@ Refer to our latest resources to learn more about privacy.
 Read articles about the latest updates to the Data Localization Suite.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/data-localization/#page","headline":"Data Localization Suite · Cloudflare Data Localization Suite docs","description":"Control where your data is inspected, processed, and stored with the Data Localization Suite.","url":"https://developers.cloudflare.com/data-localization/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/data-localization/#page","headline":"Data Localization Suite · Cloudflare Data Localization Suite docs","description":"Control where your data is inspected, processed, and stored with the Data Localization Suite.","url":"https://developers.cloudflare.com/data-localization/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}}]}
 ```

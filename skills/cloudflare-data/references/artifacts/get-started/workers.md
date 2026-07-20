@@ -1,7 +1,7 @@
 ---
 title: Workers
 description: Create an Artifacts repo from a Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -64,8 +64,8 @@ cd artifacts-worker
 
 Open your Wrangler config file and add the Artifacts binding:
 
-* [  wrangler.jsonc ](#tab-panel-7132)
-* [  wrangler.toml ](#tab-panel-7133)
+* [  wrangler.jsonc ](#tab-panel-7461)
+* [  wrangler.toml ](#tab-panel-7462)
 
 **JSONC**
 
@@ -75,7 +75,7 @@ Open your Wrangler config file and add the Artifacts binding:
   "name": "artifacts-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "artifacts": [
     {
       "binding": "ARTIFACTS",
@@ -91,7 +91,7 @@ Open your Wrangler config file and add the Artifacts binding:
 name = "artifacts-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [[artifacts]]
@@ -124,8 +124,8 @@ Wrangler adds an `Artifacts` type to your generated `worker-configuration.d.ts` 
 
 Replace `src/index.ts` with the following code:
 
-* [  JavaScript ](#tab-panel-7134)
-* [  TypeScript ](#tab-panel-7135)
+* [  JavaScript ](#tab-panel-7463)
+* [  TypeScript ](#tab-panel-7464)
 
 **src/index.js**
 
@@ -227,8 +227,8 @@ pnpm wrangler dev
 
 Then, open a second terminal and send a request to your Worker to create a new Artifacts repo:
 
-* [ Manual ](#tab-panel-7130)
-* [ jq ](#tab-panel-7131)
+* [ Manual ](#tab-panel-7459)
+* [ jq ](#tab-panel-7460)
 
 ```bash
 curl http://localhost:8787/repos \
@@ -347,6 +347,6 @@ Wrangler prints your `workers.dev` URL. Use the same `curl` request against that
 [ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/) Use standard git-over-HTTPS remotes with either URL-based auth or \`http.extraHeader\`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/workers/#page","headline":"Get started - Workers · Cloudflare Artifacts docs","description":"Create an Artifacts repo from a Worker.","url":"https://developers.cloudflare.com/artifacts/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/workers/#page","headline":"Get started - Workers · Cloudflare Artifacts docs","description":"Create an Artifacts repo from a Worker.","url":"https://developers.cloudflare.com/artifacts/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/get-started/workers/","name":"Workers"}}]}
 ```

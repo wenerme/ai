@@ -1,7 +1,7 @@
 ---
 title: Best practices
 description: Best practices for using Flagship in applications, including evaluation paths, rollout workflows, and safe flag cleanup.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -97,6 +97,6 @@ Start with a small percentage rollout, monitor application metrics, then increas
 Flags that are disabled or fully rolled out still add maintenance cost. Before deleting a flag, disable it first, monitor for unexpected behavior, remove the evaluation code, deploy the code change, then delete the flag from Flagship.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/best-practices/#page","headline":"Best practices · Cloudflare Flagship docs","description":"Best practices for using Flagship in applications, including evaluation paths, rollout workflows, and safe flag cleanup.","url":"https://developers.cloudflare.com/flagship/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/best-practices/#page","headline":"Best practices · Cloudflare Flagship docs","description":"Best practices for using Flagship in applications, including evaluation paths, rollout workflows, and safe flag cleanup.","url":"https://developers.cloudflare.com/flagship/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/best-practices/","name":"Best practices"}}]}
 ```

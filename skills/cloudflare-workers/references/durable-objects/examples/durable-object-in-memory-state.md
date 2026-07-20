@@ -1,7 +1,7 @@
 ---
 title: Durable Object in-memory state
 description: Create a Durable Object that stores the last location it was accessed from in-memory.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,8 +16,8 @@ Create a Durable Object that stores the last location it was accessed from in-me
 
 This example shows you how Durable Objects are stateful, meaning in-memory state can be retained between requests. After a brief period of inactivity, the Durable Object will be evicted, and all in-memory state will be lost. The next request will reconstruct the object, but instead of showing the city of the previous request, it will display a message indicating that the object has been reinitialized. If you need your applications state to survive eviction, write the state to storage by using the [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/), or by storing your data elsewhere.
 
-* [  JavaScript ](#tab-panel-8682)
-* [  Python ](#tab-panel-8683)
+* [  JavaScript ](#tab-panel-9024)
+* [  Python ](#tab-panel-9025)
 
 **JavaScript**
 
@@ -136,8 +136,8 @@ New Location: {request.js_object.cf.city}"""
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-8684)
-* [  wrangler.toml ](#tab-panel-8685)
+* [  wrangler.jsonc ](#tab-panel-9026)
+* [  wrangler.toml ](#tab-panel-9027)
 
 **JSONC**
 
@@ -184,6 +184,6 @@ new_sqlite_classes = [ "Location" ]
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/durable-object-in-memory-state/#page","headline":"Durable Object in-memory state · Cloudflare Durable Objects docs","description":"Create a Durable Object that stores the last location it was accessed from in-memory.","url":"https://developers.cloudflare.com/durable-objects/examples/durable-object-in-memory-state/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/durable-object-in-memory-state/#page","headline":"Durable Object in-memory state · Cloudflare Durable Objects docs","description":"Create a Durable Object that stores the last location it was accessed from in-memory.","url":"https://developers.cloudflare.com/durable-objects/examples/durable-object-in-memory-state/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/durable-object-in-memory-state/","name":"Durable Object in-memory state"}}]}
 ```

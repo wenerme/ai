@@ -1,7 +1,7 @@
 ---
 title: Upload, encode, and deliver videos
 description: Build a complete video hosting and delivery solution with Cloudflare Stream.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -43,6 +43,6 @@ Add customizable live video and voice to web or mobile applications. [Learn more
 3. [Secure videos with signed URLs](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/media-streaming/video-delivery/#page","headline":"Upload, encode, and deliver videos · Cloudflare use cases","description":"Build a complete video hosting and delivery solution with Cloudflare Stream.","url":"https://developers.cloudflare.com/use-cases/media-streaming/video-delivery/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/media-streaming/video-delivery/#page","headline":"Upload, encode, and deliver videos · Cloudflare use cases","description":"Build a complete video hosting and delivery solution with Cloudflare Stream.","url":"https://developers.cloudflare.com/use-cases/media-streaming/video-delivery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/media-streaming/","name":"Media and streaming"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/media-streaming/video-delivery/","name":"Upload, encode, and deliver videos"}}]}
 ```

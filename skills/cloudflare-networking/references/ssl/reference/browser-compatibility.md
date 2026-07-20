@@ -1,7 +1,7 @@
 ---
 title: Browser compatibility
 description: Review information about browser compatibility for the different Cloudflare SSL/TLS offerings.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -56,6 +56,6 @@ Cloudflare's OCSP implementation uses HTTP/1.1 by default for plain HTTP connect
 For HTTPS connections, the client automatically attempts to use HTTP/2 if the server supports it through the TLS ALPN (Application-Layer Protocol Negotiation) extension. If HTTP/2 is not available or supported by the server, it will fall back to HTTP/1.1.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/browser-compatibility/#page","headline":"Browser compatibility · Cloudflare SSL/TLS docs","description":"Review information about browser compatibility for the different Cloudflare SSL/TLS offerings.","url":"https://developers.cloudflare.com/ssl/reference/browser-compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/browser-compatibility/#page","headline":"Browser compatibility · Cloudflare SSL/TLS docs","description":"Review information about browser compatibility for the different Cloudflare SSL/TLS offerings.","url":"https://developers.cloudflare.com/ssl/reference/browser-compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/reference/browser-compatibility/","name":"Browser compatibility"}}]}
 ```

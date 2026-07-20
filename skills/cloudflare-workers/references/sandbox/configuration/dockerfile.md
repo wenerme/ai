@@ -1,7 +1,7 @@
 ---
 title: Dockerfile reference
 description: Customize the Sandbox SDK container image with packages, tools, and configurations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -202,6 +202,6 @@ If you have existing startup scripts that end with `exec bun /container-server/d
 * [Container concepts](https://developers.cloudflare.com/sandbox/concepts/containers/) \- Understanding the runtime environment
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/dockerfile/#page","headline":"Dockerfile reference · Cloudflare Sandbox SDK docs","description":"Customize the Sandbox SDK container image with packages, tools, and configurations.","url":"https://developers.cloudflare.com/sandbox/configuration/dockerfile/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/dockerfile/#page","headline":"Dockerfile reference · Cloudflare Sandbox SDK docs","description":"Customize the Sandbox SDK container image with packages, tools, and configurations.","url":"https://developers.cloudflare.com/sandbox/configuration/dockerfile/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/dockerfile/","name":"Dockerfile reference"}}]}
 ```

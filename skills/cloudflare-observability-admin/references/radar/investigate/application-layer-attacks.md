@@ -1,7 +1,7 @@
 ---
 title: Application layer attacks
 description: Investigate mitigated HTTP request data in Cloudflare Radar, including attack sources, targets, and mitigation products.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -242,6 +242,6 @@ For more information refer to [Get layer 7 top attack pairs](https://developers.
 Refer to [Network layer attacks](https://developers.cloudflare.com/radar/investigate/network-layer-attacks/) for more information on data on layer 3 of the Open Systems Interconnection (OSI) model.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/application-layer-attacks/#page","headline":"Application layer attacks · Cloudflare Radar docs","description":"Investigate mitigated HTTP request data in Cloudflare Radar, including attack sources, targets, and mitigation products.","url":"https://developers.cloudflare.com/radar/investigate/application-layer-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/application-layer-attacks/#page","headline":"Application layer attacks · Cloudflare Radar docs","description":"Investigate mitigated HTTP request data in Cloudflare Radar, including attack sources, targets, and mitigation products.","url":"https://developers.cloudflare.com/radar/investigate/application-layer-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/application-layer-attacks/","name":"Application layer attacks"}}]}
 ```

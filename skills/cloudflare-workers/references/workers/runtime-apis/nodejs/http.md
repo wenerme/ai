@@ -1,7 +1,7 @@
 ---
 title: http
 description: Use the Node.js http module in Cloudflare Workers for client and server-side HTTP functionality.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -24,8 +24,8 @@ To use the HTTP client-side methods (`http.get`, `http.request`, etc.), you must
 
 This flag is automatically enabled for Workers using a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2025-08-15` or later when `nodejs_compat` is enabled. For Workers using an earlier compatibility date, you can manually enable it by adding the flag to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-12372)
-* [  wrangler.toml ](#tab-panel-12373)
+* [  wrangler.jsonc ](#tab-panel-12897)
+* [  wrangler.toml ](#tab-panel-12898)
 
 **JSONC**
 
@@ -50,8 +50,8 @@ To use the HTTP server-side methods (`http.createServer`, `http.Server`, `http.S
 
 This flag is automatically enabled for Workers using a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2025-09-01` or later when `nodejs_compat` is enabled. For Workers using an earlier compatibility date, you can manually enable it by adding the flag to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-12374)
-* [  wrangler.toml ](#tab-panel-12375)
+* [  wrangler.jsonc ](#tab-panel-12899)
+* [  wrangler.toml ](#tab-panel-12900)
 
 **JSONC**
 
@@ -72,8 +72,8 @@ compatibility_flags = [ "nodejs_compat", "enable_nodejs_http_server_modules" ]
 
 To use both client-side and server-side methods, enable both flags:
 
-* [  wrangler.jsonc ](#tab-panel-12376)
-* [  wrangler.toml ](#tab-panel-12377)
+* [  wrangler.jsonc ](#tab-panel-12901)
+* [  wrangler.toml ](#tab-panel-12902)
 
 **JSONC**
 
@@ -448,6 +448,6 @@ Because the Workers implementation of `node:http` is a wrapper around the global
 * Gaining direct access to the underlying `socket` is not supported.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/http/#page","headline":"http · Cloudflare Workers docs","description":"Use the Node.js http module in Cloudflare Workers for client and server-side HTTP functionality.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/http/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/http/#page","headline":"http · Cloudflare Workers docs","description":"Use the Node.js http module in Cloudflare Workers for client and server-side HTTP functionality.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/http/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/nodejs/","name":"Node.js compatibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/nodejs/http/","name":"http"}}]}
 ```

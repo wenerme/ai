@@ -1,7 +1,7 @@
 ---
 title: Agent Lee
 description: Ask questions, run diagnostics, and take actions across your Cloudflare account using an AI-powered dashboard assistant.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -127,6 +127,6 @@ Agent Lee is built on Cloudflare's own developer platform using the same primiti
 * [Blog post: Introducing Agent Lee ↗](https://blog.cloudflare.com/introducing-agent-lee)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agent-lee/#page","headline":"Overview · Agent Lee docs","description":"Ask questions, run diagnostics, and take actions across your Cloudflare account using an AI-powered dashboard assistant.","url":"https://developers.cloudflare.com/agent-lee/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agent-lee/#page","headline":"Overview · Agent Lee docs","description":"Ask questions, run diagnostics, and take actions across your Cloudflare account using an AI-powered dashboard assistant.","url":"https://developers.cloudflare.com/agent-lee/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agent-lee/","name":"Agent Lee"}}]}
 ```

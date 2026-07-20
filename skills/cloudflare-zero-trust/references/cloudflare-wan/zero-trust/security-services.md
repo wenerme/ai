@@ -1,7 +1,7 @@
 ---
 title: Secure WAN traffic
 description: Which security services apply to WAN traffic and when to use them.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -112,6 +112,6 @@ This means you can layer multiple security services on the same traffic flow wit
 * [WAN transformation](https://developers.cloudflare.com/cloudflare-wan/wan-transformation/): Plan your migration from traditional WAN to Cloudflare.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/security-services/#page","headline":"Secure WAN traffic · Cloudflare WAN docs","description":"Which security services apply to WAN traffic and when to use them.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/security-services/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/security-services/#page","headline":"Secure WAN traffic · Cloudflare WAN docs","description":"Which security services apply to WAN traffic and when to use them.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/security-services/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/zero-trust/","name":"Cloudflare One integration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/zero-trust/security-services/","name":"Secure WAN traffic"}}]}
 ```

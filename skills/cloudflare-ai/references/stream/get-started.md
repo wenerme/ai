@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Upload your first video or start your first live stream with Cloudflare Stream.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,11 +31,11 @@ For a list of accepted file types, refer to [Supported video formats](https://de
 
 To use the API, replace the `API_TOKEN` and `ACCOUNT_ID` values with your credentials in the example below.
 
-* [ REST API ](#tab-panel-11178)
-* [ Workers Binding API ](#tab-panel-11179)
+* [ REST API ](#tab-panel-11623)
+* [ Workers Binding API ](#tab-panel-11624)
 
-* [ cURL ](#tab-panel-11171)
-* [ TypeScript ](#tab-panel-11172)
+* [ cURL ](#tab-panel-11616)
+* [ TypeScript ](#tab-panel-11617)
 
 ```bash
 curl \
@@ -63,8 +63,8 @@ const video = await client.stream.copy.create({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-11173)
-* [ wrangler.jsonc ](#tab-panel-11174)
+* [ index.ts ](#tab-panel-11618)
+* [ wrangler.jsonc ](#tab-panel-11619)
 
 **TypeScript**
 
@@ -173,10 +173,10 @@ You can create a live input using the API or the **Live inputs** page of the Clo
 
 To use the API, replace the `API_TOKEN` and `ACCOUNT_ID` values with your credentials in the example below.
 
-* [ REST API ](#tab-panel-11177)
+* [ REST API ](#tab-panel-11622)
 
-* [ cURL ](#tab-panel-11175)
-* [ TypeScript ](#tab-panel-11176)
+* [ cURL ](#tab-panel-11620)
+* [ TypeScript ](#tab-panel-11621)
 
 ```bash
 curl -X POST \
@@ -261,6 +261,6 @@ The embed code above can also be found on the **Stream** page of the Cloudflare 
 To make your video content more accessible, include [captions](https://developers.cloudflare.com/stream/edit-videos/adding-captions/) and [high-quality audio recording ↗](https://www.w3.org/WAI/media/av/av-content/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/get-started/#page","headline":"Get started · Cloudflare Stream docs","description":"Upload your first video or start your first live stream with Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/get-started/#page","headline":"Get started · Cloudflare Stream docs","description":"Upload your first video or start your first live stream with Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/get-started/","name":"Get started"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Workers Cache
 description: Workers Cache lets you cache Worker responses to reduce latency and Workers usage.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -119,8 +119,8 @@ This quickstart walks you through enabling caching, deploying, and observing the
 
 ### 1\. Enable caching in your Wrangler configuration
 
-* [  wrangler.jsonc ](#tab-panel-11827)
-* [  wrangler.toml ](#tab-panel-11828)
+* [  wrangler.jsonc ](#tab-panel-12225)
+* [  wrangler.toml ](#tab-panel-12226)
 
 **JSONC**
 
@@ -129,7 +129,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
  "name": "my-worker",
  "main": "src/index.ts",
  // Set this to today's date
- "compatibility_date": "2026-07-07",
+ "compatibility_date": "2026-07-20",
  "cache": {
   "enabled": true,
  },
@@ -142,7 +142,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-07"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -153,8 +153,8 @@ enabled = true
 
 Use `max-age` to control how long Cloudflare caches each response:
 
-* [  JavaScript ](#tab-panel-11833)
-* [  TypeScript ](#tab-panel-11834)
+* [  JavaScript ](#tab-panel-12231)
+* [  TypeScript ](#tab-panel-12232)
 
 **src/index.js**
 
@@ -256,8 +256,8 @@ Workers Caching honors the [Vary ↗](https://www.rfc-editor.org/rfc/rfc9110.htm
 
 This lets a single URL cache multiple representations — for example, different encodings, different content types, or different languages — without your Worker coordinating content negotiation by hand:
 
-* [  JavaScript ](#tab-panel-11835)
-* [  TypeScript ](#tab-panel-11836)
+* [  JavaScript ](#tab-panel-12233)
+* [  TypeScript ](#tab-panel-12234)
 
 **src/index.js**
 
@@ -340,8 +340,8 @@ The wrapper entrypoint forwards the request into the Durable Object and sets `Ca
 
 The default entrypoint here is a gateway that should run on every request, so disable caching on it and enable it on `CachedCounter` (see [Per-entrypoint caching](https://developers.cloudflare.com/workers/cache/configuration/#per-entrypoint-caching)):
 
-* [  wrangler.jsonc ](#tab-panel-11829)
-* [  wrangler.toml ](#tab-panel-11830)
+* [  wrangler.jsonc ](#tab-panel-12227)
+* [  wrangler.toml ](#tab-panel-12228)
 
 **JSONC**
 
@@ -350,7 +350,7 @@ The default entrypoint here is a gateway that should run on every request, so di
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-07",
+  "compatibility_date": "2026-07-20",
   "cache": { "enabled": true },
   "exports": {
     "default": { "type": "worker", "cache": { "enabled": false } },
@@ -365,7 +365,7 @@ The default entrypoint here is a gateway that should run on every request, so di
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-07"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -388,8 +388,8 @@ type = "worker"
   enabled = true
 ```
 
-* [  JavaScript ](#tab-panel-11837)
-* [  TypeScript ](#tab-panel-11838)
+* [  JavaScript ](#tab-panel-12235)
+* [  TypeScript ](#tab-panel-12236)
 
 **src/index.js**
 
@@ -520,8 +520,8 @@ Because the upper tier and the Smart Placement target are chosen independently t
 
 Your Worker can invalidate its own cache at any time using `ctx.cache.purge()`. Tags are the most flexible mechanism — tag responses with `Cache-Tag` when returning them, and purge those tags later:
 
-* [  JavaScript ](#tab-panel-11831)
-* [  TypeScript ](#tab-panel-11832)
+* [  JavaScript ](#tab-panel-12229)
+* [  TypeScript ](#tab-panel-12230)
 
 **src/index.js**
 
@@ -575,6 +575,6 @@ For an example, refer to [Pricing example: Worker with caching](https://develope
 * [ Limitations ](https://developers.cloudflare.com/workers/cache/limitations/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/#page","headline":"Workers Cache · Cloudflare Workers docs","description":"Workers Cache lets you cache Worker responses to reduce latency and Workers usage.","url":"https://developers.cloudflare.com/workers/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/#page","headline":"Workers Cache · Cloudflare Workers docs","description":"Workers Cache lets you cache Worker responses to reduce latency and Workers usage.","url":"https://developers.cloudflare.com/workers/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}}]}
 ```

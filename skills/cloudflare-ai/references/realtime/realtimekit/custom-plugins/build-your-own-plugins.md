@@ -1,7 +1,7 @@
 ---
 title: Build your own plugins
 description: Build custom plugins for RealtimeKit meetings.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -215,6 +215,6 @@ For richer, full-featured collaboration, you can pair your plugin with a dedicat
 * Get started with the [RealtimeKit plugins example ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/plugins) for a working React implementation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/#page","headline":"Build your own plugins · Cloudflare Realtime docs","description":"Build custom plugins for RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/#page","headline":"Build your own plugins · Cloudflare Realtime docs","description":"Build custom plugins for RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/custom-plugins/","name":"Custom Plugins"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/custom-plugins/build-your-own-plugins/","name":"Build your own plugins"}}]}
 ```

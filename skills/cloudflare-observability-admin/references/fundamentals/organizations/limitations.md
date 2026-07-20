@@ -1,7 +1,7 @@
 ---
 title: Limitations and troubleshooting
 description: Review the current limitations of Cloudflare Organizations and troubleshoot common errors.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -42,7 +42,7 @@ Each Organization supports a maximum of **500 accounts** and **5,000 zones**. Th
 | Organization creation        | MSSP/Distributor Organizations are created by Cloudflare. Contact your account team to set up your Organization.                                                                                        |
 | Adding existing accounts     | Assigning existing accounts is not available for MSSP/Distributor Organizations. Use account creation to add new accounts.                                                                              |
 | Account creation             | MSSP Organizations can self-serve create new customer accounts within their Organization.                                                                                                               |
-| Sub-Organizations            | Distributors can create child MSSP Organizations. MSSP Organizations cannot create their own child Organizations — the hierarchy is limited to two tiers: Distributor → MSSP Organizations.             |
+| Sub-Organizations            | Distributors can create child MSSP Organizations. MSSP/Distributor Organizations support up to 5 levels of nested sub-organizations.                                                                    |
 | Moving accounts              | Accounts can be moved between MSSP Organizations within the same Distributor Organization.                                                                                                              |
 | Roles                        | Organization Super Administrator is the only role available. Additional roles (read-only, billing, audit log) will be available in a future release.                                                    |
 | Organization deletion        | To delete an Organization, use the [API](https://developers.cloudflare.com/api/resources/organizations/methods/delete). Dashboard support is not yet available.                                         |
@@ -79,6 +79,6 @@ You may encounter the following errors when setting up or managing an Organizati
 | Account cannot be assigned.                     | The account may already belong to another Organization. Each account can only belong to one Organization. Contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if you believe this is incorrect. |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/limitations/#page","headline":"Limitations and troubleshooting · Cloudflare Fundamentals docs","description":"Review the current limitations of Cloudflare Organizations and troubleshoot common errors.","url":"https://developers.cloudflare.com/fundamentals/organizations/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/limitations/#page","headline":"Limitations and troubleshooting · Cloudflare Fundamentals docs","description":"Review the current limitations of Cloudflare Organizations and troubleshoot common errors.","url":"https://developers.cloudflare.com/fundamentals/organizations/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/organizations/","name":"Organizations"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/organizations/limitations/","name":"Limitations and troubleshooting"}}]}
 ```

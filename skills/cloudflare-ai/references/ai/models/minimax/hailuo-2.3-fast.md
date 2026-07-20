@@ -1,7 +1,7 @@
 ---
 title: MiniMax Hailuo 2.3 Fast
 description: A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual consistency, and stylization while enabling faster iteration.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-880)
-* [ cURL ](#tab-panel-881)
+* [ TypeScript ](#tab-panel-930)
+* [ cURL ](#tab-panel-931)
 
 **TypeScript**
 
@@ -67,8 +67,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-876)
-* [ Raw response ](#tab-panel-877)
+* [ Output ](#tab-panel-926)
+* [ Raw response ](#tab-panel-927)
 
 ```json
 {
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution I2V**  — Animate a photo in 1080P
 
-* [ TypeScript ](#tab-panel-884)
-* [ cURL ](#tab-panel-885)
+* [ TypeScript ](#tab-panel-934)
+* [ cURL ](#tab-panel-935)
 
 **TypeScript**
 
@@ -126,8 +126,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-878)
-* [ Raw response ](#tab-panel-879)
+* [ Output ](#tab-panel-928)
+* [ Raw response ](#tab-panel-929)
 
 ```json
 {
@@ -145,8 +145,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Processing**  — Quick I2V with fast pretreatment enabled
 
-* [ TypeScript ](#tab-panel-886)
-* [ cURL ](#tab-panel-887)
+* [ TypeScript ](#tab-panel-936)
+* [ cURL ](#tab-panel-937)
 
 **TypeScript**
 
@@ -183,8 +183,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-882)
-* [ Raw response ](#tab-panel-883)
+* [ Output ](#tab-panel-932)
+* [ Raw response ](#tab-panel-933)
 
 ```json
 {
@@ -202,8 +202,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-888)
-* [ Output ](#tab-panel-889)
+* [ Input ](#tab-panel-938)
+* [ Output ](#tab-panel-939)
 
 first\_frame\_image
 
@@ -248,6 +248,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/sc
 Output [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/#page","headline":"MiniMax Hailuo 2.3 Fast (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual consistency, and stylization while enabling faster iteration.","url":"https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/#page","headline":"MiniMax Hailuo 2.3 Fast (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual consistency, and stylization while enabling faster iteration.","url":"https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

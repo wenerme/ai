@@ -1,7 +1,7 @@
 ---
 title: Inworld TTS 2
 description: Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 with rich expressive speech, real-time latency, natural language steering (e.g. [whisper], [say excitedly]), and stronger multilingual support across 15 production languages plus 90+ experimental languages.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 w
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-822)
-* [ cURL ](#tab-panel-823)
+* [ TypeScript ](#tab-panel-872)
+* [ cURL ](#tab-panel-873)
 
 **TypeScript**
 
@@ -64,8 +64,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-818)
-* [ Raw response ](#tab-panel-819)
+* [ Output ](#tab-panel-868)
+* [ Raw response ](#tab-panel-869)
 
 ```json
 {
@@ -83,8 +83,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Natural Language Steering**  — Direct the voice with bracketed natural-language cues for emotion, pace, and style.
 
-* [ TypeScript ](#tab-panel-826)
-* [ cURL ](#tab-panel-827)
+* [ TypeScript ](#tab-panel-876)
+* [ cURL ](#tab-panel-877)
 
 **TypeScript**
 
@@ -118,8 +118,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-820)
-* [ Raw response ](#tab-panel-821)
+* [ Output ](#tab-panel-870)
+* [ Raw response ](#tab-panel-871)
 
 ```json
 {
@@ -135,8 +135,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Whisper**  — Use steering tags to whisper
 
-* [ TypeScript ](#tab-panel-830)
-* [ cURL ](#tab-panel-831)
+* [ TypeScript ](#tab-panel-880)
+* [ cURL ](#tab-panel-881)
 
 **TypeScript**
 
@@ -170,8 +170,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-824)
-* [ Raw response ](#tab-panel-825)
+* [ Output ](#tab-panel-874)
+* [ Raw response ](#tab-panel-875)
 
 ```json
 {
@@ -187,8 +187,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality Audio**  — Higher sample rate for studio quality
 
-* [ TypeScript ](#tab-panel-834)
-* [ cURL ](#tab-panel-835)
+* [ TypeScript ](#tab-panel-884)
+* [ cURL ](#tab-panel-885)
 
 **TypeScript**
 
@@ -224,8 +224,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-828)
-* [ Raw response ](#tab-panel-829)
+* [ Output ](#tab-panel-878)
+* [ Raw response ](#tab-panel-879)
 
 ```json
 {
@@ -241,8 +241,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Text Normalization**  — Expand numbers and abbreviations before synthesis
 
-* [ TypeScript ](#tab-panel-836)
-* [ cURL ](#tab-panel-837)
+* [ TypeScript ](#tab-panel-886)
+* [ cURL ](#tab-panel-887)
 
 **TypeScript**
 
@@ -278,8 +278,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-832)
-* [ Raw response ](#tab-panel-833)
+* [ Output ](#tab-panel-882)
+* [ Raw response ](#tab-panel-883)
 
 ```json
 {
@@ -295,8 +295,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-838)
-* [ Output ](#tab-panel-839)
+* [ Input ](#tab-panel-888)
+* [ Output ](#tab-panel-889)
 
 text
 
@@ -345,6 +345,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/inworld/tts-2/schema-input
 Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-2/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-2/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-2/#page","headline":"Inworld TTS 2 (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 with rich expressive speech, real-time latency, natural language steering (e.g. \\[whisper], \\[say excitedly]), and stronger multilingual support across 15 production languages plus 90+ experimental languages.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-2/#page","headline":"Inworld TTS 2 (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 with rich expressive speech, real-time latency, natural language steering (e.g. \\[whisper], \\[say excitedly]), and stronger multilingual support across 15 production languages plus 90+ experimental languages.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

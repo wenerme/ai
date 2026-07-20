@@ -1,7 +1,7 @@
 ---
 title: JA3/JA4 fingerprint
 description: Profile SSL/TLS clients across requests using JA3 and JA4 fingerprints.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -121,6 +121,6 @@ Often, mobile application traffic will produce the same JA3 fingerprint across d
 Use the JA3 fingerprint to [allow traffic](https://developers.cloudflare.com/waf/custom-rules/use-cases/challenge-bad-bots/#adjust-for-mobile-traffic) from your mobile application, but block or challenge remaining traffic.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/#page","headline":"JA3/JA4 fingerprint · Cloudflare bot solutions docs","description":"Profile SSL/TLS clients across requests using JA3 and JA4 fingerprints.","url":"https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/#page","headline":"JA3/JA4 fingerprint · Cloudflare bot solutions docs","description":"Profile SSL/TLS clients across requests using JA3 and JA4 fingerprints.","url":"https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/additional-configurations/ja3-ja4-fingerprint/","name":"JA3/JA4 fingerprint"}}]}
 ```

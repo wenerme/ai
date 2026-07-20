@@ -3,7 +3,7 @@ title: plamo-embedding-1b
 description: PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Networks, Inc.
 
 It can convert Japanese text input into numerical vectors and can be used for a wide range of applications, including information retrieval, text classification, and clustering.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,9 +28,9 @@ PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Net
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2479)
-* [  Python ](#tab-panel-2480)
-* [  curl ](#tab-panel-2481)
+* [  TypeScript ](#tab-panel-2627)
+* [  Python ](#tab-panel-2628)
+* [  curl ](#tab-panel-2629)
 
 ```ts
 export interface Env {
@@ -102,8 +102,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-2482)
-* [ Output ](#tab-panel-2483)
+* [ Input ](#tab-panel-2630)
+* [ Output ](#tab-panel-2631)
 
 ▶text
 
@@ -124,6 +124,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b
 Output [ ](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/pfnet/plamo-embedding-1b/#page","headline":"plamo-embedding-1b (pfnet) · Cloudflare AI docs · Cloudflare AI docs","description":"PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Networks, Inc.\n\nIt can convert Japanese text input into numerical vectors and can be used for a wide range of applications, including information retrieval, text classification, and clustering.","url":"https://developers.cloudflare.com/ai/models/%40cf/pfnet/plamo-embedding-1b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/pfnet/plamo-embedding-1b/#page","headline":"plamo-embedding-1b (pfnet) · Cloudflare AI docs · Cloudflare AI docs","description":"PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Networks, Inc.\n\nIt can convert Japanese text input into numerical vectors and can be used for a wide range of applications, including information retrieval, text classification, and clustering.","url":"https://developers.cloudflare.com/ai/models/%40cf/pfnet/plamo-embedding-1b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

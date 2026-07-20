@@ -1,7 +1,7 @@
 ---
 title: Build your first Workflow
 description: Create and deploy your first Cloudflare Workflow with durable, multi-step execution on the Workers platform.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -124,8 +124,8 @@ For more guidance on how to define your Workflow logic, refer to [Rules of Workf
 
 1. Open `wrangler.jsonc`, which is your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project and your Workflow, and add the `workflows` configuration:
 
-  * [  wrangler.jsonc ](#tab-panel-13432)
-  * [  wrangler.toml ](#tab-panel-13433)
+  * [  wrangler.jsonc ](#tab-panel-14051)
+  * [  wrangler.toml ](#tab-panel-14052)
 
 **JSONC**
 ```jsonc
@@ -134,7 +134,7 @@ For more guidance on how to define your Workflow logic, refer to [Rules of Workf
   "name": "my-workflow",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "observability": {
     "enabled": true
   },
@@ -154,7 +154,7 @@ For more guidance on how to define your Workflow logic, refer to [Rules of Workf
 name = "my-workflow"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 [observability]
 enabled = true
 [[workflows]]
@@ -165,8 +165,8 @@ class_name = "MyWorkflow"
 The `class_name` must match your exported class, and `binding` is the variable name you use to access the Workflow in your code (like `env.MY_WORKFLOW`).
 If you want the same Workflow to run automatically on a recurring interval, add `schedules` to the Workflow definition:
 
-  * [  wrangler.jsonc ](#tab-panel-13434)
-  * [  wrangler.toml ](#tab-panel-13435)
+  * [  wrangler.jsonc ](#tab-panel-14053)
+  * [  wrangler.toml ](#tab-panel-14054)
 
 **JSONC**
 ```jsonc
@@ -175,7 +175,7 @@ If you want the same Workflow to run automatically on a recurring interval, add 
   "name": "my-workflow",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "workflows": [
     {
       "name": "my-workflow",
@@ -193,7 +193,7 @@ If you want the same Workflow to run automatically on a recurring interval, add 
 name = "my-workflow"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 [[workflows]]
 name = "my-workflow"
 binding = "MY_WORKFLOW"
@@ -283,6 +283,6 @@ The output of `instances describe` shows:
 [ Rules of Workflows ](https://developers.cloudflare.com/workflows/build/rules-of-workflows/) Understand the programming model and best practices.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/guide/#page","headline":"Build your first Workflow · Cloudflare Workflows docs","description":"Create and deploy your first Cloudflare Workflow with durable, multi-step execution on the Workers platform.","url":"https://developers.cloudflare.com/workflows/get-started/guide/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/guide/#page","headline":"Build your first Workflow · Cloudflare Workflows docs","description":"Create and deploy your first Cloudflare Workflow with durable, multi-step execution on the Workers platform.","url":"https://developers.cloudflare.com/workflows/get-started/guide/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/get-started/guide/","name":"Build your first Workflow"}}]}
 ```

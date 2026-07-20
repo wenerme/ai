@@ -1,7 +1,7 @@
 ---
 title: Common use cases
 description: Common WAF custom rule use cases and example configurations.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -34,6 +34,6 @@ The following common use cases illustrate how to secure web traffic to your site
 * [ Update custom rules for customers or partners ](https://developers.cloudflare.com/waf/custom-rules/use-cases/update-rules-customers-partners/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waf/custom-rules/use-cases/#page","headline":"Common use cases for custom rules · Cloudflare Web Application Firewall (WAF) docs","description":"Common WAF custom rule use cases and example configurations.","url":"https://developers.cloudflare.com/waf/custom-rules/use-cases/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waf/custom-rules/use-cases/#page","headline":"Common use cases for custom rules · Cloudflare Web Application Firewall (WAF) docs","description":"Common WAF custom rule use cases and example configurations.","url":"https://developers.cloudflare.com/waf/custom-rules/use-cases/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/use-cases/","name":"Common use cases"}}]}
 ```

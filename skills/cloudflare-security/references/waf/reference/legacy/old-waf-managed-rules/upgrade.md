@@ -1,7 +1,7 @@
 ---
 title: WAF managed rules upgrade
 description: Upgrade from the previous version of WAF managed rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -508,6 +508,6 @@ The concept of paranoia level did not exist in the OWASP version (2.x) used in W
 You cannot disable the new version of WAF Managed Rules using [Page Rules](https://developers.cloudflare.com/rules/page-rules/), since the _Web Application Firewall: Off_ setting in Page Rules only applies to the previous version of WAF managed rules. To disable the new WAF Managed Rules you must configure [exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) (also known as skip rules).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/#page","headline":"WAF managed rules upgrade · Cloudflare Web Application Firewall (WAF) docs","description":"Upgrade from the previous version of WAF managed rules.","url":"https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/#page","headline":"WAF managed rules upgrade · Cloudflare Web Application Firewall (WAF) docs","description":"Upgrade from the previous version of WAF managed rules.","url":"https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/reference/legacy/","name":"Legacy features"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/reference/legacy/old-waf-managed-rules/","name":"WAF managed rules (previous version)"}},{"@type":"ListItem","position":6,"item":{"@id":"/waf/reference/legacy/old-waf-managed-rules/upgrade/","name":"WAF managed rules upgrade"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Enable Sourcing Kit
 description: Set up Sourcing Kit to create import jobs and start importing images from Amazon S3 into Cloudflare Images.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -61,6 +61,6 @@ Repeat steps 8-11 in [Create your first import job](#create-your-first-import-jo
 Refer to [Edit source details](https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/edit/) to learn more about editing details for import jobs you have already created, or to learn how to abort running import jobs.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/enable/#page","headline":"Enable Sourcing Kit · Cloudflare Images docs","description":"Set up Sourcing Kit to create import jobs and start importing images from Amazon S3 into Cloudflare Images.","url":"https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/enable/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/enable/#page","headline":"Enable Sourcing Kit · Cloudflare Images docs","description":"Set up Sourcing Kit to create import jobs and start importing images from Amazon S3 into Cloudflare Images.","url":"https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/enable/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/storage/","name":"Storage"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/storage/upload-images/","name":"Upload images"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/storage/upload-images/sourcing-kit/","name":"Upload via Sourcing Kit"}},{"@type":"ListItem","position":6,"item":{"@id":"/images/storage/upload-images/sourcing-kit/enable/","name":"Enable Sourcing Kit"}}]}
 ```

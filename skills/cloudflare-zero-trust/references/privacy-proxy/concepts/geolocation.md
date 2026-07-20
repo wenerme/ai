@@ -1,7 +1,7 @@
 ---
 title: Geolocation
 description: Privacy Proxy preserves user geolocation using geohashes to select egress IPs that match the client's geographic region.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -99,6 +99,6 @@ The geohash is cryptographically protected to prevent clients from spoofing thei
 * [Geo-egress: Improving WARP user experience on a larger network ↗](https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network/) \- How Cloudflare implements geolocation-aware egress.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/#page","headline":"Geolocation · Cloudflare Privacy Proxy docs","description":"Privacy Proxy preserves user geolocation using geohashes to select egress IPs that match the client's geographic region.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/#page","headline":"Geolocation · Cloudflare Privacy Proxy docs","description":"Privacy Proxy preserves user geolocation using geohashes to select egress IPs that match the client's geographic region.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/concepts/geolocation/","name":"Geolocation"}}]}
 ```

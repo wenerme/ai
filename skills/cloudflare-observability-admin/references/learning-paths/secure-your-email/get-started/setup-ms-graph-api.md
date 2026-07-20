@@ -1,7 +1,7 @@
 ---
 title: Set up Microsoft Graph API
 description: Integrate Email security with Microsoft 365.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
     * Select **Continue to Email security**.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/get-started/setup-ms-graph-api/#page","headline":"Set up Microsoft Graph API · Cloudflare Learning Paths","description":"Integrate Email security with Microsoft 365.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/get-started/setup-ms-graph-api/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/get-started/setup-ms-graph-api/#page","headline":"Set up Microsoft Graph API · Cloudflare Learning Paths","description":"Integrate Email security with Microsoft 365.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/get-started/setup-ms-graph-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-your-email/get-started/","name":"Get started with Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-your-email/get-started/setup-ms-graph-api/","name":"Set up Microsoft Graph API"}}]}
 ```

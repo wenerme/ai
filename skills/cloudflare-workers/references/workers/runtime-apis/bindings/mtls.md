@@ -1,7 +1,7 @@
 ---
 title: mTLS
 description: Configure your Worker to present a client certificate to services that enforce an mTLS connection.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -34,8 +34,8 @@ npx wrangler mtls-certificate upload --cert cert.pem --key key.pem --name my-cli
 
 Then, update your Worker project's Wrangler file to create an mTLS certificate binding:
 
-* [  wrangler.jsonc ](#tab-panel-12291)
-* [  wrangler.toml ](#tab-panel-12292)
+* [  wrangler.jsonc ](#tab-panel-12816)
+* [  wrangler.toml ](#tab-panel-12817)
 
 **JSONC**
 
@@ -70,8 +70,8 @@ mTLS certificate bindings present an API similar to [service bindings](https://d
 
 ### Interface
 
-* [  JavaScript ](#tab-panel-12289)
-* [  TypeScript ](#tab-panel-12290)
+* [  JavaScript ](#tab-panel-12814)
+* [  TypeScript ](#tab-panel-12815)
 
 **JavaScript**
 
@@ -99,6 +99,6 @@ export default {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/#page","headline":"mTLS · Cloudflare Workers docs","description":"Configure your Worker to present a client certificate to services that enforce an mTLS connection.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/#page","headline":"mTLS · Cloudflare Workers docs","description":"Configure your Worker to present a client certificate to services that enforce an mTLS connection.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/bindings/","name":"Bindings (env)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/bindings/mtls/","name":"mTLS"}}]}
 ```

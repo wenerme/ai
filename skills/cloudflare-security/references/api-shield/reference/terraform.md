@@ -1,7 +1,7 @@
 ---
 title: Terraform
 description: Configure API Shield resources with Terraform, including endpoints and schemas.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -181,6 +181,6 @@ resource "cloudflare_api_shield" "session_identifiers" {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/reference/terraform/#page","headline":"Terraform · Cloudflare API Shield docs","description":"Configure API Shield resources with Terraform, including endpoints and schemas.","url":"https://developers.cloudflare.com/api-shield/reference/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/reference/terraform/#page","headline":"Terraform · Cloudflare API Shield docs","description":"Configure API Shield resources with Terraform, including endpoints and schemas.","url":"https://developers.cloudflare.com/api-shield/reference/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/reference/terraform/","name":"Terraform"}}]}
 ```

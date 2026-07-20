@@ -1,7 +1,7 @@
 ---
 title: Phish submissions
 description: Review user and admin phish submissions.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -24,6 +24,6 @@ There are two different ways to [submit a phish](https://developers.cloudflare.c
   * Within the Email security dashboard, Phish submissions will allow you to have a full understanding of what reclassification has been made and what the outcomes of those submissions are.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/phish-submissions/#page","headline":"Phish submissions · Cloudflare Learning Paths","description":"Review user and admin phish submissions.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/phish-submissions/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/phish-submissions/#page","headline":"Phish submissions · Cloudflare Learning Paths","description":"Review user and admin phish submissions.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/phish-submissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-your-email/monitor-your-inbox/","name":"Monitor your email activity"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-your-email/monitor-your-inbox/phish-submissions/","name":"Phish submissions"}}]}
 ```

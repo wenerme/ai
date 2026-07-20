@@ -1,7 +1,7 @@
 ---
 title: Traffic flow through Cloudflare
 description: Understand how public and private traffic on-ramps to and off-ramps from Cloudflare's global network for security and performance.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -70,6 +70,6 @@ Refer to the list below for products you can use to off-ramp traffic from Cloudf
 * [Regional services](https://developers.cloudflare.com/data-localization/regional-services/) lets you choose which subset of data centers decrypt and service HTTPS traffic, which can help customers who have to meet regional compliance or have preferences for maintaining regional control over their data.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/#page","headline":"Traffic flow through Cloudflare · Cloudflare Fundamentals docs","description":"Understand how public and private traffic on-ramps to and off-ramps from Cloudflare's global network for security and performance.","url":"https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/#page","headline":"Traffic flow through Cloudflare · Cloudflare Fundamentals docs","description":"Understand how public and private traffic on-ramps to and off-ramps from Cloudflare's global network for security and performance.","url":"https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/concepts/traffic-flow-cloudflare/","name":"Traffic flow through Cloudflare"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Cross-domain authentication
 description: Authenticate WebSocket connections to Cloudflare Agents across domains using signed tokens.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -44,8 +44,8 @@ Cookies do not help across origins. Pass credentials in the URL query, then veri
 
 ### Static authentication
 
-* [  JavaScript ](#tab-panel-6705)
-* [  TypeScript ](#tab-panel-6706)
+* [  JavaScript ](#tab-panel-6979)
+* [  TypeScript ](#tab-panel-6980)
 
 **JavaScript**
 
@@ -91,8 +91,8 @@ function ChatComponent() {
 
 Build query values right before connect. Use Suspense for async setup.
 
-* [  JavaScript ](#tab-panel-6711)
-* [  TypeScript ](#tab-panel-6712)
+* [  JavaScript ](#tab-panel-6985)
+* [  TypeScript ](#tab-panel-6986)
 
 **JavaScript**
 
@@ -172,8 +172,8 @@ function App() {
 
 Refresh the token when the connection fails due to authentication error.
 
-* [  JavaScript ](#tab-panel-6713)
-* [  TypeScript ](#tab-panel-6714)
+* [  JavaScript ](#tab-panel-6987)
+* [  TypeScript ](#tab-panel-6988)
 
 **JavaScript**
 
@@ -297,8 +297,8 @@ Pass credentials in the URL when connecting to another host, then verify on the 
 
 ### Static cross-domain auth
 
-* [  JavaScript ](#tab-panel-6707)
-* [  TypeScript ](#tab-panel-6708)
+* [  JavaScript ](#tab-panel-6981)
+* [  TypeScript ](#tab-panel-6982)
 
 **JavaScript**
 
@@ -344,8 +344,8 @@ function StaticCrossDomainAuth() {
 
 ### Async cross-domain auth
 
-* [  JavaScript ](#tab-panel-6709)
-* [  TypeScript ](#tab-panel-6710)
+* [  JavaScript ](#tab-panel-6983)
+* [  TypeScript ](#tab-panel-6984)
 
 **JavaScript**
 
@@ -409,8 +409,8 @@ function AsyncCrossDomainAuth() {
 
 On the server side, verify the token in the `onConnect` handler:
 
-* [  JavaScript ](#tab-panel-6715)
-* [  TypeScript ](#tab-panel-6716)
+* [  JavaScript ](#tab-panel-6989)
+* [  TypeScript ](#tab-panel-6990)
 
 **JavaScript**
 
@@ -536,6 +536,6 @@ export class SecureAgent extends Agent {
 [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/#page","headline":"Cross-domain authentication · Cloudflare Agents docs","description":"Authenticate WebSocket connections to Cloudflare Agents across domains using signed tokens.","url":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/#page","headline":"Cross-domain authentication · Cloudflare Agents docs","description":"Authenticate WebSocket connections to Cloudflare Agents across domains using signed tokens.","url":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/operations/","name":"Operations"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/operations/cross-domain-authentication/","name":"Cross-domain authentication"}}]}
 ```

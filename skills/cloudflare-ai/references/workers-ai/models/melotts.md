@@ -1,7 +1,7 @@
 ---
 title: melotts
 description: MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -48,8 +48,8 @@ export default {
 
 ## Parameters
 
-* [ Input ](#tab-panel-5228)
-* [ Output ](#tab-panel-5229)
+* [ Input ](#tab-panel-5486)
+* [ Output ](#tab-panel-5487)
 
 prompt
 
@@ -76,6 +76,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-inp
 Output [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/melotts/#page","headline":"melotts (MyShell) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.","url":"https://developers.cloudflare.com/workers-ai/models/melotts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/melotts/#page","headline":"melotts (MyShell) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.","url":"https://developers.cloudflare.com/workers-ai/models/melotts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Webhooks
 description: Receive RealtimeKit events in your application through signed HTTP callbacks.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ Webhook events are subscription-only. Your endpoint receives only the events inc
 
 Your webhook endpoint must accept JSON `POST` requests. The endpoint can handle multiple event types by switching on the `event` field in the request body.
 
-* [  JavaScript ](#tab-panel-10376)
-* [  TypeScript ](#tab-panel-10377)
+* [  JavaScript ](#tab-panel-10821)
+* [  TypeScript ](#tab-panel-10822)
 
 **src/index.js**
 
@@ -174,8 +174,8 @@ The response includes a PEM-encoded public key:
 
 Verify `rtk-signature` against the raw request body. Do not reserialize parsed JSON before verification because changes in whitespace or key order can change the signed bytes.
 
-* [  JavaScript ](#tab-panel-10378)
-* [  TypeScript ](#tab-panel-10379)
+* [  JavaScript ](#tab-panel-10823)
+* [  TypeScript ](#tab-panel-10824)
 
 **src/index.js**
 
@@ -618,6 +618,6 @@ Livestream statuses include `LIVE`, `OFFLINE`, and `IDLE`.
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/webhooks/#page","headline":"Webhooks · Cloudflare Realtime docs","description":"Receive RealtimeKit events in your application through signed HTTP callbacks.","url":"https://developers.cloudflare.com/realtime/realtimekit/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/webhooks/#page","headline":"Webhooks · Cloudflare Realtime docs","description":"Receive RealtimeKit events in your application through signed HTTP callbacks.","url":"https://developers.cloudflare.com/realtime/realtimekit/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/webhooks/","name":"Webhooks"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Meeting Locale
 description: Customize text and localize the RealtimeKit UI Kit meeting interface for different languages.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -969,6 +969,6 @@ The React Native UI Kit exposes approximately 195 overridable string keys via th
 | ended.kicked               | You were removed from the meeting.       |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/#page","headline":"Meeting Locale · Cloudflare Realtime docs","description":"Customize text and localize the RealtimeKit UI Kit meeting interface for different languages.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/#page","headline":"Meeting Locale · Cloudflare Realtime docs","description":"Customize text and localize the RealtimeKit UI Kit meeting interface for different languages.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ui-kit/","name":"Build using UI Kit"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ui-kit/meeting-locale/","name":"Meeting Locale"}}]}
 ```

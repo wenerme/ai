@@ -1,7 +1,7 @@
 ---
 title: Lifecycle
 description: Create, configure, and manage Sandbox SDK container instances and their resources.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -51,8 +51,8 @@ Implicit execution mode
 
 By default, sandbox methods that do not specify a `sessionId` run in the sandbox's default session and preserve shell state between calls. It is recommended to set `enableDefaultSession` to `false` to ensure operations run in isolation. The `createSession()` API exists when sessions are required. Default sessions will be removed in a future version of the Sandbox SDK.
 
-* [  JavaScript ](#tab-panel-10576)
-* [  TypeScript ](#tab-panel-10577)
+* [  JavaScript ](#tab-panel-11021)
+* [  TypeScript ](#tab-panel-11022)
 
 **JavaScript**
 
@@ -106,8 +106,8 @@ await sandbox.setKeepAlive(keepAlive: boolean): Promise<void>
 
 When enabled, the sandbox automatically sends heartbeat pings every 30 seconds to prevent container eviction. When disabled, the sandbox returns to normal sleep behavior based on the `sleepAfter` configuration.
 
-* [  JavaScript ](#tab-panel-10578)
-* [  TypeScript ](#tab-panel-10579)
+* [  JavaScript ](#tab-panel-11023)
+* [  TypeScript ](#tab-panel-11024)
 
 **JavaScript**
 
@@ -166,8 +166,8 @@ Immediately terminates the container and permanently deletes all state:
 * All sessions (including the default session)
 * Network connections and exposed ports
 
-* [  JavaScript ](#tab-panel-10580)
-* [  TypeScript ](#tab-panel-10581)
+* [  JavaScript ](#tab-panel-11025)
+* [  TypeScript ](#tab-panel-11026)
 
 **JavaScript**
 
@@ -216,6 +216,6 @@ Containers automatically sleep after 10 minutes of inactivity but still count to
 * [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Create execution contexts within a sandbox
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/lifecycle/#page","headline":"Lifecycle · Cloudflare Sandbox SDK docs","description":"Create, configure, and manage Sandbox SDK container instances and their resources.","url":"https://developers.cloudflare.com/sandbox/api/lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/lifecycle/#page","headline":"Lifecycle · Cloudflare Sandbox SDK docs","description":"Create, configure, and manage Sandbox SDK container instances and their resources.","url":"https://developers.cloudflare.com/sandbox/api/lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/lifecycle/","name":"Lifecycle"}}]}
 ```

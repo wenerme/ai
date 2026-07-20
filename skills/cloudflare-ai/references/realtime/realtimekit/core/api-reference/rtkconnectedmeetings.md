@@ -1,6 +1,6 @@
 ---
 title: RTKConnectedMeetings
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,7 +16,7 @@ This consists of the methods to facilitate connected meetings
 * [RTKConnectedMeetings](#module%5FRTKConnectedMeetings)
   * [module.exports](#exp%5Fmodule%5FRTKConnectedMeetings--module.exports) ⏏
     * [new module.exports(context)](#new%5Fmodule%5FRTKConnectedMeetings--module.exports%5Fnew)
-    * [.getRTKConnectedMeetings()](#module%5FRTKConnectedMeetings--module.exports+getRTKConnectedMeetings)
+    * [.getConnectedMeetings()](#module%5FRTKConnectedMeetings--module.exports+getConnectedMeetings)
     * [.createMeetings(request)](#module%5FRTKConnectedMeetings--module.exports+createMeetings)
     * [.updateMeetings(request)](#module%5FRTKConnectedMeetings--module.exports+updateMeetings)
     * [.deleteMeetings(meetingIds)](#module%5FRTKConnectedMeetings--module.exports+deleteMeetings)
@@ -33,7 +33,7 @@ This consists of the methods to facilitate connected meetings
 | ------- | ------- |
 | context | Context |
 
-#### module.exports.getRTKConnectedMeetings()
+#### module.exports.getConnectedMeetings()
 
 get connected meeting state
 
@@ -94,6 +94,6 @@ Trigger event to move participants with custom preset
 | participants         | Array.<{id: string, presetId: string}> |                           |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkconnectedmeetings/#page","headline":"RTKConnectedMeetings · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkconnectedmeetings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkconnectedmeetings/#page","headline":"RTKConnectedMeetings · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkconnectedmeetings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/api-reference/","name":"API Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/realtime/realtimekit/core/api-reference/rtkconnectedmeetings/","name":"RTKConnectedMeetings"}}]}
 ```

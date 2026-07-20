@@ -1,7 +1,7 @@
 ---
 title: HTTP DDoS Attack Protection
 description: Explore HTTP DDoS Attack Protection rule categories, including botnets, unusual requests, and advanced features, to enhance your Cloudflare security.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -76,6 +76,6 @@ Other customers can only create one override (or rule) and they cannot customize
 To block additional L7 attacks you can use other Cloudflare products like the [Cloudflare WAF](https://developers.cloudflare.com/waf/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/#page","headline":"HTTP DDoS Attack Protection managed ruleset · Cloudflare DDoS Protection docs","description":"Explore HTTP DDoS Attack Protection rule categories, including botnets, unusual requests, and advanced features, to enhance your Cloudflare security.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/#page","headline":"HTTP DDoS Attack Protection managed ruleset · Cloudflare DDoS Protection docs","description":"Explore HTTP DDoS Attack Protection rule categories, including botnets, unusual requests, and advanced features, to enhance your Cloudflare security.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/managed-rulesets/","name":"Managed rulesets"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/managed-rulesets/http/","name":"HTTP DDoS Attack Protection"}}]}
 ```

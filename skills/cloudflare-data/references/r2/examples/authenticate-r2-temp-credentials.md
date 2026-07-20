@@ -1,7 +1,7 @@
 ---
 title: Authenticate against R2 with temporary credentials
 description: Authenticate against R2 with temporary credentials.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -229,6 +229,6 @@ console.log(denied.status); // 403
 * [Error codes](https://developers.cloudflare.com/r2/api/error-codes/#authentication-and-authorization-errors): authentication error reference.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/#page","headline":"Authenticate against R2 with temporary credentials · Cloudflare R2 docs","description":"Authenticate against R2 with temporary credentials.","url":"https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/#page","headline":"Authenticate against R2 with temporary credentials · Cloudflare R2 docs","description":"Authenticate against R2 with temporary credentials.","url":"https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/authenticate-r2-temp-credentials/","name":"Authenticate against R2 with temporary credentials"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Claude Sonnet 4.5
 description: Claude Sonnet 4.5 is the best coding model to date, with significant improvements across the entire development lifecycle.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -975,6 +975,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.
 Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/#page","headline":"Claude Sonnet 4.5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Sonnet 4.5 is the best coding model to date, with significant improvements across the entire development lifecycle.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/#page","headline":"Claude Sonnet 4.5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Sonnet 4.5 is the best coding model to date, with significant improvements across the entire development lifecycle.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

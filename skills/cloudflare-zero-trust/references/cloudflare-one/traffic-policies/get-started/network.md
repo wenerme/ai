@@ -1,7 +1,7 @@
 ---
 title: Network filtering
 description: Network filtering in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -46,8 +46,8 @@ To verify your device is connected to Cloudflare One:
 3. On your Cloudflare One Client device, open a browser and visit any website. This generates traffic that should appear in the logs.
 4. Determine the **Source IP** for your device (the public-facing address Cloudflare sees for your connection):
 
-* [ Version 2026.2+ ](#tab-panel-7939)
-* [ Version 2026.1 and earlier ](#tab-panel-7940)
+* [ Version 2026.2+ ](#tab-panel-8277)
+* [ Version 2026.1 and earlier ](#tab-panel-8278)
 
 1. Open the Cloudflare One Client.
 2. Go to **Profile**.
@@ -67,8 +67,8 @@ A network policy has two parts: a matcher that selects which traffic to act on (
 
 To create a new network policy:
 
-* [ Dashboard ](#tab-panel-7941)
-* [ API ](#tab-panel-7942)
+* [ Dashboard ](#tab-panel-8279)
+* [ API ](#tab-panel-8280)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **Network** tab, select **Add a network policy**.
@@ -127,6 +127,6 @@ For more information, refer to [network policies](https://developers.cloudflare.
 Refer to our list of [common network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/common-policies) for policies you may want to create. Common additions include blocking traffic to specific IP ranges, restricting access to non-standard ports (ports other than well-known ones like 80 for HTTP and 443 for HTTPS), and using protocol detection to identify applications like BitTorrent based on their traffic patterns rather than port numbers alone.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/network/#page","headline":"Set up network filtering · Cloudflare One docs","description":"Network filtering in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/network/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH","RDP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/network/#page","headline":"Set up network filtering · Cloudflare One docs","description":"Network filtering in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/network/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH","RDP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/get-started/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/get-started/network/","name":"Network filtering"}}]}
 ```

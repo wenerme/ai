@@ -1,7 +1,7 @@
 ---
 title: Write key-value pairs
 description: Store data in a Workers KV namespace using the put() method, with options for expiration and metadata.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To create a new key-value pair, or to update the value for a particular key, call the `put()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9344)
-* [  Python ](#tab-panel-9345)
+* [  JavaScript ](#tab-panel-9787)
+* [  Python ](#tab-panel-9788)
 
 **JavaScript**
 
@@ -33,8 +33,8 @@ self.env.NAMESPACE.put(key, value)
 
 An example of writing a key-value pair from within a Worker:
 
-* [  JavaScript ](#tab-panel-9346)
-* [  Python ](#tab-panel-9347)
+* [  JavaScript ](#tab-panel-9789)
+* [  Python ](#tab-panel-9790)
 
 **JavaScript**
 
@@ -82,8 +82,8 @@ The following method is provided to write to KV:
 
 To create a new key-value pair, or to update the value for a particular key, call the `put()` method on any KV namespace you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9348)
-* [  Python ](#tab-panel-9349)
+* [  JavaScript ](#tab-panel-9791)
+* [  Python ](#tab-panel-9792)
 
 **JavaScript**
 
@@ -160,8 +160,8 @@ Expiration targets that are less than 60 seconds into the future are not support
 
 To create expiring keys, set `expiration` in the `put()` options to a number representing the seconds since epoch, or set `expirationTtl` in the `put()` options to a number representing the seconds from now:
 
-* [  JavaScript ](#tab-panel-9350)
-* [  Python ](#tab-panel-9351)
+* [  JavaScript ](#tab-panel-9793)
+* [  Python ](#tab-panel-9794)
 
 **JavaScript**
 
@@ -191,8 +191,8 @@ These assume that `secondsSinceEpoch`/`seconds_since_epoch` and `secondsFromNow`
 
 To associate metadata with a key-value pair, set `metadata` in the `put()` options to an object (serializable to JSON):
 
-* [  JavaScript ](#tab-panel-9352)
-* [  Python ](#tab-panel-9353)
+* [  JavaScript ](#tab-panel-9795)
+* [  Python ](#tab-panel-9796)
 
 **JavaScript**
 
@@ -216,8 +216,8 @@ You should not write more than once per second to the same key. Consider consoli
 
 The following example serves as a demonstration of how multiple writes to the same key may return errors by forcing concurrent writes within a single Worker invocation. This is not a pattern that should be used in production.
 
-* [  TypeScript ](#tab-panel-9354)
-* [  Python ](#tab-panel-9355)
+* [  TypeScript ](#tab-panel-9797)
+* [  Python ](#tab-panel-9798)
 
 **TypeScript**
 
@@ -331,8 +331,8 @@ class Default(WorkerEntrypoint):
 
 To handle these errors, we recommend implementing a retry logic, with exponential backoff. Here is a simple approach to add retries to the above code.
 
-* [  TypeScript ](#tab-panel-9356)
-* [  Python ](#tab-panel-9357)
+* [  TypeScript ](#tab-panel-9799)
+* [  Python ](#tab-panel-9800)
 
 **TypeScript**
 
@@ -468,6 +468,6 @@ async def retry_with_backoff(fn, success_result, max_attempts=5, initial_delay=1
 You can also [write key-value pairs from the command line with Wrangler](https://developers.cloudflare.com/kv/reference/kv-commands/#kv-namespace-create) and [write data via the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/values/methods/update/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/write-key-value-pairs/#page","headline":"Write key-value pairs · Cloudflare Workers KV docs","description":"Store data in a Workers KV namespace using the put() method, with options for expiration and metadata.","url":"https://developers.cloudflare.com/kv/api/write-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/write-key-value-pairs/#page","headline":"Write key-value pairs · Cloudflare Workers KV docs","description":"Store data in a Workers KV namespace using the put() method, with options for expiration and metadata.","url":"https://developers.cloudflare.com/kv/api/write-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/api/write-key-value-pairs/","name":"Write key-value pairs"}}]}
 ```

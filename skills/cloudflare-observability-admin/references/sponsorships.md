@@ -2,7 +2,7 @@
 title: Sponsorships
 description: Cloudflare powers over 20 million Internet properties, including these
 		world-changing open-source projects.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -166,6 +166,6 @@ A responsive, mobile-first HTML, CSS and JS styling library.
 [Visit site](https://getbootstrap.com/) [Code on GitHub](https://github.com/twbs/bootstrap)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sponsorships/#page","headline":"Sponsorships | Cloudflare Docs","description":"Cloudflare powers over 20 million Internet properties, including these\n\t\tworld-changing open-source projects.","url":"https://developers.cloudflare.com/sponsorships/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sponsorships/#page","headline":"Sponsorships | Cloudflare Docs","description":"Cloudflare powers over 20 million Internet properties, including these\n\t\tworld-changing open-source projects.","url":"https://developers.cloudflare.com/sponsorships/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sponsorships/","name":"sponsorships"}}]}
 ```

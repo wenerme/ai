@@ -1,7 +1,7 @@
 ---
 title: Domain control validation flow
 description: Consider the steps that have to take place before the DCV process is completed and certificate authorities can issue SSL/TLS certificates.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -48,6 +48,6 @@ DCV tokens are generated and controlled by the CA and not by Cloudflare. You can
 * DCV tokens also have [validity periods](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/). If you are handling the DCV process manually, it is recommended that you place the tokens as soon as the certificate is up for renewal. Otherwise, the tokens may expire and new tokens will be required.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/#page","headline":"Domain control validation flow · Cloudflare SSL/TLS docs","description":"Consider the steps that have to take place before the DCV process is completed and certificate authorities can issue SSL/TLS certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/#page","headline":"Domain control validation flow · Cloudflare SSL/TLS docs","description":"Consider the steps that have to take place before the DCV process is completed and certificate authorities can issue SSL/TLS certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/changing-dcv-method/","name":"Domain control validation (DCV)"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/changing-dcv-method/dcv-flow/","name":"Domain control validation flow"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: bge-small-en-v1.5
 description: BAAI general embedding (Small) model that transforms any given text into a 384-dimensional vector
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,9 +30,9 @@ BAAI general embedding (Small) model that transforms any given text into a 384-d
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4979)
-* [  Python ](#tab-panel-4980)
-* [  curl ](#tab-panel-4981)
+* [  TypeScript ](#tab-panel-5237)
+* [  Python ](#tab-panel-5238)
+* [  curl ](#tab-panel-5239)
 
 ```ts
 export interface Env {
@@ -106,8 +106,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-4982)
-* [ Output ](#tab-panel-4983)
+* [ Input ](#tab-panel-5240)
+* [ Output ](#tab-panel-5241)
 
 ▶text
 
@@ -131,8 +131,8 @@ pooling
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-4984)
-* [ Output ](#tab-panel-4985)
+* [ Input ](#tab-panel-5242)
+* [ Output ](#tab-panel-5243)
 
 ▶requests\[\]
 
@@ -161,6 +161,6 @@ pooling
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/batch-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/#page","headline":"bge-small-en-v1.5 (BAAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"BAAI general embedding (Small) model that transforms any given text into a 384-dimensional vector","url":"https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/#page","headline":"bge-small-en-v1.5 (BAAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"BAAI general embedding (Small) model that transforms any given text into a 384-dimensional vector","url":"https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

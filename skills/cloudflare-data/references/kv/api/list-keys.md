@@ -1,7 +1,7 @@
 ---
 title: List keys
 description: Enumerate all keys in a Workers KV namespace using the list() method, with support for pagination and filtering by prefix.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To list all the keys in your KV namespace, call the `list()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9318)
-* [  Python ](#tab-panel-9319)
+* [  JavaScript ](#tab-panel-9761)
+* [  Python ](#tab-panel-9762)
 
 **JavaScript**
 
@@ -35,8 +35,8 @@ The `list()` method returns a promise you can `await` on to get the value.
 
 An example of listing keys from within a Worker:
 
-* [  JavaScript ](#tab-panel-9320)
-* [  Python ](#tab-panel-9321)
+* [  JavaScript ](#tab-panel-9763)
+* [  Python ](#tab-panel-9764)
 
 **JavaScript**
 
@@ -86,8 +86,8 @@ The following method is provided to list the keys of KV:
 
 To list all the keys in your KV namespace, call the `list()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any KV namespace you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9322)
-* [  Python ](#tab-panel-9323)
+* [  JavaScript ](#tab-panel-9765)
+* [  Python ](#tab-panel-9766)
 
 **TypeScript**
 
@@ -141,8 +141,8 @@ If `list_complete` is `false`, there are more keys to fetch, even if the `keys` 
 
 Consider storing your values in metadata if your values fit in the [metadata-size limit](https://developers.cloudflare.com/kv/platform/limits/). Storing values in metadata is more efficient than a `list()` followed by a `get()` per key. When using `put()`, leave the `value` parameter empty and instead include a property in the metadata object:
 
-* [  JavaScript ](#tab-panel-9324)
-* [  Python ](#tab-panel-9325)
+* [  JavaScript ](#tab-panel-9767)
+* [  Python ](#tab-panel-9768)
 
 **JavaScript**
 
@@ -168,8 +168,8 @@ List all the keys starting with a particular prefix.
 
 For example, you may have structured your keys with a user, a user ID, and key names, separated by colons (such as `user:1:<key>`). You could get the keys for user number one by using the following code:
 
-* [  JavaScript ](#tab-panel-9326)
-* [  Python ](#tab-panel-9327)
+* [  JavaScript ](#tab-panel-9769)
+* [  Python ](#tab-panel-9770)
 
 **JavaScript**
 
@@ -204,8 +204,8 @@ Keys are always returned in lexicographically sorted order according to their UT
 
 If there are more keys to fetch, the `list_complete` key will be set to `false` and a `cursor` will also be returned. In this case, you can call `list()` again with the `cursor` value to get the next batch of keys:
 
-* [  JavaScript ](#tab-panel-9328)
-* [  Python ](#tab-panel-9329)
+* [  JavaScript ](#tab-panel-9771)
+* [  Python ](#tab-panel-9772)
 
 **JavaScript**
 
@@ -241,8 +241,8 @@ When de-paginating a large result set while also providing a `prefix` argument, 
 
 Consider storing your values in metadata if your values fit in the [metadata-size limit](https://developers.cloudflare.com/kv/platform/limits/). Storing values in metadata is more efficient than a `list()` followed by a `get()` per key. When using `put()`, leave the `value` parameter empty and instead include a property in the metadata object:
 
-* [  JavaScript ](#tab-panel-9330)
-* [  Python ](#tab-panel-9331)
+* [  JavaScript ](#tab-panel-9773)
+* [  Python ](#tab-panel-9774)
 
 **JavaScript**
 
@@ -263,6 +263,6 @@ await self.env.NAMESPACE.put(key, "", metadata={"value": value})
 You can also [list keys on the command line with Wrangler](https://developers.cloudflare.com/kv/reference/kv-commands/#kv-namespace-list) or [with the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/keys/methods/list/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/list-keys/#page","headline":"List keys · Cloudflare Workers KV docs","description":"Enumerate all keys in a Workers KV namespace using the list() method, with support for pagination and filtering by prefix.","url":"https://developers.cloudflare.com/kv/api/list-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/list-keys/#page","headline":"List keys · Cloudflare Workers KV docs","description":"Enumerate all keys in a Workers KV namespace using the list() method, with support for pagination and filtering by prefix.","url":"https://developers.cloudflare.com/kv/api/list-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/api/list-keys/","name":"List keys"}}]}
 ```

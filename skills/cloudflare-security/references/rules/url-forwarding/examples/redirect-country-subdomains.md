@@ -1,7 +1,7 @@
 ---
 title: Redirect local visitors to specific subdomains
 description: Create a redirect rule to redirect United Kingdom and France visitors from the `example.com` website's  root path (`/`) to their localized subdomains `https://gb.example.com` and `https://fr.example.com`, respectively.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,6 +36,6 @@ For example, the redirect rule would perform the following redirects:
 | United States   | example.com | (unchanged)            | n/a         |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-country-subdomains/#page","headline":"Redirect local visitors to specific subdomains · Cloudflare Rules docs","description":"Create a redirect rule to redirect United Kingdom and France visitors from the example.com website's  root path (/) to their localized subdomains https://gb.example.com and https://fr.example.com, respectively.","url":"https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-country-subdomains/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects","Geolocation"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-country-subdomains/#page","headline":"Redirect local visitors to specific subdomains · Cloudflare Rules docs","description":"Create a redirect rule to redirect United Kingdom and France visitors from the example.com website's  root path (/) to their localized subdomains https://gb.example.com and https://fr.example.com, respectively.","url":"https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-country-subdomains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects","Geolocation"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/examples/","name":"Redirect examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/examples/redirect-country-subdomains/","name":"Redirect local visitors to specific subdomains"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Batching, Retries and Delays
 description: Configure message batching, retry behavior, and delivery delays for Cloudflare Queues.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -59,9 +59,9 @@ You can acknowledge individual messages within a batch by explicitly acknowledgi
 
 To explicitly acknowledge a message as delivered, call the `ack()` method on the message.
 
-* [  JavaScript ](#tab-panel-10002)
-* [  TypeScript ](#tab-panel-10003)
-* [  Python ](#tab-panel-10004)
+* [  JavaScript ](#tab-panel-10431)
+* [  TypeScript ](#tab-panel-10432)
+* [  Python ](#tab-panel-10433)
 
 **index.js**
 
@@ -107,9 +107,9 @@ class Default(WorkerEntrypoint):
 
 You can also call `retry()` to explicitly force a message to be redelivered in a subsequent batch. This is referred to as "negative acknowledgement". This can be particularly useful when you want to process the rest of the messages in that batch without throwing an error that would force the entire batch to be redelivered.
 
-* [  JavaScript ](#tab-panel-10005)
-* [  TypeScript ](#tab-panel-10006)
-* [  Python ](#tab-panel-10007)
+* [  JavaScript ](#tab-panel-10434)
+* [  TypeScript ](#tab-panel-10435)
+* [  Python ](#tab-panel-10436)
 
 **index.js**
 
@@ -190,9 +190,9 @@ Configuring delivery and retry delays via the `wrangler` CLI or when [developing
 
 To delay a message or batch of messages when sending to a queue, you can provide a `delaySeconds` parameter when sending a message.
 
-* [  JavaScript ](#tab-panel-10008)
-* [  TypeScript ](#tab-panel-10009)
-* [  Python ](#tab-panel-10010)
+* [  JavaScript ](#tab-panel-10437)
+* [  TypeScript ](#tab-panel-10438)
+* [  Python ](#tab-panel-10439)
 
 **index.js**
 
@@ -255,9 +255,9 @@ When [consuming messages from a queue](https://developers.cloudflare.com/queues/
 
 To delay an individual message within a batch:
 
-* [  JavaScript ](#tab-panel-10011)
-* [  TypeScript ](#tab-panel-10012)
-* [  Python ](#tab-panel-10013)
+* [  JavaScript ](#tab-panel-10440)
+* [  TypeScript ](#tab-panel-10441)
+* [  Python ](#tab-panel-10442)
 
 **index.js**
 
@@ -303,9 +303,9 @@ class Default(WorkerEntrypoint):
 
 To delay a batch of messages:
 
-* [  JavaScript ](#tab-panel-10014)
-* [  TypeScript ](#tab-panel-10015)
-* [  Python ](#tab-panel-10016)
+* [  JavaScript ](#tab-panel-10443)
+* [  TypeScript ](#tab-panel-10444)
+* [  Python ](#tab-panel-10445)
 
 **index.js**
 
@@ -361,8 +361,8 @@ npx wrangler@latest queues consumer http add $QUEUE-NAME --retry-delay-secs=60
 
 Delays can also be configured in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#queues) with the `delivery_delay` setting for producers (when sending) and/or the `retry_delay` (when retrying) per-consumer:
 
-* [  wrangler.jsonc ](#tab-panel-10000)
-* [  wrangler.toml ](#tab-panel-10001)
+* [  wrangler.jsonc ](#tab-panel-10429)
+* [  wrangler.toml ](#tab-panel-10430)
 
 **JSONC**
 
@@ -420,9 +420,9 @@ Each message delivered to a consumer includes an `attempts` property that tracks
 
 For example, to generate an [exponential backoff ↗](https://en.wikipedia.org/wiki/Exponential%5Fbackoff) for a message, you can create a helper function that calculates this for you:
 
-* [  JavaScript ](#tab-panel-10017)
-* [  TypeScript ](#tab-panel-10018)
-* [  Python ](#tab-panel-10019)
+* [  JavaScript ](#tab-panel-10446)
+* [  TypeScript ](#tab-panel-10447)
+* [  Python ](#tab-panel-10448)
 
 **index.js**
 
@@ -452,9 +452,9 @@ def calculate_exponential_backoff(attempts, base_delay_seconds):
 
 In your consumer, you then pass the value of `msg.attempts` and your desired delay factor as the argument to `delaySeconds` when calling `retry()` on an individual message:
 
-* [  JavaScript ](#tab-panel-10020)
-* [  TypeScript ](#tab-panel-10021)
-* [  Python ](#tab-panel-10022)
+* [  JavaScript ](#tab-panel-10449)
+* [  TypeScript ](#tab-panel-10450)
+* [  Python ](#tab-panel-10451)
 
 **index.js**
 
@@ -527,6 +527,6 @@ class Default(WorkerEntrypoint):
 * Understand the [metrics available](https://developers.cloudflare.com/queues/observability/metrics/) for your queues, including backlog and delayed message counts.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/batching-retries/#page","headline":"Batching, Retries and Delays · Cloudflare Queues docs","description":"Configure message batching, retry behavior, and delivery delays for Cloudflare Queues.","url":"https://developers.cloudflare.com/queues/configuration/batching-retries/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/batching-retries/#page","headline":"Batching, Retries and Delays · Cloudflare Queues docs","description":"Configure message batching, retry behavior, and delivery delays for Cloudflare Queues.","url":"https://developers.cloudflare.com/queues/configuration/batching-retries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/batching-retries/","name":"Batching, Retries and Delays"}}]}
 ```

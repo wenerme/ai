@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot IPsec tunnels
 description: Troubleshoot Magic Transit IPsec tunnel issues.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -155,6 +155,6 @@ If your ISP is blocking these response packets, health checks will fail even whe
 **Resolution:** Switch to bidirectional health checks, which send both the probe and the response through the tunnel. Bidirectional health checks require egress traffic to be turned on for your Magic Transit configuration. For more information, refer to [Tunnel health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/#page","headline":"Troubleshoot IPsec tunnels · Cloudflare Magic Transit docs","description":"Troubleshoot Magic Transit IPsec tunnel issues.","url":"https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","ICMP","Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/#page","headline":"Troubleshoot IPsec tunnels · Cloudflare Magic Transit docs","description":"Troubleshoot Magic Transit IPsec tunnel issues.","url":"https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","ICMP","Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/troubleshooting/ipsec-troubleshoot/","name":"Troubleshoot IPsec tunnels"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Recraft V3
 description: Recraft V3 is the previous-generation text-to-image model from Recraft, well-suited to design-quality compositions, brand-aware imagery, and accurate text rendering.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Recraft V3 is the previous-generation text-to-image model from Recraft, well-sui
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1624)
-* [ cURL ](#tab-panel-1625)
+* [ TypeScript ](#tab-panel-1770)
+* [ cURL ](#tab-panel-1771)
 
 **TypeScript**
 
@@ -54,8 +54,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1622)
-* [ Raw response ](#tab-panel-1623)
+* [ Output ](#tab-panel-1768)
+* [ Raw response ](#tab-panel-1769)
 
 ![Simple Generation](https://examples.aig.cloudflare.com/recraft/recraftv3/simple-generation.png)
 
@@ -75,8 +75,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Scene Composition**  — Generate a complex compositional scene
 
-* [ TypeScript ](#tab-panel-1628)
-* [ cURL ](#tab-panel-1629)
+* [ TypeScript ](#tab-panel-1774)
+* [ cURL ](#tab-panel-1775)
 
 **TypeScript**
 
@@ -102,8 +102,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1626)
-* [ Raw response ](#tab-panel-1627)
+* [ Output ](#tab-panel-1772)
+* [ Raw response ](#tab-panel-1773)
 
 ![Scene Composition](https://examples.aig.cloudflare.com/recraft/recraftv3/scene-composition.png)
 
@@ -121,8 +121,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Size**  — Specify output dimensions
 
-* [ TypeScript ](#tab-panel-1632)
-* [ cURL ](#tab-panel-1633)
+* [ TypeScript ](#tab-panel-1778)
+* [ cURL ](#tab-panel-1779)
 
 **TypeScript**
 
@@ -150,8 +150,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1630)
-* [ Raw response ](#tab-panel-1631)
+* [ Output ](#tab-panel-1776)
+* [ Raw response ](#tab-panel-1777)
 
 ![Custom Size](https://examples.aig.cloudflare.com/recraft/recraftv3/custom-size.png)
 
@@ -169,8 +169,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Color Controls**  — Guide generation with specific brand colors
 
-* [ TypeScript ](#tab-panel-1640)
-* [ cURL ](#tab-panel-1641)
+* [ TypeScript ](#tab-panel-1786)
+* [ cURL ](#tab-panel-1787)
 
 **TypeScript**
 
@@ -215,8 +215,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1634)
-* [ Raw response ](#tab-panel-1635)
+* [ Output ](#tab-panel-1780)
+* [ Raw response ](#tab-panel-1781)
 
 ![With Color Controls](https://examples.aig.cloudflare.com/recraft/recraftv3/with-color-controls.png)
 
@@ -234,8 +234,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Background Color**  — Set a specific background color
 
-* [ TypeScript ](#tab-panel-1638)
-* [ cURL ](#tab-panel-1639)
+* [ TypeScript ](#tab-panel-1784)
+* [ cURL ](#tab-panel-1785)
 
 **TypeScript**
 
@@ -273,8 +273,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1636)
-* [ Raw response ](#tab-panel-1637)
+* [ Output ](#tab-panel-1782)
+* [ Raw response ](#tab-panel-1783)
 
 ![Background Color](https://examples.aig.cloudflare.com/recraft/recraftv3/background-color.png)
 
@@ -292,8 +292,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1642)
-* [ Output ](#tab-panel-1643)
+* [ Input ](#tab-panel-1788)
+* [ Output ](#tab-panel-1789)
 
 prompt
 
@@ -326,6 +326,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv3/schema-i
 Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv3/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv3/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv3/#page","headline":"Recraft V3 (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Recraft V3 is the previous-generation text-to-image model from Recraft, well-suited to design-quality compositions, brand-aware imagery, and accurate text rendering.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv3/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv3/#page","headline":"Recraft V3 (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Recraft V3 is the previous-generation text-to-image model from Recraft, well-suited to design-quality compositions, brand-aware imagery, and accurate text rendering.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

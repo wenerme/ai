@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "kimi-for-coding/k2p7"
+  model: "kimi-for-coding/k3"
 });
 
 // Generate a response
@@ -40,18 +40,6 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
-    "model": "kimi-for-coding/k2p7",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 32768,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "kimi-for-coding/k3",
     "imageInput": true,
     "audioInput": false,
@@ -60,6 +48,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kimi-for-coding/kimi-for-coding",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
     "inputCost": null,
     "outputCost": null
   },
@@ -88,7 +88,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.kimi.com/coding/v1",
-    id: "kimi-for-coding/k2p7",
+    id: "kimi-for-coding/k3",
     apiKey: process.env.KIMI_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -107,7 +107,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "kimi-for-coding/kimi-for-coding-highspeed"
-      : "kimi-for-coding/k2p7";
+      : "kimi-for-coding/k3";
   }
 });
 ```

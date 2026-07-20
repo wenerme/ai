@@ -1,7 +1,7 @@
 ---
 title: User Agent Blocking
 description: Block or challenge requests based on User-Agent header values.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -38,9 +38,9 @@ The number of available user agent rules depends on your Cloudflare plan.
 
 ## Create a User Agent Blocking rule
 
-* [  New dashboard ](#tab-panel-11637)
-* [ Old dashboard ](#tab-panel-11638)
-* [ API ](#tab-panel-11639)
+* [  New dashboard ](#tab-panel-12076)
+* [ Old dashboard ](#tab-panel-12077)
+* [ API ](#tab-panel-12078)
 
 Note
 
@@ -95,6 +95,6 @@ When a User Agent Blocking rule uses a challenge action such as _Managed Challen
 * [Cloudflare Zone Lockdown](https://developers.cloudflare.com/waf/tools/zone-lockdown/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/user-agent-blocking/#page","headline":"User Agent Blocking · Cloudflare Web Application Firewall (WAF) docs","description":"Block or challenge requests based on User-Agent header values.","url":"https://developers.cloudflare.com/waf/tools/user-agent-blocking/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/user-agent-blocking/#page","headline":"User Agent Blocking · Cloudflare Web Application Firewall (WAF) docs","description":"Block or challenge requests based on User-Agent header values.","url":"https://developers.cloudflare.com/waf/tools/user-agent-blocking/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/user-agent-blocking/","name":"User Agent Blocking"}}]}
 ```

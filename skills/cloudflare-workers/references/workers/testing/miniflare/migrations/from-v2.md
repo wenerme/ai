@@ -1,7 +1,7 @@
 ---
 title: Migrating from Version 2
 description: Migrate from Miniflare v2 to v3, which uses the workerd runtime for full Workers compatibility.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -184,6 +184,6 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
   * Miniflare is now contained within a single `miniflare` package.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/#page","headline":"Migrating from Version 2 · Cloudflare Workers docs","description":"Migrate from Miniflare v2 to v3, which uses the workerd runtime for full Workers compatibility.","url":"https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/#page","headline":"Migrating from Version 2 · Cloudflare Workers docs","description":"Migrate from Miniflare v2 to v3, which uses the workerd runtime for full Workers compatibility.","url":"https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/miniflare/","name":"Miniflare"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/miniflare/migrations/","name":"Migrations"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/testing/miniflare/migrations/from-v2/","name":"Migrating from Version 2"}}]}
 ```

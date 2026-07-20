@@ -1,7 +1,7 @@
 ---
 title: Nano Banana Pro
 description: Google's higher-quality image generation model with improved detail and prompt adherence.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Google's higher-quality image generation model with improved detail and prompt a
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-694)
-* [ cURL ](#tab-panel-695)
+* [ TypeScript ](#tab-panel-744)
+* [ cURL ](#tab-panel-745)
 
 **TypeScript**
 
@@ -61,8 +61,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-692)
-* [ Raw response ](#tab-panel-693)
+* [ Output ](#tab-panel-742)
+* [ Raw response ](#tab-panel-743)
 
 ![Product Photography](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/product-photography.png)
 
@@ -82,8 +82,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fantasy Illustration**  — Epic fantasy scene
 
-* [ TypeScript ](#tab-panel-698)
-* [ cURL ](#tab-panel-699)
+* [ TypeScript ](#tab-panel-748)
+* [ cURL ](#tab-panel-749)
 
 **TypeScript**
 
@@ -114,8 +114,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-696)
-* [ Raw response ](#tab-panel-697)
+* [ Output ](#tab-panel-746)
+* [ Raw response ](#tab-panel-747)
 
 ![Fantasy Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/fantasy-illustration.png)
 
@@ -133,8 +133,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Architectural Visualization**  — Modern architecture render
 
-* [ TypeScript ](#tab-panel-704)
-* [ cURL ](#tab-panel-705)
+* [ TypeScript ](#tab-panel-754)
+* [ cURL ](#tab-panel-755)
 
 **TypeScript**
 
@@ -167,8 +167,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-700)
-* [ Raw response ](#tab-panel-701)
+* [ Output ](#tab-panel-750)
+* [ Raw response ](#tab-panel-751)
 
 ![Architectural Visualization](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/architectural-visualization.jpg)
 
@@ -186,8 +186,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Character Design**  — Game character concept art
 
-* [ TypeScript ](#tab-panel-706)
-* [ cURL ](#tab-panel-707)
+* [ TypeScript ](#tab-panel-756)
+* [ cURL ](#tab-panel-757)
 
 **TypeScript**
 
@@ -216,8 +216,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-702)
-* [ Raw response ](#tab-panel-703)
+* [ Output ](#tab-panel-752)
+* [ Raw response ](#tab-panel-753)
 
 ![Character Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/character-design.png)
 
@@ -235,8 +235,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-708)
-* [ Output ](#tab-panel-709)
+* [ Input ](#tab-panel-758)
+* [ Output ](#tab-panel-759)
 
 prompt
 
@@ -269,6 +269,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/sch
 Output [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/nano-banana-pro/#page","headline":"Nano Banana Pro (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's higher-quality image generation model with improved detail and prompt adherence.","url":"https://developers.cloudflare.com/ai/models/google/nano-banana-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/nano-banana-pro/#page","headline":"Nano Banana Pro (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's higher-quality image generation model with improved detail and prompt adherence.","url":"https://developers.cloudflare.com/ai/models/google/nano-banana-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

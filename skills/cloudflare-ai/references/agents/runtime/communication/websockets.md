@@ -1,7 +1,7 @@
 ---
 title: WebSockets
 description: Handle real-time WebSocket connections, messages, broadcasts, and lifecycle hooks in the Agents SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -33,8 +33,8 @@ Agents have several lifecycle hooks that fire at different points:
 
 `onStart()` is called once when the agent first starts, before any connections are established:
 
-* [  JavaScript ](#tab-panel-6225)
-* [  TypeScript ](#tab-panel-6226)
+* [  JavaScript ](#tab-panel-6499)
+* [  TypeScript ](#tab-panel-6500)
 
 **JavaScript**
 
@@ -86,8 +86,8 @@ export class MyAgent extends Agent {
 
 Define `onConnect` and `onMessage` methods on your Agent to accept WebSocket connections:
 
-* [  JavaScript ](#tab-panel-6231)
-* [  TypeScript ](#tab-panel-6232)
+* [  JavaScript ](#tab-panel-6505)
+* [  TypeScript ](#tab-panel-6506)
 
 **JavaScript**
 
@@ -178,8 +178,8 @@ Each connected client has a unique `Connection` object:
 
 Store data specific to each connection (user info, preferences, etc.):
 
-* [  JavaScript ](#tab-panel-6235)
-* [  TypeScript ](#tab-panel-6236)
+* [  JavaScript ](#tab-panel-6509)
+* [  TypeScript ](#tab-panel-6510)
 
 **JavaScript**
 
@@ -241,8 +241,8 @@ export class ChatAgent extends Agent {
 
 Use `this.broadcast()` to send a message to all connected clients:
 
-* [  JavaScript ](#tab-panel-6229)
-* [  TypeScript ](#tab-panel-6230)
+* [  JavaScript ](#tab-panel-6503)
+* [  TypeScript ](#tab-panel-6504)
 
 **JavaScript**
 
@@ -294,8 +294,8 @@ export class ChatAgent extends Agent {
 
 Pass an array of connection IDs to exclude from the broadcast:
 
-* [  JavaScript ](#tab-panel-6223)
-* [  TypeScript ](#tab-panel-6224)
+* [  JavaScript ](#tab-panel-6497)
+* [  TypeScript ](#tab-panel-6498)
 
 **JavaScript**
 
@@ -321,8 +321,8 @@ this.broadcast(
 
 Tag connections for easy filtering. Override `getConnectionTags()` to assign tags when a connection is established:
 
-* [  JavaScript ](#tab-panel-6237)
-* [  TypeScript ](#tab-panel-6238)
+* [  JavaScript ](#tab-panel-6511)
+* [  TypeScript ](#tab-panel-6512)
 
 **JavaScript**
 
@@ -393,8 +393,8 @@ export class ChatAgent extends Agent {
 
 Messages can be strings or binary (`ArrayBuffer` / `ArrayBufferView`):
 
-* [  JavaScript ](#tab-panel-6233)
-* [  TypeScript ](#tab-panel-6234)
+* [  JavaScript ](#tab-panel-6507)
+* [  TypeScript ](#tab-panel-6508)
 
 **JavaScript**
 
@@ -446,8 +446,8 @@ Agents automatically send JSON text frames (identity, state, MCP servers) to eve
 
 Handle connection errors and disconnections. The `onError` method has two overloads — one for WebSocket connection errors and one for server-level errors:
 
-* [  JavaScript ](#tab-panel-6243)
-* [  TypeScript ](#tab-panel-6244)
+* [  JavaScript ](#tab-panel-6517)
+* [  TypeScript ](#tab-panel-6518)
 
 **JavaScript**
 
@@ -539,8 +539,8 @@ Agents support hibernation — they can sleep when inactive and wake when needed
 
 Hibernation is enabled by default. To disable:
 
-* [  JavaScript ](#tab-panel-6227)
-* [  TypeScript ](#tab-panel-6228)
+* [  JavaScript ](#tab-panel-6501)
+* [  TypeScript ](#tab-panel-6502)
 
 **JavaScript**
 
@@ -577,8 +577,8 @@ export class AlwaysOnAgent extends Agent {
 
 Store important data in `this.state` or SQLite, not in class properties:
 
-* [  JavaScript ](#tab-panel-6239)
-* [  TypeScript ](#tab-panel-6240)
+* [  JavaScript ](#tab-panel-6513)
+* [  TypeScript ](#tab-panel-6514)
 
 **JavaScript**
 
@@ -630,8 +630,8 @@ export class MyAgent extends Agent<Env, { counter: number }> {
 
 Track who is online using per-connection state. Connection state is automatically cleaned up when users disconnect:
 
-* [  JavaScript ](#tab-panel-6247)
-* [  TypeScript ](#tab-panel-6248)
+* [  JavaScript ](#tab-panel-6521)
+* [  TypeScript ](#tab-panel-6522)
 
 **JavaScript**
 
@@ -786,8 +786,8 @@ export class PresenceAgent extends Agent {
 
 ### Chat room with broadcast
 
-* [  JavaScript ](#tab-panel-6245)
-* [  TypeScript ](#tab-panel-6246)
+* [  JavaScript ](#tab-panel-6519)
+* [  TypeScript ](#tab-panel-6520)
 
 **JavaScript**
 
@@ -915,8 +915,8 @@ export class ChatRoom extends Agent {
 
 By default, agents send JSON text frames (identity, state sync, MCP server lists) to every connection. Override `shouldSendProtocolMessages` to suppress them for specific connections — for example, binary-only clients that cannot handle JSON text frames:
 
-* [  JavaScript ](#tab-panel-6241)
-* [  TypeScript ](#tab-panel-6242)
+* [  JavaScript ](#tab-panel-6515)
+* [  TypeScript ](#tab-panel-6516)
 
 **JavaScript**
 
@@ -978,6 +978,6 @@ Refer to [Client SDK](https://developers.cloudflare.com/agents/communication-cha
 [ Cross-domain authentication ](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/) Secure WebSocket connections across domains.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/websockets/#page","headline":"WebSockets · Cloudflare Agents docs","description":"Handle real-time WebSocket connections, messages, broadcasts, and lifecycle hooks in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/communication/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/websockets/#page","headline":"WebSockets · Cloudflare Agents docs","description":"Handle real-time WebSocket connections, messages, broadcasts, and lifecycle hooks in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/communication/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/websockets/","name":"WebSockets"}}]}
 ```

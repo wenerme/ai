@@ -1,7 +1,7 @@
 ---
 title: Account limits
 description: Reference information for Account limits in Cloudflare One.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,10 +29,10 @@ This page lists the default account limits for rules, applications, fields, and 
 | Identity providers                    | 50       |
 | Reusable policies                     | 500      |
 | Rules per application                 | 1,000    |
-| Domains per application               | 5        |
+| Domains per application               | 50       |
 | Infrastructure targets                | 5,000    |
 | MCP portals                           | 20       |
-| MCP servers per portal                | 20       |
+| MCP servers per portal                | 40       |
 | Custom domains per MCP portal         | 5        |
 | MCP portal session inactivity timeout | 24 hours |
 
@@ -129,6 +129,6 @@ This page lists the default account limits for rules, applications, fields, and 
 | Device IP profiles per account                                             | 30     |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/account-limits/#page","headline":"Account limits · Cloudflare One docs","description":"Reference information for Account limits in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/account-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/account-limits/#page","headline":"Account limits · Cloudflare One docs","description":"Reference information for Account limits in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/account-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/account-limits/","name":"Account limits"}}]}
 ```

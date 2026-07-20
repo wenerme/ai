@@ -1,7 +1,7 @@
 ---
 title: Configure Managed Transforms
 description: Learn how to configure Managed Transforms.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Configure Managed Transforms
 
-* [ Dashboard ](#tab-panel-10483)
-* [ API ](#tab-panel-10484)
-* [ Terraform ](#tab-panel-10485)
+* [ Dashboard ](#tab-panel-10928)
+* [ API ](#tab-panel-10929)
+* [ Terraform ](#tab-panel-10930)
 
 1. In the Cloudflare dashboard, go to the Rules **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/settings)
@@ -268,8 +268,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \
 }
 ```
 
-* [ Terraform (v5) ](#tab-panel-10481)
-* [ Terraform (v4) ](#tab-panel-10482)
+* [ Terraform (v5) ](#tab-panel-10926)
+* [ Terraform (v4) ](#tab-panel-10927)
 
 Required API token permissions
 
@@ -319,6 +319,6 @@ resource "cloudflare_managed_headers" "tf_example" {
 Make sure you include the Managed Transforms you are updating in the correct object (`managed_request_headers` or `managed_response_headers`).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/managed-transforms/configure/#page","headline":"Configure Managed Transforms · Cloudflare Rules docs","description":"Learn how to configure Managed Transforms.","url":"https://developers.cloudflare.com/rules/transform/managed-transforms/configure/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/managed-transforms/configure/#page","headline":"Configure Managed Transforms · Cloudflare Rules docs","description":"Learn how to configure Managed Transforms.","url":"https://developers.cloudflare.com/rules/transform/managed-transforms/configure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/managed-transforms/","name":"Managed Transforms"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/managed-transforms/configure/","name":"Configure Managed Transforms"}}]}
 ```

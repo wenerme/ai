@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Set up the Cloudflare Radar API, make your first request, compare data, and configure alerts.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 * [ Configure alerts ](https://developers.cloudflare.com/radar/get-started/configure-alerts/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/radar/get-started/#page","headline":"Get started · Cloudflare Radar docs","description":"Set up the Cloudflare Radar API, make your first request, compare data, and configure alerts.","url":"https://developers.cloudflare.com/radar/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/radar/get-started/#page","headline":"Get started · Cloudflare Radar docs","description":"Set up the Cloudflare Radar API, make your first request, compare data, and configure alerts.","url":"https://developers.cloudflare.com/radar/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/get-started/","name":"Get started"}}]}
 ```

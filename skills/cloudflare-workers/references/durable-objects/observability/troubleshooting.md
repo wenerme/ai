@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Debug Durable Objects with wrangler dev and wrangler tail, and resolve common errors like overload and storage issues.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -60,6 +60,6 @@ To prevent indefinite blocking, there is a limit on how much time storage operat
 Besides the suggested approach of backing off, also consider changing your code to use `state.storage.get(keys Array<string>)` rather than multiple individual `state.storage.get(key)` calls where possible.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/observability/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Durable Objects docs","description":"Debug Durable Objects with wrangler dev and wrangler tail, and resolve common errors like overload and storage issues.","url":"https://developers.cloudflare.com/durable-objects/observability/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/observability/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Durable Objects docs","description":"Debug Durable Objects with wrangler dev and wrangler tail, and resolve common errors like overload and storage issues.","url":"https://developers.cloudflare.com/durable-objects/observability/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/observability/troubleshooting/","name":"Troubleshooting"}}]}
 ```

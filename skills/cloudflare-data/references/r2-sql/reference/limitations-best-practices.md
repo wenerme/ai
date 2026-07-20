@@ -1,7 +1,7 @@
 ---
 title: Limitations and best practices
 description: Supported features, known limitations, and best practices for R2 SQL queries.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -116,6 +116,6 @@ Exact aggregates such as `COUNT(DISTINCT ...)`, `MEDIAN`, `PERCENTILE_CONT`, `AR
 10. Use explicit `JOIN` syntax instead of implicit joins (comma-separated `FROM`) for readability and to ensure the optimizer can choose optimal join ordering.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/reference/limitations-best-practices/#page","headline":"Limitations and best practices · R2 SQL docs","description":"Supported features, known limitations, and best practices for R2 SQL queries.","url":"https://developers.cloudflare.com/r2-sql/reference/limitations-best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/reference/limitations-best-practices/#page","headline":"Limitations and best practices · R2 SQL docs","description":"Supported features, known limitations, and best practices for R2 SQL queries.","url":"https://developers.cloudflare.com/r2-sql/reference/limitations-best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2-sql/reference/limitations-best-practices/","name":"Limitations and best practices"}}]}
 ```

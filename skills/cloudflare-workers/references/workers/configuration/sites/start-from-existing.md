@@ -1,7 +1,7 @@
 ---
 title: Start from existing
 description: Deploy an existing static site project to Cloudflare using Workers Sites.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -40,8 +40,8 @@ This command adds/update the following files:
   * `src/index.ts`: A basic Cloudflare Worker, written in TypeScript.
 2. Add your site's build/output directory to the Wrangler file:
 
-  * [  wrangler.jsonc ](#tab-panel-11864)
-  * [  wrangler.toml ](#tab-panel-11865)
+  * [  wrangler.jsonc ](#tab-panel-12383)
+  * [  wrangler.toml ](#tab-panel-12384)
 
 **JSONC**
 ```jsonc
@@ -69,8 +69,8 @@ npm i -D @cloudflare/kv-asset-handler
 ```
 4. Replace the contents of `src/index.ts` with the following code snippet:
 
-* [  Module Worker ](#tab-panel-11862)
-* [  Service Worker ](#tab-panel-11863)
+* [  Module Worker ](#tab-panel-12381)
+* [  Service Worker ](#tab-panel-12382)
 
 **JavaScript**
 
@@ -140,8 +140,8 @@ npx wrangler deploy
 ```
 2. Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone. Add a `route` property to the Wrangler file.
 
-  * [  wrangler.jsonc ](#tab-panel-11866)
-  * [  wrangler.toml ](#tab-panel-11867)
+  * [  wrangler.jsonc ](#tab-panel-12385)
+  * [  wrangler.toml ](#tab-panel-12386)
 
 **JSONC**
 ```jsonc
@@ -160,6 +160,6 @@ Refer to the documentation on [Routes](https://developers.cloudflare.com/workers
 Learn more about [configuring your project](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Start from existing · Cloudflare Workers docs","description":"Deploy an existing static site project to Cloudflare using Workers Sites.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Start from existing · Cloudflare Workers docs","description":"Deploy an existing static site project to Cloudflare using Workers Sites.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/sites/","name":"Workers Sites"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/sites/start-from-existing/","name":"Start from existing"}}]}
 ```

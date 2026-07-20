@@ -1,7 +1,7 @@
 ---
 title: Accounts, zones, and profiles
 description: Understand how Cloudflare organizes resources into user profiles, accounts, and zones, and where settings and products apply.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -67,6 +67,6 @@ Once you are within a zone, items within the sidebar will be zone-related produc
 1. Similar to [DNS zones ↗](https://www.cloudflare.com/learning/dns/glossary/dns-zone/), but with additional capabilities. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#page","headline":"Accounts, zones, and profiles · Cloudflare Fundamentals docs","description":"Understand how Cloudflare organizes resources into user profiles, accounts, and zones, and where settings and products apply.","url":"https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#page","headline":"Accounts, zones, and profiles · Cloudflare Fundamentals docs","description":"Understand how Cloudflare organizes resources into user profiles, accounts, and zones, and where settings and products apply.","url":"https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/concepts/accounts-and-zones/","name":"Accounts, zones, and profiles"}}]}
 ```

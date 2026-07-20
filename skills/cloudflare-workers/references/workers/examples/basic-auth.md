@@ -1,7 +1,7 @@
 ---
 title: HTTP Basic Authentication
 description: Shows how to restrict access using the HTTP Basic schema.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -22,10 +22,10 @@ Caution when using in production
 
 This code is provided as a sample, and is not suitable for production use. Basic Authentication sends credentials unencrypted, and must be used with an HTTPS connection to be considered secure. For a production-ready authentication system, consider using [Cloudflare Access ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/).
 
-* [  JavaScript ](#tab-panel-11936)
-* [  TypeScript ](#tab-panel-11937)
-* [  Rust ](#tab-panel-11938)
-* [  Hono ](#tab-panel-11939)
+* [  JavaScript ](#tab-panel-12455)
+* [  TypeScript ](#tab-panel-12456)
+* [  Rust ](#tab-panel-12457)
+* [  Hono ](#tab-panel-12458)
 
 **JavaScript**
 
@@ -422,6 +422,6 @@ export default app;
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/basic-auth/#page","headline":"HTTP Basic Authentication · Cloudflare Workers docs","description":"Shows how to restrict access using the HTTP Basic schema.","url":"https://developers.cloudflare.com/workers/examples/basic-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security","Authentication","JavaScript","TypeScript","Rust"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/basic-auth/#page","headline":"HTTP Basic Authentication · Cloudflare Workers docs","description":"Shows how to restrict access using the HTTP Basic schema.","url":"https://developers.cloudflare.com/workers/examples/basic-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security","Authentication","JavaScript","TypeScript","Rust"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/basic-auth/","name":"HTTP Basic Authentication"}}]}
 ```

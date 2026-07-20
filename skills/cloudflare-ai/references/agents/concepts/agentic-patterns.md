@@ -1,7 +1,7 @@
 ---
 title: Agentic patterns
 description: Implement common AI agent patterns like prompt chaining, routing, parallelization, and orchestrator-workers on Cloudflare.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -407,6 +407,6 @@ async function translateWithFeedback(text: string, targetLanguage: string) {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/#page","headline":"Agentic patterns · Cloudflare Agents docs","description":"Implement common AI agent patterns like prompt chaining, routing, parallelization, and orchestrator-workers on Cloudflare.","url":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/#page","headline":"Agentic patterns · Cloudflare Agents docs","description":"Implement common AI agent patterns like prompt chaining, routing, parallelization, and orchestrator-workers on Cloudflare.","url":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/agentic-patterns/","name":"Agentic patterns"}}]}
 ```

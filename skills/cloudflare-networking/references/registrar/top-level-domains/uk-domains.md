@@ -1,7 +1,7 @@
 ---
 title: .UK domains
 description: Manage .UK domains with Cloudflare Registrar.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -42,6 +42,6 @@ Note
 If you do not know the IPS tag, contact your new registrar for instructions. Your new registrar may require you to follow some additional steps before starting the transfer process.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/top-level-domains/uk-domains/#page","headline":"Learn how to manage a .UK domain with Cloudflare. · Cloudflare Registrar docs","description":"Manage .UK domains with Cloudflare Registrar.","url":"https://developers.cloudflare.com/registrar/top-level-domains/uk-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/top-level-domains/uk-domains/#page","headline":"Learn how to manage a .UK domain with Cloudflare. · Cloudflare Registrar docs","description":"Manage .UK domains with Cloudflare Registrar.","url":"https://developers.cloudflare.com/registrar/top-level-domains/uk-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/top-level-domains/","name":"Top Level Domains supported"}},{"@type":"ListItem","position":4,"item":{"@id":"/registrar/top-level-domains/uk-domains/","name":".UK domains"}}]}
 ```

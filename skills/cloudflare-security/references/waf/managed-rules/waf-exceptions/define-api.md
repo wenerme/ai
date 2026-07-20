@@ -1,7 +1,7 @@
 ---
 title: Add an exception via API
 description: Create WAF exceptions using the Rulesets API.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -289,6 +289,6 @@ The `action_parameters` \> `rules` object contains the ID of the Cloudflare Mana
 For more information on skipping one or more rules of managed rulesets via API, refer to [Create an exception](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/#skip-one-or-more-rules-of-managed-rulesets) in the Ruleset Engine documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-api/#page","headline":"Add an exception via API · Cloudflare Web Application Firewall (WAF) docs","description":"Create WAF exceptions using the Rulesets API.","url":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-api/#page","headline":"Add an exception via API · Cloudflare Web Application Firewall (WAF) docs","description":"Create WAF exceptions using the Rulesets API.","url":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/waf-exceptions/","name":"Create exceptions"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/waf-exceptions/define-api/","name":"Add an exception via API"}}]}
 ```

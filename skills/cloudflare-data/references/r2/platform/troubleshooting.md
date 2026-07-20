@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Troubleshoot common R2 issues including CORS errors, 403 responses, and cache behavior.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -101,6 +101,6 @@ For example, uploading an object named `example/` into an R2 bucket will be disp
   * `This object is unnamed`
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/troubleshooting/#page","headline":"Troubleshooting · Cloudflare R2 docs","description":"Troubleshoot common R2 issues including CORS errors, 403 responses, and cache behavior.","url":"https://developers.cloudflare.com/r2/platform/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/troubleshooting/#page","headline":"Troubleshooting · Cloudflare R2 docs","description":"Troubleshoot common R2 issues including CORS errors, 403 responses, and cache behavior.","url":"https://developers.cloudflare.com/r2/platform/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/platform/troubleshooting/","name":"Troubleshooting"}}]}
 ```

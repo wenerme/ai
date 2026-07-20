@@ -1,7 +1,7 @@
 ---
 title: whisper
 description: Whisper is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitasking model that can perform multilingual speech recognition, speech translation, and language identification.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,8 +27,8 @@ Whisper is a general-purpose speech recognition model. It is trained on a large 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5322)
-* [  curl ](#tab-panel-5323)
+* [  TypeScript ](#tab-panel-5582)
+* [  curl ](#tab-panel-5583)
 
 ```ts
 export interface Env {
@@ -69,8 +69,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-5324)
-* [ Output ](#tab-panel-5325)
+* [ Input ](#tab-panel-5584)
+* [ Output ](#tab-panel-5585)
 
 Option 1
 
@@ -103,6 +103,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/whisper/schema-inp
 Output [ ](https://developers.cloudflare.com/workers-ai/models/whisper/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/whisper/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/whisper/#page","headline":"whisper (OpenAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Whisper is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitasking model that can perform multilingual speech recognition, speech translation, and language identification.","url":"https://developers.cloudflare.com/workers-ai/models/whisper/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/whisper/#page","headline":"whisper (OpenAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Whisper is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitasking model that can perform multilingual speech recognition, speech translation, and language identification.","url":"https://developers.cloudflare.com/workers-ai/models/whisper/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

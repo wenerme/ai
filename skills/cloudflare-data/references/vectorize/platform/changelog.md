@@ -1,7 +1,7 @@
 ---
 title: Changelog
 description: Track recent changes, updates, and new features in Vectorize.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -177,6 +177,6 @@ Vectorize, Cloudflare's vector database, is [now in public beta](https://blog.cl
 To get started with Vectorize, [see the guide](https://developers.cloudflare.com/vectorize/get-started/).
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/vectorize/platform/changelog/#page","headline":"Changelog · Cloudflare Vectorize docs","description":"Track recent changes, updates, and new features in Vectorize.","url":"https://developers.cloudflare.com/vectorize/platform/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/vectorize/platform/changelog/#page","headline":"Changelog · Cloudflare Vectorize docs","description":"Track recent changes, updates, and new features in Vectorize.","url":"https://developers.cloudflare.com/vectorize/platform/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/platform/changelog/","name":"Changelog"}}]}
 ```

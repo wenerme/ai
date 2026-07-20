@@ -1,7 +1,7 @@
 ---
 title: Turnstile Analytics
 description: Use Turnstile Analytics to view the number of challenges issued, the challenge solve rate, and the metrics of issued challenges.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -38,6 +38,6 @@ Refer to the pages below for more information about Turnstile Analytics:
 * [ Token validation ](https://developers.cloudflare.com/turnstile/turnstile-analytics/token-validation/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/turnstile-analytics/#page","headline":"Turnstile Analytics · Cloudflare Turnstile docs","description":"Use Turnstile Analytics to view the number of challenges issued, the challenge solve rate, and the metrics of issued challenges.","url":"https://developers.cloudflare.com/turnstile/turnstile-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/turnstile-analytics/#page","headline":"Turnstile Analytics · Cloudflare Turnstile docs","description":"Use Turnstile Analytics to view the number of challenges issued, the challenge solve rate, and the metrics of issued challenges.","url":"https://developers.cloudflare.com/turnstile/turnstile-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/turnstile-analytics/","name":"Turnstile Analytics"}}]}
 ```

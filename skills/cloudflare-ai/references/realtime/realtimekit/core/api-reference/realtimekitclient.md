@@ -1,6 +1,6 @@
 ---
 title: RealtimeKitClient
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,6 @@ The RealtimeKitClient class is the main class of the web core library. An object
       * [.**internals**](#module%5FRealtimeKitClient--module.exports+%5F%5Finternals%5F%5F)
       * [.join()](#module%5FRealtimeKitClient--module.exports+join)
       * [.leave()](#module%5FRealtimeKitClient--module.exports+leave)
-      * ~~[.joinRoom()](#module%5FRealtimeKitClient--module.exports+joinRoom)~~
-      * ~~[.leaveRoom(\[state\])](#module%5FRealtimeKitClient--module.exports+leaveRoom)~~
     * _static_
       * [.initMedia(\[options\], \[skipAwaits\], \[cachedUserDetails\])](#module%5FRealtimeKitClient--module.exports.initMedia)
       * [.init(options)](#module%5FRealtimeKitClient--module.exports.init)
@@ -112,22 +110,6 @@ The `leave()` method can be used to leave a meeting.
 
 **Kind**: instance method of [module.exports](#exp%5Fmodule%5FRealtimeKitClient--module.exports)
 
-#### ~~module.exports.joinRoom()~~
-
-_**Deprecated**_
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRealtimeKitClient--module.exports)
-
-#### ~~module.exports.leaveRoom(\[state\])~~
-
-_**Deprecated**_
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRealtimeKitClient--module.exports)
-
-| Param     | Type           |
-| --------- | -------------- |
-| \[state\] | LeaveRoomState |
-
 #### module.exports.initMedia(\[options\], \[skipAwaits\], \[cachedUserDetails\])
 
 **Kind**: static method of [module.exports](#exp%5Fmodule%5FRealtimeKitClient--module.exports)
@@ -166,6 +148,6 @@ The `init` method can be used to instantiate the RealtimeKitClient class. This r
 | args      | any                      |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/realtimekitclient/#page","headline":"RealtimeKitClient · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/realtimekitclient/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-02-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/realtimekitclient/#page","headline":"RealtimeKitClient · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/realtimekitclient/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/api-reference/","name":"API Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/realtime/realtimekit/core/api-reference/realtimekitclient/","name":"RealtimeKitClient"}}]}
 ```

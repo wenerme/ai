@@ -1,7 +1,7 @@
 ---
 title: Queues
 description: Wrangler commands for managing Workers Queues configurations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,9 +18,9 @@ Manage your Workers [Queues](https://developers.cloudflare.com/queues/) configur
 
 List queues
 
-* [  npm ](#tab-panel-12890)
-* [  pnpm ](#tab-panel-12891)
-* [  yarn ](#tab-panel-12892)
+* [  npm ](#tab-panel-13447)
+* [  pnpm ](#tab-panel-13448)
+* [  yarn ](#tab-panel-13449)
 
 ```sh
 npx wrangler queues list
@@ -62,9 +62,9 @@ Use a specific auth profile
 
 Create a queue
 
-* [  npm ](#tab-panel-12893)
-* [  pnpm ](#tab-panel-12894)
-* [  yarn ](#tab-panel-12895)
+* [  npm ](#tab-panel-13450)
+* [  pnpm ](#tab-panel-13451)
+* [  yarn ](#tab-panel-13452)
 
 ```sh
 npx wrangler queues create [NAME]
@@ -110,9 +110,9 @@ Use a specific auth profile
 
 Update a queue
 
-* [  npm ](#tab-panel-12896)
-* [  pnpm ](#tab-panel-12897)
-* [  yarn ](#tab-panel-12898)
+* [  npm ](#tab-panel-13453)
+* [  pnpm ](#tab-panel-13454)
+* [  yarn ](#tab-panel-13455)
 
 ```sh
 npx wrangler queues update [NAME]
@@ -158,9 +158,9 @@ Use a specific auth profile
 
 Delete a queue
 
-* [  npm ](#tab-panel-12899)
-* [  pnpm ](#tab-panel-12900)
-* [  yarn ](#tab-panel-12901)
+* [  npm ](#tab-panel-13456)
+* [  pnpm ](#tab-panel-13457)
+* [  yarn ](#tab-panel-13458)
 
 ```sh
 npx wrangler queues delete [NAME]
@@ -202,9 +202,9 @@ Use a specific auth profile
 
 Get queue information
 
-* [  npm ](#tab-panel-12902)
-* [  pnpm ](#tab-panel-12903)
-* [  yarn ](#tab-panel-12904)
+* [  npm ](#tab-panel-13459)
+* [  pnpm ](#tab-panel-13460)
+* [  yarn ](#tab-panel-13461)
 
 ```sh
 npx wrangler queues info [NAME]
@@ -246,9 +246,9 @@ Use a specific auth profile
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-12905)
-* [  pnpm ](#tab-panel-12906)
-* [  yarn ](#tab-panel-12907)
+* [  npm ](#tab-panel-13462)
+* [  pnpm ](#tab-panel-13463)
+* [  yarn ](#tab-panel-13464)
 
 ```sh
 npx wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
@@ -304,9 +304,9 @@ Use a specific auth profile
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-12908)
-* [  pnpm ](#tab-panel-12909)
-* [  yarn ](#tab-panel-12910)
+* [  npm ](#tab-panel-13465)
+* [  pnpm ](#tab-panel-13466)
+* [  yarn ](#tab-panel-13467)
 
 ```sh
 npx wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
@@ -350,9 +350,9 @@ Use a specific auth profile
 
 List consumers for a queue
 
-* [  npm ](#tab-panel-12911)
-* [  pnpm ](#tab-panel-12912)
-* [  yarn ](#tab-panel-12913)
+* [  npm ](#tab-panel-13468)
+* [  pnpm ](#tab-panel-13469)
+* [  yarn ](#tab-panel-13470)
 
 ```sh
 npx wrangler queues consumer list [QUEUE-NAME]
@@ -396,9 +396,9 @@ Use a specific auth profile
 
 Add a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-12914)
-* [  pnpm ](#tab-panel-12915)
-* [  yarn ](#tab-panel-12916)
+* [  npm ](#tab-panel-13471)
+* [  pnpm ](#tab-panel-13472)
+* [  yarn ](#tab-panel-13473)
 
 ```sh
 npx wrangler queues consumer http add [QUEUE-NAME]
@@ -450,9 +450,9 @@ Use a specific auth profile
 
 Remove a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-12917)
-* [  pnpm ](#tab-panel-12918)
-* [  yarn ](#tab-panel-12919)
+* [  npm ](#tab-panel-13474)
+* [  pnpm ](#tab-panel-13475)
+* [  yarn ](#tab-panel-13476)
 
 ```sh
 npx wrangler queues consumer http remove [QUEUE-NAME]
@@ -494,9 +494,9 @@ Use a specific auth profile
 
 List HTTP pull consumers for a queue
 
-* [  npm ](#tab-panel-12920)
-* [  pnpm ](#tab-panel-12921)
-* [  yarn ](#tab-panel-12922)
+* [  npm ](#tab-panel-13477)
+* [  pnpm ](#tab-panel-13478)
+* [  yarn ](#tab-panel-13479)
 
 ```sh
 npx wrangler queues consumer http list [QUEUE-NAME]
@@ -540,9 +540,9 @@ Use a specific auth profile
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-12923)
-* [  pnpm ](#tab-panel-12924)
-* [  yarn ](#tab-panel-12925)
+* [  npm ](#tab-panel-13480)
+* [  pnpm ](#tab-panel-13481)
+* [  yarn ](#tab-panel-13482)
 
 ```sh
 npx wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
@@ -598,9 +598,9 @@ Use a specific auth profile
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-12926)
-* [  pnpm ](#tab-panel-12927)
-* [  yarn ](#tab-panel-12928)
+* [  npm ](#tab-panel-13483)
+* [  pnpm ](#tab-panel-13484)
+* [  yarn ](#tab-panel-13485)
 
 ```sh
 npx wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
@@ -644,9 +644,9 @@ Use a specific auth profile
 
 List worker consumers for a queue
 
-* [  npm ](#tab-panel-12929)
-* [  pnpm ](#tab-panel-12930)
-* [  yarn ](#tab-panel-12931)
+* [  npm ](#tab-panel-13486)
+* [  pnpm ](#tab-panel-13487)
+* [  yarn ](#tab-panel-13488)
 
 ```sh
 npx wrangler queues consumer worker list [QUEUE-NAME]
@@ -690,9 +690,9 @@ Use a specific auth profile
 
 Pause message delivery for a queue
 
-* [  npm ](#tab-panel-12932)
-* [  pnpm ](#tab-panel-12933)
-* [  yarn ](#tab-panel-12934)
+* [  npm ](#tab-panel-13489)
+* [  pnpm ](#tab-panel-13490)
+* [  yarn ](#tab-panel-13491)
 
 ```sh
 npx wrangler queues pause-delivery [NAME]
@@ -734,9 +734,9 @@ Use a specific auth profile
 
 Resume message delivery for a queue
 
-* [  npm ](#tab-panel-12935)
-* [  pnpm ](#tab-panel-12936)
-* [  yarn ](#tab-panel-12937)
+* [  npm ](#tab-panel-13492)
+* [  pnpm ](#tab-panel-13493)
+* [  yarn ](#tab-panel-13494)
 
 ```sh
 npx wrangler queues resume-delivery [NAME]
@@ -778,9 +778,9 @@ Use a specific auth profile
 
 Purge messages from a queue
 
-* [  npm ](#tab-panel-12938)
-* [  pnpm ](#tab-panel-12939)
-* [  yarn ](#tab-panel-12940)
+* [  npm ](#tab-panel-13495)
+* [  pnpm ](#tab-panel-13496)
+* [  yarn ](#tab-panel-13497)
 
 ```sh
 npx wrangler queues purge [NAME]
@@ -824,9 +824,9 @@ Use a specific auth profile
 
 Create a new event subscription for a queue
 
-* [  npm ](#tab-panel-12941)
-* [  pnpm ](#tab-panel-12942)
-* [  yarn ](#tab-panel-12943)
+* [  npm ](#tab-panel-13498)
+* [  pnpm ](#tab-panel-13499)
+* [  yarn ](#tab-panel-13500)
 
 ```sh
 npx wrangler queues subscription create [QUEUE]
@@ -882,9 +882,9 @@ Use a specific auth profile
 
 List event subscriptions for a queue
 
-* [  npm ](#tab-panel-12944)
-* [  pnpm ](#tab-panel-12945)
-* [  yarn ](#tab-panel-12946)
+* [  npm ](#tab-panel-13501)
+* [  pnpm ](#tab-panel-13502)
+* [  yarn ](#tab-panel-13503)
 
 ```sh
 npx wrangler queues subscription list [QUEUE]
@@ -932,9 +932,9 @@ Use a specific auth profile
 
 Get details about a specific event subscription
 
-* [  npm ](#tab-panel-12947)
-* [  pnpm ](#tab-panel-12948)
-* [  yarn ](#tab-panel-12949)
+* [  npm ](#tab-panel-13504)
+* [  pnpm ](#tab-panel-13505)
+* [  yarn ](#tab-panel-13506)
 
 ```sh
 npx wrangler queues subscription get [QUEUE]
@@ -980,9 +980,9 @@ Use a specific auth profile
 
 Delete an event subscription from a queue
 
-* [  npm ](#tab-panel-12950)
-* [  pnpm ](#tab-panel-12951)
-* [  yarn ](#tab-panel-12952)
+* [  npm ](#tab-panel-13507)
+* [  pnpm ](#tab-panel-13508)
+* [  yarn ](#tab-panel-13509)
 
 ```sh
 npx wrangler queues subscription delete [QUEUE]
@@ -1028,9 +1028,9 @@ Use a specific auth profile
 
 Update an existing event subscription
 
-* [  npm ](#tab-panel-12953)
-* [  pnpm ](#tab-panel-12954)
-* [  yarn ](#tab-panel-12955)
+* [  npm ](#tab-panel-13510)
+* [  pnpm ](#tab-panel-13511)
+* [  yarn ](#tab-panel-13512)
 
 ```sh
 npx wrangler queues subscription update [QUEUE]
@@ -1079,6 +1079,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/queues/#page","headline":"Queues · Cloudflare Workers docs","description":"Wrangler commands for managing Workers Queues configurations.","url":"https://developers.cloudflare.com/workers/wrangler/commands/queues/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/queues/#page","headline":"Queues · Cloudflare Workers docs","description":"Wrangler commands for managing Workers Queues configurations.","url":"https://developers.cloudflare.com/workers/wrangler/commands/queues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/queues/","name":"Queues"}}]}
 ```

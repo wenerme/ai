@@ -1,7 +1,7 @@
 ---
 title: Calling LLMs
 description: Call large language models from within a stateful Cloudflare Agent with persistent context and autonomous scheduling.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ This page covers the patterns that become possible when your LLM calls happen in
 
 Every Agent has a built-in [SQL database](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) and key-value state. Instead of passing an entire conversation history from the client on every request, the Agent stores it and builds prompts from its own storage.
 
-* [  JavaScript ](#tab-panel-5597)
-* [  TypeScript ](#tab-panel-5598)
+* [  JavaScript ](#tab-panel-5859)
+* [  TypeScript ](#tab-panel-5860)
 
 **JavaScript**
 
@@ -83,8 +83,8 @@ Reasoning models like DeepSeek R1 or GLM-4 can take 30 seconds to several minute
 
 An Agent keeps running after the client disconnects. When the response arrives, the Agent can persist it to state and deliver it when the client reconnects — even hours or days later.
 
-* [  JavaScript ](#tab-panel-5599)
-* [  TypeScript ](#tab-panel-5600)
+* [  JavaScript ](#tab-panel-5861)
+* [  TypeScript ](#tab-panel-5862)
 
 **JavaScript**
 
@@ -154,8 +154,8 @@ With [AIChatAgent](https://developers.cloudflare.com/agents/communication-channe
 
 Agents do not need a user request to call a model. You can schedule model calls to run in the background — for nightly summarization, periodic classification, monitoring, or any task that should happen without human interaction.
 
-* [  JavaScript ](#tab-panel-5601)
-* [  TypeScript ](#tab-panel-5602)
+* [  JavaScript ](#tab-panel-5863)
+* [  TypeScript ](#tab-panel-5864)
 
 **JavaScript**
 
@@ -229,8 +229,8 @@ export class DigestAgent extends Agent<Env> {
 
 Because an Agent maintains state across calls, you can chain multiple models in a single method — using a fast model for classification, a reasoning model for planning, and an embedding model for retrieval — without losing context between steps.
 
-* [  JavaScript ](#tab-panel-5605)
-* [  TypeScript ](#tab-panel-5606)
+* [  JavaScript ](#tab-panel-5867)
+* [  TypeScript ](#tab-panel-5868)
 
 **JavaScript**
 
@@ -320,8 +320,8 @@ Each intermediate result stays in the Agent's memory for the duration of the met
 
 Persistent storage means you can cache model responses and avoid redundant calls. This is especially useful for expensive operations like embeddings or long reasoning chains.
 
-* [  JavaScript ](#tab-panel-5603)
-* [  TypeScript ](#tab-panel-5604)
+* [  JavaScript ](#tab-panel-5865)
+* [  TypeScript ](#tab-panel-5866)
 
 **JavaScript**
 
@@ -402,6 +402,6 @@ For provider-level caching and rate limit management across multiple agents, use
 [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Run autonomous model calls on a delay, schedule, or cron.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/calling-llms/#page","headline":"Calling LLMs · Cloudflare Agents docs","description":"Call large language models from within a stateful Cloudflare Agent with persistent context and autonomous scheduling.","url":"https://developers.cloudflare.com/agents/concepts/calling-llms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/calling-llms/#page","headline":"Calling LLMs · Cloudflare Agents docs","description":"Call large language models from within a stateful Cloudflare Agent with persistent context and autonomous scheduling.","url":"https://developers.cloudflare.com/agents/concepts/calling-llms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/calling-llms/","name":"Calling LLMs"}}]}
 ```

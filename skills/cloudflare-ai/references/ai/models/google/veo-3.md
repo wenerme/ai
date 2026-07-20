@@ -1,7 +1,7 @@
 ---
 title: Veo 3
 description: Google's video generation model capable of producing high-quality videos with optional audio from text prompts.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Google's video generation model capable of producing high-quality videos with op
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-714)
-* [ cURL ](#tab-panel-715)
+* [ TypeScript ](#tab-panel-764)
+* [ cURL ](#tab-panel-765)
 
 **TypeScript**
 
@@ -64,8 +64,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-710)
-* [ Raw response ](#tab-panel-711)
+* [ Output ](#tab-panel-760)
+* [ Raw response ](#tab-panel-761)
 
 ```json
 {
@@ -83,8 +83,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Scene**  — Widescreen cinematic video in 1080p
 
-* [ TypeScript ](#tab-panel-718)
-* [ cURL ](#tab-panel-719)
+* [ TypeScript ](#tab-panel-768)
+* [ cURL ](#tab-panel-769)
 
 **TypeScript**
 
@@ -119,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-712)
-* [ Raw response ](#tab-panel-713)
+* [ Output ](#tab-panel-762)
+* [ Raw response ](#tab-panel-763)
 
 ```json
 {
@@ -136,8 +136,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Vertical Video**  — Portrait orientation for social media
 
-* [ TypeScript ](#tab-panel-722)
-* [ cURL ](#tab-panel-723)
+* [ TypeScript ](#tab-panel-772)
+* [ cURL ](#tab-panel-773)
 
 **TypeScript**
 
@@ -171,8 +171,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-716)
-* [ Raw response ](#tab-panel-717)
+* [ Output ](#tab-panel-766)
+* [ Raw response ](#tab-panel-767)
 
 ```json
 {
@@ -188,8 +188,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Short Format**  — Short video for social media posts
 
-* [ TypeScript ](#tab-panel-726)
-* [ cURL ](#tab-panel-727)
+* [ TypeScript ](#tab-panel-776)
+* [ cURL ](#tab-panel-777)
 
 **TypeScript**
 
@@ -223,8 +223,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-720)
-* [ Raw response ](#tab-panel-721)
+* [ Output ](#tab-panel-770)
+* [ Raw response ](#tab-panel-771)
 
 ```json
 {
@@ -240,8 +240,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Silent Video**  — Video without audio generation
 
-* [ TypeScript ](#tab-panel-728)
-* [ cURL ](#tab-panel-729)
+* [ TypeScript ](#tab-panel-778)
+* [ cURL ](#tab-panel-779)
 
 **TypeScript**
 
@@ -275,8 +275,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-724)
-* [ Raw response ](#tab-panel-725)
+* [ Output ](#tab-panel-774)
+* [ Raw response ](#tab-panel-775)
 
 ```json
 {
@@ -292,8 +292,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-730)
-* [ Output ](#tab-panel-731)
+* [ Input ](#tab-panel-780)
+* [ Output ](#tab-panel-781)
 
 prompt
 
@@ -330,6 +330,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/veo-3/schema-input.
 Output [ ](https://developers.cloudflare.com/ai/models/google/veo-3/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/veo-3/#page","headline":"Veo 3 (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's video generation model capable of producing high-quality videos with optional audio from text prompts.","url":"https://developers.cloudflare.com/ai/models/google/veo-3/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/veo-3/#page","headline":"Veo 3 (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's video generation model capable of producing high-quality videos with optional audio from text prompts.","url":"https://developers.cloudflare.com/ai/models/google/veo-3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

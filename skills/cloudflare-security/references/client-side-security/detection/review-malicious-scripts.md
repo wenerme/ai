@@ -1,7 +1,7 @@
 ---
 title: Review resources considered malicious
 description: Learn how to review scripts and connections that Cloudflare's client-side security considered malicious.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -24,8 +24,8 @@ To review the scripts considered malicious:
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7055)
-  * [ Old dashboard ](#tab-panel-7056)
+  * [  New dashboard ](#tab-panel-7637)
+  * [ Old dashboard ](#tab-panel-7638)
 
   1. In the Cloudflare dashboard, go to the **Web assets** page.
   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -52,8 +52,8 @@ To review the connections considered malicious:
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7057)
-  * [ Old dashboard ](#tab-panel-7058)
+  * [  New dashboard ](#tab-panel-7639)
+  * [ Old dashboard ](#tab-panel-7640)
 
   1. In the Cloudflare dashboard, go to the **Web assets** page.
   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -71,6 +71,6 @@ For more information, refer to [Malicious script and connection detection](https
 4. Based on the displayed information, and with the help of the [last seen/first seen fields in the connection details](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#view-details), review and update the pages where the malicious connection was detected.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/#page","headline":"Review resources considered malicious · Client-side security docs","description":"Learn how to review scripts and connections that Cloudflare's client-side security considered malicious.","url":"https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/#page","headline":"Review resources considered malicious · Client-side security docs","description":"Learn how to review scripts and connections that Cloudflare's client-side security considered malicious.","url":"https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/detection/","name":"Detection"}},{"@type":"ListItem","position":4,"item":{"@id":"/client-side-security/detection/review-malicious-scripts/","name":"Review resources considered malicious"}}]}
 ```

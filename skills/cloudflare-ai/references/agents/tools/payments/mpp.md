@@ -1,7 +1,7 @@
 ---
 title: MPP (Machine Payments Protocol)
 description: Accept and make payments using the Machine Payments Protocol (MPP) on Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -72,6 +72,6 @@ The TypeScript SDK includes framework middleware for [Hono ↗](https://mpp.dev/
 * [Pay Per Crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/) — Cloudflare-native monetization for web content
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/tools/payments/mpp/#page","headline":"MPP (Machine Payments Protocol) · Cloudflare Agents docs","description":"Accept and make payments using the Machine Payments Protocol (MPP) on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/tools/payments/mpp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/tools/payments/mpp/#page","headline":"MPP (Machine Payments Protocol) · Cloudflare Agents docs","description":"Accept and make payments using the Machine Payments Protocol (MPP) on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/tools/payments/mpp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/payments/","name":"Agentic Payments"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/payments/mpp/","name":"MPP (Machine Payments Protocol)"}}]}
 ```

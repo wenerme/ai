@@ -1,7 +1,7 @@
 ---
 title: Improve SEO
 description: Use Cloudflare features like caching, HTTPS, and Crawler Hints to improve your website's search engine rankings.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -65,6 +65,6 @@ The following characteristics do not affect your domain's SEO:
 * **Cloudflare caching**: When Cloudflare caches your content, it actually speeds up content delivery and only improves SEO. Our caching does not create duplicate content, rewrite URLs, or create additional subdomains.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/performance/improve-seo/#page","headline":"Improve SEO · Cloudflare Fundamentals docs","description":"Use Cloudflare features like caching, HTTPS, and Crawler Hints to improve your website's search engine rankings.","url":"https://developers.cloudflare.com/fundamentals/performance/improve-seo/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/performance/improve-seo/#page","headline":"Improve SEO · Cloudflare Fundamentals docs","description":"Use Cloudflare features like caching, HTTPS, and Crawler Hints to improve your website's search engine rankings.","url":"https://developers.cloudflare.com/fundamentals/performance/improve-seo/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/performance/","name":"Performance"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/performance/improve-seo/","name":"Improve SEO"}}]}
 ```

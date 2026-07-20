@@ -1,7 +1,7 @@
 ---
 title: Queue tasks
 description: Add background tasks to a built-in FIFO queue for asynchronous processing within Cloudflare Agents.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -59,8 +59,8 @@ async queue<T>(
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6299)
-* [  TypeScript ](#tab-panel-6300)
+* [  JavaScript ](#tab-panel-6573)
+* [  TypeScript ](#tab-panel-6574)
 
 **JavaScript**
 
@@ -124,8 +124,8 @@ dequeue(id: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6289)
-* [  TypeScript ](#tab-panel-6290)
+* [  JavaScript ](#tab-panel-6563)
+* [  TypeScript ](#tab-panel-6564)
 
 **JavaScript**
 
@@ -153,8 +153,8 @@ dequeueAll(): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6291)
-* [  TypeScript ](#tab-panel-6292)
+* [  JavaScript ](#tab-panel-6565)
+* [  TypeScript ](#tab-panel-6566)
 
 **JavaScript**
 
@@ -186,8 +186,8 @@ dequeueAllByCallback(callback: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6293)
-* [  TypeScript ](#tab-panel-6294)
+* [  JavaScript ](#tab-panel-6567)
+* [  TypeScript ](#tab-panel-6568)
 
 **JavaScript**
 
@@ -223,8 +223,8 @@ The payload is automatically parsed from JSON before being returned.
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6297)
-* [  TypeScript ](#tab-panel-6298)
+* [  JavaScript ](#tab-panel-6571)
+* [  TypeScript ](#tab-panel-6572)
 
 **JavaScript**
 
@@ -267,8 +267,8 @@ This method fetches all queue items and filters them in memory by parsing each p
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6295)
-* [  TypeScript ](#tab-panel-6296)
+* [  JavaScript ](#tab-panel-6569)
+* [  TypeScript ](#tab-panel-6570)
 
 **JavaScript**
 
@@ -306,8 +306,8 @@ async callbackMethod(payload: unknown, queueItem: QueueItem): Promise<void>
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6303)
-* [  TypeScript ](#tab-panel-6304)
+* [  JavaScript ](#tab-panel-6577)
+* [  TypeScript ](#tab-panel-6578)
 
 **JavaScript**
 
@@ -368,8 +368,8 @@ class MyAgent extends Agent {
 
 ### Background processing
 
-* [  JavaScript ](#tab-panel-6301)
-* [  TypeScript ](#tab-panel-6302)
+* [  JavaScript ](#tab-panel-6575)
+* [  TypeScript ](#tab-panel-6576)
 
 **JavaScript**
 
@@ -419,8 +419,8 @@ class DataProcessor extends Agent {
 
 ### Batch operations
 
-* [  JavaScript ](#tab-panel-6305)
-* [  TypeScript ](#tab-panel-6306)
+* [  JavaScript ](#tab-panel-6579)
+* [  TypeScript ](#tab-panel-6580)
 
 **JavaScript**
 
@@ -478,8 +478,8 @@ class BatchProcessor extends Agent {
 
 Use the built-in `retry` option instead of manual re-queue logic. When a callback throws, the task is automatically retried with exponential backoff:
 
-* [  JavaScript ](#tab-panel-6307)
-* [  TypeScript ](#tab-panel-6308)
+* [  JavaScript ](#tab-panel-6581)
+* [  TypeScript ](#tab-panel-6582)
 
 **JavaScript**
 
@@ -583,6 +583,6 @@ Use **queue** when you want tasks to execute as soon as possible in order. Use [
 [ Run Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) Durable multi-step background processing.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/#page","headline":"Queue tasks · Cloudflare Agents docs","description":"Add background tasks to a built-in FIFO queue for asynchronous processing within Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/#page","headline":"Queue tasks · Cloudflare Agents docs","description":"Add background tasks to a built-in FIFO queue for asynchronous processing within Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/queue-tasks/","name":"Queue tasks"}}]}
 ```

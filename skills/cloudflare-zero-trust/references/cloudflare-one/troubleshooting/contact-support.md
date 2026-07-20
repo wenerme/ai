@@ -1,7 +1,7 @@
 ---
 title: Contact Cloudflare Support
 description: Contact Cloudflare Support in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -57,6 +57,6 @@ For issues with DEX tests or device monitoring, provide a [remote capture](https
 For more information, refer to [Contacting Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/contact-support/#page","headline":"Contact Cloudflare Support · Cloudflare One docs","description":"Contact Cloudflare Support in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/contact-support/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/contact-support/#page","headline":"Contact Cloudflare Support · Cloudflare One docs","description":"Contact Cloudflare Support in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/contact-support/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/troubleshooting/contact-support/","name":"Contact Cloudflare Support"}}]}
 ```

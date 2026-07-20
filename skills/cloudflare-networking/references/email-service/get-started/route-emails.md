@@ -1,7 +1,7 @@
 ---
 title: Route emails
 description: Forward incoming emails to existing mailboxes or process them with Workers using Email Service.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -44,8 +44,8 @@ Once your domain is onboarded, you can start routing emails.
 
 You can route your first email by setting up routing rules in the dashboard, or by processing emails with Workers.
 
-* [ Route to email ](#tab-panel-8885)
-* [ Route to Workers ](#tab-panel-8886)
+* [ Route to email ](#tab-panel-9257)
+* [ Route to Workers ](#tab-panel-9258)
 
 The simplest way to route emails is forwarding them to existing email addresses.
 
@@ -100,8 +100,8 @@ npm install mimetext
 ```
 3. Add the `nodejs_compat` compatibility flag to your Wrangler configuration file. This is required for the `mimetext` package:
 
-  * [  wrangler.jsonc ](#tab-panel-8883)
-  * [  wrangler.toml ](#tab-panel-8884)
+  * [  wrangler.jsonc ](#tab-panel-9255)
+  * [  wrangler.toml ](#tab-panel-9256)
 
 **JSONC**
 ```jsonc
@@ -214,6 +214,6 @@ Now that you can route emails, explore advanced features:
 * **[Examples](https://developers.cloudflare.com/email-service/examples/)** \- Real-world routing patterns
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/get-started/route-emails/#page","headline":"Route emails · Cloudflare Email Service docs","description":"Forward incoming emails to existing mailboxes or process them with Workers using Email Service.","url":"https://developers.cloudflare.com/email-service/get-started/route-emails/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/get-started/route-emails/#page","headline":"Route emails · Cloudflare Email Service docs","description":"Forward incoming emails to existing mailboxes or process them with Workers using Email Service.","url":"https://developers.cloudflare.com/email-service/get-started/route-emails/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/get-started/route-emails/","name":"Route emails"}}]}
 ```

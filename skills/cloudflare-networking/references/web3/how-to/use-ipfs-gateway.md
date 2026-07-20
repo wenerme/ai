@@ -1,7 +1,7 @@
 ---
 title: Use IPFS gateway
 description: Serve IPFS content through the Cloudflare IPFS Gateway.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -35,6 +35,6 @@ If a request path is `/ipns/<DOMAIN>`, that tells the gateway that you want it t
 Cloudflare's IPFS Gateway is currently limited to read-only access.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/how-to/use-ipfs-gateway/#page","headline":"Use IPFS gateway · Cloudflare Web3 docs","description":"Serve IPFS content through the Cloudflare IPFS Gateway.","url":"https://developers.cloudflare.com/web3/how-to/use-ipfs-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/how-to/use-ipfs-gateway/#page","headline":"Use IPFS gateway · Cloudflare Web3 docs","description":"Serve IPFS content through the Cloudflare IPFS Gateway.","url":"https://developers.cloudflare.com/web3/how-to/use-ipfs-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/how-to/use-ipfs-gateway/","name":"Use IPFS gateway"}}]}
 ```

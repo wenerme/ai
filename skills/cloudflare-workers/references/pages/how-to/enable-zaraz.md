@@ -1,7 +1,7 @@
 ---
 title: Enable Zaraz
 description: Set up Zaraz on your Cloudflare Pages project using a custom domain.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ To enable Zaraz on Cloudflare Pages, you need a [custom domain](https://develope
 After that, [set up Zaraz](https://developers.cloudflare.com/zaraz/get-started/) on the custom domain.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/enable-zaraz/#page","headline":"Enable Zaraz · Cloudflare Pages docs","description":"Set up Zaraz on your Cloudflare Pages project using a custom domain.","url":"https://developers.cloudflare.com/pages/how-to/enable-zaraz/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/enable-zaraz/#page","headline":"Enable Zaraz · Cloudflare Pages docs","description":"Set up Zaraz on your Cloudflare Pages project using a custom domain.","url":"https://developers.cloudflare.com/pages/how-to/enable-zaraz/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/enable-zaraz/","name":"Enable Zaraz"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Wrangler configuration
 description: Set up Wrangler bindings, Durable Objects, and container settings for Sandbox SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The minimum required configuration for using Sandbox SDK:
 
-* [  wrangler.jsonc ](#tab-panel-10662)
-* [  wrangler.toml ](#tab-panel-10663)
+* [  wrangler.jsonc ](#tab-panel-11107)
+* [  wrangler.toml ](#tab-panel-11108)
 
 **JSONC**
 
@@ -26,7 +26,7 @@ The minimum required configuration for using Sandbox SDK:
   "name": "my-sandbox-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": ["nodejs_compat"],
   "containers": [
     {
@@ -57,7 +57,7 @@ The minimum required configuration for using Sandbox SDK:
 name = "my-sandbox-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -98,8 +98,8 @@ npx wrangler r2 bucket create my-backup-bucket
 
 ### 2\. Add the binding and environment variables
 
-* [  wrangler.jsonc ](#tab-panel-10656)
-* [  wrangler.toml ](#tab-panel-10657)
+* [  wrangler.jsonc ](#tab-panel-11101)
+* [  wrangler.toml ](#tab-panel-11102)
 
 **JSONC**
 
@@ -150,8 +150,8 @@ The SDK uses these credentials to generate presigned URLs that allow the contain
 
 **Solution**: Ensure your `wrangler.jsonc` includes the Durable Objects binding:
 
-* [  wrangler.jsonc ](#tab-panel-10658)
-* [  wrangler.toml ](#tab-panel-10659)
+* [  wrangler.jsonc ](#tab-panel-11103)
+* [  wrangler.toml ](#tab-panel-11104)
 
 **JSONC**
 
@@ -182,8 +182,8 @@ name = "Sandbox"
 
 **Solution**: Add migrations for the Sandbox class:
 
-* [  wrangler.jsonc ](#tab-panel-10660)
-* [  wrangler.toml ](#tab-panel-10661)
+* [  wrangler.jsonc ](#tab-panel-11105)
+* [  wrangler.toml ](#tab-panel-11106)
 
 **JSONC**
 
@@ -216,6 +216,6 @@ tag = "v1"
 * [Get Started guide](https://developers.cloudflare.com/sandbox/get-started/) \- Initial setup walkthrough
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/wrangler/#page","headline":"Wrangler configuration · Cloudflare Sandbox SDK docs","description":"Set up Wrangler bindings, Durable Objects, and container settings for Sandbox SDK.","url":"https://developers.cloudflare.com/sandbox/configuration/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/wrangler/#page","headline":"Wrangler configuration · Cloudflare Sandbox SDK docs","description":"Set up Wrangler bindings, Durable Objects, and container settings for Sandbox SDK.","url":"https://developers.cloudflare.com/sandbox/configuration/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/wrangler/","name":"Wrangler configuration"}}]}
 ```

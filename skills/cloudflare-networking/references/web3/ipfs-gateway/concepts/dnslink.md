@@ -1,7 +1,7 @@
 ---
 title: DNSLink gateways
 description: Use DNSLink to map domain names to IPFS content.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -43,6 +43,6 @@ For example, the default DNSLink record for `www.example.com` would look like th
 For more details about the DNS records created by the IPFS gateway, refer to [Gateway DNS records](https://developers.cloudflare.com/web3/reference/gateway-dns-records/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/#page","headline":"DNSLink gateways · Cloudflare Web3 docs","description":"Use DNSLink to map domain names to IPFS content.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/#page","headline":"DNSLink gateways · Cloudflare Web3 docs","description":"Use DNSLink to map domain names to IPFS content.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ipfs-gateway/","name":"IPFS Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ipfs-gateway/concepts/","name":"Concepts"}},{"@type":"ListItem","position":5,"item":{"@id":"/web3/ipfs-gateway/concepts/dnslink/","name":"DNSLink gateways"}}]}
 ```

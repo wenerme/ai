@@ -1,7 +1,7 @@
 ---
 title: Use Microsoft Entra ID Conditional Access policies in Cloudflare Access
 description: With Conditional Access in Microsoft Entra ID, administrators can enforce policies on applications and users directly in EntraID.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -83,6 +83,6 @@ To enforce your Conditional Access policies on a Cloudflare Access application:
 Users will only be allowed access if they pass the Microsoft Entra ID Conditional Access policies associated with this authentication context.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-conditional-access/#page","headline":"Use Microsoft Entra ID Conditional Access policies in Cloudflare Access · Cloudflare One docs","description":"With Conditional Access in Microsoft Entra ID, administrators can enforce policies on applications and users directly in EntraID.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-conditional-access/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-conditional-access/#page","headline":"Use Microsoft Entra ID Conditional Access policies in Cloudflare Access · Cloudflare One docs","description":"With Conditional Access in Microsoft Entra ID, administrators can enforce policies on applications and users directly in EntraID.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-conditional-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/entra-id-conditional-access/","name":"Use Microsoft Entra ID Conditional Access policies in Cloudflare Access"}}]}
 ```

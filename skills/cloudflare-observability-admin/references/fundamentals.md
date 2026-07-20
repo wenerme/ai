@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Fundamentals
 description: Understand core Cloudflare concepts, set up your account, manage domains, and configure essential platform settings.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,6 +30,6 @@ Refer to the list below for additional Cloudflare resources.
 * [Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/#page","headline":"Overview · Cloudflare Fundamentals docs","description":"Understand core Cloudflare concepts, set up your account, manage domains, and configure essential platform settings.","url":"https://developers.cloudflare.com/fundamentals/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/#page","headline":"Overview · Cloudflare Fundamentals docs","description":"Understand core Cloudflare concepts, set up your account, manage domains, and configure essential platform settings.","url":"https://developers.cloudflare.com/fundamentals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}}]}
 ```

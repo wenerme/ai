@@ -1,7 +1,7 @@
 ---
 title: REST API
 description: Use the Cloudflare Workers AI REST API to deploy a large language model (LLM).
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -46,18 +46,25 @@ After creating your API token, authenticate and make requests to the API using y
 
 You will use the [Execute AI model](https://developers.cloudflare.com/api/resources/ai/methods/run/) endpoint to run the [@cf/meta/llama-3.1-8b-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct/) model:
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/llama-3.1-8b-instruct \  -H 'Authorization: Bearer {API_TOKEN}' \  -d '{ "prompt": "Where did the phrase Hello World come from" }'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/llama-3.1-8b-instruct \
+  -H 'Authorization: Bearer {API_TOKEN}' \
+  -d '{ "prompt": "Where did the phrase Hello World come from" }'
 ```
 
 Replace the values for `{ACCOUNT_ID}` and `{API_TOKEN}`.
 
 The API response will look like the following:
 
-```
-{  "result": {    "response": "Hello, World first appeared in 1974 at Bell Labs when Brian Kernighan included it in the C programming language example. It became widely used as a basic test program due to simplicity and clarity. It represents an inviting greeting from a program to the world."  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "response": "Hello, World first appeared in 1974 at Bell Labs when Brian Kernighan included it in the C programming language example. It became widely used as a basic test program due to simplicity and clarity. It represents an inviting greeting from a program to the world."
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 This example execution uses the `@cf/meta/llama-3.1-8b-instruct` model, but you can use any of the models in the [Workers AI models catalog](https://developers.cloudflare.com/workers-ai/models/). If using another model, you will need to replace `{model}` with your desired model name.
@@ -70,6 +77,6 @@ By completing this guide, you have created a Cloudflare account (if you did not 
 * [AI SDK](https://developers.cloudflare.com/workers-ai/configuration/ai-sdk) \- Learn how to integrate with an AI model.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/get-started/rest-api/#page","headline":"Get started - REST API · Cloudflare Workers AI docs","description":"Use the Cloudflare Workers AI REST API to deploy a large language model (LLM).","url":"https://developers.cloudflare.com/workers-ai/get-started/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/get-started/rest-api/#page","headline":"Get started - REST API · Cloudflare Workers AI docs","description":"Use the Cloudflare Workers AI REST API to deploy a large language model (LLM).","url":"https://developers.cloudflare.com/workers-ai/get-started/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/get-started/rest-api/","name":"REST API"}}]}
 ```

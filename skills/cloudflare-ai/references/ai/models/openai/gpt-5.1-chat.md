@@ -1,7 +1,7 @@
 ---
 title: GPT-5.1 Chat
 description: GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1222)
-* [ cURL ](#tab-panel-1223)
+* [ TypeScript ](#tab-panel-1310)
+* [ cURL ](#tab-panel-1311)
 
 **TypeScript**
 
@@ -58,8 +58,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1232)
-* [ Raw response ](#tab-panel-1233)
+* [ Output ](#tab-panel-1320)
+* [ Raw response ](#tab-panel-1321)
 
 The three laws of thermodynamics can be stated simply as:
 
@@ -119,8 +119,8 @@ If you want, I can also include the "zeroth" law for completeness.
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-1224)
-* [ cURL ](#tab-panel-1225)
+* [ TypeScript ](#tab-panel-1312)
+* [ cURL ](#tab-panel-1313)
 
 **TypeScript**
 
@@ -156,8 +156,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1234)
-* [ Raw response ](#tab-panel-1235)
+* [ Output ](#tab-panel-1322)
+* [ Raw response ](#tab-panel-1323)
 
 The easiest way to read a JSON file in Python is to use the built‑in json module.
 
@@ -217,8 +217,8 @@ Notes:
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-1228)
-* [ cURL ](#tab-panel-1229)
+* [ TypeScript ](#tab-panel-1316)
+* [ cURL ](#tab-panel-1317)
 
 **TypeScript**
 
@@ -268,8 +268,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1236)
-* [ Raw response ](#tab-panel-1237)
+* [ Output ](#tab-panel-1324)
+* [ Raw response ](#tab-panel-1325)
 
 Here are some great stops along the way from San Francisco to Los Angeles, depending on which route you choose:
 
@@ -339,8 +339,8 @@ If you tell me your preferred pace, interests (food, nature, beaches, wineries, 
 
 **Creative Writing**  — Longer completion for creative output
 
-* [ TypeScript ](#tab-panel-1226)
-* [ cURL ](#tab-panel-1227)
+* [ TypeScript ](#tab-panel-1314)
+* [ cURL ](#tab-panel-1315)
 
 **TypeScript**
 
@@ -376,8 +376,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1238)
-* [ Raw response ](#tab-panel-1239)
+* [ Output ](#tab-panel-1326)
+* [ Raw response ](#tab-panel-1327)
 
 Detective Mara Lorne had seen her share of strange crime scenes, but none as quietly unsettling as the abandoned greenhouse on Cinder Street. The air was warm and sweet, thick with the scent of overgrown jasmine. Glass panes lay shattered underfoot like frozen puddles.
 
@@ -426,8 +426,8 @@ She crouched beside the body, careful not to disturb the latticework of vines th
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-1230)
-* [ cURL ](#tab-panel-1231)
+* [ TypeScript ](#tab-panel-1318)
+* [ cURL ](#tab-panel-1319)
 
 **TypeScript**
 
@@ -462,8 +462,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1240)
-* [ Raw response ](#tab-panel-1241)
+* [ Output ](#tab-panel-1328)
+* [ Raw response ](#tab-panel-1329)
 
 Recursion is a programming technique where a function calls itself to solve a smaller version of the same problem. It continues doing this until it reaches a simple stopping point called the base case.
 
@@ -3458,8 +3458,8 @@ This shows how a big task is broken into smaller tasks until it’s simple enoug
 
 ## Parameters
 
-* [ Input ](#tab-panel-1242)
-* [ Output ](#tab-panel-1243)
+* [ Input ](#tab-panel-1330)
+* [ Output ](#tab-panel-1331)
 
 ▶messages\[\]
 
@@ -3548,6 +3548,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/#page","headline":"GPT-5.1 Chat (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/#page","headline":"GPT-5.1 Chat (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

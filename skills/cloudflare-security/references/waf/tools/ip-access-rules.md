@@ -1,7 +1,7 @@
 ---
 title: IP Access rules
 description: Control access based on IP address, range, country, or ASN.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -69,6 +69,6 @@ Block by country is only available on Enterprise plans. Other customers may perf
 To learn more about protection options provided by Cloudflare to protect your website against malicious traffic and bad actors, refer to [Account security](https://developers.cloudflare.com/learning-paths/application-security/account-security/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/ip-access-rules/#page","headline":"IP Access rules · Cloudflare Web Application Firewall (WAF) docs","description":"Control access based on IP address, range, country, or ASN.","url":"https://developers.cloudflare.com/waf/tools/ip-access-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/ip-access-rules/#page","headline":"IP Access rules · Cloudflare Web Application Firewall (WAF) docs","description":"Control access based on IP address, range, country, or ASN.","url":"https://developers.cloudflare.com/waf/tools/ip-access-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/ip-access-rules/","name":"IP Access rules"}}]}
 ```

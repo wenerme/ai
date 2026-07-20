@@ -1,7 +1,7 @@
 ---
 title: Workers
 description: Wrangler commands for creating, developing, deploying, and managing Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -327,9 +327,9 @@ The following global flags work on every command:
 
 🪄 Setup a project to work on Cloudflare
 
-* [  npm ](#tab-panel-13166)
-* [  pnpm ](#tab-panel-13167)
-* [  yarn ](#tab-panel-13168)
+* [  npm ](#tab-panel-13717)
+* [  pnpm ](#tab-panel-13718)
+* [  yarn ](#tab-panel-13719)
 
 ```sh
 npx wrangler setup
@@ -385,9 +385,9 @@ This action creates a new [version](https://developers.cloudflare.com/workers/ve
 
 Create or update a secret for a Worker
 
-* [  npm ](#tab-panel-13169)
-* [  pnpm ](#tab-panel-13170)
-* [  yarn ](#tab-panel-13171)
+* [  npm ](#tab-panel-13720)
+* [  pnpm ](#tab-panel-13721)
+* [  yarn ](#tab-panel-13722)
 
 ```sh
 npx wrangler secret put [KEY]
@@ -449,9 +449,9 @@ echo "-----BEGIN PRIVATE KEY-----\nM...==\n-----END PRIVATE KEY-----\n" | wrangl
 
 Delete a secret from a Worker
 
-* [  npm ](#tab-panel-13172)
-* [  pnpm ](#tab-panel-13173)
-* [  yarn ](#tab-panel-13174)
+* [  npm ](#tab-panel-13723)
+* [  pnpm ](#tab-panel-13724)
+* [  yarn ](#tab-panel-13725)
 
 ```sh
 npx wrangler secret delete [KEY]
@@ -495,9 +495,9 @@ Use a specific auth profile
 
 List all secrets for a Worker
 
-* [  npm ](#tab-panel-13175)
-* [  pnpm ](#tab-panel-13176)
-* [  yarn ](#tab-panel-13177)
+* [  npm ](#tab-panel-13726)
+* [  pnpm ](#tab-panel-13727)
+* [  yarn ](#tab-panel-13728)
 
 ```sh
 npx wrangler secret list
@@ -558,9 +558,9 @@ npx wrangler secret list
 
 Create, update, or delete multiple secrets for a Worker in a single request, with up to 100 secrets per command.
 
-* [  npm ](#tab-panel-13178)
-* [  pnpm ](#tab-panel-13179)
-* [  yarn ](#tab-panel-13180)
+* [  npm ](#tab-panel-13729)
+* [  pnpm ](#tab-panel-13730)
+* [  yarn ](#tab-panel-13731)
 
 ```sh
 npx wrangler secret bulk [FILE]
@@ -636,9 +636,9 @@ Finished processing secrets file:
 
 🦚 Start a log tailing session for a Worker
 
-* [  npm ](#tab-panel-13181)
-* [  pnpm ](#tab-panel-13182)
-* [  yarn ](#tab-panel-13183)
+* [  npm ](#tab-panel-13732)
+* [  pnpm ](#tab-panel-13733)
+* [  yarn ](#tab-panel-13734)
 
 ```sh
 npx wrangler tail [WORKER]
@@ -714,9 +714,9 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Upload a new [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker that is not deployed immediately.
 
-* [  npm ](#tab-panel-13184)
-* [  pnpm ](#tab-panel-13185)
-* [  yarn ](#tab-panel-13186)
+* [  npm ](#tab-panel-13735)
+* [  pnpm ](#tab-panel-13736)
+* [  yarn ](#tab-panel-13737)
 
 ```sh
 npx wrangler versions upload [PATH]
@@ -804,9 +804,9 @@ Use a specific auth profile
 
 Deploy a previously created [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker all at once or create a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) to incrementally shift traffic to a new version by following an interactive prompt.
 
-* [  npm ](#tab-panel-13187)
-* [  pnpm ](#tab-panel-13188)
-* [  yarn ](#tab-panel-13189)
+* [  npm ](#tab-panel-13738)
+* [  pnpm ](#tab-panel-13739)
+* [  yarn ](#tab-panel-13740)
 
 ```sh
 npx wrangler versions deploy [VERSION-SPECS]
@@ -868,9 +868,9 @@ For example: `wrangler versions deploy 095f00a7-23a7-43b7-a227-e4c97cab5f22@10% 
 
 Retrieve details for the 10 most recent versions. Details include `Version ID`, `Created on`, `Author`, `Source`, and optionally, `Tag` or `Message`.
 
-* [  npm ](#tab-panel-13190)
-* [  pnpm ](#tab-panel-13191)
-* [  yarn ](#tab-panel-13192)
+* [  npm ](#tab-panel-13741)
+* [  pnpm ](#tab-panel-13742)
+* [  yarn ](#tab-panel-13743)
 
 ```sh
 npx wrangler versions list
@@ -914,9 +914,9 @@ Use a specific auth profile
 
 View the details of a specific version of your Worker
 
-* [  npm ](#tab-panel-13193)
-* [  pnpm ](#tab-panel-13194)
-* [  yarn ](#tab-panel-13195)
+* [  npm ](#tab-panel-13744)
+* [  pnpm ](#tab-panel-13745)
+* [  yarn ](#tab-panel-13746)
 
 ```sh
 npx wrangler versions view [VERSION-ID]
@@ -962,9 +962,9 @@ Use a specific auth profile
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-13196)
-* [  pnpm ](#tab-panel-13197)
-* [  yarn ](#tab-panel-13198)
+* [  npm ](#tab-panel-13747)
+* [  pnpm ](#tab-panel-13748)
+* [  yarn ](#tab-panel-13749)
 
 ```sh
 npx wrangler versions secret put [KEY]
@@ -1012,9 +1012,9 @@ Use a specific auth profile
 
 Delete a secret variable from a Worker
 
-* [  npm ](#tab-panel-13199)
-* [  pnpm ](#tab-panel-13200)
-* [  yarn ](#tab-panel-13201)
+* [  npm ](#tab-panel-13750)
+* [  pnpm ](#tab-panel-13751)
+* [  yarn ](#tab-panel-13752)
 
 ```sh
 npx wrangler versions secret delete [KEY]
@@ -1062,9 +1062,9 @@ Use a specific auth profile
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-13202)
-* [  pnpm ](#tab-panel-13203)
-* [  yarn ](#tab-panel-13204)
+* [  npm ](#tab-panel-13753)
+* [  pnpm ](#tab-panel-13754)
+* [  yarn ](#tab-panel-13755)
 
 ```sh
 npx wrangler versions secret bulk [FILE]
@@ -1123,9 +1123,9 @@ Experimental
 
 Apply changes to triggers (Routes or domains and Cron Triggers) when using `wrangler versions upload`
 
-* [  npm ](#tab-panel-13205)
-* [  pnpm ](#tab-panel-13206)
-* [  yarn ](#tab-panel-13207)
+* [  npm ](#tab-panel-13756)
+* [  pnpm ](#tab-panel-13757)
+* [  yarn ](#tab-panel-13758)
 
 ```sh
 npx wrangler triggers deploy
@@ -1183,9 +1183,9 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Displays the 10 most recent deployments of your Worker
 
-* [  npm ](#tab-panel-13208)
-* [  pnpm ](#tab-panel-13209)
-* [  yarn ](#tab-panel-13210)
+* [  npm ](#tab-panel-13759)
+* [  pnpm ](#tab-panel-13760)
+* [  yarn ](#tab-panel-13761)
 
 ```sh
 npx wrangler deployments list
@@ -1229,9 +1229,9 @@ Use a specific auth profile
 
 View the current state of your production
 
-* [  npm ](#tab-panel-13211)
-* [  pnpm ](#tab-panel-13212)
-* [  yarn ](#tab-panel-13213)
+* [  npm ](#tab-panel-13762)
+* [  pnpm ](#tab-panel-13763)
+* [  yarn ](#tab-panel-13764)
 
 ```sh
 npx wrangler deployments status
@@ -1388,6 +1388,6 @@ The following global flags work on every command:
   * Run as if Wrangler was started in the specified directory instead of the current working directory.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers/#page","headline":"Workers · Cloudflare Workers docs","description":"Wrangler commands for creating, developing, deploying, and managing Workers.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers/#page","headline":"Workers · Cloudflare Workers docs","description":"Wrangler commands for creating, developing, deploying, and managing Workers.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/workers/","name":"Workers"}}]}
 ```

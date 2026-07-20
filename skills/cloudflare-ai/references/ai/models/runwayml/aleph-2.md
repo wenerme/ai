@@ -1,7 +1,7 @@
 ---
 title: RunwayML Aleph 2
 description: RunwayML's video editing model. Edit one frame to update your whole video, make changes across multiple shots, and work with up to 30 seconds of video. Supports keyframe-guided editing for precise control over specific moments in the clip.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ RunwayML's video editing model. Edit one frame to update your whole video, make 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1874)
-* [ cURL ](#tab-panel-1875)
+* [ TypeScript ](#tab-panel-2020)
+* [ cURL ](#tab-panel-2021)
 
 **TypeScript**
 
@@ -57,8 +57,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1872)
-* [ Raw response ](#tab-panel-1873)
+* [ Output ](#tab-panel-2018)
+* [ Raw response ](#tab-panel-2019)
 
 ```json
 {
@@ -76,8 +76,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Keyframe-Guided Edit**  — Edit a video using a reference image anchored to the first frame of the output
 
-* [ TypeScript ](#tab-panel-1882)
-* [ cURL ](#tab-panel-1883)
+* [ TypeScript ](#tab-panel-2028)
+* [ cURL ](#tab-panel-2029)
 
 **TypeScript**
 
@@ -117,8 +117,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1876)
-* [ Raw response ](#tab-panel-1877)
+* [ Output ](#tab-panel-2022)
+* [ Raw response ](#tab-panel-2023)
 
 ```json
 {
@@ -134,8 +134,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Timed Keyframe Edit**  — Place a guidance image at a specific timestamp within the input video using keyframes\[\].seconds
 
-* [ TypeScript ](#tab-panel-1884)
-* [ cURL ](#tab-panel-1885)
+* [ TypeScript ](#tab-panel-2030)
+* [ cURL ](#tab-panel-2031)
 
 **TypeScript**
 
@@ -175,8 +175,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1878)
-* [ Raw response ](#tab-panel-1879)
+* [ Output ](#tab-panel-2024)
+* [ Raw response ](#tab-panel-2025)
 
 ```json
 {
@@ -192,8 +192,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Content Moderation Override**  — Edit a video featuring public figures with relaxed content moderation
 
-* [ TypeScript ](#tab-panel-1886)
-* [ cURL ](#tab-panel-1887)
+* [ TypeScript ](#tab-panel-2032)
+* [ cURL ](#tab-panel-2033)
 
 **TypeScript**
 
@@ -227,8 +227,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1880)
-* [ Raw response ](#tab-panel-1881)
+* [ Output ](#tab-panel-2026)
+* [ Raw response ](#tab-panel-2027)
 
 ```json
 {
@@ -244,8 +244,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1888)
-* [ Output ](#tab-panel-1889)
+* [ Input ](#tab-panel-2034)
+* [ Output ](#tab-panel-2035)
 
 prompt
 
@@ -286,6 +286,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/schema-in
 Output [ ](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/runwayml/aleph-2/#page","headline":"RunwayML Aleph 2 (RunwayML) · Cloudflare AI docs · Cloudflare AI docs","description":"RunwayML's video editing model. Edit one frame to update your whole video, make changes across multiple shots, and work with up to 30 seconds of video. Supports keyframe-guided editing for precise control over specific moments in the clip.","url":"https://developers.cloudflare.com/ai/models/runwayml/aleph-2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/runwayml/aleph-2/#page","headline":"RunwayML Aleph 2 (RunwayML) · Cloudflare AI docs · Cloudflare AI docs","description":"RunwayML's video editing model. Edit one frame to update your whole video, make changes across multiple shots, and work with up to 30 seconds of video. Supports keyframe-guided editing for precise control over specific moments in the clip.","url":"https://developers.cloudflare.com/ai/models/runwayml/aleph-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

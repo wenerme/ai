@@ -1,7 +1,7 @@
 ---
 title: Create indexes
 description: Learn how to create Vectorize indexes, configure dimensions, and choose distance metrics.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -132,6 +132,6 @@ When querying vectors, you can specify Vectorize to use either:
 Distance metrics cannot be changed after index creation, and that each metric has a different scoring function.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/best-practices/create-indexes/#page","headline":"Create indexes · Cloudflare Vectorize docs","description":"Learn how to create Vectorize indexes, configure dimensions, and choose distance metrics.","url":"https://developers.cloudflare.com/vectorize/best-practices/create-indexes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/best-practices/create-indexes/#page","headline":"Create indexes · Cloudflare Vectorize docs","description":"Learn how to create Vectorize indexes, configure dimensions, and choose distance metrics.","url":"https://developers.cloudflare.com/vectorize/best-practices/create-indexes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/best-practices/create-indexes/","name":"Create indexes"}}]}
 ```

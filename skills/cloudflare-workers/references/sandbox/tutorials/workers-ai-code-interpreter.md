@@ -1,7 +1,7 @@
 ---
 title: Code interpreter with Workers AI
 description: Build a code interpreter using Workers AI GPT-OSS model with the official workers-ai-provider package.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -109,8 +109,8 @@ async function handleAIRequest(input: string, env: Env): Promise<string> {
 
 The template includes the proper Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10944)
-* [  wrangler.toml ](#tab-panel-10945)
+* [  wrangler.jsonc ](#tab-panel-11389)
+* [  wrangler.toml ](#tab-panel-11390)
 
 **JSONC**
 
@@ -119,7 +119,7 @@ The template includes the proper Wrangler configuration:
   "name": "sandbox-code-interpreter-example",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "ai": {
     "binding": "AI"
   },
@@ -149,7 +149,7 @@ The template includes the proper Wrangler configuration:
 name = "sandbox-code-interpreter-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [ai]
@@ -275,6 +275,6 @@ You deployed a sophisticated code interpreter that:
 * [GPT-OSS model documentation](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/) \- Model details and capabilities
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/#page","headline":"Code interpreter with Workers AI · Cloudflare Sandbox SDK docs","description":"Build a code interpreter using Workers AI GPT-OSS model with the official workers-ai-provider package.","url":"https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/#page","headline":"Code interpreter with Workers AI · Cloudflare Sandbox SDK docs","description":"Build a code interpreter using Workers AI GPT-OSS model with the official workers-ai-provider package.","url":"https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/workers-ai-code-interpreter/","name":"Code interpreter with Workers AI"}}]}
 ```

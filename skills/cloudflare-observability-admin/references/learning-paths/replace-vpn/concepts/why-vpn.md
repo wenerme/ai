@@ -1,7 +1,7 @@
 ---
 title: Why should you replace your VPN?
 description: Learn benefits of Zero Trust over VPNs.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ VPNs invoke a perimeter-based security model (often called the [castle-and-moat 
 **Performance** — ZTNA connects users to corporate networks via [the cloud ↗](https://www.cloudflare.com/learning/cloud/what-is-the-cloud/) instead of via on-premise VPN servers. This enables users to connect from anywhere without experiencing performance degradation and integrates more easily with cloud-based infrastructure.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/why-vpn/#page","headline":"Why should you replace your VPN? · Cloudflare Learning Paths","description":"Learn benefits of Zero Trust over VPNs.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/why-vpn/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/why-vpn/#page","headline":"Why should you replace your VPN? · Cloudflare Learning Paths","description":"Learn benefits of Zero Trust over VPNs.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/why-vpn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/concepts/why-vpn/","name":"Why should you replace your VPN?"}}]}
 ```

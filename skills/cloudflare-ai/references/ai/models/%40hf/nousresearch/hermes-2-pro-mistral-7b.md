@@ -1,7 +1,7 @@
 ---
 title: hermes-2-pro-mistral-7b
 description: Hermes 2 Pro on Mistral 7B is the new flagship 7B Hermes! Hermes 2 Pro is an upgraded, retrained version of Nous Hermes 2, consisting of an updated and cleaned version of the OpenHermes 2.5 Dataset, as well as a newly introduced Function Calling and JSON Mode dataset developed in-house.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2312)
-* [  TypeScript ](#tab-panel-2313)
-* [  Python ](#tab-panel-2314)
-* [  curl ](#tab-panel-2315)
+* [  Worker (Streaming) ](#tab-panel-2458)
+* [  TypeScript ](#tab-panel-2459)
+* [  Python ](#tab-panel-2460)
+* [  curl ](#tab-panel-2461)
 
 **TypeScript**
 
@@ -228,6 +228,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b/streaming-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40hf/nousresearch/hermes-2-pro-mistral-7b/#page","headline":"hermes-2-pro-mistral-7b (nousresearch) · Cloudflare AI docs · Cloudflare AI docs","description":"Hermes 2 Pro on Mistral 7B is the new flagship 7B Hermes! Hermes 2 Pro is an upgraded, retrained version of Nous Hermes 2, consisting of an updated and cleaned version of the OpenHermes 2.5 Dataset, as well as a newly introduced Function Calling and JSON Mode dataset developed in-house.","url":"https://developers.cloudflare.com/ai/models/%40hf/nousresearch/hermes-2-pro-mistral-7b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40hf/nousresearch/hermes-2-pro-mistral-7b/#page","headline":"hermes-2-pro-mistral-7b (nousresearch) · Cloudflare AI docs · Cloudflare AI docs","description":"Hermes 2 Pro on Mistral 7B is the new flagship 7B Hermes! Hermes 2 Pro is an upgraded, retrained version of Nous Hermes 2, consisting of an updated and cleaned version of the OpenHermes 2.5 Dataset, as well as a newly introduced Function Calling and JSON Mode dataset developed in-house.","url":"https://developers.cloudflare.com/ai/models/%40hf/nousresearch/hermes-2-pro-mistral-7b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

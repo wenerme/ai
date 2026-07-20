@@ -1,7 +1,7 @@
 ---
 title: embeddinggemma-300m
 description: EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -22,9 +22,9 @@ EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embeddin
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5003)
-* [  Python ](#tab-panel-5004)
-* [  curl ](#tab-panel-5005)
+* [  TypeScript ](#tab-panel-5261)
+* [  Python ](#tab-panel-5262)
+* [  curl ](#tab-panel-5263)
 
 ```ts
 export interface Env {
@@ -96,8 +96,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-5006)
-* [ Output ](#tab-panel-5007)
+* [ Input ](#tab-panel-5264)
+* [ Output ](#tab-panel-5265)
 
 ▶text
 
@@ -118,6 +118,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300
 Output [ ](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/#page","headline":"embeddinggemma-300m (Google) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages.","url":"https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/#page","headline":"embeddinggemma-300m (Google) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages.","url":"https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

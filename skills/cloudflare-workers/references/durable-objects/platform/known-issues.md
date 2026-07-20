@@ -1,7 +1,7 @@
 ---
 title: Known issues
 description: Known issues with Durable Objects, including global uniqueness guarantees, code updates, and development tool limitations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -45,6 +45,6 @@ Currently, when developing locally (using `npx wrangler dev`), Durable Object [a
 To avoid this issue, when using Durable Object alarms, close and restart your `wrangler dev` command after editing your code.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/known-issues/#page","headline":"Known issues · Cloudflare Durable Objects docs","description":"Known issues with Durable Objects, including global uniqueness guarantees, code updates, and development tool limitations.","url":"https://developers.cloudflare.com/durable-objects/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/known-issues/#page","headline":"Known issues · Cloudflare Durable Objects docs","description":"Known issues with Durable Objects, including global uniqueness guarantees, code updates, and development tool limitations.","url":"https://developers.cloudflare.com/durable-objects/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/platform/known-issues/","name":"Known issues"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: TTS-1
 description: OpenAI's text-to-speech model optimized for real-time use with low latency.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ OpenAI's text-to-speech model optimized for real-time use with low latency.
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1494)
-* [ cURL ](#tab-panel-1495)
+* [ TypeScript ](#tab-panel-1640)
+* [ cURL ](#tab-panel-1641)
 
 **TypeScript**
 
@@ -62,8 +62,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1490)
-* [ Raw response ](#tab-panel-1491)
+* [ Output ](#tab-panel-1636)
+* [ Raw response ](#tab-panel-1637)
 
 ```json
 {
@@ -81,8 +81,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Different Voice**  — Use the Nova voice for a different tone
 
-* [ TypeScript ](#tab-panel-1498)
-* [ cURL ](#tab-panel-1499)
+* [ TypeScript ](#tab-panel-1644)
+* [ cURL ](#tab-panel-1645)
 
 **TypeScript**
 
@@ -114,8 +114,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1492)
-* [ Raw response ](#tab-panel-1493)
+* [ Output ](#tab-panel-1638)
+* [ Raw response ](#tab-panel-1639)
 
 ```json
 {
@@ -131,8 +131,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Narration**  — Slower narration style with the Onyx voice
 
-* [ TypeScript ](#tab-panel-1502)
-* [ cURL ](#tab-panel-1503)
+* [ TypeScript ](#tab-panel-1648)
+* [ cURL ](#tab-panel-1649)
 
 **TypeScript**
 
@@ -164,8 +164,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1496)
-* [ Raw response ](#tab-panel-1497)
+* [ Output ](#tab-panel-1642)
+* [ Raw response ](#tab-panel-1643)
 
 ```json
 {
@@ -181,8 +181,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Echo Voice**  — Use the Echo voice for a deeper tone
 
-* [ TypeScript ](#tab-panel-1506)
-* [ cURL ](#tab-panel-1507)
+* [ TypeScript ](#tab-panel-1652)
+* [ cURL ](#tab-panel-1653)
 
 **TypeScript**
 
@@ -214,8 +214,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1500)
-* [ Raw response ](#tab-panel-1501)
+* [ Output ](#tab-panel-1646)
+* [ Raw response ](#tab-panel-1647)
 
 ```json
 {
@@ -231,8 +231,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Playback**  — Speed up speech for quick listening
 
-* [ TypeScript ](#tab-panel-1508)
-* [ cURL ](#tab-panel-1509)
+* [ TypeScript ](#tab-panel-1654)
+* [ cURL ](#tab-panel-1655)
 
 **TypeScript**
 
@@ -264,8 +264,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1504)
-* [ Raw response ](#tab-panel-1505)
+* [ Output ](#tab-panel-1650)
+* [ Raw response ](#tab-panel-1651)
 
 ```json
 {
@@ -281,8 +281,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1510)
-* [ Output ](#tab-panel-1511)
+* [ Input ](#tab-panel-1656)
+* [ Output ](#tab-panel-1657)
 
 text
 
@@ -311,6 +311,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-input.
 Output [ ](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/tts-1/#page","headline":"TTS-1 (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's text-to-speech model optimized for real-time use with low latency.","url":"https://developers.cloudflare.com/ai/models/openai/tts-1/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/tts-1/#page","headline":"TTS-1 (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's text-to-speech model optimized for real-time use with low latency.","url":"https://developers.cloudflare.com/ai/models/openai/tts-1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

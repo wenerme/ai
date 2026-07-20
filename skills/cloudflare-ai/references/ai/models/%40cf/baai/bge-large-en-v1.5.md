@@ -1,7 +1,7 @@
 ---
 title: bge-large-en-v1.5
 description: BAAI general embedding (Large) model that transforms any given text into a 1024-dimensional vector
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,9 +30,9 @@ BAAI general embedding (Large) model that transforms any given text into a 1024-
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2173)
-* [  Python ](#tab-panel-2174)
-* [  curl ](#tab-panel-2175)
+* [  TypeScript ](#tab-panel-2319)
+* [  Python ](#tab-panel-2320)
+* [  curl ](#tab-panel-2321)
 
 ```ts
 export interface Env {
@@ -106,8 +106,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-2176)
-* [ Output ](#tab-panel-2177)
+* [ Input ](#tab-panel-2322)
+* [ Output ](#tab-panel-2323)
 
 ▶text
 
@@ -131,8 +131,8 @@ pooling
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-2178)
-* [ Output ](#tab-panel-2179)
+* [ Input ](#tab-panel-2324)
+* [ Output ](#tab-panel-2325)
 
 ▶requests\[\]
 
@@ -161,6 +161,6 @@ pooling
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/baai/bge-large-en-v1.5/#page","headline":"bge-large-en-v1.5 (BAAI) · Cloudflare AI docs · Cloudflare AI docs","description":"BAAI general embedding (Large) model that transforms any given text into a 1024-dimensional vector","url":"https://developers.cloudflare.com/ai/models/%40cf/baai/bge-large-en-v1.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/baai/bge-large-en-v1.5/#page","headline":"bge-large-en-v1.5 (BAAI) · Cloudflare AI docs · Cloudflare AI docs","description":"BAAI general embedding (Large) model that transforms any given text into a 1024-dimensional vector","url":"https://developers.cloudflare.com/ai/models/%40cf/baai/bge-large-en-v1.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Set up Data Loss Prevention (DLP)
 description: Enable and configure DLP policies on your AI Gateway to scan prompts and responses for sensitive data.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -219,6 +219,6 @@ For general AI Gateway troubleshooting, refer to [Troubleshooting](https://devel
 For additional support with DLP configuration, refer to the [Cloudflare Data Loss Prevention documentation](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) or contact your Cloudflare support team.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/#page","headline":"Set up Data Loss Prevention (DLP) · Cloudflare AI Gateway docs","description":"Enable and configure DLP policies on your AI Gateway to scan prompts and responses for sensitive data.","url":"https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/#page","headline":"Set up Data Loss Prevention (DLP) · Cloudflare AI Gateway docs","description":"Enable and configure DLP policies on your AI Gateway to scan prompts and responses for sensitive data.","url":"https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/dlp/","name":"Data Loss Prevention (DLP)"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/features/dlp/set-up-dlp/","name":"Set up Data Loss Prevention (DLP)"}}]}
 ```

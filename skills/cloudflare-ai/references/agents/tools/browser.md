@@ -1,7 +1,7 @@
 ---
 title: Browser
 description: Give Agents full Chrome DevTools Protocol access to inspect pages, scrape data, and capture screenshots with Browser Run.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -34,8 +34,8 @@ Because browser sessions run outside the Worker isolate, use them for work that 
 
 Create browser tools with the Browser Run and Worker Loader bindings, then pass those tools to your model call.
 
-* [  JavaScript ](#tab-panel-6763)
-* [  TypeScript ](#tab-panel-6764)
+* [  JavaScript ](#tab-panel-7037)
+* [  TypeScript ](#tab-panel-7038)
 
 **JavaScript**
 
@@ -119,8 +119,8 @@ To discover protocol surface, the model calls `cdp.spec()` (the live, normalized
 
 Add the Browser Run and Worker Loader bindings to `wrangler.jsonc`.
 
-* [  wrangler.jsonc ](#tab-panel-6749)
-* [  wrangler.toml ](#tab-panel-6750)
+* [  wrangler.jsonc ](#tab-panel-7023)
+* [  wrangler.toml ](#tab-panel-7024)
 
 **JSONC**
 
@@ -154,8 +154,8 @@ binding = "LOADER"
 
 The durable runtime behind the tool lives in a Durable Object facet, so your Worker entry must export it (the `@cloudflare/codemode/vite` plugin does this automatically):
 
-* [  JavaScript ](#tab-panel-6751)
-* [  TypeScript ](#tab-panel-6752)
+* [  JavaScript ](#tab-panel-7025)
+* [  TypeScript ](#tab-panel-7026)
 
 **JavaScript**
 
@@ -175,8 +175,8 @@ export { CodemodeRuntime } from "agents/browser";
 
 By default each execution gets a fresh browser session, torn down when the run ends (`one-shot`). Pass a `session` option for two more modes:
 
-* [  JavaScript ](#tab-panel-6753)
-* [  TypeScript ](#tab-panel-6754)
+* [  JavaScript ](#tab-panel-7027)
+* [  TypeScript ](#tab-panel-7028)
 
 **JavaScript**
 
@@ -214,8 +214,8 @@ For host-side wiring (session inspection, cleanup, reclaiming stale pauses), use
 
 Use `browser_execute` for interactive, multi-step automation. For one-shot browsing tasks, use [Browser Run Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/). Quick Actions need only the `browser` binding, so they do not need a Worker Loader or sandbox.
 
-* [  JavaScript ](#tab-panel-6755)
-* [  TypeScript ](#tab-panel-6756)
+* [  JavaScript ](#tab-panel-7029)
+* [  TypeScript ](#tab-panel-7030)
 
 **JavaScript**
 
@@ -239,8 +239,8 @@ const tools = createQuickActionTools({ browser: this.env.BROWSER });
 
 By default, `createBrowserTools` and `createBrowserRuntime` include Quick Action tools whenever a `browser` binding is present. Pass `quickActions: false` to keep only `browser_execute`, or pass `quickActions: { actions, maxChars, options }` to configure the stateless tools.
 
-* [  JavaScript ](#tab-panel-6757)
-* [  TypeScript ](#tab-panel-6758)
+* [  JavaScript ](#tab-panel-7031)
+* [  TypeScript ](#tab-panel-7032)
 
 **JavaScript**
 
@@ -277,8 +277,8 @@ Because the Code Mode runtime can pause a run with the browser session intact, a
 3. The model makes an approval-gated call, so the run pauses durably.
 4. After approval, the run resumes against the same session.
 
-* [  JavaScript ](#tab-panel-6759)
-* [  TypeScript ](#tab-panel-6760)
+* [  JavaScript ](#tab-panel-7033)
+* [  TypeScript ](#tab-panel-7034)
 
 **JavaScript**
 
@@ -320,8 +320,8 @@ From the host side, `connector.liveView()` returns Live View URLs for the shared
 
 Opt in per session with `recording: true`:
 
-* [  JavaScript ](#tab-panel-6761)
-* [  TypeScript ](#tab-panel-6762)
+* [  JavaScript ](#tab-panel-7035)
+* [  TypeScript ](#tab-panel-7036)
 
 **JavaScript**
 
@@ -353,8 +353,8 @@ const { connector } = createBrowserRuntime({
 
 A recording is finalized after the session closes. Capture the session ID while the session is alive, then fetch the recording from the Browser Rendering REST API:
 
-* [  JavaScript ](#tab-panel-6765)
-* [  TypeScript ](#tab-panel-6766)
+* [  JavaScript ](#tab-panel-7039)
+* [  TypeScript ](#tab-panel-7040)
 
 **JavaScript**
 
@@ -432,6 +432,6 @@ For a complete walkthrough, including Browser Run setup, tool definitions, and s
 [ Chrome DevTools Protocol ](https://developers.cloudflare.com/browser-run/cdp/) Use CDP commands, events, and types with Browser Run.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/browser/#page","headline":"Browser · Cloudflare Agents docs","description":"Give Agents full Chrome DevTools Protocol access to inspect pages, scrape data, and capture screenshots with Browser Run.","url":"https://developers.cloudflare.com/agents/tools/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/browser/#page","headline":"Browser · Cloudflare Agents docs","description":"Give Agents full Chrome DevTools Protocol access to inspect pages, scrape data, and capture screenshots with Browser Run.","url":"https://developers.cloudflare.com/agents/tools/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/browser/","name":"Browser"}}]}
 ```

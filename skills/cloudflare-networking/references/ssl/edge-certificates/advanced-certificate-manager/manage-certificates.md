@@ -1,7 +1,7 @@
 ---
 title: Manage advanced certificates
 description: Learn how to create, delete and perform other operations to manage your Cloudflare Advanced SSL certificates.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,8 +18,8 @@ If you are using an existing [Universal SSL certificate](https://developers.clou
 
 Once you order a certificate, you can review the [certificate's status](https://developers.cloudflare.com/ssl/reference/certificate-statuses/) on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or via the API with a [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/list/).
 
-* [ Dashboard ](#tab-panel-10726)
-* [ API ](#tab-panel-10727)
+* [ Dashboard ](#tab-panel-11466)
+* [ API ](#tab-panel-11467)
 
 To create a new advanced certificate in the dashboard:
 
@@ -48,8 +48,8 @@ The available options for **Validation method** and **Certificate Validity Perio
 
 ## Delete a certificate
 
-* [ Dashboard ](#tab-panel-10728)
-* [ API ](#tab-panel-10729)
+* [ Dashboard ](#tab-panel-11468)
+* [ API ](#tab-panel-11469)
 
 To delete an advanced certificate in the dashboard:
 
@@ -118,6 +118,6 @@ Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notificati
 The certificate validity period you choose determines when the auto renewal will start for your certificate. For details, refer to [Validity period and renewal](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/#page","headline":"Manage advanced certificates · Cloudflare SSL/TLS docs","description":"Learn how to create, delete and perform other operations to manage your Cloudflare Advanced SSL certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/#page","headline":"Manage advanced certificates · Cloudflare SSL/TLS docs","description":"Learn how to create, delete and perform other operations to manage your Cloudflare Advanced SSL certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/advanced-certificate-manager/","name":"Advanced certificates"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/","name":"Manage advanced certificates"}}]}
 ```

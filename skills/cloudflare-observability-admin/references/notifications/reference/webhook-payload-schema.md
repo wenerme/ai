@@ -1,7 +1,7 @@
 ---
 title: Webhook payload schema
 description: Review the JSON payload structure for webhooks.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -315,6 +315,6 @@ You can use the `cf-webhook-auth` header to verify that incoming webhooks are fr
 * [Available notification types](https://developers.cloudflare.com/notifications/notification-available/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/#page","headline":"Webhook payload schema · Cloudflare Notifications docs","description":"Review the JSON payload structure for webhooks.","url":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/#page","headline":"Webhook payload schema · Cloudflare Notifications docs","description":"Review the JSON payload structure for webhooks.","url":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/notifications/","name":"Notifications"}},{"@type":"ListItem","position":3,"item":{"@id":"/notifications/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/notifications/reference/webhook-payload-schema/","name":"Webhook payload schema"}}]}
 ```

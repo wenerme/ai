@@ -1,7 +1,7 @@
 ---
 title: High-level metrics
 description: Page views, visits, and other high-level metrics in Web Analytics.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -21,6 +21,6 @@ Understanding the key metrics in web analytics is essential for optimizing your 
 ![Web Analytics overview page](https://developers.cloudflare.com/_astro/dash-web_analytics-overview.Z0JtJyOL_5dwhM.webp)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/high-level-metrics/#page","headline":"High-level metrics · Cloudflare Web Analytics docs","description":"Page views, visits, and other high-level metrics in Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/high-level-metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/high-level-metrics/#page","headline":"High-level metrics · Cloudflare Web Analytics docs","description":"Page views, visits, and other high-level metrics in Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/high-level-metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/data-metrics/","name":"Data and metrics"}},{"@type":"ListItem","position":4,"item":{"@id":"/web-analytics/data-metrics/high-level-metrics/","name":"High-level metrics"}}]}
 ```

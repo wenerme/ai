@@ -1,7 +1,7 @@
 ---
 title: llama-4-scout-17b-16e-instruct
 description: Meta's Llama 4 Scout is a 17 billion parameter model with 16 experts that is natively multimodal. These models leverage a mixture-of-experts architecture to offer industry-leading performance in text and image understanding.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -37,10 +37,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-5200)
-* [  TypeScript ](#tab-panel-5201)
-* [  Python ](#tab-panel-5202)
-* [  curl ](#tab-panel-5203)
+* [  Worker (Streaming) ](#tab-panel-5458)
+* [  TypeScript ](#tab-panel-5459)
+* [  Python ](#tab-panel-5460)
+* [  curl ](#tab-panel-5461)
 
 **TypeScript**
 
@@ -140,8 +140,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-5204)
-* [ Output ](#tab-panel-5205)
+* [ Input ](#tab-panel-5462)
+* [ Output ](#tab-panel-5463)
 
 prompt
 
@@ -209,8 +209,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
-* [ Input ](#tab-panel-5206)
-* [ Output ](#tab-panel-5207)
+* [ Input ](#tab-panel-5464)
+* [ Output ](#tab-panel-5465)
 
 prompt
 
@@ -278,8 +278,8 @@ format
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-5208)
-* [ Output ](#tab-panel-5209)
+* [ Input ](#tab-panel-5466)
+* [ Output ](#tab-panel-5467)
 
 ▶requests\[\]
 
@@ -312,6 +312,6 @@ response
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/batch-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/#page","headline":"llama-4-scout-17b-16e-instruct (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Meta's Llama 4 Scout is a 17 billion parameter model with 16 experts that is natively multimodal. These models leverage a mixture-of-experts architecture to offer industry-leading performance in text and image understanding.","url":"https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/#page","headline":"llama-4-scout-17b-16e-instruct (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Meta's Llama 4 Scout is a 17 billion parameter model with 16 experts that is natively multimodal. These models leverage a mixture-of-experts architecture to offer industry-leading performance in text and image understanding.","url":"https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

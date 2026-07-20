@@ -1,7 +1,7 @@
 ---
 title: Local development
 description: Develop and test your Workers locally.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -90,8 +90,8 @@ During local development, your Worker code interacts with these bindings using t
 
 ### Example configuration
 
-* [  wrangler.jsonc ](#tab-panel-12181)
-* [  wrangler.toml ](#tab-panel-12182)
+* [  wrangler.jsonc ](#tab-panel-12702)
+* [  wrangler.toml ](#tab-panel-12703)
 
 **JSONC**
 
@@ -99,7 +99,7 @@ During local development, your Worker code interacts with these bindings using t
 {
   "name": "my-worker",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
 
 
   "r2_buckets": [
@@ -117,7 +117,7 @@ During local development, your Worker code interacts with these bindings using t
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [[r2_buckets]]
@@ -134,8 +134,8 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
 **For example:**
 
-* [  wrangler.jsonc ](#tab-panel-12193)
-* [  wrangler.toml ](#tab-panel-12194)
+* [  wrangler.jsonc ](#tab-panel-12714)
+* [  wrangler.toml ](#tab-panel-12715)
 
 **JSONC**
 
@@ -143,7 +143,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 {
   "name": "my-worker",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
 
 
   "env": {
@@ -173,7 +173,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [[env.production.r2_buckets]]
@@ -202,8 +202,8 @@ The following bindings are recommended to have `remote: true` in your Wrangler c
 
 To interact with a real headless browser for rendering. There is no current local simulation for Browser Run.
 
-* [  wrangler.jsonc ](#tab-panel-12179)
-* [  wrangler.toml ](#tab-panel-12180)
+* [  wrangler.jsonc ](#tab-panel-12700)
+* [  wrangler.toml ](#tab-panel-12701)
 
 **JSONC**
 
@@ -228,8 +228,8 @@ remote = true
 
 To utilize actual AI models deployed on Cloudflare's network for inference. There is no current local simulation for Workers AI.
 
-* [  wrangler.jsonc ](#tab-panel-12183)
-* [  wrangler.toml ](#tab-panel-12184)
+* [  wrangler.jsonc ](#tab-panel-12704)
+* [  wrangler.toml ](#tab-panel-12705)
 
 **JSONC**
 
@@ -254,8 +254,8 @@ remote = true
 
 To connect to your production Vectorize indexes for accurate vector search and similarity operations. There is no current local simulation for Vectorize.
 
-* [  wrangler.jsonc ](#tab-panel-12185)
-* [  wrangler.toml ](#tab-panel-12186)
+* [  wrangler.jsonc ](#tab-panel-12706)
+* [  wrangler.toml ](#tab-panel-12707)
 
 **JSONC**
 
@@ -284,8 +284,8 @@ remote = true
 
 To verify that the certificate exchange and validation process work as expected. There is no current local simulation for mTLS bindings.
 
-* [  wrangler.jsonc ](#tab-panel-12189)
-* [  wrangler.toml ](#tab-panel-12190)
+* [  wrangler.jsonc ](#tab-panel-12710)
+* [  wrangler.toml ](#tab-panel-12711)
 
 **JSONC**
 
@@ -314,8 +314,8 @@ remote = true
 
 To connect to a high-fidelity version of the Images API, and verify that all transformations work as expected. Local simulation for Cloudflare Images is [limited with only a subset of features](https://developers.cloudflare.com/images/optimization/binding/#interact-with-your-images-binding-locally).
 
-* [  wrangler.jsonc ](#tab-panel-12187)
-* [  wrangler.toml ](#tab-panel-12188)
+* [  wrangler.jsonc ](#tab-panel-12708)
+* [  wrangler.toml ](#tab-panel-12709)
 
 **JSONC**
 
@@ -346,8 +346,8 @@ If a Workers AI binding has `remote` set to `false`, Cloudflare will **produce a
 
 Workers for Platforms users can configure `remote: true` in dispatch namespace binding definitions:
 
-* [  wrangler.jsonc ](#tab-panel-12191)
-* [  wrangler.toml ](#tab-panel-12192)
+* [  wrangler.jsonc ](#tab-panel-12712)
+* [  wrangler.toml ](#tab-panel-12713)
 
 **JSONC**
 
@@ -493,8 +493,8 @@ The function:
 
 Here's a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
 
-* [  JavaScript ](#tab-panel-12195)
-* [  TypeScript ](#tab-panel-12196)
+* [  JavaScript ](#tab-panel-12716)
+* [  TypeScript ](#tab-panel-12717)
 
 **JavaScript**
 
@@ -644,6 +644,6 @@ When using remote development, all bindings automatically connect to their remot
 * When you run a remote development session using the `--remote` flag, a limit of 50 [routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) per zone is enforced. Learn more in[ Workers platform limits](https://developers.cloudflare.com/workers/platform/limits/#routes-and-domains-when-using-wrangler-dev---remote).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/#page","headline":"Local development · Cloudflare Workers docs","description":"Develop and test your Workers locally.","url":"https://developers.cloudflare.com/workers/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/#page","headline":"Local development · Cloudflare Workers docs","description":"Develop and test your Workers locally.","url":"https://developers.cloudflare.com/workers/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/local-development/","name":"Local development"}}]}
 ```

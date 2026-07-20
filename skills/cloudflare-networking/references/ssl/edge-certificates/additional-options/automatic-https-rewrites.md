@@ -1,7 +1,7 @@
 ---
 title: Automatic HTTPS Rewrites
 description: Fix mixed content by rewriting HTTP URLs to HTTPS in page responses.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -32,8 +32,8 @@ For security reasons, this feature will run on URLs pointing to `localhost` if t
 
 ## Enable Automatic HTTPS Rewrites
 
-* [ Dashboard ](#tab-panel-10708)
-* [ API ](#tab-panel-10709)
+* [ Dashboard ](#tab-panel-11448)
+* [ API ](#tab-panel-11449)
 
 To enable **Automatic HTTPS Rewrites** in the dashboard:
 
@@ -56,6 +56,6 @@ Some resources are loaded by JavaScript or CSS via HTTP when the site is loaded 
 If a third-party domain supports HTTPS and is not rewritten automatically, you can manually change those links to relative links or HTTPS links. Alternatively, you can ask the third-party domain owner to submit their site for inclusion in the HTTPS Everywhere rulesets, which [accept pull requests on GitHub ↗](https://github.com/EFForg/https-everywhere/). For more information on how to fix mixed content errors, refer to [Troubleshooting mixed content errors](https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/#page","headline":"Automatic HTTPS Rewrites · Cloudflare SSL/TLS docs","description":"Fix mixed content by rewriting HTTP URLs to HTTPS in page responses.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/#page","headline":"Automatic HTTPS Rewrites · Cloudflare SSL/TLS docs","description":"Fix mixed content by rewriting HTTP URLs to HTTPS in page responses.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/additional-options/automatic-https-rewrites/","name":"Automatic HTTPS Rewrites"}}]}
 ```

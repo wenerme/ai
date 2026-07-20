@@ -1,7 +1,7 @@
 ---
 title: Use Ethereum gateway
 description: Send JSON-RPC requests through the Cloudflare Ethereum Gateway.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -133,6 +133,6 @@ await fetch(
 _(The actual command above will not work — you need to provide your own signed transaction.)_
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/#page","headline":"Use Ethereum gateway · Cloudflare Web3 docs","description":"Send JSON-RPC requests through the Cloudflare Ethereum Gateway.","url":"https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/#page","headline":"Use Ethereum gateway · Cloudflare Web3 docs","description":"Send JSON-RPC requests through the Cloudflare Ethereum Gateway.","url":"https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/how-to/use-ethereum-gateway/","name":"Use Ethereum gateway"}}]}
 ```

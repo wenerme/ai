@@ -1,7 +1,7 @@
 ---
 title: Transport modes
 description: Configure how Sandbox SDK communicates between Durable Objects and containers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -83,8 +83,8 @@ HTTP transport is the default and requires no additional configuration.
 
 Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 
-* [  wrangler.jsonc ](#tab-panel-10654)
-* [  wrangler.toml ](#tab-panel-10655)
+* [  wrangler.jsonc ](#tab-panel-11099)
+* [  wrangler.toml ](#tab-panel-11100)
 
 **JSONC**
 
@@ -93,7 +93,7 @@ Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
   "name": "my-sandbox-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "vars": {
     "SANDBOX_TRANSPORT": "rpc"
   },
@@ -120,7 +120,7 @@ Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 name = "my-sandbox-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [vars]
@@ -191,8 +191,8 @@ Using the `rpc` transport requires version 0.9.1 or newer. If you are using an o
 
 Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-10648)
-* [  wrangler.toml ](#tab-panel-10649)
+* [  wrangler.jsonc ](#tab-panel-11093)
+* [  wrangler.toml ](#tab-panel-11094)
 
 **JSONC**
 
@@ -221,8 +221,8 @@ npx wrangler deploy
 
 Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
-* [  wrangler.jsonc ](#tab-panel-10650)
-* [  wrangler.toml ](#tab-panel-10651)
+* [  wrangler.jsonc ](#tab-panel-11095)
+* [  wrangler.toml ](#tab-panel-11096)
 
 **JSONC**
 
@@ -248,8 +248,8 @@ Using the `rpc` transport requires version 0.9.1 or newer. If you are using an o
 
 Set the `SANDBOX_TRANSPORT` variable to `"rpc"`:
 
-* [  wrangler.jsonc ](#tab-panel-10652)
-* [  wrangler.toml ](#tab-panel-10653)
+* [  wrangler.jsonc ](#tab-panel-11097)
+* [  wrangler.toml ](#tab-panel-11098)
 
 **JSONC**
 
@@ -276,6 +276,6 @@ SANDBOX_TRANSPORT = "rpc"
 * [Architecture](https://developers.cloudflare.com/sandbox/concepts/architecture/) \- How Sandbox SDK components communicate
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/transport/#page","headline":"Transport modes · Cloudflare Sandbox SDK docs","description":"Configure how Sandbox SDK communicates between Durable Objects and containers.","url":"https://developers.cloudflare.com/sandbox/configuration/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/transport/#page","headline":"Transport modes · Cloudflare Sandbox SDK docs","description":"Configure how Sandbox SDK communicates between Durable Objects and containers.","url":"https://developers.cloudflare.com/sandbox/configuration/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/transport/","name":"Transport modes"}}]}
 ```

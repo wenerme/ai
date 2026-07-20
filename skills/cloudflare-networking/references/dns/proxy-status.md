@@ -1,7 +1,7 @@
 ---
 title: Proxy status
 description: Control whether Cloudflare proxies traffic for DNS records.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -154,6 +154,6 @@ Certain DNS records should be DNS-only because the services they support are not
 For a detailed list of scenarios, refer to [Use cases](https://developers.cloudflare.com/dns/proxy-status/use-cases/). For hard constraints on proxying, refer to [Proxying limitations](https://developers.cloudflare.com/dns/proxy-status/limitations/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/proxy-status/#page","headline":"Proxy status · Cloudflare DNS docs","description":"Control whether Cloudflare proxies traffic for DNS records.","url":"https://developers.cloudflare.com/dns/proxy-status/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Proxying"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/proxy-status/#page","headline":"Proxy status · Cloudflare DNS docs","description":"Control whether Cloudflare proxies traffic for DNS records.","url":"https://developers.cloudflare.com/dns/proxy-status/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Proxying"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/proxy-status/","name":"Proxy status"}}]}
 ```

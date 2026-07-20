@@ -1,7 +1,7 @@
 ---
 title: Use WebSockets
 description: Serve WebSocket connections from Durable Objects, including the standard and Hibernation APIs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -65,9 +65,9 @@ To use WebSockets with Durable Objects:
 
 If an event occurs for a hibernated Durable Object, the runtime re-initializes it by calling the constructor. Minimize work in the constructor when using hibernation.
 
-* [  JavaScript ](#tab-panel-8656)
-* [  TypeScript ](#tab-panel-8657)
-* [  Python ](#tab-panel-8658)
+* [  JavaScript ](#tab-panel-8998)
+* [  TypeScript ](#tab-panel-8999)
+* [  Python ](#tab-panel-9000)
 
 **JavaScript**
 
@@ -217,8 +217,8 @@ self.ctx = state
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-8665)
-* [  wrangler.toml ](#tab-panel-8666)
+* [  wrangler.jsonc ](#tab-panel-9007)
+* [  wrangler.toml ](#tab-panel-9008)
 
 **JSONC**
 
@@ -286,8 +286,8 @@ To maximize throughput:
 * **Use a simple envelope format** to pack and unpack batched messages
 * **Target fewer, larger messages** rather than many small ones
 
-* [  JavaScript ](#tab-panel-8669)
-* [  TypeScript ](#tab-panel-8670)
+* [  JavaScript ](#tab-panel-9011)
+* [  TypeScript ](#tab-panel-9012)
 
 **JavaScript**
 
@@ -425,8 +425,8 @@ Retrieves the most recent value passed to `serializeAttachment()`, or `null` if 
 
 Use `serializeAttachment` and `deserializeAttachment` to persist per-connection state across hibernation:
 
-* [  JavaScript ](#tab-panel-8671)
-* [  TypeScript ](#tab-panel-8672)
+* [  JavaScript ](#tab-panel-9013)
+* [  TypeScript ](#tab-panel-9014)
 
 **JavaScript**
 
@@ -547,9 +547,9 @@ Validate requests in a Worker
 
 Both Workers and Durable Objects are billed based on the number of requests. Validate requests in your Worker to avoid billing for invalid requests against a Durable Object.
 
-* [  JavaScript ](#tab-panel-8659)
-* [  TypeScript ](#tab-panel-8660)
-* [  Python ](#tab-panel-8661)
+* [  JavaScript ](#tab-panel-9001)
+* [  TypeScript ](#tab-panel-9002)
+* [  Python ](#tab-panel-9003)
 
 **JavaScript**
 
@@ -683,9 +683,9 @@ headers={
 
 The following Durable Object creates a WebSocket connection and responds to messages with the total number of connections:
 
-* [  JavaScript ](#tab-panel-8662)
-* [  TypeScript ](#tab-panel-8663)
-* [  Python ](#tab-panel-8664)
+* [  JavaScript ](#tab-panel-9004)
+* [  TypeScript ](#tab-panel-9005)
+* [  Python ](#tab-panel-9006)
 
 **JavaScript**
 
@@ -850,8 +850,8 @@ self.currently_connected_websockets = 0
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-8667)
-* [  wrangler.toml ](#tab-panel-8668)
+* [  wrangler.jsonc ](#tab-panel-9009)
+* [  wrangler.toml ](#tab-panel-9010)
 
 **JSONC**
 
@@ -911,6 +911,6 @@ Code updates disconnect all WebSockets. Deploying a new version restarts every D
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/websockets/#page","headline":"Use WebSockets · Cloudflare Durable Objects docs","description":"Serve WebSocket connections from Durable Objects, including the standard and Hibernation APIs.","url":"https://developers.cloudflare.com/durable-objects/best-practices/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/websockets/#page","headline":"Use WebSockets · Cloudflare Durable Objects docs","description":"Serve WebSocket connections from Durable Objects, including the standard and Hibernation APIs.","url":"https://developers.cloudflare.com/durable-objects/best-practices/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/best-practices/websockets/","name":"Use WebSockets"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Geo Key Manager
 description: Control the geographic storage location of your private SSL/TLS keys.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -46,6 +46,6 @@ The first version of Geo Key Manager supports 3 regions: U.S., E.U., and a set o
 Compare available Cloudflare plans
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/#page","headline":"Geo Key Manager · Cloudflare SSL/TLS docs","description":"Control the geographic storage location of your private SSL/TLS keys.","url":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/#page","headline":"Geo Key Manager · Cloudflare SSL/TLS docs","description":"Control the geographic storage location of your private SSL/TLS keys.","url":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/geokey-manager/","name":"Geo Key Manager"}}]}
 ```

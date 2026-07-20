@@ -1,7 +1,7 @@
 ---
 title: Domain ownership certificate
 description: Generate a domain ownership certificate (WHOIS ownership letter) for a domain registered with Cloudflare Registrar.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -51,6 +51,6 @@ Note
 Domains that are pending transfer or have not yet completed registration with Cloudflare Registrar are not eligible until the registration is finalized.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/domain-ownership-certificate/#page","headline":"Domain ownership certificate · Cloudflare Registrar docs","description":"Generate a domain ownership certificate (WHOIS ownership letter) for a domain registered with Cloudflare Registrar.","url":"https://developers.cloudflare.com/registrar/account-options/domain-ownership-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/domain-ownership-certificate/#page","headline":"Domain ownership certificate · Cloudflare Registrar docs","description":"Generate a domain ownership certificate (WHOIS ownership letter) for a domain registered with Cloudflare Registrar.","url":"https://developers.cloudflare.com/registrar/account-options/domain-ownership-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/account-options/","name":"Registration options"}},{"@type":"ListItem","position":4,"item":{"@id":"/registrar/account-options/domain-ownership-certificate/","name":"Domain ownership certificate"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Platform
 description: Cloudflare Workflows platform reference, including limits, pricing, and API documentation.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,6 +20,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Release notes ](https://developers.cloudflare.com/workflows/reference/changelog/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workflows/reference/#page","headline":"Platform · Cloudflare Workflows docs","description":"Cloudflare Workflows platform reference, including limits, pricing, and API documentation.","url":"https://developers.cloudflare.com/workflows/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workflows/reference/#page","headline":"Platform · Cloudflare Workflows docs","description":"Cloudflare Workflows platform reference, including limits, pricing, and API documentation.","url":"https://developers.cloudflare.com/workflows/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/reference/","name":"Platform"}}]}
 ```

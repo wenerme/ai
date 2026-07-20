@@ -1,7 +1,7 @@
 ---
 title: Reference
 description: Reference information for SSL/TLS certificates, protocols, and features.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,6 +28,6 @@ For more on Cloudflare SSL/TLS, refer to these articles:
 * [ PCI compliance and vulnerabilities mitigation ](https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ssl/reference/#page","headline":"Reference · Cloudflare SSL/TLS docs","description":"Reference information for SSL/TLS certificates, protocols, and features.","url":"https://developers.cloudflare.com/ssl/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ssl/reference/#page","headline":"Reference · Cloudflare SSL/TLS docs","description":"Reference information for SSL/TLS certificates, protocols, and features.","url":"https://developers.cloudflare.com/ssl/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/reference/","name":"Reference"}}]}
 ```

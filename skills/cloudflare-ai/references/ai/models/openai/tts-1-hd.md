@@ -1,7 +1,7 @@
 ---
 title: TTS-1 HD
 description: OpenAI's high-definition text-to-speech model producing higher quality audio output.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ OpenAI's high-definition text-to-speech model producing higher quality audio out
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1516)
-* [ cURL ](#tab-panel-1517)
+* [ TypeScript ](#tab-panel-1662)
+* [ cURL ](#tab-panel-1663)
 
 **TypeScript**
 
@@ -62,8 +62,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1512)
-* [ Raw response ](#tab-panel-1513)
+* [ Output ](#tab-panel-1658)
+* [ Raw response ](#tab-panel-1659)
 
 ```json
 {
@@ -81,8 +81,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Storytelling**  — HD narration with the Fable voice
 
-* [ TypeScript ](#tab-panel-1520)
-* [ cURL ](#tab-panel-1521)
+* [ TypeScript ](#tab-panel-1666)
+* [ cURL ](#tab-panel-1667)
 
 **TypeScript**
 
@@ -114,8 +114,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1514)
-* [ Raw response ](#tab-panel-1515)
+* [ Output ](#tab-panel-1660)
+* [ Raw response ](#tab-panel-1661)
 
 ```json
 {
@@ -131,8 +131,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Podcast Style**  — Conversational podcast narration
 
-* [ TypeScript ](#tab-panel-1524)
-* [ cURL ](#tab-panel-1525)
+* [ TypeScript ](#tab-panel-1670)
+* [ cURL ](#tab-panel-1671)
 
 **TypeScript**
 
@@ -164,8 +164,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1518)
-* [ Raw response ](#tab-panel-1519)
+* [ Output ](#tab-panel-1664)
+* [ Raw response ](#tab-panel-1665)
 
 ```json
 {
@@ -181,8 +181,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Shimmer Voice**  — Bright and expressive voice
 
-* [ TypeScript ](#tab-panel-1526)
-* [ cURL ](#tab-panel-1527)
+* [ TypeScript ](#tab-panel-1672)
+* [ cURL ](#tab-panel-1673)
 
 **TypeScript**
 
@@ -214,8 +214,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1522)
-* [ Raw response ](#tab-panel-1523)
+* [ Output ](#tab-panel-1668)
+* [ Raw response ](#tab-panel-1669)
 
 ```json
 {
@@ -231,8 +231,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1528)
-* [ Output ](#tab-panel-1529)
+* [ Input ](#tab-panel-1674)
+* [ Output ](#tab-panel-1675)
 
 text
 
@@ -261,6 +261,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-inp
 Output [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/tts-1-hd/#page","headline":"TTS-1 HD (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's high-definition text-to-speech model producing higher quality audio output.","url":"https://developers.cloudflare.com/ai/models/openai/tts-1-hd/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/tts-1-hd/#page","headline":"TTS-1 HD (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's high-definition text-to-speech model producing higher quality audio output.","url":"https://developers.cloudflare.com/ai/models/openai/tts-1-hd/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

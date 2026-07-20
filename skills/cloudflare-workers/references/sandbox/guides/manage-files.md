@@ -1,7 +1,7 @@
 ---
 title: Manage files
 description: Read, write, organize, and synchronize files in the sandbox.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -22,8 +22,8 @@ File operations support both absolute and relative paths:
 * `/tmp` \- Temporary files (may be cleared)
 * `/home` \- User home directory
 
-* [  JavaScript ](#tab-panel-10832)
-* [  TypeScript ](#tab-panel-10833)
+* [  JavaScript ](#tab-panel-11277)
+* [  TypeScript ](#tab-panel-11278)
 
 **JavaScript**
 
@@ -55,8 +55,8 @@ await session.writeFile('src/index.js', code);  // Writes to /workspace/my-proje
 
 ## Write files
 
-* [  JavaScript ](#tab-panel-10844)
-* [  TypeScript ](#tab-panel-10845)
+* [  JavaScript ](#tab-panel-11289)
+* [  TypeScript ](#tab-panel-11290)
 
 **JavaScript**
 
@@ -114,8 +114,8 @@ await sandbox.writeFile('/workspace/image.png', base64, { encoding: 'base64' });
 
 ## Read files
 
-* [  JavaScript ](#tab-panel-10838)
-* [  TypeScript ](#tab-panel-10839)
+* [  JavaScript ](#tab-panel-11283)
+* [  TypeScript ](#tab-panel-11284)
 
 **JavaScript**
 
@@ -165,8 +165,8 @@ For more details on the `rpc` transport please see the [Transport](https://devel
 
 ## Organize files
 
-* [  JavaScript ](#tab-panel-10836)
-* [  TypeScript ](#tab-panel-10837)
+* [  JavaScript ](#tab-panel-11281)
+* [  TypeScript ](#tab-panel-11282)
 
 **JavaScript**
 
@@ -212,8 +212,8 @@ await sandbox.deleteFile('/workspace/temp.txt');
 
 Write multiple files in parallel:
 
-* [  JavaScript ](#tab-panel-10840)
-* [  TypeScript ](#tab-panel-10841)
+* [  JavaScript ](#tab-panel-11285)
+* [  TypeScript ](#tab-panel-11286)
 
 **JavaScript**
 
@@ -251,8 +251,8 @@ await Promise.all(
 
 ## Check if file exists
 
-* [  JavaScript ](#tab-panel-10846)
-* [  TypeScript ](#tab-panel-10847)
+* [  JavaScript ](#tab-panel-11291)
+* [  TypeScript ](#tab-panel-11292)
 
 **JavaScript**
 
@@ -310,8 +310,8 @@ const sessionResult = await session.exists('/workspace/temp.txt');
 
 Create parent directories first:
 
-* [  JavaScript ](#tab-panel-10834)
-* [  TypeScript ](#tab-panel-10835)
+* [  JavaScript ](#tab-panel-11279)
+* [  TypeScript ](#tab-panel-11280)
 
 **JavaScript**
 
@@ -333,8 +333,8 @@ await sandbox.writeFile('/workspace/data/file.txt', content);
 
 Use `encoding: "none"` (with `rpc` transport) for binary files:
 
-* [  JavaScript ](#tab-panel-10842)
-* [  TypeScript ](#tab-panel-10843)
+* [  JavaScript ](#tab-panel-11287)
+* [  TypeScript ](#tab-panel-11288)
 
 **JavaScript**
 
@@ -364,8 +364,8 @@ const file = await sandbox.readFile('/workspace/image.png', {
 
 For older SDK versions or `http` transport:
 
-* [  JavaScript ](#tab-panel-10848)
-* [  TypeScript ](#tab-panel-10849)
+* [  JavaScript ](#tab-panel-11293)
+* [  TypeScript ](#tab-panel-11294)
 
 **JavaScript**
 
@@ -399,8 +399,8 @@ const file = await sandbox.readFile('/workspace/image.png', {
 
 When writing with `encoding: 'base64'`, content must contain only valid base64 characters:
 
-* [  JavaScript ](#tab-panel-10850)
-* [  TypeScript ](#tab-panel-10851)
+* [  JavaScript ](#tab-panel-11295)
+* [  TypeScript ](#tab-panel-11296)
 
 **JavaScript**
 
@@ -442,6 +442,6 @@ try {
 * [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) \- Generate and execute code files
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/manage-files/#page","headline":"Manage files · Cloudflare Sandbox SDK docs","description":"Read, write, organize, and synchronize files in the sandbox.","url":"https://developers.cloudflare.com/sandbox/guides/manage-files/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/manage-files/#page","headline":"Manage files · Cloudflare Sandbox SDK docs","description":"Read, write, organize, and synchronize files in the sandbox.","url":"https://developers.cloudflare.com/sandbox/guides/manage-files/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/manage-files/","name":"Manage files"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Enable Smart Shield and configure origin protection features for your domain.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -32,8 +32,8 @@ After setup, you can monitor origin performance and cache effectiveness through 
 
 Pro, Business, and Enterprise customers have access to [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/) for monitoring origin availability across all packages.
 
-* [ Enterprise ](#tab-panel-10666)
-* [ Free / Pro / Business ](#tab-panel-10667)
+* [ Enterprise ](#tab-panel-11406)
+* [ Free / Pro / Business ](#tab-panel-11407)
 
 Enterprise customers have access to all Smart Shield packages, including Smart Shield Advanced.
 
@@ -83,6 +83,6 @@ Smart Shield Advanced is not currently available for Free, Pro, and Business cus
 * [ Connection reuse ](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/get-started/#page","headline":"Get started · Cloudflare Smart Shield docs","description":"Enable Smart Shield and configure origin protection features for your domain.","url":"https://developers.cloudflare.com/smart-shield/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/get-started/#page","headline":"Get started · Cloudflare Smart Shield docs","description":"Enable Smart Shield and configure origin protection features for your domain.","url":"https://developers.cloudflare.com/smart-shield/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/smart-shield/get-started/","name":"Get started"}}]}
 ```

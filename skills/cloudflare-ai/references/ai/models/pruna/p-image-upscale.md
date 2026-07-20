@@ -1,7 +1,7 @@
 ---
 title: P-Image-Upscale
 description: Pruna's P-Image-Upscale increases image resolution using AI, targeting 1-128 megapixels with optional detail and realism enhancement for sharper, cleaner results.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,8 +27,8 @@ Pruna's P-Image-Upscale increases image resolution using AI, targeting 1-128 meg
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1594)
-* [ cURL ](#tab-panel-1595)
+* [ TypeScript ](#tab-panel-1740)
+* [ cURL ](#tab-panel-1741)
 
 **TypeScript**
 
@@ -60,8 +60,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1592)
-* [ Raw response ](#tab-panel-1593)
+* [ Output ](#tab-panel-1738)
+* [ Raw response ](#tab-panel-1739)
 
 ![4MP Upscale]()
 
@@ -79,8 +79,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1596)
-* [ Output ](#tab-panel-1597)
+* [ Input ](#tab-panel-1742)
+* [ Output ](#tab-panel-1743)
 
 image
 
@@ -121,6 +121,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/sche
 Output [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/#page","headline":"P-Image-Upscale (Pruna AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Pruna's P-Image-Upscale increases image resolution using AI, targeting 1-128 megapixels with optional detail and realism enhancement for sharper, cleaner results.","url":"https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/#page","headline":"P-Image-Upscale (Pruna AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Pruna's P-Image-Upscale increases image resolution using AI, targeting 1-128 megapixels with optional detail and realism enhancement for sharper, cleaner results.","url":"https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

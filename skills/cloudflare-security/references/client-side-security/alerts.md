@@ -1,7 +1,7 @@
 ---
 title: Alerts
 description: Cloudflare client-side resource alerts notify you when new scripts are detected on your domain or when Cloudflare detects resources that are likely malicious.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -53,6 +53,6 @@ Scoped alerts only fire if the zone has at least one enabled content security ru
 For unscoped alerts, you will receive notifications for all resources detected across your zones. Some of these resources may also violate your configured content security rules.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/alerts/#page","headline":"Alerts · Client-side security docs","description":"Cloudflare client-side resource alerts notify you when new scripts are detected on your domain or when Cloudflare detects resources that are likely malicious.","url":"https://developers.cloudflare.com/client-side-security/alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/alerts/#page","headline":"Alerts · Client-side security docs","description":"Cloudflare client-side resource alerts notify you when new scripts are detected on your domain or when Cloudflare detects resources that are likely malicious.","url":"https://developers.cloudflare.com/client-side-security/alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/alerts/","name":"Alerts"}}]}
 ```

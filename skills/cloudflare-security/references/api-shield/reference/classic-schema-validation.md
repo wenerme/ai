@@ -1,7 +1,7 @@
 ---
 title: Classic Schema validation (deprecated)
 description: Reference for the deprecated classic Schema validation feature in API Shield.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -53,6 +53,6 @@ After deploying your API Shield rule, Cloudflare displays a summary of all API e
 4. Select **Done**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/reference/classic-schema-validation/#page","headline":"Configure Classic Schema validation (deprecated) · Cloudflare API Shield docs","description":"Reference for the deprecated classic Schema validation feature in API Shield.","url":"https://developers.cloudflare.com/api-shield/reference/classic-schema-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/reference/classic-schema-validation/#page","headline":"Configure Classic Schema validation (deprecated) · Cloudflare API Shield docs","description":"Reference for the deprecated classic Schema validation feature in API Shield.","url":"https://developers.cloudflare.com/api-shield/reference/classic-schema-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/reference/classic-schema-validation/","name":"Classic Schema validation (deprecated)"}}]}
 ```

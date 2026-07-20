@@ -1,7 +1,7 @@
 ---
 title: Pricing
 description: Dynamic Workers pricing is based on requests, CPU time, and the number of unique Dynamic Workers created per day.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -105,6 +105,6 @@ Unlike standard Workers (where only execution time is billed), Dynamic Workers b
 * **Execution time**: The compute time your code spends actively processing logic, excluding time spent waiting on I/O.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/pricing/#page","headline":"Pricing · Cloudflare Dynamic Workers docs","description":"Dynamic Workers pricing is based on requests, CPU time, and the number of unique Dynamic Workers created per day.","url":"https://developers.cloudflare.com/dynamic-workers/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/pricing/#page","headline":"Pricing · Cloudflare Dynamic Workers docs","description":"Dynamic Workers pricing is based on requests, CPU time, and the number of unique Dynamic Workers created per day.","url":"https://developers.cloudflare.com/dynamic-workers/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/pricing/","name":"Pricing"}}]}
 ```

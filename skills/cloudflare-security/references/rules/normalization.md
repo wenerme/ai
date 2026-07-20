@@ -1,7 +1,7 @@
 ---
 title: URL normalization
 description: Normalize incoming request URLs before they reach other Cloudflare Rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -37,6 +37,6 @@ URL normalization is available in all Cloudflare plans.
 Learn more about [URL normalization](https://developers.cloudflare.com/rules/normalization/how-it-works/) and how to [configure URL normalization](https://developers.cloudflare.com/rules/normalization/manage/) in the Cloudflare dashboard.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/normalization/#page","headline":"URL normalization · Cloudflare Rules docs","description":"Normalize incoming request URLs before they reach other Cloudflare Rules.","url":"https://developers.cloudflare.com/rules/normalization/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/normalization/#page","headline":"URL normalization · Cloudflare Rules docs","description":"Normalize incoming request URLs before they reach other Cloudflare Rules.","url":"https://developers.cloudflare.com/rules/normalization/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/normalization/","name":"URL normalization"}}]}
 ```

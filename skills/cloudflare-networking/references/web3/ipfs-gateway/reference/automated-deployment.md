@@ -1,7 +1,7 @@
 ---
 title: Automated deployments
 description: Automate IPFS content deployment with CI/CD pipelines.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -21,6 +21,6 @@ IPFS usually fits into these systems: instead of copying the production version 
 * [Fission's IPFS support ↗](https://guide.fission.codes/developers/custom-domains/using-cloudflare-ipfs-gateway) lets you use the Fission IPFS app publishing system from the CLI or from GitHub Actions, while using Cloudflare-managed DNS and gateway.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/reference/automated-deployment/#page","headline":"Automated deployments · Cloudflare Web3 docs","description":"Automate IPFS content deployment with CI/CD pipelines.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/reference/automated-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/reference/automated-deployment/#page","headline":"Automated deployments · Cloudflare Web3 docs","description":"Automate IPFS content deployment with CI/CD pipelines.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/reference/automated-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ipfs-gateway/","name":"IPFS Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ipfs-gateway/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/web3/ipfs-gateway/reference/automated-deployment/","name":"Automated deployments"}}]}
 ```

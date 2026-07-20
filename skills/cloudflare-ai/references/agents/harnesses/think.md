@@ -1,7 +1,7 @@
 ---
 title: Think
 description: Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ npm install @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zo
 
 ### Server
 
-* [  JavaScript ](#tab-panel-5787)
-* [  TypeScript ](#tab-panel-5788)
+* [  JavaScript ](#tab-panel-6049)
+* [  TypeScript ](#tab-panel-6050)
 
 **JavaScript**
 
@@ -91,8 +91,8 @@ That is it. Think handles the WebSocket chat protocol, message persistence, the 
 
 ### Client
 
-* [  JavaScript ](#tab-panel-5789)
-* [  TypeScript ](#tab-panel-5790)
+* [  JavaScript ](#tab-panel-6051)
+* [  TypeScript ](#tab-panel-6052)
 
 **JavaScript**
 
@@ -178,8 +178,8 @@ function Chat() {
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-5783)
-* [  wrangler.toml ](#tab-panel-5784)
+* [  wrangler.jsonc ](#tab-panel-6045)
+* [  wrangler.toml ](#tab-panel-6046)
 
 **JSONC**
 
@@ -187,7 +187,7 @@ function Chat() {
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -217,7 +217,7 @@ function Chat() {
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = ["nodejs_compat"]
 
 
@@ -290,8 +290,8 @@ Experimental
 
 The `input` accepts a string, a `UIMessage`, an array of messages, or — in `wait` and `stream` modes — a function `(current) => UIMessage[]` evaluated at admission. (`submit` does not accept function input.)
 
-* [  JavaScript ](#tab-panel-5791)
-* [  TypeScript ](#tab-panel-5792)
+* [  JavaScript ](#tab-panel-6053)
+* [  TypeScript ](#tab-panel-6054)
 
 **JavaScript**
 
@@ -404,8 +404,8 @@ Use `saveMessages()` when the caller owns the trigger and can wait for the turn 
 
 Use `addMessages()` to write to the transcript **without** starting a model turn — for importing prior history or injecting background context the next turn should see:
 
-* [  JavaScript ](#tab-panel-5785)
-* [  TypeScript ](#tab-panel-5786)
+* [  JavaScript ](#tab-panel-6047)
+* [  TypeScript ](#tab-panel-6048)
 
 **JavaScript**
 
@@ -499,6 +499,6 @@ Think's design is inspired by [Pi ↗](https://pi.dev).
 * [Browse the web](https://developers.cloudflare.com/agents/tools/browser/) — full CDP helper API reference
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think · Cloudflare Agents docs","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think · Cloudflare Agents docs","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}}]}
 ```

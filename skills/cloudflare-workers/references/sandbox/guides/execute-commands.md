@@ -1,7 +1,7 @@
 ---
 title: Execute commands
 description: Run commands with streaming output, error handling, and shell access.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ For **web servers, databases, or services that need to keep running**, use `star
 
 Use `exec()` for simple commands that complete quickly:
 
-* [  JavaScript ](#tab-panel-10748)
-* [  TypeScript ](#tab-panel-10749)
+* [  JavaScript ](#tab-panel-11193)
+* [  TypeScript ](#tab-panel-11194)
 
 **JavaScript**
 
@@ -73,8 +73,8 @@ console.log(result.success);  // true
 
 When passing user input or dynamic values, avoid string interpolation to prevent injection attacks:
 
-* [  JavaScript ](#tab-panel-10750)
-* [  TypeScript ](#tab-panel-10751)
+* [  JavaScript ](#tab-panel-11195)
+* [  TypeScript ](#tab-panel-11196)
 
 **JavaScript**
 
@@ -119,8 +119,8 @@ Commands can fail in two ways:
 1. **Non-zero exit code** \- Command ran but failed (result.success === false)
 2. **Execution error** \- Command couldn't start (throws exception)
 
-* [  JavaScript ](#tab-panel-10764)
-* [  TypeScript ](#tab-panel-10765)
+* [  JavaScript ](#tab-panel-11209)
+* [  TypeScript ](#tab-panel-11210)
 
 **JavaScript**
 
@@ -190,8 +190,8 @@ try {
 
 The sandbox supports shell features like pipes, redirects, and chaining:
 
-* [  JavaScript ](#tab-panel-10754)
-* [  TypeScript ](#tab-panel-10755)
+* [  JavaScript ](#tab-panel-11199)
+* [  TypeScript ](#tab-panel-11200)
 
 **JavaScript**
 
@@ -227,8 +227,8 @@ await sandbox.exec('cd /workspace && npm install && npm test');
 
 ## Execute Python scripts
 
-* [  JavaScript ](#tab-panel-10762)
-* [  TypeScript ](#tab-panel-10763)
+* [  JavaScript ](#tab-panel-11207)
+* [  TypeScript ](#tab-panel-11208)
 
 **JavaScript**
 
@@ -277,8 +277,8 @@ Set a maximum execution time for commands to prevent long-running operations fro
 
 Pass `timeout` in the options to set a timeout for a single command:
 
-* [  JavaScript ](#tab-panel-10752)
-* [  TypeScript ](#tab-panel-10753)
+* [  JavaScript ](#tab-panel-11197)
+* [  TypeScript ](#tab-panel-11198)
 
 **JavaScript**
 
@@ -300,8 +300,8 @@ const result = await sandbox.exec('npm run build', {
 
 Set a default timeout for all commands in a session with `commandTimeoutMs`:
 
-* [  JavaScript ](#tab-panel-10758)
-* [  TypeScript ](#tab-panel-10759)
+* [  JavaScript ](#tab-panel-11203)
+* [  TypeScript ](#tab-panel-11204)
 
 **JavaScript**
 
@@ -369,8 +369,8 @@ When a command times out, the SDK raises an error and closes the connection. The
 
 Verify the command exists in the container:
 
-* [  JavaScript ](#tab-panel-10756)
-* [  TypeScript ](#tab-panel-10757)
+* [  JavaScript ](#tab-panel-11201)
+* [  TypeScript ](#tab-panel-11202)
 
 **JavaScript**
 
@@ -394,8 +394,8 @@ if (!check.success) {
 
 Use absolute paths or change directory:
 
-* [  JavaScript ](#tab-panel-10760)
-* [  TypeScript ](#tab-panel-10761)
+* [  JavaScript ](#tab-panel-11205)
+* [  TypeScript ](#tab-panel-11206)
 
 **JavaScript**
 
@@ -427,6 +427,6 @@ await sandbox.exec('cd /workspace/my-app && python script.py');
 * [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) \- Higher-level code execution
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/execute-commands/#page","headline":"Execute commands · Cloudflare Sandbox SDK docs","description":"Run commands with streaming output, error handling, and shell access.","url":"https://developers.cloudflare.com/sandbox/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/execute-commands/#page","headline":"Execute commands · Cloudflare Sandbox SDK docs","description":"Run commands with streaming output, error handling, and shell access.","url":"https://developers.cloudflare.com/sandbox/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/execute-commands/","name":"Execute commands"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: 403 Authentication error when creating DNS records
 description: Fix the 403 authentication error caused by incorrect zone data source indexing in Terraform.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,6 +31,6 @@ zone_id = data.cloudflare_zones.example_com.zones[0].id`
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/troubleshooting/authentication-error-dns-records/#page","headline":"403 Authentication error when creating DNS records · Cloudflare Terraform docs","description":"Fix the 403 authentication error caused by incorrect zone data source indexing in Terraform.","url":"https://developers.cloudflare.com/terraform/troubleshooting/authentication-error-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/troubleshooting/authentication-error-dns-records/#page","headline":"403 Authentication error when creating DNS records · Cloudflare Terraform docs","description":"Fix the 403 authentication error caused by incorrect zone data source indexing in Terraform.","url":"https://developers.cloudflare.com/terraform/troubleshooting/authentication-error-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/troubleshooting/authentication-error-dns-records/","name":"403 Authentication error when creating DNS records"}}]}
 ```

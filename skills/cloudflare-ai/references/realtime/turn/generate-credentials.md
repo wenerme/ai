@@ -1,7 +1,7 @@
 ---
 title: Generate Credentials
 description: Create TURN keys and generate short-lived credentials for Cloudflare Realtime TURN clients.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -113,6 +113,6 @@ https://rtc.live.cloudflare.com/v1/turn/keys/$TURN_KEY_ID/credentials/$USERNAME/
 A **204 (No Content)** response is returned if the credential is successfully revoked.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/generate-credentials/#page","headline":"Generate Credentials · Cloudflare Realtime docs","description":"Create TURN keys and generate short-lived credentials for Cloudflare Realtime TURN clients.","url":"https://developers.cloudflare.com/realtime/turn/generate-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/generate-credentials/#page","headline":"Generate Credentials · Cloudflare Realtime docs","description":"Create TURN keys and generate short-lived credentials for Cloudflare Realtime TURN clients.","url":"https://developers.cloudflare.com/realtime/turn/generate-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/turn/","name":"TURN Service"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/turn/generate-credentials/","name":"Generate Credentials"}}]}
 ```

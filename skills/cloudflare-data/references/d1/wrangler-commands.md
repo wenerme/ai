@@ -1,7 +1,7 @@
 ---
 title: Wrangler commands
 description: Use Wrangler CLI commands to create, manage, and query D1 databases.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,9 +20,9 @@ Creates a new D1 database, and provides the binding and UUID that you will put i
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8401)
-* [  pnpm ](#tab-panel-8402)
-* [  yarn ](#tab-panel-8403)
+* [  npm ](#tab-panel-8702)
+* [  pnpm ](#tab-panel-8703)
+* [  yarn ](#tab-panel-8704)
 
 ```sh
 npx wrangler d1 create [NAME]
@@ -76,9 +76,9 @@ Get information about a D1 database, including the current database size and sta
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8404)
-* [  pnpm ](#tab-panel-8405)
-* [  yarn ](#tab-panel-8406)
+* [  npm ](#tab-panel-8705)
+* [  pnpm ](#tab-panel-8706)
+* [  yarn ](#tab-panel-8707)
 
 ```sh
 npx wrangler d1 info [NAME]
@@ -124,9 +124,9 @@ List all D1 databases in your account
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8407)
-* [  pnpm ](#tab-panel-8408)
-* [  yarn ](#tab-panel-8409)
+* [  npm ](#tab-panel-8708)
+* [  pnpm ](#tab-panel-8709)
+* [  yarn ](#tab-panel-8710)
 
 ```sh
 npx wrangler d1 list
@@ -170,9 +170,9 @@ Delete a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8410)
-* [  pnpm ](#tab-panel-8411)
-* [  yarn ](#tab-panel-8412)
+* [  npm ](#tab-panel-8711)
+* [  pnpm ](#tab-panel-8712)
+* [  yarn ](#tab-panel-8713)
 
 ```sh
 npx wrangler d1 delete [NAME]
@@ -218,9 +218,9 @@ Execute a command or SQL file
 
 You must provide either --command or --file for this command to run successfully.
 
-* [  npm ](#tab-panel-8413)
-* [  pnpm ](#tab-panel-8414)
-* [  yarn ](#tab-panel-8415)
+* [  npm ](#tab-panel-8714)
+* [  pnpm ](#tab-panel-8715)
+* [  yarn ](#tab-panel-8716)
 
 ```sh
 npx wrangler d1 execute [DATABASE]
@@ -278,9 +278,9 @@ Use a specific auth profile
 
 Export the contents or schema of your database as a .sql file
 
-* [  npm ](#tab-panel-8416)
-* [  pnpm ](#tab-panel-8417)
-* [  yarn ](#tab-panel-8418)
+* [  npm ](#tab-panel-8717)
+* [  pnpm ](#tab-panel-8718)
+* [  yarn ](#tab-panel-8719)
 
 ```sh
 npx wrangler d1 export [NAME]
@@ -340,9 +340,9 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-8419)
-* [  pnpm ](#tab-panel-8420)
-* [  yarn ](#tab-panel-8421)
+* [  npm ](#tab-panel-8720)
+* [  pnpm ](#tab-panel-8721)
+* [  yarn ](#tab-panel-8722)
 
 ```sh
 npx wrangler d1 time-travel info [DATABASE]
@@ -392,9 +392,9 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-8422)
-* [  pnpm ](#tab-panel-8423)
-* [  yarn ](#tab-panel-8424)
+* [  npm ](#tab-panel-8723)
+* [  pnpm ](#tab-panel-8724)
+* [  yarn ](#tab-panel-8725)
 
 ```sh
 npx wrangler d1 time-travel restore [DATABASE]
@@ -451,9 +451,9 @@ This will generate a new versioned file inside the 'migrations' folder. Name you
 
 The filename will include a version number and the migration name you specify.
 
-* [  npm ](#tab-panel-8425)
-* [  pnpm ](#tab-panel-8426)
-* [  yarn ](#tab-panel-8427)
+* [  npm ](#tab-panel-8726)
+* [  pnpm ](#tab-panel-8727)
+* [  yarn ](#tab-panel-8728)
 
 ```sh
 npx wrangler d1 migrations create [DATABASE] [MESSAGE]
@@ -497,9 +497,9 @@ Use a specific auth profile
 
 View a list of unapplied migration files
 
-* [  npm ](#tab-panel-8428)
-* [  pnpm ](#tab-panel-8429)
-* [  yarn ](#tab-panel-8430)
+* [  npm ](#tab-panel-8729)
+* [  pnpm ](#tab-panel-8730)
+* [  yarn ](#tab-panel-8731)
 
 ```sh
 npx wrangler d1 migrations list [DATABASE]
@@ -557,9 +557,9 @@ When running the apply command in a CI/CD environment or another non-interactive
 
 If applying a migration results in an error, this migration will be rolled back, and the previous successful migration will remain applied.
 
-* [  npm ](#tab-panel-8431)
-* [  pnpm ](#tab-panel-8432)
-* [  yarn ](#tab-panel-8433)
+* [  npm ](#tab-panel-8732)
+* [  pnpm ](#tab-panel-8733)
+* [  yarn ](#tab-panel-8734)
 
 ```sh
 npx wrangler d1 migrations apply [DATABASE]
@@ -614,9 +614,9 @@ Get information about the queries run on a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8434)
-* [  pnpm ](#tab-panel-8435)
-* [  yarn ](#tab-panel-8436)
+* [  npm ](#tab-panel-8735)
+* [  pnpm ](#tab-panel-8736)
+* [  yarn ](#tab-panel-8737)
 
 ```sh
 npx wrangler d1 insights [NAME]
@@ -667,6 +667,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare D1 docs","description":"Use Wrangler CLI commands to create, manage, and query D1 databases.","url":"https://developers.cloudflare.com/d1/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare D1 docs","description":"Use Wrangler CLI commands to create, manage, and query D1 databases.","url":"https://developers.cloudflare.com/d1/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Workers Binding API
 description: Use the Workers KV binding API to read, write, delete, and list key-value pairs from your Worker code.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,6 +18,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ List keys ](https://developers.cloudflare.com/kv/api/list-keys/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/kv/api/#page","headline":"Workers Binding API · Cloudflare Workers KV docs","description":"Use the Workers KV binding API to read, write, delete, and list key-value pairs from your Worker code.","url":"https://developers.cloudflare.com/kv/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/kv/api/#page","headline":"Workers Binding API · Cloudflare Workers KV docs","description":"Use the Workers KV binding API to read, write, delete, and list key-value pairs from your Worker code.","url":"https://developers.cloudflare.com/kv/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/api/","name":"Workers Binding API"}}]}
 ```

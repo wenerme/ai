@@ -1,7 +1,7 @@
 ---
 title: qwen3-30b-a3b-fp8
 description: Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts (MoE) models. Built upon extensive training, Qwen3 delivers groundbreaking advancements in reasoning, instruction-following, agent capabilities, and multilingual support.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2488)
-* [  TypeScript ](#tab-panel-2489)
-* [  Python ](#tab-panel-2490)
-* [  curl ](#tab-panel-2491)
+* [  Worker (Streaming) ](#tab-panel-2636)
+* [  TypeScript ](#tab-panel-2637)
+* [  Python ](#tab-panel-2638)
+* [  curl ](#tab-panel-2639)
 
 **TypeScript**
 
@@ -139,8 +139,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-2492)
-* [ Output ](#tab-panel-2493)
+* [ Input ](#tab-panel-2640)
+* [ Output ](#tab-panel-2641)
 
 prompt
 
@@ -224,8 +224,8 @@ prompt\_logprobs{}
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
-* [ Input ](#tab-panel-2494)
-* [ Output ](#tab-panel-2495)
+* [ Input ](#tab-panel-2642)
+* [ Output ](#tab-panel-2643)
 
 prompt
 
@@ -293,8 +293,8 @@ format
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-2496)
-* [ Output ](#tab-panel-2497)
+* [ Input ](#tab-panel-2644)
+* [ Output ](#tab-panel-2645)
 
 ▶requests\[\]
 
@@ -343,6 +343,6 @@ prompt\_logprobs{}
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/batch-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen3-30b-a3b-fp8/#page","headline":"qwen3-30b-a3b-fp8 (Qwen) · Cloudflare AI docs · Cloudflare AI docs","description":"Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts (MoE) models. Built upon extensive training, Qwen3 delivers groundbreaking advancements in reasoning, instruction-following, agent capabilities, and multilingual support.","url":"https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen3-30b-a3b-fp8/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen3-30b-a3b-fp8/#page","headline":"qwen3-30b-a3b-fp8 (Qwen) · Cloudflare AI docs · Cloudflare AI docs","description":"Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts (MoE) models. Built upon extensive training, Qwen3 delivers groundbreaking advancements in reasoning, instruction-following, agent capabilities, and multilingual support.","url":"https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen3-30b-a3b-fp8/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

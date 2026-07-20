@@ -1,7 +1,7 @@
 ---
 title: Useful commands
 description: Common cloudflared commands for managing tunnels.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -46,6 +46,6 @@ To view all CLI commands, refer to the CLI help text in your terminal. For examp
 | cloudflared tunnel route lb <NAME or UUID> <hostname> <load balancer pool> | Adds a tunnel as an endpoint in a [load balancer pool](https://developers.cloudflare.com/tunnel/routing/#add-a-tunnel-to-a-load-balancer-pool). A new load balancer and pool will be created if necessary. <hostname>: the public-facing hostname of the load balancer, for example lb.example.com <load balancer pool>: the name of the [pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool) that will contain the tunnel endpoint  To load balance traffic to a [published application](https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/#file-structure-for-published-applications), you will also need to specify the application hostname in the [endpoint host header](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/) using the dashboard or API. |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/tunnel-useful-commands/#page","headline":"Useful commands · Cloudflare Docs","description":"Common cloudflared commands for managing tunnels.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/tunnel-useful-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/tunnel-useful-commands/#page","headline":"Useful commands · Cloudflare Docs","description":"Common cloudflared commands for managing tunnels.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/tunnel-useful-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/advanced/","name":"Advanced"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/advanced/local-management/","name":"Locally-managed tunnels"}},{"@type":"ListItem","position":5,"item":{"@id":"/tunnel/advanced/local-management/tunnel-useful-commands/","name":"Useful commands"}}]}
 ```

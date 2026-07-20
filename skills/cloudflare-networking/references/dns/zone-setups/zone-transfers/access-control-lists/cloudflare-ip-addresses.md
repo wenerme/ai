@@ -1,7 +1,7 @@
 ---
 title: Cloudflare IP addresses
 description: IP addresses used by Cloudflare for DNS zone transfers and NOTIFY messages.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -92,6 +92,6 @@ Warning
 If you are updating an existing BIND configuration, first add the new IP addresses alongside the old ones in your `allow-transfer` directive. Verify that zone transfers are completing successfully from the new addresses, and only then remove the old IP addresses. The old IP addresses will stop working on **December 1, 2026**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/#page","headline":"Cloudflare IP addresses - Access Control Lists (ACLs) · Cloudflare DNS docs","description":"IP addresses used by Cloudflare for DNS zone transfers and NOTIFY messages.","url":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/#page","headline":"Cloudflare IP addresses - Access Control Lists (ACLs) · Cloudflare DNS docs","description":"IP addresses used by Cloudflare for DNS zone transfers and NOTIFY messages.","url":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/zone-transfers/","name":"DNS Zone transfers"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/zone-transfers/access-control-lists/","name":"Access Control Lists (ACLs)"}},{"@type":"ListItem","position":6,"item":{"@id":"/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/","name":"Cloudflare IP addresses"}}]}
 ```

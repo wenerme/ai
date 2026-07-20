@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Custom Domain Protection
 description: Enterprise domain protection against hijacking.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ Custom Domain Protection offers additional safeguard features for registered dom
 Contact your account team if you are interested in Cloudflare's Custom Domain Protection.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/custom-domain-protection/#page","headline":"Cloudflare Custom Domain Protection · Cloudflare Registrar docs","description":"Enterprise domain protection against hijacking.","url":"https://developers.cloudflare.com/registrar/custom-domain-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/custom-domain-protection/#page","headline":"Cloudflare Custom Domain Protection · Cloudflare Registrar docs","description":"Enterprise domain protection against hijacking.","url":"https://developers.cloudflare.com/registrar/custom-domain-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/custom-domain-protection/","name":"Cloudflare Custom Domain Protection"}}]}
 ```

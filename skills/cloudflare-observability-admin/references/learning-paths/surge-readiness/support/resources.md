@@ -1,7 +1,7 @@
 ---
 title: Support resources
 description: Access Cloudflare support and resources.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,6 +36,6 @@ For security reasons, Cloudflare Support only assists individuals whose email ad
 * [Maximize Revenue and Minimize Risk in Peak Season webinar ↗](https://www.google.com/url?q=https://cloudflare.ondemand.goldcast.io/on-demand/28262595-9ddf-4e26-91bf-241117f4b5fe&sa=D&source=docs&ust=1758134183832896&usg=AOvVaw3-v4hp23nSzNj0s6j-xxyc)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/support/resources/#page","headline":"Support resources · Cloudflare Learning Paths","description":"Access Cloudflare support and resources.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/support/resources/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/support/resources/#page","headline":"Support resources · Cloudflare Learning Paths","description":"Access Cloudflare support and resources.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/support/resources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/surge-readiness/support/","name":"Support"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/surge-readiness/support/resources/","name":"Support resources"}}]}
 ```

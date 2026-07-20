@@ -1,7 +1,7 @@
 ---
 title: Show source citations in responses
 description: Display source citations alongside AI-generated answers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -67,8 +67,8 @@ cd ai-search-citations
 
 Add an AI Search namespace binding to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6975)
-* [  wrangler.toml ](#tab-panel-6976)
+* [  wrangler.jsonc ](#tab-panel-7229)
+* [  wrangler.toml ](#tab-panel-7230)
 
 **JSONC**
 
@@ -78,7 +78,7 @@ Add an AI Search namespace binding to your Wrangler configuration:
   "name": "ai-search-citations",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-09",
+  "compatibility_date": "2026-07-20",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -94,7 +94,7 @@ Add an AI Search namespace binding to your Wrangler configuration:
 name = "ai-search-citations"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-09"
+compatibility_date = "2026-07-20"
 
 
 [[ai_search_namespaces]]
@@ -112,8 +112,8 @@ Start with the simplest citation pattern: return the generated answer and a list
 
 Replace the contents of `src/index.ts` with the following Worker code:
 
-* [  JavaScript ](#tab-panel-6977)
-* [  TypeScript ](#tab-panel-6978)
+* [  JavaScript ](#tab-panel-7231)
+* [  TypeScript ](#tab-panel-7232)
 
 **src/index.js**
 
@@ -222,8 +222,8 @@ Multiple chunks can come from the same document. Group them by `item.key` to sho
 
 To show one citation per source, update `src/index.ts` to group chunks by source document:
 
-* [  JavaScript ](#tab-panel-6981)
-* [  TypeScript ](#tab-panel-6982)
+* [  JavaScript ](#tab-panel-7235)
+* [  TypeScript ](#tab-panel-7236)
 
 **src/index.js**
 
@@ -357,8 +357,8 @@ When using `stream: true`, the chunks are sent as a separate Server-Sent Events 
 
 To show citations before the full answer finishes streaming, update `src/index.ts` to transform the stream:
 
-* [  JavaScript ](#tab-panel-6983)
-* [  TypeScript ](#tab-panel-6984)
+* [  JavaScript ](#tab-panel-7237)
+* [  TypeScript ](#tab-panel-7238)
 
 **src/index.js**
 
@@ -559,8 +559,8 @@ Each chunk includes a `scoring_details` object with a breakdown of how it was sc
 
 To filter citations by relevance, update `src/index.ts` to use score fields:
 
-* [  JavaScript ](#tab-panel-6979)
-* [  TypeScript ](#tab-panel-6980)
+* [  JavaScript ](#tab-panel-7233)
+* [  TypeScript ](#tab-panel-7234)
 
 **src/index.js**
 
@@ -670,6 +670,6 @@ Each chunk in the `chunks` array can include the following fields:
 For multi-instance searches, each chunk also includes an `instance_id` field identifying which instance it came from. To search or chat across multiple instances, refer to [namespace methods](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#namespace-methods).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/#page","headline":"Show source citations in responses · Cloudflare AI Search docs","description":"Display source citations alongside AI-generated answers.","url":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/#page","headline":"Show source citations in responses · Cloudflare AI Search docs","description":"Display source citations alongside AI-generated answers.","url":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/chunk-citations/","name":"Show source citations in responses"}}]}
 ```

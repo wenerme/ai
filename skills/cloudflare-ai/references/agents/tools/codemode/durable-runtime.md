@@ -1,7 +1,7 @@
 ---
 title: Create a durable Code Mode runtime
 description: Create a Code Mode runtime with connectors, durable approvals, rollback, execution history, and reusable snippets.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -40,15 +40,15 @@ bun add @cloudflare/codemode
 ```
 2. Add a Worker Loader binding. `DynamicWorkerExecutor` uses this binding to run model-generated code in isolated Workers:
 
-  * [  wrangler.jsonc ](#tab-panel-6787)
-  * [  wrangler.toml ](#tab-panel-6788)
+  * [  wrangler.jsonc ](#tab-panel-7061)
+  * [  wrangler.toml ](#tab-panel-7062)
 
 **JSONC**
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -63,15 +63,15 @@ bun add @cloudflare/codemode
 **TOML**
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = ["nodejs_compat"]
 [[worker_loaders]]
 binding = "LOADER"
 ```
 3. Add the Agents and Code Mode plugins to `vite.config.ts`:
 
-  * [  JavaScript ](#tab-panel-6789)
-  * [  TypeScript ](#tab-panel-6790)
+  * [  JavaScript ](#tab-panel-7063)
+  * [  TypeScript ](#tab-panel-7064)
 
 **vite.config.js**
 ```js
@@ -102,8 +102,8 @@ export { CodemodeRuntime } from "@cloudflare/codemode";
 ```
 4. Create a connector. Connectors are plain classes — they need no special file name or import syntax. This example stores notes in the Agent's Durable Object storage:
 
-  * [  JavaScript ](#tab-panel-6791)
-  * [  TypeScript ](#tab-panel-6792)
+  * [  JavaScript ](#tab-panel-7065)
+  * [  TypeScript ](#tab-panel-7066)
 
 **src/notes-connector.js**
 ```js
@@ -213,8 +213,8 @@ The `name()` result becomes the sandbox global, in this case `notes`. `requiresA
 Use `McpConnector` for MCP tools or `OpenApiConnector` for OpenAPI operations. For MCP-specific setup, refer to [Use MCP tools with Code Mode](https://developers.cloudflare.com/agents/tools/codemode/mcp/).
 5. Import the connector and create a runtime in your Agent:
 
-  * [  JavaScript ](#tab-panel-6793)
-  * [  TypeScript ](#tab-panel-6794)
+  * [  JavaScript ](#tab-panel-7067)
+  * [  TypeScript ](#tab-panel-7068)
 
 **src/server.js**
 ```js
@@ -381,6 +381,6 @@ Approval resumes the same script through replay. Completed calls return recorded
 Call `rollbackExecution()` to compensate for applied calls whose currently configured connector provides `revert`. Save only completed executions as snippets.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/#page","headline":"Create a durable Code Mode runtime · Cloudflare Agents docs","description":"Create a Code Mode runtime with connectors, durable approvals, rollback, execution history, and reusable snippets.","url":"https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/#page","headline":"Create a durable Code Mode runtime · Cloudflare Agents docs","description":"Create a Code Mode runtime with connectors, durable approvals, rollback, execution history, and reusable snippets.","url":"https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/codemode/","name":"Code Mode"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/codemode/durable-runtime/","name":"Create a durable Code Mode runtime"}}]}
 ```

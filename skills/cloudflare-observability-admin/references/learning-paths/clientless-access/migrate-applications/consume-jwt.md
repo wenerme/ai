@@ -1,7 +1,7 @@
 ---
 title: Authenticate without integrated SSO
 description: Use Cloudflare JWT for application authentication.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -33,6 +33,6 @@ When applications do not have integrated SSO, or any other method to deliver jus
 Refer to [this tutorial](https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/) for setup details.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/#page","headline":"Authenticate without integrated SSO · Cloudflare Learning Paths","description":"Use Cloudflare JWT for application authentication.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/#page","headline":"Authenticate without integrated SSO · Cloudflare Learning Paths","description":"Use Cloudflare JWT for application authentication.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/migrate-applications/","name":"Migrate applications"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/clientless-access/migrate-applications/consume-jwt/","name":"Authenticate without integrated SSO"}}]}
 ```

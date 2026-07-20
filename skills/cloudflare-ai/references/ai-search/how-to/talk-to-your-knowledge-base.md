@@ -1,7 +1,7 @@
 ---
 title: Talk to your knowledge base
 description: Build a voice agent that lets users speak to an AI Search knowledge base and hear spoken answers, using the Cloudflare Agents voice pipeline.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -84,8 +84,8 @@ The [@cloudflare/voice](https://developers.cloudflare.com/agents/communication-c
 
 Add an [AI Search binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), alongside the Workers AI binding and the agent's Durable Object. Replace `my-instance` with the name of your instance.
 
-* [  wrangler.jsonc ](#tab-panel-7115)
-* [  wrangler.toml ](#tab-panel-7116)
+* [  wrangler.jsonc ](#tab-panel-7267)
+* [  wrangler.toml ](#tab-panel-7268)
 
 **JSONC**
 
@@ -94,7 +94,7 @@ Add an [AI Search binding](https://developers.cloudflare.com/ai-search/api/searc
   "name": "voice-knowledge-base",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-11",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": ["nodejs_compat"],
   "ai": {
     "binding": "AI",
@@ -130,7 +130,7 @@ Add an [AI Search binding](https://developers.cloudflare.com/ai-search/api/searc
 name = "voice-knowledge-base"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-11"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -181,8 +181,8 @@ Update `src/server.ts`. Build the agent with the `withVoice` mixin, set the STT 
 
 The model is given a `searchKnowledgeBase` tool that calls AI Search's `search()` for retrieval. It calls the tool when it needs facts from your knowledge base, grounds its answer in the returned chunks, and you return the generated text for the pipeline to speak. The agent stores conversation history automatically, so you can pass `context.messages` for follow-up questions.
 
-* [  JavaScript ](#tab-panel-7117)
-* [  TypeScript ](#tab-panel-7118)
+* [  JavaScript ](#tab-panel-7269)
+* [  TypeScript ](#tab-panel-7270)
 
 **src/server.js**
 
@@ -489,6 +489,6 @@ This tutorial builds a single-user voice agent. If you instead need several peop
 [ Bring your own generation model ](https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/) Use a third-party model for generation while AI Search handles retrieval.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/#page","headline":"Talk to your knowledge base · Cloudflare AI Search docs","description":"Build a voice agent that lets users speak to an AI Search knowledge base and hear spoken answers, using the Cloudflare Agents voice pipeline.","url":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/#page","headline":"Talk to your knowledge base · Cloudflare AI Search docs","description":"Build a voice agent that lets users speak to an AI Search knowledge base and hear spoken answers, using the Cloudflare Agents voice pipeline.","url":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/talk-to-your-knowledge-base/","name":"Talk to your knowledge base"}}]}
 ```

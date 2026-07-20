@@ -1,7 +1,7 @@
 ---
 title: View the payload content in the dashboard
 description: View matched payload content in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,8 +16,8 @@ View the content of the matched rule payload in the dashboard by entering your p
 
 1. Open [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/):
 
-  * [  New dashboard ](#tab-panel-11293)
-  * [ Old dashboard ](#tab-panel-11294)
+  * [  New dashboard ](#tab-panel-12027)
+  * [ Old dashboard ](#tab-panel-12028)
 
   1. In the Cloudflare dashboard, go to the **Analytics** page.
   [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -36,6 +36,6 @@ If the private key you entered decrypts the encrypted payload successfully, the 
 ![Viewing the decrypted payload match data after entering your private key in the dashboard](https://developers.cloudflare.com/_astro/payload-decrypted.DoVOmjx4_2nII9B.webp)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/view/#page","headline":"View the payload content in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"View matched payload content in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/view/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/view/#page","headline":"View the payload content in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"View matched payload content in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/view/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/payload-logging/","name":"Log the payload of matched rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/payload-logging/view/","name":"View the payload content in the dashboard"}}]}
 ```

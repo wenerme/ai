@@ -1,7 +1,7 @@
 ---
 title: Network Time Security
 description: Secure time synchronization with NTS protocol.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,6 +26,6 @@ The NTS protocol is divided into two phases:
 NTS is gaining support in many NTP implementations, including [Chrony ↗](https://chrony-project.org/documentation.html), [NTPsec ↗](https://www.ntpsec.org/), and [ntpd-rs ↗](https://github.com/pendulum-project/ntpd-rs). Read the relevant documentation for guidance on setting them up to point to our time service, `time.cloudflare.com`. Also see [Netnod's documentation ↗](https://www.netnod.se/netnod-time/how-to-use-nts) for configuring NTS clients.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/time-services/nts/#page","headline":"Network Time Security · Cloudflare Time Services docs","description":"Secure time synchronization with NTS protocol.","url":"https://developers.cloudflare.com/time-services/nts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/time-services/nts/#page","headline":"Network Time Security · Cloudflare Time Services docs","description":"Secure time synchronization with NTS protocol.","url":"https://developers.cloudflare.com/time-services/nts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/time-services/","name":"Time Services"}},{"@type":"ListItem","position":3,"item":{"@id":"/time-services/nts/","name":"Network Time Security"}}]}
 ```

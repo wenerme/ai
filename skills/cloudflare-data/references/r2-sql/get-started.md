@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Create your first pipeline to ingest streaming data and write to R2 Data Catalog as an Apache Iceberg table.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,8 +31,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket
 
-* [ Wrangler CLI ](#tab-panel-10122)
-* [ Dashboard ](#tab-panel-10123)
+* [ Wrangler CLI ](#tab-panel-10567)
+* [ Dashboard ](#tab-panel-10568)
 
 1. If not already logged in, run:
 ```bash
@@ -51,8 +51,8 @@ npx wrangler r2 bucket create pipelines-tutorial
 
 ## 2\. Enable R2 Data Catalog
 
-* [ Wrangler CLI ](#tab-panel-10124)
-* [ Dashboard ](#tab-panel-10125)
+* [ Wrangler CLI ](#tab-panel-10569)
+* [ Dashboard ](#tab-panel-10570)
 
 Enable the catalog on your R2 bucket:
 
@@ -87,8 +87,8 @@ This token also includes the R2 SQL Read permission, which allows you to query y
 
 ## 4\. Create a pipeline
 
-* [ Wrangler CLI ](#tab-panel-10126)
-* [ Dashboard ](#tab-panel-10127)
+* [ Wrangler CLI ](#tab-panel-10571)
+* [ Dashboard ](#tab-panel-10572)
 
 First, create a schema file that defines your ecommerce data structure:
 
@@ -296,6 +296,6 @@ You can also query this table with any engine that supports Apache Iceberg. To l
 [ Pipelines ](https://developers.cloudflare.com/pipelines/) Understand SQL transformations and pipeline configuration.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/get-started/#page","headline":"Getting started · R2 SQL docs","description":"Create your first pipeline to ingest streaming data and write to R2 Data Catalog as an Apache Iceberg table.","url":"https://developers.cloudflare.com/r2-sql/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/get-started/#page","headline":"Getting started · R2 SQL docs","description":"Create your first pipeline to ingest streaming data and write to R2 Data Catalog as an Apache Iceberg table.","url":"https://developers.cloudflare.com/r2-sql/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/get-started/","name":"Getting started"}}]}
 ```

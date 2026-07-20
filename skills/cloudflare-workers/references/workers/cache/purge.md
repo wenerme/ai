@@ -1,7 +1,7 @@
 ---
 title: Purging the cache
 description: Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -25,8 +25,8 @@ There are two equivalent ways to trigger a purge from inside your Worker:
 
 Both forms call into the same API and behave identically. Pick whichever reads more cleanly for your code.
 
-* [  JavaScript ](#tab-panel-11887)
-* [  TypeScript ](#tab-panel-11888)
+* [  JavaScript ](#tab-panel-12285)
+* [  TypeScript ](#tab-panel-12286)
 
 **src/index.js**
 
@@ -90,8 +90,8 @@ The returned promise resolves to a result object you can inspect to confirm succ
 
 Purge after a write by calling `ctx.cache.purge()` at the end of any handler that mutates data:
 
-* [  JavaScript ](#tab-panel-11895)
-* [  TypeScript ](#tab-panel-11896)
+* [  JavaScript ](#tab-panel-12293)
+* [  TypeScript ](#tab-panel-12294)
 
 **src/index.js**
 
@@ -151,8 +151,8 @@ export default {
 
 You can combine fields in a single call. For example, `purge({ tags: ["blog-posts"], pathPrefixes: ["/blog/"] })` purges everything that matches **either** tag or path-prefix — the fields are unioned, not intersected. Use this when one logical invalidation affects responses tagged by multiple schemes.
 
-* [  JavaScript ](#tab-panel-11889)
-* [  TypeScript ](#tab-panel-11890)
+* [  JavaScript ](#tab-panel-12287)
+* [  TypeScript ](#tab-panel-12288)
 
 **src/index.js**
 
@@ -196,8 +196,8 @@ Tags are attached to responses via the `Cache-Tag` response header, and purged l
 
 ### Attach tags on write
 
-* [  JavaScript ](#tab-panel-11893)
-* [  TypeScript ](#tab-panel-11894)
+* [  JavaScript ](#tab-panel-12291)
+* [  TypeScript ](#tab-panel-12292)
 
 **src/index.js**
 
@@ -247,8 +247,8 @@ Tag values must be **printable ASCII** (no spaces, no Unicode), each tag is at m
 
 ### Trigger the purge
 
-* [  JavaScript ](#tab-panel-11891)
-* [  TypeScript ](#tab-panel-11892)
+* [  JavaScript ](#tab-panel-12289)
+* [  TypeScript ](#tab-panel-12290)
 
 **src/admin.js**
 
@@ -292,8 +292,8 @@ Tags are scoped to the entrypoint that called `purge()`. A tag named `user-42` a
 
 To invalidate groups of related responses in one call, tag each response with multiple tags representing every level of hierarchy it belongs to — sometimes called "soft tags":
 
-* [  JavaScript ](#tab-panel-11907)
-* [  TypeScript ](#tab-panel-11908)
+* [  JavaScript ](#tab-panel-12305)
+* [  TypeScript ](#tab-panel-12306)
 
 **src/index.js**
 
@@ -367,8 +367,8 @@ By default, Workers Caching [partitions the cache by Worker version](https://dev
 
 Add the [version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11885)
-* [  wrangler.toml ](#tab-panel-11886)
+* [  wrangler.jsonc ](#tab-panel-12283)
+* [  wrangler.toml ](#tab-panel-12284)
 
 **JSONC**
 
@@ -377,7 +377,7 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-20",
   "cache": { "enabled": true, "cross_version_cache": true },
   "version_metadata": { "binding": "CF_VERSION_METADATA" },
 }
@@ -389,7 +389,7 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -403,8 +403,8 @@ binding = "CF_VERSION_METADATA"
 
 Then prepend the version ID to your tags:
 
-* [  JavaScript ](#tab-panel-11905)
-* [  TypeScript ](#tab-panel-11906)
+* [  JavaScript ](#tab-panel-12303)
+* [  TypeScript ](#tab-panel-12304)
 
 **src/index.js**
 
@@ -455,8 +455,8 @@ export default {
 
 When you want to invalidate everything a specific version wrote — for example, after a rollback — purge the version tag:
 
-* [  JavaScript ](#tab-panel-11897)
-* [  TypeScript ](#tab-panel-11898)
+* [  JavaScript ](#tab-panel-12295)
+* [  TypeScript ](#tab-panel-12296)
 
 **src/admin.js**
 
@@ -496,8 +496,8 @@ export default {
 
 `pathPrefixes` invalidates every cached response whose **request path** begins with one of the given prefixes:
 
-* [  JavaScript ](#tab-panel-11899)
-* [  TypeScript ](#tab-panel-11900)
+* [  JavaScript ](#tab-panel-12297)
+* [  TypeScript ](#tab-panel-12298)
 
 **src/index.js**
 
@@ -539,8 +539,8 @@ Entries in `pathPrefixes` are **paths**, not full URLs. A prefix must not includ
 
 There is no dedicated "purge by URL" mode. To invalidate a single cached URL, pass its path as a single-element `pathPrefixes` array:
 
-* [  JavaScript ](#tab-panel-11903)
-* [  TypeScript ](#tab-panel-11904)
+* [  JavaScript ](#tab-panel-12301)
+* [  TypeScript ](#tab-panel-12302)
 
 **src/index.js**
 
@@ -580,8 +580,8 @@ Because `pathPrefixes` matches on the start of the request path, passing the ful
 
 Invalidate every cached response stored by the calling entrypoint:
 
-* [  JavaScript ](#tab-panel-11901)
-* [  TypeScript ](#tab-panel-11902)
+* [  JavaScript ](#tab-panel-12299)
+* [  TypeScript ](#tab-panel-12300)
 
 **src/index.js**
 
@@ -619,8 +619,8 @@ Purges triggered by `ctx.cache.purge()` use Cloudflare's [Instant Purge](https:/
 
 `purge()` resolves to a result object. Check `success` to confirm the purge was accepted, and inspect `errors` if it was not:
 
-* [  JavaScript ](#tab-panel-11909)
-* [  TypeScript ](#tab-panel-11910)
+* [  JavaScript ](#tab-panel-12307)
+* [  TypeScript ](#tab-panel-12308)
 
 **src/index.js**
 
@@ -667,6 +667,6 @@ On failure, each error in `errors` carries a numeric `code` and a human-readable
 `purge()` uses the same rate-limiting system as Cloudflare's zone purge API. For the rate limits that apply to your account's plan, refer to [Availability and limits](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits). When the purge is rate-limited, `success` is `false` and `errors` contains an entry describing the rejection.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purging the cache · Cloudflare Workers docs","description":"Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purging the cache · Cloudflare Workers docs","description":"Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/cache/purge/","name":"Purging the cache"}}]}
 ```

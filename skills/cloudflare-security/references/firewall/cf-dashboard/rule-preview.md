@@ -1,7 +1,7 @@
 ---
 title: Preview rules
 description: Test firewall rule impact before deployment.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -43,6 +43,6 @@ In this screenshot, a rule that matches all User-Agents that contain the string 
 **Cloudflare does not store the entirety of requests, so only a limited number of fields are available to Rule Preview**. The table below lists the fields that Rule Preview supports (green cells), broken down by operator. Fields and operators that are not supported are not included in this table.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/cf-dashboard/rule-preview/#page","headline":"Preview firewall rules · Cloudflare Firewall Rules (deprecated) docs","description":"Test firewall rule impact before deployment.","url":"https://developers.cloudflare.com/firewall/cf-dashboard/rule-preview/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/cf-dashboard/rule-preview/#page","headline":"Preview firewall rules · Cloudflare Firewall Rules (deprecated) docs","description":"Test firewall rule impact before deployment.","url":"https://developers.cloudflare.com/firewall/cf-dashboard/rule-preview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/firewall/","name":"Firewall Rules (deprecated)"}},{"@type":"ListItem","position":3,"item":{"@id":"/firewall/cf-dashboard/","name":"Manage rules in the dashboard"}},{"@type":"ListItem","position":4,"item":{"@id":"/firewall/cf-dashboard/rule-preview/","name":"Preview rules"}}]}
 ```

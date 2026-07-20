@@ -1,7 +1,7 @@
 ---
 title: Introduction to the series
 description: Overview of the Durable Objects video series.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Introduction to the series
 
-* [ Watch this episode ](#tab-panel-9181)
-* [ Series overview ](#tab-panel-9182)
+* [ Watch this episode ](#tab-panel-9915)
+* [ Series overview ](#tab-panel-9916)
 
 In this episode, we present an overview of the series, discuss its underlying architecture, and access resources to set up the project locally.
 
@@ -32,6 +32,6 @@ In this episode, we present an overview of the series, discuss its underlying ar
 [ Watch Episode 7: Deploy your video call app ](https://developers.cloudflare.com/learning-paths/durable-objects-course/series/deploy-your-video-call-app-7/) In this final episode, we configure the remaining functionalities. By the end, your app will be fully functional and ready for deployment.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/durable-objects-course/series/introduction-to-series-1/#page","headline":"Introduction to the series · Cloudflare Learning Paths","description":"Overview of the Durable Objects video series.","url":"https://developers.cloudflare.com/learning-paths/durable-objects-course/series/introduction-to-series-1/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/durable-objects-course/series/introduction-to-series-1/#page","headline":"Introduction to the series · Cloudflare Learning Paths","description":"Overview of the Durable Objects video series.","url":"https://developers.cloudflare.com/learning-paths/durable-objects-course/series/introduction-to-series-1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/durable-objects-course/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/durable-objects-course/series/introduction-to-series-1/","name":"Introduction to the series"}}]}
 ```
